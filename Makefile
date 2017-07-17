@@ -3,7 +3,7 @@ SHELL=/bin/bash
 
 PACK   =gcp
 PACKDIR=pack
-NAME   =GCP
+NAME   =Google Cloud Platform (GCP)
 
 TFGEN           = lumi-tfgen
 TFBRIDGE        = lumi-tfbridge
@@ -21,9 +21,9 @@ all: banner gen build test install
 .PHONY: all
 
 banner:
-	@$(ECHO) "\033[1;37m================================\033[0m"
+	@$(ECHO) "\033[1;37m========================================\033[0m"
 	@$(ECHO) "\033[1;37m${NAME} Lumi Package\033[0m"
-	@$(ECHO) "\033[1;37m================================\033[0m"
+	@$(ECHO) "\033[1;37m========================================\033[0m"
 	@go version
 .PHONY: banner
 

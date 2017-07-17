@@ -34,6 +34,7 @@ func gcptok(mod string, res string) tokens.Type {
 	return tokens.Type(gcpPkg + ":" + mod + "/" + fn + ":" + res)
 }
 
+// Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	git, err := tfbridge.GetGitInfo("google")
 	if err != nil {
