@@ -7,7 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pulumi/lumi/pkg/tokens"
-
+	"github.com/pulumi/terraform-bridge/pkg/tfbridge"
 	"github.com/terraform-providers/terraform-provider-google/google"
 )
 
@@ -34,16 +34,16 @@ func gcptok(mod string, res string) tokens.Type {
 	return tokens.Type(gcpPkg + ":" + mod + "/" + fn + ":" + res)
 }
 
-func gcpProvider() ProviderInfo {
-	git, err := getGitInfo("google")
+func Provider() tfbridge.ProviderInfo {
+	git, err := tfbridge.GetGitInfo("google")
 	if err != nil {
 		panic(err)
 	}
 	p := google.Provider().(*schema.Provider)
-	prov := ProviderInfo{
+	prov := tfbridge.ProviderInfo{
 		P:   p,
 		Git: git,
-		Resources: map[string]ResourceInfo{
+		Resources: map[string]tfbridge.ResourceInfo{
 			// BigQuery
 			"google_bigquery_dataset": {Tok: gcptok(bigqueryMod, "DataSet")},
 			"google_bigquery_table":   {Tok: gcptok(bigqueryMod, "Table")},
@@ -78,27 +78,27 @@ func gcpProvider() ProviderInfo {
 			"google_compute_router_peer":            {Tok: gcptok(gceMod, "RouterPeer")},
 			"google_compute_ssl_certificate": {
 				Tok: gcptok(gceMod, "SslCertificate"),
-				Fields: map[string]SchemaInfo{
+				Fields: map[string]tfbridge.SchemaInfo{
 					"id": {Name: "certificateId"},
 				},
 			},
 			"google_compute_subnetwork": {Tok: gcptok(gceMod, "SubNetwork")},
 			"google_compute_target_http_proxy": {
 				Tok: gcptok(gceMod, "TargetHttpProxy"),
-				Fields: map[string]SchemaInfo{
+				Fields: map[string]tfbridge.SchemaInfo{
 					"id": {Name: "proxyId"},
 				},
 			},
 			"google_compute_target_https_proxy": {
 				Tok: gcptok(gceMod, "TargetHttpsProxy"),
-				Fields: map[string]SchemaInfo{
+				Fields: map[string]tfbridge.SchemaInfo{
 					"id": {Name: "proxyId"},
 				},
 			},
 			"google_compute_target_pool": {Tok: gcptok(gceMod, "TargetPool")},
 			"google_compute_url_map": {
 				Tok: gcptok(gceMod, "UrlMap"),
-				Fields: map[string]SchemaInfo{
+				Fields: map[string]tfbridge.SchemaInfo{
 					"id": {Name: "mapId"},
 				},
 			},
@@ -133,8 +133,8 @@ func gcpProvider() ProviderInfo {
 	// For all resources with name properties, we will add an auto-name property.
 	for resname := range prov.Resources {
 		if schema := p.ResourcesMap[resname]; schema != nil {
-			if _, has := schema.Schema[NameProperty]; has {
-				prov.Resources[resname] = autoName(prov.Resources[resname], -1)
+			if _, has := schema.Schema[tfbridge.NameProperty]; has {
+				prov.Resources[resname] = tfbridge.AutoName(prov.Resources[resname], -1)
 			}
 		}
 	}
