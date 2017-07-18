@@ -58,6 +58,6 @@ install:
 .PHONY: install
 
 clean:
-	rm -rf ${LUMILIB}/$$(basename $$pack) ; \
+	rm -rf ${INSTALLDIR}
 .PHONY: clean
 
