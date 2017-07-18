@@ -13,6 +13,8 @@ LUMILIB         = ${LUMIROOT}/packs
 LUMIPLUG        = lumi-resource
 TESTPARALLELISM = 10
 
+INSTALLDIR      = ${LUMILIB}/${PACK}
+
 ECHO=echo -e
 GOMETALINTERBIN=gometalinter
 GOMETALINTER=${GOMETALINTERBIN} --config=Gometalinter.json
@@ -36,7 +38,6 @@ build:
 	cd ${PACKDIR} && yarn link @lumi/lumi @lumi/lumirt      # ensure we resolve to Lumi's stdlibs.
 	cd ${PACKDIR} && lumijs                                 # compile the LumiPack.
 	cd ${PACKDIR} && lumi pack verify                       # ensure the pack verifies.
-	$(eval INSTALLDIR := ${LUMILIB}/${PACK})
 .PHONY: build
 
 test:
