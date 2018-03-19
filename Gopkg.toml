@@ -1,0 +1,16 @@
+[[override]]
+  name = "github.com/pulumi/pulumi"
+  revision = "7e14a09b3b63bfab1aaeac47fdad944ac466b241"
+
+[[override]]
+  name = "github.com/pulumi/pulumi-terraform"
+  revision = "fe4b00ca832323f3c9461bf64118c523e8792812"
+
+[[override]]
+  name = "github.com/aws/aws-sdk-go"
+  version = "=1.12.32"
+
+[[override]]
+  name = "github.com/hashicorp/terraform"
+  source = "github.com/pulumi/terraform"
+  branch = "pulumi-master"
