@@ -8,5 +8,5 @@
 
 [[override]]
   name = "github.com/hashicorp/terraform"
-  source = "github.com/pulumi/terraform"
-  branch = "pulumi-master"
+  source = "github.com/hashicorp/terraform"
+  branch = "master"

@@ -4,8 +4,8 @@
 [[projects]]
   name = "cloud.google.com/go"
   packages = ["bigtable","bigtable/internal/gax","bigtable/internal/option","compute/metadata","internal/version","longrunning","longrunning/autogen"]
-  revision = "20d4028b8a750c2aca76bf9fefa8ed2d0109b573"
-  version = "v0.19.0"
+  revision = "4b98a6370e36d7a85192e7bad08a4ebd82eac2a8"
+  version = "v0.20.0"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
@@ -36,6 +36,11 @@
   packages = ["."]
   revision = "1fca145dffbcaa8fe914309b1ec0cfc67500fe61"
 
+[[projects]]
+  name = "github.com/aws/aws-sdk-go"
+  packages = ["aws","aws/awserr","aws/awsutil","aws/client","aws/client/metadata","aws/corehandlers","aws/credentials","aws/credentials/ec2rolecreds","aws/credentials/endpointcreds","aws/credentials/stscreds","aws/defaults","aws/ec2metadata","aws/endpoints","aws/request","aws/session","aws/signer/v4","internal/sdkio","internal/sdkrand","internal/shareddefaults","private/protocol","private/protocol/query","private/protocol/query/queryutil","private/protocol/rest","private/protocol/restxml","private/protocol/xml/xmlutil","service/s3","service/sts"]
+  revision = "c8c4e0c0514d87f930c1342fef390db5329928b7"
+  version = "v1.13.20"
 
 [[projects]]
   branch = "master"
@@ -160,11 +165,11 @@
   revision = "0dc08b1671f34c4250ce212759ebd880f743d883"
 
 [[projects]]
-  branch = "pulumi-master"
+  branch = "master"
   name = "github.com/hashicorp/terraform"
-  packages = ["config","config/configschema","config/hcl2shim","config/module","dag","flatmap","helper/config","helper/customdiff","helper/encryption","helper/hashcode","helper/hilmapstructure","helper/logging","helper/mutexkv","helper/pathorcontents","helper/resource","helper/schema","helper/structure","helper/validation","moduledeps","plugin/discovery","registry","registry/regsrc","registry/response","svchost","svchost/auth","svchost/disco","terraform","tfdiags","version"]
-  revision = "d7d71806cd41349fce8aa1e2910bdf801c298553"
-  source = "github.com/pulumi/terraform"
+  packages = ["config","config/configschema","config/hcl2shim","config/module","dag","flatmap","helper/config","helper/customdiff","helper/encryption","helper/hashcode","helper/hilmapstructure","helper/logging","helper/mutexkv","helper/pathorcontents","helper/resource","helper/schema","helper/structure","helper/validation","httpclient","moduledeps","plugin/discovery","registry","registry/regsrc","registry/response","svchost","svchost/auth","svchost/disco","terraform","tfdiags","version"]
+  revision = "1e2bb075048cc575fddf119b92d96e6666c818c4"
+  source = "github.com/hashicorp/terraform"
 
 [[projects]]
   name = "github.com/hashicorp/vault"
@@ -284,15 +289,10 @@
   revision = "2ab6b7470a54bfa9b5b0289f9b4e8fc4839838f7"
 
 [[projects]]
-  name = "github.com/satori/go.uuid"
-  packages = ["."]
-  revision = "b061729afc07e77a8aa4fad0a2fd840958f1942a"
-
-[[projects]]
   branch = "master"
   name = "github.com/spf13/cobra"
   packages = ["."]
-  revision = "c6c44e6fdcc30161c7f4480754da7230d01c06e3"
+  revision = "a1f051bc3eba734da4772d60e2d677f47cf93ef4"
 
 [[projects]]
   name = "github.com/spf13/pflag"
@@ -303,8 +303,8 @@
 [[projects]]
   name = "github.com/terraform-providers/terraform-provider-google"
   packages = ["google"]
-  revision = "89f9d0cab8694abd3b207de2ece66d5890218529"
-  version = "v1.7.0"
+  revision = "d6d1b7e6f2d23cbc5fefb936c84635da3d59710d"
+  version = "v1.8.0"
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
@@ -339,7 +339,7 @@
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["bcrypt","blowfish","cast5","openpgp","openpgp/armor","openpgp/elgamal","openpgp/errors","openpgp/packet","openpgp/s2k","pbkdf2","ssh/terminal"]
-  revision = "374053ea96cb300f8671b8d3b07edeeb06e203b4"
+  revision = "88942b9c40a4c9d203b82b3731787b672d6e809b"
 
 [[projects]]
   name = "golang.org/x/net"
@@ -356,7 +356,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix","windows"]
-  revision = "01acb38716e021ed1fc03a602bdb5838e1358c5e"
+  revision = "13d03a9a82fba647c21a0ef8fba44a795d0f0835"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -368,7 +368,7 @@
   branch = "master"
   name = "google.golang.org/api"
   packages = ["bigquery/v2","cloudbilling/v1","cloudfunctions/v1","cloudiot/v1","cloudkms/v1","cloudresourcemanager/v1","cloudresourcemanager/v2beta1","compute/v0.beta","compute/v1","container/v1","container/v1beta1","dataflow/v1b3","dataproc/v1","dns/v1","gensupport","googleapi","googleapi/internal/uritemplates","googleapi/transport","iam/v1","internal","iterator","logging/v2","option","pubsub/v1","runtimeconfig/v1beta1","servicemanagement/v1","sourcerepo/v1","spanner/v1","sqladmin/v1beta4","storage/v1","transport","transport/grpc","transport/http"]
-  revision = "55e9fb4044f4757138d4273ace23060d022d18f9"
+  revision = "fd84a7d742f699417e6d39a933a987ff2386c99c"
 
 [[projects]]
   name = "google.golang.org/appengine"
@@ -380,23 +380,23 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/api/annotations","googleapis/bigtable/admin/v2","googleapis/bigtable/v2","googleapis/iam/v1","googleapis/longrunning","googleapis/rpc/status","protobuf/field_mask"]
-  revision = "f8c8703595236ae70fdf8789ecb656ea0bcdcf46"
+  revision = "ab0870e398d5dd054b868c0db1481ab029b9a9f2"
 
 [[projects]]
   name = "google.golang.org/grpc"
   packages = [".","balancer","codes","connectivity","credentials","credentials/oauth","grpclb/grpc_lb_v1/messages","grpclog","internal","keepalive","metadata","naming","peer","reflection","reflection/grpc_reflection_v1alpha","resolver","stats","status","tap","transport"]
-  revision = "5ffe3083946d5603a0578721101dc8165b1d5b5f"
-  version = "v1.7.2"
+  revision = "8e4536a86ab602859c20df5ebfd0bd4228d08655"
+  version = "v1.10.0"
 
 [[projects]]
   name = "gopkg.in/yaml.v2"
   packages = ["."]
-  revision = "7f97868eec74b32b0982dd158a51a446d1da7eb5"
-  version = "v2.1.1"
+  revision = "86f5ed62f8a0ee96bd888d2efdfd6d4fb100a4eb"
+  version = "v2.2.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d480f21ecaf35a3236493f397577dfc46b03181682ac76f042374353b2d5f114"
+  inputs-digest = "759592a4914d6a1749912c32fd06df949e6d61b0c9e3b48e9c82c9083c9e362f"
   solver-name = "gps-cdcl"
   solver-version = 1
