@@ -1,12 +1,16 @@
 [[override]]
   name = "github.com/pulumi/pulumi"
-  revision = "7e14a09b3b63bfab1aaeac47fdad944ac466b241"
+  branch = "master"
 
 [[override]]
   name = "github.com/pulumi/pulumi-terraform"
-  revision = "fe4b00ca832323f3c9461bf64118c523e8792812"
+  branch = "master"
 
 [[override]]
-  name = "github.com/hashicorp/terraform"
-  source = "github.com/hashicorp/terraform"
-  branch = "master"
+  name = "github.com/pulumi/terraform"
+  branch = "pulumi-master"
+
+[[override]]
+  name = "github.com/terraform-providers/terraform-provider-google"
+  source = "github.com/pulumi/terraform-provider-google"
+  branch = "subha-gcp"

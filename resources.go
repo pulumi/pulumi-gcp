@@ -615,12 +615,6 @@ func Provider() tfbridge.ProviderInfo {
 		Overlay: &tfbridge.OverlayInfo{
 			Files:   []string{},
 			Modules: map[string]*tfbridge.OverlayInfo{},
-			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
-			},
-			PeerDependencies: map[string]string{
-				"@pulumi/pulumi": "^0.11.0-dev-163-g89067313",
-			},
 		},
 	}
 
