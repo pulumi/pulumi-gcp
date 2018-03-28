@@ -1,0 +1,39 @@
+swagger: "2.0"
+    info:
+      description: "A simple Google Cloud Endpoints API example."
+      title: "Endpoints Example"
+      version: "1.0.0"
+    host: "echo-api.endpoints.pulumi-development.cloud.goog"
+    basePath: "/"
+    consumes:
+    - "application/json"
+    produces:
+    - "application/json"
+    schemes:
+    - "https"
+    paths:
+      "/echo":
+        post:
+          description: "Echo back a given message."
+          operationId: "echo"
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "Echo"
+              schema:
+                $ref: "#/definitions/echoMessage"
+          parameters:
+          - description: "Message to echo"
+            in: body
+            name: message
+            required: true
+            schema:
+              $ref: "#/definitions/echoMessage"
+          security:
+          - api_key: []
+    definitions:
+      echoMessage:
+        properties:
+          message:
+            type: "string"
