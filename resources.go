@@ -444,13 +444,13 @@ func Provider() tfbridge.ProviderInfo {
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 
 			"google_billing_account": {
-				Tok: gcpDataSource(gcpCore, "getBillingAccount"),
+				Tok: gcpDataSource(gcpOrganization, "getBillingAccount"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_billing_account.html.markdown",
 				},
 			},
 			"google_client_config": {
-				Tok: gcpDataSource(gcpCore, "getClientConfig"),
+				Tok: gcpDataSource(gcpOrganization, "getClientConfig"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_client_config.html.markdown",
 				},
@@ -504,7 +504,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_project": {
-				Tok: gcpDataSource(gcpCompute, "getProject"),
+				Tok: gcpDataSource(gcpOrganization, "getProject"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
 				},
@@ -576,13 +576,13 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_active_folder": {
-				Tok: gcpDataSource(gcpFolder, "getActiveFolder"),
+				Tok: gcpDataSource(gcpOrganization, "getActiveFolder"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_active_folder.html.markdown",
 				},
 			},
 			"google_iam_policy": {
-				Tok: gcpDataSource(gcpCore, "getIAMPolicy"),
+				Tok: gcpDataSource(gcpOrganization, "getIAMPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_iam_policy.html.markdown",
 				},
