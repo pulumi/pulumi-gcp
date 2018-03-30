@@ -3,15 +3,14 @@
 package gcp
 
 import (
-	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
-	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-google/google"
+
+	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi/pkg/tokens"
+	
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -618,6 +617,20 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	const awsName = "name"
+	for resname, res := range prov.Resources {
+		if schema := p.ResourcesMap[resname]; schema != nil {
+			if _, has := schema.Schema[awsName]; has {
+				if _, hasfield := res.Fields[awsName]; !hasfield {
+					if res.Fields == nil {
+						res.Fields = make(map[string]*tfbridge.SchemaInfo)
+					}
+					res.Fields[awsName] = tfbridge.AutoName(awsName, 255)
+				}
+			}
+		}
+	}
+
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
 	const gcpName = "name"
@@ -630,63 +643,11 @@ func Provider() tfbridge.ProviderInfo {
 					}
 					// Use conservative options that apply broadly for Google Cloud Platform.  See
 					// details.
-					res.Fields[gcpName] = AutoName(gcpName, AutoNameOptions{
-						ForceLowercase: true,
-						Separator:      "",
-						Maxlen:         24,
-						Randlen:        8,
-					})
+					res.Fields[gcpName] = tfbridge.AutoName(gcpName, 255)
 				}
 			}
 		}
 	}
 
 	return prov
-}
-
-// IDEA: Consider moving this refactoring of AutoName to allow more flexible configuration back into pulumi-terraform.
-
-// AutoNameOptions provides parameters to AutoName to control how names will be generated
-type AutoNameOptions struct {
-	// A separator between name and random portions of the
-	Separator string
-	// Maximum length of the generated name
-	Maxlen int
-	// Number of characters of random hex digits to add to the name
-	Randlen int
-	// A transform to apply to the name prior to adding random characters
-	Transform func(string) string
-	// Force the name to be lowercase prior to adding random characters
-	ForceLowercase bool
-}
-
-// AutoName creates custom schema for a Terraform name property which is automatically populated from the resource's URN
-// name, and tranformed based on the provided options.
-func AutoName(name string, options AutoNameOptions) *tfbridge.SchemaInfo {
-	return &tfbridge.SchemaInfo{
-		Name: name,
-		Default: &tfbridge.DefaultInfo{
-			From: FromName(options),
-		},
-	}
-}
-
-// FromName automatically propagates a resource's URN onto the resulting default info.
-func FromName(options AutoNameOptions) func(res *tfbridge.PulumiResource) (interface{}, error) {
-	return func(res *tfbridge.PulumiResource) (interface{}, error) {
-		// Take the URN name part, transform it if required, and then append some unique characters if requested.
-		vs := string(res.URN.Name())
-		if options.Transform != nil {
-			vs = options.Transform(vs)
-		} else if options.ForceLowercase {
-			vs = strings.ToLower(vs)
-		}
-		if options.Randlen > 0 {
-			return resource.NewUniqueHex(vs+options.Separator, options.Randlen, options.Maxlen)
-		}
-		if len(vs) > options.Maxlen {
-			return "", errors.Errorf("name '%s' is longer than maximum length %d", vs, options.Maxlen)
-		}
-		return vs, nil
-	}
 }
