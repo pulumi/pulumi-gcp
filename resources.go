@@ -615,20 +615,19 @@ func Provider() tfbridge.ProviderInfo {
 			Files:   []string{},
 			Modules: map[string]*tfbridge.OverlayInfo{},
 		},
-	}
-
-	const awsName = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			if _, has := schema.Schema[awsName]; has {
-				if _, hasfield := res.Fields[awsName]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[awsName] = tfbridge.AutoName(awsName, 255)
-				}
-			}
-		}
+		JavaScript: &tfbridge.JavaScriptInfo{
+			DevDependencies: map[string]string{
+				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+			},
+			PeerDependencies: map[string]string{
+				"@pulumi/pulumi": "^0.11.0",
+			},
+		},
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=0.11.0",
+			},
+		},
 	}
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
