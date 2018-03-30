@@ -14,7 +14,7 @@ import (
 	"github.com/terraform-providers/terraform-provider-google/google"
 )
 
-// all of the Azure token components used below.
+// all of the Google Cloud Platform token components used below.
 const (
 	// packages:
 	gcpPackage = "gcp"
@@ -270,7 +270,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
 			"google_compute_instance_template":             {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
-			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "network")},
+			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
 			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
 			"google_compute_project_metadata_item":         {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
 			"google_compute_region_autoscaler":             {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},

@@ -13,4 +13,4 @@
 [[override]]
   name = "github.com/terraform-providers/terraform-provider-google"
   source = "github.com/pulumi/terraform-provider-google"
-  branch = "subha-gcp"
+  branch = "pulumi-master"
