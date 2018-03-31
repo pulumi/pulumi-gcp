@@ -74,7 +74,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "google",
-		Description: "A Pulumi package for creating and managing Microsoft Google cloud resources.",
+		Description: "A Pulumi package for creating and managing Google Cloud Platform resources.",
 		Keywords:    []string{"pulumi", "gcp"},
 		Homepage:    "https://pulumi.io/gcp",
 		Repository:  "https://github.com/pulumi/pulumi-gcp",
