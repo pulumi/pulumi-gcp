@@ -1,0 +1,4 @@
+name: loadbalancer
+runtime: nodejs
+description: Basic example of a Load Balancer accessible over HTTP running on Google
+  Cloud Platform. Example is implemented based on Terraform example below \n https://github.com/terraform-providers/terraform-provider-google/tree/master/examples/content-based-load-balancing
