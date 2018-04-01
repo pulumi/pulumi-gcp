@@ -12,6 +12,8 @@ env:
 - PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
 # [START auth]
+
+openssl aes-256-cbc -K $encrypted_3a0414e700dd_key -iv $encrypted_3a0414e700dd_iv -in pulumi-gcloud-credentials.json.enc -d
 openssl aes-256-cbc -K $encrypted_3a0414e700dd_key -iv $encrypted_3a0414e700dd_iv -in pulumi-gcloud-credentials.json.enc -out pulumi-gcloud-credentials.json -d
 # If the SDK is not already cached, download it and unpack it
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then 
