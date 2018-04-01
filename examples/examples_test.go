@@ -14,6 +14,7 @@ import (
 
 func TestExamples(t *testing.T) {
 	
+	// Set the configurations.
 	project:= os.Getenv("GOOGLE_PROJECT");
 	if project == "" {
 		t.Skipf("Skipping test due to missing GOOGLE_PROJECT variable")
