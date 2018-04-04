@@ -737,7 +737,7 @@
     "transport"
   ]
   revision = "8e4536a86ab602859c20df5ebfd0bd4228d08655"
-  version = "v1.10.0"
+  version = "v1.7.2"
 
 [[projects]]
   name = "gopkg.in/yaml.v2"
