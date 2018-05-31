@@ -22,7 +22,10 @@ function run_go_build() {
     fi
 
     mkdir -p "${PUBDIR}/bin"
-    go build -o "${PUBDIR}/bin/${output_name}${bin_suffix}" "$1"
+    go build \
+       -ldflags "-X github.com/pulumi/pulumi-gcp/pkg/version.Version=${VERSION}" \
+       -o "${PUBDIR}/bin/${output_name}${bin_suffix}" \
+       "$1"
 }
 
 # usage: copy_package <path-to-module> <module-name>
