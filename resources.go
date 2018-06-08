@@ -10,7 +10,6 @@ import (
 
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
-	
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -616,16 +615,16 @@ func Provider() tfbridge.ProviderInfo {
 			Modules: map[string]*tfbridge.OverlayInfo{},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			Dependencies: map[string]string{
+				"@pulumi/pulumi": "^0.12.3",
+			},
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
-			},
-			PeerDependencies: map[string]string{
-				"@pulumi/pulumi": "^0.11.0",
 			},
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.11.0",
+				"pulumi": ">=0.12.2,<0.13.0",
 			},
 		},
 	}
