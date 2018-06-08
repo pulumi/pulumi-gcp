@@ -1,4 +1,3 @@
 name: webserver
 runtime: nodejs
-description: Basic example of a web server on a compute instance running on Google
-  Cloud Platform. https://github.com/terraform-providers/terraform-provider-google/tree/master/examples/endpoints-on-compute-engine
+description: Basic example of a web server on a compute instance running on Google Cloud Platform

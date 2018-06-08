@@ -17,18 +17,6 @@ const region = gcp.config.region;
 const regionZone = gcp.config.zone;
 const projectName = gcp.config.project;
 
-const projSM = new gcp.projects.Service("webserverprojectsm", {
-    project: projectName,
-    service: "servicemanagement.googleapis.com",
-    disableOnDestroy: false,
-});
-
-const projCompute = new gcp.projects.Service("webserverprojectcompute",{
-    project: projectName,
-    service: "compute.googleapis.com",
-    disableOnDestroy: false,
-});
-
 const computeNetwork = new gcp.compute.Network("network", {
     project: projectName,
     autoCreateSubnetworks: true,
