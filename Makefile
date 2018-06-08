@@ -2,7 +2,7 @@ PROJECT_NAME := Google Cloud Platform Package
 include build/common.mk
 
 PACK             := gcp
-PACKDIR          := pack
+PACKDIR          := sdk
 PROJECT          := github.com/pulumi/pulumi-gcp
 NODE_MODULE_NAME := @pulumi/gcp
 
