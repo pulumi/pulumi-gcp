@@ -1,14 +1,10 @@
 [[override]]
   name = "github.com/pulumi/pulumi"
-  branch = "master"
+  revision = "0fcfbf39c30e4e1fc9bf99f73137bc5ca8f9de8e"
 
 [[override]]
   name = "github.com/pulumi/pulumi-terraform"
-  branch = "master"
-
-[[override]]
-  name = "github.com/pulumi/terraform"
-  branch = "pulumi-master"
+  revision = "b5c656a809adb8e695a5f28fc8de5319fabd9aaf"
 
 [[override]]
   name = "github.com/terraform-providers/terraform-provider-google"
