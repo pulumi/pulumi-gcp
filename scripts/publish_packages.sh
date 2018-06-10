@@ -6,11 +6,11 @@ if [[ "${TRAVIS_OS_NAME:-}" == "linux" ]]; then
     # Publish the NPM package.
     echo "Publishing NPM package to NPMjs.com:"
 
-    # First, add an install script to our package.json
+    # First, add an install script to our package.json.
     node $(dirname $0)/promote.js < \
-        ${ROOT}/pack/nodejs/bin/package.json > \
-        ${ROOT}/pack/nodejs/bin/package.json.publish
-    pushd ${ROOT}/pack/nodejs/bin
+        ${ROOT}/sdk/nodejs/bin/package.json > \
+        ${ROOT}/sdk/nodejs/bin/package.json.publish
+    pushd ${ROOT}/sdk/nodejs/bin
     mv package.json package.json.dev
     mv package.json.publish package.json
 
@@ -37,5 +37,5 @@ if [[ "${TRAVIS_OS_NAME:-}" == "linux" ]]; then
     twine upload \
         --repository-url https://pypi.pulumi.com?token=${PULUMI_API_TOKEN} \
         -u pulumi -p pulumi \
-        ${ROOT}/pack/python/bin/dist/*.tar.gz
+        ${ROOT}/sdk/python/bin/dist/*.tar.gz
 fi

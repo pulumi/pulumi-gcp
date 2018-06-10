@@ -1,0 +1,24 @@
+{
+    "name": "@pulumi/gcp",
+    "version": "v0.11.1-1528417815-g400d93f-dirty",
+    "description": "A Pulumi package for creating and managing Google Cloud Platform resources.",
+    "keywords": [
+        "pulumi",
+        "gcp"
+    ],
+    "homepage": "https://pulumi.io/gcp",
+    "repository": "https://github.com/pulumi/pulumi-gcp",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^0.12.3"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.25",
+        "typescript": "^2.6.2"
+    },
+    "pulumi": {
+        "resource": true
+    }
+}
