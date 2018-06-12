@@ -38,9 +38,10 @@ before_install:
 # Install the AWS CLI so that we can publish the resulting release (if applicable) at the end.
 - pip install --upgrade --user awscli
 install:
-# Clone the Pulumi repo and use install-locked.sh to install Pulumi components based on our Gopkg.lock.
-- git clone git@github.com:pulumi/home ${GOPATH}/src/github.com/pulumi/home
-- "${GOPATH}/src/github.com/pulumi/home/scripts/install-locked.sh ${PULUMI_ROOT} pulumi"
+# Clone the Pulumi repos and install Pulumi.
+- if [ "${TRAVIS_SECURE_ENV_VARS:-}" = "true" ]; then git clone git@github.com:pulumi/home ${GOPATH}/src/github.com/pulumi/home; fi
+- git clone git@github.com:pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
+- ${GOPATH}/src/github.com/pulumi/scripts/ci/install-pulumi.sh v0.12.3
 # Now restore all dependencies, after cloning, to rebuild vendor appropriately.
 - make ensure
 script:
