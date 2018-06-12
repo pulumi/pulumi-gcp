@@ -42,6 +42,7 @@ install:
 - if [ "${TRAVIS_SECURE_ENV_VARS:-}" = "true" ]; then git clone git@github.com:pulumi/home ${GOPATH}/src/github.com/pulumi/home; fi
 - git clone git@github.com:pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
 - ${GOPATH}/src/github.com/pulumi/scripts/ci/install-pulumi.sh v0.12.3
+- export PATH=/usr/local/pulumi/bin:$PATH
 # Now restore all dependencies, after cloning, to rebuild vendor appropriately.
 - make ensure
 script:
