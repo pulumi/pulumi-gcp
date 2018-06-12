@@ -9,9 +9,9 @@
     "devDependencies": {
         "typescript": "^2.5.3"
     },
-	"dependencies": {
-        "@pulumi/pulumi": "^0.12.3"
-	},
+    "dependencies": {
+        "@pulumi/pulumi": "^0.14.0-rc1"
+    },
     "peerDependencies": {
         "@pulumi/gcp": "latest"
     }
