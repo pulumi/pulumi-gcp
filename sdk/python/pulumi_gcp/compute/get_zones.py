@@ -10,17 +10,13 @@ class GetZonesResult(object):
     A collection of values returned by getZones.
     """
     def __init__(__self__, names=None, project=None):
-        if not names:
-            raise TypeError('Missing required argument names')
-        elif not isinstance(names, list):
+        if names and not isinstance(names, list):
             raise TypeError('Expected argument names to be a list')
         __self__.names = names
         """
         A list of zones available in the given region
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
 
@@ -51,5 +47,5 @@ def get_zones(project=None, region=None, status=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__)
 
     return GetZonesResult(
-        names=__ret__['names'],
-        project=__ret__['project'])
+        names=__ret__.get('names'),
+        project=__ret__.get('project'))

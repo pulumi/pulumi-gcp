@@ -10,109 +10,79 @@ class GetBackendServiceResult(object):
     A collection of values returned by getBackendService.
     """
     def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
-        if not backends:
-            raise TypeError('Missing required argument backends')
-        elif not isinstance(backends, list):
+        if backends and not isinstance(backends, list):
             raise TypeError('Expected argument backends to be a list')
         __self__.backends = backends
         """
         The list of backends that serve this Backend Service.
         """
-        if not cdn_policies:
-            raise TypeError('Missing required argument cdn_policies')
-        elif not isinstance(cdn_policies, list):
+        if cdn_policies and not isinstance(cdn_policies, list):
             raise TypeError('Expected argument cdn_policies to be a list')
         __self__.cdn_policies = cdn_policies
-        if not connection_draining_timeout_sec:
-            raise TypeError('Missing required argument connection_draining_timeout_sec')
-        elif not isinstance(connection_draining_timeout_sec, int):
+        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, int):
             raise TypeError('Expected argument connection_draining_timeout_sec to be a int')
         __self__.connection_draining_timeout_sec = connection_draining_timeout_sec
         """
         Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         """
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         Textual description for the Backend Service.
         """
-        if not enable_cdn:
-            raise TypeError('Missing required argument enable_cdn')
-        elif not isinstance(enable_cdn, bool):
+        if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError('Expected argument enable_cdn to be a bool')
         __self__.enable_cdn = enable_cdn
         """
         Whether or not Cloud CDN is enabled on the Backend Service.
         """
-        if not fingerprint:
-            raise TypeError('Missing required argument fingerprint')
-        elif not isinstance(fingerprint, basestring):
+        if fingerprint and not isinstance(fingerprint, basestring):
             raise TypeError('Expected argument fingerprint to be a basestring')
         __self__.fingerprint = fingerprint
         """
         The fingerprint of the Backend Service.
         """
-        if not health_checks:
-            raise TypeError('Missing required argument health_checks')
-        elif not isinstance(health_checks, list):
+        if health_checks and not isinstance(health_checks, list):
             raise TypeError('Expected argument health_checks to be a list')
         __self__.health_checks = health_checks
         """
         The list of HTTP/HTTPS health checks used by the Backend Service.
         """
-        if not iaps:
-            raise TypeError('Missing required argument iaps')
-        elif not isinstance(iaps, list):
+        if iaps and not isinstance(iaps, list):
             raise TypeError('Expected argument iaps to be a list')
         __self__.iaps = iaps
-        if not port_name:
-            raise TypeError('Missing required argument port_name')
-        elif not isinstance(port_name, basestring):
+        if port_name and not isinstance(port_name, basestring):
             raise TypeError('Expected argument port_name to be a basestring')
         __self__.port_name = port_name
         """
         The name of a service that has been added to an instance group in this backend.
         """
-        if not protocol:
-            raise TypeError('Missing required argument protocol')
-        elif not isinstance(protocol, basestring):
+        if protocol and not isinstance(protocol, basestring):
             raise TypeError('Expected argument protocol to be a basestring')
         __self__.protocol = protocol
         """
         The protocol for incoming requests.
         """
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
-        if not security_policy:
-            raise TypeError('Missing required argument security_policy')
-        elif not isinstance(security_policy, basestring):
+        if security_policy and not isinstance(security_policy, basestring):
             raise TypeError('Expected argument security_policy to be a basestring')
         __self__.security_policy = security_policy
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the Backend Service.
         """
-        if not session_affinity:
-            raise TypeError('Missing required argument session_affinity')
-        elif not isinstance(session_affinity, basestring):
+        if session_affinity and not isinstance(session_affinity, basestring):
             raise TypeError('Expected argument session_affinity to be a basestring')
         __self__.session_affinity = session_affinity
         """
         The Backend Service session stickyness configuration.
         """
-        if not timeout_sec:
-            raise TypeError('Missing required argument timeout_sec')
-        elif not isinstance(timeout_sec, int):
+        if timeout_sec and not isinstance(timeout_sec, int):
             raise TypeError('Expected argument timeout_sec to be a int')
         __self__.timeout_sec = timeout_sec
         """
@@ -132,18 +102,18 @@ def get_backend_service(name=None, project=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__)
 
     return GetBackendServiceResult(
-        backends=__ret__['backends'],
-        cdn_policies=__ret__['cdnPolicies'],
-        connection_draining_timeout_sec=__ret__['connectionDrainingTimeoutSec'],
-        description=__ret__['description'],
-        enable_cdn=__ret__['enableCdn'],
-        fingerprint=__ret__['fingerprint'],
-        health_checks=__ret__['healthChecks'],
-        iaps=__ret__['iaps'],
-        port_name=__ret__['portName'],
-        protocol=__ret__['protocol'],
-        region=__ret__['region'],
-        security_policy=__ret__['securityPolicy'],
-        self_link=__ret__['selfLink'],
-        session_affinity=__ret__['sessionAffinity'],
-        timeout_sec=__ret__['timeoutSec'])
+        backends=__ret__.get('backends'),
+        cdn_policies=__ret__.get('cdnPolicies'),
+        connection_draining_timeout_sec=__ret__.get('connectionDrainingTimeoutSec'),
+        description=__ret__.get('description'),
+        enable_cdn=__ret__.get('enableCdn'),
+        fingerprint=__ret__.get('fingerprint'),
+        health_checks=__ret__.get('healthChecks'),
+        iaps=__ret__.get('iaps'),
+        port_name=__ret__.get('portName'),
+        protocol=__ret__.get('protocol'),
+        region=__ret__.get('region'),
+        security_policy=__ret__.get('securityPolicy'),
+        self_link=__ret__.get('selfLink'),
+        session_affinity=__ret__.get('sessionAffinity'),
+        timeout_sec=__ret__.get('timeoutSec'))

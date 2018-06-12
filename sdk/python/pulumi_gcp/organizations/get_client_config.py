@@ -10,25 +10,19 @@ class GetClientConfigResult(object):
     A collection of values returned by getClientConfig.
     """
     def __init__(__self__, access_token=None, project=None, region=None):
-        if not access_token:
-            raise TypeError('Missing required argument access_token')
-        elif not isinstance(access_token, basestring):
+        if access_token and not isinstance(access_token, basestring):
             raise TypeError('Expected argument access_token to be a basestring')
         __self__.access_token = access_token
         """
         The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
         """
         The ID of the project to apply any resources to.
         """
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
         """
@@ -44,6 +38,6 @@ def get_client_config():
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__)
 
     return GetClientConfigResult(
-        access_token=__ret__['accessToken'],
-        project=__ret__['project'],
-        region=__ret__['region'])
+        access_token=__ret__.get('accessToken'),
+        project=__ret__.get('project'),
+        region=__ret__.get('region'))

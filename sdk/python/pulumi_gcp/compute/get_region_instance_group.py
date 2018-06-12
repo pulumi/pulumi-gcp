@@ -10,40 +10,28 @@ class GetRegionInstanceGroupResult(object):
     A collection of values returned by getRegionInstanceGroup.
     """
     def __init__(__self__, instances=None, name=None, project=None, region=None, self_link=None, size=None):
-        if not instances:
-            raise TypeError('Missing required argument instances')
-        elif not isinstance(instances, list):
+        if instances and not isinstance(instances, list):
             raise TypeError('Expected argument instances to be a list')
         __self__.instances = instances
         """
         List of instances in the group, as a list of resources, each containing:
         """
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
         String port name
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
-        if not size:
-            raise TypeError('Missing required argument size')
-        elif not isinstance(size, int):
+        if size and not isinstance(size, int):
             raise TypeError('Expected argument size to be a int')
         __self__.size = size
         """
@@ -89,9 +77,9 @@ def get_region_instance_group(name=None, project=None, region=None, self_link=No
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__)
 
     return GetRegionInstanceGroupResult(
-        instances=__ret__['instances'],
-        name=__ret__['name'],
-        project=__ret__['project'],
-        region=__ret__['region'],
-        self_link=__ret__['selfLink'],
-        size=__ret__['size'])
+        instances=__ret__.get('instances'),
+        name=__ret__.get('name'),
+        project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        self_link=__ret__.get('selfLink'),
+        size=__ret__.get('size'))

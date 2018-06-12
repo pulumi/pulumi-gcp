@@ -10,9 +10,7 @@ class GetIAMPolicyResult(object):
     A collection of values returned by getIAMPolicy.
     """
     def __init__(__self__, policy_data=None):
-        if not policy_data:
-            raise TypeError('Missing required argument policy_data')
-        elif not isinstance(policy_data, basestring):
+        if policy_data and not isinstance(policy_data, basestring):
             raise TypeError('Expected argument policy_data to be a basestring')
         __self__.policy_data = policy_data
         """
@@ -59,4 +57,4 @@ def get_i_a_m_policy(bindings=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__)
 
     return GetIAMPolicyResult(
-        policy_data=__ret__['policyData'])
+        policy_data=__ret__.get('policyData'))

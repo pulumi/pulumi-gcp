@@ -20,7 +20,6 @@ func LookupActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs) (*GetAct
 	}
 	return &GetActiveFolderResult{
 		Name: outputs["name"],
-	}
 	}, nil
 }
 

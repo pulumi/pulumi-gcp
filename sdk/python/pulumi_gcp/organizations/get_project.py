@@ -10,59 +10,37 @@ class GetProjectResult(object):
     A collection of values returned by getProject.
     """
     def __init__(__self__, app_engines=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, policy_data=None, policy_etag=None, skip_delete=None):
-        if not app_engines:
-            raise TypeError('Missing required argument app_engines')
-        elif not isinstance(app_engines, list):
+        if app_engines and not isinstance(app_engines, list):
             raise TypeError('Expected argument app_engines to be a list')
         __self__.app_engines = app_engines
-        if not auto_create_network:
-            raise TypeError('Missing required argument auto_create_network')
-        elif not isinstance(auto_create_network, bool):
+        if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError('Expected argument auto_create_network to be a bool')
         __self__.auto_create_network = auto_create_network
-        if not billing_account:
-            raise TypeError('Missing required argument billing_account')
-        elif not isinstance(billing_account, basestring):
+        if billing_account and not isinstance(billing_account, basestring):
             raise TypeError('Expected argument billing_account to be a basestring')
         __self__.billing_account = billing_account
-        if not folder_id:
-            raise TypeError('Missing required argument folder_id')
-        elif not isinstance(folder_id, basestring):
+        if folder_id and not isinstance(folder_id, basestring):
             raise TypeError('Expected argument folder_id to be a basestring')
         __self__.folder_id = folder_id
-        if not labels:
-            raise TypeError('Missing required argument labels')
-        elif not isinstance(labels, dict):
+        if labels and not isinstance(labels, dict):
             raise TypeError('Expected argument labels to be a dict')
         __self__.labels = labels
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
-        if not number:
-            raise TypeError('Missing required argument number')
-        elif not isinstance(number, basestring):
+        if number and not isinstance(number, basestring):
             raise TypeError('Expected argument number to be a basestring')
         __self__.number = number
-        if not org_id:
-            raise TypeError('Missing required argument org_id')
-        elif not isinstance(org_id, basestring):
+        if org_id and not isinstance(org_id, basestring):
             raise TypeError('Expected argument org_id to be a basestring')
         __self__.org_id = org_id
-        if not policy_data:
-            raise TypeError('Missing required argument policy_data')
-        elif not isinstance(policy_data, basestring):
+        if policy_data and not isinstance(policy_data, basestring):
             raise TypeError('Expected argument policy_data to be a basestring')
         __self__.policy_data = policy_data
-        if not policy_etag:
-            raise TypeError('Missing required argument policy_etag')
-        elif not isinstance(policy_etag, basestring):
+        if policy_etag and not isinstance(policy_etag, basestring):
             raise TypeError('Expected argument policy_etag to be a basestring')
         __self__.policy_etag = policy_etag
-        if not skip_delete:
-            raise TypeError('Missing required argument skip_delete')
-        elif not isinstance(skip_delete, bool):
+        if skip_delete and not isinstance(skip_delete, bool):
             raise TypeError('Expected argument skip_delete to be a bool')
         __self__.skip_delete = skip_delete
 
@@ -78,14 +56,14 @@ def get_project(project_id=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__)
 
     return GetProjectResult(
-        app_engines=__ret__['appEngines'],
-        auto_create_network=__ret__['autoCreateNetwork'],
-        billing_account=__ret__['billingAccount'],
-        folder_id=__ret__['folderId'],
-        labels=__ret__['labels'],
-        name=__ret__['name'],
-        number=__ret__['number'],
-        org_id=__ret__['orgId'],
-        policy_data=__ret__['policyData'],
-        policy_etag=__ret__['policyEtag'],
-        skip_delete=__ret__['skipDelete'])
+        app_engines=__ret__.get('appEngines'),
+        auto_create_network=__ret__.get('autoCreateNetwork'),
+        billing_account=__ret__.get('billingAccount'),
+        folder_id=__ret__.get('folderId'),
+        labels=__ret__.get('labels'),
+        name=__ret__.get('name'),
+        number=__ret__.get('number'),
+        org_id=__ret__.get('orgId'),
+        policy_data=__ret__.get('policyData'),
+        policy_etag=__ret__.get('policyEtag'),
+        skip_delete=__ret__.get('skipDelete'))

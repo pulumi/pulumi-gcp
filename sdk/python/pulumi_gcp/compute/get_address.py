@@ -10,35 +10,25 @@ class GetAddressResult(object):
     A collection of values returned by getAddress.
     """
     def __init__(__self__, address=None, project=None, region=None, self_link=None, status=None):
-        if not address:
-            raise TypeError('Missing required argument address')
-        elif not isinstance(address, basestring):
+        if address and not isinstance(address, basestring):
             raise TypeError('Expected argument address to be a basestring')
         __self__.address = address
         """
         The IP of the created resource.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the created resource.
         """
-        if not status:
-            raise TypeError('Missing required argument status')
-        elif not isinstance(status, basestring):
+        if status and not isinstance(status, basestring):
             raise TypeError('Expected argument status to be a basestring')
         __self__.status = status
         """
@@ -58,8 +48,8 @@ def get_address(name=None, project=None, region=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getAddress:getAddress', __args__)
 
     return GetAddressResult(
-        address=__ret__['address'],
-        project=__ret__['project'],
-        region=__ret__['region'],
-        self_link=__ret__['selfLink'],
-        status=__ret__['status'])
+        address=__ret__.get('address'),
+        project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        self_link=__ret__.get('selfLink'),
+        status=__ret__.get('status'))

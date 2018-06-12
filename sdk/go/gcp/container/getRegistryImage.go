@@ -25,9 +25,7 @@ func LookupRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs) (*GetR
 	}
 	return &GetRegistryImageResult{
 		ImageUrl: outputs["imageUrl"],
-	}
 		Project: outputs["project"],
-	}
 	}, nil
 }
 

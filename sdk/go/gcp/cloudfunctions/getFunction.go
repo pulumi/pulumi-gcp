@@ -23,29 +23,17 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 	}
 	return &GetFunctionResult{
 		AvailableMemoryMb: outputs["availableMemoryMb"],
-	}
 		Description: outputs["description"],
-	}
 		EntryPoint: outputs["entryPoint"],
-	}
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
-	}
 		Labels: outputs["labels"],
-	}
 		RetryOnFailure: outputs["retryOnFailure"],
-	}
 		SourceArchiveBucket: outputs["sourceArchiveBucket"],
-	}
 		SourceArchiveObject: outputs["sourceArchiveObject"],
-	}
 		Timeout: outputs["timeout"],
-	}
 		TriggerBucket: outputs["triggerBucket"],
-	}
 		TriggerHttp: outputs["triggerHttp"],
-	}
 		TriggerTopic: outputs["triggerTopic"],
-	}
 	}, nil
 }
 

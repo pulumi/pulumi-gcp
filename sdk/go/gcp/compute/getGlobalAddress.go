@@ -21,13 +21,9 @@ func LookupGlobalAddress(ctx *pulumi.Context, args *GetGlobalAddressArgs) (*GetG
 	}
 	return &GetGlobalAddressResult{
 		Address: outputs["address"],
-	}
 		Project: outputs["project"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		Status: outputs["status"],
-	}
 	}, nil
 }
 

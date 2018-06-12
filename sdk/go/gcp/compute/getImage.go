@@ -22,41 +22,23 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 	}
 	return &GetImageResult{
 		ArchiveSizeBytes: outputs["archiveSizeBytes"],
-	}
 		CreationTimestamp: outputs["creationTimestamp"],
-	}
 		Description: outputs["description"],
-	}
 		DiskSizeGb: outputs["diskSizeGb"],
-	}
 		Family: outputs["family"],
-	}
 		ImageEncryptionKeySha256: outputs["imageEncryptionKeySha256"],
-	}
 		ImageId: outputs["imageId"],
-	}
 		LabelFingerprint: outputs["labelFingerprint"],
-	}
 		Labels: outputs["labels"],
-	}
 		Licenses: outputs["licenses"],
-	}
 		Name: outputs["name"],
-	}
 		Project: outputs["project"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		SourceDisk: outputs["sourceDisk"],
-	}
 		SourceDiskEncryptionKeySha256: outputs["sourceDiskEncryptionKeySha256"],
-	}
 		SourceDiskId: outputs["sourceDiskId"],
-	}
 		SourceImageId: outputs["sourceImageId"],
-	}
 		Status: outputs["status"],
-	}
 	}, nil
 }
 

@@ -10,9 +10,7 @@ class GetObjectSignedUrlResult(object):
     A collection of values returned by getObjectSignedUrl.
     """
     def __init__(__self__, signed_url=None):
-        if not signed_url:
-            raise TypeError('Missing required argument signed_url')
-        elif not isinstance(signed_url, basestring):
+        if signed_url and not isinstance(signed_url, basestring):
             raise TypeError('Expected argument signed_url to be a basestring')
         __self__.signed_url = signed_url
         """
@@ -38,4 +36,4 @@ def get_object_signed_url(bucket=None, content_md5=None, content_type=None, cred
     __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__)
 
     return GetObjectSignedUrlResult(
-        signed_url=__ret__['signedUrl'])
+        signed_url=__ret__.get('signedUrl'))

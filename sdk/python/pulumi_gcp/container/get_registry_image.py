@@ -10,14 +10,10 @@ class GetRegistryImageResult(object):
     A collection of values returned by getRegistryImage.
     """
     def __init__(__self__, image_url=None, project=None):
-        if not image_url:
-            raise TypeError('Missing required argument image_url')
-        elif not isinstance(image_url, basestring):
+        if image_url and not isinstance(image_url, basestring):
             raise TypeError('Expected argument image_url to be a basestring')
         __self__.image_url = image_url
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
 
@@ -37,5 +33,5 @@ def get_registry_image(digest=None, name=None, project=None, region=None, tag=No
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__)
 
     return GetRegistryImageResult(
-        image_url=__ret__['imageUrl'],
-        project=__ret__['project'])
+        image_url=__ret__.get('imageUrl'),
+        project=__ret__.get('project'))

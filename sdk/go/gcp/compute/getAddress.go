@@ -22,15 +22,10 @@ func LookupAddress(ctx *pulumi.Context, args *GetAddressArgs) (*GetAddressResult
 	}
 	return &GetAddressResult{
 		Address: outputs["address"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		Status: outputs["status"],
-	}
 	}, nil
 }
 

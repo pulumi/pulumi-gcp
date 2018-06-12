@@ -10,38 +10,28 @@ class GetVPNGatewayResult(object):
     A collection of values returned by getVPNGateway.
     """
     def __init__(__self__, description=None, network=None, project=None, region=None, self_link=None):
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         Description of this VPN gateway.
         """
-        if not network:
-            raise TypeError('Missing required argument network')
-        elif not isinstance(network, basestring):
+        if network and not isinstance(network, basestring):
             raise TypeError('Expected argument network to be a basestring')
         __self__.network = network
         """
         The network of this VPN gateway.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
         """
         Region of this VPN gateway.
         """
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
@@ -60,8 +50,8 @@ def get_v_p_n_gateway(name=None, project=None, region=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__)
 
     return GetVPNGatewayResult(
-        description=__ret__['description'],
-        network=__ret__['network'],
-        project=__ret__['project'],
-        region=__ret__['region'],
-        self_link=__ret__['selfLink'])
+        description=__ret__.get('description'),
+        network=__ret__.get('network'),
+        project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        self_link=__ret__.get('selfLink'))

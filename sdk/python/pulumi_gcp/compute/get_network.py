@@ -10,33 +10,25 @@ class GetNetworkResult(object):
     A collection of values returned by getNetwork.
     """
     def __init__(__self__, description=None, gateway_ipv4=None, self_link=None, subnetworks_self_links=None):
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         Description of this network.
         """
-        if not gateway_ipv4:
-            raise TypeError('Missing required argument gateway_ipv4')
-        elif not isinstance(gateway_ipv4, basestring):
+        if gateway_ipv4 and not isinstance(gateway_ipv4, basestring):
             raise TypeError('Expected argument gateway_ipv4 to be a basestring')
         __self__.gateway_ipv4 = gateway_ipv4
         """
         The IP address of the gateway.
         """
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the resource.
         """
-        if not subnetworks_self_links:
-            raise TypeError('Missing required argument subnetworks_self_links')
-        elif not isinstance(subnetworks_self_links, list):
+        if subnetworks_self_links and not isinstance(subnetworks_self_links, list):
             raise TypeError('Expected argument subnetworks_self_links to be a list')
         __self__.subnetworks_self_links = subnetworks_self_links
         """
@@ -54,7 +46,7 @@ def get_network(name=None, project=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__)
 
     return GetNetworkResult(
-        description=__ret__['description'],
-        gateway_ipv4=__ret__['gatewayIpv4'],
-        self_link=__ret__['selfLink'],
-        subnetworks_self_links=__ret__['subnetworksSelfLinks'])
+        description=__ret__.get('description'),
+        gateway_ipv4=__ret__.get('gatewayIpv4'),
+        self_link=__ret__.get('selfLink'),
+        subnetworks_self_links=__ret__.get('subnetworksSelfLinks'))

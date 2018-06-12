@@ -21,27 +21,16 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 	}
 	return &GetProjectResult{
 		AppEngines: outputs["appEngines"],
-	}
 		AutoCreateNetwork: outputs["autoCreateNetwork"],
-	}
 		BillingAccount: outputs["billingAccount"],
-	}
 		FolderId: outputs["folderId"],
-	}
 		Labels: outputs["labels"],
-	}
 		Name: outputs["name"],
-	}
 		Number: outputs["number"],
-	}
 		OrgId: outputs["orgId"],
-	}
 		PolicyData: outputs["policyData"],
-	}
 		PolicyEtag: outputs["policyEtag"],
-	}
 		SkipDelete: outputs["skipDelete"],
-	}
 	}, nil
 }
 

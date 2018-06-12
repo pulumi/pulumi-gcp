@@ -21,31 +21,18 @@ func LookupForwardingRule(ctx *pulumi.Context, args *GetForwardingRuleArgs) (*Ge
 	}
 	return &GetForwardingRuleResult{
 		BackendService: outputs["backendService"],
-	}
 		Description: outputs["description"],
-	}
 		IpAddress: outputs["ipAddress"],
-	}
 		IpProtocol: outputs["ipProtocol"],
-	}
 		LoadBalancingScheme: outputs["loadBalancingScheme"],
-	}
 		Network: outputs["network"],
-	}
 		PortRange: outputs["portRange"],
-	}
 		Ports: outputs["ports"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		Subnetwork: outputs["subnetwork"],
-	}
 		Target: outputs["target"],
-	}
 	}, nil
 }
 

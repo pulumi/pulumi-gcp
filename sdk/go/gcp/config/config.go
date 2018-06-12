@@ -9,17 +9,17 @@ import (
 )
 
 func GetCredentials(ctx *pulumi.Context) string {
-	return config.Get("gcp:credentials")
+	return config.Get(ctx, "gcp:credentials")
 }
 
 func GetProject(ctx *pulumi.Context) string {
-	return config.Get("gcp:project")
+	return config.Get(ctx, "gcp:project")
 }
 
 func GetRegion(ctx *pulumi.Context) string {
-	return config.Get("gcp:region")
+	return config.Get(ctx, "gcp:region")
 }
 
 func GetZone(ctx *pulumi.Context) string {
-	return config.Get("gcp:zone")
+	return config.Get(ctx, "gcp:zone")
 }

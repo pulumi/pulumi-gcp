@@ -10,62 +10,46 @@ class GetInstanceGroupResult(object):
     A collection of values returned by getInstanceGroup.
     """
     def __init__(__self__, description=None, instances=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None):
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         Textual description of the instance group.
         """
-        if not instances:
-            raise TypeError('Missing required argument instances')
-        elif not isinstance(instances, list):
+        if instances and not isinstance(instances, list):
             raise TypeError('Expected argument instances to be a list')
         __self__.instances = instances
         """
         List of instances in the group.
         """
-        if not named_ports:
-            raise TypeError('Missing required argument named_ports')
-        elif not isinstance(named_ports, list):
+        if named_ports and not isinstance(named_ports, list):
             raise TypeError('Expected argument named_ports to be a list')
         __self__.named_ports = named_ports
         """
         List of named ports in the group.
         """
-        if not network:
-            raise TypeError('Missing required argument network')
-        elif not isinstance(network, basestring):
+        if network and not isinstance(network, basestring):
             raise TypeError('Expected argument network to be a basestring')
         __self__.network = network
         """
         The URL of the network the instance group is in.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the resource.
         """
-        if not size:
-            raise TypeError('Missing required argument size')
-        elif not isinstance(size, int):
+        if size and not isinstance(size, int):
             raise TypeError('Expected argument size to be a int')
         __self__.size = size
         """
         The number of instances in the group.
         """
-        if not zone:
-            raise TypeError('Missing required argument zone')
-        elif not isinstance(zone, basestring):
+        if zone and not isinstance(zone, basestring):
             raise TypeError('Expected argument zone to be a basestring')
         __self__.zone = zone
 
@@ -91,11 +75,11 @@ def get_instance_group(name=None, project=None, self_link=None, zone=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__)
 
     return GetInstanceGroupResult(
-        description=__ret__['description'],
-        instances=__ret__['instances'],
-        named_ports=__ret__['namedPorts'],
-        network=__ret__['network'],
-        project=__ret__['project'],
-        self_link=__ret__['selfLink'],
-        size=__ret__['size'],
-        zone=__ret__['zone'])
+        description=__ret__.get('description'),
+        instances=__ret__.get('instances'),
+        named_ports=__ret__.get('namedPorts'),
+        network=__ret__.get('network'),
+        project=__ret__.get('project'),
+        self_link=__ret__.get('selfLink'),
+        size=__ret__.get('size'),
+        zone=__ret__.get('zone'))

@@ -10,49 +10,37 @@ class GetImageResult(object):
     A collection of values returned by getImage.
     """
     def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
-        if not archive_size_bytes:
-            raise TypeError('Missing required argument archive_size_bytes')
-        elif not isinstance(archive_size_bytes, int):
+        if archive_size_bytes and not isinstance(archive_size_bytes, int):
             raise TypeError('Expected argument archive_size_bytes to be a int')
         __self__.archive_size_bytes = archive_size_bytes
         """
         The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
         """
-        if not creation_timestamp:
-            raise TypeError('Missing required argument creation_timestamp')
-        elif not isinstance(creation_timestamp, basestring):
+        if creation_timestamp and not isinstance(creation_timestamp, basestring):
             raise TypeError('Expected argument creation_timestamp to be a basestring')
         __self__.creation_timestamp = creation_timestamp
         """
         The creation timestamp in RFC3339 text format.
         """
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         An optional description of this image.
         """
-        if not disk_size_gb:
-            raise TypeError('Missing required argument disk_size_gb')
-        elif not isinstance(disk_size_gb, int):
+        if disk_size_gb and not isinstance(disk_size_gb, int):
             raise TypeError('Expected argument disk_size_gb to be a int')
         __self__.disk_size_gb = disk_size_gb
         """
         The size of the image when restored onto a persistent disk in gigabytes.
         """
-        if not family:
-            raise TypeError('Missing required argument family')
-        elif not isinstance(family, basestring):
+        if family and not isinstance(family, basestring):
             raise TypeError('Expected argument family to be a basestring')
         __self__.family = family
         """
         The family name of the image.
         """
-        if not image_encryption_key_sha256:
-            raise TypeError('Missing required argument image_encryption_key_sha256')
-        elif not isinstance(image_encryption_key_sha256, basestring):
+        if image_encryption_key_sha256 and not isinstance(image_encryption_key_sha256, basestring):
             raise TypeError('Expected argument image_encryption_key_sha256 to be a basestring')
         __self__.image_encryption_key_sha256 = image_encryption_key_sha256
         """
@@ -60,70 +48,52 @@ class GetImageResult(object):
         encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
         that protects this image.
         """
-        if not image_id:
-            raise TypeError('Missing required argument image_id')
-        elif not isinstance(image_id, basestring):
+        if image_id and not isinstance(image_id, basestring):
             raise TypeError('Expected argument image_id to be a basestring')
         __self__.image_id = image_id
         """
         The unique identifier for the image.
         """
-        if not label_fingerprint:
-            raise TypeError('Missing required argument label_fingerprint')
-        elif not isinstance(label_fingerprint, basestring):
+        if label_fingerprint and not isinstance(label_fingerprint, basestring):
             raise TypeError('Expected argument label_fingerprint to be a basestring')
         __self__.label_fingerprint = label_fingerprint
         """
         A fingerprint for the labels being applied to this image.
         """
-        if not labels:
-            raise TypeError('Missing required argument labels')
-        elif not isinstance(labels, dict):
+        if labels and not isinstance(labels, dict):
             raise TypeError('Expected argument labels to be a dict')
         __self__.labels = labels
         """
         A map of labels applied to this image.
         """
-        if not licenses:
-            raise TypeError('Missing required argument licenses')
-        elif not isinstance(licenses, list):
+        if licenses and not isinstance(licenses, list):
             raise TypeError('Expected argument licenses to be a list')
         __self__.licenses = licenses
         """
         A list of applicable license URI.
         """
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
         The name of the image.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the image.
         """
-        if not source_disk:
-            raise TypeError('Missing required argument source_disk')
-        elif not isinstance(source_disk, basestring):
+        if source_disk and not isinstance(source_disk, basestring):
             raise TypeError('Expected argument source_disk to be a basestring')
         __self__.source_disk = source_disk
         """
         The URL of the source disk used to create this image.
         """
-        if not source_disk_encryption_key_sha256:
-            raise TypeError('Missing required argument source_disk_encryption_key_sha256')
-        elif not isinstance(source_disk_encryption_key_sha256, basestring):
+        if source_disk_encryption_key_sha256 and not isinstance(source_disk_encryption_key_sha256, basestring):
             raise TypeError('Expected argument source_disk_encryption_key_sha256 to be a basestring')
         __self__.source_disk_encryption_key_sha256 = source_disk_encryption_key_sha256
         """
@@ -131,25 +101,19 @@ class GetImageResult(object):
         encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
         that protects this image.
         """
-        if not source_disk_id:
-            raise TypeError('Missing required argument source_disk_id')
-        elif not isinstance(source_disk_id, basestring):
+        if source_disk_id and not isinstance(source_disk_id, basestring):
             raise TypeError('Expected argument source_disk_id to be a basestring')
         __self__.source_disk_id = source_disk_id
         """
         The ID value of the disk used to create this image.
         """
-        if not source_image_id:
-            raise TypeError('Missing required argument source_image_id')
-        elif not isinstance(source_image_id, basestring):
+        if source_image_id and not isinstance(source_image_id, basestring):
             raise TypeError('Expected argument source_image_id to be a basestring')
         __self__.source_image_id = source_image_id
         """
         The ID value of the image used to create this image.
         """
-        if not status:
-            raise TypeError('Missing required argument status')
-        elif not isinstance(status, basestring):
+        if status and not isinstance(status, basestring):
             raise TypeError('Expected argument status to be a basestring')
         __self__.status = status
         """
@@ -169,21 +133,21 @@ def get_image(family=None, name=None, project=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getImage:getImage', __args__)
 
     return GetImageResult(
-        archive_size_bytes=__ret__['archiveSizeBytes'],
-        creation_timestamp=__ret__['creationTimestamp'],
-        description=__ret__['description'],
-        disk_size_gb=__ret__['diskSizeGb'],
-        family=__ret__['family'],
-        image_encryption_key_sha256=__ret__['imageEncryptionKeySha256'],
-        image_id=__ret__['imageId'],
-        label_fingerprint=__ret__['labelFingerprint'],
-        labels=__ret__['labels'],
-        licenses=__ret__['licenses'],
-        name=__ret__['name'],
-        project=__ret__['project'],
-        self_link=__ret__['selfLink'],
-        source_disk=__ret__['sourceDisk'],
-        source_disk_encryption_key_sha256=__ret__['sourceDiskEncryptionKeySha256'],
-        source_disk_id=__ret__['sourceDiskId'],
-        source_image_id=__ret__['sourceImageId'],
-        status=__ret__['status'])
+        archive_size_bytes=__ret__.get('archiveSizeBytes'),
+        creation_timestamp=__ret__.get('creationTimestamp'),
+        description=__ret__.get('description'),
+        disk_size_gb=__ret__.get('diskSizeGb'),
+        family=__ret__.get('family'),
+        image_encryption_key_sha256=__ret__.get('imageEncryptionKeySha256'),
+        image_id=__ret__.get('imageId'),
+        label_fingerprint=__ret__.get('labelFingerprint'),
+        labels=__ret__.get('labels'),
+        licenses=__ret__.get('licenses'),
+        name=__ret__.get('name'),
+        project=__ret__.get('project'),
+        self_link=__ret__.get('selfLink'),
+        source_disk=__ret__.get('sourceDisk'),
+        source_disk_encryption_key_sha256=__ret__.get('sourceDiskEncryptionKeySha256'),
+        source_disk_id=__ret__.get('sourceDiskId'),
+        source_image_id=__ret__.get('sourceImageId'),
+        status=__ret__.get('status'))

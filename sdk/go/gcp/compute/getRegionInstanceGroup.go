@@ -48,17 +48,11 @@ func LookupRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroup
 	}
 	return &GetRegionInstanceGroupResult{
 		Instances: outputs["instances"],
-	}
 		Name: outputs["name"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		Size: outputs["size"],
-	}
 	}, nil
 }
 

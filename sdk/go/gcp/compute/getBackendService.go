@@ -22,35 +22,20 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 	}
 	return &GetBackendServiceResult{
 		Backends: outputs["backends"],
-	}
 		CdnPolicies: outputs["cdnPolicies"],
-	}
 		ConnectionDrainingTimeoutSec: outputs["connectionDrainingTimeoutSec"],
-	}
 		Description: outputs["description"],
-	}
 		EnableCdn: outputs["enableCdn"],
-	}
 		Fingerprint: outputs["fingerprint"],
-	}
 		HealthChecks: outputs["healthChecks"],
-	}
 		Iaps: outputs["iaps"],
-	}
 		PortName: outputs["portName"],
-	}
 		Protocol: outputs["protocol"],
-	}
 		Region: outputs["region"],
-	}
 		SecurityPolicy: outputs["securityPolicy"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		SessionAffinity: outputs["sessionAffinity"],
-	}
 		TimeoutSec: outputs["timeoutSec"],
-	}
 	}, nil
 }
 

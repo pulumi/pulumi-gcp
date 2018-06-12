@@ -10,14 +10,10 @@ class GetRegistryRepositoryResult(object):
     A collection of values returned by getRegistryRepository.
     """
     def __init__(__self__, project=None, repository_url=None):
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not repository_url:
-            raise TypeError('Missing required argument repository_url')
-        elif not isinstance(repository_url, basestring):
+        if repository_url and not isinstance(repository_url, basestring):
             raise TypeError('Expected argument repository_url to be a basestring')
         __self__.repository_url = repository_url
 
@@ -34,5 +30,5 @@ def get_registry_repository(project=None, region=None):
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__)
 
     return GetRegistryRepositoryResult(
-        project=__ret__['project'],
-        repository_url=__ret__['repositoryUrl'])
+        project=__ret__.get('project'),
+        repository_url=__ret__.get('repositoryUrl'))

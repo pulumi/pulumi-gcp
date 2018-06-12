@@ -10,102 +10,76 @@ class GetForwardingRuleResult(object):
     A collection of values returned by getForwardingRule.
     """
     def __init__(__self__, backend_service=None, description=None, ip_address=None, ip_protocol=None, load_balancing_scheme=None, network=None, port_range=None, ports=None, project=None, region=None, self_link=None, subnetwork=None, target=None):
-        if not backend_service:
-            raise TypeError('Missing required argument backend_service')
-        elif not isinstance(backend_service, basestring):
+        if backend_service and not isinstance(backend_service, basestring):
             raise TypeError('Expected argument backend_service to be a basestring')
         __self__.backend_service = backend_service
         """
         Backend service, if this forwarding rule has one.
         """
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
         """
         Description of this forwarding rule.
         """
-        if not ip_address:
-            raise TypeError('Missing required argument ip_address')
-        elif not isinstance(ip_address, basestring):
+        if ip_address and not isinstance(ip_address, basestring):
             raise TypeError('Expected argument ip_address to be a basestring')
         __self__.ip_address = ip_address
         """
         IP address of this forwarding rule.
         """
-        if not ip_protocol:
-            raise TypeError('Missing required argument ip_protocol')
-        elif not isinstance(ip_protocol, basestring):
+        if ip_protocol and not isinstance(ip_protocol, basestring):
             raise TypeError('Expected argument ip_protocol to be a basestring')
         __self__.ip_protocol = ip_protocol
         """
         IP protocol of this forwarding rule.
         """
-        if not load_balancing_scheme:
-            raise TypeError('Missing required argument load_balancing_scheme')
-        elif not isinstance(load_balancing_scheme, basestring):
+        if load_balancing_scheme and not isinstance(load_balancing_scheme, basestring):
             raise TypeError('Expected argument load_balancing_scheme to be a basestring')
         __self__.load_balancing_scheme = load_balancing_scheme
         """
         Type of load balancing of this forwarding rule.
         """
-        if not network:
-            raise TypeError('Missing required argument network')
-        elif not isinstance(network, basestring):
+        if network and not isinstance(network, basestring):
             raise TypeError('Expected argument network to be a basestring')
         __self__.network = network
         """
         Network of this forwarding rule.
         """
-        if not port_range:
-            raise TypeError('Missing required argument port_range')
-        elif not isinstance(port_range, basestring):
+        if port_range and not isinstance(port_range, basestring):
             raise TypeError('Expected argument port_range to be a basestring')
         __self__.port_range = port_range
         """
         Port range, if this forwarding rule has one.
         """
-        if not ports:
-            raise TypeError('Missing required argument ports')
-        elif not isinstance(ports, list):
+        if ports and not isinstance(ports, list):
             raise TypeError('Expected argument ports to be a list')
         __self__.ports = ports
         """
         List of ports to use for internal load balancing, if this forwarding rule has any.
         """
-        if not project:
-            raise TypeError('Missing required argument project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
-        if not region:
-            raise TypeError('Missing required argument region')
-        elif not isinstance(region, basestring):
+        if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
         """
         Region of this forwarding rule.
         """
-        if not self_link:
-            raise TypeError('Missing required argument self_link')
-        elif not isinstance(self_link, basestring):
+        if self_link and not isinstance(self_link, basestring):
             raise TypeError('Expected argument self_link to be a basestring')
         __self__.self_link = self_link
         """
         The URI of the resource.
         """
-        if not subnetwork:
-            raise TypeError('Missing required argument subnetwork')
-        elif not isinstance(subnetwork, basestring):
+        if subnetwork and not isinstance(subnetwork, basestring):
             raise TypeError('Expected argument subnetwork to be a basestring')
         __self__.subnetwork = subnetwork
         """
         Subnetwork of this forwarding rule.
         """
-        if not target:
-            raise TypeError('Missing required argument target')
-        elif not isinstance(target, basestring):
+        if target and not isinstance(target, basestring):
             raise TypeError('Expected argument target to be a basestring')
         __self__.target = target
         """
@@ -124,16 +98,16 @@ def get_forwarding_rule(name=None, project=None, region=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__)
 
     return GetForwardingRuleResult(
-        backend_service=__ret__['backendService'],
-        description=__ret__['description'],
-        ip_address=__ret__['ipAddress'],
-        ip_protocol=__ret__['ipProtocol'],
-        load_balancing_scheme=__ret__['loadBalancingScheme'],
-        network=__ret__['network'],
-        port_range=__ret__['portRange'],
-        ports=__ret__['ports'],
-        project=__ret__['project'],
-        region=__ret__['region'],
-        self_link=__ret__['selfLink'],
-        subnetwork=__ret__['subnetwork'],
-        target=__ret__['target'])
+        backend_service=__ret__.get('backendService'),
+        description=__ret__.get('description'),
+        ip_address=__ret__.get('ipAddress'),
+        ip_protocol=__ret__.get('ipProtocol'),
+        load_balancing_scheme=__ret__.get('loadBalancingScheme'),
+        network=__ret__.get('network'),
+        port_range=__ret__.get('portRange'),
+        ports=__ret__.get('ports'),
+        project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        self_link=__ret__.get('selfLink'),
+        subnetwork=__ret__.get('subnetwork'),
+        target=__ret__.get('target'))
