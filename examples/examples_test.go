@@ -52,7 +52,6 @@ func TestExamples(t *testing.T) {
 			"gcp:config:region":  region,
 		},
 		Dependencies: []string{
-			"@pulumi/pulumi",
 			"@pulumi/gcp",
 		},
 	}
