@@ -12,9 +12,11 @@
         "fs":"*",
         "path": "*"
     },
+	"dependencies": {
+        "@pulumi/pulumi": "^0.12.3"
+	},
     "peerDependencies": {
-        "@pulumi/gcp": "latest",
-        "@pulumi/pulumi": "^0.11.0-dev-65-g7aedf80f"
+        "@pulumi/gcp": "latest"
     },
     "license": "MIT"
 }
