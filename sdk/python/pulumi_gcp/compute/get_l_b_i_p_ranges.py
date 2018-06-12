@@ -10,17 +10,13 @@ class GetLBIPRangesResult(object):
     A collection of values returned by getLBIPRanges.
     """
     def __init__(__self__, http_ssl_tcp_internals=None, networks=None):
-        if not http_ssl_tcp_internals:
-            raise TypeError('Missing required argument http_ssl_tcp_internals')
-        elif not isinstance(http_ssl_tcp_internals, list):
+        if http_ssl_tcp_internals and not isinstance(http_ssl_tcp_internals, list):
             raise TypeError('Expected argument http_ssl_tcp_internals to be a list')
         __self__.http_ssl_tcp_internals = http_ssl_tcp_internals
         """
         The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
         """
-        if not networks:
-            raise TypeError('Missing required argument networks')
-        elif not isinstance(networks, list):
+        if networks and not isinstance(networks, list):
             raise TypeError('Expected argument networks to be a list')
         __self__.networks = networks
         """
@@ -38,5 +34,5 @@ def get_l_b_i_p_ranges():
     __ret__ = pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__)
 
     return GetLBIPRangesResult(
-        http_ssl_tcp_internals=__ret__['httpSslTcpInternals'],
-        networks=__ret__['networks'])
+        http_ssl_tcp_internals=__ret__.get('httpSslTcpInternals'),
+        networks=__ret__.get('networks'))

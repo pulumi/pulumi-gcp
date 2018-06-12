@@ -38,15 +38,10 @@ func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*Ge
 	}
 	return &GetEngineVersionsResult{
 		DefaultClusterVersion: outputs["defaultClusterVersion"],
-	}
 		LatestMasterVersion: outputs["latestMasterVersion"],
-	}
 		LatestNodeVersion: outputs["latestNodeVersion"],
-	}
 		ValidMasterVersions: outputs["validMasterVersions"],
-	}
 		ValidNodeVersions: outputs["validNodeVersions"],
-	}
 	}, nil
 }
 

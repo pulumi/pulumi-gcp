@@ -10,41 +10,31 @@ class GetEngineVersionsResult(object):
     A collection of values returned by getEngineVersions.
     """
     def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, valid_master_versions=None, valid_node_versions=None):
-        if not default_cluster_version:
-            raise TypeError('Missing required argument default_cluster_version')
-        elif not isinstance(default_cluster_version, basestring):
+        if default_cluster_version and not isinstance(default_cluster_version, basestring):
             raise TypeError('Expected argument default_cluster_version to be a basestring')
         __self__.default_cluster_version = default_cluster_version
         """
         Version of Kubernetes the service deploys by default.
         """
-        if not latest_master_version:
-            raise TypeError('Missing required argument latest_master_version')
-        elif not isinstance(latest_master_version, basestring):
+        if latest_master_version and not isinstance(latest_master_version, basestring):
             raise TypeError('Expected argument latest_master_version to be a basestring')
         __self__.latest_master_version = latest_master_version
         """
         The latest version available in the given zone for use with master instances.
         """
-        if not latest_node_version:
-            raise TypeError('Missing required argument latest_node_version')
-        elif not isinstance(latest_node_version, basestring):
+        if latest_node_version and not isinstance(latest_node_version, basestring):
             raise TypeError('Expected argument latest_node_version to be a basestring')
         __self__.latest_node_version = latest_node_version
         """
         The latest version available in the given zone for use with node instances.
         """
-        if not valid_master_versions:
-            raise TypeError('Missing required argument valid_master_versions')
-        elif not isinstance(valid_master_versions, list):
+        if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError('Expected argument valid_master_versions to be a list')
         __self__.valid_master_versions = valid_master_versions
         """
         A list of versions available in the given zone for use with master instances.
         """
-        if not valid_node_versions:
-            raise TypeError('Missing required argument valid_node_versions')
-        elif not isinstance(valid_node_versions, list):
+        if valid_node_versions and not isinstance(valid_node_versions, list):
             raise TypeError('Expected argument valid_node_versions to be a list')
         __self__.valid_node_versions = valid_node_versions
         """
@@ -80,8 +70,8 @@ def get_engine_versions(project=None, zone=None):
     __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__)
 
     return GetEngineVersionsResult(
-        default_cluster_version=__ret__['defaultClusterVersion'],
-        latest_master_version=__ret__['latestMasterVersion'],
-        latest_node_version=__ret__['latestNodeVersion'],
-        valid_master_versions=__ret__['validMasterVersions'],
-        valid_node_versions=__ret__['validNodeVersions'])
+        default_cluster_version=__ret__.get('defaultClusterVersion'),
+        latest_master_version=__ret__.get('latestMasterVersion'),
+        latest_node_version=__ret__.get('latestNodeVersion'),
+        valid_master_versions=__ret__.get('validMasterVersions'),
+        valid_node_versions=__ret__.get('validNodeVersions'))

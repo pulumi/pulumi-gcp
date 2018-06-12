@@ -10,9 +10,7 @@ class GetKMSSecretResult(object):
     A collection of values returned by getKMSSecret.
     """
     def __init__(__self__, plaintext=None):
-        if not plaintext:
-            raise TypeError('Missing required argument plaintext')
-        elif not isinstance(plaintext, basestring):
+        if plaintext and not isinstance(plaintext, basestring):
             raise TypeError('Expected argument plaintext to be a basestring')
         __self__.plaintext = plaintext
         """
@@ -39,4 +37,4 @@ def get_k_m_s_secret(ciphertext=None, crypto_key=None):
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__)
 
     return GetKMSSecretResult(
-        plaintext=__ret__['plaintext'])
+        plaintext=__ret__.get('plaintext'))

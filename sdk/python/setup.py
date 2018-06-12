@@ -8,10 +8,10 @@ from subprocess import check_call
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
-        check_call(['pulumi', 'plugin', 'install', 'resource', 'gcp', 'v0.13.0-dev-1528663299-g705a2c2-dirty'])
+        check_call(['pulumi', 'plugin', 'install', 'resource', 'gcp', '${PLUGIN_VERSION}'])
 
 setup(name='pulumi_gcp',
-      version='0.13.0.dev1528663299+g705a2c2.dirty',
+      version='${VERSION}',
       description='A Pulumi package for creating and managing Google Cloud Platform resources.',
       cmdclass={
           'install': InstallPluginCommand,

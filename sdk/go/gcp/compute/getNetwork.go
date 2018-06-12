@@ -20,13 +20,9 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 	}
 	return &GetNetworkResult{
 		Description: outputs["description"],
-	}
 		GatewayIpv4: outputs["gatewayIpv4"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		SubnetworksSelfLinks: outputs["subnetworksSelfLinks"],
-	}
 	}, nil
 }
 

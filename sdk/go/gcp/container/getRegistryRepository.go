@@ -22,9 +22,7 @@ func LookupRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryAr
 	}
 	return &GetRegistryRepositoryResult{
 		Project: outputs["project"],
-	}
 		RepositoryUrl: outputs["repositoryUrl"],
-	}
 	}, nil
 }
 

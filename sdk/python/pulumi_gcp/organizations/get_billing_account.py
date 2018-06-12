@@ -10,27 +10,19 @@ class GetBillingAccountResult(object):
     A collection of values returned by getBillingAccount.
     """
     def __init__(__self__, display_name=None, name=None, open=None, project_ids=None):
-        if not display_name:
-            raise TypeError('Missing required argument display_name')
-        elif not isinstance(display_name, basestring):
+        if display_name and not isinstance(display_name, basestring):
             raise TypeError('Expected argument display_name to be a basestring')
         __self__.display_name = display_name
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
         The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
         """
-        if not open:
-            raise TypeError('Missing required argument open')
-        elif not isinstance(open, bool):
+        if open and not isinstance(open, bool):
             raise TypeError('Expected argument open to be a bool')
         __self__.open = open
-        if not project_ids:
-            raise TypeError('Missing required argument project_ids')
-        elif not isinstance(project_ids, list):
+        if project_ids and not isinstance(project_ids, list):
             raise TypeError('Expected argument project_ids to be a list')
         __self__.project_ids = project_ids
         """
@@ -64,7 +56,7 @@ def get_billing_account(billing_account=None, display_name=None, open=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__)
 
     return GetBillingAccountResult(
-        display_name=__ret__['displayName'],
-        name=__ret__['name'],
-        open=__ret__['open'],
-        project_ids=__ret__['projectIds'])
+        display_name=__ret__.get('displayName'),
+        name=__ret__.get('name'),
+        open=__ret__.get('open'),
+        project_ids=__ret__.get('projectIds'))

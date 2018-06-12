@@ -36,13 +36,9 @@ func LookupBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs) (*Ge
 	}
 	return &GetBillingAccountResult{
 		DisplayName: outputs["displayName"],
-	}
 		Name: outputs["name"],
-	}
 		Open: outputs["open"],
-	}
 		ProjectIds: outputs["projectIds"],
-	}
 	}, nil
 }
 

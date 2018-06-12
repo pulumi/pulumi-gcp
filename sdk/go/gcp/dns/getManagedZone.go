@@ -40,11 +40,8 @@ func LookupManagedZone(ctx *pulumi.Context, args *GetManagedZoneArgs) (*GetManag
 	}
 	return &GetManagedZoneResult{
 		Description: outputs["description"],
-	}
 		DnsName: outputs["dnsName"],
-	}
 		NameServers: outputs["nameServers"],
-	}
 	}, nil
 }
 

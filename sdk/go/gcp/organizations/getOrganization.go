@@ -31,15 +31,10 @@ func LookupOrganization(ctx *pulumi.Context, args *GetOrganizationArgs) (*GetOrg
 	}
 	return &GetOrganizationResult{
 		CreateTime: outputs["createTime"],
-	}
 		DirectoryCustomerId: outputs["directoryCustomerId"],
-	}
 		Domain: outputs["domain"],
-	}
 		LifecycleState: outputs["lifecycleState"],
-	}
 		Name: outputs["name"],
-	}
 	}, nil
 }
 

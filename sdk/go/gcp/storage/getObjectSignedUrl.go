@@ -28,7 +28,6 @@ func LookupObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs) (*
 	}
 	return &GetObjectSignedUrlResult{
 		SignedUrl: outputs["signedUrl"],
-	}
 	}, nil
 }
 

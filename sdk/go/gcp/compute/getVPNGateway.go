@@ -21,15 +21,10 @@ func LookupVPNGateway(ctx *pulumi.Context, args *GetVPNGatewayArgs) (*GetVPNGate
 	}
 	return &GetVPNGatewayResult{
 		Description: outputs["description"],
-	}
 		Network: outputs["network"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 	}, nil
 }
 

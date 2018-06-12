@@ -21,23 +21,14 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 	}
 	return &GetSubnetworkResult{
 		Description: outputs["description"],
-	}
 		GatewayAddress: outputs["gatewayAddress"],
-	}
 		IpCidrRange: outputs["ipCidrRange"],
-	}
 		Network: outputs["network"],
-	}
 		PrivateIpGoogleAccess: outputs["privateIpGoogleAccess"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 		SecondaryIpRanges: outputs["secondaryIpRanges"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 	}, nil
 }
 

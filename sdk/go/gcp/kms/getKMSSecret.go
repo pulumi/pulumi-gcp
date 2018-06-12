@@ -29,7 +29,6 @@ func LookupKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs) (*GetKMSSecret
 	}
 	return &GetKMSSecretResult{
 		Plaintext: outputs["plaintext"],
-	}
 	}, nil
 }
 

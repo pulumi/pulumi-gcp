@@ -10,9 +10,7 @@ class GetActiveFolderResult(object):
     A collection of values returned by getActiveFolder.
     """
     def __init__(__self__, name=None):
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
@@ -30,4 +28,4 @@ def get_active_folder(display_name=None, parent=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__)
 
     return GetActiveFolderResult(
-        name=__ret__['name'])
+        name=__ret__.get('name'))

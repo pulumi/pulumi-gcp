@@ -10,38 +10,28 @@ class GetOrganizationResult(object):
     A collection of values returned by getOrganization.
     """
     def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None):
-        if not create_time:
-            raise TypeError('Missing required argument create_time')
-        elif not isinstance(create_time, basestring):
+        if create_time and not isinstance(create_time, basestring):
             raise TypeError('Expected argument create_time to be a basestring')
         __self__.create_time = create_time
         """
         Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
-        if not directory_customer_id:
-            raise TypeError('Missing required argument directory_customer_id')
-        elif not isinstance(directory_customer_id, basestring):
+        if directory_customer_id and not isinstance(directory_customer_id, basestring):
             raise TypeError('Expected argument directory_customer_id to be a basestring')
         __self__.directory_customer_id = directory_customer_id
         """
         The Google for Work customer ID of the Organization.
         """
-        if not domain:
-            raise TypeError('Missing required argument domain')
-        elif not isinstance(domain, basestring):
+        if domain and not isinstance(domain, basestring):
             raise TypeError('Expected argument domain to be a basestring')
         __self__.domain = domain
-        if not lifecycle_state:
-            raise TypeError('Missing required argument lifecycle_state')
-        elif not isinstance(lifecycle_state, basestring):
+        if lifecycle_state and not isinstance(lifecycle_state, basestring):
             raise TypeError('Expected argument lifecycle_state to be a basestring')
         __self__.lifecycle_state = lifecycle_state
         """
         The Organization's current lifecycle state.
         """
-        if not name:
-            raise TypeError('Missing required argument name')
-        elif not isinstance(name, basestring):
+        if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
@@ -70,8 +60,8 @@ def get_organization(domain=None, organization=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__)
 
     return GetOrganizationResult(
-        create_time=__ret__['createTime'],
-        directory_customer_id=__ret__['directoryCustomerId'],
-        domain=__ret__['domain'],
-        lifecycle_state=__ret__['lifecycleState'],
-        name=__ret__['name'])
+        create_time=__ret__.get('createTime'),
+        directory_customer_id=__ret__.get('directoryCustomerId'),
+        domain=__ret__.get('domain'),
+        lifecycle_state=__ret__.get('lifecycleState'),
+        name=__ret__.get('name'))

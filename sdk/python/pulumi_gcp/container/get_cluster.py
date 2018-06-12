@@ -10,139 +10,85 @@ class GetClusterResult(object):
     A collection of values returned by getCluster.
     """
     def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, subnetwork=None):
-        if not additional_zones:
-            raise TypeError('Missing required argument additional_zones')
-        elif not isinstance(additional_zones, list):
+        if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
-        if not addons_configs:
-            raise TypeError('Missing required argument addons_configs')
-        elif not isinstance(addons_configs, list):
+        if addons_configs and not isinstance(addons_configs, list):
             raise TypeError('Expected argument addons_configs to be a list')
         __self__.addons_configs = addons_configs
-        if not cluster_ipv4_cidr:
-            raise TypeError('Missing required argument cluster_ipv4_cidr')
-        elif not isinstance(cluster_ipv4_cidr, basestring):
+        if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, basestring):
             raise TypeError('Expected argument cluster_ipv4_cidr to be a basestring')
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
-        if not description:
-            raise TypeError('Missing required argument description')
-        elif not isinstance(description, basestring):
+        if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
-        if not enable_kubernetes_alpha:
-            raise TypeError('Missing required argument enable_kubernetes_alpha')
-        elif not isinstance(enable_kubernetes_alpha, bool):
+        if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError('Expected argument enable_kubernetes_alpha to be a bool')
         __self__.enable_kubernetes_alpha = enable_kubernetes_alpha
-        if not enable_legacy_abac:
-            raise TypeError('Missing required argument enable_legacy_abac')
-        elif not isinstance(enable_legacy_abac, bool):
+        if enable_legacy_abac and not isinstance(enable_legacy_abac, bool):
             raise TypeError('Expected argument enable_legacy_abac to be a bool')
         __self__.enable_legacy_abac = enable_legacy_abac
-        if not endpoint:
-            raise TypeError('Missing required argument endpoint')
-        elif not isinstance(endpoint, basestring):
+        if endpoint and not isinstance(endpoint, basestring):
             raise TypeError('Expected argument endpoint to be a basestring')
         __self__.endpoint = endpoint
-        if not initial_node_count:
-            raise TypeError('Missing required argument initial_node_count')
-        elif not isinstance(initial_node_count, int):
+        if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError('Expected argument initial_node_count to be a int')
         __self__.initial_node_count = initial_node_count
-        if not instance_group_urls:
-            raise TypeError('Missing required argument instance_group_urls')
-        elif not isinstance(instance_group_urls, list):
+        if instance_group_urls and not isinstance(instance_group_urls, list):
             raise TypeError('Expected argument instance_group_urls to be a list')
         __self__.instance_group_urls = instance_group_urls
-        if not ip_allocation_policies:
-            raise TypeError('Missing required argument ip_allocation_policies')
-        elif not isinstance(ip_allocation_policies, list):
+        if ip_allocation_policies and not isinstance(ip_allocation_policies, list):
             raise TypeError('Expected argument ip_allocation_policies to be a list')
         __self__.ip_allocation_policies = ip_allocation_policies
-        if not logging_service:
-            raise TypeError('Missing required argument logging_service')
-        elif not isinstance(logging_service, basestring):
+        if logging_service and not isinstance(logging_service, basestring):
             raise TypeError('Expected argument logging_service to be a basestring')
         __self__.logging_service = logging_service
-        if not maintenance_policies:
-            raise TypeError('Missing required argument maintenance_policies')
-        elif not isinstance(maintenance_policies, list):
+        if maintenance_policies and not isinstance(maintenance_policies, list):
             raise TypeError('Expected argument maintenance_policies to be a list')
         __self__.maintenance_policies = maintenance_policies
-        if not master_auths:
-            raise TypeError('Missing required argument master_auths')
-        elif not isinstance(master_auths, list):
+        if master_auths and not isinstance(master_auths, list):
             raise TypeError('Expected argument master_auths to be a list')
         __self__.master_auths = master_auths
-        if not master_authorized_networks_configs:
-            raise TypeError('Missing required argument master_authorized_networks_configs')
-        elif not isinstance(master_authorized_networks_configs, list):
+        if master_authorized_networks_configs and not isinstance(master_authorized_networks_configs, list):
             raise TypeError('Expected argument master_authorized_networks_configs to be a list')
         __self__.master_authorized_networks_configs = master_authorized_networks_configs
-        if not master_ipv4_cidr_block:
-            raise TypeError('Missing required argument master_ipv4_cidr_block')
-        elif not isinstance(master_ipv4_cidr_block, basestring):
+        if master_ipv4_cidr_block and not isinstance(master_ipv4_cidr_block, basestring):
             raise TypeError('Expected argument master_ipv4_cidr_block to be a basestring')
         __self__.master_ipv4_cidr_block = master_ipv4_cidr_block
-        if not master_version:
-            raise TypeError('Missing required argument master_version')
-        elif not isinstance(master_version, basestring):
+        if master_version and not isinstance(master_version, basestring):
             raise TypeError('Expected argument master_version to be a basestring')
         __self__.master_version = master_version
-        if not min_master_version:
-            raise TypeError('Missing required argument min_master_version')
-        elif not isinstance(min_master_version, basestring):
+        if min_master_version and not isinstance(min_master_version, basestring):
             raise TypeError('Expected argument min_master_version to be a basestring')
         __self__.min_master_version = min_master_version
-        if not monitoring_service:
-            raise TypeError('Missing required argument monitoring_service')
-        elif not isinstance(monitoring_service, basestring):
+        if monitoring_service and not isinstance(monitoring_service, basestring):
             raise TypeError('Expected argument monitoring_service to be a basestring')
         __self__.monitoring_service = monitoring_service
-        if not network:
-            raise TypeError('Missing required argument network')
-        elif not isinstance(network, basestring):
+        if network and not isinstance(network, basestring):
             raise TypeError('Expected argument network to be a basestring')
         __self__.network = network
-        if not network_policies:
-            raise TypeError('Missing required argument network_policies')
-        elif not isinstance(network_policies, list):
+        if network_policies and not isinstance(network_policies, list):
             raise TypeError('Expected argument network_policies to be a list')
         __self__.network_policies = network_policies
-        if not node_configs:
-            raise TypeError('Missing required argument node_configs')
-        elif not isinstance(node_configs, list):
+        if node_configs and not isinstance(node_configs, list):
             raise TypeError('Expected argument node_configs to be a list')
         __self__.node_configs = node_configs
-        if not node_pools:
-            raise TypeError('Missing required argument node_pools')
-        elif not isinstance(node_pools, list):
+        if node_pools and not isinstance(node_pools, list):
             raise TypeError('Expected argument node_pools to be a list')
         __self__.node_pools = node_pools
-        if not node_version:
-            raise TypeError('Missing required argument node_version')
-        elif not isinstance(node_version, basestring):
+        if node_version and not isinstance(node_version, basestring):
             raise TypeError('Expected argument node_version to be a basestring')
         __self__.node_version = node_version
-        if not pod_security_policy_configs:
-            raise TypeError('Missing required argument pod_security_policy_configs')
-        elif not isinstance(pod_security_policy_configs, list):
+        if pod_security_policy_configs and not isinstance(pod_security_policy_configs, list):
             raise TypeError('Expected argument pod_security_policy_configs to be a list')
         __self__.pod_security_policy_configs = pod_security_policy_configs
-        if not private_cluster:
-            raise TypeError('Missing required argument private_cluster')
-        elif not isinstance(private_cluster, bool):
+        if private_cluster and not isinstance(private_cluster, bool):
             raise TypeError('Expected argument private_cluster to be a bool')
         __self__.private_cluster = private_cluster
-        if not remove_default_node_pool:
-            raise TypeError('Missing required argument remove_default_node_pool')
-        elif not isinstance(remove_default_node_pool, bool):
+        if remove_default_node_pool and not isinstance(remove_default_node_pool, bool):
             raise TypeError('Expected argument remove_default_node_pool to be a bool')
         __self__.remove_default_node_pool = remove_default_node_pool
-        if not subnetwork:
-            raise TypeError('Missing required argument subnetwork')
-        elif not isinstance(subnetwork, basestring):
+        if subnetwork and not isinstance(subnetwork, basestring):
             raise TypeError('Expected argument subnetwork to be a basestring')
         __self__.subnetwork = subnetwork
 
@@ -159,30 +105,30 @@ def get_cluster(name=None, project=None, region=None, zone=None):
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__)
 
     return GetClusterResult(
-        additional_zones=__ret__['additionalZones'],
-        addons_configs=__ret__['addonsConfigs'],
-        cluster_ipv4_cidr=__ret__['clusterIpv4Cidr'],
-        description=__ret__['description'],
-        enable_kubernetes_alpha=__ret__['enableKubernetesAlpha'],
-        enable_legacy_abac=__ret__['enableLegacyAbac'],
-        endpoint=__ret__['endpoint'],
-        initial_node_count=__ret__['initialNodeCount'],
-        instance_group_urls=__ret__['instanceGroupUrls'],
-        ip_allocation_policies=__ret__['ipAllocationPolicies'],
-        logging_service=__ret__['loggingService'],
-        maintenance_policies=__ret__['maintenancePolicies'],
-        master_auths=__ret__['masterAuths'],
-        master_authorized_networks_configs=__ret__['masterAuthorizedNetworksConfigs'],
-        master_ipv4_cidr_block=__ret__['masterIpv4CidrBlock'],
-        master_version=__ret__['masterVersion'],
-        min_master_version=__ret__['minMasterVersion'],
-        monitoring_service=__ret__['monitoringService'],
-        network=__ret__['network'],
-        network_policies=__ret__['networkPolicies'],
-        node_configs=__ret__['nodeConfigs'],
-        node_pools=__ret__['nodePools'],
-        node_version=__ret__['nodeVersion'],
-        pod_security_policy_configs=__ret__['podSecurityPolicyConfigs'],
-        private_cluster=__ret__['privateCluster'],
-        remove_default_node_pool=__ret__['removeDefaultNodePool'],
-        subnetwork=__ret__['subnetwork'])
+        additional_zones=__ret__.get('additionalZones'),
+        addons_configs=__ret__.get('addonsConfigs'),
+        cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
+        description=__ret__.get('description'),
+        enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
+        enable_legacy_abac=__ret__.get('enableLegacyAbac'),
+        endpoint=__ret__.get('endpoint'),
+        initial_node_count=__ret__.get('initialNodeCount'),
+        instance_group_urls=__ret__.get('instanceGroupUrls'),
+        ip_allocation_policies=__ret__.get('ipAllocationPolicies'),
+        logging_service=__ret__.get('loggingService'),
+        maintenance_policies=__ret__.get('maintenancePolicies'),
+        master_auths=__ret__.get('masterAuths'),
+        master_authorized_networks_configs=__ret__.get('masterAuthorizedNetworksConfigs'),
+        master_ipv4_cidr_block=__ret__.get('masterIpv4CidrBlock'),
+        master_version=__ret__.get('masterVersion'),
+        min_master_version=__ret__.get('minMasterVersion'),
+        monitoring_service=__ret__.get('monitoringService'),
+        network=__ret__.get('network'),
+        network_policies=__ret__.get('networkPolicies'),
+        node_configs=__ret__.get('nodeConfigs'),
+        node_pools=__ret__.get('nodePools'),
+        node_version=__ret__.get('nodeVersion'),
+        pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),
+        private_cluster=__ret__.get('privateCluster'),
+        remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
+        subnetwork=__ret__.get('subnetwork'))

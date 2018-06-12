@@ -17,9 +17,7 @@ func LookupLBIPRanges(ctx *pulumi.Context) (*GetLBIPRangesResult, error) {
 	}
 	return &GetLBIPRangesResult{
 		HttpSslTcpInternals: outputs["httpSslTcpInternals"],
-	}
 		Networks: outputs["networks"],
-	}
 	}, nil
 }
 

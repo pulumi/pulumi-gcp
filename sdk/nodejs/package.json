@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/gcp",
-    "version": "v0.13.0-dev-1528663299-g705a2c2-dirty",
+    "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing Google Cloud Platform resources.",
     "keywords": [
         "pulumi",

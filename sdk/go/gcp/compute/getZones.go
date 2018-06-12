@@ -36,9 +36,7 @@ func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, erro
 	}
 	return &GetZonesResult{
 		Names: outputs["names"],
-	}
 		Project: outputs["project"],
-	}
 	}, nil
 }
 

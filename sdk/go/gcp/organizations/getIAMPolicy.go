@@ -48,7 +48,6 @@ func LookupIAMPolicy(ctx *pulumi.Context, args *GetIAMPolicyArgs) (*GetIAMPolicy
 	}
 	return &GetIAMPolicyResult{
 		PolicyData: outputs["policyData"],
-	}
 	}, nil
 }
 

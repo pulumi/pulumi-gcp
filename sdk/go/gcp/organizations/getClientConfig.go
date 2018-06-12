@@ -15,11 +15,8 @@ func LookupClientConfig(ctx *pulumi.Context) (*GetClientConfigResult, error) {
 	}
 	return &GetClientConfigResult{
 		AccessToken: outputs["accessToken"],
-	}
 		Project: outputs["project"],
-	}
 		Region: outputs["region"],
-	}
 	}, nil
 }
 

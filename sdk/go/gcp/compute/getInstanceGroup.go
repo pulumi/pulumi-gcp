@@ -31,21 +31,13 @@ func LookupInstanceGroup(ctx *pulumi.Context, args *GetInstanceGroupArgs) (*GetI
 	}
 	return &GetInstanceGroupResult{
 		Description: outputs["description"],
-	}
 		Instances: outputs["instances"],
-	}
 		NamedPorts: outputs["namedPorts"],
-	}
 		Network: outputs["network"],
-	}
 		Project: outputs["project"],
-	}
 		SelfLink: outputs["selfLink"],
-	}
 		Size: outputs["size"],
-	}
 		Zone: outputs["zone"],
-	}
 	}, nil
 }
 
