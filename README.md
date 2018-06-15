@@ -2,10 +2,36 @@
 
 # Google Cloud Platform Resource Provider
 
-:warning: **Pulumi is in private beta.  This package may not work unless you are already participating.
-Please visit [pulumi.com](https://pulumi.com/) to register for access.**
+The Google Cloud Platform (GCP) resource provider for Pulumi lets you use GCP resources in your cloud programs.  To use
+this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
-The Google Cloud Platform (GCP) for Pulumi lets you use GCP resources in your cloud programs.
+## Installing
 
-This package is meant for use with the Pulumi CLI.  Please visit [docs.pulumi.com](https://docs.pulumi.com) for
-installation instructions.
+This package is available in many languages in the standard packaging formats.
+
+### Node.js (Java/TypeScript)
+
+To use from JavaScript or TypeScript in Node.js, install using either `npm`:
+
+    $ npm install @pulumi/gcp
+
+or `yarn`:
+
+    $ yarn add @pulumi/gcp
+
+### Python
+
+To use from Python, install using `pip`:
+
+    $ pip install pulumi_gcp
+
+### Go
+
+To use from Go, use `go get` to grab the latest version of the library
+
+    $ go get github.com/pulumi/pulumi-gcp/sdk/go/...
+
+## Reference¬
+
+For detailed reference documentation, please visit [the API docs](
+https://pulumi.io/reference/pkg/nodejs/@pulumi/gcp/index.html).

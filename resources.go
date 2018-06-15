@@ -75,7 +75,8 @@ func Provider() tfbridge.ProviderInfo {
 		Name:        "google",
 		Description: "A Pulumi package for creating and managing Google Cloud Platform resources.",
 		Keywords:    []string{"pulumi", "gcp"},
-		Homepage:    "https://pulumi.io/gcp",
+		License:     "Apache 2.0",
+		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-gcp",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// BigQuery
