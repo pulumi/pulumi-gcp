@@ -17,10 +17,11 @@ setup(name='pulumi_gcp',
           'install': InstallPluginCommand,
       },
       keywords='pulumi gcp',
-      url='https://pulumi.io/gcp',
+      url='https://pulumi.io',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-gcp'
       },
+      license='Apache 2.0',
       packages=find_packages(),
       install_requires=[
           'pulumi>=0.14.0rc1,<0.15.0'
