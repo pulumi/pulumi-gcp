@@ -9,7 +9,7 @@ class GetGlobalAddressResult(object):
     """
     A collection of values returned by getGlobalAddress.
     """
-    def __init__(__self__, address=None, project=None, self_link=None, status=None):
+    def __init__(__self__, address=None, project=None, self_link=None, status=None, id=None):
         if address and not isinstance(address, basestring):
             raise TypeError('Expected argument address to be a basestring')
         __self__.address = address
@@ -31,6 +31,12 @@ class GetGlobalAddressResult(object):
         """
         Indicates if the address is used. Possible values are: RESERVED or IN_USE.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_global_address(name=None, project=None):
     """
@@ -47,4 +53,5 @@ def get_global_address(name=None, project=None):
         address=__ret__.get('address'),
         project=__ret__.get('project'),
         self_link=__ret__.get('selfLink'),
-        status=__ret__.get('status'))
+        status=__ret__.get('status'),
+        id=__ret__.get('id'))

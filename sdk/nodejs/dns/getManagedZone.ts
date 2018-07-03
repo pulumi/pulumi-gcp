@@ -65,4 +65,8 @@ export interface GetManagedZoneResult {
      * thus making Google Cloud DNS authoritative for this zone.
      */
     readonly nameServers: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

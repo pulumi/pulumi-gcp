@@ -9,7 +9,7 @@ class GetOrganizationResult(object):
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None):
+    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None, id=None):
         if create_time and not isinstance(create_time, basestring):
             raise TypeError('Expected argument create_time to be a basestring')
         __self__.create_time = create_time
@@ -36,6 +36,12 @@ class GetOrganizationResult(object):
         __self__.name = name
         """
         The resource name of the Organization in the form `organizations/{organization_id}`.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_organization(domain=None, organization=None):
@@ -64,4 +70,5 @@ def get_organization(domain=None, organization=None):
         directory_customer_id=__ret__.get('directoryCustomerId'),
         domain=__ret__.get('domain'),
         lifecycle_state=__ret__.get('lifecycleState'),
-        name=__ret__.get('name'))
+        name=__ret__.get('name'),
+        id=__ret__.get('id'))

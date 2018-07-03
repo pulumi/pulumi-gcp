@@ -8,14 +8,19 @@ import (
 )
 
 // Use this data source to retrieve default service account for this project
-func LookupDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs) error {
+func LookupDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs) (*GetDefaultServiceAccountResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["email"] = args.Email
 		inputs["project"] = args.Project
 	}
-	_, err := ctx.Invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", inputs)
-	return err
+	outputs, err := ctx.Invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", inputs)
+	if err != nil {
+		return nil, err
+	}
+	return &GetDefaultServiceAccountResult{
+		Id: outputs["id"],
+	}, nil
 }
 
 // A collection of arguments for invoking getDefaultServiceAccount.
@@ -23,4 +28,10 @@ type GetDefaultServiceAccountArgs struct {
 	Email interface{}
 	// The project ID. If it is not provided, the provider project is used.
 	Project interface{}
+}
+
+// A collection of values returned by getDefaultServiceAccount.
+type GetDefaultServiceAccountResult struct {
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

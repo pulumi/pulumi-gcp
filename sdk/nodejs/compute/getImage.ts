@@ -107,4 +107,8 @@ export interface GetImageResult {
      * The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
      */
     readonly status: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

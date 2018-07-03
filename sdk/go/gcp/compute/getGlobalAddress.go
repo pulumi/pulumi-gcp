@@ -24,6 +24,7 @@ func LookupGlobalAddress(ctx *pulumi.Context, args *GetGlobalAddressArgs) (*GetG
 		Project: outputs["project"],
 		SelfLink: outputs["selfLink"],
 		Status: outputs["status"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -45,4 +46,6 @@ type GetGlobalAddressResult struct {
 	SelfLink interface{}
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 	Status interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

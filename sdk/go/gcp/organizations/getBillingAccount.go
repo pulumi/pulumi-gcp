@@ -39,6 +39,7 @@ func LookupBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs) (*Ge
 		Name: outputs["name"],
 		Open: outputs["open"],
 		ProjectIds: outputs["projectIds"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -60,4 +61,6 @@ type GetBillingAccountResult struct {
 	Open interface{}
 	// The IDs of any projects associated with the billing account.
 	ProjectIds interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

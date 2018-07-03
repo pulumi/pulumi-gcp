@@ -5,10 +5,10 @@
 # Export this package's modules as members:
 from registry import *
 from crypto_key import *
-from crypto_key_i_a_m_binding import *
-from crypto_key_i_a_m_member import *
+from crypto_key_iam_binding import *
+from crypto_key_iam_member import *
 from key_ring import *
-from key_ring_i_a_m_binding import *
-from key_ring_i_a_m_member import *
-from key_ring_i_a_m_policy import *
-from get_k_m_s_secret import *
+from key_ring_iam_binding import *
+from key_ring_iam_member import *
+from key_ring_iam_policy import *
+from get_kms_secret import *

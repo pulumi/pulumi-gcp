@@ -33,6 +33,7 @@ func LookupForwardingRule(ctx *pulumi.Context, args *GetForwardingRuleArgs) (*Ge
 		SelfLink: outputs["selfLink"],
 		Subnetwork: outputs["subnetwork"],
 		Target: outputs["target"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -75,4 +76,6 @@ type GetForwardingRuleResult struct {
 	Subnetwork interface{}
 	// URL of the target pool, if this forwarding rule has one.
 	Target interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

@@ -42,6 +42,7 @@ func LookupManagedZone(ctx *pulumi.Context, args *GetManagedZoneArgs) (*GetManag
 		Description: outputs["description"],
 		DnsName: outputs["dnsName"],
 		NameServers: outputs["nameServers"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -63,4 +64,6 @@ type GetManagedZoneResult struct {
 	// domain. Use NS records to redirect from your DNS provider to these names,
 	// thus making Google Cloud DNS authoritative for this zone.
 	NameServers interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

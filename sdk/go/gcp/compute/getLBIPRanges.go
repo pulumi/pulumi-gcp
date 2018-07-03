@@ -18,6 +18,7 @@ func LookupLBIPRanges(ctx *pulumi.Context) (*GetLBIPRangesResult, error) {
 	return &GetLBIPRangesResult{
 		HttpSslTcpInternals: outputs["httpSslTcpInternals"],
 		Networks: outputs["networks"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -27,4 +28,6 @@ type GetLBIPRangesResult struct {
 	HttpSslTcpInternals interface{}
 	// The IP ranges used for health checks when **Network load balancing** is used
 	Networks interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

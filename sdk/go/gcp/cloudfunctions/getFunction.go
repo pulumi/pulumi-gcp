@@ -34,6 +34,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		TriggerBucket: outputs["triggerBucket"],
 		TriggerHttp: outputs["triggerHttp"],
 		TriggerTopic: outputs["triggerTopic"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -74,4 +75,6 @@ type GetFunctionResult struct {
 	TriggerHttp interface{}
 	// If function is triggered by Pub/Sub topic, name of topic is set here.
 	TriggerTopic interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

@@ -62,4 +62,8 @@ export interface GetBillingAccountResult {
      * The IDs of any projects associated with the billing account.
      */
     readonly projectIds: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

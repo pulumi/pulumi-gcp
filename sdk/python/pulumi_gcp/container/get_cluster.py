@@ -9,7 +9,7 @@ class GetClusterResult(object):
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, subnetwork=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, subnetwork=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
@@ -91,6 +91,12 @@ class GetClusterResult(object):
         if subnetwork and not isinstance(subnetwork, basestring):
             raise TypeError('Expected argument subnetwork to be a basestring')
         __self__.subnetwork = subnetwork
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_cluster(name=None, project=None, region=None, zone=None):
     """
@@ -131,4 +137,5 @@ def get_cluster(name=None, project=None, region=None, zone=None):
         pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),
         private_cluster=__ret__.get('privateCluster'),
         remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
-        subnetwork=__ret__.get('subnetwork'))
+        subnetwork=__ret__.get('subnetwork'),
+        id=__ret__.get('id'))

@@ -9,12 +9,18 @@ class GetActiveFolderResult(object):
     """
     A collection of values returned by getActiveFolder.
     """
-    def __init__(__self__, name=None):
+    def __init__(__self__, name=None, id=None):
         if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
         """
         The resource name of the Folder. This uniquely identifies the folder.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_active_folder(display_name=None, parent=None):
@@ -28,4 +34,5 @@ def get_active_folder(display_name=None, parent=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__)
 
     return GetActiveFolderResult(
-        name=__ret__.get('name'))
+        name=__ret__.get('name'),
+        id=__ret__.get('id'))

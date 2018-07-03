@@ -26,6 +26,7 @@ func LookupRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs) (*GetR
 	return &GetRegistryImageResult{
 		ImageUrl: outputs["imageUrl"],
 		Project: outputs["project"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -42,4 +43,6 @@ type GetRegistryImageArgs struct {
 type GetRegistryImageResult struct {
 	ImageUrl interface{}
 	Project interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

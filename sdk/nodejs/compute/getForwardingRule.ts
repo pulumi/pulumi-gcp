@@ -87,4 +87,8 @@ export interface GetForwardingRuleResult {
      * URL of the target pool, if this forwarding rule has one.
      */
     readonly target: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

@@ -9,7 +9,7 @@ class GetForwardingRuleResult(object):
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, backend_service=None, description=None, ip_address=None, ip_protocol=None, load_balancing_scheme=None, network=None, port_range=None, ports=None, project=None, region=None, self_link=None, subnetwork=None, target=None):
+    def __init__(__self__, backend_service=None, description=None, ip_address=None, ip_protocol=None, load_balancing_scheme=None, network=None, port_range=None, ports=None, project=None, region=None, self_link=None, subnetwork=None, target=None, id=None):
         if backend_service and not isinstance(backend_service, basestring):
             raise TypeError('Expected argument backend_service to be a basestring')
         __self__.backend_service = backend_service
@@ -85,6 +85,12 @@ class GetForwardingRuleResult(object):
         """
         URL of the target pool, if this forwarding rule has one.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_forwarding_rule(name=None, project=None, region=None):
     """
@@ -110,4 +116,5 @@ def get_forwarding_rule(name=None, project=None, region=None):
         region=__ret__.get('region'),
         self_link=__ret__.get('selfLink'),
         subnetwork=__ret__.get('subnetwork'),
-        target=__ret__.get('target'))
+        target=__ret__.get('target'),
+        id=__ret__.get('id'))

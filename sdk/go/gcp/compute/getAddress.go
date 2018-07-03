@@ -26,6 +26,7 @@ func LookupAddress(ctx *pulumi.Context, args *GetAddressArgs) (*GetAddressResult
 		Region: outputs["region"],
 		SelfLink: outputs["selfLink"],
 		Status: outputs["status"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -51,4 +52,6 @@ type GetAddressResult struct {
 	SelfLink interface{}
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 	Status interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

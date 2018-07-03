@@ -27,4 +27,8 @@ export interface GetClientConfigResult {
      * The region to operate under.
      */
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

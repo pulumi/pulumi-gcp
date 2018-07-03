@@ -73,4 +73,8 @@ export interface GetSubnetworkResult {
      * The URI of the created resource.
      */
     readonly selfLink: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }
