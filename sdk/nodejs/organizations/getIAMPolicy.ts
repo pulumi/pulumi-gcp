@@ -62,4 +62,8 @@ export interface GetIAMPolicyResult {
      * referencing from a resource that supports IAM.
      */
     readonly policyData: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

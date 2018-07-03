@@ -23,6 +23,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		GatewayIpv4: outputs["gatewayIpv4"],
 		SelfLink: outputs["selfLink"],
 		SubnetworksSelfLinks: outputs["subnetworksSelfLinks"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -45,4 +46,6 @@ type GetNetworkResult struct {
 	SelfLink interface{}
 	// the list of subnetworks which belong to the network
 	SubnetworksSelfLinks interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

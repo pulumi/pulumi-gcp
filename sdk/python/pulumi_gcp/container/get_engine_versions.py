@@ -9,7 +9,7 @@ class GetEngineVersionsResult(object):
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, valid_master_versions=None, valid_node_versions=None):
+    def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, valid_master_versions=None, valid_node_versions=None, id=None):
         if default_cluster_version and not isinstance(default_cluster_version, basestring):
             raise TypeError('Expected argument default_cluster_version to be a basestring')
         __self__.default_cluster_version = default_cluster_version
@@ -39,6 +39,12 @@ class GetEngineVersionsResult(object):
         __self__.valid_node_versions = valid_node_versions
         """
         A list of versions available in the given zone for use with node instances.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_engine_versions(project=None, zone=None):
@@ -74,4 +80,5 @@ def get_engine_versions(project=None, zone=None):
         latest_master_version=__ret__.get('latestMasterVersion'),
         latest_node_version=__ret__.get('latestNodeVersion'),
         valid_master_versions=__ret__.get('validMasterVersions'),
-        valid_node_versions=__ret__.get('validNodeVersions'))
+        valid_node_versions=__ret__.get('validNodeVersions'),
+        id=__ret__.get('id'))

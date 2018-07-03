@@ -1,10 +1,10 @@
-[[override]]
+[[constraint]]
   name = "github.com/pulumi/pulumi"
-  version = "v0.14.0-rc1"
+  branch = "master"
 
-[[override]]
+[[constraint]]
   name = "github.com/pulumi/pulumi-terraform"
-  version = "v0.14.0-rc1"
+  branch = "master"
 
 [[override]]
   name = "github.com/terraform-providers/terraform-provider-google"

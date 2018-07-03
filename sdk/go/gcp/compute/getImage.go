@@ -39,6 +39,7 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 		SourceDiskId: outputs["sourceDiskId"],
 		SourceImageId: outputs["sourceImageId"],
 		Status: outputs["status"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -93,4 +94,6 @@ type GetImageResult struct {
 	SourceImageId interface{}
 	// The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
 	Status interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

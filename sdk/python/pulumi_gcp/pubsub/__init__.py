@@ -4,10 +4,10 @@
 
 # Export this package's modules as members:
 from subscription import *
-from subscription_i_a_m_binding import *
-from subscription_i_a_m_member import *
-from subscription_i_a_m_policy import *
+from subscription_iam_binding import *
+from subscription_iam_member import *
+from subscription_iam_policy import *
 from topic import *
-from topic_i_a_m_binding import *
-from topic_i_a_m_member import *
-from topic_i_a_m_policy import *
+from topic_iam_binding import *
+from topic_iam_member import *
+from topic_iam_policy import *

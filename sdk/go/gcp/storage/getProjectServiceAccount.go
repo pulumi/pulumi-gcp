@@ -10,7 +10,18 @@ import (
 // Use this data source to get the email address of the project's Google Cloud Storage service account.
 //  For more information see 
 // [API](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
-func LookupProjectServiceAccount(ctx *pulumi.Context) error {
-	_, err := ctx.Invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", nil)
-	return err
+func LookupProjectServiceAccount(ctx *pulumi.Context) (*GetProjectServiceAccountResult, error) {
+	outputs, err := ctx.Invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", nil)
+	if err != nil {
+		return nil, err
+	}
+	return &GetProjectServiceAccountResult{
+		Id: outputs["id"],
+	}, nil
+}
+
+// A collection of values returned by getProjectServiceAccount.
+type GetProjectServiceAccountResult struct {
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

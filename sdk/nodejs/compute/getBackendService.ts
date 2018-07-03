@@ -81,4 +81,8 @@ export interface GetBackendServiceResult {
      * The number of seconds to wait for a backend to respond to a request before considering the request failed.
      */
     readonly timeoutSec: number;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

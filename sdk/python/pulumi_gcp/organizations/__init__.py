@@ -4,15 +4,15 @@
 
 # Export this package's modules as members:
 from folder import *
-from i_a_m_binding import *
-from i_a_m_custom_role import *
-from i_a_m_member import *
-from i_a_m_policy import *
+from iam_binding import *
+from iam_custom_role import *
+from iam_member import *
+from iam_policy import *
 from policy import *
 from project import *
 from get_active_folder import *
 from get_billing_account import *
 from get_client_config import *
-from get_i_a_m_policy import *
+from get_iam_policy import *
 from get_organization import *
 from get_project import *

@@ -9,7 +9,7 @@ class GetProjectResult(object):
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, app_engines=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, policy_data=None, policy_etag=None, skip_delete=None):
+    def __init__(__self__, app_engines=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, policy_data=None, policy_etag=None, skip_delete=None, id=None):
         if app_engines and not isinstance(app_engines, list):
             raise TypeError('Expected argument app_engines to be a list')
         __self__.app_engines = app_engines
@@ -43,6 +43,12 @@ class GetProjectResult(object):
         if skip_delete and not isinstance(skip_delete, bool):
             raise TypeError('Expected argument skip_delete to be a bool')
         __self__.skip_delete = skip_delete
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_project(project_id=None):
     """
@@ -66,4 +72,5 @@ def get_project(project_id=None):
         org_id=__ret__.get('orgId'),
         policy_data=__ret__.get('policyData'),
         policy_etag=__ret__.get('policyEtag'),
-        skip_delete=__ret__.get('skipDelete'))
+        skip_delete=__ret__.get('skipDelete'),
+        id=__ret__.get('id'))

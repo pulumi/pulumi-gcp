@@ -58,4 +58,8 @@ export interface GetZonesResult {
      */
     readonly names: string[];
     readonly project: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

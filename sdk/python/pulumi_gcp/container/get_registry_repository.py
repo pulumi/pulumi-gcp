@@ -9,13 +9,19 @@ class GetRegistryRepositoryResult(object):
     """
     A collection of values returned by getRegistryRepository.
     """
-    def __init__(__self__, project=None, repository_url=None):
+    def __init__(__self__, project=None, repository_url=None, id=None):
         if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
         if repository_url and not isinstance(repository_url, basestring):
             raise TypeError('Expected argument repository_url to be a basestring')
         __self__.repository_url = repository_url
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_registry_repository(project=None, region=None):
     """
@@ -31,4 +37,5 @@ def get_registry_repository(project=None, region=None):
 
     return GetRegistryRepositoryResult(
         project=__ret__.get('project'),
-        repository_url=__ret__.get('repositoryUrl'))
+        repository_url=__ret__.get('repositoryUrl'),
+        id=__ret__.get('id'))

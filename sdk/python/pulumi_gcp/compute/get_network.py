@@ -9,7 +9,7 @@ class GetNetworkResult(object):
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, gateway_ipv4=None, self_link=None, subnetworks_self_links=None):
+    def __init__(__self__, description=None, gateway_ipv4=None, self_link=None, subnetworks_self_links=None, id=None):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -34,6 +34,12 @@ class GetNetworkResult(object):
         """
         the list of subnetworks which belong to the network
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_network(name=None, project=None):
     """
@@ -49,4 +55,5 @@ def get_network(name=None, project=None):
         description=__ret__.get('description'),
         gateway_ipv4=__ret__.get('gatewayIpv4'),
         self_link=__ret__.get('selfLink'),
-        subnetworks_self_links=__ret__.get('subnetworksSelfLinks'))
+        subnetworks_self_links=__ret__.get('subnetworksSelfLinks'),
+        id=__ret__.get('id'))

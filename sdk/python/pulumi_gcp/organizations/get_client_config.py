@@ -9,7 +9,7 @@ class GetClientConfigResult(object):
     """
     A collection of values returned by getClientConfig.
     """
-    def __init__(__self__, access_token=None, project=None, region=None):
+    def __init__(__self__, access_token=None, project=None, region=None, id=None):
         if access_token and not isinstance(access_token, basestring):
             raise TypeError('Expected argument access_token to be a basestring')
         __self__.access_token = access_token
@@ -28,6 +28,12 @@ class GetClientConfigResult(object):
         """
         The region to operate under.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_client_config():
     """
@@ -40,4 +46,5 @@ def get_client_config():
     return GetClientConfigResult(
         access_token=__ret__.get('accessToken'),
         project=__ret__.get('project'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

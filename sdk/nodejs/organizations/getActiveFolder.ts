@@ -35,4 +35,8 @@ export interface GetActiveFolderResult {
      * The resource name of the Folder. This uniquely identifies the folder.
      */
     readonly name: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

@@ -9,7 +9,7 @@ class GetFunctionResult(object):
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError('Expected argument available_memory_mb to be a int')
         __self__.available_memory_mb = available_memory_mb
@@ -79,6 +79,12 @@ class GetFunctionResult(object):
         """
         If function is triggered by Pub/Sub topic, name of topic is set here.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_function(name=None, project=None, region=None):
     """
@@ -105,4 +111,5 @@ def get_function(name=None, project=None, region=None):
         timeout=__ret__.get('timeout'),
         trigger_bucket=__ret__.get('triggerBucket'),
         trigger_http=__ret__.get('triggerHttp'),
-        trigger_topic=__ret__.get('triggerTopic'))
+        trigger_topic=__ret__.get('triggerTopic'),
+        id=__ret__.get('id'))

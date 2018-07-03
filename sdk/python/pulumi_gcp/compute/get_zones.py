@@ -9,7 +9,7 @@ class GetZonesResult(object):
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, names=None, project=None):
+    def __init__(__self__, names=None, project=None, id=None):
         if names and not isinstance(names, list):
             raise TypeError('Expected argument names to be a list')
         __self__.names = names
@@ -19,6 +19,12 @@ class GetZonesResult(object):
         if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_zones(project=None, region=None, status=None):
     """
@@ -48,4 +54,5 @@ def get_zones(project=None, region=None, status=None):
 
     return GetZonesResult(
         names=__ret__.get('names'),
-        project=__ret__.get('project'))
+        project=__ret__.get('project'),
+        id=__ret__.get('id'))

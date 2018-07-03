@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from i_a_m_binding import *
-from i_a_m_member import *
-from i_a_m_policy import *
+from iam_binding import *
+from iam_member import *
+from iam_policy import *
 from organization_policy import *

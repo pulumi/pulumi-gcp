@@ -48,4 +48,8 @@ export interface GetNetworkResult {
      * the list of subnetworks which belong to the network
      */
     readonly subnetworksSelfLinks: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

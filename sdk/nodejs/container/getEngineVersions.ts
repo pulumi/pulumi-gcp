@@ -71,4 +71,8 @@ export interface GetEngineVersionsResult {
      * A list of versions available in the given zone for use with node instances.
      */
     readonly validNodeVersions: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

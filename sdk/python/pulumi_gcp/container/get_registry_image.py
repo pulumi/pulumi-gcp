@@ -9,13 +9,19 @@ class GetRegistryImageResult(object):
     """
     A collection of values returned by getRegistryImage.
     """
-    def __init__(__self__, image_url=None, project=None):
+    def __init__(__self__, image_url=None, project=None, id=None):
         if image_url and not isinstance(image_url, basestring):
             raise TypeError('Expected argument image_url to be a basestring')
         __self__.image_url = image_url
         if project and not isinstance(project, basestring):
             raise TypeError('Expected argument project to be a basestring')
         __self__.project = project
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_registry_image(digest=None, name=None, project=None, region=None, tag=None):
     """
@@ -34,4 +40,5 @@ def get_registry_image(digest=None, name=None, project=None, region=None, tag=No
 
     return GetRegistryImageResult(
         image_url=__ret__.get('imageUrl'),
-        project=__ret__.get('project'))
+        project=__ret__.get('project'),
+        id=__ret__.get('id'))

@@ -25,4 +25,8 @@ export interface GetLBIPRangesResult {
      * The IP ranges used for health checks when **Network load balancing** is used
      */
     readonly networks: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }
