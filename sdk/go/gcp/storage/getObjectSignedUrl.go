@@ -28,6 +28,7 @@ func LookupObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs) (*
 	}
 	return &GetObjectSignedUrlResult{
 		SignedUrl: outputs["signedUrl"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -60,4 +61,6 @@ type GetObjectSignedUrlArgs struct {
 type GetObjectSignedUrlResult struct {
 	// The signed URL that can be used to access the storage object without authentication.
 	SignedUrl interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

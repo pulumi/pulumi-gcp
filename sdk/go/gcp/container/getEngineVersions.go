@@ -42,6 +42,7 @@ func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*Ge
 		LatestNodeVersion: outputs["latestNodeVersion"],
 		ValidMasterVersions: outputs["validMasterVersions"],
 		ValidNodeVersions: outputs["validNodeVersions"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -66,4 +67,6 @@ type GetEngineVersionsResult struct {
 	ValidMasterVersions interface{}
 	// A list of versions available in the given zone for use with node instances.
 	ValidNodeVersions interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

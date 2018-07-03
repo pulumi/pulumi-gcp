@@ -9,7 +9,7 @@ class GetSubnetworkResult(object):
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, ip_cidr_range=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
+    def __init__(__self__, description=None, gateway_address=None, ip_cidr_range=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, id=None):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -63,6 +63,12 @@ class GetSubnetworkResult(object):
         """
         The URI of the created resource.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_subnetwork(name=None, project=None, region=None):
     """
@@ -84,4 +90,5 @@ def get_subnetwork(name=None, project=None, region=None):
         project=__ret__.get('project'),
         region=__ret__.get('region'),
         secondary_ip_ranges=__ret__.get('secondaryIpRanges'),
-        self_link=__ret__.get('selfLink'))
+        self_link=__ret__.get('selfLink'),
+        id=__ret__.get('id'))

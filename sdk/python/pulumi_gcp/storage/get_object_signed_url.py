@@ -9,12 +9,18 @@ class GetObjectSignedUrlResult(object):
     """
     A collection of values returned by getObjectSignedUrl.
     """
-    def __init__(__self__, signed_url=None):
+    def __init__(__self__, signed_url=None, id=None):
         if signed_url and not isinstance(signed_url, basestring):
             raise TypeError('Expected argument signed_url to be a basestring')
         __self__.signed_url = signed_url
         """
         The signed URL that can be used to access the storage object without authentication.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_object_signed_url(bucket=None, content_md5=None, content_type=None, credentials=None, duration=None, extension_headers=None, http_method=None, path=None):
@@ -36,4 +42,5 @@ def get_object_signed_url(bucket=None, content_md5=None, content_type=None, cred
     __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__)
 
     return GetObjectSignedUrlResult(
-        signed_url=__ret__.get('signedUrl'))
+        signed_url=__ret__.get('signedUrl'),
+        id=__ret__.get('id'))

@@ -85,4 +85,8 @@ export interface GetFunctionResult {
      * If function is triggered by Pub/Sub topic, name of topic is set here.
      */
     readonly triggerTopic: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

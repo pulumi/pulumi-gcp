@@ -63,4 +63,8 @@ export interface GetClusterResult {
     readonly privateCluster: boolean;
     readonly removeDefaultNodePool: boolean;
     readonly subnetwork: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

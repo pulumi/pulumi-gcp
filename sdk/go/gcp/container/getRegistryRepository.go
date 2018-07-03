@@ -23,6 +23,7 @@ func LookupRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryAr
 	return &GetRegistryRepositoryResult{
 		Project: outputs["project"],
 		RepositoryUrl: outputs["repositoryUrl"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -36,4 +37,6 @@ type GetRegistryRepositoryArgs struct {
 type GetRegistryRepositoryResult struct {
 	Project interface{}
 	RepositoryUrl interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

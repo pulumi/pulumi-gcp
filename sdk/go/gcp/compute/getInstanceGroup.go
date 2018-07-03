@@ -38,6 +38,7 @@ func LookupInstanceGroup(ctx *pulumi.Context, args *GetInstanceGroupArgs) (*GetI
 		SelfLink: outputs["selfLink"],
 		Size: outputs["size"],
 		Zone: outputs["zone"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -71,4 +72,6 @@ type GetInstanceGroupResult struct {
 	// The number of instances in the group.
 	Size interface{}
 	Zone interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

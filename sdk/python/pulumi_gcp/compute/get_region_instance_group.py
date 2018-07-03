@@ -9,7 +9,7 @@ class GetRegionInstanceGroupResult(object):
     """
     A collection of values returned by getRegionInstanceGroup.
     """
-    def __init__(__self__, instances=None, name=None, project=None, region=None, self_link=None, size=None):
+    def __init__(__self__, instances=None, name=None, project=None, region=None, self_link=None, size=None, id=None):
         if instances and not isinstance(instances, list):
             raise TypeError('Expected argument instances to be a list')
         __self__.instances = instances
@@ -36,6 +36,12 @@ class GetRegionInstanceGroupResult(object):
         __self__.size = size
         """
         The number of instances in the group.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_region_instance_group(name=None, project=None, region=None, self_link=None):
@@ -82,4 +88,5 @@ def get_region_instance_group(name=None, project=None, region=None, self_link=No
         project=__ret__.get('project'),
         region=__ret__.get('region'),
         self_link=__ret__.get('selfLink'),
-        size=__ret__.get('size'))
+        size=__ret__.get('size'),
+        id=__ret__.get('id'))

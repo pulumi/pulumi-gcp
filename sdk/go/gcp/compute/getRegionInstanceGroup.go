@@ -53,6 +53,7 @@ func LookupRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroup
 		Region: outputs["region"],
 		SelfLink: outputs["selfLink"],
 		Size: outputs["size"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -82,4 +83,6 @@ type GetRegionInstanceGroupResult struct {
 	SelfLink interface{}
 	// The number of instances in the group.
 	Size interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

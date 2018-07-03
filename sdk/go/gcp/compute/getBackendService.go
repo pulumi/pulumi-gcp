@@ -36,6 +36,7 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		SelfLink: outputs["selfLink"],
 		SessionAffinity: outputs["sessionAffinity"],
 		TimeoutSec: outputs["timeoutSec"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -75,4 +76,6 @@ type GetBackendServiceResult struct {
 	SessionAffinity interface{}
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
 	TimeoutSec interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

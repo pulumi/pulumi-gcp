@@ -5,6 +5,18 @@
 import pulumi
 import pulumi.runtime
 
+class GetDefaultServiceAccountResult(object):
+    """
+    A collection of values returned by getDefaultServiceAccount.
+    """
+    def __init__(__self__, id=None):
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
+
 def get_default_service_account(email=None, project=None):
     """
     Use this data source to retrieve default service account for this project
@@ -15,3 +27,5 @@ def get_default_service_account(email=None, project=None):
     __args__['project'] = project
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount', __args__)
 
+    return GetDefaultServiceAccountResult(
+        id=__ret__.get('id'))

@@ -46,4 +46,8 @@ export interface GetGlobalAddressResult {
      * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
      */
     readonly status: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

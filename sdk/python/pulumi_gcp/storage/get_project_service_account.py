@@ -5,6 +5,18 @@
 import pulumi
 import pulumi.runtime
 
+class GetProjectServiceAccountResult(object):
+    """
+    A collection of values returned by getProjectServiceAccount.
+    """
+    def __init__(__self__, id=None):
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
+
 def get_project_service_account():
     """
     Use this data source to get the email address of the project's Google Cloud Storage service account.
@@ -15,3 +27,5 @@ def get_project_service_account():
 
     __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__)
 
+    return GetProjectServiceAccountResult(
+        id=__ret__.get('id'))

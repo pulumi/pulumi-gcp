@@ -48,6 +48,7 @@ func LookupIAMPolicy(ctx *pulumi.Context, args *GetIAMPolicyArgs) (*GetIAMPolicy
 	}
 	return &GetIAMPolicyResult{
 		PolicyData: outputs["policyData"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -64,4 +65,6 @@ type GetIAMPolicyResult struct {
 	// The above bindings serialized in a format suitable for
 	// referencing from a resource that supports IAM.
 	PolicyData interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

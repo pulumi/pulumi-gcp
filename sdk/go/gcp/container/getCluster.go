@@ -48,6 +48,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		PrivateCluster: outputs["privateCluster"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		Subnetwork: outputs["subnetwork"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -91,4 +92,6 @@ type GetClusterResult struct {
 	PrivateCluster interface{}
 	RemoveDefaultNodePool interface{}
 	Subnetwork interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

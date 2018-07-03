@@ -29,6 +29,7 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 		Region: outputs["region"],
 		SecondaryIpRanges: outputs["secondaryIpRanges"],
 		SelfLink: outputs["selfLink"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -67,4 +68,6 @@ type GetSubnetworkResult struct {
 	SecondaryIpRanges interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

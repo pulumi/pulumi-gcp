@@ -9,7 +9,7 @@ class GetBackendServiceResult(object):
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
         if backends and not isinstance(backends, list):
             raise TypeError('Expected argument backends to be a list')
         __self__.backends = backends
@@ -88,6 +88,12 @@ class GetBackendServiceResult(object):
         """
         The number of seconds to wait for a backend to respond to a request before considering the request failed.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_backend_service(name=None, project=None):
     """
@@ -116,4 +122,5 @@ def get_backend_service(name=None, project=None):
         security_policy=__ret__.get('securityPolicy'),
         self_link=__ret__.get('selfLink'),
         session_affinity=__ret__.get('sessionAffinity'),
-        timeout_sec=__ret__.get('timeoutSec'))
+        timeout_sec=__ret__.get('timeoutSec'),
+        id=__ret__.get('id'))

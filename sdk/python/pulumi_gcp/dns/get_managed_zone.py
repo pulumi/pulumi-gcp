@@ -9,7 +9,7 @@ class GetManagedZoneResult(object):
     """
     A collection of values returned by getManagedZone.
     """
-    def __init__(__self__, description=None, dns_name=None, name_servers=None):
+    def __init__(__self__, description=None, dns_name=None, name_servers=None, id=None):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -29,6 +29,12 @@ class GetManagedZoneResult(object):
         The list of nameservers that will be authoritative for this
         domain. Use NS records to redirect from your DNS provider to these names,
         thus making Google Cloud DNS authoritative for this zone.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_managed_zone(name=None, project=None):
@@ -64,4 +70,5 @@ def get_managed_zone(name=None, project=None):
     return GetManagedZoneResult(
         description=__ret__.get('description'),
         dns_name=__ret__.get('dnsName'),
-        name_servers=__ret__.get('nameServers'))
+        name_servers=__ret__.get('nameServers'),
+        id=__ret__.get('id'))

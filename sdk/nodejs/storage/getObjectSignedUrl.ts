@@ -72,4 +72,8 @@ export interface GetObjectSignedUrlResult {
      * The signed URL that can be used to access the storage object without authentication.
      */
     readonly signedUrl: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

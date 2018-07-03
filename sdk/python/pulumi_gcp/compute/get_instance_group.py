@@ -9,7 +9,7 @@ class GetInstanceGroupResult(object):
     """
     A collection of values returned by getInstanceGroup.
     """
-    def __init__(__self__, description=None, instances=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None):
+    def __init__(__self__, description=None, instances=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None, id=None):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -52,6 +52,12 @@ class GetInstanceGroupResult(object):
         if zone and not isinstance(zone, basestring):
             raise TypeError('Expected argument zone to be a basestring')
         __self__.zone = zone
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_instance_group(name=None, project=None, self_link=None, zone=None):
     """
@@ -82,4 +88,5 @@ def get_instance_group(name=None, project=None, self_link=None, zone=None):
         project=__ret__.get('project'),
         self_link=__ret__.get('selfLink'),
         size=__ret__.get('size'),
-        zone=__ret__.get('zone'))
+        zone=__ret__.get('zone'),
+        id=__ret__.get('id'))
