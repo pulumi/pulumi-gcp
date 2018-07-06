@@ -1,6 +1,6 @@
-.DS_Store
 /pack/
 /vendor/
 /bin/
 /node_modules/
 .pulumi
+Pulumi.*.yaml
