@@ -635,7 +635,8 @@ func Provider() tfbridge.ProviderInfo {
 	const gcpName = "name"
 	for resname, res := range prov.Resources {
 		if schema := p.ResourcesMap[resname]; schema != nil {
-			if _, has := schema.Schema[gcpName]; has {
+			// Only apply auto-name to input properties (Optional || Required) named `name`
+			if tfs, has := schema.Schema[gcpName]; has && (tfs.Optional || tfs.Required) {
 				if _, hasfield := res.Fields[gcpName]; !hasfield {
 					if res.Fields == nil {
 						res.Fields = make(map[string]*tfbridge.SchemaInfo)
