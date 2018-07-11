@@ -21,7 +21,7 @@ before_install:
 - gcloud auth activate-service-account --key-file gcp-credentials.json
 - export PULUMI_ROOT=/opt/pulumi
 # Dep for Go dependency management.
-- go get -v github.com/golang/dep/cmd/dep
+- curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 # Gometalinter for good Go linting/hygiene.
 - go get -v github.com/alecthomas/gometalinter
 - gometalinter --install
