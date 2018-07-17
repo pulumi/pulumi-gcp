@@ -607,9 +607,10 @@
   version = "v1.2.1"
 
 [[projects]]
+  branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-google"
   packages = ["google"]
-  revision = "8711ef707678f23abb737cb5930faa32028e1956"
+  revision = "bb9022d12f6efed89066d503465a1c0751a40dfc"
   source = "github.com/pulumi/terraform-provider-google"
 
 [[projects]]
@@ -959,6 +960,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e8b98b3191e507edcc0bd5f9b4f8b38b28c072ad6df421421681022e9fb03216"
+  inputs-digest = "2331b533c993f7f6fc368b487f1c6488a0f5e3c1c449ebd0fe2e7893486354ef"
   solver-name = "gps-cdcl"
   solver-version = 1

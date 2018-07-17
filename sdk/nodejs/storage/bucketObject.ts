@@ -72,7 +72,7 @@ export class BucketObject extends pulumi.CustomResource {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    public readonly source: pulumi.Output<string | undefined>;
+    public readonly source: pulumi.Output<pulumi.asset.Archive | undefined>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
@@ -179,7 +179,7 @@ export interface BucketObjectState {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    readonly source?: pulumi.Input<string>;
+    readonly source?: pulumi.Input<pulumi.asset.Archive>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
@@ -231,7 +231,7 @@ export interface BucketObjectArgs {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    readonly source?: pulumi.Input<string>;
+    readonly source?: pulumi.Input<pulumi.asset.Archive>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default

@@ -9,5 +9,4 @@
 [[override]]
   name = "github.com/terraform-providers/terraform-provider-google"
   source = "github.com/pulumi/terraform-provider-google"
-  # branch = "pulumi-master"
-  revision = "8711ef707678f23abb737cb5930faa32028e1956"
+  branch = "pulumi-master"

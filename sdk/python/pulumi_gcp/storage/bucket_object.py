@@ -99,8 +99,8 @@ class BucketObject(pulumi.CustomResource):
         """
         __props__['name'] = name
 
-        if source and not isinstance(source, basestring):
-            raise TypeError('Expected property source to be a basestring')
+        if source and not isinstance(source, pulumi.Archive):
+            raise TypeError('Expected property source to be a pulumi.Archive')
         __self__.source = source
         """
         A path to the data you want to upload. Must be defined
