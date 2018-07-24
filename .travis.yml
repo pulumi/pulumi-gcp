@@ -1,51 +1,34 @@
+# It may be tempting to add parens around each individual clause in this expression, but Travis then builds pushes anyway
 if: branch = master OR branch =~ ^release/ OR tag IS present
 language: go
 go: 1.9
-sudo: true
+sudo: true # give us 7.5GB and >2 bursted cores.
 git:
   depth: false
 cache:
   directories:
-  - "$HOME/google-cloud-sdk/"
-env:
-# Make sure gcloud command is on our PATH and the App Engine SDK is in the Python path
-- PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - $HOME/google-cloud-sdk/
 before_install:
-- openssl aes-256-cbc -K $encrypted_289ace6c29ed_key -iv $encrypted_289ace6c29ed_iv -in gcp-credentials.json.enc -out gcp-credentials.json -d
-- export GOOGLE_CREDENTIALS=$(cat gcp-credentials.json)
-# If the SDK is not already cached, download it and unpack it
-- if [ ! -d ${HOME}/google-cloud-sdk ]; then 
-  curl https://sdk.cloud.google.com | bash;
-  fi
-# Here we use the decrypted service account credentials to authenticate the command line tool
-- gcloud auth activate-service-account --key-file gcp-credentials.json
-- export PULUMI_ROOT=/opt/pulumi
-# Dep for Go dependency management.
-- curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-# Gometalinter for good Go linting/hygiene.
-- go get -v github.com/alecthomas/gometalinter
-- gometalinter --install
-# Node.js 6.10.2 for all JavaScript code
-- nvm install v6.10.2
- # Install Yarn as per https://yarnpkg.com/lang/en/docs/install-ci/#travis-tab.
-- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.2.1
-- export PATH=$HOME/.yarn/bin:$PATH
-# Install Twine so that we can publish Pip packages.
-- pip install --upgrade --user twine==1.9.1
-# Ensure that we can access Pulumi's private NPM and PyPI orgs.
-- if [ ! -z "${NPM_TOKEN}" ]; then echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc; fi
-# Install the AWS CLI so that we can publish the resulting release (if applicable) at the end.
-- pip install --upgrade --user awscli
+    - git clone https://github.com/pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
+    - source ${GOPATH}/src/github.com/pulumi/scripts/ci/prepare-environment.sh
+    - source ${PULUMI_SCRIPTS}/ci/keep-failed-tests.sh
 install:
-# Clone the Pulumi repos and install Pulumi.
-- git clone https://github.com/pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
-# Install Pulumi
-- curl -L https://get.pulumi.com/ | bash -s -- --version 0.14.0-rc1
-- export PATH=$HOME/.pulumi/bin:$PATH
-- sudo apt-get install pandoc
-# Now restore all dependencies, after cloning, to rebuild vendor appropriately.
-- make ensure
+    - source ${PULUMI_SCRIPTS}/ci/install-common-toolchain.sh
+    # Install GCP SDK and Authenticate
+    - if [ ! -d $HOME/google-cloud-sdk ]; then curl https://sdk.cloud.google.com | bash; fi
+    - export PATH=$PATH:$HOME/google-cloud-sdk/bin
+    - export CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - openssl aes-256-cbc -K $encrypted_289ace6c29ed_key -iv $encrypted_289ace6c29ed_iv -in gcp-credentials.json.enc -out gcp-credentials.json -d
+    - export GOOGLE_CREDENTIALS=$(cat gcp-credentials.json)
+    - gcloud auth activate-service-account --key-file gcp-credentials.json
+    # Install Pulumi
+    - curl -L https://get.pulumi.com/ | bash -s -- --version 0.14.0
+    - export PATH=$HOME/.pulumi/bin:$PATH
+before_script:
+    - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
 script:
-- make travis_${TRAVIS_EVENT_TYPE}
+    - make travis_${TRAVIS_EVENT_TYPE}
+after_failure:
+    - ${PULUMI_SCRIPTS}/ci/upload-failed-tests
 notifications:
-  webhooks: https://ufci1w66n3.execute-api.us-west-2.amazonaws.com/stage/travis
+    webhooks: https://ufci1w66n3.execute-api.us-west-2.amazonaws.com/stage/travis
