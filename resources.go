@@ -9,6 +9,7 @@ import (
 	"github.com/terraform-providers/terraform-provider-google/google"
 
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 )
 
@@ -388,7 +389,19 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "storage_bucket_iam.html.markdown",
 				},
 			},
-			"google_storage_bucket_object":      {Tok: gcpResource(gcpStorage, "BucketObject")},
+			"google_storage_bucket_object": {
+				Tok: gcpResource(gcpStorage, "BucketObject"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"source": {
+						// TODO[pulumi/pulum#280] This property sould be mapped as accepting an Asset, not an Archive,
+						// but we do the later for now so that users can programattically construct archives to upload.
+						Asset: &tfbridge.AssetTranslation{
+							Kind:   tfbridge.FileArchive,
+							Format: resource.ZIPArchive,
+						},
+					},
+				},
+			},
 			"google_storage_default_object_acl": {Tok: gcpResource(gcpStorage, "DefaultObjectACL")},
 			"google_storage_notification":       {Tok: gcpResource(gcpStorage, "Notification")},
 			"google_storage_object_acl":         {Tok: gcpResource(gcpStorage, "ObjectACL")},

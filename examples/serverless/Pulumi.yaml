@@ -1,0 +1,3 @@
+name: serverless-gcp
+runtime: nodejs
+description: Simple serverless examples
