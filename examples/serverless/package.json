@@ -1,5 +1,5 @@
 {
-    "name": "webserver",
+    "name": "serverless",
     "version": "0.1",
     "main": "bin/index.js",
     "typings": "bin/index.d.ts",
@@ -12,9 +12,6 @@
     "devDependencies": {
         "@types/node": "^8.0.26",
         "typescript": "^2.5.3"
-    },
-    "dependencies": {
-        "@pulumi/pulumi": "^0.14.0"
     },
     "peerDependencies": {
         "@pulumi/gcp": "latest"

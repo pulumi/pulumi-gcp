@@ -62,6 +62,7 @@ func TestExamples(t *testing.T) {
 	if !testing.Short() {
 		examples = append(examples, []integration.ProgramTestOptions{
 			base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "loadbalancer")}),
+			base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "serverless")}),
 			base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "webserver")}),
 		}...)
 	}
