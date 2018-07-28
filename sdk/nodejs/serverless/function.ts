@@ -1,0 +1,184 @@
+// Copyright 2016-2018, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+import * as pulumi from "@pulumi/pulumi";
+import * as cloudfunctions from "../cloudfunctions";
+import * as storage from "../storage";
+
+import * as filepath from "path";
+import * as readPackageJson from "read-package-json";
+
+/**
+ * Handler is the signature for a serverless function.
+ */
+export type Handler = (request: any, response: any) => any;
+
+/**
+ * FunctionOptions provides configuration options for the serverless Function.
+ */
+export interface FunctionOptions {
+    /**
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     */
+    readonly availableMemoryMb?: pulumi.Input<number>;
+    /**
+     * Description of the function.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the function.
+     */
+    readonly labels?: pulumi.Input<{
+        [key: string]: any;
+    }>;
+    /**
+     * Project of the function. If it is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
+    /**
+     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     */
+    readonly region?: pulumi.Input<string>;
+    /**
+     * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+     */
+    readonly timeout?: pulumi.Input<number>;        
+   /**
+    * The packages relative to the program folder to not include the Function upload. This can be
+    * used to override the default serialization logic that includes all packages referenced by
+    * project.json (except @pulumi packages).  Default is `[]`.
+    */
+   excludePackages?: string[];
+}
+
+/**
+ * Function is a higher-level API for creating and managing GCP Cloud Function resources implemented
+ * by a given handler.
+ */
+export class Function extends pulumi.ComponentResource {
+    public readonly options: FunctionOptions;
+    public readonly function: cloudfunctions.Function;
+    public readonly bucket: storage.Bucket;
+    public readonly bucketObject: storage.BucketObject;
+
+    constructor(name: string,
+        options: FunctionOptions,
+        func: Handler,
+        opts?: pulumi.ResourceOptions,
+        serialize?: (obj: any) => boolean) {
+        if (!name) {
+            throw new Error("Missing required resource name");
+        }
+        if (!func) {
+            throw new Error("Missing required function callback");
+        }
+
+        super("gcp:serverless:Function", name, { options: options }, opts);
+
+        // Now compile the function text into an asset we can use to create the function. Note: to
+        // prevent a circularity/deadlock, we list this Function object as something that the
+        // serialized closure cannot reference.
+        serialize = serialize || (_ => true);
+        const finalSerialize = (o: any) => {
+            return serialize(o) && o !== this;
+        }
+
+        const handlerName = "handler";
+        const serializedFileNameNoExtension = "index";
+
+        let closure = pulumi.runtime.serializeFunction(func, {
+            serialize: finalSerialize,
+            exportName: handlerName,
+        });
+
+        let codePaths = computeCodePaths(
+            closure, serializedFileNameNoExtension, options.excludePackages);
+
+        this.bucket = new storage.Bucket(`${name}-bucket`, {
+            project: options.project
+        }, { parent: this });
+
+        this.bucketObject = new storage.BucketObject(`${name}-bucket-object`, {
+            bucket: this.bucket.name,
+            source: new pulumi.asset.AssetArchive(codePaths),
+        }, { parent: this });
+
+        // Create the Cloud Function.
+        this.function = new cloudfunctions.Function(name, {
+            entryPoint: handlerName,
+            sourceArchiveBucket: this.bucket.name,
+            sourceArchiveObject: this.bucketObject.name,
+            triggerHttp: true,
+
+            availableMemoryMb: options.availableMemoryMb,
+            description: options.description,
+            labels: options.labels,
+            project: options.project,
+            region: options.region,
+            timeout: options.timeout
+        }, { parent: this });
+    }
+}
+
+// computeCodePaths calculates an AssetMap of files to include in the Function package.
+async function computeCodePaths(
+        closure: Promise<pulumi.runtime.SerializedFunction>,
+        serializedFileNameNoExtension: string,
+        excludePackages?: string[]): Promise<pulumi.asset.AssetMap> {
+
+    const serializedFunction = await closure;
+
+    excludePackages = excludePackages || [];
+
+    const excludedPackages = new Set<string>();
+    for (const p of excludePackages) {
+        excludedPackages.add(p);
+    }
+
+    // Include packages to package.json file
+    const packageJson = await producePackageJson(excludedPackages);
+
+    return {
+        // Always include the serialized function.
+        [serializedFileNameNoExtension + ".js"]: new pulumi.asset.StringAsset(serializedFunction.text),
+        // Include package.json and GCP will install packages for us
+        ["package.json"]: new pulumi.asset.StringAsset(packageJson)
+    };
+}
+
+// Get the list of packages declare in package.json, exclude pulumi and exclusions made by user,
+// generate the new package.json to be uploaded to GCP.
+// GCP will restore the packages itself.
+function producePackageJson(excludedPackages: Set<string>): Promise<string> {
+    return new Promise((resolve, reject) => {
+        readPackageJson(filepath.basename('package.json'), null, false, (err, data) => {
+            if (err) {
+              return reject(err);
+            }
+
+            const filteredDependencies = Object.keys(data.dependencies)
+                .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
+                .reduce((obj, key) => {
+                    obj[key] = data.dependencies[key];
+                    return obj;
+                }, {});
+
+            const newPackageJson = {
+                name: data.name,
+                description: data.description,
+                dependencies: filteredDependencies
+            }
+            resolve(JSON.stringify(newPackageJson));
+          });
+    });
+}

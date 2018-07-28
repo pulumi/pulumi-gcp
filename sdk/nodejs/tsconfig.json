@@ -147,6 +147,8 @@
         "runtimeconfig/config.ts",
         "runtimeconfig/index.ts",
         "runtimeconfig/variavble.ts",
+        "serverless/function.ts",
+        "serverless/index.ts",
         "serviceAccount/account.ts",
         "serviceAccount/iAMBinding.ts",
         "serviceAccount/iAMMember.ts",
