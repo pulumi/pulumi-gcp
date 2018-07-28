@@ -12,35 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp";
 
-let handler = (req: any, res: any) => {
-    res.send(`Hello ${req.body.name || 'World'}!`);
-};
-
-// Serialize JavaScript callback to text
-let serializedFunction = pulumi.runtime.serializeFunction(handler);
-let functionText = serializedFunction.then(x => x.text);
-let functionEntryPoint = serializedFunction.then(x => x.exportName);
-
-// Create a bucket and object to store the function ZIP file
-let bucket = new gcp.storage.Bucket("bucket", {});
-let data = new gcp.storage.BucketObject("object", {
-    bucket: bucket.name,
-    source: new pulumi.asset.AssetArchive({
-        "index.js": new pulumi.asset.StringAsset(functionText),
-    }),
-});
-
 // Create the Function resource
-let f = new gcp.cloudfunctions.Function("f", {
-    sourceArchiveBucket: bucket.name,
-    sourceArchiveObject: data.name,
-    entryPoint: functionEntryPoint,
-    triggerHttp: true, 
-});
+let f = new gcp.serverless.Function("f", {}, 
+    (req: any, res: any) => {
+        res.send(`Hello ${req.body.name || 'World'}!`);
+    });
 
 // Export the HTTPS url for invoking the function
-export let url = f.httpsTriggerUrl;
-
+export let url = f.function.httpsTriggerUrl;
