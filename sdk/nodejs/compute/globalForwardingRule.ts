@@ -41,6 +41,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+     * You cannot provide this and `ip_address`.
      */
     public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
@@ -149,6 +150,7 @@ export interface GlobalForwardingRuleState {
     /**
      * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+     * You cannot provide this and `ip_address`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -214,6 +216,7 @@ export interface GlobalForwardingRuleArgs {
     /**
      * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+     * You cannot provide this and `ip_address`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**

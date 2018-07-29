@@ -13,7 +13,7 @@ class BackendService(pulumi.CustomResource):
     
     For internal load balancing, use a [google_compute_region_backend_service](/docs/providers/google/r/compute_region_backend_service.html).
     """
-    def __init__(__self__, __name__, __opts__=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, __name__, __opts__=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None):
         """Create a BackendService resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -48,6 +48,15 @@ class BackendService(pulumi.CustomResource):
         but still work to finish started ones). Defaults to `300`.
         """
         __props__['connectionDrainingTimeoutSec'] = connection_draining_timeout_sec
+
+        if custom_request_headers and not isinstance(custom_request_headers, list):
+            raise TypeError('Expected property custom_request_headers to be a list')
+        __self__.custom_request_headers = custom_request_headers
+        """
+        ) Headers that the
+        HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+        """
+        __props__['customRequestHeaders'] = custom_request_headers
 
         if description and not isinstance(description, basestring):
             raise TypeError('Expected property description to be a basestring')
@@ -170,6 +179,8 @@ class BackendService(pulumi.CustomResource):
             self.cdn_policy = outs['cdnPolicy']
         if 'connectionDrainingTimeoutSec' in outs:
             self.connection_draining_timeout_sec = outs['connectionDrainingTimeoutSec']
+        if 'customRequestHeaders' in outs:
+            self.custom_request_headers = outs['customRequestHeaders']
         if 'description' in outs:
             self.description = outs['description']
         if 'enableCdn' in outs:

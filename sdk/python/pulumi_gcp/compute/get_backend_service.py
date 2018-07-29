@@ -9,7 +9,7 @@ class GetBackendServiceResult(object):
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
         if backends and not isinstance(backends, list):
             raise TypeError('Expected argument backends to be a list')
         __self__.backends = backends
@@ -25,6 +25,9 @@ class GetBackendServiceResult(object):
         """
         Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         """
+        if custom_request_headers and not isinstance(custom_request_headers, list):
+            raise TypeError('Expected argument custom_request_headers to be a list')
+        __self__.custom_request_headers = custom_request_headers
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -111,6 +114,7 @@ def get_backend_service(name=None, project=None):
         backends=__ret__.get('backends'),
         cdn_policies=__ret__.get('cdnPolicies'),
         connection_draining_timeout_sec=__ret__.get('connectionDrainingTimeoutSec'),
+        custom_request_headers=__ret__.get('customRequestHeaders'),
         description=__ret__.get('description'),
         enable_cdn=__ret__.get('enableCdn'),
         fingerprint=__ret__.get('fingerprint'),

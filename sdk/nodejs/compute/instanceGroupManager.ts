@@ -52,12 +52,11 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup: pulumi.Output<string>;
     /**
-     * The full URL to an instance template from
-     * which all new instances will be created.
+     * - The full URL to an instance template from which all new instances of this version will be created.
      */
-    public readonly instanceTemplate: pulumi.Output<string>;
+    public readonly instanceTemplate: pulumi.Output<string | undefined>;
     /**
-     * The name of the port.
+     * - Version name.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -86,9 +85,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetPools: pulumi.Output<string[] | undefined>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      */
     public readonly targetSize: pulumi.Output<number>;
     /**
@@ -99,6 +96,15 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     public readonly updateStrategy: pulumi.Output<string | undefined>;
+    /**
+     * Application versions managed by this instance group. Each
+     * version deals with a specific instance template, allowing canary release scenarios.
+     * Conflicts with `instance_template`. Structure is documented below. Beware that
+     * exactly one version must not specify a target size. It means that versions with
+     * a target size will respect the setting, and the one without target size will
+     * be applied to all remaining Instances (top level target_size - each version target_size).
+     */
+    public readonly versions: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, Terraform will
@@ -137,15 +143,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["targetPools"] = state ? state.targetPools : undefined;
             inputs["targetSize"] = state ? state.targetSize : undefined;
             inputs["updateStrategy"] = state ? state.updateStrategy : undefined;
+            inputs["versions"] = state ? state.versions : undefined;
             inputs["waitForInstances"] = state ? state.waitForInstances : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
             if (!args || args.baseInstanceName === undefined) {
                 throw new Error("Missing required property 'baseInstanceName'");
-            }
-            if (!args || args.instanceTemplate === undefined) {
-                throw new Error("Missing required property 'instanceTemplate'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
@@ -158,6 +162,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["targetPools"] = args ? args.targetPools : undefined;
             inputs["targetSize"] = args ? args.targetSize : undefined;
             inputs["updateStrategy"] = args ? args.updateStrategy : undefined;
+            inputs["versions"] = args ? args.versions : undefined;
             inputs["waitForInstances"] = args ? args.waitForInstances : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["fingerprint"] = undefined /*out*/;
@@ -200,12 +205,11 @@ export interface InstanceGroupManagerState {
      */
     readonly instanceGroup?: pulumi.Input<string>;
     /**
-     * The full URL to an instance template from
-     * which all new instances will be created.
+     * - The full URL to an instance template from which all new instances of this version will be created.
      */
     readonly instanceTemplate?: pulumi.Input<string>;
     /**
-     * The name of the port.
+     * - Version name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -234,9 +238,7 @@ export interface InstanceGroupManagerState {
      */
     readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
@@ -247,6 +249,15 @@ export interface InstanceGroupManagerState {
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     readonly updateStrategy?: pulumi.Input<string>;
+    /**
+     * Application versions managed by this instance group. Each
+     * version deals with a specific instance template, allowing canary release scenarios.
+     * Conflicts with `instance_template`. Structure is documented below. Beware that
+     * exactly one version must not specify a target size. It means that versions with
+     * a target size will respect the setting, and the one without target size will
+     * be applied to all remaining Instances (top level target_size - each version target_size).
+     */
+    readonly versions?: pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, Terraform will
@@ -284,12 +295,11 @@ export interface InstanceGroupManagerArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The full URL to an instance template from
-     * which all new instances will be created.
+     * - The full URL to an instance template from which all new instances of this version will be created.
      */
-    readonly instanceTemplate: pulumi.Input<string>;
+    readonly instanceTemplate?: pulumi.Input<string>;
     /**
-     * The name of the port.
+     * - Version name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -314,9 +324,7 @@ export interface InstanceGroupManagerArgs {
      */
     readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
@@ -327,6 +335,15 @@ export interface InstanceGroupManagerArgs {
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     readonly updateStrategy?: pulumi.Input<string>;
+    /**
+     * Application versions managed by this instance group. Each
+     * version deals with a specific instance template, allowing canary release scenarios.
+     * Conflicts with `instance_template`. Structure is documented below. Beware that
+     * exactly one version must not specify a target size. It means that versions with
+     * a target size will respect the setting, and the one without target size will
+     * be applied to all remaining Instances (top level target_size - each version target_size).
+     */
+    readonly versions?: pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, Terraform will

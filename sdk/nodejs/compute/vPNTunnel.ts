@@ -3,13 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Manages a VPN Tunnel to the GCE network. For more info, read the
- * [documentation](https://cloud.google.com/compute/docs/vpn).
- * 
- * ~> **Note:** All arguments including the `shared_secret` will be stored in the raw state as plain-text.
- * [Read more about sensitive data in state](/docs/state/sensitive-data.html).
- */
 export class VPNTunnel extends pulumi.CustomResource {
     /**
      * Get an existing VPNTunnel resource's state with the given name, ID, and optional extra
@@ -23,74 +16,29 @@ export class VPNTunnel extends pulumi.CustomResource {
         return new VPNTunnel(name, <any>state, { id });
     }
 
-    /**
-     * A description of the resource. Changing this forces
-     * a new resource to be created.
-     */
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Information about the status of the VPN tunnel.
-     */
     public /*out*/ readonly detailedStatus: pulumi.Output<string>;
-    /**
-     * Either version 1 or 2. Default is 2. Changing this
-     * forces a new resource to be created.
-     */
     public readonly ikeVersion: pulumi.Output<number | undefined>;
-    /**
-     * Specifies which CIDR ranges are
-     * announced to the VPN peer. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
+    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly localTrafficSelectors: pulumi.Output<string[]>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The VPN gateway sitting outside of GCE. Changing this
-     * forces a new resource to be created.
-     */
     public readonly peerIp: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region this tunnel should sit in. If not specified,
-     * the project region will be used. Changing this forces a new resource to be
-     * created.
-     */
     public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies which CIDR ranges the VPN
-     * tunnel can route to the remote side. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
     public readonly remoteTrafficSelectors: pulumi.Output<string[]>;
-    /**
-     * Name of a Cloud Router in the same region
-     * to be used for dynamic routing. Refer to Google documentation for more
-     * information.
-     */
     public readonly router: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * A passphrase shared between the two VPN gateways.
-     * Changing this forces a new resource to be created.
-     */
     public readonly sharedSecret: pulumi.Output<string>;
-    /**
-     * A link to the VPN gateway sitting inside
-     * GCE. Changing this forces a new resource to be created.
-     */
+    public /*out*/ readonly sharedSecretHash: pulumi.Output<string>;
     public readonly targetVpnGateway: pulumi.Output<string>;
 
     /**
@@ -105,9 +53,12 @@ export class VPNTunnel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: VPNTunnelState = argsOrState as VPNTunnelState | undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["detailedStatus"] = state ? state.detailedStatus : undefined;
             inputs["ikeVersion"] = state ? state.ikeVersion : undefined;
+            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["localTrafficSelectors"] = state ? state.localTrafficSelectors : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["peerIp"] = state ? state.peerIp : undefined;
@@ -117,6 +68,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["router"] = state ? state.router : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["sharedSecret"] = state ? state.sharedSecret : undefined;
+            inputs["sharedSecretHash"] = state ? state.sharedSecretHash : undefined;
             inputs["targetVpnGateway"] = state ? state.targetVpnGateway : undefined;
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
@@ -131,6 +83,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["ikeVersion"] = args ? args.ikeVersion : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["localTrafficSelectors"] = args ? args.localTrafficSelectors : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["peerIp"] = args ? args.peerIp : undefined;
@@ -140,8 +93,11 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["detailedStatus"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["sharedSecretHash"] = undefined /*out*/;
         }
         super("gcp:compute/vPNTunnel:VPNTunnel", name, inputs, opts);
     }
@@ -151,74 +107,29 @@ export class VPNTunnel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VPNTunnel resources.
  */
 export interface VPNTunnelState {
-    /**
-     * A description of the resource. Changing this forces
-     * a new resource to be created.
-     */
+    readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * Information about the status of the VPN tunnel.
-     */
     readonly detailedStatus?: pulumi.Input<string>;
-    /**
-     * Either version 1 or 2. Default is 2. Changing this
-     * forces a new resource to be created.
-     */
     readonly ikeVersion?: pulumi.Input<number>;
-    /**
-     * Specifies which CIDR ranges are
-     * announced to the VPN peer. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
+    readonly labelFingerprint?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The VPN gateway sitting outside of GCE. Changing this
-     * forces a new resource to be created.
-     */
     readonly peerIp?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this tunnel should sit in. If not specified,
-     * the project region will be used. Changing this forces a new resource to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * Specifies which CIDR ranges the VPN
-     * tunnel can route to the remote side. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of a Cloud Router in the same region
-     * to be used for dynamic routing. Refer to Google documentation for more
-     * information.
-     */
     readonly router?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * A passphrase shared between the two VPN gateways.
-     * Changing this forces a new resource to be created.
-     */
     readonly sharedSecret?: pulumi.Input<string>;
-    /**
-     * A link to the VPN gateway sitting inside
-     * GCE. Changing this forces a new resource to be created.
-     */
+    readonly sharedSecretHash?: pulumi.Input<string>;
     readonly targetVpnGateway?: pulumi.Input<string>;
 }
 
@@ -226,65 +137,20 @@ export interface VPNTunnelState {
  * The set of arguments for constructing a VPNTunnel resource.
  */
 export interface VPNTunnelArgs {
-    /**
-     * A description of the resource. Changing this forces
-     * a new resource to be created.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Either version 1 or 2. Default is 2. Changing this
-     * forces a new resource to be created.
-     */
     readonly ikeVersion?: pulumi.Input<number>;
-    /**
-     * Specifies which CIDR ranges are
-     * announced to the VPN peer. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The VPN gateway sitting outside of GCE. Changing this
-     * forces a new resource to be created.
-     */
     readonly peerIp: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this tunnel should sit in. If not specified,
-     * the project region will be used. Changing this forces a new resource to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * Specifies which CIDR ranges the VPN
-     * tunnel can route to the remote side. Mandatory if the VPN gateway is attached to a
-     * custom subnetted network. Refer to Google documentation for more
-     * information.
-     */
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of a Cloud Router in the same region
-     * to be used for dynamic routing. Refer to Google documentation for more
-     * information.
-     */
     readonly router?: pulumi.Input<string>;
-    /**
-     * A passphrase shared between the two VPN gateways.
-     * Changing this forces a new resource to be created.
-     */
     readonly sharedSecret: pulumi.Input<string>;
-    /**
-     * A link to the VPN gateway sitting inside
-     * GCE. Changing this forces a new resource to be created.
-     */
     readonly targetVpnGateway: pulumi.Input<string>;
 }

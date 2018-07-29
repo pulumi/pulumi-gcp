@@ -7,10 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a Forwarding Rule within GCE. This binds an ip and port range to a target pool. For more
-// information see [the official
-// documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/forwardingRules).
 type ForwardingRule struct {
 	s *pulumi.ResourceState
 }
@@ -24,13 +20,17 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["ipAddress"] = nil
 		inputs["ipProtocol"] = nil
+		inputs["ipVersion"] = nil
+		inputs["labels"] = nil
 		inputs["loadBalancingScheme"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
+		inputs["networkTier"] = nil
 		inputs["portRange"] = nil
 		inputs["ports"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
+		inputs["serviceLabel"] = nil
 		inputs["subnetwork"] = nil
 		inputs["target"] = nil
 	} else {
@@ -38,17 +38,24 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["ipAddress"] = args.IpAddress
 		inputs["ipProtocol"] = args.IpProtocol
+		inputs["ipVersion"] = args.IpVersion
+		inputs["labels"] = args.Labels
 		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
+		inputs["networkTier"] = args.NetworkTier
 		inputs["portRange"] = args.PortRange
 		inputs["ports"] = args.Ports
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
+		inputs["serviceLabel"] = args.ServiceLabel
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["target"] = args.Target
 	}
+	inputs["creationTimestamp"] = nil
+	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
+	inputs["serviceName"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/forwardingRule:ForwardingRule", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -63,17 +70,24 @@ func GetForwardingRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["backendService"] = state.BackendService
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["ipAddress"] = state.IpAddress
 		inputs["ipProtocol"] = state.IpProtocol
+		inputs["ipVersion"] = state.IpVersion
+		inputs["labelFingerprint"] = state.LabelFingerprint
+		inputs["labels"] = state.Labels
 		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
+		inputs["networkTier"] = state.NetworkTier
 		inputs["portRange"] = state.PortRange
 		inputs["ports"] = state.Ports
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["selfLink"] = state.SelfLink
+		inputs["serviceLabel"] = state.ServiceLabel
+		inputs["serviceName"] = state.ServiceName
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["target"] = state.Target
 	}
@@ -94,76 +108,68 @@ func (r *ForwardingRule) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// BackendService resource to receive the
-// matched traffic. Only used for internal load balancing.
 func (r *ForwardingRule) BackendService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["backendService"])
 }
 
-// Textual description field.
+func (r *ForwardingRule) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *ForwardingRule) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The static IP. (if not set, an ephemeral IP is
-// used).
 func (r *ForwardingRule) IpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
-// The IP protocol to route, one of "TCP" "UDP" "AH"
-// "ESP" or "SCTP" for external load balancing, "TCP" or "UDP" for internal
-// (default "TCP").
 func (r *ForwardingRule) IpProtocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipProtocol"])
 }
 
-// Type of load balancing to use. Can be
-// set to "INTERNAL" or "EXTERNAL" (default "EXTERNAL").
+func (r *ForwardingRule) IpVersion() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
+}
+
+func (r *ForwardingRule) LabelFingerprint() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+}
+
+func (r *ForwardingRule) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
 func (r *ForwardingRule) LoadBalancingScheme() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
 }
 
-// A unique name for the resource, required by GCE. Changing
-// this forces a new resource to be created.
 func (r *ForwardingRule) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Network name or self_link that the load balanced IP
-// should belong to. Only used for internal load balancing. If it is not
-// provided, the default network is used.
 func (r *ForwardingRule) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
-// A range e.g. "1024-2048" or a single port "1024"
-// (defaults to all ports!). Only used for external load balancing.
-// Some types of forwarding targets have constraints on the acceptable ports:
-// * Target HTTP proxy: 80, 8080
-// * Target HTTPS proxy: 443
-// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-// * Target VPN gateway: 500, 4500
+func (r *ForwardingRule) NetworkTier() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["networkTier"])
+}
+
 func (r *ForwardingRule) PortRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["portRange"])
 }
 
-// A list of ports (maximum of 5) to use for internal load
-// balancing. Packets addressed to these ports will be forwarded to the backends
-// configured with this forwarding rule. Required for internal load balancing.
 func (r *ForwardingRule) Ports() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["ports"])
 }
 
-// The ID of project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *ForwardingRule) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The Region in which the created address should reside.
-// If it is not provided, the provider region is used.
 func (r *ForwardingRule) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -173,121 +179,69 @@ func (r *ForwardingRule) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// Subnetwork that the load balanced IP should belong
-// to. Only used for internal load balancing. Must be specified if the network
-// is in custom subnet mode.
+func (r *ForwardingRule) ServiceLabel() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["serviceLabel"])
+}
+
+func (r *ForwardingRule) ServiceName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+}
+
 func (r *ForwardingRule) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
-// URL of target pool. Required for external load
-// balancing.
 func (r *ForwardingRule) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
 // Input properties used for looking up and filtering ForwardingRule resources.
 type ForwardingRuleState struct {
-	// BackendService resource to receive the
-	// matched traffic. Only used for internal load balancing.
 	BackendService interface{}
-	// Textual description field.
+	CreationTimestamp interface{}
 	Description interface{}
-	// The static IP. (if not set, an ephemeral IP is
-	// used).
 	IpAddress interface{}
-	// The IP protocol to route, one of "TCP" "UDP" "AH"
-	// "ESP" or "SCTP" for external load balancing, "TCP" or "UDP" for internal
-	// (default "TCP").
 	IpProtocol interface{}
-	// Type of load balancing to use. Can be
-	// set to "INTERNAL" or "EXTERNAL" (default "EXTERNAL").
+	IpVersion interface{}
+	LabelFingerprint interface{}
+	Labels interface{}
 	LoadBalancingScheme interface{}
-	// A unique name for the resource, required by GCE. Changing
-	// this forces a new resource to be created.
 	Name interface{}
-	// Network name or self_link that the load balanced IP
-	// should belong to. Only used for internal load balancing. If it is not
-	// provided, the default network is used.
 	Network interface{}
-	// A range e.g. "1024-2048" or a single port "1024"
-	// (defaults to all ports!). Only used for external load balancing.
-	// Some types of forwarding targets have constraints on the acceptable ports:
-	// * Target HTTP proxy: 80, 8080
-	// * Target HTTPS proxy: 443
-	// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target VPN gateway: 500, 4500
+	NetworkTier interface{}
 	PortRange interface{}
-	// A list of ports (maximum of 5) to use for internal load
-	// balancing. Packets addressed to these ports will be forwarded to the backends
-	// configured with this forwarding rule. Required for internal load balancing.
 	Ports interface{}
-	// The ID of project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// Subnetwork that the load balanced IP should belong
-	// to. Only used for internal load balancing. Must be specified if the network
-	// is in custom subnet mode.
+	ServiceLabel interface{}
+	ServiceName interface{}
 	Subnetwork interface{}
-	// URL of target pool. Required for external load
-	// balancing.
 	Target interface{}
 }
 
 // The set of arguments for constructing a ForwardingRule resource.
 type ForwardingRuleArgs struct {
-	// BackendService resource to receive the
-	// matched traffic. Only used for internal load balancing.
 	BackendService interface{}
-	// Textual description field.
 	Description interface{}
-	// The static IP. (if not set, an ephemeral IP is
-	// used).
 	IpAddress interface{}
-	// The IP protocol to route, one of "TCP" "UDP" "AH"
-	// "ESP" or "SCTP" for external load balancing, "TCP" or "UDP" for internal
-	// (default "TCP").
 	IpProtocol interface{}
-	// Type of load balancing to use. Can be
-	// set to "INTERNAL" or "EXTERNAL" (default "EXTERNAL").
+	IpVersion interface{}
+	Labels interface{}
 	LoadBalancingScheme interface{}
-	// A unique name for the resource, required by GCE. Changing
-	// this forces a new resource to be created.
 	Name interface{}
-	// Network name or self_link that the load balanced IP
-	// should belong to. Only used for internal load balancing. If it is not
-	// provided, the default network is used.
 	Network interface{}
-	// A range e.g. "1024-2048" or a single port "1024"
-	// (defaults to all ports!). Only used for external load balancing.
-	// Some types of forwarding targets have constraints on the acceptable ports:
-	// * Target HTTP proxy: 80, 8080
-	// * Target HTTPS proxy: 443
-	// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target VPN gateway: 500, 4500
+	NetworkTier interface{}
 	PortRange interface{}
-	// A list of ports (maximum of 5) to use for internal load
-	// balancing. Packets addressed to these ports will be forwarded to the backends
-	// configured with this forwarding rule. Required for internal load balancing.
 	Ports interface{}
-	// The ID of project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
-	// Subnetwork that the load balanced IP should belong
-	// to. Only used for internal load balancing. Must be specified if the network
-	// is in custom subnet mode.
+	ServiceLabel interface{}
 	Subnetwork interface{}
-	// URL of target pool. Required for external load
-	// balancing.
 	Target interface{}
 }

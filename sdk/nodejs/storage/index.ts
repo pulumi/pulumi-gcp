@@ -6,6 +6,7 @@ export * from "./bucket";
 export * from "./bucketACL";
 export * from "./bucketIAMBinding";
 export * from "./bucketIAMMember";
+export * from "./bucketIAMPolicy";
 export * from "./bucketObject";
 export * from "./defaultObjectACL";
 export * from "./getObjectSignedUrl";

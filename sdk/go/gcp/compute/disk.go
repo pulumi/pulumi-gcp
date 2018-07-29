@@ -7,13 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new persistent disk within GCE, based on another disk. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/disks).
-// 
-// ~> **Note:** All arguments including the disk encryption key will be stored in the raw state as plain-text.
-// [Read more about sensitive data in state](/docs/state/sensitive-data.html).
 type Disk struct {
 	s *pulumi.ResourceState
 }
@@ -23,6 +16,8 @@ func NewDisk(ctx *pulumi.Context,
 	name string, args *DiskArgs, opts ...pulumi.ResourceOpt) (*Disk, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["description"] = nil
+		inputs["diskEncryptionKey"] = nil
 		inputs["diskEncryptionKeyRaw"] = nil
 		inputs["image"] = nil
 		inputs["labels"] = nil
@@ -30,9 +25,13 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["size"] = nil
 		inputs["snapshot"] = nil
+		inputs["sourceImageEncryptionKey"] = nil
+		inputs["sourceSnapshotEncryptionKey"] = nil
 		inputs["type"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["description"] = args.Description
+		inputs["diskEncryptionKey"] = args.DiskEncryptionKey
 		inputs["diskEncryptionKeyRaw"] = args.DiskEncryptionKeyRaw
 		inputs["image"] = args.Image
 		inputs["labels"] = args.Labels
@@ -40,12 +39,19 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["size"] = args.Size
 		inputs["snapshot"] = args.Snapshot
+		inputs["sourceImageEncryptionKey"] = args.SourceImageEncryptionKey
+		inputs["sourceSnapshotEncryptionKey"] = args.SourceSnapshotEncryptionKey
 		inputs["type"] = args.Type
 		inputs["zone"] = args.Zone
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["diskEncryptionKeySha256"] = nil
 	inputs["labelFingerprint"] = nil
+	inputs["lastAttachTimestamp"] = nil
+	inputs["lastDetachTimestamp"] = nil
 	inputs["selfLink"] = nil
+	inputs["sourceImageId"] = nil
+	inputs["sourceSnapshotId"] = nil
 	inputs["users"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/disk:Disk", name, true, inputs, opts...)
 	if err != nil {
@@ -60,16 +66,25 @@ func GetDisk(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DiskState, opts ...pulumi.ResourceOpt) (*Disk, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["creationTimestamp"] = state.CreationTimestamp
+		inputs["description"] = state.Description
+		inputs["diskEncryptionKey"] = state.DiskEncryptionKey
 		inputs["diskEncryptionKeyRaw"] = state.DiskEncryptionKeyRaw
 		inputs["diskEncryptionKeySha256"] = state.DiskEncryptionKeySha256
 		inputs["image"] = state.Image
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
+		inputs["lastAttachTimestamp"] = state.LastAttachTimestamp
+		inputs["lastDetachTimestamp"] = state.LastDetachTimestamp
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["selfLink"] = state.SelfLink
 		inputs["size"] = state.Size
 		inputs["snapshot"] = state.Snapshot
+		inputs["sourceImageEncryptionKey"] = state.SourceImageEncryptionKey
+		inputs["sourceImageId"] = state.SourceImageId
+		inputs["sourceSnapshotEncryptionKey"] = state.SourceSnapshotEncryptionKey
+		inputs["sourceSnapshotId"] = state.SourceSnapshotId
 		inputs["type"] = state.Type
 		inputs["users"] = state.Users
 		inputs["zone"] = state.Zone
@@ -91,53 +106,52 @@ func (r *Disk) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// A 256-bit [customer-supplied encryption key]
-// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-// to encrypt this disk.
+func (r *Disk) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
+func (r *Disk) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *Disk) DiskEncryptionKey() *pulumi.Output {
+	return r.s.State["diskEncryptionKey"]
+}
+
 func (r *Disk) DiskEncryptionKeyRaw() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["diskEncryptionKeyRaw"])
 }
 
-// The [RFC 4648 base64]
-// (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-// [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-// that protects this resource.
 func (r *Disk) DiskEncryptionKeySha256() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["diskEncryptionKeySha256"])
 }
 
-// The image from which to initialize this disk. This can be
-// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-// images names must include the family name. If they don't, use the
-// [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-// These images can be referred by family name here.
 func (r *Disk) Image() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["image"])
 }
 
-// The fingerprint of the assigned labels.
 func (r *Disk) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-// A set of key/value label pairs to assign to the image.
 func (r *Disk) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
+func (r *Disk) LastAttachTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["lastAttachTimestamp"])
+}
+
+func (r *Disk) LastDetachTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["lastDetachTimestamp"])
+}
+
 func (r *Disk) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Disk) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -147,111 +161,86 @@ func (r *Disk) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The size of the image in gigabytes. If not specified, it
-// will inherit the size of its base image.
 func (r *Disk) Size() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["size"])
 }
 
-// Name of snapshot from which to initialize this disk.
 func (r *Disk) Snapshot() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["snapshot"])
 }
 
-// The GCE disk type.
+func (r *Disk) SourceImageEncryptionKey() *pulumi.Output {
+	return r.s.State["sourceImageEncryptionKey"]
+}
+
+func (r *Disk) SourceImageId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["sourceImageId"])
+}
+
+func (r *Disk) SourceSnapshotEncryptionKey() *pulumi.Output {
+	return r.s.State["sourceSnapshotEncryptionKey"]
+}
+
+func (r *Disk) SourceSnapshotId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["sourceSnapshotId"])
+}
+
 func (r *Disk) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
 
-// The Users of the created resource.
 func (r *Disk) Users() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["users"])
 }
 
-// The zone where this disk will be available.
 func (r *Disk) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Disk resources.
 type DiskState struct {
-	// A 256-bit [customer-supplied encryption key]
-	// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-	// to encrypt this disk.
+	CreationTimestamp interface{}
+	Description interface{}
+	DiskEncryptionKey interface{}
 	DiskEncryptionKeyRaw interface{}
-	// The [RFC 4648 base64]
-	// (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-	// [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-	// that protects this resource.
 	DiskEncryptionKeySha256 interface{}
-	// The image from which to initialize this disk. This can be
-	// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-	// images names must include the family name. If they don't, use the
-	// [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-	// These images can be referred by family name here.
 	Image interface{}
-	// The fingerprint of the assigned labels.
 	LabelFingerprint interface{}
-	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	LastAttachTimestamp interface{}
+	LastDetachTimestamp interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The size of the image in gigabytes. If not specified, it
-	// will inherit the size of its base image.
 	Size interface{}
-	// Name of snapshot from which to initialize this disk.
 	Snapshot interface{}
-	// The GCE disk type.
+	SourceImageEncryptionKey interface{}
+	SourceImageId interface{}
+	SourceSnapshotEncryptionKey interface{}
+	SourceSnapshotId interface{}
 	Type interface{}
-	// The Users of the created resource.
 	Users interface{}
-	// The zone where this disk will be available.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
-	// A 256-bit [customer-supplied encryption key]
-	// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-	// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-	// to encrypt this disk.
+	Description interface{}
+	DiskEncryptionKey interface{}
 	DiskEncryptionKeyRaw interface{}
-	// The image from which to initialize this disk. This can be
-	// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-	// images names must include the family name. If they don't, use the
-	// [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-	// These images can be referred by family name here.
 	Image interface{}
-	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The size of the image in gigabytes. If not specified, it
-	// will inherit the size of its base image.
 	Size interface{}
-	// Name of snapshot from which to initialize this disk.
 	Snapshot interface{}
-	// The GCE disk type.
+	SourceImageEncryptionKey interface{}
+	SourceSnapshotEncryptionKey interface{}
 	Type interface{}
-	// The zone where this disk will be available.
 	Zone interface{}
 }

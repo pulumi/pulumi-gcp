@@ -39,9 +39,14 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     public readonly folder: pulumi.Output<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * can also be used to allow or deny all values. Structure is documented below.
      */
     public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, suggestedValue: string } | undefined>;
+    /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
@@ -68,6 +73,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             inputs["etag"] = state ? state.etag : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["listPolicy"] = state ? state.listPolicy : undefined;
+            inputs["restorePolicy"] = state ? state.restorePolicy : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -82,6 +88,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             inputs["constraint"] = args ? args.constraint : undefined;
             inputs["folder"] = args ? args.folder : undefined;
             inputs["listPolicy"] = args ? args.listPolicy : undefined;
+            inputs["restorePolicy"] = args ? args.restorePolicy : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["etag"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -111,9 +118,14 @@ export interface OrganizationPolicyState {
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * can also be used to allow or deny all values. Structure is documented below.
      */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
@@ -141,9 +153,14 @@ export interface OrganizationPolicyArgs {
      */
     readonly folder: pulumi.Input<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * can also be used to allow or deny all values. Structure is documented below.
      */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
      * Version of the Policy. Default version is 0.
      */

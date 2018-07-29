@@ -11,6 +11,9 @@ import (
 // A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
 // For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
+// 
+// ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+//   [`google_compute_backend_service`](compute_backend_service.html) instead.
 type RegionBackendService struct {
 	s *pulumi.ResourceState
 }
@@ -131,7 +134,7 @@ func (r *RegionBackendService) Project() *pulumi.StringOutput {
 }
 
 // The protocol for incoming requests. Defaults to
-// `HTTP`.
+// `TCP`.
 func (r *RegionBackendService) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
@@ -182,7 +185,7 @@ type RegionBackendServiceState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The protocol for incoming requests. Defaults to
-	// `HTTP`.
+	// `TCP`.
 	Protocol interface{}
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -218,7 +221,7 @@ type RegionBackendServiceArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The protocol for incoming requests. Defaults to
-	// `HTTP`.
+	// `TCP`.
 	Protocol interface{}
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.

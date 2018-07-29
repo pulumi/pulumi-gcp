@@ -109,6 +109,7 @@ func (r *GlobalForwardingRule) IpProtocol() *pulumi.StringOutput {
 
 // 
 // The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+// You cannot provide this and `ip_address`.
 func (r *GlobalForwardingRule) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
@@ -172,6 +173,7 @@ type GlobalForwardingRuleState struct {
 	IpProtocol interface{}
 	// 
 	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
 	// ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
 	LabelFingerprint interface{}
@@ -213,6 +215,7 @@ type GlobalForwardingRuleArgs struct {
 	IpProtocol interface{}
 	// 
 	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
 	// )
 	// A set of key/value label pairs to assign to the resource.

@@ -12,7 +12,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
     """
-    def __init__(__self__, __name__, __opts__=None, boolean_policy=None, constraint=None, folder=None, list_policy=None, version=None):
+    def __init__(__self__, __name__, __opts__=None, boolean_policy=None, constraint=None, folder=None, list_policy=None, restore_policy=None, version=None):
         """Create a OrganizationPolicy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -55,9 +55,18 @@ class OrganizationPolicy(pulumi.CustomResource):
             raise TypeError('Expected property list_policy to be a dict')
         __self__.list_policy = list_policy
         """
-        A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        A policy that can define specific values that are allowed or denied for the given constraint. It 
+        can also be used to allow or deny all values. Structure is documented below.
         """
         __props__['listPolicy'] = list_policy
+
+        if restore_policy and not isinstance(restore_policy, dict):
+            raise TypeError('Expected property restore_policy to be a dict')
+        __self__.restore_policy = restore_policy
+        """
+        A restore policy is a constraint to restore the default policy. Structure is documented below. 
+        """
+        __props__['restorePolicy'] = restore_policy
 
         if version and not isinstance(version, int):
             raise TypeError('Expected property version to be a int')
@@ -93,6 +102,8 @@ class OrganizationPolicy(pulumi.CustomResource):
             self.folder = outs['folder']
         if 'listPolicy' in outs:
             self.list_policy = outs['listPolicy']
+        if 'restorePolicy' in outs:
+            self.restore_policy = outs['restorePolicy']
         if 'updateTime' in outs:
             self.update_time = outs['updateTime']
         if 'version' in outs:

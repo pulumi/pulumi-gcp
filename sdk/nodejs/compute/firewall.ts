@@ -48,6 +48,11 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly direction: pulumi.Output<string>;
     /**
+     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+     * When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+     */
+    public readonly disabled: pulumi.Output<boolean | undefined>;
+    /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
@@ -121,6 +126,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["destinationRanges"] = state ? state.destinationRanges : undefined;
             inputs["direction"] = state ? state.direction : undefined;
+            inputs["disabled"] = state ? state.disabled : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["priority"] = state ? state.priority : undefined;
@@ -141,6 +147,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
             inputs["direction"] = args ? args.direction : undefined;
+            inputs["disabled"] = args ? args.disabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["priority"] = args ? args.priority : undefined;
@@ -185,6 +192,11 @@ export interface FirewallState {
      * One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
      */
     readonly direction?: pulumi.Input<string>;
+    /**
+     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+     * When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
@@ -272,6 +284,11 @@ export interface FirewallArgs {
      * One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
      */
     readonly direction?: pulumi.Input<string>;
+    /**
+     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+     * When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.

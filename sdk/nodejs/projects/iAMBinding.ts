@@ -3,6 +3,17 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
+/**
+ * Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+ * 
+ * * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+ * * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+ * * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+ * 
+ * ~> **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+ * 
+ * ~> **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+ */
 export class IAMBinding extends pulumi.CustomResource {
     /**
      * Get an existing IAMBinding resource's state with the given name, ID, and optional extra
@@ -16,9 +27,21 @@ export class IAMBinding extends pulumi.CustomResource {
         return new IAMBinding(name, <any>state, { id });
     }
 
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     public /*out*/ readonly etag: pulumi.Output<string>;
     public readonly members: pulumi.Output<string[]>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     public readonly project: pulumi.Output<string | undefined>;
+    /**
+     * The role that should be applied. Only one
+     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role: pulumi.Output<string>;
 
     /**
@@ -58,9 +81,21 @@ export class IAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMBinding resources.
  */
 export interface IAMBindingState {
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -69,6 +104,15 @@ export interface IAMBindingState {
  */
 export interface IAMBindingArgs {
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role: pulumi.Input<string>;
 }

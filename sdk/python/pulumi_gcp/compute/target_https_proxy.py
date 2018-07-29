@@ -6,7 +6,7 @@ import pulumi
 import pulumi.runtime
 
 class TargetHttpsProxy(pulumi.CustomResource):
-    def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         """Create a TargetHttpsProxy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -35,6 +35,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         __props__['project'] = project
+
+        if quic_override and not isinstance(quic_override, basestring):
+            raise TypeError('Expected property quic_override to be a basestring')
+        __self__.quic_override = quic_override
+        __props__['quicOverride'] = quic_override
 
         if not ssl_certificates:
             raise TypeError('Missing required property ssl_certificates')
@@ -79,6 +84,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             self.project = outs['project']
         if 'proxyId' in outs:
             self.proxy_id = outs['proxyId']
+        if 'quicOverride' in outs:
+            self.quic_override = outs['quicOverride']
         if 'selfLink' in outs:
             self.self_link = outs['selfLink']
         if 'sslCertificates' in outs:

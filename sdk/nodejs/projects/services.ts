@@ -58,9 +58,6 @@ export class Services extends pulumi.CustomResource {
             inputs["services"] = state ? state.services : undefined;
         } else {
             const args = argsOrState as ServicesArgs | undefined;
-            if (!args || args.project === undefined) {
-                throw new Error("Missing required property 'project'");
-            }
             if (!args || args.services === undefined) {
                 throw new Error("Missing required property 'services'");
             }
@@ -100,7 +97,7 @@ export interface ServicesArgs {
      * Changing this forces Terraform to attempt to disable all previously managed
      * API services in the previous project.
      */
-    readonly project: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
     /**
      * The list of services that are enabled. Supports
      * update.

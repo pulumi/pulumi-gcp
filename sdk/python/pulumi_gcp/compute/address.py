@@ -6,16 +6,7 @@ import pulumi
 import pulumi.runtime
 
 class Address(pulumi.CustomResource):
-    """
-    Creates a static IP address resource for Google Compute Engine. For more information see
-    the official documentation for
-    [external](https://cloud.google.com/compute/docs/instances-and-network) and
-    [internal](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
-    static IP reservations, as well as the
-    [API](https://cloud.google.com/compute/docs/reference/beta/addresses/insert).
-    
-    """
-    def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, name=None, project=None, region=None, subnetwork=None):
+    def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):
         """Create a Address resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -29,64 +20,53 @@ class Address(pulumi.CustomResource):
         if address and not isinstance(address, basestring):
             raise TypeError('Expected property address to be a basestring')
         __self__.address = address
-        """
-        The IP address to reserve. An address may only be
-        specified for INTERNAL address types. The IP address must be inside the
-        specified subnetwork, if any.
-        """
         __props__['address'] = address
 
         if address_type and not isinstance(address_type, basestring):
             raise TypeError('Expected property address_type to be a basestring')
         __self__.address_type = address_type
-        """
-        The Address Type that should be configured.
-        Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-        specify an external static IP address. Defaults to EXTERNAL if omitted.
-        """
         __props__['addressType'] = address_type
+
+        if description and not isinstance(description, basestring):
+            raise TypeError('Expected property description to be a basestring')
+        __self__.description = description
+        __props__['description'] = description
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
+
+        if network_tier and not isinstance(network_tier, basestring):
+            raise TypeError('Expected property network_tier to be a basestring')
+        __self__.network_tier = network_tier
+        __props__['networkTier'] = network_tier
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         __props__['project'] = project
 
         if region and not isinstance(region, basestring):
             raise TypeError('Expected property region to be a basestring')
         __self__.region = region
-        """
-        The Region in which the created address should reside.
-        If it is not provided, the provider region is used.
-        """
         __props__['region'] = region
 
         if subnetwork and not isinstance(subnetwork, basestring):
             raise TypeError('Expected property subnetwork to be a basestring')
         __self__.subnetwork = subnetwork
-        """
-        The self link URI of the subnetwork in which to
-        create the address. A subnetwork may only be specified for INTERNAL
-        address types.
-        """
         __props__['subnetwork'] = subnetwork
 
+        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
         """
+        __self__.users = pulumi.runtime.UNKNOWN
 
         super(Address, __self__).__init__(
             'gcp:compute/address:Address',
@@ -99,8 +79,14 @@ class Address(pulumi.CustomResource):
             self.address = outs['address']
         if 'addressType' in outs:
             self.address_type = outs['addressType']
+        if 'creationTimestamp' in outs:
+            self.creation_timestamp = outs['creationTimestamp']
+        if 'description' in outs:
+            self.description = outs['description']
         if 'name' in outs:
             self.name = outs['name']
+        if 'networkTier' in outs:
+            self.network_tier = outs['networkTier']
         if 'project' in outs:
             self.project = outs['project']
         if 'region' in outs:
@@ -109,3 +95,5 @@ class Address(pulumi.CustomResource):
             self.self_link = outs['selfLink']
         if 'subnetwork' in outs:
             self.subnetwork = outs['subnetwork']
+        if 'users' in outs:
+            self.users = outs['users']

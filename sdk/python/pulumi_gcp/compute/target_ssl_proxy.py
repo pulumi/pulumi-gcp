@@ -6,7 +6,7 @@ import pulumi
 import pulumi.runtime
 
 class TargetSSLProxy(pulumi.CustomResource):
-    def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, ssl_certificates=None):
+    def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, ssl_certificates=None, ssl_policy=None):
         """Create a TargetSSLProxy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -55,6 +55,11 @@ class TargetSSLProxy(pulumi.CustomResource):
         __self__.ssl_certificates = ssl_certificates
         __props__['sslCertificates'] = ssl_certificates
 
+        if ssl_policy and not isinstance(ssl_policy, basestring):
+            raise TypeError('Expected property ssl_policy to be a basestring')
+        __self__.ssl_policy = ssl_policy
+        __props__['sslPolicy'] = ssl_policy
+
         __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.proxy_id = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
@@ -87,3 +92,5 @@ class TargetSSLProxy(pulumi.CustomResource):
             self.self_link = outs['selfLink']
         if 'sslCertificates' in outs:
             self.ssl_certificates = outs['sslCertificates']
+        if 'sslPolicy' in outs:
+            self.ssl_policy = outs['sslPolicy']

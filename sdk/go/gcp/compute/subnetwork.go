@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a subnetwork within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/vpc/#vpc_networks_and_subnets)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/subnetworks).
 type Subnetwork struct {
 	s *pulumi.ResourceState
 }
@@ -47,6 +43,7 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["secondaryIpRanges"] = args.SecondaryIpRanges
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["fingerprint"] = nil
 	inputs["gatewayAddress"] = nil
 	inputs["selfLink"] = nil
@@ -63,6 +60,7 @@ func GetSubnetwork(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SubnetworkState, opts ...pulumi.ResourceOpt) (*Subnetwork, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["enableFlowLogs"] = state.EnableFlowLogs
 		inputs["fingerprint"] = state.Fingerprint
@@ -93,14 +91,14 @@ func (r *Subnetwork) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// Description of this subnetwork.
+func (r *Subnetwork) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *Subnetwork) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// )
-// Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-// for this subnetwork.
 func (r *Subnetwork) EnableFlowLogs() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableFlowLogs"])
 }
@@ -109,49 +107,36 @@ func (r *Subnetwork) Fingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
-// The IP address of the gateway.
 func (r *Subnetwork) GatewayAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["gatewayAddress"])
 }
 
-// The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
 func (r *Subnetwork) IpCidrRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipCidrRange"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *Subnetwork) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The network name or resource link to the parent
-// network of this subnetwork. The parent network must have been created
-// in custom subnet mode.
 func (r *Subnetwork) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
-// Whether the VMs in this subnet
-// can access Google services without assigned external IP
-// addresses.
 func (r *Subnetwork) PrivateIpGoogleAccess() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["privateIpGoogleAccess"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Subnetwork) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region this subnetwork will be created in. If
-// unspecified, this defaults to the region configured in the provider.
 func (r *Subnetwork) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
 func (r *Subnetwork) SecondaryIpRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["secondaryIpRanges"])
 }
@@ -163,35 +148,19 @@ func (r *Subnetwork) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type SubnetworkState struct {
-	// Description of this subnetwork.
+	CreationTimestamp interface{}
 	Description interface{}
-	// )
-	// Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-	// for this subnetwork.
 	EnableFlowLogs interface{}
 	Fingerprint interface{}
-	// The IP address of the gateway.
 	GatewayAddress interface{}
-	// The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
 	IpCidrRange interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The network name or resource link to the parent
-	// network of this subnetwork. The parent network must have been created
-	// in custom subnet mode.
 	Network interface{}
-	// Whether the VMs in this subnet
-	// can access Google services without assigned external IP
-	// addresses.
 	PrivateIpGoogleAccess interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region this subnetwork will be created in. If
-	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
-	// ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -199,31 +168,15 @@ type SubnetworkState struct {
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
-	// Description of this subnetwork.
 	Description interface{}
-	// )
-	// Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-	// for this subnetwork.
 	EnableFlowLogs interface{}
-	// The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
 	IpCidrRange interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The network name or resource link to the parent
-	// network of this subnetwork. The parent network must have been created
-	// in custom subnet mode.
 	Network interface{}
-	// Whether the VMs in this subnet
-	// can access Google services without assigned external IP
-	// addresses.
 	PrivateIpGoogleAccess interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region this subnetwork will be created in. If
-	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
-	// ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges interface{}
 }

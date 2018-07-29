@@ -25,8 +25,8 @@ export class User extends pulumi.CustomResource {
 
     /**
      * The host the user can connect from. This is only supported
-     * for first generation SQL instances. Don't set this field for second generation
-     * SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+     * for MySQL instances. Don't set this field for PostgreSQL instances.
+     * Can be an IP address. Changing this forces a new resource to be created.
      */
     public readonly host: pulumi.Output<string | undefined>;
     /**
@@ -87,8 +87,8 @@ export class User extends pulumi.CustomResource {
 export interface UserState {
     /**
      * The host the user can connect from. This is only supported
-     * for first generation SQL instances. Don't set this field for second generation
-     * SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+     * for MySQL instances. Don't set this field for PostgreSQL instances.
+     * Can be an IP address. Changing this forces a new resource to be created.
      */
     readonly host?: pulumi.Input<string>;
     /**
@@ -118,8 +118,8 @@ export interface UserState {
 export interface UserArgs {
     /**
      * The host the user can connect from. This is only supported
-     * for first generation SQL instances. Don't set this field for second generation
-     * SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+     * for MySQL instances. Don't set this field for PostgreSQL instances.
+     * Can be an IP address. Changing this forces a new resource to be created.
      */
     readonly host?: pulumi.Input<string>;
     /**

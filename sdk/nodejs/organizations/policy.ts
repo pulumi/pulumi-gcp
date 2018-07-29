@@ -43,6 +43,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly orgId: pulumi.Output<string>;
     /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
+    /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
     public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -68,6 +72,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["etag"] = state ? state.etag : undefined;
             inputs["listPolicy"] = state ? state.listPolicy : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
+            inputs["restorePolicy"] = state ? state.restorePolicy : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -82,6 +87,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["constraint"] = args ? args.constraint : undefined;
             inputs["listPolicy"] = args ? args.listPolicy : undefined;
             inputs["orgId"] = args ? args.orgId : undefined;
+            inputs["restorePolicy"] = args ? args.restorePolicy : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["etag"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -115,6 +121,10 @@ export interface PolicyState {
      */
     readonly orgId?: pulumi.Input<string>;
     /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
+    /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
     readonly updateTime?: pulumi.Input<string>;
@@ -144,6 +154,10 @@ export interface PolicyArgs {
      * The numeric ID of the organization to set the policy for.
      */
     readonly orgId: pulumi.Input<string>;
+    /**
+     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     */
+    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
      * Version of the Policy. Default version is 0.
      */

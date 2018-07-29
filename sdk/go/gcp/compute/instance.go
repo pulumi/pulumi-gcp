@@ -186,6 +186,7 @@ func (r *Instance) Description() *pulumi.StringOutput {
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
+// **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
 func (r *Instance) GuestAccelerators() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
 }
@@ -205,10 +206,7 @@ func (r *Instance) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// The machine type to create. To create a custom
-// machine type, value should be set as specified
-// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-// **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+// The machine type to create.
 func (r *Instance) MachineType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["machineType"])
 }
@@ -322,6 +320,7 @@ type InstanceState struct {
 	// A brief description of this resource.
 	Description interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
 	GuestAccelerators interface{}
 	// The server-assigned unique identifier of this instance.
 	InstanceId interface{}
@@ -329,10 +328,7 @@ type InstanceState struct {
 	LabelFingerprint interface{}
 	// A set of key/value label pairs to assign to the instance.
 	Labels interface{}
-	// The machine type to create. To create a custom
-	// machine type, value should be set as specified
-	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-	// **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+	// The machine type to create.
 	MachineType interface{}
 	// Metadata key/value pairs to make available from
 	// within the instance.
@@ -401,13 +397,11 @@ type InstanceArgs struct {
 	// A brief description of this resource.
 	Description interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
 	GuestAccelerators interface{}
 	// A set of key/value label pairs to assign to the instance.
 	Labels interface{}
-	// The machine type to create. To create a custom
-	// machine type, value should be set as specified
-	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-	// **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+	// The machine type to create.
 	MachineType interface{}
 	// Metadata key/value pairs to make available from
 	// within the instance.

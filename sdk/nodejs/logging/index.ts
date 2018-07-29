@@ -2,7 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./billingAccountExclusion";
 export * from "./billingAccountSink";
+export * from "./folderExclusion";
 export * from "./folderSink";
+export * from "./organizationExclusion";
 export * from "./organizationSink";
+export * from "./projectExclusion";
 export * from "./projectSink";

@@ -29,8 +29,8 @@ class User(pulumi.CustomResource):
         __self__.host = host
         """
         The host the user can connect from. This is only supported
-        for first generation SQL instances. Don't set this field for second generation
-        SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+        for MySQL instances. Don't set this field for PostgreSQL instances.
+        Can be an IP address. Changing this forces a new resource to be created.
         """
         __props__['host'] = host
 

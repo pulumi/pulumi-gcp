@@ -8,6 +8,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+// 
+// * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+// * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+// * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+// 
+// ~> **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+// 
+// ~> **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
 type IAMPolicy struct {
 	s *pulumi.ResourceState
 }
@@ -69,44 +78,109 @@ func (r *IAMPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
+// (Optional, only for `google_project_iam_policy`)
+// A boolean value indicating if this policy
+// should overwrite any existing IAM policy on the project. When set to true,
+// **any policies not in your config file will be removed**. This can **lock
+// you out** of your project until an Organization Administrator grants you
+// access again, so please exercise caution. If this argument is `true` and you
+// want to delete the resource, you must set the `disable_project` argument to
+// `true`, acknowledging that the project will be inaccessible to anyone but the
+// Organization Admins, as it will no longer have an IAM policy. Rather than using
+// this, you should use `google_project_iam_binding` and
+// `google_project_iam_member`.
 func (r *IAMPolicy) Authoritative() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["authoritative"])
 }
 
+// (Optional, only for `google_project_iam_policy`)
+// A boolean value that must be set to `true`
+// if you want to delete a `google_project_iam_policy` that is authoritative.
 func (r *IAMPolicy) DisableProject() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disableProject"])
 }
 
+// (Computed) The etag of the project's IAM policy.
 func (r *IAMPolicy) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
+// The `google_iam_policy` data source that represents
+// the IAM policy that will be applied to the project. The policy will be
+// merged with any existing policy applied to the project.
 func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["policyData"])
 }
 
+// The project ID. If not specified, uses the
+// ID of the project configured with the provider.
 func (r *IAMPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// (DEPRECATED) (Computed, only for `google_project_iam_policy`)
+// The IAM policy that will be restored when a
+// non-authoritative policy resource is deleted.
 func (r *IAMPolicy) RestorePolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["restorePolicy"])
 }
 
 // Input properties used for looking up and filtering IAMPolicy resources.
 type IAMPolicyState struct {
+	// (Optional, only for `google_project_iam_policy`)
+	// A boolean value indicating if this policy
+	// should overwrite any existing IAM policy on the project. When set to true,
+	// **any policies not in your config file will be removed**. This can **lock
+	// you out** of your project until an Organization Administrator grants you
+	// access again, so please exercise caution. If this argument is `true` and you
+	// want to delete the resource, you must set the `disable_project` argument to
+	// `true`, acknowledging that the project will be inaccessible to anyone but the
+	// Organization Admins, as it will no longer have an IAM policy. Rather than using
+	// this, you should use `google_project_iam_binding` and
+	// `google_project_iam_member`.
 	Authoritative interface{}
+	// (Optional, only for `google_project_iam_policy`)
+	// A boolean value that must be set to `true`
+	// if you want to delete a `google_project_iam_policy` that is authoritative.
 	DisableProject interface{}
+	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
+	// The `google_iam_policy` data source that represents
+	// the IAM policy that will be applied to the project. The policy will be
+	// merged with any existing policy applied to the project.
 	PolicyData interface{}
+	// The project ID. If not specified, uses the
+	// ID of the project configured with the provider.
 	Project interface{}
+	// (DEPRECATED) (Computed, only for `google_project_iam_policy`)
+	// The IAM policy that will be restored when a
+	// non-authoritative policy resource is deleted.
 	RestorePolicy interface{}
 }
 
 // The set of arguments for constructing a IAMPolicy resource.
 type IAMPolicyArgs struct {
+	// (Optional, only for `google_project_iam_policy`)
+	// A boolean value indicating if this policy
+	// should overwrite any existing IAM policy on the project. When set to true,
+	// **any policies not in your config file will be removed**. This can **lock
+	// you out** of your project until an Organization Administrator grants you
+	// access again, so please exercise caution. If this argument is `true` and you
+	// want to delete the resource, you must set the `disable_project` argument to
+	// `true`, acknowledging that the project will be inaccessible to anyone but the
+	// Organization Admins, as it will no longer have an IAM policy. Rather than using
+	// this, you should use `google_project_iam_binding` and
+	// `google_project_iam_member`.
 	Authoritative interface{}
+	// (Optional, only for `google_project_iam_policy`)
+	// A boolean value that must be set to `true`
+	// if you want to delete a `google_project_iam_policy` that is authoritative.
 	DisableProject interface{}
+	// The `google_iam_policy` data source that represents
+	// the IAM policy that will be applied to the project. The policy will be
+	// merged with any existing policy applied to the project.
 	PolicyData interface{}
+	// The project ID. If not specified, uses the
+	// ID of the project configured with the provider.
 	Project interface{}
 }
