@@ -6,14 +6,7 @@ import pulumi
 import pulumi.runtime
 
 class VPNTunnel(pulumi.CustomResource):
-    """
-    Manages a VPN Tunnel to the GCE network. For more info, read the
-    [documentation](https://cloud.google.com/compute/docs/vpn).
-    
-    ~> **Note:** All arguments including the `shared_secret` will be stored in the raw state as plain-text.
-    [Read more about sensitive data in state](/docs/state/sensitive-data.html).
-    """
-    def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):
         """Create a VPNTunnel resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -27,39 +20,26 @@ class VPNTunnel(pulumi.CustomResource):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
-        """
-        A description of the resource. Changing this forces
-        a new resource to be created.
-        """
         __props__['description'] = description
 
         if ike_version and not isinstance(ike_version, int):
             raise TypeError('Expected property ike_version to be a int')
         __self__.ike_version = ike_version
-        """
-        Either version 1 or 2. Default is 2. Changing this
-        forces a new resource to be created.
-        """
         __props__['ikeVersion'] = ike_version
+
+        if labels and not isinstance(labels, dict):
+            raise TypeError('Expected property labels to be a dict')
+        __self__.labels = labels
+        __props__['labels'] = labels
 
         if local_traffic_selectors and not isinstance(local_traffic_selectors, list):
             raise TypeError('Expected property local_traffic_selectors to be a list')
         __self__.local_traffic_selectors = local_traffic_selectors
-        """
-        Specifies which CIDR ranges are
-        announced to the VPN peer. Mandatory if the VPN gateway is attached to a
-        custom subnetted network. Refer to Google documentation for more
-        information.
-        """
         __props__['localTrafficSelectors'] = local_traffic_selectors
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
-        """
-        A unique name for the resource, required by GCE. Changing
-        this forces a new resource to be created.
-        """
         __props__['name'] = name
 
         if not peer_ip:
@@ -67,50 +47,30 @@ class VPNTunnel(pulumi.CustomResource):
         elif not isinstance(peer_ip, basestring):
             raise TypeError('Expected property peer_ip to be a basestring')
         __self__.peer_ip = peer_ip
-        """
-        The VPN gateway sitting outside of GCE. Changing this
-        forces a new resource to be created.
-        """
         __props__['peerIp'] = peer_ip
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         __props__['project'] = project
 
         if region and not isinstance(region, basestring):
             raise TypeError('Expected property region to be a basestring')
         __self__.region = region
-        """
-        The region this tunnel should sit in. If not specified,
-        the project region will be used. Changing this forces a new resource to be
-        created.
-        """
         __props__['region'] = region
 
         if remote_traffic_selectors and not isinstance(remote_traffic_selectors, list):
             raise TypeError('Expected property remote_traffic_selectors to be a list')
         __self__.remote_traffic_selectors = remote_traffic_selectors
-        """
-        Specifies which CIDR ranges the VPN
-        tunnel can route to the remote side. Mandatory if the VPN gateway is attached to a
-        custom subnetted network. Refer to Google documentation for more
-        information.
-        """
         __props__['remoteTrafficSelectors'] = remote_traffic_selectors
 
         if router and not isinstance(router, basestring):
             raise TypeError('Expected property router to be a basestring')
         __self__.router = router
-        """
-        Name of a Cloud Router in the same region
-        to be used for dynamic routing. Refer to Google documentation for more
-        information.
-        """
         __props__['router'] = router
 
         if not shared_secret:
@@ -118,10 +78,6 @@ class VPNTunnel(pulumi.CustomResource):
         elif not isinstance(shared_secret, basestring):
             raise TypeError('Expected property shared_secret to be a basestring')
         __self__.shared_secret = shared_secret
-        """
-        A passphrase shared between the two VPN gateways.
-        Changing this forces a new resource to be created.
-        """
         __props__['sharedSecret'] = shared_secret
 
         if not target_vpn_gateway:
@@ -129,20 +85,16 @@ class VPNTunnel(pulumi.CustomResource):
         elif not isinstance(target_vpn_gateway, basestring):
             raise TypeError('Expected property target_vpn_gateway to be a basestring')
         __self__.target_vpn_gateway = target_vpn_gateway
-        """
-        A link to the VPN gateway sitting inside
-        GCE. Changing this forces a new resource to be created.
-        """
         __props__['targetVpnGateway'] = target_vpn_gateway
 
+        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.detailed_status = pulumi.runtime.UNKNOWN
-        """
-        Information about the status of the VPN tunnel.
-        """
+        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
         """
+        __self__.shared_secret_hash = pulumi.runtime.UNKNOWN
 
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
@@ -151,12 +103,18 @@ class VPNTunnel(pulumi.CustomResource):
             __opts__)
 
     def set_outputs(self, outs):
+        if 'creationTimestamp' in outs:
+            self.creation_timestamp = outs['creationTimestamp']
         if 'description' in outs:
             self.description = outs['description']
         if 'detailedStatus' in outs:
             self.detailed_status = outs['detailedStatus']
         if 'ikeVersion' in outs:
             self.ike_version = outs['ikeVersion']
+        if 'labelFingerprint' in outs:
+            self.label_fingerprint = outs['labelFingerprint']
+        if 'labels' in outs:
+            self.labels = outs['labels']
         if 'localTrafficSelectors' in outs:
             self.local_traffic_selectors = outs['localTrafficSelectors']
         if 'name' in outs:
@@ -175,5 +133,7 @@ class VPNTunnel(pulumi.CustomResource):
             self.self_link = outs['selfLink']
         if 'sharedSecret' in outs:
             self.shared_secret = outs['sharedSecret']
+        if 'sharedSecretHash' in outs:
+            self.shared_secret_hash = outs['sharedSecretHash']
         if 'targetVpnGateway' in outs:
             self.target_vpn_gateway = outs['targetVpnGateway']

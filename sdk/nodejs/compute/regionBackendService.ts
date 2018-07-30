@@ -7,6 +7,9 @@ import * as pulumi from "@pulumi/pulumi";
  * A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
  * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
+ * 
+ * ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+ *   [`google_compute_backend_service`](compute_backend_service.html) instead.
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**
@@ -56,7 +59,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     public readonly protocol: pulumi.Output<string>;
     /**
@@ -165,7 +168,7 @@ export interface RegionBackendServiceState {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -225,7 +228,7 @@ export interface RegionBackendServiceArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**

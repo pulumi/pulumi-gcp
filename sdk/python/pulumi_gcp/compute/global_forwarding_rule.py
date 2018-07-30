@@ -57,6 +57,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         """
         
         The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
+        You cannot provide this and `ip_address`.
         """
         __props__['ipVersion'] = ip_version
 

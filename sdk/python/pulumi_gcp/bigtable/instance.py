@@ -29,7 +29,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property cluster_id to be a basestring')
         __self__.cluster_id = cluster_id
         """
-        The name of the Bigtable instance's cluster.
+        The ID of the Cloud Bigtable cluster.
         """
         __props__['clusterId'] = cluster_id
 
@@ -45,7 +45,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property instance_type to be a basestring')
         __self__.instance_type = instance_type
         """
-        The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `PRODUCTION`.
+        The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
         """
         __props__['instanceType'] = instance_type
 
@@ -53,7 +53,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        The name of the Bigtable instance.
+        The name of the Cloud Bigtable instance.
         """
         __props__['name'] = name
 
@@ -61,7 +61,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property num_nodes to be a int')
         __self__.num_nodes = num_nodes
         """
-        The number of nodes in your Bigtable instance. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+        The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
         """
         __props__['numNodes'] = num_nodes
 
@@ -78,7 +78,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property storage_type to be a basestring')
         __self__.storage_type = storage_type
         """
-        The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `SSD`.
+        The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
         """
         __props__['storageType'] = storage_type
 
@@ -86,7 +86,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property zone to be a basestring')
         __self__.zone = zone
         """
-        The zone to create the Bigtable instance in. Zones that support Bigtable instances are noted on the [Cloud Locations page](https://cloud.google.com/about/locations/).
+        The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         __props__['zone'] = zone
 

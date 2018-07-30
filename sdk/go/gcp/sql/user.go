@@ -74,8 +74,8 @@ func (r *User) ID() *pulumi.IDOutput {
 }
 
 // The host the user can connect from. This is only supported
-// for first generation SQL instances. Don't set this field for second generation
-// SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+// for MySQL instances. Don't set this field for PostgreSQL instances.
+// Can be an IP address. Changing this forces a new resource to be created.
 func (r *User) Host() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["host"])
 }
@@ -106,8 +106,8 @@ func (r *User) Project() *pulumi.StringOutput {
 // Input properties used for looking up and filtering User resources.
 type UserState struct {
 	// The host the user can connect from. This is only supported
-	// for first generation SQL instances. Don't set this field for second generation
-	// SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// Can be an IP address. Changing this forces a new resource to be created.
 	Host interface{}
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
@@ -125,8 +125,8 @@ type UserState struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// The host the user can connect from. This is only supported
-	// for first generation SQL instances. Don't set this field for second generation
-	// SQL instances. Can be an IP address. Changing this forces a new resource to be created.
+	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// Can be an IP address. Changing this forces a new resource to be created.
 	Host interface{}
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.

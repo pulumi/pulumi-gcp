@@ -9,7 +9,7 @@ class Registry(pulumi.CustomResource):
     """
      Creates a device registry in Google's Cloud IoT Core platform. For more information see
     [the official documentation](https://cloud.google.com/iot/docs/) and
-    [API](https://cloud.google.com/iot/docs/reference/rest/v1/projects.locations.registries).
+    [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
     
     """
     def __init__(__self__, __name__, __opts__=None, credentials=None, event_notification_config=None, http_config=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):

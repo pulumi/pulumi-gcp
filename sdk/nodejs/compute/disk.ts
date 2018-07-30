@@ -3,15 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Creates a new persistent disk within GCE, based on another disk. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/disks).
- * 
- * ~> **Note:** All arguments including the disk encryption key will be stored in the raw state as plain-text.
- * [Read more about sensitive data in state](/docs/state/sensitive-data.html).
- */
 export class Disk extends pulumi.CustomResource {
     /**
      * Get an existing Disk resource's state with the given name, ID, and optional extra
@@ -25,74 +16,34 @@ export class Disk extends pulumi.CustomResource {
         return new Disk(name, <any>state, { id });
     }
 
-    /**
-     * A 256-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk.
-     */
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
+    public readonly description: pulumi.Output<string | undefined>;
+    public readonly diskEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
     public readonly diskEncryptionKeyRaw: pulumi.Output<string | undefined>;
-    /**
-     * The [RFC 4648 base64]
-     * (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-     * [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-     * that protects this resource.
-     */
     public /*out*/ readonly diskEncryptionKeySha256: pulumi.Output<string>;
-    /**
-     * The image from which to initialize this disk. This can be
-     * one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-     * images names must include the family name. If they don't, use the
-     * [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-     * These images can be referred by family name here.
-     */
     public readonly image: pulumi.Output<string | undefined>;
-    /**
-     * The fingerprint of the assigned labels.
-     */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    /**
-     * A set of key/value label pairs to assign to the image.
-     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
+    public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
+    public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
     public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
-     */
     public readonly size: pulumi.Output<number>;
-    /**
-     * Name of snapshot from which to initialize this disk.
-     */
     public readonly snapshot: pulumi.Output<string | undefined>;
-    /**
-     * The GCE disk type.
-     */
+    public readonly sourceImageEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly sourceImageId: pulumi.Output<string>;
+    public readonly sourceSnapshotEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly sourceSnapshotId: pulumi.Output<string>;
     public readonly type: pulumi.Output<string | undefined>;
-    /**
-     * The Users of the created resource.
-     */
     public /*out*/ readonly users: pulumi.Output<string[]>;
-    /**
-     * The zone where this disk will be available.
-     */
     public readonly zone: pulumi.Output<string>;
 
     /**
@@ -107,21 +58,32 @@ export class Disk extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: DiskState = argsOrState as DiskState | undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            inputs["description"] = state ? state.description : undefined;
+            inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
             inputs["diskEncryptionKeyRaw"] = state ? state.diskEncryptionKeyRaw : undefined;
             inputs["diskEncryptionKeySha256"] = state ? state.diskEncryptionKeySha256 : undefined;
             inputs["image"] = state ? state.image : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
+            inputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshot"] = state ? state.snapshot : undefined;
+            inputs["sourceImageEncryptionKey"] = state ? state.sourceImageEncryptionKey : undefined;
+            inputs["sourceImageId"] = state ? state.sourceImageId : undefined;
+            inputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
+            inputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["users"] = state ? state.users : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["diskEncryptionKeyRaw"] = args ? args.diskEncryptionKeyRaw : undefined;
             inputs["image"] = args ? args.image : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -129,11 +91,18 @@ export class Disk extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshot"] = args ? args.snapshot : undefined;
+            inputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
+            inputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["diskEncryptionKeySha256"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
+            inputs["lastAttachTimestamp"] = undefined /*out*/;
+            inputs["lastDetachTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["sourceImageId"] = undefined /*out*/;
+            inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
         super("gcp:compute/disk:Disk", name, inputs, opts);
@@ -144,74 +113,34 @@ export class Disk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Disk resources.
  */
 export interface DiskState {
-    /**
-     * A 256-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk.
-     */
+    readonly creationTimestamp?: pulumi.Input<string>;
+    readonly description?: pulumi.Input<string>;
+    readonly diskEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly diskEncryptionKeyRaw?: pulumi.Input<string>;
-    /**
-     * The [RFC 4648 base64]
-     * (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-     * [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-     * that protects this resource.
-     */
     readonly diskEncryptionKeySha256?: pulumi.Input<string>;
-    /**
-     * The image from which to initialize this disk. This can be
-     * one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-     * images names must include the family name. If they don't, use the
-     * [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-     * These images can be referred by family name here.
-     */
     readonly image?: pulumi.Input<string>;
-    /**
-     * The fingerprint of the assigned labels.
-     */
     readonly labelFingerprint?: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the image.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
+    readonly lastAttachTimestamp?: pulumi.Input<string>;
+    readonly lastDetachTimestamp?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
-     */
     readonly size?: pulumi.Input<number>;
-    /**
-     * Name of snapshot from which to initialize this disk.
-     */
     readonly snapshot?: pulumi.Input<string>;
-    /**
-     * The GCE disk type.
-     */
+    readonly sourceImageEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceImageId?: pulumi.Input<string>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceSnapshotId?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
-    /**
-     * The Users of the created resource.
-     */
     readonly users?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The zone where this disk will be available.
-     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -219,54 +148,21 @@ export interface DiskState {
  * The set of arguments for constructing a Disk resource.
  */
 export interface DiskArgs {
-    /**
-     * A 256-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk.
-     */
+    readonly description?: pulumi.Input<string>;
+    readonly diskEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly diskEncryptionKeyRaw?: pulumi.Input<string>;
-    /**
-     * The image from which to initialize this disk. This can be
-     * one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-     * images names must include the family name. If they don't, use the
-     * [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-     * These images can be referred by family name here.
-     */
     readonly image?: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the image.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The size of the image in gigabytes. If not specified, it
-     * will inherit the size of its base image.
-     */
     readonly size?: pulumi.Input<number>;
-    /**
-     * Name of snapshot from which to initialize this disk.
-     */
     readonly snapshot?: pulumi.Input<string>;
-    /**
-     * The GCE disk type.
-     */
+    readonly sourceImageEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly type?: pulumi.Input<string>;
-    /**
-     * The zone where this disk will be available.
-     */
     readonly zone?: pulumi.Input<string>;
 }

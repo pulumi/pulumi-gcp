@@ -15,7 +15,7 @@ class Cluster(pulumi.CustomResource):
     ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
     [Read more about sensitive data in state](/docs/state/sensitive-data.html).
     """
-    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, subnetwork=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
         """Create a Cluster resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -108,8 +108,8 @@ class Cluster(pulumi.CustomResource):
         __self__.logging_service = logging_service
         """
         The logging service that the cluster should
-        write logs to. Available options include `logging.googleapis.com` and
-        `none`. Defaults to `logging.googleapis.com`
+        write logs to. Available options include `logging.googleapis.com`,
+        `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
         """
         __props__['loggingService'] = logging_service
 
@@ -172,8 +172,8 @@ class Cluster(pulumi.CustomResource):
         Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         VM metrics will be collected by Google Compute Engine regardless of this setting
         Available options include
-        `monitoring.googleapis.com` and `none`. Defaults to
-        `monitoring.googleapis.com`
+        `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+        Defaults to `monitoring.googleapis.com`
         """
         __props__['monitoringService'] = monitoring_service
 
@@ -249,9 +249,9 @@ class Cluster(pulumi.CustomResource):
         __self__.private_cluster = private_cluster
         """
         ) If true, a
-        [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, which makes
-        the master inaccessible from the public internet and nodes do not get public IP addresses either. It is mandatory to specify
-        `master_ipv4_cidr_block` and `ip_allocation_policy` with this option.
+        [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
+        nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
+        `ip_allocation_policy` with this option.
         """
         __props__['privateCluster'] = private_cluster
 
@@ -276,6 +276,14 @@ class Cluster(pulumi.CustomResource):
         If true, deletes the default node pool upon cluster creation.
         """
         __props__['removeDefaultNodePool'] = remove_default_node_pool
+
+        if resource_labels and not isinstance(resource_labels, dict):
+            raise TypeError('Expected property resource_labels to be a dict')
+        __self__.resource_labels = resource_labels
+        """
+        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        """
+        __props__['resourceLabels'] = resource_labels
 
         if subnetwork and not isinstance(subnetwork, basestring):
             raise TypeError('Expected property subnetwork to be a basestring')
@@ -377,6 +385,8 @@ class Cluster(pulumi.CustomResource):
             self.region = outs['region']
         if 'removeDefaultNodePool' in outs:
             self.remove_default_node_pool = outs['removeDefaultNodePool']
+        if 'resourceLabels' in outs:
+            self.resource_labels = outs['resourceLabels']
         if 'subnetwork' in outs:
             self.subnetwork = outs['subnetwork']
         if 'zone' in outs:

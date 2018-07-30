@@ -42,6 +42,7 @@ export interface GetBackendServiceResult {
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */
     readonly connectionDrainingTimeoutSec: number;
+    readonly customRequestHeaders: string[];
     /**
      * Textual description for the Backend Service.
      */

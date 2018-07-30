@@ -6,6 +6,7 @@ export * from "./folder";
 export * from "./getActiveFolder";
 export * from "./getBillingAccount";
 export * from "./getClientConfig";
+export * from "./getFolder";
 export * from "./getIAMPolicy";
 export * from "./getOrganization";
 export * from "./getProject";

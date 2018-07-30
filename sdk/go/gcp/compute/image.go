@@ -24,6 +24,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["family"] = nil
 		inputs["labels"] = nil
+		inputs["licenses"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["rawDisk"] = nil
@@ -33,6 +34,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["family"] = args.Family
 		inputs["labels"] = args.Labels
+		inputs["licenses"] = args.Licenses
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["rawDisk"] = args.RawDisk
@@ -58,6 +60,7 @@ func GetImage(ctx *pulumi.Context,
 		inputs["family"] = state.Family
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
+		inputs["licenses"] = state.Licenses
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["rawDisk"] = state.RawDisk
@@ -106,6 +109,12 @@ func (r *Image) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// A list of license URIs to apply to this image. Changing this
+// forces a new resource to be created.
+func (r *Image) Licenses() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["licenses"])
+}
+
 // A unique name for the resource, required by GCE.
 // Changing this forces a new resource to be created.
 func (r *Image) Name() *pulumi.StringOutput {
@@ -148,6 +157,9 @@ type ImageState struct {
 	LabelFingerprint interface{}
 	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
+	// A list of license URIs to apply to this image. Changing this
+	// forces a new resource to be created.
+	Licenses interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}
@@ -175,6 +187,9 @@ type ImageArgs struct {
 	Family interface{}
 	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
+	// A list of license URIs to apply to this image. Changing this
+	// forces a new resource to be created.
+	Licenses interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}

@@ -26,6 +26,7 @@ func NewTargetHttpsProxy(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
+		inputs["quicOverride"] = nil
 		inputs["sslCertificates"] = nil
 		inputs["sslPolicy"] = nil
 		inputs["urlMap"] = nil
@@ -33,6 +34,7 @@ func NewTargetHttpsProxy(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
+		inputs["quicOverride"] = args.QuicOverride
 		inputs["sslCertificates"] = args.SslCertificates
 		inputs["sslPolicy"] = args.SslPolicy
 		inputs["urlMap"] = args.UrlMap
@@ -58,6 +60,7 @@ func GetTargetHttpsProxy(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["proxyId"] = state.ProxyId
+		inputs["quicOverride"] = state.QuicOverride
 		inputs["selfLink"] = state.SelfLink
 		inputs["sslCertificates"] = state.SslCertificates
 		inputs["sslPolicy"] = state.SslPolicy
@@ -102,6 +105,10 @@ func (r *TargetHttpsProxy) ProxyId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["proxyId"])
 }
 
+func (r *TargetHttpsProxy) QuicOverride() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["quicOverride"])
+}
+
 // The URI of the created resource.
 func (r *TargetHttpsProxy) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
@@ -128,6 +135,7 @@ type TargetHttpsProxyState struct {
 	// If it is not provided, the provider project is used.
 	Project interface{}
 	ProxyId interface{}
+	QuicOverride interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	SslCertificates interface{}
@@ -142,6 +150,7 @@ type TargetHttpsProxyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	QuicOverride interface{}
 	SslCertificates interface{}
 	SslPolicy interface{}
 	UrlMap interface{}

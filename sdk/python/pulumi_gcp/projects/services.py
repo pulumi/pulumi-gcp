@@ -34,9 +34,7 @@ class Services(pulumi.CustomResource):
         __self__.disable_on_destroy = disable_on_destroy
         __props__['disableOnDestroy'] = disable_on_destroy
 
-        if not project:
-            raise TypeError('Missing required property project')
-        elif not isinstance(project, basestring):
+        if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """

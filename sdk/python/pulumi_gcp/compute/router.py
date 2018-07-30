@@ -6,12 +6,6 @@ import pulumi
 import pulumi.runtime
 
 class Router(pulumi.CustomResource):
-    """
-    Manages a Cloud Router resource. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/routers).
-    """
     def __init__(__self__, __name__, __opts__=None, bgp=None, description=None, name=None, network=None, project=None, region=None):
         """Create a Router resource with the given unique name, props, and options."""
         if not __name__:
@@ -23,34 +17,19 @@ class Router(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not bgp:
-            raise TypeError('Missing required property bgp')
-        elif not isinstance(bgp, dict):
+        if bgp and not isinstance(bgp, dict):
             raise TypeError('Expected property bgp to be a dict')
         __self__.bgp = bgp
-        """
-        BGP information specific to this router.
-        Changing this forces a new router to be created.
-        Structure is documented below.
-        """
         __props__['bgp'] = bgp
 
         if description and not isinstance(description, basestring):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
-        """
-        A description of the resource.
-        Changing this forces a new router to be created.
-        """
         __props__['description'] = description
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
-        """
-        A unique name for the router, required by GCE. Changing
-        this forces a new router to be created.
-        """
         __props__['name'] = name
 
         if not network:
@@ -58,32 +37,23 @@ class Router(pulumi.CustomResource):
         elif not isinstance(network, basestring):
             raise TypeError('Expected property network to be a basestring')
         __self__.network = network
-        """
-        The name or resource link to the network this Cloud Router
-        will use to learn and announce routes. Changing this forces a new router to be created.
-        """
         __props__['network'] = network
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        Changing this forces a new router to be created.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         __props__['project'] = project
 
         if region and not isinstance(region, basestring):
             raise TypeError('Expected property region to be a basestring')
         __self__.region = region
-        """
-        The region this router should sit in. If not specified,
-        the project region will be used. Changing this forces a new router to be
-        created.
-        """
         __props__['region'] = region
 
+        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
@@ -98,6 +68,8 @@ class Router(pulumi.CustomResource):
     def set_outputs(self, outs):
         if 'bgp' in outs:
             self.bgp = outs['bgp']
+        if 'creationTimestamp' in outs:
+            self.creation_timestamp = outs['creationTimestamp']
         if 'description' in outs:
             self.description = outs['description']
         if 'name' in outs:

@@ -12,7 +12,7 @@ class Firewall(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/firewalls).
     """
-    def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
+    def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         """Create a Firewall resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -67,6 +67,15 @@ class Firewall(pulumi.CustomResource):
         One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
         """
         __props__['direction'] = direction
+
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError('Expected property disabled to be a bool')
+        __self__.disabled = disabled
+        """
+        Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+        When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+        """
+        __props__['disabled'] = disabled
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -180,6 +189,8 @@ class Firewall(pulumi.CustomResource):
             self.destination_ranges = outs['destinationRanges']
         if 'direction' in outs:
             self.direction = outs['direction']
+        if 'disabled' in outs:
+            self.disabled = outs['disabled']
         if 'name' in outs:
             self.name = outs['name']
         if 'network' in outs:

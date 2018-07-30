@@ -29,6 +29,7 @@ func NewTargetSSLProxy(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["proxyHeader"] = nil
 		inputs["sslCertificates"] = nil
+		inputs["sslPolicy"] = nil
 	} else {
 		inputs["backendService"] = args.BackendService
 		inputs["description"] = args.Description
@@ -36,6 +37,7 @@ func NewTargetSSLProxy(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["proxyHeader"] = args.ProxyHeader
 		inputs["sslCertificates"] = args.SslCertificates
+		inputs["sslPolicy"] = args.SslPolicy
 	}
 	inputs["creationTimestamp"] = nil
 	inputs["proxyId"] = nil
@@ -62,6 +64,7 @@ func GetTargetSSLProxy(ctx *pulumi.Context,
 		inputs["proxyId"] = state.ProxyId
 		inputs["selfLink"] = state.SelfLink
 		inputs["sslCertificates"] = state.SslCertificates
+		inputs["sslPolicy"] = state.SslPolicy
 	}
 	s, err := ctx.ReadResource("gcp:compute/targetSSLProxy:TargetSSLProxy", name, id, inputs, opts...)
 	if err != nil {
@@ -119,6 +122,10 @@ func (r *TargetSSLProxy) SslCertificates() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sslCertificates"])
 }
 
+func (r *TargetSSLProxy) SslPolicy() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["sslPolicy"])
+}
+
 // Input properties used for looking up and filtering TargetSSLProxy resources.
 type TargetSSLProxyState struct {
 	BackendService interface{}
@@ -133,6 +140,7 @@ type TargetSSLProxyState struct {
 	// The URI of the created resource.
 	SelfLink interface{}
 	SslCertificates interface{}
+	SslPolicy interface{}
 }
 
 // The set of arguments for constructing a TargetSSLProxy resource.
@@ -145,4 +153,5 @@ type TargetSSLProxyArgs struct {
 	Project interface{}
 	ProxyHeader interface{}
 	SslCertificates interface{}
+	SslPolicy interface{}
 }

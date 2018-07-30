@@ -29,6 +29,7 @@ func NewFirewall(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["destinationRanges"] = nil
 		inputs["direction"] = nil
+		inputs["disabled"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["priority"] = nil
@@ -44,6 +45,7 @@ func NewFirewall(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["destinationRanges"] = args.DestinationRanges
 		inputs["direction"] = args.Direction
+		inputs["disabled"] = args.Disabled
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["priority"] = args.Priority
@@ -73,6 +75,7 @@ func GetFirewall(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["destinationRanges"] = state.DestinationRanges
 		inputs["direction"] = state.Direction
+		inputs["disabled"] = state.Disabled
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["priority"] = state.Priority
@@ -129,6 +132,12 @@ func (r *Firewall) DestinationRanges() *pulumi.ArrayOutput {
 // One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 func (r *Firewall) Direction() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["direction"])
+}
+
+// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+func (r *Firewall) Disabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // A unique name for the resource, required by GCE.
@@ -214,6 +223,9 @@ type FirewallState struct {
 	// Direction of traffic to which this firewall applies;
 	// One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 	Direction interface{}
+	// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+	// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+	Disabled interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}
@@ -269,6 +281,9 @@ type FirewallArgs struct {
 	// Direction of traffic to which this firewall applies;
 	// One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 	Direction interface{}
+	// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
+	// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
+	Disabled interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}

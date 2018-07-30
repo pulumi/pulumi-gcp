@@ -28,6 +28,7 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["backends"] = nil
 		inputs["cdnPolicy"] = nil
 		inputs["connectionDrainingTimeoutSec"] = nil
+		inputs["customRequestHeaders"] = nil
 		inputs["description"] = nil
 		inputs["enableCdn"] = nil
 		inputs["healthChecks"] = nil
@@ -43,6 +44,7 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["backends"] = args.Backends
 		inputs["cdnPolicy"] = args.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
+		inputs["customRequestHeaders"] = args.CustomRequestHeaders
 		inputs["description"] = args.Description
 		inputs["enableCdn"] = args.EnableCdn
 		inputs["healthChecks"] = args.HealthChecks
@@ -73,6 +75,7 @@ func GetBackendService(ctx *pulumi.Context,
 		inputs["backends"] = state.Backends
 		inputs["cdnPolicy"] = state.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = state.ConnectionDrainingTimeoutSec
+		inputs["customRequestHeaders"] = state.CustomRequestHeaders
 		inputs["description"] = state.Description
 		inputs["enableCdn"] = state.EnableCdn
 		inputs["fingerprint"] = state.Fingerprint
@@ -118,6 +121,12 @@ func (r *BackendService) CdnPolicy() *pulumi.Output {
 // but still work to finish started ones). Defaults to `300`.
 func (r *BackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
+}
+
+// ) Headers that the
+// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+func (r *BackendService) CustomRequestHeaders() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["customRequestHeaders"])
 }
 
 // Textual description for the backend.
@@ -203,6 +212,9 @@ type BackendServiceState struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
+	// ) Headers that the
+	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+	CustomRequestHeaders interface{}
 	// Textual description for the backend.
 	Description interface{}
 	// Whether or not to enable the Cloud CDN on the backend service.
@@ -249,6 +261,9 @@ type BackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
+	// ) Headers that the
+	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+	CustomRequestHeaders interface{}
 	// Textual description for the backend.
 	Description interface{}
 	// Whether or not to enable the Cloud CDN on the backend service.

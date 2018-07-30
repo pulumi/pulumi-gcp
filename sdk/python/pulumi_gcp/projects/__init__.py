@@ -7,6 +7,7 @@ from iam_binding import *
 from iam_custom_role import *
 from iam_member import *
 from iam_policy import *
+from organization_policy import *
 from service import *
 from services import *
 from usage_export_bucket import *
