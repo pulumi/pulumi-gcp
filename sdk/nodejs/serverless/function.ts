@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import * as pulumi from "@pulumi/pulumi";
+import * as express from "express";
 import * as cloudfunctions from "../cloudfunctions";
 import * as storage from "../storage";
 
@@ -20,8 +21,10 @@ import * as readPackageJson from "read-package-json";
 
 /**
  * Handler is the signature for a serverless function.
+ * For HTTP Function it accepts Request and Response from Express.
+ * See https://cloud.google.com/functions/docs/writing/http.
  */
-export type Handler = (request: any, response: any) => any;
+export type Handler = (req: express.Request, resp: express.Response) => void;
 
 /**
  * FunctionOptions provides configuration options for the serverless Function.
@@ -74,8 +77,7 @@ export class Function extends pulumi.ComponentResource {
     constructor(name: string,
         options: FunctionOptions,
         func: Handler,
-        opts?: pulumi.ResourceOptions,
-        serialize?: (obj: any) => boolean) {
+        opts?: pulumi.ResourceOptions) {
         if (!name) {
             throw new Error("Missing required resource name");
         }
@@ -85,23 +87,14 @@ export class Function extends pulumi.ComponentResource {
 
         super("gcp:serverless:Function", name, { options: options }, opts);
 
-        // Now compile the function text into an asset we can use to create the function. Note: to
-        // prevent a circularity/deadlock, we list this Function object as something that the
-        // serialized closure cannot reference.
-        serialize = serialize || (_ => true);
-        const finalSerialize = (o: any) => {
-            return serialize(o) && o !== this;
-        }
-
         const handlerName = "handler";
         const serializedFileNameNoExtension = "index";
 
-        let closure = pulumi.runtime.serializeFunction(func, {
-            serialize: finalSerialize,
-            exportName: handlerName,
+        const closure = pulumi.runtime.serializeFunction(func, {
+            exportName: handlerName
         });
 
-        let codePaths = computeCodePaths(
+        const codePaths = computeCodePaths(
             closure, serializedFileNameNoExtension, options.excludePackages);
 
         this.bucket = new storage.Bucket(`${name}-bucket`, {
@@ -161,24 +154,20 @@ async function computeCodePaths(
 // GCP will restore the packages itself.
 function producePackageJson(excludedPackages: Set<string>): Promise<string> {
     return new Promise((resolve, reject) => {
-        readPackageJson(filepath.basename('package.json'), null, false, (err, data) => {
+        readPackageJson(filepath.basename('package.json'), null, false, (err, packageJson) => {
             if (err) {
               return reject(err);
             }
 
-            const filteredDependencies = Object.keys(data.dependencies)
+            // Override dependencies by removing @pulumi and excludedPackages
+            packageJson.dependencies = Object.keys(packageJson.dependencies)
                 .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
                 .reduce((obj, key) => {
-                    obj[key] = data.dependencies[key];
+                    obj[key] = packageJson.dependencies[key];
                     return obj;
                 }, {});
 
-            const newPackageJson = {
-                name: data.name,
-                description: data.description,
-                dependencies: filteredDependencies
-            }
-            resolve(JSON.stringify(newPackageJson));
+            resolve(JSON.stringify(packageJson));
           });
     });
 }
