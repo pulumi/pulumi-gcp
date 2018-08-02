@@ -20,7 +20,7 @@ export interface GetDefaultServiceAccountArgs {
     /**
      * The project ID. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**

@@ -98,7 +98,7 @@ export interface TargetSSLProxyState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly sslCertificates?: pulumi.Input<pulumi.Input<string>>;
+    readonly sslCertificates?: pulumi.Input<string>;
     readonly sslPolicy?: pulumi.Input<string>;
 }
 
@@ -115,6 +115,6 @@ export interface TargetSSLProxyArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly proxyHeader?: pulumi.Input<string>;
-    readonly sslCertificates: pulumi.Input<pulumi.Input<string>>;
+    readonly sslCertificates: pulumi.Input<string>;
     readonly sslPolicy?: pulumi.Input<string>;
 }

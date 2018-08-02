@@ -74,7 +74,7 @@ export class Router extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Router resources.
  */
 export interface RouterState {
-    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }[]>, asn: pulumi.Input<number> }>;
+    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -95,7 +95,7 @@ export interface RouterState {
  * The set of arguments for constructing a Router resource.
  */
 export interface RouterArgs {
-    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }[]>, asn: pulumi.Input<number> }>;
+    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;

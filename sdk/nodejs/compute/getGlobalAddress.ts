@@ -21,12 +21,12 @@ export interface GetGlobalAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**

@@ -227,7 +227,7 @@ export interface RegionInstanceGroupManagerState {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -315,7 +315,7 @@ export interface RegionInstanceGroupManagerArgs {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

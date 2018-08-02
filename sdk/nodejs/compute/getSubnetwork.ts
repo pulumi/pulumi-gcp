@@ -21,17 +21,17 @@ export interface GetSubnetworkArgs {
     /**
      * The name of the subnetwork.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
     /**
      * The region this subnetwork has been created in. If
      * unspecified, this defaults to the region configured in the provider.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
 }
 
 /**

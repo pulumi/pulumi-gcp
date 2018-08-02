@@ -171,13 +171,13 @@ export interface FirewallState {
      * Can be specified multiple times for each allow
      * rule. Each allow block supports fields documented below.
      */
-    readonly allows?: pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }[]>;
+    readonly allows?: pulumi.Input<pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }>[]>;
     /**
      * Can be specified multiple times for each deny
      * rule. Each deny block supports fields documented below. Can be specified
      * instead of allow.
      */
-    readonly denies?: pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }[]>;
+    readonly denies?: pulumi.Input<pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }>[]>;
     /**
      * Textual description field.
      */
@@ -236,7 +236,7 @@ export interface FirewallState {
      * `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
      * cannot be used at the same time as `source_tags` or `target_tags`.
      */
-    readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>>;
+    readonly sourceServiceAccounts?: pulumi.Input<string>;
     /**
      * A list of source tags for this firewall. Can't be used for `EGRESS`.
      */
@@ -248,7 +248,7 @@ export interface FirewallState {
      * firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
      * to a change in the way that these firewall rules are handled.
      */
-    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>>;
+    readonly targetServiceAccounts?: pulumi.Input<string>;
     /**
      * A list of target tags for this firewall.
      */
@@ -263,13 +263,13 @@ export interface FirewallArgs {
      * Can be specified multiple times for each allow
      * rule. Each allow block supports fields documented below.
      */
-    readonly allows?: pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }[]>;
+    readonly allows?: pulumi.Input<pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }>[]>;
     /**
      * Can be specified multiple times for each deny
      * rule. Each deny block supports fields documented below. Can be specified
      * instead of allow.
      */
-    readonly denies?: pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }[]>;
+    readonly denies?: pulumi.Input<pulumi.Input<{ ports?: pulumi.Input<pulumi.Input<string>[]>, protocol: pulumi.Input<string> }>[]>;
     /**
      * Textual description field.
      */
@@ -324,7 +324,7 @@ export interface FirewallArgs {
      * `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
      * cannot be used at the same time as `source_tags` or `target_tags`.
      */
-    readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>>;
+    readonly sourceServiceAccounts?: pulumi.Input<string>;
     /**
      * A list of source tags for this firewall. Can't be used for `EGRESS`.
      */
@@ -336,7 +336,7 @@ export interface FirewallArgs {
      * firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
      * to a change in the way that these firewall rules are handled.
      */
-    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>>;
+    readonly targetServiceAccounts?: pulumi.Input<string>;
     /**
      * A list of target tags for this firewall.
      */

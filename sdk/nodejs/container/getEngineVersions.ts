@@ -40,11 +40,11 @@ export interface GetEngineVersionsArgs {
      * ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
      * Defaults to the project that the provider is authenticated with.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
     /**
      * Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone?: string;
 }
 
 /**

@@ -20,11 +20,11 @@ export interface GetActiveFolderArgs {
     /**
      * The folder's display name.
      */
-    readonly displayName: pulumi.Input<string>;
+    readonly displayName: string;
     /**
      * The resource name of the parent Folder or Organization.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent: string;
 }
 
 /**

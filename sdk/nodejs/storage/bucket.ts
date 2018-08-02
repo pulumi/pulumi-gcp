@@ -134,7 +134,7 @@ export interface BucketState {
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly cors?: pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }[]>;
+    readonly cors?: pulumi.Input<pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
@@ -148,7 +148,7 @@ export interface BucketState {
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly lifecycleRules?: pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
@@ -185,7 +185,7 @@ export interface BucketState {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    readonly websites?: pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }[]>;
+    readonly websites?: pulumi.Input<pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>[]>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface BucketArgs {
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly cors?: pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }[]>;
+    readonly cors?: pulumi.Input<pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
@@ -209,7 +209,7 @@ export interface BucketArgs {
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly lifecycleRules?: pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
@@ -238,5 +238,5 @@ export interface BucketArgs {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    readonly websites?: pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }[]>;
+    readonly websites?: pulumi.Input<pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>[]>;
 }
