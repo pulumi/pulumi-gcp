@@ -126,7 +126,7 @@ export interface URLMapState {
     /**
      * A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly hostRules?: pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }[]>;
+    readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
     /**
      * The GCE assigned ID of the resource.
      */
@@ -138,7 +138,7 @@ export interface URLMapState {
     /**
      * The name of the `path_matcher` to apply this host rule to.
      */
-    readonly pathMatchers?: pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }[]> }[]>;
+    readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -151,7 +151,7 @@ export interface URLMapState {
     /**
      * The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly tests?: pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }[]>;
+    readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
 }
 
 /**
@@ -169,7 +169,7 @@ export interface URLMapArgs {
     /**
      * A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly hostRules?: pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }[]>;
+    readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
     /**
      * The name of the `path_matcher` resource.
      */
@@ -177,7 +177,7 @@ export interface URLMapArgs {
     /**
      * The name of the `path_matcher` to apply this host rule to.
      */
-    readonly pathMatchers?: pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }[]> }[]>;
+    readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -186,5 +186,5 @@ export interface URLMapArgs {
     /**
      * The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly tests?: pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }[]>;
+    readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
 }

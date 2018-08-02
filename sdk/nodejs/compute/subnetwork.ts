@@ -107,7 +107,7 @@ export interface SubnetworkState {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    readonly secondaryIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
     /**
      * The URI of the created resource.
      */
@@ -130,5 +130,5 @@ export interface SubnetworkArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    readonly secondaryIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
 }

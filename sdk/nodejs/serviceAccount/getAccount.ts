@@ -21,12 +21,12 @@ export interface GetAccountArgs {
     /**
      * The Service account id.
      */
-    readonly accountId: pulumi.Input<string>;
+    readonly accountId: string;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**

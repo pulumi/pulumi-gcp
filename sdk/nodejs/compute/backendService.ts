@@ -166,7 +166,7 @@ export interface BackendServiceState {
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     /**
      * Cloud CDN configuration for this BackendService. Structure is documented below.
      */
@@ -198,7 +198,7 @@ export interface BackendServiceState {
      * for checking the health of the backend service. Currently at most one health
      * check can be specified, and a health check is required.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */
@@ -251,7 +251,7 @@ export interface BackendServiceArgs {
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     /**
      * Cloud CDN configuration for this BackendService. Structure is documented below.
      */
@@ -279,7 +279,7 @@ export interface BackendServiceArgs {
      * for checking the health of the backend service. Currently at most one health
      * check can be specified, and a health check is required.
      */
-    readonly healthChecks: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks: pulumi.Input<string>;
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */

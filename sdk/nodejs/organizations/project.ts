@@ -155,7 +155,7 @@ export interface ProjectState {
      * A block of configuration to enable an App Engine app. Setting this
      * field will enabled the App Engine Admin API, which is required to manage the app.
      */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }[]> }>;
+    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network
@@ -220,7 +220,7 @@ export interface ProjectArgs {
      * A block of configuration to enable an App Engine app. Setting this
      * field will enabled the App Engine Admin API, which is required to manage the app.
      */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }[]> }>;
+    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network

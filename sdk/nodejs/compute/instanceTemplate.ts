@@ -214,11 +214,11 @@ export interface InstanceTemplateState {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    readonly guestAccelerators?: pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
      * A brief description to use for instances
      * created from this template.
@@ -269,7 +269,7 @@ export interface InstanceTemplateState {
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<{ accessConfigs?: pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -288,7 +288,7 @@ export interface InstanceTemplateState {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly schedulings?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }[]>;
+    readonly schedulings?: pulumi.Input<pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>[]>;
     /**
      * The URI of the created resource.
      */
@@ -325,11 +325,11 @@ export interface InstanceTemplateArgs {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }[]>;
+    readonly disks: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    readonly guestAccelerators?: pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
      * A brief description to use for instances
      * created from this template.
@@ -376,7 +376,7 @@ export interface InstanceTemplateArgs {
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<{ accessConfigs?: pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -395,7 +395,7 @@ export interface InstanceTemplateArgs {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly schedulings?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }[]>;
+    readonly schedulings?: pulumi.Input<pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>[]>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */

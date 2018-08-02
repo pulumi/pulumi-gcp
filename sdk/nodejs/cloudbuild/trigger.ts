@@ -108,7 +108,7 @@ export interface TriggerState {
      * or resolved from the specified branch or tag.
      * * `$SHORT_SHA`: first 7 characters of `$REVISION_ID` or `$COMMIT_SHA`.
      */
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<{ args?: pulumi.Input<string>, name?: pulumi.Input<string> }[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * A brief description of this resource.
      */
@@ -150,7 +150,7 @@ export interface TriggerArgs {
      * or resolved from the specified branch or tag.
      * * `$SHORT_SHA`: first 7 characters of `$REVISION_ID` or `$COMMIT_SHA`.
      */
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<{ args?: pulumi.Input<string>, name?: pulumi.Input<string> }[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * A brief description of this resource.
      */

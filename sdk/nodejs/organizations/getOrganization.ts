@@ -32,11 +32,11 @@ export interface GetOrganizationArgs {
     /**
      * The domain name of the Organization.
      */
-    readonly domain?: pulumi.Input<string>;
+    readonly domain?: string;
     /**
      * The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
      */
-    readonly organization?: pulumi.Input<string>;
+    readonly organization?: string;
 }
 
 /**

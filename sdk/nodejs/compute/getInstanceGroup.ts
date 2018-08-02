@@ -32,21 +32,21 @@ export interface GetInstanceGroupArgs {
     /**
      * The name of the instance group. Either `name` or `self_link` must be provided.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
     /**
      * The self link of the instance group. Either `name` or `self_link` must be provided.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    readonly selfLink?: string;
     /**
      * The zone of the instance group. If referencing the instance group by name
      * and `zone` is not provided, the provider zone is used.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone?: string;
 }
 
 /**

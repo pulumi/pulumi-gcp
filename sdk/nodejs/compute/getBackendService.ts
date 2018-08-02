@@ -22,11 +22,11 @@ export interface GetBackendServiceArgs {
     /**
      * The name of the Backend Service.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**

@@ -247,7 +247,7 @@ export interface InstanceState {
     /**
      * List of disks to attach to the instance. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
@@ -281,7 +281,7 @@ export interface InstanceState {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -330,7 +330,7 @@ export interface InstanceState {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<{ accessConfigs?: pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -345,7 +345,7 @@ export interface InstanceState {
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<{ interface?: pulumi.Input<string> }[]>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     /**
      * The URI of the created resource.
      */
@@ -382,7 +382,7 @@ export interface InstanceArgs {
     /**
      * List of disks to attach to the instance. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
@@ -412,7 +412,7 @@ export interface InstanceArgs {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
      * A set of key/value label pairs to assign to the instance.
      */
@@ -449,7 +449,7 @@ export interface InstanceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<{ accessConfigs?: pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }[]>;
+    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -464,7 +464,7 @@ export interface InstanceArgs {
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<{ interface?: pulumi.Input<string> }[]>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.

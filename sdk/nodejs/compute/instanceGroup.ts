@@ -126,7 +126,7 @@ export interface InstanceGroupState {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
@@ -176,7 +176,7 @@ export interface InstanceGroupArgs {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation

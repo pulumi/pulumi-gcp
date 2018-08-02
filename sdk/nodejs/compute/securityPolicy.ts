@@ -108,7 +108,7 @@ export interface SecurityPolicyState {
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    readonly rules?: pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
     /**
      * The URI of the created resource.
      */
@@ -137,5 +137,5 @@ export interface SecurityPolicyArgs {
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    readonly rules?: pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
 }

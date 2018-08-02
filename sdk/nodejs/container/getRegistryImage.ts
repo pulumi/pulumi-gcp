@@ -22,11 +22,11 @@ export function getRegistryImage(args: GetRegistryImageArgs): Promise<GetRegistr
  * A collection of arguments for invoking getRegistryImage.
  */
 export interface GetRegistryImageArgs {
-    readonly digest?: pulumi.Input<string>;
-    readonly name: pulumi.Input<string>;
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly tag?: pulumi.Input<string>;
+    readonly digest?: string;
+    readonly name: string;
+    readonly project?: string;
+    readonly region?: string;
+    readonly tag?: string;
 }
 
 /**
