@@ -626,14 +626,21 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^0.14.0",
+				"@pulumi/pulumi":    "^0.14.0",
+				"read-package-json": "^2.0.13",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/node":    "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/express": "^4.16.0",
 			},
 			Overlay: &tfbridge.OverlayInfo{
-				Files:   []string{},
-				Modules: map[string]*tfbridge.OverlayInfo{},
+				Modules: map[string]*tfbridge.OverlayInfo{
+					"serverless": {
+						Files: []string{
+							"function.ts", // a serverless function that works with language closures.
+						},
+					},
+				},
 			},
 		},
 		Python: &tfbridge.PythonInfo{
