@@ -22,11 +22,11 @@ export interface GetBackendServiceArgs {
     /**
      * The name of the Backend Service.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**
@@ -42,6 +42,7 @@ export interface GetBackendServiceResult {
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */
     readonly connectionDrainingTimeoutSec: number;
+    readonly customRequestHeaders: string[];
     /**
      * Textual description for the Backend Service.
      */

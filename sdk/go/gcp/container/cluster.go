@@ -49,6 +49,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["removeDefaultNodePool"] = nil
+		inputs["resourceLabels"] = nil
 		inputs["subnetwork"] = nil
 		inputs["zone"] = nil
 	} else {
@@ -78,6 +79,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
+		inputs["resourceLabels"] = args.ResourceLabels
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["zone"] = args.Zone
 	}
@@ -126,6 +128,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
+		inputs["resourceLabels"] = state.ResourceLabels
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["zone"] = state.Zone
 	}
@@ -211,8 +214,8 @@ func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
 }
 
 // The logging service that the cluster should
-// write logs to. Available options include `logging.googleapis.com` and
-// `none`. Defaults to `logging.googleapis.com`
+// write logs to. Available options include `logging.googleapis.com`,
+// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
 func (r *Cluster) LoggingService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["loggingService"])
 }
@@ -264,8 +267,8 @@ func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
 // Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 // VM metrics will be collected by Google Compute Engine regardless of this setting
 // Available options include
-// `monitoring.googleapis.com` and `none`. Defaults to
-// `monitoring.googleapis.com`
+// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+// Defaults to `monitoring.googleapis.com`
 func (r *Cluster) MonitoringService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["monitoringService"])
 }
@@ -317,9 +320,9 @@ func (r *Cluster) PodSecurityPolicyConfig() *pulumi.Output {
 }
 
 // ) If true, a
-// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, which makes
-// the master inaccessible from the public internet and nodes do not get public IP addresses either. It is mandatory to specify
-// `master_ipv4_cidr_block` and `ip_allocation_policy` with this option.
+// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
+// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
+// `ip_allocation_policy` with this option.
 func (r *Cluster) PrivateCluster() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["privateCluster"])
 }
@@ -337,6 +340,11 @@ func (r *Cluster) Region() *pulumi.StringOutput {
 // If true, deletes the default node pool upon cluster creation.
 func (r *Cluster) RemoveDefaultNodePool() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["removeDefaultNodePool"])
+}
+
+// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+func (r *Cluster) ResourceLabels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["resourceLabels"])
 }
 
 // The name or self_link of the Google Compute Engine subnetwork in
@@ -389,8 +397,8 @@ type ClusterState struct {
 	// Structure is documented below.
 	IpAllocationPolicy interface{}
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com` and
-	// `none`. Defaults to `logging.googleapis.com`
+	// write logs to. Available options include `logging.googleapis.com`,
+	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -421,8 +429,8 @@ type ClusterState struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com` and `none`. Defaults to
-	// `monitoring.googleapis.com`
+	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -450,9 +458,9 @@ type ClusterState struct {
 	// Structure is documented below.
 	PodSecurityPolicyConfig interface{}
 	// ) If true, a
-	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, which makes
-	// the master inaccessible from the public internet and nodes do not get public IP addresses either. It is mandatory to specify
-	// `master_ipv4_cidr_block` and `ip_allocation_policy` with this option.
+	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
+	// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
+	// `ip_allocation_policy` with this option.
 	PrivateCluster interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -460,6 +468,8 @@ type ClusterState struct {
 	Region interface{}
 	// If true, deletes the default node pool upon cluster creation.
 	RemoveDefaultNodePool interface{}
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	ResourceLabels interface{}
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
@@ -501,8 +511,8 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	IpAllocationPolicy interface{}
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com` and
-	// `none`. Defaults to `logging.googleapis.com`
+	// write logs to. Available options include `logging.googleapis.com`,
+	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -529,8 +539,8 @@ type ClusterArgs struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com` and `none`. Defaults to
-	// `monitoring.googleapis.com`
+	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -558,9 +568,9 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	PodSecurityPolicyConfig interface{}
 	// ) If true, a
-	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, which makes
-	// the master inaccessible from the public internet and nodes do not get public IP addresses either. It is mandatory to specify
-	// `master_ipv4_cidr_block` and `ip_allocation_policy` with this option.
+	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
+	// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
+	// `ip_allocation_policy` with this option.
 	PrivateCluster interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -568,6 +578,8 @@ type ClusterArgs struct {
 	Region interface{}
 	// If true, deletes the default node pool upon cluster creation.
 	RemoveDefaultNodePool interface{}
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	ResourceLabels interface{}
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}

@@ -20,14 +20,14 @@ export function getImage(args?: GetImageArgs): Promise<GetImageResult> {
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
-    readonly family?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    readonly family?: string;
+    readonly name?: string;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
      * [public base image][pubimg], be sure to specify the correct Image Project.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**

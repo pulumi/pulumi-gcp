@@ -7,6 +7,9 @@ import * as pulumi from "@pulumi/pulumi";
  * A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
  * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
+ * 
+ * ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+ *   [`google_compute_backend_service`](compute_backend_service.html) instead.
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**
@@ -56,7 +59,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     public readonly protocol: pulumi.Output<string>;
     /**
@@ -134,7 +137,7 @@ export interface RegionBackendServiceState {
      * The list of backends that serve this BackendService.
      * Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }>[]>;
     /**
      * Time for which instance will be drained
      * (not accept new connections, but still work to finish started ones). Defaults to `0`.
@@ -153,7 +156,7 @@ export interface RegionBackendServiceState {
      * for checking the health of the backend service. Currently at most
      * one health check can be specified, and a health check is required.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * The name of the backend service.
      */
@@ -165,7 +168,7 @@ export interface RegionBackendServiceState {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -198,7 +201,7 @@ export interface RegionBackendServiceArgs {
      * The list of backends that serve this BackendService.
      * Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }>[]>;
     /**
      * Time for which instance will be drained
      * (not accept new connections, but still work to finish started ones). Defaults to `0`.
@@ -213,7 +216,7 @@ export interface RegionBackendServiceArgs {
      * for checking the health of the backend service. Currently at most
      * one health check can be specified, and a health check is required.
      */
-    readonly healthChecks: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks: pulumi.Input<string>;
     /**
      * The name of the backend service.
      */
@@ -225,7 +228,7 @@ export interface RegionBackendServiceArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol for incoming requests. Defaults to
-     * `HTTP`.
+     * `TCP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**

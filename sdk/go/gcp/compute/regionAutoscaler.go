@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Compute Engine Regional Autoscaler automatically adds or removes virtual machines from
-// a managed instance group based on increases or decreases in load. This allows
-// your applications to gracefully handle increases in traffic and reduces cost
-// when the need for resources is lower. You just define the autoscaling policy and
-// the autoscaler performs automatic scaling based on the measured load. For more
-// information, see [the official
-// documentation](https://cloud.google.com/compute/docs/autoscaler/) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/regionAutoscalers)
-// 
 type RegionAutoscaler struct {
 	s *pulumi.ResourceState
 }
@@ -26,9 +17,6 @@ func NewRegionAutoscaler(ctx *pulumi.Context,
 	name string, args *RegionAutoscalerArgs, opts ...pulumi.ResourceOpt) (*RegionAutoscaler, error) {
 	if args == nil || args.AutoscalingPolicy == nil {
 		return nil, errors.New("missing required argument 'AutoscalingPolicy'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
 	}
 	if args == nil || args.Target == nil {
 		return nil, errors.New("missing required argument 'Target'")
@@ -49,6 +37,7 @@ func NewRegionAutoscaler(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["target"] = args.Target
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/regionAutoscaler:RegionAutoscaler", name, true, inputs, opts...)
 	if err != nil {
@@ -64,6 +53,7 @@ func GetRegionAutoscaler(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["autoscalingPolicy"] = state.AutoscalingPolicy
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -88,92 +78,64 @@ func (r *RegionAutoscaler) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The parameters of the autoscaling
-// algorithm. Structure is documented below.
 func (r *RegionAutoscaler) AutoscalingPolicy() *pulumi.Output {
 	return r.s.State["autoscalingPolicy"]
 }
 
-// An optional textual description of the instance
-// group manager.
+func (r *RegionAutoscaler) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *RegionAutoscaler) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The name of the Google Cloud Monitoring metric to follow, e.g.
-// `compute.googleapis.com/instance/network/received_bytes_count`
 func (r *RegionAutoscaler) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *RegionAutoscaler) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region of the target.
 func (r *RegionAutoscaler) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// The URL of the created resource.
+// The URI of the created resource.
 func (r *RegionAutoscaler) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The floating point threshold where load balancing utilization
-// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-// such that each instance receives 5 RPS.
 func (r *RegionAutoscaler) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
 // Input properties used for looking up and filtering RegionAutoscaler resources.
 type RegionAutoscalerState struct {
-	// The parameters of the autoscaling
-	// algorithm. Structure is documented below.
 	AutoscalingPolicy interface{}
-	// An optional textual description of the instance
-	// group manager.
+	CreationTimestamp interface{}
 	Description interface{}
-	// The name of the Google Cloud Monitoring metric to follow, e.g.
-	// `compute.googleapis.com/instance/network/received_bytes_count`
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region of the target.
 	Region interface{}
-	// The URL of the created resource.
+	// The URI of the created resource.
 	SelfLink interface{}
-	// The floating point threshold where load balancing utilization
-	// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-	// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-	// such that each instance receives 5 RPS.
 	Target interface{}
 }
 
 // The set of arguments for constructing a RegionAutoscaler resource.
 type RegionAutoscalerArgs struct {
-	// The parameters of the autoscaling
-	// algorithm. Structure is documented below.
 	AutoscalingPolicy interface{}
-	// An optional textual description of the instance
-	// group manager.
 	Description interface{}
-	// The name of the Google Cloud Monitoring metric to follow, e.g.
-	// `compute.googleapis.com/instance/network/received_bytes_count`
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region of the target.
 	Region interface{}
-	// The floating point threshold where load balancing utilization
-	// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-	// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-	// such that each instance receives 5 RPS.
 	Target interface{}
 }

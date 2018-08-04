@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a Cloud Router resource. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
 type Router struct {
 	s *pulumi.ResourceState
 }
@@ -19,9 +15,6 @@ type Router struct {
 // NewRouter registers a new resource with the given unique name, arguments, and options.
 func NewRouter(ctx *pulumi.Context,
 	name string, args *RouterArgs, opts ...pulumi.ResourceOpt) (*Router, error) {
-	if args == nil || args.Bgp == nil {
-		return nil, errors.New("missing required argument 'Bgp'")
-	}
 	if args == nil || args.Network == nil {
 		return nil, errors.New("missing required argument 'Network'")
 	}
@@ -41,6 +34,7 @@ func NewRouter(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/router:Router", name, true, inputs, opts...)
 	if err != nil {
@@ -56,6 +50,7 @@ func GetRouter(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["bgp"] = state.Bgp
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
@@ -80,41 +75,32 @@ func (r *Router) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// BGP information specific to this router.
-// Changing this forces a new router to be created.
-// Structure is documented below.
 func (r *Router) Bgp() *pulumi.Output {
 	return r.s.State["bgp"]
 }
 
-// A description of the resource.
-// Changing this forces a new router to be created.
+func (r *Router) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *Router) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A unique name for the router, required by GCE. Changing
-// this forces a new router to be created.
 func (r *Router) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The name or resource link to the network this Cloud Router
-// will use to learn and announce routes. Changing this forces a new router to be created.
 func (r *Router) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
-// Changing this forces a new router to be created.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Router) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region this router should sit in. If not specified,
-// the project region will be used. Changing this forces a new router to be
-// created.
 func (r *Router) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -126,26 +112,14 @@ func (r *Router) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Router resources.
 type RouterState struct {
-	// BGP information specific to this router.
-	// Changing this forces a new router to be created.
-	// Structure is documented below.
 	Bgp interface{}
-	// A description of the resource.
-	// Changing this forces a new router to be created.
+	CreationTimestamp interface{}
 	Description interface{}
-	// A unique name for the router, required by GCE. Changing
-	// this forces a new router to be created.
 	Name interface{}
-	// The name or resource link to the network this Cloud Router
-	// will use to learn and announce routes. Changing this forces a new router to be created.
 	Network interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
-	// Changing this forces a new router to be created.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region this router should sit in. If not specified,
-	// the project region will be used. Changing this forces a new router to be
-	// created.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -153,25 +127,12 @@ type RouterState struct {
 
 // The set of arguments for constructing a Router resource.
 type RouterArgs struct {
-	// BGP information specific to this router.
-	// Changing this forces a new router to be created.
-	// Structure is documented below.
 	Bgp interface{}
-	// A description of the resource.
-	// Changing this forces a new router to be created.
 	Description interface{}
-	// A unique name for the router, required by GCE. Changing
-	// this forces a new router to be created.
 	Name interface{}
-	// The name or resource link to the network this Cloud Router
-	// will use to learn and announce routes. Changing this forces a new router to be created.
 	Network interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
-	// Changing this forces a new router to be created.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The region this router should sit in. If not specified,
-	// the project region will be used. Changing this forces a new router to be
-	// created.
 	Region interface{}
 }

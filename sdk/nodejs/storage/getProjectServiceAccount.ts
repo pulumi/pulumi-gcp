@@ -8,15 +8,28 @@ import * as pulumi from "@pulumi/pulumi";
  *  For more information see 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  */
-export function getProjectServiceAccount(): Promise<GetProjectServiceAccountResult> {
+export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs): Promise<GetProjectServiceAccountResult> {
+    args = args || {};
     return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
+        "project": args.project,
     });
+}
+
+/**
+ * A collection of arguments for invoking getProjectServiceAccount.
+ */
+export interface GetProjectServiceAccountArgs {
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
+    readonly project?: string;
 }
 
 /**
  * A collection of values returned by getProjectServiceAccount.
  */
 export interface GetProjectServiceAccountResult {
+    readonly project: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

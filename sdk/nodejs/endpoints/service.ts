@@ -76,10 +76,10 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
-    readonly apis?: pulumi.Input<{ methods?: pulumi.Input<{ name?: pulumi.Input<string>, requestType?: pulumi.Input<string>, responseType?: pulumi.Input<string>, syntax?: pulumi.Input<string> }[]>, name?: pulumi.Input<string>, syntax?: pulumi.Input<string>, version?: pulumi.Input<string> }[]>;
+    readonly apis?: pulumi.Input<pulumi.Input<{ methods?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, requestType?: pulumi.Input<string>, responseType?: pulumi.Input<string>, syntax?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, syntax?: pulumi.Input<string>, version?: pulumi.Input<string> }>[]>;
     readonly configId?: pulumi.Input<string>;
     readonly dnsAddress?: pulumi.Input<string>;
-    readonly endpoints?: pulumi.Input<{ address?: pulumi.Input<string>, name?: pulumi.Input<string> }[]>;
+    readonly endpoints?: pulumi.Input<pulumi.Input<{ address?: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>;
     readonly grpcConfig?: pulumi.Input<string>;
     readonly openapiConfig?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;

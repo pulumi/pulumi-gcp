@@ -9,7 +9,6 @@ import * as pulumi from "@pulumi/pulumi";
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", {
-        "email": args.email,
         "project": args.project,
     });
 }
@@ -18,17 +17,21 @@ export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs): P
  * A collection of arguments for invoking getDefaultServiceAccount.
  */
 export interface GetDefaultServiceAccountArgs {
-    readonly email?: pulumi.Input<string>;
     /**
      * The project ID. If it is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
 }
 
 /**
  * A collection of values returned by getDefaultServiceAccount.
  */
 export interface GetDefaultServiceAccountResult {
+    /**
+     * Email address of the default service account used by VMs running in this project
+     */
+    readonly email: string;
+    readonly project: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

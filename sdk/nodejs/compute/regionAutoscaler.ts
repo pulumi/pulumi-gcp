@@ -3,17 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * A Compute Engine Regional Autoscaler automatically adds or removes virtual machines from
- * a managed instance group based on increases or decreases in load. This allows
- * your applications to gracefully handle increases in traffic and reduces cost
- * when the need for resources is lower. You just define the autoscaling policy and
- * the autoscaler performs automatic scaling based on the measured load. For more
- * information, see [the official
- * documentation](https://cloud.google.com/compute/docs/autoscaler/) and
- * [API](https://cloud.google.com/compute/docs/reference/latest/regionAutoscalers)
- * 
- */
 export class RegionAutoscaler extends pulumi.CustomResource {
     /**
      * Get an existing RegionAutoscaler resource's state with the given name, ID, and optional extra
@@ -27,40 +16,20 @@ export class RegionAutoscaler extends pulumi.CustomResource {
         return new RegionAutoscaler(name, <any>state, { id });
     }
 
-    /**
-     * The parameters of the autoscaling
-     * algorithm. Structure is documented below.
-     */
-    public readonly autoscalingPolicy: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization?: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { name: string, target: number, type: string }[], minReplicas: number }>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
+    public readonly autoscalingPolicy: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { name: string, target: number, type: string }[], minReplicas: number }>;
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The name of the Google Cloud Monitoring metric to follow, e.g.
-     * `compute.googleapis.com/instance/network/received_bytes_count`
-     */
     public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region of the target.
-     */
     public readonly region: pulumi.Output<string>;
     /**
-     * The URL of the created resource.
+     * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * The floating point threshold where load balancing utilization
-     * should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-     * per second (RPS) then setting this to 0.5 would cause the group to be scaled
-     * such that each instance receives 5 RPS.
-     */
     public readonly target: pulumi.Output<string>;
 
     /**
@@ -76,6 +45,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: RegionAutoscalerState = argsOrState as RegionAutoscalerState | undefined;
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -87,9 +57,6 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             if (!args || args.autoscalingPolicy === undefined) {
                 throw new Error("Missing required property 'autoscalingPolicy'");
             }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
-            }
             if (!args || args.target === undefined) {
                 throw new Error("Missing required property 'target'");
             }
@@ -99,6 +66,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["target"] = args ? args.target : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, inputs, opts);
@@ -109,40 +77,20 @@ export class RegionAutoscaler extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionAutoscaler resources.
  */
 export interface RegionAutoscalerState {
-    /**
-     * The parameters of the autoscaling
-     * algorithm. Structure is documented below.
-     */
-    readonly autoscalingPolicy?: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<{ name: pulumi.Input<string>, target: pulumi.Input<number>, type: pulumi.Input<string> }[]>, minReplicas: pulumi.Input<number> }>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
+    readonly autoscalingPolicy?: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, target: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, minReplicas: pulumi.Input<number> }>;
+    readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the Google Cloud Monitoring metric to follow, e.g.
-     * `compute.googleapis.com/instance/network/received_bytes_count`
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region of the target.
-     */
     readonly region?: pulumi.Input<string>;
     /**
-     * The URL of the created resource.
+     * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The floating point threshold where load balancing utilization
-     * should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-     * per second (RPS) then setting this to 0.5 would cause the group to be scaled
-     * such that each instance receives 5 RPS.
-     */
     readonly target?: pulumi.Input<string>;
 }
 
@@ -150,35 +98,14 @@ export interface RegionAutoscalerState {
  * The set of arguments for constructing a RegionAutoscaler resource.
  */
 export interface RegionAutoscalerArgs {
-    /**
-     * The parameters of the autoscaling
-     * algorithm. Structure is documented below.
-     */
-    readonly autoscalingPolicy: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<{ name: pulumi.Input<string>, target: pulumi.Input<number>, type: pulumi.Input<string> }[]>, minReplicas: pulumi.Input<number> }>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
+    readonly autoscalingPolicy: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, target: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, minReplicas: pulumi.Input<number> }>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the Google Cloud Monitoring metric to follow, e.g.
-     * `compute.googleapis.com/instance/network/received_bytes_count`
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region of the target.
-     */
-    readonly region: pulumi.Input<string>;
-    /**
-     * The floating point threshold where load balancing utilization
-     * should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-     * per second (RPS) then setting this to 0.5 would cause the group to be scaled
-     * such that each instance receives 5 RPS.
-     */
+    readonly region?: pulumi.Input<string>;
     readonly target: pulumi.Input<string>;
 }

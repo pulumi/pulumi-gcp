@@ -3,15 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Creates a static IP address resource for Google Compute Engine. For more information see
- * the official documentation for
- * [external](https://cloud.google.com/compute/docs/instances-and-network) and
- * [internal](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
- * static IP reservations, as well as the
- * [API](https://cloud.google.com/compute/docs/reference/beta/addresses/insert).
- * 
- */
 export class Address extends pulumi.CustomResource {
     /**
      * Get an existing Address resource's state with the given name, ID, and optional extra
@@ -25,43 +16,24 @@ export class Address extends pulumi.CustomResource {
         return new Address(name, <any>state, { id });
     }
 
-    /**
-     * The IP address to reserve. An address may only be
-     * specified for INTERNAL address types. The IP address must be inside the
-     * specified subnetwork, if any.
-     */
     public readonly address: pulumi.Output<string>;
-    /**
-     * The Address Type that should be configured.
-     * Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-     * specify an external static IP address. Defaults to EXTERNAL if omitted.
-     */
     public readonly addressType: pulumi.Output<string | undefined>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
+    public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
+    public readonly networkTier: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
-     */
     public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * The self link URI of the subnetwork in which to
-     * create the address. A subnetwork may only be specified for INTERNAL
-     * address types.
-     */
     public readonly subnetwork: pulumi.Output<string>;
+    public /*out*/ readonly users: pulumi.Output<string[]>;
 
     /**
      * Create a Address resource with the given unique name, arguments, and options.
@@ -77,20 +49,28 @@ export class Address extends pulumi.CustomResource {
             const state: AddressState = argsOrState as AddressState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["addressType"] = state ? state.addressType : undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["networkTier"] = state ? state.networkTier : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
+            inputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as AddressArgs | undefined;
             inputs["address"] = args ? args.address : undefined;
             inputs["addressType"] = args ? args.addressType : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkTier"] = args ? args.networkTier : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["users"] = undefined /*out*/;
         }
         super("gcp:compute/address:Address", name, inputs, opts);
     }
@@ -100,80 +80,40 @@ export class Address extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Address resources.
  */
 export interface AddressState {
-    /**
-     * The IP address to reserve. An address may only be
-     * specified for INTERNAL address types. The IP address must be inside the
-     * specified subnetwork, if any.
-     */
     readonly address?: pulumi.Input<string>;
-    /**
-     * The Address Type that should be configured.
-     * Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-     * specify an external static IP address. Defaults to EXTERNAL if omitted.
-     */
     readonly addressType?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
+    readonly creationTimestamp?: pulumi.Input<string>;
+    readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly networkTier?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The self link URI of the subnetwork in which to
-     * create the address. A subnetwork may only be specified for INTERNAL
-     * address types.
-     */
     readonly subnetwork?: pulumi.Input<string>;
+    readonly users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a Address resource.
  */
 export interface AddressArgs {
-    /**
-     * The IP address to reserve. An address may only be
-     * specified for INTERNAL address types. The IP address must be inside the
-     * specified subnetwork, if any.
-     */
     readonly address?: pulumi.Input<string>;
-    /**
-     * The Address Type that should be configured.
-     * Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-     * specify an external static IP address. Defaults to EXTERNAL if omitted.
-     */
     readonly addressType?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
+    readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly networkTier?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The Region in which the created address should reside.
-     * If it is not provided, the provider region is used.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The self link URI of the subnetwork in which to
-     * create the address. A subnetwork may only be specified for INTERNAL
-     * address types.
-     */
     readonly subnetwork?: pulumi.Input<string>;
 }

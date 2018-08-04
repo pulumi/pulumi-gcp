@@ -11,7 +11,6 @@ import (
 func LookupDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs) (*GetDefaultServiceAccountResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
-		inputs["email"] = args.Email
 		inputs["project"] = args.Project
 	}
 	outputs, err := ctx.Invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", inputs)
@@ -19,19 +18,23 @@ func LookupDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAcc
 		return nil, err
 	}
 	return &GetDefaultServiceAccountResult{
+		Email: outputs["email"],
+		Project: outputs["project"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getDefaultServiceAccount.
 type GetDefaultServiceAccountArgs struct {
-	Email interface{}
 	// The project ID. If it is not provided, the provider project is used.
 	Project interface{}
 }
 
 // A collection of values returned by getDefaultServiceAccount.
 type GetDefaultServiceAccountResult struct {
+	// Email address of the default service account used by VMs running in this project
+	Email interface{}
+	Project interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

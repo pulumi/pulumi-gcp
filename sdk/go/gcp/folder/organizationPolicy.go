@@ -31,12 +31,14 @@ func NewOrganizationPolicy(ctx *pulumi.Context,
 		inputs["constraint"] = nil
 		inputs["folder"] = nil
 		inputs["listPolicy"] = nil
+		inputs["restorePolicy"] = nil
 		inputs["version"] = nil
 	} else {
 		inputs["booleanPolicy"] = args.BooleanPolicy
 		inputs["constraint"] = args.Constraint
 		inputs["folder"] = args.Folder
 		inputs["listPolicy"] = args.ListPolicy
+		inputs["restorePolicy"] = args.RestorePolicy
 		inputs["version"] = args.Version
 	}
 	inputs["etag"] = nil
@@ -59,6 +61,7 @@ func GetOrganizationPolicy(ctx *pulumi.Context,
 		inputs["etag"] = state.Etag
 		inputs["folder"] = state.Folder
 		inputs["listPolicy"] = state.ListPolicy
+		inputs["restorePolicy"] = state.RestorePolicy
 		inputs["updateTime"] = state.UpdateTime
 		inputs["version"] = state.Version
 	}
@@ -99,9 +102,15 @@ func (r *OrganizationPolicy) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+// A policy that can define specific values that are allowed or denied for the given constraint. It 
+// can also be used to allow or deny all values. Structure is documented below.
 func (r *OrganizationPolicy) ListPolicy() *pulumi.Output {
 	return r.s.State["listPolicy"]
+}
+
+// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+func (r *OrganizationPolicy) RestorePolicy() *pulumi.Output {
+	return r.s.State["restorePolicy"]
 }
 
 // (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
@@ -124,8 +133,11 @@ type OrganizationPolicyState struct {
 	Etag interface{}
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder interface{}
-	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+	// A policy that can define specific values that are allowed or denied for the given constraint. It 
+	// can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy interface{}
+	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	RestorePolicy interface{}
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime interface{}
 	// Version of the Policy. Default version is 0.
@@ -140,8 +152,11 @@ type OrganizationPolicyArgs struct {
 	Constraint interface{}
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder interface{}
-	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+	// A policy that can define specific values that are allowed or denied for the given constraint. It 
+	// can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy interface{}
+	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	RestorePolicy interface{}
 	// Version of the Policy. Default version is 0.
 	Version interface{}
 }

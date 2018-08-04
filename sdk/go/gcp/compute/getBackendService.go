@@ -24,6 +24,7 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		Backends: outputs["backends"],
 		CdnPolicies: outputs["cdnPolicies"],
 		ConnectionDrainingTimeoutSec: outputs["connectionDrainingTimeoutSec"],
+		CustomRequestHeaders: outputs["customRequestHeaders"],
 		Description: outputs["description"],
 		EnableCdn: outputs["enableCdn"],
 		Fingerprint: outputs["fingerprint"],
@@ -55,6 +56,7 @@ type GetBackendServiceResult struct {
 	CdnPolicies interface{}
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
 	ConnectionDrainingTimeoutSec interface{}
+	CustomRequestHeaders interface{}
 	// Textual description for the Backend Service.
 	Description interface{}
 	// Whether or not Cloud CDN is enabled on the Backend Service.

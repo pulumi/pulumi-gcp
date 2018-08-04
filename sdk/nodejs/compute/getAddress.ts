@@ -22,17 +22,17 @@ export interface GetAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
+    readonly project?: string;
     /**
      * The Region in which the created address reside.
      * If it is not provided, the provider region is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
 }
 
 /**

@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a network route within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/vpc/routes)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/routes).
 type Route struct {
 	s *pulumi.ResourceState
 }
@@ -104,66 +100,52 @@ func (r *Route) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The destination IPv4 address range that this
-// route applies to.
 func (r *Route) DestRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destRange"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *Route) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The name or self_link of the network to attach this route to.
 func (r *Route) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
-// The URL of the internet gateway to route
-// to if this route is matched. The alias "default-internet-gateway" can also
-// be used.
 func (r *Route) NextHopGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopGateway"])
 }
 
-// The name of the VM instance to route to
-// if this route is matched.
 func (r *Route) NextHopInstance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopInstance"])
 }
 
-// 
-// The zone of the instance specified in `next_hop_instance`.
+// (Optional when `next_hop_instance` is
+// specified)  The zone of the instance specified in
+// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+// a URL.
 func (r *Route) NextHopInstanceZone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopInstanceZone"])
 }
 
-// The IP address of the next hop if this route
-// is matched.
 func (r *Route) NextHopIp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopIp"])
 }
 
-// The name of the next hop network, if available.
 func (r *Route) NextHopNetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopNetwork"])
 }
 
-// The name of the VPN to route to if this
-// route is matched.
 func (r *Route) NextHopVpnTunnel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopVpnTunnel"])
 }
 
-// The priority of this route, used to break ties. Defaults to 1000.
 func (r *Route) Priority() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["priority"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Route) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -173,7 +155,6 @@ func (r *Route) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The tags that this route applies to.
 func (r *Route) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
@@ -181,75 +162,46 @@ func (r *Route) Tags() *pulumi.ArrayOutput {
 // Input properties used for looking up and filtering Route resources.
 type RouteState struct {
 	Description interface{}
-	// The destination IPv4 address range that this
-	// route applies to.
 	DestRange interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The name or self_link of the network to attach this route to.
 	Network interface{}
-	// The URL of the internet gateway to route
-	// to if this route is matched. The alias "default-internet-gateway" can also
-	// be used.
 	NextHopGateway interface{}
-	// The name of the VM instance to route to
-	// if this route is matched.
 	NextHopInstance interface{}
-	// 
-	// The zone of the instance specified in `next_hop_instance`.
+	// (Optional when `next_hop_instance` is
+	// specified)  The zone of the instance specified in
+	// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+	// a URL.
 	NextHopInstanceZone interface{}
-	// The IP address of the next hop if this route
-	// is matched.
 	NextHopIp interface{}
-	// The name of the next hop network, if available.
 	NextHopNetwork interface{}
-	// The name of the VPN to route to if this
-	// route is matched.
 	NextHopVpnTunnel interface{}
-	// The priority of this route, used to break ties. Defaults to 1000.
 	Priority interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The tags that this route applies to.
 	Tags interface{}
 }
 
 // The set of arguments for constructing a Route resource.
 type RouteArgs struct {
 	Description interface{}
-	// The destination IPv4 address range that this
-	// route applies to.
 	DestRange interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The name or self_link of the network to attach this route to.
 	Network interface{}
-	// The URL of the internet gateway to route
-	// to if this route is matched. The alias "default-internet-gateway" can also
-	// be used.
 	NextHopGateway interface{}
-	// The name of the VM instance to route to
-	// if this route is matched.
 	NextHopInstance interface{}
-	// 
-	// The zone of the instance specified in `next_hop_instance`.
+	// (Optional when `next_hop_instance` is
+	// specified)  The zone of the instance specified in
+	// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+	// a URL.
 	NextHopInstanceZone interface{}
-	// The IP address of the next hop if this route
-	// is matched.
 	NextHopIp interface{}
-	// The name of the VPN to route to if this
-	// route is matched.
 	NextHopVpnTunnel interface{}
-	// The priority of this route, used to break ties. Defaults to 1000.
 	Priority interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The tags that this route applies to.
 	Tags interface{}
 }

@@ -29,13 +29,13 @@ export interface GetKMSSecretArgs {
     /**
      * The ciphertext to be decrypted, encoded in base64
      */
-    readonly ciphertext: pulumi.Input<string>;
+    readonly ciphertext: string;
     /**
      * The id of the CryptoKey that will be used to
      * decrypt the provided ciphertext. This is represented by the format
      * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
      */
-    readonly cryptoKey: pulumi.Input<string>;
+    readonly cryptoKey: string;
 }
 
 /**

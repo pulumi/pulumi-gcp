@@ -3,12 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Manages a network route within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/vpc/routes)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/routes).
- */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -23,66 +17,31 @@ export class Route extends pulumi.CustomResource {
     }
 
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The destination IPv4 address range that this
-     * route applies to.
-     */
     public readonly destRange: pulumi.Output<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The name or self_link of the network to attach this route to.
-     */
     public readonly network: pulumi.Output<string>;
-    /**
-     * The URL of the internet gateway to route
-     * to if this route is matched. The alias "default-internet-gateway" can also
-     * be used.
-     */
     public readonly nextHopGateway: pulumi.Output<string | undefined>;
-    /**
-     * The name of the VM instance to route to
-     * if this route is matched.
-     */
     public readonly nextHopInstance: pulumi.Output<string | undefined>;
     /**
-     * 
-     * The zone of the instance specified in `next_hop_instance`.
+     * (Optional when `next_hop_instance` is
+     * specified)  The zone of the instance specified in
+     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * a URL.
      */
     public readonly nextHopInstanceZone: pulumi.Output<string | undefined>;
-    /**
-     * The IP address of the next hop if this route
-     * is matched.
-     */
     public readonly nextHopIp: pulumi.Output<string | undefined>;
-    /**
-     * The name of the next hop network, if available.
-     */
     public /*out*/ readonly nextHopNetwork: pulumi.Output<string>;
-    /**
-     * The name of the VPN to route to if this
-     * route is matched.
-     */
     public readonly nextHopVpnTunnel: pulumi.Output<string | undefined>;
-    /**
-     * The priority of this route, used to break ties. Defaults to 1000.
-     */
     public readonly priority: pulumi.Output<number | undefined>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * The tags that this route applies to.
-     */
     public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
@@ -143,66 +102,31 @@ export class Route extends pulumi.CustomResource {
  */
 export interface RouteState {
     readonly description?: pulumi.Input<string>;
-    /**
-     * The destination IPv4 address range that this
-     * route applies to.
-     */
     readonly destRange?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name or self_link of the network to attach this route to.
-     */
     readonly network?: pulumi.Input<string>;
-    /**
-     * The URL of the internet gateway to route
-     * to if this route is matched. The alias "default-internet-gateway" can also
-     * be used.
-     */
     readonly nextHopGateway?: pulumi.Input<string>;
-    /**
-     * The name of the VM instance to route to
-     * if this route is matched.
-     */
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
-     * 
-     * The zone of the instance specified in `next_hop_instance`.
+     * (Optional when `next_hop_instance` is
+     * specified)  The zone of the instance specified in
+     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
-    /**
-     * The IP address of the next hop if this route
-     * is matched.
-     */
     readonly nextHopIp?: pulumi.Input<string>;
-    /**
-     * The name of the next hop network, if available.
-     */
     readonly nextHopNetwork?: pulumi.Input<string>;
-    /**
-     * The name of the VPN to route to if this
-     * route is matched.
-     */
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
-    /**
-     * The priority of this route, used to break ties. Defaults to 1000.
-     */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The tags that this route applies to.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -211,57 +135,25 @@ export interface RouteState {
  */
 export interface RouteArgs {
     readonly description?: pulumi.Input<string>;
-    /**
-     * The destination IPv4 address range that this
-     * route applies to.
-     */
     readonly destRange: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name or self_link of the network to attach this route to.
-     */
     readonly network: pulumi.Input<string>;
-    /**
-     * The URL of the internet gateway to route
-     * to if this route is matched. The alias "default-internet-gateway" can also
-     * be used.
-     */
     readonly nextHopGateway?: pulumi.Input<string>;
-    /**
-     * The name of the VM instance to route to
-     * if this route is matched.
-     */
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
-     * 
-     * The zone of the instance specified in `next_hop_instance`.
+     * (Optional when `next_hop_instance` is
+     * specified)  The zone of the instance specified in
+     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
-    /**
-     * The IP address of the next hop if this route
-     * is matched.
-     */
     readonly nextHopIp?: pulumi.Input<string>;
-    /**
-     * The name of the VPN to route to if this
-     * route is matched.
-     */
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
-    /**
-     * The priority of this route, used to break ties. Defaults to 1000.
-     */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The tags that this route applies to.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

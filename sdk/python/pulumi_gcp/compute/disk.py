@@ -6,16 +6,7 @@ import pulumi
 import pulumi.runtime
 
 class Disk(pulumi.CustomResource):
-    """
-    Creates a new persistent disk within GCE, based on another disk. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/disks).
-    
-    ~> **Note:** All arguments including the disk encryption key will be stored in the raw state as plain-text.
-    [Read more about sensitive data in state](/docs/state/sensitive-data.html).
-    """
-    def __init__(__self__, __name__, __opts__=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, type=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, disk_encryption_key=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None):
         """Create a Disk resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -26,111 +17,87 @@ class Disk(pulumi.CustomResource):
 
         __props__ = dict()
 
+        if description and not isinstance(description, basestring):
+            raise TypeError('Expected property description to be a basestring')
+        __self__.description = description
+        __props__['description'] = description
+
+        if disk_encryption_key and not isinstance(disk_encryption_key, dict):
+            raise TypeError('Expected property disk_encryption_key to be a dict')
+        __self__.disk_encryption_key = disk_encryption_key
+        __props__['diskEncryptionKey'] = disk_encryption_key
+
         if disk_encryption_key_raw and not isinstance(disk_encryption_key_raw, basestring):
             raise TypeError('Expected property disk_encryption_key_raw to be a basestring')
         __self__.disk_encryption_key_raw = disk_encryption_key_raw
-        """
-        A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this disk.
-        """
         __props__['diskEncryptionKeyRaw'] = disk_encryption_key_raw
 
         if image and not isinstance(image, basestring):
             raise TypeError('Expected property image to be a basestring')
         __self__.image = image
-        """
-        The image from which to initialize this disk. This can be
-        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-        images names must include the family name. If they don't, use the
-        [google_compute_image data source](/docs/providers/google/d/datasource_compute_image.html).
-        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-        These images can be referred by family name here.
-        """
         __props__['image'] = image
 
         if labels and not isinstance(labels, dict):
             raise TypeError('Expected property labels to be a dict')
         __self__.labels = labels
-        """
-        A set of key/value label pairs to assign to the image.
-        """
         __props__['labels'] = labels
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         __props__['project'] = project
 
         if size and not isinstance(size, int):
             raise TypeError('Expected property size to be a int')
         __self__.size = size
-        """
-        The size of the image in gigabytes. If not specified, it
-        will inherit the size of its base image.
-        """
         __props__['size'] = size
 
         if snapshot and not isinstance(snapshot, basestring):
             raise TypeError('Expected property snapshot to be a basestring')
         __self__.snapshot = snapshot
-        """
-        Name of snapshot from which to initialize this disk.
-        """
         __props__['snapshot'] = snapshot
+
+        if source_image_encryption_key and not isinstance(source_image_encryption_key, dict):
+            raise TypeError('Expected property source_image_encryption_key to be a dict')
+        __self__.source_image_encryption_key = source_image_encryption_key
+        __props__['sourceImageEncryptionKey'] = source_image_encryption_key
+
+        if source_snapshot_encryption_key and not isinstance(source_snapshot_encryption_key, dict):
+            raise TypeError('Expected property source_snapshot_encryption_key to be a dict')
+        __self__.source_snapshot_encryption_key = source_snapshot_encryption_key
+        __props__['sourceSnapshotEncryptionKey'] = source_snapshot_encryption_key
 
         if type and not isinstance(type, basestring):
             raise TypeError('Expected property type to be a basestring')
         __self__.type = type
-        """
-        The GCE disk type.
-        """
         __props__['type'] = type
 
         if zone and not isinstance(zone, basestring):
             raise TypeError('Expected property zone to be a basestring')
         __self__.zone = zone
-        """
-        The zone where this disk will be available.
-        """
         __props__['zone'] = zone
 
+        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.disk_encryption_key_sha256 = pulumi.runtime.UNKNOWN
-        """
-        The [RFC 4648 base64]
-        (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-        [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-        that protects this resource.
-        """
         __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        """
-        The fingerprint of the assigned labels.
-        """
+        __self__.last_attach_timestamp = pulumi.runtime.UNKNOWN
+        __self__.last_detach_timestamp = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
         """
+        __self__.source_image_id = pulumi.runtime.UNKNOWN
+        __self__.source_snapshot_id = pulumi.runtime.UNKNOWN
         __self__.users = pulumi.runtime.UNKNOWN
-        """
-        The Users of the created resource.
-        """
 
         super(Disk, __self__).__init__(
             'gcp:compute/disk:Disk',
@@ -139,6 +106,12 @@ class Disk(pulumi.CustomResource):
             __opts__)
 
     def set_outputs(self, outs):
+        if 'creationTimestamp' in outs:
+            self.creation_timestamp = outs['creationTimestamp']
+        if 'description' in outs:
+            self.description = outs['description']
+        if 'diskEncryptionKey' in outs:
+            self.disk_encryption_key = outs['diskEncryptionKey']
         if 'diskEncryptionKeyRaw' in outs:
             self.disk_encryption_key_raw = outs['diskEncryptionKeyRaw']
         if 'diskEncryptionKeySha256' in outs:
@@ -149,6 +122,10 @@ class Disk(pulumi.CustomResource):
             self.label_fingerprint = outs['labelFingerprint']
         if 'labels' in outs:
             self.labels = outs['labels']
+        if 'lastAttachTimestamp' in outs:
+            self.last_attach_timestamp = outs['lastAttachTimestamp']
+        if 'lastDetachTimestamp' in outs:
+            self.last_detach_timestamp = outs['lastDetachTimestamp']
         if 'name' in outs:
             self.name = outs['name']
         if 'project' in outs:
@@ -159,6 +136,14 @@ class Disk(pulumi.CustomResource):
             self.size = outs['size']
         if 'snapshot' in outs:
             self.snapshot = outs['snapshot']
+        if 'sourceImageEncryptionKey' in outs:
+            self.source_image_encryption_key = outs['sourceImageEncryptionKey']
+        if 'sourceImageId' in outs:
+            self.source_image_id = outs['sourceImageId']
+        if 'sourceSnapshotEncryptionKey' in outs:
+            self.source_snapshot_encryption_key = outs['sourceSnapshotEncryptionKey']
+        if 'sourceSnapshotId' in outs:
+            self.source_snapshot_id = outs['sourceSnapshotId']
         if 'type' in outs:
             self.type = outs['type']
         if 'users' in outs:

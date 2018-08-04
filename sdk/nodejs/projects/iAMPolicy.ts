@@ -3,6 +3,17 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
+/**
+ * Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+ * 
+ * * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+ * * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+ * * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+ * 
+ * ~> **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+ * 
+ * ~> **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+ */
 export class IAMPolicy extends pulumi.CustomResource {
     /**
      * Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
@@ -16,11 +27,46 @@ export class IAMPolicy extends pulumi.CustomResource {
         return new IAMPolicy(name, <any>state, { id });
     }
 
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value indicating if this policy
+     * should overwrite any existing IAM policy on the project. When set to true,
+     * **any policies not in your config file will be removed**. This can **lock
+     * you out** of your project until an Organization Administrator grants you
+     * access again, so please exercise caution. If this argument is `true` and you
+     * want to delete the resource, you must set the `disable_project` argument to
+     * `true`, acknowledging that the project will be inaccessible to anyone but the
+     * Organization Admins, as it will no longer have an IAM policy. Rather than using
+     * this, you should use `google_project_iam_binding` and
+     * `google_project_iam_member`.
+     */
     public readonly authoritative: pulumi.Output<boolean | undefined>;
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value that must be set to `true`
+     * if you want to delete a `google_project_iam_policy` that is authoritative.
+     */
     public readonly disableProject: pulumi.Output<boolean | undefined>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the project. The policy will be
+     * merged with any existing policy applied to the project.
+     */
     public readonly policyData: pulumi.Output<string>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * (DEPRECATED) (Computed, only for `google_project_iam_policy`)
+     * The IAM policy that will be restored when a
+     * non-authoritative policy resource is deleted.
+     */
     public /*out*/ readonly restorePolicy: pulumi.Output<string>;
 
     /**
@@ -61,11 +107,46 @@ export class IAMPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMPolicy resources.
  */
 export interface IAMPolicyState {
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value indicating if this policy
+     * should overwrite any existing IAM policy on the project. When set to true,
+     * **any policies not in your config file will be removed**. This can **lock
+     * you out** of your project until an Organization Administrator grants you
+     * access again, so please exercise caution. If this argument is `true` and you
+     * want to delete the resource, you must set the `disable_project` argument to
+     * `true`, acknowledging that the project will be inaccessible to anyone but the
+     * Organization Admins, as it will no longer have an IAM policy. Rather than using
+     * this, you should use `google_project_iam_binding` and
+     * `google_project_iam_member`.
+     */
     readonly authoritative?: pulumi.Input<boolean>;
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value that must be set to `true`
+     * if you want to delete a `google_project_iam_policy` that is authoritative.
+     */
     readonly disableProject?: pulumi.Input<boolean>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the project. The policy will be
+     * merged with any existing policy applied to the project.
+     */
     readonly policyData?: pulumi.Input<string>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * (DEPRECATED) (Computed, only for `google_project_iam_policy`)
+     * The IAM policy that will be restored when a
+     * non-authoritative policy resource is deleted.
+     */
     readonly restorePolicy?: pulumi.Input<string>;
 }
 
@@ -73,8 +154,35 @@ export interface IAMPolicyState {
  * The set of arguments for constructing a IAMPolicy resource.
  */
 export interface IAMPolicyArgs {
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value indicating if this policy
+     * should overwrite any existing IAM policy on the project. When set to true,
+     * **any policies not in your config file will be removed**. This can **lock
+     * you out** of your project until an Organization Administrator grants you
+     * access again, so please exercise caution. If this argument is `true` and you
+     * want to delete the resource, you must set the `disable_project` argument to
+     * `true`, acknowledging that the project will be inaccessible to anyone but the
+     * Organization Admins, as it will no longer have an IAM policy. Rather than using
+     * this, you should use `google_project_iam_binding` and
+     * `google_project_iam_member`.
+     */
     readonly authoritative?: pulumi.Input<boolean>;
+    /**
+     * (Optional, only for `google_project_iam_policy`)
+     * A boolean value that must be set to `true`
+     * if you want to delete a `google_project_iam_policy` that is authoritative.
+     */
     readonly disableProject?: pulumi.Input<boolean>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the project. The policy will be
+     * merged with any existing policy applied to the project.
+     */
     readonly policyData: pulumi.Input<string>;
+    /**
+     * The project ID. If not specified, uses the
+     * ID of the project configured with the provider.
+     */
     readonly project?: pulumi.Input<string>;
 }

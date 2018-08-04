@@ -3,12 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Manages a Cloud Router resource. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- */
 export class Router extends pulumi.CustomResource {
     /**
      * Get an existing Router resource's state with the given name, ID, and optional extra
@@ -22,38 +16,16 @@ export class Router extends pulumi.CustomResource {
         return new Router(name, <any>state, { id });
     }
 
-    /**
-     * BGP information specific to this router.
-     * Changing this forces a new router to be created.
-     * Structure is documented below.
-     */
-    public readonly bgp: pulumi.Output<{ asn: number }>;
-    /**
-     * A description of the resource.
-     * Changing this forces a new router to be created.
-     */
+    public readonly bgp: pulumi.Output<{ advertiseMode?: string, advertisedGroups?: string[], advertisedIpRanges?: { description?: string, range?: string }[], asn: number } | undefined>;
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * A unique name for the router, required by GCE. Changing
-     * this forces a new router to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The name or resource link to the network this Cloud Router
-     * will use to learn and announce routes. Changing this forces a new router to be created.
-     */
     public readonly network: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     * Changing this forces a new router to be created.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region this router should sit in. If not specified,
-     * the project region will be used. Changing this forces a new router to be
-     * created.
-     */
     public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
@@ -73,6 +45,7 @@ export class Router extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: RouterState = argsOrState as RouterState | undefined;
             inputs["bgp"] = state ? state.bgp : undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -81,9 +54,6 @@ export class Router extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            if (!args || args.bgp === undefined) {
-                throw new Error("Missing required property 'bgp'");
-            }
             if (!args || args.network === undefined) {
                 throw new Error("Missing required property 'network'");
             }
@@ -93,6 +63,7 @@ export class Router extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:compute/router:Router", name, inputs, opts);
@@ -103,38 +74,16 @@ export class Router extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Router resources.
  */
 export interface RouterState {
-    /**
-     * BGP information specific to this router.
-     * Changing this forces a new router to be created.
-     * Structure is documented below.
-     */
-    readonly bgp?: pulumi.Input<{ asn: pulumi.Input<number> }>;
-    /**
-     * A description of the resource.
-     * Changing this forces a new router to be created.
-     */
+    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
+    readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique name for the router, required by GCE. Changing
-     * this forces a new router to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name or resource link to the network this Cloud Router
-     * will use to learn and announce routes. Changing this forces a new router to be created.
-     */
     readonly network?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     * Changing this forces a new router to be created.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this router should sit in. If not specified,
-     * the project region will be used. Changing this forces a new router to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -146,37 +95,14 @@ export interface RouterState {
  * The set of arguments for constructing a Router resource.
  */
 export interface RouterArgs {
-    /**
-     * BGP information specific to this router.
-     * Changing this forces a new router to be created.
-     * Structure is documented below.
-     */
-    readonly bgp: pulumi.Input<{ asn: pulumi.Input<number> }>;
-    /**
-     * A description of the resource.
-     * Changing this forces a new router to be created.
-     */
+    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique name for the router, required by GCE. Changing
-     * this forces a new router to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name or resource link to the network this Cloud Router
-     * will use to learn and announce routes. Changing this forces a new router to be created.
-     */
     readonly network: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     * Changing this forces a new router to be created.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this router should sit in. If not specified,
-     * the project region will be used. Changing this forces a new router to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
 }

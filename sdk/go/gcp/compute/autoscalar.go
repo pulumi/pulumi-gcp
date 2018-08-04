@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Compute Engine Autoscaler automatically adds or removes virtual machines from
-// a managed instance group based on increases or decreases in load. This allows
-// your applications to gracefully handle increases in traffic and reduces cost
-// when the need for resources is lower. You just define the autoscaling policy and
-// the autoscaler performs automatic scaling based on the measured load. For more
-// information, see [the official
-// documentation](https://cloud.google.com/compute/docs/autoscaler/) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/autoscalers)
-// 
 type Autoscalar struct {
 	s *pulumi.ResourceState
 }
@@ -46,6 +37,7 @@ func NewAutoscalar(ctx *pulumi.Context,
 		inputs["target"] = args.Target
 		inputs["zone"] = args.Zone
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/autoscalar:Autoscalar", name, true, inputs, opts...)
 	if err != nil {
@@ -61,6 +53,7 @@ func GetAutoscalar(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["autoscalingPolicy"] = state.AutoscalingPolicy
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -85,92 +78,64 @@ func (r *Autoscalar) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The parameters of the autoscaling
-// algorithm. Structure is documented below.
 func (r *Autoscalar) AutoscalingPolicy() *pulumi.Output {
 	return r.s.State["autoscalingPolicy"]
 }
 
-// An optional textual description of the instance
-// group manager.
+func (r *Autoscalar) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *Autoscalar) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The name of the Google Cloud Monitoring metric to follow, e.g.
-// `compute.googleapis.com/instance/network/received_bytes_count`
 func (r *Autoscalar) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Autoscalar) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The URL of the created resource.
+// The URI of the created resource.
 func (r *Autoscalar) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The floating point threshold where load balancing utilization
-// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-// such that each instance receives 5 RPS.
 func (r *Autoscalar) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
-// The zone of the target.
 func (r *Autoscalar) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Autoscalar resources.
 type AutoscalarState struct {
-	// The parameters of the autoscaling
-	// algorithm. Structure is documented below.
 	AutoscalingPolicy interface{}
-	// An optional textual description of the instance
-	// group manager.
+	CreationTimestamp interface{}
 	Description interface{}
-	// The name of the Google Cloud Monitoring metric to follow, e.g.
-	// `compute.googleapis.com/instance/network/received_bytes_count`
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The URL of the created resource.
+	// The URI of the created resource.
 	SelfLink interface{}
-	// The floating point threshold where load balancing utilization
-	// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-	// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-	// such that each instance receives 5 RPS.
 	Target interface{}
-	// The zone of the target.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Autoscalar resource.
 type AutoscalarArgs struct {
-	// The parameters of the autoscaling
-	// algorithm. Structure is documented below.
 	AutoscalingPolicy interface{}
-	// An optional textual description of the instance
-	// group manager.
 	Description interface{}
-	// The name of the Google Cloud Monitoring metric to follow, e.g.
-	// `compute.googleapis.com/instance/network/received_bytes_count`
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The floating point threshold where load balancing utilization
-	// should be. E.g. if the load balancer's `maxRatePerInstance` is 10 requests
-	// per second (RPS) then setting this to 0.5 would cause the group to be scaled
-	// such that each instance receives 5 RPS.
 	Target interface{}
-	// The zone of the target.
 	Zone interface{}
 }

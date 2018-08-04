@@ -93,6 +93,7 @@ class Instance(pulumi.CustomResource):
         __self__.guest_accelerators = guest_accelerators
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
         """
         __props__['guestAccelerators'] = guest_accelerators
 
@@ -110,10 +111,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property machine_type to be a basestring')
         __self__.machine_type = machine_type
         """
-        The machine type to create. To create a custom
-        machine type, value should be set as specified
-        [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-        **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+        The machine type to create.
         """
         __props__['machineType'] = machine_type
 

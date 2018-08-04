@@ -12,7 +12,7 @@ class Policy(pulumi.CustomResource):
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy).
     """
-    def __init__(__self__, __name__, __opts__=None, boolean_policy=None, constraint=None, list_policy=None, org_id=None, version=None):
+    def __init__(__self__, __name__, __opts__=None, boolean_policy=None, constraint=None, list_policy=None, org_id=None, restore_policy=None, version=None):
         """Create a Policy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -59,6 +59,14 @@ class Policy(pulumi.CustomResource):
         """
         __props__['orgId'] = org_id
 
+        if restore_policy and not isinstance(restore_policy, dict):
+            raise TypeError('Expected property restore_policy to be a dict')
+        __self__.restore_policy = restore_policy
+        """
+        A restore policy is a constraint to restore the default policy. Structure is documented below. 
+        """
+        __props__['restorePolicy'] = restore_policy
+
         if version and not isinstance(version, int):
             raise TypeError('Expected property version to be a int')
         __self__.version = version
@@ -93,6 +101,8 @@ class Policy(pulumi.CustomResource):
             self.list_policy = outs['listPolicy']
         if 'orgId' in outs:
             self.org_id = outs['orgId']
+        if 'restorePolicy' in outs:
+            self.restore_policy = outs['restorePolicy']
         if 'updateTime' in outs:
             self.update_time = outs['updateTime']
         if 'version' in outs:

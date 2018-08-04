@@ -37,6 +37,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
+     * ) Headers that the
+     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     */
+    public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
+    /**
      * Textual description for the backend.
      */
     public readonly description: pulumi.Output<string | undefined>;
@@ -113,6 +118,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
+            inputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableCdn"] = state ? state.enableCdn : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -134,6 +140,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
+            inputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
@@ -159,7 +166,7 @@ export interface BackendServiceState {
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     /**
      * Cloud CDN configuration for this BackendService. Structure is documented below.
      */
@@ -169,6 +176,11 @@ export interface BackendServiceState {
      * but still work to finish started ones). Defaults to `300`.
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * ) Headers that the
+     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     */
+    readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Textual description for the backend.
      */
@@ -186,7 +198,7 @@ export interface BackendServiceState {
      * for checking the health of the backend service. Currently at most one health
      * check can be specified, and a health check is required.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */
@@ -239,7 +251,7 @@ export interface BackendServiceArgs {
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
-    readonly backends?: pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     /**
      * Cloud CDN configuration for this BackendService. Structure is documented below.
      */
@@ -249,6 +261,11 @@ export interface BackendServiceArgs {
      * but still work to finish started ones). Defaults to `300`.
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * ) Headers that the
+     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     */
+    readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Textual description for the backend.
      */
@@ -262,7 +279,7 @@ export interface BackendServiceArgs {
      * for checking the health of the backend service. Currently at most one health
      * check can be specified, and a health check is required.
      */
-    readonly healthChecks: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks: pulumi.Input<string>;
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */

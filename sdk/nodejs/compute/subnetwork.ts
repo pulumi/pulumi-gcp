@@ -3,12 +3,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 
-/**
- * Manages a subnetwork within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/vpc/#vpc_networks_and_subnets)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/subnetworks).
- */
 export class Subnetwork extends pulumi.CustomResource {
     /**
      * Get an existing Subnetwork resource's state with the given name, ID, and optional extra
@@ -22,56 +16,22 @@ export class Subnetwork extends pulumi.CustomResource {
         return new Subnetwork(name, <any>state, { id });
     }
 
-    /**
-     * Description of this subnetwork.
-     */
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * )
-     * Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-     * for this subnetwork.
-     */
     public readonly enableFlowLogs: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    /**
-     * The IP address of the gateway.
-     */
     public /*out*/ readonly gatewayAddress: pulumi.Output<string>;
-    /**
-     * The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
-     */
     public readonly ipCidrRange: pulumi.Output<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The network name or resource link to the parent
-     * network of this subnetwork. The parent network must have been created
-     * in custom subnet mode.
-     */
     public readonly network: pulumi.Output<string>;
-    /**
-     * Whether the VMs in this subnet
-     * can access Google services without assigned external IP
-     * addresses.
-     */
     public readonly privateIpGoogleAccess: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region this subnetwork will be created in. If
-     * unspecified, this defaults to the region configured in the provider.
-     */
     public readonly region: pulumi.Output<string>;
-    /**
-     * ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
-     */
-    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[] | undefined>;
+    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[]>;
     /**
      * The URI of the created resource.
      */
@@ -89,6 +49,7 @@ export class Subnetwork extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SubnetworkState = argsOrState as SubnetworkState | undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableFlowLogs"] = state ? state.enableFlowLogs : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -118,6 +79,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["gatewayAddress"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -130,56 +92,22 @@ export class Subnetwork extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnetwork resources.
  */
 export interface SubnetworkState {
-    /**
-     * Description of this subnetwork.
-     */
+    readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * )
-     * Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-     * for this subnetwork.
-     */
     readonly enableFlowLogs?: pulumi.Input<boolean>;
     readonly fingerprint?: pulumi.Input<string>;
-    /**
-     * The IP address of the gateway.
-     */
     readonly gatewayAddress?: pulumi.Input<string>;
-    /**
-     * The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
-     */
     readonly ipCidrRange?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The network name or resource link to the parent
-     * network of this subnetwork. The parent network must have been created
-     * in custom subnet mode.
-     */
     readonly network?: pulumi.Input<string>;
-    /**
-     * Whether the VMs in this subnet
-     * can access Google services without assigned external IP
-     * addresses.
-     */
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this subnetwork will be created in. If
-     * unspecified, this defaults to the region configured in the provider.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
-     */
-    readonly secondaryIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
     /**
      * The URI of the created resource.
      */
@@ -190,49 +118,17 @@ export interface SubnetworkState {
  * The set of arguments for constructing a Subnetwork resource.
  */
 export interface SubnetworkArgs {
-    /**
-     * Description of this subnetwork.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * )
-     * Set to `true` to enable [flow logs](https://cloud.google.com/vpc/docs/using-flow-logs)
-     * for this subnetwork.
-     */
     readonly enableFlowLogs?: pulumi.Input<boolean>;
-    /**
-     * The range of IP addresses belonging to this subnetwork secondary range. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network.
-     */
     readonly ipCidrRange: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The network name or resource link to the parent
-     * network of this subnetwork. The parent network must have been created
-     * in custom subnet mode.
-     */
     readonly network: pulumi.Input<string>;
-    /**
-     * Whether the VMs in this subnet
-     * can access Google services without assigned external IP
-     * addresses.
-     */
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this subnetwork will be created in. If
-     * unspecified, this defaults to the region configured in the provider.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * ) An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. Structure is documented below.
-     */
-    readonly secondaryIpRanges?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
 }

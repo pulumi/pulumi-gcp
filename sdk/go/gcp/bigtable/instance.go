@@ -81,7 +81,7 @@ func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The name of the Bigtable instance's cluster.
+// The ID of the Cloud Bigtable cluster.
 func (r *Instance) ClusterId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterId"])
 }
@@ -91,17 +91,17 @@ func (r *Instance) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
-// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `PRODUCTION`.
+// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 func (r *Instance) InstanceType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
-// The name of the Bigtable instance.
+// The name of the Cloud Bigtable instance.
 func (r *Instance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The number of nodes in your Bigtable instance. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+// The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
 func (r *Instance) NumNodes() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["numNodes"])
 }
@@ -112,54 +112,54 @@ func (r *Instance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `SSD`.
+// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
 func (r *Instance) StorageType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["storageType"])
 }
 
-// The zone to create the Bigtable instance in. Zones that support Bigtable instances are noted on the [Cloud Locations page](https://cloud.google.com/about/locations/).
+// The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 func (r *Instance) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// The name of the Bigtable instance's cluster.
+	// The ID of the Cloud Bigtable cluster.
 	ClusterId interface{}
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName interface{}
-	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `PRODUCTION`.
+	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType interface{}
-	// The name of the Bigtable instance.
+	// The name of the Cloud Bigtable instance.
 	Name interface{}
-	// The number of nodes in your Bigtable instance. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+	// The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
 	NumNodes interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `SSD`.
+	// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
 	StorageType interface{}
-	// The zone to create the Bigtable instance in. Zones that support Bigtable instances are noted on the [Cloud Locations page](https://cloud.google.com/about/locations/).
+	// The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The name of the Bigtable instance's cluster.
+	// The ID of the Cloud Bigtable cluster.
 	ClusterId interface{}
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName interface{}
-	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `PRODUCTION`.
+	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType interface{}
-	// The name of the Bigtable instance.
+	// The name of the Cloud Bigtable instance.
 	Name interface{}
-	// The number of nodes in your Bigtable instance. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+	// The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
 	NumNodes interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `SSD`.
+	// The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
 	StorageType interface{}
-	// The zone to create the Bigtable instance in. Zones that support Bigtable instances are noted on the [Cloud Locations page](https://cloud.google.com/about/locations/).
+	// The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 	Zone interface{}
 }

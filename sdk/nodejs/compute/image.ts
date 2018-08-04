@@ -43,6 +43,11 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
+    public readonly licenses: pulumi.Output<string[]>;
+    /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
@@ -85,6 +90,7 @@ export class Image extends pulumi.CustomResource {
             inputs["family"] = state ? state.family : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["licenses"] = state ? state.licenses : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["rawDisk"] = state ? state.rawDisk : undefined;
@@ -96,6 +102,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["family"] = args ? args.family : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["licenses"] = args ? args.licenses : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
@@ -131,6 +138,11 @@ export interface ImageState {
      * A set of key/value label pairs to assign to the image.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
+    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
@@ -178,6 +190,11 @@ export interface ImageArgs {
      * A set of key/value label pairs to assign to the image.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
+    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.

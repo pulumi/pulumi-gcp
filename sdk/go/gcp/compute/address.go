@@ -7,13 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a static IP address resource for Google Compute Engine. For more information see
-// the official documentation for
-// [external](https://cloud.google.com/compute/docs/instances-and-network) and
-// [internal](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
-// static IP reservations, as well as the
-// [API](https://cloud.google.com/compute/docs/reference/beta/addresses/insert).
-// 
 type Address struct {
 	s *pulumi.ResourceState
 }
@@ -25,19 +18,25 @@ func NewAddress(ctx *pulumi.Context,
 	if args == nil {
 		inputs["address"] = nil
 		inputs["addressType"] = nil
+		inputs["description"] = nil
 		inputs["name"] = nil
+		inputs["networkTier"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["subnetwork"] = nil
 	} else {
 		inputs["address"] = args.Address
 		inputs["addressType"] = args.AddressType
+		inputs["description"] = args.Description
 		inputs["name"] = args.Name
+		inputs["networkTier"] = args.NetworkTier
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["subnetwork"] = args.Subnetwork
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
+	inputs["users"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/address:Address", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -53,11 +52,15 @@ func GetAddress(ctx *pulumi.Context,
 	if state != nil {
 		inputs["address"] = state.Address
 		inputs["addressType"] = state.AddressType
+		inputs["creationTimestamp"] = state.CreationTimestamp
+		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["networkTier"] = state.NetworkTier
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["selfLink"] = state.SelfLink
 		inputs["subnetwork"] = state.Subnetwork
+		inputs["users"] = state.Users
 	}
 	s, err := ctx.ReadResource("gcp:compute/address:Address", name, id, inputs, opts...)
 	if err != nil {
@@ -76,34 +79,36 @@ func (r *Address) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The IP address to reserve. An address may only be
-// specified for INTERNAL address types. The IP address must be inside the
-// specified subnetwork, if any.
 func (r *Address) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
 }
 
-// The Address Type that should be configured.
-// Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-// specify an external static IP address. Defaults to EXTERNAL if omitted.
 func (r *Address) AddressType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["addressType"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
+func (r *Address) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
+func (r *Address) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
 func (r *Address) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+func (r *Address) NetworkTier() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["networkTier"])
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Address) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The Region in which the created address should reside.
-// If it is not provided, the provider region is used.
 func (r *Address) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -113,61 +118,42 @@ func (r *Address) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The self link URI of the subnetwork in which to
-// create the address. A subnetwork may only be specified for INTERNAL
-// address types.
 func (r *Address) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
+func (r *Address) Users() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["users"])
+}
+
 // Input properties used for looking up and filtering Address resources.
 type AddressState struct {
-	// The IP address to reserve. An address may only be
-	// specified for INTERNAL address types. The IP address must be inside the
-	// specified subnetwork, if any.
 	Address interface{}
-	// The Address Type that should be configured.
-	// Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-	// specify an external static IP address. Defaults to EXTERNAL if omitted.
 	AddressType interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	CreationTimestamp interface{}
+	Description interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	NetworkTier interface{}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The self link URI of the subnetwork in which to
-	// create the address. A subnetwork may only be specified for INTERNAL
-	// address types.
 	Subnetwork interface{}
+	Users interface{}
 }
 
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
-	// The IP address to reserve. An address may only be
-	// specified for INTERNAL address types. The IP address must be inside the
-	// specified subnetwork, if any.
 	Address interface{}
-	// The Address Type that should be configured.
-	// Specify INTERNAL to reserve an internal static IP address EXTERNAL to
-	// specify an external static IP address. Defaults to EXTERNAL if omitted.
 	AddressType interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	Description interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	NetworkTier interface{}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
-	// The self link URI of the subnetwork in which to
-	// create the address. A subnetwork may only be specified for INTERNAL
-	// address types.
 	Subnetwork interface{}
 }

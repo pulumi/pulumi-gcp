@@ -7,6 +7,7 @@ from bucket import *
 from bucket_acl import *
 from bucket_iam_binding import *
 from bucket_iam_member import *
+from bucket_iam_policy import *
 from bucket_object import *
 from default_object_acl import *
 from notification import *

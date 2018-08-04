@@ -22,14 +22,14 @@ export interface GetClusterArgs {
     /**
      * The name of the cluster.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly zone?: pulumi.Input<string>;
+    readonly project?: string;
+    readonly region?: string;
+    readonly zone?: string;
 }
 
 /**
@@ -56,12 +56,13 @@ export interface GetClusterResult {
     readonly monitoringService: string;
     readonly network: string;
     readonly networkPolicies: { enabled: boolean, provider: string }[];
-    readonly nodeConfigs: { diskSizeGb: number, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
-    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
+    readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
+    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
     readonly privateCluster: boolean;
     readonly removeDefaultNodePool: boolean;
+    readonly resourceLabels: {[key: string]: string};
     readonly subnetwork: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

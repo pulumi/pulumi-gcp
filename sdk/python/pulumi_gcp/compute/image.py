@@ -12,7 +12,7 @@ class Image(pulumi.CustomResource):
     [API](https://cloud.google.com/compute/docs/reference/latest/images).
     
     """
-    def __init__(__self__, __name__, __opts__=None, create_timeout=None, description=None, family=None, labels=None, name=None, project=None, raw_disk=None, source_disk=None):
+    def __init__(__self__, __name__, __opts__=None, create_timeout=None, description=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None):
         """Create a Image resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -54,6 +54,15 @@ class Image(pulumi.CustomResource):
         A set of key/value label pairs to assign to the image.
         """
         __props__['labels'] = labels
+
+        if licenses and not isinstance(licenses, list):
+            raise TypeError('Expected property licenses to be a list')
+        __self__.licenses = licenses
+        """
+        A list of license URIs to apply to this image. Changing this
+        forces a new resource to be created.
+        """
+        __props__['licenses'] = licenses
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -118,6 +127,8 @@ class Image(pulumi.CustomResource):
             self.label_fingerprint = outs['labelFingerprint']
         if 'labels' in outs:
             self.labels = outs['labels']
+        if 'licenses' in outs:
+            self.licenses = outs['licenses']
         if 'name' in outs:
             self.name = outs['name']
         if 'project' in outs:

@@ -32,6 +32,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sslCertificates: pulumi.Output<string>;
+    public readonly sslPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a TargetSSLProxy resource with the given unique name, arguments, and options.
@@ -54,6 +55,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             inputs["proxyId"] = state ? state.proxyId : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["sslCertificates"] = state ? state.sslCertificates : undefined;
+            inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
         } else {
             const args = argsOrState as TargetSSLProxyArgs | undefined;
             if (!args || args.backendService === undefined) {
@@ -68,6 +70,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
+            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -95,7 +98,8 @@ export interface TargetSSLProxyState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly sslCertificates?: pulumi.Input<pulumi.Input<string>>;
+    readonly sslCertificates?: pulumi.Input<string>;
+    readonly sslPolicy?: pulumi.Input<string>;
 }
 
 /**
@@ -111,5 +115,6 @@ export interface TargetSSLProxyArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly proxyHeader?: pulumi.Input<string>;
-    readonly sslCertificates: pulumi.Input<pulumi.Input<string>>;
+    readonly sslCertificates: pulumi.Input<string>;
+    readonly sslPolicy?: pulumi.Input<string>;
 }

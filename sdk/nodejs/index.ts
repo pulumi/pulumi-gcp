@@ -4,6 +4,7 @@
 // Export sub-modules:
 import * as bigquery from "./bigquery/index";
 import * as bigtable from "./bigtable/index";
+import * as cloudbuild from "./cloudbuild/index";
 import * as cloudfunctions from "./cloudfunctions/index";
 import * as compute from "./compute/index";
 import * as config from "./config/index";
@@ -18,6 +19,8 @@ import * as logging from "./logging/index";
 import * as organizations from "./organizations/index";
 import * as projects from "./projects/index";
 import * as pubsub from "./pubsub/index";
+import * as redis from "./redis/index";
+import * as resourcemanager from "./resourcemanager/index";
 import * as runtimeconfig from "./runtimeconfig/index";
 import * as serverless from "./serverless/index";
 import * as serviceAccount from "./serviceAccount/index";
@@ -25,4 +28,4 @@ import * as sourcerepo from "./sourcerepo/index";
 import * as spanner from "./spanner/index";
 import * as sql from "./sql/index";
 import * as storage from "./storage/index";
-export {bigquery, bigtable, cloudfunctions, compute, config, container, dataflow, dataproc, dns, endpoints, folder, kms, logging, organizations, projects, pubsub, runtimeconfig, serverless, serviceAccount, sourcerepo, spanner, sql, storage};
+export {bigquery, bigtable, cloudbuild, cloudfunctions, compute, config, container, dataflow, dataproc, dns, endpoints, folder, kms, logging, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, sourcerepo, spanner, sql, storage};

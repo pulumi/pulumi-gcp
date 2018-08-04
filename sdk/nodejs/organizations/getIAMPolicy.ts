@@ -50,7 +50,7 @@ export interface GetIAMPolicyArgs {
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      */
-    readonly bindings: pulumi.Input<{ members: pulumi.Input<pulumi.Input<string>[]>, role: pulumi.Input<string> }[]>;
+    readonly bindings: { members: string[], role: string }[];
 }
 
 /**

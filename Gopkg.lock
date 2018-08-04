@@ -548,7 +548,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "ad3b5e7ee88346bc7e960de9f953957a72f84516"
+  revision = "c57aef785bb8d88f94f6301f8956c782e84dbcb5"
 
 [[projects]]
   branch = "master"
@@ -557,7 +557,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "e39285594c20a8d2ea5d41351c40000e87fed547"
+  revision = "c0f99e5d748ed3a7b17b319bb38675dd72288031"
 
 [[projects]]
   branch = "master"
@@ -601,6 +601,12 @@
   version = "v1.3.0"
 
 [[projects]]
+  name = "github.com/stoewer/go-strcase"
+  packages = ["."]
+  revision = "c8136b55823dc6af966d084a06056c5575f6400f"
+  version = "v1.0.1"
+
+[[projects]]
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
@@ -610,7 +616,7 @@
   branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-google"
   packages = ["google"]
-  revision = "bb9022d12f6efed89066d503465a1c0751a40dfc"
+  revision = "e95fa4674ce86246965fcf659086cedbfc6d1417"
   source = "github.com/pulumi/terraform-provider-google"
 
 [[projects]]
@@ -795,6 +801,7 @@
     "dataflow/v1b3",
     "dataproc/v1",
     "dns/v1",
+    "dns/v1beta2",
     "gensupport",
     "googleapi",
     "googleapi/internal/uritemplates",

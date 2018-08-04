@@ -20,8 +20,8 @@ export function getRegistryRepository(args?: GetRegistryRepositoryArgs): Promise
  * A collection of arguments for invoking getRegistryRepository.
  */
 export interface GetRegistryRepositoryArgs {
-    readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    readonly project?: string;
+    readonly region?: string;
 }
 
 /**

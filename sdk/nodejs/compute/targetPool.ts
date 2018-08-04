@@ -138,7 +138,7 @@ export interface TargetPoolState {
      * List of zero or one health check name or self_link. Only
      * legacy `google_compute_http_health_check` is supported.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -196,7 +196,7 @@ export interface TargetPoolArgs {
      * List of zero or one health check name or self_link. Only
      * legacy `google_compute_http_health_check` is supported.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
