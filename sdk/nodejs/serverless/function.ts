@@ -55,7 +55,7 @@ export interface FunctionOptions {
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    readonly timeout?: pulumi.Input<number>;        
+    readonly timeout?: pulumi.Input<number>;
    /**
     * The packages relative to the program folder to not include the Function upload. This can be
     * used to override the default serialization logic that includes all packages referenced by
@@ -158,16 +158,18 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
             if (err) {
               return reject(err);
             }
-
+            
             // Override dependencies by removing @pulumi and excludedPackages
-            packageJson.dependencies = Object.keys(packageJson.dependencies)
+            const dependencies = Object.keys(packageJson.dependencies)
                 .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
                 .reduce((obj, key) => {
                     obj[key] = packageJson.dependencies[key];
                     return obj;
                 }, {});
 
-            resolve(JSON.stringify(packageJson));
-          });
+            resolve(JSON.stringify({
+                dependencies: dependencies,
+            }));
+        });
     });
 }

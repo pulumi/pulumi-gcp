@@ -158,16 +158,18 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
             if (err) {
               return reject(err);
             }
-
+            
             // Override dependencies by removing @pulumi and excludedPackages
-            packageJson.dependencies = Object.keys(packageJson.dependencies)
+            const dependencies = Object.keys(packageJson.dependencies)
                 .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
                 .reduce((obj, key) => {
                     obj[key] = packageJson.dependencies[key];
                     return obj;
                 }, {});
 
-            resolve(JSON.stringify(packageJson));
-          });
+            resolve(JSON.stringify({
+                dependencies: dependencies,
+            }));
+        });
     });
 }

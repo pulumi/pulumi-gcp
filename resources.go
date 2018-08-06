@@ -79,7 +79,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:        "google",
 		Description: "A Pulumi package for creating and managing Google Cloud Platform resources.",
 		Keywords:    []string{"pulumi", "gcp"},
-		License:     "Apache 2.0",
+		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-gcp",
 		Resources: map[string]*tfbridge.ResourceInfo{
@@ -753,10 +753,10 @@ func Provider() tfbridge.ProviderInfo {
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "^0.14.0",
 				"read-package-json": "^2.0.13",
+				"@types/express":    "^4.16.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node":    "^8.0.25", // so we can access strongly typed node definitions.
-				"@types/express": "^4.16.0",
+				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				Modules: map[string]*tfbridge.OverlayInfo{
