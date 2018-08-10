@@ -45,7 +45,7 @@ const computeIntance = new gcp.compute.Instance("instance", {
     zone: regionZone,
     bootDisk: {
         initializeParams: {
-            image: "debian-cloud/debian-8",
+            image: "debian-cloud/debian-9",
         },
     },
     networkInterfaces: [
