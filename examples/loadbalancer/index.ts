@@ -18,7 +18,7 @@ const regionZone = gcp.config.zone;
 const projectName = gcp.config.project;
 
 const machineTypeName = "f1-micro";
-const imageName = "debian-cloud/debian-8";
+const imageName = "debian-cloud/debian-9";
 const tag = "http-tag";
 
 let network = new gcp.compute.Network("default-network", {
