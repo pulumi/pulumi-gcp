@@ -152,6 +152,7 @@
         "projects/service.ts",
         "projects/services.ts",
         "projects/usageExportBucket.ts",
+        "provider.ts",
         "pubsub/index.ts",
         "pubsub/subscription.ts",
         "pubsub/subscriptionIAMBinding.ts",
