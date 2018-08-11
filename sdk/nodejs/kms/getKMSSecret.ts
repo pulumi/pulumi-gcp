@@ -15,11 +15,11 @@ import * as pulumi from "@pulumi/pulumi";
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
  */
-export function getKMSSecret(args: GetKMSSecretArgs): Promise<GetKMSSecretResult> {
+export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult> {
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
         "ciphertext": args.ciphertext,
         "cryptoKey": args.cryptoKey,
-    });
+    }, opts);
 }
 
 /**

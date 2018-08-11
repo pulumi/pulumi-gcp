@@ -8,9 +8,9 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
  */
-export function getNetblockIPRanges(): Promise<GetNetblockIPRangesResult> {
+export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
-    });
+    }, opts);
 }
 
 /**

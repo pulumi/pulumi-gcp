@@ -6,11 +6,11 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get a network within GCE from its name.
  */
-export function getNetwork(args: GetNetworkArgs): Promise<GetNetworkResult> {
+export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

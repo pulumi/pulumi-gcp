@@ -7,11 +7,11 @@ import * as pulumi from "@pulumi/pulumi";
  * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
  */
-export function getGlobalAddress(args: GetGlobalAddressArgs): Promise<GetGlobalAddressResult> {
+export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

@@ -8,11 +8,11 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ```hcl
  */
-export function getFolder(args: GetFolderArgs): Promise<GetFolderResult> {
+export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
     return pulumi.runtime.invoke("gcp:organizations/getFolder:getFolder", {
         "folder": args.folder,
         "lookupOrganization": args.lookupOrganization,
-    });
+    }, opts);
 }
 
 /**

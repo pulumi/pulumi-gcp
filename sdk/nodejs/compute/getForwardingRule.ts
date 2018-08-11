@@ -6,12 +6,12 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get a forwarding rule within GCE from its name.
  */
-export function getForwardingRule(args: GetForwardingRuleArgs): Promise<GetForwardingRuleResult> {
+export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
     return pulumi.runtime.invoke("gcp:compute/getForwardingRule:getForwardingRule", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

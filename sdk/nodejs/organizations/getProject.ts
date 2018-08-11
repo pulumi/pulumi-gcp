@@ -8,11 +8,11 @@ import * as pulumi from "@pulumi/pulumi";
  * For more information see 
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
  */
-export function getProject(args?: GetProjectArgs): Promise<GetProjectResult> {
+export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:organizations/getProject:getProject", {
         "projectId": args.projectId,
-    });
+    }, opts);
 }
 
 /**

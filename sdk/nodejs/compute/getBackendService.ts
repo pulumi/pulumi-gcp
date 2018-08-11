@@ -8,11 +8,11 @@ import * as pulumi from "@pulumi/pulumi";
  * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  */
-export function getBackendService(args: GetBackendServiceArgs): Promise<GetBackendServiceResult> {
+export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

@@ -22,7 +22,7 @@ install:
     - export GOOGLE_CREDENTIALS=$(cat gcp-credentials.json)
     - gcloud auth activate-service-account --key-file gcp-credentials.json
     # Install Pulumi
-    - curl -L https://get.pulumi.com/ | bash -s -- --version 0.14.0
+    - curl -L https://get.pulumi.com/ | bash -s -- --version 0.15.0-rc2
     - export PATH=$HOME/.pulumi/bin:$PATH
 before_script:
     - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
