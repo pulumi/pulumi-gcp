@@ -60,8 +60,8 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SubnetworkIAMPolicyArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: SubnetworkIAMPolicyArgs | SubnetworkIAMPolicyState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: SubnetworkIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SubnetworkIAMPolicyArgs | SubnetworkIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SubnetworkIAMPolicyState = argsOrState as SubnetworkIAMPolicyState | undefined;

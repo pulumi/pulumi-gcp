@@ -48,8 +48,8 @@ export class BucketIAMMember extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BucketIAMMemberArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: BucketIAMMemberArgs | BucketIAMMemberState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: BucketIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: BucketIAMMemberArgs | BucketIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: BucketIAMMemberState = argsOrState as BucketIAMMemberState | undefined;

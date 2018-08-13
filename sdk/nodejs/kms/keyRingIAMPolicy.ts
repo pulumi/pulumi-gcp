@@ -51,8 +51,8 @@ export class KeyRingIAMPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: KeyRingIAMPolicyArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: KeyRingIAMPolicyArgs | KeyRingIAMPolicyState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: KeyRingIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: KeyRingIAMPolicyArgs | KeyRingIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: KeyRingIAMPolicyState = argsOrState as KeyRingIAMPolicyState | undefined;

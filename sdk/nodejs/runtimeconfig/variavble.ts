@@ -53,8 +53,8 @@ export class Variavble extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VariavbleArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: VariavbleArgs | VariavbleState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: VariavbleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: VariavbleArgs | VariavbleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: VariavbleState = argsOrState as VariavbleState | undefined;
