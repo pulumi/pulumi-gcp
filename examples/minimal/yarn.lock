@@ -45,9 +45,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
 
-"@pulumi/pulumi@^0.15.0-rc":
-  version "0.15.0-rc3"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-0.15.0-rc3.tgz#e83d2d02c289ea815f50a55feebbcef6648a3da0"
+"@pulumi/pulumi@^0.15.0":
+  version "0.15.0"
+  resolved "https://npmjs.pulumi.com/@pulumi%2fpulumi/-/pulumi-0.15.0.tgz#63f7e6ab76c35459eae4725112ff507f08d071c2"
   dependencies:
     google-protobuf "^3.5.0"
     grpc "^1.12.2"
@@ -64,8 +64,8 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
 
 "@types/node@^10.1.0":
-  version "10.5.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.8.tgz#6f14ccecad1d19332f063a6a764f8907801fece0"
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.7.0.tgz#d384b2c8625414ab2aa18fdf989c288d6a7a8202"
 
 abbrev@1:
   version "1.1.1"
