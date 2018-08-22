@@ -6,11 +6,11 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to retrieve default service account for this project
  */
-export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs): Promise<GetDefaultServiceAccountResult> {
+export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

@@ -53,8 +53,8 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TopicIAMPolicyArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: TopicIAMPolicyArgs | TopicIAMPolicyState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: TopicIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: TopicIAMPolicyArgs | TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: TopicIAMPolicyState = argsOrState as TopicIAMPolicyState | undefined;

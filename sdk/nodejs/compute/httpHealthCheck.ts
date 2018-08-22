@@ -43,8 +43,8 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: HttpHealthCheckArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: HttpHealthCheckArgs | HttpHealthCheckState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: HttpHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: HttpHealthCheckArgs | HttpHealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: HttpHealthCheckState = argsOrState as HttpHealthCheckState | undefined;

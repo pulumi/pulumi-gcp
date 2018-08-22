@@ -7,11 +7,11 @@ import * as pulumi from "@pulumi/pulumi";
  * Get the service account from a project. For more information see
  * the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
  */
-export function getAccount(args: GetAccountArgs): Promise<GetAccountResult> {
+export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
         "accountId": args.accountId,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

@@ -83,18 +83,18 @@ func (r *Registry) Credentials() *pulumi.ArrayOutput {
 }
 
 // A PubSub topics to publish device events. Structure is documented below.
-func (r *Registry) EventNotificationConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["eventNotificationConfig"])
+func (r *Registry) EventNotificationConfig() *pulumi.Output {
+	return r.s.State["eventNotificationConfig"]
 }
 
 // Activate or deactivate HTTP. Structure is documented below.
-func (r *Registry) HttpConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["httpConfig"])
+func (r *Registry) HttpConfig() *pulumi.Output {
+	return r.s.State["httpConfig"]
 }
 
 // Activate or deactivate MQTT. Structure is documented below.
-func (r *Registry) MqttConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["mqttConfig"])
+func (r *Registry) MqttConfig() *pulumi.Output {
+	return r.s.State["mqttConfig"]
 }
 
 // A unique name for the resource, required by device registry.
@@ -114,8 +114,8 @@ func (r *Registry) Region() *pulumi.StringOutput {
 }
 
 // A PubSub topic to publish device state updates. Structure is documented below.
-func (r *Registry) StateNotificationConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["stateNotificationConfig"])
+func (r *Registry) StateNotificationConfig() *pulumi.Output {
+	return r.s.State["stateNotificationConfig"]
 }
 
 // Input properties used for looking up and filtering Registry resources.

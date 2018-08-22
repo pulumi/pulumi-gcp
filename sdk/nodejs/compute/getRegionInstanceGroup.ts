@@ -32,14 +32,14 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ```
  */
-export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs): Promise<GetRegionInstanceGroupResult> {
+export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
         "selfLink": args.selfLink,
-    });
+    }, opts);
 }
 
 /**

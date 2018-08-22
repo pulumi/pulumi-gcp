@@ -6,11 +6,11 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get an active folder within GCP by `display_name` and `parent`.
  */
-export function getActiveFolder(args: GetActiveFolderArgs): Promise<GetActiveFolderResult> {
+export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
     return pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {
         "displayName": args.displayName,
         "parent": args.parent,
-    });
+    }, opts);
 }
 
 /**

@@ -21,13 +21,13 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getBillingAccount(args?: GetBillingAccountArgs): Promise<GetBillingAccountResult> {
+export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
         "displayName": args.displayName,
         "open": args.open,
-    });
+    }, opts);
 }
 
 /**

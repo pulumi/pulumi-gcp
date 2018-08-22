@@ -35,10 +35,10 @@ import * as pulumi from "@pulumi/pulumi";
  * See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
  * for a list of these restrictions.
  */
-export function getIAMPolicy(args: GetIAMPolicyArgs): Promise<GetIAMPolicyResult> {
+export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
     return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
         "bindings": args.bindings,
-    });
+    }, opts);
 }
 
 /**

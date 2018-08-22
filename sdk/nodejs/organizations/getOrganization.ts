@@ -17,12 +17,12 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getOrganization(args?: GetOrganizationArgs): Promise<GetOrganizationResult> {
+export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:organizations/getOrganization:getOrganization", {
         "domain": args.domain,
         "organization": args.organization,
-    });
+    }, opts);
 }
 
 /**

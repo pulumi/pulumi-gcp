@@ -6,13 +6,13 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get info about a cluster within GKE from its name and zone.
  */
-export function getCluster(args: GetClusterArgs): Promise<GetClusterResult> {
+export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("gcp:container/getCluster:getCluster", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
         "zone": args.zone,
-    });
+    }, opts);
 }
 
 /**

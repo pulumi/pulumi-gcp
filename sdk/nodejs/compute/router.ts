@@ -39,8 +39,8 @@ export class Router extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RouterArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: RouterState = argsOrState as RouterState | undefined;

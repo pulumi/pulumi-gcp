@@ -26,11 +26,11 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getManagedZone(args: GetManagedZoneArgs): Promise<GetManagedZoneResult> {
+export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {
     return pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

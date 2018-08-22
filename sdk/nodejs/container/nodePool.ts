@@ -89,8 +89,8 @@ export class NodePool extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NodePoolArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: NodePoolState = argsOrState as NodePoolState | undefined;

@@ -7,12 +7,12 @@ import * as pulumi from "@pulumi/pulumi";
  * Get the IP address from a static address. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
  */
-export function getAddress(args: GetAddressArgs): Promise<GetAddressResult> {
+export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getAddress:getAddress", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

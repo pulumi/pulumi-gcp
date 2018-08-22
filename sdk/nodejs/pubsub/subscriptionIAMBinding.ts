@@ -55,8 +55,8 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SubscriptionIAMBindingArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: SubscriptionIAMBindingArgs | SubscriptionIAMBindingState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: SubscriptionIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SubscriptionIAMBindingArgs | SubscriptionIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SubscriptionIAMBindingState = argsOrState as SubscriptionIAMBindingState | undefined;

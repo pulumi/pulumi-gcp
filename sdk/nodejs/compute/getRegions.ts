@@ -19,12 +19,12 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getRegions(args?: GetRegionsArgs): Promise<GetRegionsResult> {
+export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getRegions:getRegions", {
         "project": args.project,
         "status": args.status,
-    });
+    }, opts);
 }
 
 /**
