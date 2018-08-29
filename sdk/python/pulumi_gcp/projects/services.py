@@ -16,7 +16,7 @@ class Services(pulumi.CustomResource):
     
     ~> **Note:** This resource attempts to be the authoritative source on which APIs are enabled, which can
     	lead to conflicts when certain APIs or actions enable other APIs. To just ensure that a specific
-    	API is enabled, use the [google_project_service](google_project_service.html) resource.
+    	API is enabled, use the google_project_service resource.
     """
     def __init__(__self__, __name__, __opts__=None, disable_on_destroy=None, project=None, services=None):
         """Create a Services resource with the given unique name, props, and options."""

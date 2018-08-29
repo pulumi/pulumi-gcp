@@ -8,7 +8,7 @@ import * as pulumi from "@pulumi/pulumi";
  * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  * 
- * For internal load balancing, use a [google_compute_region_backend_service](/docs/providers/google/r/compute_region_backend_service.html).
+ * For internal load balancing, use a [google_compute_region_backend_service](https://www.terraform.io/docs/providers/google/r/compute_region_backend_service.html).
  */
 export class BackendService extends pulumi.CustomResource {
     /**
@@ -42,7 +42,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -182,7 +182,7 @@ export interface BackendServiceState {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -267,7 +267,7 @@ export interface BackendServiceArgs {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**

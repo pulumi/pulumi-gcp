@@ -66,7 +66,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
-     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     public readonly storageClass: pulumi.Output<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface BucketState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     readonly storageClass?: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface BucketArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     readonly storageClass?: pulumi.Input<string>;
     /**

@@ -12,7 +12,7 @@ import (
 // see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 // 
-// For internal load balancing, use a [google_compute_region_backend_service](/docs/providers/google/r/compute_region_backend_service.html).
+// For internal load balancing, use a [google_compute_region_backend_service](https://www.terraform.io/docs/providers/google/r/compute_region_backend_service.html).
 type BackendService struct {
 	s *pulumi.ResourceState
 }
@@ -129,7 +129,7 @@ func (r *BackendService) CustomRequestHeaders() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["customRequestHeaders"])
 }
 
-// Textual description for the backend.
+// The textual description for the backend service.
 func (r *BackendService) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
@@ -215,7 +215,7 @@ type BackendServiceState struct {
 	// ) Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
 	CustomRequestHeaders interface{}
-	// Textual description for the backend.
+	// The textual description for the backend service.
 	Description interface{}
 	// Whether or not to enable the Cloud CDN on the backend service.
 	EnableCdn interface{}
@@ -264,7 +264,7 @@ type BackendServiceArgs struct {
 	// ) Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
 	CustomRequestHeaders interface{}
-	// Textual description for the backend.
+	// The textual description for the backend service.
 	Description interface{}
 	// Whether or not to enable the Cloud CDN on the backend service.
 	EnableCdn interface{}

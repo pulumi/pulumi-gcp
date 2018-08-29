@@ -20,10 +20,6 @@ export class Autoscalar extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
@@ -81,10 +77,6 @@ export interface AutoscalarState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -101,10 +93,6 @@ export interface AutoscalarArgs {
     readonly autoscalingPolicy: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, target: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, minReplicas: pulumi.Input<number> }>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly target: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;

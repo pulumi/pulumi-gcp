@@ -45,7 +45,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
-     * ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
      */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface GlobalForwardingRuleState {
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
-     * ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
      */
     readonly labelFingerprint?: pulumi.Input<string>;
     /**

@@ -9,7 +9,7 @@ import * as pulumi from "@pulumi/pulumi";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
  * 
  * ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
- *   [`google_compute_backend_service`](compute_backend_service.html) instead.
+ *   `google_compute_backend_service` instead.
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**
@@ -35,7 +35,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -144,7 +144,7 @@ export interface RegionBackendServiceState {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface RegionBackendServiceArgs {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**

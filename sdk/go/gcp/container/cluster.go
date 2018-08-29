@@ -13,7 +13,7 @@ import (
 // [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters).
 // 
 // ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-// [Read more about sensitive data in state](/docs/state/sensitive-data.html).
+// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 type Cluster struct {
 	s *pulumi.ResourceState
 }
@@ -300,7 +300,7 @@ func (r *Cluster) NodeConfig() *pulumi.Output {
 }
 
 // List of node pools associated with this cluster.
-// See [google_container_node_pool](container_node_pool.html) for schema.
+// See google_container_node_pool for schema.
 func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodePools"])
 }
@@ -447,7 +447,7 @@ type ClusterState struct {
 	// Structure is documented below.
 	NodeConfig interface{}
 	// List of node pools associated with this cluster.
-	// See [google_container_node_pool](container_node_pool.html) for schema.
+	// See google_container_node_pool for schema.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default
@@ -557,7 +557,7 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	NodeConfig interface{}
 	// List of node pools associated with this cluster.
-	// See [google_container_node_pool](container_node_pool.html) for schema.
+	// See google_container_node_pool for schema.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default

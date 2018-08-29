@@ -11,7 +11,7 @@ class BackendService(pulumi.CustomResource):
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
     
-    For internal load balancing, use a [google_compute_region_backend_service](/docs/providers/google/r/compute_region_backend_service.html).
+    For internal load balancing, use a [google_compute_region_backend_service](https://www.terraform.io/docs/providers/google/r/compute_region_backend_service.html).
     """
     def __init__(__self__, __name__, __opts__=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None):
         """Create a BackendService resource with the given unique name, props, and options."""
@@ -62,7 +62,7 @@ class BackendService(pulumi.CustomResource):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
         """
-        Textual description for the backend.
+        The textual description for the backend service.
         """
         __props__['description'] = description
 

@@ -13,7 +13,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ~> **Note:** This resource attempts to be the authoritative source on which APIs are enabled, which can
  * 	lead to conflicts when certain APIs or actions enable other APIs. To just ensure that a specific
- * 	API is enabled, use the [google_project_service](google_project_service.html) resource.
+ * 	API is enabled, use the google_project_service resource.
  */
 export class Services extends pulumi.CustomResource {
     /**

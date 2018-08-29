@@ -11,7 +11,7 @@ import (
 // see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
 // and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
 // 
-// ~> **Note:** This entire resource is in [Beta](/docs/providers/google/index.html#beta-features)
+// ~> **Note:** This entire resource is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
 type SecurityPolicy struct {
 	s *pulumi.ResourceState
 }
@@ -70,7 +70,7 @@ func (r *SecurityPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// An optional description of this rule. Max size is 64.
+// An optional description of this security policy. Max size is 2048.
 func (r *SecurityPolicy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
@@ -105,7 +105,7 @@ func (r *SecurityPolicy) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SecurityPolicy resources.
 type SecurityPolicyState struct {
-	// An optional description of this rule. Max size is 64.
+	// An optional description of this security policy. Max size is 2048.
 	Description interface{}
 	// Fingerprint of this resource.
 	Fingerprint interface{}
@@ -124,7 +124,7 @@ type SecurityPolicyState struct {
 
 // The set of arguments for constructing a SecurityPolicy resource.
 type SecurityPolicyArgs struct {
-	// An optional description of this rule. Max size is 64.
+	// An optional description of this security policy. Max size is 2048.
 	Description interface{}
 	// The name of the security policy.
 	Name interface{}

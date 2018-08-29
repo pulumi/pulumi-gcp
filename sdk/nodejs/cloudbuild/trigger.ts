@@ -49,9 +49,6 @@ export class Trigger extends pulumi.CustomResource {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     public readonly filename: pulumi.Output<string | undefined>;
-    /**
-     * ID of the project that owns the Cloud Source Repository.
-     */
     public readonly project: pulumi.Output<string>;
     /**
      * Location of the source in a Google
@@ -119,9 +116,6 @@ export interface TriggerState {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     readonly filename?: pulumi.Input<string>;
-    /**
-     * ID of the project that owns the Cloud Source Repository.
-     */
     readonly project?: pulumi.Input<string>;
     /**
      * Location of the source in a Google
@@ -161,9 +155,6 @@ export interface TriggerArgs {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     readonly filename?: pulumi.Input<string>;
-    /**
-     * ID of the project that owns the Cloud Source Repository.
-     */
     readonly project?: pulumi.Input<string>;
     /**
      * Location of the source in a Google

@@ -34,7 +34,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
      */
     public readonly databaseVersion: pulumi.Output<string | undefined>;
     /**
@@ -51,7 +51,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly masterInstanceName: pulumi.Output<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, Terraform will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -144,7 +147,7 @@ export interface DatabaseInstanceState {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -161,7 +164,10 @@ export interface DatabaseInstanceState {
      */
     readonly masterInstanceName?: pulumi.Input<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, Terraform will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -205,7 +211,7 @@ export interface DatabaseInstanceArgs {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -215,7 +221,10 @@ export interface DatabaseInstanceArgs {
      */
     readonly masterInstanceName?: pulumi.Input<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, Terraform will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     readonly name?: pulumi.Input<string>;
     /**
