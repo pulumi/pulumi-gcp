@@ -550,7 +550,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "f8d0ff87fd98595e25fa410a7f95cd81926bb345"
+  revision = "1ebd698a7ab2926ef88eb97a8f268e6c95f44816"
 
 [[projects]]
   branch = "master"
