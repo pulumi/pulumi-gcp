@@ -7,12 +7,12 @@ import * as pulumi from "@pulumi/pulumi";
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
  * 
  */
-export function getAccountKey(args: GetAccountKeyArgs): Promise<GetAccountKeyResult> {
+export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
         "project": args.project,
         "publicKeyType": args.publicKeyType,
         "serviceAccountId": args.serviceAccountId,
-    });
+    }, opts);
 }
 
 /**

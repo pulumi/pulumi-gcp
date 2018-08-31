@@ -13,7 +13,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ~> **Note:** This resource attempts to be the authoritative source on which APIs are enabled, which can
  * 	lead to conflicts when certain APIs or actions enable other APIs. To just ensure that a specific
- * 	API is enabled, use the [google_project_service](google_project_service.html) resource.
+ * 	API is enabled, use the google_project_service resource.
  */
 export class Services extends pulumi.CustomResource {
     /**
@@ -48,8 +48,8 @@ export class Services extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ServicesArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: ServicesArgs | ServicesState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ServicesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ServicesArgs | ServicesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ServicesState = argsOrState as ServicesState | undefined;

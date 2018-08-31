@@ -21,9 +21,9 @@ import * as pulumi from "@pulumi/pulumi";
  * behavior, either:
  * 
  * * Use the project ID directly in whatever is referencing the project, using the
- *   [google_project_iam_policy](/docs/providers/google/r/google_project_iam.html)
+ *   [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
  *   to replace the old `policy_data` property.
- * * Use the [import](/docs/import/usage.html) functionality
+ * * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
  *   to import your pre-existing project into Terraform, where it can be referenced and
  *   used just like always, keeping in mind that Terraform will attempt to undo any changes
  *   made outside Terraform.
@@ -112,8 +112,8 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ProjectState = argsOrState as ProjectState | undefined;

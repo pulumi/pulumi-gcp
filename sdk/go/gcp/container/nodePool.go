@@ -135,7 +135,7 @@ func (r *NodePool) NamePrefix() *pulumi.StringOutput {
 }
 
 // The node configuration of the pool. See
-// [google_container_cluster](container_cluster.html) for schema.
+// google_container_cluster for schema.
 func (r *NodePool) NodeConfig() *pulumi.Output {
 	return r.s.State["nodeConfig"]
 }
@@ -190,7 +190,7 @@ type NodePoolState struct {
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
 	// The node configuration of the pool. See
-	// [google_container_cluster](container_cluster.html) for schema.
+	// google_container_cluster for schema.
 	NodeConfig interface{}
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -228,7 +228,7 @@ type NodePoolArgs struct {
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
 	// The node configuration of the pool. See
-	// [google_container_cluster](container_cluster.html) for schema.
+	// google_container_cluster for schema.
 	NodeConfig interface{}
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.

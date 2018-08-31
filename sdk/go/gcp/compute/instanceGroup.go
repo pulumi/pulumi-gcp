@@ -90,7 +90,10 @@ func (r *InstanceGroup) Instances() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["instances"])
 }
 
-// The name which the port will be mapped to.
+// The name of the instance group. Must be 1-63
+// characters long and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+// include lowercase letters, numbers, and hyphens.
 func (r *InstanceGroup) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -139,7 +142,10 @@ type InstanceGroupState struct {
 	// as self_link URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances interface{}
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name interface{}
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -169,7 +175,10 @@ type InstanceGroupArgs struct {
 	// as self_link URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances interface{}
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name interface{}
 	// The named port configuration. See the section below
 	// for details on configuration.

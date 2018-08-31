@@ -14,7 +14,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ~> **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
  * 
- * ~> **Note:** These entire resources are in [Beta](/docs/providers/google/index.html#beta-features)
+ * ~> **Note:** These entire resources are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
  */
 export class SubnetworkIAMMember extends pulumi.CustomResource {
     /**
@@ -62,8 +62,8 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SubnetworkIAMMemberArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: SubnetworkIAMMemberArgs | SubnetworkIAMMemberState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: SubnetworkIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SubnetworkIAMMemberArgs | SubnetworkIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SubnetworkIAMMemberState = argsOrState as SubnetworkIAMMemberState | undefined;

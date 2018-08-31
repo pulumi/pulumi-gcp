@@ -8,7 +8,7 @@ import * as pulumi from "@pulumi/pulumi";
  * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
  * 
- * ~> **Note:** This entire resource is in [Beta](/docs/providers/google/index.html#beta-features)
+ * ~> **Note:** This entire resource is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
  */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**
@@ -24,7 +24,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -58,8 +58,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SecurityPolicyState = argsOrState as SecurityPolicyState | undefined;
@@ -87,7 +87,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
  */
 export interface SecurityPolicyState {
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -120,7 +120,7 @@ export interface SecurityPolicyState {
  */
 export interface SecurityPolicyArgs {
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     readonly description?: pulumi.Input<string>;
     /**

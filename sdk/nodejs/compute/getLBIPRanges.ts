@@ -8,9 +8,9 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
  */
-export function getLBIPRanges(): Promise<GetLBIPRangesResult> {
+export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
-    });
+    }, opts);
 }
 
 /**

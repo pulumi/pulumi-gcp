@@ -45,7 +45,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
-     * ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
      */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
@@ -90,8 +90,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: GlobalForwardingRuleState = argsOrState as GlobalForwardingRuleState | undefined;
@@ -154,7 +154,7 @@ export interface GlobalForwardingRuleState {
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
-     * ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
      */
     readonly labelFingerprint?: pulumi.Input<string>;
     /**

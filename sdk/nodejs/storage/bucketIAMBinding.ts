@@ -48,8 +48,8 @@ export class BucketIAMBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BucketIAMBindingArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: BucketIAMBindingArgs | BucketIAMBindingState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: BucketIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: BucketIAMBindingArgs | BucketIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: BucketIAMBindingState = argsOrState as BucketIAMBindingState | undefined;

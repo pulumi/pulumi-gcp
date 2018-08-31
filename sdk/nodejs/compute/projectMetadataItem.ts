@@ -43,8 +43,8 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectMetadataItemArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: ProjectMetadataItemArgs | ProjectMetadataItemState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProjectMetadataItemArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ProjectMetadataItemArgs | ProjectMetadataItemState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ProjectMetadataItemState = argsOrState as ProjectMetadataItemState | undefined;

@@ -9,7 +9,7 @@ import * as pulumi from "@pulumi/pulumi";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
  * 
  * ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
- *   [`google_compute_backend_service`](compute_backend_service.html) instead.
+ *   `google_compute_backend_service` instead.
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**
@@ -35,7 +35,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -90,8 +90,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegionBackendServiceArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: RegionBackendServiceArgs | RegionBackendServiceState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: RegionBackendServiceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: RegionBackendServiceArgs | RegionBackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: RegionBackendServiceState = argsOrState as RegionBackendServiceState | undefined;
@@ -144,7 +144,7 @@ export interface RegionBackendServiceState {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface RegionBackendServiceArgs {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Textual description for the backend.
+     * The textual description for the backend service.
      */
     readonly description?: pulumi.Input<string>;
     /**

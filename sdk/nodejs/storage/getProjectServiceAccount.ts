@@ -8,11 +8,11 @@ import * as pulumi from "@pulumi/pulumi";
  *  For more information see 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  */
-export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs): Promise<GetProjectServiceAccountResult> {
+export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

@@ -33,7 +33,10 @@ export class InstanceGroup extends pulumi.CustomResource {
      */
     public readonly instances: pulumi.Output<string[]>;
     /**
-     * The name which the port will be mapped to.
+     * The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -73,8 +76,8 @@ export class InstanceGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: InstanceGroupArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: InstanceGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: InstanceGroupState = argsOrState as InstanceGroupState | undefined;
@@ -119,7 +122,10 @@ export interface InstanceGroupState {
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name which the port will be mapped to.
+     * The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -169,7 +175,10 @@ export interface InstanceGroupArgs {
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name which the port will be mapped to.
+     * The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      */
     readonly name?: pulumi.Input<string>;
     /**

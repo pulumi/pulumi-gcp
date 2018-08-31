@@ -98,8 +98,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly timePartitioning: pulumi.Output<{ expirationMs?: number, field?: string, type: string } | undefined>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * Describes the table type.
      */
     public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -115,8 +114,8 @@ export class Table extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TableArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: TableState = argsOrState as TableState | undefined;
@@ -251,8 +250,7 @@ export interface TableState {
      */
     readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, type: pulumi.Input<string> }>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * Describes the table type.
      */
     readonly type?: pulumi.Input<string>;
     /**

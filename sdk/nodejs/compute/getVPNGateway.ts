@@ -6,12 +6,12 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get a VPN gateway within GCE from its name.
  */
-export function getVPNGateway(args: GetVPNGatewayArgs): Promise<GetVPNGatewayResult> {
+export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
     return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

@@ -94,8 +94,6 @@ func (r *RegionAutoscaler) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (r *RegionAutoscaler) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -119,8 +117,6 @@ type RegionAutoscalerState struct {
 	CreationTimestamp interface{}
 	Description interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
 	// The URI of the created resource.
@@ -133,8 +129,6 @@ type RegionAutoscalerArgs struct {
 	AutoscalingPolicy interface{}
 	Description interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
 	Target interface{}

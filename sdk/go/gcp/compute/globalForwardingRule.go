@@ -114,7 +114,7 @@ func (r *GlobalForwardingRule) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
-// ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+// ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
 func (r *GlobalForwardingRule) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
@@ -175,7 +175,7 @@ type GlobalForwardingRuleState struct {
 	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
 	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
-	// ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+	// ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
 	LabelFingerprint interface{}
 	// )
 	// A set of key/value label pairs to assign to the resource.

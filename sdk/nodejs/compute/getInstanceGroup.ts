@@ -15,14 +15,14 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getInstanceGroup(args?: GetInstanceGroupArgs): Promise<GetInstanceGroupResult> {
+export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getInstanceGroup:getInstanceGroup", {
         "name": args.name,
         "project": args.project,
         "selfLink": args.selfLink,
         "zone": args.zone,
-    });
+    }, opts);
 }
 
 /**

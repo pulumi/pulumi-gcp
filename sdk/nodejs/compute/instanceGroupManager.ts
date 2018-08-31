@@ -9,7 +9,7 @@ import * as pulumi from "@pulumi/pulumi";
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
  * 
- * ~> **Note:** Use [google_compute_region_instance_group_manager](/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
+ * ~> **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -124,8 +124,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: InstanceGroupManagerArgs | InstanceGroupManagerState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: InstanceGroupManagerArgs | InstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: InstanceGroupManagerState = argsOrState as InstanceGroupManagerState | undefined;

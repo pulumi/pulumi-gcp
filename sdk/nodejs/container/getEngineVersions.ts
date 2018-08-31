@@ -24,12 +24,12 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getEngineVersions(args?: GetEngineVersionsArgs): Promise<GetEngineVersionsResult> {
+export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "project": args.project,
         "zone": args.zone,
-    });
+    }, opts);
 }
 
 /**

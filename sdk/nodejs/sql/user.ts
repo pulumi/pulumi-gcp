@@ -7,7 +7,7 @@ import * as pulumi from "@pulumi/pulumi";
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
  * 
  * ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- * [Read more about sensitive data in state](/docs/state/sensitive-data.html). Passwords will not be retrieved when running
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html). Passwords will not be retrieved when running
  * "terraform import".
  */
 export class User extends pulumi.CustomResource {
@@ -56,8 +56,8 @@ export class User extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: UserArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: UserState = argsOrState as UserState | undefined;

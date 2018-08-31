@@ -21,13 +21,13 @@ import * as pulumi from "@pulumi/pulumi";
  * }
  * ```
  */
-export function getZones(args?: GetZonesArgs): Promise<GetZonesResult> {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getZones:getZones", {
         "project": args.project,
         "region": args.region,
         "status": args.status,
-    });
+    }, opts);
 }
 
 /**

@@ -8,7 +8,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
  */
-export function getObjectSignedUrl(args: GetObjectSignedUrlArgs): Promise<GetObjectSignedUrlResult> {
+export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
     return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
         "bucket": args.bucket,
         "contentMd5": args.contentMd5,
@@ -18,7 +18,7 @@ export function getObjectSignedUrl(args: GetObjectSignedUrlArgs): Promise<GetObj
         "extensionHeaders": args.extensionHeaders,
         "httpMethod": args.httpMethod,
         "path": args.path,
-    });
+    }, opts);
 }
 
 /**

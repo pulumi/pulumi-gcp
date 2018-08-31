@@ -11,7 +11,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ~> **Note:**  If you want to manage only single key/value pairs within the project metadata
  * rather than the entire set, then use
- * [google_compute_project_metadata_item](compute_project_metadata_item.html).
+ * google_compute_project_metadata_item.
  */
 export class ProjectMetadata extends pulumi.CustomResource {
     /**
@@ -44,8 +44,8 @@ export class ProjectMetadata extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectMetadataArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: ProjectMetadataArgs | ProjectMetadataState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProjectMetadataArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ProjectMetadataArgs | ProjectMetadataState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ProjectMetadataState = argsOrState as ProjectMetadataState | undefined;

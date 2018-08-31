@@ -6,12 +6,12 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Get a subnetwork within GCE from its name and region.
  */
-export function getSubnetwork(args: GetSubnetworkArgs): Promise<GetSubnetworkResult> {
+export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

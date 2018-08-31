@@ -7,13 +7,13 @@ import * as pulumi from "@pulumi/pulumi";
  * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
  */
-export function getImage(args?: GetImageArgs): Promise<GetImageResult> {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

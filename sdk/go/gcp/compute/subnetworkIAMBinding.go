@@ -18,7 +18,7 @@ import (
 // 
 // ~> **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
 // 
-// ~> **Note:** These entire resources are in [Beta](/docs/providers/google/index.html#beta-features)
+// ~> **Note:** These entire resources are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
 type SubnetworkIAMBinding struct {
 	s *pulumi.ResourceState
 }

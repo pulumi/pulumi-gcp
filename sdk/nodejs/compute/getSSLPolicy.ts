@@ -7,11 +7,11 @@ import * as pulumi from "@pulumi/pulumi";
  * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
  *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
  */
-export function getSSLPolicy(args: GetSSLPolicyArgs): Promise<GetSSLPolicyResult> {
+export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
     return pulumi.runtime.invoke("gcp:compute/getSSLPolicy:getSSLPolicy", {
         "name": args.name,
         "project": args.project,
-    });
+    }, opts);
 }
 
 /**

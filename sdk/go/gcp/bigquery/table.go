@@ -200,8 +200,7 @@ func (r *Table) TimePartitioning() *pulumi.Output {
 	return r.s.State["timePartitioning"]
 }
 
-// The only type supported is DAY, which will generate
-// one partition per day based on data loading time.
+// Describes the table type.
 func (r *Table) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
@@ -255,8 +254,7 @@ type TableState struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning interface{}
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// Describes the table type.
 	Type interface{}
 	// If specified, configures this table as a view.
 	// Structure is documented below.

@@ -85,12 +85,12 @@ func (r *URLMap) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The backend service or backend bucket to use if none of the given paths match.
+// The backend service or backend bucket to use when none of the given rules match.
 func (r *URLMap) DefaultService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultService"])
 }
 
-// An optional description of this test.
+// A brief description of this resource.
 func (r *URLMap) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
@@ -110,12 +110,13 @@ func (r *URLMap) MapId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["mapId"])
 }
 
-// The name of the `path_matcher` resource.
+// A unique name for the resource, required by GCE.
+// Changing this forces a new resource to be created.
 func (r *URLMap) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The name of the `path_matcher` to apply this host rule to.
+// A list of paths to match. Structure is documented below.
 func (r *URLMap) PathMatchers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["pathMatchers"])
 }
@@ -138,9 +139,9 @@ func (r *URLMap) Tests() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering URLMap resources.
 type URLMapState struct {
-	// The backend service or backend bucket to use if none of the given paths match.
+	// The backend service or backend bucket to use when none of the given rules match.
 	DefaultService interface{}
-	// An optional description of this test.
+	// A brief description of this resource.
 	Description interface{}
 	// The unique fingerprint for this resource.
 	Fingerprint interface{}
@@ -148,9 +149,10 @@ type URLMapState struct {
 	HostRules interface{}
 	// The GCE assigned ID of the resource.
 	MapId interface{}
-	// The name of the `path_matcher` resource.
+	// A unique name for the resource, required by GCE.
+	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The name of the `path_matcher` to apply this host rule to.
+	// A list of paths to match. Structure is documented below.
 	PathMatchers interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -163,15 +165,16 @@ type URLMapState struct {
 
 // The set of arguments for constructing a URLMap resource.
 type URLMapArgs struct {
-	// The backend service or backend bucket to use if none of the given paths match.
+	// The backend service or backend bucket to use when none of the given rules match.
 	DefaultService interface{}
-	// An optional description of this test.
+	// A brief description of this resource.
 	Description interface{}
 	// A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
 	HostRules interface{}
-	// The name of the `path_matcher` resource.
+	// A unique name for the resource, required by GCE.
+	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The name of the `path_matcher` to apply this host rule to.
+	// A list of paths to match. Structure is documented below.
 	PathMatchers interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

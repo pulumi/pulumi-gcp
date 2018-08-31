@@ -8,12 +8,12 @@ import * as pulumi from "@pulumi/pulumi";
  * the [official documentation](https://cloud.google.com/functions/docs/)
  * and [API](https://cloud.google.com/functions/docs/apis).
  */
-export function getFunction(args: GetFunctionArgs): Promise<GetFunctionResult> {
+export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
     return pulumi.runtime.invoke("gcp:cloudfunctions/getFunction:getFunction", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**
