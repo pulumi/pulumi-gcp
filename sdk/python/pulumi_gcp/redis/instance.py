@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):

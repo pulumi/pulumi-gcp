@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Address(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):

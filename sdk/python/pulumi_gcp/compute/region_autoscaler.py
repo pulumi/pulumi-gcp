@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class RegionAutoscaler(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, autoscaling_policy=None, description=None, name=None, project=None, region=None, target=None):

@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class VPNGateway(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, network=None, project=None, region=None):

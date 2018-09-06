@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Lien(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, origin=None, parent=None, reason=None, restrictions=None):
