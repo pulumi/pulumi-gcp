@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Disk(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, disk_encryption_key=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None):

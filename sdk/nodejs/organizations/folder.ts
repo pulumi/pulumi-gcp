@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Allows management of a Google Cloud Platform folder. For more information see 

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "./utilities";
 
 /**
  * The provider type for the google package
@@ -18,10 +19,10 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            inputs["credentials"] = (args ? args.credentials : undefined) || utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
+            inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         super("google", name, inputs, opts);
     }

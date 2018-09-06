@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class HttpHealthCheck(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, check_interval_sec=None, description=None, healthy_threshold=None, host=None, name=None, port=None, project=None, request_path=None, timeout_sec=None, unhealthy_threshold=None):

@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Route(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, dest_range=None, name=None, network=None, next_hop_gateway=None, next_hop_instance=None, next_hop_instance_zone=None, next_hop_ip=None, next_hop_vpn_tunnel=None, priority=None, project=None, tags=None):

@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class TargetTCPProxy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None):

@@ -9,17 +9,45 @@ import (
 )
 
 func GetCredentials(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:credentials")
+	v, err := config.Try(ctx, "gcp:credentials")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetProject(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:project")
+	v, err := config.Try(ctx, "gcp:project")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetRegion(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:region")
+	v, err := config.Try(ctx, "gcp:region")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetZone(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:zone")
+	v, err := config.Try(ctx, "gcp:zone")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string); ok {
+		return dv
+	}
+	return v
 }
