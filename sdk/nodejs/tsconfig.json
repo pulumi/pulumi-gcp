@@ -205,7 +205,8 @@
         "storage/getProjectServiceAccount.ts",
         "storage/index.ts",
         "storage/notification.ts",
-        "storage/objectACL.ts"
+        "storage/objectACL.ts",
+        "utilities.ts"
     ]
 }
 

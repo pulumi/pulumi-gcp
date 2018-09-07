@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class InstanceGroup(pulumi.CustomResource):
     """
@@ -45,7 +46,10 @@ class InstanceGroup(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        The name which the port will be mapped to.
+        The name of the instance group. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         __props__['name'] = name
 

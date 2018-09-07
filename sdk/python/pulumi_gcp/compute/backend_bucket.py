@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class BackendBucket(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, bucket_name=None, description=None, enable_cdn=None, name=None, project=None):

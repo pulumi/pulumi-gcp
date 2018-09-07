@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Creates a table resource in a dataset for Google BigQuery. For more information see
@@ -98,8 +99,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly timePartitioning: pulumi.Output<{ expirationMs?: number, field?: string, type: string } | undefined>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * Describes the table type.
      */
     public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -251,8 +251,7 @@ export interface TableState {
      */
     readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, type: pulumi.Input<string> }>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * Describes the table type.
      */
     readonly type?: pulumi.Input<string>;
     /**

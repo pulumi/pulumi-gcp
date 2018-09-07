@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class RegionBackendService(pulumi.CustomResource):
     """
@@ -12,7 +13,7 @@ class RegionBackendService(pulumi.CustomResource):
     and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
     
     ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
-      [`google_compute_backend_service`](compute_backend_service.html) instead.
+      `google_compute_backend_service` instead.
     """
     def __init__(__self__, __name__, __opts__=None, backends=None, connection_draining_timeout_sec=None, description=None, health_checks=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None):
         """Create a RegionBackendService resource with the given unique name, props, and options."""
@@ -47,7 +48,7 @@ class RegionBackendService(pulumi.CustomResource):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
         """
-        Textual description for the backend.
+        The textual description for the backend service.
         """
         __props__['description'] = description
 

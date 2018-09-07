@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Instance(pulumi.CustomResource):
     """
@@ -93,7 +94,7 @@ class Instance(pulumi.CustomResource):
         __self__.guest_accelerators = guest_accelerators
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
+        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         """
         __props__['guestAccelerators'] = guest_accelerators
 
@@ -142,7 +143,7 @@ class Instance(pulumi.CustomResource):
         """
         Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
         `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         __props__['minCpuPlatform'] = min_cpu_platform
 
@@ -199,7 +200,7 @@ class Instance(pulumi.CustomResource):
         """
         Service account to attach to the instance.
         Structure is documented below.
-        **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         __props__['serviceAccount'] = service_account
 

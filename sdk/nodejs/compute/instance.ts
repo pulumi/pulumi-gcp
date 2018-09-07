@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a VM instance resource within GCE. For more information see
@@ -63,7 +64,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
     public readonly guestAccelerators: pulumi.Output<{ count: number, type: string }[]>;
     /**
@@ -102,7 +103,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     public readonly minCpuPlatform: pulumi.Output<string | undefined>;
     /**
@@ -137,7 +138,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     public readonly serviceAccount: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
@@ -279,7 +280,7 @@ export interface InstanceState {
     readonly description?: pulumi.Input<string>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
@@ -318,7 +319,7 @@ export interface InstanceState {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -353,7 +354,7 @@ export interface InstanceState {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
@@ -410,7 +411,7 @@ export interface InstanceArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
@@ -437,7 +438,7 @@ export interface InstanceArgs {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -468,7 +469,7 @@ export interface InstanceArgs {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: [`allow_stopping_for_update`](#allow_stopping_for_update) must be set to true in order to update this field.
+     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**

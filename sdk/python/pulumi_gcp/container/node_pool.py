@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class NodePool(pulumi.CustomResource):
     """
@@ -83,7 +84,7 @@ class NodePool(pulumi.CustomResource):
         __self__.node_config = node_config
         """
         The node configuration of the pool. See
-        [google_container_cluster](container_cluster.html) for schema.
+        google_container_cluster for schema.
         """
         __props__['nodeConfig'] = node_config
 

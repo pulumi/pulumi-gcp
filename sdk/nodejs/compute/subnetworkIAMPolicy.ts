@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for GCE subnetwork. Each of these resources serves a different use case:
@@ -14,7 +15,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * ~> **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
  * 
- * ~> **Note:** These entire resources are in [Beta](/docs/providers/google/index.html#beta-features)
+ * ~> **Note:** These entire resources are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
  */
 export class SubnetworkIAMPolicy extends pulumi.CustomResource {
     /**

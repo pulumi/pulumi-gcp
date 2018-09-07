@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Subnetwork(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, enable_flow_logs=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None):

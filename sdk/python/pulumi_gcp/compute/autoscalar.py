@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Autoscalar(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, autoscaling_policy=None, description=None, name=None, project=None, target=None, zone=None):
@@ -37,10 +38,6 @@ class Autoscalar(pulumi.CustomResource):
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not target:

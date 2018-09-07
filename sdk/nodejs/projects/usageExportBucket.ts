@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Allows creation and management of a Google Cloud Platform project.
@@ -21,9 +22,9 @@ import * as pulumi from "@pulumi/pulumi";
  * behavior, either:
  * 
  * * Use the project ID directly in whatever is referencing the project, using the
- *   [google_project_iam_policy](/docs/providers/google/r/google_project_iam.html)
+ *   [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
  *   to replace the old `policy_data` property.
- * * Use the [import](/docs/import/usage.html) functionality
+ * * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
  *   to import your pre-existing project into Terraform, where it can be referenced and
  *   used just like always, keeping in mind that Terraform will attempt to undo any changes
  *   made outside Terraform.

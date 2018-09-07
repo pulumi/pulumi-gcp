@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class ProjectMetadata(pulumi.CustomResource):
     """
@@ -14,7 +15,7 @@ class ProjectMetadata(pulumi.CustomResource):
     
     ~> **Note:**  If you want to manage only single key/value pairs within the project metadata
     rather than the entire set, then use
-    [google_compute_project_metadata_item](compute_project_metadata_item.html).
+    google_compute_project_metadata_item.
     """
     def __init__(__self__, __name__, __opts__=None, metadata=None, project=None):
         """Create a ProjectMetadata resource with the given unique name, props, and options."""

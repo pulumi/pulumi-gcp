@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class SecurityPolicy(pulumi.CustomResource):
     """
@@ -11,7 +12,7 @@ class SecurityPolicy(pulumi.CustomResource):
     see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
     
-    ~> **Note:** This entire resource is in [Beta](/docs/providers/google/index.html#beta-features)
+    ~> **Note:** This entire resource is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
     """
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, rules=None):
         """Create a SecurityPolicy resource with the given unique name, props, and options."""
@@ -28,7 +29,7 @@ class SecurityPolicy(pulumi.CustomResource):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
         """
-        An optional description of this rule. Max size is 64.
+        An optional description of this security policy. Max size is 2048.
         """
         __props__['description'] = description
 

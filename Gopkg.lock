@@ -338,8 +338,8 @@
     "tfdiags",
     "version"
   ]
-  revision = "41e50bd32a8825a84535e353c3674af8ce799161"
-  version = "v0.11.7"
+  revision = "6dfc4d748de9cda23835bc5704307ed45e839622"
+  version = "v0.11.8"
 
 [[projects]]
   name = "github.com/hashicorp/vault"
@@ -367,6 +367,12 @@
   name = "github.com/jmespath/go-jmespath"
   packages = ["."]
   revision = "0b12d6b5"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/kballard/go-shellquote"
+  packages = ["."]
+  revision = "95032a82bc518f77982ea72343cc1ade730072f0"
 
 [[projects]]
   name = "github.com/kevinburke/ssh_config"
@@ -405,6 +411,12 @@
   packages = ["."]
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mgutz/ansi"
+  packages = ["."]
+  revision = "9520e82c474b0a04dd04f8a40959027271bab992"
 
 [[projects]]
   branch = "master"
@@ -511,7 +523,8 @@
     "pkg/apitype",
     "pkg/apitype/migrate",
     "pkg/backend",
-    "pkg/backend/local",
+    "pkg/backend/display",
+    "pkg/backend/filestate",
     "pkg/diag",
     "pkg/diag/colors",
     "pkg/encoding",
@@ -538,6 +551,7 @@
     "pkg/util/httputil",
     "pkg/util/logging",
     "pkg/util/mapper",
+    "pkg/util/result",
     "pkg/util/retry",
     "pkg/util/rpcutil",
     "pkg/util/rpcutil/rpcerror",
@@ -549,8 +563,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "23cbfa503d856f57a3e00599d53c04fe69c93cf0"
-  version = "v0.15.0"
+  revision = "30fccc0773f2f6554da8f94bb06f80f1e7b9925e"
 
 [[projects]]
   name = "github.com/pulumi/pulumi-terraform"
@@ -558,8 +571,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "bd7ae49ed76ec49f8fbbb7b8b55b407ad38c3c30"
-  version = "v0.15.0"
+  revision = "95c5ae2284ada1866845359ac2fec69329c67ab8"
 
 [[projects]]
   branch = "master"
@@ -626,6 +638,12 @@
   packages = ["google"]
   revision = "e95fa4674ce86246965fcf659086cedbfc6d1417"
   source = "github.com/pulumi/terraform-provider-google"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/texttheater/golang-levenshtein"
+  packages = ["levenshtein"]
+  revision = "d188e65d659ef53fcdb0691c12f1bba64928b649"
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
@@ -900,6 +918,16 @@
   ]
   revision = "41344da2231b913fa3d983840a57a6b1b7b631a1"
   version = "v1.12.0"
+
+[[projects]]
+  name = "gopkg.in/AlecAivazis/survey.v1"
+  packages = [
+    ".",
+    "core",
+    "terminal"
+  ]
+  revision = "f30c5d1830c892f533140f29a1de89141dc217f5"
+  version = "v1.6.2"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"

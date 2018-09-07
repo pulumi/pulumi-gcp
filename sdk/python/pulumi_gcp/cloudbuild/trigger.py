@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Trigger(pulumi.CustomResource):
     """
@@ -65,9 +66,6 @@ class Trigger(pulumi.CustomResource):
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
-        """
-        ID of the project that owns the Cloud Source Repository.
-        """
         __props__['project'] = project
 
         if trigger_template and not isinstance(trigger_template, dict):

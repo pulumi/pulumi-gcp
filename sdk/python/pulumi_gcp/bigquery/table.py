@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Table(pulumi.CustomResource):
     """
@@ -149,8 +150,7 @@ class Table(pulumi.CustomResource):
         """
         __self__.type = pulumi.runtime.UNKNOWN
         """
-        The only type supported is DAY, which will generate
-        one partition per day based on data loading time.
+        Describes the table type.
         """
 
         super(Table, __self__).__init__(

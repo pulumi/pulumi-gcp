@@ -13,7 +13,7 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
 // 
 // ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
-//   [`google_compute_backend_service`](compute_backend_service.html) instead.
+//   `google_compute_backend_service` instead.
 type RegionBackendService struct {
 	s *pulumi.ResourceState
 }
@@ -105,7 +105,7 @@ func (r *RegionBackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput 
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
 }
 
-// Textual description for the backend.
+// The textual description for the backend service.
 func (r *RegionBackendService) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
@@ -171,7 +171,7 @@ type RegionBackendServiceState struct {
 	// Time for which instance will be drained
 	// (not accept new connections, but still work to finish started ones). Defaults to `0`.
 	ConnectionDrainingTimeoutSec interface{}
-	// Textual description for the backend.
+	// The textual description for the backend service.
 	Description interface{}
 	// The fingerprint of the backend service.
 	Fingerprint interface{}
@@ -209,7 +209,7 @@ type RegionBackendServiceArgs struct {
 	// Time for which instance will be drained
 	// (not accept new connections, but still work to finish started ones). Defaults to `0`.
 	ConnectionDrainingTimeoutSec interface{}
-	// Textual description for the backend.
+	// The textual description for the backend service.
 	Description interface{}
 	// Specifies a list of health checks
 	// for checking the health of the backend service. Currently at most

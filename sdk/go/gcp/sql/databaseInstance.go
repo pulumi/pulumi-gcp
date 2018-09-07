@@ -100,7 +100,7 @@ func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 // use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-// for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
 func (r *DatabaseInstance) DatabaseVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
@@ -123,7 +123,10 @@ func (r *DatabaseInstance) MasterInstanceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterInstanceName"])
 }
 
-// A name for this whitelist entry.
+// The name of the instance. If the name is left
+// blank, Terraform will randomly generate one when the instance is first
+// created. This is done because after a name is used, it cannot be reused for
+// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (r *DatabaseInstance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -174,7 +177,7 @@ type DatabaseInstanceState struct {
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+	// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
 	DatabaseVersion interface{}
 	// The first IPv4 address of the addresses assigned. This is
 	// is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
@@ -185,7 +188,10 @@ type DatabaseInstanceState struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, Terraform will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -215,13 +221,16 @@ type DatabaseInstanceArgs struct {
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in [Beta](/docs/providers/google/index.html#beta-features).
+	// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
 	DatabaseVersion interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, Terraform will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

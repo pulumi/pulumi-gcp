@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class SubnetworkIAMPolicy(pulumi.CustomResource):
     """
@@ -17,7 +18,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
     
     ~> **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
     
-    ~> **Note:** These entire resources are in [Beta](/docs/providers/google/index.html#beta-features)
+    ~> **Note:** These entire resources are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
     """
     def __init__(__self__, __name__, __opts__=None, policy_data=None, project=None, region=None, subnetwork=None):
         """Create a SubnetworkIAMPolicy resource with the given unique name, props, and options."""

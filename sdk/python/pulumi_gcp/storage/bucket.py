@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Bucket(pulumi.CustomResource):
     """
@@ -98,7 +99,7 @@ class Bucket(pulumi.CustomResource):
             raise TypeError('Expected property storage_class to be a basestring')
         __self__.storage_class = storage_class
         """
-        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         """
         __props__['storageClass'] = storage_class
 

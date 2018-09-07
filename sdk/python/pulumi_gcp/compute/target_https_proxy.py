@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None):

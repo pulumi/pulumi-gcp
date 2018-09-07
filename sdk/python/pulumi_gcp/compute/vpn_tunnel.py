@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class VPNTunnel(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):

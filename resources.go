@@ -82,6 +82,45 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-gcp",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"credentials": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"GOOGLE_CREDENTIALS",
+						"GOOGLE_CLOUD_KEYFILE_JSON",
+						"GCLOUD_KEYFILE_JSON",
+					},
+				},
+			},
+			"project": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"GOOGLE_PROJECT",
+						"GOOGLE_CLOUD_PROJECT",
+						"GCLOUD_PROJECT",
+						"CLOUDSDK_CORE_PROJECT",
+					},
+				},
+			},
+			"region": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"GOOGLE_REGION",
+						"GCLOUD_REGION",
+						"CLOUDSDK_COMPUTE_REGION",
+					},
+				},
+			},
+			"zone": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"GOOGLE_ZONE",
+						"GCLOUD_ZONE",
+						"CLOUDSDK_COMPUTE_ZONE",
+					},
+				},
+			},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// BigQuery
 			"google_bigquery_dataset": {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -751,7 +790,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.15.0",
+				"@pulumi/pulumi":    "^0.15.1-rc",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -770,7 +809,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.15.0,<0.16.0",
+				"pulumi": ">=0.15.1rc,<0.16.0",
 			},
 		},
 	}

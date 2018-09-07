@@ -98,7 +98,6 @@ func (r *Trigger) Filename() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filename"])
 }
 
-// ID of the project that owns the Cloud Source Repository.
 func (r *Trigger) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -132,7 +131,6 @@ type TriggerState struct {
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
-	// ID of the project that owns the Cloud Source Repository.
 	Project interface{}
 	// Location of the source in a Google
 	// Cloud Source Repository. Structure is documented below.
@@ -162,7 +160,6 @@ type TriggerArgs struct {
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
-	// ID of the project that owns the Cloud Source Repository.
 	Project interface{}
 	// Location of the source in a Google
 	// Cloud Source Repository. Structure is documented below.

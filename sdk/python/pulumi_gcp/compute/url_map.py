@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class URLMap(pulumi.CustomResource):
     """
@@ -30,7 +31,7 @@ class URLMap(pulumi.CustomResource):
             raise TypeError('Expected property default_service to be a basestring')
         __self__.default_service = default_service
         """
-        The backend service or backend bucket to use if none of the given paths match.
+        The backend service or backend bucket to use when none of the given rules match.
         """
         __props__['defaultService'] = default_service
 
@@ -38,7 +39,7 @@ class URLMap(pulumi.CustomResource):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
         """
-        An optional description of this test.
+        A brief description of this resource.
         """
         __props__['description'] = description
 
@@ -54,7 +55,8 @@ class URLMap(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        The name of the `path_matcher` resource.
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
         """
         __props__['name'] = name
 
@@ -62,7 +64,7 @@ class URLMap(pulumi.CustomResource):
             raise TypeError('Expected property path_matchers to be a list')
         __self__.path_matchers = path_matchers
         """
-        The name of the `path_matcher` to apply this host rule to.
+        A list of paths to match. Structure is documented below.
         """
         __props__['pathMatchers'] = path_matchers
 

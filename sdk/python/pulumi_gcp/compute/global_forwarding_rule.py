@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class GlobalForwardingRule(pulumi.CustomResource):
     """
@@ -115,7 +116,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         __self__.label_fingerprint = pulumi.runtime.UNKNOWN
         """
-        ([Beta](/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+        ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
         """
         __self__.self_link = pulumi.runtime.UNKNOWN
         """

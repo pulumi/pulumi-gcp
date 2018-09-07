@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * The Google Compute Engine Instance Group Manager API creates and manages pools
@@ -9,7 +10,7 @@ import * as pulumi from "@pulumi/pulumi";
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
  * 
- * ~> **Note:** Use [google_compute_region_instance_group_manager](/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
+ * ~> **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Cluster(pulumi.CustomResource):
     """
@@ -13,7 +14,7 @@ class Cluster(pulumi.CustomResource):
     [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters).
     
     ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-    [Read more about sensitive data in state](/docs/state/sensitive-data.html).
+    [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     """
     def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
         """Create a Cluster resource with the given unique name, props, and options."""
@@ -220,7 +221,7 @@ class Cluster(pulumi.CustomResource):
         __self__.node_pools = node_pools
         """
         List of node pools associated with this cluster.
-        See [google_container_node_pool](container_node_pool.html) for schema.
+        See google_container_node_pool for schema.
         """
         __props__['nodePools'] = node_pools
 

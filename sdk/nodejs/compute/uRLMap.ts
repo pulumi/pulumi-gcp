@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a URL Map resource within GCE. For more information see
@@ -24,11 +25,11 @@ export class URLMap extends pulumi.CustomResource {
     }
 
     /**
-     * The backend service or backend bucket to use if none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     public readonly defaultService: pulumi.Output<string>;
     /**
-     * An optional description of this test.
+     * A brief description of this resource.
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -44,11 +45,12 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly mapId: pulumi.Output<string>;
     /**
-     * The name of the `path_matcher` resource.
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
      */
     public readonly name: pulumi.Output<string>;
     /**
-     * The name of the `path_matcher` to apply this host rule to.
+     * A list of paths to match. Structure is documented below.
      */
     public readonly pathMatchers: pulumi.Output<{ defaultService: string, description?: string, name: string, pathRules?: { paths: string[], service: string }[] }[] | undefined>;
     /**
@@ -112,11 +114,11 @@ export class URLMap extends pulumi.CustomResource {
  */
 export interface URLMapState {
     /**
-     * The backend service or backend bucket to use if none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     readonly defaultService?: pulumi.Input<string>;
     /**
-     * An optional description of this test.
+     * A brief description of this resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -132,11 +134,12 @@ export interface URLMapState {
      */
     readonly mapId?: pulumi.Input<string>;
     /**
-     * The name of the `path_matcher` resource.
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name of the `path_matcher` to apply this host rule to.
+     * A list of paths to match. Structure is documented below.
      */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
     /**
@@ -159,11 +162,11 @@ export interface URLMapState {
  */
 export interface URLMapArgs {
     /**
-     * The backend service or backend bucket to use if none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     readonly defaultService: pulumi.Input<string>;
     /**
-     * An optional description of this test.
+     * A brief description of this resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -171,11 +174,12 @@ export interface URLMapArgs {
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
     /**
-     * The name of the `path_matcher` resource.
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name of the `path_matcher` to apply this host rule to.
+     * A list of paths to match. Structure is documented below.
      */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
     /**
