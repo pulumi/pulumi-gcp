@@ -119,6 +119,11 @@ class DatabaseInstance(pulumi.CustomResource):
         The URI of the created resource.
         """
         __self__.server_ca_cert = pulumi.runtime.UNKNOWN
+        __self__.service_account_email_address = pulumi.runtime.UNKNOWN
+        """
+        The service account email address assigned to the
+        instance. This property is applicable only to Second Generation instances.
+        """
 
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
@@ -149,5 +154,7 @@ class DatabaseInstance(pulumi.CustomResource):
             self.self_link = outs['selfLink']
         if 'serverCaCert' in outs:
             self.server_ca_cert = outs['serverCaCert']
+        if 'serviceAccountEmailAddress' in outs:
+            self.service_account_email_address = outs['serviceAccountEmailAddress']
         if 'settings' in outs:
             self.settings = outs['settings']

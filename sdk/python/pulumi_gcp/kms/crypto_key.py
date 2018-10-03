@@ -16,8 +16,13 @@ class CryptoKey(pulumi.CustomResource):
     A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
     Google Cloud KMS KeyRing.
     
-    ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed CryptoKey will remove it
-    from state and delete all CryptoKeyVersions, rendering the key unusable, but **will not delete the resource on the server**.
+    ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
+    Terraform-managed CryptoKey will remove it from state and delete all
+    CryptoKeyVersions, rendering the key unusable, but **will not delete the
+    resource on the server**. When Terraform destroys these keys, any data
+    previously encrypted with these keys will be irrecoverable. For this reason, it
+    is strongly recommended that you add lifecycle hooks to the resource to prevent
+    accidental destruction.
     """
     def __init__(__self__, __name__, __opts__=None, key_ring=None, name=None, rotation_period=None):
         """Create a CryptoKey resource with the given unique name, props, and options."""
@@ -56,9 +61,14 @@ class CryptoKey(pulumi.CustomResource):
         Every time this period passes, generate a new CryptoKeyVersion and set it as
         the primary. The first rotation will take place after the specified period. The rotation period has the format
         of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-        a day (ie, 83400).
+        a day (ie, 86400).
         """
         __props__['rotationPeriod'] = rotation_period
+
+        __self__.self_link = pulumi.runtime.UNKNOWN
+        """
+        The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+        """
 
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',
@@ -73,3 +83,5 @@ class CryptoKey(pulumi.CustomResource):
             self.name = outs['name']
         if 'rotationPeriod' in outs:
             self.rotation_period = outs['rotationPeriod']
+        if 'selfLink' in outs:
+            self.self_link = outs['selfLink']

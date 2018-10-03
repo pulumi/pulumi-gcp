@@ -13,7 +13,7 @@ class Dataset(pulumi.CustomResource):
     [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
     
     """
-    def __init__(__self__, __name__, __opts__=None, dataset_id=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, accesses=None, dataset_id=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None):
         """Create a Dataset resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,14 +24,22 @@ class Dataset(pulumi.CustomResource):
 
         __props__ = dict()
 
+        if accesses and not isinstance(accesses, list):
+            raise TypeError('Expected property accesses to be a list')
+        __self__.accesses = accesses
+        """
+        An array of objects that define dataset access for
+        one or more entities. Structure is documented below.
+        """
+        __props__['accesses'] = accesses
+
         if not dataset_id:
             raise TypeError('Missing required property dataset_id')
         elif not isinstance(dataset_id, basestring):
             raise TypeError('Expected property dataset_id to be a basestring')
         __self__.dataset_id = dataset_id
         """
-        A unique ID for the resource.
-        Changing this forces a new resource to be created.
+        The ID of the dataset containing this table.
         """
         __props__['datasetId'] = dataset_id
 
@@ -112,6 +120,8 @@ class Dataset(pulumi.CustomResource):
             __opts__)
 
     def set_outputs(self, outs):
+        if 'accesses' in outs:
+            self.accesses = outs['accesses']
         if 'creationTime' in outs:
             self.creation_time = outs['creationTime']
         if 'datasetId' in outs:

@@ -17,3 +17,4 @@ from get_folder import *
 from get_iam_policy import *
 from get_organization import *
 from get_project import *
+from get_project_services import *

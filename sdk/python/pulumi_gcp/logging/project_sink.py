@@ -14,8 +14,9 @@ class ProjectSink(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
     
-    Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    granted to the credentials used with terraform.
+    ~> **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
+    
+    ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
     """
     def __init__(__self__, __name__, __opts__=None, destination=None, filter=None, name=None, project=None, unique_writer_identity=None):
         """Create a ProjectSink resource with the given unique name, props, and options."""

@@ -48,6 +48,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Enable Binary Authorization for this cluster.
+     * If enabled, all container images will be validated by Google Binary Authorization.
+     */
+    public readonly enableBinaryAuthorization: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -79,7 +84,7 @@ export class Cluster extends pulumi.CustomResource {
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below.
      */
-    public readonly ipAllocationPolicy: pulumi.Output<{ clusterSecondaryRangeName?: string, servicesSecondaryRangeName?: string } | undefined>;
+    public readonly ipAllocationPolicy: pulumi.Output<{ clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork?: boolean, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName?: string } | undefined>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -158,7 +163,7 @@ export class Cluster extends pulumi.CustomResource {
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
      */
-    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
+    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode?: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -220,6 +225,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             inputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
@@ -254,6 +260,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -313,6 +320,11 @@ export interface ClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Enable Binary Authorization for this cluster.
+     * If enabled, all container images will be validated by Google Binary Authorization.
+     */
+    readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -344,7 +356,7 @@ export interface ClusterState {
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below.
      */
-    readonly ipAllocationPolicy?: pulumi.Input<{ clusterSecondaryRangeName?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string> }>;
+    readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string> }>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -423,7 +435,7 @@ export interface ClusterState {
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
      */
-    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -496,6 +508,11 @@ export interface ClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Enable Binary Authorization for this cluster.
+     * If enabled, all container images will be validated by Google Binary Authorization.
+     */
+    readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -518,7 +535,7 @@ export interface ClusterArgs {
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below.
      */
-    readonly ipAllocationPolicy?: pulumi.Input<{ clusterSecondaryRangeName?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string> }>;
+    readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string> }>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -591,7 +608,7 @@ export interface ClusterArgs {
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
      */
-    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default

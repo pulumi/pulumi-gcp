@@ -30,6 +30,10 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly dnsName: pulumi.Output<string>;
     /**
+     * A set of key/value label pairs to assign to the instance.
+     */
+    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
@@ -60,6 +64,7 @@ export class ManagedZone extends pulumi.CustomResource {
             const state: ManagedZoneState = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nameServers"] = state ? state.nameServers : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -70,6 +75,7 @@ export class ManagedZone extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["nameServers"] = undefined /*out*/;
@@ -90,6 +96,10 @@ export interface ManagedZoneState {
      * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      */
     readonly dnsName?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the instance.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
@@ -120,6 +130,10 @@ export interface ManagedZoneArgs {
      * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      */
     readonly dnsName: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the instance.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.

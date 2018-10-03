@@ -24,6 +24,7 @@ func NewDataset(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["accesses"] = nil
 		inputs["datasetId"] = nil
 		inputs["defaultTableExpirationMs"] = nil
 		inputs["description"] = nil
@@ -32,6 +33,7 @@ func NewDataset(ctx *pulumi.Context,
 		inputs["location"] = nil
 		inputs["project"] = nil
 	} else {
+		inputs["accesses"] = args.Accesses
 		inputs["datasetId"] = args.DatasetId
 		inputs["defaultTableExpirationMs"] = args.DefaultTableExpirationMs
 		inputs["description"] = args.Description
@@ -57,6 +59,7 @@ func GetDataset(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DatasetState, opts ...pulumi.ResourceOpt) (*Dataset, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["accesses"] = state.Accesses
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
 		inputs["defaultTableExpirationMs"] = state.DefaultTableExpirationMs
@@ -86,13 +89,18 @@ func (r *Dataset) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
+// An array of objects that define dataset access for
+// one or more entities. Structure is documented below.
+func (r *Dataset) Accesses() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["accesses"])
+}
+
 // The time when this dataset was created, in milliseconds since the epoch.
 func (r *Dataset) CreationTime() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["creationTime"])
 }
 
-// A unique ID for the resource.
-// Changing this forces a new resource to be created.
+// The ID of the dataset containing this table.
 func (r *Dataset) DatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datasetId"])
 }
@@ -149,10 +157,12 @@ func (r *Dataset) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Dataset resources.
 type DatasetState struct {
+	// An array of objects that define dataset access for
+	// one or more entities. Structure is documented below.
+	Accesses interface{}
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime interface{}
-	// A unique ID for the resource.
-	// Changing this forces a new resource to be created.
+	// The ID of the dataset containing this table.
 	DatasetId interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000
@@ -181,8 +191,10 @@ type DatasetState struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
-	// A unique ID for the resource.
-	// Changing this forces a new resource to be created.
+	// An array of objects that define dataset access for
+	// one or more entities. Structure is documented below.
+	Accesses interface{}
+	// The ID of the dataset containing this table.
 	DatasetId interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000

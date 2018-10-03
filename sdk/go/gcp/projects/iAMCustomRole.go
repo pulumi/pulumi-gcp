@@ -12,6 +12,13 @@ import (
 // [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
 // and
 // [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
+// 
+// ~> **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
+//  from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
+//  same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
+//  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
+//  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
+//  by Terraform, and new roles cannot share that name.
 type IAMCustomRole struct {
 	s *pulumi.ResourceState
 }
@@ -84,7 +91,6 @@ func (r *IAMCustomRole) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The current deleted state of the role. Defaults to `false`.
 func (r *IAMCustomRole) Deleted() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["deleted"])
 }
@@ -124,7 +130,6 @@ func (r *IAMCustomRole) Title() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMCustomRole resources.
 type IAMCustomRoleState struct {
-	// The current deleted state of the role. Defaults to `false`.
 	Deleted interface{}
 	// A human-readable description for the role.
 	Description interface{}
@@ -145,7 +150,6 @@ type IAMCustomRoleState struct {
 
 // The set of arguments for constructing a IAMCustomRole resource.
 type IAMCustomRoleArgs struct {
-	// The current deleted state of the role. Defaults to `false`.
 	Deleted interface{}
 	// A human-readable description for the role.
 	Description interface{}

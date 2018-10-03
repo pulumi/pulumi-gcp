@@ -32,6 +32,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly cors: pulumi.Output<{ maxAgeSeconds?: number, methods?: string[], origins?: string[], responseHeaders?: string[] }[] | undefined>;
     /**
+     * The bucket's encryption configuration.
+     */
+    public readonly encryption: pulumi.Output<{ defaultKmsKeyName: string } | undefined>;
+    /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
      * bucket that contains objects, Terraform will fail that run.
@@ -96,6 +100,7 @@ export class Bucket extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: BucketState = argsOrState as BucketState | undefined;
             inputs["cors"] = state ? state.cors : undefined;
+            inputs["encryption"] = state ? state.encryption : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
@@ -111,6 +116,7 @@ export class Bucket extends pulumi.CustomResource {
         } else {
             const args = argsOrState as BucketArgs | undefined;
             inputs["cors"] = args ? args.cors : undefined;
+            inputs["encryption"] = args ? args.encryption : undefined;
             inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
@@ -136,6 +142,10 @@ export interface BucketState {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     readonly cors?: pulumi.Input<pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    /**
+     * The bucket's encryption configuration.
+     */
+    readonly encryption?: pulumi.Input<{ defaultKmsKeyName: pulumi.Input<string> }>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
@@ -197,6 +207,10 @@ export interface BucketArgs {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     readonly cors?: pulumi.Input<pulumi.Input<{ maxAgeSeconds?: pulumi.Input<number>, methods?: pulumi.Input<pulumi.Input<string>[]>, origins?: pulumi.Input<pulumi.Input<string>[]>, responseHeaders?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    /**
+     * The bucket's encryption configuration.
+     */
+    readonly encryption?: pulumi.Input<{ defaultKmsKeyName: pulumi.Input<string> }>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a

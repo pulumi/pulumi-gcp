@@ -24,12 +24,16 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /**
+     * An array of objects that define dataset access for
+     * one or more entities. Structure is documented below.
+     */
+    public readonly accesses: pulumi.Output<{ domain?: string, groupByEmail?: string, role?: string, specialGroup?: string, userByEmail?: string, view?: { datasetId: string, projectId: string, tableId: string } }[]>;
+    /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
     public /*out*/ readonly creationTime: pulumi.Output<number>;
     /**
-     * A unique ID for the resource.
-     * Changing this forces a new resource to be created.
+     * The ID of the dataset containing this table.
      */
     public readonly datasetId: pulumi.Output<string>;
     /**
@@ -86,6 +90,7 @@ export class Dataset extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: DatasetState = argsOrState as DatasetState | undefined;
+            inputs["accesses"] = state ? state.accesses : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
@@ -102,6 +107,7 @@ export class Dataset extends pulumi.CustomResource {
             if (!args || args.datasetId === undefined) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            inputs["accesses"] = args ? args.accesses : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -123,12 +129,16 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetState {
     /**
+     * An array of objects that define dataset access for
+     * one or more entities. Structure is documented below.
+     */
+    readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
+    /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
     readonly creationTime?: pulumi.Input<number>;
     /**
-     * A unique ID for the resource.
-     * Changing this forces a new resource to be created.
+     * The ID of the dataset containing this table.
      */
     readonly datasetId?: pulumi.Input<string>;
     /**
@@ -179,8 +189,12 @@ export interface DatasetState {
  */
 export interface DatasetArgs {
     /**
-     * A unique ID for the resource.
-     * Changing this forces a new resource to be created.
+     * An array of objects that define dataset access for
+     * one or more entities. Structure is documented below.
+     */
+    readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
+    /**
+     * The ID of the dataset containing this table.
      */
     readonly datasetId: pulumi.Input<string>;
     /**

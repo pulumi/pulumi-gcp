@@ -17,10 +17,15 @@ export class Address extends pulumi.CustomResource {
         return new Address(name, <any>state, { id });
     }
 
+    /**
+     * The IP of the created resource.
+     */
     public readonly address: pulumi.Output<string>;
     public readonly addressType: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly networkTier: pulumi.Output<string>;
     /**
@@ -52,6 +57,8 @@ export class Address extends pulumi.CustomResource {
             inputs["addressType"] = state ? state.addressType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkTier"] = state ? state.networkTier : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -64,12 +71,14 @@ export class Address extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["addressType"] = args ? args.addressType : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkTier"] = args ? args.networkTier : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
@@ -81,10 +90,15 @@ export class Address extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Address resources.
  */
 export interface AddressState {
+    /**
+     * The IP of the created resource.
+     */
     readonly address?: pulumi.Input<string>;
     readonly addressType?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly labelFingerprint?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly networkTier?: pulumi.Input<string>;
     /**
@@ -105,9 +119,13 @@ export interface AddressState {
  * The set of arguments for constructing a Address resource.
  */
 export interface AddressArgs {
+    /**
+     * The IP of the created resource.
+     */
     readonly address?: pulumi.Input<string>;
     readonly addressType?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly networkTier?: pulumi.Input<string>;
     /**

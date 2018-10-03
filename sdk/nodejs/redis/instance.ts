@@ -17,7 +17,7 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { id });
     }
 
-    public readonly alternativeLocationId: pulumi.Output<string | undefined>;
+    public readonly alternativeLocationId: pulumi.Output<string>;
     public readonly authorizedNetwork: pulumi.Output<string>;
     public /*out*/ readonly createTime: pulumi.Output<string>;
     public /*out*/ readonly currentLocationId: pulumi.Output<string>;

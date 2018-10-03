@@ -24,12 +24,14 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["filename"] = nil
 		inputs["project"] = nil
+		inputs["substitutions"] = nil
 		inputs["triggerTemplate"] = nil
 	} else {
 		inputs["build"] = args.Build
 		inputs["description"] = args.Description
 		inputs["filename"] = args.Filename
 		inputs["project"] = args.Project
+		inputs["substitutions"] = args.Substitutions
 		inputs["triggerTemplate"] = args.TriggerTemplate
 	}
 	s, err := ctx.RegisterResource("gcp:cloudbuild/trigger:Trigger", name, true, inputs, opts...)
@@ -49,6 +51,7 @@ func GetTrigger(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["filename"] = state.Filename
 		inputs["project"] = state.Project
+		inputs["substitutions"] = state.Substitutions
 		inputs["triggerTemplate"] = state.TriggerTemplate
 	}
 	s, err := ctx.ReadResource("gcp:cloudbuild/trigger:Trigger", name, id, inputs, opts...)
@@ -102,6 +105,10 @@ func (r *Trigger) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Trigger) Substitutions() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["substitutions"])
+}
+
 // Location of the source in a Google
 // Cloud Source Repository. Structure is documented below.
 func (r *Trigger) TriggerTemplate() *pulumi.Output {
@@ -132,6 +139,7 @@ type TriggerState struct {
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
 	Project interface{}
+	Substitutions interface{}
 	// Location of the source in a Google
 	// Cloud Source Repository. Structure is documented below.
 	TriggerTemplate interface{}
@@ -161,6 +169,7 @@ type TriggerArgs struct {
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
 	Project interface{}
+	Substitutions interface{}
 	// Location of the source in a Google
 	// Cloud Source Repository. Structure is documented below.
 	TriggerTemplate interface{}

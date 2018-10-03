@@ -13,7 +13,7 @@ class Trigger(pulumi.CustomResource):
     and
     [API](https://godoc.org/google.golang.org/api/cloudbuild/v1#BuildTrigger).
     """
-    def __init__(__self__, __name__, __opts__=None, build=None, description=None, filename=None, project=None, trigger_template=None):
+    def __init__(__self__, __name__, __opts__=None, build=None, description=None, filename=None, project=None, substitutions=None, trigger_template=None):
         """Create a Trigger resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -68,6 +68,11 @@ class Trigger(pulumi.CustomResource):
         __self__.project = project
         __props__['project'] = project
 
+        if substitutions and not isinstance(substitutions, dict):
+            raise TypeError('Expected property substitutions to be a dict')
+        __self__.substitutions = substitutions
+        __props__['substitutions'] = substitutions
+
         if trigger_template and not isinstance(trigger_template, dict):
             raise TypeError('Expected property trigger_template to be a dict')
         __self__.trigger_template = trigger_template
@@ -92,5 +97,7 @@ class Trigger(pulumi.CustomResource):
             self.filename = outs['filename']
         if 'project' in outs:
             self.project = outs['project']
+        if 'substitutions' in outs:
+            self.substitutions = outs['substitutions']
         if 'triggerTemplate' in outs:
             self.trigger_template = outs['triggerTemplate']

@@ -48,9 +48,9 @@ class GetEngineVersionsResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_engine_versions(project=None, zone=None):
+def get_engine_versions(project=None, region=None, zone=None):
     """
-    Provides access to available Google Container Engine versions in a zone for a given project.
+    Provides access to available Google Container Engine versions in a zone or region for a given project.
     
     ```hcl
     data "google_container_engine_versions" "central1b" {
@@ -73,6 +73,7 @@ def get_engine_versions(project=None, zone=None):
     __args__ = dict()
 
     __args__['project'] = project
+    __args__['region'] = region
     __args__['zone'] = zone
     __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__)
 

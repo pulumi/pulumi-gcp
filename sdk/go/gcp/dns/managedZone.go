@@ -24,11 +24,13 @@ func NewManagedZone(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["dnsName"] = nil
+		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["dnsName"] = args.DnsName
+		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 	}
@@ -48,6 +50,7 @@ func GetManagedZone(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["dnsName"] = state.DnsName
+		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["nameServers"] = state.NameServers
 		inputs["project"] = state.Project
@@ -79,6 +82,11 @@ func (r *ManagedZone) DnsName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
+// A set of key/value label pairs to assign to the instance.
+func (r *ManagedZone) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
 // A unique name for the resource, required by GCE.
 // Changing this forces a new resource to be created.
 func (r *ManagedZone) Name() *pulumi.StringOutput {
@@ -104,6 +112,8 @@ type ManagedZoneState struct {
 	Description interface{}
 	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
+	// A set of key/value label pairs to assign to the instance.
+	Labels interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}
@@ -122,6 +132,8 @@ type ManagedZoneArgs struct {
 	Description interface{}
 	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
+	// A set of key/value label pairs to assign to the instance.
+	Labels interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}

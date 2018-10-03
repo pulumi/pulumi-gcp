@@ -25,6 +25,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		AvailableMemoryMb: outputs["availableMemoryMb"],
 		Description: outputs["description"],
 		EntryPoint: outputs["entryPoint"],
+		EnvironmentVariables: outputs["environmentVariables"],
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
 		Labels: outputs["labels"],
 		RetryOnFailure: outputs["retryOnFailure"],
@@ -58,6 +59,7 @@ type GetFunctionResult struct {
 	Description interface{}
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
+	EnvironmentVariables interface{}
 	// If function is triggered by HTTP, trigger URL is set here.
 	HttpsTriggerUrl interface{}
 	// A map of labels applied to this function.

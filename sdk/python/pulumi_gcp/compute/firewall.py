@@ -7,13 +7,7 @@ import pulumi.runtime
 from .. import utilities
 
 class Firewall(pulumi.CustomResource):
-    """
-    Manages a firewall resource within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/vpc/firewalls)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/firewalls).
-    """
-    def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
+    def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         """Create a Firewall resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -27,64 +21,41 @@ class Firewall(pulumi.CustomResource):
         if allows and not isinstance(allows, list):
             raise TypeError('Expected property allows to be a list')
         __self__.allows = allows
-        """
-        Can be specified multiple times for each allow
-        rule. Each allow block supports fields documented below.
-        """
         __props__['allows'] = allows
 
         if denies and not isinstance(denies, list):
             raise TypeError('Expected property denies to be a list')
         __self__.denies = denies
-        """
-        Can be specified multiple times for each deny
-        rule. Each deny block supports fields documented below. Can be specified
-        instead of allow.
-        """
         __props__['denies'] = denies
 
         if description and not isinstance(description, basestring):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
-        """
-        Textual description field.
-        """
         __props__['description'] = description
 
         if destination_ranges and not isinstance(destination_ranges, list):
             raise TypeError('Expected property destination_ranges to be a list')
         __self__.destination_ranges = destination_ranges
-        """
-        A list of destination CIDR ranges that this
-        firewall applies to. Can't be used for `INGRESS`.
-        """
         __props__['destinationRanges'] = destination_ranges
 
         if direction and not isinstance(direction, basestring):
             raise TypeError('Expected property direction to be a basestring')
         __self__.direction = direction
-        """
-        Direction of traffic to which this firewall applies;
-        One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
-        """
         __props__['direction'] = direction
 
         if disabled and not isinstance(disabled, bool):
             raise TypeError('Expected property disabled to be a bool')
         __self__.disabled = disabled
-        """
-        Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
-        When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
-        """
         __props__['disabled'] = disabled
+
+        if enable_logging and not isinstance(enable_logging, bool):
+            raise TypeError('Expected property enable_logging to be a bool')
+        __self__.enable_logging = enable_logging
+        __props__['enableLogging'] = enable_logging
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
         if not network:
@@ -92,82 +63,48 @@ class Firewall(pulumi.CustomResource):
         elif not isinstance(network, basestring):
             raise TypeError('Expected property network to be a basestring')
         __self__.network = network
-        """
-        The name or self_link of the network to attach this firewall to.
-        """
         __props__['network'] = network
 
         if priority and not isinstance(priority, int):
             raise TypeError('Expected property priority to be a int')
         __self__.priority = priority
-        """
-        The priority for this firewall. Ranges from 0-65535, inclusive. Defaults to 1000. Firewall
-        resources with lower priority values have higher precedence (e.g. a firewall resource with a priority value of 0
-        takes effect over all other firewall rules with a non-zero priority).
-        """
         __props__['priority'] = priority
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         __props__['project'] = project
 
         if source_ranges and not isinstance(source_ranges, list):
             raise TypeError('Expected property source_ranges to be a list')
         __self__.source_ranges = source_ranges
-        """
-        A list of source CIDR ranges that this
-        firewall applies to. Can't be used for `EGRESS`.
-        """
         __props__['sourceRanges'] = source_ranges
 
         if source_service_accounts and not isinstance(source_service_accounts, basestring):
             raise TypeError('Expected property source_service_accounts to be a basestring')
         __self__.source_service_accounts = source_service_accounts
-        """
-        A list of service accounts such that
-        the firewall will apply only to traffic originating from an instance with a service account in this list.  Note that as of May 2018,
-        this list can contain only one item, due to a change in the way that these firewall rules are handled.  Source service accounts
-        cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not
-        an IP address. `source_ranges` can be set at the same time as `source_service_accounts`. If both are set, the firewall will apply to
-        traffic that has source IP address within `source_ranges` OR the source IP belongs to an instance with service account listed in
-        `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
-        cannot be used at the same time as `source_tags` or `target_tags`.
-        """
         __props__['sourceServiceAccounts'] = source_service_accounts
 
         if source_tags and not isinstance(source_tags, list):
             raise TypeError('Expected property source_tags to be a list')
         __self__.source_tags = source_tags
-        """
-        A list of source tags for this firewall. Can't be used for `EGRESS`.
-        """
         __props__['sourceTags'] = source_tags
 
         if target_service_accounts and not isinstance(target_service_accounts, basestring):
             raise TypeError('Expected property target_service_accounts to be a basestring')
         __self__.target_service_accounts = target_service_accounts
-        """
-        A list of service accounts indicating
-        sets of instances located in the network that may make network connections as specified in `allow`. `target_service_accounts` cannot
-        be used at the same time as `source_tags` or `target_tags`. If neither `target_service_accounts` nor `target_tags` are specified, the
-        firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
-        to a change in the way that these firewall rules are handled.
-        """
         __props__['targetServiceAccounts'] = target_service_accounts
 
         if target_tags and not isinstance(target_tags, list):
             raise TypeError('Expected property target_tags to be a list')
         __self__.target_tags = target_tags
-        """
-        A list of target tags for this firewall.
-        """
         __props__['targetTags'] = target_tags
 
+        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
@@ -182,6 +119,8 @@ class Firewall(pulumi.CustomResource):
     def set_outputs(self, outs):
         if 'allows' in outs:
             self.allows = outs['allows']
+        if 'creationTimestamp' in outs:
+            self.creation_timestamp = outs['creationTimestamp']
         if 'denies' in outs:
             self.denies = outs['denies']
         if 'description' in outs:
@@ -192,6 +131,8 @@ class Firewall(pulumi.CustomResource):
             self.direction = outs['direction']
         if 'disabled' in outs:
             self.disabled = outs['disabled']
+        if 'enableLogging' in outs:
+            self.enable_logging = outs['enableLogging']
         if 'name' in outs:
             self.name = outs['name']
         if 'network' in outs:

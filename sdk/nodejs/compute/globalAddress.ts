@@ -21,6 +21,8 @@ export class GlobalAddress extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly ipVersion: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -48,6 +50,8 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
+            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -55,10 +59,12 @@ export class GlobalAddress extends pulumi.CustomResource {
             const args = argsOrState as GlobalAddressArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["address"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:compute/globalAddress:GlobalAddress", name, inputs, opts);
@@ -73,6 +79,8 @@ export interface GlobalAddressState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly ipVersion?: pulumi.Input<string>;
+    readonly labelFingerprint?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -91,6 +99,7 @@ export interface GlobalAddressState {
 export interface GlobalAddressArgs {
     readonly description?: pulumi.Input<string>;
     readonly ipVersion?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

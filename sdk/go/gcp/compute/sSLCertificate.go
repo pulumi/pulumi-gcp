@@ -8,11 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates an SSL certificate resource necessary for HTTPS load balancing in GCE.
-// For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/ssl-certificates) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/sslCertificates).
-// 
 type SSLCertificate struct {
 	s *pulumi.ResourceState
 }
@@ -43,6 +38,7 @@ func NewSSLCertificate(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 	}
 	inputs["certificateId"] = nil
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/sSLCertificate:SSLCertificate", name, true, inputs, opts...)
 	if err != nil {
@@ -59,6 +55,7 @@ func GetSSLCertificate(ctx *pulumi.Context,
 	if state != nil {
 		inputs["certificate"] = state.Certificate
 		inputs["certificateId"] = state.CertificateId
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["namePrefix"] = state.NamePrefix
@@ -83,44 +80,38 @@ func (r *SSLCertificate) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// A local certificate file in PEM format. The chain
-// may be at most 5 certs long, and must include at least one intermediate
-// cert. Changing this forces a new resource to be created.
 func (r *SSLCertificate) Certificate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["certificate"])
 }
 
-// A unique ID for the certificate, assigned by GCE.
-func (r *SSLCertificate) CertificateId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["certificateId"])
+func (r *SSLCertificate) CertificateId() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
-// An optional description of this resource.
-// Changing this forces a new resource to be created.
+func (r *SSLCertificate) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *SSLCertificate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A unique name for the SSL certificate. If you leave
-// this blank, Terraform will auto-generate a unique name.
 func (r *SSLCertificate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Creates a unique name beginning with the specified
-// prefix. Conflicts with `name`.
+// Creates a unique name beginning with the
+// specified prefix. Conflicts with `name`.
 func (r *SSLCertificate) NamePrefix() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
-// Write only private key in PEM format.
-// Changing this forces a new resource to be created.
 func (r *SSLCertificate) PrivateKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *SSLCertificate) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -132,26 +123,17 @@ func (r *SSLCertificate) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SSLCertificate resources.
 type SSLCertificateState struct {
-	// A local certificate file in PEM format. The chain
-	// may be at most 5 certs long, and must include at least one intermediate
-	// cert. Changing this forces a new resource to be created.
 	Certificate interface{}
-	// A unique ID for the certificate, assigned by GCE.
 	CertificateId interface{}
-	// An optional description of this resource.
-	// Changing this forces a new resource to be created.
+	CreationTimestamp interface{}
 	Description interface{}
-	// A unique name for the SSL certificate. If you leave
-	// this blank, Terraform will auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// Creates a unique name beginning with the
+	// specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
-	// Write only private key in PEM format.
-	// Changing this forces a new resource to be created.
 	PrivateKey interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -159,23 +141,14 @@ type SSLCertificateState struct {
 
 // The set of arguments for constructing a SSLCertificate resource.
 type SSLCertificateArgs struct {
-	// A local certificate file in PEM format. The chain
-	// may be at most 5 certs long, and must include at least one intermediate
-	// cert. Changing this forces a new resource to be created.
 	Certificate interface{}
-	// An optional description of this resource.
-	// Changing this forces a new resource to be created.
 	Description interface{}
-	// A unique name for the SSL certificate. If you leave
-	// this blank, Terraform will auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name beginning with the specified
-	// prefix. Conflicts with `name`.
+	// Creates a unique name beginning with the
+	// specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
-	// Write only private key in PEM format.
-	// Changing this forces a new resource to be created.
 	PrivateKey interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

@@ -53,6 +53,7 @@ export interface GetFunctionResult {
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
     readonly entryPoint: string;
+    readonly environmentVariables: {[key: string]: any};
     /**
      * If function is triggered by HTTP, trigger URL is set here.
      */

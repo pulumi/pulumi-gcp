@@ -27,6 +27,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = nil
 		inputs["clusterIpv4Cidr"] = nil
 		inputs["description"] = nil
+		inputs["enableBinaryAuthorization"] = nil
 		inputs["enableKubernetesAlpha"] = nil
 		inputs["enableLegacyAbac"] = nil
 		inputs["initialNodeCount"] = nil
@@ -57,6 +58,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = args.AddonsConfig
 		inputs["clusterIpv4Cidr"] = args.ClusterIpv4Cidr
 		inputs["description"] = args.Description
+		inputs["enableBinaryAuthorization"] = args.EnableBinaryAuthorization
 		inputs["enableKubernetesAlpha"] = args.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = args.EnableLegacyAbac
 		inputs["initialNodeCount"] = args.InitialNodeCount
@@ -103,6 +105,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = state.AddonsConfig
 		inputs["clusterIpv4Cidr"] = state.ClusterIpv4Cidr
 		inputs["description"] = state.Description
+		inputs["enableBinaryAuthorization"] = state.EnableBinaryAuthorization
 		inputs["enableKubernetesAlpha"] = state.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = state.EnableLegacyAbac
 		inputs["endpoint"] = state.Endpoint
@@ -172,6 +175,12 @@ func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
 // Description of the cluster.
 func (r *Cluster) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+// Enable Binary Authorization for this cluster.
+// If enabled, all container images will be validated by Google Binary Authorization.
+func (r *Cluster) EnableBinaryAuthorization() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableBinaryAuthorization"])
 }
 
 // Whether to enable Kubernetes Alpha features for
@@ -375,6 +384,9 @@ type ClusterState struct {
 	ClusterIpv4Cidr interface{}
 	// Description of the cluster.
 	Description interface{}
+	// Enable Binary Authorization for this cluster.
+	// If enabled, all container images will be validated by Google Binary Authorization.
+	EnableBinaryAuthorization interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -494,6 +506,9 @@ type ClusterArgs struct {
 	ClusterIpv4Cidr interface{}
 	// Description of the cluster.
 	Description interface{}
+	// Enable Binary Authorization for this cluster.
+	// If enabled, all container images will be validated by Google Binary Authorization.
+	EnableBinaryAuthorization interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.

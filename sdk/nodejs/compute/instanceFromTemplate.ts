@@ -49,7 +49,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Changing this forces a new resource to be created.
      */
     public readonly name: pulumi.Output<string>;
-    public /*out*/ readonly networkInterfaces: pulumi.Output<{ accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRange: { ipCidrRange: string, subnetworkRangeName: string }, name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public /*out*/ readonly networkInterfaces: pulumi.Output<{ accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     public readonly project: pulumi.Output<string>;
     public readonly scheduling: pulumi.Output<{ automaticRestart: boolean, onHostMaintenance: string, preemptible: boolean }>;
     public readonly scratchDisks: pulumi.Output<{ interface: string }[]>;
@@ -169,7 +169,7 @@ export interface InstanceFromTemplateState {
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     readonly project?: pulumi.Input<string>;
     readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;

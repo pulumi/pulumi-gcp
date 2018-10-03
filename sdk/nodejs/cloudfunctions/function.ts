@@ -36,6 +36,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly entryPoint: pulumi.Output<string | undefined>;
     /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
+    public readonly environmentVariables: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * URL which triggers function execution. Returned only if `trigger_http` is used.
      */
     public readonly httpsTriggerUrl: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class Function extends pulumi.CustomResource {
             inputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["entryPoint"] = state ? state.entryPoint : undefined;
+            inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             inputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -122,6 +127,7 @@ export class Function extends pulumi.CustomResource {
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
+            inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -155,6 +161,10 @@ export interface FunctionState {
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
     readonly entryPoint?: pulumi.Input<string>;
+    /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
+    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * URL which triggers function execution. Returned only if `trigger_http` is used.
      */
@@ -221,6 +231,10 @@ export interface FunctionArgs {
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
     readonly entryPoint?: pulumi.Input<string>;
+    /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
+    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * URL which triggers function execution. Returned only if `trigger_http` is used.
      */

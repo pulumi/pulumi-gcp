@@ -16,8 +16,13 @@ import (
 // A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
 // Google Cloud KMS KeyRing.
 // 
-// ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed CryptoKey will remove it
-// from state and delete all CryptoKeyVersions, rendering the key unusable, but **will not delete the resource on the server**.
+// ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
+// Terraform-managed CryptoKey will remove it from state and delete all
+// CryptoKeyVersions, rendering the key unusable, but **will not delete the
+// resource on the server**. When Terraform destroys these keys, any data
+// previously encrypted with these keys will be irrecoverable. For this reason, it
+// is strongly recommended that you add lifecycle hooks to the resource to prevent
+// accidental destruction.
 type CryptoKey struct {
 	s *pulumi.ResourceState
 }
@@ -38,6 +43,7 @@ func NewCryptoKey(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["rotationPeriod"] = args.RotationPeriod
 	}
+	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:kms/cryptoKey:CryptoKey", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -54,6 +60,7 @@ func GetCryptoKey(ctx *pulumi.Context,
 		inputs["keyRing"] = state.KeyRing
 		inputs["name"] = state.Name
 		inputs["rotationPeriod"] = state.RotationPeriod
+		inputs["selfLink"] = state.SelfLink
 	}
 	s, err := ctx.ReadResource("gcp:kms/cryptoKey:CryptoKey", name, id, inputs, opts...)
 	if err != nil {
@@ -86,9 +93,14 @@ func (r *CryptoKey) Name() *pulumi.StringOutput {
 // Every time this period passes, generate a new CryptoKeyVersion and set it as
 // the primary. The first rotation will take place after the specified period. The rotation period has the format
 // of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-// a day (ie, 83400).
+// a day (ie, 86400).
 func (r *CryptoKey) RotationPeriod() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["rotationPeriod"])
+}
+
+// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+func (r *CryptoKey) SelfLink() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering CryptoKey resources.
@@ -101,8 +113,10 @@ type CryptoKeyState struct {
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
 	// the primary. The first rotation will take place after the specified period. The rotation period has the format
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-	// a day (ie, 83400).
+	// a day (ie, 86400).
 	RotationPeriod interface{}
+	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+	SelfLink interface{}
 }
 
 // The set of arguments for constructing a CryptoKey resource.
@@ -115,6 +129,6 @@ type CryptoKeyArgs struct {
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
 	// the primary. The first rotation will take place after the specified period. The rotation period has the format
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-	// a day (ie, 83400).
+	// a day (ie, 86400).
 	RotationPeriod interface{}
 }

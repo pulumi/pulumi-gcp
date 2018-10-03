@@ -7,12 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a health check within GCE. This is used to monitor instances
-// behind load balancers. Timeouts or HTTP errors cause the instance to be
-// removed from the pool. For more information, see [the official
-// documentation](https://cloud.google.com/compute/docs/load-balancing/health-checks)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/healthChecks).
 type HealthCheck struct {
 	s *pulumi.ResourceState
 }
@@ -46,7 +40,9 @@ func NewHealthCheck(ctx *pulumi.Context,
 		inputs["timeoutSec"] = args.TimeoutSec
 		inputs["unhealthyThreshold"] = args.UnhealthyThreshold
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
+	inputs["type"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/healthCheck:HealthCheck", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -61,6 +57,7 @@ func GetHealthCheck(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["checkIntervalSec"] = state.CheckIntervalSec
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["healthyThreshold"] = state.HealthyThreshold
 		inputs["httpHealthCheck"] = state.HttpHealthCheck
@@ -71,6 +68,7 @@ func GetHealthCheck(ctx *pulumi.Context,
 		inputs["sslHealthCheck"] = state.SslHealthCheck
 		inputs["tcpHealthCheck"] = state.TcpHealthCheck
 		inputs["timeoutSec"] = state.TimeoutSec
+		inputs["type"] = state.Type
 		inputs["unhealthyThreshold"] = state.UnhealthyThreshold
 	}
 	s, err := ctx.ReadResource("gcp:compute/healthCheck:HealthCheck", name, id, inputs, opts...)
@@ -90,42 +88,36 @@ func (r *HealthCheck) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The number of seconds between each poll of
-// the instance instance (default 5).
 func (r *HealthCheck) CheckIntervalSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["checkIntervalSec"])
 }
 
-// Textual description field.
+func (r *HealthCheck) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *HealthCheck) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Consecutive successes required (default 2).
 func (r *HealthCheck) HealthyThreshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["healthyThreshold"])
 }
 
-// An HTTP Health Check. Only one kind of Health Check can be added.
-// Structure is documented below.
 func (r *HealthCheck) HttpHealthCheck() *pulumi.Output {
 	return r.s.State["httpHealthCheck"]
 }
 
-// An HTTPS Health Check. Only one kind of Health Check can be added.
-// Structure is documented below.
 func (r *HealthCheck) HttpsHealthCheck() *pulumi.Output {
 	return r.s.State["httpsHealthCheck"]
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *HealthCheck) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *HealthCheck) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -135,95 +127,60 @@ func (r *HealthCheck) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// An SSL Health Check. Only one kind of Health Check can be added.
-// Structure is documented below.
 func (r *HealthCheck) SslHealthCheck() *pulumi.Output {
 	return r.s.State["sslHealthCheck"]
 }
 
-// A TCP Health Check. Only one kind of Health Check can be added.
-// Structure is documented below.
 func (r *HealthCheck) TcpHealthCheck() *pulumi.Output {
 	return r.s.State["tcpHealthCheck"]
 }
 
-// The number of seconds to wait before declaring
-// failure (default 5).
 func (r *HealthCheck) TimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeoutSec"])
 }
 
-// Consecutive failures required (default 2).
+func (r *HealthCheck) Type() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["type"])
+}
+
 func (r *HealthCheck) UnhealthyThreshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
 }
 
 // Input properties used for looking up and filtering HealthCheck resources.
 type HealthCheckState struct {
-	// The number of seconds between each poll of
-	// the instance instance (default 5).
 	CheckIntervalSec interface{}
-	// Textual description field.
+	CreationTimestamp interface{}
 	Description interface{}
-	// Consecutive successes required (default 2).
 	HealthyThreshold interface{}
-	// An HTTP Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	HttpHealthCheck interface{}
-	// An HTTPS Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	HttpsHealthCheck interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// An SSL Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	SslHealthCheck interface{}
-	// A TCP Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	TcpHealthCheck interface{}
-	// The number of seconds to wait before declaring
-	// failure (default 5).
 	TimeoutSec interface{}
-	// Consecutive failures required (default 2).
+	Type interface{}
 	UnhealthyThreshold interface{}
 }
 
 // The set of arguments for constructing a HealthCheck resource.
 type HealthCheckArgs struct {
-	// The number of seconds between each poll of
-	// the instance instance (default 5).
 	CheckIntervalSec interface{}
-	// Textual description field.
 	Description interface{}
-	// Consecutive successes required (default 2).
 	HealthyThreshold interface{}
-	// An HTTP Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	HttpHealthCheck interface{}
-	// An HTTPS Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	HttpsHealthCheck interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// An SSL Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	SslHealthCheck interface{}
-	// A TCP Health Check. Only one kind of Health Check can be added.
-	// Structure is documented below.
 	TcpHealthCheck interface{}
-	// The number of seconds to wait before declaring
-	// failure (default 5).
 	TimeoutSec interface{}
-	// Consecutive failures required (default 2).
 	UnhealthyThreshold interface{}
 }

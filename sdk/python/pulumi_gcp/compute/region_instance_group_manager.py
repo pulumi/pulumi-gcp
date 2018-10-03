@@ -15,7 +15,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     
     ~> **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
     """
-    def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, instance_template=None, name=None, named_ports=None, project=None, region=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, wait_for_instances=None):
+    def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, instance_template=None, name=None, named_ports=None, project=None, region=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, versions=None, wait_for_instances=None):
         """Create a RegionInstanceGroupManager resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -69,14 +69,11 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         """
         __props__['distributionPolicyZones'] = distribution_policy_zones
 
-        if not instance_template:
-            raise TypeError('Missing required property instance_template')
-        elif not isinstance(instance_template, basestring):
+        if instance_template and not isinstance(instance_template, basestring):
             raise TypeError('Expected property instance_template to be a basestring')
         __self__.instance_template = instance_template
         """
-        The full URL to an instance template from
-        which all new instances will be created.
+        - The full URL to an instance template from which all new instances of this version will be created.
         """
         __props__['instanceTemplate'] = instance_template
 
@@ -84,7 +81,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        The name of the port.
+        - Version name.
         """
         __props__['name'] = name
 
@@ -138,9 +135,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             raise TypeError('Expected property target_size to be a int')
         __self__.target_size = target_size
         """
-        The target number of running instances for this managed
-        instance group. This value should always be explicitly set unless this resource is attached to
-        an autoscaler, in which case it should never be set. Defaults to `0`.
+        - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
         __props__['targetSize'] = target_size
 
@@ -155,6 +150,19 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         `rolling_update_policy` block to be set
         """
         __props__['updateStrategy'] = update_strategy
+
+        if versions and not isinstance(versions, list):
+            raise TypeError('Expected property versions to be a list')
+        __self__.versions = versions
+        """
+        Application versions managed by this instance group. Each
+        version deals with a specific instance template, allowing canary release scenarios.
+        Conflicts with `instance_template`. Structure is documented below. Beware that
+        exactly one version must not specify a target size. It means that versions with
+        a target size will respect the setting, and the one without target size will
+        be applied to all remaining Instances (top level target_size - each version target_size).
+        """
+        __props__['versions'] = versions
 
         if wait_for_instances and not isinstance(wait_for_instances, bool):
             raise TypeError('Expected property wait_for_instances to be a bool')
@@ -218,5 +226,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             self.target_size = outs['targetSize']
         if 'updateStrategy' in outs:
             self.update_strategy = outs['updateStrategy']
+        if 'versions' in outs:
+            self.versions = outs['versions']
         if 'waitForInstances' in outs:
             self.wait_for_instances = outs['waitForInstances']

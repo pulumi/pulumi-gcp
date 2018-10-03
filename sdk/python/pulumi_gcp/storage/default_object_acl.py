@@ -34,9 +34,7 @@ class DefaultObjectACL(pulumi.CustomResource):
         """
         __props__['bucket'] = bucket
 
-        if not role_entities:
-            raise TypeError('Missing required property role_entities')
-        elif not isinstance(role_entities, list):
+        if role_entities and not isinstance(role_entities, list):
             raise TypeError('Expected property role_entities to be a list')
         __self__.role_entities = role_entities
         """

@@ -19,32 +19,35 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
-	gcpBigQuery        = "bigquery"       // BigQuery resources
-	gcpBigTable        = "bigtable"       // BitTable resources
-	gcpCloudBuild      = "cloudbuild"     // CloudBuild resources
-	gcpCloudFunctions  = "cloudfunctions" // CloudFunction resources
-	gcpCore            = "core"
-	gcpFolder          = "folder"          // Folder resources
-	gcpOrganization    = "organizations"   // Organization resources
-	gcpProject         = "projects"        // Project resources
-	gcpServiceAccount  = "serviceAccount"  // Service Account resources
-	gcpCompute         = "compute"         // Compute resoures
-	gcpKubernetes      = "container"       // Kubernetes Engine resources
-	gcpDataFolow       = "dataflow"        // DataFlow resources
-	gcpDataProc        = "dataproc"        // DataProc resources
-	gcpDNS             = "dns"             // DNS resources
-	gcpEndPoints       = "endpoints"       // End Point resources
-	gcpPubSub          = "pubsub"          // PubSub resources
-	gcpRedis           = "redis"           // Redis resources
-	gcpResourceManager = "resourcemanager" // Resource Manager resources
-	gcpRuntimeConfig   = "runtimeconfig"   // Runtime Config resources
-	gcpSourceRepo      = "sourcerepo"      // Source Repo resources
-	gcpSpanner         = "spanner"         // Spanner Resources
-	gcpSQL             = "sql"             // SQL resources
-	gcpLogging         = "logging"         // Logging resources
-	gcpStorage         = "storage"         // Storage resources
-	gcpKMS             = "kms"             // KMS resources
-	gcpCloudIoT        = "iot"             // CloudIoT resources
+	gcpBigQuery            = "bigquery"            // BigQuery resources
+	gcpBigTable            = "bigtable"            // BitTable resources
+	gcpBinaryAuthorization = "binaryauthorization" // Binary Authorization resources
+	gcpCloudBuild          = "cloudbuild"          // CloudBuild resources
+	gcpCloudFunctions      = "cloudfunctions"      // CloudFunction resources
+	gcpComposer            = "composer"            // Cloud Composer resources
+	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
+	gcpCore                = "core"
+	gcpFolder              = "folder"          // Folder resources
+	gcpOrganization        = "organizations"   // Organization resources
+	gcpProject             = "projects"        // Project resources
+	gcpServiceAccount      = "serviceAccount"  // Service Account resources
+	gcpCompute             = "compute"         // Compute resoures
+	gcpKubernetes          = "container"       // Kubernetes Engine resources
+	gcpDataFolow           = "dataflow"        // DataFlow resources
+	gcpDataProc            = "dataproc"        // DataProc resources
+	gcpDNS                 = "dns"             // DNS resources
+	gcpEndPoints           = "endpoints"       // End Point resources
+	gcpPubSub              = "pubsub"          // PubSub resources
+	gcpRedis               = "redis"           // Redis resources
+	gcpResourceManager     = "resourcemanager" // Resource Manager resources
+	gcpRuntimeConfig       = "runtimeconfig"   // Runtime Config resources
+	gcpSourceRepo          = "sourcerepo"      // Source Repo resources
+	gcpSpanner             = "spanner"         // Spanner Resources
+	gcpSQL                 = "sql"             // SQL resources
+	gcpLogging             = "logging"         // Logging resources
+	gcpStorage             = "storage"         // Storage resources
+	gcpKMS                 = "kms"             // KMS resources
+	gcpCloudIoT            = "iot"             // CloudIoT resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -130,11 +133,28 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
 			"google_bigtable_table":    {Tok: gcpResource(gcpBigTable, "Table")},
 
+			// Binary Authorization
+			"google_binary_authorization_attestor": {
+				Tok: gcpResource(gcpBinaryAuthorization, "Attestor"),
+				Docs: &tfbridge.DocInfo{
+					Source: "binaryauthorization_attestor.html.markdown",
+				},
+			},
+			"google_binary_authorization_policy": {
+				Tok: gcpResource(gcpBinaryAuthorization, "Policy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "binaryauthorization_policy.html.markdown",
+				},
+			},
+
 			// Cloud Build
 			"google_cloudbuild_trigger": {Tok: gcpResource(gcpCloudBuild, "Trigger")},
 
 			// Cloud Functions
 			"google_cloudfunctions_function": {Tok: gcpResource(gcpCloudFunctions, "Function")},
+
+			// Composer
+			"google_composer_environment": {Tok: gcpResource(gcpComposer, "Environment")},
 
 			// Core functions
 			"google_folder": {
@@ -289,6 +309,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_address.html.markdown",
 				},
 			},
+			"google_compute_attached_disk": {
+				Tok: gcpResource(gcpCompute, "AttachedDisk"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_attached_disk.html.markdown",
+				},
+			},
 			"google_compute_autoscaler": {
 				Tok: gcpResource(gcpCompute, "Autoscalar"),
 				Docs: &tfbridge.DocInfo{
@@ -327,6 +353,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_project_metadata_item":         {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
 			"google_compute_region_autoscaler":             {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
 			"google_compute_region_backend_service":        {Tok: gcpResource(gcpCompute, "RegionBackendService")},
+			"google_compute_region_disk":                   {Tok: gcpResource(gcpCompute, "RegionDisk")},
 			"google_compute_region_instance_group_manager": {Tok: gcpResource(gcpCompute, "RegionInstanceGroupManager")},
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
@@ -365,6 +392,14 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_url_map":            {Tok: gcpResource(gcpCompute, "URLMap")},
 			"google_compute_vpn_gateway":        {Tok: gcpResource(gcpCompute, "VPNGateway")},
 			"google_compute_vpn_tunnel":         {Tok: gcpResource(gcpCompute, "VPNTunnel")},
+
+			// Container Analysis resources
+			"google_container_analysis_note": {
+				Tok: gcpResource(gcpContainerAnalysis, "Note"),
+				Docs: &tfbridge.DocInfo{
+					Source: "containeranalysis_note.html.markdown",
+				},
+			},
 
 			// Container/Kubernetes resources
 			"google_container_cluster":   {Tok: gcpResource(gcpKubernetes, "Cluster")},
@@ -653,6 +688,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpOrganization, "getProject"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
+				},
+			},
+			"google_project_services": {
+				Tok: gcpDataSource(gcpOrganization, "getProjectServices"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_project_services.html.markdown",
 				},
 			},
 			"google_compute_subnetwork": {

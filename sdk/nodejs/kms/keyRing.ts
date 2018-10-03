@@ -44,6 +44,10 @@ export class KeyRing extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
+     */
+    public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a KeyRing resource with the given unique name, arguments, and options.
@@ -60,6 +64,7 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as KeyRingArgs | undefined;
             if (!args || args.location === undefined) {
@@ -68,6 +73,7 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:kms/keyRing:KeyRing", name, inputs, opts);
     }
@@ -92,6 +98,10 @@ export interface KeyRingState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
+     */
+    readonly selfLink?: pulumi.Input<string>;
 }
 
 /**

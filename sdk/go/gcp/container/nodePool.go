@@ -28,6 +28,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["cluster"] = nil
 		inputs["initialNodeCount"] = nil
 		inputs["management"] = nil
+		inputs["maxPodsPerNode"] = nil
 		inputs["name"] = nil
 		inputs["namePrefix"] = nil
 		inputs["nodeConfig"] = nil
@@ -41,6 +42,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["cluster"] = args.Cluster
 		inputs["initialNodeCount"] = args.InitialNodeCount
 		inputs["management"] = args.Management
+		inputs["maxPodsPerNode"] = args.MaxPodsPerNode
 		inputs["name"] = args.Name
 		inputs["namePrefix"] = args.NamePrefix
 		inputs["nodeConfig"] = args.NodeConfig
@@ -69,6 +71,7 @@ func GetNodePool(ctx *pulumi.Context,
 		inputs["initialNodeCount"] = state.InitialNodeCount
 		inputs["instanceGroupUrls"] = state.InstanceGroupUrls
 		inputs["management"] = state.Management
+		inputs["maxPodsPerNode"] = state.MaxPodsPerNode
 		inputs["name"] = state.Name
 		inputs["namePrefix"] = state.NamePrefix
 		inputs["nodeConfig"] = state.NodeConfig
@@ -120,6 +123,13 @@ func (r *NodePool) InstanceGroupUrls() *pulumi.ArrayOutput {
 // auto-upgrade is configured. Structure is documented below.
 func (r *NodePool) Management() *pulumi.Output {
 	return r.s.State["management"]
+}
+
+// The maximum number of pods per node in this node pool.
+// Note that this does not work on node pools which are "route-based" - that is, node
+// pools belonging to clusters that do not have IP Aliasing enabled.
+func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
 
 // The name of the node pool. If left blank, Terraform will
@@ -183,6 +193,10 @@ type NodePoolState struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
+	// The maximum number of pods per node in this node pool.
+	// Note that this does not work on node pools which are "route-based" - that is, node
+	// pools belonging to clusters that do not have IP Aliasing enabled.
+	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}
@@ -221,6 +235,10 @@ type NodePoolArgs struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
+	// The maximum number of pods per node in this node pool.
+	// Note that this does not work on node pools which are "route-based" - that is, node
+	// pools belonging to clusters that do not have IP Aliasing enabled.
+	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}

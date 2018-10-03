@@ -51,6 +51,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly filename: pulumi.Output<string | undefined>;
     public readonly project: pulumi.Output<string>;
+    public readonly substitutions: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of the source in a Google
      * Cloud Source Repository. Structure is documented below.
@@ -73,6 +74,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["filename"] = state ? state.filename : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["substitutions"] = state ? state.substitutions : undefined;
             inputs["triggerTemplate"] = state ? state.triggerTemplate : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
@@ -80,6 +82,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["filename"] = args ? args.filename : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
         }
         super("gcp:cloudbuild/trigger:Trigger", name, inputs, opts);
@@ -118,6 +121,7 @@ export interface TriggerState {
      */
     readonly filename?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the source in a Google
      * Cloud Source Repository. Structure is documented below.
@@ -157,6 +161,7 @@ export interface TriggerArgs {
      */
     readonly filename?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the source in a Google
      * Cloud Source Repository. Structure is documented below.

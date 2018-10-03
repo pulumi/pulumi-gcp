@@ -12,8 +12,10 @@ class BillingAccountSink(pulumi.CustomResource):
     [the official documentation](https://cloud.google.com/logging/docs/) and
     [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
     
-    Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    granted to the credentials used with terraform.
+    ~> **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+    [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
+    the credentials used with Terraform. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
+    typical IAM roles granted on a project.
     """
     def __init__(__self__, __name__, __opts__=None, billing_account=None, destination=None, filter=None, name=None):
         """Create a BillingAccountSink resource with the given unique name, props, and options."""

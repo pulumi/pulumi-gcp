@@ -30,6 +30,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["availableMemoryMb"] = nil
 		inputs["description"] = nil
 		inputs["entryPoint"] = nil
+		inputs["environmentVariables"] = nil
 		inputs["httpsTriggerUrl"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
@@ -46,6 +47,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["availableMemoryMb"] = args.AvailableMemoryMb
 		inputs["description"] = args.Description
 		inputs["entryPoint"] = args.EntryPoint
+		inputs["environmentVariables"] = args.EnvironmentVariables
 		inputs["httpsTriggerUrl"] = args.HttpsTriggerUrl
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
@@ -75,6 +77,7 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["availableMemoryMb"] = state.AvailableMemoryMb
 		inputs["description"] = state.Description
 		inputs["entryPoint"] = state.EntryPoint
+		inputs["environmentVariables"] = state.EnvironmentVariables
 		inputs["httpsTriggerUrl"] = state.HttpsTriggerUrl
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
@@ -118,6 +121,11 @@ func (r *Function) Description() *pulumi.StringOutput {
 // Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 func (r *Function) EntryPoint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["entryPoint"])
+}
+
+// A set of key/value environment variable pairs to assign to the function.
+func (r *Function) EnvironmentVariables() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["environmentVariables"])
 }
 
 // URL which triggers function execution. Returned only if `trigger_http` is used.
@@ -188,6 +196,8 @@ type FunctionState struct {
 	Description interface{}
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
+	// A set of key/value environment variable pairs to assign to the function.
+	EnvironmentVariables interface{}
 	// URL which triggers function execution. Returned only if `trigger_http` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
@@ -222,6 +232,8 @@ type FunctionArgs struct {
 	Description interface{}
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
+	// A set of key/value environment variable pairs to assign to the function.
+	EnvironmentVariables interface{}
 	// URL which triggers function execution. Returned only if `trigger_http` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.

@@ -7,7 +7,7 @@ import pulumi.runtime
 from .. import utilities
 
 class Address(pulumi.CustomResource):
-    def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):
+    def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):
         """Create a Address resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -21,6 +21,9 @@ class Address(pulumi.CustomResource):
         if address and not isinstance(address, basestring):
             raise TypeError('Expected property address to be a basestring')
         __self__.address = address
+        """
+        The IP of the created resource.
+        """
         __props__['address'] = address
 
         if address_type and not isinstance(address_type, basestring):
@@ -32,6 +35,11 @@ class Address(pulumi.CustomResource):
             raise TypeError('Expected property description to be a basestring')
         __self__.description = description
         __props__['description'] = description
+
+        if labels and not isinstance(labels, dict):
+            raise TypeError('Expected property labels to be a dict')
+        __self__.labels = labels
+        __props__['labels'] = labels
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -63,6 +71,7 @@ class Address(pulumi.CustomResource):
         __props__['subnetwork'] = subnetwork
 
         __self__.creation_timestamp = pulumi.runtime.UNKNOWN
+        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
@@ -84,6 +93,10 @@ class Address(pulumi.CustomResource):
             self.creation_timestamp = outs['creationTimestamp']
         if 'description' in outs:
             self.description = outs['description']
+        if 'labelFingerprint' in outs:
+            self.label_fingerprint = outs['labelFingerprint']
+        if 'labels' in outs:
+            self.labels = outs['labels']
         if 'name' in outs:
             self.name = outs['name']
         if 'networkTier' in outs:

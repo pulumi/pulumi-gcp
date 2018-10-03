@@ -59,6 +59,11 @@ class KeyRing(pulumi.CustomResource):
         """
         __props__['project'] = project
 
+        __self__.self_link = pulumi.runtime.UNKNOWN
+        """
+        The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
+        """
+
         super(KeyRing, __self__).__init__(
             'gcp:kms/keyRing:KeyRing',
             __name__,
@@ -72,3 +77,5 @@ class KeyRing(pulumi.CustomResource):
             self.name = outs['name']
         if 'project' in outs:
             self.project = outs['project']
+        if 'selfLink' in outs:
+            self.self_link = outs['selfLink']

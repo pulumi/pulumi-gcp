@@ -7,7 +7,7 @@ import pulumi.runtime
 from .. import utilities
 
 class GlobalAddress(pulumi.CustomResource):
-    def __init__(__self__, __name__, __opts__=None, description=None, ip_version=None, name=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, ip_version=None, labels=None, name=None, project=None):
         """Create a GlobalAddress resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -28,6 +28,11 @@ class GlobalAddress(pulumi.CustomResource):
         __self__.ip_version = ip_version
         __props__['ipVersion'] = ip_version
 
+        if labels and not isinstance(labels, dict):
+            raise TypeError('Expected property labels to be a dict')
+        __self__.labels = labels
+        __props__['labels'] = labels
+
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
@@ -44,6 +49,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         __self__.address = pulumi.runtime.UNKNOWN
         __self__.creation_timestamp = pulumi.runtime.UNKNOWN
+        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         """
         The URI of the created resource.
@@ -64,6 +70,10 @@ class GlobalAddress(pulumi.CustomResource):
             self.description = outs['description']
         if 'ipVersion' in outs:
             self.ip_version = outs['ipVersion']
+        if 'labelFingerprint' in outs:
+            self.label_fingerprint = outs['labelFingerprint']
+        if 'labels' in outs:
+            self.labels = outs['labels']
         if 'name' in outs:
             self.name = outs['name']
         if 'project' in outs:
