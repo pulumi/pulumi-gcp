@@ -16,6 +16,12 @@
   version = "v0.23.0"
 
 [[projects]]
+  name = "contrib.go.opencensus.io/exporter/stackdriver"
+  packages = ["propagation"]
+  revision = "2b93072101d466aa4120b3c23c2e1b08af01541c"
+  version = "v0.6.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/Azure/go-ansiterm"
   packages = [
@@ -638,7 +644,7 @@
   branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-google"
   packages = ["google"]
-  revision = "e95fa4674ce86246965fcf659086cedbfc6d1417"
+  revision = "fda7a75812d04044939c89d8418677b543279e1c"
   source = "github.com/pulumi/terraform-provider-google"
 
 [[projects]]
@@ -706,7 +712,6 @@
 [[projects]]
   name = "go.opencensus.io"
   packages = [
-    "exporter/stackdriver/propagation",
     "exporterutil",
     "internal",
     "internal/tagencoding",
@@ -810,7 +815,6 @@
   version = "v0.3.0"
 
 [[projects]]
-  branch = "master"
   name = "google.golang.org/api"
   packages = [
     "appengine/v1",
@@ -822,6 +826,7 @@
     "cloudkms/v1",
     "cloudresourcemanager/v1",
     "cloudresourcemanager/v2beta1",
+    "composer/v1",
     "compute/v0.beta",
     "compute/v1",
     "container/v1",
@@ -852,7 +857,7 @@
     "transport/grpc",
     "transport/http"
   ]
-  revision = "8e296ef260056b6323d10727db40512dac6d92d5"
+  revision = "087779f1d2c96357d4c45bd04c4d10d7b5f22736"
 
 [[projects]]
   name = "google.golang.org/appengine"

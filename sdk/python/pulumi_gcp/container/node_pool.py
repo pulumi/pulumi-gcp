@@ -13,7 +13,7 @@ class NodePool(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
     """
-    def __init__(__self__, __name__, __opts__=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None):
         """Create a NodePool resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -60,6 +60,16 @@ class NodePool(pulumi.CustomResource):
         auto-upgrade is configured. Structure is documented below.
         """
         __props__['management'] = management
+
+        if max_pods_per_node and not isinstance(max_pods_per_node, int):
+            raise TypeError('Expected property max_pods_per_node to be a int')
+        __self__.max_pods_per_node = max_pods_per_node
+        """
+        The maximum number of pods per node in this node pool.
+        Note that this does not work on node pools which are "route-based" - that is, node
+        pools belonging to clusters that do not have IP Aliasing enabled.
+        """
+        __props__['maxPodsPerNode'] = max_pods_per_node
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -151,6 +161,8 @@ class NodePool(pulumi.CustomResource):
             self.instance_group_urls = outs['instanceGroupUrls']
         if 'management' in outs:
             self.management = outs['management']
+        if 'maxPodsPerNode' in outs:
+            self.max_pods_per_node = outs['maxPodsPerNode']
         if 'name' in outs:
             self.name = outs['name']
         if 'namePrefix' in outs:

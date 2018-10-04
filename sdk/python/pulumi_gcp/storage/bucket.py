@@ -17,7 +17,7 @@ class Bucket(pulumi.CustomResource):
     [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
     
     """
-    def __init__(__self__, __name__, __opts__=None, cors=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None):
+    def __init__(__self__, __name__, __opts__=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None):
         """Create a Bucket resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -35,6 +35,14 @@ class Bucket(pulumi.CustomResource):
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         __props__['cors'] = cors
+
+        if encryption and not isinstance(encryption, dict):
+            raise TypeError('Expected property encryption to be a dict')
+        __self__.encryption = encryption
+        """
+        The bucket's encryption configuration.
+        """
+        __props__['encryption'] = encryption
 
         if force_destroy and not isinstance(force_destroy, bool):
             raise TypeError('Expected property force_destroy to be a bool')
@@ -137,6 +145,8 @@ class Bucket(pulumi.CustomResource):
     def set_outputs(self, outs):
         if 'cors' in outs:
             self.cors = outs['cors']
+        if 'encryption' in outs:
+            self.encryption = outs['encryption']
         if 'forceDestroy' in outs:
             self.force_destroy = outs['forceDestroy']
         if 'labels' in outs:

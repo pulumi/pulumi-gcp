@@ -13,7 +13,7 @@ class Function(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/functions/docs/apis).
     """
-    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
+    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
         """Create a Function resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -47,6 +47,14 @@ class Function(pulumi.CustomResource):
         Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
         """
         __props__['entryPoint'] = entry_point
+
+        if environment_variables and not isinstance(environment_variables, dict):
+            raise TypeError('Expected property environment_variables to be a dict')
+        __self__.environment_variables = environment_variables
+        """
+        A set of key/value environment variable pairs to assign to the function.
+        """
+        __props__['environmentVariables'] = environment_variables
 
         if https_trigger_url and not isinstance(https_trigger_url, basestring):
             raise TypeError('Expected property https_trigger_url to be a basestring')
@@ -161,6 +169,8 @@ class Function(pulumi.CustomResource):
             self.description = outs['description']
         if 'entryPoint' in outs:
             self.entry_point = outs['entryPoint']
+        if 'environmentVariables' in outs:
+            self.environment_variables = outs['environmentVariables']
         if 'httpsTriggerUrl' in outs:
             self.https_trigger_url = outs['httpsTriggerUrl']
         if 'labels' in outs:

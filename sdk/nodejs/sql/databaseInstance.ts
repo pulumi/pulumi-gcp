@@ -84,6 +84,11 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public /*out*/ readonly serverCaCert: pulumi.Output<{ cert: string, commonName: string, createTime: string, expirationTime: string, sha1Fingerprint: string }>;
     /**
+     * The service account email address assigned to the
+     * instance. This property is applicable only to Second Generation instances.
+     */
+    public /*out*/ readonly serviceAccountEmailAddress: pulumi.Output<string>;
+    /**
      * The settings to use for the database. The
      * configuration is detailed below.
      */
@@ -112,6 +117,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serverCaCert"] = state ? state.serverCaCert : undefined;
+            inputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
             inputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
@@ -130,6 +136,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["ipAddresses"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["serverCaCert"] = undefined /*out*/;
+            inputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
         super("gcp:sql/databaseInstance:DatabaseInstance", name, inputs, opts);
     }
@@ -196,6 +203,11 @@ export interface DatabaseInstanceState {
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly serverCaCert?: pulumi.Input<{ cert?: pulumi.Input<string>, commonName?: pulumi.Input<string>, createTime?: pulumi.Input<string>, expirationTime?: pulumi.Input<string>, sha1Fingerprint?: pulumi.Input<string> }>;
+    /**
+     * The service account email address assigned to the
+     * instance. This property is applicable only to Second Generation instances.
+     */
+    readonly serviceAccountEmailAddress?: pulumi.Input<string>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below.

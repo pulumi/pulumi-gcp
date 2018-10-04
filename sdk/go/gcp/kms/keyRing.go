@@ -38,6 +38,7 @@ func NewKeyRing(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 	}
+	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:kms/keyRing:KeyRing", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -54,6 +55,7 @@ func GetKeyRing(ctx *pulumi.Context,
 		inputs["location"] = state.Location
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
+		inputs["selfLink"] = state.SelfLink
 	}
 	s, err := ctx.ReadResource("gcp:kms/keyRing:KeyRing", name, id, inputs, opts...)
 	if err != nil {
@@ -90,6 +92,11 @@ func (r *KeyRing) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
+func (r *KeyRing) SelfLink() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+}
+
 // Input properties used for looking up and filtering KeyRing resources.
 type KeyRingState struct {
 	// The Google Cloud Platform location for the KeyRing.
@@ -101,6 +108,8 @@ type KeyRingState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
+	SelfLink interface{}
 }
 
 // The set of arguments for constructing a KeyRing resource.

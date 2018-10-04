@@ -51,9 +51,6 @@ export class DefaultObjectACL extends pulumi.CustomResource {
             if (!args || args.bucket === undefined) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.roleEntities === undefined) {
-                throw new Error("Missing required property 'roleEntities'");
-            }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
@@ -86,5 +83,5 @@ export interface DefaultObjectACLArgs {
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      */
-    readonly roleEntities: pulumi.Input<pulumi.Input<string>[]>;
+    readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -13,6 +13,12 @@ class Notification(pulumi.CustomResource):
     [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
     and 
     [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
+    
+    In order to enable notifications, a special Google Cloud Storage service account unique to the project
+    must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
+    account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
+    for an example of enabling notifications by granting the correct IAM permission. See
+    [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
     """
     def __init__(__self__, __name__, __opts__=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None):
         """Create a Notification resource with the given unique name, props, and options."""

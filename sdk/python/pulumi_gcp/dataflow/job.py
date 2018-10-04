@@ -13,7 +13,7 @@ class Job(pulumi.CustomResource):
     [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
     
     """
-    def __init__(__self__, __name__, __opts__=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
         """Create a Job resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -63,6 +63,11 @@ class Job(pulumi.CustomResource):
         The project in which the resource belongs. If it is not provided, the provider project is used.
         """
         __props__['project'] = project
+
+        if region and not isinstance(region, basestring):
+            raise TypeError('Expected property region to be a basestring')
+        __self__.region = region
+        __props__['region'] = region
 
         if not temp_gcs_location:
             raise TypeError('Missing required property temp_gcs_location')
@@ -114,6 +119,8 @@ class Job(pulumi.CustomResource):
             self.parameters = outs['parameters']
         if 'project' in outs:
             self.project = outs['project']
+        if 'region' in outs:
+            self.region = outs['region']
         if 'state' in outs:
             self.state = outs['state']
         if 'tempGcsLocation' in outs:

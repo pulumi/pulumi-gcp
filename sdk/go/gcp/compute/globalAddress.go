@@ -18,16 +18,19 @@ func NewGlobalAddress(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["ipVersion"] = nil
+		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["ipVersion"] = args.IpVersion
+		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 	}
 	inputs["address"] = nil
 	inputs["creationTimestamp"] = nil
+	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/globalAddress:GlobalAddress", name, true, inputs, opts...)
 	if err != nil {
@@ -46,6 +49,8 @@ func GetGlobalAddress(ctx *pulumi.Context,
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["ipVersion"] = state.IpVersion
+		inputs["labelFingerprint"] = state.LabelFingerprint
+		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["selfLink"] = state.SelfLink
@@ -83,6 +88,14 @@ func (r *GlobalAddress) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
+func (r *GlobalAddress) LabelFingerprint() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+}
+
+func (r *GlobalAddress) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
 func (r *GlobalAddress) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -104,6 +117,8 @@ type GlobalAddressState struct {
 	CreationTimestamp interface{}
 	Description interface{}
 	IpVersion interface{}
+	LabelFingerprint interface{}
+	Labels interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -116,6 +131,7 @@ type GlobalAddressState struct {
 type GlobalAddressArgs struct {
 	Description interface{}
 	IpVersion interface{}
+	Labels interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -16,7 +16,7 @@ class Cluster(pulumi.CustomResource):
     ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
     [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     """
-    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
         """Create a Cluster resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -63,6 +63,15 @@ class Cluster(pulumi.CustomResource):
         Description of the cluster.
         """
         __props__['description'] = description
+
+        if enable_binary_authorization and not isinstance(enable_binary_authorization, bool):
+            raise TypeError('Expected property enable_binary_authorization to be a bool')
+        __self__.enable_binary_authorization = enable_binary_authorization
+        """
+        Enable Binary Authorization for this cluster.
+        If enabled, all container images will be validated by Google Binary Authorization.
+        """
+        __props__['enableBinaryAuthorization'] = enable_binary_authorization
 
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError('Expected property enable_kubernetes_alpha to be a bool')
@@ -336,6 +345,8 @@ class Cluster(pulumi.CustomResource):
             self.cluster_ipv4_cidr = outs['clusterIpv4Cidr']
         if 'description' in outs:
             self.description = outs['description']
+        if 'enableBinaryAuthorization' in outs:
+            self.enable_binary_authorization = outs['enableBinaryAuthorization']
         if 'enableKubernetesAlpha' in outs:
             self.enable_kubernetes_alpha = outs['enableKubernetesAlpha']
         if 'enableLegacyAbac' in outs:

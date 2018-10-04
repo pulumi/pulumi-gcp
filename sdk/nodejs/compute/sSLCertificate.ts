@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an SSL certificate resource necessary for HTTPS load balancing in GCE.
- * For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/ssl-certificates) and
- * [API](https://cloud.google.com/compute/docs/reference/latest/sslCertificates).
- * 
- */
 export class SSLCertificate extends pulumi.CustomResource {
     /**
      * Get an existing SSLCertificate resource's state with the given name, ID, and optional extra
@@ -24,39 +17,20 @@ export class SSLCertificate extends pulumi.CustomResource {
         return new SSLCertificate(name, <any>state, { id });
     }
 
-    /**
-     * A local certificate file in PEM format. The chain
-     * may be at most 5 certs long, and must include at least one intermediate
-     * cert. Changing this forces a new resource to be created.
-     */
     public readonly certificate: pulumi.Output<string>;
-    /**
-     * A unique ID for the certificate, assigned by GCE.
-     */
-    public /*out*/ readonly certificateId: pulumi.Output<string>;
-    /**
-     * An optional description of this resource.
-     * Changing this forces a new resource to be created.
-     */
+    public /*out*/ readonly certificateId: pulumi.Output<number>;
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * A unique name for the SSL certificate. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     public readonly name: pulumi.Output<string>;
     /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
      */
     public readonly namePrefix: pulumi.Output<string>;
-    /**
-     * Write only private key in PEM format.
-     * Changing this forces a new resource to be created.
-     */
     public readonly privateKey: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
     /**
@@ -78,6 +52,7 @@ export class SSLCertificate extends pulumi.CustomResource {
             const state: SSLCertificateState = argsOrState as SSLCertificateState | undefined;
             inputs["certificate"] = state ? state.certificate : undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
@@ -99,6 +74,7 @@ export class SSLCertificate extends pulumi.CustomResource {
             inputs["privateKey"] = args ? args.privateKey : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["certificateId"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:compute/sSLCertificate:SSLCertificate", name, inputs, opts);
@@ -109,39 +85,20 @@ export class SSLCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SSLCertificate resources.
  */
 export interface SSLCertificateState {
-    /**
-     * A local certificate file in PEM format. The chain
-     * may be at most 5 certs long, and must include at least one intermediate
-     * cert. Changing this forces a new resource to be created.
-     */
     readonly certificate?: pulumi.Input<string>;
-    /**
-     * A unique ID for the certificate, assigned by GCE.
-     */
-    readonly certificateId?: pulumi.Input<string>;
-    /**
-     * An optional description of this resource.
-     * Changing this forces a new resource to be created.
-     */
+    readonly certificateId?: pulumi.Input<number>;
+    readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique name for the SSL certificate. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
      */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Write only private key in PEM format.
-     * Changing this forces a new resource to be created.
-     */
     readonly privateKey?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -154,35 +111,18 @@ export interface SSLCertificateState {
  * The set of arguments for constructing a SSLCertificate resource.
  */
 export interface SSLCertificateArgs {
-    /**
-     * A local certificate file in PEM format. The chain
-     * may be at most 5 certs long, and must include at least one intermediate
-     * cert. Changing this forces a new resource to be created.
-     */
     readonly certificate: pulumi.Input<string>;
-    /**
-     * An optional description of this resource.
-     * Changing this forces a new resource to be created.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A unique name for the SSL certificate. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
      */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * Write only private key in PEM format.
-     * Changing this forces a new resource to be created.
-     */
     readonly privateKey: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }

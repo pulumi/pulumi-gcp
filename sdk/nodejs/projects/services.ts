@@ -12,9 +12,10 @@ import * as utilities from "../utilities";
  * For a list of services available, visit the
  * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
  * 
- * ~> **Note:** This resource attempts to be the authoritative source on which APIs are enabled, which can
- * 	lead to conflicts when certain APIs or actions enable other APIs. To just ensure that a specific
- * 	API is enabled, use the google_project_service resource.
+ * ~> **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
+ * 	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
+ * 	*exclusively* a particular set of APIs are enabled, you should most likely use the
+ * 	google_project_service resource, one resource per API.
  */
 export class Services extends pulumi.CustomResource {
     /**

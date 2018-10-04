@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to available Google Container Engine versions in a zone for a given project.
+ * Provides access to available Google Container Engine versions in a zone or region for a given project.
  * 
  * ```hcl
  * data "google_container_engine_versions" "central1b" {
@@ -29,6 +29,7 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
     args = args || {};
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "project": args.project,
+        "region": args.region,
         "zone": args.zone,
     }, opts);
 }
@@ -43,7 +44,14 @@ export interface GetEngineVersionsArgs {
      */
     readonly project?: string;
     /**
+     * Region to list available cluster versions for. Should match the region the cluster will be deployed in.
+     * For regional clusters, this value must be specified and cannot be inferred from provider-level region. One of zone,
+     * region, or provider-level zone is required.
+     */
+    readonly region?: string;
+    /**
      * Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
+     * If not specified, the provider-level zone is used. One of zone, region, or provider-level zone is required.
      */
     readonly zone?: string;
 }

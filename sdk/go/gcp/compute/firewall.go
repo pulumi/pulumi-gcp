@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a firewall resource within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/vpc/firewalls)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/firewalls).
 type Firewall struct {
 	s *pulumi.ResourceState
 }
@@ -30,6 +26,7 @@ func NewFirewall(ctx *pulumi.Context,
 		inputs["destinationRanges"] = nil
 		inputs["direction"] = nil
 		inputs["disabled"] = nil
+		inputs["enableLogging"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["priority"] = nil
@@ -46,6 +43,7 @@ func NewFirewall(ctx *pulumi.Context,
 		inputs["destinationRanges"] = args.DestinationRanges
 		inputs["direction"] = args.Direction
 		inputs["disabled"] = args.Disabled
+		inputs["enableLogging"] = args.EnableLogging
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["priority"] = args.Priority
@@ -56,6 +54,7 @@ func NewFirewall(ctx *pulumi.Context,
 		inputs["targetServiceAccounts"] = args.TargetServiceAccounts
 		inputs["targetTags"] = args.TargetTags
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/firewall:Firewall", name, true, inputs, opts...)
 	if err != nil {
@@ -71,11 +70,13 @@ func GetFirewall(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["allows"] = state.Allows
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["denies"] = state.Denies
 		inputs["description"] = state.Description
 		inputs["destinationRanges"] = state.DestinationRanges
 		inputs["direction"] = state.Direction
 		inputs["disabled"] = state.Disabled
+		inputs["enableLogging"] = state.EnableLogging
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["priority"] = state.Priority
@@ -104,62 +105,52 @@ func (r *Firewall) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// Can be specified multiple times for each allow
-// rule. Each allow block supports fields documented below.
 func (r *Firewall) Allows() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allows"])
 }
 
-// Can be specified multiple times for each deny
-// rule. Each deny block supports fields documented below. Can be specified
-// instead of allow.
+func (r *Firewall) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *Firewall) Denies() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["denies"])
 }
 
-// Textual description field.
 func (r *Firewall) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A list of destination CIDR ranges that this
-// firewall applies to. Can't be used for `INGRESS`.
 func (r *Firewall) DestinationRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["destinationRanges"])
 }
 
-// Direction of traffic to which this firewall applies;
-// One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 func (r *Firewall) Direction() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["direction"])
 }
 
-// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
-// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
 func (r *Firewall) Disabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
+func (r *Firewall) EnableLogging() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableLogging"])
+}
+
 func (r *Firewall) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The name or self_link of the network to attach this firewall to.
 func (r *Firewall) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
-// The priority for this firewall. Ranges from 0-65535, inclusive. Defaults to 1000. Firewall
-// resources with lower priority values have higher precedence (e.g. a firewall resource with a priority value of 0
-// takes effect over all other firewall rules with a non-zero priority).
 func (r *Firewall) Priority() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["priority"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Firewall) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -169,153 +160,69 @@ func (r *Firewall) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// A list of source CIDR ranges that this
-// firewall applies to. Can't be used for `EGRESS`.
 func (r *Firewall) SourceRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sourceRanges"])
 }
 
-// A list of service accounts such that
-// the firewall will apply only to traffic originating from an instance with a service account in this list.  Note that as of May 2018,
-// this list can contain only one item, due to a change in the way that these firewall rules are handled.  Source service accounts
-// cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not
-// an IP address. `source_ranges` can be set at the same time as `source_service_accounts`. If both are set, the firewall will apply to
-// traffic that has source IP address within `source_ranges` OR the source IP belongs to an instance with service account listed in
-// `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
-// cannot be used at the same time as `source_tags` or `target_tags`.
 func (r *Firewall) SourceServiceAccounts() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceServiceAccounts"])
 }
 
-// A list of source tags for this firewall. Can't be used for `EGRESS`.
 func (r *Firewall) SourceTags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sourceTags"])
 }
 
-// A list of service accounts indicating
-// sets of instances located in the network that may make network connections as specified in `allow`. `target_service_accounts` cannot
-// be used at the same time as `source_tags` or `target_tags`. If neither `target_service_accounts` nor `target_tags` are specified, the
-// firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
-// to a change in the way that these firewall rules are handled.
 func (r *Firewall) TargetServiceAccounts() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["targetServiceAccounts"])
 }
 
-// A list of target tags for this firewall.
 func (r *Firewall) TargetTags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["targetTags"])
 }
 
 // Input properties used for looking up and filtering Firewall resources.
 type FirewallState struct {
-	// Can be specified multiple times for each allow
-	// rule. Each allow block supports fields documented below.
 	Allows interface{}
-	// Can be specified multiple times for each deny
-	// rule. Each deny block supports fields documented below. Can be specified
-	// instead of allow.
+	CreationTimestamp interface{}
 	Denies interface{}
-	// Textual description field.
 	Description interface{}
-	// A list of destination CIDR ranges that this
-	// firewall applies to. Can't be used for `INGRESS`.
 	DestinationRanges interface{}
-	// Direction of traffic to which this firewall applies;
-	// One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 	Direction interface{}
-	// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
-	// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
 	Disabled interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	EnableLogging interface{}
 	Name interface{}
-	// The name or self_link of the network to attach this firewall to.
 	Network interface{}
-	// The priority for this firewall. Ranges from 0-65535, inclusive. Defaults to 1000. Firewall
-	// resources with lower priority values have higher precedence (e.g. a firewall resource with a priority value of 0
-	// takes effect over all other firewall rules with a non-zero priority).
 	Priority interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// A list of source CIDR ranges that this
-	// firewall applies to. Can't be used for `EGRESS`.
 	SourceRanges interface{}
-	// A list of service accounts such that
-	// the firewall will apply only to traffic originating from an instance with a service account in this list.  Note that as of May 2018,
-	// this list can contain only one item, due to a change in the way that these firewall rules are handled.  Source service accounts
-	// cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not
-	// an IP address. `source_ranges` can be set at the same time as `source_service_accounts`. If both are set, the firewall will apply to
-	// traffic that has source IP address within `source_ranges` OR the source IP belongs to an instance with service account listed in
-	// `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
-	// cannot be used at the same time as `source_tags` or `target_tags`.
 	SourceServiceAccounts interface{}
-	// A list of source tags for this firewall. Can't be used for `EGRESS`.
 	SourceTags interface{}
-	// A list of service accounts indicating
-	// sets of instances located in the network that may make network connections as specified in `allow`. `target_service_accounts` cannot
-	// be used at the same time as `source_tags` or `target_tags`. If neither `target_service_accounts` nor `target_tags` are specified, the
-	// firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
-	// to a change in the way that these firewall rules are handled.
 	TargetServiceAccounts interface{}
-	// A list of target tags for this firewall.
 	TargetTags interface{}
 }
 
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
-	// Can be specified multiple times for each allow
-	// rule. Each allow block supports fields documented below.
 	Allows interface{}
-	// Can be specified multiple times for each deny
-	// rule. Each deny block supports fields documented below. Can be specified
-	// instead of allow.
 	Denies interface{}
-	// Textual description field.
 	Description interface{}
-	// A list of destination CIDR ranges that this
-	// firewall applies to. Can't be used for `INGRESS`.
 	DestinationRanges interface{}
-	// Direction of traffic to which this firewall applies;
-	// One of `INGRESS` or `EGRESS`. Defaults to `INGRESS`.
 	Direction interface{}
-	// Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with.
-	// When set to true, the firewall rule is not enforced and the network behaves as if it did not exist.
 	Disabled interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	EnableLogging interface{}
 	Name interface{}
-	// The name or self_link of the network to attach this firewall to.
 	Network interface{}
-	// The priority for this firewall. Ranges from 0-65535, inclusive. Defaults to 1000. Firewall
-	// resources with lower priority values have higher precedence (e.g. a firewall resource with a priority value of 0
-	// takes effect over all other firewall rules with a non-zero priority).
 	Priority interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// A list of source CIDR ranges that this
-	// firewall applies to. Can't be used for `EGRESS`.
 	SourceRanges interface{}
-	// A list of service accounts such that
-	// the firewall will apply only to traffic originating from an instance with a service account in this list.  Note that as of May 2018,
-	// this list can contain only one item, due to a change in the way that these firewall rules are handled.  Source service accounts
-	// cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not
-	// an IP address. `source_ranges` can be set at the same time as `source_service_accounts`. If both are set, the firewall will apply to
-	// traffic that has source IP address within `source_ranges` OR the source IP belongs to an instance with service account listed in
-	// `source_service_accounts`. The connection does not need to match both properties for the firewall to apply. `source_service_accounts`
-	// cannot be used at the same time as `source_tags` or `target_tags`.
 	SourceServiceAccounts interface{}
-	// A list of source tags for this firewall. Can't be used for `EGRESS`.
 	SourceTags interface{}
-	// A list of service accounts indicating
-	// sets of instances located in the network that may make network connections as specified in `allow`. `target_service_accounts` cannot
-	// be used at the same time as `source_tags` or `target_tags`. If neither `target_service_accounts` nor `target_tags` are specified, the
-	// firewall rule applies to all instances on the specified network.  Note that as of May 2018, this list can contain only one item, due
-	// to a change in the way that these firewall rules are handled.
 	TargetServiceAccounts interface{}
-	// A list of target tags for this firewall.
 	TargetTags interface{}
 }

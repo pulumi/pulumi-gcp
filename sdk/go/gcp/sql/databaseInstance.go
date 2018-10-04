@@ -48,6 +48,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	inputs["ipAddresses"] = nil
 	inputs["selfLink"] = nil
 	inputs["serverCaCert"] = nil
+	inputs["serviceAccountEmailAddress"] = nil
 	s, err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -72,6 +73,7 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 		inputs["replicaConfiguration"] = state.ReplicaConfiguration
 		inputs["selfLink"] = state.SelfLink
 		inputs["serverCaCert"] = state.ServerCaCert
+		inputs["serviceAccountEmailAddress"] = state.ServiceAccountEmailAddress
 		inputs["settings"] = state.Settings
 	}
 	s, err := ctx.ReadResource("gcp:sql/databaseInstance:DatabaseInstance", name, id, inputs, opts...)
@@ -163,6 +165,12 @@ func (r *DatabaseInstance) ServerCaCert() *pulumi.Output {
 	return r.s.State["serverCaCert"]
 }
 
+// The service account email address assigned to the
+// instance. This property is applicable only to Second Generation instances.
+func (r *DatabaseInstance) ServiceAccountEmailAddress() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmailAddress"])
+}
+
 // The settings to use for the database. The
 // configuration is detailed below.
 func (r *DatabaseInstance) Settings() *pulumi.Output {
@@ -210,6 +218,9 @@ type DatabaseInstanceState struct {
 	// The URI of the created resource.
 	SelfLink interface{}
 	ServerCaCert interface{}
+	// The service account email address assigned to the
+	// instance. This property is applicable only to Second Generation instances.
+	ServiceAccountEmailAddress interface{}
 	// The settings to use for the database. The
 	// configuration is detailed below.
 	Settings interface{}

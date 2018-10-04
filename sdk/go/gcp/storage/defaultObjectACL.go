@@ -22,9 +22,6 @@ func NewDefaultObjectACL(ctx *pulumi.Context,
 	if args == nil || args.Bucket == nil {
 		return nil, errors.New("missing required argument 'Bucket'")
 	}
-	if args == nil || args.RoleEntities == nil {
-		return nil, errors.New("missing required argument 'RoleEntities'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["bucket"] = nil

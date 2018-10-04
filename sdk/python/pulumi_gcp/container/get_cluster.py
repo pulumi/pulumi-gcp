@@ -10,7 +10,7 @@ class GetClusterResult(object):
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
@@ -23,6 +23,9 @@ class GetClusterResult(object):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
+        if enable_binary_authorization and not isinstance(enable_binary_authorization, bool):
+            raise TypeError('Expected argument enable_binary_authorization to be a bool')
+        __self__.enable_binary_authorization = enable_binary_authorization
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError('Expected argument enable_kubernetes_alpha to be a bool')
         __self__.enable_kubernetes_alpha = enable_kubernetes_alpha
@@ -119,6 +122,7 @@ def get_cluster(name=None, project=None, region=None, zone=None):
         addons_configs=__ret__.get('addonsConfigs'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
         description=__ret__.get('description'),
+        enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
         enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
         enable_legacy_abac=__ret__.get('enableLegacyAbac'),
         endpoint=__ret__.get('endpoint'),

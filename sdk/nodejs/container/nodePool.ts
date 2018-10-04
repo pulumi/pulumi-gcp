@@ -44,6 +44,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly management: pulumi.Output<{ autoRepair?: boolean, autoUpgrade?: boolean }>;
     /**
+     * The maximum number of pods per node in this node pool.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     */
+    public readonly maxPodsPerNode: pulumi.Output<number | undefined>;
+    /**
      * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      */
@@ -100,6 +106,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
             inputs["management"] = state ? state.management : undefined;
+            inputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
@@ -117,6 +124,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["management"] = args ? args.management : undefined;
+            inputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
@@ -155,6 +163,12 @@ export interface NodePoolState {
      * auto-upgrade is configured. Structure is documented below.
      */
     readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
+    /**
+     * The maximum number of pods per node in this node pool.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     */
+    readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
      * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
@@ -219,6 +233,12 @@ export interface NodePoolArgs {
      * auto-upgrade is configured. Structure is documented below.
      */
     readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
+    /**
+     * The maximum number of pods per node in this node pool.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     */
+    readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
      * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.

@@ -25,6 +25,7 @@ func NewBucket(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["cors"] = nil
+		inputs["encryption"] = nil
 		inputs["forceDestroy"] = nil
 		inputs["labels"] = nil
 		inputs["lifecycleRules"] = nil
@@ -37,6 +38,7 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["websites"] = nil
 	} else {
 		inputs["cors"] = args.Cors
+		inputs["encryption"] = args.Encryption
 		inputs["forceDestroy"] = args.ForceDestroy
 		inputs["labels"] = args.Labels
 		inputs["lifecycleRules"] = args.LifecycleRules
@@ -64,6 +66,7 @@ func GetBucket(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["cors"] = state.Cors
+		inputs["encryption"] = state.Encryption
 		inputs["forceDestroy"] = state.ForceDestroy
 		inputs["labels"] = state.Labels
 		inputs["lifecycleRules"] = state.LifecycleRules
@@ -97,6 +100,11 @@ func (r *Bucket) ID() *pulumi.IDOutput {
 // The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 func (r *Bucket) Cors() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["cors"])
+}
+
+// The bucket's encryption configuration.
+func (r *Bucket) Encryption() *pulumi.Output {
+	return r.s.State["encryption"]
 }
 
 // When deleting a bucket, this
@@ -166,6 +174,8 @@ func (r *Bucket) Websites() *pulumi.ArrayOutput {
 type BucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors interface{}
+	// The bucket's encryption configuration.
+	Encryption interface{}
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, Terraform will fail that run.
@@ -199,6 +209,8 @@ type BucketState struct {
 type BucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors interface{}
+	// The bucket's encryption configuration.
+	Encryption interface{}
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, Terraform will fail that run.

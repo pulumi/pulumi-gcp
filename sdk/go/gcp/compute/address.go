@@ -19,6 +19,7 @@ func NewAddress(ctx *pulumi.Context,
 		inputs["address"] = nil
 		inputs["addressType"] = nil
 		inputs["description"] = nil
+		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["networkTier"] = nil
 		inputs["project"] = nil
@@ -28,6 +29,7 @@ func NewAddress(ctx *pulumi.Context,
 		inputs["address"] = args.Address
 		inputs["addressType"] = args.AddressType
 		inputs["description"] = args.Description
+		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["networkTier"] = args.NetworkTier
 		inputs["project"] = args.Project
@@ -35,6 +37,7 @@ func NewAddress(ctx *pulumi.Context,
 		inputs["subnetwork"] = args.Subnetwork
 	}
 	inputs["creationTimestamp"] = nil
+	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
 	inputs["users"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/address:Address", name, true, inputs, opts...)
@@ -54,6 +57,8 @@ func GetAddress(ctx *pulumi.Context,
 		inputs["addressType"] = state.AddressType
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
+		inputs["labelFingerprint"] = state.LabelFingerprint
+		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["networkTier"] = state.NetworkTier
 		inputs["project"] = state.Project
@@ -79,6 +84,7 @@ func (r *Address) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
+// The IP of the created resource.
 func (r *Address) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
 }
@@ -93,6 +99,14 @@ func (r *Address) CreationTimestamp() *pulumi.StringOutput {
 
 func (r *Address) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *Address) LabelFingerprint() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+}
+
+func (r *Address) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
 func (r *Address) Name() *pulumi.StringOutput {
@@ -128,10 +142,13 @@ func (r *Address) Users() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Address resources.
 type AddressState struct {
+	// The IP of the created resource.
 	Address interface{}
 	AddressType interface{}
 	CreationTimestamp interface{}
 	Description interface{}
+	LabelFingerprint interface{}
+	Labels interface{}
 	Name interface{}
 	NetworkTier interface{}
 	// The ID of the project in which the resource belongs.
@@ -146,9 +163,11 @@ type AddressState struct {
 
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
+	// The IP of the created resource.
 	Address interface{}
 	AddressType interface{}
 	Description interface{}
+	Labels interface{}
 	Name interface{}
 	NetworkTier interface{}
 	// The ID of the project in which the resource belongs.

@@ -24,9 +24,6 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 	if args == nil || args.BaseInstanceName == nil {
 		return nil, errors.New("missing required argument 'BaseInstanceName'")
 	}
-	if args == nil || args.InstanceTemplate == nil {
-		return nil, errors.New("missing required argument 'InstanceTemplate'")
-	}
 	if args == nil || args.Region == nil {
 		return nil, errors.New("missing required argument 'Region'")
 	}
@@ -45,6 +42,7 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 		inputs["targetPools"] = nil
 		inputs["targetSize"] = nil
 		inputs["updateStrategy"] = nil
+		inputs["versions"] = nil
 		inputs["waitForInstances"] = nil
 	} else {
 		inputs["autoHealingPolicies"] = args.AutoHealingPolicies
@@ -60,6 +58,7 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 		inputs["targetPools"] = args.TargetPools
 		inputs["targetSize"] = args.TargetSize
 		inputs["updateStrategy"] = args.UpdateStrategy
+		inputs["versions"] = args.Versions
 		inputs["waitForInstances"] = args.WaitForInstances
 	}
 	inputs["fingerprint"] = nil
@@ -94,6 +93,7 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 		inputs["targetPools"] = state.TargetPools
 		inputs["targetSize"] = state.TargetSize
 		inputs["updateStrategy"] = state.UpdateStrategy
+		inputs["versions"] = state.Versions
 		inputs["waitForInstances"] = state.WaitForInstances
 	}
 	s, err := ctx.ReadResource("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, id, inputs, opts...)
@@ -152,13 +152,12 @@ func (r *RegionInstanceGroupManager) InstanceGroup() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceGroup"])
 }
 
-// The full URL to an instance template from
-// which all new instances will be created.
+// - The full URL to an instance template from which all new instances of this version will be created.
 func (r *RegionInstanceGroupManager) InstanceTemplate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceTemplate"])
 }
 
-// The name of the port.
+// - Version name.
 func (r *RegionInstanceGroupManager) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -197,9 +196,7 @@ func (r *RegionInstanceGroupManager) TargetPools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["targetPools"])
 }
 
-// The target number of running instances for this managed
-// instance group. This value should always be explicitly set unless this resource is attached to
-// an autoscaler, in which case it should never be set. Defaults to `0`.
+// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["targetSize"])
 }
@@ -211,6 +208,16 @@ func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 // `rolling_update_policy` block to be set
 func (r *RegionInstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateStrategy"])
+}
+
+// Application versions managed by this instance group. Each
+// version deals with a specific instance template, allowing canary release scenarios.
+// Conflicts with `instance_template`. Structure is documented below. Beware that
+// exactly one version must not specify a target size. It means that versions with
+// a target size will respect the setting, and the one without target size will
+// be applied to all remaining Instances (top level target_size - each version target_size).
+func (r *RegionInstanceGroupManager) Versions() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
 
 // Whether to wait for all instances to be created/updated before
@@ -243,10 +250,9 @@ type RegionInstanceGroupManagerState struct {
 	Fingerprint interface{}
 	// The full URL of the instance group created by the manager.
 	InstanceGroup interface{}
-	// The full URL to an instance template from
-	// which all new instances will be created.
+	// - The full URL to an instance template from which all new instances of this version will be created.
 	InstanceTemplate interface{}
-	// The name of the port.
+	// - Version name.
 	Name interface{}
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -264,9 +270,7 @@ type RegionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools interface{}
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize interface{}
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
@@ -274,6 +278,13 @@ type RegionInstanceGroupManagerState struct {
 	// is supported as [Beta feature]. A value of `"ROLLING_UPDATE"` requires
 	// `rolling_update_policy` block to be set
 	UpdateStrategy interface{}
+	// Application versions managed by this instance group. Each
+	// version deals with a specific instance template, allowing canary release scenarios.
+	// Conflicts with `instance_template`. Structure is documented below. Beware that
+	// exactly one version must not specify a target size. It means that versions with
+	// a target size will respect the setting, and the one without target size will
+	// be applied to all remaining Instances (top level target_size - each version target_size).
+	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.
@@ -299,10 +310,9 @@ type RegionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones interface{}
-	// The full URL to an instance template from
-	// which all new instances will be created.
+	// - The full URL to an instance template from which all new instances of this version will be created.
 	InstanceTemplate interface{}
-	// The name of the port.
+	// - Version name.
 	Name interface{}
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -318,9 +328,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools interface{}
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize interface{}
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
@@ -328,6 +336,13 @@ type RegionInstanceGroupManagerArgs struct {
 	// is supported as [Beta feature]. A value of `"ROLLING_UPDATE"` requires
 	// `rolling_update_policy` block to be set
 	UpdateStrategy interface{}
+	// Application versions managed by this instance group. Each
+	// version deals with a specific instance template, allowing canary release scenarios.
+	// Conflicts with `instance_template`. Structure is documented below. Beware that
+	// exactly one version must not specify a target size. It means that versions with
+	// a target size will respect the setting, and the one without target size will
+	// be applied to all remaining Instances (top level target_size - each version target_size).
+	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
 	// continue trying until it times out.

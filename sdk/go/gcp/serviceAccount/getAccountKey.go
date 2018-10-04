@@ -12,6 +12,7 @@ import (
 func LookupAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs) (*GetAccountKeyResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["publicKeyType"] = args.PublicKeyType
 		inputs["serviceAccountId"] = args.ServiceAccountId
@@ -30,21 +31,21 @@ func LookupAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs) (*GetAccount
 
 // A collection of arguments for invoking getAccountKey.
 type GetAccountKeyArgs struct {
+	// The name of the service account key. This must have format
+	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+	// is the email address or unique id of the service account.
+	Name interface{}
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}
 	// The output format of the public key requested. X509_PEM is the default output format.
 	PublicKeyType interface{}
-	// The Service account id of the Key Pair. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
 	ServiceAccountId interface{}
 }
 
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	KeyAlgorithm interface{}
-	// The name used for this key pair
 	Name interface{}
 	// The public key, base64 encoded
 	PublicKey interface{}

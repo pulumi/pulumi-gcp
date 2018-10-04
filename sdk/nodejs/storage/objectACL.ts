@@ -38,7 +38,7 @@ export class ObjectACL extends pulumi.CustomResource {
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details. Must be set if `predefined_acl` is not.
      */
-    public readonly roleEntities: pulumi.Output<string[] | undefined>;
+    public readonly roleEntities: pulumi.Output<string[]>;
 
     /**
      * Create a ObjectACL resource with the given unique name, arguments, and options.

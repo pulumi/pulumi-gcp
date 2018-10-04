@@ -11,7 +11,7 @@ class ManagedZone(pulumi.CustomResource):
     Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
     """
-    def __init__(__self__, __name__, __opts__=None, description=None, dns_name=None, name=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, dns_name=None, labels=None, name=None, project=None):
         """Create a ManagedZone resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -39,6 +39,14 @@ class ManagedZone(pulumi.CustomResource):
         The fully qualified DNS name of this zone, e.g. `terraform.io.`.
         """
         __props__['dnsName'] = dns_name
+
+        if labels and not isinstance(labels, dict):
+            raise TypeError('Expected property labels to be a dict')
+        __self__.labels = labels
+        """
+        A set of key/value label pairs to assign to the instance.
+        """
+        __props__['labels'] = labels
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -76,6 +84,8 @@ class ManagedZone(pulumi.CustomResource):
             self.description = outs['description']
         if 'dnsName' in outs:
             self.dns_name = outs['dnsName']
+        if 'labels' in outs:
+            self.labels = outs['labels']
         if 'name' in outs:
             self.name = outs['name']
         if 'nameServers' in outs:

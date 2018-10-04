@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from address import *
+from attached_disk import *
 from autoscalar import *
 from backend_bucket import *
 from backend_service import *
@@ -27,6 +28,7 @@ from project_metadata import *
 from project_metadata_item import *
 from region_autoscaler import *
 from region_backend_service import *
+from region_disk import *
 from region_instance_group_manager import *
 from route import *
 from router import *

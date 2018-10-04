@@ -32,6 +32,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["onDelete"] = nil
 		inputs["parameters"] = nil
 		inputs["project"] = nil
+		inputs["region"] = nil
 		inputs["tempGcsLocation"] = nil
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
@@ -41,6 +42,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["onDelete"] = args.OnDelete
 		inputs["parameters"] = args.Parameters
 		inputs["project"] = args.Project
+		inputs["region"] = args.Region
 		inputs["tempGcsLocation"] = args.TempGcsLocation
 		inputs["templateGcsPath"] = args.TemplateGcsPath
 		inputs["zone"] = args.Zone
@@ -64,6 +66,7 @@ func GetJob(ctx *pulumi.Context,
 		inputs["onDelete"] = state.OnDelete
 		inputs["parameters"] = state.Parameters
 		inputs["project"] = state.Project
+		inputs["region"] = state.Region
 		inputs["state"] = state.State
 		inputs["tempGcsLocation"] = state.TempGcsLocation
 		inputs["templateGcsPath"] = state.TemplateGcsPath
@@ -111,6 +114,10 @@ func (r *Job) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Job) Region() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["region"])
+}
+
 // The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 func (r *Job) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
@@ -143,6 +150,7 @@ type JobState struct {
 	Parameters interface{}
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
+	Region interface{}
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -165,6 +173,7 @@ type JobArgs struct {
 	Parameters interface{}
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
+	Region interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation interface{}
 	// The GCS path to the Dataflow job template.

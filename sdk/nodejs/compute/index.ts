@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./address";
+export * from "./attachedDisk";
 export * from "./autoscalar";
 export * from "./backendBucket";
 export * from "./backendService";
@@ -42,6 +43,7 @@ export * from "./projectMetadata";
 export * from "./projectMetadataItem";
 export * from "./regionAutoscaler";
 export * from "./regionBackendService";
+export * from "./regionDisk";
 export * from "./regionInstanceGroupManager";
 export * from "./route";
 export * from "./router";

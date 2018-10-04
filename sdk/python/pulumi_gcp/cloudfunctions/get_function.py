@@ -10,7 +10,7 @@ class GetFunctionResult(object):
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError('Expected argument available_memory_mb to be a int')
         __self__.available_memory_mb = available_memory_mb
@@ -29,6 +29,9 @@ class GetFunctionResult(object):
         """
         Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
         """
+        if environment_variables and not isinstance(environment_variables, dict):
+            raise TypeError('Expected argument environment_variables to be a dict')
+        __self__.environment_variables = environment_variables
         if https_trigger_url and not isinstance(https_trigger_url, basestring):
             raise TypeError('Expected argument https_trigger_url to be a basestring')
         __self__.https_trigger_url = https_trigger_url
@@ -104,6 +107,7 @@ def get_function(name=None, project=None, region=None):
         available_memory_mb=__ret__.get('availableMemoryMb'),
         description=__ret__.get('description'),
         entry_point=__ret__.get('entryPoint'),
+        environment_variables=__ret__.get('environmentVariables'),
         https_trigger_url=__ret__.get('httpsTriggerUrl'),
         labels=__ret__.get('labels'),
         retry_on_failure=__ret__.get('retryOnFailure'),

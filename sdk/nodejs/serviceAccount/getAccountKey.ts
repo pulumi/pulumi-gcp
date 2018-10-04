@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
  * 
  */
-export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
+export function getAccountKey(args?: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
+    args = args || {};
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
+        "name": args.name,
         "project": args.project,
         "publicKeyType": args.publicKeyType,
         "serviceAccountId": args.serviceAccountId,
@@ -21,6 +23,12 @@ export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetAccountKeyArgs {
     /**
+     * The name of the service account key. This must have format
+     * `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+     * is the email address or unique id of the service account.
+     */
+    readonly name?: string;
+    /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
@@ -29,12 +37,7 @@ export interface GetAccountKeyArgs {
      * The output format of the public key requested. X509_PEM is the default output format.
      */
     readonly publicKeyType?: string;
-    /**
-     * The Service account id of the Key Pair. This can be a string in the format
-     * `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-     * unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
-     */
-    readonly serviceAccountId: string;
+    readonly serviceAccountId?: string;
 }
 
 /**
@@ -42,9 +45,6 @@ export interface GetAccountKeyArgs {
  */
 export interface GetAccountKeyResult {
     readonly keyAlgorithm: string;
-    /**
-     * The name used for this key pair
-     */
     readonly name: string;
     /**
      * The public key, base64 encoded

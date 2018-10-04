@@ -41,12 +41,13 @@ export interface GetClusterResult {
     readonly addonsConfigs: { horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
     readonly clusterIpv4Cidr: string;
     readonly description: string;
+    readonly enableBinaryAuthorization: boolean;
     readonly enableKubernetesAlpha: boolean;
     readonly enableLegacyAbac: boolean;
     readonly endpoint: string;
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
-    readonly ipAllocationPolicies: { clusterSecondaryRangeName: string, servicesSecondaryRangeName: string }[];
+    readonly ipAllocationPolicies: { clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork: boolean, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName: string }[];
     readonly loggingService: string;
     readonly maintenancePolicies: { dailyMaintenanceWindows: { duration: string, startTime: string }[] }[];
     readonly masterAuths: { clientCertificate: string, clientCertificateConfigs: { issueClientCertificate: boolean }[], clientKey: string, clusterCaCertificate: string, password: string, username: string }[];
@@ -58,7 +59,7 @@ export interface GetClusterResult {
     readonly network: string;
     readonly networkPolicies: { enabled: boolean, provider: string }[];
     readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
-    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
+    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
     readonly privateCluster: boolean;

@@ -17,9 +17,6 @@ class GetAccountKeyResult(object):
         if name and not isinstance(name, basestring):
             raise TypeError('Expected argument name to be a basestring')
         __self__.name = name
-        """
-        The name used for this key pair
-        """
         if public_key and not isinstance(public_key, basestring):
             raise TypeError('Expected argument public_key to be a basestring')
         __self__.public_key = public_key
@@ -33,13 +30,14 @@ class GetAccountKeyResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_account_key(project=None, public_key_type=None, service_account_id=None):
+def get_account_key(name=None, project=None, public_key_type=None, service_account_id=None):
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
     
     """
     __args__ = dict()
 
+    __args__['name'] = name
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
     __args__['serviceAccountId'] = service_account_id

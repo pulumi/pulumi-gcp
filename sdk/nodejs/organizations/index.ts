@@ -10,6 +10,7 @@ export * from "./getFolder";
 export * from "./getIAMPolicy";
 export * from "./getOrganization";
 export * from "./getProject";
+export * from "./getProjectServices";
 export * from "./iAMBinding";
 export * from "./iAMCustomRole";
 export * from "./iAMMember";

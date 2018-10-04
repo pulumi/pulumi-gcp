@@ -115,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName?: string }[], address: string, aliasIpRange?: { ipCidrRange: string, subnetworkRangeName?: string }, name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName?: string }[], address: string, aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -331,7 +331,7 @@ export interface InstanceState {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -450,7 +450,7 @@ export interface InstanceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRange?: pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

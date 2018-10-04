@@ -13,8 +13,13 @@ import * as utilities from "../utilities";
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
  * 
- * ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed CryptoKey will remove it
- * from state and delete all CryptoKeyVersions, rendering the key unusable, but **will not delete the resource on the server**.
+ * ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
+ * Terraform-managed CryptoKey will remove it from state and delete all
+ * CryptoKeyVersions, rendering the key unusable, but **will not delete the
+ * resource on the server**. When Terraform destroys these keys, any data
+ * previously encrypted with these keys will be irrecoverable. For this reason, it
+ * is strongly recommended that you add lifecycle hooks to the resource to prevent
+ * accidental destruction.
  */
 export class CryptoKey extends pulumi.CustomResource {
     /**
@@ -42,9 +47,13 @@ export class CryptoKey extends pulumi.CustomResource {
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 83400).
+     * a day (ie, 86400).
      */
     public readonly rotationPeriod: pulumi.Output<string | undefined>;
+    /**
+     * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+     */
+    public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a CryptoKey resource with the given unique name, arguments, and options.
@@ -61,6 +70,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
+            inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
             if (!args || args.keyRing === undefined) {
@@ -69,6 +79,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:kms/cryptoKey:CryptoKey", name, inputs, opts);
     }
@@ -91,9 +102,13 @@ export interface CryptoKeyState {
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 83400).
+     * a day (ie, 86400).
      */
     readonly rotationPeriod?: pulumi.Input<string>;
+    /**
+     * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+     */
+    readonly selfLink?: pulumi.Input<string>;
 }
 
 /**
@@ -113,7 +128,7 @@ export interface CryptoKeyArgs {
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 83400).
+     * a day (ie, 86400).
      */
     readonly rotationPeriod?: pulumi.Input<string>;
 }

@@ -25,6 +25,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		AddonsConfigs: outputs["addonsConfigs"],
 		ClusterIpv4Cidr: outputs["clusterIpv4Cidr"],
 		Description: outputs["description"],
+		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
 		EnableKubernetesAlpha: outputs["enableKubernetesAlpha"],
 		EnableLegacyAbac: outputs["enableLegacyAbac"],
 		Endpoint: outputs["endpoint"],
@@ -70,6 +71,7 @@ type GetClusterResult struct {
 	AddonsConfigs interface{}
 	ClusterIpv4Cidr interface{}
 	Description interface{}
+	EnableBinaryAuthorization interface{}
 	EnableKubernetesAlpha interface{}
 	EnableLegacyAbac interface{}
 	Endpoint interface{}
