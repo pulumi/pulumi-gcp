@@ -56,6 +56,16 @@ export interface FunctionOptions {
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
     readonly timeout?: pulumi.Input<number>;
+    /**
+     * Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with triggerTropic.
+     * If neither triggerTopic nor triggerBucket is set an http triggered function will be created instead.
+     */
+    readonly triggerBucket?: pulumi.Input<string>;
+    /**
+     * Name of a Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with triggerBucket.
+     * If neither triggerTopic nor triggerBucket is set an http triggered function will be created instead.
+     */
+    readonly triggerTopic?: pulumi.Input<string>;
    /**
     * The packages relative to the program folder to not include the Function upload. This can be
     * used to override the default serialization logic that includes all packages referenced by
@@ -111,14 +121,16 @@ export class Function extends pulumi.ComponentResource {
             entryPoint: handlerName,
             sourceArchiveBucket: this.bucket.name,
             sourceArchiveObject: this.bucketObject.name,
-            triggerHttp: true,
+            triggerHttp: !(options.triggerBucket || options.triggerTopic),
 
             availableMemoryMb: options.availableMemoryMb,
             description: options.description,
             labels: options.labels,
             project: options.project,
             region: options.region,
-            timeout: options.timeout
+            timeout: options.timeout,
+            triggerBucket: options.triggerBucket,
+            triggerTopic: options.triggerTopic
         }, { parent: this });
     }
 }
