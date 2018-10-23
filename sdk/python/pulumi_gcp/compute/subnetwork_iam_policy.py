@@ -8,6 +8,9 @@ from .. import utilities
 
 class SubnetworkIAMPolicy(pulumi.CustomResource):
     """
+    ~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+    
     Three different resources help you manage your IAM policy for GCE subnetwork. Each of these resources serves a different use case:
     
     * `google_compute_subnetwork_iam_policy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
@@ -17,8 +20,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
     ~> **Note:** `google_compute_subnetwork_iam_policy` **cannot** be used in conjunction with `google_compute_subnetwork_iam_binding` and `google_compute_subnetwork_iam_member` or they will fight over what your policy should be.
     
     ~> **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
-    
-    ~> **Note:** These entire resources are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)
     """
     def __init__(__self__, __name__, __opts__=None, policy_data=None, project=None, region=None, subnetwork=None):
         """Create a SubnetworkIAMPolicy resource with the given unique name, props, and options."""

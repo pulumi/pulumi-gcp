@@ -50,6 +50,10 @@ export class Trigger extends pulumi.CustomResource {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     public readonly filename: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the project that the trigger will be created in.
+     * Defaults to the provider project configuration.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly substitutions: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -120,6 +124,10 @@ export interface TriggerState {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     readonly filename?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the trigger will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -160,6 +168,10 @@ export interface TriggerArgs {
      * `cloudbuild.yaml` however it can be specified by the user.
      */
     readonly filename?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the trigger will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

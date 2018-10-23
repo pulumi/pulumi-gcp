@@ -38,7 +38,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    public readonly disks: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, mode: string, source?: string, sourceImage?: string, type: string }[]>;
+    public readonly disks: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, mode: string, source?: string, sourceImage: string, type: string }[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */

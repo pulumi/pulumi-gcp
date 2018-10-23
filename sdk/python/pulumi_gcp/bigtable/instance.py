@@ -13,7 +13,7 @@ class Instance(pulumi.CustomResource):
     [API](https://cloud.google.com/bigtable/docs/go/reference).
     
     """
-    def __init__(__self__, __name__, __opts__=None, cluster_id=None, display_name=None, instance_type=None, name=None, num_nodes=None, project=None, storage_type=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, cluster=None, cluster_id=None, display_name=None, instance_type=None, name=None, num_nodes=None, project=None, storage_type=None, zone=None):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,9 +24,15 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not cluster_id:
-            raise TypeError('Missing required property cluster_id')
-        elif not isinstance(cluster_id, basestring):
+        if cluster and not isinstance(cluster, dict):
+            raise TypeError('Expected property cluster to be a dict')
+        __self__.cluster = cluster
+        """
+        A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+        """
+        __props__['cluster'] = cluster
+
+        if cluster_id and not isinstance(cluster_id, basestring):
             raise TypeError('Expected property cluster_id to be a basestring')
         __self__.cluster_id = cluster_id
         """
@@ -98,6 +104,8 @@ class Instance(pulumi.CustomResource):
             __opts__)
 
     def set_outputs(self, outs):
+        if 'cluster' in outs:
+            self.cluster = outs['cluster']
         if 'clusterId' in outs:
             self.cluster_id = outs['clusterId']
         if 'displayName' in outs:

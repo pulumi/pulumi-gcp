@@ -128,6 +128,8 @@ func (r *NodePool) Management() *pulumi.Output {
 // The maximum number of pods per node in this node pool.
 // Note that this does not work on node pools which are "route-based" - that is, node
 // pools belonging to clusters that do not have IP Aliasing enabled.
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
@@ -163,6 +165,8 @@ func (r *NodePool) Project() *pulumi.StringOutput {
 }
 
 // The region in which the cluster resides (for regional clusters).
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *NodePool) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -196,6 +200,8 @@ type NodePoolState struct {
 	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
@@ -213,6 +219,8 @@ type NodePoolState struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for regional clusters).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -238,6 +246,8 @@ type NodePoolArgs struct {
 	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
@@ -255,6 +265,8 @@ type NodePoolArgs struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for regional clusters).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should

@@ -10,7 +10,7 @@ class GetFunctionResult(object):
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError('Expected argument available_memory_mb to be a int')
         __self__.available_memory_mb = available_memory_mb
@@ -32,6 +32,12 @@ class GetFunctionResult(object):
         if environment_variables and not isinstance(environment_variables, dict):
             raise TypeError('Expected argument environment_variables to be a dict')
         __self__.environment_variables = environment_variables
+        if event_triggers and not isinstance(event_triggers, list):
+            raise TypeError('Expected argument event_triggers to be a list')
+        __self__.event_triggers = event_triggers
+        """
+        A source that fires events in response to a condition in another service. Structure is documented below.
+        """
         if https_trigger_url and not isinstance(https_trigger_url, basestring):
             raise TypeError('Expected argument https_trigger_url to be a basestring')
         __self__.https_trigger_url = https_trigger_url
@@ -69,7 +75,7 @@ class GetFunctionResult(object):
             raise TypeError('Expected argument trigger_bucket to be a basestring')
         __self__.trigger_bucket = trigger_bucket
         """
-        If function is triggered by bucket, bucket name is set here.
+        If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
         """
         if trigger_http and not isinstance(trigger_http, bool):
             raise TypeError('Expected argument trigger_http to be a bool')
@@ -81,7 +87,7 @@ class GetFunctionResult(object):
             raise TypeError('Expected argument trigger_topic to be a basestring')
         __self__.trigger_topic = trigger_topic
         """
-        If function is triggered by Pub/Sub topic, name of topic is set here.
+        If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
         """
         if id and not isinstance(id, basestring):
             raise TypeError('Expected argument id to be a basestring')
@@ -108,6 +114,7 @@ def get_function(name=None, project=None, region=None):
         description=__ret__.get('description'),
         entry_point=__ret__.get('entryPoint'),
         environment_variables=__ret__.get('environmentVariables'),
+        event_triggers=__ret__.get('eventTriggers'),
         https_trigger_url=__ret__.get('httpsTriggerUrl'),
         labels=__ret__.get('labels'),
         retry_on_failure=__ret__.get('retryOnFailure'),

@@ -54,8 +54,10 @@ class BackendService(pulumi.CustomResource):
             raise TypeError('Expected property custom_request_headers to be a list')
         __self__.custom_request_headers = custom_request_headers
         """
-        ) Headers that the
+        Headers that the
         HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['customRequestHeaders'] = custom_request_headers
 
@@ -134,7 +136,7 @@ class BackendService(pulumi.CustomResource):
             raise TypeError('Expected property security_policy to be a basestring')
         __self__.security_policy = security_policy
         """
-        ) Name or URI of a
+        Name or URI of a
         [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
         """
         __props__['securityPolicy'] = security_policy

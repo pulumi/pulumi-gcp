@@ -44,6 +44,7 @@ export interface GetClusterResult {
     readonly enableBinaryAuthorization: boolean;
     readonly enableKubernetesAlpha: boolean;
     readonly enableLegacyAbac: boolean;
+    readonly enableTpu: boolean;
     readonly endpoint: string;
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];

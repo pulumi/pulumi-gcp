@@ -76,7 +76,7 @@ func (r *Database) ID() *pulumi.IDOutput {
 // The charset value. See MySQL's
 // [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 // and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+// for more details and supported values. Postgres databases are in beta
 // and have limited `charset` support; they only support a value of `UTF8` at creation time.
 func (r *Database) Charset() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["charset"])
@@ -85,7 +85,7 @@ func (r *Database) Charset() *pulumi.StringOutput {
 // The collation value. See MySQL's
 // [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 // and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+// for more details and supported values. Postgres databases are in beta
 // and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 func (r *Database) Collation() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["collation"])
@@ -117,13 +117,13 @@ type DatabaseState struct {
 	// The charset value. See MySQL's
 	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 	// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-	// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+	// for more details and supported values. Postgres databases are in beta
 	// and have limited `charset` support; they only support a value of `UTF8` at creation time.
 	Charset interface{}
 	// The collation value. See MySQL's
 	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 	// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-	// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+	// for more details and supported values. Postgres databases are in beta
 	// and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 	Collation interface{}
 	// The name of containing instance.
@@ -142,13 +142,13 @@ type DatabaseArgs struct {
 	// The charset value. See MySQL's
 	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 	// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-	// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+	// for more details and supported values. Postgres databases are in beta
 	// and have limited `charset` support; they only support a value of `UTF8` at creation time.
 	Charset interface{}
 	// The collation value. See MySQL's
 	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
 	// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-	// for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+	// for more details and supported values. Postgres databases are in beta
 	// and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 	Collation interface{}
 	// The name of containing instance.

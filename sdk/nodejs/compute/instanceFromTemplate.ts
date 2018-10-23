@@ -30,7 +30,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
 
     public readonly allowStoppingForUpdate: pulumi.Output<boolean>;
     public readonly attachedDisks: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, mode: string, source: string }[]>;
-    public /*out*/ readonly bootDisk: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
+    public readonly bootDisk: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
     public readonly canIpForward: pulumi.Output<boolean>;
     public /*out*/ readonly cpuPlatform: pulumi.Output<string>;
     public readonly deletionProtection: pulumi.Output<boolean>;
@@ -39,7 +39,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public /*out*/ readonly instanceId: pulumi.Output<string>;
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     public readonly labels: pulumi.Output<{[key: string]: string}>;
-    public /*out*/ readonly machineType: pulumi.Output<string>;
+    public readonly machineType: pulumi.Output<string>;
     public readonly metadata: pulumi.Output<{[key: string]: string}>;
     public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
     public readonly metadataStartupScript: pulumi.Output<string>;
@@ -49,7 +49,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Changing this forces a new resource to be created.
      */
     public readonly name: pulumi.Output<string>;
-    public /*out*/ readonly networkInterfaces: pulumi.Output<{ accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces: pulumi.Output<{ accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     public readonly project: pulumi.Output<string>;
     public readonly scheduling: pulumi.Output<{ automaticRestart: boolean, onHostMaintenance: string, preemptible: boolean }>;
     public readonly scratchDisks: pulumi.Output<{ interface: string }[]>;
@@ -114,15 +114,18 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
+            inputs["bootDisk"] = args ? args.bootDisk : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["machineType"] = args ? args.machineType : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["metadataStartupScript"] = args ? args.metadataStartupScript : undefined;
             inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
@@ -130,13 +133,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["zone"] = args ? args.zone : undefined;
-            inputs["bootDisk"] = undefined /*out*/;
             inputs["cpuPlatform"] = undefined /*out*/;
             inputs["instanceId"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["machineType"] = undefined /*out*/;
             inputs["metadataFingerprint"] = undefined /*out*/;
-            inputs["networkInterfaces"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
@@ -195,11 +195,13 @@ export interface InstanceFromTemplateState {
 export interface InstanceFromTemplateArgs {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, source?: pulumi.Input<string> }>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly machineType?: pulumi.Input<string>;
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly metadataStartupScript?: pulumi.Input<string>;
     readonly minCpuPlatform?: pulumi.Input<string>;
@@ -208,6 +210,7 @@ export interface InstanceFromTemplateArgs {
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     readonly project?: pulumi.Input<string>;
     readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;

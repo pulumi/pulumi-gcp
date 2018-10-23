@@ -26,8 +26,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly autoHealingPolicies: pulumi.Output<{ healthCheck: string, initialDelaySec: number } | undefined>;
     /**
@@ -71,7 +73,9 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      * - - -
      */
     public readonly rollingUpdatePolicy: pulumi.Output<{ maxSurgeFixed?: number, maxSurgePercent?: number, maxUnavailableFixed?: number, maxUnavailablePercent?: number, minReadySec?: number, minimalAction: string, type: string } | undefined>;
@@ -92,8 +96,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     /**
      * If the `instance_template`
      * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"RESTART"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+     * instances from being restarted by Terraform. A value of `"REPLACE"` will
+     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     public readonly updateStrategy: pulumi.Output<string | undefined>;
@@ -104,6 +108,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * exactly one version must not specify a target size. It means that versions with
      * a target size will respect the setting, and the one without target size will
      * be applied to all remaining Instances (top level target_size - each version target_size).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly versions: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
     /**
@@ -179,8 +185,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
  */
 export interface InstanceGroupManagerState {
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly autoHealingPolicies?: pulumi.Input<{ healthCheck: pulumi.Input<string>, initialDelaySec: pulumi.Input<number> }>;
     /**
@@ -224,7 +232,9 @@ export interface InstanceGroupManagerState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      * - - -
      */
     readonly rollingUpdatePolicy?: pulumi.Input<{ maxSurgeFixed?: pulumi.Input<number>, maxSurgePercent?: pulumi.Input<number>, maxUnavailableFixed?: pulumi.Input<number>, maxUnavailablePercent?: pulumi.Input<number>, minReadySec?: pulumi.Input<number>, minimalAction: pulumi.Input<string>, type: pulumi.Input<string> }>;
@@ -245,8 +255,8 @@ export interface InstanceGroupManagerState {
     /**
      * If the `instance_template`
      * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"RESTART"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+     * instances from being restarted by Terraform. A value of `"REPLACE"` will
+     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     readonly updateStrategy?: pulumi.Input<string>;
@@ -257,6 +267,8 @@ export interface InstanceGroupManagerState {
      * exactly one version must not specify a target size. It means that versions with
      * a target size will respect the setting, and the one without target size will
      * be applied to all remaining Instances (top level target_size - each version target_size).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
     /**
@@ -277,8 +289,10 @@ export interface InstanceGroupManagerState {
  */
 export interface InstanceGroupManagerArgs {
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly autoHealingPolicies?: pulumi.Input<{ healthCheck: pulumi.Input<string>, initialDelaySec: pulumi.Input<number> }>;
     /**
@@ -314,7 +328,9 @@ export interface InstanceGroupManagerArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      * - - -
      */
     readonly rollingUpdatePolicy?: pulumi.Input<{ maxSurgeFixed?: pulumi.Input<number>, maxSurgePercent?: pulumi.Input<number>, maxUnavailableFixed?: pulumi.Input<number>, maxUnavailablePercent?: pulumi.Input<number>, minReadySec?: pulumi.Input<number>, minimalAction: pulumi.Input<string>, type: pulumi.Input<string> }>;
@@ -331,8 +347,8 @@ export interface InstanceGroupManagerArgs {
     /**
      * If the `instance_template`
      * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"RESTART"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+     * instances from being restarted by Terraform. A value of `"REPLACE"` will
+     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
      * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
      */
     readonly updateStrategy?: pulumi.Input<string>;
@@ -343,6 +359,8 @@ export interface InstanceGroupManagerArgs {
      * exactly one version must not specify a target size. It means that versions with
      * a target size will respect the setting, and the one without target size will
      * be applied to all remaining Instances (top level target_size - each version target_size).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
     /**

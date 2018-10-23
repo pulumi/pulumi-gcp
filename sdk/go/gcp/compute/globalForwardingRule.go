@@ -114,13 +114,15 @@ func (r *GlobalForwardingRule) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
-// ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+// The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *GlobalForwardingRule) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-// )
-// A set of key/value label pairs to assign to the resource.
+// 
+// A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *GlobalForwardingRule) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
@@ -175,10 +177,12 @@ type GlobalForwardingRuleState struct {
 	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
 	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
-	// ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+	// The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	LabelFingerprint interface{}
-	// )
-	// A set of key/value label pairs to assign to the resource.
+	// 
+	// A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Labels interface{}
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -217,8 +221,9 @@ type GlobalForwardingRuleArgs struct {
 	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
 	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
-	// )
-	// A set of key/value label pairs to assign to the resource.
+	// 
+	// A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Labels interface{}
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.

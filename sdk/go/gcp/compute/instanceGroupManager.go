@@ -107,8 +107,10 @@ func (r *InstanceGroupManager) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// ) The autohealing policies for this managed instance
+// The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *InstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
 	return r.s.State["autoHealingPolicies"]
 }
@@ -161,7 +163,9 @@ func (r *InstanceGroupManager) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 // - - -
 func (r *InstanceGroupManager) RollingUpdatePolicy() *pulumi.Output {
 	return r.s.State["rollingUpdatePolicy"]
@@ -186,8 +190,8 @@ func (r *InstanceGroupManager) TargetSize() *pulumi.IntOutput {
 
 // If the `instance_template`
 // resource is modified, a value of `"NONE"` will prevent any of the managed
-// instances from being restarted by Terraform. A value of `"RESTART"` will
-// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+// instances from being restarted by Terraform. A value of `"REPLACE"` will
+// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
 // A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
 func (r *InstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateStrategy"])
@@ -199,6 +203,8 @@ func (r *InstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 // exactly one version must not specify a target size. It means that versions with
 // a target size will respect the setting, and the one without target size will
 // be applied to all remaining Instances (top level target_size - each version target_size).
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *InstanceGroupManager) Versions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
@@ -218,8 +224,10 @@ func (r *InstanceGroupManager) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering InstanceGroupManager resources.
 type InstanceGroupManagerState struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
 	// instances in this group. The value must be a valid
@@ -245,7 +253,9 @@ type InstanceGroupManagerState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	// - - -
 	RollingUpdatePolicy interface{}
 	// The URL of the created resource.
@@ -258,8 +268,8 @@ type InstanceGroupManagerState struct {
 	TargetSize interface{}
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
-	// instances from being restarted by Terraform. A value of `"RESTART"` will
-	// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+	// instances from being restarted by Terraform. A value of `"REPLACE"` will
+	// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
 	// A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
@@ -268,6 +278,8 @@ type InstanceGroupManagerState struct {
 	// exactly one version must not specify a target size. It means that versions with
 	// a target size will respect the setting, and the one without target size will
 	// be applied to all remaining Instances (top level target_size - each version target_size).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
@@ -280,8 +292,10 @@ type InstanceGroupManagerState struct {
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
 	// instances in this group. The value must be a valid
@@ -303,7 +317,9 @@ type InstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	// - - -
 	RollingUpdatePolicy interface{}
 	// The full URL of all target pools to which new
@@ -314,8 +330,8 @@ type InstanceGroupManagerArgs struct {
 	TargetSize interface{}
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
-	// instances from being restarted by Terraform. A value of `"RESTART"` will
-	// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+	// instances from being restarted by Terraform. A value of `"REPLACE"` will
+	// restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
 	// A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
@@ -324,6 +340,8 @@ type InstanceGroupManagerArgs struct {
 	// exactly one version must not specify a target size. It means that versions with
 	// a target size will respect the setting, and the one without target size will
 	// be applied to all remaining Instances (top level target_size - each version target_size).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will

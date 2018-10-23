@@ -4,7 +4,6 @@
 package bigtable
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
@@ -19,11 +18,9 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOpt) (*Instance, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["cluster"] = nil
 		inputs["clusterId"] = nil
 		inputs["displayName"] = nil
 		inputs["instanceType"] = nil
@@ -33,6 +30,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["storageType"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["cluster"] = args.Cluster
 		inputs["clusterId"] = args.ClusterId
 		inputs["displayName"] = args.DisplayName
 		inputs["instanceType"] = args.InstanceType
@@ -55,6 +53,7 @@ func GetInstance(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InstanceState, opts ...pulumi.ResourceOpt) (*Instance, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["cluster"] = state.Cluster
 		inputs["clusterId"] = state.ClusterId
 		inputs["displayName"] = state.DisplayName
 		inputs["instanceType"] = state.InstanceType
@@ -79,6 +78,11 @@ func (r *Instance) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID
+}
+
+// A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+func (r *Instance) Cluster() *pulumi.Output {
+	return r.s.State["cluster"]
 }
 
 // The ID of the Cloud Bigtable cluster.
@@ -124,6 +128,8 @@ func (r *Instance) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
+	// A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+	Cluster interface{}
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId interface{}
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -145,6 +151,8 @@ type InstanceState struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+	Cluster interface{}
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId interface{}
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.

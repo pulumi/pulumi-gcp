@@ -26,6 +26,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		Description: outputs["description"],
 		EntryPoint: outputs["entryPoint"],
 		EnvironmentVariables: outputs["environmentVariables"],
+		EventTriggers: outputs["eventTriggers"],
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
 		Labels: outputs["labels"],
 		RetryOnFailure: outputs["retryOnFailure"],
@@ -60,6 +61,8 @@ type GetFunctionResult struct {
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
 	EnvironmentVariables interface{}
+	// A source that fires events in response to a condition in another service. Structure is documented below.
+	EventTriggers interface{}
 	// If function is triggered by HTTP, trigger URL is set here.
 	HttpsTriggerUrl interface{}
 	// A map of labels applied to this function.
@@ -71,11 +74,11 @@ type GetFunctionResult struct {
 	SourceArchiveObject interface{}
 	// Function execution timeout (in seconds).
 	Timeout interface{}
-	// If function is triggered by bucket, bucket name is set here.
+	// If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
 	TriggerBucket interface{}
 	// If function is triggered by HTTP, this boolean is set.
 	TriggerHttp interface{}
-	// If function is triggered by Pub/Sub topic, name of topic is set here.
+	// If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
 	TriggerTopic interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

@@ -68,6 +68,8 @@ class NodePool(pulumi.CustomResource):
         The maximum number of pods per node in this node pool.
         Note that this does not work on node pools which are "route-based" - that is, node
         pools belonging to clusters that do not have IP Aliasing enabled.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['maxPodsPerNode'] = max_pods_per_node
 
@@ -121,6 +123,8 @@ class NodePool(pulumi.CustomResource):
         __self__.region = region
         """
         The region in which the cluster resides (for regional clusters).
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['region'] = region
 

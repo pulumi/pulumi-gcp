@@ -35,7 +35,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in beta.
      */
     public readonly databaseVersion: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +155,7 @@ export interface DatabaseInstanceState {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in beta.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface DatabaseInstanceArgs {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+     * for more information. `POSTGRES_9_6` support is in beta.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
