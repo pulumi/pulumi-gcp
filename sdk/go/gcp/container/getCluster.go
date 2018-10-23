@@ -28,6 +28,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
 		EnableKubernetesAlpha: outputs["enableKubernetesAlpha"],
 		EnableLegacyAbac: outputs["enableLegacyAbac"],
+		EnableTpu: outputs["enableTpu"],
 		Endpoint: outputs["endpoint"],
 		InitialNodeCount: outputs["initialNodeCount"],
 		InstanceGroupUrls: outputs["instanceGroupUrls"],
@@ -74,6 +75,7 @@ type GetClusterResult struct {
 	EnableBinaryAuthorization interface{}
 	EnableKubernetesAlpha interface{}
 	EnableLegacyAbac interface{}
+	EnableTpu interface{}
 	Endpoint interface{}
 	InitialNodeCount interface{}
 	InstanceGroupUrls interface{}

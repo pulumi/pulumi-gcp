@@ -13,7 +13,7 @@ class Function(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/functions/docs/apis).
     """
-    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
+    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
         """Create a Function resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -55,6 +55,14 @@ class Function(pulumi.CustomResource):
         A set of key/value environment variable pairs to assign to the function.
         """
         __props__['environmentVariables'] = environment_variables
+
+        if event_trigger and not isinstance(event_trigger, dict):
+            raise TypeError('Expected property event_trigger to be a dict')
+        __self__.event_trigger = event_trigger
+        """
+        A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        """
+        __props__['eventTrigger'] = event_trigger
 
         if https_trigger_url and not isinstance(https_trigger_url, basestring):
             raise TypeError('Expected property https_trigger_url to be a basestring')
@@ -101,6 +109,7 @@ class Function(pulumi.CustomResource):
         __self__.retry_on_failure = retry_on_failure
         """
         Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+        Deprecated. Use `event_trigger.failure_policy.retry` instead.
         """
         __props__['retryOnFailure'] = retry_on_failure
 
@@ -137,6 +146,7 @@ class Function(pulumi.CustomResource):
         __self__.trigger_bucket = trigger_bucket
         """
         Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+        Deprecated. Use `event_trigger` instead.
         """
         __props__['triggerBucket'] = trigger_bucket
 
@@ -153,6 +163,7 @@ class Function(pulumi.CustomResource):
         __self__.trigger_topic = trigger_topic
         """
         Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+        Deprecated. Use `event_trigger` instead.
         """
         __props__['triggerTopic'] = trigger_topic
 
@@ -171,6 +182,8 @@ class Function(pulumi.CustomResource):
             self.entry_point = outs['entryPoint']
         if 'environmentVariables' in outs:
             self.environment_variables = outs['environmentVariables']
+        if 'eventTrigger' in outs:
+            self.event_trigger = outs['eventTrigger']
         if 'httpsTriggerUrl' in outs:
             self.https_trigger_url = outs['httpsTriggerUrl']
         if 'labels' in outs:

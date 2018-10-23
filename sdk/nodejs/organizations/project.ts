@@ -50,7 +50,7 @@ export class Project extends pulumi.CustomResource {
      * A block of configuration to enable an App Engine app. Setting this
      * field will enabled the App Engine Admin API, which is required to manage the app.
      */
-    public readonly appEngine: pulumi.Output<{ authDomain: string, codeBucket: string, defaultBucket: string, defaultHostname: string, featureSettings: { splitHealthChecks?: boolean }, gcrDomain: string, locationId: string, name: string, servingStatus: string, urlDispatchRules: { domain: string, path: string, service: string }[] } | undefined>;
+    public readonly appEngine: pulumi.Output<{ authDomain: string, codeBucket: string, defaultBucket: string, defaultHostname: string, featureSettings: { splitHealthChecks?: boolean }, gcrDomain: string, locationId: string, name: string, servingStatus: string, urlDispatchRules: { domain: string, path: string, service: string }[] }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network

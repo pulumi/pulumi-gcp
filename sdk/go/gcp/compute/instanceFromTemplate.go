@@ -31,15 +31,18 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 	if args == nil {
 		inputs["allowStoppingForUpdate"] = nil
 		inputs["attachedDisks"] = nil
+		inputs["bootDisk"] = nil
 		inputs["canIpForward"] = nil
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
 		inputs["guestAccelerators"] = nil
 		inputs["labels"] = nil
+		inputs["machineType"] = nil
 		inputs["metadata"] = nil
 		inputs["metadataStartupScript"] = nil
 		inputs["minCpuPlatform"] = nil
 		inputs["name"] = nil
+		inputs["networkInterfaces"] = nil
 		inputs["project"] = nil
 		inputs["scheduling"] = nil
 		inputs["scratchDisks"] = nil
@@ -50,15 +53,18 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 	} else {
 		inputs["allowStoppingForUpdate"] = args.AllowStoppingForUpdate
 		inputs["attachedDisks"] = args.AttachedDisks
+		inputs["bootDisk"] = args.BootDisk
 		inputs["canIpForward"] = args.CanIpForward
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
 		inputs["guestAccelerators"] = args.GuestAccelerators
 		inputs["labels"] = args.Labels
+		inputs["machineType"] = args.MachineType
 		inputs["metadata"] = args.Metadata
 		inputs["metadataStartupScript"] = args.MetadataStartupScript
 		inputs["minCpuPlatform"] = args.MinCpuPlatform
 		inputs["name"] = args.Name
+		inputs["networkInterfaces"] = args.NetworkInterfaces
 		inputs["project"] = args.Project
 		inputs["scheduling"] = args.Scheduling
 		inputs["scratchDisks"] = args.ScratchDisks
@@ -67,13 +73,10 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["tags"] = args.Tags
 		inputs["zone"] = args.Zone
 	}
-	inputs["bootDisk"] = nil
 	inputs["cpuPlatform"] = nil
 	inputs["instanceId"] = nil
 	inputs["labelFingerprint"] = nil
-	inputs["machineType"] = nil
 	inputs["metadataFingerprint"] = nil
-	inputs["networkInterfaces"] = nil
 	inputs["selfLink"] = nil
 	inputs["tagsFingerprint"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, true, inputs, opts...)
@@ -289,17 +292,20 @@ type InstanceFromTemplateState struct {
 type InstanceFromTemplateArgs struct {
 	AllowStoppingForUpdate interface{}
 	AttachedDisks interface{}
+	BootDisk interface{}
 	CanIpForward interface{}
 	DeletionProtection interface{}
 	Description interface{}
 	GuestAccelerators interface{}
 	Labels interface{}
+	MachineType interface{}
 	Metadata interface{}
 	MetadataStartupScript interface{}
 	MinCpuPlatform interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
 	Name interface{}
+	NetworkInterfaces interface{}
 	Project interface{}
 	Scheduling interface{}
 	ScratchDisks interface{}

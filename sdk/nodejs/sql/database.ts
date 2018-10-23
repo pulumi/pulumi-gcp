@@ -26,7 +26,7 @@ export class Database extends pulumi.CustomResource {
      * The charset value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `charset` support; they only support a value of `UTF8` at creation time.
      */
     public readonly charset: pulumi.Output<string>;
@@ -34,7 +34,7 @@ export class Database extends pulumi.CustomResource {
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
      */
     public readonly collation: pulumi.Output<string>;
@@ -98,7 +98,7 @@ export interface DatabaseState {
      * The charset value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `charset` support; they only support a value of `UTF8` at creation time.
      */
     readonly charset?: pulumi.Input<string>;
@@ -106,7 +106,7 @@ export interface DatabaseState {
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
      */
     readonly collation?: pulumi.Input<string>;
@@ -137,7 +137,7 @@ export interface DatabaseArgs {
      * The charset value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `charset` support; they only support a value of `UTF8` at creation time.
      */
     readonly charset?: pulumi.Input<string>;
@@ -145,7 +145,7 @@ export interface DatabaseArgs {
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
      * and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-     * for more details and supported values. Postgres databases are in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features),
+     * for more details and supported values. Postgres databases are in beta
      * and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
      */
     readonly collation?: pulumi.Input<string>;

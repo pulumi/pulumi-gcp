@@ -52,8 +52,9 @@ export interface GetRegionInstanceGroupArgs {
      */
     readonly name?: string;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * nor `project` are provided, the provider project is used.
      */
     readonly project?: string;
     /**

@@ -18,7 +18,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     `google_compute_instance` resource.
     
     """
-    def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None):
         """Create a InstanceFromTemplate resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -38,6 +38,11 @@ class InstanceFromTemplate(pulumi.CustomResource):
             raise TypeError('Expected property attached_disks to be a list')
         __self__.attached_disks = attached_disks
         __props__['attachedDisks'] = attached_disks
+
+        if boot_disk and not isinstance(boot_disk, dict):
+            raise TypeError('Expected property boot_disk to be a dict')
+        __self__.boot_disk = boot_disk
+        __props__['bootDisk'] = boot_disk
 
         if can_ip_forward and not isinstance(can_ip_forward, bool):
             raise TypeError('Expected property can_ip_forward to be a bool')
@@ -64,6 +69,11 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __self__.labels = labels
         __props__['labels'] = labels
 
+        if machine_type and not isinstance(machine_type, basestring):
+            raise TypeError('Expected property machine_type to be a basestring')
+        __self__.machine_type = machine_type
+        __props__['machineType'] = machine_type
+
         if metadata and not isinstance(metadata, dict):
             raise TypeError('Expected property metadata to be a dict')
         __self__.metadata = metadata
@@ -87,6 +97,11 @@ class InstanceFromTemplate(pulumi.CustomResource):
         Changing this forces a new resource to be created.
         """
         __props__['name'] = name
+
+        if network_interfaces and not isinstance(network_interfaces, list):
+            raise TypeError('Expected property network_interfaces to be a list')
+        __self__.network_interfaces = network_interfaces
+        __props__['networkInterfaces'] = network_interfaces
 
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
@@ -133,13 +148,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
         """
         __props__['zone'] = zone
 
-        __self__.boot_disk = pulumi.runtime.UNKNOWN
         __self__.cpu_platform = pulumi.runtime.UNKNOWN
         __self__.instance_id = pulumi.runtime.UNKNOWN
         __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        __self__.machine_type = pulumi.runtime.UNKNOWN
         __self__.metadata_fingerprint = pulumi.runtime.UNKNOWN
-        __self__.network_interfaces = pulumi.runtime.UNKNOWN
         __self__.self_link = pulumi.runtime.UNKNOWN
         __self__.tags_fingerprint = pulumi.runtime.UNKNOWN
 

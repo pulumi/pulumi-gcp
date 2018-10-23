@@ -16,7 +16,7 @@ class Cluster(pulumi.CustomResource):
     ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
     [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     """
-    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
         """Create a Cluster resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -70,6 +70,8 @@ class Cluster(pulumi.CustomResource):
         """
         Enable Binary Authorization for this cluster.
         If enabled, all container images will be validated by Google Binary Authorization.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['enableBinaryAuthorization'] = enable_binary_authorization
 
@@ -93,6 +95,17 @@ class Cluster(pulumi.CustomResource):
         Defaults to `false`
         """
         __props__['enableLegacyAbac'] = enable_legacy_abac
+
+        if enable_tpu and not isinstance(enable_tpu, bool):
+            raise TypeError('Expected property enable_tpu to be a bool')
+        __self__.enable_tpu = enable_tpu
+        """
+        Whether to enable Cloud TPU resources in this cluster.
+        See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        """
+        __props__['enableTpu'] = enable_tpu
 
         if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError('Expected property initial_node_count to be a int')
@@ -155,9 +168,12 @@ class Cluster(pulumi.CustomResource):
             raise TypeError('Expected property master_ipv4_cidr_block to be a basestring')
         __self__.master_ipv4_cidr_block = master_ipv4_cidr_block
         """
-        ) Specifies a private
+        Specifies a private
         [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
         The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
         """
         __props__['masterIpv4CidrBlock'] = master_ipv4_cidr_block
 
@@ -248,9 +264,11 @@ class Cluster(pulumi.CustomResource):
             raise TypeError('Expected property pod_security_policy_config to be a dict')
         __self__.pod_security_policy_config = pod_security_policy_config
         """
-        ) Configuration for the
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['podSecurityPolicyConfig'] = pod_security_policy_config
 
@@ -258,10 +276,13 @@ class Cluster(pulumi.CustomResource):
             raise TypeError('Expected property private_cluster to be a bool')
         __self__.private_cluster = private_cluster
         """
-        ) If true, a
+        If true, a
         [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
         nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
         `ip_allocation_policy` with this option.
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
         """
         __props__['privateCluster'] = private_cluster
 
@@ -351,6 +372,8 @@ class Cluster(pulumi.CustomResource):
             self.enable_kubernetes_alpha = outs['enableKubernetesAlpha']
         if 'enableLegacyAbac' in outs:
             self.enable_legacy_abac = outs['enableLegacyAbac']
+        if 'enableTpu' in outs:
+            self.enable_tpu = outs['enableTpu']
         if 'endpoint' in outs:
             self.endpoint = outs['endpoint']
         if 'initialNodeCount' in outs:

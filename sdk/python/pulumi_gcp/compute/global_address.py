@@ -7,7 +7,7 @@ import pulumi.runtime
 from .. import utilities
 
 class GlobalAddress(pulumi.CustomResource):
-    def __init__(__self__, __name__, __opts__=None, description=None, ip_version=None, labels=None, name=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None):
         """Create a GlobalAddress resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -17,6 +17,11 @@ class GlobalAddress(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        if address_type and not isinstance(address_type, basestring):
+            raise TypeError('Expected property address_type to be a basestring')
+        __self__.address_type = address_type
+        __props__['addressType'] = address_type
 
         if description and not isinstance(description, basestring):
             raise TypeError('Expected property description to be a basestring')
@@ -38,6 +43,16 @@ class GlobalAddress(pulumi.CustomResource):
         __self__.name = name
         __props__['name'] = name
 
+        if network and not isinstance(network, basestring):
+            raise TypeError('Expected property network to be a basestring')
+        __self__.network = network
+        __props__['network'] = network
+
+        if prefix_length and not isinstance(prefix_length, int):
+            raise TypeError('Expected property prefix_length to be a int')
+        __self__.prefix_length = prefix_length
+        __props__['prefixLength'] = prefix_length
+
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
@@ -46,6 +61,11 @@ class GlobalAddress(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         __props__['project'] = project
+
+        if purpose and not isinstance(purpose, basestring):
+            raise TypeError('Expected property purpose to be a basestring')
+        __self__.purpose = purpose
+        __props__['purpose'] = purpose
 
         __self__.address = pulumi.runtime.UNKNOWN
         __self__.creation_timestamp = pulumi.runtime.UNKNOWN
@@ -64,6 +84,8 @@ class GlobalAddress(pulumi.CustomResource):
     def set_outputs(self, outs):
         if 'address' in outs:
             self.address = outs['address']
+        if 'addressType' in outs:
+            self.address_type = outs['addressType']
         if 'creationTimestamp' in outs:
             self.creation_timestamp = outs['creationTimestamp']
         if 'description' in outs:
@@ -76,7 +98,13 @@ class GlobalAddress(pulumi.CustomResource):
             self.labels = outs['labels']
         if 'name' in outs:
             self.name = outs['name']
+        if 'network' in outs:
+            self.network = outs['network']
+        if 'prefixLength' in outs:
+            self.prefix_length = outs['prefixLength']
         if 'project' in outs:
             self.project = outs['project']
+        if 'purpose' in outs:
+            self.purpose = outs['purpose']
         if 'selfLink' in outs:
             self.self_link = outs['selfLink']

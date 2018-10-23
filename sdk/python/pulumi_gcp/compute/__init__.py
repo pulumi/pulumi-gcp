@@ -22,6 +22,7 @@ from instance_from_template import *
 from instance_group import *
 from instance_group_manager import *
 from instance_template import *
+from interconnect_attachment import *
 from network import *
 from network_peering import *
 from project_metadata import *
@@ -58,6 +59,7 @@ from get_default_service_account import *
 from get_forwarding_rule import *
 from get_global_address import *
 from get_image import *
+from get_instance import *
 from get_instance_group import *
 from get_lbip_ranges import *
 from get_network import *

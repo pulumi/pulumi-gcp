@@ -344,8 +344,7 @@
     "tfdiags",
     "version"
   ]
-  revision = "6dfc4d748de9cda23835bc5704307ed45e839622"
-  version = "v0.11.8"
+  revision = "35d82b055591e9d47a254e68754216d8849ba67a"
 
 [[projects]]
   name = "github.com/hashicorp/vault"
@@ -644,7 +643,7 @@
   branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-google"
   packages = ["google"]
-  revision = "fda7a75812d04044939c89d8418677b543279e1c"
+  revision = "33dc174a9cfaa89de461f912a394ad084256f9ce"
   source = "github.com/pulumi/terraform-provider-google"
 
 [[projects]]
@@ -835,6 +834,7 @@
     "dataproc/v1",
     "dns/v1",
     "dns/v1beta2",
+    "file/v1beta1",
     "gensupport",
     "googleapi",
     "googleapi/internal/uritemplates",
@@ -857,7 +857,7 @@
     "transport/grpc",
     "transport/http"
   ]
-  revision = "087779f1d2c96357d4c45bd04c4d10d7b5f22736"
+  revision = "19ff8768a5c0b8e46ea281065664787eefc24121"
 
 [[projects]]
   name = "google.golang.org/appengine"
@@ -1010,6 +1010,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4fadeab34c4aee704795181f56aabc33e8dd681ad40371c0d3b95f9b8e045116"
+  inputs-digest = "43bca9cc98e42a860891cee31c7886a1af0afaea34b6ef587cff4f712b8fae27"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -31,6 +31,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["entryPoint"] = nil
 		inputs["environmentVariables"] = nil
+		inputs["eventTrigger"] = nil
 		inputs["httpsTriggerUrl"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
@@ -48,6 +49,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["entryPoint"] = args.EntryPoint
 		inputs["environmentVariables"] = args.EnvironmentVariables
+		inputs["eventTrigger"] = args.EventTrigger
 		inputs["httpsTriggerUrl"] = args.HttpsTriggerUrl
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
@@ -78,6 +80,7 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["entryPoint"] = state.EntryPoint
 		inputs["environmentVariables"] = state.EnvironmentVariables
+		inputs["eventTrigger"] = state.EventTrigger
 		inputs["httpsTriggerUrl"] = state.HttpsTriggerUrl
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
@@ -128,6 +131,11 @@ func (r *Function) EnvironmentVariables() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["environmentVariables"])
 }
 
+// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+func (r *Function) EventTrigger() *pulumi.Output {
+	return r.s.State["eventTrigger"]
+}
+
 // URL which triggers function execution. Returned only if `trigger_http` is used.
 func (r *Function) HttpsTriggerUrl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["httpsTriggerUrl"])
@@ -154,6 +162,7 @@ func (r *Function) Region() *pulumi.StringOutput {
 }
 
 // Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+// Deprecated. Use `event_trigger.failure_policy.retry` instead.
 func (r *Function) RetryOnFailure() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["retryOnFailure"])
 }
@@ -174,6 +183,7 @@ func (r *Function) Timeout() *pulumi.IntOutput {
 }
 
 // Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+// Deprecated. Use `event_trigger` instead.
 func (r *Function) TriggerBucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["triggerBucket"])
 }
@@ -184,6 +194,7 @@ func (r *Function) TriggerHttp() *pulumi.BoolOutput {
 }
 
 // Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+// Deprecated. Use `event_trigger` instead.
 func (r *Function) TriggerTopic() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["triggerTopic"])
 }
@@ -198,6 +209,8 @@ type FunctionState struct {
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
+	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+	EventTrigger interface{}
 	// URL which triggers function execution. Returned only if `trigger_http` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
@@ -209,6 +222,7 @@ type FunctionState struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
 	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
 	RetryOnFailure interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
@@ -217,10 +231,12 @@ type FunctionState struct {
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
 	// Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+	// Deprecated. Use `event_trigger` instead.
 	TriggerBucket interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
 	TriggerHttp interface{}
 	// Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+	// Deprecated. Use `event_trigger` instead.
 	TriggerTopic interface{}
 }
 
@@ -234,6 +250,8 @@ type FunctionArgs struct {
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
+	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+	EventTrigger interface{}
 	// URL which triggers function execution. Returned only if `trigger_http` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
@@ -245,6 +263,7 @@ type FunctionArgs struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
 	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
 	RetryOnFailure interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
@@ -253,9 +272,11 @@ type FunctionArgs struct {
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
 	// Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+	// Deprecated. Use `event_trigger` instead.
 	TriggerBucket interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
 	TriggerHttp interface{}
 	// Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+	// Deprecated. Use `event_trigger` instead.
 	TriggerTopic interface{}
 }

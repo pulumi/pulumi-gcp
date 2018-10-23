@@ -66,6 +66,10 @@ class Trigger(pulumi.CustomResource):
         if project and not isinstance(project, basestring):
             raise TypeError('Expected property project to be a basestring')
         __self__.project = project
+        """
+        The ID of the project that the trigger will be created in.
+        Defaults to the provider project configuration.
+        """
         __props__['project'] = project
 
         if substitutions and not isinstance(substitutions, dict):
