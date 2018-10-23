@@ -7,6 +7,10 @@
   branch = "master"
 
 [[override]]
+  name = "github.com/hashicorp/terraform"
+  revision = "35d82b055591e9d47a254e68754216d8849ba67a"
+
+[[override]]
   name = "github.com/terraform-providers/terraform-provider-google"
   source = "github.com/pulumi/terraform-provider-google"
   branch = "pulumi-master"

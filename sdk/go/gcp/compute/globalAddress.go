@@ -16,17 +16,25 @@ func NewGlobalAddress(ctx *pulumi.Context,
 	name string, args *GlobalAddressArgs, opts ...pulumi.ResourceOpt) (*GlobalAddress, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["addressType"] = nil
 		inputs["description"] = nil
 		inputs["ipVersion"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["network"] = nil
+		inputs["prefixLength"] = nil
 		inputs["project"] = nil
+		inputs["purpose"] = nil
 	} else {
+		inputs["addressType"] = args.AddressType
 		inputs["description"] = args.Description
 		inputs["ipVersion"] = args.IpVersion
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["network"] = args.Network
+		inputs["prefixLength"] = args.PrefixLength
 		inputs["project"] = args.Project
+		inputs["purpose"] = args.Purpose
 	}
 	inputs["address"] = nil
 	inputs["creationTimestamp"] = nil
@@ -46,13 +54,17 @@ func GetGlobalAddress(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["address"] = state.Address
+		inputs["addressType"] = state.AddressType
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["ipVersion"] = state.IpVersion
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
+		inputs["network"] = state.Network
+		inputs["prefixLength"] = state.PrefixLength
 		inputs["project"] = state.Project
+		inputs["purpose"] = state.Purpose
 		inputs["selfLink"] = state.SelfLink
 	}
 	s, err := ctx.ReadResource("gcp:compute/globalAddress:GlobalAddress", name, id, inputs, opts...)
@@ -74,6 +86,10 @@ func (r *GlobalAddress) ID() *pulumi.IDOutput {
 
 func (r *GlobalAddress) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
+}
+
+func (r *GlobalAddress) AddressType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["addressType"])
 }
 
 func (r *GlobalAddress) CreationTimestamp() *pulumi.StringOutput {
@@ -100,10 +116,22 @@ func (r *GlobalAddress) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+func (r *GlobalAddress) Network() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["network"])
+}
+
+func (r *GlobalAddress) PrefixLength() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["prefixLength"])
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (r *GlobalAddress) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
+}
+
+func (r *GlobalAddress) Purpose() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // The URI of the created resource.
@@ -114,26 +142,34 @@ func (r *GlobalAddress) SelfLink() *pulumi.StringOutput {
 // Input properties used for looking up and filtering GlobalAddress resources.
 type GlobalAddressState struct {
 	Address interface{}
+	AddressType interface{}
 	CreationTimestamp interface{}
 	Description interface{}
 	IpVersion interface{}
 	LabelFingerprint interface{}
 	Labels interface{}
 	Name interface{}
+	Network interface{}
+	PrefixLength interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 }
 
 // The set of arguments for constructing a GlobalAddress resource.
 type GlobalAddressArgs struct {
+	AddressType interface{}
 	Description interface{}
 	IpVersion interface{}
 	Labels interface{}
 	Name interface{}
+	Network interface{}
+	PrefixLength interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 }

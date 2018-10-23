@@ -55,6 +55,10 @@ export interface GetFunctionResult {
     readonly entryPoint: string;
     readonly environmentVariables: {[key: string]: any};
     /**
+     * A source that fires events in response to a condition in another service. Structure is documented below.
+     */
+    readonly eventTriggers: { eventType: string, failurePolicies: { retry: boolean }[], resource: string }[];
+    /**
      * If function is triggered by HTTP, trigger URL is set here.
      */
     readonly httpsTriggerUrl: string;
@@ -76,7 +80,7 @@ export interface GetFunctionResult {
      */
     readonly timeout: number;
     /**
-     * If function is triggered by bucket, bucket name is set here.
+     * If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
      */
     readonly triggerBucket: string;
     /**
@@ -84,7 +88,7 @@ export interface GetFunctionResult {
      */
     readonly triggerHttp: boolean;
     /**
-     * If function is triggered by Pub/Sub topic, name of topic is set here.
+     * If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
      */
     readonly triggerTopic: string;
     /**

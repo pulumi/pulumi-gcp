@@ -47,8 +47,10 @@ export class NodePool extends pulumi.CustomResource {
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
-    public readonly maxPodsPerNode: pulumi.Output<number | undefined>;
+    public readonly maxPodsPerNode: pulumi.Output<number>;
     /**
      * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
@@ -76,6 +78,8 @@ export class NodePool extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly region: pulumi.Output<string | undefined>;
     /**
@@ -167,6 +171,8 @@ export interface NodePoolState {
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -196,6 +202,8 @@ export interface NodePoolState {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -237,6 +245,8 @@ export interface NodePoolArgs {
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -266,6 +276,8 @@ export interface NodePoolArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly region?: pulumi.Input<string>;
     /**

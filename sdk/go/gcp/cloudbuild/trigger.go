@@ -101,6 +101,8 @@ func (r *Trigger) Filename() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filename"])
 }
 
+// The ID of the project that the trigger will be created in.
+// Defaults to the provider project configuration.
 func (r *Trigger) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -138,6 +140,8 @@ type TriggerState struct {
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
+	// The ID of the project that the trigger will be created in.
+	// Defaults to the provider project configuration.
 	Project interface{}
 	Substitutions interface{}
 	// Location of the source in a Google
@@ -168,6 +172,8 @@ type TriggerArgs struct {
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
+	// The ID of the project that the trigger will be created in.
+	// Defaults to the provider project configuration.
 	Project interface{}
 	Substitutions interface{}
 	// Location of the source in a Google

@@ -10,7 +10,7 @@ class GetClusterResult(object):
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
@@ -32,6 +32,9 @@ class GetClusterResult(object):
         if enable_legacy_abac and not isinstance(enable_legacy_abac, bool):
             raise TypeError('Expected argument enable_legacy_abac to be a bool')
         __self__.enable_legacy_abac = enable_legacy_abac
+        if enable_tpu and not isinstance(enable_tpu, bool):
+            raise TypeError('Expected argument enable_tpu to be a bool')
+        __self__.enable_tpu = enable_tpu
         if endpoint and not isinstance(endpoint, basestring):
             raise TypeError('Expected argument endpoint to be a basestring')
         __self__.endpoint = endpoint
@@ -125,6 +128,7 @@ def get_cluster(name=None, project=None, region=None, zone=None):
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
         enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
         enable_legacy_abac=__ret__.get('enableLegacyAbac'),
+        enable_tpu=__ret__.get('enableTpu'),
         endpoint=__ret__.get('endpoint'),
         initial_node_count=__ret__.get('initialNodeCount'),
         instance_group_urls=__ret__.get('instanceGroupUrls'),

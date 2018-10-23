@@ -5,6 +5,7 @@
 export * from "./provider";
 
 // Export sub-modules:
+import * as appengine from "./appengine/index";
 import * as bigquery from "./bigquery/index";
 import * as bigtable from "./bigtable/index";
 import * as binaryauthorization from "./binaryauthorization/index";
@@ -19,9 +20,11 @@ import * as dataflow from "./dataflow/index";
 import * as dataproc from "./dataproc/index";
 import * as dns from "./dns/index";
 import * as endpoints from "./endpoints/index";
+import * as filestore from "./filestore/index";
 import * as folder from "./folder/index";
 import * as kms from "./kms/index";
 import * as logging from "./logging/index";
+import * as monitoring from "./monitoring/index";
 import * as organizations from "./organizations/index";
 import * as projects from "./projects/index";
 import * as pubsub from "./pubsub/index";
@@ -34,4 +37,4 @@ import * as sourcerepo from "./sourcerepo/index";
 import * as spanner from "./spanner/index";
 import * as sql from "./sql/index";
 import * as storage from "./storage/index";
-export {bigquery, bigtable, binaryauthorization, cloudbuild, cloudfunctions, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, folder, kms, logging, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, sourcerepo, spanner, sql, storage};
+export {appengine, bigquery, bigtable, binaryauthorization, cloudbuild, cloudfunctions, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, filestore, folder, kms, logging, monitoring, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, sourcerepo, spanner, sql, storage};

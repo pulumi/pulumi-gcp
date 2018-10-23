@@ -66,8 +66,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
             raise TypeError('Expected property labels to be a dict')
         __self__.labels = labels
         """
-        )
-        A set of key/value label pairs to assign to the resource.
+        
+        A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['labels'] = labels
 
@@ -116,7 +117,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         __self__.label_fingerprint = pulumi.runtime.UNKNOWN
         """
-        ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+        The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __self__.self_link = pulumi.runtime.UNKNOWN
         """

@@ -102,7 +102,7 @@ func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 // use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+// for more information. `POSTGRES_9_6` support is in beta.
 func (r *DatabaseInstance) DatabaseVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
@@ -185,7 +185,7 @@ type DatabaseInstanceState struct {
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+	// for more information. `POSTGRES_9_6` support is in beta.
 	DatabaseVersion interface{}
 	// The first IPv4 address of the addresses assigned. This is
 	// is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
@@ -232,7 +232,7 @@ type DatabaseInstanceArgs struct {
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in [Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features).
+	// for more information. `POSTGRES_9_6` support is in beta.
 	DatabaseVersion interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have

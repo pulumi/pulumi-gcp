@@ -46,12 +46,14 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
-     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
+     * 
+     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -155,12 +157,14 @@ export interface GlobalForwardingRuleState {
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
-     * ([Beta](https://www.terraform.io/docs/providers/google/index.html#beta-features)) The current label fingerprint.
+     * The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly labelFingerprint?: pulumi.Input<string>;
     /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
+     * 
+     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -221,8 +225,9 @@ export interface GlobalForwardingRuleArgs {
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
+     * 
+     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -19,6 +19,7 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
+	gcpAppEngine           = "appengine"           // AppEngine resources
 	gcpBigQuery            = "bigquery"            // BigQuery resources
 	gcpBigTable            = "bigtable"            // BitTable resources
 	gcpBinaryAuthorization = "binaryauthorization" // Binary Authorization resources
@@ -37,6 +38,8 @@ const (
 	gcpDataProc            = "dataproc"        // DataProc resources
 	gcpDNS                 = "dns"             // DNS resources
 	gcpEndPoints           = "endpoints"       // End Point resources
+	gcpFilestore           = "filestore"       // Filestore resources
+	gcpMonitoring          = "monitoring"      // Monitoring resources
 	gcpPubSub              = "pubsub"          // PubSub resources
 	gcpRedis               = "redis"           // Redis resources
 	gcpResourceManager     = "resourcemanager" // Resource Manager resources
@@ -125,6 +128,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			// AppEngine
+			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
 			// BigQuery
 			"google_bigquery_dataset": {Tok: gcpResource(gcpBigQuery, "Dataset")},
 			"google_bigquery_table":   {Tok: gcpResource(gcpBigQuery, "Table")},
@@ -347,6 +352,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_instance_group":                {Tok: gcpResource(gcpCompute, "InstanceGroup")},
 			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
 			"google_compute_instance_template":             {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
+			"google_compute_interconnect_attachment":       {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
 			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
 			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
@@ -418,6 +424,12 @@ func Provider() tfbridge.ProviderInfo {
 
 			// EndPoints resources
 			"google_endpoints_service": {Tok: gcpResource(gcpEndPoints, "Service")},
+
+			// Filestore resources
+			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
+
+			// Monitoring resources
+			"google_monitoring_alert_policy": {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -658,6 +670,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpCompute, "getImage"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_image.html.markdown",
+				},
+			},
+			"google_compute_instance": {
+				Tok: gcpDataSource(gcpCompute, "getInstance"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_instance.html.markdown",
 				},
 			},
 			"google_compute_forwarding_rule": {

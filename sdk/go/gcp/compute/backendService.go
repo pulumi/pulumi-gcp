@@ -123,8 +123,10 @@ func (r *BackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
 }
 
-// ) Headers that the
+// Headers that the
 // HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *BackendService) CustomRequestHeaders() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["customRequestHeaders"])
 }
@@ -179,7 +181,7 @@ func (r *BackendService) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// ) Name or URI of a
+// Name or URI of a
 // [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
 func (r *BackendService) SecurityPolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["securityPolicy"])
@@ -212,8 +214,10 @@ type BackendServiceState struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
-	// ) Headers that the
+	// Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	CustomRequestHeaders interface{}
 	// The textual description for the backend service.
 	Description interface{}
@@ -238,7 +242,7 @@ type BackendServiceState struct {
 	// The protocol for incoming requests. Defaults to
 	// `HTTP`.
 	Protocol interface{}
-	// ) Name or URI of a
+	// Name or URI of a
 	// [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
 	SecurityPolicy interface{}
 	// The URI of the created resource.
@@ -261,8 +265,10 @@ type BackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
-	// ) Headers that the
+	// Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	CustomRequestHeaders interface{}
 	// The textual description for the backend service.
 	Description interface{}
@@ -285,7 +291,7 @@ type BackendServiceArgs struct {
 	// The protocol for incoming requests. Defaults to
 	// `HTTP`.
 	Protocol interface{}
-	// ) Name or URI of a
+	// Name or URI of a
 	// [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
 	SecurityPolicy interface{}
 	// How to distribute load. Options are `NONE` (no

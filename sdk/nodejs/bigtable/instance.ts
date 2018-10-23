@@ -24,9 +24,13 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
+    public readonly cluster: pulumi.Output<{ clusterId?: string, numNodes?: number, storageType?: string, zone: string } | undefined>;
+    /**
      * The ID of the Cloud Bigtable cluster.
      */
-    public readonly clusterId: pulumi.Output<string>;
+    public readonly clusterId: pulumi.Output<string | undefined>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
@@ -64,11 +68,12 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: InstanceState = argsOrState as InstanceState | undefined;
+            inputs["cluster"] = state ? state.cluster : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
@@ -79,9 +84,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.clusterId === undefined) {
-                throw new Error("Missing required property 'clusterId'");
-            }
+            inputs["cluster"] = args ? args.cluster : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
@@ -99,6 +102,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
+    readonly cluster?: pulumi.Input<{ clusterId?: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone?: pulumi.Input<string> }>;
     /**
      * The ID of the Cloud Bigtable cluster.
      */
@@ -139,9 +146,13 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
+    readonly cluster?: pulumi.Input<{ clusterId?: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone?: pulumi.Input<string> }>;
+    /**
      * The ID of the Cloud Bigtable cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    readonly clusterId?: pulumi.Input<string>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */

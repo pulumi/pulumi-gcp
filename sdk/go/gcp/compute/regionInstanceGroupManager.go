@@ -113,8 +113,10 @@ func (r *RegionInstanceGroupManager) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// ) The autohealing policies for this managed instance
+// The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *RegionInstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
 	return r.s.State["autoHealingPolicies"]
 }
@@ -135,7 +137,7 @@ func (r *RegionInstanceGroupManager) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// ) The distribution policy for this managed instance
+// The distribution policy for this managed instance
 // group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 // - - -
 func (r *RegionInstanceGroupManager) DistributionPolicyZones() *pulumi.ArrayOutput {
@@ -179,7 +181,9 @@ func (r *RegionInstanceGroupManager) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *RegionInstanceGroupManager) RollingUpdatePolicy() *pulumi.Output {
 	return r.s.State["rollingUpdatePolicy"]
 }
@@ -204,8 +208,8 @@ func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 // If the `instance_template`
 // resource is modified, a value of `"NONE"` will prevent any of the managed
 // instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-// is supported as [Beta feature]. A value of `"ROLLING_UPDATE"` requires
-// `rolling_update_policy` block to be set
+// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
+// `rolling_update_policy` block to be set.
 func (r *RegionInstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateStrategy"])
 }
@@ -216,6 +220,8 @@ func (r *RegionInstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 // exactly one version must not specify a target size. It means that versions with
 // a target size will respect the setting, and the one without target size will
 // be applied to all remaining Instances (top level target_size - each version target_size).
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *RegionInstanceGroupManager) Versions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
@@ -229,8 +235,10 @@ func (r *RegionInstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 type RegionInstanceGroupManagerState struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
 	// instances in this group. The value must be a valid
@@ -242,7 +250,7 @@ type RegionInstanceGroupManagerState struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description interface{}
-	// ) The distribution policy for this managed instance
+	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones interface{}
@@ -262,7 +270,9 @@ type RegionInstanceGroupManagerState struct {
 	Project interface{}
 	// The region where the managed instance group resides.
 	Region interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	RollingUpdatePolicy interface{}
 	// The URL of the created resource.
 	SelfLink interface{}
@@ -275,8 +285,8 @@ type RegionInstanceGroupManagerState struct {
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
 	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-	// is supported as [Beta feature]. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set
+	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
+	// `rolling_update_policy` block to be set.
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -284,6 +294,8 @@ type RegionInstanceGroupManagerState struct {
 	// exactly one version must not specify a target size. It means that versions with
 	// a target size will respect the setting, and the one without target size will
 	// be applied to all remaining Instances (top level target_size - each version target_size).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
@@ -293,8 +305,10 @@ type RegionInstanceGroupManagerState struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
 	// instances in this group. The value must be a valid
@@ -306,7 +320,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description interface{}
-	// ) The distribution policy for this managed instance
+	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones interface{}
@@ -322,7 +336,9 @@ type RegionInstanceGroupManagerArgs struct {
 	Project interface{}
 	// The region where the managed instance group resides.
 	Region interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	RollingUpdatePolicy interface{}
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
@@ -333,8 +349,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// If the `instance_template`
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
 	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-	// is supported as [Beta feature]. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set
+	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
+	// `rolling_update_policy` block to be set.
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -342,6 +358,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// exactly one version must not specify a target size. It means that versions with
 	// a target size will respect the setting, and the one without target size will
 	// be applied to all remaining Instances (top level target_size - each version target_size).
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, Terraform will

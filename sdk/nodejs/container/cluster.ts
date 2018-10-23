@@ -50,6 +50,8 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly enableBinaryAuthorization: pulumi.Output<boolean | undefined>;
     /**
@@ -65,6 +67,13 @@ export class Cluster extends pulumi.CustomResource {
      * Defaults to `false`
      */
     public readonly enableLegacyAbac: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to enable Cloud TPU resources in this cluster.
+     * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     */
+    public readonly enableTpu: pulumi.Output<boolean | undefined>;
     /**
      * The IP address of this cluster's Kubernetes master.
      */
@@ -108,9 +117,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterAuthorizedNetworksConfig: pulumi.Output<{ cidrBlocks: { cidrBlock: string, displayName?: string }[] } | undefined>;
     /**
-     * ) Specifies a private
+     * Specifies a private
      * [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
      * The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
      */
     public readonly masterIpv4CidrBlock: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +175,7 @@ export class Cluster extends pulumi.CustomResource {
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
      */
-    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode?: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
+    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -171,16 +183,21 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeVersion: pulumi.Output<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly podSecurityPolicyConfig: pulumi.Output<{ enabled: boolean } | undefined>;
     /**
-     * ) If true, a
+     * If true, a
      * [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
      * nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
      * `ip_allocation_policy` with this option.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
      */
     public readonly privateCluster: pulumi.Output<boolean | undefined>;
     /**
@@ -228,6 +245,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             inputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
+            inputs["enableTpu"] = state ? state.enableTpu : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
@@ -263,6 +281,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
+            inputs["enableTpu"] = args ? args.enableTpu : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             inputs["loggingService"] = args ? args.loggingService : undefined;
@@ -322,6 +341,8 @@ export interface ClusterState {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
@@ -337,6 +358,13 @@ export interface ClusterState {
      * Defaults to `false`
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable Cloud TPU resources in this cluster.
+     * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     */
+    readonly enableTpu?: pulumi.Input<boolean>;
     /**
      * The IP address of this cluster's Kubernetes master.
      */
@@ -380,9 +408,12 @@ export interface ClusterState {
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<{ cidrBlocks?: pulumi.Input<pulumi.Input<{ cidrBlock: pulumi.Input<string>, displayName?: pulumi.Input<string> }>[]> }>;
     /**
-     * ) Specifies a private
+     * Specifies a private
      * [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
      * The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
      */
     readonly masterIpv4CidrBlock?: pulumi.Input<string>;
     /**
@@ -443,16 +474,21 @@ export interface ClusterState {
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly podSecurityPolicyConfig?: pulumi.Input<{ enabled: pulumi.Input<boolean> }>;
     /**
-     * ) If true, a
+     * If true, a
      * [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
      * nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
      * `ip_allocation_policy` with this option.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
      */
     readonly privateCluster?: pulumi.Input<boolean>;
     /**
@@ -510,6 +546,8 @@ export interface ClusterArgs {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
@@ -525,6 +563,13 @@ export interface ClusterArgs {
      * Defaults to `false`
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable Cloud TPU resources in this cluster.
+     * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     */
+    readonly enableTpu?: pulumi.Input<boolean>;
     /**
      * The number of nodes to create in this
      * cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
@@ -559,9 +604,12 @@ export interface ClusterArgs {
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<{ cidrBlocks?: pulumi.Input<pulumi.Input<{ cidrBlock: pulumi.Input<string>, displayName?: pulumi.Input<string> }>[]> }>;
     /**
-     * ) Specifies a private
+     * Specifies a private
      * [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
      * The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
      */
     readonly masterIpv4CidrBlock?: pulumi.Input<string>;
     /**
@@ -616,16 +664,21 @@ export interface ClusterArgs {
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly podSecurityPolicyConfig?: pulumi.Input<{ enabled: pulumi.Input<boolean> }>;
     /**
-     * ) If true, a
+     * If true, a
      * [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
      * nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
      * `ip_allocation_policy` with this option.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+     * This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
      */
     readonly privateCluster?: pulumi.Input<boolean>;
     /**

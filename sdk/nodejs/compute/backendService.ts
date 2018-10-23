@@ -38,8 +38,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * ) Headers that the
+     * Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
     /**
@@ -84,7 +86,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly protocol: pulumi.Output<string>;
     /**
-     * ) Name or URI of a
+     * Name or URI of a
      * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
      */
     public readonly securityPolicy: pulumi.Output<string | undefined>;
@@ -178,8 +180,10 @@ export interface BackendServiceState {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * ) Headers that the
+     * Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -224,7 +228,7 @@ export interface BackendServiceState {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * ) Name or URI of a
+     * Name or URI of a
      * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
      */
     readonly securityPolicy?: pulumi.Input<string>;
@@ -263,8 +267,10 @@ export interface BackendServiceArgs {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * ) Headers that the
+     * Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
+     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -305,7 +311,7 @@ export interface BackendServiceArgs {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * ) Name or URI of a
+     * Name or URI of a
      * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
      */
     readonly securityPolicy?: pulumi.Input<string>;

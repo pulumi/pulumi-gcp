@@ -30,8 +30,10 @@ class InstanceGroupManager(pulumi.CustomResource):
             raise TypeError('Expected property auto_healing_policies to be a dict')
         __self__.auto_healing_policies = auto_healing_policies
         """
-        ) The autohealing policies for this managed instance
+        The autohealing policies for this managed instance
         group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['autoHealingPolicies'] = auto_healing_policies
 
@@ -97,7 +99,9 @@ class InstanceGroupManager(pulumi.CustomResource):
             raise TypeError('Expected property rolling_update_policy to be a dict')
         __self__.rolling_update_policy = rolling_update_policy
         """
-        ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         - - -
         """
         __props__['rollingUpdatePolicy'] = rolling_update_policy
@@ -126,8 +130,8 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         If the `instance_template`
         resource is modified, a value of `"NONE"` will prevent any of the managed
-        instances from being restarted by Terraform. A value of `"RESTART"` will
-        restart all of the instances at once. `"ROLLING_UPDATE"` is supported as [Beta feature].
+        instances from being restarted by Terraform. A value of `"REPLACE"` will
+        restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
         A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
         """
         __props__['updateStrategy'] = update_strategy
@@ -142,6 +146,8 @@ class InstanceGroupManager(pulumi.CustomResource):
         exactly one version must not specify a target size. It means that versions with
         a target size will respect the setting, and the one without target size will
         be applied to all remaining Instances (top level target_size - each version target_size).
+        This property is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         """
         __props__['versions'] = versions
 
