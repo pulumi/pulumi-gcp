@@ -17,20 +17,20 @@ class GetRegionInstanceGroupResult(object):
         """
         List of instances in the group, as a list of resources, each containing:
         """
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected argument name to be a basestring')
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
         __self__.name = name
         """
         String port name
         """
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
-        if self_link and not isinstance(self_link, basestring):
-            raise TypeError('Expected argument self_link to be a basestring')
+        if self_link and not isinstance(self_link, str):
+            raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
         if size and not isinstance(size, int):
             raise TypeError('Expected argument size to be a int')
@@ -38,8 +38,8 @@ class GetRegionInstanceGroupResult(object):
         """
         The number of instances in the group.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

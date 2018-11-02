@@ -16,88 +16,29 @@ class InstanceGroup(pulumi.CustomResource):
         """Create a InstanceGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        An optional textual description of the instance
-        group.
-        """
         __props__['description'] = description
 
-        if instances and not isinstance(instances, list):
-            raise TypeError('Expected property instances to be a list')
-        __self__.instances = instances
-        """
-        List of instances in the group. They should be given
-        as self_link URLs. When adding instances they must all be in the same
-        network and zone as the instance group.
-        """
         __props__['instances'] = instances
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the instance group. Must be 1-63
-        characters long and comply with
-        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        include lowercase letters, numbers, and hyphens.
-        """
         __props__['name'] = name
 
-        if named_ports and not isinstance(named_ports, list):
-            raise TypeError('Expected property named_ports to be a list')
-        __self__.named_ports = named_ports
-        """
-        The named port configuration. See the section below
-        for details on configuration.
-        """
         __props__['namedPorts'] = named_ports
 
-        if network and not isinstance(network, basestring):
-            raise TypeError('Expected property network to be a basestring')
-        __self__.network = network
-        """
-        The URL of the network the instance group is in. If
-        this is different from the network where the instances are in, the creation
-        fails. Defaults to the network where the instances are in (if neither
-        `network` nor `instances` is specified, this field will be blank).
-        """
         __props__['network'] = network
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if zone and not isinstance(zone, basestring):
-            raise TypeError('Expected property zone to be a basestring')
-        __self__.zone = zone
-        """
-        The zone that this instance group should be created in.
-        """
         __props__['zone'] = zone
 
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.size = pulumi.runtime.UNKNOWN
-        """
-        The number of instances in the group.
-        """
+        __props__['self_link'] = None
+        __props__['size'] = None
 
         super(InstanceGroup, __self__).__init__(
             'gcp:compute/instanceGroup:InstanceGroup',
@@ -105,22 +46,3 @@ class InstanceGroup(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'instances' in outs:
-            self.instances = outs['instances']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'namedPorts' in outs:
-            self.named_ports = outs['namedPorts']
-        if 'network' in outs:
-            self.network = outs['network']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'size' in outs:
-            self.size = outs['size']
-        if 'zone' in outs:
-            self.zone = outs['zone']

@@ -17,14 +17,14 @@ class GetFunctionResult(object):
         """
         Available memory (in MB) to the function.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         Description of the function.
         """
-        if entry_point and not isinstance(entry_point, basestring):
-            raise TypeError('Expected argument entry_point to be a basestring')
+        if entry_point and not isinstance(entry_point, str):
+            raise TypeError('Expected argument entry_point to be a str')
         __self__.entry_point = entry_point
         """
         Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
@@ -38,8 +38,8 @@ class GetFunctionResult(object):
         """
         A source that fires events in response to a condition in another service. Structure is documented below.
         """
-        if https_trigger_url and not isinstance(https_trigger_url, basestring):
-            raise TypeError('Expected argument https_trigger_url to be a basestring')
+        if https_trigger_url and not isinstance(https_trigger_url, str):
+            raise TypeError('Expected argument https_trigger_url to be a str')
         __self__.https_trigger_url = https_trigger_url
         """
         If function is triggered by HTTP, trigger URL is set here.
@@ -53,14 +53,14 @@ class GetFunctionResult(object):
         if retry_on_failure and not isinstance(retry_on_failure, bool):
             raise TypeError('Expected argument retry_on_failure to be a bool')
         __self__.retry_on_failure = retry_on_failure
-        if source_archive_bucket and not isinstance(source_archive_bucket, basestring):
-            raise TypeError('Expected argument source_archive_bucket to be a basestring')
+        if source_archive_bucket and not isinstance(source_archive_bucket, str):
+            raise TypeError('Expected argument source_archive_bucket to be a str')
         __self__.source_archive_bucket = source_archive_bucket
         """
         The GCS bucket containing the zip archive which contains the function.
         """
-        if source_archive_object and not isinstance(source_archive_object, basestring):
-            raise TypeError('Expected argument source_archive_object to be a basestring')
+        if source_archive_object and not isinstance(source_archive_object, str):
+            raise TypeError('Expected argument source_archive_object to be a str')
         __self__.source_archive_object = source_archive_object
         """
         The source archive object (file) in archive bucket.
@@ -71,8 +71,8 @@ class GetFunctionResult(object):
         """
         Function execution timeout (in seconds).
         """
-        if trigger_bucket and not isinstance(trigger_bucket, basestring):
-            raise TypeError('Expected argument trigger_bucket to be a basestring')
+        if trigger_bucket and not isinstance(trigger_bucket, str):
+            raise TypeError('Expected argument trigger_bucket to be a str')
         __self__.trigger_bucket = trigger_bucket
         """
         If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
@@ -83,14 +83,14 @@ class GetFunctionResult(object):
         """
         If function is triggered by HTTP, this boolean is set.
         """
-        if trigger_topic and not isinstance(trigger_topic, basestring):
-            raise TypeError('Expected argument trigger_topic to be a basestring')
+        if trigger_topic and not isinstance(trigger_topic, str):
+            raise TypeError('Expected argument trigger_topic to be a str')
         __self__.trigger_topic = trigger_topic
         """
         If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

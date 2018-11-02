@@ -3,9 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from cluster import *
-from node_pool import *
-from get_cluster import *
-from get_engine_versions import *
-from get_registry_image import *
-from get_registry_repository import *
+from .cluster import *
+from .node_pool import *
+from .get_cluster import *
+from .get_engine_versions import *
+from .get_registry_image import *
+from .get_registry_repository import *

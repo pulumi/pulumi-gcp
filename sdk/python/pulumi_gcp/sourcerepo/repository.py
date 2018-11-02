@@ -16,38 +16,19 @@ class Repository(pulumi.CustomResource):
         """Create a Repository resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the repository that will be created.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        __self__.size = pulumi.runtime.UNKNOWN
-        """
-        The size of the repository.
-        """
-        __self__.url = pulumi.runtime.UNKNOWN
-        """
-        The url to clone the repository.
-        """
+        __props__['size'] = None
+        __props__['url'] = None
 
         super(Repository, __self__).__init__(
             'gcp:sourcerepo/repository:Repository',
@@ -55,12 +36,3 @@ class Repository(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'size' in outs:
-            self.size = outs['size']
-        if 'url' in outs:
-            self.url = outs['url']

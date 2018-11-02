@@ -22,7 +22,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
         """Create a KeyRingIAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -31,40 +31,17 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         if not key_ring_id:
             raise TypeError('Missing required property key_ring_id')
-        elif not isinstance(key_ring_id, basestring):
-            raise TypeError('Expected property key_ring_id to be a basestring')
-        __self__.key_ring_id = key_ring_id
-        """
-        The key ring ID, in the form
-        `{project_id}/{location_name}/{key_ring_name}` or
-        `{location_name}/{key_ring_name}`. In the second form, the provider's
-        project setting will be used as a fallback.
-        """
         __props__['keyRingId'] = key_ring_id
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
         __props__['member'] = member
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Only one
-        `google_kms_key_ring_iam_binding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the key ring's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(KeyRingIAMMember, __self__).__init__(
             'gcp:kms/keyRingIAMMember:KeyRingIAMMember',
@@ -72,12 +49,3 @@ class KeyRingIAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'keyRingId' in outs:
-            self.key_ring_id = outs['keyRingId']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'role' in outs:
-            self.role = outs['role']

@@ -11,14 +11,14 @@ class GetObjectSignedUrlResult(object):
     A collection of values returned by getObjectSignedUrl.
     """
     def __init__(__self__, signed_url=None, id=None):
-        if signed_url and not isinstance(signed_url, basestring):
-            raise TypeError('Expected argument signed_url to be a basestring')
+        if signed_url and not isinstance(signed_url, str):
+            raise TypeError('Expected argument signed_url to be a str')
         __self__.signed_url = signed_url
         """
         The signed URL that can be used to access the storage object without authentication.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

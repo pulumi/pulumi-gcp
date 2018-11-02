@@ -25,7 +25,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         """Create a InstanceIAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -34,46 +34,19 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         if not instance:
             raise TypeError('Missing required property instance')
-        elif not isinstance(instance, basestring):
-            raise TypeError('Expected property instance to be a basestring')
-        __self__.instance = instance
-        """
-        The name of the instance.
-        """
         __props__['instance'] = instance
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
         __props__['member'] = member
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Only one
-        `google_spanner_instance_iam_binding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the instance's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(InstanceIAMMember, __self__).__init__(
             'gcp:spanner/instanceIAMMember:InstanceIAMMember',
@@ -81,14 +54,3 @@ class InstanceIAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'instance' in outs:
-            self.instance = outs['instance']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'role' in outs:
-            self.role = outs['role']

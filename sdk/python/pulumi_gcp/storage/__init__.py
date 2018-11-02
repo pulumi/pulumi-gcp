@@ -3,14 +3,14 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from bucket import *
-from bucket_acl import *
-from bucket_iam_binding import *
-from bucket_iam_member import *
-from bucket_iam_policy import *
-from bucket_object import *
-from default_object_acl import *
-from notification import *
-from object_acl import *
-from get_object_signed_url import *
-from get_project_service_account import *
+from .bucket import *
+from .bucket_acl import *
+from .bucket_iam_binding import *
+from .bucket_iam_member import *
+from .bucket_iam_policy import *
+from .bucket_object import *
+from .default_object_acl import *
+from .notification import *
+from .object_acl import *
+from .get_object_signed_url import *
+from .get_project_service_account import *

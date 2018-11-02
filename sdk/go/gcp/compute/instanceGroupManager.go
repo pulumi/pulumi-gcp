@@ -99,12 +99,12 @@ func GetInstanceGroupManager(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *InstanceGroupManager) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *InstanceGroupManager) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The autohealing policies for this managed instance

@@ -17,7 +17,7 @@ class Table(pulumi.CustomResource):
         """Create a Table resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -26,37 +26,12 @@ class Table(pulumi.CustomResource):
 
         if not instance_name:
             raise TypeError('Missing required property instance_name')
-        elif not isinstance(instance_name, basestring):
-            raise TypeError('Expected property instance_name to be a basestring')
-        __self__.instance_name = instance_name
-        """
-        The name of the Bigtable instance.
-        """
         __props__['instanceName'] = instance_name
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the table.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if split_keys and not isinstance(split_keys, list):
-            raise TypeError('Expected property split_keys to be a list')
-        __self__.split_keys = split_keys
-        """
-        A list of predefined keys to split the table on.
-        """
         __props__['splitKeys'] = split_keys
 
         super(Table, __self__).__init__(
@@ -65,12 +40,3 @@ class Table(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'instanceName' in outs:
-            self.instance_name = outs['instanceName']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'splitKeys' in outs:
-            self.split_keys = outs['splitKeys']

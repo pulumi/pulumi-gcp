@@ -71,12 +71,12 @@ func GetFolderSink(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *FolderSink) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *FolderSink) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a

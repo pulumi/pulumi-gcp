@@ -77,12 +77,12 @@ func GetURLMap(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *URLMap) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *URLMap) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The backend service or backend bucket to use when none of the given rules match.

@@ -15,63 +15,26 @@ class ManagedZone(pulumi.CustomResource):
         """Create a ManagedZone resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A textual description field. Defaults to 'Managed by Terraform'.
-        """
         __props__['description'] = description
 
         if not dns_name:
             raise TypeError('Missing required property dns_name')
-        elif not isinstance(dns_name, basestring):
-            raise TypeError('Expected property dns_name to be a basestring')
-        __self__.dns_name = dns_name
-        """
-        The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-        """
         __props__['dnsName'] = dns_name
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
-        """
-        A set of key/value label pairs to assign to the instance.
-        """
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        __self__.name_servers = pulumi.runtime.UNKNOWN
-        """
-        The list of nameservers that will be authoritative for this
-        domain. Use NS records to redirect from your DNS provider to these names,
-        thus making Google Cloud DNS authoritative for this zone.
-        """
+        __props__['name_servers'] = None
 
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
@@ -79,16 +42,3 @@ class ManagedZone(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'dnsName' in outs:
-            self.dns_name = outs['dnsName']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'nameServers' in outs:
-            self.name_servers = outs['nameServers']
-        if 'project' in outs:
-            self.project = outs['project']

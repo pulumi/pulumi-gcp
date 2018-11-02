@@ -11,8 +11,8 @@ class GetInstanceGroupResult(object):
     A collection of values returned by getInstanceGroup.
     """
     def __init__(__self__, description=None, instances=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None, id=None):
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         Textual description of the instance group.
@@ -29,17 +29,17 @@ class GetInstanceGroupResult(object):
         """
         List of named ports in the group.
         """
-        if network and not isinstance(network, basestring):
-            raise TypeError('Expected argument network to be a basestring')
+        if network and not isinstance(network, str):
+            raise TypeError('Expected argument network to be a str')
         __self__.network = network
         """
         The URL of the network the instance group is in.
         """
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if self_link and not isinstance(self_link, basestring):
-            raise TypeError('Expected argument self_link to be a basestring')
+        if self_link and not isinstance(self_link, str):
+            raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
         """
         The URI of the resource.
@@ -50,11 +50,11 @@ class GetInstanceGroupResult(object):
         """
         The number of instances in the group.
         """
-        if zone and not isinstance(zone, basestring):
-            raise TypeError('Expected argument zone to be a basestring')
+        if zone and not isinstance(zone, str):
+            raise TypeError('Expected argument zone to be a str')
         __self__.zone = zone
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

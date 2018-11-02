@@ -11,62 +11,34 @@ class TargetHttpsProxy(pulumi.CustomResource):
         """Create a TargetHttpsProxy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if quic_override and not isinstance(quic_override, basestring):
-            raise TypeError('Expected property quic_override to be a basestring')
-        __self__.quic_override = quic_override
         __props__['quicOverride'] = quic_override
 
         if not ssl_certificates:
             raise TypeError('Missing required property ssl_certificates')
-        elif not isinstance(ssl_certificates, list):
-            raise TypeError('Expected property ssl_certificates to be a list')
-        __self__.ssl_certificates = ssl_certificates
         __props__['sslCertificates'] = ssl_certificates
 
-        if ssl_policy and not isinstance(ssl_policy, basestring):
-            raise TypeError('Expected property ssl_policy to be a basestring')
-        __self__.ssl_policy = ssl_policy
         __props__['sslPolicy'] = ssl_policy
 
         if not url_map:
             raise TypeError('Missing required property url_map')
-        elif not isinstance(url_map, basestring):
-            raise TypeError('Expected property url_map to be a basestring')
-        __self__.url_map = url_map
         __props__['urlMap'] = url_map
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.proxy_id = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['creation_timestamp'] = None
+        __props__['proxy_id'] = None
+        __props__['self_link'] = None
 
         super(TargetHttpsProxy, __self__).__init__(
             'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
@@ -74,24 +46,3 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'proxyId' in outs:
-            self.proxy_id = outs['proxyId']
-        if 'quicOverride' in outs:
-            self.quic_override = outs['quicOverride']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'sslCertificates' in outs:
-            self.ssl_certificates = outs['sslCertificates']
-        if 'sslPolicy' in outs:
-            self.ssl_policy = outs['sslPolicy']
-        if 'urlMap' in outs:
-            self.url_map = outs['urlMap']

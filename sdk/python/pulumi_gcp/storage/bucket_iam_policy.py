@@ -21,7 +21,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         """Create a BucketIAMPolicy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -30,25 +30,13 @@ class BucketIAMPolicy(pulumi.CustomResource):
 
         if not bucket:
             raise TypeError('Missing required property bucket')
-        elif not isinstance(bucket, basestring):
-            raise TypeError('Expected property bucket to be a basestring')
-        __self__.bucket = bucket
-        """
-        The name of the bucket it applies to.
-        """
         __props__['bucket'] = bucket
 
         if not policy_data:
             raise TypeError('Missing required property policy_data')
-        elif not isinstance(policy_data, basestring):
-            raise TypeError('Expected property policy_data to be a basestring')
-        __self__.policy_data = policy_data
         __props__['policyData'] = policy_data
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the storage bucket's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(BucketIAMPolicy, __self__).__init__(
             'gcp:storage/bucketIAMPolicy:BucketIAMPolicy',
@@ -56,10 +44,3 @@ class BucketIAMPolicy(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucket' in outs:
-            self.bucket = outs['bucket']
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'policyData' in outs:
-            self.policy_data = outs['policyData']

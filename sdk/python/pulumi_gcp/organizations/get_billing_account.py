@@ -11,11 +11,11 @@ class GetBillingAccountResult(object):
     A collection of values returned by getBillingAccount.
     """
     def __init__(__self__, display_name=None, name=None, open=None, project_ids=None, id=None):
-        if display_name and not isinstance(display_name, basestring):
-            raise TypeError('Expected argument display_name to be a basestring')
+        if display_name and not isinstance(display_name, str):
+            raise TypeError('Expected argument display_name to be a str')
         __self__.display_name = display_name
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected argument name to be a basestring')
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
         __self__.name = name
         """
         The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
@@ -29,8 +29,8 @@ class GetBillingAccountResult(object):
         """
         The IDs of any projects associated with the billing account.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

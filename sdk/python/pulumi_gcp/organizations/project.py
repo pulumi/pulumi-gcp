@@ -40,110 +40,34 @@ class Project(pulumi.CustomResource):
         """Create a Project resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if app_engine and not isinstance(app_engine, dict):
-            raise TypeError('Expected property app_engine to be a dict')
-        __self__.app_engine = app_engine
-        """
-        A block of configuration to enable an App Engine app. Setting this
-        field will enabled the App Engine Admin API, which is required to manage the app.
-        """
         __props__['appEngine'] = app_engine
 
-        if auto_create_network and not isinstance(auto_create_network, bool):
-            raise TypeError('Expected property auto_create_network to be a bool')
-        __self__.auto_create_network = auto_create_network
-        """
-        Create the 'default' network automatically.  Default true.
-        Note: this might be more accurately described as "Delete Default Network", since the network
-        is created automatically then deleted before project creation returns, but we choose this
-        name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
-        API which is required to delete the network.
-        """
         __props__['autoCreateNetwork'] = auto_create_network
 
-        if billing_account and not isinstance(billing_account, basestring):
-            raise TypeError('Expected property billing_account to be a basestring')
-        __self__.billing_account = billing_account
-        """
-        The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with Terraform
-        must have Billing Account Administrator privileges (`roles/billing.admin`) in
-        the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
-        for more details.
-        """
         __props__['billingAccount'] = billing_account
 
-        if folder_id and not isinstance(folder_id, basestring):
-            raise TypeError('Expected property folder_id to be a basestring')
-        __self__.folder_id = folder_id
-        """
-        The numeric ID of the folder this project should be
-        created under. Only one of `org_id` or `folder_id` may be
-        specified. If the `folder_id` is specified, then the project is
-        created under the specified folder. Changing this forces the
-        project to be migrated to the newly specified folder.
-        """
         __props__['folderId'] = folder_id
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
-        """
-        A set of key/value label pairs to assign to the project.
-        """
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The display name of the project.
-        """
         __props__['name'] = name
 
-        if org_id and not isinstance(org_id, basestring):
-            raise TypeError('Expected property org_id to be a basestring')
-        __self__.org_id = org_id
-        """
-        The numeric ID of the organization this project belongs to.
-        Changing this forces a new project to be created.  Only one of
-        `org_id` or `folder_id` may be specified. If the `org_id` is
-        specified then the project is created at the top level. Changing
-        this forces the project to be migrated to the newly specified
-        organization.
-        """
         __props__['orgId'] = org_id
 
         if not project_id:
             raise TypeError('Missing required property project_id')
-        elif not isinstance(project_id, basestring):
-            raise TypeError('Expected property project_id to be a basestring')
-        __self__.project_id = project_id
-        """
-        The project ID. Changing this forces a new project to be created.
-        """
         __props__['projectId'] = project_id
 
-        if skip_delete and not isinstance(skip_delete, bool):
-            raise TypeError('Expected property skip_delete to be a bool')
-        __self__.skip_delete = skip_delete
-        """
-        If true, the Terraform resource can be deleted
-        without deleting the Project via the Google API.
-        """
         __props__['skipDelete'] = skip_delete
 
-        __self__.number = pulumi.runtime.UNKNOWN
-        """
-        The numeric identifier of the project.
-        """
+        __props__['number'] = None
 
         super(Project, __self__).__init__(
             'gcp:organizations/project:Project',
@@ -151,24 +75,3 @@ class Project(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'appEngine' in outs:
-            self.app_engine = outs['appEngine']
-        if 'autoCreateNetwork' in outs:
-            self.auto_create_network = outs['autoCreateNetwork']
-        if 'billingAccount' in outs:
-            self.billing_account = outs['billingAccount']
-        if 'folderId' in outs:
-            self.folder_id = outs['folderId']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'number' in outs:
-            self.number = outs['number']
-        if 'orgId' in outs:
-            self.org_id = outs['orgId']
-        if 'projectId' in outs:
-            self.project_id = outs['projectId']
-        if 'skipDelete' in outs:
-            self.skip_delete = outs['skipDelete']

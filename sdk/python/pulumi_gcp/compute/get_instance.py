@@ -32,8 +32,8 @@ class GetInstanceResult(object):
         """
         Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         """
-        if cpu_platform and not isinstance(cpu_platform, basestring):
-            raise TypeError('Expected argument cpu_platform to be a basestring')
+        if cpu_platform and not isinstance(cpu_platform, str):
+            raise TypeError('Expected argument cpu_platform to be a str')
         __self__.cpu_platform = cpu_platform
         """
         The CPU platform used by this instance.
@@ -47,8 +47,8 @@ class GetInstanceResult(object):
         """
         Whether deletion protection is enabled on this instance.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         A brief description of the resource.
@@ -62,14 +62,14 @@ class GetInstanceResult(object):
         """
         List of the type and count of accelerator cards attached to the instance. Structure is documented below.
         """
-        if instance_id and not isinstance(instance_id, basestring):
-            raise TypeError('Expected argument instance_id to be a basestring')
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError('Expected argument instance_id to be a str')
         __self__.instance_id = instance_id
         """
         The server-assigned unique identifier of this instance.
         """
-        if label_fingerprint and not isinstance(label_fingerprint, basestring):
-            raise TypeError('Expected argument label_fingerprint to be a basestring')
+        if label_fingerprint and not isinstance(label_fingerprint, str):
+            raise TypeError('Expected argument label_fingerprint to be a str')
         __self__.label_fingerprint = label_fingerprint
         """
         The unique fingerprint of the labels.
@@ -80,8 +80,8 @@ class GetInstanceResult(object):
         """
         A set of key/value label pairs assigned to the instance.
         """
-        if machine_type and not isinstance(machine_type, basestring):
-            raise TypeError('Expected argument machine_type to be a basestring')
+        if machine_type and not isinstance(machine_type, str):
+            raise TypeError('Expected argument machine_type to be a str')
         __self__.machine_type = machine_type
         """
         The machine type to create.
@@ -92,17 +92,17 @@ class GetInstanceResult(object):
         """
         Metadata key/value pairs made available within the instance.
         """
-        if metadata_fingerprint and not isinstance(metadata_fingerprint, basestring):
-            raise TypeError('Expected argument metadata_fingerprint to be a basestring')
+        if metadata_fingerprint and not isinstance(metadata_fingerprint, str):
+            raise TypeError('Expected argument metadata_fingerprint to be a str')
         __self__.metadata_fingerprint = metadata_fingerprint
         """
         The unique fingerprint of the metadata.
         """
-        if metadata_startup_script and not isinstance(metadata_startup_script, basestring):
-            raise TypeError('Expected argument metadata_startup_script to be a basestring')
+        if metadata_startup_script and not isinstance(metadata_startup_script, str):
+            raise TypeError('Expected argument metadata_startup_script to be a str')
         __self__.metadata_startup_script = metadata_startup_script
-        if min_cpu_platform and not isinstance(min_cpu_platform, basestring):
-            raise TypeError('Expected argument min_cpu_platform to be a basestring')
+        if min_cpu_platform and not isinstance(min_cpu_platform, str):
+            raise TypeError('Expected argument min_cpu_platform to be a str')
         __self__.min_cpu_platform = min_cpu_platform
         """
         The minimum CPU platform specified for the VM instance.
@@ -131,8 +131,8 @@ class GetInstanceResult(object):
         """
         The scratch disks attached to the instance. Structure is documented below.
         """
-        if self_link and not isinstance(self_link, basestring):
-            raise TypeError('Expected argument self_link to be a basestring')
+        if self_link and not isinstance(self_link, str):
+            raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
         """
         The URI of the created resource.
@@ -149,14 +149,14 @@ class GetInstanceResult(object):
         """
         The list of tags attached to the instance.
         """
-        if tags_fingerprint and not isinstance(tags_fingerprint, basestring):
-            raise TypeError('Expected argument tags_fingerprint to be a basestring')
+        if tags_fingerprint and not isinstance(tags_fingerprint, str):
+            raise TypeError('Expected argument tags_fingerprint to be a str')
         __self__.tags_fingerprint = tags_fingerprint
         """
         The unique fingerprint of the tags.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
