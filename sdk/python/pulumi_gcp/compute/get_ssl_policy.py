@@ -11,8 +11,8 @@ class GetSSLPolicyResult(object):
     A collection of values returned by getSSLPolicy.
     """
     def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, min_tls_version=None, profile=None, self_link=None, id=None):
-        if creation_timestamp and not isinstance(creation_timestamp, basestring):
-            raise TypeError('Expected argument creation_timestamp to be a basestring')
+        if creation_timestamp and not isinstance(creation_timestamp, str):
+            raise TypeError('Expected argument creation_timestamp to be a str')
         __self__.creation_timestamp = creation_timestamp
         if custom_features and not isinstance(custom_features, list):
             raise TypeError('Expected argument custom_features to be a list')
@@ -22,8 +22,8 @@ class GetSSLPolicyResult(object):
         ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
         attribute will be empty.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         Description of this SSL Policy.
@@ -34,32 +34,32 @@ class GetSSLPolicyResult(object):
         """
         The set of enabled encryption ciphers as a result of the policy config
         """
-        if fingerprint and not isinstance(fingerprint, basestring):
-            raise TypeError('Expected argument fingerprint to be a basestring')
+        if fingerprint and not isinstance(fingerprint, str):
+            raise TypeError('Expected argument fingerprint to be a str')
         __self__.fingerprint = fingerprint
         """
         Fingerprint of this resource.
         """
-        if min_tls_version and not isinstance(min_tls_version, basestring):
-            raise TypeError('Expected argument min_tls_version to be a basestring')
+        if min_tls_version and not isinstance(min_tls_version, str):
+            raise TypeError('Expected argument min_tls_version to be a str')
         __self__.min_tls_version = min_tls_version
         """
         The minimum supported TLS version of this policy.
         """
-        if profile and not isinstance(profile, basestring):
-            raise TypeError('Expected argument profile to be a basestring')
+        if profile and not isinstance(profile, str):
+            raise TypeError('Expected argument profile to be a str')
         __self__.profile = profile
         """
         The Google-curated or custom profile used by this policy.
         """
-        if self_link and not isinstance(self_link, basestring):
-            raise TypeError('Expected argument self_link to be a basestring')
+        if self_link and not isinstance(self_link, str):
+            raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
         """
         The URI of the created resource.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

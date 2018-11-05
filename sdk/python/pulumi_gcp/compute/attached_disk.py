@@ -27,45 +27,27 @@ class AttachedDisk(pulumi.CustomResource):
         """Create a AttachedDisk resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if device_name and not isinstance(device_name, basestring):
-            raise TypeError('Expected property device_name to be a basestring')
-        __self__.device_name = device_name
         __props__['deviceName'] = device_name
 
         if not disk:
             raise TypeError('Missing required property disk')
-        elif not isinstance(disk, basestring):
-            raise TypeError('Expected property disk to be a basestring')
-        __self__.disk = disk
         __props__['disk'] = disk
 
         if not instance:
             raise TypeError('Missing required property instance')
-        elif not isinstance(instance, basestring):
-            raise TypeError('Expected property instance to be a basestring')
-        __self__.instance = instance
         __props__['instance'] = instance
 
-        if mode and not isinstance(mode, basestring):
-            raise TypeError('Expected property mode to be a basestring')
-        __self__.mode = mode
         __props__['mode'] = mode
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
-        if zone and not isinstance(zone, basestring):
-            raise TypeError('Expected property zone to be a basestring')
-        __self__.zone = zone
         __props__['zone'] = zone
 
         super(AttachedDisk, __self__).__init__(
@@ -74,16 +56,3 @@ class AttachedDisk(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'deviceName' in outs:
-            self.device_name = outs['deviceName']
-        if 'disk' in outs:
-            self.disk = outs['disk']
-        if 'instance' in outs:
-            self.instance = outs['instance']
-        if 'mode' in outs:
-            self.mode = outs['mode']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'zone' in outs:
-            self.zone = outs['zone']

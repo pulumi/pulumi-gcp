@@ -70,12 +70,12 @@ func GetBillingAccountSink(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *BillingAccountSink) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *BillingAccountSink) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The billing account exported to the sink.

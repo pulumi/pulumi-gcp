@@ -11,91 +11,48 @@ class VPNTunnel(pulumi.CustomResource):
         """Create a VPNTunnel resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if ike_version and not isinstance(ike_version, int):
-            raise TypeError('Expected property ike_version to be a int')
-        __self__.ike_version = ike_version
         __props__['ikeVersion'] = ike_version
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
         __props__['labels'] = labels
 
-        if local_traffic_selectors and not isinstance(local_traffic_selectors, list):
-            raise TypeError('Expected property local_traffic_selectors to be a list')
-        __self__.local_traffic_selectors = local_traffic_selectors
         __props__['localTrafficSelectors'] = local_traffic_selectors
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
         if not peer_ip:
             raise TypeError('Missing required property peer_ip')
-        elif not isinstance(peer_ip, basestring):
-            raise TypeError('Expected property peer_ip to be a basestring')
-        __self__.peer_ip = peer_ip
         __props__['peerIp'] = peer_ip
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
         __props__['region'] = region
 
-        if remote_traffic_selectors and not isinstance(remote_traffic_selectors, list):
-            raise TypeError('Expected property remote_traffic_selectors to be a list')
-        __self__.remote_traffic_selectors = remote_traffic_selectors
         __props__['remoteTrafficSelectors'] = remote_traffic_selectors
 
-        if router and not isinstance(router, basestring):
-            raise TypeError('Expected property router to be a basestring')
-        __self__.router = router
         __props__['router'] = router
 
         if not shared_secret:
             raise TypeError('Missing required property shared_secret')
-        elif not isinstance(shared_secret, basestring):
-            raise TypeError('Expected property shared_secret to be a basestring')
-        __self__.shared_secret = shared_secret
         __props__['sharedSecret'] = shared_secret
 
         if not target_vpn_gateway:
             raise TypeError('Missing required property target_vpn_gateway')
-        elif not isinstance(target_vpn_gateway, basestring):
-            raise TypeError('Expected property target_vpn_gateway to be a basestring')
-        __self__.target_vpn_gateway = target_vpn_gateway
         __props__['targetVpnGateway'] = target_vpn_gateway
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.detailed_status = pulumi.runtime.UNKNOWN
-        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.shared_secret_hash = pulumi.runtime.UNKNOWN
+        __props__['creation_timestamp'] = None
+        __props__['detailed_status'] = None
+        __props__['label_fingerprint'] = None
+        __props__['self_link'] = None
+        __props__['shared_secret_hash'] = None
 
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
@@ -103,38 +60,3 @@ class VPNTunnel(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'detailedStatus' in outs:
-            self.detailed_status = outs['detailedStatus']
-        if 'ikeVersion' in outs:
-            self.ike_version = outs['ikeVersion']
-        if 'labelFingerprint' in outs:
-            self.label_fingerprint = outs['labelFingerprint']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'localTrafficSelectors' in outs:
-            self.local_traffic_selectors = outs['localTrafficSelectors']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'peerIp' in outs:
-            self.peer_ip = outs['peerIp']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'remoteTrafficSelectors' in outs:
-            self.remote_traffic_selectors = outs['remoteTrafficSelectors']
-        if 'router' in outs:
-            self.router = outs['router']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'sharedSecret' in outs:
-            self.shared_secret = outs['sharedSecret']
-        if 'sharedSecretHash' in outs:
-            self.shared_secret_hash = outs['sharedSecretHash']
-        if 'targetVpnGateway' in outs:
-            self.target_vpn_gateway = outs['targetVpnGateway']

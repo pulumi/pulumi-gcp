@@ -20,110 +20,35 @@ class DatabaseInstance(pulumi.CustomResource):
         """Create a DatabaseInstance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if database_version and not isinstance(database_version, basestring):
-            raise TypeError('Expected property database_version to be a basestring')
-        __self__.database_version = database_version
-        """
-        The MySQL version to
-        use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
-        instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-        See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-        for more information. `POSTGRES_9_6` support is in beta.
-        """
         __props__['databaseVersion'] = database_version
 
-        if master_instance_name and not isinstance(master_instance_name, basestring):
-            raise TypeError('Expected property master_instance_name to be a basestring')
-        __self__.master_instance_name = master_instance_name
-        """
-        The name of the instance that will act as
-        the master in the replication setup. Note, this requires the master to have
-        `binary_log_enabled` set, as well as existing backups.
-        """
         __props__['masterInstanceName'] = master_instance_name
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the instance. If the name is left
-        blank, Terraform will randomly generate one when the instance is first
-        created. This is done because after a name is used, it cannot be reused for
-        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region the instance will sit in. Note, first-generation Cloud SQL instance
-        regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
-        available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-        A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        the provider region will be used instead, but this will be an apply-time error for all first-generation
-        instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-        If you choose not to provide the `region` argument for this resource, make sure you understand this.
-        """
         __props__['region'] = region
 
-        if replica_configuration and not isinstance(replica_configuration, dict):
-            raise TypeError('Expected property replica_configuration to be a dict')
-        __self__.replica_configuration = replica_configuration
-        """
-        The configuration for replication. The
-        configuration is detailed below.
-        """
         __props__['replicaConfiguration'] = replica_configuration
 
         if not settings:
             raise TypeError('Missing required property settings')
-        elif not isinstance(settings, dict):
-            raise TypeError('Expected property settings to be a dict')
-        __self__.settings = settings
-        """
-        The settings to use for the database. The
-        configuration is detailed below.
-        """
         __props__['settings'] = settings
 
-        __self__.connection_name = pulumi.runtime.UNKNOWN
-        """
-        The connection name of the instance to be used in connection strings.
-        """
-        __self__.first_ip_address = pulumi.runtime.UNKNOWN
-        """
-        The first IPv4 address of the addresses assigned. This is
-        is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
-        when the resource is configured with a `count`.
-        """
-        __self__.ip_addresses = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.server_ca_cert = pulumi.runtime.UNKNOWN
-        __self__.service_account_email_address = pulumi.runtime.UNKNOWN
-        """
-        The service account email address assigned to the
-        instance. This property is applicable only to Second Generation instances.
-        """
+        __props__['connection_name'] = None
+        __props__['first_ip_address'] = None
+        __props__['ip_addresses'] = None
+        __props__['self_link'] = None
+        __props__['server_ca_cert'] = None
+        __props__['service_account_email_address'] = None
 
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
@@ -131,30 +56,3 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'connectionName' in outs:
-            self.connection_name = outs['connectionName']
-        if 'databaseVersion' in outs:
-            self.database_version = outs['databaseVersion']
-        if 'firstIpAddress' in outs:
-            self.first_ip_address = outs['firstIpAddress']
-        if 'ipAddresses' in outs:
-            self.ip_addresses = outs['ipAddresses']
-        if 'masterInstanceName' in outs:
-            self.master_instance_name = outs['masterInstanceName']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'replicaConfiguration' in outs:
-            self.replica_configuration = outs['replicaConfiguration']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'serverCaCert' in outs:
-            self.server_ca_cert = outs['serverCaCert']
-        if 'serviceAccountEmailAddress' in outs:
-            self.service_account_email_address = outs['serviceAccountEmailAddress']
-        if 'settings' in outs:
-            self.settings = outs['settings']

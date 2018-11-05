@@ -27,7 +27,7 @@ class IAMPolicy(pulumi.CustomResource):
         """Create a IAMPolicy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -36,27 +36,13 @@ class IAMPolicy(pulumi.CustomResource):
 
         if not org_id:
             raise TypeError('Missing required property org_id')
-        elif not isinstance(org_id, basestring):
-            raise TypeError('Expected property org_id to be a basestring')
-        __self__.org_id = org_id
-        """
-        The numeric ID of the organization in which you want to create a custom role.
-        """
         __props__['orgId'] = org_id
 
         if not policy_data:
             raise TypeError('Missing required property policy_data')
-        elif not isinstance(policy_data, basestring):
-            raise TypeError('Expected property policy_data to be a basestring')
-        __self__.policy_data = policy_data
-        """
-        The `google_iam_policy` data source that represents
-        the IAM policy that will be applied to the organization. This policy overrides any existing
-        policy applied to the organization.
-        """
         __props__['policyData'] = policy_data
 
-        __self__.etag = pulumi.runtime.UNKNOWN
+        __props__['etag'] = None
 
         super(IAMPolicy, __self__).__init__(
             'gcp:organizations/iAMPolicy:IAMPolicy',
@@ -64,10 +50,3 @@ class IAMPolicy(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'orgId' in outs:
-            self.org_id = outs['orgId']
-        if 'policyData' in outs:
-            self.policy_data = outs['policyData']

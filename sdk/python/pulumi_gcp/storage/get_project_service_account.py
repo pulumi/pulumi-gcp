@@ -11,18 +11,18 @@ class GetProjectServiceAccountResult(object):
     A collection of values returned by getProjectServiceAccount.
     """
     def __init__(__self__, email_address=None, project=None, id=None):
-        if email_address and not isinstance(email_address, basestring):
-            raise TypeError('Expected argument email_address to be a basestring')
+        if email_address and not isinstance(email_address, str):
+            raise TypeError('Expected argument email_address to be a str')
         __self__.email_address = email_address
         """
         The email address of the service account. This value is often used to refer to the service account
         in order to grant IAM permissions.
         """
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

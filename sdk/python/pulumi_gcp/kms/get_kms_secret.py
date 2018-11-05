@@ -11,14 +11,14 @@ class GetKMSSecretResult(object):
     A collection of values returned by getKMSSecret.
     """
     def __init__(__self__, plaintext=None, id=None):
-        if plaintext and not isinstance(plaintext, basestring):
-            raise TypeError('Expected argument plaintext to be a basestring')
+        if plaintext and not isinstance(plaintext, str):
+            raise TypeError('Expected argument plaintext to be a str')
         __self__.plaintext = plaintext
         """
         Contains the result of decrypting the provided ciphertext.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

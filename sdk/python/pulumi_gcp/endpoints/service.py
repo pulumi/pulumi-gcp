@@ -14,49 +14,31 @@ class Service(pulumi.CustomResource):
         """Create a Service resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if grpc_config and not isinstance(grpc_config, basestring):
-            raise TypeError('Expected property grpc_config to be a basestring')
-        __self__.grpc_config = grpc_config
         __props__['grpcConfig'] = grpc_config
 
-        if openapi_config and not isinstance(openapi_config, basestring):
-            raise TypeError('Expected property openapi_config to be a basestring')
-        __self__.openapi_config = openapi_config
         __props__['openapiConfig'] = openapi_config
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
-        if protoc_output and not isinstance(protoc_output, basestring):
-            raise TypeError('Expected property protoc_output to be a basestring')
-        __self__.protoc_output = protoc_output
         __props__['protocOutput'] = protoc_output
 
-        if protoc_output_base64 and not isinstance(protoc_output_base64, basestring):
-            raise TypeError('Expected property protoc_output_base64 to be a basestring')
-        __self__.protoc_output_base64 = protoc_output_base64
         __props__['protocOutputBase64'] = protoc_output_base64
 
         if not service_name:
             raise TypeError('Missing required property service_name')
-        elif not isinstance(service_name, basestring):
-            raise TypeError('Expected property service_name to be a basestring')
-        __self__.service_name = service_name
         __props__['serviceName'] = service_name
 
-        __self__.apis = pulumi.runtime.UNKNOWN
-        __self__.config_id = pulumi.runtime.UNKNOWN
-        __self__.dns_address = pulumi.runtime.UNKNOWN
-        __self__.endpoints = pulumi.runtime.UNKNOWN
+        __props__['apis'] = None
+        __props__['config_id'] = None
+        __props__['dns_address'] = None
+        __props__['endpoints'] = None
 
         super(Service, __self__).__init__(
             'gcp:endpoints/service:Service',
@@ -64,24 +46,3 @@ class Service(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'apis' in outs:
-            self.apis = outs['apis']
-        if 'configId' in outs:
-            self.config_id = outs['configId']
-        if 'dnsAddress' in outs:
-            self.dns_address = outs['dnsAddress']
-        if 'endpoints' in outs:
-            self.endpoints = outs['endpoints']
-        if 'grpcConfig' in outs:
-            self.grpc_config = outs['grpcConfig']
-        if 'openapiConfig' in outs:
-            self.openapi_config = outs['openapiConfig']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'protocOutput' in outs:
-            self.protoc_output = outs['protocOutput']
-        if 'protocOutputBase64' in outs:
-            self.protoc_output_base64 = outs['protocOutputBase64']
-        if 'serviceName' in outs:
-            self.service_name = outs['serviceName']

@@ -25,7 +25,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         """Create a SubnetworkIAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -34,55 +34,21 @@ class SubnetworkIAMMember(pulumi.CustomResource):
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
         __props__['member'] = member
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region of the subnetwork. If
-        unspecified, this defaults to the region configured in the provider.
-        """
         __props__['region'] = region
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Only one
-        `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
         if not subnetwork:
             raise TypeError('Missing required property subnetwork')
-        elif not isinstance(subnetwork, basestring):
-            raise TypeError('Expected property subnetwork to be a basestring')
-        __self__.subnetwork = subnetwork
-        """
-        The name of the subnetwork.
-        """
         __props__['subnetwork'] = subnetwork
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the subnetwork's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(SubnetworkIAMMember, __self__).__init__(
             'gcp:compute/subnetworkIAMMember:SubnetworkIAMMember',
@@ -90,16 +56,3 @@ class SubnetworkIAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'role' in outs:
-            self.role = outs['role']
-        if 'subnetwork' in outs:
-            self.subnetwork = outs['subnetwork']

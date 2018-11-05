@@ -17,7 +17,7 @@ class ObjectACL(pulumi.CustomResource):
         """Create a ObjectACL resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -26,38 +26,14 @@ class ObjectACL(pulumi.CustomResource):
 
         if not bucket:
             raise TypeError('Missing required property bucket')
-        elif not isinstance(bucket, basestring):
-            raise TypeError('Expected property bucket to be a basestring')
-        __self__.bucket = bucket
-        """
-        The name of the bucket it applies to.
-        """
         __props__['bucket'] = bucket
 
         if not object:
             raise TypeError('Missing required property object')
-        elif not isinstance(object, basestring):
-            raise TypeError('Expected property object to be a basestring')
-        __self__.object = object
-        """
-        The name of the object it applies to.
-        """
         __props__['object'] = object
 
-        if predefined_acl and not isinstance(predefined_acl, basestring):
-            raise TypeError('Expected property predefined_acl to be a basestring')
-        __self__.predefined_acl = predefined_acl
-        """
-        The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        """
         __props__['predefinedAcl'] = predefined_acl
 
-        if role_entities and not isinstance(role_entities, list):
-            raise TypeError('Expected property role_entities to be a list')
-        __self__.role_entities = role_entities
-        """
-        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details. Must be set if `predefined_acl` is not.
-        """
         __props__['roleEntities'] = role_entities
 
         super(ObjectACL, __self__).__init__(
@@ -66,12 +42,3 @@ class ObjectACL(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucket' in outs:
-            self.bucket = outs['bucket']
-        if 'object' in outs:
-            self.object = outs['object']
-        if 'predefinedAcl' in outs:
-            self.predefined_acl = outs['predefinedAcl']
-        if 'roleEntities' in outs:
-            self.role_entities = outs['roleEntities']

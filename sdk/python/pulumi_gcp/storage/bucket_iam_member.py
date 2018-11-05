@@ -21,7 +21,7 @@ class BucketIAMMember(pulumi.CustomResource):
         """Create a BucketIAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -30,36 +30,17 @@ class BucketIAMMember(pulumi.CustomResource):
 
         if not bucket:
             raise TypeError('Missing required property bucket')
-        elif not isinstance(bucket, basestring):
-            raise TypeError('Expected property bucket to be a basestring')
-        __self__.bucket = bucket
-        """
-        The name of the bucket it applies to.
-        """
         __props__['bucket'] = bucket
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
         __props__['member'] = member
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the storage bucket's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(BucketIAMMember, __self__).__init__(
             'gcp:storage/bucketIAMMember:BucketIAMMember',
@@ -67,12 +48,3 @@ class BucketIAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucket' in outs:
-            self.bucket = outs['bucket']
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'role' in outs:
-            self.role = outs['role']

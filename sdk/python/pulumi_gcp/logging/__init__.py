@@ -3,11 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from billing_account_exclusion import *
-from billing_account_sink import *
-from folder_exclusion import *
-from folder_sink import *
-from organization_exclusion import *
-from organization_sink import *
-from project_exclusion import *
-from project_sink import *
+from .billing_account_exclusion import *
+from .billing_account_sink import *
+from .folder_exclusion import *
+from .folder_sink import *
+from .organization_exclusion import *
+from .organization_sink import *
+from .project_exclusion import *
+from .project_sink import *

@@ -20,7 +20,7 @@ class IAMMember(pulumi.CustomResource):
         """Create a IAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -29,44 +29,17 @@ class IAMMember(pulumi.CustomResource):
 
         if not folder:
             raise TypeError('Missing required property folder')
-        elif not isinstance(folder, basestring):
-            raise TypeError('Expected property folder to be a basestring')
-        __self__.folder = folder
-        """
-        The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        """
         __props__['folder'] = folder
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
-        """
-        The identity that will be granted the privilege in the `role`.
-        This field can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        """
         __props__['member'] = member
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the folder's IAM policy.
-        """
+        __props__['etag'] = None
 
         super(IAMMember, __self__).__init__(
             'gcp:folder/iAMMember:IAMMember',
@@ -74,12 +47,3 @@ class IAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'folder' in outs:
-            self.folder = outs['folder']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'role' in outs:
-            self.role = outs['role']

@@ -11,14 +11,14 @@ class GetRegistryImageResult(object):
     A collection of values returned by getRegistryImage.
     """
     def __init__(__self__, image_url=None, project=None, id=None):
-        if image_url and not isinstance(image_url, basestring):
-            raise TypeError('Expected argument image_url to be a basestring')
+        if image_url and not isinstance(image_url, str):
+            raise TypeError('Expected argument image_url to be a str')
         __self__.image_url = image_url
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

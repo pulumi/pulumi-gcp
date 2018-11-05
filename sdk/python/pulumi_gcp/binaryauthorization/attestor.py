@@ -11,7 +11,7 @@ class Attestor(pulumi.CustomResource):
         """Create a Attestor resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -20,24 +20,12 @@ class Attestor(pulumi.CustomResource):
 
         if not attestation_authority_note:
             raise TypeError('Missing required property attestation_authority_note')
-        elif not isinstance(attestation_authority_note, dict):
-            raise TypeError('Expected property attestation_authority_note to be a dict')
-        __self__.attestation_authority_note = attestation_authority_note
         __props__['attestationAuthorityNote'] = attestation_authority_note
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
         super(Attestor, __self__).__init__(
@@ -46,12 +34,3 @@ class Attestor(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'attestationAuthorityNote' in outs:
-            self.attestation_authority_note = outs['attestationAuthorityNote']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']

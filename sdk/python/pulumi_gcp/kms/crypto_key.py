@@ -28,7 +28,7 @@ class CryptoKey(pulumi.CustomResource):
         """Create a CryptoKey resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -37,38 +37,13 @@ class CryptoKey(pulumi.CustomResource):
 
         if not key_ring:
             raise TypeError('Missing required property key_ring')
-        elif not isinstance(key_ring, basestring):
-            raise TypeError('Expected property key_ring to be a basestring')
-        __self__.key_ring = key_ring
-        """
-        The id of the Google Cloud Platform KeyRing to which the key shall belong.
-        """
         __props__['keyRing'] = key_ring
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The CryptoKey's name.
-        A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-        """
         __props__['name'] = name
 
-        if rotation_period and not isinstance(rotation_period, basestring):
-            raise TypeError('Expected property rotation_period to be a basestring')
-        __self__.rotation_period = rotation_period
-        """
-        Every time this period passes, generate a new CryptoKeyVersion and set it as
-        the primary. The first rotation will take place after the specified period. The rotation period has the format
-        of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-        a day (ie, 86400).
-        """
         __props__['rotationPeriod'] = rotation_period
 
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-        """
+        __props__['self_link'] = None
 
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',
@@ -76,12 +51,3 @@ class CryptoKey(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'keyRing' in outs:
-            self.key_ring = outs['keyRing']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'rotationPeriod' in outs:
-            self.rotation_period = outs['rotationPeriod']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']

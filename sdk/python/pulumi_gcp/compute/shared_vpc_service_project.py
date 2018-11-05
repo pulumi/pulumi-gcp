@@ -21,7 +21,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         """Create a SharedVPCServiceProject resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -30,22 +30,10 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         if not host_project:
             raise TypeError('Missing required property host_project')
-        elif not isinstance(host_project, basestring):
-            raise TypeError('Expected property host_project to be a basestring')
-        __self__.host_project = host_project
-        """
-        The ID of a host project to associate.
-        """
         __props__['hostProject'] = host_project
 
         if not service_project:
             raise TypeError('Missing required property service_project')
-        elif not isinstance(service_project, basestring):
-            raise TypeError('Expected property service_project to be a basestring')
-        __self__.service_project = service_project
-        """
-        The ID of the project that will serve as a Shared VPC service project.
-        """
         __props__['serviceProject'] = service_project
 
         super(SharedVPCServiceProject, __self__).__init__(
@@ -54,8 +42,3 @@ class SharedVPCServiceProject(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'hostProject' in outs:
-            self.host_project = outs['hostProject']
-        if 'serviceProject' in outs:
-            self.service_project = outs['serviceProject']

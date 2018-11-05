@@ -17,7 +17,7 @@ class DefaultObjectACL(pulumi.CustomResource):
         """Create a DefaultObjectACL resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -26,20 +26,8 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         if not bucket:
             raise TypeError('Missing required property bucket')
-        elif not isinstance(bucket, basestring):
-            raise TypeError('Expected property bucket to be a basestring')
-        __self__.bucket = bucket
-        """
-        The name of the bucket it applies to.
-        """
         __props__['bucket'] = bucket
 
-        if role_entities and not isinstance(role_entities, list):
-            raise TypeError('Expected property role_entities to be a list')
-        __self__.role_entities = role_entities
-        """
-        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        """
         __props__['roleEntities'] = role_entities
 
         super(DefaultObjectACL, __self__).__init__(
@@ -48,8 +36,3 @@ class DefaultObjectACL(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucket' in outs:
-            self.bucket = outs['bucket']
-        if 'roleEntities' in outs:
-            self.role_entities = outs['roleEntities']

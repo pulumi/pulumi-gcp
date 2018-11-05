@@ -26,7 +26,7 @@ class Folder(pulumi.CustomResource):
         """Create a Folder resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -35,39 +35,15 @@ class Folder(pulumi.CustomResource):
 
         if not display_name:
             raise TypeError('Missing required property display_name')
-        elif not isinstance(display_name, basestring):
-            raise TypeError('Expected property display_name to be a basestring')
-        __self__.display_name = display_name
-        """
-        The folder’s display name.
-        A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
-        """
         __props__['displayName'] = display_name
 
         if not parent:
             raise TypeError('Missing required property parent')
-        elif not isinstance(parent, basestring):
-            raise TypeError('Expected property parent to be a basestring')
-        __self__.parent = parent
-        """
-        The resource name of the parent Folder or Organization.
-        Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-        """
         __props__['parent'] = parent
 
-        __self__.create_time = pulumi.runtime.UNKNOWN
-        """
-        Timestamp when the Folder was created. Assigned by the server.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        """
-        __self__.lifecycle_state = pulumi.runtime.UNKNOWN
-        """
-        The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
-        """
-        __self__.name = pulumi.runtime.UNKNOWN
-        """
-        The resource name of the Folder. Its format is folders/{folder_id}.
-        """
+        __props__['create_time'] = None
+        __props__['lifecycle_state'] = None
+        __props__['name'] = None
 
         super(Folder, __self__).__init__(
             'gcp:organizations/folder:Folder',
@@ -75,14 +51,3 @@ class Folder(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'createTime' in outs:
-            self.create_time = outs['createTime']
-        if 'displayName' in outs:
-            self.display_name = outs['displayName']
-        if 'lifecycleState' in outs:
-            self.lifecycle_state = outs['lifecycleState']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'parent' in outs:
-            self.parent = outs['parent']
