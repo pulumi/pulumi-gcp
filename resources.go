@@ -27,30 +27,28 @@ const (
 	gcpCloudFunctions      = "cloudfunctions"      // CloudFunction resources
 	gcpComposer            = "composer"            // Cloud Composer resources
 	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
-	gcpCore                = "core"
-	gcpFolder              = "folder"          // Folder resources
-	gcpOrganization        = "organizations"   // Organization resources
-	gcpProject             = "projects"        // Project resources
-	gcpServiceAccount      = "serviceAccount"  // Service Account resources
-	gcpCompute             = "compute"         // Compute resoures
-	gcpKubernetes          = "container"       // Kubernetes Engine resources
-	gcpDataFolow           = "dataflow"        // DataFlow resources
-	gcpDataProc            = "dataproc"        // DataProc resources
-	gcpDNS                 = "dns"             // DNS resources
-	gcpEndPoints           = "endpoints"       // End Point resources
-	gcpFilestore           = "filestore"       // Filestore resources
-	gcpMonitoring          = "monitoring"      // Monitoring resources
-	gcpPubSub              = "pubsub"          // PubSub resources
-	gcpRedis               = "redis"           // Redis resources
-	gcpResourceManager     = "resourcemanager" // Resource Manager resources
-	gcpRuntimeConfig       = "runtimeconfig"   // Runtime Config resources
-	gcpSourceRepo          = "sourcerepo"      // Source Repo resources
-	gcpSpanner             = "spanner"         // Spanner Resources
-	gcpSQL                 = "sql"             // SQL resources
-	gcpLogging             = "logging"         // Logging resources
-	gcpStorage             = "storage"         // Storage resources
-	gcpKMS                 = "kms"             // KMS resources
-	gcpCloudIoT            = "iot"             // CloudIoT resources
+	gcpFolder              = "folder"              // Folder resources
+	gcpOrganization        = "organizations"       // Organization resources
+	gcpProject             = "projects"            // Project resources
+	gcpServiceAccount      = "serviceAccount"      // Service Account resources
+	gcpCompute             = "compute"             // Compute resoures
+	gcpKubernetes          = "container"           // Kubernetes Engine resources
+	gcpDataFolow           = "dataflow"            // DataFlow resources
+	gcpDataProc            = "dataproc"            // DataProc resources
+	gcpDNS                 = "dns"                 // DNS resources
+	gcpEndPoints           = "endpoints"           // End Point resources
+	gcpFilestore           = "filestore"           // Filestore resources
+	gcpMonitoring          = "monitoring"          // Monitoring resources
+	gcpPubSub              = "pubsub"              // PubSub resources
+	gcpRedis               = "redis"               // Redis resources
+	gcpResourceManager     = "resourcemanager"     // Resource Manager resources
+	gcpRuntimeConfig       = "runtimeconfig"       // Runtime Config resources
+	gcpSourceRepo          = "sourcerepo"          // Source Repo resources
+	gcpSpanner             = "spanner"             // Spanner Resources
+	gcpSQL                 = "sql"                 // SQL resources
+	gcpLogging             = "logging"             // Logging resources
+	gcpStorage             = "storage"             // Storage resources
+	gcpKMS                 = "kms"                 // KMS resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -63,14 +61,14 @@ func gcpType(mod string, typ string) tokens.Type {
 	return tokens.Type(gcpMember(mod, typ))
 }
 
-// gcpDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the Azure
+// gcpDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the GCP
 // package and names the file by simply lower casing the data source's first character.
 func gcpDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return gcpMember(mod+"/"+fn, res)
 }
 
-// gcpResource manufactures a standard resource token given a module and resource name.  It automatically uses the Azure
+// gcpResource manufactures a standard resource token given a module and resource name.  It automatically uses the GCP
 // package and names the file by simply lower casing the resource's first character.
 func gcpResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -89,7 +87,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-gcp",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"credentials": &tfbridge.SchemaInfo{
+			"credentials": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"GOOGLE_CREDENTIALS",
@@ -98,7 +96,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"project": &tfbridge.SchemaInfo{
+			"project": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"GOOGLE_PROJECT",
@@ -108,7 +106,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"region": &tfbridge.SchemaInfo{
+			"region": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"GOOGLE_REGION",
@@ -117,7 +115,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"zone": &tfbridge.SchemaInfo{
+			"zone": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"GOOGLE_ZONE",
@@ -568,8 +566,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpStorage, "BucketObject"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"source": {
-						// TODO[pulumi/pulum#280] This property sould be mapped as accepting an Asset, not an Archive,
-						// but we do the later for now so that users can programattically construct archives to upload.
+						// TODO[pulumi/pulum#280] This property should be mapped as accepting an Asset, not an Archive,
+						// but we do the later for now so that users can programmatically construct archives to upload.
 						Asset: &tfbridge.AssetTranslation{
 							Kind:   tfbridge.FileArchive,
 							Format: resource.ZIPArchive,
