@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class HealthCheck(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None):
@@ -18,27 +18,27 @@ class HealthCheck(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['checkIntervalSec'] = check_interval_sec
+        __props__['check_interval_sec'] = check_interval_sec
 
         __props__['description'] = description
 
-        __props__['healthyThreshold'] = healthy_threshold
+        __props__['healthy_threshold'] = healthy_threshold
 
-        __props__['httpHealthCheck'] = http_health_check
+        __props__['http_health_check'] = http_health_check
 
-        __props__['httpsHealthCheck'] = https_health_check
+        __props__['https_health_check'] = https_health_check
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['sslHealthCheck'] = ssl_health_check
+        __props__['ssl_health_check'] = ssl_health_check
 
-        __props__['tcpHealthCheck'] = tcp_health_check
+        __props__['tcp_health_check'] = tcp_health_check
 
-        __props__['timeoutSec'] = timeout_sec
+        __props__['timeout_sec'] = timeout_sec
 
-        __props__['unhealthyThreshold'] = unhealthy_threshold
+        __props__['unhealthy_threshold'] = unhealthy_threshold
 
         __props__['creation_timestamp'] = None
         __props__['self_link'] = None
@@ -49,4 +49,11 @@ class HealthCheck(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
     """
@@ -26,13 +26,13 @@ class Table(pulumi.CustomResource):
 
         if not dataset_id:
             raise TypeError('Missing required property dataset_id')
-        __props__['datasetId'] = dataset_id
+        __props__['dataset_id'] = dataset_id
 
         __props__['description'] = description
 
-        __props__['expirationTime'] = expiration_time
+        __props__['expiration_time'] = expiration_time
 
-        __props__['friendlyName'] = friendly_name
+        __props__['friendly_name'] = friendly_name
 
         __props__['labels'] = labels
 
@@ -42,9 +42,9 @@ class Table(pulumi.CustomResource):
 
         if not table_id:
             raise TypeError('Missing required property table_id')
-        __props__['tableId'] = table_id
+        __props__['table_id'] = table_id
 
-        __props__['timePartitioning'] = time_partitioning
+        __props__['time_partitioning'] = time_partitioning
 
         __props__['view'] = view
 
@@ -63,4 +63,11 @@ class Table(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

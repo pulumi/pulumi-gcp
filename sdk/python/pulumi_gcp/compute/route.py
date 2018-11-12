@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Route(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, dest_range=None, name=None, network=None, next_hop_gateway=None, next_hop_instance=None, next_hop_instance_zone=None, next_hop_ip=None, next_hop_vpn_tunnel=None, priority=None, project=None, tags=None):
@@ -22,7 +22,7 @@ class Route(pulumi.CustomResource):
 
         if not dest_range:
             raise TypeError('Missing required property dest_range')
-        __props__['destRange'] = dest_range
+        __props__['dest_range'] = dest_range
 
         __props__['name'] = name
 
@@ -30,15 +30,15 @@ class Route(pulumi.CustomResource):
             raise TypeError('Missing required property network')
         __props__['network'] = network
 
-        __props__['nextHopGateway'] = next_hop_gateway
+        __props__['next_hop_gateway'] = next_hop_gateway
 
-        __props__['nextHopInstance'] = next_hop_instance
+        __props__['next_hop_instance'] = next_hop_instance
 
-        __props__['nextHopInstanceZone'] = next_hop_instance_zone
+        __props__['next_hop_instance_zone'] = next_hop_instance_zone
 
-        __props__['nextHopIp'] = next_hop_ip
+        __props__['next_hop_ip'] = next_hop_ip
 
-        __props__['nextHopVpnTunnel'] = next_hop_vpn_tunnel
+        __props__['next_hop_vpn_tunnel'] = next_hop_vpn_tunnel
 
         __props__['priority'] = priority
 
@@ -54,4 +54,11 @@ class Route(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

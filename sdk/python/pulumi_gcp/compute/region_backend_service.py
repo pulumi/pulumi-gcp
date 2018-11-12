@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RegionBackendService(pulumi.CustomResource):
     """
@@ -28,13 +28,13 @@ class RegionBackendService(pulumi.CustomResource):
 
         __props__['backends'] = backends
 
-        __props__['connectionDrainingTimeoutSec'] = connection_draining_timeout_sec
+        __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
 
         __props__['description'] = description
 
         if not health_checks:
             raise TypeError('Missing required property health_checks')
-        __props__['healthChecks'] = health_checks
+        __props__['health_checks'] = health_checks
 
         __props__['name'] = name
 
@@ -44,9 +44,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['sessionAffinity'] = session_affinity
+        __props__['session_affinity'] = session_affinity
 
-        __props__['timeoutSec'] = timeout_sec
+        __props__['timeout_sec'] = timeout_sec
 
         __props__['fingerprint'] = None
         __props__['self_link'] = None
@@ -56,4 +56,11 @@ class RegionBackendService(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

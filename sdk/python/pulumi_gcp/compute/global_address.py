@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GlobalAddress(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None):
@@ -18,11 +18,11 @@ class GlobalAddress(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['addressType'] = address_type
+        __props__['address_type'] = address_type
 
         __props__['description'] = description
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
         __props__['labels'] = labels
 
@@ -30,7 +30,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         __props__['network'] = network
 
-        __props__['prefixLength'] = prefix_length
+        __props__['prefix_length'] = prefix_length
 
         __props__['project'] = project
 
@@ -46,4 +46,11 @@ class GlobalAddress(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

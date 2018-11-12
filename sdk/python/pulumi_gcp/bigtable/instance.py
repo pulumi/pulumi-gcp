@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -26,19 +26,19 @@ class Instance(pulumi.CustomResource):
 
         __props__['cluster'] = cluster
 
-        __props__['clusterId'] = cluster_id
+        __props__['cluster_id'] = cluster_id
 
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
-        __props__['instanceType'] = instance_type
+        __props__['instance_type'] = instance_type
 
         __props__['name'] = name
 
-        __props__['numNodes'] = num_nodes
+        __props__['num_nodes'] = num_nodes
 
         __props__['project'] = project
 
-        __props__['storageType'] = storage_type
+        __props__['storage_type'] = storage_type
 
         __props__['zone'] = zone
 
@@ -47,4 +47,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

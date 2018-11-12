@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GlobalForwardingRule(pulumi.CustomResource):
     """
@@ -26,17 +26,17 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['ipAddress'] = ip_address
+        __props__['ip_address'] = ip_address
 
-        __props__['ipProtocol'] = ip_protocol
+        __props__['ip_protocol'] = ip_protocol
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
         __props__['labels'] = labels
 
         __props__['name'] = name
 
-        __props__['portRange'] = port_range
+        __props__['port_range'] = port_range
 
         __props__['project'] = project
 
@@ -52,4 +52,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class BackendBucket(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, bucket_name=None, description=None, enable_cdn=None, name=None, project=None):
@@ -20,11 +20,11 @@ class BackendBucket(pulumi.CustomResource):
 
         if not bucket_name:
             raise TypeError('Missing required property bucket_name')
-        __props__['bucketName'] = bucket_name
+        __props__['bucket_name'] = bucket_name
 
         __props__['description'] = description
 
-        __props__['enableCdn'] = enable_cdn
+        __props__['enable_cdn'] = enable_cdn
 
         __props__['name'] = name
 
@@ -38,4 +38,11 @@ class BackendBucket(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

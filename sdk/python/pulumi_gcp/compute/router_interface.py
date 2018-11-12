@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RouterInterface(pulumi.CustomResource):
     """
@@ -24,7 +24,7 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['ipRange'] = ip_range
+        __props__['ip_range'] = ip_range
 
         __props__['name'] = name
 
@@ -38,11 +38,18 @@ class RouterInterface(pulumi.CustomResource):
 
         if not vpn_tunnel:
             raise TypeError('Missing required property vpn_tunnel')
-        __props__['vpnTunnel'] = vpn_tunnel
+        __props__['vpn_tunnel'] = vpn_tunnel
 
         super(RouterInterface, __self__).__init__(
             'gcp:compute/routerInterface:RouterInterface',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Account(pulumi.CustomResource):
     """
@@ -23,11 +23,11 @@ class Account(pulumi.CustomResource):
 
         if not account_id:
             raise TypeError('Missing required property account_id')
-        __props__['accountId'] = account_id
+        __props__['account_id'] = account_id
 
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
-        __props__['policyData'] = policy_data
+        __props__['policy_data'] = policy_data
 
         __props__['project'] = project
 
@@ -40,4 +40,11 @@ class Account(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

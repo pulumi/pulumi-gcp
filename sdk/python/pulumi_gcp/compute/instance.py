@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -25,49 +25,49 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['allowStoppingForUpdate'] = allow_stopping_for_update
+        __props__['allow_stopping_for_update'] = allow_stopping_for_update
 
-        __props__['attachedDisks'] = attached_disks
+        __props__['attached_disks'] = attached_disks
 
         if not boot_disk:
             raise TypeError('Missing required property boot_disk')
-        __props__['bootDisk'] = boot_disk
+        __props__['boot_disk'] = boot_disk
 
-        __props__['canIpForward'] = can_ip_forward
+        __props__['can_ip_forward'] = can_ip_forward
 
-        __props__['createTimeout'] = create_timeout
+        __props__['create_timeout'] = create_timeout
 
-        __props__['deletionProtection'] = deletion_protection
+        __props__['deletion_protection'] = deletion_protection
 
         __props__['description'] = description
 
-        __props__['guestAccelerators'] = guest_accelerators
+        __props__['guest_accelerators'] = guest_accelerators
 
         __props__['labels'] = labels
 
         if not machine_type:
             raise TypeError('Missing required property machine_type')
-        __props__['machineType'] = machine_type
+        __props__['machine_type'] = machine_type
 
         __props__['metadata'] = metadata
 
-        __props__['metadataStartupScript'] = metadata_startup_script
+        __props__['metadata_startup_script'] = metadata_startup_script
 
-        __props__['minCpuPlatform'] = min_cpu_platform
+        __props__['min_cpu_platform'] = min_cpu_platform
 
         __props__['name'] = name
 
         if not network_interfaces:
             raise TypeError('Missing required property network_interfaces')
-        __props__['networkInterfaces'] = network_interfaces
+        __props__['network_interfaces'] = network_interfaces
 
         __props__['project'] = project
 
         __props__['scheduling'] = scheduling
 
-        __props__['scratchDisks'] = scratch_disks
+        __props__['scratch_disks'] = scratch_disks
 
-        __props__['serviceAccount'] = service_account
+        __props__['service_account'] = service_account
 
         __props__['tags'] = tags
 
@@ -85,4 +85,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

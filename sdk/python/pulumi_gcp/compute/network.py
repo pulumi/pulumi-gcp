@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
     """
@@ -24,17 +24,17 @@ class Network(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['autoCreateSubnetworks'] = auto_create_subnetworks
+        __props__['auto_create_subnetworks'] = auto_create_subnetworks
 
         __props__['description'] = description
 
-        __props__['ipv4Range'] = ipv4_range
+        __props__['ipv4_range'] = ipv4_range
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['routingMode'] = routing_mode
+        __props__['routing_mode'] = routing_mode
 
         __props__['gateway_ipv4'] = None
         __props__['self_link'] = None
@@ -44,4 +44,11 @@ class Network(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

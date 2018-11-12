@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetNetworkResult(object):
     """
@@ -42,7 +42,7 @@ class GetNetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_network(name=None, project=None):
+async def get_network(name=None, project=None):
     """
     Get a network within GCE from its name.
     """
@@ -50,7 +50,7 @@ def get_network(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__)
 
     return GetNetworkResult(
         description=__ret__.get('description'),

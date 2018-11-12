@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Registry(pulumi.CustomResource):
     """
@@ -26,11 +26,11 @@ class Registry(pulumi.CustomResource):
 
         __props__['credentials'] = credentials
 
-        __props__['eventNotificationConfig'] = event_notification_config
+        __props__['event_notification_config'] = event_notification_config
 
-        __props__['httpConfig'] = http_config
+        __props__['http_config'] = http_config
 
-        __props__['mqttConfig'] = mqtt_config
+        __props__['mqtt_config'] = mqtt_config
 
         __props__['name'] = name
 
@@ -38,11 +38,18 @@ class Registry(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['stateNotificationConfig'] = state_notification_config
+        __props__['state_notification_config'] = state_notification_config
 
         super(Registry, __self__).__init__(
             'gcp:kms/registry:Registry',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

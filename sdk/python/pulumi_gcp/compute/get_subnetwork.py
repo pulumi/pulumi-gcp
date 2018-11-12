@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetSubnetworkResult(object):
     """
@@ -71,7 +71,7 @@ class GetSubnetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_subnetwork(name=None, project=None, region=None):
+async def get_subnetwork(name=None, project=None, region=None):
     """
     Get a subnetwork within GCE from its name and region.
     """
@@ -80,7 +80,7 @@ def get_subnetwork(name=None, project=None, region=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__)
 
     return GetSubnetworkResult(
         description=__ret__.get('description'),

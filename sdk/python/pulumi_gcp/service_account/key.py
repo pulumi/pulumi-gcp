@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Key(pulumi.CustomResource):
     """
@@ -22,17 +22,17 @@ class Key(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['keyAlgorithm'] = key_algorithm
+        __props__['key_algorithm'] = key_algorithm
 
-        __props__['pgpKey'] = pgp_key
+        __props__['pgp_key'] = pgp_key
 
-        __props__['privateKeyType'] = private_key_type
+        __props__['private_key_type'] = private_key_type
 
-        __props__['publicKeyType'] = public_key_type
+        __props__['public_key_type'] = public_key_type
 
         if not service_account_id:
             raise TypeError('Missing required property service_account_id')
-        __props__['serviceAccountId'] = service_account_id
+        __props__['service_account_id'] = service_account_id
 
         __props__['name'] = None
         __props__['private_key'] = None
@@ -47,4 +47,11 @@ class Key(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

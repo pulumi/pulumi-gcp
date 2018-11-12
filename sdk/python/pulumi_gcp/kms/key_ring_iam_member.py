@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class KeyRingIAMMember(pulumi.CustomResource):
     """
@@ -31,7 +31,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         if not key_ring_id:
             raise TypeError('Missing required property key_ring_id')
-        __props__['keyRingId'] = key_ring_id
+        __props__['key_ring_id'] = key_ring_id
 
         if not member:
             raise TypeError('Missing required property member')
@@ -48,4 +48,11 @@ class KeyRingIAMMember(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

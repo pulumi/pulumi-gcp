@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None):
@@ -22,7 +22,7 @@ class Instance(pulumi.CustomResource):
 
         if not file_shares:
             raise TypeError('Missing required property file_shares')
-        __props__['fileShares'] = file_shares
+        __props__['file_shares'] = file_shares
 
         __props__['labels'] = labels
 
@@ -50,4 +50,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class TargetPool(pulumi.CustomResource):
     """
@@ -26,13 +26,13 @@ class TargetPool(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['backupPool'] = backup_pool
+        __props__['backup_pool'] = backup_pool
 
         __props__['description'] = description
 
-        __props__['failoverRatio'] = failover_ratio
+        __props__['failover_ratio'] = failover_ratio
 
-        __props__['healthChecks'] = health_checks
+        __props__['health_checks'] = health_checks
 
         __props__['instances'] = instances
 
@@ -42,7 +42,7 @@ class TargetPool(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['sessionAffinity'] = session_affinity
+        __props__['session_affinity'] = session_affinity
 
         __props__['self_link'] = None
 
@@ -51,4 +51,11 @@ class TargetPool(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

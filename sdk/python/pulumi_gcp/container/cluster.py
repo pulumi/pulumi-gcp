@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
     """
@@ -27,63 +27,63 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['additionalZones'] = additional_zones
+        __props__['additional_zones'] = additional_zones
 
-        __props__['addonsConfig'] = addons_config
+        __props__['addons_config'] = addons_config
 
-        __props__['clusterIpv4Cidr'] = cluster_ipv4_cidr
+        __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
 
         __props__['description'] = description
 
-        __props__['enableBinaryAuthorization'] = enable_binary_authorization
+        __props__['enable_binary_authorization'] = enable_binary_authorization
 
-        __props__['enableKubernetesAlpha'] = enable_kubernetes_alpha
+        __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
 
-        __props__['enableLegacyAbac'] = enable_legacy_abac
+        __props__['enable_legacy_abac'] = enable_legacy_abac
 
-        __props__['enableTpu'] = enable_tpu
+        __props__['enable_tpu'] = enable_tpu
 
-        __props__['initialNodeCount'] = initial_node_count
+        __props__['initial_node_count'] = initial_node_count
 
-        __props__['ipAllocationPolicy'] = ip_allocation_policy
+        __props__['ip_allocation_policy'] = ip_allocation_policy
 
-        __props__['loggingService'] = logging_service
+        __props__['logging_service'] = logging_service
 
-        __props__['maintenancePolicy'] = maintenance_policy
+        __props__['maintenance_policy'] = maintenance_policy
 
-        __props__['masterAuth'] = master_auth
+        __props__['master_auth'] = master_auth
 
-        __props__['masterAuthorizedNetworksConfig'] = master_authorized_networks_config
+        __props__['master_authorized_networks_config'] = master_authorized_networks_config
 
-        __props__['masterIpv4CidrBlock'] = master_ipv4_cidr_block
+        __props__['master_ipv4_cidr_block'] = master_ipv4_cidr_block
 
-        __props__['minMasterVersion'] = min_master_version
+        __props__['min_master_version'] = min_master_version
 
-        __props__['monitoringService'] = monitoring_service
+        __props__['monitoring_service'] = monitoring_service
 
         __props__['name'] = name
 
         __props__['network'] = network
 
-        __props__['networkPolicy'] = network_policy
+        __props__['network_policy'] = network_policy
 
-        __props__['nodeConfig'] = node_config
+        __props__['node_config'] = node_config
 
-        __props__['nodePools'] = node_pools
+        __props__['node_pools'] = node_pools
 
-        __props__['nodeVersion'] = node_version
+        __props__['node_version'] = node_version
 
-        __props__['podSecurityPolicyConfig'] = pod_security_policy_config
+        __props__['pod_security_policy_config'] = pod_security_policy_config
 
-        __props__['privateCluster'] = private_cluster
+        __props__['private_cluster'] = private_cluster
 
         __props__['project'] = project
 
         __props__['region'] = region
 
-        __props__['removeDefaultNodePool'] = remove_default_node_pool
+        __props__['remove_default_node_pool'] = remove_default_node_pool
 
-        __props__['resourceLabels'] = resource_labels
+        __props__['resource_labels'] = resource_labels
 
         __props__['subnetwork'] = subnetwork
 
@@ -98,4 +98,11 @@ class Cluster(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

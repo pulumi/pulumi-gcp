@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class TargetHttpProxy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, url_map=None):
@@ -26,7 +26,7 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         if not url_map:
             raise TypeError('Missing required property url_map')
-        __props__['urlMap'] = url_map
+        __props__['url_map'] = url_map
 
         __props__['creation_timestamp'] = None
         __props__['proxy_id'] = None
@@ -37,4 +37,11 @@ class TargetHttpProxy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

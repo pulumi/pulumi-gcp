@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RegionDisk(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, disk_encryption_key=None, labels=None, name=None, project=None, region=None, replica_zones=None, size=None, snapshot=None, source_snapshot_encryption_key=None, type=None):
@@ -20,7 +20,7 @@ class RegionDisk(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['diskEncryptionKey'] = disk_encryption_key
+        __props__['disk_encryption_key'] = disk_encryption_key
 
         __props__['labels'] = labels
 
@@ -32,13 +32,13 @@ class RegionDisk(pulumi.CustomResource):
 
         if not replica_zones:
             raise TypeError('Missing required property replica_zones')
-        __props__['replicaZones'] = replica_zones
+        __props__['replica_zones'] = replica_zones
 
         __props__['size'] = size
 
         __props__['snapshot'] = snapshot
 
-        __props__['sourceSnapshotEncryptionKey'] = source_snapshot_encryption_key
+        __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
 
         __props__['type'] = type
 
@@ -55,4 +55,11 @@ class RegionDisk(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

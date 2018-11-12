@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
     """
@@ -24,11 +24,11 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['maxWorkers'] = max_workers
+        __props__['max_workers'] = max_workers
 
         __props__['name'] = name
 
-        __props__['onDelete'] = on_delete
+        __props__['on_delete'] = on_delete
 
         __props__['parameters'] = parameters
 
@@ -38,11 +38,11 @@ class Job(pulumi.CustomResource):
 
         if not temp_gcs_location:
             raise TypeError('Missing required property temp_gcs_location')
-        __props__['tempGcsLocation'] = temp_gcs_location
+        __props__['temp_gcs_location'] = temp_gcs_location
 
         if not template_gcs_path:
             raise TypeError('Missing required property template_gcs_path')
-        __props__['templateGcsPath'] = template_gcs_path
+        __props__['template_gcs_path'] = template_gcs_path
 
         __props__['zone'] = zone
 
@@ -53,4 +53,11 @@ class Job(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

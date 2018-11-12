@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
@@ -18,27 +18,27 @@ class ForwardingRule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['backendService'] = backend_service
+        __props__['backend_service'] = backend_service
 
         __props__['description'] = description
 
-        __props__['ipAddress'] = ip_address
+        __props__['ip_address'] = ip_address
 
-        __props__['ipProtocol'] = ip_protocol
+        __props__['ip_protocol'] = ip_protocol
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
         __props__['labels'] = labels
 
-        __props__['loadBalancingScheme'] = load_balancing_scheme
+        __props__['load_balancing_scheme'] = load_balancing_scheme
 
         __props__['name'] = name
 
         __props__['network'] = network
 
-        __props__['networkTier'] = network_tier
+        __props__['network_tier'] = network_tier
 
-        __props__['portRange'] = port_range
+        __props__['port_range'] = port_range
 
         __props__['ports'] = ports
 
@@ -46,7 +46,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['serviceLabel'] = service_label
+        __props__['service_label'] = service_label
 
         __props__['subnetwork'] = subnetwork
 
@@ -62,4 +62,11 @@ class ForwardingRule(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
     """
@@ -24,15 +24,15 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['forceDelete'] = force_delete
+        __props__['force_delete'] = force_delete
 
-        __props__['hadoopConfig'] = hadoop_config
+        __props__['hadoop_config'] = hadoop_config
 
-        __props__['hiveConfig'] = hive_config
+        __props__['hive_config'] = hive_config
 
         __props__['labels'] = labels
 
-        __props__['pigConfig'] = pig_config
+        __props__['pig_config'] = pig_config
 
         if not placement:
             raise TypeError('Missing required property placement')
@@ -40,7 +40,7 @@ class Job(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['pysparkConfig'] = pyspark_config
+        __props__['pyspark_config'] = pyspark_config
 
         __props__['reference'] = reference
 
@@ -48,9 +48,9 @@ class Job(pulumi.CustomResource):
 
         __props__['scheduling'] = scheduling
 
-        __props__['sparkConfig'] = spark_config
+        __props__['spark_config'] = spark_config
 
-        __props__['sparksqlConfig'] = sparksql_config
+        __props__['sparksql_config'] = sparksql_config
 
         __props__['driver_controls_files_uri'] = None
         __props__['driver_output_resource_uri'] = None
@@ -61,4 +61,11 @@ class Job(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

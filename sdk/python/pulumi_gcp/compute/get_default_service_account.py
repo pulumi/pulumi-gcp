@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetDefaultServiceAccountResult(object):
     """
@@ -27,14 +27,14 @@ class GetDefaultServiceAccountResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_default_service_account(project=None):
+async def get_default_service_account(project=None):
     """
     Use this data source to retrieve default service account for this project
     """
     __args__ = dict()
 
     __args__['project'] = project
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount', __args__)
 
     return GetDefaultServiceAccountResult(
         email=__ret__.get('email'),

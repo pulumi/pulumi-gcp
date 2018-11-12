@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Dataset(pulumi.CustomResource):
     """
@@ -28,13 +28,13 @@ class Dataset(pulumi.CustomResource):
 
         if not dataset_id:
             raise TypeError('Missing required property dataset_id')
-        __props__['datasetId'] = dataset_id
+        __props__['dataset_id'] = dataset_id
 
-        __props__['defaultTableExpirationMs'] = default_table_expiration_ms
+        __props__['default_table_expiration_ms'] = default_table_expiration_ms
 
         __props__['description'] = description
 
-        __props__['friendlyName'] = friendly_name
+        __props__['friendly_name'] = friendly_name
 
         __props__['labels'] = labels
 
@@ -52,4 +52,11 @@ class Dataset(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

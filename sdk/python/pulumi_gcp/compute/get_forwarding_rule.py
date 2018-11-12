@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetForwardingRuleResult(object):
     """
@@ -93,7 +93,7 @@ class GetForwardingRuleResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_forwarding_rule(name=None, project=None, region=None):
+async def get_forwarding_rule(name=None, project=None, region=None):
     """
     Get a forwarding rule within GCE from its name.
     """
@@ -102,7 +102,7 @@ def get_forwarding_rule(name=None, project=None, region=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__)
 
     return GetForwardingRuleResult(
         backend_service=__ret__.get('backendService'),

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SSLCertificate(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, certificate=None, description=None, name=None, name_prefix=None, private_key=None, project=None):
@@ -26,11 +26,11 @@ class SSLCertificate(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        __props__['namePrefix'] = name_prefix
+        __props__['name_prefix'] = name_prefix
 
         if not private_key:
             raise TypeError('Missing required property private_key')
-        __props__['privateKey'] = private_key
+        __props__['private_key'] = private_key
 
         __props__['project'] = project
 
@@ -43,4 +43,11 @@ class SSLCertificate(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

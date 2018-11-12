@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class TargetSSLProxy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, ssl_certificates=None, ssl_policy=None):
@@ -20,7 +20,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         if not backend_service:
             raise TypeError('Missing required property backend_service')
-        __props__['backendService'] = backend_service
+        __props__['backend_service'] = backend_service
 
         __props__['description'] = description
 
@@ -28,13 +28,13 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['proxyHeader'] = proxy_header
+        __props__['proxy_header'] = proxy_header
 
         if not ssl_certificates:
             raise TypeError('Missing required property ssl_certificates')
-        __props__['sslCertificates'] = ssl_certificates
+        __props__['ssl_certificates'] = ssl_certificates
 
-        __props__['sslPolicy'] = ssl_policy
+        __props__['ssl_policy'] = ssl_policy
 
         __props__['creation_timestamp'] = None
         __props__['proxy_id'] = None
@@ -45,4 +45,11 @@ class TargetSSLProxy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

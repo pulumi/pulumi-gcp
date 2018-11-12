@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
@@ -18,31 +18,31 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['alternativeLocationId'] = alternative_location_id
+        __props__['alternative_location_id'] = alternative_location_id
 
-        __props__['authorizedNetwork'] = authorized_network
+        __props__['authorized_network'] = authorized_network
 
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
         __props__['labels'] = labels
 
-        __props__['locationId'] = location_id
+        __props__['location_id'] = location_id
 
         if not memory_size_gb:
             raise TypeError('Missing required property memory_size_gb')
-        __props__['memorySizeGb'] = memory_size_gb
+        __props__['memory_size_gb'] = memory_size_gb
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['redisConfigs'] = redis_configs
+        __props__['redis_configs'] = redis_configs
 
-        __props__['redisVersion'] = redis_version
+        __props__['redis_version'] = redis_version
 
         __props__['region'] = region
 
-        __props__['reservedIpRange'] = reserved_ip_range
+        __props__['reserved_ip_range'] = reserved_ip_range
 
         __props__['tier'] = tier
 
@@ -56,4 +56,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

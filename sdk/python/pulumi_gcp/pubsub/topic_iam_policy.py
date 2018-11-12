@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class TopicIAMPolicy(pulumi.CustomResource):
     """
@@ -31,7 +31,7 @@ class TopicIAMPolicy(pulumi.CustomResource):
 
         if not policy_data:
             raise TypeError('Missing required property policy_data')
-        __props__['policyData'] = policy_data
+        __props__['policy_data'] = policy_data
 
         __props__['project'] = project
 
@@ -46,4 +46,11 @@ class TopicIAMPolicy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

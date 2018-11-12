@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Address(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):
@@ -20,7 +20,7 @@ class Address(pulumi.CustomResource):
 
         __props__['address'] = address
 
-        __props__['addressType'] = address_type
+        __props__['address_type'] = address_type
 
         __props__['description'] = description
 
@@ -28,7 +28,7 @@ class Address(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        __props__['networkTier'] = network_tier
+        __props__['network_tier'] = network_tier
 
         __props__['project'] = project
 
@@ -46,4 +46,11 @@ class Address(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

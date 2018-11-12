@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class CryptoKey(pulumi.CustomResource):
     """
@@ -37,11 +37,11 @@ class CryptoKey(pulumi.CustomResource):
 
         if not key_ring:
             raise TypeError('Missing required property key_ring')
-        __props__['keyRing'] = key_ring
+        __props__['key_ring'] = key_ring
 
         __props__['name'] = name
 
-        __props__['rotationPeriod'] = rotation_period
+        __props__['rotation_period'] = rotation_period
 
         __props__['self_link'] = None
 
@@ -50,4 +50,11 @@ class CryptoKey(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class BucketACL(pulumi.CustomResource):
     """
@@ -28,15 +28,22 @@ class BucketACL(pulumi.CustomResource):
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
-        __props__['defaultAcl'] = default_acl
+        __props__['default_acl'] = default_acl
 
-        __props__['predefinedAcl'] = predefined_acl
+        __props__['predefined_acl'] = predefined_acl
 
-        __props__['roleEntities'] = role_entities
+        __props__['role_entities'] = role_entities
 
         super(BucketACL, __self__).__init__(
             'gcp:storage/bucketACL:BucketACL',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
