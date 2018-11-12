@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -27,13 +27,13 @@ class Instance(pulumi.CustomResource):
 
         if not display_name:
             raise TypeError('Missing required property display_name')
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
         __props__['labels'] = labels
 
         __props__['name'] = name
 
-        __props__['numNodes'] = num_nodes
+        __props__['num_nodes'] = num_nodes
 
         __props__['project'] = project
 
@@ -44,4 +44,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

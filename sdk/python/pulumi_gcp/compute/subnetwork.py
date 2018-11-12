@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Subnetwork(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, enable_flow_logs=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None):
@@ -20,11 +20,11 @@ class Subnetwork(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['enableFlowLogs'] = enable_flow_logs
+        __props__['enable_flow_logs'] = enable_flow_logs
 
         if not ip_cidr_range:
             raise TypeError('Missing required property ip_cidr_range')
-        __props__['ipCidrRange'] = ip_cidr_range
+        __props__['ip_cidr_range'] = ip_cidr_range
 
         __props__['name'] = name
 
@@ -32,13 +32,13 @@ class Subnetwork(pulumi.CustomResource):
             raise TypeError('Missing required property network')
         __props__['network'] = network
 
-        __props__['privateIpGoogleAccess'] = private_ip_google_access
+        __props__['private_ip_google_access'] = private_ip_google_access
 
         __props__['project'] = project
 
         __props__['region'] = region
 
-        __props__['secondaryIpRanges'] = secondary_ip_ranges
+        __props__['secondary_ip_ranges'] = secondary_ip_ranges
 
         __props__['creation_timestamp'] = None
         __props__['fingerprint'] = None
@@ -50,4 +50,11 @@ class Subnetwork(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

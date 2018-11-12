@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class OrganizationPolicy(pulumi.CustomResource):
     """
@@ -24,7 +24,7 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['booleanPolicy'] = boolean_policy
+        __props__['boolean_policy'] = boolean_policy
 
         if not constraint:
             raise TypeError('Missing required property constraint')
@@ -34,9 +34,9 @@ class OrganizationPolicy(pulumi.CustomResource):
             raise TypeError('Missing required property folder')
         __props__['folder'] = folder
 
-        __props__['listPolicy'] = list_policy
+        __props__['list_policy'] = list_policy
 
-        __props__['restorePolicy'] = restore_policy
+        __props__['restore_policy'] = restore_policy
 
         __props__['version'] = version
 
@@ -48,4 +48,11 @@ class OrganizationPolicy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

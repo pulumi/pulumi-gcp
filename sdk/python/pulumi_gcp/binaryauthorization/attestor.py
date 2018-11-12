@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Attestor(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, attestation_authority_note=None, description=None, name=None, project=None):
@@ -20,7 +20,7 @@ class Attestor(pulumi.CustomResource):
 
         if not attestation_authority_note:
             raise TypeError('Missing required property attestation_authority_note')
-        __props__['attestationAuthorityNote'] = attestation_authority_note
+        __props__['attestation_authority_note'] = attestation_authority_note
 
         __props__['description'] = description
 
@@ -33,4 +33,11 @@ class Attestor(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

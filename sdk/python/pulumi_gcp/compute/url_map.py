@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class URLMap(pulumi.CustomResource):
     """
@@ -27,15 +27,15 @@ class URLMap(pulumi.CustomResource):
 
         if not default_service:
             raise TypeError('Missing required property default_service')
-        __props__['defaultService'] = default_service
+        __props__['default_service'] = default_service
 
         __props__['description'] = description
 
-        __props__['hostRules'] = host_rules
+        __props__['host_rules'] = host_rules
 
         __props__['name'] = name
 
-        __props__['pathMatchers'] = path_matchers
+        __props__['path_matchers'] = path_matchers
 
         __props__['project'] = project
 
@@ -50,4 +50,11 @@ class URLMap(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

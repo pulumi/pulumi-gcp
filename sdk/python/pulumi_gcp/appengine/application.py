@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Application(pulumi.CustomResource):
     """
@@ -26,17 +26,17 @@ class Application(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['authDomain'] = auth_domain
+        __props__['auth_domain'] = auth_domain
 
-        __props__['featureSettings'] = feature_settings
+        __props__['feature_settings'] = feature_settings
 
         if not location_id:
             raise TypeError('Missing required property location_id')
-        __props__['locationId'] = location_id
+        __props__['location_id'] = location_id
 
         __props__['project'] = project
 
-        __props__['servingStatus'] = serving_status
+        __props__['serving_status'] = serving_status
 
         __props__['code_bucket'] = None
         __props__['default_bucket'] = None
@@ -50,4 +50,11 @@ class Application(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

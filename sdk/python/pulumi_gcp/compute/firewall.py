@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Firewall(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
@@ -24,13 +24,13 @@ class Firewall(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['destinationRanges'] = destination_ranges
+        __props__['destination_ranges'] = destination_ranges
 
         __props__['direction'] = direction
 
         __props__['disabled'] = disabled
 
-        __props__['enableLogging'] = enable_logging
+        __props__['enable_logging'] = enable_logging
 
         __props__['name'] = name
 
@@ -42,15 +42,15 @@ class Firewall(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['sourceRanges'] = source_ranges
+        __props__['source_ranges'] = source_ranges
 
-        __props__['sourceServiceAccounts'] = source_service_accounts
+        __props__['source_service_accounts'] = source_service_accounts
 
-        __props__['sourceTags'] = source_tags
+        __props__['source_tags'] = source_tags
 
-        __props__['targetServiceAccounts'] = target_service_accounts
+        __props__['target_service_accounts'] = target_service_accounts
 
-        __props__['targetTags'] = target_tags
+        __props__['target_tags'] = target_tags
 
         __props__['creation_timestamp'] = None
         __props__['self_link'] = None
@@ -60,4 +60,11 @@ class Firewall(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

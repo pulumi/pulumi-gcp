@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetFolderResult(object):
     """
@@ -54,7 +54,7 @@ class GetFolderResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_folder(folder=None, lookup_organization=None):
+async def get_folder(folder=None, lookup_organization=None):
     """
     Use this data source to get information about a Google Cloud Folder.
     
@@ -64,7 +64,7 @@ def get_folder(folder=None, lookup_organization=None):
 
     __args__['folder'] = folder
     __args__['lookupOrganization'] = lookup_organization
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__)
 
     return GetFolderResult(
         create_time=__ret__.get('createTime'),

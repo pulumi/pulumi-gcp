@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SharedVPCServiceProject(pulumi.CustomResource):
     """
@@ -30,15 +30,22 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         if not host_project:
             raise TypeError('Missing required property host_project')
-        __props__['hostProject'] = host_project
+        __props__['host_project'] = host_project
 
         if not service_project:
             raise TypeError('Missing required property service_project')
-        __props__['serviceProject'] = service_project
+        __props__['service_project'] = service_project
 
         super(SharedVPCServiceProject, __self__).__init__(
             'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

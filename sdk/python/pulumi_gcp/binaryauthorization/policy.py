@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
@@ -18,13 +18,13 @@ class Policy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['admissionWhitelistPatterns'] = admission_whitelist_patterns
+        __props__['admission_whitelist_patterns'] = admission_whitelist_patterns
 
-        __props__['clusterAdmissionRules'] = cluster_admission_rules
+        __props__['cluster_admission_rules'] = cluster_admission_rules
 
         if not default_admission_rule:
             raise TypeError('Missing required property default_admission_rule')
-        __props__['defaultAdmissionRule'] = default_admission_rule
+        __props__['default_admission_rule'] = default_admission_rule
 
         __props__['description'] = description
 
@@ -35,4 +35,11 @@ class Policy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

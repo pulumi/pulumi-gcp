@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None):
@@ -24,17 +24,17 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['quicOverride'] = quic_override
+        __props__['quic_override'] = quic_override
 
         if not ssl_certificates:
             raise TypeError('Missing required property ssl_certificates')
-        __props__['sslCertificates'] = ssl_certificates
+        __props__['ssl_certificates'] = ssl_certificates
 
-        __props__['sslPolicy'] = ssl_policy
+        __props__['ssl_policy'] = ssl_policy
 
         if not url_map:
             raise TypeError('Missing required property url_map')
-        __props__['urlMap'] = url_map
+        __props__['url_map'] = url_map
 
         __props__['creation_timestamp'] = None
         __props__['proxy_id'] = None
@@ -45,4 +45,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

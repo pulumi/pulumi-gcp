@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Folder(pulumi.CustomResource):
     """
@@ -35,7 +35,7 @@ class Folder(pulumi.CustomResource):
 
         if not display_name:
             raise TypeError('Missing required property display_name')
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
         if not parent:
             raise TypeError('Missing required property parent')
@@ -50,4 +50,11 @@ class Folder(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

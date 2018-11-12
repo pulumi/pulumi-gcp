@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class CryptoKeyIAMMember(pulumi.CustomResource):
     """
@@ -29,7 +29,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         if not crypto_key_id:
             raise TypeError('Missing required property crypto_key_id')
-        __props__['cryptoKeyId'] = crypto_key_id
+        __props__['crypto_key_id'] = crypto_key_id
 
         if not member:
             raise TypeError('Missing required property member')
@@ -46,4 +46,11 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

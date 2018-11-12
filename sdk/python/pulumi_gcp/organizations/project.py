@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Project(pulumi.CustomResource):
     """
@@ -47,25 +47,25 @@ class Project(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['appEngine'] = app_engine
+        __props__['app_engine'] = app_engine
 
-        __props__['autoCreateNetwork'] = auto_create_network
+        __props__['auto_create_network'] = auto_create_network
 
-        __props__['billingAccount'] = billing_account
+        __props__['billing_account'] = billing_account
 
-        __props__['folderId'] = folder_id
+        __props__['folder_id'] = folder_id
 
         __props__['labels'] = labels
 
         __props__['name'] = name
 
-        __props__['orgId'] = org_id
+        __props__['org_id'] = org_id
 
         if not project_id:
             raise TypeError('Missing required property project_id')
-        __props__['projectId'] = project_id
+        __props__['project_id'] = project_id
 
-        __props__['skipDelete'] = skip_delete
+        __props__['skip_delete'] = skip_delete
 
         __props__['number'] = None
 
@@ -74,4 +74,11 @@ class Project(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

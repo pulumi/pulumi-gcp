@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Function(pulumi.CustomResource):
     """
@@ -24,17 +24,17 @@ class Function(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['availableMemoryMb'] = available_memory_mb
+        __props__['available_memory_mb'] = available_memory_mb
 
         __props__['description'] = description
 
-        __props__['entryPoint'] = entry_point
+        __props__['entry_point'] = entry_point
 
-        __props__['environmentVariables'] = environment_variables
+        __props__['environment_variables'] = environment_variables
 
-        __props__['eventTrigger'] = event_trigger
+        __props__['event_trigger'] = event_trigger
 
-        __props__['httpsTriggerUrl'] = https_trigger_url
+        __props__['https_trigger_url'] = https_trigger_url
 
         __props__['labels'] = labels
 
@@ -44,27 +44,34 @@ class Function(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['retryOnFailure'] = retry_on_failure
+        __props__['retry_on_failure'] = retry_on_failure
 
         if not source_archive_bucket:
             raise TypeError('Missing required property source_archive_bucket')
-        __props__['sourceArchiveBucket'] = source_archive_bucket
+        __props__['source_archive_bucket'] = source_archive_bucket
 
         if not source_archive_object:
             raise TypeError('Missing required property source_archive_object')
-        __props__['sourceArchiveObject'] = source_archive_object
+        __props__['source_archive_object'] = source_archive_object
 
         __props__['timeout'] = timeout
 
-        __props__['triggerBucket'] = trigger_bucket
+        __props__['trigger_bucket'] = trigger_bucket
 
-        __props__['triggerHttp'] = trigger_http
+        __props__['trigger_http'] = trigger_http
 
-        __props__['triggerTopic'] = trigger_topic
+        __props__['trigger_topic'] = trigger_topic
 
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

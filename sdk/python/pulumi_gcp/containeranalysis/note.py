@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Note(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, attestation_authority=None, name=None, project=None):
@@ -20,7 +20,7 @@ class Note(pulumi.CustomResource):
 
         if not attestation_authority:
             raise TypeError('Missing required property attestation_authority')
-        __props__['attestationAuthority'] = attestation_authority
+        __props__['attestation_authority'] = attestation_authority
 
         __props__['name'] = name
 
@@ -31,4 +31,11 @@ class Note(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

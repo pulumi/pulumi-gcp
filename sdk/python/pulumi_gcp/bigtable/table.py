@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
     """
@@ -26,17 +26,24 @@ class Table(pulumi.CustomResource):
 
         if not instance_name:
             raise TypeError('Missing required property instance_name')
-        __props__['instanceName'] = instance_name
+        __props__['instance_name'] = instance_name
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['splitKeys'] = split_keys
+        __props__['split_keys'] = split_keys
 
         super(Table, __self__).__init__(
             'gcp:bigtable/table:Table',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

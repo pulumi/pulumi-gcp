@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Subscription(pulumi.CustomResource):
     """
@@ -24,13 +24,13 @@ class Subscription(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['ackDeadlineSeconds'] = ack_deadline_seconds
+        __props__['ack_deadline_seconds'] = ack_deadline_seconds
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['pushConfig'] = push_config
+        __props__['push_config'] = push_config
 
         if not topic:
             raise TypeError('Missing required property topic')
@@ -43,4 +43,11 @@ class Subscription(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

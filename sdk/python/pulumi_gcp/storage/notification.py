@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Notification(pulumi.CustomResource):
     """
@@ -35,15 +35,15 @@ class Notification(pulumi.CustomResource):
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
-        __props__['eventTypes'] = event_types
+        __props__['event_types'] = event_types
 
-        __props__['objectNamePrefix'] = object_name_prefix
+        __props__['object_name_prefix'] = object_name_prefix
 
         if not payload_format:
             raise TypeError('Missing required property payload_format')
-        __props__['payloadFormat'] = payload_format
+        __props__['payload_format'] = payload_format
 
         if not topic:
             raise TypeError('Missing required property topic')
@@ -56,4 +56,11 @@ class Notification(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

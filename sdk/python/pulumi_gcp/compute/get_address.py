@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetAddressResult(object):
     """
@@ -42,7 +42,7 @@ class GetAddressResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_address(name=None, project=None, region=None):
+async def get_address(name=None, project=None, region=None):
     """
     Get the IP address from a static address. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
@@ -52,7 +52,7 @@ def get_address(name=None, project=None, region=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getAddress:getAddress', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getAddress:getAddress', __args__)
 
     return GetAddressResult(
         address=__ret__.get('address'),

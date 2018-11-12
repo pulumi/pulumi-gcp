@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, combiner=None, conditions=None, display_name=None, enabled=None, labels=None, notification_channels=None, project=None):
@@ -28,7 +28,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         if not display_name:
             raise TypeError('Missing required property display_name')
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
         if not enabled:
             raise TypeError('Missing required property enabled')
@@ -36,7 +36,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         __props__['labels'] = labels
 
-        __props__['notificationChannels'] = notification_channels
+        __props__['notification_channels'] = notification_channels
 
         __props__['project'] = project
 
@@ -48,4 +48,11 @@ class AlertPolicy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class InstanceGroupManager(pulumi.CustomResource):
     """
@@ -26,33 +26,33 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['autoHealingPolicies'] = auto_healing_policies
+        __props__['auto_healing_policies'] = auto_healing_policies
 
         if not base_instance_name:
             raise TypeError('Missing required property base_instance_name')
-        __props__['baseInstanceName'] = base_instance_name
+        __props__['base_instance_name'] = base_instance_name
 
         __props__['description'] = description
 
-        __props__['instanceTemplate'] = instance_template
+        __props__['instance_template'] = instance_template
 
         __props__['name'] = name
 
-        __props__['namedPorts'] = named_ports
+        __props__['named_ports'] = named_ports
 
         __props__['project'] = project
 
-        __props__['rollingUpdatePolicy'] = rolling_update_policy
+        __props__['rolling_update_policy'] = rolling_update_policy
 
-        __props__['targetPools'] = target_pools
+        __props__['target_pools'] = target_pools
 
-        __props__['targetSize'] = target_size
+        __props__['target_size'] = target_size
 
-        __props__['updateStrategy'] = update_strategy
+        __props__['update_strategy'] = update_strategy
 
         __props__['versions'] = versions
 
-        __props__['waitForInstances'] = wait_for_instances
+        __props__['wait_for_instances'] = wait_for_instances
 
         __props__['zone'] = zone
 
@@ -65,4 +65,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

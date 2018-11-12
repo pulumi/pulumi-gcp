@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class NetworkPeering(pulumi.CustomResource):
     """
@@ -28,7 +28,7 @@ class NetworkPeering(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['autoCreateRoutes'] = auto_create_routes
+        __props__['auto_create_routes'] = auto_create_routes
 
         __props__['name'] = name
 
@@ -38,7 +38,7 @@ class NetworkPeering(pulumi.CustomResource):
 
         if not peer_network:
             raise TypeError('Missing required property peer_network')
-        __props__['peerNetwork'] = peer_network
+        __props__['peer_network'] = peer_network
 
         __props__['state'] = None
         __props__['state_details'] = None
@@ -48,4 +48,11 @@ class NetworkPeering(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

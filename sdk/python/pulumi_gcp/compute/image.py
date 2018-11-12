@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Image(pulumi.CustomResource):
     """
@@ -24,7 +24,7 @@ class Image(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['createTimeout'] = create_timeout
+        __props__['create_timeout'] = create_timeout
 
         __props__['description'] = description
 
@@ -38,9 +38,9 @@ class Image(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['rawDisk'] = raw_disk
+        __props__['raw_disk'] = raw_disk
 
-        __props__['sourceDisk'] = source_disk
+        __props__['source_disk'] = source_disk
 
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None
@@ -50,4 +50,11 @@ class Image(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

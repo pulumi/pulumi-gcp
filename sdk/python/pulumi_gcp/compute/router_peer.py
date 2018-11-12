@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
     """
@@ -24,7 +24,7 @@ class RouterPeer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['advertisedRoutePriority'] = advertised_route_priority
+        __props__['advertised_route_priority'] = advertised_route_priority
 
         if not interface:
             raise TypeError('Missing required property interface')
@@ -34,9 +34,9 @@ class RouterPeer(pulumi.CustomResource):
 
         if not peer_asn:
             raise TypeError('Missing required property peer_asn')
-        __props__['peerAsn'] = peer_asn
+        __props__['peer_asn'] = peer_asn
 
-        __props__['peerIpAddress'] = peer_ip_address
+        __props__['peer_ip_address'] = peer_ip_address
 
         __props__['project'] = project
 
@@ -53,4 +53,11 @@ class RouterPeer(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

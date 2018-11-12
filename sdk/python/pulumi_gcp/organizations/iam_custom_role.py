@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IAMCustomRole(pulumi.CustomResource):
     """
@@ -37,7 +37,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         if not org_id:
             raise TypeError('Missing required property org_id')
-        __props__['orgId'] = org_id
+        __props__['org_id'] = org_id
 
         if not permissions:
             raise TypeError('Missing required property permissions')
@@ -45,7 +45,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         if not role_id:
             raise TypeError('Missing required property role_id')
-        __props__['roleId'] = role_id
+        __props__['role_id'] = role_id
 
         __props__['stage'] = stage
 
@@ -58,4 +58,11 @@ class IAMCustomRole(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

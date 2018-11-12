@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class VPNTunnel(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):
@@ -20,33 +20,33 @@ class VPNTunnel(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['ikeVersion'] = ike_version
+        __props__['ike_version'] = ike_version
 
         __props__['labels'] = labels
 
-        __props__['localTrafficSelectors'] = local_traffic_selectors
+        __props__['local_traffic_selectors'] = local_traffic_selectors
 
         __props__['name'] = name
 
         if not peer_ip:
             raise TypeError('Missing required property peer_ip')
-        __props__['peerIp'] = peer_ip
+        __props__['peer_ip'] = peer_ip
 
         __props__['project'] = project
 
         __props__['region'] = region
 
-        __props__['remoteTrafficSelectors'] = remote_traffic_selectors
+        __props__['remote_traffic_selectors'] = remote_traffic_selectors
 
         __props__['router'] = router
 
         if not shared_secret:
             raise TypeError('Missing required property shared_secret')
-        __props__['sharedSecret'] = shared_secret
+        __props__['shared_secret'] = shared_secret
 
         if not target_vpn_gateway:
             raise TypeError('Missing required property target_vpn_gateway')
-        __props__['targetVpnGateway'] = target_vpn_gateway
+        __props__['target_vpn_gateway'] = target_vpn_gateway
 
         __props__['creation_timestamp'] = None
         __props__['detailed_status'] = None
@@ -59,4 +59,11 @@ class VPNTunnel(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

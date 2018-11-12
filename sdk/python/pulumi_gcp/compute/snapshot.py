@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Snapshot(pulumi.CustomResource):
     """
@@ -30,13 +30,13 @@ class Snapshot(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        __props__['snapshotEncryptionKeyRaw'] = snapshot_encryption_key_raw
+        __props__['snapshot_encryption_key_raw'] = snapshot_encryption_key_raw
 
         if not source_disk:
             raise TypeError('Missing required property source_disk')
-        __props__['sourceDisk'] = source_disk
+        __props__['source_disk'] = source_disk
 
-        __props__['sourceDiskEncryptionKeyRaw'] = source_disk_encryption_key_raw
+        __props__['source_disk_encryption_key_raw'] = source_disk_encryption_key_raw
 
         __props__['zone'] = zone
 
@@ -51,4 +51,11 @@ class Snapshot(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

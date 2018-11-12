@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
     """
@@ -21,19 +21,19 @@ class Service(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['grpcConfig'] = grpc_config
+        __props__['grpc_config'] = grpc_config
 
-        __props__['openapiConfig'] = openapi_config
+        __props__['openapi_config'] = openapi_config
 
         __props__['project'] = project
 
-        __props__['protocOutput'] = protoc_output
+        __props__['protoc_output'] = protoc_output
 
-        __props__['protocOutputBase64'] = protoc_output_base64
+        __props__['protoc_output_base64'] = protoc_output_base64
 
         if not service_name:
             raise TypeError('Missing required property service_name')
-        __props__['serviceName'] = service_name
+        __props__['service_name'] = service_name
 
         __props__['apis'] = None
         __props__['config_id'] = None
@@ -45,4 +45,11 @@ class Service(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

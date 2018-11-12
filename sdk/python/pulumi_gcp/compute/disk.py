@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Disk(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, description=None, disk_encryption_key=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None):
@@ -20,9 +20,9 @@ class Disk(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['diskEncryptionKey'] = disk_encryption_key
+        __props__['disk_encryption_key'] = disk_encryption_key
 
-        __props__['diskEncryptionKeyRaw'] = disk_encryption_key_raw
+        __props__['disk_encryption_key_raw'] = disk_encryption_key_raw
 
         __props__['image'] = image
 
@@ -36,9 +36,9 @@ class Disk(pulumi.CustomResource):
 
         __props__['snapshot'] = snapshot
 
-        __props__['sourceImageEncryptionKey'] = source_image_encryption_key
+        __props__['source_image_encryption_key'] = source_image_encryption_key
 
-        __props__['sourceSnapshotEncryptionKey'] = source_snapshot_encryption_key
+        __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
 
         __props__['type'] = type
 
@@ -59,4 +59,11 @@ class Disk(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

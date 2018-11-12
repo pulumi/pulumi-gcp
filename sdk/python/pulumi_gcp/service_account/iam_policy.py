@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IAMPolicy(pulumi.CustomResource):
     """
@@ -33,11 +33,11 @@ class IAMPolicy(pulumi.CustomResource):
 
         if not policy_data:
             raise TypeError('Missing required property policy_data')
-        __props__['policyData'] = policy_data
+        __props__['policy_data'] = policy_data
 
         if not service_account_id:
             raise TypeError('Missing required property service_account_id')
-        __props__['serviceAccountId'] = service_account_id
+        __props__['service_account_id'] = service_account_id
 
         __props__['etag'] = None
 
@@ -46,4 +46,11 @@ class IAMPolicy(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

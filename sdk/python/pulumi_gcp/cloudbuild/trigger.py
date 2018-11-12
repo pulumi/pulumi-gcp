@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Trigger(pulumi.CustomResource):
     """
@@ -34,11 +34,18 @@ class Trigger(pulumi.CustomResource):
 
         __props__['substitutions'] = substitutions
 
-        __props__['triggerTemplate'] = trigger_template
+        __props__['trigger_template'] = trigger_template
 
         super(Trigger, __self__).__init__(
             'gcp:cloudbuild/trigger:Trigger',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

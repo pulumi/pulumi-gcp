@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetBillingAccountResult(object):
     """
@@ -36,7 +36,7 @@ class GetBillingAccountResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_billing_account(billing_account=None, display_name=None, open=None):
+async def get_billing_account(billing_account=None, display_name=None, open=None):
     """
     Use this data source to get information about a Google Billing Account.
     
@@ -60,7 +60,7 @@ def get_billing_account(billing_account=None, display_name=None, open=None):
     __args__['billingAccount'] = billing_account
     __args__['displayName'] = display_name
     __args__['open'] = open
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__)
 
     return GetBillingAccountResult(
         display_name=__ret__.get('displayName'),

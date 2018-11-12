@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RegionAutoscaler(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, autoscaling_policy=None, description=None, name=None, project=None, region=None, target=None):
@@ -20,7 +20,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         if not autoscaling_policy:
             raise TypeError('Missing required property autoscaling_policy')
-        __props__['autoscalingPolicy'] = autoscaling_policy
+        __props__['autoscaling_policy'] = autoscaling_policy
 
         __props__['description'] = description
 
@@ -42,4 +42,11 @@ class RegionAutoscaler(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

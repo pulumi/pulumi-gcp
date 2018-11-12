@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class NodePool(pulumi.CustomResource):
     """
@@ -30,19 +30,19 @@ class NodePool(pulumi.CustomResource):
             raise TypeError('Missing required property cluster')
         __props__['cluster'] = cluster
 
-        __props__['initialNodeCount'] = initial_node_count
+        __props__['initial_node_count'] = initial_node_count
 
         __props__['management'] = management
 
-        __props__['maxPodsPerNode'] = max_pods_per_node
+        __props__['max_pods_per_node'] = max_pods_per_node
 
         __props__['name'] = name
 
-        __props__['namePrefix'] = name_prefix
+        __props__['name_prefix'] = name_prefix
 
-        __props__['nodeConfig'] = node_config
+        __props__['node_config'] = node_config
 
-        __props__['nodeCount'] = node_count
+        __props__['node_count'] = node_count
 
         __props__['project'] = project
 
@@ -59,4 +59,11 @@ class NodePool(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetVPNGatewayResult(object):
     """
@@ -45,7 +45,7 @@ class GetVPNGatewayResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_vpn_gateway(name=None, project=None, region=None):
+async def get_vpn_gateway(name=None, project=None, region=None):
     """
     Get a VPN gateway within GCE from its name.
     """
@@ -54,7 +54,7 @@ def get_vpn_gateway(name=None, project=None, region=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__)
 
     return GetVPNGatewayResult(
         description=__ret__.get('description'),

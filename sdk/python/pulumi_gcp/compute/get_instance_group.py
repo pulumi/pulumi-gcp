@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetInstanceGroupResult(object):
     """
@@ -60,7 +60,7 @@ class GetInstanceGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_instance_group(name=None, project=None, self_link=None, zone=None):
+async def get_instance_group(name=None, project=None, self_link=None, zone=None):
     """
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
@@ -79,7 +79,7 @@ def get_instance_group(name=None, project=None, self_link=None, zone=None):
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__)
 
     return GetInstanceGroupResult(
         description=__ret__.get('description'),
