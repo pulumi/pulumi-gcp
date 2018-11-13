@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetRegionsResult(object):
     """
@@ -17,17 +17,17 @@ class GetRegionsResult(object):
         """
         A list of regions available in the given project
         """
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_regions(project=None, status=None):
+async def get_regions(project=None, status=None):
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
@@ -48,7 +48,7 @@ def get_regions(project=None, status=None):
 
     __args__['project'] = project
     __args__['status'] = status
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__)
 
     return GetRegionsResult(
         names=__ret__.get('names'),

@@ -4,45 +4,45 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetClientConfigResult(object):
     """
     A collection of values returned by getClientConfig.
     """
     def __init__(__self__, access_token=None, project=None, region=None, id=None):
-        if access_token and not isinstance(access_token, basestring):
-            raise TypeError('Expected argument access_token to be a basestring')
+        if access_token and not isinstance(access_token, str):
+            raise TypeError('Expected argument access_token to be a str')
         __self__.access_token = access_token
         """
         The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         """
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
         """
         The ID of the project to apply any resources to.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         The region to operate under.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_client_config():
+async def get_client_config():
     """
     Use this data source to access the configuration of the Google Cloud provider.
     """
     __args__ = dict()
 
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__)
 
     return GetClientConfigResult(
         access_token=__ret__.get('accessToken'),

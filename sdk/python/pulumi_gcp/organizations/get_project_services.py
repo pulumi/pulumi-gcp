@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetProjectServicesResult(object):
     """
@@ -17,14 +17,14 @@ class GetProjectServicesResult(object):
         if services and not isinstance(services, list):
             raise TypeError('Expected argument services to be a list')
         __self__.services = services
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_project_services(project=None):
+async def get_project_services(project=None):
     """
     Use this data source to get details on the enabled project services.
     
@@ -34,7 +34,7 @@ def get_project_services(project=None):
     __args__ = dict()
 
     __args__['project'] = project
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__)
 
     return GetProjectServicesResult(
         disable_on_destroy=__ret__.get('disableOnDestroy'),

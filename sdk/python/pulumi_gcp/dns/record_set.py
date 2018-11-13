@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RecordSet(pulumi.CustomResource):
     """
@@ -21,7 +21,7 @@ class RecordSet(pulumi.CustomResource):
         """Create a RecordSet resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -30,61 +30,22 @@ class RecordSet(pulumi.CustomResource):
 
         if not managed_zone:
             raise TypeError('Missing required property managed_zone')
-        elif not isinstance(managed_zone, basestring):
-            raise TypeError('Expected property managed_zone to be a basestring')
-        __self__.managed_zone = managed_zone
-        """
-        The name of the zone in which this record set will
-        reside.
-        """
-        __props__['managedZone'] = managed_zone
+        __props__['managed_zone'] = managed_zone
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The DNS name this record set will apply to.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not rrdatas:
             raise TypeError('Missing required property rrdatas')
-        elif not isinstance(rrdatas, list):
-            raise TypeError('Expected property rrdatas to be a list')
-        __self__.rrdatas = rrdatas
-        """
-        The string data for the records in this record set
-        whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
-        """
         __props__['rrdatas'] = rrdatas
 
         if not ttl:
             raise TypeError('Missing required property ttl')
-        elif not isinstance(ttl, int):
-            raise TypeError('Expected property ttl to be a int')
-        __self__.ttl = ttl
-        """
-        The time-to-live of this record set (seconds).
-        """
         __props__['ttl'] = ttl
 
         if not type:
             raise TypeError('Missing required property type')
-        elif not isinstance(type, basestring):
-            raise TypeError('Expected property type to be a basestring')
-        __self__.type = type
-        """
-        The DNS record set type.
-        """
         __props__['type'] = type
 
         super(RecordSet, __self__).__init__(
@@ -93,16 +54,10 @@ class RecordSet(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'managedZone' in outs:
-            self.managed_zone = outs['managedZone']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'rrdatas' in outs:
-            self.rrdatas = outs['rrdatas']
-        if 'ttl' in outs:
-            self.ttl = outs['ttl']
-        if 'type' in outs:
-            self.type = outs['type']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

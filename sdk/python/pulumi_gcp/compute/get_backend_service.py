@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetBackendServiceResult(object):
     """
@@ -29,8 +29,8 @@ class GetBackendServiceResult(object):
         if custom_request_headers and not isinstance(custom_request_headers, list):
             raise TypeError('Expected argument custom_request_headers to be a list')
         __self__.custom_request_headers = custom_request_headers
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         Textual description for the Backend Service.
@@ -41,8 +41,8 @@ class GetBackendServiceResult(object):
         """
         Whether or not Cloud CDN is enabled on the Backend Service.
         """
-        if fingerprint and not isinstance(fingerprint, basestring):
-            raise TypeError('Expected argument fingerprint to be a basestring')
+        if fingerprint and not isinstance(fingerprint, str):
+            raise TypeError('Expected argument fingerprint to be a str')
         __self__.fingerprint = fingerprint
         """
         The fingerprint of the Backend Service.
@@ -56,32 +56,32 @@ class GetBackendServiceResult(object):
         if iaps and not isinstance(iaps, list):
             raise TypeError('Expected argument iaps to be a list')
         __self__.iaps = iaps
-        if port_name and not isinstance(port_name, basestring):
-            raise TypeError('Expected argument port_name to be a basestring')
+        if port_name and not isinstance(port_name, str):
+            raise TypeError('Expected argument port_name to be a str')
         __self__.port_name = port_name
         """
         The name of a service that has been added to an instance group in this backend.
         """
-        if protocol and not isinstance(protocol, basestring):
-            raise TypeError('Expected argument protocol to be a basestring')
+        if protocol and not isinstance(protocol, str):
+            raise TypeError('Expected argument protocol to be a str')
         __self__.protocol = protocol
         """
         The protocol for incoming requests.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
-        if security_policy and not isinstance(security_policy, basestring):
-            raise TypeError('Expected argument security_policy to be a basestring')
+        if security_policy and not isinstance(security_policy, str):
+            raise TypeError('Expected argument security_policy to be a str')
         __self__.security_policy = security_policy
-        if self_link and not isinstance(self_link, basestring):
-            raise TypeError('Expected argument self_link to be a basestring')
+        if self_link and not isinstance(self_link, str):
+            raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
         """
         The URI of the Backend Service.
         """
-        if session_affinity and not isinstance(session_affinity, basestring):
-            raise TypeError('Expected argument session_affinity to be a basestring')
+        if session_affinity and not isinstance(session_affinity, str):
+            raise TypeError('Expected argument session_affinity to be a str')
         __self__.session_affinity = session_affinity
         """
         The Backend Service session stickyness configuration.
@@ -92,14 +92,14 @@ class GetBackendServiceResult(object):
         """
         The number of seconds to wait for a backend to respond to a request before considering the request failed.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_backend_service(name=None, project=None):
+async def get_backend_service(name=None, project=None):
     """
     Provide acces to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -109,7 +109,7 @@ def get_backend_service(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__)
 
     return GetBackendServiceResult(
         backends=__ret__.get('backends'),

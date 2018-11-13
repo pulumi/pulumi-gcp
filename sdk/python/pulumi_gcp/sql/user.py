@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class User(pulumi.CustomResource):
     """
@@ -18,58 +18,23 @@ class User(pulumi.CustomResource):
         """Create a User resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if host and not isinstance(host, basestring):
-            raise TypeError('Expected property host to be a basestring')
-        __self__.host = host
-        """
-        The host the user can connect from. This is only supported
-        for MySQL instances. Don't set this field for PostgreSQL instances.
-        Can be an IP address. Changing this forces a new resource to be created.
-        """
         __props__['host'] = host
 
         if not instance:
             raise TypeError('Missing required property instance')
-        elif not isinstance(instance, basestring):
-            raise TypeError('Expected property instance to be a basestring')
-        __self__.instance = instance
-        """
-        The name of the Cloud SQL instance. Changing this
-        forces a new resource to be created.
-        """
         __props__['instance'] = instance
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the user. Changing this forces a new resource
-        to be created.
-        """
         __props__['name'] = name
 
-        if password and not isinstance(password, basestring):
-            raise TypeError('Expected property password to be a basestring')
-        __self__.password = password
-        """
-        The password for the user. Can be updated.
-        """
         __props__['password'] = password
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         super(User, __self__).__init__(
@@ -78,14 +43,10 @@ class User(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'host' in outs:
-            self.host = outs['host']
-        if 'instance' in outs:
-            self.instance = outs['instance']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'password' in outs:
-            self.password = outs['password']
-        if 'project' in outs:
-            self.project = outs['project']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

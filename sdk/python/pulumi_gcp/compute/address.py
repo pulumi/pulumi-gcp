@@ -4,79 +4,42 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Address(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, region=None, subnetwork=None):
         """Create a Address resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if address and not isinstance(address, basestring):
-            raise TypeError('Expected property address to be a basestring')
-        __self__.address = address
-        """
-        The IP of the created resource.
-        """
         __props__['address'] = address
 
-        if address_type and not isinstance(address_type, basestring):
-            raise TypeError('Expected property address_type to be a basestring')
-        __self__.address_type = address_type
-        __props__['addressType'] = address_type
+        __props__['address_type'] = address_type
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
-        if network_tier and not isinstance(network_tier, basestring):
-            raise TypeError('Expected property network_tier to be a basestring')
-        __self__.network_tier = network_tier
-        __props__['networkTier'] = network_tier
+        __props__['network_tier'] = network_tier
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
         __props__['region'] = region
 
-        if subnetwork and not isinstance(subnetwork, basestring):
-            raise TypeError('Expected property subnetwork to be a basestring')
-        __self__.subnetwork = subnetwork
         __props__['subnetwork'] = subnetwork
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.users = pulumi.runtime.UNKNOWN
+        __props__['creation_timestamp'] = None
+        __props__['label_fingerprint'] = None
+        __props__['self_link'] = None
+        __props__['users'] = None
 
         super(Address, __self__).__init__(
             'gcp:compute/address:Address',
@@ -84,30 +47,10 @@ class Address(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'address' in outs:
-            self.address = outs['address']
-        if 'addressType' in outs:
-            self.address_type = outs['addressType']
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'labelFingerprint' in outs:
-            self.label_fingerprint = outs['labelFingerprint']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'networkTier' in outs:
-            self.network_tier = outs['networkTier']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'subnetwork' in outs:
-            self.subnetwork = outs['subnetwork']
-        if 'users' in outs:
-            self.users = outs['users']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

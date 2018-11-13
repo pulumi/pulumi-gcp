@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Snapshot(pulumi.CustomResource):
     """
@@ -17,105 +17,34 @@ class Snapshot(pulumi.CustomResource):
         """Create a Snapshot resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
-        """
-        A set of key/value label pairs to assign to the snapshot.
-        """
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if snapshot_encryption_key_raw and not isinstance(snapshot_encryption_key_raw, basestring):
-            raise TypeError('Expected property snapshot_encryption_key_raw to be a basestring')
-        __self__.snapshot_encryption_key_raw = snapshot_encryption_key_raw
-        """
-        A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this snapshot.
-        """
-        __props__['snapshotEncryptionKeyRaw'] = snapshot_encryption_key_raw
+        __props__['snapshot_encryption_key_raw'] = snapshot_encryption_key_raw
 
         if not source_disk:
             raise TypeError('Missing required property source_disk')
-        elif not isinstance(source_disk, basestring):
-            raise TypeError('Expected property source_disk to be a basestring')
-        __self__.source_disk = source_disk
-        """
-        The disk which will be used as the source of the snapshot.
-        """
-        __props__['sourceDisk'] = source_disk
+        __props__['source_disk'] = source_disk
 
-        if source_disk_encryption_key_raw and not isinstance(source_disk_encryption_key_raw, basestring):
-            raise TypeError('Expected property source_disk_encryption_key_raw to be a basestring')
-        __self__.source_disk_encryption_key_raw = source_disk_encryption_key_raw
-        """
-        A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to decrypt the source disk.
-        """
-        __props__['sourceDiskEncryptionKeyRaw'] = source_disk_encryption_key_raw
+        __props__['source_disk_encryption_key_raw'] = source_disk_encryption_key_raw
 
-        if zone and not isinstance(zone, basestring):
-            raise TypeError('Expected property zone to be a basestring')
-        __self__.zone = zone
-        """
-        The zone where the source disk is located.
-        """
         __props__['zone'] = zone
 
-        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        """
-        The unique fingerprint of the labels.
-        """
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.snapshot_encryption_key_sha256 = pulumi.runtime.UNKNOWN
-        """
-        The [RFC 4648 base64]
-        (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-        [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-        that protects this resource.
-        """
-        __self__.source_disk_encryption_key_sha256 = pulumi.runtime.UNKNOWN
-        """
-        The [RFC 4648 base64]
-        (https://tools.ietf.org/html/rfc4648#section-4) encoded SHA-256 hash of the
-        [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
-        that protects the source disk.
-        """
-        __self__.source_disk_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the source disk.
-        """
+        __props__['label_fingerprint'] = None
+        __props__['self_link'] = None
+        __props__['snapshot_encryption_key_sha256'] = None
+        __props__['source_disk_encryption_key_sha256'] = None
+        __props__['source_disk_link'] = None
 
         super(Snapshot, __self__).__init__(
             'gcp:compute/snapshot:Snapshot',
@@ -123,28 +52,10 @@ class Snapshot(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'labelFingerprint' in outs:
-            self.label_fingerprint = outs['labelFingerprint']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'snapshotEncryptionKeyRaw' in outs:
-            self.snapshot_encryption_key_raw = outs['snapshotEncryptionKeyRaw']
-        if 'snapshotEncryptionKeySha256' in outs:
-            self.snapshot_encryption_key_sha256 = outs['snapshotEncryptionKeySha256']
-        if 'sourceDisk' in outs:
-            self.source_disk = outs['sourceDisk']
-        if 'sourceDiskEncryptionKeyRaw' in outs:
-            self.source_disk_encryption_key_raw = outs['sourceDiskEncryptionKeyRaw']
-        if 'sourceDiskEncryptionKeySha256' in outs:
-            self.source_disk_encryption_key_sha256 = outs['sourceDiskEncryptionKeySha256']
-        if 'sourceDiskLink' in outs:
-            self.source_disk_link = outs['sourceDiskLink']
-        if 'zone' in outs:
-            self.zone = outs['zone']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

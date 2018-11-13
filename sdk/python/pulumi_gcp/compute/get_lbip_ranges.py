@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetLBIPRangesResult(object):
     """
@@ -23,14 +23,14 @@ class GetLBIPRangesResult(object):
         """
         The IP ranges used for health checks when **Network load balancing** is used
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_lbip_ranges():
+async def get_lbip_ranges():
     """
     Use this data source to access IP ranges in your firewall rules.
     
@@ -38,7 +38,7 @@ def get_lbip_ranges():
     """
     __args__ = dict()
 
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__)
 
     return GetLBIPRangesResult(
         http_ssl_tcp_internals=__ret__.get('httpSslTcpInternals'),

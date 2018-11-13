@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GlobalForwardingRule(pulumi.CustomResource):
     """
@@ -17,113 +17,35 @@ class GlobalForwardingRule(pulumi.CustomResource):
         """Create a GlobalForwardingRule resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        Textual description field.
-        """
         __props__['description'] = description
 
-        if ip_address and not isinstance(ip_address, basestring):
-            raise TypeError('Expected property ip_address to be a basestring')
-        __self__.ip_address = ip_address
-        """
-        The static IP. (if not set, an ephemeral IP is
-        used). This should be the literal IP address to be used, not the `self_link`
-        to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-        resource, use the `address` property instead of the `self_link` property.)
-        """
-        __props__['ipAddress'] = ip_address
+        __props__['ip_address'] = ip_address
 
-        if ip_protocol and not isinstance(ip_protocol, basestring):
-            raise TypeError('Expected property ip_protocol to be a basestring')
-        __self__.ip_protocol = ip_protocol
-        """
-        The IP protocol to route, one of "TCP" "UDP" "AH"
-        "ESP" or "SCTP". (default "TCP").
-        """
-        __props__['ipProtocol'] = ip_protocol
+        __props__['ip_protocol'] = ip_protocol
 
-        if ip_version and not isinstance(ip_version, basestring):
-            raise TypeError('Expected property ip_version to be a basestring')
-        __self__.ip_version = ip_version
-        """
-        
-        The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-        You cannot provide this and `ip_address`.
-        """
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
-        """
-        
-        A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-        """
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource, required by GCE. Changing
-        this forces a new resource to be created.
-        """
         __props__['name'] = name
 
-        if port_range and not isinstance(port_range, basestring):
-            raise TypeError('Expected property port_range to be a basestring')
-        __self__.port_range = port_range
-        """
-        A range e.g. "1024-2048" or a single port "1024"
-        (defaults to all ports!).
-        Some types of forwarding targets have constraints on the acceptable ports:
-        * Target HTTP proxy: 80, 8080
-        * Target HTTPS proxy: 443
-        * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-        * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-        * Target VPN gateway: 500, 4500
-        """
-        __props__['portRange'] = port_range
+        __props__['port_range'] = port_range
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not target:
             raise TypeError('Missing required property target')
-        elif not isinstance(target, basestring):
-            raise TypeError('Expected property target to be a basestring')
-        __self__.target = target
-        """
-        URL of target HTTP or HTTPS proxy.
-        """
         __props__['target'] = target
 
-        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        """
-        The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-        """
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['label_fingerprint'] = None
+        __props__['self_link'] = None
 
         super(GlobalForwardingRule, __self__).__init__(
             'gcp:compute/globalForwardingRule:GlobalForwardingRule',
@@ -131,26 +53,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'ipAddress' in outs:
-            self.ip_address = outs['ipAddress']
-        if 'ipProtocol' in outs:
-            self.ip_protocol = outs['ipProtocol']
-        if 'ipVersion' in outs:
-            self.ip_version = outs['ipVersion']
-        if 'labelFingerprint' in outs:
-            self.label_fingerprint = outs['labelFingerprint']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'portRange' in outs:
-            self.port_range = outs['portRange']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'target' in outs:
-            self.target = outs['target']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

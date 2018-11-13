@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -17,84 +17,29 @@ class Instance(pulumi.CustomResource):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if cluster and not isinstance(cluster, dict):
-            raise TypeError('Expected property cluster to be a dict')
-        __self__.cluster = cluster
-        """
-        A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
-        """
         __props__['cluster'] = cluster
 
-        if cluster_id and not isinstance(cluster_id, basestring):
-            raise TypeError('Expected property cluster_id to be a basestring')
-        __self__.cluster_id = cluster_id
-        """
-        The ID of the Cloud Bigtable cluster.
-        """
-        __props__['clusterId'] = cluster_id
+        __props__['cluster_id'] = cluster_id
 
-        if display_name and not isinstance(display_name, basestring):
-            raise TypeError('Expected property display_name to be a basestring')
-        __self__.display_name = display_name
-        """
-        The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-        """
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
-        if instance_type and not isinstance(instance_type, basestring):
-            raise TypeError('Expected property instance_type to be a basestring')
-        __self__.instance_type = instance_type
-        """
-        The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
-        """
-        __props__['instanceType'] = instance_type
+        __props__['instance_type'] = instance_type
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the Cloud Bigtable instance.
-        """
         __props__['name'] = name
 
-        if num_nodes and not isinstance(num_nodes, int):
-            raise TypeError('Expected property num_nodes to be a int')
-        __self__.num_nodes = num_nodes
-        """
-        The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
-        """
-        __props__['numNodes'] = num_nodes
+        __props__['num_nodes'] = num_nodes
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if storage_type and not isinstance(storage_type, basestring):
-            raise TypeError('Expected property storage_type to be a basestring')
-        __self__.storage_type = storage_type
-        """
-        The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
-        """
-        __props__['storageType'] = storage_type
+        __props__['storage_type'] = storage_type
 
-        if zone and not isinstance(zone, basestring):
-            raise TypeError('Expected property zone to be a basestring')
-        __self__.zone = zone
-        """
-        The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        """
         __props__['zone'] = zone
 
         super(Instance, __self__).__init__(
@@ -103,22 +48,10 @@ class Instance(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'cluster' in outs:
-            self.cluster = outs['cluster']
-        if 'clusterId' in outs:
-            self.cluster_id = outs['clusterId']
-        if 'displayName' in outs:
-            self.display_name = outs['displayName']
-        if 'instanceType' in outs:
-            self.instance_type = outs['instanceType']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'numNodes' in outs:
-            self.num_nodes = outs['numNodes']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'storageType' in outs:
-            self.storage_type = outs['storageType']
-        if 'zone' in outs:
-            self.zone = outs['zone']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -14,7 +14,7 @@ class Instance(pulumi.CustomResource):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -23,70 +23,21 @@ class Instance(pulumi.CustomResource):
 
         if not config:
             raise TypeError('Missing required property config')
-        elif not isinstance(config, basestring):
-            raise TypeError('Expected property config to be a basestring')
-        __self__.config = config
-        """
-        The name of the instance's configuration (similar but not
-        quite the same as a region) which defines defines the geographic placement and
-        replication of your databases in this instance. It determines where your data
-        is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-        In order to obtain a valid list please consult the
-        [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-        """
         __props__['config'] = config
 
         if not display_name:
             raise TypeError('Missing required property display_name')
-        elif not isinstance(display_name, basestring):
-            raise TypeError('Expected property display_name to be a basestring')
-        __self__.display_name = display_name
-        """
-        The descriptive name for this instance as it appears
-        in UIs. Can be updated, however should be kept globally unique to avoid confusion.
-        """
-        __props__['displayName'] = display_name
+        __props__['display_name'] = display_name
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
-        """
-        A mapping (key/value pairs) of labels to assign to the instance.
-        """
         __props__['labels'] = labels
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The unique name (ID) of the instance. If the name is left
-        blank, Terraform will randomly generate one when the instance is first
-        created.
-        """
         __props__['name'] = name
 
-        if num_nodes and not isinstance(num_nodes, int):
-            raise TypeError('Expected property num_nodes to be a int')
-        __self__.num_nodes = num_nodes
-        """
-        The number of nodes allocated to this instance.
-        Defaults to `1`. This can be updated after creation.
-        """
-        __props__['numNodes'] = num_nodes
+        __props__['num_nodes'] = num_nodes
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        __self__.state = pulumi.runtime.UNKNOWN
-        """
-        The current state of the instance.
-        """
+        __props__['state'] = None
 
         super(Instance, __self__).__init__(
             'gcp:spanner/instance:Instance',
@@ -94,18 +45,10 @@ class Instance(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'config' in outs:
-            self.config = outs['config']
-        if 'displayName' in outs:
-            self.display_name = outs['displayName']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'numNodes' in outs:
-            self.num_nodes = outs['numNodes']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'state' in outs:
-            self.state = outs['state']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

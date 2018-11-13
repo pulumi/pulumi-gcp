@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Registry(pulumi.CustomResource):
     """
@@ -17,77 +17,28 @@ class Registry(pulumi.CustomResource):
         """Create a Registry resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if credentials and not isinstance(credentials, list):
-            raise TypeError('Expected property credentials to be a list')
-        __self__.credentials = credentials
-        """
-        List of public key certificates to authenticate devices. Structure is documented below. 
-        """
         __props__['credentials'] = credentials
 
-        if event_notification_config and not isinstance(event_notification_config, dict):
-            raise TypeError('Expected property event_notification_config to be a dict')
-        __self__.event_notification_config = event_notification_config
-        """
-        A PubSub topics to publish device events. Structure is documented below.
-        """
-        __props__['eventNotificationConfig'] = event_notification_config
+        __props__['event_notification_config'] = event_notification_config
 
-        if http_config and not isinstance(http_config, dict):
-            raise TypeError('Expected property http_config to be a dict')
-        __self__.http_config = http_config
-        """
-        Activate or deactivate HTTP. Structure is documented below.
-        """
-        __props__['httpConfig'] = http_config
+        __props__['http_config'] = http_config
 
-        if mqtt_config and not isinstance(mqtt_config, dict):
-            raise TypeError('Expected property mqtt_config to be a dict')
-        __self__.mqtt_config = mqtt_config
-        """
-        Activate or deactivate MQTT. Structure is documented below.
-        """
-        __props__['mqttConfig'] = mqtt_config
+        __props__['mqtt_config'] = mqtt_config
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource, required by device registry.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The project in which the resource belongs. If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The Region in which the created address should reside. If it is not provided, the provider region is used.
-        """
         __props__['region'] = region
 
-        if state_notification_config and not isinstance(state_notification_config, dict):
-            raise TypeError('Expected property state_notification_config to be a dict')
-        __self__.state_notification_config = state_notification_config
-        """
-        A PubSub topic to publish device state updates. Structure is documented below.
-        """
-        __props__['stateNotificationConfig'] = state_notification_config
+        __props__['state_notification_config'] = state_notification_config
 
         super(Registry, __self__).__init__(
             'gcp:kms/registry:Registry',
@@ -95,20 +46,10 @@ class Registry(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'credentials' in outs:
-            self.credentials = outs['credentials']
-        if 'eventNotificationConfig' in outs:
-            self.event_notification_config = outs['eventNotificationConfig']
-        if 'httpConfig' in outs:
-            self.http_config = outs['httpConfig']
-        if 'mqttConfig' in outs:
-            self.mqtt_config = outs['mqttConfig']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'stateNotificationConfig' in outs:
-            self.state_notification_config = outs['stateNotificationConfig']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

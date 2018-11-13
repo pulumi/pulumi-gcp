@@ -4,21 +4,21 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetManagedZoneResult(object):
     """
     A collection of values returned by getManagedZone.
     """
     def __init__(__self__, description=None, dns_name=None, name_servers=None, id=None):
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         A textual description field.
         """
-        if dns_name and not isinstance(dns_name, basestring):
-            raise TypeError('Expected argument dns_name to be a basestring')
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError('Expected argument dns_name to be a str')
         __self__.dns_name = dns_name
         """
         The fully qualified DNS name of this zone, e.g. `terraform.io.`.
@@ -31,14 +31,14 @@ class GetManagedZoneResult(object):
         domain. Use NS records to redirect from your DNS provider to these names,
         thus making Google Cloud DNS authoritative for this zone.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_managed_zone(name=None, project=None):
+async def get_managed_zone(name=None, project=None):
     """
     Provides access to a zone's attributes within Google Cloud DNS.
     For more information see
@@ -66,7 +66,7 @@ def get_managed_zone(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__)
 
     return GetManagedZoneResult(
         description=__ret__.get('description'),

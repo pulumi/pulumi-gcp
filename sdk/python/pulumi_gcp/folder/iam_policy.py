@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IAMPolicy(pulumi.CustomResource):
     """
@@ -15,7 +15,7 @@ class IAMPolicy(pulumi.CustomResource):
         """Create a IAMPolicy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -24,30 +24,13 @@ class IAMPolicy(pulumi.CustomResource):
 
         if not folder:
             raise TypeError('Missing required property folder')
-        elif not isinstance(folder, basestring):
-            raise TypeError('Expected property folder to be a basestring')
-        __self__.folder = folder
-        """
-        The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        """
         __props__['folder'] = folder
 
         if not policy_data:
             raise TypeError('Missing required property policy_data')
-        elif not isinstance(policy_data, basestring):
-            raise TypeError('Expected property policy_data to be a basestring')
-        __self__.policy_data = policy_data
-        """
-        The `google_iam_policy` data source that represents
-        the IAM policy that will be applied to the folder. This policy overrides any existing
-        policy applied to the folder.
-        """
-        __props__['policyData'] = policy_data
+        __props__['policy_data'] = policy_data
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
-        """
+        __props__['etag'] = None
 
         super(IAMPolicy, __self__).__init__(
             'gcp:folder/iAMPolicy:IAMPolicy',
@@ -55,10 +38,10 @@ class IAMPolicy(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'folder' in outs:
-            self.folder = outs['folder']
-        if 'policyData' in outs:
-            self.policy_data = outs['policyData']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

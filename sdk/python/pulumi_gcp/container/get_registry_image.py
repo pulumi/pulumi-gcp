@@ -4,27 +4,27 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetRegistryImageResult(object):
     """
     A collection of values returned by getRegistryImage.
     """
     def __init__(__self__, image_url=None, project=None, id=None):
-        if image_url and not isinstance(image_url, basestring):
-            raise TypeError('Expected argument image_url to be a basestring')
+        if image_url and not isinstance(image_url, str):
+            raise TypeError('Expected argument image_url to be a str')
         __self__.image_url = image_url
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_registry_image(digest=None, name=None, project=None, region=None, tag=None):
+async def get_registry_image(digest=None, name=None, project=None, region=None, tag=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
@@ -37,7 +37,7 @@ def get_registry_image(digest=None, name=None, project=None, region=None, tag=No
     __args__['project'] = project
     __args__['region'] = region
     __args__['tag'] = tag
-    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__)
 
     return GetRegistryImageResult(
         image_url=__ret__.get('imageUrl'),

@@ -4,14 +4,14 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class BackendBucket(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, bucket_name=None, description=None, enable_cdn=None, name=None, project=None):
         """Create a BackendBucket resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -20,40 +20,18 @@ class BackendBucket(pulumi.CustomResource):
 
         if not bucket_name:
             raise TypeError('Missing required property bucket_name')
-        elif not isinstance(bucket_name, basestring):
-            raise TypeError('Expected property bucket_name to be a basestring')
-        __self__.bucket_name = bucket_name
-        __props__['bucketName'] = bucket_name
+        __props__['bucket_name'] = bucket_name
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if enable_cdn and not isinstance(enable_cdn, bool):
-            raise TypeError('Expected property enable_cdn to be a bool')
-        __self__.enable_cdn = enable_cdn
-        __props__['enableCdn'] = enable_cdn
+        __props__['enable_cdn'] = enable_cdn
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['creation_timestamp'] = None
+        __props__['self_link'] = None
 
         super(BackendBucket, __self__).__init__(
             'gcp:compute/backendBucket:BackendBucket',
@@ -61,18 +39,10 @@ class BackendBucket(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucketName' in outs:
-            self.bucket_name = outs['bucketName']
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'enableCdn' in outs:
-            self.enable_cdn = outs['enableCdn']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -3,11 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from database import *
-from database_iam_binding import *
-from database_iam_member import *
-from database_iam_policy import *
-from instance import *
-from instance_iam_binding import *
-from instance_iam_member import *
-from instance_iam_policy import *
+from .database import *
+from .database_iam_binding import *
+from .database_iam_member import *
+from .database_iam_policy import *
+from .instance import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
+from .instance_iam_policy import *

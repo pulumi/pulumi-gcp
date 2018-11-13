@@ -4,27 +4,27 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetKMSSecretResult(object):
     """
     A collection of values returned by getKMSSecret.
     """
     def __init__(__self__, plaintext=None, id=None):
-        if plaintext and not isinstance(plaintext, basestring):
-            raise TypeError('Expected argument plaintext to be a basestring')
+        if plaintext and not isinstance(plaintext, str):
+            raise TypeError('Expected argument plaintext to be a str')
         __self__.plaintext = plaintext
         """
         Contains the result of decrypting the provided ciphertext.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_kms_secret(ciphertext=None, crypto_key=None):
+async def get_kms_secret(ciphertext=None, crypto_key=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -41,7 +41,7 @@ def get_kms_secret(ciphertext=None, crypto_key=None):
 
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
-    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__)
 
     return GetKMSSecretResult(
         plaintext=__ret__.get('plaintext'),

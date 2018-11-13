@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SharedVPCHostProject(pulumi.CustomResource):
     """
@@ -20,7 +20,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
         """Create a SharedVPCHostProject resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -29,12 +29,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
         if not project:
             raise TypeError('Missing required property project')
-        elif not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project that will serve as a Shared VPC host project
-        """
         __props__['project'] = project
 
         super(SharedVPCHostProject, __self__).__init__(
@@ -43,6 +37,10 @@ class SharedVPCHostProject(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'project' in outs:
-            self.project = outs['project']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

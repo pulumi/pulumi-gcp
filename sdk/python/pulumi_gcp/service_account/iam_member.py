@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IAMMember(pulumi.CustomResource):
     """
@@ -24,7 +24,7 @@ class IAMMember(pulumi.CustomResource):
         """Create a IAMMember resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -33,37 +33,17 @@ class IAMMember(pulumi.CustomResource):
 
         if not member:
             raise TypeError('Missing required property member')
-        elif not isinstance(member, basestring):
-            raise TypeError('Expected property member to be a basestring')
-        __self__.member = member
         __props__['member'] = member
 
         if not role:
             raise TypeError('Missing required property role')
-        elif not isinstance(role, basestring):
-            raise TypeError('Expected property role to be a basestring')
-        __self__.role = role
-        """
-        The role that should be applied. Only one
-        `google_service_account_iam_binding` can be used per role. Note that custom roles must be of the format
-        `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        """
         __props__['role'] = role
 
         if not service_account_id:
             raise TypeError('Missing required property service_account_id')
-        elif not isinstance(service_account_id, basestring):
-            raise TypeError('Expected property service_account_id to be a basestring')
-        __self__.service_account_id = service_account_id
-        """
-        The service account id to apply policy to.
-        """
-        __props__['serviceAccountId'] = service_account_id
+        __props__['service_account_id'] = service_account_id
 
-        __self__.etag = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The etag of the service account IAM policy.
-        """
+        __props__['etag'] = None
 
         super(IAMMember, __self__).__init__(
             'gcp:serviceAccount/iAMMember:IAMMember',
@@ -71,12 +51,10 @@ class IAMMember(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'etag' in outs:
-            self.etag = outs['etag']
-        if 'member' in outs:
-            self.member = outs['member']
-        if 'role' in outs:
-            self.role = outs['role']
-        if 'serviceAccountId' in outs:
-            self.service_account_id = outs['serviceAccountId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

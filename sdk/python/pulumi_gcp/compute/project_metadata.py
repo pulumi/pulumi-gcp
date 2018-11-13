@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ProjectMetadata(pulumi.CustomResource):
     """
@@ -21,7 +21,7 @@ class ProjectMetadata(pulumi.CustomResource):
         """Create a ProjectMetadata resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -30,22 +30,8 @@ class ProjectMetadata(pulumi.CustomResource):
 
         if not metadata:
             raise TypeError('Missing required property metadata')
-        elif not isinstance(metadata, dict):
-            raise TypeError('Expected property metadata to be a dict')
-        __self__.metadata = metadata
-        """
-        A series of key value pairs. Changing this resource
-        updates the GCE state.
-        """
         __props__['metadata'] = metadata
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         super(ProjectMetadata, __self__).__init__(
@@ -54,8 +40,10 @@ class ProjectMetadata(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'metadata' in outs:
-            self.metadata = outs['metadata']
-        if 'project' in outs:
-            self.project = outs['project']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
     """
@@ -17,79 +17,27 @@ class Network(pulumi.CustomResource):
         """Create a Network resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
-            raise TypeError('Expected property auto_create_subnetworks to be a bool')
-        __self__.auto_create_subnetworks = auto_create_subnetworks
-        """
-        If set to true, this network will be
-        created in auto subnet mode, and Google will create a subnet for each region
-        automatically. If set to false, a custom subnetted network will be created that
-        can support `google_compute_subnetwork` resources. Defaults to true.
-        """
-        __props__['autoCreateSubnetworks'] = auto_create_subnetworks
+        __props__['auto_create_subnetworks'] = auto_create_subnetworks
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A brief description of this resource.
-        """
         __props__['description'] = description
 
-        if ipv4_range and not isinstance(ipv4_range, basestring):
-            raise TypeError('Expected property ipv4_range to be a basestring')
-        __self__.ipv4_range = ipv4_range
-        """
-        If set to a CIDR block, uses the legacy VPC API with the
-        specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-        explicitly set to false.
-        """
-        __props__['ipv4Range'] = ipv4_range
+        __props__['ipv4_range'] = ipv4_range
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-        """
         __props__['name'] = name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if routing_mode and not isinstance(routing_mode, basestring):
-            raise TypeError('Expected property routing_mode to be a basestring')
-        __self__.routing_mode = routing_mode
-        """
-        Sets the network-wide routing mode for Cloud Routers
-        to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-        Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-        for more details.
-        """
-        __props__['routingMode'] = routing_mode
+        __props__['routing_mode'] = routing_mode
 
-        __self__.gateway_ipv4 = pulumi.runtime.UNKNOWN
-        """
-        The IPv4 address of the gateway.
-        """
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['gateway_ipv4'] = None
+        __props__['self_link'] = None
 
         super(Network, __self__).__init__(
             'gcp:compute/network:Network',
@@ -97,20 +45,10 @@ class Network(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'autoCreateSubnetworks' in outs:
-            self.auto_create_subnetworks = outs['autoCreateSubnetworks']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'gatewayIpv4' in outs:
-            self.gateway_ipv4 = outs['gatewayIpv4']
-        if 'ipv4Range' in outs:
-            self.ipv4_range = outs['ipv4Range']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'routingMode' in outs:
-            self.routing_mode = outs['routingMode']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

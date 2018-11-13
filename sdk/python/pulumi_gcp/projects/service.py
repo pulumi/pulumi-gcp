@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
     """
@@ -20,37 +20,19 @@ class Service(pulumi.CustomResource):
         """Create a Service resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if disable_on_destroy and not isinstance(disable_on_destroy, bool):
-            raise TypeError('Expected property disable_on_destroy to be a bool')
-        __self__.disable_on_destroy = disable_on_destroy
-        """
-        If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-        """
-        __props__['disableOnDestroy'] = disable_on_destroy
+        __props__['disable_on_destroy'] = disable_on_destroy
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The project ID. If not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not service:
             raise TypeError('Missing required property service')
-        elif not isinstance(service, basestring):
-            raise TypeError('Expected property service to be a basestring')
-        __self__.service = service
-        """
-        The service to enable.
-        """
         __props__['service'] = service
 
         super(Service, __self__).__init__(
@@ -59,10 +41,10 @@ class Service(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'disableOnDestroy' in outs:
-            self.disable_on_destroy = outs['disableOnDestroy']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'service' in outs:
-            self.service = outs['service']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

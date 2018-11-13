@@ -4,116 +4,58 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
         """Create a ForwardingRule resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if backend_service and not isinstance(backend_service, basestring):
-            raise TypeError('Expected property backend_service to be a basestring')
-        __self__.backend_service = backend_service
-        __props__['backendService'] = backend_service
+        __props__['backend_service'] = backend_service
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if ip_address and not isinstance(ip_address, basestring):
-            raise TypeError('Expected property ip_address to be a basestring')
-        __self__.ip_address = ip_address
-        __props__['ipAddress'] = ip_address
+        __props__['ip_address'] = ip_address
 
-        if ip_protocol and not isinstance(ip_protocol, basestring):
-            raise TypeError('Expected property ip_protocol to be a basestring')
-        __self__.ip_protocol = ip_protocol
-        __props__['ipProtocol'] = ip_protocol
+        __props__['ip_protocol'] = ip_protocol
 
-        if ip_version and not isinstance(ip_version, basestring):
-            raise TypeError('Expected property ip_version to be a basestring')
-        __self__.ip_version = ip_version
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
-        if labels and not isinstance(labels, dict):
-            raise TypeError('Expected property labels to be a dict')
-        __self__.labels = labels
         __props__['labels'] = labels
 
-        if load_balancing_scheme and not isinstance(load_balancing_scheme, basestring):
-            raise TypeError('Expected property load_balancing_scheme to be a basestring')
-        __self__.load_balancing_scheme = load_balancing_scheme
-        __props__['loadBalancingScheme'] = load_balancing_scheme
+        __props__['load_balancing_scheme'] = load_balancing_scheme
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
-        if network and not isinstance(network, basestring):
-            raise TypeError('Expected property network to be a basestring')
-        __self__.network = network
         __props__['network'] = network
 
-        if network_tier and not isinstance(network_tier, basestring):
-            raise TypeError('Expected property network_tier to be a basestring')
-        __self__.network_tier = network_tier
-        __props__['networkTier'] = network_tier
+        __props__['network_tier'] = network_tier
 
-        if port_range and not isinstance(port_range, basestring):
-            raise TypeError('Expected property port_range to be a basestring')
-        __self__.port_range = port_range
-        __props__['portRange'] = port_range
+        __props__['port_range'] = port_range
 
-        if ports and not isinstance(ports, list):
-            raise TypeError('Expected property ports to be a list')
-        __self__.ports = ports
         __props__['ports'] = ports
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
         __props__['region'] = region
 
-        if service_label and not isinstance(service_label, basestring):
-            raise TypeError('Expected property service_label to be a basestring')
-        __self__.service_label = service_label
-        __props__['serviceLabel'] = service_label
+        __props__['service_label'] = service_label
 
-        if subnetwork and not isinstance(subnetwork, basestring):
-            raise TypeError('Expected property subnetwork to be a basestring')
-        __self__.subnetwork = subnetwork
         __props__['subnetwork'] = subnetwork
 
-        if target and not isinstance(target, basestring):
-            raise TypeError('Expected property target to be a basestring')
-        __self__.target = target
         __props__['target'] = target
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.label_fingerprint = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
-        __self__.service_name = pulumi.runtime.UNKNOWN
+        __props__['creation_timestamp'] = None
+        __props__['label_fingerprint'] = None
+        __props__['self_link'] = None
+        __props__['service_name'] = None
 
         super(ForwardingRule, __self__).__init__(
             'gcp:compute/forwardingRule:ForwardingRule',
@@ -121,46 +63,10 @@ class ForwardingRule(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'backendService' in outs:
-            self.backend_service = outs['backendService']
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'ipAddress' in outs:
-            self.ip_address = outs['ipAddress']
-        if 'ipProtocol' in outs:
-            self.ip_protocol = outs['ipProtocol']
-        if 'ipVersion' in outs:
-            self.ip_version = outs['ipVersion']
-        if 'labelFingerprint' in outs:
-            self.label_fingerprint = outs['labelFingerprint']
-        if 'labels' in outs:
-            self.labels = outs['labels']
-        if 'loadBalancingScheme' in outs:
-            self.load_balancing_scheme = outs['loadBalancingScheme']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'network' in outs:
-            self.network = outs['network']
-        if 'networkTier' in outs:
-            self.network_tier = outs['networkTier']
-        if 'portRange' in outs:
-            self.port_range = outs['portRange']
-        if 'ports' in outs:
-            self.ports = outs['ports']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'serviceLabel' in outs:
-            self.service_label = outs['serviceLabel']
-        if 'serviceName' in outs:
-            self.service_name = outs['serviceName']
-        if 'subnetwork' in outs:
-            self.subnetwork = outs['subnetwork']
-        if 'target' in outs:
-            self.target = outs['target']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

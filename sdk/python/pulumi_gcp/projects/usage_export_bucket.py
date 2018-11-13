@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class UsageExportBucket(pulumi.CustomResource):
     """
@@ -40,7 +40,7 @@ class UsageExportBucket(pulumi.CustomResource):
         """Create a UsageExportBucket resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -49,19 +49,10 @@ class UsageExportBucket(pulumi.CustomResource):
 
         if not bucket_name:
             raise TypeError('Missing required property bucket_name')
-        elif not isinstance(bucket_name, basestring):
-            raise TypeError('Expected property bucket_name to be a basestring')
-        __self__.bucket_name = bucket_name
-        __props__['bucketName'] = bucket_name
+        __props__['bucket_name'] = bucket_name
 
-        if prefix and not isinstance(prefix, basestring):
-            raise TypeError('Expected property prefix to be a basestring')
-        __self__.prefix = prefix
         __props__['prefix'] = prefix
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
         super(UsageExportBucket, __self__).__init__(
@@ -70,10 +61,10 @@ class UsageExportBucket(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'bucketName' in outs:
-            self.bucket_name = outs['bucketName']
-        if 'prefix' in outs:
-            self.prefix = outs['prefix']
-        if 'project' in outs:
-            self.project = outs['project']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

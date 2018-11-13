@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Variavble(pulumi.CustomResource):
     """
@@ -17,58 +17,26 @@ class Variavble(pulumi.CustomResource):
         """Create a Variavble resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the variable to manage. Note that variable
-        names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-        """
         __props__['name'] = name
 
         if not parent:
             raise TypeError('Missing required property parent')
-        elif not isinstance(parent, basestring):
-            raise TypeError('Expected property parent to be a basestring')
-        __self__.parent = parent
-        """
-        The name of the RuntimeConfig resource containing this
-        variable.
-        """
         __props__['parent'] = parent
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if text and not isinstance(text, basestring):
-            raise TypeError('Expected property text to be a basestring')
-        __self__.text = text
         __props__['text'] = text
 
-        if value and not isinstance(value, basestring):
-            raise TypeError('Expected property value to be a basestring')
-        __self__.value = value
         __props__['value'] = value
 
-        __self__.update_time = pulumi.runtime.UNKNOWN
-        """
-        (Computed) The timestamp in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds, representing when the variable was last updated.
-        Example: "2016-10-09T12:33:37.578138407Z".
-        """
+        __props__['update_time'] = None
 
         super(Variavble, __self__).__init__(
             'gcp:runtimeconfig/variavble:Variavble',
@@ -76,16 +44,10 @@ class Variavble(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'parent' in outs:
-            self.parent = outs['parent']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'text' in outs:
-            self.text = outs['text']
-        if 'updateTime' in outs:
-            self.update_time = outs['updateTime']
-        if 'value' in outs:
-            self.value = outs['value']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

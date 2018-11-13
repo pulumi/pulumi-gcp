@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class BackendService(pulumi.CustomResource):
     """
@@ -18,156 +18,47 @@ class BackendService(pulumi.CustomResource):
         """Create a BackendService resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if backends and not isinstance(backends, list):
-            raise TypeError('Expected property backends to be a list')
-        __self__.backends = backends
-        """
-        The list of backends that serve this BackendService. Structure is documented below.
-        """
         __props__['backends'] = backends
 
-        if cdn_policy and not isinstance(cdn_policy, dict):
-            raise TypeError('Expected property cdn_policy to be a dict')
-        __self__.cdn_policy = cdn_policy
-        """
-        Cloud CDN configuration for this BackendService. Structure is documented below.
-        """
-        __props__['cdnPolicy'] = cdn_policy
+        __props__['cdn_policy'] = cdn_policy
 
-        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, int):
-            raise TypeError('Expected property connection_draining_timeout_sec to be a int')
-        __self__.connection_draining_timeout_sec = connection_draining_timeout_sec
-        """
-        Time for which instance will be drained (not accept new connections,
-        but still work to finish started ones). Defaults to `300`.
-        """
-        __props__['connectionDrainingTimeoutSec'] = connection_draining_timeout_sec
+        __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
 
-        if custom_request_headers and not isinstance(custom_request_headers, list):
-            raise TypeError('Expected property custom_request_headers to be a list')
-        __self__.custom_request_headers = custom_request_headers
-        """
-        Headers that the
-        HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-        This property is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-        """
-        __props__['customRequestHeaders'] = custom_request_headers
+        __props__['custom_request_headers'] = custom_request_headers
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        The textual description for the backend service.
-        """
         __props__['description'] = description
 
-        if enable_cdn and not isinstance(enable_cdn, bool):
-            raise TypeError('Expected property enable_cdn to be a bool')
-        __self__.enable_cdn = enable_cdn
-        """
-        Whether or not to enable the Cloud CDN on the backend service.
-        """
-        __props__['enableCdn'] = enable_cdn
+        __props__['enable_cdn'] = enable_cdn
 
         if not health_checks:
             raise TypeError('Missing required property health_checks')
-        elif not isinstance(health_checks, basestring):
-            raise TypeError('Expected property health_checks to be a basestring')
-        __self__.health_checks = health_checks
-        """
-        Specifies a list of HTTP/HTTPS health checks
-        for checking the health of the backend service. Currently at most one health
-        check can be specified, and a health check is required.
-        """
-        __props__['healthChecks'] = health_checks
+        __props__['health_checks'] = health_checks
 
-        if iap and not isinstance(iap, dict):
-            raise TypeError('Expected property iap to be a dict')
-        __self__.iap = iap
-        """
-        Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
-        """
         __props__['iap'] = iap
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the backend service.
-        """
         __props__['name'] = name
 
-        if port_name and not isinstance(port_name, basestring):
-            raise TypeError('Expected property port_name to be a basestring')
-        __self__.port_name = port_name
-        """
-        The name of a service that has been added to an
-        instance group in this backend. See [related docs](https://cloud.google.com/compute/docs/instance-groups/#specifying_service_endpoints) for details. Defaults to http.
-        """
-        __props__['portName'] = port_name
+        __props__['port_name'] = port_name
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if protocol and not isinstance(protocol, basestring):
-            raise TypeError('Expected property protocol to be a basestring')
-        __self__.protocol = protocol
-        """
-        The protocol for incoming requests. Defaults to
-        `HTTP`.
-        """
         __props__['protocol'] = protocol
 
-        if security_policy and not isinstance(security_policy, basestring):
-            raise TypeError('Expected property security_policy to be a basestring')
-        __self__.security_policy = security_policy
-        """
-        Name or URI of a
-        [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
-        """
-        __props__['securityPolicy'] = security_policy
+        __props__['security_policy'] = security_policy
 
-        if session_affinity and not isinstance(session_affinity, basestring):
-            raise TypeError('Expected property session_affinity to be a basestring')
-        __self__.session_affinity = session_affinity
-        """
-        How to distribute load. Options are `NONE` (no
-        affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
-        `GENERATED_COOKIE` (distribute load using a generated session cookie).
-        """
-        __props__['sessionAffinity'] = session_affinity
+        __props__['session_affinity'] = session_affinity
 
-        if timeout_sec and not isinstance(timeout_sec, int):
-            raise TypeError('Expected property timeout_sec to be a int')
-        __self__.timeout_sec = timeout_sec
-        """
-        The number of secs to wait for a backend to respond
-        to a request before considering the request failed. Defaults to `30`.
-        """
-        __props__['timeoutSec'] = timeout_sec
+        __props__['timeout_sec'] = timeout_sec
 
-        __self__.fingerprint = pulumi.runtime.UNKNOWN
-        """
-        The fingerprint of the backend service.
-        """
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['fingerprint'] = None
+        __props__['self_link'] = None
 
         super(BackendService, __self__).__init__(
             'gcp:compute/backendService:BackendService',
@@ -175,38 +66,10 @@ class BackendService(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'backends' in outs:
-            self.backends = outs['backends']
-        if 'cdnPolicy' in outs:
-            self.cdn_policy = outs['cdnPolicy']
-        if 'connectionDrainingTimeoutSec' in outs:
-            self.connection_draining_timeout_sec = outs['connectionDrainingTimeoutSec']
-        if 'customRequestHeaders' in outs:
-            self.custom_request_headers = outs['customRequestHeaders']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'enableCdn' in outs:
-            self.enable_cdn = outs['enableCdn']
-        if 'fingerprint' in outs:
-            self.fingerprint = outs['fingerprint']
-        if 'healthChecks' in outs:
-            self.health_checks = outs['healthChecks']
-        if 'iap' in outs:
-            self.iap = outs['iap']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'portName' in outs:
-            self.port_name = outs['portName']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'protocol' in outs:
-            self.protocol = outs['protocol']
-        if 'securityPolicy' in outs:
-            self.security_policy = outs['securityPolicy']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'sessionAffinity' in outs:
-            self.session_affinity = outs['sessionAffinity']
-        if 'timeoutSec' in outs:
-            self.timeout_sec = outs['timeoutSec']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

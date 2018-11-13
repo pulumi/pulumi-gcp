@@ -4,111 +4,56 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Firewall(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         """Create a Firewall resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if allows and not isinstance(allows, list):
-            raise TypeError('Expected property allows to be a list')
-        __self__.allows = allows
         __props__['allows'] = allows
 
-        if denies and not isinstance(denies, list):
-            raise TypeError('Expected property denies to be a list')
-        __self__.denies = denies
         __props__['denies'] = denies
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if destination_ranges and not isinstance(destination_ranges, list):
-            raise TypeError('Expected property destination_ranges to be a list')
-        __self__.destination_ranges = destination_ranges
-        __props__['destinationRanges'] = destination_ranges
+        __props__['destination_ranges'] = destination_ranges
 
-        if direction and not isinstance(direction, basestring):
-            raise TypeError('Expected property direction to be a basestring')
-        __self__.direction = direction
         __props__['direction'] = direction
 
-        if disabled and not isinstance(disabled, bool):
-            raise TypeError('Expected property disabled to be a bool')
-        __self__.disabled = disabled
         __props__['disabled'] = disabled
 
-        if enable_logging and not isinstance(enable_logging, bool):
-            raise TypeError('Expected property enable_logging to be a bool')
-        __self__.enable_logging = enable_logging
-        __props__['enableLogging'] = enable_logging
+        __props__['enable_logging'] = enable_logging
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
         __props__['name'] = name
 
         if not network:
             raise TypeError('Missing required property network')
-        elif not isinstance(network, basestring):
-            raise TypeError('Expected property network to be a basestring')
-        __self__.network = network
         __props__['network'] = network
 
-        if priority and not isinstance(priority, int):
-            raise TypeError('Expected property priority to be a int')
-        __self__.priority = priority
         __props__['priority'] = priority
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
-        if source_ranges and not isinstance(source_ranges, list):
-            raise TypeError('Expected property source_ranges to be a list')
-        __self__.source_ranges = source_ranges
-        __props__['sourceRanges'] = source_ranges
+        __props__['source_ranges'] = source_ranges
 
-        if source_service_accounts and not isinstance(source_service_accounts, basestring):
-            raise TypeError('Expected property source_service_accounts to be a basestring')
-        __self__.source_service_accounts = source_service_accounts
-        __props__['sourceServiceAccounts'] = source_service_accounts
+        __props__['source_service_accounts'] = source_service_accounts
 
-        if source_tags and not isinstance(source_tags, list):
-            raise TypeError('Expected property source_tags to be a list')
-        __self__.source_tags = source_tags
-        __props__['sourceTags'] = source_tags
+        __props__['source_tags'] = source_tags
 
-        if target_service_accounts and not isinstance(target_service_accounts, basestring):
-            raise TypeError('Expected property target_service_accounts to be a basestring')
-        __self__.target_service_accounts = target_service_accounts
-        __props__['targetServiceAccounts'] = target_service_accounts
+        __props__['target_service_accounts'] = target_service_accounts
 
-        if target_tags and not isinstance(target_tags, list):
-            raise TypeError('Expected property target_tags to be a list')
-        __self__.target_tags = target_tags
-        __props__['targetTags'] = target_tags
+        __props__['target_tags'] = target_tags
 
-        __self__.creation_timestamp = pulumi.runtime.UNKNOWN
-        __self__.self_link = pulumi.runtime.UNKNOWN
-        """
-        The URI of the created resource.
-        """
+        __props__['creation_timestamp'] = None
+        __props__['self_link'] = None
 
         super(Firewall, __self__).__init__(
             'gcp:compute/firewall:Firewall',
@@ -116,40 +61,10 @@ class Firewall(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'allows' in outs:
-            self.allows = outs['allows']
-        if 'creationTimestamp' in outs:
-            self.creation_timestamp = outs['creationTimestamp']
-        if 'denies' in outs:
-            self.denies = outs['denies']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'destinationRanges' in outs:
-            self.destination_ranges = outs['destinationRanges']
-        if 'direction' in outs:
-            self.direction = outs['direction']
-        if 'disabled' in outs:
-            self.disabled = outs['disabled']
-        if 'enableLogging' in outs:
-            self.enable_logging = outs['enableLogging']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'network' in outs:
-            self.network = outs['network']
-        if 'priority' in outs:
-            self.priority = outs['priority']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'selfLink' in outs:
-            self.self_link = outs['selfLink']
-        if 'sourceRanges' in outs:
-            self.source_ranges = outs['sourceRanges']
-        if 'sourceServiceAccounts' in outs:
-            self.source_service_accounts = outs['sourceServiceAccounts']
-        if 'sourceTags' in outs:
-            self.source_tags = outs['sourceTags']
-        if 'targetServiceAccounts' in outs:
-            self.target_service_accounts = outs['targetServiceAccounts']
-        if 'targetTags' in outs:
-            self.target_tags = outs['targetTags']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

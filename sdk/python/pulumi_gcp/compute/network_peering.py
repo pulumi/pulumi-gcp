@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class NetworkPeering(pulumi.CustomResource):
     """
@@ -21,58 +21,27 @@ class NetworkPeering(pulumi.CustomResource):
         """Create a NetworkPeering resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if auto_create_routes and not isinstance(auto_create_routes, bool):
-            raise TypeError('Expected property auto_create_routes to be a bool')
-        __self__.auto_create_routes = auto_create_routes
-        """
-        If set to `true`, the routes between the two networks will
-        be created and managed automatically. Defaults to `true`.
-        """
-        __props__['autoCreateRoutes'] = auto_create_routes
+        __props__['auto_create_routes'] = auto_create_routes
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        Name of the peering.
-        """
         __props__['name'] = name
 
         if not network:
             raise TypeError('Missing required property network')
-        elif not isinstance(network, basestring):
-            raise TypeError('Expected property network to be a basestring')
-        __self__.network = network
-        """
-        Resource link of the network to add a peering to.
-        """
         __props__['network'] = network
 
         if not peer_network:
             raise TypeError('Missing required property peer_network')
-        elif not isinstance(peer_network, basestring):
-            raise TypeError('Expected property peer_network to be a basestring')
-        __self__.peer_network = peer_network
-        """
-        Resource link of the peer network.
-        """
-        __props__['peerNetwork'] = peer_network
+        __props__['peer_network'] = peer_network
 
-        __self__.state = pulumi.runtime.UNKNOWN
-        """
-        State for the peering.
-        """
-        __self__.state_details = pulumi.runtime.UNKNOWN
-        """
-        Details about the current state of the peering.
-        """
+        __props__['state'] = None
+        __props__['state_details'] = None
 
         super(NetworkPeering, __self__).__init__(
             'gcp:compute/networkPeering:NetworkPeering',
@@ -80,16 +49,10 @@ class NetworkPeering(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'autoCreateRoutes' in outs:
-            self.auto_create_routes = outs['autoCreateRoutes']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'network' in outs:
-            self.network = outs['network']
-        if 'peerNetwork' in outs:
-            self.peer_network = outs['peerNetwork']
-        if 'state' in outs:
-            self.state = outs['state']
-        if 'stateDetails' in outs:
-            self.state_details = outs['stateDetails']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

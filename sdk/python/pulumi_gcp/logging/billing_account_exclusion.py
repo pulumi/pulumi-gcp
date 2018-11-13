@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class BillingAccountExclusion(pulumi.CustomResource):
     """
@@ -19,7 +19,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         """Create a BillingAccountExclusion resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -28,49 +28,16 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
         if not billing_account:
             raise TypeError('Missing required property billing_account')
-        elif not isinstance(billing_account, basestring):
-            raise TypeError('Expected property billing_account to be a basestring')
-        __self__.billing_account = billing_account
-        """
-        The billing account to create the exclusion for.
-        """
-        __props__['billingAccount'] = billing_account
+        __props__['billing_account'] = billing_account
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A human-readable description.
-        """
         __props__['description'] = description
 
-        if disabled and not isinstance(disabled, bool):
-            raise TypeError('Expected property disabled to be a bool')
-        __self__.disabled = disabled
-        """
-        Whether this exclusion rule should be disabled or not. This defaults to
-        false.
-        """
         __props__['disabled'] = disabled
 
         if not filter:
             raise TypeError('Missing required property filter')
-        elif not isinstance(filter, basestring):
-            raise TypeError('Expected property filter to be a basestring')
-        __self__.filter = filter
-        """
-        The filter to apply when excluding logs. Only log entries that match the filter are excluded.
-        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
-        write a filter.
-        """
         __props__['filter'] = filter
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the logging exclusion.
-        """
         __props__['name'] = name
 
         super(BillingAccountExclusion, __self__).__init__(
@@ -79,14 +46,10 @@ class BillingAccountExclusion(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'billingAccount' in outs:
-            self.billing_account = outs['billingAccount']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'disabled' in outs:
-            self.disabled = outs['disabled']
-        if 'filter' in outs:
-            self.filter = outs['filter']
-        if 'name' in outs:
-            self.name = outs['name']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

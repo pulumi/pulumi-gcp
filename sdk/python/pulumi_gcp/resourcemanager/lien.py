@@ -4,14 +4,14 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Lien(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, origin=None, parent=None, reason=None, restrictions=None):
         """Create a Lien resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -20,34 +20,22 @@ class Lien(pulumi.CustomResource):
 
         if not origin:
             raise TypeError('Missing required property origin')
-        elif not isinstance(origin, basestring):
-            raise TypeError('Expected property origin to be a basestring')
-        __self__.origin = origin
         __props__['origin'] = origin
 
         if not parent:
             raise TypeError('Missing required property parent')
-        elif not isinstance(parent, basestring):
-            raise TypeError('Expected property parent to be a basestring')
-        __self__.parent = parent
         __props__['parent'] = parent
 
         if not reason:
             raise TypeError('Missing required property reason')
-        elif not isinstance(reason, basestring):
-            raise TypeError('Expected property reason to be a basestring')
-        __self__.reason = reason
         __props__['reason'] = reason
 
         if not restrictions:
             raise TypeError('Missing required property restrictions')
-        elif not isinstance(restrictions, list):
-            raise TypeError('Expected property restrictions to be a list')
-        __self__.restrictions = restrictions
         __props__['restrictions'] = restrictions
 
-        __self__.create_time = pulumi.runtime.UNKNOWN
-        __self__.name = pulumi.runtime.UNKNOWN
+        __props__['create_time'] = None
+        __props__['name'] = None
 
         super(Lien, __self__).__init__(
             'gcp:resourcemanager/lien:Lien',
@@ -55,16 +43,10 @@ class Lien(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'createTime' in outs:
-            self.create_time = outs['createTime']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'origin' in outs:
-            self.origin = outs['origin']
-        if 'parent' in outs:
-            self.parent = outs['parent']
-        if 'reason' in outs:
-            self.reason = outs['reason']
-        if 'restrictions' in outs:
-            self.restrictions = outs['restrictions']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

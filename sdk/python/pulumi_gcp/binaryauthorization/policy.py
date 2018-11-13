@@ -4,45 +4,30 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
         """Create a Policy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if admission_whitelist_patterns and not isinstance(admission_whitelist_patterns, list):
-            raise TypeError('Expected property admission_whitelist_patterns to be a list')
-        __self__.admission_whitelist_patterns = admission_whitelist_patterns
-        __props__['admissionWhitelistPatterns'] = admission_whitelist_patterns
+        __props__['admission_whitelist_patterns'] = admission_whitelist_patterns
 
-        if cluster_admission_rules and not isinstance(cluster_admission_rules, list):
-            raise TypeError('Expected property cluster_admission_rules to be a list')
-        __self__.cluster_admission_rules = cluster_admission_rules
-        __props__['clusterAdmissionRules'] = cluster_admission_rules
+        __props__['cluster_admission_rules'] = cluster_admission_rules
 
         if not default_admission_rule:
             raise TypeError('Missing required property default_admission_rule')
-        elif not isinstance(default_admission_rule, dict):
-            raise TypeError('Expected property default_admission_rule to be a dict')
-        __self__.default_admission_rule = default_admission_rule
-        __props__['defaultAdmissionRule'] = default_admission_rule
+        __props__['default_admission_rule'] = default_admission_rule
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
         __props__['description'] = description
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
         super(Policy, __self__).__init__(
@@ -51,14 +36,10 @@ class Policy(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'admissionWhitelistPatterns' in outs:
-            self.admission_whitelist_patterns = outs['admissionWhitelistPatterns']
-        if 'clusterAdmissionRules' in outs:
-            self.cluster_admission_rules = outs['clusterAdmissionRules']
-        if 'defaultAdmissionRule' in outs:
-            self.default_admission_rule = outs['defaultAdmissionRule']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'project' in outs:
-            self.project = outs['project']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

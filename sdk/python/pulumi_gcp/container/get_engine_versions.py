@@ -4,27 +4,27 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetEngineVersionsResult(object):
     """
     A collection of values returned by getEngineVersions.
     """
     def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, valid_master_versions=None, valid_node_versions=None, id=None):
-        if default_cluster_version and not isinstance(default_cluster_version, basestring):
-            raise TypeError('Expected argument default_cluster_version to be a basestring')
+        if default_cluster_version and not isinstance(default_cluster_version, str):
+            raise TypeError('Expected argument default_cluster_version to be a str')
         __self__.default_cluster_version = default_cluster_version
         """
         Version of Kubernetes the service deploys by default.
         """
-        if latest_master_version and not isinstance(latest_master_version, basestring):
-            raise TypeError('Expected argument latest_master_version to be a basestring')
+        if latest_master_version and not isinstance(latest_master_version, str):
+            raise TypeError('Expected argument latest_master_version to be a str')
         __self__.latest_master_version = latest_master_version
         """
         The latest version available in the given zone for use with master instances.
         """
-        if latest_node_version and not isinstance(latest_node_version, basestring):
-            raise TypeError('Expected argument latest_node_version to be a basestring')
+        if latest_node_version and not isinstance(latest_node_version, str):
+            raise TypeError('Expected argument latest_node_version to be a str')
         __self__.latest_node_version = latest_node_version
         """
         The latest version available in the given zone for use with node instances.
@@ -41,14 +41,14 @@ class GetEngineVersionsResult(object):
         """
         A list of versions available in the given zone for use with node instances.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_engine_versions(project=None, region=None, zone=None):
+async def get_engine_versions(project=None, region=None, zone=None):
     """
     Provides access to available Google Container Engine versions in a zone or region for a given project.
     
@@ -75,7 +75,7 @@ def get_engine_versions(project=None, region=None, zone=None):
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
-    __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__)
 
     return GetEngineVersionsResult(
         default_cluster_version=__ret__.get('defaultClusterVersion'),

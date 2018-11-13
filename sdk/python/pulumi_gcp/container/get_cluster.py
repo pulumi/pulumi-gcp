@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetClusterResult(object):
     """
@@ -17,11 +17,11 @@ class GetClusterResult(object):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError('Expected argument addons_configs to be a list')
         __self__.addons_configs = addons_configs
-        if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, basestring):
-            raise TypeError('Expected argument cluster_ipv4_cidr to be a basestring')
+        if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, str):
+            raise TypeError('Expected argument cluster_ipv4_cidr to be a str')
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         if enable_binary_authorization and not isinstance(enable_binary_authorization, bool):
             raise TypeError('Expected argument enable_binary_authorization to be a bool')
@@ -35,8 +35,8 @@ class GetClusterResult(object):
         if enable_tpu and not isinstance(enable_tpu, bool):
             raise TypeError('Expected argument enable_tpu to be a bool')
         __self__.enable_tpu = enable_tpu
-        if endpoint and not isinstance(endpoint, basestring):
-            raise TypeError('Expected argument endpoint to be a basestring')
+        if endpoint and not isinstance(endpoint, str):
+            raise TypeError('Expected argument endpoint to be a str')
         __self__.endpoint = endpoint
         if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError('Expected argument initial_node_count to be a int')
@@ -47,8 +47,8 @@ class GetClusterResult(object):
         if ip_allocation_policies and not isinstance(ip_allocation_policies, list):
             raise TypeError('Expected argument ip_allocation_policies to be a list')
         __self__.ip_allocation_policies = ip_allocation_policies
-        if logging_service and not isinstance(logging_service, basestring):
-            raise TypeError('Expected argument logging_service to be a basestring')
+        if logging_service and not isinstance(logging_service, str):
+            raise TypeError('Expected argument logging_service to be a str')
         __self__.logging_service = logging_service
         if maintenance_policies and not isinstance(maintenance_policies, list):
             raise TypeError('Expected argument maintenance_policies to be a list')
@@ -59,20 +59,20 @@ class GetClusterResult(object):
         if master_authorized_networks_configs and not isinstance(master_authorized_networks_configs, list):
             raise TypeError('Expected argument master_authorized_networks_configs to be a list')
         __self__.master_authorized_networks_configs = master_authorized_networks_configs
-        if master_ipv4_cidr_block and not isinstance(master_ipv4_cidr_block, basestring):
-            raise TypeError('Expected argument master_ipv4_cidr_block to be a basestring')
+        if master_ipv4_cidr_block and not isinstance(master_ipv4_cidr_block, str):
+            raise TypeError('Expected argument master_ipv4_cidr_block to be a str')
         __self__.master_ipv4_cidr_block = master_ipv4_cidr_block
-        if master_version and not isinstance(master_version, basestring):
-            raise TypeError('Expected argument master_version to be a basestring')
+        if master_version and not isinstance(master_version, str):
+            raise TypeError('Expected argument master_version to be a str')
         __self__.master_version = master_version
-        if min_master_version and not isinstance(min_master_version, basestring):
-            raise TypeError('Expected argument min_master_version to be a basestring')
+        if min_master_version and not isinstance(min_master_version, str):
+            raise TypeError('Expected argument min_master_version to be a str')
         __self__.min_master_version = min_master_version
-        if monitoring_service and not isinstance(monitoring_service, basestring):
-            raise TypeError('Expected argument monitoring_service to be a basestring')
+        if monitoring_service and not isinstance(monitoring_service, str):
+            raise TypeError('Expected argument monitoring_service to be a str')
         __self__.monitoring_service = monitoring_service
-        if network and not isinstance(network, basestring):
-            raise TypeError('Expected argument network to be a basestring')
+        if network and not isinstance(network, str):
+            raise TypeError('Expected argument network to be a str')
         __self__.network = network
         if network_policies and not isinstance(network_policies, list):
             raise TypeError('Expected argument network_policies to be a list')
@@ -83,8 +83,8 @@ class GetClusterResult(object):
         if node_pools and not isinstance(node_pools, list):
             raise TypeError('Expected argument node_pools to be a list')
         __self__.node_pools = node_pools
-        if node_version and not isinstance(node_version, basestring):
-            raise TypeError('Expected argument node_version to be a basestring')
+        if node_version and not isinstance(node_version, str):
+            raise TypeError('Expected argument node_version to be a str')
         __self__.node_version = node_version
         if pod_security_policy_configs and not isinstance(pod_security_policy_configs, list):
             raise TypeError('Expected argument pod_security_policy_configs to be a list')
@@ -98,17 +98,17 @@ class GetClusterResult(object):
         if resource_labels and not isinstance(resource_labels, dict):
             raise TypeError('Expected argument resource_labels to be a dict')
         __self__.resource_labels = resource_labels
-        if subnetwork and not isinstance(subnetwork, basestring):
-            raise TypeError('Expected argument subnetwork to be a basestring')
+        if subnetwork and not isinstance(subnetwork, str):
+            raise TypeError('Expected argument subnetwork to be a str')
         __self__.subnetwork = subnetwork
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_cluster(name=None, project=None, region=None, zone=None):
+async def get_cluster(name=None, project=None, region=None, zone=None):
     """
     Get info about a cluster within GKE from its name and zone.
     """
@@ -118,7 +118,7 @@ def get_cluster(name=None, project=None, region=None, zone=None):
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
-    __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__)
 
     return GetClusterResult(
         additional_zones=__ret__.get('additionalZones'),

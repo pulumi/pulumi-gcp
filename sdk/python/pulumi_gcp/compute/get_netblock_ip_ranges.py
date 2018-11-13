@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetNetblockIPRangesResult(object):
     """
@@ -29,14 +29,14 @@ class GetNetblockIPRangesResult(object):
         """
         Retrieve list of the IP6 CIDR blocks.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_netblock_ip_ranges():
+async def get_netblock_ip_ranges():
     """
     Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
     
@@ -44,7 +44,7 @@ def get_netblock_ip_ranges():
     """
     __args__ = dict()
 
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__)
 
     return GetNetblockIPRangesResult(
         cidr_blocks=__ret__.get('cidrBlocks'),

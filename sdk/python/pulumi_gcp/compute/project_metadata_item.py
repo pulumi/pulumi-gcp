@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ProjectMetadataItem(pulumi.CustomResource):
     """
@@ -17,7 +17,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
         """Create a ProjectMetadataItem resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -26,31 +26,12 @@ class ProjectMetadataItem(pulumi.CustomResource):
 
         if not key:
             raise TypeError('Missing required property key')
-        elif not isinstance(key, basestring):
-            raise TypeError('Expected property key to be a basestring')
-        __self__.key = key
-        """
-        The metadata key to set.
-        """
         __props__['key'] = key
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
-        """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
-        """
         __props__['project'] = project
 
         if not value:
             raise TypeError('Missing required property value')
-        elif not isinstance(value, basestring):
-            raise TypeError('Expected property value to be a basestring')
-        __self__.value = value
-        """
-        The value to set for the given metadata key.
-        """
         __props__['value'] = value
 
         super(ProjectMetadataItem, __self__).__init__(
@@ -59,10 +40,10 @@ class ProjectMetadataItem(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'key' in outs:
-            self.key = outs['key']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'value' in outs:
-            self.value = outs['value']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

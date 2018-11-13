@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Application(pulumi.CustomResource):
     """
@@ -19,77 +19,31 @@ class Application(pulumi.CustomResource):
         """Create a Application resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if auth_domain and not isinstance(auth_domain, basestring):
-            raise TypeError('Expected property auth_domain to be a basestring')
-        __self__.auth_domain = auth_domain
-        """
-        The domain to authenticate users with when using App Engine's User API.
-        """
-        __props__['authDomain'] = auth_domain
+        __props__['auth_domain'] = auth_domain
 
-        if feature_settings and not isinstance(feature_settings, dict):
-            raise TypeError('Expected property feature_settings to be a dict')
-        __self__.feature_settings = feature_settings
-        """
-        A block of optional settings to configure specific App Engine features:
-        """
-        __props__['featureSettings'] = feature_settings
+        __props__['feature_settings'] = feature_settings
 
         if not location_id:
             raise TypeError('Missing required property location_id')
-        elif not isinstance(location_id, basestring):
-            raise TypeError('Expected property location_id to be a basestring')
-        __self__.location_id = location_id
-        """
-        The [location](https://cloud.google.com/appengine/docs/locations)
-        to serve the app from.
-        """
-        __props__['locationId'] = location_id
+        __props__['location_id'] = location_id
 
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected property project to be a basestring')
-        __self__.project = project
         __props__['project'] = project
 
-        if serving_status and not isinstance(serving_status, basestring):
-            raise TypeError('Expected property serving_status to be a basestring')
-        __self__.serving_status = serving_status
-        """
-        The serving status of the app.
-        """
-        __props__['servingStatus'] = serving_status
+        __props__['serving_status'] = serving_status
 
-        __self__.code_bucket = pulumi.runtime.UNKNOWN
-        """
-        The GCS bucket code is being stored in for this app.
-        """
-        __self__.default_bucket = pulumi.runtime.UNKNOWN
-        """
-        The GCS bucket content is being stored in for this app.
-        """
-        __self__.default_hostname = pulumi.runtime.UNKNOWN
-        """
-        The default hostname for this app.
-        """
-        __self__.gcr_domain = pulumi.runtime.UNKNOWN
-        """
-        The GCR domain used for storing managed Docker images for this app.
-        """
-        __self__.name = pulumi.runtime.UNKNOWN
-        """
-        Unique name of the app, usually `apps/{PROJECT_ID}`
-        """
-        __self__.url_dispatch_rules = pulumi.runtime.UNKNOWN
-        """
-        A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-        """
+        __props__['code_bucket'] = None
+        __props__['default_bucket'] = None
+        __props__['default_hostname'] = None
+        __props__['gcr_domain'] = None
+        __props__['name'] = None
+        __props__['url_dispatch_rules'] = None
 
         super(Application, __self__).__init__(
             'gcp:appengine/application:Application',
@@ -97,26 +51,10 @@ class Application(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'authDomain' in outs:
-            self.auth_domain = outs['authDomain']
-        if 'codeBucket' in outs:
-            self.code_bucket = outs['codeBucket']
-        if 'defaultBucket' in outs:
-            self.default_bucket = outs['defaultBucket']
-        if 'defaultHostname' in outs:
-            self.default_hostname = outs['defaultHostname']
-        if 'featureSettings' in outs:
-            self.feature_settings = outs['featureSettings']
-        if 'gcrDomain' in outs:
-            self.gcr_domain = outs['gcrDomain']
-        if 'locationId' in outs:
-            self.location_id = outs['locationId']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'project' in outs:
-            self.project = outs['project']
-        if 'servingStatus' in outs:
-            self.serving_status = outs['servingStatus']
-        if 'urlDispatchRules' in outs:
-            self.url_dispatch_rules = outs['urlDispatchRules']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

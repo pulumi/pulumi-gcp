@@ -4,27 +4,27 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetRegistryRepositoryResult(object):
     """
     A collection of values returned by getRegistryRepository.
     """
     def __init__(__self__, project=None, repository_url=None, id=None):
-        if project and not isinstance(project, basestring):
-            raise TypeError('Expected argument project to be a basestring')
+        if project and not isinstance(project, str):
+            raise TypeError('Expected argument project to be a str')
         __self__.project = project
-        if repository_url and not isinstance(repository_url, basestring):
-            raise TypeError('Expected argument repository_url to be a basestring')
+        if repository_url and not isinstance(repository_url, str):
+            raise TypeError('Expected argument repository_url to be a str')
         __self__.repository_url = repository_url
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_registry_repository(project=None, region=None):
+async def get_registry_repository(project=None, region=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
@@ -34,7 +34,7 @@ def get_registry_repository(project=None, region=None):
 
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__)
 
     return GetRegistryRepositoryResult(
         project=__ret__.get('project'),
