@@ -23,8 +23,8 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCServiceProjectState): SharedVPCServiceProject {
-        return new SharedVPCServiceProject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCServiceProjectState, opts?: pulumi.CustomResourceOptions): SharedVPCServiceProject {
+        return new SharedVPCServiceProject(name, <any>state, { ...opts, id: id });
     }
 
     /**

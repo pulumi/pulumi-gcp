@@ -13,8 +13,8 @@ export class Environment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EnvironmentState): Environment {
-        return new Environment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EnvironmentState, opts?: pulumi.CustomResourceOptions): Environment {
+        return new Environment(name, <any>state, { ...opts, id: id });
     }
 
     public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string} } }>;

@@ -24,8 +24,8 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionIAMMemberState): SubscriptionIAMMember {
-        return new SubscriptionIAMMember(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionIAMMemberState, opts?: pulumi.CustomResourceOptions): SubscriptionIAMMember {
+        return new SubscriptionIAMMember(name, <any>state, { ...opts, id: id });
     }
 
     /**
