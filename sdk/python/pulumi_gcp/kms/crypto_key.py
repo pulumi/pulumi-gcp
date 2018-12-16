@@ -16,7 +16,7 @@ class CryptoKey(pulumi.CustomResource):
     A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
     Google Cloud KMS KeyRing.
     
-    ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
+    > Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
     Terraform-managed CryptoKey will remove it from state and delete all
     CryptoKeyVersions, rendering the key unusable, but **will not delete the
     resource on the server**. When Terraform destroys these keys, any data

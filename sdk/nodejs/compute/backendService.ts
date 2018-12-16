@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Backend Service defines a group of virtual machines that will serve traffic for load balancing. For more information
- * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
- * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
- * 
- * For internal load balancing, use a [google_compute_region_backend_service](https://www.terraform.io/docs/providers/google/r/compute_region_backend_service.html).
- */
 export class BackendService extends pulumi.CustomResource {
     /**
      * Get an existing BackendService resource's state with the given name, ID, and optional extra
@@ -20,90 +13,26 @@ export class BackendService extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendServiceState): BackendService {
-        return new BackendService(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendServiceState, opts?: pulumi.CustomResourceOptions): BackendService {
+        return new BackendService(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The list of backends that serve this BackendService. Structure is documented below.
-     */
     public readonly backends: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
-    /**
-     * Cloud CDN configuration for this BackendService. Structure is documented below.
-     */
     public readonly cdnPolicy: pulumi.Output<{ cacheKeyPolicy?: { includeHost?: boolean, includeProtocol?: boolean, includeQueryString?: boolean, queryStringBlacklists?: string[], queryStringWhitelists?: string[] } }>;
-    /**
-     * Time for which instance will be drained (not accept new connections,
-     * but still work to finish started ones). Defaults to `300`.
-     */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
-    /**
-     * Headers that the
-     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
-    /**
-     * The textual description for the backend service.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Whether or not to enable the Cloud CDN on the backend service.
-     */
     public readonly enableCdn: pulumi.Output<boolean | undefined>;
-    /**
-     * The fingerprint of the backend service.
-     */
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    /**
-     * Specifies a list of HTTP/HTTPS health checks
-     * for checking the health of the backend service. Currently at most one health
-     * check can be specified, and a health check is required.
-     */
     public readonly healthChecks: pulumi.Output<string>;
-    /**
-     * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
-     */
     public readonly iap: pulumi.Output<{ oauth2ClientId: string, oauth2ClientSecret: string } | undefined>;
-    /**
-     * The name of the backend service.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The name of a service that has been added to an
-     * instance group in this backend. See [related docs](https://cloud.google.com/compute/docs/instance-groups/#specifying_service_endpoints) for details. Defaults to http.
-     */
     public readonly portName: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The protocol for incoming requests. Defaults to
-     * `HTTP`.
-     */
     public readonly protocol: pulumi.Output<string>;
-    /**
-     * Name or URI of a
-     * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
-     */
     public readonly securityPolicy: pulumi.Output<string | undefined>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * How to distribute load. Options are `NONE` (no
-     * affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
-     * `GENERATED_COOKIE` (distribute load using a generated session cookie).
-     */
     public readonly sessionAffinity: pulumi.Output<string>;
-    /**
-     * The number of secs to wait for a backend to respond
-     * to a request before considering the request failed. Defaults to `30`.
-     */
     public readonly timeoutSec: pulumi.Output<number>;
 
     /**
@@ -166,86 +95,22 @@ export class BackendService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendService resources.
  */
 export interface BackendServiceState {
-    /**
-     * The list of backends that serve this BackendService. Structure is documented below.
-     */
     readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
-    /**
-     * Cloud CDN configuration for this BackendService. Structure is documented below.
-     */
     readonly cdnPolicy?: pulumi.Input<{ cacheKeyPolicy?: pulumi.Input<{ includeHost?: pulumi.Input<boolean>, includeProtocol?: pulumi.Input<boolean>, includeQueryString?: pulumi.Input<boolean>, queryStringBlacklists?: pulumi.Input<pulumi.Input<string>[]>, queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]> }> }>;
-    /**
-     * Time for which instance will be drained (not accept new connections,
-     * but still work to finish started ones). Defaults to `300`.
-     */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
-    /**
-     * Headers that the
-     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The textual description for the backend service.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Whether or not to enable the Cloud CDN on the backend service.
-     */
     readonly enableCdn?: pulumi.Input<boolean>;
-    /**
-     * The fingerprint of the backend service.
-     */
     readonly fingerprint?: pulumi.Input<string>;
-    /**
-     * Specifies a list of HTTP/HTTPS health checks
-     * for checking the health of the backend service. Currently at most one health
-     * check can be specified, and a health check is required.
-     */
     readonly healthChecks?: pulumi.Input<string>;
-    /**
-     * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
-     */
     readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string> }>;
-    /**
-     * The name of the backend service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of a service that has been added to an
-     * instance group in this backend. See [related docs](https://cloud.google.com/compute/docs/instance-groups/#specifying_service_endpoints) for details. Defaults to http.
-     */
     readonly portName?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The protocol for incoming requests. Defaults to
-     * `HTTP`.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * Name or URI of a
-     * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
-     */
     readonly securityPolicy?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * How to distribute load. Options are `NONE` (no
-     * affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
-     * `GENERATED_COOKIE` (distribute load using a generated session cookie).
-     */
     readonly sessionAffinity?: pulumi.Input<string>;
-    /**
-     * The number of secs to wait for a backend to respond
-     * to a request before considering the request failed. Defaults to `30`.
-     */
     readonly timeoutSec?: pulumi.Input<number>;
 }
 
@@ -253,77 +118,19 @@ export interface BackendServiceState {
  * The set of arguments for constructing a BackendService resource.
  */
 export interface BackendServiceArgs {
-    /**
-     * The list of backends that serve this BackendService. Structure is documented below.
-     */
     readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
-    /**
-     * Cloud CDN configuration for this BackendService. Structure is documented below.
-     */
     readonly cdnPolicy?: pulumi.Input<{ cacheKeyPolicy?: pulumi.Input<{ includeHost?: pulumi.Input<boolean>, includeProtocol?: pulumi.Input<boolean>, includeQueryString?: pulumi.Input<boolean>, queryStringBlacklists?: pulumi.Input<pulumi.Input<string>[]>, queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]> }> }>;
-    /**
-     * Time for which instance will be drained (not accept new connections,
-     * but still work to finish started ones). Defaults to `300`.
-     */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
-    /**
-     * Headers that the
-     * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The textual description for the backend service.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Whether or not to enable the Cloud CDN on the backend service.
-     */
     readonly enableCdn?: pulumi.Input<boolean>;
-    /**
-     * Specifies a list of HTTP/HTTPS health checks
-     * for checking the health of the backend service. Currently at most one health
-     * check can be specified, and a health check is required.
-     */
     readonly healthChecks: pulumi.Input<string>;
-    /**
-     * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
-     */
     readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string> }>;
-    /**
-     * The name of the backend service.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of a service that has been added to an
-     * instance group in this backend. See [related docs](https://cloud.google.com/compute/docs/instance-groups/#specifying_service_endpoints) for details. Defaults to http.
-     */
     readonly portName?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The protocol for incoming requests. Defaults to
-     * `HTTP`.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * Name or URI of a
-     * [security policy](https://cloud.google.com/armor/docs/security-policy-concepts) to add to the backend service.
-     */
     readonly securityPolicy?: pulumi.Input<string>;
-    /**
-     * How to distribute load. Options are `NONE` (no
-     * affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
-     * `GENERATED_COOKIE` (distribute load using a generated session cookie).
-     */
     readonly sessionAffinity?: pulumi.Input<string>;
-    /**
-     * The number of secs to wait for a backend to respond
-     * to a request before considering the request failed. Defaults to `30`.
-     */
     readonly timeoutSec?: pulumi.Input<number>;
 }

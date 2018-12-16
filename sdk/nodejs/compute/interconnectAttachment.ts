@@ -13,8 +13,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InterconnectAttachmentState): InterconnectAttachment {
-        return new InterconnectAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InterconnectAttachmentState, opts?: pulumi.CustomResourceOptions): InterconnectAttachment {
+        return new InterconnectAttachment(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly cloudRouterIpAddress: pulumi.Output<string>;
@@ -25,16 +25,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     public readonly interconnect: pulumi.Output<string>;
     public readonly name: pulumi.Output<string>;
     public /*out*/ readonly privateInterconnectInfo: pulumi.Output<{ tag8021q: number }>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
     public readonly router: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -98,16 +91,9 @@ export interface InterconnectAttachmentState {
     readonly interconnect?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly privateInterconnectInfo?: pulumi.Input<{ tag8021q?: pulumi.Input<number> }>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly router?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -118,10 +104,6 @@ export interface InterconnectAttachmentArgs {
     readonly description?: pulumi.Input<string>;
     readonly interconnect: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly router: pulumi.Input<string>;

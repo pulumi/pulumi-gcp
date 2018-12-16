@@ -34,6 +34,7 @@ from .region_instance_group_manager import *
 from .route import *
 from .router import *
 from .router_interface import *
+from .router_nat import *
 from .router_peer import *
 from .security_policy import *
 from .shared_vpc_host_project import *

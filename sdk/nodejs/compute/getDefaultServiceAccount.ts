@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve default service account for this project
- */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", {
@@ -18,9 +15,6 @@ export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, op
  * A collection of arguments for invoking getDefaultServiceAccount.
  */
 export interface GetDefaultServiceAccountArgs {
-    /**
-     * The project ID. If it is not provided, the provider project is used.
-     */
     readonly project?: string;
 }
 
@@ -28,9 +22,6 @@ export interface GetDefaultServiceAccountArgs {
  * A collection of values returned by getDefaultServiceAccount.
  */
 export interface GetDefaultServiceAccountResult {
-    /**
-     * Email address of the default service account used by VMs running in this project
-     */
     readonly email: string;
     readonly project: string;
     /**

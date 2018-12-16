@@ -12,7 +12,7 @@ import (
 // and
 // [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters).
 // 
-// ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
+// > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 type Cluster struct {
 	s *pulumi.ResourceState
@@ -48,6 +48,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["nodeVersion"] = nil
 		inputs["podSecurityPolicyConfig"] = nil
 		inputs["privateCluster"] = nil
+		inputs["privateClusterConfig"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["removeDefaultNodePool"] = nil
@@ -80,6 +81,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["nodeVersion"] = args.NodeVersion
 		inputs["podSecurityPolicyConfig"] = args.PodSecurityPolicyConfig
 		inputs["privateCluster"] = args.PrivateCluster
+		inputs["privateClusterConfig"] = args.PrivateClusterConfig
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
@@ -131,6 +133,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["nodeVersion"] = state.NodeVersion
 		inputs["podSecurityPolicyConfig"] = state.PodSecurityPolicyConfig
 		inputs["privateCluster"] = state.PrivateCluster
+		inputs["privateClusterConfig"] = state.PrivateClusterConfig
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
@@ -326,6 +329,10 @@ func (r *Cluster) NodeConfig() *pulumi.Output {
 
 // List of node pools associated with this cluster.
 // See google_container_node_pool for schema.
+// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
+// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
+// to say "these are the _only_ node pools associated with this cluster", use the
+// google_container_node_pool resource instead of this property.
 func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodePools"])
 }
@@ -355,6 +362,14 @@ func (r *Cluster) PodSecurityPolicyConfig() *pulumi.Output {
 // This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
 func (r *Cluster) PrivateCluster() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["privateCluster"])
+}
+
+// A set of options for creating
+// a private cluster. Structure is documented below.
+// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+func (r *Cluster) PrivateClusterConfig() *pulumi.Output {
+	return r.s.State["privateClusterConfig"]
 }
 
 // The ID of the project in which the resource belongs. If it
@@ -491,6 +506,10 @@ type ClusterState struct {
 	NodeConfig interface{}
 	// List of node pools associated with this cluster.
 	// See google_container_node_pool for schema.
+	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
+	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
+	// to say "these are the _only_ node pools associated with this cluster", use the
+	// google_container_node_pool resource instead of this property.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default
@@ -510,6 +529,11 @@ type ClusterState struct {
 	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	// This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
 	PrivateCluster interface{}
+	// A set of options for creating
+	// a private cluster. Structure is documented below.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
@@ -619,6 +643,10 @@ type ClusterArgs struct {
 	NodeConfig interface{}
 	// List of node pools associated with this cluster.
 	// See google_container_node_pool for schema.
+	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
+	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
+	// to say "these are the _only_ node pools associated with this cluster", use the
+	// google_container_node_pool resource instead of this property.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default
@@ -638,6 +666,11 @@ type ClusterArgs struct {
 	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	// This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
 	PrivateCluster interface{}
+	// A set of options for creating
+	// a private cluster. Structure is documented below.
+	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
+	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}

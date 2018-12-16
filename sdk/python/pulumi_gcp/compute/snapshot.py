@@ -8,12 +8,27 @@ from .. import utilities, tables
 
 class Snapshot(pulumi.CustomResource):
     """
-    Creates a new snapshot of a disk within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/snapshots).
+    Represents a Persistent Disk Snapshot resource.
+    
+    Use snapshots to back up data from your persistent disks. Snapshots are
+    different from public images and custom images, which are used primarily
+    to create instances or configure instance templates. Snapshots are useful
+    for periodic backup of the data on your persistent disks. You can create
+    snapshots from persistent disks even while they are attached to running
+    instances.
+    
+    Snapshots are incremental, so you can create regular snapshots on a
+    persistent disk faster and at a much lower cost than if you regularly
+    created a full image of the disk.
+    
+    
+    To get more information about Snapshot, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
     """
-    def __init__(__self__, __name__, __opts__=None, labels=None, name=None, project=None, snapshot_encryption_key_raw=None, source_disk=None, source_disk_encryption_key_raw=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, snapshot_encryption_key_raw=None, source_disk=None, source_disk_encryption_key=None, source_disk_encryption_key_raw=None, zone=None):
         """Create a Snapshot resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,11 +39,15 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__['description'] = description
+
         __props__['labels'] = labels
 
         __props__['name'] = name
 
         __props__['project'] = project
+
+        __props__['snapshot_encryption_key'] = snapshot_encryption_key
 
         __props__['snapshot_encryption_key_raw'] = snapshot_encryption_key_raw
 
@@ -36,15 +55,22 @@ class Snapshot(pulumi.CustomResource):
             raise TypeError('Missing required property source_disk')
         __props__['source_disk'] = source_disk
 
+        __props__['source_disk_encryption_key'] = source_disk_encryption_key
+
         __props__['source_disk_encryption_key_raw'] = source_disk_encryption_key_raw
 
         __props__['zone'] = zone
 
+        __props__['creation_timestamp'] = None
+        __props__['disk_size_gb'] = None
         __props__['label_fingerprint'] = None
+        __props__['licenses'] = None
         __props__['self_link'] = None
         __props__['snapshot_encryption_key_sha256'] = None
+        __props__['snapshot_id'] = None
         __props__['source_disk_encryption_key_sha256'] = None
         __props__['source_disk_link'] = None
+        __props__['storage_bytes'] = None
 
         super(Snapshot, __self__).__init__(
             'gcp:compute/snapshot:Snapshot',

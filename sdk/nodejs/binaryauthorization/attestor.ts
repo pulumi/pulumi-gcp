@@ -13,8 +13,8 @@ export class Attestor extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttestorState): Attestor {
-        return new Attestor(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttestorState, opts?: pulumi.CustomResourceOptions): Attestor {
+        return new Attestor(name, <any>state, { ...opts, id: id });
     }
 
     public readonly attestationAuthorityNote: pulumi.Output<{ delegationServiceAccountEmail: string, noteReference: string, publicKeys?: { asciiArmoredPgpPublicKey: string, comment?: string, id: string }[] }>;

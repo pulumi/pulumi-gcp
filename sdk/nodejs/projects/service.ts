@@ -4,15 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows management of a single API service for an existing Google Cloud Platform project. 
- * 
- * For a list of services available, visit the
- * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
- * 
- * ~> **Note:** This resource _must not_ be used in conjunction with
- *    `google_project_services` or they will fight over which services should be enabled.
- */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -22,21 +13,12 @@ export class Service extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServiceState): Service {
-        return new Service(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServiceState, opts?: pulumi.CustomResourceOptions): Service {
+        return new Service(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     public readonly disableOnDestroy: pulumi.Output<boolean | undefined>;
-    /**
-     * The project ID. If not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The service to enable.
-     */
     public readonly service: pulumi.Output<string>;
 
     /**
@@ -71,17 +53,8 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
-    /**
-     * If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * The project ID. If not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The service to enable.
-     */
     readonly service?: pulumi.Input<string>;
 }
 
@@ -89,16 +62,7 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
-    /**
-     * If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * The project ID. If not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The service to enable.
-     */
     readonly service: pulumi.Input<string>;
 }

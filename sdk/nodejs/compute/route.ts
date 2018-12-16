@@ -13,8 +13,8 @@ export class Route extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteState): Route {
-        return new Route(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteState, opts?: pulumi.CustomResourceOptions): Route {
+        return new Route(name, <any>state, { ...opts, id: id });
     }
 
     public readonly description: pulumi.Output<string | undefined>;
@@ -23,25 +23,12 @@ export class Route extends pulumi.CustomResource {
     public readonly network: pulumi.Output<string>;
     public readonly nextHopGateway: pulumi.Output<string | undefined>;
     public readonly nextHopInstance: pulumi.Output<string | undefined>;
-    /**
-     * (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
-     * a URL.
-     */
     public readonly nextHopInstanceZone: pulumi.Output<string | undefined>;
     public readonly nextHopIp: pulumi.Output<string | undefined>;
     public /*out*/ readonly nextHopNetwork: pulumi.Output<string>;
     public readonly nextHopVpnTunnel: pulumi.Output<string | undefined>;
     public readonly priority: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly tags: pulumi.Output<string[] | undefined>;
 
@@ -108,25 +95,12 @@ export interface RouteState {
     readonly network?: pulumi.Input<string>;
     readonly nextHopGateway?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
-    /**
-     * (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
-     * a URL.
-     */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
     readonly nextHopIp?: pulumi.Input<string>;
     readonly nextHopNetwork?: pulumi.Input<string>;
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -141,20 +115,10 @@ export interface RouteArgs {
     readonly network: pulumi.Input<string>;
     readonly nextHopGateway?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
-    /**
-     * (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
-     * a URL.
-     */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
     readonly nextHopIp?: pulumi.Input<string>;
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

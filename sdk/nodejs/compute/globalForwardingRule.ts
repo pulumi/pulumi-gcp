@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Global Forwarding Rule within GCE. This binds an ip and port to a target HTTP(s) proxy. For more
- * information see [the official
- * documentation](https://cloud.google.com/compute/docs/load-balancing/http/global-forwarding-rules) and
- * [API](https://cloud.google.com/compute/docs/reference/latest/globalForwardingRules).
- */
 export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * Get an existing GlobalForwardingRule resource's state with the given name, ID, and optional extra
@@ -19,71 +13,20 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalForwardingRuleState): GlobalForwardingRule {
-        return new GlobalForwardingRule(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions): GlobalForwardingRule {
+        return new GlobalForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Textual description field.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     public readonly ipAddress: pulumi.Output<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     public readonly ipProtocol: pulumi.Output<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     public readonly ipVersion: pulumi.Output<string | undefined>;
-    /**
-     * The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    /**
-     * 
-     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
     public readonly portRange: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     public readonly target: pulumi.Output<string>;
 
     /**
@@ -134,67 +77,16 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalForwardingRule resources.
  */
 export interface GlobalForwardingRuleState {
-    /**
-     * Textual description field.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     readonly ipVersion?: pulumi.Input<string>;
-    /**
-     * The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly labelFingerprint?: pulumi.Input<string>;
-    /**
-     * 
-     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
     readonly portRange?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     readonly target?: pulumi.Input<string>;
 }
 
@@ -202,57 +94,13 @@ export interface GlobalForwardingRuleState {
  * The set of arguments for constructing a GlobalForwardingRule resource.
  */
 export interface GlobalForwardingRuleArgs {
-    /**
-     * Textual description field.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     readonly ipVersion?: pulumi.Input<string>;
-    /**
-     * 
-     * A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
     readonly portRange?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     readonly target: pulumi.Input<string>;
 }

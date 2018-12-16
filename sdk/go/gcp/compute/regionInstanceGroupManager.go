@@ -13,7 +13,7 @@ import (
 // template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
 // 
-// ~> **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+// > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
 type RegionInstanceGroupManager struct {
 	s *pulumi.ResourceState
 }
@@ -209,7 +209,9 @@ func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 // resource is modified, a value of `"NONE"` will prevent any of the managed
 // instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
 // is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-// `rolling_update_policy` block to be set.
+// `rolling_update_policy` block to be set. This field is deprecated as in
+// `2.0.0` it has no functionality anymore. It will be removed then. This field
+// is only present in the `google` provider.
 func (r *RegionInstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateStrategy"])
 }
@@ -286,7 +288,9 @@ type RegionInstanceGroupManagerState struct {
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
 	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
 	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set.
+	// `rolling_update_policy` block to be set. This field is deprecated as in
+	// `2.0.0` it has no functionality anymore. It will be removed then. This field
+	// is only present in the `google` provider.
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -350,7 +354,9 @@ type RegionInstanceGroupManagerArgs struct {
 	// resource is modified, a value of `"NONE"` will prevent any of the managed
 	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
 	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set.
+	// `rolling_update_policy` block to be set. This field is deprecated as in
+	// `2.0.0` it has no functionality anymore. It will be removed then. This field
+	// is only present in the `google` provider.
 	UpdateStrategy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.

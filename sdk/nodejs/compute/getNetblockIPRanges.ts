@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
- * 
- * https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
- */
 export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
     }, opts);
@@ -18,17 +13,8 @@ export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNet
  * A collection of values returned by getNetblockIPRanges.
  */
 export interface GetNetblockIPRangesResult {
-    /**
-     * Retrieve list of all CIDR blocks.
-     */
     readonly cidrBlocks: string[];
-    /**
-     * Retrieve list of the IP4 CIDR blocks
-     */
     readonly cidrBlocksIpv4s: string[];
-    /**
-     * Retrieve list of the IP6 CIDR blocks.
-     */
     readonly cidrBlocksIpv6s: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

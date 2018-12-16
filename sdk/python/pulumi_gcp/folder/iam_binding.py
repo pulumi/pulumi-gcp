@@ -11,7 +11,7 @@ class IAMBinding(pulumi.CustomResource):
     Allows creation and management of a single binding within IAM policy for
     an existing Google Cloud Platform folder.
     
-    ~> **Note:** This resource _must not_ be used in conjunction with
+    > **Note:** This resource _must not_ be used in conjunction with
        `google_folder_iam_policy` or they will fight over what your policy
        should be.
     """

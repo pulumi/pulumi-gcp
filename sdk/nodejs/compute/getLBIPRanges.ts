@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to access IP ranges in your firewall rules.
- * 
- * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
- */
 export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);
@@ -18,13 +13,7 @@ export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRange
  * A collection of values returned by getLBIPRanges.
  */
 export interface GetLBIPRangesResult {
-    /**
-     * The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
-     */
     readonly httpSslTcpInternals: string[];
-    /**
-     * The IP ranges used for health checks when **Network load balancing** is used
-     */
     readonly networks: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

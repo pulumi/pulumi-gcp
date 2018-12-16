@@ -13,8 +13,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HttpsHealthCheckState): HttpsHealthCheck {
-        return new HttpsHealthCheck(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HttpsHealthCheckState, opts?: pulumi.CustomResourceOptions): HttpsHealthCheck {
+        return new HttpsHealthCheck(name, <any>state, { ...opts, id: id });
     }
 
     public readonly checkIntervalSec: pulumi.Output<number | undefined>;
@@ -24,15 +24,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
     public readonly host: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly port: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly requestPath: pulumi.Output<string | undefined>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly timeoutSec: pulumi.Output<number | undefined>;
     public readonly unhealthyThreshold: pulumi.Output<number | undefined>;
@@ -91,15 +84,8 @@ export interface HttpsHealthCheckState {
     readonly host?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly port?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly requestPath?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly timeoutSec?: pulumi.Input<number>;
     readonly unhealthyThreshold?: pulumi.Input<number>;
@@ -115,10 +101,6 @@ export interface HttpsHealthCheckArgs {
     readonly host?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly port?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly requestPath?: pulumi.Input<string>;
     readonly timeoutSec?: pulumi.Input<number>;

@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows management of enabled API services for an existing Google Cloud
- * Platform project. Services in an existing project that are not defined
- * in the config will be removed.
- * 
- * For a list of services available, visit the
- * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
- * 
- * ~> **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
- * 	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
- * 	*exclusively* a particular set of APIs are enabled, you should most likely use the
- * 	google_project_service resource, one resource per API.
- */
 export class Services extends pulumi.CustomResource {
     /**
      * Get an existing Services resource's state with the given name, ID, and optional extra
@@ -26,21 +13,12 @@ export class Services extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServicesState): Services {
-        return new Services(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServicesState, opts?: pulumi.CustomResourceOptions): Services {
+        return new Services(name, <any>state, { ...opts, id: id });
     }
 
     public readonly disableOnDestroy: pulumi.Output<boolean | undefined>;
-    /**
-     * The project ID.
-     * Changing this forces Terraform to attempt to disable all previously managed
-     * API services in the previous project.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The list of services that are enabled. Supports
-     * update.
-     */
     public readonly services: pulumi.Output<string[]>;
 
     /**
@@ -76,16 +54,7 @@ export class Services extends pulumi.CustomResource {
  */
 export interface ServicesState {
     readonly disableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * The project ID.
-     * Changing this forces Terraform to attempt to disable all previously managed
-     * API services in the previous project.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The list of services that are enabled. Supports
-     * update.
-     */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -94,15 +63,6 @@ export interface ServicesState {
  */
 export interface ServicesArgs {
     readonly disableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * The project ID.
-     * Changing this forces Terraform to attempt to disable all previously managed
-     * API services in the previous project.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The list of services that are enabled. Supports
-     * update.
-     */
     readonly services: pulumi.Input<pulumi.Input<string>[]>;
 }

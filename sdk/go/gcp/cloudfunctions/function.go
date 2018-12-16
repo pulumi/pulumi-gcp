@@ -38,6 +38,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["retryOnFailure"] = nil
+		inputs["runtime"] = nil
 		inputs["sourceArchiveBucket"] = nil
 		inputs["sourceArchiveObject"] = nil
 		inputs["timeout"] = nil
@@ -56,6 +57,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["retryOnFailure"] = args.RetryOnFailure
+		inputs["runtime"] = args.Runtime
 		inputs["sourceArchiveBucket"] = args.SourceArchiveBucket
 		inputs["sourceArchiveObject"] = args.SourceArchiveObject
 		inputs["timeout"] = args.Timeout
@@ -87,6 +89,7 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["retryOnFailure"] = state.RetryOnFailure
+		inputs["runtime"] = state.Runtime
 		inputs["sourceArchiveBucket"] = state.SourceArchiveBucket
 		inputs["sourceArchiveObject"] = state.SourceArchiveObject
 		inputs["timeout"] = state.Timeout
@@ -167,6 +170,11 @@ func (r *Function) RetryOnFailure() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["retryOnFailure"])
 }
 
+// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+func (r *Function) Runtime() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["runtime"])
+}
+
 // The GCS bucket containing the zip archive which contains the function.
 func (r *Function) SourceArchiveBucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceArchiveBucket"])
@@ -224,6 +232,8 @@ type FunctionState struct {
 	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
 	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
 	RetryOnFailure interface{}
+	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+	Runtime interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.
@@ -265,6 +275,8 @@ type FunctionArgs struct {
 	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
 	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
 	RetryOnFailure interface{}
+	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+	Runtime interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.

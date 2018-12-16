@@ -4,15 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Enables the Google Compute Engine
- * [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
- * feature for a project, assigning it as a Shared VPC host project.
- * 
- * For more information, see,
- * [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
- * where the Shared VPC feature is referred to by its former name "XPN".
- */
 export class SharedVPCHostProject extends pulumi.CustomResource {
     /**
      * Get an existing SharedVPCHostProject resource's state with the given name, ID, and optional extra
@@ -22,13 +13,10 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCHostProjectState): SharedVPCHostProject {
-        return new SharedVPCHostProject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCHostProjectState, opts?: pulumi.CustomResourceOptions): SharedVPCHostProject {
+        return new SharedVPCHostProject(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the project that will serve as a Shared VPC host project
-     */
     public readonly project: pulumi.Output<string>;
 
     /**
@@ -59,9 +47,6 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SharedVPCHostProject resources.
  */
 export interface SharedVPCHostProjectState {
-    /**
-     * The ID of the project that will serve as a Shared VPC host project
-     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -69,8 +54,5 @@ export interface SharedVPCHostProjectState {
  * The set of arguments for constructing a SharedVPCHostProject resource.
  */
 export interface SharedVPCHostProjectArgs {
-    /**
-     * The ID of the project that will serve as a Shared VPC host project
-     */
     readonly project: pulumi.Input<string>;
 }

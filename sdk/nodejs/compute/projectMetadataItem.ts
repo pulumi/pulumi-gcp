@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a single key/value pair on metadata common to all instances for
- * a project in GCE. Using `google_compute_project_metadata_item` lets you
- * manage a single key/value setting in Terraform rather than the entire
- * project metadata map.
- */
 export class ProjectMetadataItem extends pulumi.CustomResource {
     /**
      * Get an existing ProjectMetadataItem resource's state with the given name, ID, and optional extra
@@ -19,22 +13,12 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectMetadataItemState): ProjectMetadataItem {
-        return new ProjectMetadataItem(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectMetadataItemState, opts?: pulumi.CustomResourceOptions): ProjectMetadataItem {
+        return new ProjectMetadataItem(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The metadata key to set.
-     */
     public readonly key: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The value to set for the given metadata key.
-     */
     public readonly value: pulumi.Output<string>;
 
     /**
@@ -72,18 +56,8 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectMetadataItem resources.
  */
 export interface ProjectMetadataItemState {
-    /**
-     * The metadata key to set.
-     */
     readonly key?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The value to set for the given metadata key.
-     */
     readonly value?: pulumi.Input<string>;
 }
 
@@ -91,17 +65,7 @@ export interface ProjectMetadataItemState {
  * The set of arguments for constructing a ProjectMetadataItem resource.
  */
 export interface ProjectMetadataItemArgs {
-    /**
-     * The metadata key to set.
-     */
     readonly key: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The value to set for the given metadata key.
-     */
     readonly value: pulumi.Input<string>;
 }

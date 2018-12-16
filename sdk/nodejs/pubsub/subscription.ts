@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a subscription in Google's pubsub queueing system. For more information see
- * [the official documentation](https://cloud.google.com/pubsub/docs) and
- * [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
- * 
- */
 export class Subscription extends pulumi.CustomResource {
     /**
      * Get an existing Subscription resource's state with the given name, ID, and optional extra
@@ -19,39 +13,15 @@ export class Subscription extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionState): Subscription {
-        return new Subscription(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionState, opts?: pulumi.CustomResourceOptions): Subscription {
+        return new Subscription(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The maximum number of seconds a
-     * subscriber has to acknowledge a received message, otherwise the message is
-     * redelivered. Changing this forces a new resource to be created.
-     */
     public readonly ackDeadlineSeconds: pulumi.Output<number>;
-    /**
-     * A unique name for the resource, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
-     */
     public /*out*/ readonly path: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * Block configuration for push options. More
-     * configuration options are detailed below.
-     */
     public readonly pushConfig: pulumi.Output<{ attributes?: {[key: string]: string}, pushEndpoint: string } | undefined>;
-    /**
-     * The topic name or id to bind this subscription to, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     public readonly topic: pulumi.Output<string>;
 
     /**
@@ -92,35 +62,11 @@ export class Subscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subscription resources.
  */
 export interface SubscriptionState {
-    /**
-     * The maximum number of seconds a
-     * subscriber has to acknowledge a received message, otherwise the message is
-     * redelivered. Changing this forces a new resource to be created.
-     */
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
-    /**
-     * A unique name for the resource, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
-     */
     readonly path?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * Block configuration for push options. More
-     * configuration options are detailed below.
-     */
     readonly pushConfig?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pushEndpoint: pulumi.Input<string> }>;
-    /**
-     * The topic name or id to bind this subscription to, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     readonly topic?: pulumi.Input<string>;
 }
 
@@ -128,30 +74,9 @@ export interface SubscriptionState {
  * The set of arguments for constructing a Subscription resource.
  */
 export interface SubscriptionArgs {
-    /**
-     * The maximum number of seconds a
-     * subscriber has to acknowledge a received message, otherwise the message is
-     * redelivered. Changing this forces a new resource to be created.
-     */
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
-    /**
-     * A unique name for the resource, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * Block configuration for push options. More
-     * configuration options are detailed below.
-     */
     readonly pushConfig?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pushEndpoint: pulumi.Input<string> }>;
-    /**
-     * The topic name or id to bind this subscription to, required by pubsub.
-     * Changing this forces a new resource to be created.
-     */
     readonly topic: pulumi.Input<string>;
 }

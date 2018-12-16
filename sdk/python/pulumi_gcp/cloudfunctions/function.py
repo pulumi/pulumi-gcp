@@ -13,7 +13,7 @@ class Function(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/functions/docs/apis).
     """
-    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
+    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
         """Create a Function resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -45,6 +45,8 @@ class Function(pulumi.CustomResource):
         __props__['region'] = region
 
         __props__['retry_on_failure'] = retry_on_failure
+
+        __props__['runtime'] = runtime
 
         if not source_archive_bucket:
             raise TypeError('Missing required property source_archive_bucket')

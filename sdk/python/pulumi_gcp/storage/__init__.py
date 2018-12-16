@@ -9,8 +9,10 @@ from .bucket_iam_binding import *
 from .bucket_iam_member import *
 from .bucket_iam_policy import *
 from .bucket_object import *
+from .default_object_access_control import *
 from .default_object_acl import *
 from .notification import *
+from .object_access_control import *
 from .object_acl import *
 from .get_object_signed_url import *
 from .get_project_service_account import *

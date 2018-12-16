@@ -50,6 +50,7 @@ export * from "./regionInstanceGroupManager";
 export * from "./route";
 export * from "./router";
 export * from "./routerInterface";
+export * from "./routerNat";
 export * from "./routerPeer";
 export * from "./sSLCertificate";
 export * from "./sSLPolicy";

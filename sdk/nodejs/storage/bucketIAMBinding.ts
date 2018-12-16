@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * * `google_storage_bucket_iam_policy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple google_storage_bucket_iam_binding resources will be much safer. See the usage example on how to work with policy correctly.
  * 
  * 
- * ~> **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
  */
 export class BucketIAMBinding extends pulumi.CustomResource {
     /**
@@ -23,8 +23,8 @@ export class BucketIAMBinding extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketIAMBindingState): BucketIAMBinding {
-        return new BucketIAMBinding(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketIAMBindingState, opts?: pulumi.CustomResourceOptions): BucketIAMBinding {
+        return new BucketIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
     /**

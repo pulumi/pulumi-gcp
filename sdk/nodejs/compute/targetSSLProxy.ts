@@ -13,24 +13,17 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetSSLProxyState): TargetSSLProxy {
-        return new TargetSSLProxy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetSSLProxyState, opts?: pulumi.CustomResourceOptions): TargetSSLProxy {
+        return new TargetSSLProxy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly backendService: pulumi.Output<string>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly proxyHeader: pulumi.Output<string | undefined>;
     public /*out*/ readonly proxyId: pulumi.Output<number>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sslCertificates: pulumi.Output<string>;
     public readonly sslPolicy: pulumi.Output<string | undefined>;
@@ -88,16 +81,9 @@ export interface TargetSSLProxyState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly proxyHeader?: pulumi.Input<string>;
     readonly proxyId?: pulumi.Input<number>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly sslCertificates?: pulumi.Input<string>;
     readonly sslPolicy?: pulumi.Input<string>;
@@ -110,10 +96,6 @@ export interface TargetSSLProxyArgs {
     readonly backendService: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly proxyHeader?: pulumi.Input<string>;
     readonly sslCertificates: pulumi.Input<string>;

@@ -11,7 +11,7 @@ import (
 // Allows creation and management of a single binding within IAM policy for
 // an existing Google Cloud Platform Organization.
 // 
-// ~> **Note:** This resource __must not__ be used in conjunction with
+// > **Note:** This resource __must not__ be used in conjunction with
 //    `google_organization_iam_member` for the __same role__ or they will fight over
 //    what your policy should be.
 type IAMBinding struct {

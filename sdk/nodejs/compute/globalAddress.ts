@@ -13,8 +13,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalAddressState): GlobalAddress {
-        return new GlobalAddress(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalAddressState, opts?: pulumi.CustomResourceOptions): GlobalAddress {
+        return new GlobalAddress(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly address: pulumi.Output<string>;
@@ -27,15 +27,8 @@ export class GlobalAddress extends pulumi.CustomResource {
     public readonly name: pulumi.Output<string>;
     public readonly network: pulumi.Output<string | undefined>;
     public readonly prefixLength: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly purpose: pulumi.Output<string | undefined>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -97,15 +90,8 @@ export interface GlobalAddressState {
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly prefixLength?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly purpose?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -120,10 +106,6 @@ export interface GlobalAddressArgs {
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly prefixLength?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly purpose?: pulumi.Input<string>;
 }

@@ -3,4 +3,4 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Make subpackages available:
-__all__ = ['appengine', 'bigquery', 'bigtable', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'folder', 'kms', 'logging', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'serviceAccount', 'sourcerepo', 'spanner', 'sql', 'storage']
+__all__ = ['appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'folder', 'iam', 'kms', 'logging', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'serviceAccount', 'sourcerepo', 'spanner', 'sql', 'storage']

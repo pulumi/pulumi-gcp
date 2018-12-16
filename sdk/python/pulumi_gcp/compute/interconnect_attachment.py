@@ -7,6 +7,11 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InterconnectAttachment(pulumi.CustomResource):
+    """
+    Represents an InterconnectAttachment (VLAN attachment) resource. For more
+    information, see Creating VLAN Attachments.
+    
+    """
     def __init__(__self__, __name__, __opts__=None, description=None, interconnect=None, name=None, project=None, region=None, router=None):
         """Create a InterconnectAttachment resource with the given unique name, props, and options."""
         if not __name__:

@@ -23,6 +23,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 	return &GetClusterResult{
 		AdditionalZones: outputs["additionalZones"],
 		AddonsConfigs: outputs["addonsConfigs"],
+		ClusterAutoscalings: outputs["clusterAutoscalings"],
 		ClusterIpv4Cidr: outputs["clusterIpv4Cidr"],
 		Description: outputs["description"],
 		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
@@ -48,6 +49,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		NodeVersion: outputs["nodeVersion"],
 		PodSecurityPolicyConfigs: outputs["podSecurityPolicyConfigs"],
 		PrivateCluster: outputs["privateCluster"],
+		PrivateClusterConfigs: outputs["privateClusterConfigs"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
 		Subnetwork: outputs["subnetwork"],
@@ -70,6 +72,7 @@ type GetClusterArgs struct {
 type GetClusterResult struct {
 	AdditionalZones interface{}
 	AddonsConfigs interface{}
+	ClusterAutoscalings interface{}
 	ClusterIpv4Cidr interface{}
 	Description interface{}
 	EnableBinaryAuthorization interface{}
@@ -95,6 +98,7 @@ type GetClusterResult struct {
 	NodeVersion interface{}
 	PodSecurityPolicyConfigs interface{}
 	PrivateCluster interface{}
+	PrivateClusterConfigs interface{}
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
 	Subnetwork interface{}

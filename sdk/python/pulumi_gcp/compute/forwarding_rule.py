@@ -7,6 +7,24 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
+    """
+    A ForwardingRule resource. A ForwardingRule resource specifies which pool
+    of target virtual machines to forward a packet to if it matches the given
+    [IPAddress, IPProtocol, portRange] tuple.
+    
+    
+    To get more information about ForwardingRule, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+    
+    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=forwarding_rule_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+      </a>
+    </div>
+    """
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
         """Create a ForwardingRule resource with the given unique name, props, and options."""
         if not __name__:

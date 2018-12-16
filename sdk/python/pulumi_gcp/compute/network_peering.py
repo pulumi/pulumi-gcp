@@ -13,9 +13,9 @@ class NetworkPeering(pulumi.CustomResource):
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/networks).
     
-    ~> **Note:** Both network must create a peering with each other for the peering to be functional.
+    > **Note:** Both network must create a peering with each other for the peering to be functional.
     
-    ~> **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+    > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
     """
     def __init__(__self__, __name__, __opts__=None, auto_create_routes=None, name=None, network=None, peer_network=None):
         """Create a NetworkPeering resource with the given unique name, props, and options."""

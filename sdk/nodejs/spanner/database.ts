@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
- */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra
@@ -16,33 +13,14 @@ export class Database extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState): Database {
-        return new Database(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState, opts?: pulumi.CustomResourceOptions): Database {
+        return new Database(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     public readonly ddls: pulumi.Output<string[] | undefined>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     public readonly instance: pulumi.Output<string>;
-    /**
-     * The name of the database.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The current state of the database.
-     */
     public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
@@ -81,29 +59,10 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     readonly instance?: pulumi.Input<string>;
-    /**
-     * The name of the database.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The current state of the database.
-     */
     readonly state?: pulumi.Input<string>;
 }
 
@@ -111,24 +70,8 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     readonly instance: pulumi.Input<string>;
-    /**
-     * The name of the database.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

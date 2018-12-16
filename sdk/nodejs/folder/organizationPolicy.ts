@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows management of Organization policies for a Google Folder. For more information see
- * [the official
- * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
- * [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
- */
 export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationPolicy resource's state with the given name, ID, and optional extra
@@ -19,42 +13,17 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OrganizationPolicyState): OrganizationPolicy {
-        return new OrganizationPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OrganizationPolicyState, opts?: pulumi.CustomResourceOptions): OrganizationPolicy {
+        return new OrganizationPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
-     */
     public readonly booleanPolicy: pulumi.Output<{ enforced: boolean } | undefined>;
-    /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     */
     public readonly constraint: pulumi.Output<string>;
-    /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
-     */
     public /*out*/ readonly etag: pulumi.Output<string>;
-    /**
-     * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-     */
     public readonly folder: pulumi.Output<string>;
-    /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
-     * can also be used to allow or deny all values. Structure is documented below.
-     */
     public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, suggestedValue: string } | undefined>;
-    /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
-     */
     public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
-    /**
-     * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-     */
     public /*out*/ readonly updateTime: pulumi.Output<string>;
-    /**
-     * Version of the Policy. Default version is 0.
-     */
     public readonly version: pulumi.Output<number>;
 
     /**
@@ -102,38 +71,13 @@ export class OrganizationPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationPolicy resources.
  */
 export interface OrganizationPolicyState {
-    /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
-     */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
-    /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     */
     readonly constraint?: pulumi.Input<string>;
-    /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
-     */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-     */
     readonly folder?: pulumi.Input<string>;
-    /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
-     * can also be used to allow or deny all values. Structure is documented below.
-     */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
-    /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
-     */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
-    /**
-     * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-     */
     readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Version of the Policy. Default version is 0.
-     */
     readonly version?: pulumi.Input<number>;
 }
 
@@ -141,29 +85,10 @@ export interface OrganizationPolicyState {
  * The set of arguments for constructing a OrganizationPolicy resource.
  */
 export interface OrganizationPolicyArgs {
-    /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
-     */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
-    /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     */
     readonly constraint: pulumi.Input<string>;
-    /**
-     * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-     */
     readonly folder: pulumi.Input<string>;
-    /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
-     * can also be used to allow or deny all values. Structure is documented below.
-     */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
-    /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
-     */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
-    /**
-     * Version of the Policy. Default version is 0.
-     */
     readonly version?: pulumi.Input<number>;
 }

@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a dataset resource for Google BigQuery. For more information see
- * [the official documentation](https://cloud.google.com/bigquery/docs/) and
- * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
- * 
- */
 export class Dataset extends pulumi.CustomResource {
     /**
      * Get an existing Dataset resource's state with the given name, ID, and optional extra
@@ -19,63 +13,21 @@ export class Dataset extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatasetState): Dataset {
-        return new Dataset(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatasetState, opts?: pulumi.CustomResourceOptions): Dataset {
+        return new Dataset(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     public readonly accesses: pulumi.Output<{ domain?: string, groupByEmail?: string, role?: string, specialGroup?: string, userByEmail?: string, view?: { datasetId: string, projectId: string, tableId: string } }[]>;
-    /**
-     * The time when this dataset was created, in milliseconds since the epoch.
-     */
     public /*out*/ readonly creationTime: pulumi.Output<number>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     public readonly datasetId: pulumi.Output<string>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     public readonly defaultTableExpirationMs: pulumi.Output<number | undefined>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * A hash of the resource.
-     */
     public /*out*/ readonly etag: pulumi.Output<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     public readonly friendlyName: pulumi.Output<string | undefined>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The date when this dataset or any of its tables was last modified,
-     * in milliseconds since the epoch.
-     */
     public /*out*/ readonly lastModifiedTime: pulumi.Output<number>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     public readonly location: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -128,59 +80,17 @@ export class Dataset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dataset resources.
  */
 export interface DatasetState {
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
-    /**
-     * The time when this dataset was created, in milliseconds since the epoch.
-     */
     readonly creationTime?: pulumi.Input<number>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     readonly datasetId?: pulumi.Input<string>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A hash of the resource.
-     */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     readonly friendlyName?: pulumi.Input<string>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The date when this dataset or any of its tables was last modified,
-     * in milliseconds since the epoch.
-     */
     readonly lastModifiedTime?: pulumi.Input<number>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     readonly location?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -188,41 +98,12 @@ export interface DatasetState {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     readonly datasetId: pulumi.Input<string>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     readonly friendlyName?: pulumi.Input<string>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     readonly location?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

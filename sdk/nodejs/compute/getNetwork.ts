@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get a network within GCE from its name.
- */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
@@ -18,14 +15,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkArgs {
-    /**
-     * The name of the network.
-     */
     readonly name: string;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: string;
 }
 
@@ -33,21 +23,9 @@ export interface GetNetworkArgs {
  * A collection of values returned by getNetwork.
  */
 export interface GetNetworkResult {
-    /**
-     * Description of this network.
-     */
     readonly description: string;
-    /**
-     * The IP address of the gateway.
-     */
     readonly gatewayIpv4: string;
-    /**
-     * The URI of the resource.
-     */
     readonly selfLink: string;
-    /**
-     * the list of subnetworks which belong to the network
-     */
     readonly subnetworksSelfLinks: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
