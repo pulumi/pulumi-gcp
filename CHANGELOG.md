@@ -1,5 +1,12 @@
 
-## 0.16.5 (unreleased)
+## 0.16.4 (unreleased)
+
+## 0.16.3 (Released December 22nd, 2018)
+
+### Improvements
+
+- `.get` methods can now work with just an `id` in most cases
+- Package installation does not fail when `pulumi` is not present
 
 ## 0.16.2 (Released Novemeber 13th, 2018)
 
