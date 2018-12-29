@@ -11,7 +11,7 @@ class InstallPluginCommand(install):
         check_call(['pulumi', 'plugin', 'install', 'resource', 'gcp', '${PLUGIN_VERSION}'])
 
 def readme():
-    with open('README.rst') as f:
+    with open('README.rst', encoding='utf-8') as f:
         return f.read()
 
 setup(name='pulumi_gcp',
