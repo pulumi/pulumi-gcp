@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of an App Engine application.
  * 
- * ~> App Engine applications cannot be deleted once they're created; you have to delete the
+ * > App Engine applications cannot be deleted once they're created; you have to delete the
  *    entire project to delete the application. Terraform will report the application has been
  *    successfully deleted; this is a limitation of Terraform, and will go away in the future.
  *    Terraform is not able to delete App Engine applications.
@@ -21,8 +21,8 @@ export class Application extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApplicationState): Application {
-        return new Application(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApplicationState, opts?: pulumi.CustomResourceOptions): Application {
+        return new Application(name, <any>state, { ...opts, id: id });
     }
 
     /**

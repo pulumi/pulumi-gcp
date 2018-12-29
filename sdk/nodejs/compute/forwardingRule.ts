@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A ForwardingRule resource. A ForwardingRule resource specifies which pool
+ * of target virtual machines to forward a packet to if it matches the given
+ * [IPAddress, IPProtocol, portRange] tuple.
+ * 
+ * 
+ * To get more information about ForwardingRule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_target_pool_default = new gcp.compute.TargetPool("default", {
+ *     name: "website-target-pool",
+ * });
+ * const google_compute_forwarding_rule_default = new gcp.compute.ForwardingRule("default", {
+ *     name: "website-forwarding-rule",
+ *     portRange: "80",
+ *     target: google_compute_target_pool_default.selfLink,
+ * });
+ * ```
+ */
 export class ForwardingRule extends pulumi.CustomResource {
     /**
      * Get an existing ForwardingRule resource's state with the given name, ID, and optional extra
@@ -13,8 +41,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ForwardingRuleState): ForwardingRule {
-        return new ForwardingRule(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ForwardingRuleState, opts?: pulumi.CustomResourceOptions): ForwardingRule {
+        return new ForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
     public readonly backendService: pulumi.Output<string | undefined>;

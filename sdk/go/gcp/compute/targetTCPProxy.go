@@ -8,6 +8,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a TargetTcpProxy resource, which is used by one or more
+// global forwarding rule to route incoming TCP requests to a Backend
+// service.
+// 
+// 
+// To get more information about TargetTcpProxy, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetTcpProxies)
+// * How-to Guides
+//     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 type TargetTCPProxy struct {
 	s *pulumi.ResourceState
 }

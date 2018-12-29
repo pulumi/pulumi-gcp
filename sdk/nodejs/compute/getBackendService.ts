@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Provide acces to a Backend Service's attribute. For more information
  * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_backend_service_baz = pulumi.output(gcp.compute.getBackendService({
+ *     name: "foobar",
+ * }));
+ * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {

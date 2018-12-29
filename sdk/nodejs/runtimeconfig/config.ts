@@ -9,6 +9,20 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a RuntimeConfig resource.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_runtimeconfig_config_my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ *     name: "my-service-runtime-config",
+ * });
+ * ```
  */
 export class Config extends pulumi.CustomResource {
     /**
@@ -19,8 +33,8 @@ export class Config extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConfigState): Config {
-        return new Config(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConfigState, opts?: pulumi.CustomResourceOptions): Config {
+        return new Config(name, <any>state, { ...opts, id: id });
     }
 
     /**

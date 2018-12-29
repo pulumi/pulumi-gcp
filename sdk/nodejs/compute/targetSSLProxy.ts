@@ -4,6 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a TargetSslProxy resource, which is used by one or more
+ * global forwarding rule to route incoming SSL requests to a backend
+ * service.
+ * 
+ * 
+ * To get more information about TargetSslProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetSslProxies)
+ * * How-to Guides
+ *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as fs from "fs";
+ * 
+ * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "health-check",
+ *     tcpHealthCheck: {
+ *         port: Number.parseFloat("443"),
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     name: "default-cert",
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_health_check_default.selfLink,
+ *     name: "backend-service",
+ *     protocol: "SSL",
+ * });
+ * const google_compute_target_ssl_proxy_default = new gcp.compute.TargetSSLProxy("default", {
+ *     backendService: google_compute_backend_service_default.selfLink,
+ *     name: "test-proxy",
+ *     sslCertificates: google_compute_ssl_certificate_default.selfLink,
+ * });
+ * ```
+ */
 export class TargetSSLProxy extends pulumi.CustomResource {
     /**
      * Get an existing TargetSSLProxy resource's state with the given name, ID, and optional extra
@@ -13,8 +57,8 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetSSLProxyState): TargetSSLProxy {
-        return new TargetSSLProxy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetSSLProxyState, opts?: pulumi.CustomResourceOptions): TargetSSLProxy {
+        return new TargetSSLProxy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly backendService: pulumi.Output<string>;

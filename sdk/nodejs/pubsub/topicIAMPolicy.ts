@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * * `google_pubsub_topic_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
  * * `google_pubsub_topic_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
  * 
- * ~> **Note:** `google_pubsub_topic_iam_policy` **cannot** be used in conjunction with `google_pubsub_topic_iam_binding` and `google_pubsub_topic_iam_member` or they will fight over what your policy should be.
+ * > **Note:** `google_pubsub_topic_iam_policy` **cannot** be used in conjunction with `google_pubsub_topic_iam_binding` and `google_pubsub_topic_iam_member` or they will fight over what your policy should be.
  * 
- * ~> **Note:** `google_pubsub_topic_iam_binding` resources **can be** used in conjunction with `google_pubsub_topic_iam_member` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `google_pubsub_topic_iam_binding` resources **can be** used in conjunction with `google_pubsub_topic_iam_member` resources **only if** they do not grant privilege to the same role.
  */
 export class TopicIAMPolicy extends pulumi.CustomResource {
     /**
@@ -24,8 +24,8 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIAMPolicyState): TopicIAMPolicy {
-        return new TopicIAMPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions): TopicIAMPolicy {
+        return new TopicIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /**

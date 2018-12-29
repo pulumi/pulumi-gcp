@@ -8,6 +8,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a Router resource.
+// 
+// 
+// To get more information about Router, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+// * How-to Guides
+//     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 type Router struct {
 	s *pulumi.ResourceState
 }

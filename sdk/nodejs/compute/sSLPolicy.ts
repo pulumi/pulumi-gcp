@@ -4,6 +4,43 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a SSL policy. SSL policies give you the ability to control the
+ * features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+ * 
+ * 
+ * To get more information about SslPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
+ * * How-to Guides
+ *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_ssl_policy_custom_ssl_policy = new gcp.compute.SSLPolicy("custom-ssl-policy", {
+ *     customFeatures: [
+ *         "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+ *         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+ *     ],
+ *     minTlsVersion: "TLS_1_2",
+ *     name: "custom-ssl-policy",
+ *     profile: "CUSTOM",
+ * });
+ * const google_compute_ssl_policy_nonprod_ssl_policy = new gcp.compute.SSLPolicy("nonprod-ssl-policy", {
+ *     minTlsVersion: "TLS_1_2",
+ *     name: "nonprod-ssl-policy",
+ *     profile: "MODERN",
+ * });
+ * const google_compute_ssl_policy_prod_ssl_policy = new gcp.compute.SSLPolicy("prod-ssl-policy", {
+ *     name: "production-ssl-policy",
+ *     profile: "MODERN",
+ * });
+ * ```
+ */
 export class SSLPolicy extends pulumi.CustomResource {
     /**
      * Get an existing SSLPolicy resource's state with the given name, ID, and optional extra
@@ -13,8 +50,8 @@ export class SSLPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SSLPolicyState): SSLPolicy {
-        return new SSLPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SSLPolicyState, opts?: pulumi.CustomResourceOptions): SSLPolicy {
+        return new SSLPolicy(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;

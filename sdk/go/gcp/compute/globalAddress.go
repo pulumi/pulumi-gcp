@@ -7,6 +7,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a Global Address resource. Global addresses are used for
+// HTTP(S) load balancing.
+// 
+// 
+// To get more information about GlobalAddress, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/globalAddresses)
+// * How-to Guides
+//     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 type GlobalAddress struct {
 	s *pulumi.ResourceState
 }

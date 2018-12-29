@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a TargetTcpProxy resource, which is used by one or more
+ * global forwarding rule to route incoming TCP requests to a Backend
+ * service.
+ * 
+ * 
+ * To get more information about TargetTcpProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetTcpProxies)
+ * * How-to Guides
+ *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "health-check",
+ *     tcpHealthCheck: {
+ *         port: Number.parseFloat("443"),
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_health_check_default.selfLink,
+ *     name: "backend-service",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_target_tcp_proxy_default = new gcp.compute.TargetTCPProxy("default", {
+ *     backendService: google_compute_backend_service_default.selfLink,
+ *     name: "test-proxy",
+ * });
+ * ```
+ */
 export class TargetTCPProxy extends pulumi.CustomResource {
     /**
      * Get an existing TargetTCPProxy resource's state with the given name, ID, and optional extra
@@ -13,8 +51,8 @@ export class TargetTCPProxy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetTCPProxyState): TargetTCPProxy {
-        return new TargetTCPProxy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetTCPProxyState, opts?: pulumi.CustomResourceOptions): TargetTCPProxy {
+        return new TargetTCPProxy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly backendService: pulumi.Output<string>;

@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  * 
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with Terraform.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_logging_billing_account_exclusion_my_exclusion = new gcp.logging.BillingAccountExclusion("my-exclusion", {
+ *     billingAccount: "ABCDEF-012345-GHIJKL",
+ *     description: "Exclude GCE instance debug logs",
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
+ *     name: "my-instance-debug-exclusion",
+ * });
+ * ```
  */
 export class BillingAccountExclusion extends pulumi.CustomResource {
     /**
@@ -21,8 +35,8 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BillingAccountExclusionState): BillingAccountExclusion {
-        return new BillingAccountExclusion(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BillingAccountExclusionState, opts?: pulumi.CustomResourceOptions): BillingAccountExclusion {
+        return new BillingAccountExclusion(name, <any>state, { ...opts, id: id });
     }
 
     /**

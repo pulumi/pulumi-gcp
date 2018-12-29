@@ -7,6 +7,22 @@ import * as utilities from "../utilities";
 /**
  * Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
  * [API](https://cloud.google.com/dns/api/v1/managedZones).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     description: "Production DNS zone",
+ *     dnsName: "prod.mydomain.com.",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     name: "prod-zone",
+ * });
+ * ```
  */
 export class ManagedZone extends pulumi.CustomResource {
     /**
@@ -17,8 +33,8 @@ export class ManagedZone extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedZoneState): ManagedZone {
-        return new ManagedZone(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedZoneState, opts?: pulumi.CustomResourceOptions): ManagedZone {
+        return new ManagedZone(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -7,6 +7,18 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
+    """
+    A ForwardingRule resource. A ForwardingRule resource specifies which pool
+    of target virtual machines to forward a packet to if it matches the given
+    [IPAddress, IPProtocol, portRange] tuple.
+    
+    
+    To get more information about ForwardingRule, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+    """
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
         """Create a ForwardingRule resource with the given unique name, props, and options."""
         if not __name__:

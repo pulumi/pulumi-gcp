@@ -9,6 +9,54 @@ import * as utilities from "../utilities";
  * information see [the official
  * documentation](https://cloud.google.com/compute/docs/load-balancing/http/global-forwarding-rules) and
  * [API](https://cloud.google.com/compute/docs/reference/latest/globalForwardingRules).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "test",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "default-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
+ *     defaultService: google_compute_backend_service_default.selfLink,
+ *     description: "a description",
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "url-map",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_default.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: google_compute_backend_service_default.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const google_compute_target_http_proxy_default = new gcp.compute.TargetHttpProxy("default", {
+ *     description: "a description",
+ *     name: "test-proxy",
+ *     urlMap: google_compute_url_map_default.selfLink,
+ * });
+ * const google_compute_global_forwarding_rule_default = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "default-rule",
+ *     portRange: "80",
+ *     target: google_compute_target_http_proxy_default.selfLink,
+ * });
+ * ```
  */
 export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
@@ -19,8 +67,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalForwardingRuleState): GlobalForwardingRule {
-        return new GlobalForwardingRule(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions): GlobalForwardingRule {
+        return new GlobalForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
     /**

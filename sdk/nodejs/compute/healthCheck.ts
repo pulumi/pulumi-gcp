@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Health Checks determine whether instances are responsive and able to do work.
+ * They are an important part of a comprehensive load balancing configuration,
+ * as they enable monitoring instances behind load balancers.
+ * 
+ * Health Checks poll instances at a specified interval. Instances that
+ * do not respond successfully to some number of probes in a row are marked
+ * as unhealthy. No new connections are sent to unhealthy instances,
+ * though existing connections will continue. The health check will
+ * continue to poll unhealthy instances. If an instance later responds
+ * successfully to some number of consecutive probes, it is marked
+ * healthy again and can receive new connections.
+ * 
+ * 
+ * To get more information about HealthCheck, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/latest/healthChecks)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_health_check_internal_health_check = new gcp.compute.HealthCheck("internal-health-check", {
+ *     checkIntervalSec: 1,
+ *     name: "internal-service-health-check",
+ *     tcpHealthCheck: {
+ *         port: Number.parseFloat("80"),
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ */
 export class HealthCheck extends pulumi.CustomResource {
     /**
      * Get an existing HealthCheck resource's state with the given name, ID, and optional extra
@@ -13,8 +49,8 @@ export class HealthCheck extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HealthCheckState): HealthCheck {
-        return new HealthCheck(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HealthCheckState, opts?: pulumi.CustomResourceOptions): HealthCheck {
+        return new HealthCheck(name, <any>state, { ...opts, id: id });
     }
 
     public readonly checkIntervalSec: pulumi.Output<number | undefined>;

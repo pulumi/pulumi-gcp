@@ -16,7 +16,7 @@ class KeyRing(pulumi.CustomResource):
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
     
-    ~> Note: KeyRings cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed KeyRing will remove it
+    > Note: KeyRings cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed KeyRing will remove it
     from state but **will not delete the resource on the server**.
     """
     def __init__(__self__, __name__, __opts__=None, location=None, name=None, project=None):

@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
  * 
  * https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_netblock_ip_ranges_netblock = pulumi.output(gcp.compute.getNetblockIPRanges({}));
+ * 
+ * export const cidrBlocks = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocks);
+ * export const cidrBlocksIpv4 = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocksIpv4s);
+ * export const cidrBlocksIpv6 = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocksIpv6s);
+ * ```
  */
 export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {

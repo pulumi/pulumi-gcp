@@ -9,6 +9,34 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_bigquery_dataset_default = new gcp.bigquery.Dataset("default", {
+ *     accesses: [
+ *         {
+ *             domain: "example.com",
+ *             role: "READER",
+ *         },
+ *         {
+ *             groupByEmail: "writers@example.com",
+ *             role: "WRITER",
+ *         },
+ *     ],
+ *     datasetId: "foo",
+ *     defaultTableExpirationMs: 3600000,
+ *     description: "This is a test description",
+ *     friendlyName: "test",
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     location: "EU",
+ * });
+ * ```
  */
 export class Dataset extends pulumi.CustomResource {
     /**
@@ -19,8 +47,8 @@ export class Dataset extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatasetState): Dataset {
-        return new Dataset(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatasetState, opts?: pulumi.CustomResourceOptions): Dataset {
+        return new Dataset(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -13,7 +13,7 @@ import (
 // For a list of services available, visit the
 // [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
 // 
-// ~> **Note:** This resource _must not_ be used in conjunction with
+// > **Note:** This resource _must not_ be used in conjunction with
 //    `google_project_services` or they will fight over which services should be enabled.
 type Service struct {
 	s *pulumi.ResourceState

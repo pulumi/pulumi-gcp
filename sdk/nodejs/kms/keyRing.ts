@@ -13,8 +13,20 @@ import * as utilities from "../utilities";
  * A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
  * and resides in a specific location.
  * 
- * ~> Note: KeyRings cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed KeyRing will remove it
+ * > Note: KeyRings cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed KeyRing will remove it
  * from state but **will not delete the resource on the server**.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_kms_key_ring_my_key_ring = new gcp.kms.KeyRing("my_key_ring", {
+ *     location: "us-central1",
+ *     name: "my-key-ring",
+ * });
+ * ```
  */
 export class KeyRing extends pulumi.CustomResource {
     /**
@@ -25,8 +37,8 @@ export class KeyRing extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyRingState): KeyRing {
-        return new KeyRing(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyRingState, opts?: pulumi.CustomResourceOptions): KeyRing {
+        return new KeyRing(name, <any>state, { ...opts, id: id });
     }
 
     /**

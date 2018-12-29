@@ -9,6 +9,23 @@ import * as utilities from "../utilities";
  * the official documentation for
  * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dataflow_job_big_data_job = new gcp.dataflow.Job("big_data_job", {
+ *     name: "dataflow-job",
+ *     parameters: {
+ *         baz: "qux",
+ *         foo: "bar",
+ *     },
+ *     tempGcsLocation: "gs://my-bucket/tmp_dir",
+ *     templateGcsPath: "gs://my-bucket/templates/template_file",
+ * });
+ * ```
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -19,8 +36,8 @@ export class Job extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: JobState): Job {
-        return new Job(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: JobState, opts?: pulumi.CustomResourceOptions): Job {
+        return new Job(name, <any>state, { ...opts, id: id });
     }
 
     /**

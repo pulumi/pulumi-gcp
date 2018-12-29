@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
  * 
  * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_registry_repository_foo = pulumi.output(gcp.container.getRegistryRepository({}));
+ * 
+ * export const gcrLocation = google_container_registry_repository_foo.apply(__arg0 => __arg0.repositoryUrl);
+ * ```
  */
 export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryImageResult> {
     return pulumi.runtime.invoke("gcp:container/getRegistryImage:getRegistryImage", {

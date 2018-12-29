@@ -9,6 +9,38 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/functions/docs/)
  * and
  * [API](https://cloud.google.com/functions/docs/apis).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "test-bucket",
+ * });
+ * const google_storage_bucket_object_archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: google_storage_bucket_bucket.name,
+ *     name: "index.zip",
+ *     source: new pulumi.asset.FileArchive("./path/to/zip/file/which/contains/code"),
+ * });
+ * const google_cloudfunctions_function_function = new gcp.cloudfunctions.Function("function", {
+ *     availableMemoryMb: 128,
+ *     description: "My function",
+ *     entryPoint: "helloGET",
+ *     environmentVariables: {
+ *         MY_ENV_VAR: "my-env-var-value",
+ *     },
+ *     labels: {
+ *         my-label: "my-label-value",
+ *     },
+ *     name: "function-test",
+ *     sourceArchiveBucket: google_storage_bucket_bucket.name,
+ *     sourceArchiveObject: google_storage_bucket_object_archive.name,
+ *     timeout: 60,
+ *     triggerHttp: true,
+ * });
+ * ```
  */
 export class Function extends pulumi.CustomResource {
     /**
@@ -19,8 +51,8 @@ export class Function extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FunctionState): Function {
-        return new Function(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FunctionState, opts?: pulumi.CustomResourceOptions): Function {
+        return new Function(name, <any>state, { ...opts, id: id });
     }
 
     /**

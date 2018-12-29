@@ -8,6 +8,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
+// load balancing.
+// 
+// An HTTP(S) load balancer can direct traffic to specified URLs to a
+// backend bucket rather than a backend service. It can send requests for
+// static content to a Cloud Storage bucket and requests for dynamic content
+// a virtual machine instance.
+// 
+// 
+// To get more information about BackendBucket, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/backendBuckets)
+// * How-to Guides
+//     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 type BackendBucket struct {
 	s *pulumi.ResourceState
 }

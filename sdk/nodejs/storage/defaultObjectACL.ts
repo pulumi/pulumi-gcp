@@ -9,6 +9,27 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a default object ACL on a bucket with one owner, and one reader.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ *     location: "EU",
+ *     name: "image-store-bucket",
+ * });
+ * const google_storage_default_object_acl_image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
+ *     bucket: google_storage_bucket_image_store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
  */
 export class DefaultObjectACL extends pulumi.CustomResource {
     /**
@@ -19,8 +40,8 @@ export class DefaultObjectACL extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DefaultObjectACLState): DefaultObjectACL {
-        return new DefaultObjectACL(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DefaultObjectACLState, opts?: pulumi.CustomResourceOptions): DefaultObjectACL {
+        return new DefaultObjectACL(name, <any>state, { ...opts, id: id });
     }
 
     /**

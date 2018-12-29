@@ -9,8 +9,54 @@ import * as utilities from "../utilities";
  * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
  * 
- * ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+ * > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
  *   `google_compute_backend_service` instead.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "test",
+ *     tcpHealthCheck: {
+ *         port: Number.parseFloat("80"),
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_instance_template_foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     disks: [{
+ *         autoDelete: true,
+ *         boot: true,
+ *         sourceImage: "debian-cloud/debian-9",
+ *     }],
+ *     machineType: "n1-standard-1",
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const google_compute_region_instance_group_manager_foo = new gcp.compute.RegionInstanceGroupManager("foo", {
+ *     baseInstanceName: "foobar",
+ *     instanceTemplate: google_compute_instance_template_foobar.selfLink,
+ *     name: "terraform-test",
+ *     region: "us-central1",
+ *     targetSize: 1,
+ * });
+ * const google_compute_region_backend_service_foobar = new gcp.compute.RegionBackendService("foobar", {
+ *     backends: [{
+ *         group: google_compute_region_instance_group_manager_foo.instanceGroup,
+ *     }],
+ *     description: "Hello World 1234",
+ *     healthChecks: google_compute_health_check_default.selfLink,
+ *     name: "blablah",
+ *     protocol: "TCP",
+ *     sessionAffinity: "CLIENT_IP",
+ *     timeoutSec: 10,
+ * });
+ * ```
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**
@@ -21,8 +67,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionBackendServiceState): RegionBackendService {
-        return new RegionBackendService(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionBackendServiceState, opts?: pulumi.CustomResourceOptions): RegionBackendService {
+        return new RegionBackendService(name, <any>state, { ...opts, id: id });
     }
 
     /**

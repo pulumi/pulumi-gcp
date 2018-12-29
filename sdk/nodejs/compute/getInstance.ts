@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_instance_appserver = pulumi.output(gcp.compute.getInstance({
+ *     name: "primary-application-server",
+ *     zone: "us-central1-a",
+ * }));
+ * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     return pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {

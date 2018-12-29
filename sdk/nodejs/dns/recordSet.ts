@@ -8,11 +8,108 @@ import * as utilities from "../utilities";
  * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
  * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
  * 
- * ~> **Note:** The Google Cloud DNS API requires NS records be present at all
+ * > **Note:** The Google Cloud DNS API requires NS records be present at all
  * times. To accommodate this, when creating NS records, the default records
  * Google automatically creates will be silently overwritten.  Also, when
  * destroying NS records, Terraform will not actually remove NS records, but will
  * report that it did.
+ * 
+ * ## Example Usage
+ * 
+ * ### Binding a DNS name to the ephemeral IP of a new instance:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_instance_frontend = new gcp.compute.Instance("frontend", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "g1-small",
+ *     name: "frontend",
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     zone: "us-central1-b",
+ * });
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ *     name: "prod-zone",
+ * });
+ * const google_dns_record_set_frontend = new gcp.dns.RecordSet("frontend", {
+ *     managedZone: google_dns_managed_zone_prod.name,
+ *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `frontend.${__arg0}`),
+ *     rrdatas: [google_compute_instance_frontend.networkInterfaces.apply(__arg0 => __arg0[0].accessConfig.0.natIp)],
+ *     ttl: 300,
+ *     type: "A",
+ * });
+ * ```
+ * ### Adding an A record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ *     name: "prod-zone",
+ * });
+ * const google_dns_record_set_a = new gcp.dns.RecordSet("a", {
+ *     managedZone: google_dns_managed_zone_prod.name,
+ *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `backend.${__arg0}`),
+ *     rrdatas: ["8.8.8.8"],
+ *     ttl: 300,
+ *     type: "A",
+ * });
+ * ```
+ * ### Adding an MX record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ *     name: "prod-zone",
+ * });
+ * const google_dns_record_set_mx = new gcp.dns.RecordSet("mx", {
+ *     managedZone: google_dns_managed_zone_prod.name,
+ *     name: google_dns_managed_zone_prod.dnsName,
+ *     rrdatas: [
+ *         "1 aspmx.l.google.com.",
+ *         "5 alt1.aspmx.l.google.com.",
+ *         "5 alt2.aspmx.l.google.com.",
+ *         "10 alt3.aspmx.l.google.com.",
+ *         "10 alt4.aspmx.l.google.com.",
+ *     ],
+ *     ttl: 3600,
+ *     type: "MX",
+ * });
+ * ```
+ * ### Adding an SPF record
+ * 
+ * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ *     name: "prod-zone",
+ * });
+ * const google_dns_record_set_spf = new gcp.dns.RecordSet("spf", {
+ *     managedZone: google_dns_managed_zone_prod.name,
+ *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `frontend.${__arg0}`),
+ *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
+ *     ttl: 300,
+ *     type: "TXT",
+ * });
+ * ```
  */
 export class RecordSet extends pulumi.CustomResource {
     /**
@@ -23,8 +120,8 @@ export class RecordSet extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordSetState): RecordSet {
-        return new RecordSet(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordSetState, opts?: pulumi.CustomResourceOptions): RecordSet {
+        return new RecordSet(name, <any>state, { ...opts, id: id });
     }
 
     /**

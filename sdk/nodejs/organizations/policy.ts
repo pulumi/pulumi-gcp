@@ -9,6 +9,71 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy).
+ * 
+ * ## Example Usage
+ * 
+ * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_organization_policy_serial_port_policy = new gcp.organizations.Policy("serial_port_policy", {
+ *     booleanPolicy: {
+ *         enforced: true,
+ *     },
+ *     constraint: "compute.disableSerialPortAccess",
+ *     orgId: "123456789",
+ * });
+ * ```
+ * 
+ * To set a policy with a [list contraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_organization_policy_services_policy = new gcp.organizations.Policy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     listPolicy: {
+ *         allow: {
+ *             all: true,
+ *         },
+ *     },
+ *     orgId: "123456789",
+ * });
+ * ```
+ * Or to deny some services, use the following instead:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_organization_policy_services_policy = new gcp.organizations.Policy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     listPolicy: {
+ *         deny: {
+ *             values: ["cloudresourcemanager.googleapis.com"],
+ *         },
+ *         suggestedValues: "compute.googleapis.com",
+ *     },
+ *     orgId: "123456789",
+ * });
+ * ```
+ * To restore the default organization policy, use the following instead:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_organization_policy_services_policy = new gcp.organizations.Policy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     orgId: "123456789",
+ *     restorePolicy: {
+ *         default: true,
+ *     },
+ * });
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -19,8 +84,8 @@ export class Policy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState): Policy {
-        return new Policy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState, opts?: pulumi.CustomResourceOptions): Policy {
+        return new Policy(name, <any>state, { ...opts, id: id });
     }
 
     /**

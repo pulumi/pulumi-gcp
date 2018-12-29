@@ -10,6 +10,68 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_my_image = pulumi.output(gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * }));
+ * const google_compute_disk_foobar = new gcp.compute.Disk("foobar", {
+ *     image: google_compute_image_my_image.apply(__arg0 => __arg0.selfLink),
+ *     name: "existing-disk",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const google_compute_instance_template_default = new gcp.compute.InstanceTemplate("default", {
+ *     canIpForward: false,
+ *     description: "This template is used to create app server instances.",
+ *     disks: [
+ *         {
+ *             autoDelete: true,
+ *             boot: true,
+ *             sourceImage: "debian-cloud/debian-9",
+ *         },
+ *         {
+ *             autoDelete: false,
+ *             boot: false,
+ *             source: google_compute_disk_foobar.name,
+ *         },
+ *     ],
+ *     instanceDescription: "description assigned to instances",
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     machineType: "n1-standard-1",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     name: "appserver-template",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     schedulings: [{
+ *         automaticRestart: true,
+ *         onHostMaintenance: "MIGRATE",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ * });
+ * ```
  */
 export class InstanceTemplate extends pulumi.CustomResource {
     /**
@@ -20,8 +82,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceTemplateState): InstanceTemplate {
-        return new InstanceTemplate(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceTemplateState, opts?: pulumi.CustomResourceOptions): InstanceTemplate {
+        return new InstanceTemplate(name, <any>state, { ...opts, id: id });
     }
 
     /**

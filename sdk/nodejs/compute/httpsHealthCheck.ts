@@ -4,6 +4,38 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An HttpsHealthCheck resource. This resource defines a template for how
+ * individual VMs should be checked for health, via HTTPS.
+ * 
+ * 
+ * > **Note:** google_compute_https_health_check is a legacy health check.
+ * The newer [google_compute_health_check](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
+ * should be preferred for all uses except
+ * [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
+ * which still require the legacy version.
+ * 
+ * 
+ * To get more information about HttpsHealthCheck, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/httpsHealthChecks)
+ * * How-to Guides
+ *     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_https_health_check_default = new gcp.compute.HttpsHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "authentication-health-check",
+ *     requestPath: "/health_check",
+ *     timeoutSec: 1,
+ * });
+ * ```
+ */
 export class HttpsHealthCheck extends pulumi.CustomResource {
     /**
      * Get an existing HttpsHealthCheck resource's state with the given name, ID, and optional extra
@@ -13,8 +45,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HttpsHealthCheckState): HttpsHealthCheck {
-        return new HttpsHealthCheck(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HttpsHealthCheckState, opts?: pulumi.CustomResourceOptions): HttpsHealthCheck {
+        return new HttpsHealthCheck(name, <any>state, { ...opts, id: id });
     }
 
     public readonly checkIntervalSec: pulumi.Output<number | undefined>;

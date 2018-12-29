@@ -4,6 +4,58 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a TargetHttpProxy resource, which is used by one or more global
+ * forwarding rule to route incoming HTTP requests to a URL map.
+ * 
+ * 
+ * To get more information about TargetHttpProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetHttpProxies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
+ *     defaultService: google_compute_backend_service_default.selfLink,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "url-map",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_default.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: google_compute_backend_service_default.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const google_compute_target_http_proxy_default = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: google_compute_url_map_default.selfLink,
+ * });
+ * ```
+ */
 export class TargetHttpProxy extends pulumi.CustomResource {
     /**
      * Get an existing TargetHttpProxy resource's state with the given name, ID, and optional extra
@@ -13,8 +65,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetHttpProxyState): TargetHttpProxy {
-        return new TargetHttpProxy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TargetHttpProxyState, opts?: pulumi.CustomResourceOptions): TargetHttpProxy {
+        return new TargetHttpProxy(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;

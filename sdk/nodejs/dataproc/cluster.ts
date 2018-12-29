@@ -12,6 +12,63 @@ import * as utilities from "../utilities";
  * !> **Warning:** Due to limitations of the API, all arguments except
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
  * whole cluster!
+ * 
+ * ## Example usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dataproc_cluster_mycluster = new gcp.dataproc.Cluster("mycluster", {
+ *     clusterConfig: {
+ *         gceClusterConfig: {
+ *             tags: [
+ *                 "foo",
+ *                 "bar",
+ *             ],
+ *         },
+ *         initializationActions: [{
+ *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+ *             timeoutSec: 500,
+ *         }],
+ *         masterConfig: {
+ *             diskConfig: {
+ *                 bootDiskSizeGb: 10,
+ *                 bootDiskType: "pd-ssd",
+ *             },
+ *             machineType: "n1-standard-1",
+ *             numInstances: 1,
+ *         },
+ *         preemptibleWorkerConfig: {
+ *             numInstances: 0,
+ *         },
+ *         softwareConfig: {
+ *             imageVersion: "1.3.7-deb9",
+ *             overrideProperties: {
+ *                 dataproc:dataproc.allow.zero.workers: "true",
+ *             },
+ *         },
+ *         stagingBucket: "dataproc-staging-bucket",
+ *         workerConfig: {
+ *             diskConfig: {
+ *                 bootDiskSizeGb: 10,
+ *                 numLocalSsds: 1,
+ *             },
+ *             machineType: "n1-standard-1",
+ *             numInstances: 2,
+ *         },
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     name: "mycluster",
+ *     region: "us-central1",
+ * });
+ * const google_dataproc_cluster_simplecluster = new gcp.dataproc.Cluster("simplecluster", {
+ *     name: "simplecluster",
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -22,8 +79,8 @@ export class Cluster extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterState): Cluster {
-        return new Cluster(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterState, opts?: pulumi.CustomResourceOptions): Cluster {
+        return new Cluster(name, <any>state, { ...opts, id: id });
     }
 
     /**

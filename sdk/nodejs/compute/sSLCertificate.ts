@@ -4,6 +4,123 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An SslCertificate resource, used for HTTPS load balancing. This resource
+ * provides a mechanism to upload an SSL key and certificate to
+ * the load balancer to serve secure connections from the user.
+ * 
+ * 
+ * To get more information about SslCertificate, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as fs from "fs";
+ * 
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     description: "a description",
+ *     namePrefix: "my-certificate-",
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * ```
+ * ### You may also want to control name generation explicitly:
+ * resource "google_compute_ssl_certificate" "default" {
+ *   # The name will contain 8 random hex digits,
+ *   # e.g. "my-certificate-48ab27cd2a"
+ *   name        = "${random_id.certificate.hex}"
+ *   private_key = "${file("path/to/private.key")}"
+ *   certificate = "${file("path/to/certificate.crt")}"
+ * 
+ *   lifecycle {
+ *     create_before_destroy = true
+ *   }
+ * }
+ * 
+ * resource "random_id" "certificate" {
+ *   byte_length = 4
+ *   prefix      = "my-certificate-"
+ * 
+ *   # For security, do not expose raw certificate values in the output
+ *   keepers {
+ *     private_key = "${base64sha256(file("path/to/private.key"))}"
+ *     certificate = "${base64sha256(file("path/to/certificate.crt"))}"
+ *   }
+ * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * 
+ * ```
+ * //
+ * // SSL certificates cannot be updated after creation. In order to apply
+ * // the specified configuration, Terraform will destroy the existing
+ * // resource and create a replacement. To effectively use an SSL
+ * // certificate resource with a Target HTTPS Proxy resource, it's
+ * // recommended to specify create_before_destroy in a lifecycle block.
+ * // Either omit the Instance Template name attribute, specify a partial
+ * // name with name_prefix, or use random_id resource. Example:
+ * 
+ * resource "google_compute_ssl_certificate" "default" {
+ *   name_prefix = "my-certificate-"
+ *   private_key = "${file("path/to/private.key")}"
+ *   certificate = "${file("path/to/certificate.crt")}"
+ * 
+ *   lifecycle {
+ *     create_before_destroy = true
+ *   }
+ * }
+ * 
+ * resource "google_compute_target_https_proxy" "default" {
+ *   name             = "test-proxy"
+ *   url_map          = "${google_compute_url_map.default.self_link}"
+ *   ssl_certificates = ["${google_compute_ssl_certificate.default.self_link}"]
+ * }
+ * 
+ * resource "google_compute_url_map" "default" {
+ *   name        = "url-map"
+ *   description = "a description"
+ * 
+ *   default_service = "${google_compute_backend_service.default.self_link}"
+ * 
+ *   host_rule {
+ *     hosts        = ["mysite.com"]
+ *     path_matcher = "allpaths"
+ *   }
+ * 
+ *   path_matcher {
+ *     name            = "allpaths"
+ *     default_service = "${google_compute_backend_service.default.self_link}"
+ * 
+ *     path_rule {
+ *       paths   = ["/*"]
+ *       service = "${google_compute_backend_service.default.self_link}"
+ *     }
+ *   }
+ * }
+ * 
+ * resource "google_compute_backend_service" "default" {
+ *   name        = "backend-service"
+ *   port_name   = "http"
+ *   protocol    = "HTTP"
+ *   timeout_sec = 10
+ * 
+ *   health_checks = ["${google_compute_http_health_check.default.self_link}"]
+ * }
+ * 
+ * resource "google_compute_http_health_check" "default" {
+ *   name               = "http-health-check"
+ *   request_path       = "/"
+ *   check_interval_sec = 1
+ *   timeout_sec        = 1
+ * }
+ * 
+ */
 export class SSLCertificate extends pulumi.CustomResource {
     /**
      * Get an existing SSLCertificate resource's state with the given name, ID, and optional extra
@@ -13,8 +130,8 @@ export class SSLCertificate extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SSLCertificateState): SSLCertificate {
-        return new SSLCertificate(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SSLCertificateState, opts?: pulumi.CustomResourceOptions): SSLCertificate {
+        return new SSLCertificate(name, <any>state, { ...opts, id: id });
     }
 
     public readonly certificate: pulumi.Output<string>;

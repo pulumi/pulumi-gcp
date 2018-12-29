@@ -4,6 +4,89 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents an Address resource.
+ * 
+ * Each virtual machine instance has an ephemeral internal IP address and,
+ * optionally, an external IP address. To communicate between instances on
+ * the same network, you can use an instance's internal IP address. To
+ * communicate with the Internet and instances outside of the same network,
+ * you must specify the instance's external IP address.
+ * 
+ * Internal IP addresses are ephemeral and only belong to an instance for
+ * the lifetime of the instance; if the instance is deleted and recreated,
+ * the instance is assigned a new internal IP address, either by Compute
+ * Engine or by you. External IP addresses can be either ephemeral or
+ * static.
+ * 
+ * 
+ * To get more information about Address, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
+ * * How-to Guides
+ *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+ *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_address_ip_address = new gcp.compute.Address("ip_address", {
+ *     name: "my-address",
+ * });
+ * ```
+ * resource "google_compute_network" "default" {
+ *   name = "my-network"
+ * }
+ * 
+ * resource "google_compute_subnetwork" "default" {
+ *   name          = "my-subnet"
+ *   ip_cidr_range = "10.0.0.0/16"
+ *   region        = "us-central1"
+ *   network       = "${google_compute_network.default.self_link}"
+ * }
+ * 
+ * resource "google_compute_address" "internal_with_subnet_and_address" {
+ *   name         = "my-internal-address"
+ *   subnetwork   = "${google_compute_subnetwork.default.self_link}"
+ *   address_type = "INTERNAL"
+ *   address      = "10.0.42.42"
+ *   region       = "us-central1"
+ * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * 
+ * ```
+ *   name = "ipv4-address"
+ * }
+ * 
+ * data "google_compute_image" "debian_image" {
+ * 	family  = "debian-9"
+ * 	project = "debian-cloud"
+ * }
+ * 
+ * resource "google_compute_instance" "instance_with_ip" {
+ * 	name         = "vm-instance"
+ * 	machine_type = "f1-micro"
+ * 	zone         = "us-central1-a"
+ * 
+ * 	boot_disk {
+ * 		initialize_params{
+ * 			image = "${data.google_compute_image.debian_image.self_link}"
+ * 		}
+ * 	}
+ * 
+ * 	network_interface {
+ * 		network = "default"
+ * 		access_config {
+ * 			nat_ip = "${google_compute_address.static.address}"
+ * 		}
+ * 	}
+ * }
+ * 
+ */
 export class Address extends pulumi.CustomResource {
     /**
      * Get an existing Address resource's state with the given name, ID, and optional extra
@@ -13,8 +96,8 @@ export class Address extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AddressState): Address {
-        return new Address(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AddressState, opts?: pulumi.CustomResourceOptions): Address {
+        return new Address(name, <any>state, { ...opts, id: id });
     }
 
     /**

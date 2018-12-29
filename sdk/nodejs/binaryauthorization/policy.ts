@@ -4,6 +4,55 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A policy for container image binary authorization.
+ * 
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ * 
+ * To get more information about Policy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "My attestor",
+ *         },
+ *     },
+ *     name: "test-attestor-note",
+ * });
+ * const google_binary_authorization_attestor_attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     attestationAuthorityNote: {
+ *         noteReference: google_container_analysis_note_note.name,
+ *     },
+ *     name: "test-attestor",
+ * });
+ * const google_binary_authorization_policy_policy = new gcp.binaryauthorization.Policy("policy", {
+ *     admissionWhitelistPatterns: [{
+ *         namePattern: "gcr.io/google_containers/*",
+ *     }],
+ *     clusterAdmissionRules: [{
+ *         cluster: "us-central1-a.prod-cluster",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         requireAttestationsBies: [google_binary_authorization_attestor_attestor.name],
+ *     }],
+ *     defaultAdmissionRule: {
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         evaluationMode: "ALWAYS_ALLOW",
+ *     },
+ * });
+ * ```
+ */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -13,8 +62,8 @@ export class Policy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState): Policy {
-        return new Policy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState, opts?: pulumi.CustomResourceOptions): Policy {
+        return new Policy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly admissionWhitelistPatterns: pulumi.Output<{ namePattern?: string }[] | undefined>;

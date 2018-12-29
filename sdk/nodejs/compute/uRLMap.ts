@@ -10,6 +10,75 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "test",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_storage_bucket_static = new gcp.storage.Bucket("static", {
+ *     location: "US",
+ *     name: "static-asset-bucket",
+ * });
+ * const google_compute_backend_bucket_static = new gcp.compute.BackendBucket("static", {
+ *     bucketName: google_storage_bucket_static.name,
+ *     enableCdn: true,
+ *     name: "static-asset-backend-bucket",
+ * });
+ * const google_compute_backend_service_home = new gcp.compute.BackendService("home", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "home-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_backend_service_login = new gcp.compute.BackendService("login", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "login-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_foobar = new gcp.compute.URLMap("foobar", {
+ *     defaultService: google_compute_backend_service_home.selfLink,
+ *     description: "a description",
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "urlmap",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_home.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [
+ *             {
+ *                 paths: ["/home"],
+ *                 service: google_compute_backend_service_home.selfLink,
+ *             },
+ *             {
+ *                 paths: ["/login"],
+ *                 service: google_compute_backend_service_login.selfLink,
+ *             },
+ *             {
+ *                 paths: ["/static"],
+ *                 service: google_compute_backend_bucket_static.selfLink,
+ *             },
+ *         ],
+ *     }],
+ *     tests: [{
+ *         host: "hi.com",
+ *         path: "/home",
+ *         service: google_compute_backend_service_home.selfLink,
+ *     }],
+ * });
+ * ```
  */
 export class URLMap extends pulumi.CustomResource {
     /**
@@ -20,8 +89,8 @@ export class URLMap extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: URLMapState): URLMap {
-        return new URLMap(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: URLMapState, opts?: pulumi.CustomResourceOptions): URLMap {
+        return new URLMap(name, <any>state, { ...opts, id: id });
     }
 
     /**

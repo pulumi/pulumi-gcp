@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Global Address resource. Global addresses are used for
+ * HTTP(S) load balancing.
+ * 
+ * 
+ * To get more information about GlobalAddress, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/globalAddresses)
+ * * How-to Guides
+ *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_global_address_default = new gcp.compute.GlobalAddress("default", {
+ *     name: "global-appserver-ip",
+ * });
+ * ```
+ */
 export class GlobalAddress extends pulumi.CustomResource {
     /**
      * Get an existing GlobalAddress resource's state with the given name, ID, and optional extra
@@ -13,8 +35,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalAddressState): GlobalAddress {
-        return new GlobalAddress(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GlobalAddressState, opts?: pulumi.CustomResourceOptions): GlobalAddress {
+        return new GlobalAddress(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly address: pulumi.Output<string>;

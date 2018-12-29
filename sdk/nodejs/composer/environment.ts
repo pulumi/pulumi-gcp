@@ -4,6 +4,88 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     name: "my-composer-env",
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### With GKE and Compute Resource Dependencies
+ * 
+ * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+ * (i.e. at a project level). This will probably require an explicit dependency
+ * on the IAM policy binding (see `google_project_iam_member` below).
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_test = new gcp.compute.Network("test", {
+ *     autoCreateSubnetworks: false,
+ *     name: "composer-test-network",
+ * });
+ * const google_service_account_test = new gcp.serviceAccount.Account("test", {
+ *     accountId: "composer-env-account",
+ *     displayName: "Test Service Account for Composer Environment",
+ * });
+ * const google_compute_subnetwork_test = new gcp.compute.Subnetwork("test", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     name: "composer-test-subnetwork",
+ *     network: google_compute_network_test.selfLink,
+ *     region: "us-central1",
+ * });
+ * const google_project_iam_member_composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     member: google_service_account_test.email.apply(__arg0 => `serviceAccount:${__arg0}`),
+ *     role: "roles/composer.worker",
+ * });
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         nodeConfig: {
+ *             machineType: "n1-standard-1",
+ *             network: google_compute_network_test.selfLink,
+ *             serviceAccount: google_service_account_test.name,
+ *             subnetwork: google_compute_subnetwork_test.selfLink,
+ *             zone: "us-central1-a",
+ *         },
+ *         nodeCount: 4,
+ *     },
+ *     name: "%s",
+ *     region: "us-central1",
+ * }, {dependsOn: [google_project_iam_member_composer_worker]});
+ * ```
+ * ### With Software (Airflow) Config
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         softwareConfig: {
+ *             airflowConfigOverrides: {
+ *                 core-load_example: "True",
+ *             },
+ *             envVariables: {
+ *                 FOO: "bar",
+ *             },
+ *             pypiPackages: {
+ *                 numpy: "",
+ *                 scipy: "==1.1.0",
+ *             },
+ *         },
+ *     },
+ *     name: "%s",
+ *     region: "us-central1",
+ * });
+ * ```
+ */
 export class Environment extends pulumi.CustomResource {
     /**
      * Get an existing Environment resource's state with the given name, ID, and optional extra
@@ -13,8 +95,8 @@ export class Environment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EnvironmentState): Environment {
-        return new Environment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EnvironmentState, opts?: pulumi.CustomResourceOptions): Environment {
+        return new Environment(name, <any>state, { ...opts, id: id });
     }
 
     public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string} } }>;

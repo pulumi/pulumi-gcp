@@ -7,6 +7,20 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    """
+    A Google Cloud Filestore instance.
+    
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+    
+    To get more information about Instance, see:
+    
+    * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+        * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+        * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+    """
     def __init__(__self__, __name__, __opts__=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:

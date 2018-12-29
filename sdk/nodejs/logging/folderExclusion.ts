@@ -11,6 +11,24 @@ import * as utilities from "../utilities";
  * 
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with Terraform.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_my_folder = new gcp.organizations.Folder("my-folder", {
+ *     displayName: "My folder",
+ *     parent: "organizations/123456",
+ * });
+ * const google_logging_folder_exclusion_my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ *     description: "Exclude GCE instance debug logs",
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
+ *     folder: google_folder_my_folder.name,
+ *     name: "my-instance-debug-exclusion",
+ * });
+ * ```
  */
 export class FolderExclusion extends pulumi.CustomResource {
     /**
@@ -21,8 +39,8 @@ export class FolderExclusion extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FolderExclusionState): FolderExclusion {
-        return new FolderExclusion(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FolderExclusionState, opts?: pulumi.CustomResourceOptions): FolderExclusion {
+        return new FolderExclusion(name, <any>state, { ...opts, id: id });
     }
 
     /**

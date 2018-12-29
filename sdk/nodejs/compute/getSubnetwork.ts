@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Get a subnetwork within GCE from its name and region.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_subnetwork_my_subnetwork = pulumi.output(gcp.compute.getSubnetwork({
+ *     name: "default-us-east1",
+ *     region: "us-east1",
+ * }));
+ * ```
  */
 export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {

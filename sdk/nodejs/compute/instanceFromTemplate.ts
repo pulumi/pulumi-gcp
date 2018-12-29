@@ -14,6 +14,40 @@ import * as utilities from "../utilities";
  * `source_instance_template`. To create an instance without a template, use the
  * `google_compute_instance` resource.
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_instance_template_tpl = new gcp.compute.InstanceTemplate("tpl", {
+ *     canIpForward: true,
+ *     disks: [{
+ *         autoDelete: true,
+ *         boot: true,
+ *         diskSizeGb: 100,
+ *         sourceImage: "debian-cloud/debian-9",
+ *     }],
+ *     machineType: "n1-standard-1",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     name: "template",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const google_compute_instance_from_template_tpl = new gcp.compute.InstanceFromTemplate("tpl", {
+ *     canIpForward: false,
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
+ *     name: "instance-from-template",
+ *     sourceInstanceTemplate: google_compute_instance_template_tpl.selfLink,
+ *     zone: "us-central1-a",
+ * });
+ * ```
  */
 export class InstanceFromTemplate extends pulumi.CustomResource {
     /**
@@ -24,8 +58,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceFromTemplateState): InstanceFromTemplate {
-        return new InstanceFromTemplate(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceFromTemplateState, opts?: pulumi.CustomResourceOptions): InstanceFromTemplate {
+        return new InstanceFromTemplate(name, <any>state, { ...opts, id: id });
     }
 
     public readonly allowStoppingForUpdate: pulumi.Output<boolean>;

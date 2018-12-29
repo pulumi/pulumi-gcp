@@ -9,6 +9,18 @@ import * as utilities from "../utilities";
  * a project in GCE. Using `google_compute_project_metadata_item` lets you
  * manage a single key/value setting in Terraform rather than the entire
  * project metadata map.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_project_metadata_item_default = new gcp.compute.ProjectMetadataItem("default", {
+ *     key: "my_metadata",
+ *     value: "my_value",
+ * });
+ * ```
  */
 export class ProjectMetadataItem extends pulumi.CustomResource {
     /**
@@ -19,8 +31,8 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectMetadataItemState): ProjectMetadataItem {
-        return new ProjectMetadataItem(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectMetadataItemState, opts?: pulumi.CustomResourceOptions): ProjectMetadataItem {
+        return new ProjectMetadataItem(name, <any>state, { ...opts, id: id });
     }
 
     /**

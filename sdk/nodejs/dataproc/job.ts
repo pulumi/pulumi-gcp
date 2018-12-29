@@ -9,6 +9,54 @@ import * as utilities from "../utilities";
  * [the official dataproc documentation](https://cloud.google.com/dataproc/).
  * 
  * !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+ * 
+ * ## Example usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dataproc_cluster_mycluster = new gcp.dataproc.Cluster("mycluster", {
+ *     name: "dproc-cluster-unique-name",
+ *     region: "us-central1",
+ * });
+ * const google_dataproc_job_pyspark = new gcp.dataproc.Job("pyspark", {
+ *     forceDelete: true,
+ *     placement: {
+ *         clusterName: google_dataproc_cluster_mycluster.name,
+ *     },
+ *     pysparkConfig: {
+ *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+ *         properties: {
+ *             spark.logConf: "true",
+ *         },
+ *     },
+ *     region: google_dataproc_cluster_mycluster.region,
+ * });
+ * const google_dataproc_job_spark = new gcp.dataproc.Job("spark", {
+ *     forceDelete: true,
+ *     placement: {
+ *         clusterName: google_dataproc_cluster_mycluster.name,
+ *     },
+ *     region: google_dataproc_cluster_mycluster.region,
+ *     sparkConfig: {
+ *         args: ["1000"],
+ *         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+ *         loggingConfig: {
+ *             driverLogLevels: {
+ *                 root: "INFO",
+ *             },
+ *         },
+ *         mainClass: "org.apache.spark.examples.SparkPi",
+ *         properties: {
+ *             spark.logConf: "true",
+ *         },
+ *     },
+ * });
+ * 
+ * export const pysparkStatus = google_dataproc_job_pyspark.status.apply(__arg0 => __arg0.state);
+ * export const sparkStatus = google_dataproc_job_spark.status.apply(__arg0 => __arg0.state);
+ * ```
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -19,8 +67,8 @@ export class Job extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: JobState): Job {
-        return new Job(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: JobState, opts?: pulumi.CustomResourceOptions): Job {
+        return new Job(name, <any>state, { ...opts, id: id });
     }
 
     /**

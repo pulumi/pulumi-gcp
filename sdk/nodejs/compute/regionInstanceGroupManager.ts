@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * 
- * ~> **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+ * > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
  */
 export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -21,8 +21,8 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionInstanceGroupManagerState): RegionInstanceGroupManager {
-        return new RegionInstanceGroupManager(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionInstanceGroupManagerState, opts?: pulumi.CustomResourceOptions): RegionInstanceGroupManager {
+        return new RegionInstanceGroupManager(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -7,6 +7,24 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class HttpsHealthCheck(pulumi.CustomResource):
+    """
+    An HttpsHealthCheck resource. This resource defines a template for how
+    individual VMs should be checked for health, via HTTPS.
+    
+    
+    > **Note:** google_compute_https_health_check is a legacy health check.
+    The newer [google_compute_health_check](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
+    should be preferred for all uses except
+    [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
+    which still require the legacy version.
+    
+    
+    To get more information about HttpsHealthCheck, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/httpsHealthChecks)
+    * How-to Guides
+        * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+    """
     def __init__(__self__, __name__, __opts__=None, check_interval_sec=None, description=None, healthy_threshold=None, host=None, name=None, port=None, project=None, request_path=None, timeout_sec=None, unhealthy_threshold=None):
         """Create a HttpsHealthCheck resource with the given unique name, props, and options."""
         if not __name__:

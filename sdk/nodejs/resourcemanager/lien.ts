@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Lien represents an encumbrance on the actions that can be performed on a resource.
+ * 
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_project_project = new gcp.organizations.Project("project", {
+ *     name: "A very important project!",
+ *     projectId: "staging-project",
+ * });
+ * const google_resource_manager_lien_lien = new gcp.resourcemanager.Lien("lien", {
+ *     origin: "machine-readable-explanation",
+ *     parent: google_project_project.number.apply(__arg0 => `projects/${__arg0}`),
+ *     reason: "This project is an important environment",
+ *     restrictions: ["resourcemanager.projects.delete"],
+ * });
+ * ```
+ */
 export class Lien extends pulumi.CustomResource {
     /**
      * Get an existing Lien resource's state with the given name, ID, and optional extra
@@ -13,8 +36,8 @@ export class Lien extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LienState): Lien {
-        return new Lien(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LienState, opts?: pulumi.CustomResourceOptions): Lien {
+        return new Lien(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly createTime: pulumi.Output<string>;

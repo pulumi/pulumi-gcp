@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * For more information, see [the official
  * documentation](https://cloud.google.com/source-repositories/) and
  * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+ * 
+ * ## Example Usage
+ * 
+ * This example is the common case of creating a repository within Google Cloud Source Repositories:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_sourcerepo_repository_frontend = new gcp.sourcerepo.Repository("frontend", {
+ *     name: "frontend",
+ * });
+ * ```
  */
 export class Repository extends pulumi.CustomResource {
     /**
@@ -18,8 +31,8 @@ export class Repository extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RepositoryState): Repository {
-        return new Repository(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RepositoryState, opts?: pulumi.CustomResourceOptions): Repository {
+        return new Repository(name, <any>state, { ...opts, id: id });
     }
 
     /**

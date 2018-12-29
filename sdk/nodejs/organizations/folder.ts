@@ -18,6 +18,22 @@ import * as utilities from "../utilities";
  * resource must have `roles/resourcemanager.folderCreator`. See the
  * [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  * doc for more information.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const google_folder_team_abc = new gcp.organizations.Folder("team-abc", {
+ *     displayName: "Team ABC",
+ *     parent: google_folder_department1.name,
+ * });
+ * ```
  */
 export class Folder extends pulumi.CustomResource {
     /**
@@ -28,8 +44,8 @@ export class Folder extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FolderState): Folder {
-        return new Folder(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FolderState, opts?: pulumi.CustomResourceOptions): Folder {
+        return new Folder(name, <any>state, { ...opts, id: id });
     }
 
     /**

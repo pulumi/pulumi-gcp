@@ -12,6 +12,25 @@ import * as utilities from "../utilities";
  * For more information, see,
  * [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
  * where the Shared VPC feature is referred to by its former name "XPN".
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_shared_vpc_host_project_host = new gcp.compute.SharedVPCHostProject("host", {
+ *     project: "host-project-id",
+ * });
+ * const google_compute_shared_vpc_service_project_service1 = new gcp.compute.SharedVPCServiceProject("service1", {
+ *     hostProject: google_compute_shared_vpc_host_project_host.project,
+ *     serviceProject: "service-project-id-1",
+ * });
+ * const google_compute_shared_vpc_service_project_service2 = new gcp.compute.SharedVPCServiceProject("service2", {
+ *     hostProject: google_compute_shared_vpc_host_project_host.project,
+ *     serviceProject: "service-project-id-2",
+ * });
+ * ```
  */
 export class SharedVPCHostProject extends pulumi.CustomResource {
     /**
@@ -22,8 +41,8 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCHostProjectState): SharedVPCHostProject {
-        return new SharedVPCHostProject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCHostProjectState, opts?: pulumi.CustomResourceOptions): SharedVPCHostProject {
+        return new SharedVPCHostProject(name, <any>state, { ...opts, id: id });
     }
 
     /**

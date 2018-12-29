@@ -13,6 +13,21 @@ import * as utilities from "../utilities";
  * For more information, see,
  * [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
  * where the Shared VPC feature is referred to by its former name "XPN".
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_shared_vpc_service_project_service1 = new gcp.compute.SharedVPCServiceProject("service1", {
+ *     hostProject: "host-project-id",
+ *     serviceProject: "service-project-id-1",
+ * });
+ * ```
+ * For a complete Shared VPC example with both host and service projects, see
+ * [`google_compute_shared_vpc_host_project`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
+ * 
  */
 export class SharedVPCServiceProject extends pulumi.CustomResource {
     /**
@@ -23,8 +38,8 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCServiceProjectState): SharedVPCServiceProject {
-        return new SharedVPCServiceProject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SharedVPCServiceProjectState, opts?: pulumi.CustomResourceOptions): SharedVPCServiceProject {
+        return new SharedVPCServiceProject(name, <any>state, { ...opts, id: id });
     }
 
     /**

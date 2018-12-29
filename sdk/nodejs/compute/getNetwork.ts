@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get a network within GCE from its name.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_my_network = pulumi.output(gcp.compute.getNetwork({
+ *     name: "default-us-east1",
+ * }));
+ * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {

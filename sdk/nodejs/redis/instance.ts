@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Redis instance.
+ * 
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_redis_instance_cache = new gcp.redis.Instance("cache", {
+ *     memorySizeGb: 1,
+ *     name: "memory-cache",
+ * });
+ * ```
+ * resource "google_redis_instance" "cache" {
+ *   name           = "ha-memory-cache"
+ *   tier           = "STANDARD_HA"
+ *   memory_size_gb = 1
+ * 
+ *   location_id             = "us-central1-a"
+ *   alternative_location_id = "us-central1-f"
+ * 
+ *   authorized_network = "${google_compute_network.auto-network.self_link}"
+ * 
+ *   redis_version     = "REDIS_3_2"
+ *   display_name      = "Terraform Test Instance"
+ *   reserved_ip_range = "192.168.0.0/29"
+ * 
+ *   labels {
+ *     my_key    = "my_val"
+ *     other_key = "other_val"
+ *   }
+ * }
+ * 
+ * resource "google_compute_network" "auto-network" {
+ *   name = "authorized-network"
+ * }
+ * 
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -13,8 +59,8 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
     }
 
     public readonly alternativeLocationId: pulumi.Output<string>;

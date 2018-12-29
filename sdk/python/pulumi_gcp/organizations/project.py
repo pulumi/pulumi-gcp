@@ -32,7 +32,7 @@ class Project(pulumi.CustomResource):
       used just like always, keeping in mind that Terraform will attempt to undo any changes
       made outside Terraform.
     
-    ~> It's important to note that any project resources that were added to your Terraform config
+    > It's important to note that any project resources that were added to your Terraform config
     prior to 0.8.5 will continue to function as they always have, and will not be managed by
     Terraform. Only newly added projects are affected.
     """

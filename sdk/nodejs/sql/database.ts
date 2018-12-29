@@ -8,6 +8,28 @@ import * as utilities from "../utilities";
  * Creates a new Google SQL Database on a Google SQL Database Instance. For more information, see
  * the [official documentation](https://cloud.google.com/sql/),
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/databases).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a SQL Database.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_sql_database_instance_master = new gcp.sql.DatabaseInstance("master", {
+ *     name: "master-instance",
+ *     settings: {
+ *         tier: "D0",
+ *     },
+ * });
+ * const google_sql_database_users = new gcp.sql.Database("users", {
+ *     charset: "latin1",
+ *     collation: "latin1_swedish_ci",
+ *     instance: google_sql_database_instance_master.name,
+ *     name: "users-db",
+ * });
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -18,8 +40,8 @@ export class Database extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState): Database {
-        return new Database(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState, opts?: pulumi.CustomResourceOptions): Database {
+        return new Database(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Creates and manages a Google Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a Spanner instance.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_spanner_instance_main = new gcp.spanner.Instance("main", {
+ *     config: "regional-europe-west1",
+ *     displayName: "main-instance",
+ *     name: "main-instance",
+ *     numNodes: 1,
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -16,8 +32,8 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
     }
 
     /**

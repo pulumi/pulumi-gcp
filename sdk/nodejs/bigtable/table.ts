@@ -9,6 +9,30 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_bigtable_instance_instance = new gcp.bigtable.Instance("instance", {
+ *     clusterId: "tf-instance-cluster",
+ *     name: "tf-instance",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ *     zone: "us-central1-b",
+ * });
+ * const google_bigtable_table_table = new gcp.bigtable.Table("table", {
+ *     instanceName: google_bigtable_instance_instance.name,
+ *     name: "tf-table",
+ *     splitKeys: [
+ *         "a",
+ *         "b",
+ *         "c",
+ *     ],
+ * });
+ * ```
  */
 export class Table extends pulumi.CustomResource {
     /**
@@ -19,8 +43,8 @@ export class Table extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TableState): Table {
-        return new Table(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TableState, opts?: pulumi.CustomResourceOptions): Table {
+        return new Table(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a detailed description of a Note.
+ * 
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ * 
+ * To get more information about Note, see:
+ * 
+ * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/container-analysis/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
+ *     name: "test-attestor-note",
+ * });
+ * ```
+ */
 export class Note extends pulumi.CustomResource {
     /**
      * Get an existing Note resource's state with the given name, ID, and optional extra
@@ -13,8 +41,8 @@ export class Note extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NoteState): Note {
-        return new Note(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NoteState, opts?: pulumi.CustomResourceOptions): Note {
+        return new Note(name, <any>state, { ...opts, id: id });
     }
 
     public readonly attestationAuthority: pulumi.Output<{ hint: { humanReadableName: string } }>;

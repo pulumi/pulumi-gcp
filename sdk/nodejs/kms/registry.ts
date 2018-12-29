@@ -9,6 +9,42 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/iot/docs/) and
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as fs from "fs";
+ * 
+ * const google_pubsub_topic_default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {
+ *     name: "default-devicestatus",
+ * });
+ * const google_pubsub_topic_default_telemetry = new gcp.pubsub.Topic("default-telemetry", {
+ *     name: "default-telemetry",
+ * });
+ * const google_cloudiot_registry_default_registry = new gcp.kms.Registry("default-registry", {
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             certificate: fs.readFileSync("rsa_cert.pem", "utf-8"),
+ *             format: "X509_CERTIFICATE_PEM",
+ *         },
+ *     }],
+ *     eventNotificationConfig: {
+ *         pubsub_topic_name: google_pubsub_topic_default_telemetry.id,
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     name: "default-registry",
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: google_pubsub_topic_default_devicestatus.id,
+ *     },
+ * });
+ * ```
  */
 export class Registry extends pulumi.CustomResource {
     /**
@@ -19,8 +55,8 @@ export class Registry extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegistryState): Registry {
-        return new Registry(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegistryState, opts?: pulumi.CustomResourceOptions): Registry {
+        return new Registry(name, <any>state, { ...opts, id: id });
     }
 
     /**

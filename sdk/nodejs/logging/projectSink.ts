@@ -11,9 +11,60 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
  * 
- * ~> **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
+ * > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
  * 
- * ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+ * > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_logging_project_sink_my_sink = new gcp.logging.ProjectSink("my-sink", {
+ *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+ *     filter: "resource.type = gce_instance AND severity >= WARN",
+ *     name: "my-pubsub-instance-sink",
+ *     uniqueWriterIdentity: true,
+ * });
+ * ```
+ * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+ * cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
+ * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
+ * used with terraform.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_instance_my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "n1-standard-1",
+ *     name: "my-instance",
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     zone: "us-central1-a",
+ * });
+ * const google_storage_bucket_log_bucket = new gcp.storage.Bucket("log-bucket", {
+ *     name: "my-unique-logging-bucket",
+ * });
+ * const google_logging_project_sink_instance_sink = new gcp.logging.ProjectSink("instance-sink", {
+ *     destination: google_storage_bucket_log_bucket.name.apply(__arg0 => `storage.googleapis.com/${__arg0}`),
+ *     filter: google_compute_instance_my_logged_instance.instanceId.apply(__arg0 => `resource.type = gce_instance AND resource.labels.instance_id = "${__arg0}"`),
+ *     name: "my-instance-sink",
+ *     uniqueWriterIdentity: true,
+ * });
+ * const google_project_iam_binding_log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     members: [google_logging_project_sink_instance_sink.writerIdentity],
+ *     role: "roles/storage.objectCreator",
+ * });
+ * ```
  */
 export class ProjectSink extends pulumi.CustomResource {
     /**
@@ -24,8 +75,8 @@ export class ProjectSink extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectSinkState): ProjectSink {
-        return new ProjectSink(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectSinkState, opts?: pulumi.CustomResourceOptions): ProjectSink {
+        return new ProjectSink(name, <any>state, { ...opts, id: id });
     }
 
     /**

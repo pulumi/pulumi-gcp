@@ -9,6 +9,23 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_router_peer_foobar = new gcp.compute.RouterPeer("foobar", {
+ *     advertisedRoutePriority: 100,
+ *     interface: "interface-1",
+ *     name: "peer-1",
+ *     peerAsn: 65513,
+ *     peerIpAddress: "169.254.1.2",
+ *     region: "us-central1",
+ *     router: "router-1",
+ * });
+ * ```
  */
 export class RouterPeer extends pulumi.CustomResource {
     /**
@@ -19,8 +36,8 @@ export class RouterPeer extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterPeerState): RouterPeer {
-        return new RouterPeer(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterPeerState, opts?: pulumi.CustomResourceOptions): RouterPeer {
+        return new RouterPeer(name, <any>state, { ...opts, id: id });
     }
 
     /**

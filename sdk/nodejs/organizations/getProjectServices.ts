@@ -9,6 +9,19 @@ import * as utilities from "../utilities";
  * 
  * For a list of services available, visit the
  * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_project_services_project = pulumi.output(gcp.organizations.getProjectServices({
+ *     project: "your-project-id",
+ * }));
+ * 
+ * export const projectServices = google_project_services_project.apply(__arg0 => __arg0.services.join(","));
+ * ```
  */
 export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> {
     args = args || {};

@@ -7,6 +7,24 @@ import * as utilities from "../utilities";
 /**
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_service_account_myaccount = new gcp.serviceAccount.Account("myaccount", {
+ *     accountId: "dev-foo-account",
+ * });
+ * const google_service_account_key_mykey = new gcp.serviceAccount.Key("mykey", {
+ *     serviceAccountId: google_service_account_myaccount.name,
+ * });
+ * const google_service_account_key_mykey = pulumi.output(gcp.serviceAccount.getAccountKey({
+ *     name: google_service_account_key_mykey.name,
+ *     publicKeyType: "TYPE_X509_PEM_FILE",
+ * }));
+ * ```
  */
 export function getAccountKey(args?: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     args = args || {};

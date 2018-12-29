@@ -7,6 +7,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A ForwardingRule resource. A ForwardingRule resource specifies which pool
+// of target virtual machines to forward a packet to if it matches the given
+// [IPAddress, IPProtocol, portRange] tuple.
+// 
+// 
+// To get more information about ForwardingRule, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 type ForwardingRule struct {
 	s *pulumi.ResourceState
 }

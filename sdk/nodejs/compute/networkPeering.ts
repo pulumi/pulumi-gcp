@@ -10,9 +10,35 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
  * 
- * ~> **Note:** Both network must create a peering with each other for the peering to be functional.
+ * > **Note:** Both network must create a peering with each other for the peering to be functional.
  * 
- * ~> **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+ * > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_default = new gcp.compute.Network("default", {
+ *     autoCreateSubnetworks: false,
+ *     name: "foobar",
+ * });
+ * const google_compute_network_other = new gcp.compute.Network("other", {
+ *     autoCreateSubnetworks: false,
+ *     name: "other",
+ * });
+ * const google_compute_network_peering_peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     name: "peering1",
+ *     network: google_compute_network_default.selfLink,
+ *     peerNetwork: google_compute_network_other.selfLink,
+ * });
+ * const google_compute_network_peering_peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     name: "peering2",
+ *     network: google_compute_network_other.selfLink,
+ *     peerNetwork: google_compute_network_default.selfLink,
+ * });
+ * ```
  */
 export class NetworkPeering extends pulumi.CustomResource {
     /**
@@ -23,8 +49,8 @@ export class NetworkPeering extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkPeeringState): NetworkPeering {
-        return new NetworkPeering(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkPeeringState, opts?: pulumi.CustomResourceOptions): NetworkPeering {
+        return new NetworkPeering(name, <any>state, { ...opts, id: id });
     }
 
     /**

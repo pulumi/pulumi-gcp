@@ -8,6 +8,41 @@ import * as utilities from "../utilities";
  * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
  * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_security_policy_policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     rules: [
+ *         {
+ *             action: "deny(403)",
+ *             description: "Deny access to IPs in 9.9.9.0/24",
+ *             match: {
+ *                 config: {
+ *                     srcIpRanges: ["9.9.9.9/32"],
+ *                 },
+ *                 versionedExpr: "SRC_IPS_V1",
+ *             },
+ *             priority: Number.parseFloat("1000"),
+ *         },
+ *         {
+ *             action: "allow",
+ *             description: "default rule",
+ *             match: {
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
+ *                 versionedExpr: "SRC_IPS_V1",
+ *             },
+ *             priority: Number.parseFloat("2147483647"),
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**
@@ -18,8 +53,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecurityPolicyState): SecurityPolicy {
-        return new SecurityPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecurityPolicyState, opts?: pulumi.CustomResourceOptions): SecurityPolicy {
+        return new SecurityPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /**

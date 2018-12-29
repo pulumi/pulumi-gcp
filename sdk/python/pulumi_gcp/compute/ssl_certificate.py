@@ -7,6 +7,18 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class SSLCertificate(pulumi.CustomResource):
+    """
+    An SslCertificate resource, used for HTTPS load balancing. This resource
+    provides a mechanism to upload an SSL key and certificate to
+    the load balancer to serve secure connections from the user.
+    
+    
+    To get more information about SslCertificate, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+    """
     def __init__(__self__, __name__, __opts__=None, certificate=None, description=None, name=None, name_prefix=None, private_key=None, project=None):
         """Create a SSLCertificate resource with the given unique name, props, and options."""
         if not __name__:

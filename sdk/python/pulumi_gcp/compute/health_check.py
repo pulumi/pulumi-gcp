@@ -7,6 +7,26 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class HealthCheck(pulumi.CustomResource):
+    """
+    Health Checks determine whether instances are responsive and able to do work.
+    They are an important part of a comprehensive load balancing configuration,
+    as they enable monitoring instances behind load balancers.
+    
+    Health Checks poll instances at a specified interval. Instances that
+    do not respond successfully to some number of probes in a row are marked
+    as unhealthy. No new connections are sent to unhealthy instances,
+    though existing connections will continue. The health check will
+    continue to poll unhealthy instances. If an instance later responds
+    successfully to some number of consecutive probes, it is marked
+    healthy again and can receive new connections.
+    
+    
+    To get more information about HealthCheck, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/latest/healthChecks)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+    """
     def __init__(__self__, __name__, __opts__=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None):
         """Create a HealthCheck resource with the given unique name, props, and options."""
         if not __name__:

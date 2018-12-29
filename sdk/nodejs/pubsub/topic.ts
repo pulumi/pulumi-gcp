@@ -9,6 +9,17 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/pubsub/docs) and
  * [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_pubsub_topic_mytopic = new gcp.pubsub.Topic("mytopic", {
+ *     name: "default-topic",
+ * });
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -19,8 +30,8 @@ export class Topic extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState): Topic {
-        return new Topic(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState, opts?: pulumi.CustomResourceOptions): Topic {
+        return new Topic(name, <any>state, { ...opts, id: id });
     }
 
     /**

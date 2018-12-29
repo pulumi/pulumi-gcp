@@ -4,6 +4,43 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A description of the conditions under which some aspect of your system is
+ * considered to be "unhealthy" and the ways to notify people or services
+ * about this state.
+ * 
+ * 
+ * To get more information about AlertPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_monitoring_alert_policy_basic = new gcp.monitoring.AlertPolicy("basic", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "Test Policy Basic",
+ * });
+ * ```
+ */
 export class AlertPolicy extends pulumi.CustomResource {
     /**
      * Get an existing AlertPolicy resource's state with the given name, ID, and optional extra
@@ -13,8 +50,8 @@ export class AlertPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlertPolicyState): AlertPolicy {
-        return new AlertPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlertPolicyState, opts?: pulumi.CustomResourceOptions): AlertPolicy {
+        return new AlertPolicy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly combiner: pulumi.Output<string>;

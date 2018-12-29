@@ -8,6 +8,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A Google Cloud Redis instance.
+// 
+// 
+// To get more information about Instance, see:
+// 
+// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 type Instance struct {
 	s *pulumi.ResourceState
 }

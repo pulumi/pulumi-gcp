@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents an InterconnectAttachment (VLAN attachment) resource. For more
+ * information, see Creating VLAN Attachments.
+ * 
+ */
 export class InterconnectAttachment extends pulumi.CustomResource {
     /**
      * Get an existing InterconnectAttachment resource's state with the given name, ID, and optional extra
@@ -13,8 +18,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InterconnectAttachmentState): InterconnectAttachment {
-        return new InterconnectAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InterconnectAttachmentState, opts?: pulumi.CustomResourceOptions): InterconnectAttachment {
+        return new InterconnectAttachment(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly cloudRouterIpAddress: pulumi.Output<string>;

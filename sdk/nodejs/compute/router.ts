@@ -4,6 +4,45 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Router resource.
+ * 
+ * 
+ * To get more information about Router, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+ * * How-to Guides
+ *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_foobar = new gcp.compute.Network("foobar", {
+ *     autoCreateSubnetworks: false,
+ *     name: "my-network",
+ * });
+ * const google_compute_router_foobar = new gcp.compute.Router("foobar", {
+ *     bgp: {
+ *         advertiseMode: "CUSTOM",
+ *         advertisedGroups: ["ALL_SUBNETS"],
+ *         advertisedIpRanges: [
+ *             {
+ *                 range: "1.2.3.4",
+ *             },
+ *             {
+ *                 range: "6.7.0.0/16",
+ *             },
+ *         ],
+ *         asn: 64514,
+ *     },
+ *     name: "my-router",
+ *     network: google_compute_network_foobar.name,
+ * });
+ * ```
+ */
 export class Router extends pulumi.CustomResource {
     /**
      * Get an existing Router resource's state with the given name, ID, and optional extra
@@ -13,8 +52,8 @@ export class Router extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterState): Router {
-        return new Router(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterState, opts?: pulumi.CustomResourceOptions): Router {
+        return new Router(name, <any>state, { ...opts, id: id });
     }
 
     public readonly bgp: pulumi.Output<{ advertiseMode?: string, advertisedGroups?: string[], advertisedIpRanges?: { description?: string, range?: string }[], asn: number } | undefined>;

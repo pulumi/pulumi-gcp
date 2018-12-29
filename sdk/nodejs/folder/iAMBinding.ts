@@ -8,9 +8,26 @@ import * as utilities from "../utilities";
  * Allows creation and management of a single binding within IAM policy for
  * an existing Google Cloud Platform folder.
  * 
- * ~> **Note:** This resource _must not_ be used in conjunction with
+ * > **Note:** This resource _must not_ be used in conjunction with
  *    `google_folder_iam_policy` or they will fight over what your policy
  *    should be.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const google_folder_iam_binding_admin = new gcp.folder.IAMBinding("admin", {
+ *     folder: google_folder_department1.name,
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**
@@ -21,8 +38,8 @@ export class IAMBinding extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMBindingState): IAMBinding {
-        return new IAMBinding(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMBindingState, opts?: pulumi.CustomResourceOptions): IAMBinding {
+        return new IAMBinding(name, <any>state, { ...opts, id: id });
     }
 
     /**

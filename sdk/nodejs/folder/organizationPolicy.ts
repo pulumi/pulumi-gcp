@@ -9,6 +9,72 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+ * 
+ * ## Example Usage
+ * 
+ * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_organization_policy_serial_port_policy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ *     booleanPolicy: {
+ *         enforced: true,
+ *     },
+ *     constraint: "compute.disableSerialPortAccess",
+ *     folder: "folders/123456789",
+ * });
+ * ```
+ * 
+ * To set a policy with a [list contraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     listPolicy: {
+ *         allow: {
+ *             all: true,
+ *         },
+ *     },
+ * });
+ * ```
+ * 
+ * Or to deny some services, use the following instead:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     listPolicy: {
+ *         deny: {
+ *             values: ["cloudresourcemanager.googleapis.com"],
+ *         },
+ *         suggestedValues: "compute.googleapis.com",
+ *     },
+ * });
+ * ```
+ * To restore the default folder organization policy, use the following instead:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     restorePolicy: {
+ *         default: true,
+ *     },
+ * });
+ * ```
  */
 export class OrganizationPolicy extends pulumi.CustomResource {
     /**
@@ -19,8 +85,8 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OrganizationPolicyState): OrganizationPolicy {
-        return new OrganizationPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OrganizationPolicyState, opts?: pulumi.CustomResourceOptions): OrganizationPolicy {
+        return new OrganizationPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /**

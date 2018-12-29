@@ -7,6 +7,15 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class VPNGateway(pulumi.CustomResource):
+    """
+    Represents a VPN gateway running in GCP. This virtual device is managed
+    by Google, but used only by you.
+    
+    
+    To get more information about VpnGateway, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
+    """
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, network=None, project=None, region=None):
         """Create a VPNGateway resource with the given unique name, props, and options."""
         if not __name__:

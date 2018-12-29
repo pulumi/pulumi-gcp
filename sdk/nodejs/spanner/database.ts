@@ -6,6 +6,28 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a Spanner database.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_spanner_instance_main = new gcp.spanner.Instance("main", {
+ *     config: "regional-europe-west1",
+ *     displayName: "main-instance",
+ * });
+ * const google_spanner_database_db = new gcp.spanner.Database("db", {
+ *     ddls: [
+ *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+ *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+ *     ],
+ *     instance: google_spanner_instance_main.name,
+ *     name: "main-instance",
+ * });
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -16,8 +38,8 @@ export class Database extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState): Database {
-        return new Database(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState, opts?: pulumi.CustomResourceOptions): Database {
+        return new Database(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -7,6 +7,17 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class TargetHttpsProxy(pulumi.CustomResource):
+    """
+    Represents a TargetHttpsProxy resource, which is used by one or more
+    global forwarding rule to route incoming HTTPS requests to a URL map.
+    
+    
+    To get more information about TargetHttpsProxy, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetHttpsProxies)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+    """
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         """Create a TargetHttpsProxy resource with the given unique name, props, and options."""
         if not __name__:

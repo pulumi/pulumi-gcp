@@ -4,6 +4,72 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * VPN tunnel resource.
+ * 
+ * 
+ * To get more information about VpnTunnel, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
+ * * How-to Guides
+ *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+ *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+ * 
+ * > **Warning:** All arguments including the shared secret will be stored in the raw
+ * state as plain-text.
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_address_vpn_static_ip = new gcp.compute.Address("vpn_static_ip", {
+ *     name: "vpn-static-ip",
+ * });
+ * const google_compute_network_network1 = new gcp.compute.Network("network1", {
+ *     name: "network1",
+ * });
+ * const google_compute_vpn_gateway_target_gateway = new gcp.compute.VPNGateway("target_gateway", {
+ *     name: "vpn1",
+ *     network: google_compute_network_network1.selfLink,
+ * });
+ * const google_compute_forwarding_rule_fr_esp = new gcp.compute.ForwardingRule("fr_esp", {
+ *     ipAddress: google_compute_address_vpn_static_ip.address,
+ *     ipProtocol: "ESP",
+ *     name: "fr-esp",
+ *     target: google_compute_vpn_gateway_target_gateway.selfLink,
+ * });
+ * const google_compute_forwarding_rule_fr_udp4500 = new gcp.compute.ForwardingRule("fr_udp4500", {
+ *     ipAddress: google_compute_address_vpn_static_ip.address,
+ *     ipProtocol: "UDP",
+ *     name: "fr-udp4500",
+ *     portRange: "4500",
+ *     target: google_compute_vpn_gateway_target_gateway.selfLink,
+ * });
+ * const google_compute_forwarding_rule_fr_udp500 = new gcp.compute.ForwardingRule("fr_udp500", {
+ *     ipAddress: google_compute_address_vpn_static_ip.address,
+ *     ipProtocol: "UDP",
+ *     name: "fr-udp500",
+ *     portRange: "500",
+ *     target: google_compute_vpn_gateway_target_gateway.selfLink,
+ * });
+ * const google_compute_vpn_tunnel_tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "tunnel1",
+ *     peerIp: "15.0.0.120",
+ *     sharedSecret: "a secret message",
+ *     targetVpnGateway: google_compute_vpn_gateway_target_gateway.selfLink,
+ * }, {dependsOn: [google_compute_forwarding_rule_fr_esp, google_compute_forwarding_rule_fr_udp4500, google_compute_forwarding_rule_fr_udp500]});
+ * const google_compute_route_route1 = new gcp.compute.Route("route1", {
+ *     destRange: "15.0.0.0/24",
+ *     name: "route1",
+ *     network: google_compute_network_network1.name,
+ *     nextHopVpnTunnel: google_compute_vpn_tunnel_tunnel1.selfLink,
+ *     priority: 1000,
+ * });
+ * ```
+ */
 export class VPNTunnel extends pulumi.CustomResource {
     /**
      * Get an existing VPNTunnel resource's state with the given name, ID, and optional extra
@@ -13,8 +79,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VPNTunnelState): VPNTunnel {
-        return new VPNTunnel(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VPNTunnelState, opts?: pulumi.CustomResourceOptions): VPNTunnel {
+        return new VPNTunnel(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;

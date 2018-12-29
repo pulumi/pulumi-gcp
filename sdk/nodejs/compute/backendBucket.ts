@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
+ * load balancing.
+ * 
+ * An HTTP(S) load balancer can direct traffic to specified URLs to a
+ * backend bucket rather than a backend service. It can send requests for
+ * static content to a Cloud Storage bucket and requests for dynamic content
+ * a virtual machine instance.
+ * 
+ * 
+ * To get more information about BackendBucket, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/backendBuckets)
+ * * How-to Guides
+ *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_image_bucket = new gcp.storage.Bucket("image_bucket", {
+ *     location: "EU",
+ *     name: "image-store-bucket",
+ * });
+ * const google_compute_backend_bucket_image_backend = new gcp.compute.BackendBucket("image_backend", {
+ *     bucketName: google_storage_bucket_image_bucket.name,
+ *     description: "Contains beautiful images",
+ *     enableCdn: true,
+ *     name: "image-backend-bucket",
+ * });
+ * ```
+ */
 export class BackendBucket extends pulumi.CustomResource {
     /**
      * Get an existing BackendBucket resource's state with the given name, ID, and optional extra
@@ -13,8 +47,8 @@ export class BackendBucket extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendBucketState): BackendBucket {
-        return new BackendBucket(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendBucketState, opts?: pulumi.CustomResourceOptions): BackendBucket {
+        return new BackendBucket(name, <any>state, { ...opts, id: id });
     }
 
     public readonly bucketName: pulumi.Output<string>;

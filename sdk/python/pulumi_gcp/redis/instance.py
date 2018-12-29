@@ -7,6 +7,16 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    """
+    A Google Cloud Redis instance.
+    
+    
+    To get more information about Instance, see:
+    
+    * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+    """
     def __init__(__self__, __name__, __opts__=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:

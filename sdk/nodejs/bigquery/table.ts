@@ -9,6 +9,36 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as fs from "fs";
+ * 
+ * const google_bigquery_dataset_default = new gcp.bigquery.Dataset("default", {
+ *     datasetId: "foo",
+ *     defaultTableExpirationMs: 3600000,
+ *     description: "This is a test description",
+ *     friendlyName: "test",
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     location: "EU",
+ * });
+ * const google_bigquery_table_default = new gcp.bigquery.Table("default", {
+ *     datasetId: google_bigquery_dataset_default.datasetId,
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     schema: fs.readFileSync("schema.json", "utf-8"),
+ *     tableId: "bar",
+ *     timePartitioning: {
+ *         type: "DAY",
+ *     },
+ * });
+ * ```
  */
 export class Table extends pulumi.CustomResource {
     /**
@@ -19,8 +49,8 @@ export class Table extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TableState): Table {
-        return new Table(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TableState, opts?: pulumi.CustomResourceOptions): Table {
+        return new Table(name, <any>state, { ...opts, id: id });
     }
 
     /**

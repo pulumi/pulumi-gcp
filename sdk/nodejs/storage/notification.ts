@@ -16,6 +16,38 @@ import * as utilities from "../utilities";
  * account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
  * for an example of enabling notifications by granting the correct IAM permission. See
  * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_project_service_account_gcs_account = pulumi.output(gcp.storage.getProjectServiceAccount({}));
+ * const google_pubsub_topic_topic = new gcp.pubsub.Topic("topic", {
+ *     name: "default_topic",
+ * });
+ * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "default_bucket",
+ * });
+ * const google_pubsub_topic_iam_binding_binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ *     members: [google_storage_project_service_account_gcs_account.apply(__arg0 => `serviceAccount:${__arg0.emailAddress}`)],
+ *     role: "roles/pubsub.publisher",
+ *     topic: google_pubsub_topic_topic.name,
+ * });
+ * const google_storage_notification_notification = new gcp.storage.Notification("notification", {
+ *     bucket: google_storage_bucket_bucket.name,
+ *     customAttributes: {
+ *         new-attribute: "new-attribute-value",
+ *     },
+ *     eventTypes: [
+ *         "OBJECT_FINALIZE",
+ *         "OBJECT_METADATA_UPDATE",
+ *     ],
+ *     payloadFormat: "JSON_API_V1",
+ *     topic: google_pubsub_topic_topic.id,
+ * }, {dependsOn: [google_pubsub_topic_iam_binding_binding]});
+ * ```
  */
 export class Notification extends pulumi.CustomResource {
     /**
@@ -26,8 +58,8 @@ export class Notification extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NotificationState): Notification {
-        return new Notification(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NotificationState, opts?: pulumi.CustomResourceOptions): Notification {
+        return new Notification(name, <any>state, { ...opts, id: id });
     }
 
     /**

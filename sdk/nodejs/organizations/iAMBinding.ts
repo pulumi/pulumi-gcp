@@ -8,9 +8,22 @@ import * as utilities from "../utilities";
  * Allows creation and management of a single binding within IAM policy for
  * an existing Google Cloud Platform Organization.
  * 
- * ~> **Note:** This resource __must not__ be used in conjunction with
+ * > **Note:** This resource __must not__ be used in conjunction with
  *    `google_organization_iam_member` for the __same role__ or they will fight over
  *    what your policy should be.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_organization_iam_binding_binding = new gcp.organizations.IAMBinding("binding", {
+ *     members: ["user:jane@example.com"],
+ *     orgId: "123456789",
+ *     role: "roles/browser",
+ * });
+ * ```
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**
@@ -21,8 +34,8 @@ export class IAMBinding extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMBindingState): IAMBinding {
-        return new IAMBinding(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMBindingState, opts?: pulumi.CustomResourceOptions): IAMBinding {
+        return new IAMBinding(name, <any>state, { ...opts, id: id });
     }
 
     /**

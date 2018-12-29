@@ -7,6 +7,18 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Policy(pulumi.CustomResource):
+    """
+    A policy for container image binary authorization.
+    
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+    
+    To get more information about Policy, see:
+    
+    * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    """
     def __init__(__self__, __name__, __opts__=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
         """Create a Policy resource with the given unique name, props, and options."""
         if not __name__:

@@ -7,6 +7,11 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Lien(pulumi.CustomResource):
+    """
+    A Lien represents an encumbrance on the actions that can be performed on a resource.
+    
+    
+    """
     def __init__(__self__, __name__, __opts__=None, origin=None, parent=None, reason=None, restrictions=None):
         """Create a Lien resource with the given unique name, props, and options."""
         if not __name__:

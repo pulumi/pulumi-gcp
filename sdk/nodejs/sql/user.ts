@@ -7,9 +7,31 @@ import * as utilities from "../utilities";
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
  * 
- * ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
+ * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html). Passwords will not be retrieved when running
  * "terraform import".
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a SQL User.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_sql_database_instance_master = new gcp.sql.DatabaseInstance("master", {
+ *     name: "master-instance",
+ *     settings: {
+ *         tier: "D0",
+ *     },
+ * });
+ * const google_sql_user_users = new gcp.sql.User("users", {
+ *     host: "me.com",
+ *     instance: google_sql_database_instance_master.name,
+ *     name: "me",
+ *     password: "changeme",
+ * });
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -20,8 +42,8 @@ export class User extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState): User {
-        return new User(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState, opts?: pulumi.CustomResourceOptions): User {
+        return new User(name, <any>state, { ...opts, id: id });
     }
 
     /**

@@ -7,6 +7,18 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class TargetTCPProxy(pulumi.CustomResource):
+    """
+    Represents a TargetTcpProxy resource, which is used by one or more
+    global forwarding rule to route incoming TCP requests to a Backend
+    service.
+    
+    
+    To get more information about TargetTcpProxy, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetTcpProxies)
+    * How-to Guides
+        * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+    """
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None):
         """Create a TargetTCPProxy resource with the given unique name, props, and options."""
         if not __name__:

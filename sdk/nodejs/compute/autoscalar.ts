@@ -4,6 +4,80 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents an Autoscaler resource.
+ * 
+ * Autoscalers allow you to automatically scale virtual machine instances in
+ * managed instance groups according to an autoscaling policy that you
+ * define.
+ * 
+ * 
+ * To get more information about Autoscaler, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
+ * * How-to Guides
+ *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_debian_9 = pulumi.output(gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * }));
+ * const google_compute_target_pool_foobar = new gcp.compute.TargetPool("foobar", {
+ *     name: "my-target-pool",
+ * });
+ * const google_compute_instance_template_foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     canIpForward: false,
+ *     disks: [{
+ *         sourceImage: google_compute_image_debian_9.apply(__arg0 => __arg0.selfLink),
+ *     }],
+ *     machineType: "n1-standard-1",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     name: "my-instance-template",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ * });
+ * const google_compute_instance_group_manager_foobar = new gcp.compute.InstanceGroupManager("foobar", {
+ *     baseInstanceName: "foobar",
+ *     instanceTemplate: google_compute_instance_template_foobar.selfLink,
+ *     name: "my-igm",
+ *     targetPools: [google_compute_target_pool_foobar.selfLink],
+ *     zone: "us-central1-f",
+ * });
+ * const google_compute_autoscaler_foobar = new gcp.compute.Autoscalar("foobar", {
+ *     autoscalingPolicy: {
+ *         cooldownPeriod: 60,
+ *         cpuUtilization: {
+ *             target: 0.500000,
+ *         },
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *     },
+ *     name: "my-autoscaler",
+ *     target: google_compute_instance_group_manager_foobar.selfLink,
+ *     zone: "us-central1-f",
+ * });
+ * ```
+ */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra
@@ -13,8 +87,8 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AutoscalarState): Autoscalar {
-        return new Autoscalar(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AutoscalarState, opts?: pulumi.CustomResourceOptions): Autoscalar {
+        return new Autoscalar(name, <any>state, { ...opts, id: id });
     }
 
     public readonly autoscalingPolicy: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { name: string, target: number, type: string }[], minReplicas: number }>;

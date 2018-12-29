@@ -1,6 +1,6 @@
 [[constraint]]
   name = "github.com/pulumi/pulumi-terraform"
-  branch = "master"
+  branch = "joeduffy/skip_markdown_header_fix"
 
 [[override]]
   name = "github.com/terraform-providers/terraform-provider-google"

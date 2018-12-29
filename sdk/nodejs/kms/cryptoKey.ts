@@ -13,13 +13,31 @@ import * as utilities from "../utilities";
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
  * 
- * ~> Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
+ * > Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
  * Terraform-managed CryptoKey will remove it from state and delete all
  * CryptoKeyVersions, rendering the key unusable, but **will not delete the
  * resource on the server**. When Terraform destroys these keys, any data
  * previously encrypted with these keys will be irrecoverable. For this reason, it
  * is strongly recommended that you add lifecycle hooks to the resource to prevent
  * accidental destruction.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_kms_key_ring_my_key_ring = new gcp.kms.KeyRing("my_key_ring", {
+ *     location: "us-central1",
+ *     name: "my-key-ring",
+ *     project: "my-project",
+ * });
+ * const google_kms_crypto_key_my_crypto_key = new gcp.kms.CryptoKey("my_crypto_key", {
+ *     keyRing: google_kms_key_ring_my_key_ring.selfLink,
+ *     name: "my-crypto-key",
+ *     rotationPeriod: "100000s",
+ * });
+ * ```
  */
 export class CryptoKey extends pulumi.CustomResource {
     /**
@@ -30,8 +48,8 @@ export class CryptoKey extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CryptoKeyState): CryptoKey {
-        return new CryptoKey(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CryptoKeyState, opts?: pulumi.CustomResourceOptions): CryptoKey {
+        return new CryptoKey(name, <any>state, { ...opts, id: id });
     }
 
     /**

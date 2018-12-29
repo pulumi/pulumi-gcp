@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a public object in an existing `image-store` bucket.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_object_picture = new gcp.storage.BucketObject("picture", {
+ *     bucket: "image-store",
+ *     name: "butterfly01",
+ *     source: new pulumi.asset.FileArchive("/images/nature/garden-tiger-moth.jpg"),
+ * });
+ * ```
  */
 export class BucketObject extends pulumi.CustomResource {
     /**
@@ -22,8 +37,8 @@ export class BucketObject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketObjectState): BucketObject {
-        return new BucketObject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketObjectState, opts?: pulumi.CustomResourceOptions): BucketObject {
+        return new BucketObject(name, <any>state, { ...opts, id: id });
     }
 
     /**

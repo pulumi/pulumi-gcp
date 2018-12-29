@@ -7,6 +7,16 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Router(pulumi.CustomResource):
+    """
+    Represents a Router resource.
+    
+    
+    To get more information about Router, see:
+    
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+    * How-to Guides
+        * [Google Cloud Router](https://cloud.google.com/router/docs/)
+    """
     def __init__(__self__, __name__, __opts__=None, bgp=None, description=None, name=None, network=None, project=None, region=None):
         """Create a Router resource with the given unique name, props, and options."""
         if not __name__:

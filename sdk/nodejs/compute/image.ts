@@ -9,6 +9,34 @@ import * as utilities from "../utilities";
  * tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
  * [API](https://cloud.google.com/compute/docs/reference/latest/images).
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_bootable_image = new gcp.compute.Image("bootable-image", {
+ *     licenses: ["https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"],
+ *     name: "my-custom-image",
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/my-bucket/my-disk-image-tarball.tar.gz",
+ *     },
+ * });
+ * const google_compute_instance_vm = new gcp.compute.Instance("vm", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: google_compute_image_bootable_image.selfLink,
+ *         },
+ *     },
+ *     machineType: "n1-standard-1",
+ *     name: "vm-from-custom-image",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     zone: "us-east1-c",
+ * });
+ * ```
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -19,8 +47,8 @@ export class Image extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState): Image {
-        return new Image(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image {
+        return new Image(name, <any>state, { ...opts, id: id });
     }
 
     /**

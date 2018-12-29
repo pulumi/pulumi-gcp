@@ -4,6 +4,64 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Persistent disks are durable storage devices that function similarly to
+ * the physical disks in a desktop or a server. Compute Engine manages the
+ * hardware behind these devices to ensure data redundancy and optimize
+ * performance for you. Persistent disks are available as either standard
+ * hard disk drives (HDD) or solid-state drives (SSD).
+ * 
+ * Persistent disks are located independently from your virtual machine
+ * instances, so you can detach or move persistent disks to keep your data
+ * even after you delete your instances. Persistent disk performance scales
+ * automatically with size, so you can resize your existing persistent disks
+ * or add more persistent disks to an instance to meet your performance and
+ * storage space requirements.
+ * 
+ * Add a persistent disk to your instance when you need reliable and
+ * affordable storage with consistent performance characteristics.
+ * 
+ * 
+ * To get more information about RegionDisk, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionDisks)
+ * * How-to Guides
+ *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+ * 
+ * > **Warning:** All arguments including the disk encryption key will be stored in the raw
+ * state as plain-text.
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_disk_disk = new gcp.compute.Disk("disk", {
+ *     image: "debian-cloud/debian-9",
+ *     name: "my-disk",
+ *     size: 50,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const google_compute_snapshot_snapdisk = new gcp.compute.Snapshot("snapdisk", {
+ *     name: "my-snapshot",
+ *     sourceDisk: google_compute_disk_disk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const google_compute_region_disk_regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+ *     name: "my-region-disk",
+ *     region: "us-central1",
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ *     snapshot: google_compute_snapshot_snapdisk.selfLink,
+ *     type: "pd-ssd",
+ * });
+ * ```
+ */
 export class RegionDisk extends pulumi.CustomResource {
     /**
      * Get an existing RegionDisk resource's state with the given name, ID, and optional extra
@@ -13,8 +71,8 @@ export class RegionDisk extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionDiskState): RegionDisk {
-        return new RegionDisk(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionDiskState, opts?: pulumi.CustomResourceOptions): RegionDisk {
+        return new RegionDisk(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
