@@ -1,5 +1,10 @@
+## 0.16.5 (unreleased)
 
-## 0.16.4 (unreleased)
+## 0.16.4 (Released January 9th, 2019)
+
+### Improvements
+
+- `pulumi-gcp` is now based on v1.20.0 of the Terraform Google Cloud provider.
 
 ## 0.16.3 (Released December 22nd, 2018)
 
