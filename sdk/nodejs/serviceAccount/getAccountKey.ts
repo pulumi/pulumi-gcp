@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
- * 
- */
 export function getAccountKey(args?: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
@@ -22,20 +18,8 @@ export function getAccountKey(args?: GetAccountKeyArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getAccountKey.
  */
 export interface GetAccountKeyArgs {
-    /**
-     * The name of the service account key. This must have format
-     * `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
-     * is the email address or unique id of the service account.
-     */
     readonly name?: string;
-    /**
-     * The ID of the project that the service account will be created in.
-     * Defaults to the provider project configuration.
-     */
     readonly project?: string;
-    /**
-     * The output format of the public key requested. X509_PEM is the default output format.
-     */
     readonly publicKeyType?: string;
     readonly serviceAccountId?: string;
 }
@@ -46,9 +30,6 @@ export interface GetAccountKeyArgs {
 export interface GetAccountKeyResult {
     readonly keyAlgorithm: string;
     readonly name: string;
-    /**
-     * The public key, base64 encoded
-     */
     readonly publicKey: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

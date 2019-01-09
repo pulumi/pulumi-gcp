@@ -13,9 +13,9 @@ import (
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 // 
-// ~> **Note:** Both network must create a peering with each other for the peering to be functional.
+// > **Note:** Both network must create a peering with each other for the peering to be functional.
 // 
-// ~> **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+// > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
 type NetworkPeering struct {
 	s *pulumi.ResourceState
 }

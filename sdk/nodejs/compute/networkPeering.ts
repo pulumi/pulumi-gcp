@@ -4,16 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a network peering within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
- * 
- * ~> **Note:** Both network must create a peering with each other for the peering to be functional.
- * 
- * ~> **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
- */
 export class NetworkPeering extends pulumi.CustomResource {
     /**
      * Get an existing NetworkPeering resource's state with the given name, ID, and optional extra
@@ -23,34 +13,15 @@ export class NetworkPeering extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkPeeringState): NetworkPeering {
-        return new NetworkPeering(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkPeeringState, opts?: pulumi.CustomResourceOptions): NetworkPeering {
+        return new NetworkPeering(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
-     */
     public readonly autoCreateRoutes: pulumi.Output<boolean | undefined>;
-    /**
-     * Name of the peering.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Resource link of the network to add a peering to.
-     */
     public readonly network: pulumi.Output<string>;
-    /**
-     * Resource link of the peer network.
-     */
     public readonly peerNetwork: pulumi.Output<string>;
-    /**
-     * State for the peering.
-     */
     public /*out*/ readonly state: pulumi.Output<string>;
-    /**
-     * Details about the current state of the peering.
-     */
     public /*out*/ readonly stateDetails: pulumi.Output<string>;
 
     /**
@@ -94,30 +65,11 @@ export class NetworkPeering extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkPeering resources.
  */
 export interface NetworkPeeringState {
-    /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
-     */
     readonly autoCreateRoutes?: pulumi.Input<boolean>;
-    /**
-     * Name of the peering.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Resource link of the network to add a peering to.
-     */
     readonly network?: pulumi.Input<string>;
-    /**
-     * Resource link of the peer network.
-     */
     readonly peerNetwork?: pulumi.Input<string>;
-    /**
-     * State for the peering.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Details about the current state of the peering.
-     */
     readonly stateDetails?: pulumi.Input<string>;
 }
 
@@ -125,21 +77,8 @@ export interface NetworkPeeringState {
  * The set of arguments for constructing a NetworkPeering resource.
  */
 export interface NetworkPeeringArgs {
-    /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
-     */
     readonly autoCreateRoutes?: pulumi.Input<boolean>;
-    /**
-     * Name of the peering.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Resource link of the network to add a peering to.
-     */
     readonly network: pulumi.Input<string>;
-    /**
-     * Resource link of the peer network.
-     */
     readonly peerNetwork: pulumi.Input<string>;
 }

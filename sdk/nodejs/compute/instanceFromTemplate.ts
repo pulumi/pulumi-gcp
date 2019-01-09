@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VM instance resource within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/instances)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
- * 
- * This resource is specifically to create a compute instance from a given
- * `source_instance_template`. To create an instance without a template, use the
- * `google_compute_instance` resource.
- * 
- */
 export class InstanceFromTemplate extends pulumi.CustomResource {
     /**
      * Get an existing InstanceFromTemplate resource's state with the given name, ID, and optional extra
@@ -24,8 +13,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceFromTemplateState): InstanceFromTemplate {
-        return new InstanceFromTemplate(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceFromTemplateState, opts?: pulumi.CustomResourceOptions): InstanceFromTemplate {
+        return new InstanceFromTemplate(name, <any>state, { ...opts, id: id });
     }
 
     public readonly allowStoppingForUpdate: pulumi.Output<boolean>;
@@ -44,10 +33,6 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
     public readonly metadataStartupScript: pulumi.Output<string>;
     public readonly minCpuPlatform: pulumi.Output<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
     public readonly networkInterfaces: pulumi.Output<{ accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     public readonly project: pulumi.Output<string>;
@@ -55,17 +40,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public readonly scratchDisks: pulumi.Output<{ interface: string }[]>;
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly serviceAccount: pulumi.Output<{ email: string, scopes: string[] }>;
-    /**
-     * Name or self link of an instance
-     * template to create the instance based on.
-     */
     public readonly sourceInstanceTemplate: pulumi.Output<string>;
     public readonly tags: pulumi.Output<string[]>;
     public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
-    /**
-     * The zone that the machine should be created in. If not
-     * set, the provider zone is used.
-     */
     public readonly zone: pulumi.Output<string>;
 
     /**
@@ -164,10 +141,6 @@ export interface InstanceFromTemplateState {
     readonly metadataFingerprint?: pulumi.Input<string>;
     readonly metadataStartupScript?: pulumi.Input<string>;
     readonly minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     readonly project?: pulumi.Input<string>;
@@ -175,17 +148,9 @@ export interface InstanceFromTemplateState {
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     readonly selfLink?: pulumi.Input<string>;
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
-    /**
-     * Name or self link of an instance
-     * template to create the instance based on.
-     */
     readonly sourceInstanceTemplate?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     readonly tagsFingerprint?: pulumi.Input<string>;
-    /**
-     * The zone that the machine should be created in. If not
-     * set, the provider zone is used.
-     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -205,25 +170,13 @@ export interface InstanceFromTemplateArgs {
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly metadataStartupScript?: pulumi.Input<string>;
     readonly minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     readonly project?: pulumi.Input<string>;
     readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
-    /**
-     * Name or self link of an instance
-     * template to create the instance based on.
-     */
     readonly sourceInstanceTemplate: pulumi.Input<string>;
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The zone that the machine should be created in. If not
-     * set, the provider zone is used.
-     */
     readonly zone?: pulumi.Input<string>;
 }

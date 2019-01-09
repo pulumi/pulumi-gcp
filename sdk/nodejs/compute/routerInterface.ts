@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Cloud Router interface. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- */
 export class RouterInterface extends pulumi.CustomResource {
     /**
      * Get an existing RouterInterface resource's state with the given name, ID, and optional extra
@@ -19,40 +13,15 @@ export class RouterInterface extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceState): RouterInterface {
-        return new RouterInterface(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceState, opts?: pulumi.CustomResourceOptions): RouterInterface {
+        return new RouterInterface(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * IP address and range of the interface. The IP range must be
-     * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
-     */
     public readonly ipRange: pulumi.Output<string | undefined>;
-    /**
-     * A unique name for the interface, required by GCE. Changing
-     * this forces a new interface to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
-     */
     public readonly region: pulumi.Output<string>;
-    /**
-     * The name of the router this interface will be attached to.
-     * Changing this forces a new interface to be created.
-     */
     public readonly router: pulumi.Output<string>;
-    /**
-     * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
-     */
     public readonly vpnTunnel: pulumi.Output<string>;
 
     /**
@@ -96,36 +65,11 @@ export class RouterInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterInterface resources.
  */
 export interface RouterInterfaceState {
-    /**
-     * IP address and range of the interface. The IP range must be
-     * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
-     */
     readonly ipRange?: pulumi.Input<string>;
-    /**
-     * A unique name for the interface, required by GCE. Changing
-     * this forces a new interface to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The name of the router this interface will be attached to.
-     * Changing this forces a new interface to be created.
-     */
     readonly router?: pulumi.Input<string>;
-    /**
-     * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
-     */
     readonly vpnTunnel?: pulumi.Input<string>;
 }
 
@@ -133,35 +77,10 @@ export interface RouterInterfaceState {
  * The set of arguments for constructing a RouterInterface resource.
  */
 export interface RouterInterfaceArgs {
-    /**
-     * IP address and range of the interface. The IP range must be
-     * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
-     */
     readonly ipRange?: pulumi.Input<string>;
-    /**
-     * A unique name for the interface, required by GCE. Changing
-     * this forces a new interface to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The name of the router this interface will be attached to.
-     * Changing this forces a new interface to be created.
-     */
     readonly router: pulumi.Input<string>;
-    /**
-     * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
-     */
     readonly vpnTunnel: pulumi.Input<string>;
 }

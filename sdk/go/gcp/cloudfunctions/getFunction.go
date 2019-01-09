@@ -30,6 +30,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
 		Labels: outputs["labels"],
 		RetryOnFailure: outputs["retryOnFailure"],
+		Runtime: outputs["runtime"],
 		SourceArchiveBucket: outputs["sourceArchiveBucket"],
 		SourceArchiveObject: outputs["sourceArchiveObject"],
 		Timeout: outputs["timeout"],
@@ -68,6 +69,8 @@ type GetFunctionResult struct {
 	// A map of labels applied to this function.
 	Labels interface{}
 	RetryOnFailure interface{}
+	// The runtime in which the function is running.
+	Runtime interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.

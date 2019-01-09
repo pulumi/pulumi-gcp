@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents an InterconnectAttachment (VLAN attachment) resource. For more
+// information, see Creating VLAN Attachments.
+// 
 type InterconnectAttachment struct {
 	s *pulumi.ResourceState
 }

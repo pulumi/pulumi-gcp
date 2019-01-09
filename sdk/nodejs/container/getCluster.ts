@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get info about a cluster within GKE from its name and zone.
- */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("gcp:container/getCluster:getCluster", {
         "name": args.name,
@@ -20,14 +17,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
-    /**
-     * The name of the cluster.
-     */
     readonly name: string;
-    /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: string;
     readonly region?: string;
     readonly zone?: string;
@@ -39,6 +29,7 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly additionalZones: string[];
     readonly addonsConfigs: { horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
+    readonly clusterAutoscalings: { enabled: boolean, resourceLimits: { maximum: number, minimum: number, resourceType: string }[] }[];
     readonly clusterIpv4Cidr: string;
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
@@ -64,6 +55,7 @@ export interface GetClusterResult {
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
     readonly privateCluster: boolean;
+    readonly privateClusterConfigs: { enablePrivateEndpoint: boolean, enablePrivateNodes: boolean, masterIpv4CidrBlock: string, privateEndpoint: string, publicEndpoint: string }[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly subnetwork: string;

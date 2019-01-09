@@ -4,14 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The Google Compute Engine Instance Group Manager API creates and manages pools
- * of homogeneous Compute Engine virtual machine instances from a common instance
- * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
- * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
- * 
- * ~> **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
- */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**
      * Get an existing InstanceGroupManager resource's state with the given name, ID, and optional extra
@@ -21,107 +13,26 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceGroupManagerState): InstanceGroupManager {
-        return new InstanceGroupManager(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceGroupManagerState, opts?: pulumi.CustomResourceOptions): InstanceGroupManager {
+        return new InstanceGroupManager(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The autohealing policies for this managed instance
-     * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     public readonly autoHealingPolicies: pulumi.Output<{ healthCheck: string, initialDelaySec: number } | undefined>;
-    /**
-     * The base instance name to use for
-     * instances in this group. The value must be a valid
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
-     * are lowercase letters, numbers, and hyphens (-). Instances are named by
-     * appending a hyphen and a random four-character string to the base instance
-     * name.
-     */
     public readonly baseInstanceName: pulumi.Output<string>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The fingerprint of the instance group manager.
-     */
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    /**
-     * The full URL of the instance group created by the manager.
-     */
     public /*out*/ readonly instanceGroup: pulumi.Output<string>;
-    /**
-     * - The full URL to an instance template from which all new instances of this version will be created.
-     */
     public readonly instanceTemplate: pulumi.Output<string | undefined>;
-    /**
-     * - Version name.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The named port configuration. See the section below
-     * for details on configuration.
-     */
     public readonly namedPorts: pulumi.Output<{ name: string, port: number }[] | undefined>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     * - - -
-     */
     public readonly rollingUpdatePolicy: pulumi.Output<{ maxSurgeFixed?: number, maxSurgePercent?: number, maxUnavailableFixed?: number, maxUnavailablePercent?: number, minReadySec?: number, minimalAction: string, type: string } | undefined>;
-    /**
-     * The URL of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    /**
-     * The full URL of all target pools to which new
-     * instances in the group are added. Updating the target pools attribute does
-     * not affect existing instances.
-     */
     public readonly targetPools: pulumi.Output<string[] | undefined>;
-    /**
-     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-     */
     public readonly targetSize: pulumi.Output<number>;
-    /**
-     * If the `instance_template`
-     * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"REPLACE"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
-     * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
-     */
     public readonly updateStrategy: pulumi.Output<string | undefined>;
-    /**
-     * Application versions managed by this instance group. Each
-     * version deals with a specific instance template, allowing canary release scenarios.
-     * Conflicts with `instance_template`. Structure is documented below. Beware that
-     * exactly one version must not specify a target size. It means that versions with
-     * a target size will respect the setting, and the one without target size will
-     * be applied to all remaining Instances (top level target_size - each version target_size).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     public readonly versions: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     public readonly waitForInstances: pulumi.Output<boolean | undefined>;
-    /**
-     * The zone that instances in this group should be created
-     * in.
-     */
     public readonly zone: pulumi.Output<string>;
 
     /**
@@ -184,103 +95,22 @@ export class InstanceGroupManager extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceGroupManager resources.
  */
 export interface InstanceGroupManagerState {
-    /**
-     * The autohealing policies for this managed instance
-     * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly autoHealingPolicies?: pulumi.Input<{ healthCheck: pulumi.Input<string>, initialDelaySec: pulumi.Input<number> }>;
-    /**
-     * The base instance name to use for
-     * instances in this group. The value must be a valid
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
-     * are lowercase letters, numbers, and hyphens (-). Instances are named by
-     * appending a hyphen and a random four-character string to the base instance
-     * name.
-     */
     readonly baseInstanceName?: pulumi.Input<string>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The fingerprint of the instance group manager.
-     */
     readonly fingerprint?: pulumi.Input<string>;
-    /**
-     * The full URL of the instance group created by the manager.
-     */
     readonly instanceGroup?: pulumi.Input<string>;
-    /**
-     * - The full URL to an instance template from which all new instances of this version will be created.
-     */
     readonly instanceTemplate?: pulumi.Input<string>;
-    /**
-     * - Version name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The named port configuration. See the section below
-     * for details on configuration.
-     */
     readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     * - - -
-     */
     readonly rollingUpdatePolicy?: pulumi.Input<{ maxSurgeFixed?: pulumi.Input<number>, maxSurgePercent?: pulumi.Input<number>, maxUnavailableFixed?: pulumi.Input<number>, maxUnavailablePercent?: pulumi.Input<number>, minReadySec?: pulumi.Input<number>, minimalAction: pulumi.Input<string>, type: pulumi.Input<string> }>;
-    /**
-     * The URL of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The full URL of all target pools to which new
-     * instances in the group are added. Updating the target pools attribute does
-     * not affect existing instances.
-     */
     readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-     */
     readonly targetSize?: pulumi.Input<number>;
-    /**
-     * If the `instance_template`
-     * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"REPLACE"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
-     * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
-     */
     readonly updateStrategy?: pulumi.Input<string>;
-    /**
-     * Application versions managed by this instance group. Each
-     * version deals with a specific instance template, allowing canary release scenarios.
-     * Conflicts with `instance_template`. Structure is documented below. Beware that
-     * exactly one version must not specify a target size. It means that versions with
-     * a target size will respect the setting, and the one without target size will
-     * be applied to all remaining Instances (top level target_size - each version target_size).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     readonly waitForInstances?: pulumi.Input<boolean>;
-    /**
-     * The zone that instances in this group should be created
-     * in.
-     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -288,90 +118,18 @@ export interface InstanceGroupManagerState {
  * The set of arguments for constructing a InstanceGroupManager resource.
  */
 export interface InstanceGroupManagerArgs {
-    /**
-     * The autohealing policies for this managed instance
-     * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly autoHealingPolicies?: pulumi.Input<{ healthCheck: pulumi.Input<string>, initialDelaySec: pulumi.Input<number> }>;
-    /**
-     * The base instance name to use for
-     * instances in this group. The value must be a valid
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
-     * are lowercase letters, numbers, and hyphens (-). Instances are named by
-     * appending a hyphen and a random four-character string to the base instance
-     * name.
-     */
     readonly baseInstanceName: pulumi.Input<string>;
-    /**
-     * An optional textual description of the instance
-     * group manager.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * - The full URL to an instance template from which all new instances of this version will be created.
-     */
     readonly instanceTemplate?: pulumi.Input<string>;
-    /**
-     * - Version name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The named port configuration. See the section below
-     * for details on configuration.
-     */
     readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     * - - -
-     */
     readonly rollingUpdatePolicy?: pulumi.Input<{ maxSurgeFixed?: pulumi.Input<number>, maxSurgePercent?: pulumi.Input<number>, maxUnavailableFixed?: pulumi.Input<number>, maxUnavailablePercent?: pulumi.Input<number>, minReadySec?: pulumi.Input<number>, minimalAction: pulumi.Input<string>, type: pulumi.Input<string> }>;
-    /**
-     * The full URL of all target pools to which new
-     * instances in the group are added. Updating the target pools attribute does
-     * not affect existing instances.
-     */
     readonly targetPools?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-     */
     readonly targetSize?: pulumi.Input<number>;
-    /**
-     * If the `instance_template`
-     * resource is modified, a value of `"NONE"` will prevent any of the managed
-     * instances from being restarted by Terraform. A value of `"REPLACE"` will
-     * restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
-     * A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
-     */
     readonly updateStrategy?: pulumi.Input<string>;
-    /**
-     * Application versions managed by this instance group. Each
-     * version deals with a specific instance template, allowing canary release scenarios.
-     * Conflicts with `instance_template`. Structure is documented below. Beware that
-     * exactly one version must not specify a target size. It means that versions with
-     * a target size will respect the setting, and the one without target size will
-     * be applied to all remaining Instances (top level target_size - each version target_size).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     readonly waitForInstances?: pulumi.Input<boolean>;
-    /**
-     * The zone that instances in this group should be created
-     * in.
-     */
     readonly zone?: pulumi.Input<string>;
 }

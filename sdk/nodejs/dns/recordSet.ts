@@ -4,16 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
- * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
- * 
- * ~> **Note:** The Google Cloud DNS API requires NS records be present at all
- * times. To accommodate this, when creating NS records, the default records
- * Google automatically creates will be silently overwritten.  Also, when
- * destroying NS records, Terraform will not actually remove NS records, but will
- * report that it did.
- */
 export class RecordSet extends pulumi.CustomResource {
     /**
      * Get an existing RecordSet resource's state with the given name, ID, and optional extra
@@ -23,36 +13,15 @@ export class RecordSet extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordSetState): RecordSet {
-        return new RecordSet(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordSetState, opts?: pulumi.CustomResourceOptions): RecordSet {
+        return new RecordSet(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the zone in which this record set will
-     * reside.
-     */
     public readonly managedZone: pulumi.Output<string>;
-    /**
-     * The DNS name this record set will apply to.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
-     */
     public readonly rrdatas: pulumi.Output<string[]>;
-    /**
-     * The time-to-live of this record set (seconds).
-     */
     public readonly ttl: pulumi.Output<number>;
-    /**
-     * The DNS record set type.
-     */
     public readonly type: pulumi.Output<string>;
 
     /**
@@ -102,32 +71,11 @@ export class RecordSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RecordSet resources.
  */
 export interface RecordSetState {
-    /**
-     * The name of the zone in which this record set will
-     * reside.
-     */
     readonly managedZone?: pulumi.Input<string>;
-    /**
-     * The DNS name this record set will apply to.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
-     */
     readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The time-to-live of this record set (seconds).
-     */
     readonly ttl?: pulumi.Input<number>;
-    /**
-     * The DNS record set type.
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -135,31 +83,10 @@ export interface RecordSetState {
  * The set of arguments for constructing a RecordSet resource.
  */
 export interface RecordSetArgs {
-    /**
-     * The name of the zone in which this record set will
-     * reside.
-     */
     readonly managedZone: pulumi.Input<string>;
-    /**
-     * The DNS name this record set will apply to.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
-     */
     readonly rrdatas: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The time-to-live of this record set (seconds).
-     */
     readonly ttl: pulumi.Input<number>;
-    /**
-     * The DNS record set type.
-     */
     readonly type: pulumi.Input<string>;
 }

@@ -10,13 +10,16 @@ class GetClusterResult(object):
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError('Expected argument addons_configs to be a list')
         __self__.addons_configs = addons_configs
+        if cluster_autoscalings and not isinstance(cluster_autoscalings, list):
+            raise TypeError('Expected argument cluster_autoscalings to be a list')
+        __self__.cluster_autoscalings = cluster_autoscalings
         if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, str):
             raise TypeError('Expected argument cluster_ipv4_cidr to be a str')
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
@@ -92,6 +95,9 @@ class GetClusterResult(object):
         if private_cluster and not isinstance(private_cluster, bool):
             raise TypeError('Expected argument private_cluster to be a bool')
         __self__.private_cluster = private_cluster
+        if private_cluster_configs and not isinstance(private_cluster_configs, list):
+            raise TypeError('Expected argument private_cluster_configs to be a list')
+        __self__.private_cluster_configs = private_cluster_configs
         if remove_default_node_pool and not isinstance(remove_default_node_pool, bool):
             raise TypeError('Expected argument remove_default_node_pool to be a bool')
         __self__.remove_default_node_pool = remove_default_node_pool
@@ -123,6 +129,7 @@ async def get_cluster(name=None, project=None, region=None, zone=None):
     return GetClusterResult(
         additional_zones=__ret__.get('additionalZones'),
         addons_configs=__ret__.get('addonsConfigs'),
+        cluster_autoscalings=__ret__.get('clusterAutoscalings'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
         description=__ret__.get('description'),
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
@@ -148,6 +155,7 @@ async def get_cluster(name=None, project=None, region=None, zone=None):
         node_version=__ret__.get('nodeVersion'),
         pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),
         private_cluster=__ret__.get('privateCluster'),
+        private_cluster_configs=__ret__.get('privateClusterConfigs'),
         remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
         resource_labels=__ret__.get('resourceLabels'),
         subnetwork=__ret__.get('subnetwork'),

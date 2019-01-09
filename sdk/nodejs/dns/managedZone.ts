@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
- * [API](https://cloud.google.com/dns/api/v1/managedZones).
- */
 export class ManagedZone extends pulumi.CustomResource {
     /**
      * Get an existing ManagedZone resource's state with the given name, ID, and optional extra
@@ -17,37 +13,15 @@ export class ManagedZone extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedZoneState): ManagedZone {
-        return new ManagedZone(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedZoneState, opts?: pulumi.CustomResourceOptions): ManagedZone {
+        return new ManagedZone(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     public readonly dnsName: pulumi.Output<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The list of nameservers that will be authoritative for this
-     * domain. Use NS records to redirect from your DNS provider to these names,
-     * thus making Google Cloud DNS authoritative for this zone.
-     */
     public /*out*/ readonly nameServers: pulumi.Output<string[]>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
 
     /**
@@ -88,33 +62,11 @@ export class ManagedZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ManagedZone resources.
  */
 export interface ManagedZoneState {
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     readonly dnsName?: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The list of nameservers that will be authoritative for this
-     * domain. Use NS records to redirect from your DNS provider to these names,
-     * thus making Google Cloud DNS authoritative for this zone.
-     */
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -122,26 +74,9 @@ export interface ManagedZoneState {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     readonly dnsName: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

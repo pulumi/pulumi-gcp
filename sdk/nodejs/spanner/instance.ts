@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates and manages a Google Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances).
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -16,47 +13,16 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
-     * replication of your databases in this instance. It determines where your data
-     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-     * In order to obtain a valid list please consult the
-     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-     */
     public readonly config: pulumi.Output<string>;
-    /**
-     * The descriptive name for this instance as it appears
-     * in UIs. Can be updated, however should be kept globally unique to avoid confusion.
-     */
     public readonly displayName: pulumi.Output<string>;
-    /**
-     * A mapping (key/value pairs) of labels to assign to the instance.
-     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The unique name (ID) of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The number of nodes allocated to this instance.
-     * Defaults to `1`. This can be updated after creation.
-     */
     public readonly numNodes: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The current state of the instance.
-     */
     public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
@@ -102,43 +68,12 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    /**
-     * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
-     * replication of your databases in this instance. It determines where your data
-     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-     * In order to obtain a valid list please consult the
-     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-     */
     readonly config?: pulumi.Input<string>;
-    /**
-     * The descriptive name for this instance as it appears
-     * in UIs. Can be updated, however should be kept globally unique to avoid confusion.
-     */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * A mapping (key/value pairs) of labels to assign to the instance.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The unique name (ID) of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The number of nodes allocated to this instance.
-     * Defaults to `1`. This can be updated after creation.
-     */
     readonly numNodes?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The current state of the instance.
-     */
     readonly state?: pulumi.Input<string>;
 }
 
@@ -146,38 +81,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * The name of the instance's configuration (similar but not
-     * quite the same as a region) which defines defines the geographic placement and
-     * replication of your databases in this instance. It determines where your data
-     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-     * In order to obtain a valid list please consult the
-     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-     */
     readonly config: pulumi.Input<string>;
-    /**
-     * The descriptive name for this instance as it appears
-     * in UIs. Can be updated, however should be kept globally unique to avoid confusion.
-     */
     readonly displayName: pulumi.Input<string>;
-    /**
-     * A mapping (key/value pairs) of labels to assign to the instance.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The unique name (ID) of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The number of nodes allocated to this instance.
-     * Defaults to `1`. This can be updated after creation.
-     */
     readonly numNodes?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

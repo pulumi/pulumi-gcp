@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get the service account from a project. For more information see
- * the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
- */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
         "accountId": args.accountId,
@@ -19,14 +15,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountArgs {
-    /**
-     * The Service account id.
-     */
     readonly accountId: string;
-    /**
-     * The ID of the project that the service account will be created in.
-     * Defaults to the provider project configuration.
-     */
     readonly project?: string;
 }
 
@@ -34,23 +23,9 @@ export interface GetAccountArgs {
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
-    /**
-     * The display name for the service account.
-     */
     readonly displayName: string;
-    /**
-     * The e-mail address of the service account. This value
-     * should be referenced from any `google_iam_policy` data sources
-     * that would grant the service account privileges.
-     */
     readonly email: string;
-    /**
-     * The fully-qualified name of the service account.
-     */
     readonly name: string;
-    /**
-     * The unique id of the service account.
-     */
     readonly uniqueId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

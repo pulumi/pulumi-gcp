@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Cloud Router BGP peer. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- */
 export class RouterPeer extends pulumi.CustomResource {
     /**
      * Get an existing RouterPeer resource's state with the given name, ID, and optional extra
@@ -19,54 +13,18 @@ export class RouterPeer extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterPeerState): RouterPeer {
-        return new RouterPeer(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterPeerState, opts?: pulumi.CustomResourceOptions): RouterPeer {
+        return new RouterPeer(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The priority of routes advertised to this BGP peer.
-     * Changing this forces a new peer to be created.
-     */
     public readonly advertisedRoutePriority: pulumi.Output<number | undefined>;
-    /**
-     * The name of the interface the BGP peer is associated with.
-     * Changing this forces a new peer to be created.
-     */
     public readonly interface: pulumi.Output<string>;
-    /**
-     * IP address of the interface inside Google Cloud Platform.
-     */
     public /*out*/ readonly ipAddress: pulumi.Output<string>;
-    /**
-     * A unique name for BGP peer, required by GCE. Changing
-     * this forces a new peer to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Peer BGP Autonomous System Number (ASN).
-     * Changing this forces a new peer to be created.
-     */
     public readonly peerAsn: pulumi.Output<number>;
-    /**
-     * IP address of the BGP interface outside Google Cloud.
-     * Changing this forces a new peer to be created.
-     */
     public readonly peerIpAddress: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which this peer's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new peer to be created.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The region this peer's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new peer to be
-     * created.
-     */
     public readonly region: pulumi.Output<string>;
-    /**
-     * The name of the router in which this BGP peer will be configured.
-     * Changing this forces a new peer to be created.
-     */
     public readonly router: pulumi.Output<string>;
 
     /**
@@ -119,50 +77,14 @@ export class RouterPeer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterPeer resources.
  */
 export interface RouterPeerState {
-    /**
-     * The priority of routes advertised to this BGP peer.
-     * Changing this forces a new peer to be created.
-     */
     readonly advertisedRoutePriority?: pulumi.Input<number>;
-    /**
-     * The name of the interface the BGP peer is associated with.
-     * Changing this forces a new peer to be created.
-     */
     readonly interface?: pulumi.Input<string>;
-    /**
-     * IP address of the interface inside Google Cloud Platform.
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * A unique name for BGP peer, required by GCE. Changing
-     * this forces a new peer to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Peer BGP Autonomous System Number (ASN).
-     * Changing this forces a new peer to be created.
-     */
     readonly peerAsn?: pulumi.Input<number>;
-    /**
-     * IP address of the BGP interface outside Google Cloud.
-     * Changing this forces a new peer to be created.
-     */
     readonly peerIpAddress?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which this peer's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new peer to be created.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this peer's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new peer to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The name of the router in which this BGP peer will be configured.
-     * Changing this forces a new peer to be created.
-     */
     readonly router?: pulumi.Input<string>;
 }
 
@@ -170,45 +92,12 @@ export interface RouterPeerState {
  * The set of arguments for constructing a RouterPeer resource.
  */
 export interface RouterPeerArgs {
-    /**
-     * The priority of routes advertised to this BGP peer.
-     * Changing this forces a new peer to be created.
-     */
     readonly advertisedRoutePriority?: pulumi.Input<number>;
-    /**
-     * The name of the interface the BGP peer is associated with.
-     * Changing this forces a new peer to be created.
-     */
     readonly interface: pulumi.Input<string>;
-    /**
-     * A unique name for BGP peer, required by GCE. Changing
-     * this forces a new peer to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Peer BGP Autonomous System Number (ASN).
-     * Changing this forces a new peer to be created.
-     */
     readonly peerAsn: pulumi.Input<number>;
-    /**
-     * IP address of the BGP interface outside Google Cloud.
-     * Changing this forces a new peer to be created.
-     */
     readonly peerIpAddress?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which this peer's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new peer to be created.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region this peer's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new peer to be
-     * created.
-     */
     readonly region?: pulumi.Input<string>;
-    /**
-     * The name of the router in which this BGP peer will be configured.
-     * Changing this forces a new peer to be created.
-     */
     readonly router: pulumi.Input<string>;
 }

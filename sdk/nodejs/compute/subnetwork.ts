@@ -13,8 +13,8 @@ export class Subnetwork extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetworkState): Subnetwork {
-        return new Subnetwork(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetworkState, opts?: pulumi.CustomResourceOptions): Subnetwork {
+        return new Subnetwork(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
@@ -26,16 +26,9 @@ export class Subnetwork extends pulumi.CustomResource {
     public readonly name: pulumi.Output<string>;
     public readonly network: pulumi.Output<string>;
     public readonly privateIpGoogleAccess: pulumi.Output<boolean | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
     public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[]>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -102,16 +95,9 @@ export interface SubnetworkState {
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -125,10 +111,6 @@ export interface SubnetworkArgs {
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;

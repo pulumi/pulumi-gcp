@@ -13,8 +13,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VPNTunnelState): VPNTunnel {
-        return new VPNTunnel(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VPNTunnelState, opts?: pulumi.CustomResourceOptions): VPNTunnel {
+        return new VPNTunnel(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
@@ -26,17 +26,10 @@ export class VPNTunnel extends pulumi.CustomResource {
     public readonly localTrafficSelectors: pulumi.Output<string[]>;
     public readonly name: pulumi.Output<string>;
     public readonly peerIp: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
     public readonly remoteTrafficSelectors: pulumi.Output<string[]>;
     public readonly router: pulumi.Output<string | undefined>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sharedSecret: pulumi.Output<string>;
     public /*out*/ readonly sharedSecretHash: pulumi.Output<string>;
@@ -117,17 +110,10 @@ export interface VPNTunnelState {
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
     readonly peerIp?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly router?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly sharedSecret?: pulumi.Input<string>;
     readonly sharedSecretHash?: pulumi.Input<string>;
@@ -144,10 +130,6 @@ export interface VPNTunnelArgs {
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
     readonly peerIp: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;

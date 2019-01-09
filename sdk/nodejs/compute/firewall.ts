@@ -13,8 +13,8 @@ export class Firewall extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FirewallState): Firewall {
-        return new Firewall(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FirewallState, opts?: pulumi.CustomResourceOptions): Firewall {
+        return new Firewall(name, <any>state, { ...opts, id: id });
     }
 
     public readonly allows: pulumi.Output<{ ports?: string[], protocol: string }[] | undefined>;
@@ -28,14 +28,7 @@ export class Firewall extends pulumi.CustomResource {
     public readonly name: pulumi.Output<string>;
     public readonly network: pulumi.Output<string>;
     public readonly priority: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sourceRanges: pulumi.Output<string[]>;
     public readonly sourceServiceAccounts: pulumi.Output<string | undefined>;
@@ -116,14 +109,7 @@ export interface FirewallState {
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sourceServiceAccounts?: pulumi.Input<string>;
@@ -146,10 +132,6 @@ export interface FirewallArgs {
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sourceServiceAccounts?: pulumi.Input<string>;

@@ -13,8 +13,8 @@ export class RegionDisk extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionDiskState): RegionDisk {
-        return new RegionDisk(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionDiskState, opts?: pulumi.CustomResourceOptions): RegionDisk {
+        return new RegionDisk(name, <any>state, { ...opts, id: id });
     }
 
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
@@ -25,16 +25,9 @@ export class RegionDisk extends pulumi.CustomResource {
     public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
     public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
     public readonly replicaZones: pulumi.Output<string[]>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly size: pulumi.Output<number>;
     public readonly snapshot: pulumi.Output<string | undefined>;
@@ -113,16 +106,9 @@ export interface RegionDiskState {
     readonly lastAttachTimestamp?: pulumi.Input<string>;
     readonly lastDetachTimestamp?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
@@ -140,10 +126,6 @@ export interface RegionDiskArgs {
     readonly diskEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly replicaZones: pulumi.Input<pulumi.Input<string>[]>;

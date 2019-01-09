@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get a VPN gateway within GCE from its name.
- */
 export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
     return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,
@@ -19,19 +16,8 @@ export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getVPNGateway.
  */
 export interface GetVPNGatewayArgs {
-    /**
-     * The name of the VPN gateway.
-     */
     readonly name: string;
-    /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: string;
-    /**
-     * The region in which the resource belongs. If it
-     * is not provided, the project region is used.
-     */
     readonly region?: string;
 }
 
@@ -39,22 +25,10 @@ export interface GetVPNGatewayArgs {
  * A collection of values returned by getVPNGateway.
  */
 export interface GetVPNGatewayResult {
-    /**
-     * Description of this VPN gateway.
-     */
     readonly description: string;
-    /**
-     * The network of this VPN gateway.
-     */
     readonly network: string;
     readonly project: string;
-    /**
-     * Region of this VPN gateway.
-     */
     readonly region: string;
-    /**
-     * The URI of the resource.
-     */
     readonly selfLink: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

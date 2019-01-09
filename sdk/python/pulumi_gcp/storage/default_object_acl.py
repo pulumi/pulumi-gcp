@@ -9,9 +9,17 @@ from .. import utilities, tables
 class DefaultObjectACL(pulumi.CustomResource):
     """
     Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
+    
+    -> Note that for each object, its creator will have the `"OWNER"` role in addition
+    to the default ACL that has been defined.
+    
+    For more information see
     [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
     and 
     [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
+    
+    -> Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
+    to control individual role entity pairs.
     """
     def __init__(__self__, __name__, __opts__=None, bucket=None, role_entities=None):
         """Create a DefaultObjectACL resource with the given unique name, props, and options."""

@@ -13,8 +13,8 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionAutoscalerState): RegionAutoscaler {
-        return new RegionAutoscaler(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionAutoscalerState, opts?: pulumi.CustomResourceOptions): RegionAutoscaler {
+        return new RegionAutoscaler(name, <any>state, { ...opts, id: id });
     }
 
     public readonly autoscalingPolicy: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { name: string, target: number, type: string }[], minReplicas: number }>;
@@ -23,9 +23,6 @@ export class RegionAutoscaler extends pulumi.CustomResource {
     public readonly name: pulumi.Output<string>;
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly target: pulumi.Output<string>;
 
@@ -80,9 +77,6 @@ export interface RegionAutoscalerState {
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly target?: pulumi.Input<string>;
 }

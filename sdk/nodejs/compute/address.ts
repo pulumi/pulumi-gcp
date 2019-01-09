@@ -13,13 +13,10 @@ export class Address extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AddressState): Address {
-        return new Address(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AddressState, opts?: pulumi.CustomResourceOptions): Address {
+        return new Address(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The IP of the created resource.
-     */
     public readonly address: pulumi.Output<string>;
     public readonly addressType: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
@@ -28,15 +25,8 @@ export class Address extends pulumi.CustomResource {
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly networkTier: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly subnetwork: pulumi.Output<string>;
     public /*out*/ readonly users: pulumi.Output<string[]>;
@@ -90,9 +80,6 @@ export class Address extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Address resources.
  */
 export interface AddressState {
-    /**
-     * The IP of the created resource.
-     */
     readonly address?: pulumi.Input<string>;
     readonly addressType?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
@@ -101,15 +88,8 @@ export interface AddressState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly networkTier?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
     readonly subnetwork?: pulumi.Input<string>;
     readonly users?: pulumi.Input<pulumi.Input<string>[]>;
@@ -119,19 +99,12 @@ export interface AddressState {
  * The set of arguments for constructing a Address resource.
  */
 export interface AddressArgs {
-    /**
-     * The IP of the created resource.
-     */
     readonly address?: pulumi.Input<string>;
     readonly addressType?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly networkTier?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly subnetwork?: pulumi.Input<string>;

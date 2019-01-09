@@ -13,8 +13,8 @@ export class BackendBucket extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendBucketState): BackendBucket {
-        return new BackendBucket(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackendBucketState, opts?: pulumi.CustomResourceOptions): BackendBucket {
+        return new BackendBucket(name, <any>state, { ...opts, id: id });
     }
 
     public readonly bucketName: pulumi.Output<string>;
@@ -22,14 +22,7 @@ export class BackendBucket extends pulumi.CustomResource {
     public readonly description: pulumi.Output<string | undefined>;
     public readonly enableCdn: pulumi.Output<boolean | undefined>;
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The URI of the created resource.
-     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -77,14 +70,7 @@ export interface BackendBucketState {
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -96,9 +82,5 @@ export interface BackendBucketArgs {
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

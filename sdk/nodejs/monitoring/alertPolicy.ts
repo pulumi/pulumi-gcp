@@ -13,8 +13,8 @@ export class AlertPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlertPolicyState): AlertPolicy {
-        return new AlertPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlertPolicyState, opts?: pulumi.CustomResourceOptions): AlertPolicy {
+        return new AlertPolicy(name, <any>state, { ...opts, id: id });
     }
 
     public readonly combiner: pulumi.Output<string>;

@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a topic in Google's pubsub queueing system. For more information see
- * [the official documentation](https://cloud.google.com/pubsub/docs) and
- * [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
- * 
- */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra
@@ -19,19 +13,11 @@ export class Topic extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState): Topic {
-        return new Topic(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState, opts?: pulumi.CustomResourceOptions): Topic {
+        return new Topic(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
 
     /**
@@ -61,15 +47,7 @@ export class Topic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Topic resources.
  */
 export interface TopicState {
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -77,14 +55,6 @@ export interface TopicState {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
 }

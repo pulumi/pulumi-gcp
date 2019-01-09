@@ -12,7 +12,7 @@ import (
 // For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
 // 
-// ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+// > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
 //   `google_compute_backend_service` instead.
 type RegionBackendService struct {
 	s *pulumi.ResourceState

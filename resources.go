@@ -22,33 +22,35 @@ const (
 	gcpAppEngine           = "appengine"           // AppEngine resources
 	gcpBigQuery            = "bigquery"            // BigQuery resources
 	gcpBigTable            = "bigtable"            // BitTable resources
+	gcpBilling             = "billing"             // Billing resources
 	gcpBinaryAuthorization = "binaryauthorization" // Binary Authorization resources
 	gcpCloudBuild          = "cloudbuild"          // CloudBuild resources
 	gcpCloudFunctions      = "cloudfunctions"      // CloudFunction resources
 	gcpComposer            = "composer"            // Cloud Composer resources
-	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
-	gcpFolder              = "folder"              // Folder resources
-	gcpOrganization        = "organizations"       // Organization resources
-	gcpProject             = "projects"            // Project resources
-	gcpServiceAccount      = "serviceAccount"      // Service Account resources
 	gcpCompute             = "compute"             // Compute resoures
-	gcpKubernetes          = "container"           // Kubernetes Engine resources
+	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
+	gcpDNS                 = "dns"                 // DNS resources
 	gcpDataFolow           = "dataflow"            // DataFlow resources
 	gcpDataProc            = "dataproc"            // DataProc resources
-	gcpDNS                 = "dns"                 // DNS resources
 	gcpEndPoints           = "endpoints"           // End Point resources
 	gcpFilestore           = "filestore"           // Filestore resources
+	gcpFolder              = "folder"              // Folder resources
+	gcpIAM                 = "iam"                 // IAM resources
+	gcpKMS                 = "kms"                 // KMS resources
+	gcpKubernetes          = "container"           // Kubernetes Engine resources
+	gcpLogging             = "logging"             // Logging resources
 	gcpMonitoring          = "monitoring"          // Monitoring resources
+	gcpOrganization        = "organizations"       // Organization resources
+	gcpProject             = "projects"            // Project resources
 	gcpPubSub              = "pubsub"              // PubSub resources
 	gcpRedis               = "redis"               // Redis resources
 	gcpResourceManager     = "resourcemanager"     // Resource Manager resources
 	gcpRuntimeConfig       = "runtimeconfig"       // Runtime Config resources
+	gcpSQL                 = "sql"                 // SQL resources
+	gcpServiceAccount      = "serviceAccount"      // Service Account resources
 	gcpSourceRepo          = "sourcerepo"          // Source Repo resources
 	gcpSpanner             = "spanner"             // Spanner Resources
-	gcpSQL                 = "sql"                 // SQL resources
-	gcpLogging             = "logging"             // Logging resources
 	gcpStorage             = "storage"             // Storage resources
-	gcpKMS                 = "kms"                 // KMS resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -135,6 +137,26 @@ func Provider() tfbridge.ProviderInfo {
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
 			"google_bigtable_table":    {Tok: gcpResource(gcpBigTable, "Table")},
+
+			// Billing
+			"google_billing_account_iam_binding": {
+				Tok: gcpResource(gcpBilling, "AccountIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_billing_account_iam_binding.md",
+				},
+			},
+			"google_billing_account_iam_member": {
+				Tok: gcpResource(gcpBilling, "AccountIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_billing_account_iam_member.md",
+				},
+			},
+			"google_billing_account_iam_policy": {
+				Tok: gcpResource(gcpBilling, "AccountIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_billing_account_iam_policy.md",
+				},
+			},
 
 			// Binary Authorization
 			"google_binary_authorization_attestor": {
@@ -362,6 +384,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
 			"google_compute_router_interface":              {Tok: gcpResource(gcpCompute, "RouterInterface")},
+			"google_compute_router_nat":                    {Tok: gcpResource(gcpCompute, "RouterNat")},
 			"google_compute_router_peer":                   {Tok: gcpResource(gcpCompute, "RouterPeer")},
 			"google_compute_security_policy":               {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
 			"google_compute_shared_vpc_host_project":       {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
@@ -427,7 +450,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
 
 			// Monitoring resources
-			"google_monitoring_alert_policy": {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
+			"google_monitoring_alert_policy":         {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
+			"google_monitoring_group":                {Tok: gcpResource(gcpMonitoring, "Group")},
+			"google_monitoring_notification_channel": {Tok: gcpResource(gcpMonitoring, "NotificationChannel")},
+			"google_monitoring_uptime_check_config":  {Tok: gcpResource(gcpMonitoring, "UptimeCheckConfig")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -530,6 +556,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_sql_database":          {Tok: gcpResource(gcpSQL, "Database")},
 			"google_sql_database_instance": {Tok: gcpResource(gcpSQL, "DatabaseInstance")},
 			"google_sql_user":              {Tok: gcpResource(gcpSQL, "User")},
+			"google_sql_ssl_cert":          {Tok: gcpResource(gcpSQL, "SslCert")},
 
 			// Stackdriver Logging resources
 			"google_logging_billing_account_exclusion": {Tok: gcpResource(gcpLogging, "BillingAccountExclusion")},
@@ -575,9 +602,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_storage_default_object_acl": {Tok: gcpResource(gcpStorage, "DefaultObjectACL")},
-			"google_storage_notification":       {Tok: gcpResource(gcpStorage, "Notification")},
-			"google_storage_object_acl":         {Tok: gcpResource(gcpStorage, "ObjectACL")},
+			"google_storage_default_object_access_control": {Tok: gcpResource(gcpStorage, "DefaultObjectAccessControl")},
+			"google_storage_default_object_acl":            {Tok: gcpResource(gcpStorage, "DefaultObjectACL")},
+			"google_storage_notification":                  {Tok: gcpResource(gcpStorage, "Notification")},
+			"google_storage_object_access_control":         {Tok: gcpResource(gcpStorage, "ObjectAccessControl")},
+			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -627,7 +656,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloudiot_registry": {Tok: gcpResource(gcpKMS, "Registry")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-
 			"google_billing_account": {
 				Tok: gcpDataSource(gcpOrganization, "getBillingAccount"),
 				Docs: &tfbridge.DocInfo{
@@ -692,6 +720,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpCompute, "getNetwork"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_network.html.markdown",
+				},
+			},
+			"google_iam_role": {
+				Tok: gcpDataSource(gcpIAM, "getRule"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_iam_role.html.markdown",
 				},
 			},
 			"google_netblock_ip_ranges": {

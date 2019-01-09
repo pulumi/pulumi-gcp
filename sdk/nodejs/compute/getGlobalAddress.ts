@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
- * the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
- */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,
@@ -19,14 +15,7 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getGlobalAddress.
  */
 export interface GetGlobalAddressArgs {
-    /**
-     * A unique name for the resource, required by GCE.
-     */
     readonly name: string;
-    /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
-     */
     readonly project?: string;
 }
 
@@ -34,18 +23,9 @@ export interface GetGlobalAddressArgs {
  * A collection of values returned by getGlobalAddress.
  */
 export interface GetGlobalAddressResult {
-    /**
-     * The IP of the created resource.
-     */
     readonly address: string;
     readonly project: string;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink: string;
-    /**
-     * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-     */
     readonly status: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

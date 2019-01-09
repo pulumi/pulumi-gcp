@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a project-level logging sink. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/),
- * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs)
- * and
- * [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
- * 
- * ~> **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
- * 
- * ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
- */
 export class ProjectSink extends pulumi.CustomResource {
     /**
      * Get an existing ProjectSink resource's state with the given name, ID, and optional extra
@@ -24,47 +13,15 @@ export class ProjectSink extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectSinkState): ProjectSink {
-        return new ProjectSink(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectSinkState, opts?: pulumi.CustomResourceOptions): ProjectSink {
+        return new ProjectSink(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
-     */
     public readonly destination: pulumi.Output<string>;
-    /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
-     * write a filter.
-     */
     public readonly filter: pulumi.Output<string | undefined>;
-    /**
-     * The name of the logging sink.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the project to create the sink in. If omitted, the project associated with the provider is
-     * used.
-     */
     public readonly project: pulumi.Output<string>;
-    /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
-     */
     public readonly uniqueWriterIdentity: pulumi.Output<boolean | undefined>;
-    /**
-     * The identity associated with this sink. This identity must be granted write access to the
-     * configured `destination`.
-     */
     public /*out*/ readonly writerIdentity: pulumi.Output<string>;
 
     /**
@@ -105,43 +62,11 @@ export class ProjectSink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectSink resources.
  */
 export interface ProjectSinkState {
-    /**
-     * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
-     */
     readonly destination?: pulumi.Input<string>;
-    /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
-     * write a filter.
-     */
     readonly filter?: pulumi.Input<string>;
-    /**
-     * The name of the logging sink.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project to create the sink in. If omitted, the project associated with the provider is
-     * used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
-     */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
-    /**
-     * The identity associated with this sink. This identity must be granted write access to the
-     * configured `destination`.
-     */
     readonly writerIdentity?: pulumi.Input<string>;
 }
 
@@ -149,37 +74,9 @@ export interface ProjectSinkState {
  * The set of arguments for constructing a ProjectSink resource.
  */
 export interface ProjectSinkArgs {
-    /**
-     * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
-     */
     readonly destination: pulumi.Input<string>;
-    /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
-     * write a filter.
-     */
     readonly filter?: pulumi.Input<string>;
-    /**
-     * The name of the logging sink.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project to create the sink in. If omitted, the project associated with the provider is
-     * used.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
-     */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
 }

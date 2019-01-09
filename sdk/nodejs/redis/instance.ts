@@ -13,8 +13,8 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
     }
 
     public readonly alternativeLocationId: pulumi.Output<string>;
@@ -28,10 +28,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly memorySizeGb: pulumi.Output<number>;
     public readonly name: pulumi.Output<string>;
     public /*out*/ readonly port: pulumi.Output<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project: pulumi.Output<string>;
     public readonly redisConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly redisVersion: pulumi.Output<string>;
@@ -110,10 +106,6 @@ export interface InstanceState {
     readonly memorySizeGb?: pulumi.Input<number>;
     readonly name?: pulumi.Input<string>;
     readonly port?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly redisVersion?: pulumi.Input<string>;
@@ -133,10 +125,6 @@ export interface InstanceArgs {
     readonly locationId?: pulumi.Input<string>;
     readonly memorySizeGb: pulumi.Input<number>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     readonly project?: pulumi.Input<string>;
     readonly redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly redisVersion?: pulumi.Input<string>;

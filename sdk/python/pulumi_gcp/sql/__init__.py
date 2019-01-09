@@ -5,4 +5,5 @@
 # Export this package's modules as members:
 from .database import *
 from .database_instance import *
+from .ssl_cert import *
 from .user import *

@@ -12,7 +12,7 @@ class RegionBackendService(pulumi.CustomResource):
     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
     and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
     
-    ~> **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+    > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
       `google_compute_backend_service` instead.
     """
     def __init__(__self__, __name__, __opts__=None, backends=None, connection_draining_timeout_sec=None, description=None, health_checks=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None):
