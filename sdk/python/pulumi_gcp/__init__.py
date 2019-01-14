@@ -4,3 +4,6 @@
 
 # Make subpackages available:
 __all__ = ['appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'folder', 'iam', 'kms', 'logging', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'serviceAccount', 'sourcerepo', 'spanner', 'sql', 'storage']
+
+# Export this package's modules as members:
+from .provider import *
