@@ -31,7 +31,7 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-gcp/sdk/go/...
 
-## Reference¬
+## Reference
 
 For detailed reference documentation, please visit [the API docs](
 https://pulumi.io/reference/pkg/nodejs/@pulumi/gcp/index.html).
