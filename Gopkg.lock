@@ -480,7 +480,6 @@
   revision = "dc2bc5a81accba8782bebea28628224643a8286a"
 
 [[projects]]
-  branch = "master"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -526,7 +525,8 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "b85f95acd931286068811a000a39116661630a73"
+  revision = "5ec78df73df5056dcb67fd560e8114b5d1cbcb7d"
+  version = "v0.16.10"
 
 [[projects]]
   branch = "master"
@@ -535,7 +535,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "990b4e1ed8cf43566d8a44061747fec36e20c1a4"
+  revision = "a20e139e31c38c1557b497818dcebd11453060d0"
 
 [[projects]]
   branch = "master"
@@ -886,8 +886,8 @@
     "core",
     "terminal"
   ]
-  revision = "e205523512c83e9236698dbe7eb9649ec56e80ca"
-  version = "v1.7.1"
+  revision = "38cdfa1242b19e0eb8b6f33004bf8e89832b8743"
+  version = "v1.8.0"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
