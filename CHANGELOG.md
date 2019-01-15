@@ -1,4 +1,10 @@
-## 0.16.5 (unreleased)
+## 0.16.6 (Unreleased)
+
+## 0.16.5 (Released January 15th, 2019)
+
+### Improvements
+
+- Fixed a bug which resulted in errors of the form "Invalid address to set" for some resources.
 
 ## 0.16.4 (Released January 9th, 2019)
 
