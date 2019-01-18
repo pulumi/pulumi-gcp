@@ -8,21 +8,62 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class IAMCustomRole(pulumi.CustomResource):
+    deleted: pulumi.Output[bool]
+    description: pulumi.Output[str]
     """
-    Allows management of a customized Cloud IAM project role. For more information see
-    [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
-    and
-    [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
-    
-    > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
-     from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
-     same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
-     after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
-     made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-     by Terraform, and new roles cannot share that name.
+    A human-readable description for the role.
+    """
+    permissions: pulumi.Output[list]
+    """
+    The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+    """
+    project: pulumi.Output[str]
+    """
+    The project that the service account will be created in.
+    Defaults to the provider project configuration.
+    """
+    role_id: pulumi.Output[str]
+    """
+    The role id to use for this role.
+    """
+    stage: pulumi.Output[str]
+    """
+    The current launch stage of the role.
+    Defaults to `GA`.
+    List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+    """
+    title: pulumi.Output[str]
+    """
+    A human-readable title for the role.
     """
     def __init__(__self__, __name__, __opts__=None, deleted=None, description=None, permissions=None, project=None, role_id=None, stage=None, title=None):
-        """Create a IAMCustomRole resource with the given unique name, props, and options."""
+        """
+        Allows management of a customized Cloud IAM project role. For more information see
+        [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
+        and
+        [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
+        
+        > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
+         from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
+         same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
+         after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
+         made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
+         by Terraform, and new roles cannot share that name.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] deleted
+        :param pulumi.Input[str] description: A human-readable description for the role.
+        :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[str] project: The project that the service account will be created in.
+               Defaults to the provider project configuration.
+        :param pulumi.Input[str] role_id: The role id to use for this role.
+        :param pulumi.Input[str] stage: The current launch stage of the role.
+               Defaults to `GA`.
+               List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        :param pulumi.Input[str] title: A human-readable title for the role.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

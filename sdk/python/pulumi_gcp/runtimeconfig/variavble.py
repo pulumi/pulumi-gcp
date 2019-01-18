@@ -8,14 +8,48 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Variavble(pulumi.CustomResource):
+    name: pulumi.Output[str]
     """
-    Manages a RuntimeConfig variable in Google Cloud. For more information, see the
-    [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
-    or the
-    [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+    The name of the variable to manage. Note that variable
+    names can be hierarchical using slashes (e.g. "prod-variables/hostname").
     """
+    parent: pulumi.Output[str]
+    """
+    The name of the RuntimeConfig resource containing this
+    variable.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    text: pulumi.Output[str]
+    update_time: pulumi.Output[str]
+    """
+    (Computed) The timestamp in RFC3339 UTC "Zulu" format,
+    accurate to nanoseconds, representing when the variable was last updated.
+    Example: "2016-10-09T12:33:37.578138407Z".
+    """
+    value: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, name=None, parent=None, project=None, text=None, value=None):
-        """Create a Variavble resource with the given unique name, props, and options."""
+        """
+        Manages a RuntimeConfig variable in Google Cloud. For more information, see the
+        [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
+        or the
+        [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] name: The name of the variable to manage. Note that variable
+               names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+        :param pulumi.Input[str] parent: The name of the RuntimeConfig resource containing this
+               variable.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] text
+        :param pulumi.Input[str] value
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

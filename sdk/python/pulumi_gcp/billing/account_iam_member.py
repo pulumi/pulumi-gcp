@@ -8,16 +8,38 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class AccountIamMember(pulumi.CustomResource):
+    billing_account_id: pulumi.Output[str]
     """
-    Allows creation and management of a single member for a single binding within
-    the IAM policy for an existing Google Cloud Platform Billing Account.
-    
-    > **Note:** This resource __must not__ be used in conjunction with
-       `google_billing_account_iam_binding` for the __same role__ or they will fight over
-       what your policy should be.
+    The billing account id.
+    """
+    etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the billing account's IAM policy.
+    """
+    member: pulumi.Output[str]
+    """
+    The user that the role should apply to.
+    """
+    role: pulumi.Output[str]
+    """
+    The role that should be applied.
     """
     def __init__(__self__, __name__, __opts__=None, billing_account_id=None, member=None, role=None):
-        """Create a AccountIamMember resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of a single member for a single binding within
+        the IAM policy for an existing Google Cloud Platform Billing Account.
+        
+        > **Note:** This resource __must not__ be used in conjunction with
+           `google_billing_account_iam_binding` for the __same role__ or they will fight over
+           what your policy should be.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] member: The user that the role should apply to.
+        :param pulumi.Input[str] role: The role that should be applied.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

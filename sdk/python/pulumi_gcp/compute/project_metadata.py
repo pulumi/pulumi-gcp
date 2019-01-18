@@ -8,18 +8,35 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ProjectMetadata(pulumi.CustomResource):
+    metadata: pulumi.Output[dict]
     """
-    Manages metadata common to all instances for a project in GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
-    
-    > **Note:**  If you want to manage only single key/value pairs within the project metadata
-    rather than the entire set, then use
-    google_compute_project_metadata_item.
+    A series of key value pairs. Changing this resource
+    updates the GCE state.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
     """
     def __init__(__self__, __name__, __opts__=None, metadata=None, project=None):
-        """Create a ProjectMetadata resource with the given unique name, props, and options."""
+        """
+        Manages metadata common to all instances for a project in GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
+        
+        > **Note:**  If you want to manage only single key/value pairs within the project metadata
+        rather than the entire set, then use
+        google_compute_project_metadata_item.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] metadata: A series of key value pairs. Changing this resource
+               updates the GCE state.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

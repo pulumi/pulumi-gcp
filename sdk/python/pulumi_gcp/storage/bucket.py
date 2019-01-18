@@ -8,20 +8,97 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Bucket(pulumi.CustomResource):
+    cors: pulumi.Output[list]
     """
-    Creates a new bucket in Google cloud storage service (GCS).
-    Once a bucket has been created, its location can't be changed.
-    [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-    using the [`google_storage_bucket_acl` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
-    
-    For more information see
-    [the official documentation](https://cloud.google.com/storage/docs/overview)
-    and
-    [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
-    
+    The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+    """
+    encryption: pulumi.Output[dict]
+    """
+    The bucket's encryption configuration.
+    """
+    force_destroy: pulumi.Output[bool]
+    """
+    When deleting a bucket, this
+    boolean option will delete all contained objects. If you try to delete a
+    bucket that contains objects, Terraform will fail that run.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to the bucket.
+    """
+    lifecycle_rules: pulumi.Output[list]
+    """
+    The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+    """
+    location: pulumi.Output[str]
+    """
+    The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+    """
+    logging: pulumi.Output[dict]
+    """
+    The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the bucket.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    storage_class: pulumi.Output[str]
+    """
+    The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+    """
+    url: pulumi.Output[str]
+    """
+    The base URL of the bucket, in the format `gs://<bucket-name>`.
+    """
+    versioning: pulumi.Output[dict]
+    """
+    The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+    """
+    websites: pulumi.Output[list]
+    """
+    Configuration if the bucket acts as a website. Structure is documented below.
     """
     def __init__(__self__, __name__, __opts__=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None):
-        """Create a Bucket resource with the given unique name, props, and options."""
+        """
+        Creates a new bucket in Google cloud storage service (GCS).
+        Once a bucket has been created, its location can't be changed.
+        [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
+        using the [`google_storage_bucket_acl` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
+        
+        For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/overview)
+        and
+        [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
+        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
+               boolean option will delete all contained objects. If you try to delete a
+               bucket that contains objects, Terraform will fail that run.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the bucket.
+        :param pulumi.Input[list] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        :param pulumi.Input[dict] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+        :param pulumi.Input[str] name: The name of the bucket.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+        :param pulumi.Input[list] websites: Configuration if the bucket acts as a website. Structure is documented below.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

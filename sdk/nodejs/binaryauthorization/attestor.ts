@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An attestor that attests to container image artifacts.
+ * 
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ * 
+ * To get more information about Attestor, see:
+ * 
+ * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ * 
+ * ## Example Usage - Binary Authorization Attestor Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
+ *     name: "test-attestor-note",
+ * });
+ * const google_binary_authorization_attestor_attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     attestationAuthorityNote: {
+ *         noteReference: google_container_analysis_note_note.name,
+ *         publicKeys: [{
+ *             asciiArmoredPgpPublicKey: "mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl\nbB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0\noR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6\nV39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD\nMpj52j/pQfA8lZHOaAgb1OrthLdMrBAjoDjArV4Ek7vSbrcgYWcI6BhsQrFoxKdX\n83TZKai55ZCfCLIskwUIzA1NLVwyzCS+fSN/ABEBAAG0KCJUZXN0IEF0dGVzdG9y\nIiA8ZGFuYWhvZmZtYW5AZ29vZ2xlLmNvbT6JAU4EEwEIADgWIQRfWkqHt6hpTA1L\nuY060eeM4dc66AUCW0/R2gIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA6\n0eeM4dc66HdpCAC4ot3b0OyxPb0Ip+WT2U0PbpTBPJklesuwpIrM4Lh0N+1nVRLC\n51WSmVbM8BiAFhLbN9LpdHhds1kUrHF7+wWAjdR8sqAj9otc6HGRM/3qfa2qgh+U\nWTEk/3us/rYSi7T7TkMuutRMIa1IkR13uKiW56csEMnbOQpn9rDqwIr5R8nlZP5h\nMAU9vdm1DIv567meMqTaVZgR3w7bck2P49AO8lO5ERFpVkErtu/98y+rUy9d789l\n+OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1\nqoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg\n=6Bvm\n",
+ *         }],
+ *     },
+ *     name: "test-attestor",
+ * });
+ * ```
+ */
 export class Attestor extends pulumi.CustomResource {
     /**
      * Get an existing Attestor resource's state with the given name, ID, and optional extra

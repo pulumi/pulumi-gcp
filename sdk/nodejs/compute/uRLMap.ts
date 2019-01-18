@@ -4,6 +4,82 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a URL Map resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "test",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_storage_bucket_static = new gcp.storage.Bucket("static", {
+ *     location: "US",
+ *     name: "static-asset-bucket",
+ * });
+ * const google_compute_backend_bucket_static = new gcp.compute.BackendBucket("static", {
+ *     bucketName: google_storage_bucket_static.name,
+ *     enableCdn: true,
+ *     name: "static-asset-backend-bucket",
+ * });
+ * const google_compute_backend_service_home = new gcp.compute.BackendService("home", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "home-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_backend_service_login = new gcp.compute.BackendService("login", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "login-backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_foobar = new gcp.compute.URLMap("foobar", {
+ *     defaultService: google_compute_backend_service_home.selfLink,
+ *     description: "a description",
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "urlmap",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_home.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [
+ *             {
+ *                 paths: ["/home"],
+ *                 service: google_compute_backend_service_home.selfLink,
+ *             },
+ *             {
+ *                 paths: ["/login"],
+ *                 service: google_compute_backend_service_login.selfLink,
+ *             },
+ *             {
+ *                 paths: ["/static"],
+ *                 service: google_compute_backend_bucket_static.selfLink,
+ *             },
+ *         ],
+ *     }],
+ *     tests: [{
+ *         host: "hi.com",
+ *         path: "/home",
+ *         service: google_compute_backend_service_home.selfLink,
+ *     }],
+ * });
+ * ```
+ */
 export class URLMap extends pulumi.CustomResource {
     /**
      * Get an existing URLMap resource's state with the given name, ID, and optional extra
@@ -17,15 +93,47 @@ export class URLMap extends pulumi.CustomResource {
         return new URLMap(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     public readonly defaultService: pulumi.Output<string>;
+    /**
+     * A brief description of this resource.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The unique fingerprint for this resource.
+     */
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    /**
+     * A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
+     */
     public readonly hostRules: pulumi.Output<{ description?: string, hosts: string[], pathMatcher: string }[] | undefined>;
+    /**
+     * The GCE assigned ID of the resource.
+     */
     public /*out*/ readonly mapId: pulumi.Output<string>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * A list of paths to match. Structure is documented below.
+     */
     public readonly pathMatchers: pulumi.Output<{ defaultService: string, description?: string, name: string, pathRules?: { paths: string[], service: string }[] }[] | undefined>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    /**
+     * The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
+     */
     public readonly tests: pulumi.Output<{ description?: string, host: string, path: string, service: string }[] | undefined>;
 
     /**
@@ -74,15 +182,47 @@ export class URLMap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering URLMap resources.
  */
 export interface URLMapState {
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     readonly defaultService?: pulumi.Input<string>;
+    /**
+     * A brief description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The unique fingerprint for this resource.
+     */
     readonly fingerprint?: pulumi.Input<string>;
+    /**
+     * A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
+     */
     readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
+    /**
+     * The GCE assigned ID of the resource.
+     */
     readonly mapId?: pulumi.Input<string>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A list of paths to match. Structure is documented below.
+     */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
+     */
     readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
 }
 
@@ -90,11 +230,34 @@ export interface URLMapState {
  * The set of arguments for constructing a URLMap resource.
  */
 export interface URLMapArgs {
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     readonly defaultService: pulumi.Input<string>;
+    /**
+     * A brief description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
+     */
     readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A list of paths to match. Structure is documented below.
+     */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
+     */
     readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
 }

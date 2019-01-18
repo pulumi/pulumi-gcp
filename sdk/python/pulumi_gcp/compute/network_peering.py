@@ -8,18 +8,51 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class NetworkPeering(pulumi.CustomResource):
+    auto_create_routes: pulumi.Output[bool]
     """
-    Manages a network peering within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-    
-    > **Note:** Both network must create a peering with each other for the peering to be functional.
-    
-    > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+    If set to `true`, the routes between the two networks will
+    be created and managed automatically. Defaults to `true`.
+    """
+    name: pulumi.Output[str]
+    """
+    Name of the peering.
+    """
+    network: pulumi.Output[str]
+    """
+    Resource link of the network to add a peering to.
+    """
+    peer_network: pulumi.Output[str]
+    """
+    Resource link of the peer network.
+    """
+    state: pulumi.Output[str]
+    """
+    State for the peering.
+    """
+    state_details: pulumi.Output[str]
+    """
+    Details about the current state of the peering.
     """
     def __init__(__self__, __name__, __opts__=None, auto_create_routes=None, name=None, network=None, peer_network=None):
-        """Create a NetworkPeering resource with the given unique name, props, and options."""
+        """
+        Manages a network peering within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+        
+        > **Note:** Both network must create a peering with each other for the peering to be functional.
+        
+        > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] auto_create_routes: If set to `true`, the routes between the two networks will
+               be created and managed automatically. Defaults to `true`.
+        :param pulumi.Input[str] name: Name of the peering.
+        :param pulumi.Input[str] network: Resource link of the network to add a peering to.
+        :param pulumi.Input[str] peer_network: Resource link of the peer network.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

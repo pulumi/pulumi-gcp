@@ -8,24 +8,61 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    alternative_location_id: pulumi.Output[str]
+    authorized_network: pulumi.Output[str]
+    create_time: pulumi.Output[str]
+    current_location_id: pulumi.Output[str]
+    display_name: pulumi.Output[str]
+    host: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    location_id: pulumi.Output[str]
+    memory_size_gb: pulumi.Output[int]
+    name: pulumi.Output[str]
+    port: pulumi.Output[int]
+    project: pulumi.Output[str]
     """
-    A Google Cloud Redis instance.
-    
-    
-    To get more information about Instance, see:
-    
-    * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=redis_instance_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    redis_configs: pulumi.Output[dict]
+    redis_version: pulumi.Output[str]
+    region: pulumi.Output[str]
+    reserved_ip_range: pulumi.Output[str]
+    tier: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
-        """Create a Instance resource with the given unique name, props, and options."""
+        """
+        A Google Cloud Redis instance.
+        
+        
+        To get more information about Instance, see:
+        
+        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=redis_instance_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] alternative_location_id
+        :param pulumi.Input[str] authorized_network
+        :param pulumi.Input[str] display_name
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] location_id
+        :param pulumi.Input[int] memory_size_gb
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] redis_configs
+        :param pulumi.Input[str] redis_version
+        :param pulumi.Input[str] region
+        :param pulumi.Input[str] reserved_ip_range
+        :param pulumi.Input[str] tier
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -8,25 +8,51 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class SSLPolicy(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
+    custom_features: pulumi.Output[list]
+    description: pulumi.Output[str]
+    enabled_features: pulumi.Output[list]
+    fingerprint: pulumi.Output[str]
+    min_tls_version: pulumi.Output[str]
+    name: pulumi.Output[str]
+    profile: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    Represents a SSL policy. SSL policies give you the ability to control the
-    features of SSL that your SSL proxy or HTTPS load balancer negotiates.
-    
-    
-    To get more information about SslPolicy, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
-    * How-to Guides
-        * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_policy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
     """
     def __init__(__self__, __name__, __opts__=None, custom_features=None, description=None, min_tls_version=None, name=None, profile=None, project=None):
-        """Create a SSLPolicy resource with the given unique name, props, and options."""
+        """
+        Represents a SSL policy. SSL policies give you the ability to control the
+        features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+        
+        
+        To get more information about SslPolicy, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
+        * How-to Guides
+            * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_policy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] custom_features
+        :param pulumi.Input[str] description
+        :param pulumi.Input[str] min_tls_version
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] profile
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

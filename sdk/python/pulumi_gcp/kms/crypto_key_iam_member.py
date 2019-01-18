@@ -8,17 +8,47 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class CryptoKeyIAMMember(pulumi.CustomResource):
+    crypto_key_id: pulumi.Output[str]
     """
-    Allows creation and management of a single member for a single binding within
-    the IAM policy for an existing Google Cloud KMS crypto key.
-    
-    > **Note:** This resource _must not_ be used in conjunction with
-       `google_kms_crypto_key_iam_policy` or they will fight over what your policy
-       should be. Similarly, roles controlled by `google_kms_crypto_key_iam_binding`
-       should not be assigned to using `google_kms_crypto_key_iam_member`.
+    The key ring ID, in the form
+    `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+    `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+    the provider's project setting will be used as a fallback.
+    """
+    etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the project's IAM policy.
+    """
+    member: pulumi.Output[str]
+    """
+    The user that the role should apply to.
+    """
+    role: pulumi.Output[str]
+    """
+    The role that should be applied. Note that custom roles must be of the format
+    `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     def __init__(__self__, __name__, __opts__=None, crypto_key_id=None, member=None, role=None):
-        """Create a CryptoKeyIAMMember resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of a single member for a single binding within
+        the IAM policy for an existing Google Cloud KMS crypto key.
+        
+        > **Note:** This resource _must not_ be used in conjunction with
+           `google_kms_crypto_key_iam_policy` or they will fight over what your policy
+           should be. Similarly, roles controlled by `google_kms_crypto_key_iam_binding`
+           should not be assigned to using `google_kms_crypto_key_iam_member`.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] crypto_key_id: The key ring ID, in the form
+               `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+               `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+               the provider's project setting will be used as a fallback.
+        :param pulumi.Input[str] member: The user that the role should apply to.
+        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

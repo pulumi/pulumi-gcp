@@ -8,11 +8,68 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    config: pulumi.Output[str]
     """
-    Creates and manages a Google Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances).
+    The name of the instance's configuration (similar but not
+    quite the same as a region) which defines defines the geographic placement and
+    replication of your databases in this instance. It determines where your data
+    is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+    In order to obtain a valid list please consult the
+    [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+    """
+    display_name: pulumi.Output[str]
+    """
+    The descriptive name for this instance as it appears
+    in UIs. Can be updated, however should be kept globally unique to avoid confusion.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A mapping (key/value pairs) of labels to assign to the instance.
+    """
+    name: pulumi.Output[str]
+    """
+    The unique name (ID) of the instance. If the name is left
+    blank, Terraform will randomly generate one when the instance is first
+    created.
+    """
+    num_nodes: pulumi.Output[int]
+    """
+    The number of nodes allocated to this instance.
+    Defaults to `1`. This can be updated after creation.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    state: pulumi.Output[str]
+    """
+    The current state of the instance.
     """
     def __init__(__self__, __name__, __opts__=None, config=None, display_name=None, labels=None, name=None, num_nodes=None, project=None):
-        """Create a Instance resource with the given unique name, props, and options."""
+        """
+        Creates and manages a Google Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
+               quite the same as a region) which defines defines the geographic placement and
+               replication of your databases in this instance. It determines where your data
+               is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+               In order to obtain a valid list please consult the
+               [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears
+               in UIs. Can be updated, however should be kept globally unique to avoid confusion.
+        :param pulumi.Input[dict] labels: A mapping (key/value pairs) of labels to assign to the instance.
+        :param pulumi.Input[str] name: The unique name (ID) of the instance. If the name is left
+               blank, Terraform will randomly generate one when the instance is first
+               created.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
+               Defaults to `1`. This can be updated after creation.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -4,6 +4,76 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This message configures which resources and services to monitor for availability.
+ * 
+ * 
+ * To get more information about UptimeCheckConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Uptime Check Config Http
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_monitoring_uptime_check_config_http = new gcp.monitoring.UptimeCheckConfig("http", {
+ *     contentMatchers: [{
+ *         content: "example",
+ *     }],
+ *     displayName: "http-uptime-check",
+ *     httpCheck: {
+ *         path: "/some-path",
+ *         port: Number.parseFloat("8010"),
+ *     },
+ *     monitoredResource: {
+ *         labels: {
+ *             host: "192.168.1.1",
+ *             project_id: "example",
+ *         },
+ *         type: "uptime_url",
+ *     },
+ *     timeout: "60s",
+ * });
+ * ```
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_tcp&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * 
+ * ## Example Usage - Uptime Check Tcp
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_monitoring_group_check = new gcp.monitoring.Group("check", {
+ *     displayName: "uptime-check-group",
+ *     filter: "resource.metadata.name=has_substring(\"foo\")",
+ * });
+ * const google_monitoring_uptime_check_config_tcp_group = new gcp.monitoring.UptimeCheckConfig("tcp_group", {
+ *     displayName: "tcp-uptime-check",
+ *     resourceGroup: {
+ *         groupId: google_monitoring_group_check.name,
+ *         resourceType: "INSTANCE",
+ *     },
+ *     tcpCheck: {
+ *         port: 888,
+ *     },
+ *     timeout: "60s",
+ * });
+ * ```
+ */
 export class UptimeCheckConfig extends pulumi.CustomResource {
     /**
      * Get an existing UptimeCheckConfig resource's state with the given name, ID, and optional extra
@@ -25,6 +95,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     public readonly monitoredResource: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;
     public /*out*/ readonly name: pulumi.Output<string>;
     public readonly period: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly resourceGroup: pulumi.Output<{ groupId?: string, resourceType?: string } | undefined>;
     public readonly selectedRegions: pulumi.Output<string[] | undefined>;
@@ -94,6 +168,10 @@ export interface UptimeCheckConfigState {
     readonly monitoredResource?: pulumi.Input<{ labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>, type: pulumi.Input<string> }>;
     readonly name?: pulumi.Input<string>;
     readonly period?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly resourceGroup?: pulumi.Input<{ groupId?: pulumi.Input<string>, resourceType?: pulumi.Input<string> }>;
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -112,6 +190,10 @@ export interface UptimeCheckConfigArgs {
     readonly isInternal?: pulumi.Input<boolean>;
     readonly monitoredResource?: pulumi.Input<{ labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>, type: pulumi.Input<string> }>;
     readonly period?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly resourceGroup?: pulumi.Input<{ groupId?: pulumi.Input<string>, resourceType?: pulumi.Input<string> }>;
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;

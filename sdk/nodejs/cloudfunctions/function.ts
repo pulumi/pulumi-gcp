@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a new Cloud Function. For more information see
+ * [the official documentation](https://cloud.google.com/functions/docs/)
+ * and
+ * [API](https://cloud.google.com/functions/docs/apis).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "test-bucket",
+ * });
+ * const google_storage_bucket_object_archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: google_storage_bucket_bucket.name,
+ *     name: "index.zip",
+ *     source: new pulumi.asset.FileArchive("./path/to/zip/file/which/contains/code"),
+ * });
+ * const google_cloudfunctions_function_function = new gcp.cloudfunctions.Function("function", {
+ *     availableMemoryMb: 128,
+ *     description: "My function",
+ *     entryPoint: "helloGET",
+ *     environmentVariables: {
+ *         MY_ENV_VAR: "my-env-var-value",
+ *     },
+ *     labels: {
+ *         my-label: "my-label-value",
+ *     },
+ *     name: "function-test",
+ *     sourceArchiveBucket: google_storage_bucket_bucket.name,
+ *     sourceArchiveObject: google_storage_bucket_object_archive.name,
+ *     timeout: 60,
+ *     triggerHttp: true,
+ * });
+ * ```
+ */
 export class Function extends pulumi.CustomResource {
     /**
      * Get an existing Function resource's state with the given name, ID, and optional extra
@@ -17,23 +55,80 @@ export class Function extends pulumi.CustomResource {
         return new Function(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     */
     public readonly availableMemoryMb: pulumi.Output<number | undefined>;
+    /**
+     * Description of the function.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+     */
     public readonly entryPoint: pulumi.Output<string | undefined>;
+    /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
     public readonly environmentVariables: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     */
     public readonly eventTrigger: pulumi.Output<{ eventType: string, failurePolicy: { retry: boolean }, resource: string }>;
+    /**
+     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     */
     public readonly httpsTriggerUrl: pulumi.Output<string>;
+    /**
+     * A set of key/value label pairs to assign to the function.
+     */
     public readonly labels: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * A user-defined name of the function. Function names must be unique globally.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * Project of the function. If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     */
     public readonly region: pulumi.Output<string>;
+    /**
+     * Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+     * Deprecated. Use `event_trigger.failure_policy.retry` instead.
+     */
     public readonly retryOnFailure: pulumi.Output<boolean>;
+    /**
+     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     */
     public readonly runtime: pulumi.Output<string>;
+    /**
+     * The GCS bucket containing the zip archive which contains the function.
+     */
     public readonly sourceArchiveBucket: pulumi.Output<string>;
+    /**
+     * The source archive object (file) in archive bucket.
+     */
     public readonly sourceArchiveObject: pulumi.Output<string>;
+    /**
+     * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+     */
     public readonly timeout: pulumi.Output<number | undefined>;
+    /**
+     * Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     public readonly triggerBucket: pulumi.Output<string>;
+    /**
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     */
     public readonly triggerHttp: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     public readonly triggerTopic: pulumi.Output<string>;
 
     /**
@@ -101,23 +196,80 @@ export class Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Function resources.
  */
 export interface FunctionState {
+    /**
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     */
     readonly availableMemoryMb?: pulumi.Input<number>;
+    /**
+     * Description of the function.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+     */
     readonly entryPoint?: pulumi.Input<string>;
+    /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
     readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     */
     readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
+    /**
+     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the function.
+     */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A user-defined name of the function. Function names must be unique globally.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Project of the function. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+     * Deprecated. Use `event_trigger.failure_policy.retry` instead.
+     */
     readonly retryOnFailure?: pulumi.Input<boolean>;
+    /**
+     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     */
     readonly runtime?: pulumi.Input<string>;
+    /**
+     * The GCS bucket containing the zip archive which contains the function.
+     */
     readonly sourceArchiveBucket?: pulumi.Input<string>;
+    /**
+     * The source archive object (file) in archive bucket.
+     */
     readonly sourceArchiveObject?: pulumi.Input<string>;
+    /**
+     * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+     */
     readonly timeout?: pulumi.Input<number>;
+    /**
+     * Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerBucket?: pulumi.Input<string>;
+    /**
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     */
     readonly triggerHttp?: pulumi.Input<boolean>;
+    /**
+     * Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerTopic?: pulumi.Input<string>;
 }
 
@@ -125,22 +277,79 @@ export interface FunctionState {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
+    /**
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     */
     readonly availableMemoryMb?: pulumi.Input<number>;
+    /**
+     * Description of the function.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+     */
     readonly entryPoint?: pulumi.Input<string>;
+    /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
     readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     */
     readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
+    /**
+     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the function.
+     */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A user-defined name of the function. Function names must be unique globally.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Project of the function. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
+     * Deprecated. Use `event_trigger.failure_policy.retry` instead.
+     */
     readonly retryOnFailure?: pulumi.Input<boolean>;
+    /**
+     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     */
     readonly runtime?: pulumi.Input<string>;
+    /**
+     * The GCS bucket containing the zip archive which contains the function.
+     */
     readonly sourceArchiveBucket: pulumi.Input<string>;
+    /**
+     * The source archive object (file) in archive bucket.
+     */
     readonly sourceArchiveObject: pulumi.Input<string>;
+    /**
+     * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+     */
     readonly timeout?: pulumi.Input<number>;
+    /**
+     * Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerBucket?: pulumi.Input<string>;
+    /**
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     */
     readonly triggerHttp?: pulumi.Input<boolean>;
+    /**
+     * Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
+     * Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerTopic?: pulumi.Input<string>;
 }

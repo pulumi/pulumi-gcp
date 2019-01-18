@@ -8,17 +8,57 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
+    cluster_config: pulumi.Output[dict]
     """
-    Manages a Cloud Dataproc cluster resource within GCP. For more information see
-    [the official dataproc documentation](https://cloud.google.com/dataproc/).
-    
-    
-    !> **Warning:** Due to limitations of the API, all arguments except
-    `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
-    whole cluster!
+    Allows you to configure various aspects of the cluster.
+    Structure defined below.
+    """
+    labels: pulumi.Output[dict]
+    """
+    The list of labels (key/value pairs) to be applied to
+    instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+    which is the name of the cluster.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the cluster, unique within the project and
+    zone.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the `cluster` will exist. If it
+    is not provided, the provider project is used.
+    """
+    region: pulumi.Output[str]
+    """
+    The region in which the cluster and associated nodes will be created in.
+    Defaults to `global`.
     """
     def __init__(__self__, __name__, __opts__=None, cluster_config=None, labels=None, name=None, project=None, region=None):
-        """Create a Cluster resource with the given unique name, props, and options."""
+        """
+        Manages a Cloud Dataproc cluster resource within GCP. For more information see
+        [the official dataproc documentation](https://cloud.google.com/dataproc/).
+        
+        
+        !> **Warning:** Due to limitations of the API, all arguments except
+        `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
+        whole cluster!
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] cluster_config: Allows you to configure various aspects of the cluster.
+               Structure defined below.
+        :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to be applied to
+               instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+               which is the name of the cluster.
+        :param pulumi.Input[str] name: The name of the cluster, unique within the project and
+               zone.
+        :param pulumi.Input[str] project: The ID of the project in which the `cluster` will exist. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
+               Defaults to `global`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -4,6 +4,51 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a RuntimeConfig variable in Google Cloud. For more information, see the
+ * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
+ * or the
+ * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a RuntimeConfig variable.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_runtimeconfig_config_my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ *     name: "my-service-runtime-config",
+ * });
+ * const google_runtimeconfig_variable_environment = new gcp.runtimeconfig.Variavble("environment", {
+ *     name: "prod-variables/hostname",
+ *     parent: google_runtimeconfig_config_my_runtime_config.name,
+ *     text: "example.com",
+ * });
+ * ```
+ * You can also encode binary content using the `value` argument instead. The
+ * value must be base64 encoded.
+ * 
+ * Example of using the `value` argument.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_runtimeconfig_config_my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ *     name: "my-service-runtime-config",
+ * });
+ * const google_runtimeconfig_variable_my_secret = new gcp.runtimeconfig.Variavble("my-secret", {
+ *     name: "secret",
+ *     parent: google_runtimeconfig_config_my_runtime_config.name,
+ *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", "utf-8")).toString("base64"),
+ * });
+ * ```
+ */
 export class Variavble extends pulumi.CustomResource {
     /**
      * Get an existing Variavble resource's state with the given name, ID, and optional extra
@@ -17,10 +62,27 @@ export class Variavble extends pulumi.CustomResource {
         return new Variavble(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The name of the variable to manage. Note that variable
+     * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The name of the RuntimeConfig resource containing this
+     * variable.
+     */
     public readonly parent: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly text: pulumi.Output<string | undefined>;
+    /**
+     * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
+     * accurate to nanoseconds, representing when the variable was last updated.
+     * Example: "2016-10-09T12:33:37.578138407Z".
+     */
     public /*out*/ readonly updateTime: pulumi.Output<string>;
     public readonly value: pulumi.Output<string | undefined>;
 
@@ -62,10 +124,27 @@ export class Variavble extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Variavble resources.
  */
 export interface VariavbleState {
+    /**
+     * The name of the variable to manage. Note that variable
+     * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The name of the RuntimeConfig resource containing this
+     * variable.
+     */
     readonly parent?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly text?: pulumi.Input<string>;
+    /**
+     * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
+     * accurate to nanoseconds, representing when the variable was last updated.
+     * Example: "2016-10-09T12:33:37.578138407Z".
+     */
     readonly updateTime?: pulumi.Input<string>;
     readonly value?: pulumi.Input<string>;
 }
@@ -74,8 +153,20 @@ export interface VariavbleState {
  * The set of arguments for constructing a Variavble resource.
  */
 export interface VariavbleArgs {
+    /**
+     * The name of the variable to manage. Note that variable
+     * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The name of the RuntimeConfig resource containing this
+     * variable.
+     */
     readonly parent: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly text?: pulumi.Input<string>;
     readonly value?: pulumi.Input<string>;

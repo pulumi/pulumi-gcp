@@ -8,24 +8,39 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class AttachedDisk(pulumi.CustomResource):
-    """
-    Persistent disks can be attached to a compute instance using [the `attached_disk`
-    section within the compute instance configuration](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attached_disk).
-    However there may be situations where managing the attached disks via the compute
-    instance config isn't preferable or possible, such as attaching dynamic
-    numbers of disks using the `count` variable.
-    
-    
-    To get more information about attaching disks, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
-    * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
-    * How-to Guides
-        * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-    
-    """
+    device_name: pulumi.Output[str]
+    disk: pulumi.Output[str]
+    instance: pulumi.Output[str]
+    mode: pulumi.Output[str]
+    project: pulumi.Output[str]
+    zone: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, device_name=None, disk=None, instance=None, mode=None, project=None, zone=None):
-        """Create a AttachedDisk resource with the given unique name, props, and options."""
+        """
+        Persistent disks can be attached to a compute instance using [the `attached_disk`
+        section within the compute instance configuration](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attached_disk).
+        However there may be situations where managing the attached disks via the compute
+        instance config isn't preferable or possible, such as attaching dynamic
+        numbers of disks using the `count` variable.
+        
+        
+        To get more information about attaching disks, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
+        * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
+        * How-to Guides
+            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] device_name
+        :param pulumi.Input[str] disk
+        :param pulumi.Input[str] instance
+        :param pulumi.Input[str] mode
+        :param pulumi.Input[str] project
+        :param pulumi.Input[str] zone
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

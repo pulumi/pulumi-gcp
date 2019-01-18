@@ -8,18 +8,64 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class BillingAccountSink(pulumi.CustomResource):
+    billing_account: pulumi.Output[str]
     """
-    Manages a billing account logging sink. For more information see
-    [the official documentation](https://cloud.google.com/logging/docs/) and
-    [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-    
-    > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
-    the credentials used with Terraform. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
-    typical IAM roles granted on a project.
+    The billing account exported to the sink.
+    """
+    destination: pulumi.Output[str]
+    """
+    The destination of the sink (or, in other words, where logs are written to). Can be a
+    Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+    ```
+    "storage.googleapis.com/[GCS_BUCKET]"
+    "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+    "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+    ```
+    The writer associated with the sink must have access to write to the above resource.
+    """
+    filter: pulumi.Output[str]
+    """
+    The filter to apply when exporting logs. Only log entries that match the filter are exported.
+    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+    write a filter.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the logging sink.
+    """
+    writer_identity: pulumi.Output[str]
+    """
+    The identity associated with this sink. This identity must be granted write access to the
+    configured `destination`.
     """
     def __init__(__self__, __name__, __opts__=None, billing_account=None, destination=None, filter=None, name=None):
-        """Create a BillingAccountSink resource with the given unique name, props, and options."""
+        """
+        Manages a billing account logging sink. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        
+        > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
+        the credentials used with Terraform. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
+        typical IAM roles granted on a project.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] billing_account: The billing account exported to the sink.
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
+               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               ```
+               "storage.googleapis.com/[GCS_BUCKET]"
+               "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+               "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+               ```
+               The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: The name of the logging sink.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

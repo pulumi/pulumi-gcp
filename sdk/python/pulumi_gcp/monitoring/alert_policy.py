@@ -8,20 +8,39 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class AlertPolicy(pulumi.CustomResource):
-    """
-    A description of the conditions under which some aspect of your system is
-    considered to be "unhealthy" and the ways to notify people or services
-    about this state.
-    
-    
-    To get more information about AlertPolicy, see:
-    
-    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
-    """
+    combiner: pulumi.Output[str]
+    conditions: pulumi.Output[list]
+    creation_record: pulumi.Output[dict]
+    display_name: pulumi.Output[str]
+    enabled: pulumi.Output[bool]
+    labels: pulumi.Output[list]
+    name: pulumi.Output[str]
+    notification_channels: pulumi.Output[list]
+    project: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, combiner=None, conditions=None, display_name=None, enabled=None, labels=None, notification_channels=None, project=None):
-        """Create a AlertPolicy resource with the given unique name, props, and options."""
+        """
+        A description of the conditions under which some aspect of your system is
+        considered to be "unhealthy" and the ways to notify people or services
+        about this state.
+        
+        
+        To get more information about AlertPolicy, see:
+        
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] combiner
+        :param pulumi.Input[list] conditions
+        :param pulumi.Input[str] display_name
+        :param pulumi.Input[bool] enabled
+        :param pulumi.Input[list] labels
+        :param pulumi.Input[list] notification_channels
+        :param pulumi.Input[str] project
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

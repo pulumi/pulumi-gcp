@@ -4,6 +4,55 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Persistent Disk Snapshot resource.
+ * 
+ * Use snapshots to back up data from your persistent disks. Snapshots are
+ * different from public images and custom images, which are used primarily
+ * to create instances or configure instance templates. Snapshots are useful
+ * for periodic backup of the data on your persistent disks. You can create
+ * snapshots from persistent disks even while they are attached to running
+ * instances.
+ * 
+ * Snapshots are incremental, so you can create regular snapshots on a
+ * persistent disk faster and at a much lower cost than if you regularly
+ * created a full image of the disk.
+ * 
+ * 
+ * To get more information about Snapshot, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ * 
+ * ## Example Usage - Snapshot Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_debian = pulumi.output(gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * }));
+ * const google_compute_disk_persistent = new gcp.compute.Disk("persistent", {
+ *     image: google_compute_image_debian.apply(__arg0 => __arg0.selfLink),
+ *     name: "debian-disk",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const google_compute_snapshot_snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     labels: {
+ *         my_label: "%s",
+ *     },
+ *     name: "my-snapshot",
+ *     sourceDisk: google_compute_disk_persistent.name,
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ */
 export class Snapshot extends pulumi.CustomResource {
     /**
      * Get an existing Snapshot resource's state with the given name, ID, and optional extra
@@ -24,7 +73,14 @@ export class Snapshot extends pulumi.CustomResource {
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly licenses: pulumi.Output<string[]>;
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly snapshotEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string }>;
     public readonly snapshotEncryptionKeyRaw: pulumi.Output<string | undefined>;
@@ -111,7 +167,14 @@ export interface SnapshotState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     readonly snapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly snapshotEncryptionKeyRaw?: pulumi.Input<string>;
@@ -133,6 +196,10 @@ export interface SnapshotArgs {
     readonly description?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly snapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly snapshotEncryptionKeyRaw?: pulumi.Input<string>;

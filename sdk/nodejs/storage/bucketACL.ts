@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a new bucket ACL in Google cloud storage service (GCS). For more information see 
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+ * and 
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating an ACL on a bucket with one owner, and one reader.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ *     location: "EU",
+ *     name: "image-store-bucket",
+ * });
+ * const google_storage_bucket_acl_image_store_acl = new gcp.storage.BucketACL("image-store-acl", {
+ *     bucket: google_storage_bucket_image_store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
+ */
 export class BucketACL extends pulumi.CustomResource {
     /**
      * Get an existing BucketACL resource's state with the given name, ID, and optional extra
@@ -17,9 +44,21 @@ export class BucketACL extends pulumi.CustomResource {
         return new BucketACL(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The name of the bucket it applies to.
+     */
     public readonly bucket: pulumi.Output<string>;
+    /**
+     * Configure this ACL to be the default ACL.
+     */
     public readonly defaultAcl: pulumi.Output<string | undefined>;
+    /**
+     * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+     */
     public readonly predefinedAcl: pulumi.Output<string | undefined>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+     */
     public readonly roleEntities: pulumi.Output<string[]>;
 
     /**
@@ -56,9 +95,21 @@ export class BucketACL extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketACL resources.
  */
 export interface BucketACLState {
+    /**
+     * The name of the bucket it applies to.
+     */
     readonly bucket?: pulumi.Input<string>;
+    /**
+     * Configure this ACL to be the default ACL.
+     */
     readonly defaultAcl?: pulumi.Input<string>;
+    /**
+     * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+     */
     readonly predefinedAcl?: pulumi.Input<string>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+     */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -66,8 +117,20 @@ export interface BucketACLState {
  * The set of arguments for constructing a BucketACL resource.
  */
 export interface BucketACLArgs {
+    /**
+     * The name of the bucket it applies to.
+     */
     readonly bucket: pulumi.Input<string>;
+    /**
+     * Configure this ACL to be the default ACL.
+     */
     readonly defaultAcl?: pulumi.Input<string>;
+    /**
+     * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+     */
     readonly predefinedAcl?: pulumi.Input<string>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+     */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

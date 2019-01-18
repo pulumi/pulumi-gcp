@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a Target Pool within GCE. This is a collection of instances used as
+ * target of a network load balancer (Forwarding Rule). For more information see
+ * [the official
+ * documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
+ * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "default",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_target_pool_default = new gcp.compute.TargetPool("default", {
+ *     healthChecks: google_compute_http_health_check_default.name,
+ *     instances: [
+ *         "us-central1-a/myinstance1",
+ *         "us-central1-b/myinstance2",
+ *     ],
+ *     name: "instance-pool",
+ * });
+ * ```
+ */
 export class TargetPool extends pulumi.CustomResource {
     /**
      * Get an existing TargetPool resource's state with the given name, ID, and optional extra
@@ -17,15 +47,57 @@ export class TargetPool extends pulumi.CustomResource {
         return new TargetPool(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * URL to the backup target pool. Must also set
+     * failover\_ratio.
+     */
     public readonly backupPool: pulumi.Output<string | undefined>;
+    /**
+     * Textual description field.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Ratio (0 to 1) of failed nodes before using the
+     * backup pool (which must also be set).
+     */
     public readonly failoverRatio: pulumi.Output<number | undefined>;
+    /**
+     * List of zero or one health check name or self_link. Only
+     * legacy `google_compute_http_health_check` is supported.
+     */
     public readonly healthChecks: pulumi.Output<string | undefined>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use the
+     * Terraform interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     public readonly instances: pulumi.Output<string[]>;
+    /**
+     * A unique name for the resource, required by GCE. Changing
+     * this forces a new resource to be created.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * Where the target pool resides. Defaults to project
+     * region.
+     */
     public readonly region: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    /**
+     * How to distribute load. Options are "NONE" (no
+     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     */
     public readonly sessionAffinity: pulumi.Output<string | undefined>;
 
     /**
@@ -71,15 +143,57 @@ export class TargetPool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetPool resources.
  */
 export interface TargetPoolState {
+    /**
+     * URL to the backup target pool. Must also set
+     * failover\_ratio.
+     */
     readonly backupPool?: pulumi.Input<string>;
+    /**
+     * Textual description field.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Ratio (0 to 1) of failed nodes before using the
+     * backup pool (which must also be set).
+     */
     readonly failoverRatio?: pulumi.Input<number>;
+    /**
+     * List of zero or one health check name or self_link. Only
+     * legacy `google_compute_http_health_check` is supported.
+     */
     readonly healthChecks?: pulumi.Input<string>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use the
+     * Terraform interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A unique name for the resource, required by GCE. Changing
+     * this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Where the target pool resides. Defaults to project
+     * region.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * How to distribute load. Options are "NONE" (no
+     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     */
     readonly sessionAffinity?: pulumi.Input<string>;
 }
 
@@ -87,13 +201,52 @@ export interface TargetPoolState {
  * The set of arguments for constructing a TargetPool resource.
  */
 export interface TargetPoolArgs {
+    /**
+     * URL to the backup target pool. Must also set
+     * failover\_ratio.
+     */
     readonly backupPool?: pulumi.Input<string>;
+    /**
+     * Textual description field.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Ratio (0 to 1) of failed nodes before using the
+     * backup pool (which must also be set).
+     */
     readonly failoverRatio?: pulumi.Input<number>;
+    /**
+     * List of zero or one health check name or self_link. Only
+     * legacy `google_compute_http_health_check` is supported.
+     */
     readonly healthChecks?: pulumi.Input<string>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use the
+     * Terraform interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A unique name for the resource, required by GCE. Changing
+     * this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Where the target pool resides. Defaults to project
+     * region.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * How to distribute load. Options are "NONE" (no
+     * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
+     * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+     */
     readonly sessionAffinity?: pulumi.Input<string>;
 }

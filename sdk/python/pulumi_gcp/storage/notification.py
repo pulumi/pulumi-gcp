@@ -8,21 +8,62 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Notification(pulumi.CustomResource):
+    bucket: pulumi.Output[str]
     """
-    Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-     For more information see 
-    [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
-    and 
-    [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
-    
-    In order to enable notifications, a special Google Cloud Storage service account unique to the project
-    must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
-    account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
-    for an example of enabling notifications by granting the correct IAM permission. See
-    [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
+    The name of the bucket.
+    """
+    custom_attributes: pulumi.Output[dict]
+    """
+    A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
+    """
+    event_types: pulumi.Output[list]
+    """
+    List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+    """
+    object_name_prefix: pulumi.Output[str]
+    """
+    Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
+    """
+    payload_format: pulumi.Output[str]
+    """
+    The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    topic: pulumi.Output[str]
+    """
+    The Cloud PubSub topic to which this subscription publishes. Expects either the 
+    topic name, assumed to belong to the default GCP provider project, or the project-level name,
+    i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
     """
     def __init__(__self__, __name__, __opts__=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None):
-        """Create a Notification resource with the given unique name, props, and options."""
+        """
+        Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
+         For more information see 
+        [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
+        and 
+        [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
+        
+        In order to enable notifications, a special Google Cloud Storage service account unique to the project
+        must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
+        account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
+        for an example of enabling notifications by granting the correct IAM permission. See
+        [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[dict] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
+        :param pulumi.Input[list] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+        :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
+        :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
+        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
+               topic name, assumed to belong to the default GCP provider project, or the project-level name,
+               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

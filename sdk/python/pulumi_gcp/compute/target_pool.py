@@ -8,16 +8,92 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class TargetPool(pulumi.CustomResource):
+    backup_pool: pulumi.Output[str]
     """
-    Manages a Target Pool within GCE. This is a collection of instances used as
-    target of a network load balancer (Forwarding Rule). For more information see
-    [the official
-    documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
-    and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
-    
+    URL to the backup target pool. Must also set
+    failover\_ratio.
+    """
+    description: pulumi.Output[str]
+    """
+    Textual description field.
+    """
+    failover_ratio: pulumi.Output[float]
+    """
+    Ratio (0 to 1) of failed nodes before using the
+    backup pool (which must also be set).
+    """
+    health_checks: pulumi.Output[str]
+    """
+    List of zero or one health check name or self_link. Only
+    legacy `google_compute_http_health_check` is supported.
+    """
+    instances: pulumi.Output[list]
+    """
+    List of instances in the pool. They can be given as
+    URLs, or in the form of "zone/name". Note that the instances need not exist
+    at the time of target pool creation, so there is no need to use the
+    Terraform interpolators to create a dependency on the instances from the
+    target pool.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the resource, required by GCE. Changing
+    this forces a new resource to be created.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    region: pulumi.Output[str]
+    """
+    Where the target pool resides. Defaults to project
+    region.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    session_affinity: pulumi.Output[str]
+    """
+    How to distribute load. Options are "NONE" (no
+    affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
+    "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
     """
     def __init__(__self__, __name__, __opts__=None, backup_pool=None, description=None, failover_ratio=None, health_checks=None, instances=None, name=None, project=None, region=None, session_affinity=None):
-        """Create a TargetPool resource with the given unique name, props, and options."""
+        """
+        Manages a Target Pool within GCE. This is a collection of instances used as
+        target of a network load balancer (Forwarding Rule). For more information see
+        [the official
+        documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
+        and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
+               failover\_ratio.
+        :param pulumi.Input[str] description: Textual description field.
+        :param pulumi.Input[float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
+               backup pool (which must also be set).
+        :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
+               legacy `google_compute_http_health_check` is supported.
+        :param pulumi.Input[list] instances: List of instances in the pool. They can be given as
+               URLs, or in the form of "zone/name". Note that the instances need not exist
+               at the time of target pool creation, so there is no need to use the
+               Terraform interpolators to create a dependency on the instances from the
+               target pool.
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
+               this forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
+               region.
+        :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
+               affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
+               "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

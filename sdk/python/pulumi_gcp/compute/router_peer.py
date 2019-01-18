@@ -8,14 +8,79 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
+    advertised_route_priority: pulumi.Output[int]
     """
-    Manages a Cloud Router BGP peer. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+    The priority of routes advertised to this BGP peer.
+    Changing this forces a new peer to be created.
+    """
+    interface: pulumi.Output[str]
+    """
+    The name of the interface the BGP peer is associated with.
+    Changing this forces a new peer to be created.
+    """
+    ip_address: pulumi.Output[str]
+    """
+    IP address of the interface inside Google Cloud Platform.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for BGP peer, required by GCE. Changing
+    this forces a new peer to be created.
+    """
+    peer_asn: pulumi.Output[int]
+    """
+    Peer BGP Autonomous System Number (ASN).
+    Changing this forces a new peer to be created.
+    """
+    peer_ip_address: pulumi.Output[str]
+    """
+    IP address of the BGP interface outside Google Cloud.
+    Changing this forces a new peer to be created.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which this peer's router belongs. If it
+    is not provided, the provider project is used. Changing this forces a new peer to be created.
+    """
+    region: pulumi.Output[str]
+    """
+    The region this peer's router sits in. If not specified,
+    the project region will be used. Changing this forces a new peer to be
+    created.
+    """
+    router: pulumi.Output[str]
+    """
+    The name of the router in which this BGP peer will be configured.
+    Changing this forces a new peer to be created.
     """
     def __init__(__self__, __name__, __opts__=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
-        """Create a RouterPeer resource with the given unique name, props, and options."""
+        """
+        Manages a Cloud Router BGP peer. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] name: A unique name for BGP peer, required by GCE. Changing
+               this forces a new peer to be created.
+        :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this peer's router belongs. If it
+               is not provided, the provider project is used. Changing this forces a new peer to be created.
+        :param pulumi.Input[str] region: The region this peer's router sits in. If not specified,
+               the project region will be used. Changing this forces a new peer to be
+               created.
+        :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
+               Changing this forces a new peer to be created.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

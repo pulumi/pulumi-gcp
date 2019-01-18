@@ -8,15 +8,189 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    allow_stopping_for_update: pulumi.Output[bool]
     """
-    Manages a VM instance resource within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/instances)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-    
+    If true, allows Terraform to stop the instance to update its properties.
+    If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+    """
+    attached_disks: pulumi.Output[list]
+    """
+    List of disks to attach to the instance. Structure is documented below.
+    """
+    boot_disk: pulumi.Output[dict]
+    """
+    The boot disk for the instance.
+    Structure is documented below.
+    """
+    can_ip_forward: pulumi.Output[bool]
+    """
+    Whether to allow sending and receiving of
+    packets with non-matching source or destination IPs.
+    This defaults to false.
+    """
+    cpu_platform: pulumi.Output[str]
+    """
+    The CPU platform used by this instance.
+    """
+    create_timeout: pulumi.Output[int]
+    """
+    Configurable timeout in minutes for creating instances. Default is 4 minutes.
+    Changing this forces a new resource to be created.
+    """
+    deletion_protection: pulumi.Output[bool]
+    """
+    Enable deletion protection on this instance. Defaults to false.
+    **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
+    """
+    description: pulumi.Output[str]
+    """
+    A brief description of this resource.
+    """
+    guest_accelerators: pulumi.Output[list]
+    """
+    List of the type and count of accelerator cards attached to the instance. Structure documented below.
+    **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+    """
+    instance_id: pulumi.Output[str]
+    """
+    The server-assigned unique identifier of this instance.
+    """
+    label_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the labels.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to the instance.
+    """
+    machine_type: pulumi.Output[str]
+    """
+    The machine type to create.
+    """
+    metadata: pulumi.Output[dict]
+    """
+    Metadata key/value pairs to make available from
+    within the instance.
+    """
+    metadata_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the metadata.
+    """
+    metadata_startup_script: pulumi.Output[str]
+    """
+    An alternative to using the
+    startup-script metadata key, except this one forces the instance to be
+    recreated (thus re-running the script) if it is changed. This replaces the
+    startup-script metadata key on the created instance and thus the two
+    mechanisms are not allowed to be used simultaneously.
+    """
+    min_cpu_platform: pulumi.Output[str]
+    """
+    Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
+    `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the resource, required by GCE.
+    Changing this forces a new resource to be created.
+    """
+    network_interfaces: pulumi.Output[list]
+    """
+    Networks to attach to the instance. This can
+    be specified multiple times. Structure is documented below.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    scheduling: pulumi.Output[dict]
+    """
+    The scheduling strategy to use. More details about
+    this configuration option are detailed below.
+    """
+    scratch_disks: pulumi.Output[list]
+    """
+    Scratch disks to attach to the instance. This can be
+    specified multiple times for multiple scratch disks. Structure is documented below.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    service_account: pulumi.Output[dict]
+    """
+    Service account to attach to the instance.
+    Structure is documented below.
+    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    """
+    tags: pulumi.Output[list]
+    """
+    A list of tags to attach to the instance.
+    """
+    tags_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the tags.
+    """
+    zone: pulumi.Output[str]
+    """
+    The zone that the machine should be created in.
     """
     def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, create_timeout=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, tags=None, zone=None):
-        """Create a Instance resource with the given unique name, props, and options."""
+        """
+        Manages a VM instance resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instances)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
+               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[list] attached_disks: List of disks to attach to the instance. Structure is documented below.
+        :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
+               packets with non-matching source or destination IPs.
+               This defaults to false.
+        :param pulumi.Input[int] create_timeout: Configurable timeout in minutes for creating instances. Default is 4 minutes.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
+               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
+        :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the instance.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
+               within the instance.
+        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
+               startup-script metadata key, except this one forces the instance to be
+               recreated (thus re-running the script) if it is changed. This replaces the
+               startup-script metadata key on the created instance and thus the two
+               mechanisms are not allowed to be used simultaneously.
+        :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
+               `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[list] network_interfaces: Networks to attach to the instance. This can
+               be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
+               this configuration option are detailed below.
+        :param pulumi.Input[list] scratch_disks: Scratch disks to attach to the instance. This can be
+               specified multiple times for multiple scratch disks. Structure is documented below.
+        :param pulumi.Input[dict] service_account: Service account to attach to the instance.
+               Structure is documented below.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        :param pulumi.Input[list] tags: A list of tags to attach to the instance.
+        :param pulumi.Input[str] zone: The zone that the machine should be created in.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):
