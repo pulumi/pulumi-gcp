@@ -7,7 +7,7 @@
   name = "github.com/pulumi/pulumi-terraform"
 
 [[constraint]]
-  name = "github.com/terraform-providers/terraform-provider-google"
+  name = "github.com/terraform-providers/terraform-provider-google-beta"
   version = "v1.20.0"
 
   [constraint.metadata]
@@ -336,7 +336,7 @@
 
 [[override]]
   name = "google.golang.org/api"
-  revision = "04bb50b6b83d0e72253821af8cf3252d8e866517"
+  revision = "83a9d304b1e613fc253e1e2710778642fe81af53"
   [override.metadata]
     govendor-overridden=true
 

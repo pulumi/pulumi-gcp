@@ -480,6 +480,7 @@
   revision = "dc2bc5a81accba8782bebea28628224643a8286a"
 
 [[projects]]
+  branch = "master"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -525,8 +526,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "5ec78df73df5056dcb67fd560e8114b5d1cbcb7d"
-  version = "v0.16.10"
+  revision = "3cf81c0b4ccdd64fbc07cc8ec7cf5fbb74cd7194"
 
 [[projects]]
   branch = "master"
@@ -535,7 +535,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "a20e139e31c38c1557b497818dcebd11453060d0"
+  revision = "9070bbff358bce84f8f8ba25297513256749db2d"
 
 [[projects]]
   branch = "master"
@@ -811,7 +811,7 @@
     "transport/http",
     "transport/http/internal/propagation"
   ]
-  revision = "04bb50b6b83d0e72253821af8cf3252d8e866517"
+  revision = "83a9d304b1e613fc253e1e2710778642fe81af53"
 
 [[projects]]
   name = "google.golang.org/appengine"
@@ -963,6 +963,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "98961b3feeddf8251b0987726d21b4b97b482eaf5de194dbbae862ff74ad3e64"
+  inputs-digest = "76c0643c869e79db3d3c4977923597e8abcd98a5f8c1e0a6b1336181f60da924"
   solver-name = "gps-cdcl"
   solver-version = 1
