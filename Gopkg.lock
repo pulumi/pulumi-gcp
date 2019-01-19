@@ -167,6 +167,12 @@
   revision = "766e555c68dc8bda90d197ee8946c37519c19409"
 
 [[projects]]
+  name = "github.com/gofrs/flock"
+  packages = ["."]
+  revision = "7f43ea2e6a643ad441fc12d0ecc0d3388b300c53"
+  version = "v0.7.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/golang/glog"
   packages = ["."]
@@ -480,6 +486,7 @@
   revision = "dc2bc5a81accba8782bebea28628224643a8286a"
 
 [[projects]]
+  branch = "master"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -525,8 +532,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "5ec78df73df5056dcb67fd560e8114b5d1cbcb7d"
-  version = "v0.16.10"
+  revision = "0b8fd47fb541a3ceae04b8661d8ad9ed642f711e"
 
 [[projects]]
   branch = "master"
@@ -535,7 +541,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "a20e139e31c38c1557b497818dcebd11453060d0"
+  revision = "b0770d37ae5ab50be1a2d316a6b5a7b41e8043cb"
 
 [[projects]]
   branch = "master"
