@@ -8,13 +8,81 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InstanceGroup(pulumi.CustomResource):
+    description: pulumi.Output[str]
     """
-    Creates a group of dissimilar Compute Engine virtual machine instances.
-    For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
-    and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+    An optional textual description of the instance
+    group.
+    """
+    instances: pulumi.Output[list]
+    """
+    List of instances in the group. They should be given
+    as self_link URLs. When adding instances they must all be in the same
+    network and zone as the instance group.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the instance group. Must be 1-63
+    characters long and comply with
+    [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+    include lowercase letters, numbers, and hyphens.
+    """
+    named_ports: pulumi.Output[list]
+    """
+    The named port configuration. See the section below
+    for details on configuration.
+    """
+    network: pulumi.Output[str]
+    """
+    The URL of the network the instance group is in. If
+    this is different from the network where the instances are in, the creation
+    fails. Defaults to the network where the instances are in (if neither
+    `network` nor `instances` is specified, this field will be blank).
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    size: pulumi.Output[int]
+    """
+    The number of instances in the group.
+    """
+    zone: pulumi.Output[str]
+    """
+    The zone that this instance group should be created in.
     """
     def __init__(__self__, __name__, __opts__=None, description=None, instances=None, name=None, named_ports=None, network=None, project=None, zone=None):
-        """Create a InstanceGroup resource with the given unique name, props, and options."""
+        """
+        Creates a group of dissimilar Compute Engine virtual machine instances.
+        For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+        and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description: An optional textual description of the instance
+               group.
+        :param pulumi.Input[list] instances: List of instances in the group. They should be given
+               as self_link URLs. When adding instances they must all be in the same
+               network and zone as the instance group.
+        :param pulumi.Input[str] name: The name of the instance group. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
+        :param pulumi.Input[list] named_ports: The named port configuration. See the section below
+               for details on configuration.
+        :param pulumi.Input[str] network: The URL of the network the instance group is in. If
+               this is different from the network where the instances are in, the creation
+               fails. Defaults to the network where the instances are in (if neither
+               `network` nor `instances` is specified, this field will be blank).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

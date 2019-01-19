@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A NotificationChannel is a medium through which an alert is delivered
+ * when a policy violation is detected. Examples of channels include email, SMS,
+ * and third-party messaging applications. Fields containing sensitive information
+ * like authentication tokens or contact info are only partially populated on retrieval.
+ * 
+ * 
+ * To get more information about NotificationChannel, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=notification_channel_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Notification Channel Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_monitoring_notification_channel_basic = new gcp.monitoring.NotificationChannel("basic", {
+ *     displayName: "Test Notification Channel",
+ *     labels: {
+ *         email_address: "fake_email@blahblah.com",
+ *     },
+ *     type: "email",
+ * });
+ * ```
+ */
 export class NotificationChannel extends pulumi.CustomResource {
     /**
      * Get an existing NotificationChannel resource's state with the given name, ID, and optional extra
@@ -22,6 +56,10 @@ export class NotificationChannel extends pulumi.CustomResource {
     public readonly enabled: pulumi.Output<boolean | undefined>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly type: pulumi.Output<string>;
     public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -79,6 +117,10 @@ export interface NotificationChannelState {
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
     readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -93,6 +135,10 @@ export interface NotificationChannelArgs {
     readonly displayName: pulumi.Input<string>;
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly type: pulumi.Input<string>;
     readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

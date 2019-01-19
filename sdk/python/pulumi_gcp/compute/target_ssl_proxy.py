@@ -8,26 +8,53 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class TargetSSLProxy(pulumi.CustomResource):
+    backend_service: pulumi.Output[str]
+    creation_timestamp: pulumi.Output[str]
+    description: pulumi.Output[str]
+    name: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    Represents a TargetSslProxy resource, which is used by one or more
-    global forwarding rule to route incoming SSL requests to a backend
-    service.
-    
-    
-    To get more information about TargetSslProxy, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetSslProxies)
-    * How-to Guides
-        * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=target_ssl_proxy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    proxy_header: pulumi.Output[str]
+    proxy_id: pulumi.Output[int]
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    ssl_certificates: pulumi.Output[str]
+    ssl_policy: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, ssl_certificates=None, ssl_policy=None):
-        """Create a TargetSSLProxy resource with the given unique name, props, and options."""
+        """
+        Represents a TargetSslProxy resource, which is used by one or more
+        global forwarding rule to route incoming SSL requests to a backend
+        service.
+        
+        
+        To get more information about TargetSslProxy, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetSslProxies)
+        * How-to Guides
+            * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=target_ssl_proxy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] backend_service
+        :param pulumi.Input[str] description
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] proxy_header
+        :param pulumi.Input[str] ssl_certificates
+        :param pulumi.Input[str] ssl_policy
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

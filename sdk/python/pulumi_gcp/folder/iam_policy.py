@@ -8,12 +8,33 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class IAMPolicy(pulumi.CustomResource):
+    etag: pulumi.Output[str]
     """
-    Allows creation and management of the IAM policy for an existing Google Cloud
-    Platform folder.
+    (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+    """
+    folder: pulumi.Output[str]
+    """
+    The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+    """
+    policy_data: pulumi.Output[str]
+    """
+    The `google_iam_policy` data source that represents
+    the IAM policy that will be applied to the folder. This policy overrides any existing
+    policy applied to the folder.
     """
     def __init__(__self__, __name__, __opts__=None, folder=None, policy_data=None):
-        """Create a IAMPolicy resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of the IAM policy for an existing Google Cloud
+        Platform folder.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
+               the IAM policy that will be applied to the folder. This policy overrides any existing
+               policy applied to the folder.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

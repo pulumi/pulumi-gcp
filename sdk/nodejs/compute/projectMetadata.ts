@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages metadata common to all instances for a project in GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
+ * 
+ * > **Note:**  If you want to manage only single key/value pairs within the project metadata
+ * rather than the entire set, then use
+ * google_compute_project_metadata_item.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_project_metadata_default = new gcp.compute.ProjectMetadata("default", {
+ *     metadata: {
+ *         13: "42",
+ *         fizz: "buzz",
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ */
 export class ProjectMetadata extends pulumi.CustomResource {
     /**
      * Get an existing ProjectMetadata resource's state with the given name, ID, and optional extra
@@ -17,7 +42,15 @@ export class ProjectMetadata extends pulumi.CustomResource {
         return new ProjectMetadata(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * A series of key value pairs. Changing this resource
+     * updates the GCE state.
+     */
     public readonly metadata: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
 
     /**
@@ -50,7 +83,15 @@ export class ProjectMetadata extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectMetadata resources.
  */
 export interface ProjectMetadataState {
+    /**
+     * A series of key value pairs. Changing this resource
+     * updates the GCE state.
+     */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -58,6 +99,14 @@ export interface ProjectMetadataState {
  * The set of arguments for constructing a ProjectMetadata resource.
  */
 export interface ProjectMetadataArgs {
+    /**
+     * A series of key value pairs. Changing this resource
+     * updates the GCE state.
+     */
     readonly metadata: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

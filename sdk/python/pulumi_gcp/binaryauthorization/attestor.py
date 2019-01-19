@@ -8,20 +8,31 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Attestor(pulumi.CustomResource):
-    """
-    An attestor that attests to container image artifacts.
-    
-    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-    
-    To get more information about Attestor, see:
-    
-    * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/binary-authorization/)
-    """
+    attestation_authority_note: pulumi.Output[dict]
+    description: pulumi.Output[str]
+    name: pulumi.Output[str]
+    project: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, attestation_authority_note=None, description=None, name=None, project=None):
-        """Create a Attestor resource with the given unique name, props, and options."""
+        """
+        An attestor that attests to container image artifacts.
+        
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+        
+        To get more information about Attestor, see:
+        
+        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] attestation_authority_note
+        :param pulumi.Input[str] description
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] project
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

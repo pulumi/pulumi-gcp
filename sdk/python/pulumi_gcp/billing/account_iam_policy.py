@@ -8,21 +8,39 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class AccountIamPolicy(pulumi.CustomResource):
+    billing_account_id: pulumi.Output[str]
     """
-    Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
-    
-    > **Warning:** Billing accounts have a default user that can be **overwritten**
-    by use of this resource. The safest alternative is to use multiple `google_billing_account_iam_binding`
-       resources. If you do use this resource, the best way to be sure that you are
-       not making dangerous changes is to start by importing your existing policy,
-       and examining the diff very closely.
-    
-    > **Note:** This resource __must not__ be used in conjunction with
-       `google_billing_account_iam_member` or `google_billing_account_iam_binding`
-       or they will fight over what your policy should be.
+    The billing account id.
+    """
+    etag: pulumi.Output[str]
+    policy_data: pulumi.Output[str]
+    """
+    The `google_iam_policy` data source that represents
+    the IAM policy that will be applied to the billing account. This policy overrides any existing
+    policy applied to the billing account.
     """
     def __init__(__self__, __name__, __opts__=None, billing_account_id=None, policy_data=None):
-        """Create a AccountIamPolicy resource with the given unique name, props, and options."""
+        """
+        Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
+        
+        > **Warning:** Billing accounts have a default user that can be **overwritten**
+        by use of this resource. The safest alternative is to use multiple `google_billing_account_iam_binding`
+           resources. If you do use this resource, the best way to be sure that you are
+           not making dangerous changes is to start by importing your existing policy,
+           and examining the diff very closely.
+        
+        > **Note:** This resource __must not__ be used in conjunction with
+           `google_billing_account_iam_member` or `google_billing_account_iam_binding`
+           or they will fight over what your policy should be.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
+               the IAM policy that will be applied to the billing account. This policy overrides any existing
+               policy applied to the billing account.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

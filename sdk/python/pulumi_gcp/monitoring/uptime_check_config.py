@@ -8,24 +8,56 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class UptimeCheckConfig(pulumi.CustomResource):
+    content_matchers: pulumi.Output[list]
+    display_name: pulumi.Output[str]
+    http_check: pulumi.Output[dict]
+    internal_checkers: pulumi.Output[list]
+    is_internal: pulumi.Output[bool]
+    monitored_resource: pulumi.Output[dict]
+    name: pulumi.Output[str]
+    period: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    This message configures which resources and services to monitor for availability.
-    
-    
-    To get more information about UptimeCheckConfig, see:
-    
-    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    resource_group: pulumi.Output[dict]
+    selected_regions: pulumi.Output[list]
+    tcp_check: pulumi.Output[dict]
+    timeout: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None):
-        """Create a UptimeCheckConfig resource with the given unique name, props, and options."""
+        """
+        This message configures which resources and services to monitor for availability.
+        
+        
+        To get more information about UptimeCheckConfig, see:
+        
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] content_matchers
+        :param pulumi.Input[str] display_name
+        :param pulumi.Input[dict] http_check
+        :param pulumi.Input[list] internal_checkers
+        :param pulumi.Input[bool] is_internal
+        :param pulumi.Input[dict] monitored_resource
+        :param pulumi.Input[str] period
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] resource_group
+        :param pulumi.Input[list] selected_regions
+        :param pulumi.Input[dict] tcp_check
+        :param pulumi.Input[str] timeout
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

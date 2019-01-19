@@ -8,13 +8,50 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class SecurityPolicy(pulumi.CustomResource):
+    description: pulumi.Output[str]
     """
-    A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
-    see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
-    and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+    An optional description of this security policy. Max size is 2048.
+    """
+    fingerprint: pulumi.Output[str]
+    """
+    Fingerprint of this resource.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the security policy.
+    """
+    project: pulumi.Output[str]
+    """
+    The project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    rules: pulumi.Output[list]
+    """
+    The set of rules that belong to this policy. There must always be a default
+    rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+    security policy, a default rule with action "allow" will be added. Structure is documented below.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
     """
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, rules=None):
-        """Create a SecurityPolicy resource with the given unique name, props, and options."""
+        """
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
+        :param pulumi.Input[str] name: The name of the security policy.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[list] rules: The set of rules that belong to this policy. There must always be a default
+               rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+               security policy, a default rule with action "allow" will be added. Structure is documented below.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -8,37 +8,127 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Project(pulumi.CustomResource):
+    app_engine: pulumi.Output[dict]
     """
-    Allows creation and management of a Google Cloud Platform project.
-    
-    Projects created with this resource must be associated with an Organization.
-    See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-    
-    The service account used to run Terraform when creating a `google_project`
-    resource must have `roles/resourcemanager.projectCreator`. See the
-    [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-    doc for more information.
-    
-    Note that prior to 0.8.5, `google_project` functioned like a data source,
-    meaning any project referenced by it had to be created and managed outside
-    Terraform. As of 0.8.5, `google_project` functions like any other Terraform
-    resource, with Terraform creating and managing the project. To replicate the old
-    behavior, either:
-    
-    * Use the project ID directly in whatever is referencing the project, using the
-      [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
-      to replace the old `policy_data` property.
-    * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
-      to import your pre-existing project into Terraform, where it can be referenced and
-      used just like always, keeping in mind that Terraform will attempt to undo any changes
-      made outside Terraform.
-    
-    > It's important to note that any project resources that were added to your Terraform config
-    prior to 0.8.5 will continue to function as they always have, and will not be managed by
-    Terraform. Only newly added projects are affected.
+    A block of configuration to enable an App Engine app. Setting this
+    field will enabled the App Engine Admin API, which is required to manage the app.
+    """
+    auto_create_network: pulumi.Output[bool]
+    """
+    Create the 'default' network automatically.  Default true.
+    Note: this might be more accurately described as "Delete Default Network", since the network
+    is created automatically then deleted before project creation returns, but we choose this
+    name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
+    API which is required to delete the network.
+    """
+    billing_account: pulumi.Output[str]
+    """
+    The alphanumeric ID of the billing account this project
+    belongs to. The user or service account performing this operation with Terraform
+    must have Billing Account Administrator privileges (`roles/billing.admin`) in
+    the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+    for more details.
+    """
+    folder_id: pulumi.Output[str]
+    """
+    The numeric ID of the folder this project should be
+    created under. Only one of `org_id` or `folder_id` may be
+    specified. If the `folder_id` is specified, then the project is
+    created under the specified folder. Changing this forces the
+    project to be migrated to the newly specified folder.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to the project.
+    """
+    name: pulumi.Output[str]
+    """
+    The display name of the project.
+    """
+    number: pulumi.Output[str]
+    """
+    The numeric identifier of the project.
+    """
+    org_id: pulumi.Output[str]
+    """
+    The numeric ID of the organization this project belongs to.
+    Changing this forces a new project to be created.  Only one of
+    `org_id` or `folder_id` may be specified. If the `org_id` is
+    specified then the project is created at the top level. Changing
+    this forces the project to be migrated to the newly specified
+    organization.
+    """
+    project_id: pulumi.Output[str]
+    """
+    The project ID. Changing this forces a new project to be created.
+    """
+    skip_delete: pulumi.Output[bool]
+    """
+    If true, the Terraform resource can be deleted
+    without deleting the Project via the Google API.
     """
     def __init__(__self__, __name__, __opts__=None, app_engine=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, org_id=None, project_id=None, skip_delete=None):
-        """Create a Project resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of a Google Cloud Platform project.
+        
+        Projects created with this resource must be associated with an Organization.
+        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+        
+        The service account used to run Terraform when creating a `google_project`
+        resource must have `roles/resourcemanager.projectCreator`. See the
+        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
+        doc for more information.
+        
+        Note that prior to 0.8.5, `google_project` functioned like a data source,
+        meaning any project referenced by it had to be created and managed outside
+        Terraform. As of 0.8.5, `google_project` functions like any other Terraform
+        resource, with Terraform creating and managing the project. To replicate the old
+        behavior, either:
+        
+        * Use the project ID directly in whatever is referencing the project, using the
+          [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
+          to replace the old `policy_data` property.
+        * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
+          to import your pre-existing project into Terraform, where it can be referenced and
+          used just like always, keeping in mind that Terraform will attempt to undo any changes
+          made outside Terraform.
+        
+        > It's important to note that any project resources that were added to your Terraform config
+        prior to 0.8.5 will continue to function as they always have, and will not be managed by
+        Terraform. Only newly added projects are affected.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] app_engine: A block of configuration to enable an App Engine app. Setting this
+               field will enabled the App Engine Admin API, which is required to manage the app.
+        :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default true.
+               Note: this might be more accurately described as "Delete Default Network", since the network
+               is created automatically then deleted before project creation returns, but we choose this
+               name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
+               API which is required to delete the network.
+        :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
+               belongs to. The user or service account performing this operation with Terraform
+               must have Billing Account Administrator privileges (`roles/billing.admin`) in
+               the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+               for more details.
+        :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
+               created under. Only one of `org_id` or `folder_id` may be
+               specified. If the `folder_id` is specified, then the project is
+               created under the specified folder. Changing this forces the
+               project to be migrated to the newly specified folder.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the project.
+        :param pulumi.Input[str] name: The display name of the project.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization this project belongs to.
+               Changing this forces a new project to be created.  Only one of
+               `org_id` or `folder_id` may be specified. If the `org_id` is
+               specified then the project is created at the top level. Changing
+               this forces the project to be migrated to the newly specified
+               organization.
+        :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[bool] skip_delete: If true, the Terraform resource can be deleted
+               without deleting the Project via the Google API.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -8,28 +8,48 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
-    """
-    A Google Cloud Filestore instance.
-    
-    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-    
-    To get more information about Instance, see:
-    
-    * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-        * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
-        * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=filestore_instance_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
-    """
+    create_time: pulumi.Output[str]
+    description: pulumi.Output[str]
+    etag: pulumi.Output[str]
+    file_shares: pulumi.Output[dict]
+    labels: pulumi.Output[dict]
+    name: pulumi.Output[str]
+    networks: pulumi.Output[list]
+    project: pulumi.Output[str]
+    tier: pulumi.Output[str]
+    zone: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None):
-        """Create a Instance resource with the given unique name, props, and options."""
+        """
+        A Google Cloud Filestore instance.
+        
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+        
+        To get more information about Instance, see:
+        
+        * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=filestore_instance_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description
+        :param pulumi.Input[dict] file_shares
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] name
+        :param pulumi.Input[list] networks
+        :param pulumi.Input[str] project
+        :param pulumi.Input[str] tier
+        :param pulumi.Input[str] zone
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

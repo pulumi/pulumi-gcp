@@ -8,14 +8,39 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
+    instance_name: pulumi.Output[str]
     """
-    Creates a Google Bigtable table inside an instance. For more information see
-    [the official documentation](https://cloud.google.com/bigtable/) and
-    [API](https://cloud.google.com/bigtable/docs/go/reference).
-    
+    The name of the Bigtable instance.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the table.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    split_keys: pulumi.Output[list]
+    """
+    A list of predefined keys to split the table on.
     """
     def __init__(__self__, __name__, __opts__=None, instance_name=None, name=None, project=None, split_keys=None):
-        """Create a Table resource with the given unique name, props, and options."""
+        """
+        Creates a Google Bigtable table inside an instance. For more information see
+        [the official documentation](https://cloud.google.com/bigtable/) and
+        [API](https://cloud.google.com/bigtable/docs/go/reference).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
+        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

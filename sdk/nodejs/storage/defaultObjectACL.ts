@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
+ * 
+ * -> Note that for each object, its creator will have the `"OWNER"` role in addition
+ * to the default ACL that has been defined.
+ * 
+ * For more information see
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+ * and 
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
+ * 
+ * -> Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
+ * to control individual role entity pairs.
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a default object ACL on a bucket with one owner, and one reader.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ *     location: "EU",
+ *     name: "image-store-bucket",
+ * });
+ * const google_storage_default_object_acl_image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
+ *     bucket: google_storage_bucket_image_store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
+ */
 export class DefaultObjectACL extends pulumi.CustomResource {
     /**
      * Get an existing DefaultObjectACL resource's state with the given name, ID, and optional extra
@@ -17,7 +52,13 @@ export class DefaultObjectACL extends pulumi.CustomResource {
         return new DefaultObjectACL(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The name of the bucket it applies to.
+     */
     public readonly bucket: pulumi.Output<string>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     */
     public readonly roleEntities: pulumi.Output<string[]>;
 
     /**
@@ -50,7 +91,13 @@ export class DefaultObjectACL extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DefaultObjectACL resources.
  */
 export interface DefaultObjectACLState {
+    /**
+     * The name of the bucket it applies to.
+     */
     readonly bucket?: pulumi.Input<string>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -58,6 +105,12 @@ export interface DefaultObjectACLState {
  * The set of arguments for constructing a DefaultObjectACL resource.
  */
 export interface DefaultObjectACLArgs {
+    /**
+     * The name of the bucket it applies to.
+     */
     readonly bucket: pulumi.Input<string>;
+    /**
+     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

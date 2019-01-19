@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
+ * the official documentation for
+ * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_dataflow_job_big_data_job = new gcp.dataflow.Job("big_data_job", {
+ *     name: "dataflow-job",
+ *     parameters: {
+ *         baz: "qux",
+ *         foo: "bar",
+ *     },
+ *     tempGcsLocation: "gs://my-bucket/tmp_dir",
+ *     templateGcsPath: "gs://my-bucket/templates/template_file",
+ * });
+ * ```
+ */
 export class Job extends pulumi.CustomResource {
     /**
      * Get an existing Job resource's state with the given name, ID, and optional extra
@@ -17,15 +40,42 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+     */
     public readonly maxWorkers: pulumi.Output<number | undefined>;
+    /**
+     * A unique name for the resource, required by Dataflow.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
+     */
     public readonly onDelete: pulumi.Output<string | undefined>;
+    /**
+     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     */
     public readonly parameters: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string | undefined>;
     public readonly region: pulumi.Output<string | undefined>;
+    /**
+     * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+     */
     public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * A writeable location on GCS for the Dataflow job to dump its temporary data.
+     */
     public readonly tempGcsLocation: pulumi.Output<string>;
+    /**
+     * The GCS path to the Dataflow job template.
+     */
     public readonly templateGcsPath: pulumi.Output<string>;
+    /**
+     * The zone in which the created job should run. If it is not provided, the provider zone is used.
+     */
     public readonly zone: pulumi.Output<string | undefined>;
 
     /**
@@ -77,15 +127,42 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
+    /**
+     * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+     */
     readonly maxWorkers?: pulumi.Input<number>;
+    /**
+     * A unique name for the resource, required by Dataflow.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
+     */
     readonly onDelete?: pulumi.Input<string>;
+    /**
+     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     */
     readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+     */
     readonly state?: pulumi.Input<string>;
+    /**
+     * A writeable location on GCS for the Dataflow job to dump its temporary data.
+     */
     readonly tempGcsLocation?: pulumi.Input<string>;
+    /**
+     * The GCS path to the Dataflow job template.
+     */
     readonly templateGcsPath?: pulumi.Input<string>;
+    /**
+     * The zone in which the created job should run. If it is not provided, the provider zone is used.
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -93,13 +170,37 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+     */
     readonly maxWorkers?: pulumi.Input<number>;
+    /**
+     * A unique name for the resource, required by Dataflow.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
+     */
     readonly onDelete?: pulumi.Input<string>;
+    /**
+     * Key/Value pairs to be passed to the Dataflow job (as used in the template).
+     */
     readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * A writeable location on GCS for the Dataflow job to dump its temporary data.
+     */
     readonly tempGcsLocation: pulumi.Input<string>;
+    /**
+     * The GCS path to the Dataflow job template.
+     */
     readonly templateGcsPath: pulumi.Input<string>;
+    /**
+     * The zone in which the created job should run. If it is not provided, the provider zone is used.
+     */
     readonly zone?: pulumi.Input<string>;
 }

@@ -8,14 +8,63 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
+    max_workers: pulumi.Output[int]
     """
-    Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
-    the official documentation for
-    [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
-    
+    The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the resource, required by Dataflow.
+    """
+    on_delete: pulumi.Output[str]
+    """
+    One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
+    """
+    parameters: pulumi.Output[dict]
+    """
+    Key/Value pairs to be passed to the Dataflow job (as used in the template).
+    """
+    project: pulumi.Output[str]
+    """
+    The project in which the resource belongs. If it is not provided, the provider project is used.
+    """
+    region: pulumi.Output[str]
+    state: pulumi.Output[str]
+    """
+    The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+    """
+    temp_gcs_location: pulumi.Output[str]
+    """
+    A writeable location on GCS for the Dataflow job to dump its temporary data.
+    """
+    template_gcs_path: pulumi.Output[str]
+    """
+    The GCS path to the Dataflow job template.
+    """
+    zone: pulumi.Output[str]
+    """
+    The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
     def __init__(__self__, __name__, __opts__=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
-        """Create a Job resource with the given unique name, props, and options."""
+        """
+        Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
+        the official documentation for
+        [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+        :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
+        :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region
+        :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
+        :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

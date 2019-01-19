@@ -8,11 +8,46 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Database(pulumi.CustomResource):
+    ddls: pulumi.Output[list]
     """
-    Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
+    An optional list of DDL statements to run inside the newly created
+    database. Statements can create tables, indexes, etc. These statements execute atomically
+    with the creation of the database: if there is an error in any statement, the database
+    is not created.
+    """
+    instance: pulumi.Output[str]
+    """
+    The name of the instance that will serve the new database.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the database.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which to look for the `instance` specified. If it
+    is not provided, the provider project is used.
+    """
+    state: pulumi.Output[str]
+    """
+    The current state of the database.
     """
     def __init__(__self__, __name__, __opts__=None, ddls=None, instance=None, name=None, project=None):
-        """Create a Database resource with the given unique name, props, and options."""
+        """
+        Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created
+               database. Statements can create tables, indexes, etc. These statements execute atomically
+               with the creation of the database: if there is an error in any statement, the database
+               is not created.
+        :param pulumi.Input[str] instance: The name of the instance that will serve the new database.
+        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] project: The ID of the project in which to look for the `instance` specified. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

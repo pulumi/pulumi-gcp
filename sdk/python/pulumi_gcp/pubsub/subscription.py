@@ -8,14 +8,58 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Subscription(pulumi.CustomResource):
+    ack_deadline_seconds: pulumi.Output[int]
     """
-    Creates a subscription in Google's pubsub queueing system. For more information see
-    [the official documentation](https://cloud.google.com/pubsub/docs) and
-    [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
-    
+    The maximum number of seconds a
+    subscriber has to acknowledge a received message, otherwise the message is
+    redelivered. Changing this forces a new resource to be created.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the resource, required by pubsub.
+    Changing this forces a new resource to be created.
+    """
+    path: pulumi.Output[str]
+    """
+    Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    push_config: pulumi.Output[dict]
+    """
+    Block configuration for push options. More
+    configuration options are detailed below.
+    """
+    topic: pulumi.Output[str]
+    """
+    The topic name or id to bind this subscription to, required by pubsub.
+    Changing this forces a new resource to be created.
     """
     def __init__(__self__, __name__, __opts__=None, ack_deadline_seconds=None, name=None, project=None, push_config=None, topic=None):
-        """Create a Subscription resource with the given unique name, props, and options."""
+        """
+        Creates a subscription in Google's pubsub queueing system. For more information see
+        [the official documentation](https://cloud.google.com/pubsub/docs) and
+        [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[int] ack_deadline_seconds: The maximum number of seconds a
+               subscriber has to acknowledge a received message, otherwise the message is
+               redelivered. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] name: A unique name for the resource, required by pubsub.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[dict] push_config: Block configuration for push options. More
+               configuration options are detailed below.
+        :param pulumi.Input[str] topic: The topic name or id to bind this subscription to, required by pubsub.
+               Changing this forces a new resource to be created.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

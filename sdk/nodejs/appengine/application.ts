@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows creation and management of an App Engine application.
+ * 
+ * > App Engine applications cannot be deleted once they're created; you have to delete the
+ *    entire project to delete the application. Terraform will report the application has been
+ *    successfully deleted; this is a limitation of Terraform, and will go away in the future.
+ *    Terraform is not able to delete App Engine applications.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_project_my_project = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     orgId: "1234567",
+ *     projectId: "your-project-id",
+ * });
+ * const google_app_engine_application_app = new gcp.appengine.Application("app", {
+ *     locationId: "us-central",
+ *     project: google_project_my_project.projectId,
+ * });
+ * ```
+ */
 export class Application extends pulumi.CustomResource {
     /**
      * Get an existing Application resource's state with the given name, ID, and optional extra
@@ -17,16 +42,47 @@ export class Application extends pulumi.CustomResource {
         return new Application(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The domain to authenticate users with when using App Engine's User API.
+     */
     public readonly authDomain: pulumi.Output<string>;
+    /**
+     * The GCS bucket code is being stored in for this app.
+     */
     public /*out*/ readonly codeBucket: pulumi.Output<string>;
+    /**
+     * The GCS bucket content is being stored in for this app.
+     */
     public /*out*/ readonly defaultBucket: pulumi.Output<string>;
+    /**
+     * The default hostname for this app.
+     */
     public /*out*/ readonly defaultHostname: pulumi.Output<string>;
+    /**
+     * A block of optional settings to configure specific App Engine features:
+     */
     public readonly featureSettings: pulumi.Output<{ splitHealthChecks?: boolean }>;
+    /**
+     * The GCR domain used for storing managed Docker images for this app.
+     */
     public /*out*/ readonly gcrDomain: pulumi.Output<string>;
+    /**
+     * The [location](https://cloud.google.com/appengine/docs/locations)
+     * to serve the app from.
+     */
     public readonly locationId: pulumi.Output<string>;
+    /**
+     * Unique name of the app, usually `apps/{PROJECT_ID}`
+     */
     public /*out*/ readonly name: pulumi.Output<string>;
     public readonly project: pulumi.Output<string>;
+    /**
+     * The serving status of the app.
+     */
     public readonly servingStatus: pulumi.Output<string>;
+    /**
+     * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     */
     public /*out*/ readonly urlDispatchRules: pulumi.Output<{ domain: string, path: string, service: string }[]>;
 
     /**
@@ -77,16 +133,47 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
+    /**
+     * The domain to authenticate users with when using App Engine's User API.
+     */
     readonly authDomain?: pulumi.Input<string>;
+    /**
+     * The GCS bucket code is being stored in for this app.
+     */
     readonly codeBucket?: pulumi.Input<string>;
+    /**
+     * The GCS bucket content is being stored in for this app.
+     */
     readonly defaultBucket?: pulumi.Input<string>;
+    /**
+     * The default hostname for this app.
+     */
     readonly defaultHostname?: pulumi.Input<string>;
+    /**
+     * A block of optional settings to configure specific App Engine features:
+     */
     readonly featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>;
+    /**
+     * The GCR domain used for storing managed Docker images for this app.
+     */
     readonly gcrDomain?: pulumi.Input<string>;
+    /**
+     * The [location](https://cloud.google.com/appengine/docs/locations)
+     * to serve the app from.
+     */
     readonly locationId?: pulumi.Input<string>;
+    /**
+     * Unique name of the app, usually `apps/{PROJECT_ID}`
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * The serving status of the app.
+     */
     readonly servingStatus?: pulumi.Input<string>;
+    /**
+     * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     */
     readonly urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]>;
 }
 
@@ -94,9 +181,22 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
+    /**
+     * The domain to authenticate users with when using App Engine's User API.
+     */
     readonly authDomain?: pulumi.Input<string>;
+    /**
+     * A block of optional settings to configure specific App Engine features:
+     */
     readonly featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>;
+    /**
+     * The [location](https://cloud.google.com/appengine/docs/locations)
+     * to serve the app from.
+     */
     readonly locationId: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * The serving status of the app.
+     */
     readonly servingStatus?: pulumi.Input<string>;
 }

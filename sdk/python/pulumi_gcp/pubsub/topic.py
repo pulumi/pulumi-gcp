@@ -8,14 +8,31 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Topic(pulumi.CustomResource):
+    name: pulumi.Output[str]
     """
-    Creates a topic in Google's pubsub queueing system. For more information see
-    [the official documentation](https://cloud.google.com/pubsub/docs) and
-    [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
-    
+    A unique name for the pubsub topic.
+    Changing this forces a new resource to be created.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
     """
     def __init__(__self__, __name__, __opts__=None, name=None, project=None):
-        """Create a Topic resource with the given unique name, props, and options."""
+        """
+        Creates a topic in Google's pubsub queueing system. For more information see
+        [the official documentation](https://cloud.google.com/pubsub/docs) and
+        [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] name: A unique name for the pubsub topic.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

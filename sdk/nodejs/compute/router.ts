@@ -4,6 +4,51 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Router resource.
+ * 
+ * 
+ * To get more information about Router, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+ * * How-to Guides
+ *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=router_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Router Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_foobar = new gcp.compute.Network("foobar", {
+ *     autoCreateSubnetworks: false,
+ *     name: "my-network",
+ * });
+ * const google_compute_router_foobar = new gcp.compute.Router("foobar", {
+ *     bgp: {
+ *         advertiseMode: "CUSTOM",
+ *         advertisedGroups: ["ALL_SUBNETS"],
+ *         advertisedIpRanges: [
+ *             {
+ *                 range: "1.2.3.4",
+ *             },
+ *             {
+ *                 range: "6.7.0.0/16",
+ *             },
+ *         ],
+ *         asn: 64514,
+ *     },
+ *     name: "my-router",
+ *     network: google_compute_network_foobar.name,
+ * });
+ * ```
+ */
 export class Router extends pulumi.CustomResource {
     /**
      * Get an existing Router resource's state with the given name, ID, and optional extra
@@ -22,8 +67,15 @@ export class Router extends pulumi.CustomResource {
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly network: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -73,8 +125,15 @@ export interface RouterState {
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -86,6 +145,10 @@ export interface RouterArgs {
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
 }

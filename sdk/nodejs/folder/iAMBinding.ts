@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows creation and management of a single binding within IAM policy for
+ * an existing Google Cloud Platform folder.
+ * 
+ * > **Note:** This resource _must not_ be used in conjunction with
+ *    `google_folder_iam_policy` or they will fight over what your policy
+ *    should be.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const google_folder_iam_binding_admin = new gcp.folder.IAMBinding("admin", {
+ *     folder: google_folder_department1.name,
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ */
 export class IAMBinding extends pulumi.CustomResource {
     /**
      * Get an existing IAMBinding resource's state with the given name, ID, and optional extra
@@ -17,9 +42,28 @@ export class IAMBinding extends pulumi.CustomResource {
         return new IAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * (Computed) The etag of the folder's IAM policy.
+     */
     public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     public readonly folder: pulumi.Output<string>;
+    /**
+     * An array of identites that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     public readonly members: pulumi.Output<string[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role: pulumi.Output<string>;
 
     /**
@@ -62,9 +106,28 @@ export class IAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMBinding resources.
  */
 export interface IAMBindingState {
+    /**
+     * (Computed) The etag of the folder's IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     readonly folder?: pulumi.Input<string>;
+    /**
+     * An array of identites that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -72,7 +135,23 @@ export interface IAMBindingState {
  * The set of arguments for constructing a IAMBinding resource.
  */
 export interface IAMBindingArgs {
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     readonly folder: pulumi.Input<string>;
+    /**
+     * An array of identites that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role: pulumi.Input<string>;
 }

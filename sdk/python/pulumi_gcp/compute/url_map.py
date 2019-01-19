@@ -8,15 +8,69 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class URLMap(pulumi.CustomResource):
+    default_service: pulumi.Output[str]
     """
-    Manages a URL Map resource within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
-    
+    The backend service or backend bucket to use when none of the given rules match.
+    """
+    description: pulumi.Output[str]
+    """
+    A brief description of this resource.
+    """
+    fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint for this resource.
+    """
+    host_rules: pulumi.Output[list]
+    """
+    A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
+    """
+    map_id: pulumi.Output[str]
+    """
+    The GCE assigned ID of the resource.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the resource, required by GCE.
+    Changing this forces a new resource to be created.
+    """
+    path_matchers: pulumi.Output[list]
+    """
+    A list of paths to match. Structure is documented below.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    tests: pulumi.Output[list]
+    """
+    The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
     """
     def __init__(__self__, __name__, __opts__=None, default_service=None, description=None, host_rules=None, name=None, path_matchers=None, project=None, tests=None):
-        """Create a URLMap resource with the given unique name, props, and options."""
+        """
+        Manages a URL Map resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
+        :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[list] host_rules: A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[list] path_matchers: A list of paths to match. Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[list] tests: The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

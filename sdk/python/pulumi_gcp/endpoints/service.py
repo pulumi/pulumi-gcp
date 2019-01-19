@@ -8,11 +8,30 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
-    """
-    This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-    """
+    apis: pulumi.Output[list]
+    config_id: pulumi.Output[str]
+    dns_address: pulumi.Output[str]
+    endpoints: pulumi.Output[list]
+    grpc_config: pulumi.Output[str]
+    openapi_config: pulumi.Output[str]
+    project: pulumi.Output[str]
+    protoc_output: pulumi.Output[str]
+    protoc_output_base64: pulumi.Output[str]
+    service_name: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, grpc_config=None, openapi_config=None, project=None, protoc_output=None, protoc_output_base64=None, service_name=None):
-        """Create a Service resource with the given unique name, props, and options."""
+        """
+        This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] grpc_config
+        :param pulumi.Input[str] openapi_config
+        :param pulumi.Input[str] project
+        :param pulumi.Input[str] protoc_output
+        :param pulumi.Input[str] protoc_output_base64
+        :param pulumi.Input[str] service_name
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

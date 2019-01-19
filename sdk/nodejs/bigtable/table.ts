@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a Google Bigtable table inside an instance. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_bigtable_instance_instance = new gcp.bigtable.Instance("instance", {
+ *     clusterId: "tf-instance-cluster",
+ *     name: "tf-instance",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ *     zone: "us-central1-b",
+ * });
+ * const google_bigtable_table_table = new gcp.bigtable.Table("table", {
+ *     instanceName: google_bigtable_instance_instance.name,
+ *     name: "tf-table",
+ *     splitKeys: [
+ *         "a",
+ *         "b",
+ *         "c",
+ *     ],
+ * });
+ * ```
+ */
 export class Table extends pulumi.CustomResource {
     /**
      * Get an existing Table resource's state with the given name, ID, and optional extra
@@ -17,9 +47,22 @@ export class Table extends pulumi.CustomResource {
         return new Table(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The name of the Bigtable instance.
+     */
     public readonly instanceName: pulumi.Output<string>;
+    /**
+     * The name of the table.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     */
     public readonly splitKeys: pulumi.Output<string[] | undefined>;
 
     /**
@@ -56,9 +99,22 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * The name of the Bigtable instance.
+     */
     readonly instanceName?: pulumi.Input<string>;
+    /**
+     * The name of the table.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     */
     readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -66,8 +122,21 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * The name of the Bigtable instance.
+     */
     readonly instanceName: pulumi.Input<string>;
+    /**
+     * The name of the table.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     */
     readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

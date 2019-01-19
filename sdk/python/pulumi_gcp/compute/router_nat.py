@@ -8,8 +8,39 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RouterNat(pulumi.CustomResource):
+    icmp_idle_timeout_sec: pulumi.Output[int]
+    min_ports_per_vm: pulumi.Output[int]
+    name: pulumi.Output[str]
+    nat_ip_allocate_option: pulumi.Output[str]
+    nat_ips: pulumi.Output[list]
+    project: pulumi.Output[str]
+    region: pulumi.Output[str]
+    router: pulumi.Output[str]
+    source_subnetwork_ip_ranges_to_nat: pulumi.Output[str]
+    subnetworks: pulumi.Output[list]
+    tcp_established_idle_timeout_sec: pulumi.Output[int]
+    tcp_transitory_idle_timeout_sec: pulumi.Output[int]
+    udp_idle_timeout_sec: pulumi.Output[int]
     def __init__(__self__, __name__, __opts__=None, icmp_idle_timeout_sec=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None):
-        """Create a RouterNat resource with the given unique name, props, and options."""
+        """
+        Create a RouterNat resource with the given unique name, props, and options.
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[int] icmp_idle_timeout_sec
+        :param pulumi.Input[int] min_ports_per_vm
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] nat_ip_allocate_option
+        :param pulumi.Input[list] nat_ips
+        :param pulumi.Input[str] project
+        :param pulumi.Input[str] region
+        :param pulumi.Input[str] router
+        :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat
+        :param pulumi.Input[list] subnetworks
+        :param pulumi.Input[int] tcp_established_idle_timeout_sec
+        :param pulumi.Input[int] tcp_transitory_idle_timeout_sec
+        :param pulumi.Input[int] udp_idle_timeout_sec
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

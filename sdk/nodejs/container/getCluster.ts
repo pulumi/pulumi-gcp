@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Get info about a cluster within GKE from its name and zone.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_cluster_my_cluster = pulumi.output(gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     zone: "us-east1-a",
+ * }));
+ * 
+ * export const clusterPassword = google_container_cluster_my_cluster.apply(__arg0 => __arg0.masterAuths[0].password);
+ * export const clusterUsername = google_container_cluster_my_cluster.apply(__arg0 => __arg0.masterAuths[0].username);
+ * export const endpoint = google_container_cluster_my_cluster.apply(__arg0 => __arg0.endpoint);
+ * export const instanceGroupUrls = google_container_cluster_my_cluster.apply(__arg0 => __arg0.instanceGroupUrls);
+ * export const nodeConfig = google_container_cluster_my_cluster.apply(__arg0 => __arg0.nodeConfigs);
+ * export const nodePools = google_container_cluster_my_cluster.apply(__arg0 => __arg0.nodePools);
+ * ```
+ */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("gcp:container/getCluster:getCluster", {
         "name": args.name,
@@ -17,7 +39,14 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
+    /**
+     * The name of the cluster.
+     */
     readonly name: string;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
     readonly region?: string;
     readonly zone?: string;

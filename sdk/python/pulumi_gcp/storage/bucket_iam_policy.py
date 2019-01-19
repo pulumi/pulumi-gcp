@@ -8,18 +8,32 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class BucketIAMPolicy(pulumi.CustomResource):
+    bucket: pulumi.Output[str]
     """
-    Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
-    
-    * `google_storage_bucket_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
-    * `google_storage_bucket_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
-    * `google_storage_bucket_iam_policy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple google_storage_bucket_iam_binding resources will be much safer. See the usage example on how to work with policy correctly.
-    
-    
-    > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
+    The name of the bucket it applies to.
     """
+    etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the storage bucket's IAM policy.
+    """
+    policy_data: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, bucket=None, policy_data=None):
-        """Create a BucketIAMPolicy resource with the given unique name, props, and options."""
+        """
+        Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
+        
+        * `google_storage_bucket_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
+        * `google_storage_bucket_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
+        * `google_storage_bucket_iam_policy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple google_storage_bucket_iam_binding resources will be much safer. See the usage example on how to work with policy correctly.
+        
+        
+        > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
+        :param pulumi.Input[str] policy_data
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

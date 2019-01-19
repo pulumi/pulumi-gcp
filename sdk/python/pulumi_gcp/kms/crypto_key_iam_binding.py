@@ -8,12 +8,44 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
+    crypto_key_id: pulumi.Output[str]
     """
-    Allows creation and management of a single binding within IAM policy for
-    an existing Google Cloud KMS crypto key.
+    The crypto key ID, in the form
+    `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+    `{location_name}/{key_ring_name}/{crypto_key_name}`.
+    In the second form, the provider's project setting will be used as a fallback.
+    """
+    etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the crypto key's IAM policy.
+    """
+    members: pulumi.Output[list]
+    """
+    A list of users that the role should apply to.
+    """
+    role: pulumi.Output[str]
+    """
+    The role that should be applied. Only one
+    `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+    `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     def __init__(__self__, __name__, __opts__=None, crypto_key_id=None, members=None, role=None):
-        """Create a CryptoKeyIAMBinding resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of a single binding within IAM policy for
+        an existing Google Cloud KMS crypto key.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
+               `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+               `{location_name}/{key_ring_name}/{crypto_key_name}`.
+               In the second form, the provider's project setting will be used as a fallback.
+        :param pulumi.Input[list] members: A list of users that the role should apply to.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

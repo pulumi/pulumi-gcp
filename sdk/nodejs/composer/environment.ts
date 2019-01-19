@@ -4,6 +4,110 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An environment for running orchestration tasks.
+ * 
+ * Environments run Apache Airflow software on Google infrastructure.
+ * 
+ * To get more information about Environments, see:
+ * 
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/composer/docs)
+ *     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
+ * * [Apache Airflow Documentation](http://airflow.apache.org/)
+ * 
+ * > **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
+ *   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
+ *   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
+ *   Terraform will not be able to automatically find or manage many of these underlying resources. In particular:
+ *   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
+ *     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
+ *     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
+ *     against GCP Cloud Composer before filing bugs against the Terraform provider. 
+ *   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
+ *     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     name: "my-composer-env",
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### With GKE and Compute Resource Dependencies
+ * 
+ * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+ * (i.e. at a project level). This will probably require an explicit dependency
+ * on the IAM policy binding (see `google_project_iam_member` below).
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_network_test = new gcp.compute.Network("test", {
+ *     autoCreateSubnetworks: false,
+ *     name: "composer-test-network",
+ * });
+ * const google_service_account_test = new gcp.serviceAccount.Account("test", {
+ *     accountId: "composer-env-account",
+ *     displayName: "Test Service Account for Composer Environment",
+ * });
+ * const google_compute_subnetwork_test = new gcp.compute.Subnetwork("test", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     name: "composer-test-subnetwork",
+ *     network: google_compute_network_test.selfLink,
+ *     region: "us-central1",
+ * });
+ * const google_project_iam_member_composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     member: google_service_account_test.email.apply(__arg0 => `serviceAccount:${__arg0}`),
+ *     role: "roles/composer.worker",
+ * });
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         nodeConfig: {
+ *             machineType: "n1-standard-1",
+ *             network: google_compute_network_test.selfLink,
+ *             serviceAccount: google_service_account_test.name,
+ *             subnetwork: google_compute_subnetwork_test.selfLink,
+ *             zone: "us-central1-a",
+ *         },
+ *         nodeCount: 4,
+ *     },
+ *     name: "%s",
+ *     region: "us-central1",
+ * }, {dependsOn: [google_project_iam_member_composer_worker]});
+ * ```
+ * ### With Software (Airflow) Config
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         softwareConfig: {
+ *             airflowConfigOverrides: {
+ *                 core-load_example: "True",
+ *             },
+ *             envVariables: {
+ *                 FOO: "bar",
+ *             },
+ *             pypiPackages: {
+ *                 numpy: "",
+ *                 scipy: "==1.1.0",
+ *             },
+ *         },
+ *     },
+ *     name: "%s",
+ *     region: "us-central1",
+ * });
+ * ```
+ */
 export class Environment extends pulumi.CustomResource {
     /**
      * Get an existing Environment resource's state with the given name, ID, and optional extra
@@ -20,6 +124,10 @@ export class Environment extends pulumi.CustomResource {
     public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string} } }>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string | undefined>;
 
@@ -59,6 +167,10 @@ export interface EnvironmentState {
     readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
 }
@@ -70,6 +182,10 @@ export interface EnvironmentArgs {
     readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
 }

@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
+ * the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_global_address_my_address = pulumi.output(gcp.compute.getGlobalAddress({
+ *     name: "foobar",
+ * }));
+ * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ *     name: "prod-zone",
+ * });
+ * const google_dns_record_set_frontend = new gcp.dns.RecordSet("frontend", {
+ *     managedZone: google_dns_managed_zone_prod.name,
+ *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `lb.${__arg0}`),
+ *     rrdatas: [google_compute_global_address_my_address.apply(__arg0 => __arg0.address)],
+ *     ttl: 300,
+ *     type: "A",
+ * });
+ * ```
+ */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,
@@ -15,7 +41,14 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getGlobalAddress.
  */
 export interface GetGlobalAddressArgs {
+    /**
+     * A unique name for the resource, required by GCE.
+     */
     readonly name: string;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
 }
 
@@ -23,9 +56,18 @@ export interface GetGlobalAddressArgs {
  * A collection of values returned by getGlobalAddress.
  */
 export interface GetGlobalAddressResult {
+    /**
+     * The IP of the created resource.
+     */
     readonly address: string;
     readonly project: string;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink: string;
+    /**
+     * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+     */
     readonly status: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

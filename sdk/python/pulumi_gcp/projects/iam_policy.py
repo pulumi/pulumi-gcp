@@ -8,19 +8,82 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class IAMPolicy(pulumi.CustomResource):
+    authoritative: pulumi.Output[bool]
     """
-    Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
-    
-    * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
-    * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
-    * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
-    
-    > **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
-    
-    > **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+    (Optional, only for `google_project_iam_policy`)
+    A boolean value indicating if this policy
+    should overwrite any existing IAM policy on the project. When set to true,
+    **any policies not in your config file will be removed**. This can **lock
+    you out** of your project until an Organization Administrator grants you
+    access again, so please exercise caution. If this argument is `true` and you
+    want to delete the resource, you must set the `disable_project` argument to
+    `true`, acknowledging that the project will be inaccessible to anyone but the
+    Organization Admins, as it will no longer have an IAM policy. Rather than using
+    this, you should use `google_project_iam_binding` and
+    `google_project_iam_member`.
+    """
+    disable_project: pulumi.Output[bool]
+    """
+    (Optional, only for `google_project_iam_policy`)
+    A boolean value that must be set to `true`
+    if you want to delete a `google_project_iam_policy` that is authoritative.
+    """
+    etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the project's IAM policy.
+    """
+    policy_data: pulumi.Output[str]
+    """
+    The `google_iam_policy` data source that represents
+    the IAM policy that will be applied to the project. The policy will be
+    merged with any existing policy applied to the project.
+    """
+    project: pulumi.Output[str]
+    """
+    The project ID. If not specified, uses the
+    ID of the project configured with the provider.
+    """
+    restore_policy: pulumi.Output[str]
+    """
+    (DEPRECATED) (Computed, only for `google_project_iam_policy`)
+    The IAM policy that will be restored when a
+    non-authoritative policy resource is deleted.
     """
     def __init__(__self__, __name__, __opts__=None, authoritative=None, disable_project=None, policy_data=None, project=None):
-        """Create a IAMPolicy resource with the given unique name, props, and options."""
+        """
+        Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+        
+        * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+        * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+        * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+        
+        > **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+        
+        > **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] authoritative: (Optional, only for `google_project_iam_policy`)
+               A boolean value indicating if this policy
+               should overwrite any existing IAM policy on the project. When set to true,
+               **any policies not in your config file will be removed**. This can **lock
+               you out** of your project until an Organization Administrator grants you
+               access again, so please exercise caution. If this argument is `true` and you
+               want to delete the resource, you must set the `disable_project` argument to
+               `true`, acknowledging that the project will be inaccessible to anyone but the
+               Organization Admins, as it will no longer have an IAM policy. Rather than using
+               this, you should use `google_project_iam_binding` and
+               `google_project_iam_member`.
+        :param pulumi.Input[bool] disable_project: (Optional, only for `google_project_iam_policy`)
+               A boolean value that must be set to `true`
+               if you want to delete a `google_project_iam_policy` that is authoritative.
+        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
+               the IAM policy that will be applied to the project. The policy will be
+               merged with any existing policy applied to the project.
+        :param pulumi.Input[str] project: The project ID. If not specified, uses the
+               ID of the project configured with the provider.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

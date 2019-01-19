@@ -4,6 +4,127 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An SslCertificate resource, used for HTTPS load balancing. This resource
+ * provides a mechanism to upload an SSL key and certificate to
+ * the load balancer to serve secure connections from the user.
+ * 
+ * 
+ * To get more information about SslCertificate, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_certificate_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Ssl Certificate Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     description: "a description",
+ *     namePrefix: "my-certificate-",
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * ```
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_certificate_random_provider&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * 
+ * ## Example Usage - Ssl Certificate Random Provider
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * 
+ * const random_id_certificate = new random.RandomId("certificate", {
+ *     byteLength: 4,
+ *     keepers: {
+ *         certificate: (() => {
+ *             throw "tf2pulumi error: NYI: call to base64sha256";
+ *             return (() => { throw "NYI: call to base64sha256"; })();
+ *         })(),
+ *         private_key: (() => {
+ *             throw "tf2pulumi error: NYI: call to base64sha256";
+ *             return (() => { throw "NYI: call to base64sha256"; })();
+ *         })(),
+ *     },
+ *     prefix: "my-certificate-",
+ * });
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     name: random_id_certificate.hex,
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * ```
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_certificate_target_https_proxies&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * 
+ * ## Example Usage - Ssl Certificate Target Https Proxies
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     namePrefix: "my-certificate-",
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
+ *     defaultService: google_compute_backend_service_default.selfLink,
+ *     description: "a description",
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "url-map",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_default.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: google_compute_backend_service_default.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const google_compute_target_https_proxy_default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     sslCertificates: [google_compute_ssl_certificate_default.selfLink],
+ *     urlMap: google_compute_url_map_default.selfLink,
+ * });
+ * ```
+ */
 export class SSLCertificate extends pulumi.CustomResource {
     /**
      * Get an existing SSLCertificate resource's state with the given name, ID, and optional extra
@@ -22,9 +143,20 @@ export class SSLCertificate extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
+    /**
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
+     */
     public readonly namePrefix: pulumi.Output<string>;
     public readonly privateKey: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -79,9 +211,20 @@ export interface SSLCertificateState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     readonly privateKey?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -92,7 +235,15 @@ export interface SSLCertificateArgs {
     readonly certificate: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the
+     * specified prefix. Conflicts with `name`.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     readonly privateKey: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
