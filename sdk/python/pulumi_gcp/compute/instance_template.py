@@ -8,15 +8,162 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InstanceTemplate(pulumi.CustomResource):
+    can_ip_forward: pulumi.Output[bool]
     """
-    Manages a VM instance template resource within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
-    
+    Whether to allow sending and receiving of
+    packets with non-matching source or destination IPs. This defaults to false.
+    """
+    description: pulumi.Output[str]
+    """
+    A brief description of this resource.
+    """
+    disks: pulumi.Output[list]
+    """
+    Disks to attach to instances created from this template.
+    This can be specified multiple times for multiple disks. Structure is
+    documented below.
+    """
+    guest_accelerators: pulumi.Output[list]
+    """
+    List of the type and count of accelerator cards attached to the instance. Structure documented below.
+    """
+    instance_description: pulumi.Output[str]
+    """
+    A brief description to use for instances
+    created from this template.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to instances
+    created from this template,
+    """
+    machine_type: pulumi.Output[str]
+    """
+    The machine type to create.
+    """
+    metadata: pulumi.Output[dict]
+    """
+    Metadata key/value pairs to make available from
+    within instances created from this template.
+    """
+    metadata_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the metadata.
+    """
+    metadata_startup_script: pulumi.Output[str]
+    """
+    An alternative to using the
+    startup-script metadata key, mostly to match the compute_instance resource.
+    This replaces the startup-script metadata key on the created instance and
+    thus the two mechanisms are not allowed to be used simultaneously.
+    """
+    min_cpu_platform: pulumi.Output[str]
+    """
+    Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
+    `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the instance template. If you leave
+    this blank, Terraform will auto-generate a unique name.
+    """
+    name_prefix: pulumi.Output[str]
+    """
+    Creates a unique name beginning with the specified
+    prefix. Conflicts with `name`.
+    """
+    network_interfaces: pulumi.Output[list]
+    """
+    Networks to attach to instances created from
+    this template. This can be specified multiple times for multiple networks.
+    Structure is documented below.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    region: pulumi.Output[str]
+    """
+    An instance template is a global resource that is not
+    bound to a zone or a region. However, you can still specify some regional
+    resources in an instance template, which restricts the template to the
+    region where that resource resides. For example, a custom `subnetwork`
+    resource is tied to a specific region. Defaults to the region of the
+    Provider if no value is given.
+    """
+    schedulings: pulumi.Output[list]
+    """
+    The scheduling strategy to use. More details about
+    this configuration option are detailed below.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    service_account: pulumi.Output[dict]
+    """
+    Service account to attach to the instance. Structure is documented below.
+    """
+    tags: pulumi.Output[list]
+    """
+    Tags to attach to the instance.
+    """
+    tags_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the tags.
     """
     def __init__(__self__, __name__, __opts__=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, schedulings=None, service_account=None, tags=None):
-        """Create a InstanceTemplate resource with the given unique name, props, and options."""
+        """
+        Manages a VM instance template resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
+               packets with non-matching source or destination IPs. This defaults to false.
+        :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[list] disks: Disks to attach to instances created from this template.
+               This can be specified multiple times for multiple disks. Structure is
+               documented below.
+        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[str] instance_description: A brief description to use for instances
+               created from this template.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to instances
+               created from this template,
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
+               within instances created from this template.
+        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
+               startup-script metadata key, mostly to match the compute_instance resource.
+               This replaces the startup-script metadata key on the created instance and
+               thus the two mechanisms are not allowed to be used simultaneously.
+        :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
+               `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        :param pulumi.Input[str] name: The name of the instance template. If you leave
+               this blank, Terraform will auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
+               prefix. Conflicts with `name`.
+        :param pulumi.Input[list] network_interfaces: Networks to attach to instances created from
+               this template. This can be specified multiple times for multiple networks.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] region: An instance template is a global resource that is not
+               bound to a zone or a region. However, you can still specify some regional
+               resources in an instance template, which restricts the template to the
+               region where that resource resides. For example, a custom `subnetwork`
+               resource is tied to a specific region. Defaults to the region of the
+               Provider if no value is given.
+        :param pulumi.Input[list] schedulings: The scheduling strategy to use. More details about
+               this configuration option are detailed below.
+        :param pulumi.Input[dict] service_account: Service account to attach to the instance. Structure is documented below.
+        :param pulumi.Input[list] tags: Tags to attach to the instance.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

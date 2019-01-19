@@ -8,14 +8,119 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
+    creation_time: pulumi.Output[int]
     """
-    Creates a table resource in a dataset for Google BigQuery. For more information see
-    [the official documentation](https://cloud.google.com/bigquery/docs/) and
-    [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
-    
+    The time when this table was created, in milliseconds since the epoch.
+    """
+    dataset_id: pulumi.Output[str]
+    """
+    The dataset ID to create the table in.
+    Changing this forces a new resource to be created.
+    """
+    description: pulumi.Output[str]
+    """
+    The field description.
+    """
+    etag: pulumi.Output[str]
+    """
+    A hash of the resource.
+    """
+    expiration_time: pulumi.Output[int]
+    """
+    The time when this table expires, in
+    milliseconds since the epoch. If not present, the table will persist
+    indefinitely. Expired tables will be deleted and their storage
+    reclaimed.
+    """
+    friendly_name: pulumi.Output[str]
+    """
+    A descriptive name for the table.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A mapping of labels to assign to the resource.
+    """
+    last_modified_time: pulumi.Output[int]
+    """
+    The time when this table was last modified, in milliseconds since the epoch.
+    """
+    location: pulumi.Output[str]
+    """
+    The geographic location where the table resides. This value is inherited from the dataset.
+    """
+    num_bytes: pulumi.Output[int]
+    """
+    The size of this table in bytes, excluding any data in the streaming buffer.
+    """
+    num_long_term_bytes: pulumi.Output[int]
+    """
+    The number of bytes in the table that are considered "long-term storage".
+    """
+    num_rows: pulumi.Output[int]
+    """
+    The number of rows of data in this table, excluding any data in the streaming buffer.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    schema: pulumi.Output[str]
+    """
+    A JSON schema for the table.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    table_id: pulumi.Output[str]
+    """
+    A unique ID for the resource.
+    Changing this forces a new resource to be created.
+    """
+    time_partitioning: pulumi.Output[dict]
+    """
+    If specified, configures time-based
+    partitioning for this table. Structure is documented below.
+    """
+    type: pulumi.Output[str]
+    """
+    Describes the table type.
+    """
+    view: pulumi.Output[dict]
+    """
+    If specified, configures this table as a view.
+    Structure is documented below.
     """
     def __init__(__self__, __name__, __opts__=None, dataset_id=None, description=None, expiration_time=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None):
-        """Create a Table resource with the given unique name, props, and options."""
+        """
+        Creates a table resource in a dataset for Google BigQuery. For more information see
+        [the official documentation](https://cloud.google.com/bigquery/docs/) and
+        [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[int] expiration_time: The time when this table expires, in
+               milliseconds since the epoch. If not present, the table will persist
+               indefinitely. Expired tables will be deleted and their storage
+               reclaimed.
+        :param pulumi.Input[str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input[str] table_id: A unique ID for the resource.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[dict] time_partitioning: If specified, configures time-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input[dict] view: If specified, configures this table as a view.
+               Structure is documented below.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

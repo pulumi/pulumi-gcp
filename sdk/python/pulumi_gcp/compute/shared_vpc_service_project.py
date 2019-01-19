@@ -8,18 +8,31 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class SharedVPCServiceProject(pulumi.CustomResource):
+    host_project: pulumi.Output[str]
     """
-    Enables the Google Compute Engine
-    [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
-    feature for a project, assigning it as a Shared VPC service project associated
-    with a given host project.
-    
-    For more information, see,
-    [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
-    where the Shared VPC feature is referred to by its former name "XPN".
+    The ID of a host project to associate.
+    """
+    service_project: pulumi.Output[str]
+    """
+    The ID of the project that will serve as a Shared VPC service project.
     """
     def __init__(__self__, __name__, __opts__=None, host_project=None, service_project=None):
-        """Create a SharedVPCServiceProject resource with the given unique name, props, and options."""
+        """
+        Enables the Google Compute Engine
+        [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
+        feature for a project, assigning it as a Shared VPC service project associated
+        with a given host project.
+        
+        For more information, see,
+        [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
+        where the Shared VPC feature is referred to by its former name "XPN".
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] host_project: The ID of a host project to associate.
+        :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

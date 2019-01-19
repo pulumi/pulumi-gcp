@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a detailed description of a Note.
+ * 
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ * 
+ * To get more information about Note, see:
+ * 
+ * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/container-analysis/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=container_analysis_note_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Container Analysis Note Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
+ *     name: "test-attestor-note",
+ * });
+ * ```
+ */
 export class Note extends pulumi.CustomResource {
     /**
      * Get an existing Note resource's state with the given name, ID, and optional extra

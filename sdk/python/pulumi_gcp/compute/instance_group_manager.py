@@ -8,16 +8,161 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InstanceGroupManager(pulumi.CustomResource):
+    auto_healing_policies: pulumi.Output[dict]
     """
-    The Google Compute Engine Instance Group Manager API creates and manages pools
-    of homogeneous Compute Engine virtual machine instances from a common instance
-    template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
-    and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
-    
-    > **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
+    The autohealing policies for this managed instance
+    group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+    This property is in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+    """
+    base_instance_name: pulumi.Output[str]
+    """
+    The base instance name to use for
+    instances in this group. The value must be a valid
+    [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
+    are lowercase letters, numbers, and hyphens (-). Instances are named by
+    appending a hyphen and a random four-character string to the base instance
+    name.
+    """
+    description: pulumi.Output[str]
+    """
+    An optional textual description of the instance
+    group manager.
+    """
+    fingerprint: pulumi.Output[str]
+    """
+    The fingerprint of the instance group manager.
+    """
+    instance_group: pulumi.Output[str]
+    """
+    The full URL of the instance group created by the manager.
+    """
+    instance_template: pulumi.Output[str]
+    """
+    - The full URL to an instance template from which all new instances of this version will be created.
+    """
+    name: pulumi.Output[str]
+    """
+    - Version name.
+    """
+    named_ports: pulumi.Output[list]
+    """
+    The named port configuration. See the section below
+    for details on configuration.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    rolling_update_policy: pulumi.Output[dict]
+    """
+    The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+    This property is in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+    - - -
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URL of the created resource.
+    """
+    target_pools: pulumi.Output[list]
+    """
+    The full URL of all target pools to which new
+    instances in the group are added. Updating the target pools attribute does
+    not affect existing instances.
+    """
+    target_size: pulumi.Output[int]
+    """
+    - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+    """
+    update_strategy: pulumi.Output[str]
+    """
+    If the `instance_template`
+    resource is modified, a value of `"NONE"` will prevent any of the managed
+    instances from being restarted by Terraform. A value of `"REPLACE"` will
+    restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
+    A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
+    """
+    versions: pulumi.Output[list]
+    """
+    Application versions managed by this instance group. Each
+    version deals with a specific instance template, allowing canary release scenarios.
+    Conflicts with `instance_template`. Structure is documented below. Beware that
+    exactly one version must not specify a target size. It means that versions with
+    a target size will respect the setting, and the one without target size will
+    be applied to all remaining Instances (top level target_size - each version target_size).
+    This property is in beta, and should be used with the terraform-provider-google-beta provider.
+    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+    """
+    wait_for_instances: pulumi.Output[bool]
+    """
+    Whether to wait for all instances to be created/updated before
+    returning. Note that if this is set to true and the operation does not succeed, Terraform will
+    continue trying until it times out.
+    """
+    zone: pulumi.Output[str]
+    """
+    The zone that instances in this group should be created
+    in.
     """
     def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, instance_template=None, name=None, named_ports=None, project=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, versions=None, wait_for_instances=None, zone=None):
-        """Create a InstanceGroupManager resource with the given unique name, props, and options."""
+        """
+        The Google Compute Engine Instance Group Manager API creates and manages pools
+        of homogeneous Compute Engine virtual machine instances from a common instance
+        template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
+        and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+        
+        > **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] auto_healing_policies: The autohealing policies for this managed instance
+               group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+               This property is in beta, and should be used with the terraform-provider-google-beta provider.
+               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        :param pulumi.Input[str] base_instance_name: The base instance name to use for
+               instances in this group. The value must be a valid
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
+               are lowercase letters, numbers, and hyphens (-). Instances are named by
+               appending a hyphen and a random four-character string to the base instance
+               name.
+        :param pulumi.Input[str] description: An optional textual description of the instance
+               group manager.
+        :param pulumi.Input[str] instance_template: - The full URL to an instance template from which all new instances of this version will be created.
+        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[list] named_ports: The named port configuration. See the section below
+               for details on configuration.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[dict] rolling_update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+               This property is in beta, and should be used with the terraform-provider-google-beta provider.
+               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+               - - -
+        :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
+               instances in the group are added. Updating the target pools attribute does
+               not affect existing instances.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[str] update_strategy: If the `instance_template`
+               resource is modified, a value of `"NONE"` will prevent any of the managed
+               instances from being restarted by Terraform. A value of `"REPLACE"` will
+               restart all of the instances at once. `"ROLLING_UPDATE"` is supported as a beta feature.
+               A value of `"ROLLING_UPDATE"` requires `rolling_update_policy` block to be set
+        :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
+               version deals with a specific instance template, allowing canary release scenarios.
+               Conflicts with `instance_template`. Structure is documented below. Beware that
+               exactly one version must not specify a target size. It means that versions with
+               a target size will respect the setting, and the one without target size will
+               be applied to all remaining Instances (top level target_size - each version target_size).
+               This property is in beta, and should be used with the terraform-provider-google-beta provider.
+               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, Terraform will
+               continue trying until it times out.
+        :param pulumi.Input[str] zone: The zone that instances in this group should be created
+               in.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

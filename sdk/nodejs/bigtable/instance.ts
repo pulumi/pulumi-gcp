@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a Google Bigtable instance. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_bigtable_instance_instance = new gcp.bigtable.Instance("instance", {
+ *     cluster: {
+ *         clusterId: "tf-instance-cluster",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *         zone: "us-central1-b",
+ *     },
+ *     name: "tf-instance",
+ * });
+ * ```
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -17,14 +40,42 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
     public readonly cluster: pulumi.Output<{ clusterId?: string, numNodes?: number, storageType?: string, zone: string } | undefined>;
+    /**
+     * The ID of the Cloud Bigtable cluster.
+     */
     public readonly clusterId: pulumi.Output<string | undefined>;
+    /**
+     * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+     */
     public readonly displayName: pulumi.Output<string>;
+    /**
+     * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+     */
     public readonly instanceType: pulumi.Output<string | undefined>;
+    /**
+     * The name of the Cloud Bigtable instance.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+     */
     public readonly numNodes: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
+     */
     public readonly storageType: pulumi.Output<string | undefined>;
+    /**
+     * The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+     */
     public readonly zone: pulumi.Output<string>;
 
     /**
@@ -68,14 +119,42 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
     readonly cluster?: pulumi.Input<{ clusterId?: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone?: pulumi.Input<string> }>;
+    /**
+     * The ID of the Cloud Bigtable cluster.
+     */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+     */
     readonly instanceType?: pulumi.Input<string>;
+    /**
+     * The name of the Cloud Bigtable instance.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+     */
     readonly numNodes?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
+     */
     readonly storageType?: pulumi.Input<string>;
+    /**
+     * The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -83,13 +162,41 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+     */
     readonly cluster?: pulumi.Input<{ clusterId?: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone?: pulumi.Input<string> }>;
+    /**
+     * The ID of the Cloud Bigtable cluster.
+     */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+     */
     readonly instanceType?: pulumi.Input<string>;
+    /**
+     * The name of the Cloud Bigtable instance.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+     */
     readonly numNodes?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
+     */
     readonly storageType?: pulumi.Input<string>;
+    /**
+     * The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+     */
     readonly zone?: pulumi.Input<string>;
 }

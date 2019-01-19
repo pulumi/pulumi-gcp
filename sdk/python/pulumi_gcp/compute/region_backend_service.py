@@ -8,16 +8,97 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RegionBackendService(pulumi.CustomResource):
+    backends: pulumi.Output[list]
     """
-    A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
-    For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
-    and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
-    
-    > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
-      `google_compute_backend_service` instead.
+    The list of backends that serve this BackendService.
+    Structure is documented below.
+    """
+    connection_draining_timeout_sec: pulumi.Output[int]
+    """
+    Time for which instance will be drained
+    (not accept new connections, but still work to finish started ones). Defaults to `0`.
+    """
+    description: pulumi.Output[str]
+    """
+    The textual description for the backend service.
+    """
+    fingerprint: pulumi.Output[str]
+    """
+    The fingerprint of the backend service.
+    """
+    health_checks: pulumi.Output[str]
+    """
+    Specifies a list of health checks
+    for checking the health of the backend service. Currently at most
+    one health check can be specified, and a health check is required.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the backend service.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    protocol: pulumi.Output[str]
+    """
+    The protocol for incoming requests. Defaults to
+    `TCP`.
+    """
+    region: pulumi.Output[str]
+    """
+    The Region in which the created address should reside.
+    If it is not provided, the provider region is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    session_affinity: pulumi.Output[str]
+    """
+    How to distribute load. Options are `NONE` (no
+    affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
+    Defaults to `NONE`.
+    """
+    timeout_sec: pulumi.Output[int]
+    """
+    The number of secs to wait for a backend to respond
+    to a request before considering the request failed. Defaults to `30`.
     """
     def __init__(__self__, __name__, __opts__=None, backends=None, connection_draining_timeout_sec=None, description=None, health_checks=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None):
-        """Create a RegionBackendService resource with the given unique name, props, and options."""
+        """
+        A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
+        For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
+        and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
+        
+        > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
+          `google_compute_backend_service` instead.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] backends: The list of backends that serve this BackendService.
+               Structure is documented below.
+        :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained
+               (not accept new connections, but still work to finish started ones). Defaults to `0`.
+        :param pulumi.Input[str] description: The textual description for the backend service.
+        :param pulumi.Input[str] health_checks: Specifies a list of health checks
+               for checking the health of the backend service. Currently at most
+               one health check can be specified, and a health check is required.
+        :param pulumi.Input[str] name: The name of the backend service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] protocol: The protocol for incoming requests. Defaults to
+               `TCP`.
+        :param pulumi.Input[str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] session_affinity: How to distribute load. Options are `NONE` (no
+               affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
+               Defaults to `NONE`.
+        :param pulumi.Input[int] timeout_sec: The number of secs to wait for a backend to respond
+               to a request before considering the request failed. Defaults to `30`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

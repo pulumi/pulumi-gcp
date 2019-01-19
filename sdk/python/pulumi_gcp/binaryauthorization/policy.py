@@ -8,20 +8,33 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Policy(pulumi.CustomResource):
-    """
-    A policy for container image binary authorization.
-    
-    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-    
-    To get more information about Policy, see:
-    
-    * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/binary-authorization/)
-    """
+    admission_whitelist_patterns: pulumi.Output[list]
+    cluster_admission_rules: pulumi.Output[list]
+    default_admission_rule: pulumi.Output[dict]
+    description: pulumi.Output[str]
+    project: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
-        """Create a Policy resource with the given unique name, props, and options."""
+        """
+        A policy for container image binary authorization.
+        
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+        
+        To get more information about Policy, see:
+        
+        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] admission_whitelist_patterns
+        :param pulumi.Input[list] cluster_admission_rules
+        :param pulumi.Input[dict] default_admission_rule
+        :param pulumi.Input[str] description
+        :param pulumi.Input[str] project
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

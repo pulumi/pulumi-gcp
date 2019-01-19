@@ -8,14 +8,61 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RouterInterface(pulumi.CustomResource):
+    ip_range: pulumi.Output[str]
     """
-    Manages a Cloud Router interface. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+    IP address and range of the interface. The IP range must be
+    in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+    """
+    name: pulumi.Output[str]
+    """
+    A unique name for the interface, required by GCE. Changing
+    this forces a new interface to be created.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which this interface's router belongs. If it
+    is not provided, the provider project is used. Changing this forces a new interface to be created.
+    """
+    region: pulumi.Output[str]
+    """
+    The region this interface's router sits in. If not specified,
+    the project region will be used. Changing this forces a new interface to be
+    created.
+    """
+    router: pulumi.Output[str]
+    """
+    The name of the router this interface will be attached to.
+    Changing this forces a new interface to be created.
+    """
+    vpn_tunnel: pulumi.Output[str]
+    """
+    The name or resource link to the VPN tunnel this
+    interface will be linked to. Changing this forces a new interface to be created.
     """
     def __init__(__self__, __name__, __opts__=None, ip_range=None, name=None, project=None, region=None, router=None, vpn_tunnel=None):
-        """Create a RouterInterface resource with the given unique name, props, and options."""
+        """
+        Manages a Cloud Router interface. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
+               in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
+               this forces a new interface to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
+               is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
+               the project region will be used. Changing this forces a new interface to be
+               created.
+        :param pulumi.Input[str] router: The name of the router this interface will be attached to.
+               Changing this forces a new interface to be created.
+        :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
+               interface will be linked to. Changing this forces a new interface to be created.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

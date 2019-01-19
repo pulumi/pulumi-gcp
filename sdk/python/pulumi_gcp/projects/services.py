@@ -8,21 +8,42 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Services(pulumi.CustomResource):
+    disable_on_destroy: pulumi.Output[bool]
+    project: pulumi.Output[str]
     """
-    Allows management of enabled API services for an existing Google Cloud
-    Platform project. Services in an existing project that are not defined
-    in the config will be removed.
-    
-    For a list of services available, visit the
-    [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
-    
-    > **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
-    	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
-    	*exclusively* a particular set of APIs are enabled, you should most likely use the
-    	google_project_service resource, one resource per API.
+    The project ID.
+    Changing this forces Terraform to attempt to disable all previously managed
+    API services in the previous project.
+    """
+    services: pulumi.Output[list]
+    """
+    The list of services that are enabled. Supports
+    update.
     """
     def __init__(__self__, __name__, __opts__=None, disable_on_destroy=None, project=None, services=None):
-        """Create a Services resource with the given unique name, props, and options."""
+        """
+        Allows management of enabled API services for an existing Google Cloud
+        Platform project. Services in an existing project that are not defined
+        in the config will be removed.
+        
+        For a list of services available, visit the
+        [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+        
+        > **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
+        	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
+        	*exclusively* a particular set of APIs are enabled, you should most likely use the
+        	google_project_service resource, one resource per API.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] disable_on_destroy
+        :param pulumi.Input[str] project: The project ID.
+               Changing this forces Terraform to attempt to disable all previously managed
+               API services in the previous project.
+        :param pulumi.Input[list] services: The list of services that are enabled. Supports
+               update.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

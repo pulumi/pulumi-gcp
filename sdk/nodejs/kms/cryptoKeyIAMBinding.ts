@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows creation and management of a single binding within IAM policy for
+ * an existing Google Cloud KMS crypto key.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_kms_crypto_key_iam_binding_crypto_key = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ *     cryptoKeyId: "my-gcp-project/us-central1/my-key-ring/my-crypto-key",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ */
 export class CryptoKeyIAMBinding extends pulumi.CustomResource {
     /**
      * Get an existing CryptoKeyIAMBinding resource's state with the given name, ID, and optional extra
@@ -17,9 +34,26 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
         return new CryptoKeyIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`.
+     * In the second form, the provider's project setting will be used as a fallback.
+     */
     public readonly cryptoKeyId: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the crypto key's IAM policy.
+     */
     public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * A list of users that the role should apply to.
+     */
     public readonly members: pulumi.Output<string[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role: pulumi.Output<string>;
 
     /**
@@ -62,9 +96,26 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
  */
 export interface CryptoKeyIAMBindingState {
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`.
+     * In the second form, the provider's project setting will be used as a fallback.
+     */
     readonly cryptoKeyId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the crypto key's IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
+    /**
+     * A list of users that the role should apply to.
+     */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -72,7 +123,21 @@ export interface CryptoKeyIAMBindingState {
  * The set of arguments for constructing a CryptoKeyIAMBinding resource.
  */
 export interface CryptoKeyIAMBindingArgs {
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`.
+     * In the second form, the provider's project setting will be used as a fallback.
+     */
     readonly cryptoKeyId: pulumi.Input<string>;
+    /**
+     * A list of users that the role should apply to.
+     */
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role: pulumi.Input<string>;
 }

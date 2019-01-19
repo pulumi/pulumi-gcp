@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get project details.
+ * For more information see 
+ * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_project_project = pulumi.output(gcp.organizations.getProject({}));
+ * 
+ * export const projectNumber = google_project_project.apply(__arg0 => __arg0.number);
+ * ```
+ */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:organizations/getProject:getProject", {
@@ -15,6 +31,9 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    /**
+     * The project ID. If it is not provided, the provider project is used.
+     */
     readonly projectId?: string;
 }
 

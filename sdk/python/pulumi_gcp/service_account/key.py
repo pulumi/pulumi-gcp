@@ -8,12 +8,90 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Key(pulumi.CustomResource):
+    key_algorithm: pulumi.Output[str]
     """
-    Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
-    
+    The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
+    Valid values are listed at
+    [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
+    (only used on create)
+    """
+    name: pulumi.Output[str]
+    """
+    The name used for this key pair
+    """
+    pgp_key: pulumi.Output[str]
+    """
+    An optional PGP key to encrypt the resulting private
+    key material. Only used when creating or importing a new key pair. May either be
+    a base64-encoded public key or a `keybase:keybaseusername` string for looking up
+    in Vault.
+    """
+    private_key: pulumi.Output[str]
+    """
+    The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
+    service account keys through the CLI or web console. This is only populated when creating a new key, and when no
+    `pgp_key` is provided.
+    """
+    private_key_encrypted: pulumi.Output[str]
+    """
+    The private key material, base 64 encoded and
+    encrypted with the given `pgp_key`. This is only populated when creating a new
+    key and `pgp_key` is supplied
+    """
+    private_key_fingerprint: pulumi.Output[str]
+    """
+    The MD5 public key fingerprint for the encrypted
+    private key. This is only populated when creating a new key and `pgp_key` is supplied
+    """
+    private_key_type: pulumi.Output[str]
+    """
+    The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
+    """
+    public_key: pulumi.Output[str]
+    """
+    The public key, base64 encoded
+    """
+    public_key_type: pulumi.Output[str]
+    """
+    The output format of the public key requested. X509_PEM is the default output format.
+    """
+    service_account_id: pulumi.Output[str]
+    """
+    The Service account id of the Key Pair. This can be a string in the format
+    `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
+    unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+    """
+    valid_after: pulumi.Output[str]
+    """
+    The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+    """
+    valid_before: pulumi.Output[str]
+    """
+    The key can be used before this timestamp.
+    A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
     def __init__(__self__, __name__, __opts__=None, key_algorithm=None, pgp_key=None, private_key_type=None, public_key_type=None, service_account_id=None):
-        """Create a Key resource with the given unique name, props, and options."""
+        """
+        Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
+               Valid values are listed at
+               [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
+               (only used on create)
+        :param pulumi.Input[str] pgp_key: An optional PGP key to encrypt the resulting private
+               key material. Only used when creating or importing a new key pair. May either be
+               a base64-encoded public key or a `keybase:keybaseusername` string for looking up
+               in Vault.
+        :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
+        :param pulumi.Input[str] public_key_type: The output format of the public key requested. X509_PEM is the default output format.
+        :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
+               `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
+               unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

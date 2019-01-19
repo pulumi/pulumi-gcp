@@ -8,18 +8,57 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RecordSet(pulumi.CustomResource):
+    managed_zone: pulumi.Output[str]
     """
-    Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
-    [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
-    
-    > **Note:** The Google Cloud DNS API requires NS records be present at all
-    times. To accommodate this, when creating NS records, the default records
-    Google automatically creates will be silently overwritten.  Also, when
-    destroying NS records, Terraform will not actually remove NS records, but will
-    report that it did.
+    The name of the zone in which this record set will
+    reside.
+    """
+    name: pulumi.Output[str]
+    """
+    The DNS name this record set will apply to.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    rrdatas: pulumi.Output[list]
+    """
+    The string data for the records in this record set
+    whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
+    """
+    ttl: pulumi.Output[int]
+    """
+    The time-to-live of this record set (seconds).
+    """
+    type: pulumi.Output[str]
+    """
+    The DNS record set type.
     """
     def __init__(__self__, __name__, __opts__=None, managed_zone=None, name=None, project=None, rrdatas=None, ttl=None, type=None):
-        """Create a RecordSet resource with the given unique name, props, and options."""
+        """
+        Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
+        [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+        
+        > **Note:** The Google Cloud DNS API requires NS records be present at all
+        times. To accommodate this, when creating NS records, the default records
+        Google automatically creates will be silently overwritten.  Also, when
+        destroying NS records, Terraform will not actually remove NS records, but will
+        report that it did.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[list] rrdatas: The string data for the records in this record set
+               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
+        :param pulumi.Input[str] type: The DNS record set type.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

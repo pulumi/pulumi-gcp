@@ -8,13 +8,36 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Repository(pulumi.CustomResource):
+    name: pulumi.Output[str]
     """
-    For more information, see [the official
-    documentation](https://cloud.google.com/source-repositories/) and
-    [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+    The name of the repository that will be created.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    size: pulumi.Output[int]
+    """
+    The size of the repository.
+    """
+    url: pulumi.Output[str]
+    """
+    The url to clone the repository.
     """
     def __init__(__self__, __name__, __opts__=None, name=None, project=None):
-        """Create a Repository resource with the given unique name, props, and options."""
+        """
+        For more information, see [the official
+        documentation](https://cloud.google.com/source-repositories/) and
+        [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] name: The name of the repository that will be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

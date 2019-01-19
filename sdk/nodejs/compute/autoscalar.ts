@@ -4,6 +4,86 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents an Autoscaler resource.
+ * 
+ * Autoscalers allow you to automatically scale virtual machine instances in
+ * managed instance groups according to an autoscaling policy that you
+ * define.
+ * 
+ * 
+ * To get more information about Autoscaler, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
+ * * How-to Guides
+ *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=autoscaler_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Autoscaler Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_debian_9 = pulumi.output(gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * }));
+ * const google_compute_target_pool_foobar = new gcp.compute.TargetPool("foobar", {
+ *     name: "my-target-pool",
+ * });
+ * const google_compute_instance_template_foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     canIpForward: false,
+ *     disks: [{
+ *         sourceImage: google_compute_image_debian_9.apply(__arg0 => __arg0.selfLink),
+ *     }],
+ *     machineType: "n1-standard-1",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     name: "my-instance-template",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ * });
+ * const google_compute_instance_group_manager_foobar = new gcp.compute.InstanceGroupManager("foobar", {
+ *     baseInstanceName: "foobar",
+ *     instanceTemplate: google_compute_instance_template_foobar.selfLink,
+ *     name: "my-igm",
+ *     targetPools: [google_compute_target_pool_foobar.selfLink],
+ *     zone: "us-central1-f",
+ * });
+ * const google_compute_autoscaler_foobar = new gcp.compute.Autoscalar("foobar", {
+ *     autoscalingPolicy: {
+ *         cooldownPeriod: 60,
+ *         cpuUtilization: {
+ *             target: 0.500000,
+ *         },
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *     },
+ *     name: "my-autoscaler",
+ *     target: google_compute_instance_group_manager_foobar.selfLink,
+ *     zone: "us-central1-f",
+ * });
+ * ```
+ */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra
@@ -22,6 +102,9 @@ export class Autoscalar extends pulumi.CustomResource {
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly project: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly target: pulumi.Output<string>;
     public readonly zone: pulumi.Output<string>;
@@ -76,6 +159,9 @@ export interface AutoscalarState {
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     readonly target?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;

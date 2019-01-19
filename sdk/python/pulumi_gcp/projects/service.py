@@ -8,17 +8,35 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
+    disable_on_destroy: pulumi.Output[bool]
     """
-    Allows management of a single API service for an existing Google Cloud Platform project. 
-    
-    For a list of services available, visit the
-    [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
-    
-    > **Note:** This resource _must not_ be used in conjunction with
-       `google_project_services` or they will fight over which services should be enabled.
+    If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+    """
+    project: pulumi.Output[str]
+    """
+    The project ID. If not provided, the provider project is used.
+    """
+    service: pulumi.Output[str]
+    """
+    The service to enable.
     """
     def __init__(__self__, __name__, __opts__=None, disable_on_destroy=None, project=None, service=None):
-        """Create a Service resource with the given unique name, props, and options."""
+        """
+        Allows management of a single API service for an existing Google Cloud Platform project. 
+        
+        For a list of services available, visit the
+        [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+        
+        > **Note:** This resource _must not_ be used in conjunction with
+           `google_project_services` or they will fight over which services should be enabled.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        :param pulumi.Input[str] project: The project ID. If not provided, the provider project is used.
+        :param pulumi.Input[str] service: The service to enable.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

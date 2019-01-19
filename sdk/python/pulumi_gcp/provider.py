@@ -8,14 +8,20 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    """
-    The provider type for the google package. By default, resources use package-wide configuration
-    settings, however an explicit `Provider` instance may be created and passed during resource
-    construction to achieve fine-grained programmatic control over provider settings. See the
-    [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
-    """
     def __init__(__self__, __name__, __opts__=None, credentials=None, project=None, region=None, zone=None):
-        """Create a Provider resource with the given unique name, props, and options."""
+        """
+        The provider type for the google package. By default, resources use package-wide configuration
+        settings, however an explicit `Provider` instance may be created and passed during resource
+        construction to achieve fine-grained programmatic control over provider settings. See the
+        [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] credentials
+        :param pulumi.Input[str] project
+        :param pulumi.Input[str] region
+        :param pulumi.Input[str] zone
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

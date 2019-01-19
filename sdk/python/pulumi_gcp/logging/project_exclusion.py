@@ -8,16 +8,52 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ProjectExclusion(pulumi.CustomResource):
+    description: pulumi.Output[str]
     """
-    Manages a project-level logging exclusion. For more information see
-    [the official documentation](https://cloud.google.com/logging/docs/) and
-    [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-    
-    Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    granted to the credentials used with Terraform.
+    A human-readable description.
+    """
+    disabled: pulumi.Output[bool]
+    """
+    Whether this exclusion rule should be disabled or not. This defaults to
+    false.
+    """
+    filter: pulumi.Output[str]
+    """
+    The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+    write a filter.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the logging exclusion.
+    """
+    project: pulumi.Output[str]
+    """
+    The project to create the exclusion in. If omitted, the project associated with the provider is
+    used.
     """
     def __init__(__self__, __name__, __opts__=None, description=None, disabled=None, filter=None, name=None, project=None):
-        """Create a ProjectExclusion resource with the given unique name, props, and options."""
+        """
+        Manages a project-level logging exclusion. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+        
+        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        granted to the credentials used with Terraform.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description: A human-readable description.
+        :param pulumi.Input[bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
+               false.
+        :param pulumi.Input[str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: The name of the logging exclusion.
+        :param pulumi.Input[str] project: The project to create the exclusion in. If omitted, the project associated with the provider is
+               used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

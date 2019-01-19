@@ -4,6 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
+ * load balancing.
+ * 
+ * An HTTP(S) load balancer can direct traffic to specified URLs to a
+ * backend bucket rather than a backend service. It can send requests for
+ * static content to a Cloud Storage bucket and requests for dynamic content
+ * a virtual machine instance.
+ * 
+ * 
+ * To get more information about BackendBucket, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/backendBuckets)
+ * * How-to Guides
+ *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=backend_bucket_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Backend Bucket Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_storage_bucket_image_bucket = new gcp.storage.Bucket("image_bucket", {
+ *     location: "EU",
+ *     name: "image-store-bucket",
+ * });
+ * const google_compute_backend_bucket_image_backend = new gcp.compute.BackendBucket("image_backend", {
+ *     bucketName: google_storage_bucket_image_bucket.name,
+ *     description: "Contains beautiful images",
+ *     enableCdn: true,
+ *     name: "image-backend-bucket",
+ * });
+ * ```
+ */
 export class BackendBucket extends pulumi.CustomResource {
     /**
      * Get an existing BackendBucket resource's state with the given name, ID, and optional extra
@@ -22,7 +62,14 @@ export class BackendBucket extends pulumi.CustomResource {
     public readonly description: pulumi.Output<string | undefined>;
     public readonly enableCdn: pulumi.Output<boolean | undefined>;
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -70,7 +117,14 @@ export interface BackendBucketState {
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -82,5 +136,9 @@ export interface BackendBucketArgs {
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

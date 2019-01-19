@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows management of a customized Cloud IAM project role. For more information see
+ * [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
+ * and
+ * [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
+ * 
+ * > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
+ *  from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
+ *  same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
+ *  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
+ *  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
+ *  by Terraform, and new roles cannot share that name.
+ * 
+ * ## Example Usage
+ * 
+ * This snippet creates a customized IAM role.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_project_iam_custom_role_my_custom_role = new gcp.projects.IAMCustomRole("my-custom-role", {
+ *     description: "A description",
+ *     permissions: [
+ *         "iam.roles.list",
+ *         "iam.roles.create",
+ *         "iam.roles.delete",
+ *     ],
+ *     roleId: "myCustomRole",
+ *     title: "My Custom Role",
+ * });
+ * ```
+ */
 export class IAMCustomRole extends pulumi.CustomResource {
     /**
      * Get an existing IAMCustomRole resource's state with the given name, ID, and optional extra
@@ -18,11 +51,32 @@ export class IAMCustomRole extends pulumi.CustomResource {
     }
 
     public readonly deleted: pulumi.Output<boolean | undefined>;
+    /**
+     * A human-readable description for the role.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+     */
     public readonly permissions: pulumi.Output<string[]>;
+    /**
+     * The project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The role id to use for this role.
+     */
     public readonly roleId: pulumi.Output<string>;
+    /**
+     * The current launch stage of the role.
+     * Defaults to `GA`.
+     * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+     */
     public readonly stage: pulumi.Output<string | undefined>;
+    /**
+     * A human-readable title for the role.
+     */
     public readonly title: pulumi.Output<string>;
 
     /**
@@ -72,11 +126,32 @@ export class IAMCustomRole extends pulumi.CustomResource {
  */
 export interface IAMCustomRoleState {
     readonly deleted?: pulumi.Input<boolean>;
+    /**
+     * A human-readable description for the role.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+     */
     readonly permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The role id to use for this role.
+     */
     readonly roleId?: pulumi.Input<string>;
+    /**
+     * The current launch stage of the role.
+     * Defaults to `GA`.
+     * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+     */
     readonly stage?: pulumi.Input<string>;
+    /**
+     * A human-readable title for the role.
+     */
     readonly title?: pulumi.Input<string>;
 }
 
@@ -85,10 +160,31 @@ export interface IAMCustomRoleState {
  */
 export interface IAMCustomRoleArgs {
     readonly deleted?: pulumi.Input<boolean>;
+    /**
+     * A human-readable description for the role.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+     */
     readonly permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The role id to use for this role.
+     */
     readonly roleId: pulumi.Input<string>;
+    /**
+     * The current launch stage of the role.
+     * Defaults to `GA`.
+     * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+     */
     readonly stage?: pulumi.Input<string>;
+    /**
+     * A human-readable title for the role.
+     */
     readonly title: pulumi.Input<string>;
 }

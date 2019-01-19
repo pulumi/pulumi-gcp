@@ -8,26 +8,74 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
+    backend_service: pulumi.Output[str]
+    creation_timestamp: pulumi.Output[str]
+    description: pulumi.Output[str]
+    ip_address: pulumi.Output[str]
+    ip_protocol: pulumi.Output[str]
+    ip_version: pulumi.Output[str]
+    label_fingerprint: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    load_balancing_scheme: pulumi.Output[str]
+    name: pulumi.Output[str]
+    network: pulumi.Output[str]
+    network_tier: pulumi.Output[str]
+    port_range: pulumi.Output[str]
+    ports: pulumi.Output[list]
+    project: pulumi.Output[str]
     """
-    A ForwardingRule resource. A ForwardingRule resource specifies which pool
-    of target virtual machines to forward a packet to if it matches the given
-    [IPAddress, IPProtocol, portRange] tuple.
-    
-    
-    To get more information about ForwardingRule, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=forwarding_rule_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    region: pulumi.Output[str]
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    service_label: pulumi.Output[str]
+    service_name: pulumi.Output[str]
+    subnetwork: pulumi.Output[str]
+    target: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
-        """Create a ForwardingRule resource with the given unique name, props, and options."""
+        """
+        A ForwardingRule resource. A ForwardingRule resource specifies which pool
+        of target virtual machines to forward a packet to if it matches the given
+        [IPAddress, IPProtocol, portRange] tuple.
+        
+        
+        To get more information about ForwardingRule, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=forwarding_rule_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] backend_service
+        :param pulumi.Input[str] description
+        :param pulumi.Input[str] ip_address
+        :param pulumi.Input[str] ip_protocol
+        :param pulumi.Input[str] ip_version
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] load_balancing_scheme
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] network
+        :param pulumi.Input[str] network_tier
+        :param pulumi.Input[str] port_range
+        :param pulumi.Input[list] ports
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region
+        :param pulumi.Input[str] service_label
+        :param pulumi.Input[str] subnetwork
+        :param pulumi.Input[str] target
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

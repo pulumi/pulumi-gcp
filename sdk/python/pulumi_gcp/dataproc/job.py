@@ -8,14 +8,72 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
+    driver_controls_files_uri: pulumi.Output[str]
     """
-    Manages a job resource within a Dataproc cluster within GCE. For more information see
-    [the official dataproc documentation](https://cloud.google.com/dataproc/).
-    
-    !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+    If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
     """
+    driver_output_resource_uri: pulumi.Output[str]
+    """
+    A URI pointing to the location of the stdout of the job's driver program.
+    """
+    force_delete: pulumi.Output[bool]
+    """
+    By default, you can only delete inactive jobs within
+    Dataproc. Setting this to true, and calling destroy, will ensure that the
+    job is first cancelled before issuing the delete.
+    """
+    hadoop_config: pulumi.Output[dict]
+    hive_config: pulumi.Output[dict]
+    labels: pulumi.Output[dict]
+    """
+    The list of labels (key/value pairs) to add to the job.
+    """
+    pig_config: pulumi.Output[dict]
+    placement: pulumi.Output[dict]
+    project: pulumi.Output[str]
+    """
+    The project in which the `cluster` can be found and jobs
+    subsequently run against. If it is not provided, the provider project is used.
+    """
+    pyspark_config: pulumi.Output[dict]
+    reference: pulumi.Output[dict]
+    region: pulumi.Output[str]
+    """
+    The Cloud Dataproc region. This essentially determines which clusters are available
+    for this job to be submitted to. If not specified, defaults to `global`.
+    """
+    scheduling: pulumi.Output[dict]
+    spark_config: pulumi.Output[dict]
+    sparksql_config: pulumi.Output[dict]
+    status: pulumi.Output[dict]
     def __init__(__self__, __name__, __opts__=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None):
-        """Create a Job resource with the given unique name, props, and options."""
+        """
+        Manages a job resource within a Dataproc cluster within GCE. For more information see
+        [the official dataproc documentation](https://cloud.google.com/dataproc/).
+        
+        !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
+               Dataproc. Setting this to true, and calling destroy, will ensure that the
+               job is first cancelled before issuing the delete.
+        :param pulumi.Input[dict] hadoop_config
+        :param pulumi.Input[dict] hive_config
+        :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to add to the job.
+        :param pulumi.Input[dict] pig_config
+        :param pulumi.Input[dict] placement
+        :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
+               subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] pyspark_config
+        :param pulumi.Input[dict] reference
+        :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
+               for this job to be submitted to. If not specified, defaults to `global`.
+        :param pulumi.Input[dict] scheduling
+        :param pulumi.Input[dict] spark_config
+        :param pulumi.Input[dict] sparksql_config
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

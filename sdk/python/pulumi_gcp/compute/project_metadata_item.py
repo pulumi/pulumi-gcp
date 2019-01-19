@@ -8,14 +8,34 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ProjectMetadataItem(pulumi.CustomResource):
+    key: pulumi.Output[str]
     """
-    Manages a single key/value pair on metadata common to all instances for
-    a project in GCE. Using `google_compute_project_metadata_item` lets you
-    manage a single key/value setting in Terraform rather than the entire
-    project metadata map.
+    The metadata key to set.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    value: pulumi.Output[str]
+    """
+    The value to set for the given metadata key.
     """
     def __init__(__self__, __name__, __opts__=None, key=None, project=None, value=None):
-        """Create a ProjectMetadataItem resource with the given unique name, props, and options."""
+        """
+        Manages a single key/value pair on metadata common to all instances for
+        a project in GCE. Using `google_compute_project_metadata_item` lets you
+        manage a single key/value setting in Terraform rather than the entire
+        project metadata map.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] key: The metadata key to set.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] value: The value to set for the given metadata key.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

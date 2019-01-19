@@ -8,14 +8,84 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Dataset(pulumi.CustomResource):
+    accesses: pulumi.Output[list]
     """
-    Creates a dataset resource for Google BigQuery. For more information see
-    [the official documentation](https://cloud.google.com/bigquery/docs/) and
-    [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
-    
+    An array of objects that define dataset access for
+    one or more entities. Structure is documented below.
+    """
+    creation_time: pulumi.Output[int]
+    """
+    The time when this dataset was created, in milliseconds since the epoch.
+    """
+    dataset_id: pulumi.Output[str]
+    """
+    The ID of the dataset containing this table.
+    """
+    default_table_expiration_ms: pulumi.Output[int]
+    """
+    The default lifetime of all
+    tables in the dataset, in milliseconds. The minimum value is 3600000
+    milliseconds (one hour).
+    """
+    description: pulumi.Output[str]
+    """
+    A user-friendly description of the dataset.
+    """
+    etag: pulumi.Output[str]
+    """
+    A hash of the resource.
+    """
+    friendly_name: pulumi.Output[str]
+    """
+    A descriptive name for the dataset.
+    """
+    labels: pulumi.Output[dict]
+    """
+    A mapping of labels to assign to the resource.
+    """
+    last_modified_time: pulumi.Output[int]
+    """
+    The date when this dataset or any of its tables was last modified,
+    in milliseconds since the epoch.
+    """
+    location: pulumi.Output[str]
+    """
+    The geographic location where the dataset should reside.
+    See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
     """
     def __init__(__self__, __name__, __opts__=None, accesses=None, dataset_id=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None):
-        """Create a Dataset resource with the given unique name, props, and options."""
+        """
+        Creates a dataset resource for Google BigQuery. For more information see
+        [the official documentation](https://cloud.google.com/bigquery/docs/) and
+        [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] accesses: An array of objects that define dataset access for
+               one or more entities. Structure is documented below.
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all
+               tables in the dataset, in milliseconds. The minimum value is 3600000
+               milliseconds (one hour).
+        :param pulumi.Input[str] description: A user-friendly description of the dataset.
+        :param pulumi.Input[str] friendly_name: A descriptive name for the dataset.
+        :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
+               See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

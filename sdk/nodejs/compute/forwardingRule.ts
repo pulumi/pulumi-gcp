@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A ForwardingRule resource. A ForwardingRule resource specifies which pool
+ * of target virtual machines to forward a packet to if it matches the given
+ * [IPAddress, IPProtocol, portRange] tuple.
+ * 
+ * 
+ * To get more information about ForwardingRule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=forwarding_rule_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Forwarding Rule Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_target_pool_default = new gcp.compute.TargetPool("default", {
+ *     name: "website-target-pool",
+ * });
+ * const google_compute_forwarding_rule_default = new gcp.compute.ForwardingRule("default", {
+ *     name: "website-forwarding-rule",
+ *     portRange: "80",
+ *     target: google_compute_target_pool_default.selfLink,
+ * });
+ * ```
+ */
 export class ForwardingRule extends pulumi.CustomResource {
     /**
      * Get an existing ForwardingRule resource's state with the given name, ID, and optional extra
@@ -31,8 +65,15 @@ export class ForwardingRule extends pulumi.CustomResource {
     public readonly networkTier: pulumi.Output<string>;
     public readonly portRange: pulumi.Output<string | undefined>;
     public readonly ports: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly serviceLabel: pulumi.Output<string | undefined>;
     public /*out*/ readonly serviceName: pulumi.Output<string>;
@@ -118,8 +159,15 @@ export interface ForwardingRuleState {
     readonly networkTier?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;
     readonly ports?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     readonly serviceLabel?: pulumi.Input<string>;
     readonly serviceName?: pulumi.Input<string>;
@@ -143,6 +191,10 @@ export interface ForwardingRuleArgs {
     readonly networkTier?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;
     readonly ports?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly serviceLabel?: pulumi.Input<string>;

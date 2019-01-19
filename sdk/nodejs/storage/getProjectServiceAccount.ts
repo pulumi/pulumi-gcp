@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Get the email address of a project's unique Google Cloud Storage service account.
+ * 
+ * Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
+ * special service account can be used to set up `google_storage_notification` resources.
+ * 
+ * For more information see
+ * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
+ */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
@@ -16,7 +25,14 @@ export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, op
  * A collection of arguments for invoking getProjectServiceAccount.
  */
 export interface GetProjectServiceAccountArgs {
+    /**
+     * The project the unique service account was created for. If it is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * The project the lookup originates from. This field is used if you are making the request
+     * from a different account than the one you are finding the service account for.
+     */
     readonly userProject?: string;
 }
 
@@ -24,6 +40,10 @@ export interface GetProjectServiceAccountArgs {
  * A collection of values returned by getProjectServiceAccount.
  */
 export interface GetProjectServiceAccountResult {
+    /**
+     * The email address of the service account. This value is often used to refer to the service account
+     * in order to grant IAM permissions.
+     */
     readonly emailAddress: string;
     readonly project: string;
     /**

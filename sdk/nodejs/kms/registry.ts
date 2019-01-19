@@ -4,6 +4,48 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ *  Creates a device registry in Google's Cloud IoT Core platform. For more information see
+ * [the official documentation](https://cloud.google.com/iot/docs/) and
+ * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_pubsub_topic_default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {
+ *     name: "default-devicestatus",
+ * });
+ * const google_pubsub_topic_default_telemetry = new gcp.pubsub.Topic("default-telemetry", {
+ *     name: "default-telemetry",
+ * });
+ * const google_cloudiot_registry_default_registry = new gcp.kms.Registry("default-registry", {
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             certificate: fs.readFileSync("rsa_cert.pem", "utf-8"),
+ *             format: "X509_CERTIFICATE_PEM",
+ *         },
+ *     }],
+ *     eventNotificationConfig: {
+ *         pubsub_topic_name: google_pubsub_topic_default_telemetry.id,
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     name: "default-registry",
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: google_pubsub_topic_default_devicestatus.id,
+ *     },
+ * });
+ * ```
+ */
 export class Registry extends pulumi.CustomResource {
     /**
      * Get an existing Registry resource's state with the given name, ID, and optional extra
@@ -17,13 +59,38 @@ export class Registry extends pulumi.CustomResource {
         return new Registry(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * List of public key certificates to authenticate devices. Structure is documented below. 
+     */
     public readonly credentials: pulumi.Output<{ publicKeyCertificate?: { certificate: string, format: string } }[] | undefined>;
+    /**
+     * A PubSub topics to publish device events. Structure is documented below.
+     */
     public readonly eventNotificationConfig: pulumi.Output<{ pubsubTopicName: string } | undefined>;
+    /**
+     * Activate or deactivate HTTP. Structure is documented below.
+     */
     public readonly httpConfig: pulumi.Output<{ httpEnabledState: string }>;
+    /**
+     * Activate or deactivate MQTT. Structure is documented below.
+     */
     public readonly mqttConfig: pulumi.Output<{ mqttEnabledState: string }>;
+    /**
+     * A unique name for the resource, required by device registry.
+     * Changing this forces a new resource to be created.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     */
     public readonly region: pulumi.Output<string>;
+    /**
+     * A PubSub topic to publish device state updates. Structure is documented below.
+     */
     public readonly stateNotificationConfig: pulumi.Output<{ pubsubTopicName: string } | undefined>;
 
     /**
@@ -65,13 +132,38 @@ export class Registry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Registry resources.
  */
 export interface RegistryState {
+    /**
+     * List of public key certificates to authenticate devices. Structure is documented below. 
+     */
     readonly credentials?: pulumi.Input<pulumi.Input<{ publicKeyCertificate?: pulumi.Input<{ certificate: pulumi.Input<string>, format: pulumi.Input<string> }> }>[]>;
+    /**
+     * A PubSub topics to publish device events. Structure is documented below.
+     */
     readonly eventNotificationConfig?: pulumi.Input<{ pubsubTopicName: pulumi.Input<string> }>;
+    /**
+     * Activate or deactivate HTTP. Structure is documented below.
+     */
     readonly httpConfig?: pulumi.Input<{ httpEnabledState: pulumi.Input<string> }>;
+    /**
+     * Activate or deactivate MQTT. Structure is documented below.
+     */
     readonly mqttConfig?: pulumi.Input<{ mqttEnabledState: pulumi.Input<string> }>;
+    /**
+     * A unique name for the resource, required by device registry.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A PubSub topic to publish device state updates. Structure is documented below.
+     */
     readonly stateNotificationConfig?: pulumi.Input<{ pubsubTopicName: pulumi.Input<string> }>;
 }
 
@@ -79,12 +171,37 @@ export interface RegistryState {
  * The set of arguments for constructing a Registry resource.
  */
 export interface RegistryArgs {
+    /**
+     * List of public key certificates to authenticate devices. Structure is documented below. 
+     */
     readonly credentials?: pulumi.Input<pulumi.Input<{ publicKeyCertificate?: pulumi.Input<{ certificate: pulumi.Input<string>, format: pulumi.Input<string> }> }>[]>;
+    /**
+     * A PubSub topics to publish device events. Structure is documented below.
+     */
     readonly eventNotificationConfig?: pulumi.Input<{ pubsubTopicName: pulumi.Input<string> }>;
+    /**
+     * Activate or deactivate HTTP. Structure is documented below.
+     */
     readonly httpConfig?: pulumi.Input<{ httpEnabledState: pulumi.Input<string> }>;
+    /**
+     * Activate or deactivate MQTT. Structure is documented below.
+     */
     readonly mqttConfig?: pulumi.Input<{ mqttEnabledState: pulumi.Input<string> }>;
+    /**
+     * A unique name for the resource, required by device registry.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A PubSub topic to publish device state updates. Structure is documented below.
+     */
     readonly stateNotificationConfig?: pulumi.Input<{ pubsubTopicName: pulumi.Input<string> }>;
 }

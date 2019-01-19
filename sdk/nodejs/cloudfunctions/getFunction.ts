@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Get information about a Google Cloud Function. For more information see
+ * the [official documentation](https://cloud.google.com/functions/docs/)
+ * and [API](https://cloud.google.com/functions/docs/apis).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_cloudfunctions_function_my_function = pulumi.output(gcp.cloudfunctions.getFunction({
+ *     name: "function",
+ * }));
+ * ```
+ */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
     return pulumi.runtime.invoke("gcp:cloudfunctions/getFunction:getFunction", {
         "name": args.name,
@@ -16,8 +32,19 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getFunction.
  */
 export interface GetFunctionArgs {
+    /**
+     * The name of a Cloud Function.
+     */
     readonly name: string;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     */
     readonly region?: string;
 }
 
@@ -25,20 +52,59 @@ export interface GetFunctionArgs {
  * A collection of values returned by getFunction.
  */
 export interface GetFunctionResult {
+    /**
+     * Available memory (in MB) to the function.
+     */
     readonly availableMemoryMb: number;
+    /**
+     * Description of the function.
+     */
     readonly description: string;
+    /**
+     * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+     */
     readonly entryPoint: string;
     readonly environmentVariables: {[key: string]: any};
+    /**
+     * A source that fires events in response to a condition in another service. Structure is documented below.
+     */
     readonly eventTriggers: { eventType: string, failurePolicies: { retry: boolean }[], resource: string }[];
+    /**
+     * If function is triggered by HTTP, trigger URL is set here.
+     */
     readonly httpsTriggerUrl: string;
+    /**
+     * A map of labels applied to this function.
+     */
     readonly labels: {[key: string]: any};
     readonly retryOnFailure: boolean;
+    /**
+     * The runtime in which the function is running.
+     */
     readonly runtime: string;
+    /**
+     * The GCS bucket containing the zip archive which contains the function.
+     */
     readonly sourceArchiveBucket: string;
+    /**
+     * The source archive object (file) in archive bucket.
+     */
     readonly sourceArchiveObject: string;
+    /**
+     * Function execution timeout (in seconds).
+     */
     readonly timeout: number;
+    /**
+     * If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerBucket: string;
+    /**
+     * If function is triggered by HTTP, this boolean is set.
+     */
     readonly triggerHttp: boolean;
+    /**
+     * If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
+     */
     readonly triggerTopic: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

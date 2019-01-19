@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+ *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_ssl_policy_my_ssl_policy = pulumi.output(gcp.compute.getSSLPolicy({
+ *     name: "production-ssl-policy",
+ * }));
+ * ```
+ */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
     return pulumi.runtime.invoke("gcp:compute/getSSLPolicy:getSSLPolicy", {
         "name": args.name,
@@ -15,7 +30,14 @@ export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getSSLPolicy.
  */
 export interface GetSSLPolicyArgs {
+    /**
+     * The name of the SSL Policy.
+     */
     readonly name: string;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
 }
 
@@ -24,12 +46,35 @@ export interface GetSSLPolicyArgs {
  */
 export interface GetSSLPolicyResult {
     readonly creationTimestamp: string;
+    /**
+     * If the `profile` is `CUSTOM`, these are the custom encryption
+     * ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+     * attribute will be empty.
+     */
     readonly customFeatures: string[];
+    /**
+     * Description of this SSL Policy.
+     */
     readonly description: string;
+    /**
+     * The set of enabled encryption ciphers as a result of the policy config
+     */
     readonly enabledFeatures: string[];
+    /**
+     * Fingerprint of this resource.
+     */
     readonly fingerprint: string;
+    /**
+     * The minimum supported TLS version of this policy.
+     */
     readonly minTlsVersion: string;
+    /**
+     * The Google-curated or custom profile used by this policy.
+     */
     readonly profile: string;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -8,16 +8,71 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class FolderSink(pulumi.CustomResource):
+    destination: pulumi.Output[str]
     """
-    Manages a folder-level logging sink. For more information see
-    [the official documentation](https://cloud.google.com/logging/docs/) and
-    [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-    
-    Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    granted to the credentials used with terraform.
+    The destination of the sink (or, in other words, where logs are written to). Can be a
+    Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+    ```
+    "storage.googleapis.com/[GCS_BUCKET]"
+    "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+    "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+    ```
+    The writer associated with the sink must have access to write to the above resource.
+    """
+    filter: pulumi.Output[str]
+    """
+    The filter to apply when exporting logs. Only log entries that match the filter are exported.
+    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+    write a filter.
+    """
+    folder: pulumi.Output[str]
+    """
+    The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+    accepted.
+    """
+    include_children: pulumi.Output[bool]
+    """
+    Whether or not to include children folders in the sink export. If true, logs
+    associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the logging sink.
+    """
+    writer_identity: pulumi.Output[str]
+    """
+    The identity associated with this sink. This identity must be granted write access to the
+    configured `destination`.
     """
     def __init__(__self__, __name__, __opts__=None, destination=None, filter=None, folder=None, include_children=None, name=None):
-        """Create a FolderSink resource with the given unique name, props, and options."""
+        """
+        Manages a folder-level logging sink. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        
+        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        granted to the credentials used with terraform.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
+               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               ```
+               "storage.googleapis.com/[GCS_BUCKET]"
+               "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+               "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+               ```
+               The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] folder: The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+               accepted.
+        :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
+               associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        :param pulumi.Input[str] name: The name of the logging sink.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

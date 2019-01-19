@@ -8,42 +8,87 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Disk(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
+    description: pulumi.Output[str]
+    disk_encryption_key: pulumi.Output[dict]
+    disk_encryption_key_raw: pulumi.Output[str]
+    disk_encryption_key_sha256: pulumi.Output[str]
+    image: pulumi.Output[str]
+    label_fingerprint: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    last_attach_timestamp: pulumi.Output[str]
+    last_detach_timestamp: pulumi.Output[str]
+    name: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    Persistent disks are durable storage devices that function similarly to
-    the physical disks in a desktop or a server. Compute Engine manages the
-    hardware behind these devices to ensure data redundancy and optimize
-    performance for you. Persistent disks are available as either standard
-    hard disk drives (HDD) or solid-state drives (SSD).
-    
-    Persistent disks are located independently from your virtual machine
-    instances, so you can detach or move persistent disks to keep your data
-    even after you delete your instances. Persistent disk performance scales
-    automatically with size, so you can resize your existing persistent disks
-    or add more persistent disks to an instance to meet your performance and
-    storage space requirements.
-    
-    Add a persistent disk to your instance when you need reliable and
-    affordable storage with consistent performance characteristics.
-    
-    
-    To get more information about Disk, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/latest/disks)
-    * How-to Guides
-        * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-    
-    > **Warning:** All arguments including the disk encryption key will be stored in the raw
-    state as plain-text.
-    [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=disk_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    size: pulumi.Output[int]
+    snapshot: pulumi.Output[str]
+    source_image_encryption_key: pulumi.Output[dict]
+    source_image_id: pulumi.Output[str]
+    source_snapshot_encryption_key: pulumi.Output[dict]
+    source_snapshot_id: pulumi.Output[str]
+    type: pulumi.Output[str]
+    users: pulumi.Output[list]
+    zone: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, description=None, disk_encryption_key=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None):
-        """Create a Disk resource with the given unique name, props, and options."""
+        """
+        Persistent disks are durable storage devices that function similarly to
+        the physical disks in a desktop or a server. Compute Engine manages the
+        hardware behind these devices to ensure data redundancy and optimize
+        performance for you. Persistent disks are available as either standard
+        hard disk drives (HDD) or solid-state drives (SSD).
+        
+        Persistent disks are located independently from your virtual machine
+        instances, so you can detach or move persistent disks to keep your data
+        even after you delete your instances. Persistent disk performance scales
+        automatically with size, so you can resize your existing persistent disks
+        or add more persistent disks to an instance to meet your performance and
+        storage space requirements.
+        
+        Add a persistent disk to your instance when you need reliable and
+        affordable storage with consistent performance characteristics.
+        
+        
+        To get more information about Disk, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/disks)
+        * How-to Guides
+            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+        
+        > **Warning:** All arguments including the disk encryption key will be stored in the raw
+        state as plain-text.
+        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=disk_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description
+        :param pulumi.Input[dict] disk_encryption_key
+        :param pulumi.Input[str] disk_encryption_key_raw
+        :param pulumi.Input[str] image
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[int] size
+        :param pulumi.Input[str] snapshot
+        :param pulumi.Input[dict] source_image_encryption_key
+        :param pulumi.Input[dict] source_snapshot_encryption_key
+        :param pulumi.Input[str] type
+        :param pulumi.Input[str] zone
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

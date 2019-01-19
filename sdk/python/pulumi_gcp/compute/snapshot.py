@@ -8,29 +8,70 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Snapshot(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
+    description: pulumi.Output[str]
+    disk_size_gb: pulumi.Output[int]
+    label_fingerprint: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    licenses: pulumi.Output[list]
+    name: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    Represents a Persistent Disk Snapshot resource.
-    
-    Use snapshots to back up data from your persistent disks. Snapshots are
-    different from public images and custom images, which are used primarily
-    to create instances or configure instance templates. Snapshots are useful
-    for periodic backup of the data on your persistent disks. You can create
-    snapshots from persistent disks even while they are attached to running
-    instances.
-    
-    Snapshots are incremental, so you can create regular snapshots on a
-    persistent disk faster and at a much lower cost than if you regularly
-    created a full image of the disk.
-    
-    
-    To get more information about Snapshot, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
-    * How-to Guides
-        * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    snapshot_encryption_key: pulumi.Output[dict]
+    snapshot_encryption_key_raw: pulumi.Output[str]
+    snapshot_encryption_key_sha256: pulumi.Output[str]
+    snapshot_id: pulumi.Output[int]
+    source_disk: pulumi.Output[str]
+    source_disk_encryption_key: pulumi.Output[dict]
+    source_disk_encryption_key_raw: pulumi.Output[str]
+    source_disk_encryption_key_sha256: pulumi.Output[str]
+    source_disk_link: pulumi.Output[str]
+    storage_bytes: pulumi.Output[int]
+    zone: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, snapshot_encryption_key_raw=None, source_disk=None, source_disk_encryption_key=None, source_disk_encryption_key_raw=None, zone=None):
-        """Create a Snapshot resource with the given unique name, props, and options."""
+        """
+        Represents a Persistent Disk Snapshot resource.
+        
+        Use snapshots to back up data from your persistent disks. Snapshots are
+        different from public images and custom images, which are used primarily
+        to create instances or configure instance templates. Snapshots are useful
+        for periodic backup of the data on your persistent disks. You can create
+        snapshots from persistent disks even while they are attached to running
+        instances.
+        
+        Snapshots are incremental, so you can create regular snapshots on a
+        persistent disk faster and at a much lower cost than if you regularly
+        created a full image of the disk.
+        
+        
+        To get more information about Snapshot, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] snapshot_encryption_key
+        :param pulumi.Input[str] snapshot_encryption_key_raw
+        :param pulumi.Input[str] source_disk
+        :param pulumi.Input[dict] source_disk_encryption_key
+        :param pulumi.Input[str] source_disk_encryption_key_raw
+        :param pulumi.Input[str] zone
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

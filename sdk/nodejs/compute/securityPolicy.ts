@@ -4,6 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+ * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+ * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_security_policy_policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     rules: [
+ *         {
+ *             action: "deny(403)",
+ *             description: "Deny access to IPs in 9.9.9.0/24",
+ *             match: {
+ *                 config: {
+ *                     srcIpRanges: ["9.9.9.9/32"],
+ *                 },
+ *                 versionedExpr: "SRC_IPS_V1",
+ *             },
+ *             priority: Number.parseFloat("1000"),
+ *         },
+ *         {
+ *             action: "allow",
+ *             description: "default rule",
+ *             match: {
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
+ *                 versionedExpr: "SRC_IPS_V1",
+ *             },
+ *             priority: Number.parseFloat("2147483647"),
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * Get an existing SecurityPolicy resource's state with the given name, ID, and optional extra
@@ -17,11 +57,32 @@ export class SecurityPolicy extends pulumi.CustomResource {
         return new SecurityPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * An optional description of this security policy. Max size is 2048.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Fingerprint of this resource.
+     */
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    /**
+     * The name of the security policy.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The set of rules that belong to this policy. There must always be a default
+     * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+     * security policy, a default rule with action "allow" will be added. Structure is documented below.
+     */
     public readonly rules: pulumi.Output<{ action: string, description?: string, match: { config: { srcIpRanges: string[] }, versionedExpr: string }, preview?: boolean, priority: number }[]>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
@@ -59,11 +120,32 @@ export class SecurityPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityPolicy resources.
  */
 export interface SecurityPolicyState {
+    /**
+     * An optional description of this security policy. Max size is 2048.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Fingerprint of this resource.
+     */
     readonly fingerprint?: pulumi.Input<string>;
+    /**
+     * The name of the security policy.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The set of rules that belong to this policy. There must always be a default
+     * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+     * security policy, a default rule with action "allow" will be added. Structure is documented below.
+     */
     readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -71,8 +153,23 @@ export interface SecurityPolicyState {
  * The set of arguments for constructing a SecurityPolicy resource.
  */
 export interface SecurityPolicyArgs {
+    /**
+     * An optional description of this security policy. Max size is 2048.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the security policy.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The set of rules that belong to this policy. There must always be a default
+     * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+     * security policy, a default rule with action "allow" will be added. Structure is documented below.
+     */
     readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
 }

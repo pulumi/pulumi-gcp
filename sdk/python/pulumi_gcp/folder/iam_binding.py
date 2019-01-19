@@ -8,16 +8,52 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class IAMBinding(pulumi.CustomResource):
+    etag: pulumi.Output[str]
     """
-    Allows creation and management of a single binding within IAM policy for
-    an existing Google Cloud Platform folder.
-    
-    > **Note:** This resource _must not_ be used in conjunction with
-       `google_folder_iam_policy` or they will fight over what your policy
-       should be.
+    (Computed) The etag of the folder's IAM policy.
+    """
+    folder: pulumi.Output[str]
+    """
+    The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+    """
+    members: pulumi.Output[list]
+    """
+    An array of identites that will be granted the privilege in the `role`.
+    Each entry can have one of the following values:
+    * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+    * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+    * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+    * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+    """
+    role: pulumi.Output[str]
+    """
+    The role that should be applied. Only one
+    `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+    `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     def __init__(__self__, __name__, __opts__=None, folder=None, members=None, role=None):
-        """Create a IAMBinding resource with the given unique name, props, and options."""
+        """
+        Allows creation and management of a single binding within IAM policy for
+        an existing Google Cloud Platform folder.
+        
+        > **Note:** This resource _must not_ be used in conjunction with
+           `google_folder_iam_policy` or they will fight over what your policy
+           should be.
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+        :param pulumi.Input[list] members: An array of identites that will be granted the privilege in the `role`.
+               Each entry can have one of the following values:
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

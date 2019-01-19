@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows creation and management of the IAM policy for an existing Google Cloud
+ * Platform folder.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_iam_policy_admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const google_folder_iam_policy_folder_admin_policy = new gcp.folder.IAMPolicy("folder_admin_policy", {
+ *     folder: google_folder_department1.name,
+ *     policyData: google_iam_policy_admin.apply(__arg0 => __arg0.policyData),
+ * });
+ * ```
+ */
 export class IAMPolicy extends pulumi.CustomResource {
     /**
      * Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
@@ -17,8 +43,19 @@ export class IAMPolicy extends pulumi.CustomResource {
         return new IAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     */
     public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     public readonly folder: pulumi.Output<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the folder. This policy overrides any existing
+     * policy applied to the folder.
+     */
     public readonly policyData: pulumi.Output<string>;
 
     /**
@@ -56,8 +93,19 @@ export class IAMPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMPolicy resources.
  */
 export interface IAMPolicyState {
+    /**
+     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     */
     readonly etag?: pulumi.Input<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     readonly folder?: pulumi.Input<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the folder. This policy overrides any existing
+     * policy applied to the folder.
+     */
     readonly policyData?: pulumi.Input<string>;
 }
 
@@ -65,6 +113,14 @@ export interface IAMPolicyState {
  * The set of arguments for constructing a IAMPolicy resource.
  */
 export interface IAMPolicyArgs {
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
     readonly folder: pulumi.Input<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the folder. This policy overrides any existing
+     * policy applied to the folder.
+     */
     readonly policyData: pulumi.Input<string>;
 }

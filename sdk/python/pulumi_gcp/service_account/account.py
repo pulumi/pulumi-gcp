@@ -8,11 +8,58 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Account(pulumi.CustomResource):
+    account_id: pulumi.Output[str]
     """
-    Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+    The service account ID.
+    Changing this forces a new service account to be created.
+    """
+    display_name: pulumi.Output[str]
+    """
+    The display name for the service account.
+    Can be updated without creating a new resource.
+    """
+    email: pulumi.Output[str]
+    """
+    The e-mail address of the service account. This value
+    should be referenced from any `google_iam_policy` data sources
+    that would grant the service account privileges.
+    """
+    name: pulumi.Output[str]
+    """
+    The fully-qualified name of the service account.
+    """
+    policy_data: pulumi.Output[str]
+    """
+    The `google_iam_policy` data source that represents
+    the IAM policy that will be applied to the service account. The policy will be
+    merged with any existing policy.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project that the service account will be created in.
+    Defaults to the provider project configuration.
+    """
+    unique_id: pulumi.Output[str]
+    """
+    The unique id of the service account.
     """
     def __init__(__self__, __name__, __opts__=None, account_id=None, display_name=None, policy_data=None, project=None):
-        """Create a Account resource with the given unique name, props, and options."""
+        """
+        Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] account_id: The service account ID.
+               Changing this forces a new service account to be created.
+        :param pulumi.Input[str] display_name: The display name for the service account.
+               Can be updated without creating a new resource.
+        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
+               the IAM policy that will be applied to the service account. The policy will be
+               merged with any existing policy.
+        :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
+               Defaults to the provider project configuration.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

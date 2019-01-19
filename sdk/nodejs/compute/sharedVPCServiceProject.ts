@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Enables the Google Compute Engine
+ * [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
+ * feature for a project, assigning it as a Shared VPC service project associated
+ * with a given host project.
+ * 
+ * For more information, see,
+ * [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
+ * where the Shared VPC feature is referred to by its former name "XPN".
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_shared_vpc_service_project_service1 = new gcp.compute.SharedVPCServiceProject("service1", {
+ *     hostProject: "host-project-id",
+ *     serviceProject: "service-project-id-1",
+ * });
+ * ```
+ * For a complete Shared VPC example with both host and service projects, see
+ * [`google_compute_shared_vpc_host_project`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
+ * 
+ */
 export class SharedVPCServiceProject extends pulumi.CustomResource {
     /**
      * Get an existing SharedVPCServiceProject resource's state with the given name, ID, and optional extra
@@ -17,7 +42,13 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
         return new SharedVPCServiceProject(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The ID of a host project to associate.
+     */
     public readonly hostProject: pulumi.Output<string>;
+    /**
+     * The ID of the project that will serve as a Shared VPC service project.
+     */
     public readonly serviceProject: pulumi.Output<string>;
 
     /**
@@ -53,7 +84,13 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SharedVPCServiceProject resources.
  */
 export interface SharedVPCServiceProjectState {
+    /**
+     * The ID of a host project to associate.
+     */
     readonly hostProject?: pulumi.Input<string>;
+    /**
+     * The ID of the project that will serve as a Shared VPC service project.
+     */
     readonly serviceProject?: pulumi.Input<string>;
 }
 
@@ -61,6 +98,12 @@ export interface SharedVPCServiceProjectState {
  * The set of arguments for constructing a SharedVPCServiceProject resource.
  */
 export interface SharedVPCServiceProjectArgs {
+    /**
+     * The ID of a host project to associate.
+     */
     readonly hostProject: pulumi.Input<string>;
+    /**
+     * The ID of the project that will serve as a Shared VPC service project.
+     */
     readonly serviceProject: pulumi.Input<string>;
 }

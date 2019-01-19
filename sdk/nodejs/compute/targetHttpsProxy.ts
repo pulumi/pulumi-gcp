@@ -4,6 +4,72 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a TargetHttpsProxy resource, which is used by one or more
+ * global forwarding rule to route incoming HTTPS requests to a URL map.
+ * 
+ * 
+ * To get more information about TargetHttpsProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetHttpsProxies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=target_https_proxy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Target Https Proxy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
+ *     name: "my-certificate",
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
+ * });
+ * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
+ *     healthChecks: google_compute_http_health_check_default.selfLink,
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
+ *     defaultService: google_compute_backend_service_default.selfLink,
+ *     description: "a description",
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     name: "url-map",
+ *     pathMatchers: [{
+ *         defaultService: google_compute_backend_service_default.selfLink,
+ *         name: "allpaths",
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: google_compute_backend_service_default.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const google_compute_target_https_proxy_default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     sslCertificates: [google_compute_ssl_certificate_default.selfLink],
+ *     urlMap: google_compute_url_map_default.selfLink,
+ * });
+ * ```
+ */
 export class TargetHttpsProxy extends pulumi.CustomResource {
     /**
      * Get an existing TargetHttpsProxy resource's state with the given name, ID, and optional extra
@@ -20,9 +86,16 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
     public /*out*/ readonly proxyId: pulumi.Output<number>;
     public readonly quicOverride: pulumi.Output<string | undefined>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sslCertificates: pulumi.Output<string[]>;
     public readonly sslPolicy: pulumi.Output<string | undefined>;
@@ -80,9 +153,16 @@ export interface TargetHttpsProxyState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly proxyId?: pulumi.Input<number>;
     readonly quicOverride?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     readonly sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sslPolicy?: pulumi.Input<string>;
@@ -95,6 +175,10 @@ export interface TargetHttpsProxyState {
 export interface TargetHttpsProxyArgs {
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly quicOverride?: pulumi.Input<string>;
     readonly sslCertificates: pulumi.Input<pulumi.Input<string>[]>;

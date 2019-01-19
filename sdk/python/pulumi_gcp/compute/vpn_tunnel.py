@@ -8,29 +8,68 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class VPNTunnel(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
+    description: pulumi.Output[str]
+    detailed_status: pulumi.Output[str]
+    ike_version: pulumi.Output[int]
+    label_fingerprint: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    local_traffic_selectors: pulumi.Output[list]
+    name: pulumi.Output[str]
+    peer_ip: pulumi.Output[str]
+    project: pulumi.Output[str]
     """
-    VPN tunnel resource.
-    
-    
-    To get more information about VpnTunnel, see:
-    
-    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
-    * How-to Guides
-        * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-        * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
-    
-    > **Warning:** All arguments including the shared secret will be stored in the raw
-    state as plain-text.
-    [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-    
-    <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-      <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-        <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-      </a>
-    </div>
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
+    region: pulumi.Output[str]
+    remote_traffic_selectors: pulumi.Output[list]
+    router: pulumi.Output[str]
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
+    shared_secret: pulumi.Output[str]
+    shared_secret_hash: pulumi.Output[str]
+    target_vpn_gateway: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):
-        """Create a VPNTunnel resource with the given unique name, props, and options."""
+        """
+        VPN tunnel resource.
+        
+        
+        To get more information about VpnTunnel, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
+        * How-to Guides
+            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+            * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+        
+        > **Warning:** All arguments including the shared secret will be stored in the raw
+        state as plain-text.
+        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] description
+        :param pulumi.Input[int] ike_version
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[list] local_traffic_selectors
+        :param pulumi.Input[str] name
+        :param pulumi.Input[str] peer_ip
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region
+        :param pulumi.Input[list] remote_traffic_selectors
+        :param pulumi.Input[str] router
+        :param pulumi.Input[str] shared_secret
+        :param pulumi.Input[str] target_vpn_gateway
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+ * 
+ * ## Example Usage
+ * 
+ * This snippet creates a service account, then gives it objectViewer
+ * permission in a project.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_service_account_object_viewer = new gcp.serviceAccount.Account("object_viewer", {
+ *     accountId: "object-viewer",
+ *     displayName: "Object viewer",
+ * });
+ * ```
+ */
 export class Account extends pulumi.CustomResource {
     /**
      * Get an existing Account resource's state with the given name, ID, and optional extra
@@ -17,12 +35,40 @@ export class Account extends pulumi.CustomResource {
         return new Account(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The service account ID.
+     * Changing this forces a new service account to be created.
+     */
     public readonly accountId: pulumi.Output<string>;
+    /**
+     * The display name for the service account.
+     * Can be updated without creating a new resource.
+     */
     public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * The e-mail address of the service account. This value
+     * should be referenced from any `google_iam_policy` data sources
+     * that would grant the service account privileges.
+     */
     public /*out*/ readonly email: pulumi.Output<string>;
+    /**
+     * The fully-qualified name of the service account.
+     */
     public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the service account. The policy will be
+     * merged with any existing policy.
+     */
     public readonly policyData: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The unique id of the service account.
+     */
     public /*out*/ readonly uniqueId: pulumi.Output<string>;
 
     /**
@@ -65,12 +111,40 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
+    /**
+     * The service account ID.
+     * Changing this forces a new service account to be created.
+     */
     readonly accountId?: pulumi.Input<string>;
+    /**
+     * The display name for the service account.
+     * Can be updated without creating a new resource.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The e-mail address of the service account. This value
+     * should be referenced from any `google_iam_policy` data sources
+     * that would grant the service account privileges.
+     */
     readonly email?: pulumi.Input<string>;
+    /**
+     * The fully-qualified name of the service account.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the service account. The policy will be
+     * merged with any existing policy.
+     */
     readonly policyData?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The unique id of the service account.
+     */
     readonly uniqueId?: pulumi.Input<string>;
 }
 
@@ -78,8 +152,25 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    /**
+     * The service account ID.
+     * Changing this forces a new service account to be created.
+     */
     readonly accountId: pulumi.Input<string>;
+    /**
+     * The display name for the service account.
+     * Can be updated without creating a new resource.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The `google_iam_policy` data source that represents
+     * the IAM policy that will be applied to the service account. The policy will be
+     * merged with any existing policy.
+     */
     readonly policyData?: pulumi.Input<string>;
+    /**
+     * The ID of the project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
     readonly project?: pulumi.Input<string>;
 }

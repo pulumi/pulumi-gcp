@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a bootable VM image resource for Google Compute Engine from an existing
+ * tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/images).
+ * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_compute_image_bootable_image = new gcp.compute.Image("bootable-image", {
+ *     licenses: ["https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"],
+ *     name: "my-custom-image",
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/my-bucket/my-disk-image-tarball.tar.gz",
+ *     },
+ * });
+ * const google_compute_instance_vm = new gcp.compute.Instance("vm", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: google_compute_image_bootable_image.selfLink,
+ *         },
+ *     },
+ *     machineType: "n1-standard-1",
+ *     name: "vm-from-custom-image",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     zone: "us-east1-c",
+ * });
+ * ```
+ */
 export class Image extends pulumi.CustomResource {
     /**
      * Get an existing Image resource's state with the given name, ID, and optional extra
@@ -17,16 +51,55 @@ export class Image extends pulumi.CustomResource {
         return new Image(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Configurable timeout in minutes for creating images. Default is 4 minutes.
+     */
     public readonly createTimeout: pulumi.Output<number | undefined>;
+    /**
+     * The description of the image to be created
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The name of the image family to which this image belongs.
+     */
     public readonly family: pulumi.Output<string | undefined>;
+    /**
+     * The fingerprint of the assigned labels.
+     */
     public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    /**
+     * A set of key/value label pairs to assign to the image.
+     */
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
     public readonly licenses: pulumi.Output<string[]>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The raw disk that will be used as the source of the image.
+     * Changing this forces a new resource to be created. Structure is documented
+     * below.
+     */
     public readonly rawDisk: pulumi.Output<{ containerType?: string, sha1?: string, source: string } | undefined>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    /**
+     * The URL of a disk that will be used as the source of the
+     * image. Changing this forces a new resource to be created.
+     */
     public readonly sourceDisk: pulumi.Output<string | undefined>;
 
     /**
@@ -74,16 +147,55 @@ export class Image extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Image resources.
  */
 export interface ImageState {
+    /**
+     * Configurable timeout in minutes for creating images. Default is 4 minutes.
+     */
     readonly createTimeout?: pulumi.Input<number>;
+    /**
+     * The description of the image to be created
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the image family to which this image belongs.
+     */
     readonly family?: pulumi.Input<string>;
+    /**
+     * The fingerprint of the assigned labels.
+     */
     readonly labelFingerprint?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the image.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The raw disk that will be used as the source of the image.
+     * Changing this forces a new resource to be created. Structure is documented
+     * below.
+     */
     readonly rawDisk?: pulumi.Input<{ containerType?: pulumi.Input<string>, sha1?: pulumi.Input<string>, source: pulumi.Input<string> }>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The URL of a disk that will be used as the source of the
+     * image. Changing this forces a new resource to be created.
+     */
     readonly sourceDisk?: pulumi.Input<string>;
 }
 
@@ -91,13 +203,46 @@ export interface ImageState {
  * The set of arguments for constructing a Image resource.
  */
 export interface ImageArgs {
+    /**
+     * Configurable timeout in minutes for creating images. Default is 4 minutes.
+     */
     readonly createTimeout?: pulumi.Input<number>;
+    /**
+     * The description of the image to be created
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the image family to which this image belongs.
+     */
     readonly family?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the image.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of license URIs to apply to this image. Changing this
+     * forces a new resource to be created.
+     */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The raw disk that will be used as the source of the image.
+     * Changing this forces a new resource to be created. Structure is documented
+     * below.
+     */
     readonly rawDisk?: pulumi.Input<{ containerType?: pulumi.Input<string>, sha1?: pulumi.Input<string>, source: pulumi.Input<string> }>;
+    /**
+     * The URL of a disk that will be used as the source of the
+     * image. Changing this forces a new resource to be created.
+     */
     readonly sourceDisk?: pulumi.Input<string>;
 }

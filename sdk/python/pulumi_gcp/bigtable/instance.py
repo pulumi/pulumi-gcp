@@ -8,14 +8,64 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
+    cluster: pulumi.Output[dict]
     """
-    Creates a Google Bigtable instance. For more information see
-    [the official documentation](https://cloud.google.com/bigtable/) and
-    [API](https://cloud.google.com/bigtable/docs/go/reference).
-    
+    A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+    """
+    cluster_id: pulumi.Output[str]
+    """
+    The ID of the Cloud Bigtable cluster.
+    """
+    display_name: pulumi.Output[str]
+    """
+    The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+    """
+    instance_type: pulumi.Output[str]
+    """
+    The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+    """
+    name: pulumi.Output[str]
+    """
+    The name of the Cloud Bigtable instance.
+    """
+    num_nodes: pulumi.Output[int]
+    """
+    The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+    """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
+    storage_type: pulumi.Output[str]
+    """
+    The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
+    """
+    zone: pulumi.Output[str]
+    """
+    The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
     """
     def __init__(__self__, __name__, __opts__=None, cluster=None, cluster_id=None, display_name=None, instance_type=None, name=None, num_nodes=None, project=None, storage_type=None, zone=None):
-        """Create a Instance resource with the given unique name, props, and options."""
+        """
+        Creates a Google Bigtable instance. For more information see
+        [the official documentation](https://cloud.google.com/bigtable/) and
+        [API](https://cloud.google.com/bigtable/docs/go/reference).
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[dict] cluster: A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
+        :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster.
+        :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+        :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+        :param pulumi.Input[str] name: The name of the Cloud Bigtable instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
+        :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

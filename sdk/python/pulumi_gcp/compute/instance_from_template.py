@@ -8,19 +8,85 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InstanceFromTemplate(pulumi.CustomResource):
+    allow_stopping_for_update: pulumi.Output[bool]
+    attached_disks: pulumi.Output[list]
+    boot_disk: pulumi.Output[dict]
+    can_ip_forward: pulumi.Output[bool]
+    cpu_platform: pulumi.Output[str]
+    deletion_protection: pulumi.Output[bool]
+    description: pulumi.Output[str]
+    guest_accelerators: pulumi.Output[list]
+    instance_id: pulumi.Output[str]
+    label_fingerprint: pulumi.Output[str]
+    labels: pulumi.Output[dict]
+    machine_type: pulumi.Output[str]
+    metadata: pulumi.Output[dict]
+    metadata_fingerprint: pulumi.Output[str]
+    metadata_startup_script: pulumi.Output[str]
+    min_cpu_platform: pulumi.Output[str]
+    name: pulumi.Output[str]
     """
-    Manages a VM instance resource within GCE. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/instances)
-    and
-    [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-    
-    This resource is specifically to create a compute instance from a given
-    `source_instance_template`. To create an instance without a template, use the
-    `google_compute_instance` resource.
-    
+    A unique name for the resource, required by GCE.
+    Changing this forces a new resource to be created.
+    """
+    network_interfaces: pulumi.Output[list]
+    project: pulumi.Output[str]
+    scheduling: pulumi.Output[dict]
+    scratch_disks: pulumi.Output[list]
+    self_link: pulumi.Output[str]
+    service_account: pulumi.Output[dict]
+    source_instance_template: pulumi.Output[str]
+    """
+    Name or self link of an instance
+    template to create the instance based on.
+    """
+    tags: pulumi.Output[list]
+    tags_fingerprint: pulumi.Output[str]
+    zone: pulumi.Output[str]
+    """
+    The zone that the machine should be created in. If not
+    set, the provider zone is used.
     """
     def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None):
-        """Create a InstanceFromTemplate resource with the given unique name, props, and options."""
+        """
+        Manages a VM instance resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instances)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        
+        This resource is specifically to create a compute instance from a given
+        `source_instance_template`. To create an instance without a template, use the
+        `google_compute_instance` resource.
+        
+        
+        
+        :param str __name__: The name of the resource.
+        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] allow_stopping_for_update
+        :param pulumi.Input[list] attached_disks
+        :param pulumi.Input[dict] boot_disk
+        :param pulumi.Input[bool] can_ip_forward
+        :param pulumi.Input[bool] deletion_protection
+        :param pulumi.Input[str] description
+        :param pulumi.Input[list] guest_accelerators
+        :param pulumi.Input[dict] labels
+        :param pulumi.Input[str] machine_type
+        :param pulumi.Input[dict] metadata
+        :param pulumi.Input[str] metadata_startup_script
+        :param pulumi.Input[str] min_cpu_platform
+        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[list] network_interfaces
+        :param pulumi.Input[str] project
+        :param pulumi.Input[dict] scheduling
+        :param pulumi.Input[list] scratch_disks
+        :param pulumi.Input[dict] service_account
+        :param pulumi.Input[str] source_instance_template: Name or self link of an instance
+               template to create the instance based on.
+        :param pulumi.Input[list] tags
+        :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
+               set, the provider zone is used.
+        """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):

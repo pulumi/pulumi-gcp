@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a RuntimeConfig resource in Google Cloud. For more information, see the
+ * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
+ * or the
+ * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ * 
+ * ## Example Usage
+ * 
+ * Example creating a RuntimeConfig resource.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const google_runtimeconfig_config_my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ *     name: "my-service-runtime-config",
+ * });
+ * ```
+ */
 export class Config extends pulumi.CustomResource {
     /**
      * Get an existing Config resource's state with the given name, ID, and optional extra
@@ -17,8 +37,19 @@ export class Config extends pulumi.CustomResource {
         return new Config(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The description to associate with the runtime
+     * config.
+     */
     public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The name of the runtime config.
+     */
     public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     public readonly project: pulumi.Output<string>;
 
     /**
@@ -50,8 +81,19 @@ export class Config extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Config resources.
  */
 export interface ConfigState {
+    /**
+     * The description to associate with the runtime
+     * config.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the runtime config.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -59,7 +101,18 @@ export interface ConfigState {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
+    /**
+     * The description to associate with the runtime
+     * config.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the runtime config.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
