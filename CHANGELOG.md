@@ -1,4 +1,8 @@
-## 0.16.6 (Unreleased)
+## 0.16.7 (Unreleased)
+
+## 0.16.6 (Released January 19th, 2019)
+
+- Documentation comments for the Node.js SDK now include examples
 
 ## 0.16.5 (Released January 15th, 2019)
 
