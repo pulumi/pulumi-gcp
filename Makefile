@@ -44,7 +44,7 @@ tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-gcp/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 
 install_plugins::
-	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
+	[ -x "$(shell which pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource random 0.2.0
 
 lint::
