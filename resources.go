@@ -6,7 +6,7 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/terraform-providers/terraform-provider-google/google"
+	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
