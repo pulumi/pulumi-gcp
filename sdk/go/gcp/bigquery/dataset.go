@@ -26,6 +26,7 @@ func NewDataset(ctx *pulumi.Context,
 	if args == nil {
 		inputs["accesses"] = nil
 		inputs["datasetId"] = nil
+		inputs["defaultPartitionExpirationMs"] = nil
 		inputs["defaultTableExpirationMs"] = nil
 		inputs["description"] = nil
 		inputs["friendlyName"] = nil
@@ -35,6 +36,7 @@ func NewDataset(ctx *pulumi.Context,
 	} else {
 		inputs["accesses"] = args.Accesses
 		inputs["datasetId"] = args.DatasetId
+		inputs["defaultPartitionExpirationMs"] = args.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = args.DefaultTableExpirationMs
 		inputs["description"] = args.Description
 		inputs["friendlyName"] = args.FriendlyName
@@ -62,6 +64,7 @@ func GetDataset(ctx *pulumi.Context,
 		inputs["accesses"] = state.Accesses
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
+		inputs["defaultPartitionExpirationMs"] = state.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = state.DefaultTableExpirationMs
 		inputs["description"] = state.Description
 		inputs["etag"] = state.Etag
@@ -103,6 +106,10 @@ func (r *Dataset) CreationTime() *pulumi.IntOutput {
 // The ID of the dataset containing this table.
 func (r *Dataset) DatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+}
+
+func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["defaultPartitionExpirationMs"])
 }
 
 // The default lifetime of all
@@ -164,6 +171,7 @@ type DatasetState struct {
 	CreationTime interface{}
 	// The ID of the dataset containing this table.
 	DatasetId interface{}
+	DefaultPartitionExpirationMs interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000
 	// milliseconds (one hour).
@@ -196,6 +204,7 @@ type DatasetArgs struct {
 	Accesses interface{}
 	// The ID of the dataset containing this table.
 	DatasetId interface{}
+	DefaultPartitionExpirationMs interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000
 	// milliseconds (one hour).

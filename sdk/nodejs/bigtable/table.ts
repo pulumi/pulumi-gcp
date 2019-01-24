@@ -47,6 +47,7 @@ export class Table extends pulumi.CustomResource {
         return new Table(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly columnFamilies: pulumi.Output<{ family: string }[] | undefined>;
     /**
      * The name of the Bigtable instance.
      */
@@ -77,6 +78,7 @@ export class Table extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: TableState = argsOrState as TableState | undefined;
+            inputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -86,6 +88,7 @@ export class Table extends pulumi.CustomResource {
             if (!args || args.instanceName === undefined) {
                 throw new Error("Missing required property 'instanceName'");
             }
+            inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -99,6 +102,7 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    readonly columnFamilies?: pulumi.Input<pulumi.Input<{ family: pulumi.Input<string> }>[]>;
     /**
      * The name of the Bigtable instance.
      */
@@ -122,6 +126,7 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    readonly columnFamilies?: pulumi.Input<pulumi.Input<{ family: pulumi.Input<string> }>[]>;
     /**
      * The name of the Bigtable instance.
      */

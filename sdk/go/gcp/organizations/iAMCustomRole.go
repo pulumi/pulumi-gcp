@@ -40,7 +40,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["deleted"] = nil
 		inputs["description"] = nil
 		inputs["orgId"] = nil
 		inputs["permissions"] = nil
@@ -48,7 +47,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 		inputs["stage"] = nil
 		inputs["title"] = nil
 	} else {
-		inputs["deleted"] = args.Deleted
 		inputs["description"] = args.Description
 		inputs["orgId"] = args.OrgId
 		inputs["permissions"] = args.Permissions
@@ -56,6 +54,7 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 		inputs["stage"] = args.Stage
 		inputs["title"] = args.Title
 	}
+	inputs["deleted"] = nil
 	s, err := ctx.RegisterResource("gcp:organizations/iAMCustomRole:IAMCustomRole", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -153,8 +152,6 @@ type IAMCustomRoleState struct {
 
 // The set of arguments for constructing a IAMCustomRole resource.
 type IAMCustomRoleArgs struct {
-	// The current deleted state of the role. Defaults to `false`.
-	Deleted interface{}
 	// A human-readable description for the role.
 	Description interface{}
 	// The numeric ID of the organization in which you want to create a custom role.

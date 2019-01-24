@@ -40,6 +40,7 @@ import (
 func LookupIAMPolicy(ctx *pulumi.Context, args *GetIAMPolicyArgs) (*GetIAMPolicyResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["auditConfigs"] = args.AuditConfigs
 		inputs["bindings"] = args.Bindings
 	}
 	outputs, err := ctx.Invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", inputs)
@@ -54,6 +55,7 @@ func LookupIAMPolicy(ctx *pulumi.Context, args *GetIAMPolicyArgs) (*GetIAMPolicy
 
 // A collection of arguments for invoking getIAMPolicy.
 type GetIAMPolicyArgs struct {
+	AuditConfigs interface{}
 	// A nested configuration block (described below)
 	// defining a binding to be included in the policy document. Multiple
 	// `binding` arguments are supported.

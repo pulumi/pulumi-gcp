@@ -25,28 +25,33 @@ class Trigger(pulumi.CustomResource):
     or resolved from the specified branch or tag.
     * `$SHORT_SHA`: first 7 characters of `$REVISION_ID` or `$COMMIT_SHA`.
     """
+    create_time: pulumi.Output[str]
     description: pulumi.Output[str]
     """
     A brief description of this resource.
     """
+    disabled: pulumi.Output[str]
     filename: pulumi.Output[str]
     """
     Specify the path to a Cloud Build configuration file
     in the Git repo. This is mutually exclusive with `build`. This is typically
     `cloudbuild.yaml` however it can be specified by the user.
     """
+    ignored_files: pulumi.Output[list]
+    included_files: pulumi.Output[list]
     project: pulumi.Output[str]
     """
     The ID of the project that the trigger will be created in.
     Defaults to the provider project configuration.
     """
     substitutions: pulumi.Output[dict]
+    trigger_id: pulumi.Output[str]
     trigger_template: pulumi.Output[dict]
     """
     Location of the source in a Google
     Cloud Source Repository. Structure is documented below.
     """
-    def __init__(__self__, __name__, __opts__=None, build=None, description=None, filename=None, project=None, substitutions=None, trigger_template=None):
+    def __init__(__self__, __name__, __opts__=None, build=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None):
         """
         Creates a new build trigger within GCR. For more information, see
         [the official documentation](https://cloud.google.com/container-builder/docs/running-builds/automate-builds)
@@ -71,9 +76,12 @@ class Trigger(pulumi.CustomResource):
                or resolved from the specified branch or tag.
                * `$SHORT_SHA`: first 7 characters of `$REVISION_ID` or `$COMMIT_SHA`.
         :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[str] disabled
         :param pulumi.Input[str] filename: Specify the path to a Cloud Build configuration file
                in the Git repo. This is mutually exclusive with `build`. This is typically
                `cloudbuild.yaml` however it can be specified by the user.
+        :param pulumi.Input[list] ignored_files
+        :param pulumi.Input[list] included_files
         :param pulumi.Input[str] project: The ID of the project that the trigger will be created in.
                Defaults to the provider project configuration.
         :param pulumi.Input[dict] substitutions
@@ -93,13 +101,22 @@ class Trigger(pulumi.CustomResource):
 
         __props__['description'] = description
 
+        __props__['disabled'] = disabled
+
         __props__['filename'] = filename
+
+        __props__['ignored_files'] = ignored_files
+
+        __props__['included_files'] = included_files
 
         __props__['project'] = project
 
         __props__['substitutions'] = substitutions
 
         __props__['trigger_template'] = trigger_template
+
+        __props__['create_time'] = None
+        __props__['trigger_id'] = None
 
         super(Trigger, __self__).__init__(
             'gcp:cloudbuild/trigger:Trigger',

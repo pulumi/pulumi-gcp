@@ -22,9 +22,11 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
+            inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["credentials"] = (args ? args.credentials : undefined) || utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
             inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         super("gcp", name, inputs, opts);
@@ -35,8 +37,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    readonly accessToken?: pulumi.Input<string>;
     readonly credentials?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly zone?: pulumi.Input<string>;
 }

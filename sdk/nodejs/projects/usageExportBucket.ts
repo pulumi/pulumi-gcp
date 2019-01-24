@@ -68,9 +68,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const google_project_my_app_engine_app = new gcp.organizations.Project("my-app-engine-app", {
- *     appEngine: {
+ *     appEngines: [{
  *         locationId: "us-central",
- *     },
+ *     }],
  *     name: "App Engine Project",
  *     orgId: "1234567",
  *     projectId: "app-engine-project",

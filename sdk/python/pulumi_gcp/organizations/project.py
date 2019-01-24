@@ -8,11 +8,6 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Project(pulumi.CustomResource):
-    app_engine: pulumi.Output[dict]
-    """
-    A block of configuration to enable an App Engine app. Setting this
-    field will enabled the App Engine Admin API, which is required to manage the app.
-    """
     auto_create_network: pulumi.Output[bool]
     """
     Create the 'default' network automatically.  Default true.
@@ -67,7 +62,7 @@ class Project(pulumi.CustomResource):
     If true, the Terraform resource can be deleted
     without deleting the Project via the Google API.
     """
-    def __init__(__self__, __name__, __opts__=None, app_engine=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, org_id=None, project_id=None, skip_delete=None):
+    def __init__(__self__, __name__, __opts__=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, org_id=None, project_id=None, skip_delete=None):
         """
         Allows creation and management of a Google Cloud Platform project.
         
@@ -100,8 +95,6 @@ class Project(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[dict] app_engine: A block of configuration to enable an App Engine app. Setting this
-               field will enabled the App Engine Admin API, which is required to manage the app.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default true.
                Note: this might be more accurately described as "Delete Default Network", since the network
                is created automatically then deleted before project creation returns, but we choose this
@@ -137,8 +130,6 @@ class Project(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
-
-        __props__['app_engine'] = app_engine
 
         __props__['auto_create_network'] = auto_create_network
 

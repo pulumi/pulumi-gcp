@@ -21,6 +21,7 @@ class Dataset(pulumi.CustomResource):
     """
     The ID of the dataset containing this table.
     """
+    default_partition_expiration_ms: pulumi.Output[int]
     default_table_expiration_ms: pulumi.Output[int]
     """
     The default lifetime of all
@@ -62,7 +63,7 @@ class Dataset(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, __name__, __opts__=None, accesses=None, dataset_id=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, accesses=None, dataset_id=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None):
         """
         Creates a dataset resource for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -75,6 +76,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[list] accesses: An array of objects that define dataset access for
                one or more entities. Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[int] default_partition_expiration_ms
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all
                tables in the dataset, in milliseconds. The minimum value is 3600000
                milliseconds (one hour).
@@ -100,6 +102,8 @@ class Dataset(pulumi.CustomResource):
         if not dataset_id:
             raise TypeError('Missing required property dataset_id')
         __props__['dataset_id'] = dataset_id
+
+        __props__['default_partition_expiration_ms'] = default_partition_expiration_ms
 
         __props__['default_table_expiration_ms'] = default_table_expiration_ms
 

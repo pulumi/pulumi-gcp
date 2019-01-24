@@ -8,6 +8,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class URLMap(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
     default_service: pulumi.Output[str]
     """
     The backend service or backend bucket to use when none of the given rules match.
@@ -24,7 +25,7 @@ class URLMap(pulumi.CustomResource):
     """
     A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
     """
-    map_id: pulumi.Output[str]
+    map_id: pulumi.Output[int]
     """
     The GCE assigned ID of the resource.
     """
@@ -96,6 +97,7 @@ class URLMap(pulumi.CustomResource):
 
         __props__['tests'] = tests
 
+        __props__['creation_timestamp'] = None
         __props__['fingerprint'] = None
         __props__['map_id'] = None
         __props__['self_link'] = None

@@ -23,12 +23,10 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil {
 		inputs["accountId"] = nil
 		inputs["displayName"] = nil
-		inputs["policyData"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["accountId"] = args.AccountId
 		inputs["displayName"] = args.DisplayName
-		inputs["policyData"] = args.PolicyData
 		inputs["project"] = args.Project
 	}
 	inputs["email"] = nil
@@ -51,7 +49,6 @@ func GetAccount(ctx *pulumi.Context,
 		inputs["displayName"] = state.DisplayName
 		inputs["email"] = state.Email
 		inputs["name"] = state.Name
-		inputs["policyData"] = state.PolicyData
 		inputs["project"] = state.Project
 		inputs["uniqueId"] = state.UniqueId
 	}
@@ -96,13 +93,6 @@ func (r *Account) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The `google_iam_policy` data source that represents
-// the IAM policy that will be applied to the service account. The policy will be
-// merged with any existing policy.
-func (r *Account) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
-}
-
 // The ID of the project that the service account will be created in.
 // Defaults to the provider project configuration.
 func (r *Account) Project() *pulumi.StringOutput {
@@ -128,10 +118,6 @@ type AccountState struct {
 	Email interface{}
 	// The fully-qualified name of the service account.
 	Name interface{}
-	// The `google_iam_policy` data source that represents
-	// the IAM policy that will be applied to the service account. The policy will be
-	// merged with any existing policy.
-	PolicyData interface{}
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}
@@ -147,10 +133,6 @@ type AccountArgs struct {
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName interface{}
-	// The `google_iam_policy` data source that represents
-	// the IAM policy that will be applied to the service account. The policy will be
-	// merged with any existing policy.
-	PolicyData interface{}
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}

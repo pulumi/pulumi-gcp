@@ -34,14 +34,12 @@ func NewAlertPolicy(ctx *pulumi.Context,
 	if args == nil || args.DisplayName == nil {
 		return nil, errors.New("missing required argument 'DisplayName'")
 	}
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["combiner"] = nil
 		inputs["conditions"] = nil
 		inputs["displayName"] = nil
+		inputs["documentation"] = nil
 		inputs["enabled"] = nil
 		inputs["labels"] = nil
 		inputs["notificationChannels"] = nil
@@ -50,6 +48,7 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		inputs["combiner"] = args.Combiner
 		inputs["conditions"] = args.Conditions
 		inputs["displayName"] = args.DisplayName
+		inputs["documentation"] = args.Documentation
 		inputs["enabled"] = args.Enabled
 		inputs["labels"] = args.Labels
 		inputs["notificationChannels"] = args.NotificationChannels
@@ -74,6 +73,7 @@ func GetAlertPolicy(ctx *pulumi.Context,
 		inputs["conditions"] = state.Conditions
 		inputs["creationRecord"] = state.CreationRecord
 		inputs["displayName"] = state.DisplayName
+		inputs["documentation"] = state.Documentation
 		inputs["enabled"] = state.Enabled
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
@@ -113,6 +113,10 @@ func (r *AlertPolicy) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
+func (r *AlertPolicy) Documentation() *pulumi.Output {
+	return r.s.State["documentation"]
+}
+
 func (r *AlertPolicy) Enabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enabled"])
 }
@@ -139,6 +143,7 @@ type AlertPolicyState struct {
 	Conditions interface{}
 	CreationRecord interface{}
 	DisplayName interface{}
+	Documentation interface{}
 	Enabled interface{}
 	Labels interface{}
 	Name interface{}
@@ -151,6 +156,7 @@ type AlertPolicyArgs struct {
 	Combiner interface{}
 	Conditions interface{}
 	DisplayName interface{}
+	Documentation interface{}
 	Enabled interface{}
 	Labels interface{}
 	NotificationChannels interface{}

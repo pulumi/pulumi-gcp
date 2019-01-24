@@ -8,14 +8,13 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Image(pulumi.CustomResource):
-    create_timeout: pulumi.Output[int]
-    """
-    Configurable timeout in minutes for creating images. Default is 4 minutes.
-    """
+    archive_size_bytes: pulumi.Output[int]
+    creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     """
     The description of the image to be created
     """
+    disk_size_gb: pulumi.Output[int]
     family: pulumi.Output[str]
     """
     The name of the image family to which this image belongs.
@@ -58,7 +57,7 @@ class Image(pulumi.CustomResource):
     The URL of a disk that will be used as the source of the
     image. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, __name__, __opts__=None, create_timeout=None, description=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, disk_size_gb=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None):
         """
         Creates a bootable VM image resource for Google Compute Engine from an existing
         tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
@@ -68,8 +67,8 @@ class Image(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[int] create_timeout: Configurable timeout in minutes for creating images. Default is 4 minutes.
         :param pulumi.Input[str] description: The description of the image to be created
+        :param pulumi.Input[int] disk_size_gb
         :param pulumi.Input[str] family: The name of the image family to which this image belongs.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the image.
         :param pulumi.Input[list] licenses: A list of license URIs to apply to this image. Changing this
@@ -93,9 +92,9 @@ class Image(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['create_timeout'] = create_timeout
-
         __props__['description'] = description
+
+        __props__['disk_size_gb'] = disk_size_gb
 
         __props__['family'] = family
 
@@ -111,6 +110,8 @@ class Image(pulumi.CustomResource):
 
         __props__['source_disk'] = source_disk
 
+        __props__['archive_size_bytes'] = None
+        __props__['creation_timestamp'] = None
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None
 

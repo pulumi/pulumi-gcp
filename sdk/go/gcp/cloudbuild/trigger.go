@@ -22,18 +22,26 @@ func NewTrigger(ctx *pulumi.Context,
 	if args == nil {
 		inputs["build"] = nil
 		inputs["description"] = nil
+		inputs["disabled"] = nil
 		inputs["filename"] = nil
+		inputs["ignoredFiles"] = nil
+		inputs["includedFiles"] = nil
 		inputs["project"] = nil
 		inputs["substitutions"] = nil
 		inputs["triggerTemplate"] = nil
 	} else {
 		inputs["build"] = args.Build
 		inputs["description"] = args.Description
+		inputs["disabled"] = args.Disabled
 		inputs["filename"] = args.Filename
+		inputs["ignoredFiles"] = args.IgnoredFiles
+		inputs["includedFiles"] = args.IncludedFiles
 		inputs["project"] = args.Project
 		inputs["substitutions"] = args.Substitutions
 		inputs["triggerTemplate"] = args.TriggerTemplate
 	}
+	inputs["createTime"] = nil
+	inputs["triggerId"] = nil
 	s, err := ctx.RegisterResource("gcp:cloudbuild/trigger:Trigger", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -48,10 +56,15 @@ func GetTrigger(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["build"] = state.Build
+		inputs["createTime"] = state.CreateTime
 		inputs["description"] = state.Description
+		inputs["disabled"] = state.Disabled
 		inputs["filename"] = state.Filename
+		inputs["ignoredFiles"] = state.IgnoredFiles
+		inputs["includedFiles"] = state.IncludedFiles
 		inputs["project"] = state.Project
 		inputs["substitutions"] = state.Substitutions
+		inputs["triggerId"] = state.TriggerId
 		inputs["triggerTemplate"] = state.TriggerTemplate
 	}
 	s, err := ctx.ReadResource("gcp:cloudbuild/trigger:Trigger", name, id, inputs, opts...)
@@ -89,9 +102,17 @@ func (r *Trigger) Build() *pulumi.Output {
 	return r.s.State["build"]
 }
 
+func (r *Trigger) CreateTime() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["createTime"])
+}
+
 // A brief description of this resource.
 func (r *Trigger) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *Trigger) Disabled() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["disabled"])
 }
 
 // Specify the path to a Cloud Build configuration file
@@ -99,6 +120,14 @@ func (r *Trigger) Description() *pulumi.StringOutput {
 // `cloudbuild.yaml` however it can be specified by the user.
 func (r *Trigger) Filename() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filename"])
+}
+
+func (r *Trigger) IgnoredFiles() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["ignoredFiles"])
+}
+
+func (r *Trigger) IncludedFiles() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["includedFiles"])
 }
 
 // The ID of the project that the trigger will be created in.
@@ -109,6 +138,10 @@ func (r *Trigger) Project() *pulumi.StringOutput {
 
 func (r *Trigger) Substitutions() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["substitutions"])
+}
+
+func (r *Trigger) TriggerId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["triggerId"])
 }
 
 // Location of the source in a Google
@@ -134,16 +167,21 @@ type TriggerState struct {
 	// or resolved from the specified branch or tag.
 	// * `$SHORT_SHA`: first 7 characters of `$REVISION_ID` or `$COMMIT_SHA`.
 	Build interface{}
+	CreateTime interface{}
 	// A brief description of this resource.
 	Description interface{}
+	Disabled interface{}
 	// Specify the path to a Cloud Build configuration file
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
+	IgnoredFiles interface{}
+	IncludedFiles interface{}
 	// The ID of the project that the trigger will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}
 	Substitutions interface{}
+	TriggerId interface{}
 	// Location of the source in a Google
 	// Cloud Source Repository. Structure is documented below.
 	TriggerTemplate interface{}
@@ -168,10 +206,13 @@ type TriggerArgs struct {
 	Build interface{}
 	// A brief description of this resource.
 	Description interface{}
+	Disabled interface{}
 	// Specify the path to a Cloud Build configuration file
 	// in the Git repo. This is mutually exclusive with `build`. This is typically
 	// `cloudbuild.yaml` however it can be specified by the user.
 	Filename interface{}
+	IgnoredFiles interface{}
+	IncludedFiles interface{}
 	// The ID of the project that the trigger will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}

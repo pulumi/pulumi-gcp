@@ -11,7 +11,7 @@ class GetInstanceResult(object):
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, create_timeout=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, networks=None, network_interfaces=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, tags=None, tags_fingerprint=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, create_timeout=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, network_interfaces=None, schedulings=None, scratch_disks=None, service_accounts=None, tags=None, tags_fingerprint=None, id=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError('Expected argument allow_stopping_for_update to be a bool')
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -108,12 +108,6 @@ class GetInstanceResult(object):
         """
         The minimum CPU platform specified for the VM instance.
         """
-        if networks and not isinstance(networks, list):
-            raise TypeError('Expected argument networks to be a list')
-        __self__.networks = networks
-        """
-        The name or self_link of the network attached to this interface.
-        """
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError('Expected argument network_interfaces to be a list')
         __self__.network_interfaces = network_interfaces
@@ -131,12 +125,6 @@ class GetInstanceResult(object):
         __self__.scratch_disks = scratch_disks
         """
         The scratch disks attached to the instance. Structure is documented below.
-        """
-        if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
-        __self__.self_link = self_link
-        """
-        The URI of the created resource.
         """
         if service_accounts and not isinstance(service_accounts, list):
             raise TypeError('Expected argument service_accounts to be a list')
@@ -163,7 +151,7 @@ class GetInstanceResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_instance(name=None, project=None, zone=None):
+async def get_instance(name=None, project=None, self_link=None, zone=None):
     """
     Get information about a VM instance resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -175,6 +163,7 @@ async def get_instance(name=None, project=None, zone=None):
 
     __args__['name'] = name
     __args__['project'] = project
+    __args__['selfLink'] = self_link
     __args__['zone'] = zone
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__)
 
@@ -197,11 +186,9 @@ async def get_instance(name=None, project=None, zone=None):
         metadata_fingerprint=__ret__.get('metadataFingerprint'),
         metadata_startup_script=__ret__.get('metadataStartupScript'),
         min_cpu_platform=__ret__.get('minCpuPlatform'),
-        networks=__ret__.get('networks'),
         network_interfaces=__ret__.get('networkInterfaces'),
         schedulings=__ret__.get('schedulings'),
         scratch_disks=__ret__.get('scratchDisks'),
-        self_link=__ret__.get('selfLink'),
         service_accounts=__ret__.get('serviceAccounts'),
         tags=__ret__.get('tags'),
         tags_fingerprint=__ret__.get('tagsFingerprint'),

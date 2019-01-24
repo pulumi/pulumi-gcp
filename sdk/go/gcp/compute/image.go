@@ -20,8 +20,8 @@ func NewImage(ctx *pulumi.Context,
 	name string, args *ImageArgs, opts ...pulumi.ResourceOpt) (*Image, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["createTimeout"] = nil
 		inputs["description"] = nil
+		inputs["diskSizeGb"] = nil
 		inputs["family"] = nil
 		inputs["labels"] = nil
 		inputs["licenses"] = nil
@@ -30,8 +30,8 @@ func NewImage(ctx *pulumi.Context,
 		inputs["rawDisk"] = nil
 		inputs["sourceDisk"] = nil
 	} else {
-		inputs["createTimeout"] = args.CreateTimeout
 		inputs["description"] = args.Description
+		inputs["diskSizeGb"] = args.DiskSizeGb
 		inputs["family"] = args.Family
 		inputs["labels"] = args.Labels
 		inputs["licenses"] = args.Licenses
@@ -40,6 +40,8 @@ func NewImage(ctx *pulumi.Context,
 		inputs["rawDisk"] = args.RawDisk
 		inputs["sourceDisk"] = args.SourceDisk
 	}
+	inputs["archiveSizeBytes"] = nil
+	inputs["creationTimestamp"] = nil
 	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/image:Image", name, true, inputs, opts...)
@@ -55,8 +57,10 @@ func GetImage(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ImageState, opts ...pulumi.ResourceOpt) (*Image, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["createTimeout"] = state.CreateTimeout
+		inputs["archiveSizeBytes"] = state.ArchiveSizeBytes
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
+		inputs["diskSizeGb"] = state.DiskSizeGb
 		inputs["family"] = state.Family
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
@@ -84,14 +88,21 @@ func (r *Image) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Configurable timeout in minutes for creating images. Default is 4 minutes.
-func (r *Image) CreateTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["createTimeout"])
+func (r *Image) ArchiveSizeBytes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["archiveSizeBytes"])
+}
+
+func (r *Image) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // The description of the image to be created
 func (r *Image) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *Image) DiskSizeGb() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["diskSizeGb"])
 }
 
 // The name of the image family to which this image belongs.
@@ -147,10 +158,11 @@ func (r *Image) SourceDisk() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Image resources.
 type ImageState struct {
-	// Configurable timeout in minutes for creating images. Default is 4 minutes.
-	CreateTimeout interface{}
+	ArchiveSizeBytes interface{}
+	CreationTimestamp interface{}
 	// The description of the image to be created
 	Description interface{}
+	DiskSizeGb interface{}
 	// The name of the image family to which this image belongs.
 	Family interface{}
 	// The fingerprint of the assigned labels.
@@ -179,10 +191,9 @@ type ImageState struct {
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// Configurable timeout in minutes for creating images. Default is 4 minutes.
-	CreateTimeout interface{}
 	// The description of the image to be created
 	Description interface{}
+	DiskSizeGb interface{}
 	// The name of the image family to which this image belongs.
 	Family interface{}
 	// A set of key/value label pairs to assign to the image.

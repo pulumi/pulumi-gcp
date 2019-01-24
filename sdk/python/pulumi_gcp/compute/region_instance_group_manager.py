@@ -43,10 +43,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     """
     The full URL of the instance group created by the manager.
     """
-    instance_template: pulumi.Output[str]
-    """
-    - The full URL to an instance template from which all new instances of this version will be created.
-    """
     name: pulumi.Output[str]
     """
     - Version name.
@@ -65,12 +61,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     """
     The region where the managed instance group resides.
     """
-    rolling_update_policy: pulumi.Output[dict]
-    """
-    The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-    """
     self_link: pulumi.Output[str]
     """
     The URL of the created resource.
@@ -85,16 +75,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     """
     - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
     """
-    update_strategy: pulumi.Output[str]
-    """
-    If the `instance_template`
-    resource is modified, a value of `"NONE"` will prevent any of the managed
-    instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-    is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-    `rolling_update_policy` block to be set. This field is deprecated as in
-    `2.0.0` it has no functionality anymore. It will be removed then. This field
-    is only present in the `google` provider.
-    """
+    update_policy: pulumi.Output[dict]
     versions: pulumi.Output[list]
     """
     Application versions managed by this instance group. Each
@@ -112,7 +93,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     returning. Note that if this is set to true and the operation does not succeed, Terraform will
     continue trying until it times out.
     """
-    def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, instance_template=None, name=None, named_ports=None, project=None, region=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, versions=None, wait_for_instances=None):
+    def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, name=None, named_ports=None, project=None, region=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
@@ -139,27 +120,17 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
                - - -
-        :param pulumi.Input[str] instance_template: - The full URL to an instance template from which all new instances of this version will be created.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides.
-        :param pulumi.Input[dict] rolling_update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
         :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-        :param pulumi.Input[str] update_strategy: If the `instance_template`
-               resource is modified, a value of `"NONE"` will prevent any of the managed
-               instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-               is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-               `rolling_update_policy` block to be set. This field is deprecated as in
-               `2.0.0` it has no functionality anymore. It will be removed then. This field
-               is only present in the `google` provider.
+        :param pulumi.Input[dict] update_policy
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Conflicts with `instance_template`. Structure is documented below. Beware that
@@ -191,8 +162,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         __props__['distribution_policy_zones'] = distribution_policy_zones
 
-        __props__['instance_template'] = instance_template
-
         __props__['name'] = name
 
         __props__['named_ports'] = named_ports
@@ -203,14 +172,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             raise TypeError('Missing required property region')
         __props__['region'] = region
 
-        __props__['rolling_update_policy'] = rolling_update_policy
-
         __props__['target_pools'] = target_pools
 
         __props__['target_size'] = target_size
 
-        __props__['update_strategy'] = update_strategy
+        __props__['update_policy'] = update_policy
 
+        if not versions:
+            raise TypeError('Missing required property versions')
         __props__['versions'] = versions
 
         __props__['wait_for_instances'] = wait_for_instances

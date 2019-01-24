@@ -33,6 +33,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		Runtime: outputs["runtime"],
 		SourceArchiveBucket: outputs["sourceArchiveBucket"],
 		SourceArchiveObject: outputs["sourceArchiveObject"],
+		SourceRepositories: outputs["sourceRepositories"],
 		Timeout: outputs["timeout"],
 		TriggerBucket: outputs["triggerBucket"],
 		TriggerHttp: outputs["triggerHttp"],
@@ -75,6 +76,7 @@ type GetFunctionResult struct {
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
+	SourceRepositories interface{}
 	// Function execution timeout (in seconds).
 	Timeout interface{}
 	// If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.

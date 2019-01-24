@@ -90,6 +90,7 @@ export interface GetFunctionResult {
      * The source archive object (file) in archive bucket.
      */
     readonly sourceArchiveObject: string;
+    readonly sourceRepositories: { deployedUrl: string, url: string }[];
     /**
      * Function execution timeout (in seconds).
      */

@@ -27,21 +27,22 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 	if args == nil || args.Region == nil {
 		return nil, errors.New("missing required argument 'Region'")
 	}
+	if args == nil || args.Versions == nil {
+		return nil, errors.New("missing required argument 'Versions'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["autoHealingPolicies"] = nil
 		inputs["baseInstanceName"] = nil
 		inputs["description"] = nil
 		inputs["distributionPolicyZones"] = nil
-		inputs["instanceTemplate"] = nil
 		inputs["name"] = nil
 		inputs["namedPorts"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
-		inputs["rollingUpdatePolicy"] = nil
 		inputs["targetPools"] = nil
 		inputs["targetSize"] = nil
-		inputs["updateStrategy"] = nil
+		inputs["updatePolicy"] = nil
 		inputs["versions"] = nil
 		inputs["waitForInstances"] = nil
 	} else {
@@ -49,15 +50,13 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 		inputs["baseInstanceName"] = args.BaseInstanceName
 		inputs["description"] = args.Description
 		inputs["distributionPolicyZones"] = args.DistributionPolicyZones
-		inputs["instanceTemplate"] = args.InstanceTemplate
 		inputs["name"] = args.Name
 		inputs["namedPorts"] = args.NamedPorts
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
-		inputs["rollingUpdatePolicy"] = args.RollingUpdatePolicy
 		inputs["targetPools"] = args.TargetPools
 		inputs["targetSize"] = args.TargetSize
-		inputs["updateStrategy"] = args.UpdateStrategy
+		inputs["updatePolicy"] = args.UpdatePolicy
 		inputs["versions"] = args.Versions
 		inputs["waitForInstances"] = args.WaitForInstances
 	}
@@ -83,16 +82,14 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 		inputs["distributionPolicyZones"] = state.DistributionPolicyZones
 		inputs["fingerprint"] = state.Fingerprint
 		inputs["instanceGroup"] = state.InstanceGroup
-		inputs["instanceTemplate"] = state.InstanceTemplate
 		inputs["name"] = state.Name
 		inputs["namedPorts"] = state.NamedPorts
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
-		inputs["rollingUpdatePolicy"] = state.RollingUpdatePolicy
 		inputs["selfLink"] = state.SelfLink
 		inputs["targetPools"] = state.TargetPools
 		inputs["targetSize"] = state.TargetSize
-		inputs["updateStrategy"] = state.UpdateStrategy
+		inputs["updatePolicy"] = state.UpdatePolicy
 		inputs["versions"] = state.Versions
 		inputs["waitForInstances"] = state.WaitForInstances
 	}
@@ -154,11 +151,6 @@ func (r *RegionInstanceGroupManager) InstanceGroup() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceGroup"])
 }
 
-// - The full URL to an instance template from which all new instances of this version will be created.
-func (r *RegionInstanceGroupManager) InstanceTemplate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceTemplate"])
-}
-
 // - Version name.
 func (r *RegionInstanceGroupManager) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
@@ -181,13 +173,6 @@ func (r *RegionInstanceGroupManager) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-func (r *RegionInstanceGroupManager) RollingUpdatePolicy() *pulumi.Output {
-	return r.s.State["rollingUpdatePolicy"]
-}
-
 // The URL of the created resource.
 func (r *RegionInstanceGroupManager) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
@@ -205,15 +190,8 @@ func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["targetSize"])
 }
 
-// If the `instance_template`
-// resource is modified, a value of `"NONE"` will prevent any of the managed
-// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-// `rolling_update_policy` block to be set. This field is deprecated as in
-// `2.0.0` it has no functionality anymore. It will be removed then. This field
-// is only present in the `google` provider.
-func (r *RegionInstanceGroupManager) UpdateStrategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateStrategy"])
+func (r *RegionInstanceGroupManager) UpdatePolicy() *pulumi.Output {
+	return r.s.State["updatePolicy"]
 }
 
 // Application versions managed by this instance group. Each
@@ -260,8 +238,6 @@ type RegionInstanceGroupManagerState struct {
 	Fingerprint interface{}
 	// The full URL of the instance group created by the manager.
 	InstanceGroup interface{}
-	// - The full URL to an instance template from which all new instances of this version will be created.
-	InstanceTemplate interface{}
 	// - Version name.
 	Name interface{}
 	// The named port configuration. See the section below
@@ -272,10 +248,6 @@ type RegionInstanceGroupManagerState struct {
 	Project interface{}
 	// The region where the managed instance group resides.
 	Region interface{}
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	RollingUpdatePolicy interface{}
 	// The URL of the created resource.
 	SelfLink interface{}
 	// The full URL of all target pools to which new
@@ -284,14 +256,7 @@ type RegionInstanceGroupManagerState struct {
 	TargetPools interface{}
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize interface{}
-	// If the `instance_template`
-	// resource is modified, a value of `"NONE"` will prevent any of the managed
-	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set. This field is deprecated as in
-	// `2.0.0` it has no functionality anymore. It will be removed then. This field
-	// is only present in the `google` provider.
-	UpdateStrategy interface{}
+	UpdatePolicy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Conflicts with `instance_template`. Structure is documented below. Beware that
@@ -328,8 +293,6 @@ type RegionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones interface{}
-	// - The full URL to an instance template from which all new instances of this version will be created.
-	InstanceTemplate interface{}
 	// - Version name.
 	Name interface{}
 	// The named port configuration. See the section below
@@ -340,24 +303,13 @@ type RegionInstanceGroupManagerArgs struct {
 	Project interface{}
 	// The region where the managed instance group resides.
 	Region interface{}
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	RollingUpdatePolicy interface{}
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools interface{}
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize interface{}
-	// If the `instance_template`
-	// resource is modified, a value of `"NONE"` will prevent any of the managed
-	// instances from being restarted by Terraform. A value of `"ROLLING_UPDATE"`
-	// is supported as a beta feature. A value of `"ROLLING_UPDATE"` requires
-	// `rolling_update_policy` block to be set. This field is deprecated as in
-	// `2.0.0` it has no functionality anymore. It will be removed then. This field
-	// is only present in the `google` provider.
-	UpdateStrategy interface{}
+	UpdatePolicy interface{}
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Conflicts with `instance_template`. Structure is documented below. Beware that

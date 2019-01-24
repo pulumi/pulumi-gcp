@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
- * This will result in a Cloud SQL user being created with password `my-secret-password`.
- * 
  */
 export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult> {
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {

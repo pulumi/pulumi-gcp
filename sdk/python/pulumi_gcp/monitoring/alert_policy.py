@@ -12,12 +12,13 @@ class AlertPolicy(pulumi.CustomResource):
     conditions: pulumi.Output[list]
     creation_record: pulumi.Output[dict]
     display_name: pulumi.Output[str]
+    documentation: pulumi.Output[dict]
     enabled: pulumi.Output[bool]
     labels: pulumi.Output[list]
     name: pulumi.Output[str]
     notification_channels: pulumi.Output[list]
     project: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, combiner=None, conditions=None, display_name=None, enabled=None, labels=None, notification_channels=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None):
         """
         A description of the conditions under which some aspect of your system is
         considered to be "unhealthy" and the ways to notify people or services
@@ -36,6 +37,7 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] combiner
         :param pulumi.Input[list] conditions
         :param pulumi.Input[str] display_name
+        :param pulumi.Input[dict] documentation
         :param pulumi.Input[bool] enabled
         :param pulumi.Input[list] labels
         :param pulumi.Input[list] notification_channels
@@ -62,8 +64,8 @@ class AlertPolicy(pulumi.CustomResource):
             raise TypeError('Missing required property display_name')
         __props__['display_name'] = display_name
 
-        if not enabled:
-            raise TypeError('Missing required property enabled')
+        __props__['documentation'] = documentation
+
         __props__['enabled'] = enabled
 
         __props__['labels'] = labels

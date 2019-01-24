@@ -11,7 +11,7 @@ class GetClusterResult(object):
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
@@ -24,6 +24,9 @@ class GetClusterResult(object):
         if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, str):
             raise TypeError('Expected argument cluster_ipv4_cidr to be a str')
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
+        if default_max_pods_per_node and not isinstance(default_max_pods_per_node, int):
+            raise TypeError('Expected argument default_max_pods_per_node to be a int')
+        __self__.default_max_pods_per_node = default_max_pods_per_node
         if description and not isinstance(description, str):
             raise TypeError('Expected argument description to be a str')
         __self__.description = description
@@ -108,6 +111,9 @@ class GetClusterResult(object):
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError('Expected argument subnetwork to be a str')
         __self__.subnetwork = subnetwork
+        if tpu_ipv4_cidr_block and not isinstance(tpu_ipv4_cidr_block, str):
+            raise TypeError('Expected argument tpu_ipv4_cidr_block to be a str')
+        __self__.tpu_ipv4_cidr_block = tpu_ipv4_cidr_block
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -132,6 +138,7 @@ async def get_cluster(name=None, project=None, region=None, zone=None):
         addons_configs=__ret__.get('addonsConfigs'),
         cluster_autoscalings=__ret__.get('clusterAutoscalings'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
+        default_max_pods_per_node=__ret__.get('defaultMaxPodsPerNode'),
         description=__ret__.get('description'),
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
         enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
@@ -160,4 +167,5 @@ async def get_cluster(name=None, project=None, region=None, zone=None):
         remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
         resource_labels=__ret__.get('resourceLabels'),
         subnetwork=__ret__.get('subnetwork'),
+        tpu_ipv4_cidr_block=__ret__.get('tpuIpv4CidrBlock'),
         id=__ret__.get('id'))

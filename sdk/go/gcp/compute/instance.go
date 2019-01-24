@@ -35,7 +35,6 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["attachedDisks"] = nil
 		inputs["bootDisk"] = nil
 		inputs["canIpForward"] = nil
-		inputs["createTimeout"] = nil
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
 		inputs["guestAccelerators"] = nil
@@ -57,7 +56,6 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["attachedDisks"] = args.AttachedDisks
 		inputs["bootDisk"] = args.BootDisk
 		inputs["canIpForward"] = args.CanIpForward
-		inputs["createTimeout"] = args.CreateTimeout
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
 		inputs["guestAccelerators"] = args.GuestAccelerators
@@ -99,7 +97,6 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["bootDisk"] = state.BootDisk
 		inputs["canIpForward"] = state.CanIpForward
 		inputs["cpuPlatform"] = state.CpuPlatform
-		inputs["createTimeout"] = state.CreateTimeout
 		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
 		inputs["guestAccelerators"] = state.GuestAccelerators
@@ -166,12 +163,6 @@ func (r *Instance) CanIpForward() *pulumi.BoolOutput {
 // The CPU platform used by this instance.
 func (r *Instance) CpuPlatform() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cpuPlatform"])
-}
-
-// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-// Changing this forces a new resource to be created.
-func (r *Instance) CreateTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["createTimeout"])
 }
 
 // Enable deletion protection on this instance. Defaults to false.
@@ -311,9 +302,6 @@ type InstanceState struct {
 	CanIpForward interface{}
 	// The CPU platform used by this instance.
 	CpuPlatform interface{}
-	// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-	// Changing this forces a new resource to be created.
-	CreateTimeout interface{}
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection interface{}
@@ -388,9 +376,6 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward interface{}
-	// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-	// Changing this forces a new resource to be created.
-	CreateTimeout interface{}
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection interface{}

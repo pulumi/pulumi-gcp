@@ -11,7 +11,10 @@ class GetBackendServiceResult(object):
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+        if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
+            raise TypeError('Expected argument affinity_cookie_ttl_sec to be a int')
+        __self__.affinity_cookie_ttl_sec = affinity_cookie_ttl_sec
         if backends and not isinstance(backends, list):
             raise TypeError('Expected argument backends to be a list')
         __self__.backends = backends
@@ -113,6 +116,7 @@ async def get_backend_service(name=None, project=None):
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__)
 
     return GetBackendServiceResult(
+        affinity_cookie_ttl_sec=__ret__.get('affinityCookieTtlSec'),
         backends=__ret__.get('backends'),
         cdn_policies=__ret__.get('cdnPolicies'),
         connection_draining_timeout_sec=__ret__.get('connectionDrainingTimeoutSec'),

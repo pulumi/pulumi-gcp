@@ -8,6 +8,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
+    all_ports: pulumi.Output[bool]
     backend_service: pulumi.Output[str]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
@@ -36,7 +37,7 @@ class ForwardingRule(pulumi.CustomResource):
     service_name: pulumi.Output[str]
     subnetwork: pulumi.Output[str]
     target: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
+    def __init__(__self__, __name__, __opts__=None, all_ports=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
         """
         A ForwardingRule resource. A ForwardingRule resource specifies which pool
         of target virtual machines to forward a packet to if it matches the given
@@ -57,6 +58,7 @@ class ForwardingRule(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[bool] all_ports
         :param pulumi.Input[str] backend_service
         :param pulumi.Input[str] description
         :param pulumi.Input[str] ip_address
@@ -84,6 +86,8 @@ class ForwardingRule(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['all_ports'] = all_ports
 
         __props__['backend_service'] = backend_service
 

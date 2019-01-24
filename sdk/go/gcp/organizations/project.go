@@ -47,7 +47,6 @@ func NewProject(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["appEngine"] = nil
 		inputs["autoCreateNetwork"] = nil
 		inputs["billingAccount"] = nil
 		inputs["folderId"] = nil
@@ -57,7 +56,6 @@ func NewProject(ctx *pulumi.Context,
 		inputs["projectId"] = nil
 		inputs["skipDelete"] = nil
 	} else {
-		inputs["appEngine"] = args.AppEngine
 		inputs["autoCreateNetwork"] = args.AutoCreateNetwork
 		inputs["billingAccount"] = args.BillingAccount
 		inputs["folderId"] = args.FolderId
@@ -81,7 +79,6 @@ func GetProject(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ProjectState, opts ...pulumi.ResourceOpt) (*Project, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["appEngine"] = state.AppEngine
 		inputs["autoCreateNetwork"] = state.AutoCreateNetwork
 		inputs["billingAccount"] = state.BillingAccount
 		inputs["folderId"] = state.FolderId
@@ -107,12 +104,6 @@ func (r *Project) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Project) ID() *pulumi.IDOutput {
 	return r.s.ID()
-}
-
-// A block of configuration to enable an App Engine app. Setting this
-// field will enabled the App Engine Admin API, which is required to manage the app.
-func (r *Project) AppEngine() *pulumi.Output {
-	return r.s.State["appEngine"]
 }
 
 // Create the 'default' network automatically.  Default true.
@@ -180,9 +171,6 @@ func (r *Project) SkipDelete() *pulumi.BoolOutput {
 
 // Input properties used for looking up and filtering Project resources.
 type ProjectState struct {
-	// A block of configuration to enable an App Engine app. Setting this
-	// field will enabled the App Engine Admin API, which is required to manage the app.
-	AppEngine interface{}
 	// Create the 'default' network automatically.  Default true.
 	// Note: this might be more accurately described as "Delete Default Network", since the network
 	// is created automatically then deleted before project creation returns, but we choose this
@@ -223,9 +211,6 @@ type ProjectState struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// A block of configuration to enable an App Engine app. Setting this
-	// field will enabled the App Engine Admin API, which is required to manage the app.
-	AppEngine interface{}
 	// Create the 'default' network automatically.  Default true.
 	// Note: this might be more accurately described as "Delete Default Network", since the network
 	// is created automatically then deleted before project creation returns, but we choose this

@@ -45,6 +45,7 @@ export interface GetBackendServiceArgs {
  * A collection of values returned by getBackendService.
  */
 export interface GetBackendServiceResult {
+    readonly affinityCookieTtlSec: number;
     /**
      * The list of backends that serve this Backend Service.
      */

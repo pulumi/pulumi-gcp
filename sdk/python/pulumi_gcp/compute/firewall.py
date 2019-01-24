@@ -29,9 +29,9 @@ class Firewall(pulumi.CustomResource):
     The URI of the created resource.
     """
     source_ranges: pulumi.Output[list]
-    source_service_accounts: pulumi.Output[str]
+    source_service_accounts: pulumi.Output[list]
     source_tags: pulumi.Output[list]
-    target_service_accounts: pulumi.Output[str]
+    target_service_accounts: pulumi.Output[list]
     target_tags: pulumi.Output[list]
     def __init__(__self__, __name__, __opts__=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         """
@@ -76,9 +76,9 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] source_ranges
-        :param pulumi.Input[str] source_service_accounts
+        :param pulumi.Input[list] source_service_accounts
         :param pulumi.Input[list] source_tags
-        :param pulumi.Input[str] target_service_accounts
+        :param pulumi.Input[list] target_service_accounts
         :param pulumi.Input[list] target_tags
         """
         if not __name__:

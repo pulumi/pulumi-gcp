@@ -45,7 +45,7 @@ export class GlobalAddress extends pulumi.CustomResource {
         return new GlobalAddress(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly address: pulumi.Output<string>;
+    public readonly address: pulumi.Output<string>;
     public readonly addressType: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
@@ -93,6 +93,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as GlobalAddressArgs | undefined;
+            inputs["address"] = args ? args.address : undefined;
             inputs["addressType"] = args ? args.addressType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
@@ -102,7 +103,6 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["prefixLength"] = args ? args.prefixLength : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["address"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -141,6 +141,7 @@ export interface GlobalAddressState {
  * The set of arguments for constructing a GlobalAddress resource.
  */
 export interface GlobalAddressArgs {
+    readonly address?: pulumi.Input<string>;
     readonly addressType?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly ipVersion?: pulumi.Input<string>;

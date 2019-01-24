@@ -82,14 +82,10 @@ export class Snapshot extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly snapshotEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string }>;
-    public readonly snapshotEncryptionKeyRaw: pulumi.Output<string | undefined>;
-    public /*out*/ readonly snapshotEncryptionKeySha256: pulumi.Output<string>;
+    public readonly snapshotEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
     public /*out*/ readonly snapshotId: pulumi.Output<number>;
     public readonly sourceDisk: pulumi.Output<string>;
     public readonly sourceDiskEncryptionKey: pulumi.Output<{ rawKey?: string } | undefined>;
-    public readonly sourceDiskEncryptionKeyRaw: pulumi.Output<string | undefined>;
-    public /*out*/ readonly sourceDiskEncryptionKeySha256: pulumi.Output<string>;
     public /*out*/ readonly sourceDiskLink: pulumi.Output<string>;
     public /*out*/ readonly storageBytes: pulumi.Output<number>;
     public readonly zone: pulumi.Output<string>;
@@ -116,13 +112,9 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
-            inputs["snapshotEncryptionKeyRaw"] = state ? state.snapshotEncryptionKeyRaw : undefined;
-            inputs["snapshotEncryptionKeySha256"] = state ? state.snapshotEncryptionKeySha256 : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
             inputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
-            inputs["sourceDiskEncryptionKeyRaw"] = state ? state.sourceDiskEncryptionKeyRaw : undefined;
-            inputs["sourceDiskEncryptionKeySha256"] = state ? state.sourceDiskEncryptionKeySha256 : undefined;
             inputs["sourceDiskLink"] = state ? state.sourceDiskLink : undefined;
             inputs["storageBytes"] = state ? state.storageBytes : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -136,19 +128,15 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
-            inputs["snapshotEncryptionKeyRaw"] = args ? args.snapshotEncryptionKeyRaw : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             inputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
-            inputs["sourceDiskEncryptionKeyRaw"] = args ? args.sourceDiskEncryptionKeyRaw : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["diskSizeGb"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["licenses"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotEncryptionKeySha256"] = undefined /*out*/;
             inputs["snapshotId"] = undefined /*out*/;
-            inputs["sourceDiskEncryptionKeySha256"] = undefined /*out*/;
             inputs["sourceDiskLink"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
         }
@@ -177,13 +165,9 @@ export interface SnapshotState {
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly snapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
-    readonly snapshotEncryptionKeyRaw?: pulumi.Input<string>;
-    readonly snapshotEncryptionKeySha256?: pulumi.Input<string>;
     readonly snapshotId?: pulumi.Input<number>;
     readonly sourceDisk?: pulumi.Input<string>;
     readonly sourceDiskEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string> }>;
-    readonly sourceDiskEncryptionKeyRaw?: pulumi.Input<string>;
-    readonly sourceDiskEncryptionKeySha256?: pulumi.Input<string>;
     readonly sourceDiskLink?: pulumi.Input<string>;
     readonly storageBytes?: pulumi.Input<number>;
     readonly zone?: pulumi.Input<string>;
@@ -202,9 +186,7 @@ export interface SnapshotArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly snapshotEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
-    readonly snapshotEncryptionKeyRaw?: pulumi.Input<string>;
     readonly sourceDisk: pulumi.Input<string>;
     readonly sourceDiskEncryptionKey?: pulumi.Input<{ rawKey?: pulumi.Input<string> }>;
-    readonly sourceDiskEncryptionKeyRaw?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;
 }

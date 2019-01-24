@@ -27,20 +27,18 @@ func NewIAMPolicy(ctx *pulumi.Context,
 	if args == nil || args.PolicyData == nil {
 		return nil, errors.New("missing required argument 'PolicyData'")
 	}
+	if args == nil || args.Project == nil {
+		return nil, errors.New("missing required argument 'Project'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["authoritative"] = nil
-		inputs["disableProject"] = nil
 		inputs["policyData"] = nil
 		inputs["project"] = nil
 	} else {
-		inputs["authoritative"] = args.Authoritative
-		inputs["disableProject"] = args.DisableProject
 		inputs["policyData"] = args.PolicyData
 		inputs["project"] = args.Project
 	}
 	inputs["etag"] = nil
-	inputs["restorePolicy"] = nil
 	s, err := ctx.RegisterResource("gcp:projects/iAMPolicy:IAMPolicy", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -54,12 +52,9 @@ func GetIAMPolicy(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *IAMPolicyState, opts ...pulumi.ResourceOpt) (*IAMPolicy, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["authoritative"] = state.Authoritative
-		inputs["disableProject"] = state.DisableProject
 		inputs["etag"] = state.Etag
 		inputs["policyData"] = state.PolicyData
 		inputs["project"] = state.Project
-		inputs["restorePolicy"] = state.RestorePolicy
 	}
 	s, err := ctx.ReadResource("gcp:projects/iAMPolicy:IAMPolicy", name, id, inputs, opts...)
 	if err != nil {
@@ -76,28 +71,6 @@ func (r *IAMPolicy) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IAMPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID()
-}
-
-// (Optional, only for `google_project_iam_policy`)
-// A boolean value indicating if this policy
-// should overwrite any existing IAM policy on the project. When set to true,
-// **any policies not in your config file will be removed**. This can **lock
-// you out** of your project until an Organization Administrator grants you
-// access again, so please exercise caution. If this argument is `true` and you
-// want to delete the resource, you must set the `disable_project` argument to
-// `true`, acknowledging that the project will be inaccessible to anyone but the
-// Organization Admins, as it will no longer have an IAM policy. Rather than using
-// this, you should use `google_project_iam_binding` and
-// `google_project_iam_member`.
-func (r *IAMPolicy) Authoritative() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["authoritative"])
-}
-
-// (Optional, only for `google_project_iam_policy`)
-// A boolean value that must be set to `true`
-// if you want to delete a `google_project_iam_policy` that is authoritative.
-func (r *IAMPolicy) DisableProject() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableProject"])
 }
 
 // (Computed) The etag of the project's IAM policy.
@@ -118,31 +91,8 @@ func (r *IAMPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// (DEPRECATED) (Computed, only for `google_project_iam_policy`)
-// The IAM policy that will be restored when a
-// non-authoritative policy resource is deleted.
-func (r *IAMPolicy) RestorePolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["restorePolicy"])
-}
-
 // Input properties used for looking up and filtering IAMPolicy resources.
 type IAMPolicyState struct {
-	// (Optional, only for `google_project_iam_policy`)
-	// A boolean value indicating if this policy
-	// should overwrite any existing IAM policy on the project. When set to true,
-	// **any policies not in your config file will be removed**. This can **lock
-	// you out** of your project until an Organization Administrator grants you
-	// access again, so please exercise caution. If this argument is `true` and you
-	// want to delete the resource, you must set the `disable_project` argument to
-	// `true`, acknowledging that the project will be inaccessible to anyone but the
-	// Organization Admins, as it will no longer have an IAM policy. Rather than using
-	// this, you should use `google_project_iam_binding` and
-	// `google_project_iam_member`.
-	Authoritative interface{}
-	// (Optional, only for `google_project_iam_policy`)
-	// A boolean value that must be set to `true`
-	// if you want to delete a `google_project_iam_policy` that is authoritative.
-	DisableProject interface{}
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
 	// The `google_iam_policy` data source that represents
@@ -152,30 +102,10 @@ type IAMPolicyState struct {
 	// The project ID. If not specified, uses the
 	// ID of the project configured with the provider.
 	Project interface{}
-	// (DEPRECATED) (Computed, only for `google_project_iam_policy`)
-	// The IAM policy that will be restored when a
-	// non-authoritative policy resource is deleted.
-	RestorePolicy interface{}
 }
 
 // The set of arguments for constructing a IAMPolicy resource.
 type IAMPolicyArgs struct {
-	// (Optional, only for `google_project_iam_policy`)
-	// A boolean value indicating if this policy
-	// should overwrite any existing IAM policy on the project. When set to true,
-	// **any policies not in your config file will be removed**. This can **lock
-	// you out** of your project until an Organization Administrator grants you
-	// access again, so please exercise caution. If this argument is `true` and you
-	// want to delete the resource, you must set the `disable_project` argument to
-	// `true`, acknowledging that the project will be inaccessible to anyone but the
-	// Organization Admins, as it will no longer have an IAM policy. Rather than using
-	// this, you should use `google_project_iam_binding` and
-	// `google_project_iam_member`.
-	Authoritative interface{}
-	// (Optional, only for `google_project_iam_policy`)
-	// A boolean value that must be set to `true`
-	// if you want to delete a `google_project_iam_policy` that is authoritative.
-	DisableProject interface{}
 	// The `google_iam_policy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.

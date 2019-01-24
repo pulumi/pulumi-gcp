@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  */
 export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
     return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
+        "auditConfigs": args.auditConfigs,
         "bindings": args.bindings,
     }, opts);
 }
@@ -46,6 +47,7 @@ export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getIAMPolicy.
  */
 export interface GetIAMPolicyArgs {
+    readonly auditConfigs?: { auditLogConfigs: { exemptedMembers?: string[], logType: string }[], service: string }[];
     /**
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple

@@ -25,6 +25,7 @@ func NewBackendService(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["affinityCookieTtlSec"] = nil
 		inputs["backends"] = nil
 		inputs["cdnPolicy"] = nil
 		inputs["connectionDrainingTimeoutSec"] = nil
@@ -41,6 +42,7 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["sessionAffinity"] = nil
 		inputs["timeoutSec"] = nil
 	} else {
+		inputs["affinityCookieTtlSec"] = args.AffinityCookieTtlSec
 		inputs["backends"] = args.Backends
 		inputs["cdnPolicy"] = args.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
@@ -72,6 +74,7 @@ func GetBackendService(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *BackendServiceState, opts ...pulumi.ResourceOpt) (*BackendService, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["affinityCookieTtlSec"] = state.AffinityCookieTtlSec
 		inputs["backends"] = state.Backends
 		inputs["cdnPolicy"] = state.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = state.ConnectionDrainingTimeoutSec
@@ -105,6 +108,10 @@ func (r *BackendService) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *BackendService) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *BackendService) AffinityCookieTtlSec() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["affinityCookieTtlSec"])
 }
 
 // The list of backends that serve this BackendService. Structure is documented below.
@@ -207,6 +214,7 @@ func (r *BackendService) TimeoutSec() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering BackendService resources.
 type BackendServiceState struct {
+	AffinityCookieTtlSec interface{}
 	// The list of backends that serve this BackendService. Structure is documented below.
 	Backends interface{}
 	// Cloud CDN configuration for this BackendService. Structure is documented below.
@@ -258,6 +266,7 @@ type BackendServiceState struct {
 
 // The set of arguments for constructing a BackendService resource.
 type BackendServiceArgs struct {
+	AffinityCookieTtlSec interface{}
 	// The list of backends that serve this BackendService. Structure is documented below.
 	Backends interface{}
 	// Cloud CDN configuration for this BackendService. Structure is documented below.

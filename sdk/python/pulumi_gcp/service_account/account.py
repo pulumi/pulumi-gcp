@@ -28,12 +28,6 @@ class Account(pulumi.CustomResource):
     """
     The fully-qualified name of the service account.
     """
-    policy_data: pulumi.Output[str]
-    """
-    The `google_iam_policy` data source that represents
-    the IAM policy that will be applied to the service account. The policy will be
-    merged with any existing policy.
-    """
     project: pulumi.Output[str]
     """
     The ID of the project that the service account will be created in.
@@ -43,7 +37,7 @@ class Account(pulumi.CustomResource):
     """
     The unique id of the service account.
     """
-    def __init__(__self__, __name__, __opts__=None, account_id=None, display_name=None, policy_data=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, account_id=None, display_name=None, project=None):
         """
         Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
         
@@ -54,9 +48,6 @@ class Account(pulumi.CustomResource):
                Changing this forces a new service account to be created.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
-        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
-               the IAM policy that will be applied to the service account. The policy will be
-               merged with any existing policy.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         """
@@ -74,8 +65,6 @@ class Account(pulumi.CustomResource):
         __props__['account_id'] = account_id
 
         __props__['display_name'] = display_name
-
-        __props__['policy_data'] = policy_data
 
         __props__['project'] = project
 

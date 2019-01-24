@@ -26,7 +26,7 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly region: pulumi.Output<string>;
     public readonly router: pulumi.Output<string>;
     public readonly sourceSubnetworkIpRangesToNat: pulumi.Output<string | undefined>;
-    public readonly subnetworks: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats?: string[] }[] | undefined>;
+    public readonly subnetworks: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats: string[] }[] | undefined>;
     public readonly tcpEstablishedIdleTimeoutSec: pulumi.Output<number | undefined>;
     public readonly tcpTransitoryIdleTimeoutSec: pulumi.Output<number | undefined>;
     public readonly udpIdleTimeoutSec: pulumi.Output<number | undefined>;
@@ -95,7 +95,7 @@ export interface RouterNatState {
     readonly region?: pulumi.Input<string>;
     readonly router?: pulumi.Input<string>;
     readonly sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
-    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     readonly tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
     readonly tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     readonly udpIdleTimeoutSec?: pulumi.Input<number>;
@@ -114,7 +114,7 @@ export interface RouterNatArgs {
     readonly region?: pulumi.Input<string>;
     readonly router: pulumi.Input<string>;
     readonly sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
-    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     readonly tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
     readonly tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     readonly udpIdleTimeoutSec?: pulumi.Input<number>;

@@ -8,6 +8,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class InterconnectAttachment(pulumi.CustomResource):
+    candidate_subnets: pulumi.Output[list]
     cloud_router_ip_address: pulumi.Output[str]
     creation_timestamp: pulumi.Output[str]
     customer_router_ip_address: pulumi.Output[str]
@@ -27,7 +28,8 @@ class InterconnectAttachment(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, __name__, __opts__=None, description=None, interconnect=None, name=None, project=None, region=None, router=None):
+    vlan_tag8021q: pulumi.Output[int]
+    def __init__(__self__, __name__, __opts__=None, candidate_subnets=None, description=None, interconnect=None, name=None, project=None, region=None, router=None, vlan_tag8021q=None):
         """
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
         information, see Creating VLAN Attachments.
@@ -36,6 +38,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] candidate_subnets
         :param pulumi.Input[str] description
         :param pulumi.Input[str] interconnect
         :param pulumi.Input[str] name
@@ -43,6 +46,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region
         :param pulumi.Input[str] router
+        :param pulumi.Input[int] vlan_tag8021q
         """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -52,6 +56,8 @@ class InterconnectAttachment(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['candidate_subnets'] = candidate_subnets
 
         __props__['description'] = description
 
@@ -68,6 +74,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         if not router:
             raise TypeError('Missing required property router')
         __props__['router'] = router
+
+        __props__['vlan_tag8021q'] = vlan_tag8021q
 
         __props__['cloud_router_ip_address'] = None
         __props__['creation_timestamp'] = None

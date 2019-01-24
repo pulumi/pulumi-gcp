@@ -22,6 +22,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         return new InterconnectAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly candidateSubnets: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly cloudRouterIpAddress: pulumi.Output<string>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public /*out*/ readonly customerRouterIpAddress: pulumi.Output<string>;
@@ -41,6 +42,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public readonly vlanTag8021q: pulumi.Output<number | undefined>;
 
     /**
      * Create a InterconnectAttachment resource with the given unique name, arguments, and options.
@@ -54,6 +56,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: InterconnectAttachmentState = argsOrState as InterconnectAttachmentState | undefined;
+            inputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             inputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
@@ -66,6 +69,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["router"] = state ? state.router : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
             if (!args || args.interconnect === undefined) {
@@ -74,12 +78,14 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             if (!args || args.router === undefined) {
                 throw new Error("Missing required property 'router'");
             }
+            inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["router"] = args ? args.router : undefined;
+            inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             inputs["cloudRouterIpAddress"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customerRouterIpAddress"] = undefined /*out*/;
@@ -95,6 +101,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InterconnectAttachment resources.
  */
 export interface InterconnectAttachmentState {
+    readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly cloudRouterIpAddress?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly customerRouterIpAddress?: pulumi.Input<string>;
@@ -114,12 +121,14 @@ export interface InterconnectAttachmentState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly vlanTag8021q?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a InterconnectAttachment resource.
  */
 export interface InterconnectAttachmentArgs {
+    readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly description?: pulumi.Input<string>;
     readonly interconnect: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -130,4 +139,5 @@ export interface InterconnectAttachmentArgs {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly router: pulumi.Input<string>;
+    readonly vlanTag8021q?: pulumi.Input<number>;
 }

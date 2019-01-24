@@ -15,7 +15,6 @@ func LookupAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs) (*GetAccount
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["publicKeyType"] = args.PublicKeyType
-		inputs["serviceAccountId"] = args.ServiceAccountId
 	}
 	outputs, err := ctx.Invoke("gcp:serviceAccount/getAccountKey:getAccountKey", inputs)
 	if err != nil {
@@ -23,7 +22,6 @@ func LookupAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs) (*GetAccount
 	}
 	return &GetAccountKeyResult{
 		KeyAlgorithm: outputs["keyAlgorithm"],
-		Name: outputs["name"],
 		PublicKey: outputs["publicKey"],
 		Id: outputs["id"],
 	}, nil
@@ -40,13 +38,11 @@ type GetAccountKeyArgs struct {
 	Project interface{}
 	// The output format of the public key requested. X509_PEM is the default output format.
 	PublicKeyType interface{}
-	ServiceAccountId interface{}
 }
 
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	KeyAlgorithm interface{}
-	Name interface{}
 	// The public key, base64 encoded
 	PublicKey interface{}
 	// id is the provider-assigned unique ID for this managed resource.

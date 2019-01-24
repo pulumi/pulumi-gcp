@@ -11,7 +11,7 @@ class GetFunctionResult(object):
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError('Expected argument available_memory_mb to be a int')
         __self__.available_memory_mb = available_memory_mb
@@ -72,6 +72,9 @@ class GetFunctionResult(object):
         """
         The source archive object (file) in archive bucket.
         """
+        if source_repositories and not isinstance(source_repositories, list):
+            raise TypeError('Expected argument source_repositories to be a list')
+        __self__.source_repositories = source_repositories
         if timeout and not isinstance(timeout, int):
             raise TypeError('Expected argument timeout to be a int')
         __self__.timeout = timeout
@@ -128,6 +131,7 @@ async def get_function(name=None, project=None, region=None):
         runtime=__ret__.get('runtime'),
         source_archive_bucket=__ret__.get('sourceArchiveBucket'),
         source_archive_object=__ret__.get('sourceArchiveObject'),
+        source_repositories=__ret__.get('sourceRepositories'),
         timeout=__ret__.get('timeout'),
         trigger_bucket=__ret__.get('triggerBucket'),
         trigger_http=__ret__.get('triggerHttp'),

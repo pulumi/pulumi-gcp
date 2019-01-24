@@ -8,6 +8,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
+    column_families: pulumi.Output[list]
     instance_name: pulumi.Output[str]
     """
     The name of the Bigtable instance.
@@ -25,7 +26,7 @@ class Table(pulumi.CustomResource):
     """
     A list of predefined keys to split the table on.
     """
-    def __init__(__self__, __name__, __opts__=None, instance_name=None, name=None, project=None, split_keys=None):
+    def __init__(__self__, __name__, __opts__=None, column_families=None, instance_name=None, name=None, project=None, split_keys=None):
         """
         Creates a Google Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -35,6 +36,7 @@ class Table(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[list] column_families
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -49,6 +51,8 @@ class Table(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['column_families'] = column_families
 
         if not instance_name:
             raise TypeError('Missing required property instance_name')

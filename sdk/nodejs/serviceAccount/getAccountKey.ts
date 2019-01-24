@@ -26,13 +26,11 @@ import * as utilities from "../utilities";
  * }));
  * ```
  */
-export function getAccountKey(args?: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
-    args = args || {};
+export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
         "name": args.name,
         "project": args.project,
         "publicKeyType": args.publicKeyType,
-        "serviceAccountId": args.serviceAccountId,
     }, opts);
 }
 
@@ -45,7 +43,7 @@ export interface GetAccountKeyArgs {
      * `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
      * is the email address or unique id of the service account.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
@@ -55,7 +53,6 @@ export interface GetAccountKeyArgs {
      * The output format of the public key requested. X509_PEM is the default output format.
      */
     readonly publicKeyType?: string;
-    readonly serviceAccountId?: string;
 }
 
 /**
@@ -63,7 +60,6 @@ export interface GetAccountKeyArgs {
  */
 export interface GetAccountKeyResult {
     readonly keyAlgorithm: string;
-    readonly name: string;
     /**
      * The public key, base64 encoded
      */

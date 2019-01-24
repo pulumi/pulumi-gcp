@@ -26,19 +26,23 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["candidateSubnets"] = nil
 		inputs["description"] = nil
 		inputs["interconnect"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["router"] = nil
+		inputs["vlanTag8021q"] = nil
 	} else {
+		inputs["candidateSubnets"] = args.CandidateSubnets
 		inputs["description"] = args.Description
 		inputs["interconnect"] = args.Interconnect
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["router"] = args.Router
+		inputs["vlanTag8021q"] = args.VlanTag8021q
 	}
 	inputs["cloudRouterIpAddress"] = nil
 	inputs["creationTimestamp"] = nil
@@ -59,6 +63,7 @@ func GetInterconnectAttachment(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InterconnectAttachmentState, opts ...pulumi.ResourceOpt) (*InterconnectAttachment, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["candidateSubnets"] = state.CandidateSubnets
 		inputs["cloudRouterIpAddress"] = state.CloudRouterIpAddress
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["customerRouterIpAddress"] = state.CustomerRouterIpAddress
@@ -71,6 +76,7 @@ func GetInterconnectAttachment(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["router"] = state.Router
 		inputs["selfLink"] = state.SelfLink
+		inputs["vlanTag8021q"] = state.VlanTag8021q
 	}
 	s, err := ctx.ReadResource("gcp:compute/interconnectAttachment:InterconnectAttachment", name, id, inputs, opts...)
 	if err != nil {
@@ -87,6 +93,10 @@ func (r *InterconnectAttachment) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *InterconnectAttachment) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *InterconnectAttachment) CandidateSubnets() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["candidateSubnets"])
 }
 
 func (r *InterconnectAttachment) CloudRouterIpAddress() *pulumi.StringOutput {
@@ -140,8 +150,13 @@ func (r *InterconnectAttachment) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+func (r *InterconnectAttachment) VlanTag8021q() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["vlanTag8021q"])
+}
+
 // Input properties used for looking up and filtering InterconnectAttachment resources.
 type InterconnectAttachmentState struct {
+	CandidateSubnets interface{}
 	CloudRouterIpAddress interface{}
 	CreationTimestamp interface{}
 	CustomerRouterIpAddress interface{}
@@ -157,10 +172,12 @@ type InterconnectAttachmentState struct {
 	Router interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	VlanTag8021q interface{}
 }
 
 // The set of arguments for constructing a InterconnectAttachment resource.
 type InterconnectAttachmentArgs struct {
+	CandidateSubnets interface{}
 	Description interface{}
 	Interconnect interface{}
 	Name interface{}
@@ -169,4 +186,5 @@ type InterconnectAttachmentArgs struct {
 	Project interface{}
 	Region interface{}
 	Router interface{}
+	VlanTag8021q interface{}
 }

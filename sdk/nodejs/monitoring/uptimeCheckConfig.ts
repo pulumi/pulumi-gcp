@@ -89,7 +89,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
 
     public readonly contentMatchers: pulumi.Output<{ content?: string }[] | undefined>;
     public readonly displayName: pulumi.Output<string>;
-    public readonly httpCheck: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port?: number, useSsl?: boolean } | undefined>;
+    public readonly httpCheck: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
     public readonly internalCheckers: pulumi.Output<{ displayName?: string, gcpZone?: string, name?: string, network?: string, peerProjectId?: string }[] | undefined>;
     public readonly isInternal: pulumi.Output<boolean | undefined>;
     public readonly monitoredResource: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;

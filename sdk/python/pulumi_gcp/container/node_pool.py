@@ -41,11 +41,6 @@ class NodePool(pulumi.CustomResource):
     The name of the node pool. If left blank, Terraform will
     auto-generate a unique name.
     """
-    name_prefix: pulumi.Output[str]
-    """
-    Creates a unique name for the node pool beginning
-    with the specified prefix. Conflicts with `name`.
-    """
     node_config: pulumi.Output[dict]
     """
     The node configuration of the pool. See
@@ -77,7 +72,7 @@ class NodePool(pulumi.CustomResource):
     """
     The zone in which the cluster resides.
     """
-    def __init__(__self__, __name__, __opts__=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, max_pods_per_node=None, name=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None):
         """
         Manages a Node Pool resource within GKE. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
@@ -101,8 +96,6 @@ class NodePool(pulumi.CustomResource):
                See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, Terraform will
                auto-generate a unique name.
-        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                google_container_cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
@@ -139,8 +132,6 @@ class NodePool(pulumi.CustomResource):
         __props__['max_pods_per_node'] = max_pods_per_node
 
         __props__['name'] = name
-
-        __props__['name_prefix'] = name_prefix
 
         __props__['node_config'] = node_config
 

@@ -25,17 +25,13 @@ class Snapshot(pulumi.CustomResource):
     The URI of the created resource.
     """
     snapshot_encryption_key: pulumi.Output[dict]
-    snapshot_encryption_key_raw: pulumi.Output[str]
-    snapshot_encryption_key_sha256: pulumi.Output[str]
     snapshot_id: pulumi.Output[int]
     source_disk: pulumi.Output[str]
     source_disk_encryption_key: pulumi.Output[dict]
-    source_disk_encryption_key_raw: pulumi.Output[str]
-    source_disk_encryption_key_sha256: pulumi.Output[str]
     source_disk_link: pulumi.Output[str]
     storage_bytes: pulumi.Output[int]
     zone: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, snapshot_encryption_key_raw=None, source_disk=None, source_disk_encryption_key=None, source_disk_encryption_key_raw=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, zone=None):
         """
         Represents a Persistent Disk Snapshot resource.
         
@@ -66,10 +62,8 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] snapshot_encryption_key
-        :param pulumi.Input[str] snapshot_encryption_key_raw
         :param pulumi.Input[str] source_disk
         :param pulumi.Input[dict] source_disk_encryption_key
-        :param pulumi.Input[str] source_disk_encryption_key_raw
         :param pulumi.Input[str] zone
         """
         if not __name__:
@@ -91,15 +85,11 @@ class Snapshot(pulumi.CustomResource):
 
         __props__['snapshot_encryption_key'] = snapshot_encryption_key
 
-        __props__['snapshot_encryption_key_raw'] = snapshot_encryption_key_raw
-
         if not source_disk:
             raise TypeError('Missing required property source_disk')
         __props__['source_disk'] = source_disk
 
         __props__['source_disk_encryption_key'] = source_disk_encryption_key
-
-        __props__['source_disk_encryption_key_raw'] = source_disk_encryption_key_raw
 
         __props__['zone'] = zone
 
@@ -108,9 +98,7 @@ class Snapshot(pulumi.CustomResource):
         __props__['label_fingerprint'] = None
         __props__['licenses'] = None
         __props__['self_link'] = None
-        __props__['snapshot_encryption_key_sha256'] = None
         __props__['snapshot_id'] = None
-        __props__['source_disk_encryption_key_sha256'] = None
         __props__['source_disk_link'] = None
         __props__['storage_bytes'] = None
 

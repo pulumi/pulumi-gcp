@@ -15,10 +15,9 @@ class Service(pulumi.CustomResource):
     grpc_config: pulumi.Output[str]
     openapi_config: pulumi.Output[str]
     project: pulumi.Output[str]
-    protoc_output: pulumi.Output[str]
     protoc_output_base64: pulumi.Output[str]
     service_name: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, grpc_config=None, openapi_config=None, project=None, protoc_output=None, protoc_output_base64=None, service_name=None):
+    def __init__(__self__, __name__, __opts__=None, grpc_config=None, openapi_config=None, project=None, protoc_output_base64=None, service_name=None):
         """
         This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
         
@@ -28,7 +27,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] grpc_config
         :param pulumi.Input[str] openapi_config
         :param pulumi.Input[str] project
-        :param pulumi.Input[str] protoc_output
         :param pulumi.Input[str] protoc_output_base64
         :param pulumi.Input[str] service_name
         """
@@ -46,8 +44,6 @@ class Service(pulumi.CustomResource):
         __props__['openapi_config'] = openapi_config
 
         __props__['project'] = project
-
-        __props__['protoc_output'] = protoc_output
 
         __props__['protoc_output_base64'] = protoc_output_base64
 

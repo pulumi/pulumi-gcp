@@ -35,6 +35,7 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["logging"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
+		inputs["requesterPays"] = nil
 		inputs["storageClass"] = nil
 		inputs["versioning"] = nil
 		inputs["websites"] = nil
@@ -48,6 +49,7 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["logging"] = args.Logging
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
+		inputs["requesterPays"] = args.RequesterPays
 		inputs["storageClass"] = args.StorageClass
 		inputs["versioning"] = args.Versioning
 		inputs["websites"] = args.Websites
@@ -76,6 +78,7 @@ func GetBucket(ctx *pulumi.Context,
 		inputs["logging"] = state.Logging
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
+		inputs["requesterPays"] = state.RequesterPays
 		inputs["selfLink"] = state.SelfLink
 		inputs["storageClass"] = state.StorageClass
 		inputs["url"] = state.Url
@@ -147,6 +150,10 @@ func (r *Bucket) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Bucket) RequesterPays() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["requesterPays"])
+}
+
 // The URI of the created resource.
 func (r *Bucket) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
@@ -195,6 +202,7 @@ type BucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	RequesterPays interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
@@ -230,6 +238,7 @@ type BucketArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	RequesterPays interface{}
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass interface{}
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.

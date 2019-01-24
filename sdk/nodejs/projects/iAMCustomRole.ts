@@ -50,7 +50,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
         return new IAMCustomRole(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly deleted: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly deleted: pulumi.Output<boolean>;
     /**
      * A human-readable description for the role.
      */
@@ -109,13 +109,13 @@ export class IAMCustomRole extends pulumi.CustomResource {
             if (!args || args.title === undefined) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["deleted"] = args ? args.deleted : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["permissions"] = args ? args.permissions : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["stage"] = args ? args.stage : undefined;
             inputs["title"] = args ? args.title : undefined;
+            inputs["deleted"] = undefined /*out*/;
         }
         super("gcp:projects/iAMCustomRole:IAMCustomRole", name, inputs, opts);
     }
@@ -159,7 +159,6 @@ export interface IAMCustomRoleState {
  * The set of arguments for constructing a IAMCustomRole resource.
  */
 export interface IAMCustomRoleArgs {
-    readonly deleted?: pulumi.Input<boolean>;
     /**
      * A human-readable description for the role.
      */

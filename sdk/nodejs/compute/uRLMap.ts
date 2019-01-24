@@ -93,6 +93,7 @@ export class URLMap extends pulumi.CustomResource {
         return new URLMap(name, <any>state, { ...opts, id: id });
     }
 
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
@@ -112,7 +113,7 @@ export class URLMap extends pulumi.CustomResource {
     /**
      * The GCE assigned ID of the resource.
      */
-    public /*out*/ readonly mapId: pulumi.Output<string>;
+    public /*out*/ readonly mapId: pulumi.Output<number>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
@@ -148,6 +149,7 @@ export class URLMap extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: URLMapState = argsOrState as URLMapState | undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -170,6 +172,7 @@ export class URLMap extends pulumi.CustomResource {
             inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["tests"] = args ? args.tests : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["mapId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -182,6 +185,7 @@ export class URLMap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering URLMap resources.
  */
 export interface URLMapState {
+    readonly creationTimestamp?: pulumi.Input<string>;
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
@@ -201,7 +205,7 @@ export interface URLMapState {
     /**
      * The GCE assigned ID of the resource.
      */
-    readonly mapId?: pulumi.Input<string>;
+    readonly mapId?: pulumi.Input<number>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.

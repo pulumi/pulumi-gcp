@@ -30,7 +30,6 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["management"] = nil
 		inputs["maxPodsPerNode"] = nil
 		inputs["name"] = nil
-		inputs["namePrefix"] = nil
 		inputs["nodeConfig"] = nil
 		inputs["nodeCount"] = nil
 		inputs["project"] = nil
@@ -44,7 +43,6 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["management"] = args.Management
 		inputs["maxPodsPerNode"] = args.MaxPodsPerNode
 		inputs["name"] = args.Name
-		inputs["namePrefix"] = args.NamePrefix
 		inputs["nodeConfig"] = args.NodeConfig
 		inputs["nodeCount"] = args.NodeCount
 		inputs["project"] = args.Project
@@ -73,7 +71,6 @@ func GetNodePool(ctx *pulumi.Context,
 		inputs["management"] = state.Management
 		inputs["maxPodsPerNode"] = state.MaxPodsPerNode
 		inputs["name"] = state.Name
-		inputs["namePrefix"] = state.NamePrefix
 		inputs["nodeConfig"] = state.NodeConfig
 		inputs["nodeCount"] = state.NodeCount
 		inputs["project"] = state.Project
@@ -140,12 +137,6 @@ func (r *NodePool) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Creates a unique name for the node pool beginning
-// with the specified prefix. Conflicts with `name`.
-func (r *NodePool) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
-}
-
 // The node configuration of the pool. See
 // google_container_cluster for schema.
 func (r *NodePool) NodeConfig() *pulumi.Output {
@@ -206,9 +197,6 @@ type NodePoolState struct {
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
-	NamePrefix interface{}
 	// The node configuration of the pool. See
 	// google_container_cluster for schema.
 	NodeConfig interface{}
@@ -252,9 +240,6 @@ type NodePoolArgs struct {
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
-	NamePrefix interface{}
 	// The node configuration of the pool. See
 	// google_container_cluster for schema.
 	NodeConfig interface{}

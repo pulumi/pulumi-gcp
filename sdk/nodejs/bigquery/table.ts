@@ -127,7 +127,7 @@ export class Table extends pulumi.CustomResource {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    public readonly timePartitioning: pulumi.Output<{ expirationMs?: number, field?: string, type: string } | undefined>;
+    public readonly timePartitioning: pulumi.Output<{ expirationMs?: number, field?: string, requirePartitionFilter?: boolean, type: string } | undefined>;
     /**
      * Describes the table type.
      */
@@ -279,7 +279,7 @@ export interface TableState {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, requirePartitionFilter?: pulumi.Input<boolean>, type: pulumi.Input<string> }>;
     /**
      * Describes the table type.
      */
@@ -337,7 +337,7 @@ export interface TableArgs {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, requirePartitionFilter?: pulumi.Input<boolean>, type: pulumi.Input<string> }>;
     /**
      * If specified, configures this table as a view.
      * Structure is documented below.

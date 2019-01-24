@@ -41,6 +41,7 @@ func NewURLMap(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["tests"] = args.Tests
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["fingerprint"] = nil
 	inputs["mapId"] = nil
 	inputs["selfLink"] = nil
@@ -57,6 +58,7 @@ func GetURLMap(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *URLMapState, opts ...pulumi.ResourceOpt) (*URLMap, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["defaultService"] = state.DefaultService
 		inputs["description"] = state.Description
 		inputs["fingerprint"] = state.Fingerprint
@@ -85,6 +87,10 @@ func (r *URLMap) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+func (r *URLMap) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 // The backend service or backend bucket to use when none of the given rules match.
 func (r *URLMap) DefaultService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultService"])
@@ -106,8 +112,8 @@ func (r *URLMap) HostRules() *pulumi.ArrayOutput {
 }
 
 // The GCE assigned ID of the resource.
-func (r *URLMap) MapId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mapId"])
+func (r *URLMap) MapId() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["mapId"])
 }
 
 // A unique name for the resource, required by GCE.
@@ -139,6 +145,7 @@ func (r *URLMap) Tests() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering URLMap resources.
 type URLMapState struct {
+	CreationTimestamp interface{}
 	// The backend service or backend bucket to use when none of the given rules match.
 	DefaultService interface{}
 	// A brief description of this resource.

@@ -69,6 +69,7 @@ export class BackendService extends pulumi.CustomResource {
         return new BackendService(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly affinityCookieTtlSec: pulumi.Output<number | undefined>;
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
@@ -163,6 +164,7 @@ export class BackendService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: BackendServiceState = argsOrState as BackendServiceState | undefined;
+            inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
@@ -185,6 +187,7 @@ export class BackendService extends pulumi.CustomResource {
             if (!args || args.healthChecks === undefined) {
                 throw new Error("Missing required property 'healthChecks'");
             }
+            inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
@@ -211,6 +214,7 @@ export class BackendService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendService resources.
  */
 export interface BackendServiceState {
+    readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
@@ -298,6 +302,7 @@ export interface BackendServiceState {
  * The set of arguments for constructing a BackendService resource.
  */
 export interface BackendServiceArgs {
+    readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */

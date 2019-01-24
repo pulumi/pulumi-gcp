@@ -51,14 +51,13 @@ export class Image extends pulumi.CustomResource {
         return new Image(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Configurable timeout in minutes for creating images. Default is 4 minutes.
-     */
-    public readonly createTimeout: pulumi.Output<number | undefined>;
+    public /*out*/ readonly archiveSizeBytes: pulumi.Output<number>;
+    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * The description of the image to be created
      */
     public readonly description: pulumi.Output<string | undefined>;
+    public readonly diskSizeGb: pulumi.Output<number>;
     /**
      * The name of the image family to which this image belongs.
      */
@@ -114,8 +113,10 @@ export class Image extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ImageState = argsOrState as ImageState | undefined;
-            inputs["createTimeout"] = state ? state.createTimeout : undefined;
+            inputs["archiveSizeBytes"] = state ? state.archiveSizeBytes : undefined;
+            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
             inputs["family"] = state ? state.family : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -127,8 +128,8 @@ export class Image extends pulumi.CustomResource {
             inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            inputs["createTimeout"] = args ? args.createTimeout : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["family"] = args ? args.family : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
@@ -136,6 +137,8 @@ export class Image extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            inputs["archiveSizeBytes"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
@@ -147,14 +150,13 @@ export class Image extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Image resources.
  */
 export interface ImageState {
-    /**
-     * Configurable timeout in minutes for creating images. Default is 4 minutes.
-     */
-    readonly createTimeout?: pulumi.Input<number>;
+    readonly archiveSizeBytes?: pulumi.Input<number>;
+    readonly creationTimestamp?: pulumi.Input<string>;
     /**
      * The description of the image to be created
      */
     readonly description?: pulumi.Input<string>;
+    readonly diskSizeGb?: pulumi.Input<number>;
     /**
      * The name of the image family to which this image belongs.
      */
@@ -204,13 +206,10 @@ export interface ImageState {
  */
 export interface ImageArgs {
     /**
-     * Configurable timeout in minutes for creating images. Default is 4 minutes.
-     */
-    readonly createTimeout?: pulumi.Input<number>;
-    /**
      * The description of the image to be created
      */
     readonly description?: pulumi.Input<string>;
+    readonly diskSizeGb?: pulumi.Input<number>;
     /**
      * The name of the image family to which this image belongs.
      */

@@ -86,6 +86,7 @@ export class Bucket extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
+    public readonly requesterPays: pulumi.Output<boolean | undefined>;
     /**
      * The URI of the created resource.
      */
@@ -128,6 +129,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = state ? state.logging : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["requesterPays"] = state ? state.requesterPays : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
             inputs["url"] = state ? state.url : undefined;
@@ -144,6 +146,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = args ? args.logging : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requesterPays"] = args ? args.requesterPays : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["websites"] = args ? args.websites : undefined;
@@ -197,6 +200,7 @@ export interface BucketState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly requesterPays?: pulumi.Input<boolean>;
     /**
      * The URI of the created resource.
      */
@@ -262,6 +266,7 @@ export interface BucketArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly requesterPays?: pulumi.Input<boolean>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */

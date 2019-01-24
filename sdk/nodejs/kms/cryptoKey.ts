@@ -72,6 +72,7 @@ export class CryptoKey extends pulumi.CustomResource {
      * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public readonly versionTemplate: pulumi.Output<{ algorithm: string, protectionLevel?: string }>;
 
     /**
      * Create a CryptoKey resource with the given unique name, arguments, and options.
@@ -89,6 +90,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
             if (!args || args.keyRing === undefined) {
@@ -97,6 +99,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:kms/cryptoKey:CryptoKey", name, inputs, opts);
@@ -127,6 +130,7 @@ export interface CryptoKeyState {
      * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
 }
 
 /**
@@ -149,4 +153,5 @@ export interface CryptoKeyArgs {
      * a day (ie, 86400).
      */
     readonly rotationPeriod?: pulumi.Input<string>;
+    readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
 }

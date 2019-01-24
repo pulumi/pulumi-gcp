@@ -18,8 +18,11 @@ func LookupDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAcc
 		return nil, err
 	}
 	return &GetDefaultServiceAccountResult{
+		DisplayName: outputs["displayName"],
 		Email: outputs["email"],
+		Name: outputs["name"],
 		Project: outputs["project"],
+		UniqueId: outputs["uniqueId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -32,9 +35,12 @@ type GetDefaultServiceAccountArgs struct {
 
 // A collection of values returned by getDefaultServiceAccount.
 type GetDefaultServiceAccountResult struct {
+	DisplayName interface{}
 	// Email address of the default service account used by VMs running in this project
 	Email interface{}
+	Name interface{}
 	Project interface{}
+	UniqueId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

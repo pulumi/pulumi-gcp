@@ -44,10 +44,8 @@ func NewSnapshot(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["snapshotEncryptionKey"] = nil
-		inputs["snapshotEncryptionKeyRaw"] = nil
 		inputs["sourceDisk"] = nil
 		inputs["sourceDiskEncryptionKey"] = nil
-		inputs["sourceDiskEncryptionKeyRaw"] = nil
 		inputs["zone"] = nil
 	} else {
 		inputs["description"] = args.Description
@@ -55,10 +53,8 @@ func NewSnapshot(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["snapshotEncryptionKey"] = args.SnapshotEncryptionKey
-		inputs["snapshotEncryptionKeyRaw"] = args.SnapshotEncryptionKeyRaw
 		inputs["sourceDisk"] = args.SourceDisk
 		inputs["sourceDiskEncryptionKey"] = args.SourceDiskEncryptionKey
-		inputs["sourceDiskEncryptionKeyRaw"] = args.SourceDiskEncryptionKeyRaw
 		inputs["zone"] = args.Zone
 	}
 	inputs["creationTimestamp"] = nil
@@ -66,9 +62,7 @@ func NewSnapshot(ctx *pulumi.Context,
 	inputs["labelFingerprint"] = nil
 	inputs["licenses"] = nil
 	inputs["selfLink"] = nil
-	inputs["snapshotEncryptionKeySha256"] = nil
 	inputs["snapshotId"] = nil
-	inputs["sourceDiskEncryptionKeySha256"] = nil
 	inputs["sourceDiskLink"] = nil
 	inputs["storageBytes"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/snapshot:Snapshot", name, true, inputs, opts...)
@@ -94,13 +88,9 @@ func GetSnapshot(ctx *pulumi.Context,
 		inputs["project"] = state.Project
 		inputs["selfLink"] = state.SelfLink
 		inputs["snapshotEncryptionKey"] = state.SnapshotEncryptionKey
-		inputs["snapshotEncryptionKeyRaw"] = state.SnapshotEncryptionKeyRaw
-		inputs["snapshotEncryptionKeySha256"] = state.SnapshotEncryptionKeySha256
 		inputs["snapshotId"] = state.SnapshotId
 		inputs["sourceDisk"] = state.SourceDisk
 		inputs["sourceDiskEncryptionKey"] = state.SourceDiskEncryptionKey
-		inputs["sourceDiskEncryptionKeyRaw"] = state.SourceDiskEncryptionKeyRaw
-		inputs["sourceDiskEncryptionKeySha256"] = state.SourceDiskEncryptionKeySha256
 		inputs["sourceDiskLink"] = state.SourceDiskLink
 		inputs["storageBytes"] = state.StorageBytes
 		inputs["zone"] = state.Zone
@@ -165,14 +155,6 @@ func (r *Snapshot) SnapshotEncryptionKey() *pulumi.Output {
 	return r.s.State["snapshotEncryptionKey"]
 }
 
-func (r *Snapshot) SnapshotEncryptionKeyRaw() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotEncryptionKeyRaw"])
-}
-
-func (r *Snapshot) SnapshotEncryptionKeySha256() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotEncryptionKeySha256"])
-}
-
 func (r *Snapshot) SnapshotId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["snapshotId"])
 }
@@ -183,14 +165,6 @@ func (r *Snapshot) SourceDisk() *pulumi.StringOutput {
 
 func (r *Snapshot) SourceDiskEncryptionKey() *pulumi.Output {
 	return r.s.State["sourceDiskEncryptionKey"]
-}
-
-func (r *Snapshot) SourceDiskEncryptionKeyRaw() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDiskEncryptionKeyRaw"])
-}
-
-func (r *Snapshot) SourceDiskEncryptionKeySha256() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDiskEncryptionKeySha256"])
 }
 
 func (r *Snapshot) SourceDiskLink() *pulumi.StringOutput {
@@ -220,13 +194,9 @@ type SnapshotState struct {
 	// The URI of the created resource.
 	SelfLink interface{}
 	SnapshotEncryptionKey interface{}
-	SnapshotEncryptionKeyRaw interface{}
-	SnapshotEncryptionKeySha256 interface{}
 	SnapshotId interface{}
 	SourceDisk interface{}
 	SourceDiskEncryptionKey interface{}
-	SourceDiskEncryptionKeyRaw interface{}
-	SourceDiskEncryptionKeySha256 interface{}
 	SourceDiskLink interface{}
 	StorageBytes interface{}
 	Zone interface{}
@@ -241,9 +211,7 @@ type SnapshotArgs struct {
 	// If it is not provided, the provider project is used.
 	Project interface{}
 	SnapshotEncryptionKey interface{}
-	SnapshotEncryptionKeyRaw interface{}
 	SourceDisk interface{}
 	SourceDiskEncryptionKey interface{}
-	SourceDiskEncryptionKeyRaw interface{}
 	Zone interface{}
 }

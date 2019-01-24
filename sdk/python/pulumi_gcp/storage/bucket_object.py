@@ -51,6 +51,8 @@ class BucketObject(pulumi.CustomResource):
     """
     The name of the object.
     """
+    output_name: pulumi.Output[str]
+    self_link: pulumi.Output[str]
     source: pulumi.Output[pulumi.Archive]
     """
     A path to the data you want to upload. Must be defined
@@ -127,6 +129,8 @@ class BucketObject(pulumi.CustomResource):
 
         __props__['crc32c'] = None
         __props__['md5hash'] = None
+        __props__['output_name'] = None
+        __props__['self_link'] = None
 
         super(BucketObject, __self__).__init__(
             'gcp:storage/bucketObject:BucketObject',

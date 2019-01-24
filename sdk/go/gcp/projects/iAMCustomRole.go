@@ -37,7 +37,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["deleted"] = nil
 		inputs["description"] = nil
 		inputs["permissions"] = nil
 		inputs["project"] = nil
@@ -45,7 +44,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 		inputs["stage"] = nil
 		inputs["title"] = nil
 	} else {
-		inputs["deleted"] = args.Deleted
 		inputs["description"] = args.Description
 		inputs["permissions"] = args.Permissions
 		inputs["project"] = args.Project
@@ -53,6 +51,7 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 		inputs["stage"] = args.Stage
 		inputs["title"] = args.Title
 	}
+	inputs["deleted"] = nil
 	s, err := ctx.RegisterResource("gcp:projects/iAMCustomRole:IAMCustomRole", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -150,7 +149,6 @@ type IAMCustomRoleState struct {
 
 // The set of arguments for constructing a IAMCustomRole resource.
 type IAMCustomRoleArgs struct {
-	Deleted interface{}
 	// A human-readable description for the role.
 	Description interface{}
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.

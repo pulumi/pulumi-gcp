@@ -56,12 +56,6 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    public readonly policyData: pulumi.Output<string | undefined>;
-    /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
@@ -87,7 +81,6 @@ export class Account extends pulumi.CustomResource {
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
@@ -97,7 +90,6 @@ export class Account extends pulumi.CustomResource {
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["email"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -132,12 +124,6 @@ export interface AccountState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    readonly policyData?: pulumi.Input<string>;
-    /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
@@ -162,12 +148,6 @@ export interface AccountArgs {
      * Can be updated without creating a new resource.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    readonly policyData?: pulumi.Input<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.

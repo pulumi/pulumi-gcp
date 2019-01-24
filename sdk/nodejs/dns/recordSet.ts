@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * report that it did.
  * 
  * ## Example Usage
- * 
  * ### Binding a DNS name to the ephemeral IP of a new instance:
  * 
  * ```typescript
@@ -48,6 +47,7 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
+ * 
  * ### Adding an A record
  * 
  * ```typescript
@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
+ * 
  * ### Adding an MX record
  * 
  * ```typescript
@@ -90,6 +91,7 @@ import * as utilities from "../utilities";
  *     type: "MX",
  * });
  * ```
+ * 
  * ### Adding an SPF record
  * 
  * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.

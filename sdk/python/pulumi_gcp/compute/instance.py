@@ -32,11 +32,6 @@ class Instance(pulumi.CustomResource):
     """
     The CPU platform used by this instance.
     """
-    create_timeout: pulumi.Output[int]
-    """
-    Configurable timeout in minutes for creating instances. Default is 4 minutes.
-    Changing this forces a new resource to be created.
-    """
     deletion_protection: pulumi.Output[bool]
     """
     Enable deletion protection on this instance. Defaults to false.
@@ -137,7 +132,7 @@ class Instance(pulumi.CustomResource):
     """
     The zone that the machine should be created in.
     """
-    def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, create_timeout=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, tags=None, zone=None):
+    def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, tags=None, zone=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -156,8 +151,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[int] create_timeout: Configurable timeout in minutes for creating instances. Default is 4 minutes.
-               Changing this forces a new resource to be created.
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -209,8 +202,6 @@ class Instance(pulumi.CustomResource):
         __props__['boot_disk'] = boot_disk
 
         __props__['can_ip_forward'] = can_ip_forward
-
-        __props__['create_timeout'] = create_timeout
 
         __props__['deletion_protection'] = deletion_protection
 

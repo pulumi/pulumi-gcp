@@ -8,26 +8,6 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class IAMPolicy(pulumi.CustomResource):
-    authoritative: pulumi.Output[bool]
-    """
-    (Optional, only for `google_project_iam_policy`)
-    A boolean value indicating if this policy
-    should overwrite any existing IAM policy on the project. When set to true,
-    **any policies not in your config file will be removed**. This can **lock
-    you out** of your project until an Organization Administrator grants you
-    access again, so please exercise caution. If this argument is `true` and you
-    want to delete the resource, you must set the `disable_project` argument to
-    `true`, acknowledging that the project will be inaccessible to anyone but the
-    Organization Admins, as it will no longer have an IAM policy. Rather than using
-    this, you should use `google_project_iam_binding` and
-    `google_project_iam_member`.
-    """
-    disable_project: pulumi.Output[bool]
-    """
-    (Optional, only for `google_project_iam_policy`)
-    A boolean value that must be set to `true`
-    if you want to delete a `google_project_iam_policy` that is authoritative.
-    """
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the project's IAM policy.
@@ -43,13 +23,7 @@ class IAMPolicy(pulumi.CustomResource):
     The project ID. If not specified, uses the
     ID of the project configured with the provider.
     """
-    restore_policy: pulumi.Output[str]
-    """
-    (DEPRECATED) (Computed, only for `google_project_iam_policy`)
-    The IAM policy that will be restored when a
-    non-authoritative policy resource is deleted.
-    """
-    def __init__(__self__, __name__, __opts__=None, authoritative=None, disable_project=None, policy_data=None, project=None):
+    def __init__(__self__, __name__, __opts__=None, policy_data=None, project=None):
         """
         Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
         
@@ -64,20 +38,6 @@ class IAMPolicy(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[bool] authoritative: (Optional, only for `google_project_iam_policy`)
-               A boolean value indicating if this policy
-               should overwrite any existing IAM policy on the project. When set to true,
-               **any policies not in your config file will be removed**. This can **lock
-               you out** of your project until an Organization Administrator grants you
-               access again, so please exercise caution. If this argument is `true` and you
-               want to delete the resource, you must set the `disable_project` argument to
-               `true`, acknowledging that the project will be inaccessible to anyone but the
-               Organization Admins, as it will no longer have an IAM policy. Rather than using
-               this, you should use `google_project_iam_binding` and
-               `google_project_iam_member`.
-        :param pulumi.Input[bool] disable_project: (Optional, only for `google_project_iam_policy`)
-               A boolean value that must be set to `true`
-               if you want to delete a `google_project_iam_policy` that is authoritative.
         :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
@@ -93,18 +53,15 @@ class IAMPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['authoritative'] = authoritative
-
-        __props__['disable_project'] = disable_project
-
         if not policy_data:
             raise TypeError('Missing required property policy_data')
         __props__['policy_data'] = policy_data
 
+        if not project:
+            raise TypeError('Missing required property project')
         __props__['project'] = project
 
         __props__['etag'] = None
-        __props__['restore_policy'] = None
 
         super(IAMPolicy, __self__).__init__(
             'gcp:projects/iAMPolicy:IAMPolicy',
