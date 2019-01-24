@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  *     name: "composer-test-network",
  * });
- * const google_service_account_test = new gcp.serviceAccount.Account("test", {
+ * const google_service_account_test = new gcp.service.Account("test", {
  *     accountId: "composer-env-account",
  *     displayName: "Test Service Account for Composer Environment",
  * });

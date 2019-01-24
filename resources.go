@@ -19,38 +19,39 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
-	gcpAppEngine           = "appengine"           // AppEngine resources
-	gcpBigQuery            = "bigquery"            // BigQuery resources
-	gcpBigTable            = "bigtable"            // BitTable resources
-	gcpBilling             = "billing"             // Billing resources
-	gcpBinaryAuthorization = "binaryauthorization" // Binary Authorization resources
-	gcpCloudBuild          = "cloudbuild"          // CloudBuild resources
-	gcpCloudFunctions      = "cloudfunctions"      // CloudFunction resources
-	gcpComposer            = "composer"            // Cloud Composer resources
-	gcpCompute             = "compute"             // Compute resoures
-	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
-	gcpDNS                 = "dns"                 // DNS resources
-	gcpDataFolow           = "dataflow"            // DataFlow resources
-	gcpDataProc            = "dataproc"            // DataProc resources
-	gcpEndPoints           = "endpoints"           // End Point resources
-	gcpFilestore           = "filestore"           // Filestore resources
-	gcpFolder              = "folder"              // Folder resources
-	gcpIAM                 = "iam"                 // IAM resources
-	gcpKMS                 = "kms"                 // KMS resources
-	gcpKubernetes          = "container"           // Kubernetes Engine resources
-	gcpLogging             = "logging"             // Logging resources
-	gcpMonitoring          = "monitoring"          // Monitoring resources
-	gcpOrganization        = "organizations"       // Organization resources
-	gcpProject             = "projects"            // Project resources
-	gcpPubSub              = "pubsub"              // PubSub resources
-	gcpRedis               = "redis"               // Redis resources
-	gcpResourceManager     = "resourcemanager"     // Resource Manager resources
-	gcpRuntimeConfig       = "runtimeconfig"       // Runtime Config resources
-	gcpSQL                 = "sql"                 // SQL resources
-	gcpServiceAccount      = "serviceAccount"      // Service Account resources
-	gcpSourceRepo          = "sourcerepo"          // Source Repo resources
-	gcpSpanner             = "spanner"             // Spanner Resources
-	gcpStorage             = "storage"             // Storage resources
+	gcpAccessContextManager = "accesscontextmanager" //Access Context Manager resources
+	gcpAppEngine            = "appengine"            // AppEngine resources
+	gcpBigQuery             = "bigquery"             // BigQuery resources
+	gcpBigTable             = "bigtable"             // BitTable resources
+	gcpBilling              = "billing"              // Billing resources
+	gcpBinaryAuthorization  = "binaryauthorization"  // Binary Authorization resources
+	gcpCloudBuild           = "cloudbuild"           // CloudBuild resources
+	gcpCloudFunctions       = "cloudfunctions"       // CloudFunction resources
+	gcpComposer             = "composer"             // Cloud Composer resources
+	gcpCompute              = "compute"              // Compute resoures
+	gcpContainerAnalysis    = "containeranalysis"    // Container Analysis resources
+	gcpDNS                  = "dns"                  // DNS resources
+	gcpDataFolow            = "dataflow"             // DataFlow resources
+	gcpDataProc             = "dataproc"             // DataProc resources
+	gcpEndPoints            = "endpoints"            // End Point resources
+	gcpFilestore            = "filestore"            // Filestore resources
+	gcpFolder               = "folder"               // Folder resources
+	gcpIAM                  = "iam"                  // IAM resources
+	gcpKMS                  = "kms"                  // KMS resources
+	gcpKubernetes           = "container"            // Kubernetes Engine resources
+	gcpLogging              = "logging"              // Logging resources
+	gcpMonitoring           = "monitoring"           // Monitoring resources
+	gcpOrganization         = "organizations"        // Organization resources
+	gcpProject              = "projects"             // Project resources
+	gcpPubSub               = "pubsub"               // PubSub resources
+	gcpRedis                = "redis"                // Redis resources
+	gcpResourceManager      = "resourcemanager"      // Resource Manager resources
+	gcpRuntimeConfig        = "runtimeconfig"        // Runtime Config resources
+	gcpSQL                  = "sql"                  // SQL resources
+	gcpService              = "service"              // Service resources
+	gcpSourceRepo           = "sourcerepo"           // Source Repo resources
+	gcpSpanner              = "spanner"              // Spanner Resources
+	gcpStorage              = "storage"              // Storage resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -128,8 +129,35 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			// Access Context Manager
+			"google_access_context_manager_access_level": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessLevel"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_access_level.html.markdown",
+				},
+			},
+			"google_access_context_manager_access_policy": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_access_policy.html.markdown",
+				},
+			},
+			"google_access_context_manager_service_perimeter": {
+				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_service_perimeter.html.markdown",
+				},
+			},
+
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
+			"google_app_engine_firewall_rule": {
+				Tok: gcpResource(gcpAppEngine, "FirewallRule"),
+				Docs: &tfbridge.DocInfo{
+					Source: "app_engine_firewall_rule.html.markdown",
+				},
+			},
+
 			// BigQuery
 			"google_bigquery_dataset": {Tok: gcpResource(gcpBigQuery, "Dataset")},
 			"google_bigquery_table":   {Tok: gcpResource(gcpBigQuery, "Table")},
@@ -248,6 +276,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_project.html.markdown",
 				},
 			},
+			"google_project_iam_audit_config": {
+				Tok: gcpResource(gcpProject, "IAMAuditConfig"),
+				// Docs are missing upstream
+			},
 			"google_project_iam_binding": {
 				Tok: gcpResource(gcpProject, "IAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -294,36 +326,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpProject, "UsageExportBucket"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
-				},
-			},
-			"google_service_account": {
-				Tok: gcpResource(gcpServiceAccount, "Account"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account.html.markdown",
-				},
-			},
-			"google_service_account_iam_binding": {
-				Tok: gcpResource(gcpServiceAccount, "IAMBinding"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_iam_member": {
-				Tok: gcpResource(gcpServiceAccount, "IAMMember"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_iam_policy": {
-				Tok: gcpResource(gcpServiceAccount, "IAMPolicy"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_key": {
-				Tok: gcpResource(gcpServiceAccount, "Key"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_key.html.markdown",
 				},
 			},
 
@@ -384,15 +386,20 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
 			"google_compute_router_interface":              {Tok: gcpResource(gcpCompute, "RouterInterface")},
-			"google_compute_router_nat":                    {Tok: gcpResource(gcpCompute, "RouterNat")},
-			"google_compute_router_peer":                   {Tok: gcpResource(gcpCompute, "RouterPeer")},
-			"google_compute_security_policy":               {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
-			"google_compute_shared_vpc_host_project":       {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
-			"google_compute_shared_vpc_service_project":    {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
-			"google_compute_snapshot":                      {Tok: gcpResource(gcpCompute, "Snapshot")},
-			"google_compute_ssl_certificate":               {Tok: gcpResource(gcpCompute, "SSLCertificate")},
-			"google_compute_ssl_policy":                    {Tok: gcpResource(gcpCompute, "SSLPolicy")},
-			"google_compute_subnetwork":                    {Tok: gcpResource(gcpCompute, "Subnetwork")},
+			"google_compute_router_nat": {
+				Tok: gcpResource(gcpCompute, "RouterNat"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_router_nat.html.markdown",
+				},
+			},
+			"google_compute_router_peer":                {Tok: gcpResource(gcpCompute, "RouterPeer")},
+			"google_compute_security_policy":            {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
+			"google_compute_shared_vpc_host_project":    {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
+			"google_compute_shared_vpc_service_project": {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
+			"google_compute_snapshot":                   {Tok: gcpResource(gcpCompute, "Snapshot")},
+			"google_compute_ssl_certificate":            {Tok: gcpResource(gcpCompute, "SSLCertificate")},
+			"google_compute_ssl_policy":                 {Tok: gcpResource(gcpCompute, "SSLPolicy")},
+			"google_compute_subnetwork":                 {Tok: gcpResource(gcpCompute, "Subnetwork")},
 			"google_compute_subnetwork_iam_binding": {
 				Tok: gcpResource(gcpCompute, "SubnetworkIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -509,6 +516,44 @@ func Provider() tfbridge.ProviderInfo {
 			"google_runtimeconfig_config":   {Tok: gcpResource(gcpRuntimeConfig, "Config")},
 			"google_runtimeconfig_variable": {Tok: gcpResource(gcpRuntimeConfig, "Variavble")},
 
+			// Service
+			"google_service_account": {
+				Tok: gcpResource(gcpService, "Account"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_service_account.html.markdown",
+				},
+			},
+			"google_service_account_iam_binding": {
+				Tok: gcpResource(gcpService, "AccountIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_service_account_iam.html.markdown",
+				},
+			},
+			"google_service_account_iam_member": {
+				Tok: gcpResource(gcpService, "AccountIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_service_account_iam.html.markdown",
+				},
+			},
+			"google_service_account_iam_policy": {
+				Tok: gcpResource(gcpService, "AccountIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_service_account_iam.html.markdown",
+				},
+			},
+			"google_service_account_key": {
+				Tok: gcpResource(gcpService, "AccountKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_service_account_key.html.markdown",
+				},
+			},
+			"google_service_networking_connection": {
+				Tok: gcpResource(gcpService, "NetworkingConnection"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_networking_connection.html.markdown",
+				},
+			},
+
 			// Source Repository resources
 			"google_sourcerepo_repository": {Tok: gcpResource(gcpSourceRepo, "Repository")},
 
@@ -607,6 +652,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_notification":                  {Tok: gcpResource(gcpStorage, "Notification")},
 			"google_storage_object_access_control":         {Tok: gcpResource(gcpStorage, "ObjectAccessControl")},
 			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
+			"google_storage_transfer_job": {
+				Tok: gcpResource(gcpStorage, "TransferJob"),
+				Docs: &tfbridge.DocInfo{
+					Source: "storage_transfer_job.html.markdown",
+				},
+			},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -842,6 +893,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_iam_policy.html.markdown",
 				},
 			},
+			"google_kms_crypto_key": {
+				Tok: gcpDataSource(gcpKMS, "getCryptoKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_crypto_key.html.markdown",
+				},
+			},
+			"google_kms_key_ring": {
+				Tok: gcpDataSource(gcpKMS, "getKeyRing"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_key_ring.html.markdown",
+				},
+			},
 			"google_kms_secret": {
 				Tok: gcpDataSource(gcpKMS, "getKMSSecret"),
 				Docs: &tfbridge.DocInfo{
@@ -852,6 +915,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_organization.html.markdown",
+				},
+			},
+			"google_storage_bucket_object": {
+				Tok: gcpDataSource(gcpStorage, "getBucketObject"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_cloud_bucket_object.html.markdown",
 				},
 			},
 			"google_storage_object_signed_url": {
@@ -866,14 +935,20 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_storage_project_service_account.html.markdown",
 				},
 			},
+			"google_storage_transfer_project_service_account": {
+				Tok: gcpDataSource(gcpStorage, "getTransferProjectServiceAccount"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_storage_transfer_project_service_account.html.markdown",
+				},
+			},
 			"google_service_account": {
-				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
+				Tok: gcpDataSource(gcpService, "getAccount"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_service_account.html.markdown",
 				},
 			},
 			"google_service_account_key": {
-				Tok: gcpDataSource(gcpServiceAccount, "getAccountKey"),
+				Tok: gcpDataSource(gcpService, "getAccountKey"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_service_account_key.html.markdown",
 				},

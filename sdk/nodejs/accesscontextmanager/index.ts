@@ -2,5 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
-export * from "./application";
-export * from "./firewallRule";
+export * from "./accessLevel";
+export * from "./accessPolicy";
+export * from "./servicePerimeter";
