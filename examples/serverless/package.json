@@ -7,7 +7,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^0.15.1"
+        "@pulumi/pulumi": "feature-proxyOutput"
     },
     "devDependencies": {
         "@types/node": "^8.0.26",
