@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * 
  * const google_compute_project_metadata_default = new gcp.compute.ProjectMetadata("default", {
  *     metadata: {
- *         13: "42",
+ *         "13": "42",
  *         fizz: "buzz",
  *         foo: "bar",
  *     },

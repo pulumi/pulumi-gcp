@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *     config: {
  *         softwareConfig: {
  *             airflowConfigOverrides: {
- *                 core-load_example: "True",
+ *                 "core-load_example": "True",
  *             },
  *             envVariables: {
  *                 FOO: "bar",
