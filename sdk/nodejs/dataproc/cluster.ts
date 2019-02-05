@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *         softwareConfig: {
  *             imageVersion: "1.3.7-deb9",
  *             overrideProperties: {
- *                 dataproc:dataproc.allow.zero.workers: "true",
+ *                 "dataproc:dataproc.allow.zero.workers": "true",
  *             },
  *         },
  *         stagingBucket: "dataproc-staging-bucket",

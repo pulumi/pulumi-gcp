@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * const google_storage_notification_notification = new gcp.storage.Notification("notification", {
  *     bucket: google_storage_bucket_bucket.name,
  *     customAttributes: {
- *         new-attribute: "new-attribute-value",
+ *         "new-attribute": "new-attribute-value",
  *     },
  *     eventTypes: [
  *         "OBJECT_FINALIZE",

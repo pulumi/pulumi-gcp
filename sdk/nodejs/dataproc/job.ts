@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     pysparkConfig: {
  *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
  *         properties: {
- *             spark.logConf: "true",
+ *             "spark.logConf": "true",
  *         },
  *     },
  *     region: google_dataproc_cluster_mycluster.region,
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *         },
  *         mainClass: "org.apache.spark.examples.SparkPi",
  *         properties: {
- *             spark.logConf: "true",
+ *             "spark.logConf": "true",
  *         },
  *     },
  * });

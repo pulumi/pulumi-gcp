@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     name: "default-subscription",
  *     pushConfig: {
  *         attributes: {
- *             x-goog-version: "v1",
+ *             "x-goog-version": "v1",
  *         },
  *         pushEndpoint: "https://example.com/push",
  *     },
