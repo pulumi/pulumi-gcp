@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         MY_ENV_VAR: "my-env-var-value",
  *     },
  *     labels: {
- *         my-label: "my-label-value",
+ *         "my-label": "my-label-value",
  *     },
  *     name: "function-test",
  *     sourceArchiveBucket: google_storage_bucket_bucket.name,
