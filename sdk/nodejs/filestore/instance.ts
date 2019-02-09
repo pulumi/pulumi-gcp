@@ -30,12 +30,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_filestore_instance_instance = new gcp.filestore.Instance("instance", {
+ * const instance = new gcp.filestore.Instance("instance", {
  *     fileShares: {
  *         capacityGb: 2660,
  *         name: "share1",
  *     },
- *     name: "test-instance",
  *     networks: [{
  *         modes: ["MODE_IPV4"],
  *         network: "default",

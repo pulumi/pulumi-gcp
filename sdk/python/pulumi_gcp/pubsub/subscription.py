@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -38,16 +39,14 @@ class Subscription(pulumi.CustomResource):
     The topic name or id to bind this subscription to, required by pubsub.
     Changing this forces a new resource to be created.
     """
-    def __init__(__self__, __name__, __opts__=None, ack_deadline_seconds=None, name=None, project=None, push_config=None, topic=None):
+    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, name=None, project=None, push_config=None, topic=None, __name__=None, __opts__=None):
         """
         Creates a subscription in Google's pubsub queueing system. For more information see
         [the official documentation](https://cloud.google.com/pubsub/docs) and
         [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ack_deadline_seconds: The maximum number of seconds a
                subscriber has to acknowledge a received message, otherwise the message is
                redelivered. Changing this forces a new resource to be created.
@@ -60,11 +59,17 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] topic: The topic name or id to bind this subscription to, required by pubsub.
                Changing this forces a new resource to be created.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -77,7 +82,7 @@ class Subscription(pulumi.CustomResource):
 
         __props__['push_config'] = push_config
 
-        if not topic:
+        if topic is None:
             raise TypeError('Missing required property topic')
         __props__['topic'] = topic
 
@@ -85,9 +90,9 @@ class Subscription(pulumi.CustomResource):
 
         super(Subscription, __self__).__init__(
             'gcp:pubsub/subscription:Subscription',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

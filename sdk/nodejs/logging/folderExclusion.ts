@@ -18,15 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_my_folder = new gcp.organizations.Folder("my-folder", {
+ * const my_folder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
  * });
- * const google_logging_folder_exclusion_my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ * const my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
  *     description: "Exclude GCE instance debug logs",
+ *     // Exclude all DEBUG or lower severity messages relating to instances
  *     filter: "resource.type = gce_instance AND severity <= DEBUG",
- *     folder: google_folder_my_folder.name,
- *     name: "my-instance-debug-exclusion",
+ *     folder: my_folder.name,
  * });
  * ```
  */

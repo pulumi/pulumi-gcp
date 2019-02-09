@@ -29,18 +29,18 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
  *     description: "a description",
  *     namePrefix: "my-certificate-",
  *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
  * });
  * ```
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_certificate_random_provider&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * 
  * ## Example Usage - Ssl Certificate Random Provider
  * 
  * 
@@ -50,8 +50,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  * 
- * const random_id_certificate = new random.RandomId("certificate", {
+ * const certificate = new random.RandomId("certificate", {
  *     byteLength: 4,
+ *     // For security, do not expose raw certificate values in the output
  *     keepers: {
  *         certificate: (() => {
  *             throw "tf2pulumi error: NYI: call to base64sha256";
@@ -64,17 +65,17 @@ import * as utilities from "../utilities";
  *     },
  *     prefix: "my-certificate-",
  * });
- * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ * // You may also want to control name generation explicitly:
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
- *     name: random_id_certificate.hex,
  *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
  * });
  * ```
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=ssl_certificate_target_https_proxies&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * 
  * ## Example Usage - Ssl Certificate Target Https Proxies
  * 
  * 
@@ -83,45 +84,41 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "http-health-check",
  *     requestPath: "/",
  *     timeoutSec: 1,
  * });
- * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
  *     namePrefix: "my-certificate-",
  *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
  * });
- * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "backend-service",
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
- *     defaultService: google_compute_backend_service_default.selfLink,
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     defaultService: defaultBackendService.selfLink,
  *     description: "a description",
  *     hostRules: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
- *     name: "url-map",
  *     pathMatchers: [{
- *         defaultService: google_compute_backend_service_default.selfLink,
+ *         defaultService: defaultBackendService.selfLink,
  *         name: "allpaths",
  *         pathRules: [{
  *             paths: ["/*"],
- *             service: google_compute_backend_service_default.selfLink,
+ *             service: defaultBackendService.selfLink,
  *         }],
  *     }],
  * });
- * const google_compute_target_https_proxy_default = new gcp.compute.TargetHttpsProxy("default", {
- *     name: "test-proxy",
- *     sslCertificates: [google_compute_ssl_certificate_default.selfLink],
- *     urlMap: google_compute_url_map_default.selfLink,
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("default", {
+ *     sslCertificates: [defaultSSLCertificate.selfLink],
+ *     urlMap: defaultURLMap.selfLink,
  * });
  * ```
  */

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_cloudbuild_trigger_build_trigger = new gcp.cloudbuild.Trigger("build_trigger", {
+ * const buildTrigger = new gcp.cloudbuild.Trigger("build_trigger", {
  *     build: {
  *         images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
  *         steps: [{
@@ -32,13 +32,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
  * OR
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_cloudbuild_trigger_build_trigger = new gcp.cloudbuild.Trigger("build_trigger", {
+ * const buildTrigger = new gcp.cloudbuild.Trigger("build_trigger", {
  *     filename: "cloudbuild.yaml",
  *     project: "my-project",
  *     triggerTemplate: {
@@ -48,7 +49,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
  */
 export class Trigger extends pulumi.CustomResource {
     /**

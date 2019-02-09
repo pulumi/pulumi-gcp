@@ -44,12 +44,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_disk_default = new gcp.compute.Disk("default", {
+ * const defaultDisk = new gcp.compute.Disk("default", {
  *     image: "debian-8-jessie-v20170523",
  *     labels: {
  *         environment: "dev",
  *     },
- *     name: "test-disk",
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });

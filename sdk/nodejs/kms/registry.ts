@@ -17,13 +17,9 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_pubsub_topic_default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {
- *     name: "default-devicestatus",
- * });
- * const google_pubsub_topic_default_telemetry = new gcp.pubsub.Topic("default-telemetry", {
- *     name: "default-telemetry",
- * });
- * const google_cloudiot_registry_default_registry = new gcp.kms.Registry("default-registry", {
+ * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const default_registry = new gcp.kms.Registry("default-registry", {
  *     credentials: [{
  *         publicKeyCertificate: {
  *             certificate: fs.readFileSync("rsa_cert.pem", "utf-8"),
@@ -31,7 +27,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  *     eventNotificationConfig: {
- *         pubsub_topic_name: google_pubsub_topic_default_telemetry.id,
+ *         pubsub_topic_name: default_telemetry.id,
  *     },
  *     httpConfig: {
  *         http_enabled_state: "HTTP_ENABLED",
@@ -39,9 +35,8 @@ import * as utilities from "../utilities";
  *     mqttConfig: {
  *         mqtt_enabled_state: "MQTT_ENABLED",
  *     },
- *     name: "default-registry",
  *     stateNotificationConfig: {
- *         pubsub_topic_name: google_pubsub_topic_default_devicestatus.id,
+ *         pubsub_topic_name: default_devicestatus.id,
  *     },
  * });
  * ```

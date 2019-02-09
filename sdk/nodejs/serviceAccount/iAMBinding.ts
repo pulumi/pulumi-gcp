@@ -16,6 +16,50 @@ import * as utilities from "../utilities";
  * > **Note:** `google_service_account_iam_policy` **cannot** be used in conjunction with `google_service_account_iam_binding` and `google_service_account_iam_member` or they will fight over what your policy should be.
  * 
  * > **Note:** `google_service_account_iam_binding` resources **can be** used in conjunction with `google_service_account_iam_member` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_service\_account\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
+ *     policyData: admin.apply(admin => admin.policyData),
+ *     serviceAccountId: "your-service-account-id",
+ * });
+ * ```
+ * 
+ * ## google\_service\_account\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ *     serviceAccountId: "your-service-account-id",
+ * });
+ * ```
+ * 
+ * ## google\_service\_account\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ *     serviceAccountId: "your-service-account-id",
+ * });
+ * ```
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**

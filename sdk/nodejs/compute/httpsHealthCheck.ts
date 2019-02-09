@@ -34,9 +34,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_https_health_check_default = new gcp.compute.HttpsHealthCheck("default", {
+ * const defaultHttpsHealthCheck = new gcp.compute.HttpsHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "authentication-health-check",
  *     requestPath: "/health_check",
  *     timeoutSec: 1,
  * });

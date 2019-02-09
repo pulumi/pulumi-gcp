@@ -85,11 +85,6 @@ func (r *BillingAccountSink) BillingAccount() *pulumi.StringOutput {
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-// ```
-// "storage.googleapis.com/[GCS_BUCKET]"
-// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-// ```
 // The writer associated with the sink must have access to write to the above resource.
 func (r *BillingAccountSink) Destination() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destination"])
@@ -119,11 +114,6 @@ type BillingAccountSinkState struct {
 	BillingAccount interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// ```
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination interface{}
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -143,11 +133,6 @@ type BillingAccountSinkArgs struct {
 	BillingAccount interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// ```
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination interface{}
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.

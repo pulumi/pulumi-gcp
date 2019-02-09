@@ -10,25 +10,6 @@ import (
 // Generates an IAM policy document that may be referenced by and applied to
 // other Google Cloud Platform resources, such as the `google_project` resource.
 // 
-// ```
-// data "google_iam_policy" "admin" {
-//   binding {
-//     role = "roles/compute.instanceAdmin"
-// 
-//     members = [
-//       "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-//     ]
-//   }
-// 
-//   binding {
-//     role = "roles/storage.objectViewer"
-// 
-//     members = [
-//       "user:jane@example.com",
-//     ]
-//   }
-// }
-// ```
 // 
 // This data source is used to define IAM policies to apply to other resources.
 // Currently, defining a policy through a datasource and referencing that policy

@@ -17,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_sourcerepo_repository_frontend = new gcp.sourcerepo.Repository("frontend", {
- *     name: "frontend",
- * });
+ * const frontend = new gcp.sourcerepo.Repository("frontend", {});
  * ```
  */
 export class Repository extends pulumi.CustomResource {

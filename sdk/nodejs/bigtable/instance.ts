@@ -16,14 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_bigtable_instance_instance = new gcp.bigtable.Instance("instance", {
+ * const instance = new gcp.bigtable.Instance("instance", {
  *     cluster: {
  *         clusterId: "tf-instance-cluster",
  *         numNodes: 3,
  *         storageType: "HDD",
  *         zone: "us-central1-b",
  *     },
- *     name: "tf-instance",
  * });
  * ```
  */

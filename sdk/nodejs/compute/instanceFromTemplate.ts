@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_instance_template_tpl = new gcp.compute.InstanceTemplate("tpl", {
+ * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tpl", {
  *     canIpForward: true,
  *     disks: [{
  *         autoDelete: true,
@@ -33,18 +33,17 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         foo: "bar",
  *     },
- *     name: "template",
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
  * });
- * const google_compute_instance_from_template_tpl = new gcp.compute.InstanceFromTemplate("tpl", {
+ * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tpl", {
+ *     // Override fields from instance template
  *     canIpForward: false,
  *     labels: {
  *         my_key: "my_value",
  *     },
- *     name: "instance-from-template",
- *     sourceInstanceTemplate: google_compute_instance_template_tpl.selfLink,
+ *     sourceInstanceTemplate: tplInstanceTemplate.selfLink,
  *     zone: "us-central1-a",
  * });
  * ```

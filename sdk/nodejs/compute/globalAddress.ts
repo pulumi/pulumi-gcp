@@ -27,9 +27,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_global_address_default = new gcp.compute.GlobalAddress("default", {
- *     name: "global-appserver-ip",
- * });
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {});
  * ```
  */
 export class GlobalAddress extends pulumi.CustomResource {

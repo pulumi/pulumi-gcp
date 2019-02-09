@@ -21,7 +21,6 @@ import (
 // * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
 // * How-to Guides
 //     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-// 
 type AttachedDisk struct {
 	s *pulumi.ResourceState
 }

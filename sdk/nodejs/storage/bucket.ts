@@ -24,9 +24,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
- *     name: "image-store-bucket",
  *     websites: [{
  *         mainPageSuffix: "index.html",
  *         notFoundPage: "404.html",

@@ -28,45 +28,40 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "http-health-check",
  *     requestPath: "/",
  *     timeoutSec: 1,
  * });
- * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
- *     name: "my-certificate",
  *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
  * });
- * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "backend-service",
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
- *     defaultService: google_compute_backend_service_default.selfLink,
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     defaultService: defaultBackendService.selfLink,
  *     description: "a description",
  *     hostRules: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
- *     name: "url-map",
  *     pathMatchers: [{
- *         defaultService: google_compute_backend_service_default.selfLink,
+ *         defaultService: defaultBackendService.selfLink,
  *         name: "allpaths",
  *         pathRules: [{
  *             paths: ["/*"],
- *             service: google_compute_backend_service_default.selfLink,
+ *             service: defaultBackendService.selfLink,
  *         }],
  *     }],
  * });
- * const google_compute_target_https_proxy_default = new gcp.compute.TargetHttpsProxy("default", {
- *     name: "test-proxy",
- *     sslCertificates: [google_compute_ssl_certificate_default.selfLink],
- *     urlMap: google_compute_url_map_default.selfLink,
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("default", {
+ *     sslCertificates: [defaultSSLCertificate.selfLink],
+ *     urlMap: defaultURLMap.selfLink,
  * });
  * ```
  */

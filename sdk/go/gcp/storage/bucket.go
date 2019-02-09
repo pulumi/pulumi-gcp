@@ -16,7 +16,6 @@ import (
 // [the official documentation](https://cloud.google.com/storage/docs/overview)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
-// 
 type Bucket struct {
 	s *pulumi.ResourceState
 }

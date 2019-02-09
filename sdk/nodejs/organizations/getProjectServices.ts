@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_services_project = pulumi.output(gcp.organizations.getProjectServices({
+ * const project = pulumi.output(gcp.organizations.getProjectServices({
  *     project: "your-project-id",
  * }));
  * 
- * export const projectServices = google_project_services_project.apply(__arg0 => __arg0.services.join(","));
+ * export const projectServices = project.apply(project => project.services.join(","));
  * ```
  */
 export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> {

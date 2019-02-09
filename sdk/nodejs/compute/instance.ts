@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_instance_default = new gcp.compute.Instance("default", {
+ * const defaultInstance = new gcp.compute.Instance("default", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: "debian-cloud/debian-9",
@@ -28,11 +28,11 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     metadataStartupScript: "echo hi > /test.txt",
- *     name: "test",
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         network: "default",
  *     }],
+ *     // Local SSD disk
  *     scratchDisks: [{}],
  *     serviceAccount: {
  *         scopes: [

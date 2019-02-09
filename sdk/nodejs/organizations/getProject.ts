@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_project = pulumi.output(gcp.organizations.getProject({}));
+ * const project = pulumi.output(gcp.organizations.getProject({}));
  * 
- * export const projectNumber = google_project_project.apply(__arg0 => __arg0.number);
+ * export const projectNumber = project.apply(project => project.number);
  * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {

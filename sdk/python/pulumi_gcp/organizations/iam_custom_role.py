@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -38,7 +39,7 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     A human-readable title for the role.
     """
-    def __init__(__self__, __name__, __opts__=None, deleted=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
+    def __init__(__self__, resource_name, opts=None, deleted=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None, __name__=None, __opts__=None):
         """
         Allows management of a customized Cloud IAM organization role. For more information see
         [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -51,10 +52,9 @@ class IAMCustomRole(pulumi.CustomResource):
          after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
          by Terraform, and new roles cannot share that name.
-         
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] deleted: The current deleted state of the role. Defaults to `false`.
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
@@ -65,11 +65,17 @@ class IAMCustomRole(pulumi.CustomResource):
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
         :param pulumi.Input[str] title: A human-readable title for the role.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -78,29 +84,29 @@ class IAMCustomRole(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not org_id:
+        if org_id is None:
             raise TypeError('Missing required property org_id')
         __props__['org_id'] = org_id
 
-        if not permissions:
+        if permissions is None:
             raise TypeError('Missing required property permissions')
         __props__['permissions'] = permissions
 
-        if not role_id:
+        if role_id is None:
             raise TypeError('Missing required property role_id')
         __props__['role_id'] = role_id
 
         __props__['stage'] = stage
 
-        if not title:
+        if title is None:
             raise TypeError('Missing required property title')
         __props__['title'] = title
 
         super(IAMCustomRole, __self__).__init__(
             'gcp:organizations/iAMCustomRole:IAMCustomRole',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

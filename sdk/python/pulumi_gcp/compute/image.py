@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -58,16 +59,14 @@ class Image(pulumi.CustomResource):
     The URL of a disk that will be used as the source of the
     image. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, __name__, __opts__=None, create_timeout=None, description=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None):
+    def __init__(__self__, resource_name, opts=None, create_timeout=None, description=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __name__=None, __opts__=None):
         """
         Creates a bootable VM image resource for Google Compute Engine from an existing
         tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
         [API](https://cloud.google.com/compute/docs/reference/latest/images).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] create_timeout: Configurable timeout in minutes for creating images. Default is 4 minutes.
         :param pulumi.Input[str] description: The description of the image to be created
         :param pulumi.Input[str] family: The name of the image family to which this image belongs.
@@ -84,11 +83,17 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The URL of a disk that will be used as the source of the
                image. Changing this forces a new resource to be created.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -116,9 +121,9 @@ class Image(pulumi.CustomResource):
 
         super(Image, __self__).__init__(
             'gcp:compute/image:Image',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

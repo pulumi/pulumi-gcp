@@ -30,23 +30,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_image_debian_9 = pulumi.output(gcp.compute.getImage({
+ * const debian9 = pulumi.output(gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const google_compute_target_pool_foobar = new gcp.compute.TargetPool("foobar", {
- *     name: "my-target-pool",
- * });
- * const google_compute_instance_template_foobar = new gcp.compute.InstanceTemplate("foobar", {
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobar", {});
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
  *     canIpForward: false,
  *     disks: [{
- *         sourceImage: google_compute_image_debian_9.apply(__arg0 => __arg0.selfLink),
+ *         sourceImage: debian9.apply(debian9 => debian9.selfLink),
  *     }],
  *     machineType: "n1-standard-1",
  *     metadata: {
  *         foo: "bar",
  *     },
- *     name: "my-instance-template",
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
@@ -62,25 +59,23 @@ import * as utilities from "../utilities";
  *         "bar",
  *     ],
  * });
- * const google_compute_region_instance_group_manager_foobar = new gcp.compute.RegionInstanceGroupManager("foobar", {
+ * const foobarRegionInstanceGroupManager = new gcp.compute.RegionInstanceGroupManager("foobar", {
  *     baseInstanceName: "foobar",
- *     instanceTemplate: google_compute_instance_template_foobar.selfLink,
- *     name: "my-region-igm",
+ *     instanceTemplate: foobarInstanceTemplate.selfLink,
  *     region: "us-central1",
- *     targetPools: [google_compute_target_pool_foobar.selfLink],
+ *     targetPools: [foobarTargetPool.selfLink],
  * });
- * const google_compute_region_autoscaler_foobar = new gcp.compute.RegionAutoscaler("foobar", {
+ * const foobarRegionAutoscaler = new gcp.compute.RegionAutoscaler("foobar", {
  *     autoscalingPolicy: {
  *         cooldownPeriod: 60,
  *         cpuUtilization: {
- *             target: 0.500000,
+ *             target: 0.5,
  *         },
  *         maxReplicas: 5,
  *         minReplicas: 1,
  *     },
- *     name: "my-region-autoscaler",
  *     region: "us-central1",
- *     target: google_compute_region_instance_group_manager_foobar.selfLink,
+ *     target: foobarRegionInstanceGroupManager.selfLink,
  * });
  * ```
  */

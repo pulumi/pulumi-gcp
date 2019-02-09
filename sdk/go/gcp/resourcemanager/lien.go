@@ -9,8 +9,6 @@ import (
 )
 
 // A Lien represents an encumbrance on the actions that can be performed on a resource.
-// 
-// 
 type Lien struct {
 	s *pulumi.ResourceState
 }

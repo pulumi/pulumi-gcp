@@ -16,15 +16,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
- *     name: "test-bucket",
- * });
- * const google_storage_bucket_object_archive = new gcp.storage.BucketObject("archive", {
- *     bucket: google_storage_bucket_bucket.name,
- *     name: "index.zip",
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: bucket.name,
  *     source: new pulumi.asset.FileArchive("./path/to/zip/file/which/contains/code"),
  * });
- * const google_cloudfunctions_function_function = new gcp.cloudfunctions.Function("function", {
+ * const functionFunction = new gcp.cloudfunctions.Function("function", {
  *     availableMemoryMb: 128,
  *     description: "My function",
  *     entryPoint: "helloGET",
@@ -34,9 +31,8 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "my-label": "my-label-value",
  *     },
- *     name: "function-test",
- *     sourceArchiveBucket: google_storage_bucket_bucket.name,
- *     sourceArchiveObject: google_storage_bucket_object_archive.name,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: archive.name,
  *     timeout: 60,
  *     triggerHttp: true,
  * });

@@ -36,18 +36,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
- *     name: "static-content-bucket",
- * });
- * const google_storage_bucket_object_object = new gcp.storage.BucketObject("object", {
- *     bucket: google_storage_bucket_bucket.name,
- *     name: "public-object",
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
  *     source: new pulumi.asset.FileArchive("../static/img/header-logo.png"),
  * });
- * const google_storage_object_access_control_public_rule = new gcp.storage.ObjectAccessControl("public_rule", {
- *     bucket: google_storage_bucket_bucket.name,
+ * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
+ *     bucket: bucket.name,
  *     entity: "allUsers",
- *     object: google_storage_bucket_object_object.name,
+ *     object: object.name,
  *     role: "READER",
  * });
  * ```

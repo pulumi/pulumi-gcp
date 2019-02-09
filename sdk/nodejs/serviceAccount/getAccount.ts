@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_service_account_object_viewer = pulumi.output(gcp.serviceAccount.getAccount({
+ * const objectViewer = pulumi.output(gcp.serviceAccount.getAccount({
  *     accountId: "object-viewer",
  * }));
  * ```

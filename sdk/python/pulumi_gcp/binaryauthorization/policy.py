@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -13,7 +14,7 @@ class Policy(pulumi.CustomResource):
     default_admission_rule: pulumi.Output[dict]
     description: pulumi.Output[str]
     project: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
+    def __init__(__self__, resource_name, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None, __name__=None, __opts__=None):
         """
         A policy for container image binary authorization.
         
@@ -26,20 +27,25 @@ class Policy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] admission_whitelist_patterns
         :param pulumi.Input[list] cluster_admission_rules
         :param pulumi.Input[dict] default_admission_rule
         :param pulumi.Input[str] description
         :param pulumi.Input[str] project
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -48,7 +54,7 @@ class Policy(pulumi.CustomResource):
 
         __props__['cluster_admission_rules'] = cluster_admission_rules
 
-        if not default_admission_rule:
+        if default_admission_rule is None:
             raise TypeError('Missing required property default_admission_rule')
         __props__['default_admission_rule'] = default_admission_rule
 
@@ -58,9 +64,9 @@ class Policy(pulumi.CustomResource):
 
         super(Policy, __self__).__init__(
             'gcp:binaryauthorization/policy:Policy',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

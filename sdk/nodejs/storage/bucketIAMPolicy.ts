@@ -13,6 +13,56 @@ import * as utilities from "../utilities";
  * 
  * 
  * > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_storage\_bucket\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const binding = new gcp.storage.BucketIAMBinding("binding", {
+ *     bucket: "your-bucket-name",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/storage.objectViewer",
+ * });
+ * ```
+ * 
+ * ## google\_storage\_bucket\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const member = new gcp.storage.BucketIAMMember("member", {
+ *     bucket: "your-bucket-name",
+ *     member: "user:jane@example.com",
+ *     role: "roles/storage.objectViewer",
+ * });
+ * ```
+ * 
+ * ## google\_storage\_bucket\_iam\_policy
+ * 
+ * When applying a policy that does not include the roles listed below, you lose the default permissions which google adds to your bucket:
+ * * `roles/storage.legacyBucketOwner`
+ * * `roles/storage.legacyBucketReader`
+ * 
+ * If this happens only an entity with `roles/storage.admin` privileges can repair this bucket's policies. It is recommended to include the above roles in policies to get the same behaviour as with the other two options.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const foo_policy = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["group:yourgroup@example.com"],
+ *         role: "roles/your-role",
+ *     }],
+ * }));
+ * const member = new gcp.storage.BucketIAMPolicy("member", {
+ *     bucket: "your-bucket-name",
+ *     policyData: foo_policy.apply(foo_policy => foo_policy.policyData),
+ * });
+ * ```
  */
 export class BucketIAMPolicy extends pulumi.CustomResource {
     /**

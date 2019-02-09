@@ -16,10 +16,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_router_peer_foobar = new gcp.compute.RouterPeer("foobar", {
+ * const foobar = new gcp.compute.RouterPeer("foobar", {
  *     advertisedRoutePriority: 100,
  *     interface: "interface-1",
- *     name: "peer-1",
  *     peerAsn: 65513,
  *     peerIpAddress: "169.254.1.2",
  *     region: "us-central1",

@@ -15,9 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_registry_repository_foo = pulumi.output(gcp.container.getRegistryRepository({}));
+ * const debian = pulumi.output(gcp.container.getRegistryImage({
+ *     name: "debian",
+ * }));
  * 
- * export const gcrLocation = google_container_registry_repository_foo.apply(__arg0 => __arg0.repositoryUrl);
+ * export const gcrLocation = debian.apply(debian => debian.imageUrl);
  * ```
  */
 export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryImageResult> {

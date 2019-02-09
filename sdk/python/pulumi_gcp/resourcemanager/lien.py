@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -14,42 +15,45 @@ class Lien(pulumi.CustomResource):
     parent: pulumi.Output[str]
     reason: pulumi.Output[str]
     restrictions: pulumi.Output[list]
-    def __init__(__self__, __name__, __opts__=None, origin=None, parent=None, reason=None, restrictions=None):
+    def __init__(__self__, resource_name, opts=None, origin=None, parent=None, reason=None, restrictions=None, __name__=None, __opts__=None):
         """
         A Lien represents an encumbrance on the actions that can be performed on a resource.
         
-        
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] origin
         :param pulumi.Input[str] parent
         :param pulumi.Input[str] reason
         :param pulumi.Input[list] restrictions
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not origin:
+        if origin is None:
             raise TypeError('Missing required property origin')
         __props__['origin'] = origin
 
-        if not parent:
+        if parent is None:
             raise TypeError('Missing required property parent')
         __props__['parent'] = parent
 
-        if not reason:
+        if reason is None:
             raise TypeError('Missing required property reason')
         __props__['reason'] = reason
 
-        if not restrictions:
+        if restrictions is None:
             raise TypeError('Missing required property restrictions')
         __props__['restrictions'] = restrictions
 
@@ -58,9 +62,9 @@ class Lien(pulumi.CustomResource):
 
         super(Lien, __self__).__init__(
             'gcp:resourcemanager/lien:Lien',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

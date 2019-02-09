@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_client_config_current = pulumi.output(gcp.organizations.getClientConfig({}));
+ * const current = pulumi.output(gcp.organizations.getClientConfig({}));
  * 
- * export const project = google_client_config_current.apply(__arg0 => __arg0.project);
+ * export const project = current.apply(current => current.project);
  * ```
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {

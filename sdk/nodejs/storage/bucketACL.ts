@@ -18,12 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
- *     name: "image-store-bucket",
  * });
- * const google_storage_bucket_acl_image_store_acl = new gcp.storage.BucketACL("image-store-acl", {
- *     bucket: google_storage_bucket_image_store.name,
+ * const image_store_acl = new gcp.storage.BucketACL("image-store-acl", {
+ *     bucket: image_store.name,
  *     roleEntities: [
  *         "OWNER:user-my.email@gmail.com",
  *         "READER:group-mygroup",

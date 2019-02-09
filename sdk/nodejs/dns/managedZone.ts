@@ -14,13 +14,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     description: "Production DNS zone",
  *     dnsName: "prod.mydomain.com.",
  *     labels: {
  *         foo: "bar",
  *     },
- *     name: "prod-zone",
  * });
  * ```
  */

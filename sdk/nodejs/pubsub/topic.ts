@@ -16,9 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_pubsub_topic_mytopic = new gcp.pubsub.Topic("mytopic", {
- *     name: "default-topic",
- * });
+ * const mytopic = new gcp.pubsub.Topic("mytopic", {});
  * ```
  */
 export class Topic extends pulumi.CustomResource {

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -38,7 +39,7 @@ class Notification(pulumi.CustomResource):
     topic name, assumed to belong to the default GCP provider project, or the project-level name,
     i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
     """
-    def __init__(__self__, __name__, __opts__=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None):
+    def __init__(__self__, resource_name, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None, __name__=None, __opts__=None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
          For more information see 
@@ -52,9 +53,8 @@ class Notification(pulumi.CustomResource):
         for an example of enabling notifications by granting the correct IAM permission. See
         [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
         :param pulumi.Input[dict] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         :param pulumi.Input[list] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
@@ -64,16 +64,22 @@ class Notification(pulumi.CustomResource):
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not bucket:
+        if bucket is None:
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
@@ -83,11 +89,11 @@ class Notification(pulumi.CustomResource):
 
         __props__['object_name_prefix'] = object_name_prefix
 
-        if not payload_format:
+        if payload_format is None:
             raise TypeError('Missing required property payload_format')
         __props__['payload_format'] = payload_format
 
-        if not topic:
+        if topic is None:
             raise TypeError('Missing required property topic')
         __props__['topic'] = topic
 
@@ -95,9 +101,9 @@ class Notification(pulumi.CustomResource):
 
         super(Notification, __self__).__init__(
             'gcp:storage/notification:Notification',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

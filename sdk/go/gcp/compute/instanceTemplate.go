@@ -12,7 +12,6 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
-// 
 type InstanceTemplate struct {
 	s *pulumi.ResourceState
 }

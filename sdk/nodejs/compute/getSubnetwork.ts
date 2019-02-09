@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_subnetwork_my_subnetwork = pulumi.output(gcp.compute.getSubnetwork({
+ * const my_subnetwork = pulumi.output(gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
  * }));

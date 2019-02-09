@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_default_service_account_default = pulumi.output(gcp.compute.getDefaultServiceAccount({}));
+ * const defaultDefaultServiceAccount = pulumi.output(gcp.compute.getDefaultServiceAccount({}));
  * 
- * export const defaultAccount = google_compute_default_service_account_default.apply(__arg0 => __arg0.email);
+ * export const defaultAccount = defaultDefaultServiceAccount.apply(defaultDefaultServiceAccount => defaultDefaultServiceAccount.email);
  * ```
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {

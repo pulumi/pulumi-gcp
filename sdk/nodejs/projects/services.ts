@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_services_project = new gcp.projects.Services("project", {
+ * const project = new gcp.projects.Services("project", {
  *     project: "your-project-id",
  *     services: [
  *         "iam.googleapis.com",

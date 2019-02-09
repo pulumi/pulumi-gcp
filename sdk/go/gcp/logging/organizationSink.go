@@ -81,11 +81,6 @@ func (r *OrganizationSink) ID() *pulumi.IDOutput {
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-// ```
-// "storage.googleapis.com/[GCS_BUCKET]"
-// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-// ```
 // The writer associated with the sink must have access to write to the above resource.
 func (r *OrganizationSink) Destination() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destination"])
@@ -124,11 +119,6 @@ func (r *OrganizationSink) WriterIdentity() *pulumi.StringOutput {
 type OrganizationSinkState struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// ```
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination interface{}
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -151,11 +141,6 @@ type OrganizationSinkState struct {
 type OrganizationSinkArgs struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// ```
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination interface{}
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.

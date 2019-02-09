@@ -17,39 +17,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "test",
  *     requestPath: "/",
  *     timeoutSec: 1,
  * });
- * const google_compute_instance_template_webserver = new gcp.compute.InstanceTemplate("webserver", {
+ * const webserver = new gcp.compute.InstanceTemplate("webserver", {
  *     disks: [{
  *         autoDelete: true,
  *         boot: true,
  *         sourceImage: "debian-cloud/debian-9",
  *     }],
  *     machineType: "n1-standard-1",
- *     name: "standard-webserver",
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
  * });
- * const google_compute_instance_group_manager_webservers = new gcp.compute.InstanceGroupManager("webservers", {
+ * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
  *     baseInstanceName: "webserver",
- *     instanceTemplate: google_compute_instance_template_webserver.selfLink,
- *     name: "my-webservers",
+ *     instanceTemplate: webserver.selfLink,
  *     targetSize: 1,
  *     zone: "us-central1-f",
  * });
- * const google_compute_backend_service_website = new gcp.compute.BackendService("website", {
+ * const website = new gcp.compute.BackendService("website", {
  *     backends: [{
- *         group: google_compute_instance_group_manager_webservers.instanceGroup,
+ *         group: webservers.instanceGroup,
  *     }],
  *     description: "Our company website",
  *     enableCdn: false,
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "my-backend",
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,

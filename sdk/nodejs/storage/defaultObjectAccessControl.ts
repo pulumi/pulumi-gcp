@@ -38,11 +38,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
- *     name: "static-content-bucket",
- * });
- * const google_storage_default_object_access_control_public_rule = new gcp.storage.DefaultObjectAccessControl("public_rule", {
- *     bucket: google_storage_bucket_bucket.name,
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const publicRule = new gcp.storage.DefaultObjectAccessControl("public_rule", {
+ *     bucket: bucket.name,
  *     entity: "allUsers",
  *     role: "READER",
  * });

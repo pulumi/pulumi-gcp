@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_kms_crypto_key_iam_member_crypto_key = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: "your-crypto-key-id",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",

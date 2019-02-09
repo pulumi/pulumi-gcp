@@ -16,8 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dataflow_job_big_data_job = new gcp.dataflow.Job("big_data_job", {
- *     name: "dataflow-job",
+ * const bigDataJob = new gcp.dataflow.Job("big_data_job", {
  *     parameters: {
  *         baz: "qux",
  *         foo: "bar",
@@ -26,6 +25,14 @@ import * as utilities from "../utilities";
  *     templateGcsPath: "gs://my-bucket/templates/template_file",
  * });
  * ```
+ * 
+ * ## Note on "destroy" / "apply"
+ * 
+ * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Terraform / Google resources.
+ * 
+ * The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continously, but may surprise users who use this resource for other kinds of Dataflow jobs.
+ * 
+ * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your `terraform destroy` to complete.
  */
 export class Job extends pulumi.CustomResource {
     /**

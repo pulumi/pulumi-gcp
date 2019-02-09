@@ -16,21 +16,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_image_bootable_image = new gcp.compute.Image("bootable-image", {
+ * const bootable_image = new gcp.compute.Image("bootable-image", {
  *     licenses: ["https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"],
- *     name: "my-custom-image",
  *     rawDisk: {
  *         source: "https://storage.googleapis.com/my-bucket/my-disk-image-tarball.tar.gz",
  *     },
  * });
- * const google_compute_instance_vm = new gcp.compute.Instance("vm", {
+ * const vm = new gcp.compute.Instance("vm", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: google_compute_image_bootable_image.selfLink,
+ *             image: bootable_image.selfLink,
  *         },
  *     },
  *     machineType: "n1-standard-1",
- *     name: "vm-from-custom-image",
  *     networkInterfaces: [{
  *         network: "default",
  *     }],

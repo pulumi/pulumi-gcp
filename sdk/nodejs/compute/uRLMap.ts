@@ -17,65 +17,59 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "test",
  *     requestPath: "/",
  *     timeoutSec: 1,
  * });
- * const google_storage_bucket_static = new gcp.storage.Bucket("static", {
+ * const staticBucket = new gcp.storage.Bucket("static", {
  *     location: "US",
- *     name: "static-asset-bucket",
  * });
- * const google_compute_backend_bucket_static = new gcp.compute.BackendBucket("static", {
- *     bucketName: google_storage_bucket_static.name,
+ * const staticBackendBucket = new gcp.compute.BackendBucket("static", {
+ *     bucketName: staticBucket.name,
  *     enableCdn: true,
- *     name: "static-asset-backend-bucket",
  * });
- * const google_compute_backend_service_home = new gcp.compute.BackendService("home", {
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "home-backend",
+ * const home = new gcp.compute.BackendService("home", {
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const google_compute_backend_service_login = new gcp.compute.BackendService("login", {
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "login-backend",
+ * const login = new gcp.compute.BackendService("login", {
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const google_compute_url_map_foobar = new gcp.compute.URLMap("foobar", {
- *     defaultService: google_compute_backend_service_home.selfLink,
+ * const foobar = new gcp.compute.URLMap("foobar", {
+ *     defaultService: home.selfLink,
  *     description: "a description",
  *     hostRules: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
- *     name: "urlmap",
  *     pathMatchers: [{
- *         defaultService: google_compute_backend_service_home.selfLink,
+ *         defaultService: home.selfLink,
  *         name: "allpaths",
  *         pathRules: [
  *             {
  *                 paths: ["/home"],
- *                 service: google_compute_backend_service_home.selfLink,
+ *                 service: home.selfLink,
  *             },
  *             {
  *                 paths: ["/login"],
- *                 service: google_compute_backend_service_login.selfLink,
+ *                 service: login.selfLink,
  *             },
  *             {
  *                 paths: ["/static"],
- *                 service: google_compute_backend_bucket_static.selfLink,
+ *                 service: staticBackendBucket.selfLink,
  *             },
  *         ],
  *     }],
  *     tests: [{
  *         host: "hi.com",
  *         path: "/home",
- *         service: google_compute_backend_service_home.selfLink,
+ *         service: home.selfLink,
  *     }],
  * });
  * ```

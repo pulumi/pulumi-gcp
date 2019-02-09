@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_shared_vpc_service_project_service1 = new gcp.compute.SharedVPCServiceProject("service1", {
+ * const service1 = new gcp.compute.SharedVPCServiceProject("service1", {
  *     hostProject: "host-project-id",
  *     serviceProject: "service-project-id-1",
  * });
  * ```
+ * 
  * For a complete Shared VPC example with both host and service projects, see
  * [`google_compute_shared_vpc_host_project`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
- * 
  */
 export class SharedVPCServiceProject extends pulumi.CustomResource {
     /**

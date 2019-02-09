@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -83,16 +84,15 @@ class Function(pulumi.CustomResource):
     Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
     Deprecated. Use `event_trigger` instead.
     """
-    def __init__(__self__, __name__, __opts__=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None):
+    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, __name__=None, __opts__=None):
         """
         Creates a new Cloud Function. For more information see
         [the official documentation](https://cloud.google.com/functions/docs/)
         and
         [API](https://cloud.google.com/functions/docs/apis).
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
@@ -115,11 +115,17 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] trigger_topic: Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
                Deprecated. Use `event_trigger` instead.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -148,11 +154,11 @@ class Function(pulumi.CustomResource):
 
         __props__['runtime'] = runtime
 
-        if not source_archive_bucket:
+        if source_archive_bucket is None:
             raise TypeError('Missing required property source_archive_bucket')
         __props__['source_archive_bucket'] = source_archive_bucket
 
-        if not source_archive_object:
+        if source_archive_object is None:
             raise TypeError('Missing required property source_archive_object')
         __props__['source_archive_object'] = source_archive_object
 
@@ -166,9 +172,9 @@ class Function(pulumi.CustomResource):
 
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

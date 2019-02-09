@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -25,7 +26,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     ssl_certificates: pulumi.Output[list]
     ssl_policy: pulumi.Output[str]
     url_map: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None, __name__=None, __opts__=None):
         """
         Represents a TargetHttpsProxy resource, which is used by one or more
         global forwarding rule to route incoming HTTPS requests to a URL map.
@@ -43,8 +44,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description
         :param pulumi.Input[str] name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -54,11 +55,17 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_policy
         :param pulumi.Input[str] url_map
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -71,13 +78,13 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         __props__['quic_override'] = quic_override
 
-        if not ssl_certificates:
+        if ssl_certificates is None:
             raise TypeError('Missing required property ssl_certificates')
         __props__['ssl_certificates'] = ssl_certificates
 
         __props__['ssl_policy'] = ssl_policy
 
-        if not url_map:
+        if url_map is None:
             raise TypeError('Missing required property url_map')
         __props__['url_map'] = url_map
 
@@ -87,9 +94,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         super(TargetHttpsProxy, __self__).__init__(
             'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

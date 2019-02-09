@@ -11,7 +11,6 @@ import (
 // Creates a dataset resource for Google BigQuery. For more information see
 // [the official documentation](https://cloud.google.com/bigquery/docs/) and
 // [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
-// 
 type Dataset struct {
 	s *pulumi.ResourceState
 }

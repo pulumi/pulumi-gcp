@@ -14,17 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_global_address_my_address = pulumi.output(gcp.compute.getGlobalAddress({
+ * const myAddress = pulumi.output(gcp.compute.getGlobalAddress({
  *     name: "foobar",
  * }));
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
- *     name: "prod-zone",
  * });
- * const google_dns_record_set_frontend = new gcp.dns.RecordSet("frontend", {
- *     managedZone: google_dns_managed_zone_prod.name,
- *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `lb.${__arg0}`),
- *     rrdatas: [google_compute_global_address_my_address.apply(__arg0 => __arg0.address)],
+ * const frontend = new gcp.dns.RecordSet("frontend", {
+ *     managedZone: prod.name,
+ *     rrdatas: [myAddress.apply(myAddress => myAddress.address)],
  *     ttl: 300,
  *     type: "A",
  * });

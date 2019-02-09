@@ -7,22 +7,22 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Container Engine versions in a zone or region for a given project.
  * 
- * ```hcl
- * data "google_container_engine_versions" "central1b" {
- *   zone = "us-central1-b"
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
  * 
- * resource "google_container_cluster" "foo" {
- *   name               = "terraform-test-cluster"
- *   zone               = "us-central1-b"
- *   node_version       = "${data.google_container_engine_versions.central1b.latest_node_version}"
- *   initial_node_count = 1
- * 
- *   master_auth {
- *     username = "mr.yoda"
- *     password = "adoy.rm"
- *   }
- * }
+ * const central1b = pulumi.output(gcp.container.getEngineVersions({
+ *     zone: "us-central1-b",
+ * }));
+ * const foo = new gcp.container.Cluster("foo", {
+ *     initialNodeCount: 1,
+ *     masterAuth: {
+ *         password: "adoy.rm",
+ *         username: "mr.yoda",
+ *     },
+ *     nodeVersion: central1b.apply(central1b => central1b.latestNodeVersion),
+ *     zone: "us-central1-b",
+ * });
  * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
