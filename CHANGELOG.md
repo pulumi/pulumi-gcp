@@ -1,4 +1,9 @@
-## 0.16.7 (Unreleased)
+## 0.16.8 (Unreleased)
+
+## 0.16.7 (Released February 8, 2019)
+
+- Fixed a bug in the Terraform bridge which could cause crashes when functions like `compute.getAddress` returned no
+  results
 
 ## 0.16.6 (Released January 19th, 2019)
 
