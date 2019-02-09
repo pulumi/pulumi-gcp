@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -218,7 +219,7 @@ class Cluster(pulumi.CustomResource):
     in `initial_node_count` should be created in. Only one of `zone` and `region`
     may be set. If neither zone nor region are set, the provider zone is used.
     """
-    def __init__(__self__, __name__, __opts__=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
         """
         Creates a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -228,9 +229,8 @@ class Cluster(pulumi.CustomResource):
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] additional_zones: The list of additional Google Compute Engine
                locations in which the cluster's nodes should be located. If additional zones are
                configured, the number of nodes specified in `initial_node_count` is created in
@@ -334,11 +334,17 @@ class Cluster(pulumi.CustomResource):
                in `initial_node_count` should be created in. Only one of `zone` and `region`
                may be set. If neither zone nor region are set, the provider zone is used.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -413,9 +419,9 @@ class Cluster(pulumi.CustomResource):
 
         super(Cluster, __self__).__init__(
             'gcp:container/cluster:Cluster',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

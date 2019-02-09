@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -89,7 +90,7 @@ class BackendService(pulumi.CustomResource):
     The number of secs to wait for a backend to respond
     to a request before considering the request failed. Defaults to `30`.
     """
-    def __init__(__self__, __name__, __opts__=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, resource_name, opts=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
         """
         A Backend Service defines a group of virtual machines that will serve traffic for load balancing. For more information
         see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -97,9 +98,8 @@ class BackendService(pulumi.CustomResource):
         
         For internal load balancing, use a [google_compute_region_backend_service](https://www.terraform.io/docs/providers/google/r/compute_region_backend_service.html).
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backends: The list of backends that serve this BackendService. Structure is documented below.
         :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService. Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new connections,
@@ -129,11 +129,17 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[int] timeout_sec: The number of secs to wait for a backend to respond
                to a request before considering the request failed. Defaults to `30`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -150,7 +156,7 @@ class BackendService(pulumi.CustomResource):
 
         __props__['enable_cdn'] = enable_cdn
 
-        if not health_checks:
+        if health_checks is None:
             raise TypeError('Missing required property health_checks')
         __props__['health_checks'] = health_checks
 
@@ -175,9 +181,9 @@ class BackendService(pulumi.CustomResource):
 
         super(BackendService, __self__).__init__(
             'gcp:compute/backendService:BackendService',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

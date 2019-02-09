@@ -39,15 +39,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_address_ip_address = new gcp.compute.Address("ip_address", {
- *     name: "my-address",
- * });
+ * const ipAddress = new gcp.compute.Address("ip_address", {});
  * ```
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=address_with_subnetwork&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * 
  * ## Example Usage - Address With Subnetwork
  * 
  * 
@@ -55,28 +53,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_default = new gcp.compute.Network("default", {
- *     name: "my-network",
- * });
- * const google_compute_subnetwork_default = new gcp.compute.Subnetwork("default", {
+ * const defaultNetwork = new gcp.compute.Network("default", {});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     ipCidrRange: "10.0.0.0/16",
- *     name: "my-subnet",
- *     network: google_compute_network_default.selfLink,
+ *     network: defaultNetwork.selfLink,
  *     region: "us-central1",
  * });
- * const google_compute_address_internal_with_subnet_and_address = new gcp.compute.Address("internal_with_subnet_and_address", {
+ * const internalWithSubnetAndAddress = new gcp.compute.Address("internal_with_subnet_and_address", {
  *     address: "10.0.42.42",
  *     addressType: "INTERNAL",
- *     name: "my-internal-address",
  *     region: "us-central1",
- *     subnetwork: google_compute_subnetwork_default.selfLink,
+ *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=instance_with_ip&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * 
  * ## Example Usage - Instance With Ip
  * 
  * 
@@ -84,24 +78,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_image_debian_image = pulumi.output(gcp.compute.getImage({
+ * const debianImage = pulumi.output(gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const google_compute_address_static = new gcp.compute.Address("static", {
- *     name: "ipv4-address",
- * });
- * const google_compute_instance_instance_with_ip = new gcp.compute.Instance("instance_with_ip", {
+ * const static = new gcp.compute.Address("static", {});
+ * const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: google_compute_image_debian_image.apply(__arg0 => __arg0.selfLink),
+ *             image: debianImage.apply(debianImage => debianImage.selfLink),
  *         },
  *     },
  *     machineType: "f1-micro",
- *     name: "vm-instance",
  *     networkInterfaces: [{
  *         accessConfigs: [{
- *             natIp: google_compute_address_static.address,
+ *             natIp: static.address,
  *         }],
  *         network: "default",
  *     }],

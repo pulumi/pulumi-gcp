@@ -48,14 +48,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_custom_test = new gcp.compute.Network("custom-test", {
+ * const custom_test = new gcp.compute.Network("custom-test", {
  *     autoCreateSubnetworks: false,
- *     name: "test-network",
  * });
- * const google_compute_subnetwork_network_with_private_secondary_ip_ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
+ * const network_with_private_secondary_ip_ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
  *     ipCidrRange: "10.2.0.0/16",
- *     name: "test-subnetwork",
- *     network: google_compute_network_custom_test.selfLink,
+ *     network: custom_test.selfLink,
  *     region: "us-central1",
  *     secondaryIpRanges: [{
  *         ipCidrRange: "192.168.10.0/24",

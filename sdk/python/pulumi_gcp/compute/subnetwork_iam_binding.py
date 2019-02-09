@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -33,7 +34,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
     """
     The name of the subnetwork.
     """
-    def __init__(__self__, __name__, __opts__=None, members=None, project=None, region=None, role=None, subnetwork=None):
+    def __init__(__self__, resource_name, opts=None, members=None, project=None, region=None, role=None, subnetwork=None, __name__=None, __opts__=None):
         """
         > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
         See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
@@ -48,9 +49,8 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         
         > **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] members
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -61,16 +61,22 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subnetwork: The name of the subnetwork.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not members:
+        if members is None:
             raise TypeError('Missing required property members')
         __props__['members'] = members
 
@@ -78,11 +84,11 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 
-        if not subnetwork:
+        if subnetwork is None:
             raise TypeError('Missing required property subnetwork')
         __props__['subnetwork'] = subnetwork
 
@@ -90,9 +96,9 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         super(SubnetworkIAMBinding, __self__).__init__(
             'gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

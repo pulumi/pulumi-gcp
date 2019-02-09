@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -41,16 +42,14 @@ class Registry(pulumi.CustomResource):
     """
     A PubSub topic to publish device state updates. Structure is documented below.
     """
-    def __init__(__self__, __name__, __opts__=None, credentials=None, event_notification_config=None, http_config=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):
+    def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_config=None, http_config=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __name__=None, __opts__=None):
         """
          Creates a device registry in Google's Cloud IoT Core platform. For more information see
         [the official documentation](https://cloud.google.com/iot/docs/) and
         [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
         :param pulumi.Input[dict] event_notification_config: A PubSub topics to publish device events. Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
@@ -61,11 +60,17 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
         :param pulumi.Input[dict] state_notification_config: A PubSub topic to publish device state updates. Structure is documented below.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -88,9 +93,9 @@ class Registry(pulumi.CustomResource):
 
         super(Registry, __self__).__init__(
             'gcp:kms/registry:Registry',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -19,12 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ * const department1 = new gcp.organizations.Folder("department1", {
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const google_folder_iam_member_admin = new gcp.folder.IAMMember("admin", {
- *     folder: google_folder_department1.name,
+ * const admin = new gcp.folder.IAMMember("admin", {
+ *     folder: department1.name,
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
  * });

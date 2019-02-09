@@ -14,6 +14,55 @@ import * as utilities from "../utilities";
  * > **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
  * 
  * > **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_project\_iam\_policy
+ * 
+ * > **Be careful!** You can accidentally lock yourself out of your project
+ *    using this resource. Proceed with caution.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const project = new gcp.projects.IAMPolicy("project", {
+ *     policyData: admin.apply(admin => admin.policyData),
+ *     project: "your-project-id",
+ * });
+ * ```
+ * 
+ * ## google\_project\_iam\_binding
+ * 
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your project.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const project = new gcp.projects.IAMBinding("project", {
+ *     members: ["user:jane@example.com"],
+ *     project: "your-project-id",
+ *     role: "roles/editor",
+ * });
+ * ```
+ * 
+ * ## google\_project\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const project = new gcp.projects.IAMMember("project", {
+ *     member: "user:jane@example.com",
+ *     project: "your-project-id",
+ *     role: "roles/editor",
+ * });
+ * ```
  */
 export class IAMPolicy extends pulumi.CustomResource {
     /**

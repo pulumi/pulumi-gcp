@@ -28,23 +28,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "health-check",
  *     tcpHealthCheck: {
- *         port: Number.parseFloat("443"),
+ *         port: 443,
  *     },
  *     timeoutSec: 1,
  * });
- * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
- *     healthChecks: google_compute_health_check_default.selfLink,
- *     name: "backend-service",
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     healthChecks: defaultHealthCheck.selfLink,
  *     protocol: "TCP",
  *     timeoutSec: 10,
  * });
- * const google_compute_target_tcp_proxy_default = new gcp.compute.TargetTCPProxy("default", {
- *     backendService: google_compute_backend_service_default.selfLink,
- *     name: "test-proxy",
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("default", {
+ *     backendService: defaultBackendService.selfLink,
  * });
  * ```
  */

@@ -23,21 +23,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ * const note = new gcp.containeranalysis.Note("note", {
  *     attestationAuthority: {
  *         hint: {
  *             humanReadableName: "My attestor",
  *         },
  *     },
- *     name: "test-attestor-note",
  * });
- * const google_binary_authorization_attestor_attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
  *     attestationAuthorityNote: {
- *         noteReference: google_container_analysis_note_note.name,
+ *         noteReference: note.name,
  *     },
- *     name: "test-attestor",
  * });
- * const google_binary_authorization_policy_policy = new gcp.binaryauthorization.Policy("policy", {
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
  *     admissionWhitelistPatterns: [{
  *         namePattern: "gcr.io/google_containers/*",
  *     }],
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *         cluster: "us-central1-a.prod-cluster",
  *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
  *         evaluationMode: "REQUIRE_ATTESTATION",
- *         requireAttestationsBies: [google_binary_authorization_attestor_attestor.name],
+ *         requireAttestationsBies: [attestor.name],
  *     }],
  *     defaultAdmissionRule: {
  *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",

@@ -19,16 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_sql_database_instance_master = new gcp.sql.DatabaseInstance("master", {
- *     name: "master-instance",
+ * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",
  *     },
  * });
- * const google_sql_user_users = new gcp.sql.User("users", {
+ * const users = new gcp.sql.User("users", {
  *     host: "me.com",
- *     instance: google_sql_database_instance_master.name,
- *     name: "me",
+ *     instance: master.name,
  *     password: "changeme",
  * });
  * ```

@@ -14,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_service_account_myaccount = new gcp.serviceAccount.Account("myaccount", {
+ * const myaccount = new gcp.serviceAccount.Account("myaccount", {
  *     accountId: "dev-foo-account",
  * });
- * const google_service_account_key_mykey = new gcp.serviceAccount.Key("mykey", {
- *     serviceAccountId: google_service_account_myaccount.name,
+ * const mykeyKey = new gcp.serviceAccount.Key("mykey", {
+ *     serviceAccountId: myaccount.name,
  * });
- * const google_service_account_key_mykey = pulumi.output(gcp.serviceAccount.getAccountKey({
- *     name: google_service_account_key_mykey.name,
+ * const mykeyAccountKey = pulumi.output(gcp.serviceAccount.getAccountKey({
+ *     name: mykeyKey.name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * }));
  * ```

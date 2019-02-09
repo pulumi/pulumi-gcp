@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_billing_account_iam_member_binding = new gcp.billing.AccountIamMember("binding", {
+ * const binding = new gcp.billing.AccountIamMember("binding", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
  *     member: "user:jane@example.com",
  *     role: "roles/billing.viewer",

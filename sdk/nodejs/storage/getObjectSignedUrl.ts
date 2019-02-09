@@ -8,6 +8,26 @@ import * as utilities from "../utilities";
  * The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
  * 
  * For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
+ * 
+ * ## Full Example
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const getUrl = pulumi.output(gcp.storage.getObjectSignedUrl({
+ *     bucket: "fried_chicken",
+ *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
+ *     contentType: "text/plain",
+ *     credentials: fs.readFileSync("path/to/credentials.json", "utf-8"),
+ *     duration: "2d",
+ *     extensionHeaders: {
+ *         "x-goog-if-generation-match": 1,
+ *     },
+ *     path: "path/to/file",
+ * }));
+ * ```
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
     return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {

@@ -14,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_image_my_image = pulumi.output(gcp.compute.getImage({
+ * const myImage = pulumi.output(gcp.compute.getImage({
  *     name: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const google_compute_instance_default = new gcp.compute.Instance("default", {
+ * const defaultInstance = new gcp.compute.Instance("default", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: google_compute_image_my_image.apply(__arg0 => __arg0.selfLink),
+ *             image: myImage.apply(myImage => myImage.selfLink),
  *         },
  *     },
  * });

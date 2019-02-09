@@ -18,9 +18,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_runtimeconfig_config_my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
- *     name: "my-service-runtime-config",
  * });
  * ```
  */

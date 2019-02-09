@@ -29,16 +29,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_monitoring_group_basic = new gcp.monitoring.Group("basic", {
+ * const basic = new gcp.monitoring.Group("basic", {
  *     displayName: "New Test Group",
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=monitoring_group_subgroup&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * 
  * ## Example Usage - Monitoring Group Subgroup
  * 
  * 
@@ -46,14 +46,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_monitoring_group_parent = new gcp.monitoring.Group("parent", {
+ * const parent = new gcp.monitoring.Group("parent", {
  *     displayName: "New Test SubGroup",
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
- * const google_monitoring_group_subgroup = new gcp.monitoring.Group("subgroup", {
+ * const subgroup = new gcp.monitoring.Group("subgroup", {
  *     displayName: "New Test SubGroup",
  *     filter: "resource.metadata.region=\"europe-west2\"",
- *     parentName: google_monitoring_group_parent.name,
+ *     parentName: parent.name,
  * });
  * ```
  */

@@ -8,17 +8,6 @@ import (
 )
 
 // Use this data source to get information about a Google Cloud Organization.
-// 
-// ```hcl
-// data "google_organization" "org" {
-//   domain = "example.com"
-// }
-// 
-// resource "google_folder" "sales" {
-//   display_name = "Sales"
-//   parent       = "${data.google_organization.org.name}"
-// }
-// ```
 func LookupOrganization(ctx *pulumi.Context, args *GetOrganizationArgs) (*GetOrganizationResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

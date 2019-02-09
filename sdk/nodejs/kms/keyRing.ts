@@ -22,9 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_kms_key_ring_my_key_ring = new gcp.kms.KeyRing("my_key_ring", {
+ * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
  *     location: "us-central1",
- *     name: "my-key-ring",
  * });
  * ```
  */

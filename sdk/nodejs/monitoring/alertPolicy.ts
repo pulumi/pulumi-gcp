@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_monitoring_alert_policy_basic = new gcp.monitoring.AlertPolicy("basic", {
+ * const basic = new gcp.monitoring.AlertPolicy("basic", {
  *     combiner: "OR",
  *     conditions: [{
  *         conditionThreshold: {

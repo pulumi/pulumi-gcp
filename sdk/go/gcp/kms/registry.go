@@ -10,7 +10,6 @@ import (
 //  Creates a device registry in Google's Cloud IoT Core platform. For more information see
 // [the official documentation](https://cloud.google.com/iot/docs/) and
 // [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
-// 
 type Registry struct {
 	s *pulumi.ResourceState
 }

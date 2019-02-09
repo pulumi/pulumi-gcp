@@ -8,17 +8,6 @@ import (
 )
 
 // Use this data source to get information about a Google IAM Role.
-// 
-// ```hcl
-// data "google_iam_role" "roleinfo" {
-//   name = "roles/compute.viewer"
-// }
-// 
-// output "the_role_permissions" {
-//   value = "${data.google_iam_role.roleinfo.included_permissions}"
-// }
-// 
-// ```
 func LookupRule(ctx *pulumi.Context, args *GetRuleArgs) (*GetRuleResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

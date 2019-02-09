@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -47,7 +48,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     The zone that the machine should be created in. If not
     set, the provider zone is used.
     """
-    def __init__(__self__, __name__, __opts__=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -58,10 +59,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         `source_instance_template`. To create an instance without a template, use the
         `google_compute_instance` resource.
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update
         :param pulumi.Input[list] attached_disks
         :param pulumi.Input[dict] boot_disk
@@ -87,11 +86,17 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -132,7 +137,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         __props__['service_account'] = service_account
 
-        if not source_instance_template:
+        if source_instance_template is None:
             raise TypeError('Missing required property source_instance_template')
         __props__['source_instance_template'] = source_instance_template
 
@@ -149,9 +154,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         super(InstanceFromTemplate, __self__).__init__(
             'gcp:compute/instanceFromTemplate:InstanceFromTemplate',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

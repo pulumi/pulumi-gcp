@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -18,7 +19,7 @@ class Instance(pulumi.CustomResource):
     project: pulumi.Output[str]
     tier: pulumi.Output[str]
     zone: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None):
+    def __init__(__self__, resource_name, opts=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None, __name__=None, __opts__=None):
         """
         A Google Cloud Filestore instance.
         
@@ -39,8 +40,8 @@ class Instance(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description
         :param pulumi.Input[dict] file_shares
         :param pulumi.Input[dict] labels
@@ -50,18 +51,24 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] tier
         :param pulumi.Input[str] zone
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['description'] = description
 
-        if not file_shares:
+        if file_shares is None:
             raise TypeError('Missing required property file_shares')
         __props__['file_shares'] = file_shares
 
@@ -69,17 +76,17 @@ class Instance(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not networks:
+        if networks is None:
             raise TypeError('Missing required property networks')
         __props__['networks'] = networks
 
         __props__['project'] = project
 
-        if not tier:
+        if tier is None:
             raise TypeError('Missing required property tier')
         __props__['tier'] = tier
 
-        if not zone:
+        if zone is None:
             raise TypeError('Missing required property zone')
         __props__['zone'] = zone
 
@@ -88,9 +95,9 @@ class Instance(pulumi.CustomResource):
 
         super(Instance, __self__).__init__(
             'gcp:filestore/instance:Instance',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

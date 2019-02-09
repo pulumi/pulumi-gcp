@@ -32,15 +32,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_image_bucket = new gcp.storage.Bucket("image_bucket", {
+ * const imageBucket = new gcp.storage.Bucket("image_bucket", {
  *     location: "EU",
- *     name: "image-store-bucket",
  * });
- * const google_compute_backend_bucket_image_backend = new gcp.compute.BackendBucket("image_backend", {
- *     bucketName: google_storage_bucket_image_bucket.name,
+ * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ *     bucketName: imageBucket.name,
  *     description: "Contains beautiful images",
  *     enableCdn: true,
- *     name: "image-backend-bucket",
  * });
  * ```
  */

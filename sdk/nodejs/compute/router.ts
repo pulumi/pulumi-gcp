@@ -26,11 +26,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_foobar = new gcp.compute.Network("foobar", {
+ * const foobarNetwork = new gcp.compute.Network("foobar", {
  *     autoCreateSubnetworks: false,
- *     name: "my-network",
  * });
- * const google_compute_router_foobar = new gcp.compute.Router("foobar", {
+ * const foobarRouter = new gcp.compute.Router("foobar", {
  *     bgp: {
  *         advertiseMode: "CUSTOM",
  *         advertisedGroups: ["ALL_SUBNETS"],
@@ -44,8 +43,7 @@ import * as utilities from "../utilities";
  *         ],
  *         asn: 64514,
  *     },
- *     name: "my-router",
- *     network: google_compute_network_foobar.name,
+ *     network: foobarNetwork.name,
  * });
  * ```
  */

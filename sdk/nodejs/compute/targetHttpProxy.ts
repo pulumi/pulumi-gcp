@@ -27,38 +27,34 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_http_health_check_default = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "http-health-check",
  *     requestPath: "/",
  *     timeoutSec: 1,
  * });
- * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
- *     healthChecks: google_compute_http_health_check_default.selfLink,
- *     name: "backend-service",
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const google_compute_url_map_default = new gcp.compute.URLMap("default", {
- *     defaultService: google_compute_backend_service_default.selfLink,
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     defaultService: defaultBackendService.selfLink,
  *     hostRules: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
- *     name: "url-map",
  *     pathMatchers: [{
- *         defaultService: google_compute_backend_service_default.selfLink,
+ *         defaultService: defaultBackendService.selfLink,
  *         name: "allpaths",
  *         pathRules: [{
  *             paths: ["/*"],
- *             service: google_compute_backend_service_default.selfLink,
+ *             service: defaultBackendService.selfLink,
  *         }],
  *     }],
  * });
- * const google_compute_target_http_proxy_default = new gcp.compute.TargetHttpProxy("default", {
- *     name: "test-proxy",
- *     urlMap: google_compute_url_map_default.selfLink,
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     urlMap: defaultURLMap.selfLink,
  * });
  * ```
  */

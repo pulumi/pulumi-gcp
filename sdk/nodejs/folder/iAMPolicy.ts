@@ -14,19 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_iam_policy_admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/editor",
  *     }],
  * }));
- * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ * const department1 = new gcp.organizations.Folder("department1", {
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const google_folder_iam_policy_folder_admin_policy = new gcp.folder.IAMPolicy("folder_admin_policy", {
- *     folder: google_folder_department1.name,
- *     policyData: google_iam_policy_admin.apply(__arg0 => __arg0.policyData),
+ * const folderAdminPolicy = new gcp.folder.IAMPolicy("folder_admin_policy", {
+ *     folder: department1.name,
+ *     policyData: admin.apply(admin => admin.policyData),
  * });
  * ```
  */

@@ -26,15 +26,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_iam_policy_admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/editor",
  *     }],
  * }));
- * const google_organization_iam_policy_policy = new gcp.organizations.IAMPolicy("policy", {
+ * const policy = new gcp.organizations.IAMPolicy("policy", {
  *     orgId: "123456789",
- *     policyData: google_iam_policy_admin.apply(__arg0 => __arg0.policyData),
+ *     policyData: admin.apply(admin => admin.policyData),
  * });
  * ```
  */

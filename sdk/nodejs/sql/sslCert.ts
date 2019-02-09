@@ -18,15 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_sql_database_instance_master = new gcp.sql.DatabaseInstance("master", {
- *     name: "master-instance",
+ * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",
  *     },
  * });
- * const google_sql_ssl_cert_client_cert = new gcp.sql.SslCert("client_cert", {
+ * const clientCert = new gcp.sql.SslCert("client_cert", {
  *     commonName: "client-name",
- *     instance: google_sql_database_instance_master.name,
+ *     instance: master.name,
  * });
  * ```
  */

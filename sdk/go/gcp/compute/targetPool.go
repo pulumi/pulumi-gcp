@@ -12,7 +12,6 @@ import (
 // [the official
 // documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
-// 
 type TargetPool struct {
 	s *pulumi.ResourceState
 }

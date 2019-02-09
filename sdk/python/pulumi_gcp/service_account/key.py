@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -70,14 +71,12 @@ class Key(pulumi.CustomResource):
     The key can be used before this timestamp.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    def __init__(__self__, __name__, __opts__=None, key_algorithm=None, pgp_key=None, private_key_type=None, public_key_type=None, service_account_id=None):
+    def __init__(__self__, resource_name, opts=None, key_algorithm=None, pgp_key=None, private_key_type=None, public_key_type=None, service_account_id=None, __name__=None, __opts__=None):
         """
         Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -92,11 +91,17 @@ class Key(pulumi.CustomResource):
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -109,7 +114,7 @@ class Key(pulumi.CustomResource):
 
         __props__['public_key_type'] = public_key_type
 
-        if not service_account_id:
+        if service_account_id is None:
             raise TypeError('Missing required property service_account_id')
         __props__['service_account_id'] = service_account_id
 
@@ -123,9 +128,9 @@ class Key(pulumi.CustomResource):
 
         super(Key, __self__).__init__(
             'gcp:serviceAccount/key:Key',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

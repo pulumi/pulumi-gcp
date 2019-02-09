@@ -11,7 +11,6 @@ import (
 // Creates a Google Bigtable table inside an instance. For more information see
 // [the official documentation](https://cloud.google.com/bigtable/) and
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
-// 
 type Table struct {
 	s *pulumi.ResourceState
 }

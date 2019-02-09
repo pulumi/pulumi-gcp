@@ -37,10 +37,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_default = new gcp.compute.Network("default", {
- *     name: "test-network",
- * });
- * const google_compute_firewall_default = new gcp.compute.Firewall("default", {
+ * const defaultNetwork = new gcp.compute.Network("default", {});
+ * const defaultFirewall = new gcp.compute.Firewall("default", {
  *     allows: [
  *         {
  *             protocol: "icmp",
@@ -54,8 +52,7 @@ import * as utilities from "../utilities";
  *             protocol: "tcp",
  *         },
  *     ],
- *     name: "test-firewall",
- *     network: google_compute_network_default.name,
+ *     network: defaultNetwork.name,
  *     sourceTags: ["web"],
  * });
  * ```

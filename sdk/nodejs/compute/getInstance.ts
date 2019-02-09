@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_instance_appserver = pulumi.output(gcp.compute.getInstance({
+ * const appserver = pulumi.output(gcp.compute.getInstance({
  *     name: "primary-application-server",
  *     zone: "us-central1-a",
  * }));

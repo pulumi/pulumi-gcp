@@ -19,15 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_shared_vpc_host_project_host = new gcp.compute.SharedVPCHostProject("host", {
+ * // A host project provides network resources to associated service projects.
+ * const host = new gcp.compute.SharedVPCHostProject("host", {
  *     project: "host-project-id",
  * });
- * const google_compute_shared_vpc_service_project_service1 = new gcp.compute.SharedVPCServiceProject("service1", {
- *     hostProject: google_compute_shared_vpc_host_project_host.project,
+ * // A service project gains access to network resources provided by its
+ * // associated host project.
+ * const service1 = new gcp.compute.SharedVPCServiceProject("service1", {
+ *     hostProject: host.project,
  *     serviceProject: "service-project-id-1",
  * });
- * const google_compute_shared_vpc_service_project_service2 = new gcp.compute.SharedVPCServiceProject("service2", {
- *     hostProject: google_compute_shared_vpc_host_project_host.project,
+ * const service2 = new gcp.compute.SharedVPCServiceProject("service2", {
+ *     hostProject: host.project,
  *     serviceProject: "service-project-id-2",
  * });
  * ```

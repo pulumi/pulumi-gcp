@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -66,13 +67,6 @@ async def get_instance_group(name=None, project=None, self_link=None, zone=None)
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-    
-    ```
-    data "google_compute_instance_group" "all" {
-    	name = "instance-group-name"
-    	zone = "us-central1-a"
-    }
-    ```
     """
     __args__ = dict()
 

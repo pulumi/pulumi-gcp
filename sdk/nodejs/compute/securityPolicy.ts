@@ -15,8 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_security_policy_policy = new gcp.compute.SecurityPolicy("policy", {
- *     name: "my-policy",
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
  *     rules: [
  *         {
  *             action: "deny(403)",
@@ -27,7 +26,7 @@ import * as utilities from "../utilities";
  *                 },
  *                 versionedExpr: "SRC_IPS_V1",
  *             },
- *             priority: Number.parseFloat("1000"),
+ *             priority: 1000,
  *         },
  *         {
  *             action: "allow",
@@ -38,7 +37,7 @@ import * as utilities from "../utilities";
  *                 },
  *                 versionedExpr: "SRC_IPS_V1",
  *             },
- *             priority: Number.parseFloat("2147483647"),
+ *             priority: 2147483647,
  *         },
  *     ],
  * });

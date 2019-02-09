@@ -8,21 +8,6 @@ import (
 )
 
 // Use this data source to get information about a Google Billing Account.
-// 
-// ```hcl
-// data "google_billing_account" "acct" {
-//   display_name = "My Billing Account"
-//   open         = true
-// }
-// 
-// resource "google_project" "my_project" {
-//   name       = "My Project"
-//   project_id = "your-project-id"
-//   org_id     = "1234567"
-// 
-//   billing_account = "${data.google_billing_account.acct.id}"
-// }
-// ```
 func LookupBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs) (*GetBillingAccountResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

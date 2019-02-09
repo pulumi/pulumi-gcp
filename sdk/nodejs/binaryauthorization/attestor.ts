@@ -23,17 +23,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_analysis_note_note = new gcp.containeranalysis.Note("note", {
+ * const note = new gcp.containeranalysis.Note("note", {
  *     attestationAuthority: {
  *         hint: {
  *             humanReadableName: "Attestor Note",
  *         },
  *     },
- *     name: "test-attestor-note",
  * });
- * const google_binary_authorization_attestor_attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
  *     attestationAuthorityNote: {
- *         noteReference: google_container_analysis_note_note.name,
+ *         noteReference: note.name,
  *         publicKeys: [{
  *             asciiArmoredPgpPublicKey: `mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
  * bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
@@ -53,7 +52,6 @@ import * as utilities from "../utilities";
  * `,
  *         }],
  *     },
- *     name: "test-attestor",
  * });
  * ```
  */

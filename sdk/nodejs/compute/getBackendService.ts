@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_backend_service_baz = pulumi.output(gcp.compute.getBackendService({
+ * const baz = pulumi.output(gcp.compute.getBackendService({
  *     name: "foobar",
  * }));
  * ```

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_kms_crypto_key_iam_binding_crypto_key = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
  *     cryptoKeyId: "my-gcp-project/us-central1/my-key-ring/my-crypto-key",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",

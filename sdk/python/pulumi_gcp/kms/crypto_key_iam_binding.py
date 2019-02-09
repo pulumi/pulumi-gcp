@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -29,14 +30,13 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, __name__, __opts__=None, crypto_key_id=None, members=None, role=None):
+    def __init__(__self__, resource_name, opts=None, crypto_key_id=None, members=None, role=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud KMS crypto key.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`.
@@ -46,24 +46,30 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not crypto_key_id:
+        if crypto_key_id is None:
             raise TypeError('Missing required property crypto_key_id')
         __props__['crypto_key_id'] = crypto_key_id
 
-        if not members:
+        if members is None:
             raise TypeError('Missing required property members')
         __props__['members'] = members
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 
@@ -71,9 +77,9 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         super(CryptoKeyIAMBinding, __self__).__init__(
             'gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

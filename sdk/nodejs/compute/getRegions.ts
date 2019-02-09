@@ -8,15 +8,18 @@ import * as utilities from "../utilities";
  * Provides access to available Google Compute regions for a given project.
  * See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
  * 
- * ```
- * data "google_compute_regions" "available" {}
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
  * 
- * resource "google_compute_subnetwork" "cluster" {
- *   count = "${length(data.google_compute_regions.available.names)}"
- *   name          = "my-network"
- *   ip_cidr_range = "10.36.${count.index}.0/24"
- *   network       = "my-network"
- *   region        = "${data.google_compute_regions.available.names[count.index]}"
+ * const available = pulumi.output(gcp.compute.getRegions({}));
+ * const cluster: gcp.compute.Subnetwork[] = [];
+ * for (let i = 0; i < available.apply(available => available.names.length); i++) {
+ *     cluster.push(new gcp.compute.Subnetwork(`cluster-${i}`, {
+ *         ipCidrRange: `10.36.${i}.0/24`,
+ *         network: "my-network",
+ *         region: available.apply(available => available.names[i]),
+ *     }));
  * }
  * ```
  */
