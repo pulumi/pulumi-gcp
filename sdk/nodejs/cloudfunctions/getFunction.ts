@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_cloudfunctions_function_my_function = pulumi.output(gcp.cloudfunctions.getFunction({
+ * const my_function = pulumi.output(gcp.cloudfunctions.getFunction({
  *     name: "function",
  * }));
  * ```

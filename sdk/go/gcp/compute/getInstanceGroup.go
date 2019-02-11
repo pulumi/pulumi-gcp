@@ -10,13 +10,6 @@ import (
 // Get a Compute Instance Group within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-// 
-// ```
-// data "google_compute_instance_group" "all" {
-// 	name = "instance-group-name"
-// 	zone = "us-central1-a"
-// }
-// ```
 func LookupInstanceGroup(ctx *pulumi.Context, args *GetInstanceGroupArgs) (*GetInstanceGroupResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -32,7 +33,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
     `google_spanner_database_iam_binding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, __name__, __opts__=None, database=None, instance=None, member=None, project=None, role=None):
+    def __init__(__self__, resource_name, opts=None, database=None, instance=None, member=None, project=None, role=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
         
@@ -47,9 +48,8 @@ class DatabaseIAMMember(pulumi.CustomResource):
         
         > **Note:** `google_spanner_database_iam_binding` resources **can be** used in conjunction with `google_spanner_database_iam_member` resources **only if** they do not grant privilege to the same role.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
         :param pulumi.Input[str] member
@@ -59,30 +59,36 @@ class DatabaseIAMMember(pulumi.CustomResource):
                `google_spanner_database_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not database:
+        if database is None:
             raise TypeError('Missing required property database')
         __props__['database'] = database
 
-        if not instance:
+        if instance is None:
             raise TypeError('Missing required property instance')
         __props__['instance'] = instance
 
-        if not member:
+        if member is None:
             raise TypeError('Missing required property member')
         __props__['member'] = member
 
         __props__['project'] = project
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 
@@ -90,9 +96,9 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
         super(DatabaseIAMMember, __self__).__init__(
             'gcp:spanner/databaseIAMMember:DatabaseIAMMember',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -35,11 +35,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_composer_environment_test = new gcp.composer.Environment("test", {
- *     name: "my-composer-env",
+ * const test = new gcp.composer.Environment("test", {
  *     region: "us-central1",
  * });
  * ```
+ * 
  * ### With GKE and Compute Resource Dependencies
  * 
  * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
@@ -50,49 +50,47 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_test = new gcp.compute.Network("test", {
+ * const testNetwork = new gcp.compute.Network("test", {
  *     autoCreateSubnetworks: false,
- *     name: "composer-test-network",
  * });
- * const google_service_account_test = new gcp.serviceAccount.Account("test", {
+ * const testAccount = new gcp.serviceAccount.Account("test", {
  *     accountId: "composer-env-account",
  *     displayName: "Test Service Account for Composer Environment",
  * });
- * const google_compute_subnetwork_test = new gcp.compute.Subnetwork("test", {
+ * const testSubnetwork = new gcp.compute.Subnetwork("test", {
  *     ipCidrRange: "10.2.0.0/16",
- *     name: "composer-test-subnetwork",
- *     network: google_compute_network_test.selfLink,
+ *     network: testNetwork.selfLink,
  *     region: "us-central1",
  * });
- * const google_project_iam_member_composer_worker = new gcp.projects.IAMMember("composer-worker", {
- *     member: google_service_account_test.email.apply(__arg0 => `serviceAccount:${__arg0}`),
+ * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     member: testAccount.email.apply(email => `serviceAccount:${email}`),
  *     role: "roles/composer.worker",
  * });
- * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ * const testEnvironment = new gcp.composer.Environment("test", {
  *     config: {
  *         nodeConfig: {
  *             machineType: "n1-standard-1",
- *             network: google_compute_network_test.selfLink,
- *             serviceAccount: google_service_account_test.name,
- *             subnetwork: google_compute_subnetwork_test.selfLink,
+ *             network: testNetwork.selfLink,
+ *             serviceAccount: testAccount.name,
+ *             subnetwork: testSubnetwork.selfLink,
  *             zone: "us-central1-a",
  *         },
  *         nodeCount: 4,
  *     },
- *     name: "%s",
  *     region: "us-central1",
- * }, {dependsOn: [google_project_iam_member_composer_worker]});
+ * }, {dependsOn: [composer_worker]});
  * ```
+ * 
  * ### With Software (Airflow) Config
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_composer_environment_test = new gcp.composer.Environment("test", {
+ * const test = new gcp.composer.Environment("test", {
  *     config: {
  *         softwareConfig: {
  *             airflowConfigOverrides: {
- *                 core-load_example: "True",
+ *                 "core-load_example": "True",
  *             },
  *             envVariables: {
  *                 FOO: "bar",
@@ -103,7 +101,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     name: "%s",
  *     region: "us-central1",
  * });
  * ```

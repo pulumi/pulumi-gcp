@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -45,16 +46,23 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, __name__, __opts__=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+    def __init__(__self__, resource_name, opts=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
         
         
+        ## Note on "destroy" / "apply"
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Terraform / Google resources.
+        
+        The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continously, but may surprise users who use this resource for other kinds of Dataflow jobs.
+        
+        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your `terraform destroy` to complete.
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
@@ -65,11 +73,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -86,11 +100,11 @@ class Job(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not temp_gcs_location:
+        if temp_gcs_location is None:
             raise TypeError('Missing required property temp_gcs_location')
         __props__['temp_gcs_location'] = temp_gcs_location
 
-        if not template_gcs_path:
+        if template_gcs_path is None:
             raise TypeError('Missing required property template_gcs_path')
         __props__['template_gcs_path'] = template_gcs_path
 
@@ -100,9 +114,9 @@ class Job(pulumi.CustomResource):
 
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

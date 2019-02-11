@@ -8,28 +8,6 @@ import (
 )
 
 // Use this data source to get information about a Google Cloud Folder.
-// 
-// ```hcl
-// # Get folder by id
-// data "google_folder" "my_folder_1" {
-//   folder = "folders/12345"
-//   lookup_organization = true
-// }
-// 
-// # Search by fields
-// data "google_folder" "my_folder_2" {
-//   folder = "folders/23456"
-// }
-// 
-// output "my_folder_1_organization" {
-//   value = "${data.google_folder.my_folder_1.organization}"
-// }
-// 
-// output "my_folder_2_parent" {
-//   value = "${data.google_folder.my_folder_2.parent}"
-// }
-// 
-// ```
 func LookupFolder(ctx *pulumi.Context, args *GetFolderArgs) (*GetFolderResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

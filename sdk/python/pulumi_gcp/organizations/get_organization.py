@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -49,17 +50,6 @@ class GetOrganizationResult(object):
 async def get_organization(domain=None, organization=None):
     """
     Use this data source to get information about a Google Cloud Organization.
-    
-    ```hcl
-    data "google_organization" "org" {
-      domain = "example.com"
-    }
-    
-    resource "google_folder" "sales" {
-      display_name = "Sales"
-      parent       = "${data.google_organization.org.name}"
-    }
-    ```
     """
     __args__ = dict()
 

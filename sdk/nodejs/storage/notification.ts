@@ -23,30 +23,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_project_service_account_gcs_account = pulumi.output(gcp.storage.getProjectServiceAccount({}));
- * const google_pubsub_topic_topic = new gcp.pubsub.Topic("topic", {
- *     name: "default_topic",
- * });
- * const google_storage_bucket_bucket = new gcp.storage.Bucket("bucket", {
- *     name: "default_bucket",
- * });
- * const google_pubsub_topic_iam_binding_binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     members: [google_storage_project_service_account_gcs_account.apply(__arg0 => `serviceAccount:${__arg0.emailAddress}`)],
+ * const gcsAccount = pulumi.output(gcp.storage.getProjectServiceAccount({}));
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ *     members: [gcsAccount.apply(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  *     role: "roles/pubsub.publisher",
- *     topic: google_pubsub_topic_topic.name,
+ *     topic: topic.name,
  * });
- * const google_storage_notification_notification = new gcp.storage.Notification("notification", {
- *     bucket: google_storage_bucket_bucket.name,
+ * const notification = new gcp.storage.Notification("notification", {
+ *     bucket: bucket.name,
  *     customAttributes: {
- *         new-attribute: "new-attribute-value",
+ *         "new-attribute": "new-attribute-value",
  *     },
  *     eventTypes: [
  *         "OBJECT_FINALIZE",
  *         "OBJECT_METADATA_UPDATE",
  *     ],
  *     payloadFormat: "JSON_API_V1",
- *     topic: google_pubsub_topic_topic.id,
- * }, {dependsOn: [google_pubsub_topic_iam_binding_binding]});
+ *     topic: topic.id,
+ * }, {dependsOn: [binding]});
  * ```
  */
 export class Notification extends pulumi.CustomResource {

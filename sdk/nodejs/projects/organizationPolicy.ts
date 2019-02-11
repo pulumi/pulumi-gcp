@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_organization_policy_serial_port_policy = new gcp.projects.OrganizationPolicy("serial_port_policy", {
+ * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serial_port_policy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },
@@ -27,13 +27,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
  * To set a policy with a [list contraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_organization_policy_services_policy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
@@ -44,13 +45,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
  * Or to deny some services, use the following instead:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_organization_policy_services_policy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         deny: {
@@ -61,13 +63,14 @@ import * as utilities from "../utilities";
  *     project: "your-project-id",
  * });
  * ```
+ * 
  * To restore the default project organization policy, use the following instead:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_organization_policy_services_policy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     project: "your-project-id",
  *     restorePolicy: {

@@ -16,9 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_network_default = new gcp.compute.Network("default", {
+ * const defaultNetwork = new gcp.compute.Network("default", {
  *     autoCreateSubnetworks: true,
- *     name: "foobar",
  * });
  * ```
  */

@@ -18,40 +18,36 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "test",
  *     tcpHealthCheck: {
- *         port: Number.parseFloat("80"),
+ *         port: 80,
  *     },
  *     timeoutSec: 1,
  * });
- * const google_compute_instance_template_foobar = new gcp.compute.InstanceTemplate("foobar", {
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
  *     disks: [{
  *         autoDelete: true,
  *         boot: true,
  *         sourceImage: "debian-cloud/debian-9",
  *     }],
  *     machineType: "n1-standard-1",
- *     name: "terraform-test",
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
  * });
- * const google_compute_region_instance_group_manager_foo = new gcp.compute.RegionInstanceGroupManager("foo", {
+ * const foo = new gcp.compute.RegionInstanceGroupManager("foo", {
  *     baseInstanceName: "foobar",
- *     instanceTemplate: google_compute_instance_template_foobar.selfLink,
- *     name: "terraform-test",
+ *     instanceTemplate: foobarInstanceTemplate.selfLink,
  *     region: "us-central1",
  *     targetSize: 1,
  * });
- * const google_compute_region_backend_service_foobar = new gcp.compute.RegionBackendService("foobar", {
+ * const foobarRegionBackendService = new gcp.compute.RegionBackendService("foobar", {
  *     backends: [{
- *         group: google_compute_region_instance_group_manager_foo.instanceGroup,
+ *         group: foo.instanceGroup,
  *     }],
  *     description: "Hello World 1234",
- *     healthChecks: google_compute_health_check_default.selfLink,
- *     name: "blablah",
+ *     healthChecks: defaultHealthCheck.selfLink,
  *     protocol: "TCP",
  *     sessionAffinity: "CLIENT_IP",
  *     timeoutSec: 10,

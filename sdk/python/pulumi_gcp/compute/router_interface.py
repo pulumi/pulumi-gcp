@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -39,16 +40,15 @@ class RouterInterface(pulumi.CustomResource):
     The name or resource link to the VPN tunnel this
     interface will be linked to. Changing this forces a new interface to be created.
     """
-    def __init__(__self__, __name__, __opts__=None, ip_range=None, name=None, project=None, region=None, router=None, vpn_tunnel=None):
+    def __init__(__self__, resource_name, opts=None, ip_range=None, name=None, project=None, region=None, router=None, vpn_tunnel=None, __name__=None, __opts__=None):
         """
         Manages a Cloud Router interface. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/routers).
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
@@ -63,11 +63,17 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -80,19 +86,19 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not router:
+        if router is None:
             raise TypeError('Missing required property router')
         __props__['router'] = router
 
-        if not vpn_tunnel:
+        if vpn_tunnel is None:
             raise TypeError('Missing required property vpn_tunnel')
         __props__['vpn_tunnel'] = vpn_tunnel
 
         super(RouterInterface, __self__).__init__(
             'gcp:compute/routerInterface:RouterInterface',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

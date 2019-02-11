@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -53,16 +54,15 @@ class RouterPeer(pulumi.CustomResource):
     The name of the router in which this BGP peer will be configured.
     Changing this forces a new peer to be created.
     """
-    def __init__(__self__, __name__, __opts__=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
+    def __init__(__self__, resource_name, opts=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __name__=None, __opts__=None):
         """
         Manages a Cloud Router BGP peer. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/routers).
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
@@ -81,24 +81,30 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
                Changing this forces a new peer to be created.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['advertised_route_priority'] = advertised_route_priority
 
-        if not interface:
+        if interface is None:
             raise TypeError('Missing required property interface')
         __props__['interface'] = interface
 
         __props__['name'] = name
 
-        if not peer_asn:
+        if peer_asn is None:
             raise TypeError('Missing required property peer_asn')
         __props__['peer_asn'] = peer_asn
 
@@ -108,7 +114,7 @@ class RouterPeer(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not router:
+        if router is None:
             raise TypeError('Missing required property router')
         __props__['router'] = router
 
@@ -116,9 +122,9 @@ class RouterPeer(pulumi.CustomResource):
 
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

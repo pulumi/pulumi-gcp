@@ -11,7 +11,6 @@ import (
 // Creates a subscription in Google's pubsub queueing system. For more information see
 // [the official documentation](https://cloud.google.com/pubsub/docs) and
 // [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
-// 
 type Subscription struct {
 	s *pulumi.ResourceState
 }

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_organization_policy_serial_port_policy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },
@@ -27,13 +27,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
  * To set a policy with a [list contraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     listPolicy: {
@@ -44,13 +45,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
  * Or to deny some services, use the following instead:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     listPolicy: {
@@ -61,13 +63,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
  * To restore the default folder organization policy, use the following instead:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_organization_policy_services_policy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     restorePolicy: {

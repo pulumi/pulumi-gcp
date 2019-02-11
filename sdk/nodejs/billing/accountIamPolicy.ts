@@ -23,15 +23,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_iam_policy_admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/billing.viewer",
  *     }],
  * }));
- * const google_billing_account_iam_policy_policy = new gcp.billing.AccountIamPolicy("policy", {
+ * const policy = new gcp.billing.AccountIamPolicy("policy", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     policyData: google_iam_policy_admin.apply(__arg0 => __arg0.policyData),
+ *     policyData: admin.apply(admin => admin.policyData),
  * });
  * ```
  */

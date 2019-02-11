@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -29,7 +30,7 @@ class HealthCheck(pulumi.CustomResource):
     timeout_sec: pulumi.Output[int]
     type: pulumi.Output[str]
     unhealthy_threshold: pulumi.Output[int]
-    def __init__(__self__, __name__, __opts__=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None):
+    def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __name__=None, __opts__=None):
         """
         Health Checks determine whether instances are responsive and able to do work.
         They are an important part of a comprehensive load balancing configuration,
@@ -56,8 +57,8 @@ class HealthCheck(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] check_interval_sec
         :param pulumi.Input[str] description
         :param pulumi.Input[int] healthy_threshold
@@ -71,11 +72,17 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[int] timeout_sec
         :param pulumi.Input[int] unhealthy_threshold
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -108,9 +115,9 @@ class HealthCheck(pulumi.CustomResource):
 
         super(HealthCheck, __self__).__init__(
             'gcp:compute/healthCheck:HealthCheck',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

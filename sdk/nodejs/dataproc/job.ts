@@ -16,29 +16,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dataproc_cluster_mycluster = new gcp.dataproc.Cluster("mycluster", {
- *     name: "dproc-cluster-unique-name",
+ * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     region: "us-central1",
  * });
- * const google_dataproc_job_pyspark = new gcp.dataproc.Job("pyspark", {
+ * // Submit an example pyspark job to a dataproc cluster
+ * const pyspark = new gcp.dataproc.Job("pyspark", {
  *     forceDelete: true,
  *     placement: {
- *         clusterName: google_dataproc_cluster_mycluster.name,
+ *         clusterName: mycluster.name,
  *     },
  *     pysparkConfig: {
  *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
  *         properties: {
- *             spark.logConf: "true",
+ *             "spark.logConf": "true",
  *         },
  *     },
- *     region: google_dataproc_cluster_mycluster.region,
+ *     region: mycluster.region,
  * });
- * const google_dataproc_job_spark = new gcp.dataproc.Job("spark", {
+ * // Submit an example spark job to a dataproc cluster
+ * const spark = new gcp.dataproc.Job("spark", {
  *     forceDelete: true,
  *     placement: {
- *         clusterName: google_dataproc_cluster_mycluster.name,
+ *         clusterName: mycluster.name,
  *     },
- *     region: google_dataproc_cluster_mycluster.region,
+ *     region: mycluster.region,
  *     sparkConfig: {
  *         args: ["1000"],
  *         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
@@ -49,13 +50,14 @@ import * as utilities from "../utilities";
  *         },
  *         mainClass: "org.apache.spark.examples.SparkPi",
  *         properties: {
- *             spark.logConf: "true",
+ *             "spark.logConf": "true",
  *         },
  *     },
  * });
  * 
- * export const pysparkStatus = google_dataproc_job_pyspark.status.apply(__arg0 => __arg0.state);
- * export const sparkStatus = google_dataproc_job_spark.status.apply(__arg0 => __arg0.state);
+ * export const pysparkStatus = pyspark.status.apply(status => status.state);
+ * // Check out current state of the jobs
+ * export const sparkStatus = spark.status.apply(status => status.state);
  * ```
  */
 export class Job extends pulumi.CustomResource {

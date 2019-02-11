@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -32,7 +33,7 @@ class VPNTunnel(pulumi.CustomResource):
     shared_secret: pulumi.Output[str]
     shared_secret_hash: pulumi.Output[str]
     target_vpn_gateway: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None):
+    def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, __name__=None, __opts__=None):
         """
         VPN tunnel resource.
         
@@ -54,8 +55,8 @@ class VPNTunnel(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description
         :param pulumi.Input[int] ike_version
         :param pulumi.Input[dict] labels
@@ -70,11 +71,17 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret
         :param pulumi.Input[str] target_vpn_gateway
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -89,7 +96,7 @@ class VPNTunnel(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not peer_ip:
+        if peer_ip is None:
             raise TypeError('Missing required property peer_ip')
         __props__['peer_ip'] = peer_ip
 
@@ -101,11 +108,11 @@ class VPNTunnel(pulumi.CustomResource):
 
         __props__['router'] = router
 
-        if not shared_secret:
+        if shared_secret is None:
             raise TypeError('Missing required property shared_secret')
         __props__['shared_secret'] = shared_secret
 
-        if not target_vpn_gateway:
+        if target_vpn_gateway is None:
             raise TypeError('Missing required property target_vpn_gateway')
         __props__['target_vpn_gateway'] = target_vpn_gateway
 
@@ -117,9 +124,9 @@ class VPNTunnel(pulumi.CustomResource):
 
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

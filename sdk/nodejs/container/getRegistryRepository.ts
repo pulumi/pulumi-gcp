@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_registry_repository_foo = pulumi.output(gcp.container.getRegistryRepository({}));
+ * const foo = pulumi.output(gcp.container.getRegistryRepository({}));
  * 
- * export const gcrLocation = google_container_registry_repository_foo.apply(__arg0 => __arg0.repositoryUrl);
+ * export const gcrLocation = foo.apply(foo => foo.repositoryUrl);
  * ```
  */
 export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {

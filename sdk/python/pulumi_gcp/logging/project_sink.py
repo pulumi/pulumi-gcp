@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -12,11 +13,6 @@ class ProjectSink(pulumi.CustomResource):
     """
     The destination of the sink (or, in other words, where logs are written to). Can be a
     Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-    ```
-    "storage.googleapis.com/[GCS_BUCKET]"
-    "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-    "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-    ```
     The writer associated with the sink must have access to write to the above resource.
     """
     filter: pulumi.Output[str]
@@ -46,7 +42,7 @@ class ProjectSink(pulumi.CustomResource):
     The identity associated with this sink. This identity must be granted write access to the
     configured `destination`.
     """
-    def __init__(__self__, __name__, __opts__=None, destination=None, filter=None, name=None, project=None, unique_writer_identity=None):
+    def __init__(__self__, resource_name, opts=None, destination=None, filter=None, name=None, project=None, unique_writer_identity=None, __name__=None, __opts__=None):
         """
         Manages a project-level logging sink. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/),
@@ -58,16 +54,10 @@ class ProjectSink(pulumi.CustomResource):
         
         > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-               ```
-               "storage.googleapis.com/[GCS_BUCKET]"
-               "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-               "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-               ```
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -80,16 +70,22 @@ class ProjectSink(pulumi.CustomResource):
                then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
                must set `unique_writer_identity` to true.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not destination:
+        if destination is None:
             raise TypeError('Missing required property destination')
         __props__['destination'] = destination
 
@@ -105,9 +101,9 @@ class ProjectSink(pulumi.CustomResource):
 
         super(ProjectSink, __self__).__init__(
             'gcp:logging/projectSink:ProjectSink',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

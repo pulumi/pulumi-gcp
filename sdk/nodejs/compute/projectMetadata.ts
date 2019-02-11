@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_project_metadata_default = new gcp.compute.ProjectMetadata("default", {
+ * const defaultProjectMetadata = new gcp.compute.ProjectMetadata("default", {
  *     metadata: {
- *         13: "42",
+ *         "13": "42",
  *         fizz: "buzz",
  *         foo: "bar",
  *     },

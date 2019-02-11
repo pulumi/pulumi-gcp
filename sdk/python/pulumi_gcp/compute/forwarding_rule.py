@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -36,7 +37,7 @@ class ForwardingRule(pulumi.CustomResource):
     service_name: pulumi.Output[str]
     subnetwork: pulumi.Output[str]
     target: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None):
+    def __init__(__self__, resource_name, opts=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None, __name__=None, __opts__=None):
         """
         A ForwardingRule resource. A ForwardingRule resource specifies which pool
         of target virtual machines to forward a packet to if it matches the given
@@ -55,8 +56,8 @@ class ForwardingRule(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service
         :param pulumi.Input[str] description
         :param pulumi.Input[str] ip_address
@@ -76,11 +77,17 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork
         :param pulumi.Input[str] target
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -126,9 +133,9 @@ class ForwardingRule(pulumi.CustomResource):
 
         super(ForwardingRule, __self__).__init__(
             'gcp:compute/forwardingRule:ForwardingRule',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

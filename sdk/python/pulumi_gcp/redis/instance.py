@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -29,7 +30,7 @@ class Instance(pulumi.CustomResource):
     region: pulumi.Output[str]
     reserved_ip_range: pulumi.Output[str]
     tier: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
+    def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __name__=None, __opts__=None):
         """
         A Google Cloud Redis instance.
         
@@ -46,8 +47,8 @@ class Instance(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternative_location_id
         :param pulumi.Input[str] authorized_network
         :param pulumi.Input[str] display_name
@@ -63,11 +64,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] reserved_ip_range
         :param pulumi.Input[str] tier
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -82,7 +89,7 @@ class Instance(pulumi.CustomResource):
 
         __props__['location_id'] = location_id
 
-        if not memory_size_gb:
+        if memory_size_gb is None:
             raise TypeError('Missing required property memory_size_gb')
         __props__['memory_size_gb'] = memory_size_gb
 
@@ -107,9 +114,9 @@ class Instance(pulumi.CustomResource):
 
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

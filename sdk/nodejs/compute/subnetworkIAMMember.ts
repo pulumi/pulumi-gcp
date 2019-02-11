@@ -17,6 +17,50 @@ import * as utilities from "../utilities";
  * > **Note:** `google_compute_subnetwork_iam_policy` **cannot** be used in conjunction with `google_compute_subnetwork_iam_binding` and `google_compute_subnetwork_iam_member` or they will fight over what your policy should be.
  * 
  * > **Note:** `google_compute_subnetwork_iam_binding` resources **can be** used in conjunction with `google_compute_subnetwork_iam_member` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_compute\_subnetwork\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const subnet = new gcp.compute.SubnetworkIAMPolicy("subnet", {
+ *     policyData: admin.apply(admin => admin.policyData),
+ *     subnetwork: "your-subnetwork-id",
+ * });
+ * ```
+ * 
+ * ## google\_compute\_subnetwork\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const subnet = new gcp.compute.SubnetworkIAMBinding("subnet", {
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/compute.networkUser",
+ *     subnetwork: "your-subnetwork-id",
+ * });
+ * ```
+ * 
+ * ## google\compute\_subnetwork\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const subnet = new gcp.compute.SubnetworkIAMMember("subnet", {
+ *     member: "user:jane@example.com",
+ *     role: "roles/compute.networkUser",
+ *     subnetwork: "your-subnetwork-id",
+ * });
+ * ```
  */
 export class SubnetworkIAMMember extends pulumi.CustomResource {
     /**

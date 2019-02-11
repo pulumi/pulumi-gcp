@@ -14,6 +14,50 @@ import * as utilities from "../utilities";
  * > **Note:** `google_pubsub_topic_iam_policy` **cannot** be used in conjunction with `google_pubsub_topic_iam_binding` and `google_pubsub_topic_iam_member` or they will fight over what your policy should be.
  * 
  * > **Note:** `google_pubsub_topic_iam_binding` resources **can be** used in conjunction with `google_pubsub_topic_iam_member` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_pubsub\_topic\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const editor = new gcp.pubsub.TopicIAMPolicy("editor", {
+ *     policyData: admin.apply(admin => admin.policyData),
+ *     topic: "your-topic-name",
+ * });
+ * ```
+ * 
+ * ## google\_pubsub\_topic\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.pubsub.TopicIAMBinding("editor", {
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ *     topic: "your-topic-name",
+ * });
+ * ```
+ * 
+ * ## google\_pubsub\_topic\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.pubsub.TopicIAMMember("editor", {
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ *     topic: "your-topic-name",
+ * });
+ * ```
  */
 export class TopicIAMPolicy extends pulumi.CustomResource {
     /**

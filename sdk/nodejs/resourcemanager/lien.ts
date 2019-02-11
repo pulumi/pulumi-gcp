@@ -16,13 +16,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_project_project = new gcp.organizations.Project("project", {
- *     name: "A very important project!",
+ * const project = new gcp.organizations.Project("project", {
  *     projectId: "staging-project",
  * });
- * const google_resource_manager_lien_lien = new gcp.resourcemanager.Lien("lien", {
+ * const lien = new gcp.resourcemanager.Lien("lien", {
  *     origin: "machine-readable-explanation",
- *     parent: google_project_project.number.apply(__arg0 => `projects/${__arg0}`),
+ *     parent: project.number.apply(number => `projects/${number}`),
  *     reason: "This project is an important environment",
  *     restrictions: ["resourcemanager.projects.delete"],
  * });

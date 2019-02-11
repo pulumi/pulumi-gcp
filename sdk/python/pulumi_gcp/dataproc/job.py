@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -46,16 +47,15 @@ class Job(pulumi.CustomResource):
     spark_config: pulumi.Output[dict]
     sparksql_config: pulumi.Output[dict]
     status: pulumi.Output[dict]
-    def __init__(__self__, __name__, __opts__=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None):
+    def __init__(__self__, resource_name, opts=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None, __name__=None, __opts__=None):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
         
         !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
@@ -74,11 +74,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[dict] spark_config
         :param pulumi.Input[dict] sparksql_config
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -93,7 +99,7 @@ class Job(pulumi.CustomResource):
 
         __props__['pig_config'] = pig_config
 
-        if not placement:
+        if placement is None:
             raise TypeError('Missing required property placement')
         __props__['placement'] = placement
 
@@ -117,9 +123,9 @@ class Job(pulumi.CustomResource):
 
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

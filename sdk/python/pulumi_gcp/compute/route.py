@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -35,7 +36,7 @@ class Route(pulumi.CustomResource):
     The URI of the created resource.
     """
     tags: pulumi.Output[list]
-    def __init__(__self__, __name__, __opts__=None, description=None, dest_range=None, name=None, network=None, next_hop_gateway=None, next_hop_instance=None, next_hop_instance_zone=None, next_hop_ip=None, next_hop_vpn_tunnel=None, priority=None, project=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, description=None, dest_range=None, name=None, network=None, next_hop_gateway=None, next_hop_instance=None, next_hop_instance_zone=None, next_hop_ip=None, next_hop_vpn_tunnel=None, priority=None, project=None, tags=None, __name__=None, __opts__=None):
         """
         Represents a Route resource.
         
@@ -72,8 +73,8 @@ class Route(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description
         :param pulumi.Input[str] dest_range
         :param pulumi.Input[str] name
@@ -91,24 +92,30 @@ class Route(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] tags
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['description'] = description
 
-        if not dest_range:
+        if dest_range is None:
             raise TypeError('Missing required property dest_range')
         __props__['dest_range'] = dest_range
 
         __props__['name'] = name
 
-        if not network:
+        if network is None:
             raise TypeError('Missing required property network')
         __props__['network'] = network
 
@@ -133,9 +140,9 @@ class Route(pulumi.CustomResource):
 
         super(Route, __self__).__init__(
             'gcp:compute/route:Route',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

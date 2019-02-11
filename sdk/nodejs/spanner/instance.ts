@@ -15,10 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_spanner_instance_main = new gcp.spanner.Instance("main", {
+ * const main = new gcp.spanner.Instance("main", {
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
- *     name: "main-instance",
  *     numNodes: 1,
  * });
  * ```

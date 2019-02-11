@@ -11,20 +11,19 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/dns/api/v1/managedZones).
  * 
- * ```hcl
- * data "google_dns_managed_zone" "env_dns_zone" {
- *   name        = "qa-zone"
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
  * 
- * resource "google_dns_record_set" "dns" {
- *   name = "my-address.${data.google_dns_managed_zone.env_dns_zone.dns_name}"
- *   type = "TXT"
- *   ttl  = 300
- * 
- *   managed_zone = "${data.google_dns_managed_zone.env_dns_zone.name}"
- * 
- *   rrdatas = ["test"]
- * }
+ * const envDnsZone = pulumi.output(gcp.dns.getManagedZone({
+ *     name: "qa-zone",
+ * }));
+ * const dns = new gcp.dns.RecordSet("dns", {
+ *     managedZone: envDnsZone.apply(envDnsZone => envDnsZone.name),
+ *     rrdatas: ["test"],
+ *     ttl: 300,
+ *     type: "TXT",
+ * });
  * ```
  */
 export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {

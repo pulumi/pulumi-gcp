@@ -19,6 +19,18 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultAttachedDisk = new gcp.compute.AttachedDisk("default", {
+ *     disk: google_compute_disk_default.selfLink,
+ *     instance: google_compute_instance_default.selfLink,
+ * });
+ * ```
  */
 export class AttachedDisk extends pulumi.CustomResource {
     /**

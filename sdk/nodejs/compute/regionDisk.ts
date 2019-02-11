@@ -44,26 +44,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_disk_disk = new gcp.compute.Disk("disk", {
+ * const disk = new gcp.compute.Disk("disk", {
  *     image: "debian-cloud/debian-9",
- *     name: "my-disk",
  *     size: 50,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
- * const google_compute_snapshot_snapdisk = new gcp.compute.Snapshot("snapdisk", {
- *     name: "my-snapshot",
- *     sourceDisk: google_compute_disk_disk.name,
+ * const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+ *     sourceDisk: disk.name,
  *     zone: "us-central1-a",
  * });
- * const google_compute_region_disk_regiondisk = new gcp.compute.RegionDisk("regiondisk", {
- *     name: "my-region-disk",
+ * const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
  *     region: "us-central1",
  *     replicaZones: [
  *         "us-central1-a",
  *         "us-central1-f",
  *     ],
- *     snapshot: google_compute_snapshot_snapdisk.selfLink,
+ *     snapshot: snapdisk.selfLink,
  *     type: "pd-ssd",
  * });
  * ```

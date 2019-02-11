@@ -16,34 +16,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_pubsub_topic_default_topic = new gcp.pubsub.Topic("default-topic", {
- *     name: "default-topic",
- * });
- * const google_pubsub_subscription_default = new gcp.pubsub.Subscription("default", {
+ * const default_topic = new gcp.pubsub.Topic("default-topic", {});
+ * const defaultSubscription = new gcp.pubsub.Subscription("default", {
  *     ackDeadlineSeconds: 20,
- *     name: "default-subscription",
  *     pushConfig: {
  *         attributes: {
- *             x-goog-version: "v1",
+ *             "x-goog-version": "v1",
  *         },
  *         pushEndpoint: "https://example.com/push",
  *     },
- *     topic: google_pubsub_topic_default_topic.name,
+ *     topic: default_topic.name,
  * });
  * ```
+ * 
  * If the subscription has a topic in a different project:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_pubsub_topic_topic_different_project = new gcp.pubsub.Topic("topic-different-project", {
- *     name: "topic-different-project",
+ * const topic_different_project = new gcp.pubsub.Topic("topic-different-project", {
  *     project: "another-project",
  * });
- * const google_pubsub_subscription_default = new gcp.pubsub.Subscription("default", {
- *     name: "default-subscription",
- *     topic: google_pubsub_topic_topic_different_project.id,
+ * const defaultSubscription = new gcp.pubsub.Subscription("default", {
+ *     topic: topic_different_project.id,
  * });
  * ```
  */

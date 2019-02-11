@@ -25,13 +25,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_folder_department1 = new gcp.organizations.Folder("department1", {
+ * // Top-level folder under an organization.
+ * const department1 = new gcp.organizations.Folder("department1", {
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const google_folder_team_abc = new gcp.organizations.Folder("team-abc", {
+ * // Folder nested under another folder.
+ * const team_abc = new gcp.organizations.Folder("team-abc", {
  *     displayName: "Team ABC",
- *     parent: google_folder_department1.name,
+ *     parent: department1.name,
  * });
  * ```
  */

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -23,7 +24,7 @@ class Router(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, __name__, __opts__=None, bgp=None, description=None, name=None, network=None, project=None, region=None):
+    def __init__(__self__, resource_name, opts=None, bgp=None, description=None, name=None, network=None, project=None, region=None, __name__=None, __opts__=None):
         """
         Represents a Router resource.
         
@@ -40,8 +41,8 @@ class Router(pulumi.CustomResource):
           </a>
         </div>
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bgp
         :param pulumi.Input[str] description
         :param pulumi.Input[str] name
@@ -50,11 +51,17 @@ class Router(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -65,7 +72,7 @@ class Router(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not network:
+        if network is None:
             raise TypeError('Missing required property network')
         __props__['network'] = network
 
@@ -78,9 +85,9 @@ class Router(pulumi.CustomResource):
 
         super(Router, __self__).__init__(
             'gcp:compute/router:Router',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

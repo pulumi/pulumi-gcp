@@ -9,11 +9,14 @@ import * as utilities from "../utilities";
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  * 
- * ```
- * data "google_compute_instance_group" "all" {
- * 	name = "instance-group-name"
- * 	zone = "us-central1-a"
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const all = pulumi.output(gcp.compute.getInstanceGroup({
+ *     name: "instance-group-name",
+ *     zone: "us-central1-a",
+ * }));
  * ```
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {

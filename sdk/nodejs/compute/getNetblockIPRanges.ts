@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_netblock_ip_ranges_netblock = pulumi.output(gcp.compute.getNetblockIPRanges({}));
+ * const netblock = pulumi.output(gcp.compute.getNetblockIPRanges({}));
  * 
- * export const cidrBlocks = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocks);
- * export const cidrBlocksIpv4 = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocksIpv4s);
- * export const cidrBlocksIpv6 = google_netblock_ip_ranges_netblock.apply(__arg0 => __arg0.cidrBlocksIpv6s);
+ * export const cidrBlocks = netblock.apply(netblock => netblock.cidrBlocks);
+ * export const cidrBlocksIpv4 = netblock.apply(netblock => netblock.cidrBlocksIpv4s);
+ * export const cidrBlocksIpv6 = netblock.apply(netblock => netblock.cidrBlocksIpv6s);
  * ```
  */
 export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {

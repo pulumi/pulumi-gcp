@@ -8,17 +8,19 @@ import * as utilities from "../utilities";
  * Provides access to available Google Compute zones in a region for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
  * 
- * ```
- * data "google_compute_zones" "available" {}
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
  * 
- * resource "google_compute_instance_group_manager" "foo" {
- *   count = "${length(data.google_compute_zones.available.names)}"
- * 
- *   name               = "terraform-test-${count.index}"
- *   instance_template  = "${google_compute_instance_template.foobar.self_link}"
- *   base_instance_name = "foobar-${count.index}"
- *   zone               = "${data.google_compute_zones.available.names[count.index]}"
- *   target_size        = 1
+ * const available = pulumi.output(gcp.compute.getZones({}));
+ * const foo: gcp.compute.InstanceGroupManager[] = [];
+ * for (let i = 0; i < available.apply(available => available.names.length); i++) {
+ *     foo.push(new gcp.compute.InstanceGroupManager(`foo-${i}`, {
+ *         baseInstanceName: `foobar-${i}`,
+ *         instanceTemplate: google_compute_instance_template_foobar.selfLink,
+ *         targetSize: 1,
+ *         zone: available.apply(available => available.names[i]),
+ *     }));
  * }
  * ```
  */

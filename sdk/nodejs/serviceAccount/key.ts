@@ -14,13 +14,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_service_account_myaccount = new gcp.serviceAccount.Account("myaccount", {
+ * const myaccount = new gcp.serviceAccount.Account("myaccount", {
  *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
- * const google_service_account_key_mykey = new gcp.serviceAccount.Key("mykey", {
+ * const mykey = new gcp.serviceAccount.Key("mykey", {
  *     publicKeyType: "TYPE_X509_PEM_FILE",
- *     serviceAccountId: google_service_account_myaccount.name,
+ *     serviceAccountId: myaccount.name,
+ * });
+ * ```
+ * 
+ * ## Create new Key Pair, encrypting the private key with a PGP Key
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myaccount = new gcp.serviceAccount.Account("myaccount", {
+ *     accountId: "myaccount",
+ *     displayName: "My Service Account",
+ * });
+ * const mykey = new gcp.serviceAccount.Key("mykey", {
+ *     pgpKey: "keybase:keybaseusername",
+ *     publicKeyType: "TYPE_X509_PEM_FILE",
+ *     serviceAccountId: myaccount.name,
  * });
  * ```
  */

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -16,11 +17,11 @@ class DefaultObjectACL(pulumi.CustomResource):
     """
     List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
     """
-    def __init__(__self__, __name__, __opts__=None, bucket=None, role_entities=None):
+    def __init__(__self__, resource_name, opts=None, bucket=None, role_entities=None, __name__=None, __opts__=None):
         """
         Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
         
-        -> Note that for each object, its creator will have the `"OWNER"` role in addition
+        > Note that for each object, its creator will have the `"OWNER"` role in addition
         to the default ACL that has been defined.
         
         For more information see
@@ -28,25 +29,30 @@ class DefaultObjectACL(pulumi.CustomResource):
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
         
-        -> Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
+        > Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
         to control individual role entity pairs.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not bucket:
+        if bucket is None:
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
@@ -54,9 +60,9 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         super(DefaultObjectACL, __self__).__init__(
             'gcp:storage/defaultObjectACL:DefaultObjectACL',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

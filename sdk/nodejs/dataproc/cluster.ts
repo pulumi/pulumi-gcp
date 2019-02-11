@@ -19,14 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dataproc_cluster_mycluster = new gcp.dataproc.Cluster("mycluster", {
+ * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
+ *             //network = "${google_compute_network.dataproc_network.name}"
  *             tags: [
  *                 "foo",
  *                 "bar",
  *             ],
  *         },
+ *         // You can define multiple initialization_action blocks
  *         initializationActions: [{
  *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
  *             timeoutSec: 500,
@@ -42,10 +44,11 @@ import * as utilities from "../utilities";
  *         preemptibleWorkerConfig: {
  *             numInstances: 0,
  *         },
+ *         // Override or set some custom properties
  *         softwareConfig: {
  *             imageVersion: "1.3.7-deb9",
  *             overrideProperties: {
- *                 dataproc:dataproc.allow.zero.workers: "true",
+ *                 "dataproc:dataproc.allow.zero.workers": "true",
  *             },
  *         },
  *         stagingBucket: "dataproc-staging-bucket",
@@ -61,11 +64,9 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
- *     name: "mycluster",
  *     region: "us-central1",
  * });
- * const google_dataproc_cluster_simplecluster = new gcp.dataproc.Cluster("simplecluster", {
- *     name: "simplecluster",
+ * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
  *     region: "us-central1",
  * });
  * ```

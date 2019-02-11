@@ -13,17 +13,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_cluster_my_cluster = pulumi.output(gcp.container.getCluster({
+ * const myCluster = pulumi.output(gcp.container.getCluster({
  *     name: "my-cluster",
  *     zone: "us-east1-a",
  * }));
  * 
- * export const clusterPassword = google_container_cluster_my_cluster.apply(__arg0 => __arg0.masterAuths[0].password);
- * export const clusterUsername = google_container_cluster_my_cluster.apply(__arg0 => __arg0.masterAuths[0].username);
- * export const endpoint = google_container_cluster_my_cluster.apply(__arg0 => __arg0.endpoint);
- * export const instanceGroupUrls = google_container_cluster_my_cluster.apply(__arg0 => __arg0.instanceGroupUrls);
- * export const nodeConfig = google_container_cluster_my_cluster.apply(__arg0 => __arg0.nodeConfigs);
- * export const nodePools = google_container_cluster_my_cluster.apply(__arg0 => __arg0.nodePools);
+ * export const clusterPassword = myCluster.apply(myCluster => myCluster.masterAuths[0].password);
+ * export const clusterUsername = myCluster.apply(myCluster => myCluster.masterAuths[0].username);
+ * export const endpoint = myCluster.apply(myCluster => myCluster.endpoint);
+ * export const instanceGroupUrls = myCluster.apply(myCluster => myCluster.instanceGroupUrls);
+ * export const nodeConfig = myCluster.apply(myCluster => myCluster.nodeConfigs);
+ * export const nodePools = myCluster.apply(myCluster => myCluster.nodePools);
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {

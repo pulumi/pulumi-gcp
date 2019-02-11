@@ -11,6 +11,68 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * 
  * > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+ * 
+ * ## Example Usage with top level instance template
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const autohealing = new gcp.compute.HealthCheck("autohealing", {
+ *     checkIntervalSec: 5,
+ *     healthyThreshold: 2,
+ *     httpHealthCheck: {
+ *         port: 8080,
+ *         requestPath: "/healthz",
+ *     },
+ *     timeoutSec: 5,
+ *     unhealthyThreshold: 10, // 50 seconds
+ * });
+ * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     autoHealingPolicies: {
+ *         healthCheck: autohealing.selfLink,
+ *         initialDelaySec: 300,
+ *     },
+ *     baseInstanceName: "app",
+ *     distributionPolicyZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ *     instanceTemplate: google_compute_instance_template_appserver.selfLink,
+ *     namedPorts: [{
+ *         name: "custom",
+ *         port: 8888,
+ *     }],
+ *     region: "us-central1",
+ *     targetPools: [google_compute_target_pool_appserver.selfLink],
+ *     targetSize: 2,
+ * });
+ * ```
+ * 
+ * ## Example Usage with multiple Versions
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     baseInstanceName: "app",
+ *     region: "us-central1",
+ *     targetSize: 5,
+ *     updateStrategy: "NONE",
+ *     versions: [
+ *         {
+ *             instanceTemplate: google_compute_instance_template_appserver.selfLink,
+ *         },
+ *         {
+ *             instanceTemplate: google_compute_instance_template_appserver_canary.selfLink,
+ *             targetSize: {
+ *                 fixed: 1,
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**

@@ -9,6 +9,87 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
  * and
  * [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
+ * 
+ * ## Example usage
+ * 
+ * ### Standard usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     additionalZones: [
+ *         "us-central1-b",
+ *         "us-central1-c",
+ *     ],
+ *     initialNodeCount: 3,
+ *     masterAuth: {
+ *         password: "adoy.rm",
+ *         username: "mr.yoda",
+ *     },
+ *     nodeConfig: {
+ *         guestAccelerators: [{
+ *             count: 1,
+ *             type: "nvidia-tesla-k80",
+ *         }],
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/compute",
+ *             "https://www.googleapis.com/auth/devstorage.read_only",
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *     },
+ *     zone: "us-central1-a",
+ * });
+ * const np = new gcp.container.NodePool("np", {
+ *     cluster: primary.name,
+ *     nodeCount: 3,
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * ### Usage with an empty default pool.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     nodePools: [{
+ *         name: "default-pool",
+ *     }],
+ *     zone: "us-central1-a",
+ * });
+ * const np = new gcp.container.NodePool("np", {
+ *     cluster: primary.name,
+ *     nodeConfig: {
+ *         machineType: "n1-standard-1",
+ *         oauthScopes: [
+ *             "compute-rw",
+ *             "storage-ro",
+ *             "logging-write",
+ *             "monitoring",
+ *         ],
+ *         preemptible: true,
+ *     },
+ *     nodeCount: 1,
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * 
+ * ### Usage with a regional cluster
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const regional = new gcp.container.Cluster("regional", {
+ *     region: "us-central1",
+ * });
+ * const regional_np = new gcp.container.NodePool("regional-np", {
+ *     cluster: google_container_cluster_primary.name,
+ *     nodeCount: 1,
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export class NodePool extends pulumi.CustomResource {
     /**

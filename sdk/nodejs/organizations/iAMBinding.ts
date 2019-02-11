@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_organization_iam_binding_binding = new gcp.organizations.IAMBinding("binding", {
+ * const binding = new gcp.organizations.IAMBinding("binding", {
  *     members: ["user:jane@example.com"],
  *     orgId: "123456789",
  *     role: "roles/browser",

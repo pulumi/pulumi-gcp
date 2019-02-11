@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -24,7 +25,7 @@ class AccountIamMember(pulumi.CustomResource):
     """
     The role that should be applied.
     """
-    def __init__(__self__, __name__, __opts__=None, billing_account_id=None, member=None, role=None):
+    def __init__(__self__, resource_name, opts=None, billing_account_id=None, member=None, role=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single member for a single binding within
         the IAM policy for an existing Google Cloud Platform Billing Account.
@@ -33,31 +34,36 @@ class AccountIamMember(pulumi.CustomResource):
            `google_billing_account_iam_binding` for the __same role__ or they will fight over
            what your policy should be.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[str] member: The user that the role should apply to.
         :param pulumi.Input[str] role: The role that should be applied.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not billing_account_id:
+        if billing_account_id is None:
             raise TypeError('Missing required property billing_account_id')
         __props__['billing_account_id'] = billing_account_id
 
-        if not member:
+        if member is None:
             raise TypeError('Missing required property member')
         __props__['member'] = member
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 
@@ -65,9 +71,9 @@ class AccountIamMember(pulumi.CustomResource):
 
         super(AccountIamMember, __self__).__init__(
             'gcp:billing/accountIamMember:AccountIamMember',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

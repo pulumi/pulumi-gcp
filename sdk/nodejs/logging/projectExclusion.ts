@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_logging_project_exclusion_my_exclusion = new gcp.logging.ProjectExclusion("my-exclusion", {
+ * const my_exclusion = new gcp.logging.ProjectExclusion("my-exclusion", {
  *     description: "Exclude GCE instance debug logs",
+ *     // Exclude all DEBUG or lower severity messages relating to instances
  *     filter: "resource.type = gce_instance AND severity <= DEBUG",
- *     name: "my-instance-debug-exclusion",
  * });
  * ```
  */

@@ -16,7 +16,6 @@ import (
 // This resource is specifically to create a compute instance from a given
 // `source_instance_template`. To create an instance without a template, use the
 // `google_compute_instance` resource.
-// 
 type InstanceFromTemplate struct {
 	s *pulumi.ResourceState
 }

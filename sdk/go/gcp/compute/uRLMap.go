@@ -12,7 +12,6 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
-// 
 type URLMap struct {
 	s *pulumi.ResourceState
 }

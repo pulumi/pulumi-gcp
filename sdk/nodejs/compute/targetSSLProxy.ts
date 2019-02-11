@@ -29,28 +29,24 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_health_check_default = new gcp.compute.HealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
- *     name: "health-check",
  *     tcpHealthCheck: {
- *         port: Number.parseFloat("443"),
+ *         port: 443,
  *     },
  *     timeoutSec: 1,
  * });
- * const google_compute_ssl_certificate_default = new gcp.compute.SSLCertificate("default", {
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
- *     name: "default-cert",
  *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
  * });
- * const google_compute_backend_service_default = new gcp.compute.BackendService("default", {
- *     healthChecks: google_compute_health_check_default.selfLink,
- *     name: "backend-service",
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     healthChecks: defaultHealthCheck.selfLink,
  *     protocol: "SSL",
  * });
- * const google_compute_target_ssl_proxy_default = new gcp.compute.TargetSSLProxy("default", {
- *     backendService: google_compute_backend_service_default.selfLink,
- *     name: "test-proxy",
- *     sslCertificates: google_compute_ssl_certificate_default.selfLink,
+ * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("default", {
+ *     backendService: defaultBackendService.selfLink,
+ *     sslCertificates: defaultSSLCertificate.selfLink,
  * });
  * ```
  */

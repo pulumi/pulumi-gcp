@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -40,17 +41,6 @@ class GetRuleResult(object):
 async def get_rule(name=None):
     """
     Use this data source to get information about a Google IAM Role.
-    
-    ```hcl
-    data "google_iam_role" "roleinfo" {
-      name = "roles/compute.viewer"
-    }
-    
-    output "the_role_permissions" {
-      value = "${data.google_iam_role.roleinfo.included_permissions}"
-    }
-    
-    ```
     """
     __args__ = dict()
 

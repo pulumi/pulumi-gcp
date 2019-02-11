@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -67,7 +68,7 @@ class Bucket(pulumi.CustomResource):
     """
     Configuration if the bucket acts as a website. Structure is documented below.
     """
-    def __init__(__self__, __name__, __opts__=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None):
+    def __init__(__self__, resource_name, opts=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -79,10 +80,8 @@ class Bucket(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -99,11 +98,17 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[list] websites: Configuration if the bucket acts as a website. Structure is documented below.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -137,9 +142,9 @@ class Bucket(pulumi.CustomResource):
 
         super(Bucket, __self__).__init__(
             'gcp:storage/bucket:Bucket',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

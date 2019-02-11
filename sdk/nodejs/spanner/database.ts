@@ -15,17 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_spanner_instance_main = new gcp.spanner.Instance("main", {
+ * const main = new gcp.spanner.Instance("main", {
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
  * });
- * const google_spanner_database_db = new gcp.spanner.Database("db", {
+ * const db = new gcp.spanner.Database("db", {
  *     ddls: [
  *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
  *     ],
- *     instance: google_spanner_instance_main.name,
- *     name: "main-instance",
+ *     instance: main.name,
  * });
  * ```
  */

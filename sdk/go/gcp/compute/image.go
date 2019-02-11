@@ -10,7 +10,6 @@ import (
 // Creates a bootable VM image resource for Google Compute Engine from an existing
 // tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
 // [API](https://cloud.google.com/compute/docs/reference/latest/images).
-// 
 type Image struct {
 	s *pulumi.ResourceState
 }

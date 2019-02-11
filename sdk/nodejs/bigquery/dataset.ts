@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_bigquery_dataset_default = new gcp.bigquery.Dataset("default", {
+ * const defaultDataset = new gcp.bigquery.Dataset("default", {
  *     accesses: [
  *         {
  *             domain: "example.com",

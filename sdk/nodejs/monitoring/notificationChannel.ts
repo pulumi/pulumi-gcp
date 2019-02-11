@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_monitoring_notification_channel_basic = new gcp.monitoring.NotificationChannel("basic", {
+ * const basic = new gcp.monitoring.NotificationChannel("basic", {
  *     displayName: "Test Notification Channel",
  *     labels: {
  *         email_address: "fake_email@blahblah.com",

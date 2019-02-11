@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -113,17 +114,15 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     The unique fingerprint of the tags.
     """
-    def __init__(__self__, __name__, __opts__=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, schedulings=None, service_account=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, schedulings=None, service_account=None, tags=None, __name__=None, __opts__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
         
-        
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -164,11 +163,17 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[dict] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input[list] tags: Tags to attach to the instance.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -177,7 +182,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not disks:
+        if disks is None:
             raise TypeError('Missing required property disks')
         __props__['disks'] = disks
 
@@ -187,7 +192,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__['labels'] = labels
 
-        if not machine_type:
+        if machine_type is None:
             raise TypeError('Missing required property machine_type')
         __props__['machine_type'] = machine_type
 
@@ -219,9 +224,9 @@ class InstanceTemplate(pulumi.CustomResource):
 
         super(InstanceTemplate, __self__).__init__(
             'gcp:compute/instanceTemplate:InstanceTemplate',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

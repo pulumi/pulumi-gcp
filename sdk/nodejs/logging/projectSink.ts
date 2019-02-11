@@ -21,13 +21,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_logging_project_sink_my_sink = new gcp.logging.ProjectSink("my-sink", {
+ * const my_sink = new gcp.logging.ProjectSink("my-sink", {
+ *     // Can export to pubsub, cloud storage, or bigtable
  *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+ *     // Log all WARN or higher severity messages relating to instances
  *     filter: "resource.type = gce_instance AND severity >= WARN",
- *     name: "my-pubsub-instance-sink",
+ *     // Use a unique writer (creates a unique service account used for writing)
  *     uniqueWriterIdentity: true,
  * });
  * ```
+ * 
  * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
  * cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
  * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
@@ -37,31 +40,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_instance_my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
+ * // Our logged compute instance
+ * const my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: "debian-cloud/debian-9",
  *         },
  *     },
  *     machineType: "n1-standard-1",
- *     name: "my-instance",
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         network: "default",
  *     }],
  *     zone: "us-central1-a",
  * });
- * const google_storage_bucket_log_bucket = new gcp.storage.Bucket("log-bucket", {
- *     name: "my-unique-logging-bucket",
- * });
- * const google_logging_project_sink_instance_sink = new gcp.logging.ProjectSink("instance-sink", {
- *     destination: google_storage_bucket_log_bucket.name.apply(__arg0 => `storage.googleapis.com/${__arg0}`),
- *     filter: google_compute_instance_my_logged_instance.instanceId.apply(__arg0 => `resource.type = gce_instance AND resource.labels.instance_id = "${__arg0}"`),
- *     name: "my-instance-sink",
+ * // A bucket to store logs in
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
+ * // Our sink; this logs all activity related to our "my-logged-instance" instance
+ * const instance_sink = new gcp.logging.ProjectSink("instance-sink", {
+ *     destination: log_bucket.name.apply(name => `storage.googleapis.com/${name}`),
+ *     filter: my_logged_instance.instanceId.apply(instanceId => `resource.type = gce_instance AND resource.labels.instance_id = "${instanceId}"`),
  *     uniqueWriterIdentity: true,
  * });
- * const google_project_iam_binding_log_writer = new gcp.projects.IAMBinding("log-writer", {
- *     members: [google_logging_project_sink_instance_sink.writerIdentity],
+ * // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+ * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     members: [instance_sink.writerIdentity],
  *     role: "roles/storage.objectCreator",
  * });
  * ```
@@ -82,11 +85,6 @@ export class ProjectSink extends pulumi.CustomResource {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination: pulumi.Output<string>;
@@ -159,11 +157,6 @@ export interface ProjectSinkState {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
@@ -203,11 +196,6 @@ export interface ProjectSinkArgs {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;

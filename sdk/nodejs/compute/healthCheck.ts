@@ -36,11 +36,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_health_check_internal_health_check = new gcp.compute.HealthCheck("internal-health-check", {
+ * const internal_health_check = new gcp.compute.HealthCheck("internal-health-check", {
  *     checkIntervalSec: 1,
- *     name: "internal-service-health-check",
  *     tcpHealthCheck: {
- *         port: Number.parseFloat("80"),
+ *         port: 80,
  *     },
  *     timeoutSec: 1,
  * });

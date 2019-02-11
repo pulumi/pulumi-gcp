@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
  * 
- * -> Note that for each object, its creator will have the `"OWNER"` role in addition
+ * > Note that for each object, its creator will have the `"OWNER"` role in addition
  * to the default ACL that has been defined.
  * 
  * For more information see
@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
  * 
- * -> Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
+ * > Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
  * to control individual role entity pairs.
  * 
  * ## Example Usage
@@ -26,12 +26,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_storage_bucket_image_store = new gcp.storage.Bucket("image-store", {
+ * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
- *     name: "image-store-bucket",
  * });
- * const google_storage_default_object_acl_image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
- *     bucket: google_storage_bucket_image_store.name,
+ * const image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
+ *     bucket: image_store.name,
  *     roleEntities: [
  *         "OWNER:user-my.email@gmail.com",
  *         "READER:group-mygroup",

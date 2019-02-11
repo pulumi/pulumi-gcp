@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_container_cluster_primary = new gcp.container.Cluster("primary", {
+ * const primary = new gcp.container.Cluster("primary", {
  *     additionalZones: [
  *         "us-central1-b",
  *         "us-central1-c",
@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  *         password: "adoy.rm",
  *         username: "mr.yoda",
  *     },
- *     name: "marcellus-wallace",
  *     nodeConfig: {
  *         labels: {
  *             foo: "bar",
@@ -48,9 +47,10 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * 
- * export const clientCertificate = google_container_cluster_primary.masterAuth.apply(__arg0 => __arg0.clientCertificate);
- * export const clientKey = google_container_cluster_primary.masterAuth.apply(__arg0 => __arg0.clientKey);
- * export const clusterCaCertificate = google_container_cluster_primary.masterAuth.apply(__arg0 => __arg0.clusterCaCertificate);
+ * // The following outputs allow authentication and connectivity to the GKE Cluster.
+ * export const clientCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clientCertificate);
+ * export const clientKey = primary.masterAuth.apply(masterAuth => masterAuth.clientKey);
+ * export const clusterCaCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clusterCaCertificate);
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

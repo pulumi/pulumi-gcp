@@ -22,63 +22,58 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_instance_frontend = new gcp.compute.Instance("frontend", {
+ * const frontendInstance = new gcp.compute.Instance("frontend", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: "debian-cloud/debian-9",
  *         },
  *     },
  *     machineType: "g1-small",
- *     name: "frontend",
  *     networkInterfaces: [{
  *         accessConfigs: [{}],
  *         network: "default",
  *     }],
  *     zone: "us-central1-b",
  * });
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
- *     name: "prod-zone",
  * });
- * const google_dns_record_set_frontend = new gcp.dns.RecordSet("frontend", {
- *     managedZone: google_dns_managed_zone_prod.name,
- *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `frontend.${__arg0}`),
- *     rrdatas: [google_compute_instance_frontend.networkInterfaces.apply(__arg0 => __arg0[0].accessConfig.0.natIp)],
+ * const frontendRecordSet = new gcp.dns.RecordSet("frontend", {
+ *     managedZone: prod.name,
+ *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfig.0.natIp)],
  *     ttl: 300,
  *     type: "A",
  * });
  * ```
+ * 
  * ### Adding an A record
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
- *     name: "prod-zone",
  * });
- * const google_dns_record_set_a = new gcp.dns.RecordSet("a", {
- *     managedZone: google_dns_managed_zone_prod.name,
- *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `backend.${__arg0}`),
+ * const recordSet = new gcp.dns.RecordSet("a", {
+ *     managedZone: prod.name,
  *     rrdatas: ["8.8.8.8"],
  *     ttl: 300,
  *     type: "A",
  * });
  * ```
+ * 
  * ### Adding an MX record
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
- *     name: "prod-zone",
  * });
- * const google_dns_record_set_mx = new gcp.dns.RecordSet("mx", {
- *     managedZone: google_dns_managed_zone_prod.name,
- *     name: google_dns_managed_zone_prod.dnsName,
+ * const mx = new gcp.dns.RecordSet("mx", {
+ *     managedZone: prod.name,
  *     rrdatas: [
  *         "1 aspmx.l.google.com.",
  *         "5 alt1.aspmx.l.google.com.",
@@ -90,6 +85,7 @@ import * as utilities from "../utilities";
  *     type: "MX",
  * });
  * ```
+ * 
  * ### Adding an SPF record
  * 
  * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
@@ -98,13 +94,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_dns_managed_zone_prod = new gcp.dns.ManagedZone("prod", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
- *     name: "prod-zone",
  * });
- * const google_dns_record_set_spf = new gcp.dns.RecordSet("spf", {
- *     managedZone: google_dns_managed_zone_prod.name,
- *     name: google_dns_managed_zone_prod.dnsName.apply(__arg0 => `frontend.${__arg0}`),
+ * const spf = new gcp.dns.RecordSet("spf", {
+ *     managedZone: prod.name,
  *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
  *     ttl: 300,
  *     type: "TXT",

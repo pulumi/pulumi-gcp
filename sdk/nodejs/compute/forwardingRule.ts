@@ -28,13 +28,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_compute_target_pool_default = new gcp.compute.TargetPool("default", {
- *     name: "website-target-pool",
- * });
- * const google_compute_forwarding_rule_default = new gcp.compute.ForwardingRule("default", {
- *     name: "website-forwarding-rule",
+ * const defaultTargetPool = new gcp.compute.TargetPool("default", {});
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
  *     portRange: "80",
- *     target: google_compute_target_pool_default.selfLink,
+ *     target: defaultTargetPool.selfLink,
  * });
  * ```
  */

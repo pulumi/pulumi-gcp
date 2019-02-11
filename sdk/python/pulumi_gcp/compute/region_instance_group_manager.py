@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -112,7 +113,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     returning. Note that if this is set to true and the operation does not succeed, Terraform will
     continue trying until it times out.
     """
-    def __init__(__self__, __name__, __opts__=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, instance_template=None, name=None, named_ports=None, project=None, region=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, versions=None, wait_for_instances=None):
+    def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, instance_template=None, name=None, named_ports=None, project=None, region=None, rolling_update_policy=None, target_pools=None, target_size=None, update_strategy=None, versions=None, wait_for_instances=None, __name__=None, __opts__=None):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
@@ -121,9 +122,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         
         > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
                This property is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -172,18 +172,24 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                returning. Note that if this is set to true and the operation does not succeed, Terraform will
                continue trying until it times out.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['auto_healing_policies'] = auto_healing_policies
 
-        if not base_instance_name:
+        if base_instance_name is None:
             raise TypeError('Missing required property base_instance_name')
         __props__['base_instance_name'] = base_instance_name
 
@@ -199,7 +205,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        if not region:
+        if region is None:
             raise TypeError('Missing required property region')
         __props__['region'] = region
 
@@ -221,9 +227,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         super(RegionInstanceGroupManager, __self__).__init__(
             'gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

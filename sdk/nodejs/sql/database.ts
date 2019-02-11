@@ -17,17 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const google_sql_database_instance_master = new gcp.sql.DatabaseInstance("master", {
- *     name: "master-instance",
+ * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",
  *     },
  * });
- * const google_sql_database_users = new gcp.sql.Database("users", {
+ * const users = new gcp.sql.Database("users", {
  *     charset: "latin1",
  *     collation: "latin1_swedish_ci",
- *     instance: google_sql_database_instance_master.name,
- *     name: "users-db",
+ *     instance: master.name,
  * });
  * ```
  */
