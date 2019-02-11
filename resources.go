@@ -881,7 +881,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.16.4",
+				"@pulumi/pulumi":    "^0.16.14",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -900,7 +900,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.16.10,<0.17.0",
+				"pulumi": ">=0.16.14,<0.17.0",
 			},
 		},
 	}
