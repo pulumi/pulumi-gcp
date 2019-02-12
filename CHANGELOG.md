@@ -1,4 +1,12 @@
-## 0.16.8 (Unreleased)
+## 0.16.9 (Unreleased)
+
+## 0.16.8 (Released February 11, 2019)
+
+### Improvements
+
+- Support for the `deleteBeforeReplace` resource option and improved
+  delete-before-replace behaviour introduced in [Pulumi
+  0.16.14](https://github.com/pulumi/pulumi/blob/master/CHANGELOG.md#01614-released-january-31st-2019).
 
 ## 0.16.7 (Released February 8, 2019)
 
