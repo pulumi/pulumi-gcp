@@ -475,12 +475,12 @@
   version = "v1.0.1"
 
 [[projects]]
-  digest = "1:9ea83adf8e96d6304f394d40436f2eb44c1dc3250d223b74088cc253a6cd0a1c"
+  digest = "1:0f79867e9aac8a4e20bc1b0956d81f340da9ade9bcc00a4bfb1ebd738c152f7a"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   pruneopts = ""
-  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
-  version = "v0.0.9"
+  revision = "efa589957cd060542a26d2dd7832fd6a6c6c3ade"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:3140e04675a6a91d2a20ea9d10bdadf6072085502e6def6768361260aee4b967"
@@ -611,7 +611,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:988961f23131e2aa873e5433a4bb3f262bf40d930121b82233d906de54172c3e"
+  digest = "1:3cd2ee0fc4d4c21d8a6373ce710e73125ebd7512fa44faef76fad971644eb4d0"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -658,7 +658,7 @@
     "sdk/proto/go",
   ]
   pruneopts = ""
-  revision = "0b8fd47fb541a3ceae04b8661d8ad9ed642f711e"
+  revision = "4229f85fdaabcfc7bc866379b271b730c2384b6c"
 
 [[projects]]
   branch = "master"
@@ -673,11 +673,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:5d372d623fca34e1bddf0ca733b47dbfad0220644753213ade88cc60be366710"
+  digest = "1:54469a609929faa3afc743b2e56086963a62920f375b2bce839e0e60551d3df4"
   name = "github.com/reconquest/loreley"
   packages = ["."]
   pruneopts = ""
-  revision = "2ab6b7470a54bfa9b5b0289f9b4e8fc4839838f7"
+  revision = "7824c7cf5983a9247573e2e9a6fd38b6a9abe7ad"
 
 [[projects]]
   digest = "1:7f569d906bdd20d906b606415b7d794f798f91a62fcfb6a4daa6d50690fb7a3f"
@@ -1066,7 +1066,7 @@
   revision = "da7e20b83ed88b8423d1eb0a8ef5d54c4c25eeb0"
 
 [[projects]]
-  digest = "1:8f5753fc4fe7f8bd23d5cf6b82b6cc8e2522d29bd176cb58874917cbd26431cb"
+  digest = "1:17d1f647fe6a7d4eebb15e0e468178c058e365e4e734d1402ca7215169dd8d29"
   name = "gopkg.in/AlecAivazis/survey.v1"
   packages = [
     ".",
@@ -1074,8 +1074,8 @@
     "terminal",
   ]
   pruneopts = ""
-  revision = "38cdfa1242b19e0eb8b6f33004bf8e89832b8743"
-  version = "v1.8.0"
+  revision = "ee72c28b95a5ff3e227cfd403f556f0ef4b07ca5"
+  version = "v1.8.2"
 
 [[projects]]
   digest = "1:cc4fc94e3088593a2cde96c032e05d1e3c7d494147d7a7d707445ccc478bf4a0"
@@ -1092,7 +1092,7 @@
   version = "v4.3.0"
 
 [[projects]]
-  digest = "1:2575e0987bd652097e3921a4713b886f786483fecac75ca0707cf7dad26424f3"
+  digest = "1:a72d911e18578e34367f4b849340501c7e6a2787a3a05651b3d53c6cb96990f4"
   name = "gopkg.in/src-d/go-git.v4"
   packages = [
     ".",
@@ -1137,8 +1137,8 @@
     "utils/merkletrie/noder",
   ]
   pruneopts = ""
-  revision = "3dbfb89e0f5bce0008724e547b999fe3af9f60db"
-  version = "v4.8.1"
+  revision = "a1f6ef44dfed1253ef7f3bc049f66b15f8fc2ab2"
+  version = "v4.9.1"
 
 [[projects]]
   digest = "1:ceec7e96590fb8168f36df4795fefe17051d4b0c2acc7ec4e260d8138c4dafac"
