@@ -1,4 +1,6 @@
-## 0.16.9 (Unreleased)
+## 0.16.10 (Unreleased)
+
+## 0.16.9 (Released February 21st, 2019)
 
 ### Improvements
 
@@ -6,7 +8,7 @@
 
 - `:param` documentation comments for parameters lacking documentation no longer appear in the Python SDK.
 
-## 0.16.8 (Released February 11, 2019)
+## 0.16.8 (Released February 11th, 2019)
 
 ### Improvements
 
@@ -14,7 +16,7 @@
   delete-before-replace behaviour introduced in [Pulumi
   0.16.14](https://github.com/pulumi/pulumi/blob/master/CHANGELOG.md#01614-released-january-31st-2019).
 
-## 0.16.7 (Released February 8, 2019)
+## 0.16.7 (Released February 8th, 2019)
 
 - Fixed a bug in the Terraform bridge which could cause crashes when functions like `compute.getAddress` returned no
   results
