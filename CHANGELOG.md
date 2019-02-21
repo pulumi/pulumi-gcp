@@ -1,5 +1,11 @@
 ## 0.16.9 (Unreleased)
 
+### Improvements
+
+- Module names have been corrected in the Python SDK.
+
+- `:param` documentation comments for parameters lacking documentation no longer appear in the Python SDK.
+
 ## 0.16.8 (Released February 11, 2019)
 
 ### Improvements
