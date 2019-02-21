@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetClientConfigResult(object):
+class GetClientConfigResult:
     """
     A collection of values returned by getClientConfig.
     """
@@ -38,13 +38,13 @@ class GetClientConfigResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_client_config():
+async def get_client_config(opts=None):
     """
     Use this data source to access the configuration of the Google Cloud provider.
     """
     __args__ = dict()
 
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__, opts=opts)
 
     return GetClientConfigResult(
         access_token=__ret__.get('accessToken'),

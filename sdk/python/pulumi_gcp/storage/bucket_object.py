@@ -83,7 +83,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-        :param pulumi.Input[str] detect_md5hash
         :param pulumi.Input[str] name: The name of the object.
         :param pulumi.Input[pulumi.Archive] source: A path to the data you want to upload. Must be defined
                if `content` is not.

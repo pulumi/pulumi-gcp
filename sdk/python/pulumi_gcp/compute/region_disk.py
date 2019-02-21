@@ -71,18 +71,8 @@ class RegionDisk(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description
-        :param pulumi.Input[dict] disk_encryption_key
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[str] name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region
-        :param pulumi.Input[list] replica_zones
-        :param pulumi.Input[int] size
-        :param pulumi.Input[str] snapshot
-        :param pulumi.Input[dict] source_snapshot_encryption_key
-        :param pulumi.Input[str] type
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetKMSSecretResult(object):
+class GetKMSSecretResult:
     """
     A collection of values returned by getKMSSecret.
     """
@@ -26,7 +26,7 @@ class GetKMSSecretResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_kms_secret(ciphertext=None, crypto_key=None):
+async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -43,7 +43,7 @@ async def get_kms_secret(ciphertext=None, crypto_key=None):
 
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
-    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts)
 
     return GetKMSSecretResult(
         plaintext=__ret__.get('plaintext'),

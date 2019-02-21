@@ -47,8 +47,6 @@ class Variavble(pulumi.CustomResource):
                variable.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] text
-        :param pulumi.Input[str] value
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

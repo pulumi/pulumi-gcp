@@ -45,7 +45,6 @@ class KeyRingIAMBinding(pulumi.CustomResource):
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-        :param pulumi.Input[list] members
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_kms_key_ring_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

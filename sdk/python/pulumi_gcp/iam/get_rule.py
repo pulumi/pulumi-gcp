@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRuleResult(object):
+class GetRuleResult:
     """
     A collection of values returned by getRule.
     """
@@ -38,14 +38,14 @@ class GetRuleResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_rule(name=None):
+async def get_rule(name=None,opts=None):
     """
     Use this data source to get information about a Google IAM Role.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts)
 
     return GetRuleResult(
         included_permissions=__ret__.get('includedPermissions'),

@@ -611,7 +611,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3cd2ee0fc4d4c21d8a6373ce710e73125ebd7512fa44faef76fad971644eb4d0"
+  digest = "1:3c76a905563ef19b7bdbe787e0ed94f62a623f547ba3d301b9d2d5e10c8fc248"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -658,18 +658,18 @@
     "sdk/proto/go",
   ]
   pruneopts = ""
-  revision = "4229f85fdaabcfc7bc866379b271b730c2384b6c"
+  revision = "ce26bd871f42b9ff346058aa0760b1a0b30677ef"
 
 [[projects]]
   branch = "master"
-  digest = "1:ee977962b3fd8565483e1114262993016dcec9f170447a86b690b08ad5ab5bde"
+  digest = "1:9e48cffeb9b65db24f10f9271e27ed2987c037b07d7b7c0c3641bf13498bd09a"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen",
   ]
   pruneopts = ""
-  revision = "50c3039457f71c1bbc62f0acd86e0f8ed72e2cea"
+  revision = "0b5b9753f915a7366dd177d9a3a106fbce2fa6de"
 
 [[projects]]
   branch = "master"
@@ -1092,12 +1092,13 @@
   version = "v4.3.0"
 
 [[projects]]
-  digest = "1:a72d911e18578e34367f4b849340501c7e6a2787a3a05651b3d53c6cb96990f4"
+  digest = "1:8b8c3a2fa9908caa5d9e1c8a7f57e527758522bbde64e2bafd59f86293c23da1"
   name = "gopkg.in/src-d/go-git.v4"
   packages = [
     ".",
     "config",
     "internal/revision",
+    "internal/url",
     "plumbing",
     "plumbing/cache",
     "plumbing/filemode",
@@ -1137,8 +1138,8 @@
     "utils/merkletrie/noder",
   ]
   pruneopts = ""
-  revision = "a1f6ef44dfed1253ef7f3bc049f66b15f8fc2ab2"
-  version = "v4.9.1"
+  revision = "db6c41c156481962abf9a55a324858674c25ab08"
+  version = "v4.10.0"
 
 [[projects]]
   digest = "1:ceec7e96590fb8168f36df4795fefe17051d4b0c2acc7ec4e260d8138c4dafac"

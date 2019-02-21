@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetLBIPRangesResult(object):
+class GetLBIPRangesResult:
     """
     A collection of values returned by getLBIPRanges.
     """
@@ -32,7 +32,7 @@ class GetLBIPRangesResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_lbip_ranges():
+async def get_lbip_ranges(opts=None):
     """
     Use this data source to access IP ranges in your firewall rules.
     
@@ -40,7 +40,7 @@ async def get_lbip_ranges():
     """
     __args__ = dict()
 
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__, opts=opts)
 
     return GetLBIPRangesResult(
         http_ssl_tcp_internals=__ret__.get('httpSslTcpInternals'),

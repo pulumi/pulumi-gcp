@@ -68,7 +68,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.

@@ -66,7 +66,6 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
-        :param pulumi.Input[str] project
         :param pulumi.Input[str] serving_status: The serving status of the app.
         """
         if __name__ is not None:

@@ -48,10 +48,6 @@ class BackendBucket(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket_name
-        :param pulumi.Input[str] description
-        :param pulumi.Input[bool] enable_cdn
-        :param pulumi.Input[str] name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """

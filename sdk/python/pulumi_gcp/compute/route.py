@@ -75,22 +75,12 @@ class Route(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] dest_range
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] network
-        :param pulumi.Input[str] next_hop_gateway
-        :param pulumi.Input[str] next_hop_instance
         :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
                specified)  The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
-        :param pulumi.Input[str] next_hop_ip
-        :param pulumi.Input[str] next_hop_vpn_tunnel
-        :param pulumi.Input[int] priority
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

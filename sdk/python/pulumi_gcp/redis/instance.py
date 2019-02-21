@@ -49,20 +49,8 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alternative_location_id
-        :param pulumi.Input[str] authorized_network
-        :param pulumi.Input[str] display_name
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[str] location_id
-        :param pulumi.Input[int] memory_size_gb
-        :param pulumi.Input[str] name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] redis_configs
-        :param pulumi.Input[str] redis_version
-        :param pulumi.Input[str] region
-        :param pulumi.Input[str] reserved_ip_range
-        :param pulumi.Input[str] tier
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

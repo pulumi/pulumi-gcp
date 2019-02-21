@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetManagedZoneResult(object):
+class GetManagedZoneResult:
     """
     A collection of values returned by getManagedZone.
     """
@@ -40,7 +40,7 @@ class GetManagedZoneResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_managed_zone(name=None, project=None):
+async def get_managed_zone(name=None,project=None,opts=None):
     """
     Provides access to a zone's attributes within Google Cloud DNS.
     For more information see
@@ -52,7 +52,7 @@ async def get_managed_zone(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts)
 
     return GetManagedZoneResult(
         description=__ret__.get('description'),

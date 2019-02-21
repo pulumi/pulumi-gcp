@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSSLPolicyResult(object):
+class GetSSLPolicyResult:
     """
     A collection of values returned by getSSLPolicy.
     """
@@ -67,7 +67,7 @@ class GetSSLPolicyResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_ssl_policy(name=None, project=None):
+async def get_ssl_policy(name=None,project=None,opts=None):
     """
     Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
@@ -76,7 +76,7 @@ async def get_ssl_policy(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts)
 
     return GetSSLPolicyResult(
         creation_timestamp=__ret__.get('creationTimestamp'),

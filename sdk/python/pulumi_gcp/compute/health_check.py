@@ -59,18 +59,8 @@ class HealthCheck(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] check_interval_sec
-        :param pulumi.Input[str] description
-        :param pulumi.Input[int] healthy_threshold
-        :param pulumi.Input[dict] http_health_check
-        :param pulumi.Input[dict] https_health_check
-        :param pulumi.Input[str] name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] ssl_health_check
-        :param pulumi.Input[dict] tcp_health_check
-        :param pulumi.Input[int] timeout_sec
-        :param pulumi.Input[int] unhealthy_threshold
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

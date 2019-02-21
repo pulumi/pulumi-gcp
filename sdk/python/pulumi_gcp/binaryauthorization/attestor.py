@@ -28,10 +28,6 @@ class Attestor(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority_note
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetAccountKeyResult(object):
+class GetAccountKeyResult:
     """
     A collection of values returned by getAccountKey.
     """
@@ -32,7 +32,7 @@ class GetAccountKeyResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account_key(name=None, project=None, public_key_type=None, service_account_id=None):
+async def get_account_key(name=None,project=None,public_key_type=None,service_account_id=None,opts=None):
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
     """
@@ -42,7 +42,7 @@ async def get_account_key(name=None, project=None, public_key_type=None, service
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
     __args__['serviceAccountId'] = service_account_id
-    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts)
 
     return GetAccountKeyResult(
         key_algorithm=__ret__.get('keyAlgorithm'),

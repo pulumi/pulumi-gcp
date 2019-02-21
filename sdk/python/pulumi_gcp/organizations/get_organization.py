@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetOrganizationResult(object):
+class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
@@ -47,7 +47,7 @@ class GetOrganizationResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_organization(domain=None, organization=None):
+async def get_organization(domain=None,organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Organization.
     """
@@ -55,7 +55,7 @@ async def get_organization(domain=None, organization=None):
 
     __args__['domain'] = domain
     __args__['organization'] = organization
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__, opts=opts)
 
     return GetOrganizationResult(
         create_time=__ret__.get('createTime'),

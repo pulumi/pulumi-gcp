@@ -325,7 +325,6 @@ class Cluster(pulumi.CustomResource):
                See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] region
         :param pulumi.Input[bool] remove_default_node_pool: If true, deletes the default node pool upon cluster creation.
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetZonesResult(object):
+class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
@@ -29,7 +29,7 @@ class GetZonesResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_zones(project=None, region=None, status=None):
+async def get_zones(project=None,region=None,status=None,opts=None):
     """
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
@@ -39,7 +39,7 @@ async def get_zones(project=None, region=None, status=None):
     __args__['project'] = project
     __args__['region'] = region
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__, opts=opts)
 
     return GetZonesResult(
         names=__ret__.get('names'),

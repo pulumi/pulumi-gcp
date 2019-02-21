@@ -76,7 +76,6 @@ class Trigger(pulumi.CustomResource):
                `cloudbuild.yaml` however it can be specified by the user.
         :param pulumi.Input[str] project: The ID of the project that the trigger will be created in.
                Defaults to the provider project configuration.
-        :param pulumi.Input[dict] substitutions
         :param pulumi.Input[dict] trigger_template: Location of the source in a Google
                Cloud Source Repository. Structure is documented below.
         """

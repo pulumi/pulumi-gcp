@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetActiveFolderResult(object):
+class GetActiveFolderResult:
     """
     A collection of values returned by getActiveFolder.
     """
@@ -26,7 +26,7 @@ class GetActiveFolderResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_active_folder(display_name=None, parent=None):
+async def get_active_folder(display_name=None,parent=None,opts=None):
     """
     Get an active folder within GCP by `display_name` and `parent`.
     """
@@ -34,7 +34,7 @@ async def get_active_folder(display_name=None, parent=None):
 
     __args__['displayName'] = display_name
     __args__['parent'] = parent
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts)
 
     return GetActiveFolderResult(
         name=__ret__.get('name'),

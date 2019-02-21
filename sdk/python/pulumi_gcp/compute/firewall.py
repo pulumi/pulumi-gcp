@@ -64,23 +64,8 @@ class Firewall(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allows
-        :param pulumi.Input[list] denies
-        :param pulumi.Input[str] description
-        :param pulumi.Input[list] destination_ranges
-        :param pulumi.Input[str] direction
-        :param pulumi.Input[bool] disabled
-        :param pulumi.Input[bool] enable_logging
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] network
-        :param pulumi.Input[int] priority
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] source_ranges
-        :param pulumi.Input[str] source_service_accounts
-        :param pulumi.Input[list] source_tags
-        :param pulumi.Input[str] target_service_accounts
-        :param pulumi.Input[list] target_tags
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
