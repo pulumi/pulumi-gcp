@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRegistryRepositoryResult(object):
+class GetRegistryRepositoryResult:
     """
     A collection of values returned by getRegistryRepository.
     """
@@ -26,7 +26,7 @@ class GetRegistryRepositoryResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_registry_repository(project=None, region=None):
+async def get_registry_repository(project=None,region=None,opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
@@ -36,7 +36,7 @@ async def get_registry_repository(project=None, region=None):
 
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts)
 
     return GetRegistryRepositoryResult(
         project=__ret__.get('project'),

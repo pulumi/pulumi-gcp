@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetImageResult(object):
+class GetImageResult:
     """
     A collection of values returned by getImage.
     """
@@ -129,7 +129,7 @@ class GetImageResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_image(family=None, name=None, project=None):
+async def get_image(family=None,name=None,project=None,opts=None):
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
@@ -139,7 +139,7 @@ async def get_image(family=None, name=None, project=None):
     __args__['family'] = family
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getImage:getImage', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getImage:getImage', __args__, opts=opts)
 
     return GetImageResult(
         archive_size_bytes=__ret__.get('archiveSizeBytes'),

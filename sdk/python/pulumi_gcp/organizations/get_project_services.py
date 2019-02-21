@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetProjectServicesResult(object):
+class GetProjectServicesResult:
     """
     A collection of values returned by getProjectServices.
     """
@@ -26,7 +26,7 @@ class GetProjectServicesResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project_services(project=None):
+async def get_project_services(project=None,opts=None):
     """
     Use this data source to get details on the enabled project services.
     
@@ -36,7 +36,7 @@ async def get_project_services(project=None):
     __args__ = dict()
 
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__, opts=opts)
 
     return GetProjectServicesResult(
         disable_on_destroy=__ret__.get('disableOnDestroy'),

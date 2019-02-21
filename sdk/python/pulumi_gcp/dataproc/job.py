@@ -59,20 +59,11 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input[dict] hadoop_config
-        :param pulumi.Input[dict] hive_config
         :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to add to the job.
-        :param pulumi.Input[dict] pig_config
-        :param pulumi.Input[dict] placement
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] pyspark_config
-        :param pulumi.Input[dict] reference
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
-        :param pulumi.Input[dict] scheduling
-        :param pulumi.Input[dict] spark_config
-        :param pulumi.Input[dict] sparksql_config
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -21,10 +21,6 @@ class Lien(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] origin
-        :param pulumi.Input[str] parent
-        :param pulumi.Input[str] reason
-        :param pulumi.Input[list] restrictions
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

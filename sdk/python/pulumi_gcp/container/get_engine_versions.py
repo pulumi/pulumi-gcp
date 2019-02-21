@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetEngineVersionsResult(object):
+class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
@@ -50,7 +50,7 @@ class GetEngineVersionsResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_engine_versions(project=None, region=None, zone=None):
+async def get_engine_versions(project=None,region=None,zone=None,opts=None):
     """
     Provides access to available Google Container Engine versions in a zone or region for a given project.
     """
@@ -59,7 +59,7 @@ async def get_engine_versions(project=None, region=None, zone=None):
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts)
 
     return GetEngineVersionsResult(
         default_cluster_version=__ret__.get('defaultClusterVersion'),

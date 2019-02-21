@@ -45,19 +45,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] content_matchers
-        :param pulumi.Input[str] display_name
-        :param pulumi.Input[dict] http_check
-        :param pulumi.Input[list] internal_checkers
-        :param pulumi.Input[bool] is_internal
-        :param pulumi.Input[dict] monitored_resource
-        :param pulumi.Input[str] period
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] resource_group
-        :param pulumi.Input[list] selected_regions
-        :param pulumi.Input[dict] tcp_check
-        :param pulumi.Input[str] timeout
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

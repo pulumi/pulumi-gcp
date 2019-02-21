@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetIAMPolicyResult(object):
+class GetIAMPolicyResult:
     """
     A collection of values returned by getIAMPolicy.
     """
@@ -27,7 +27,7 @@ class GetIAMPolicyResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_iam_policy(bindings=None):
+async def get_iam_policy(bindings=None,opts=None):
     """
     Generates an IAM policy document that may be referenced by and applied to
     other Google Cloud Platform resources, such as the `google_project` resource.
@@ -44,7 +44,7 @@ async def get_iam_policy(bindings=None):
     __args__ = dict()
 
     __args__['bindings'] = bindings
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts)
 
     return GetIAMPolicyResult(
         policy_data=__ret__.get('policyData'),

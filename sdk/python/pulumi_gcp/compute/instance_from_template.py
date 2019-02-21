@@ -61,28 +61,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_stopping_for_update
-        :param pulumi.Input[list] attached_disks
-        :param pulumi.Input[dict] boot_disk
-        :param pulumi.Input[bool] can_ip_forward
-        :param pulumi.Input[bool] deletion_protection
-        :param pulumi.Input[str] description
-        :param pulumi.Input[list] guest_accelerators
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[str] machine_type
-        :param pulumi.Input[dict] metadata
-        :param pulumi.Input[str] metadata_startup_script
-        :param pulumi.Input[str] min_cpu_platform
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_interfaces
-        :param pulumi.Input[str] project
-        :param pulumi.Input[dict] scheduling
-        :param pulumi.Input[list] scratch_disks
-        :param pulumi.Input[dict] service_account
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on.
-        :param pulumi.Input[list] tags
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
         """

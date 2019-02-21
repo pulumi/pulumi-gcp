@@ -43,12 +43,6 @@ class RegionAutoscaler(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] autoscaling_policy
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] project
-        :param pulumi.Input[str] region
-        :param pulumi.Input[str] target
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

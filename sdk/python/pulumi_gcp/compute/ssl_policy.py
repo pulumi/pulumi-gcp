@@ -46,11 +46,6 @@ class SSLPolicy(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] custom_features
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] min_tls_version
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] profile
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """

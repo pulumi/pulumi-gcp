@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetAccountResult(object):
+class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
@@ -46,7 +46,7 @@ class GetAccountResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account(account_id=None, project=None):
+async def get_account(account_id=None,project=None,opts=None):
     """
     Get the service account from a project. For more information see
     the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
@@ -55,7 +55,7 @@ async def get_account(account_id=None, project=None):
 
     __args__['accountId'] = account_id
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts)
 
     return GetAccountResult(
         display_name=__ret__.get('displayName'),

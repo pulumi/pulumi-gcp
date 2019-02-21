@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRegionsResult(object):
+class GetRegionsResult:
     """
     A collection of values returned by getRegions.
     """
@@ -29,7 +29,7 @@ class GetRegionsResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_regions(project=None, status=None):
+async def get_regions(project=None,status=None,opts=None):
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
@@ -38,7 +38,7 @@ async def get_regions(project=None, status=None):
 
     __args__['project'] = project
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__, opts=opts)
 
     return GetRegionsResult(
         names=__ret__.get('names'),

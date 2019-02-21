@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetClusterResult(object):
+class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
@@ -116,7 +116,7 @@ class GetClusterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_cluster(name=None, project=None, region=None, zone=None):
+async def get_cluster(name=None,project=None,region=None,zone=None,opts=None):
     """
     Get info about a cluster within GKE from its name and zone.
     """
@@ -126,7 +126,7 @@ async def get_cluster(name=None, project=None, region=None, zone=None):
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts)
 
     return GetClusterResult(
         additional_zones=__ret__.get('additionalZones'),

@@ -58,24 +58,8 @@ class ForwardingRule(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_service
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] ip_address
-        :param pulumi.Input[str] ip_protocol
-        :param pulumi.Input[str] ip_version
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[str] load_balancing_scheme
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] network
-        :param pulumi.Input[str] network_tier
-        :param pulumi.Input[str] port_range
-        :param pulumi.Input[list] ports
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region
-        :param pulumi.Input[str] service_label
-        :param pulumi.Input[str] subnetwork
-        :param pulumi.Input[str] target
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

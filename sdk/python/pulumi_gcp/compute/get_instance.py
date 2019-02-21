@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetInstanceResult(object):
+class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
@@ -164,7 +164,7 @@ class GetInstanceResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_instance(name=None, project=None, zone=None):
+async def get_instance(name=None,project=None,zone=None,opts=None):
     """
     Get information about a VM instance resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -176,7 +176,7 @@ async def get_instance(name=None, project=None, zone=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts)
 
     return GetInstanceResult(
         allow_stopping_for_update=__ret__.get('allowStoppingForUpdate'),

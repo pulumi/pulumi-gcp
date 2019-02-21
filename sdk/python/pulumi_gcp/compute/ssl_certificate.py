@@ -50,12 +50,8 @@ class SSLCertificate(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] name
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
-        :param pulumi.Input[str] private_key
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """

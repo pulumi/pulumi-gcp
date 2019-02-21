@@ -33,12 +33,6 @@ class AttachedDisk(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device_name
-        :param pulumi.Input[str] disk
-        :param pulumi.Input[str] instance
-        :param pulumi.Input[str] mode
-        :param pulumi.Input[str] project
-        :param pulumi.Input[str] zone
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

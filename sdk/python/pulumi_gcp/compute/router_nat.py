@@ -28,19 +28,6 @@ class RouterNat(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] icmp_idle_timeout_sec
-        :param pulumi.Input[int] min_ports_per_vm
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] nat_ip_allocate_option
-        :param pulumi.Input[list] nat_ips
-        :param pulumi.Input[str] project
-        :param pulumi.Input[str] region
-        :param pulumi.Input[str] router
-        :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat
-        :param pulumi.Input[list] subnetworks
-        :param pulumi.Input[int] tcp_established_idle_timeout_sec
-        :param pulumi.Input[int] tcp_transitory_idle_timeout_sec
-        :param pulumi.Input[int] udp_idle_timeout_sec
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

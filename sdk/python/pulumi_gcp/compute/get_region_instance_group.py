@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRegionInstanceGroupResult(object):
+class GetRegionInstanceGroupResult:
     """
     A collection of values returned by getRegionInstanceGroup.
     """
@@ -47,7 +47,7 @@ class GetRegionInstanceGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_region_instance_group(name=None, project=None, region=None, self_link=None):
+async def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
@@ -61,7 +61,7 @@ async def get_region_instance_group(name=None, project=None, region=None, self_l
     __args__['project'] = project
     __args__['region'] = region
     __args__['selfLink'] = self_link
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts)
 
     return GetRegionInstanceGroupResult(
         instances=__ret__.get('instances'),

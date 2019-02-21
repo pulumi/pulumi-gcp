@@ -39,7 +39,6 @@ class IAMMember(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] member
         :param pulumi.Input[str] project: The project ID. If not specified, uses the
                ID of the project configured with the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one

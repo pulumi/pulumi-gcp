@@ -52,7 +52,6 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
-        :param pulumi.Input[list] members
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRegistryImageResult(object):
+class GetRegistryImageResult:
     """
     A collection of values returned by getRegistryImage.
     """
@@ -26,7 +26,7 @@ class GetRegistryImageResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_registry_image(digest=None, name=None, project=None, region=None, tag=None):
+async def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
@@ -39,7 +39,7 @@ async def get_registry_image(digest=None, name=None, project=None, region=None, 
     __args__['project'] = project
     __args__['region'] = region
     __args__['tag'] = tag
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts)
 
     return GetRegistryImageResult(
         image_url=__ret__.get('imageUrl'),

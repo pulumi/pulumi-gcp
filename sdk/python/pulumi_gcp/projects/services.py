@@ -37,7 +37,6 @@ class Services(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disable_on_destroy
         :param pulumi.Input[str] project: The project ID.
                Changing this forces Terraform to attempt to disable all previously managed
                API services in the previous project.

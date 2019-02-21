@@ -57,19 +57,8 @@ class VPNTunnel(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description
-        :param pulumi.Input[int] ike_version
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[list] local_traffic_selectors
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] peer_ip
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region
-        :param pulumi.Input[list] remote_traffic_selectors
-        :param pulumi.Input[str] router
-        :param pulumi.Input[str] shared_secret
-        :param pulumi.Input[str] target_vpn_gateway
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

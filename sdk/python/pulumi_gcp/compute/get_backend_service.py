@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetBackendServiceResult(object):
+class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
@@ -101,7 +101,7 @@ class GetBackendServiceResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_backend_service(name=None, project=None):
+async def get_backend_service(name=None,project=None,opts=None):
     """
     Provide acces to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -111,7 +111,7 @@ async def get_backend_service(name=None, project=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts)
 
     return GetBackendServiceResult(
         backends=__ret__.get('backends'),

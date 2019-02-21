@@ -29,11 +29,6 @@ class Policy(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] admission_whitelist_patterns
-        :param pulumi.Input[list] cluster_admission_rules
-        :param pulumi.Input[dict] default_admission_rule
-        :param pulumi.Input[str] description
-        :param pulumi.Input[str] project
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

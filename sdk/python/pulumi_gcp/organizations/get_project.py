@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetProjectResult(object):
+class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
@@ -53,7 +53,7 @@ class GetProjectResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project(project_id=None):
+async def get_project(project_id=None,opts=None):
     """
     Use this data source to get project details.
     For more information see 
@@ -62,7 +62,7 @@ async def get_project(project_id=None):
     __args__ = dict()
 
     __args__['projectId'] = project_id
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__)
+    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts)
 
     return GetProjectResult(
         app_engines=__ret__.get('appEngines'),
