@@ -58,6 +58,12 @@ func TestExamples(t *testing.T) {
 
 	shortTests := []integration.ProgramTestOptions{
 		base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
+		base.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "serverless"),
+			// One change is known to occur during refresh of the resources in this example:
+			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
+			ExpectRefreshChanges: true,
+		}),
 	}
 
 	longTests := []integration.ProgramTestOptions{
@@ -66,12 +72,6 @@ func TestExamples(t *testing.T) {
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
 			SkipRefresh: true,
-		}),
-		base.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "serverless"),
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
 		}),
 		base.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "webserver"),
