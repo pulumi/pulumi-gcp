@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * const mykeyKey = new gcp.serviceAccount.Key("mykey", {
  *     serviceAccountId: myaccount.name,
  * });
- * const mykeyAccountKey = pulumi.output(gcp.serviceAccount.getAccountKey({
- *     name: mykeyKey.name,
+ * const mykeyAccountKey = mykeyKey.name.apply(name => gcp.serviceAccount.getAccountKey({
+ *     name: name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * }));
  * ```
