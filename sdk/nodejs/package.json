@@ -13,7 +13,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "feature-seventeen",
+        "@pulumi/pulumi": "^v.17.0",
         "@types/express": "^4.16.0",
         "read-package-json": "^2.0.13"
     },
