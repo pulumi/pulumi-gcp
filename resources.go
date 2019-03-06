@@ -881,7 +881,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^v0.17.0",
+				"@pulumi/pulumi":    "^0.17.1",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
