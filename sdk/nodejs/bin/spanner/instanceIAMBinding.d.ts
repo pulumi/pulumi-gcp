@@ -1,0 +1,144 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+ *
+ * * `google_spanner_instance_iam_policy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ *
+ * > **Warning:** It's entirely possibly to lock yourself out of your instance using `google_spanner_instance_iam_policy`. Any permissions granted by default will be removed unless you include them in your config.
+ *
+ * * `google_spanner_instance_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `google_spanner_instance_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ *
+ * > **Note:** `google_spanner_instance_iam_policy` **cannot** be used in conjunction with `google_spanner_instance_iam_binding` and `google_spanner_instance_iam_member` or they will fight over what your policy should be.
+ *
+ * > **Note:** `google_spanner_instance_iam_binding` resources **can be** used in conjunction with `google_spanner_instance_iam_member` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_spanner\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
+ *     instance: "your-instance-name",
+ *     policyData: admin.apply(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
+ *     instance: "your-instance-name",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMMember("instance", {
+ *     instance: "your-instance-name",
+ *     member: "user:jane@example.com",
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
+ */
+export declare class InstanceIAMBinding extends pulumi.CustomResource {
+    /**
+     * Get an existing InstanceIAMBinding resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceIAMBindingState, opts?: pulumi.CustomResourceOptions): InstanceIAMBinding;
+    /**
+     * (Computed) The etag of the instance's IAM policy.
+     */
+    readonly etag: pulumi.Output<string>;
+    /**
+     * The name of the instance.
+     */
+    readonly instance: pulumi.Output<string>;
+    readonly members: pulumi.Output<string[]>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project: pulumi.Output<string>;
+    /**
+     * The role that should be applied. Only one
+     * `google_spanner_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Output<string>;
+    /**
+     * Create a InstanceIAMBinding resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: InstanceIAMBindingArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering InstanceIAMBinding resources.
+ */
+export interface InstanceIAMBindingState {
+    /**
+     * (Computed) The etag of the instance's IAM policy.
+     */
+    readonly etag?: pulumi.Input<string>;
+    /**
+     * The name of the instance.
+     */
+    readonly instance?: pulumi.Input<string>;
+    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `google_spanner_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a InstanceIAMBinding resource.
+ */
+export interface InstanceIAMBindingArgs {
+    /**
+     * The name of the instance.
+     */
+    readonly instance: pulumi.Input<string>;
+    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `google_spanner_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Input<string>;
+}

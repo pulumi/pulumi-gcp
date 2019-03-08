@@ -50,7 +50,6 @@ func NewDisk(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["diskEncryptionKey"] = nil
-		inputs["diskEncryptionKeyRaw"] = nil
 		inputs["image"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
@@ -64,7 +63,6 @@ func NewDisk(ctx *pulumi.Context,
 	} else {
 		inputs["description"] = args.Description
 		inputs["diskEncryptionKey"] = args.DiskEncryptionKey
-		inputs["diskEncryptionKeyRaw"] = args.DiskEncryptionKeyRaw
 		inputs["image"] = args.Image
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
@@ -77,7 +75,6 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["zone"] = args.Zone
 	}
 	inputs["creationTimestamp"] = nil
-	inputs["diskEncryptionKeySha256"] = nil
 	inputs["labelFingerprint"] = nil
 	inputs["lastAttachTimestamp"] = nil
 	inputs["lastDetachTimestamp"] = nil
@@ -101,8 +98,6 @@ func GetDisk(ctx *pulumi.Context,
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["diskEncryptionKey"] = state.DiskEncryptionKey
-		inputs["diskEncryptionKeyRaw"] = state.DiskEncryptionKeyRaw
-		inputs["diskEncryptionKeySha256"] = state.DiskEncryptionKeySha256
 		inputs["image"] = state.Image
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
@@ -148,14 +143,6 @@ func (r *Disk) Description() *pulumi.StringOutput {
 
 func (r *Disk) DiskEncryptionKey() *pulumi.Output {
 	return r.s.State["diskEncryptionKey"]
-}
-
-func (r *Disk) DiskEncryptionKeyRaw() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskEncryptionKeyRaw"])
-}
-
-func (r *Disk) DiskEncryptionKeySha256() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskEncryptionKeySha256"])
 }
 
 func (r *Disk) Image() *pulumi.StringOutput {
@@ -234,8 +221,6 @@ type DiskState struct {
 	CreationTimestamp interface{}
 	Description interface{}
 	DiskEncryptionKey interface{}
-	DiskEncryptionKeyRaw interface{}
-	DiskEncryptionKeySha256 interface{}
 	Image interface{}
 	LabelFingerprint interface{}
 	Labels interface{}
@@ -262,7 +247,6 @@ type DiskState struct {
 type DiskArgs struct {
 	Description interface{}
 	DiskEncryptionKey interface{}
-	DiskEncryptionKeyRaw interface{}
 	Image interface{}
 	Labels interface{}
 	Name interface{}

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *             description: "Deny access to IPs in 9.9.9.0/24",
  *             match: {
  *                 config: {
- *                     srcIpRanges: ["9.9.9.9/32"],
+ *                     srcIpRanges: ["9.9.9.0/24"],
  *                 },
  *                 versionedExpr: "SRC_IPS_V1",
  *             },

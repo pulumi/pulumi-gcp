@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: "your-crypto-key-id",
- *     member: "user:jane@example.com",
+ *     member: "user:alice@gmail.com",
  *     role: "roles/editor",
  * });
  * ```
@@ -51,7 +51,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     public readonly member: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export interface CryptoKeyIAMMemberState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member?: pulumi.Input<string>;
     /**
@@ -134,7 +134,7 @@ export interface CryptoKeyIAMMemberArgs {
      */
     readonly cryptoKeyId: pulumi.Input<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member: pulumi.Input<string>;
     /**

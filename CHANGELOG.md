@@ -1,5 +1,9 @@
 ## 0.17.2 (Unreleased)
 
+## Improvements
+
+- Upgraded to v2.1.0 of the Terraform Google Cloud Beta provider. This gives access to both production and beta resources, similar to using the `gcloud beta` CLI.
+
 ## 0.17.1 (Released March 6, 2019)
 
 ## Improvements

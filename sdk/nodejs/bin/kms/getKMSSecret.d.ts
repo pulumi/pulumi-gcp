@@ -1,0 +1,42 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * This data source allows you to use data encrypted with Google Cloud KMS
+ * within your resource definitions.
+ *
+ * For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+ *
+ * > **NOTE**: Using this data provider will allow you to conceal secret data within your
+ * resource definitions, but it does not take care of protecting that data in the
+ * logging output, plan output, or state output.  Please take care to secure your secret
+ * data outside of resource definitions.
+ */
+export declare function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult>;
+/**
+ * A collection of arguments for invoking getKMSSecret.
+ */
+export interface GetKMSSecretArgs {
+    /**
+     * The ciphertext to be decrypted, encoded in base64
+     */
+    readonly ciphertext: string;
+    /**
+     * The id of the CryptoKey that will be used to
+     * decrypt the provided ciphertext. This is represented by the format
+     * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+     */
+    readonly cryptoKey: string;
+}
+/**
+ * A collection of values returned by getKMSSecret.
+ */
+export interface GetKMSSecretResult {
+    /**
+     * Contains the result of decrypting the provided ciphertext.
+     */
+    readonly plaintext: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+}

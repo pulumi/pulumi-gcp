@@ -48,6 +48,37 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * ### Private IP Instance
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const privateNetwork = new gcp.compute.Network("private_network", {});
+ * const privateIpAddress = new gcp.compute.GlobalAddress("private_ip_address", {
+ *     addressType: "INTERNAL",
+ *     network: privateNetwork.selfLink,
+ *     prefixLength: 16,
+ *     purpose: "VPC_PEERING",
+ * });
+ * const privateVpcConnection = new gcp.servicenetworking.Connection("private_vpc_connection", {
+ *     network: privateNetwork.selfLink,
+ *     reservedPeeringRanges: [privateIpAddress.name],
+ *     service: "servicenetworking.googleapis.com",
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     settings: {
+ *         ipConfiguration: {
+ *             ipv4Enabled: false,
+ *             privateNetwork: privateNetwork.selfLink,
+ *         },
+ *         tier: "db-f1-micro",
+ *     },
+ * }, {dependsOn: [privateVpcConnection]});
+ * ```
  */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
@@ -63,7 +94,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The connection name of the instance to be used in connection strings.
+     * The connection name of the instance to be used in
+     * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
     public /*out*/ readonly connectionName: pulumi.Output<string>;
     /**
@@ -71,16 +103,16 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in beta.
+     * for more information.
      */
     public readonly databaseVersion: pulumi.Output<string | undefined>;
     /**
-     * The first IPv4 address of the addresses assigned. This is
-     * is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
+     * The first IPv4 address of any type assigned. This is to
+     * support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
      * when the resource is configured with a `count`.
      */
     public /*out*/ readonly firstIpAddress: pulumi.Output<string>;
-    public /*out*/ readonly ipAddresses: pulumi.Output<{ ipAddress: string, timeToRetire: string }[]>;
+    public /*out*/ readonly ipAddresses: pulumi.Output<{ ipAddress: string, timeToRetire: string, type: string }[]>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
@@ -95,10 +127,24 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly name: pulumi.Output<string>;
     /**
+     * The first private (`PRIVATE`) IPv4 address assigned. This is
+     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+     * but also provides a convenient way to access an IP of a specific type without
+     * performing filtering in a Terraform config.
+     */
+    public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
+    /**
+     * The first public (`PRIMARY`) IPv4 address assigned. This is
+     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+     * but also provides a convenient way to access an IP of a specific type without
+     * performing filtering in a Terraform config.
+     */
+    public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
     /**
      * The region the instance will sit in. Note, first-generation Cloud SQL instance
      * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
@@ -108,7 +154,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
      * If you choose not to provide the `region` argument for this resource, make sure you understand this.
      */
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly region: pulumi.Output<string>;
     /**
      * The configuration for replication. The
      * configuration is detailed below.
@@ -148,7 +194,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["ipAddresses"] = state ? state.ipAddresses : undefined;
             inputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -170,6 +218,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["connectionName"] = undefined /*out*/;
             inputs["firstIpAddress"] = undefined /*out*/;
             inputs["ipAddresses"] = undefined /*out*/;
+            inputs["privateIpAddress"] = undefined /*out*/;
+            inputs["publicIpAddress"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["serviceAccountEmailAddress"] = undefined /*out*/;
@@ -183,7 +233,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * The connection name of the instance to be used in connection strings.
+     * The connection name of the instance to be used in
+     * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
     readonly connectionName?: pulumi.Input<string>;
     /**
@@ -191,16 +242,16 @@ export interface DatabaseInstanceState {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in beta.
+     * for more information.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     * The first IPv4 address of the addresses assigned. This is
-     * is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
+     * The first IPv4 address of any type assigned. This is to
+     * support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
      * when the resource is configured with a `count`.
      */
     readonly firstIpAddress?: pulumi.Input<string>;
-    readonly ipAddresses?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, timeToRetire?: pulumi.Input<string> }>[]>;
+    readonly ipAddresses?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, timeToRetire?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
@@ -215,10 +266,24 @@ export interface DatabaseInstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The first private (`PRIVATE`) IPv4 address assigned. This is
+     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+     * but also provides a convenient way to access an IP of a specific type without
+     * performing filtering in a Terraform config.
+     */
+    readonly privateIpAddress?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The first public (`PRIMARY`) IPv4 address assigned. This is
+     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+     * but also provides a convenient way to access an IP of a specific type without
+     * performing filtering in a Terraform config.
+     */
+    readonly publicIpAddress?: pulumi.Input<string>;
     /**
      * The region the instance will sit in. Note, first-generation Cloud SQL instance
      * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
@@ -260,7 +325,7 @@ export interface DatabaseInstanceArgs {
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information. `POSTGRES_9_6` support is in beta.
+     * for more information.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**

@@ -1,0 +1,104 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * The ObjectAccessControls resources represent the Access Control Lists
+ * (ACLs) for objects within Google Cloud Storage. ACLs let you specify
+ * who has access to your data and to what extent.
+ *
+ * There are two roles that can be assigned to an entity:
+ *
+ * READERs can get an object, though the acl property will not be revealed.
+ * OWNERs are READERs, and they can get the acl property, update an object,
+ * and call all objectAccessControls methods on the object. The owner of an
+ * object is always an OWNER.
+ * For more information, see Access Control, with the caveat that this API
+ * uses READER and OWNER instead of READ and FULL_CONTROL.
+ *
+ *
+ * To get more information about ObjectAccessControl, see:
+ *
+ * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+ *
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=storage_object_access_control_public_object&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Storage Object Access Control Public Object
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileArchive("../static/img/header-logo.png"),
+ * });
+ * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
+ *     bucket: bucket.name,
+ *     entity: "allUsers",
+ *     object: object.name,
+ *     role: "READER",
+ * });
+ * ```
+ */
+export declare class ObjectAccessControl extends pulumi.CustomResource {
+    /**
+     * Get an existing ObjectAccessControl resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ObjectAccessControlState, opts?: pulumi.CustomResourceOptions): ObjectAccessControl;
+    readonly bucket: pulumi.Output<string>;
+    readonly domain: pulumi.Output<string>;
+    readonly email: pulumi.Output<string>;
+    readonly entity: pulumi.Output<string>;
+    readonly entityId: pulumi.Output<string>;
+    readonly generation: pulumi.Output<number>;
+    readonly object: pulumi.Output<string>;
+    readonly projectTeam: pulumi.Output<{
+        projectNumber?: string;
+        team?: string;
+    }>;
+    readonly role: pulumi.Output<string>;
+    /**
+     * Create a ObjectAccessControl resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: ObjectAccessControlArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering ObjectAccessControl resources.
+ */
+export interface ObjectAccessControlState {
+    readonly bucket?: pulumi.Input<string>;
+    readonly domain?: pulumi.Input<string>;
+    readonly email?: pulumi.Input<string>;
+    readonly entity?: pulumi.Input<string>;
+    readonly entityId?: pulumi.Input<string>;
+    readonly generation?: pulumi.Input<number>;
+    readonly object?: pulumi.Input<string>;
+    readonly projectTeam?: pulumi.Input<{
+        projectNumber?: pulumi.Input<string>;
+        team?: pulumi.Input<string>;
+    }>;
+    readonly role?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a ObjectAccessControl resource.
+ */
+export interface ObjectAccessControlArgs {
+    readonly bucket: pulumi.Input<string>;
+    readonly entity: pulumi.Input<string>;
+    readonly object: pulumi.Input<string>;
+    readonly role: pulumi.Input<string>;
+}

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  * 
  * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
  *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
@@ -89,7 +89,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
 
     public readonly contentMatchers: pulumi.Output<{ content?: string }[] | undefined>;
     public readonly displayName: pulumi.Output<string>;
-    public readonly httpCheck: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port?: number, useSsl?: boolean } | undefined>;
+    public readonly httpCheck: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
     public readonly internalCheckers: pulumi.Output<{ displayName?: string, gcpZone?: string, name?: string, network?: string, peerProjectId?: string }[] | undefined>;
     public readonly isInternal: pulumi.Output<boolean | undefined>;
     public readonly monitoredResource: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;

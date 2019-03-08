@@ -1,0 +1,49 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Provides access to available Google Compute regions for a given project.
+ * See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = pulumi.output(gcp.compute.getRegions({}));
+ * const cluster: gcp.compute.Subnetwork[] = [];
+ * for (let i = 0; i < available.apply(available => available.names.length); i++) {
+ *     cluster.push(new gcp.compute.Subnetwork(`cluster-${i}`, {
+ *         ipCidrRange: `10.36.${i}.0/24`,
+ *         network: "my-network",
+ *         region: available.apply(available => available.names[i]),
+ *     }));
+ * }
+ * ```
+ */
+export declare function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult>;
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsArgs {
+    /**
+     * Project from which to list available regions. Defaults to project declared in the provider.
+     */
+    readonly project?: string;
+    /**
+     * Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
+     * Defaults to no filtering (all available regions - both `UP` and `DOWN`).
+     */
+    readonly status?: string;
+}
+/**
+ * A collection of values returned by getRegions.
+ */
+export interface GetRegionsResult {
+    /**
+     * A list of regions available in the given project
+     */
+    readonly names: string[];
+    readonly project: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+}

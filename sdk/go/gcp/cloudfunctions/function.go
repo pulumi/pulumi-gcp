@@ -4,7 +4,6 @@
 package cloudfunctions
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
@@ -19,12 +18,6 @@ type Function struct {
 // NewFunction registers a new resource with the given unique name, arguments, and options.
 func NewFunction(ctx *pulumi.Context,
 	name string, args *FunctionArgs, opts ...pulumi.ResourceOpt) (*Function, error) {
-	if args == nil || args.SourceArchiveBucket == nil {
-		return nil, errors.New("missing required argument 'SourceArchiveBucket'")
-	}
-	if args == nil || args.SourceArchiveObject == nil {
-		return nil, errors.New("missing required argument 'SourceArchiveObject'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["availableMemoryMb"] = nil
@@ -37,14 +30,13 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
-		inputs["retryOnFailure"] = nil
 		inputs["runtime"] = nil
+		inputs["serviceAccountEmail"] = nil
 		inputs["sourceArchiveBucket"] = nil
 		inputs["sourceArchiveObject"] = nil
+		inputs["sourceRepository"] = nil
 		inputs["timeout"] = nil
-		inputs["triggerBucket"] = nil
 		inputs["triggerHttp"] = nil
-		inputs["triggerTopic"] = nil
 	} else {
 		inputs["availableMemoryMb"] = args.AvailableMemoryMb
 		inputs["description"] = args.Description
@@ -56,14 +48,13 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
-		inputs["retryOnFailure"] = args.RetryOnFailure
 		inputs["runtime"] = args.Runtime
+		inputs["serviceAccountEmail"] = args.ServiceAccountEmail
 		inputs["sourceArchiveBucket"] = args.SourceArchiveBucket
 		inputs["sourceArchiveObject"] = args.SourceArchiveObject
+		inputs["sourceRepository"] = args.SourceRepository
 		inputs["timeout"] = args.Timeout
-		inputs["triggerBucket"] = args.TriggerBucket
 		inputs["triggerHttp"] = args.TriggerHttp
-		inputs["triggerTopic"] = args.TriggerTopic
 	}
 	s, err := ctx.RegisterResource("gcp:cloudfunctions/function:Function", name, true, inputs, opts...)
 	if err != nil {
@@ -88,14 +79,13 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
-		inputs["retryOnFailure"] = state.RetryOnFailure
 		inputs["runtime"] = state.Runtime
+		inputs["serviceAccountEmail"] = state.ServiceAccountEmail
 		inputs["sourceArchiveBucket"] = state.SourceArchiveBucket
 		inputs["sourceArchiveObject"] = state.SourceArchiveObject
+		inputs["sourceRepository"] = state.SourceRepository
 		inputs["timeout"] = state.Timeout
-		inputs["triggerBucket"] = state.TriggerBucket
 		inputs["triggerHttp"] = state.TriggerHttp
-		inputs["triggerTopic"] = state.TriggerTopic
 	}
 	s, err := ctx.ReadResource("gcp:cloudfunctions/function:Function", name, id, inputs, opts...)
 	if err != nil {
@@ -124,7 +114,7 @@ func (r *Function) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+// Name of the function that will be executed when the Google Cloud Function is triggered.
 func (r *Function) EntryPoint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["entryPoint"])
 }
@@ -164,15 +154,14 @@ func (r *Function) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
-// Deprecated. Use `event_trigger.failure_policy.retry` instead.
-func (r *Function) RetryOnFailure() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["retryOnFailure"])
-}
-
 // The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
 func (r *Function) Runtime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["runtime"])
+}
+
+// If provided, the self-provided service account to run the function with.
+func (r *Function) ServiceAccountEmail() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
 }
 
 // The GCS bucket containing the zip archive which contains the function.
@@ -185,26 +174,20 @@ func (r *Function) SourceArchiveObject() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceArchiveObject"])
 }
 
+// Represents parameters related to source repository where a function is hosted.
+// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+func (r *Function) SourceRepository() *pulumi.Output {
+	return r.s.State["sourceRepository"]
+}
+
 // Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 func (r *Function) Timeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeout"])
 }
 
-// Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
-// Deprecated. Use `event_trigger` instead.
-func (r *Function) TriggerBucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["triggerBucket"])
-}
-
 // Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
 func (r *Function) TriggerHttp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["triggerHttp"])
-}
-
-// Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
-// Deprecated. Use `event_trigger` instead.
-func (r *Function) TriggerTopic() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["triggerTopic"])
 }
 
 // Input properties used for looking up and filtering Function resources.
@@ -213,7 +196,7 @@ type FunctionState struct {
 	AvailableMemoryMb interface{}
 	// Description of the function.
 	Description interface{}
-	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
@@ -229,25 +212,21 @@ type FunctionState struct {
 	Project interface{}
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
-	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
-	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
-	RetryOnFailure interface{}
 	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
 	Runtime interface{}
+	// If provided, the self-provided service account to run the function with.
+	ServiceAccountEmail interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
+	// Represents parameters related to source repository where a function is hosted.
+	// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+	SourceRepository interface{}
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
-	// Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
-	// Deprecated. Use `event_trigger` instead.
-	TriggerBucket interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
 	TriggerHttp interface{}
-	// Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
-	// Deprecated. Use `event_trigger` instead.
-	TriggerTopic interface{}
 }
 
 // The set of arguments for constructing a Function resource.
@@ -256,7 +235,7 @@ type FunctionArgs struct {
 	AvailableMemoryMb interface{}
 	// Description of the function.
 	Description interface{}
-	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
@@ -272,23 +251,19 @@ type FunctionArgs struct {
 	Project interface{}
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
-	// Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
-	// Deprecated. Use `event_trigger.failure_policy.retry` instead.
-	RetryOnFailure interface{}
 	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
 	Runtime interface{}
+	// If provided, the self-provided service account to run the function with.
+	ServiceAccountEmail interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
+	// Represents parameters related to source repository where a function is hosted.
+	// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+	SourceRepository interface{}
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
-	// Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
-	// Deprecated. Use `event_trigger` instead.
-	TriggerBucket interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
 	TriggerHttp interface{}
-	// Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
-	// Deprecated. Use `event_trigger` instead.
-	TriggerTopic interface{}
 }

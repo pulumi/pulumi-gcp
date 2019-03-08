@@ -90,7 +90,7 @@ func (r *CryptoKeyIAMMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The user that the role should apply to.
+// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *CryptoKeyIAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
@@ -110,7 +110,7 @@ type CryptoKeyIAMMemberState struct {
 	CryptoKeyId interface{}
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -124,7 +124,7 @@ type CryptoKeyIAMMemberArgs struct {
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId interface{}
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.

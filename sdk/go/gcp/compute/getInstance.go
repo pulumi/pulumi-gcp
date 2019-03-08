@@ -16,6 +16,7 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 	if args != nil {
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
+		inputs["selfLink"] = args.SelfLink
 		inputs["zone"] = args.Zone
 	}
 	outputs, err := ctx.Invoke("gcp:compute/getInstance:getInstance", inputs)
@@ -33,6 +34,7 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		Description: outputs["description"],
 		Disks: outputs["disks"],
 		GuestAccelerators: outputs["guestAccelerators"],
+		Hostname: outputs["hostname"],
 		InstanceId: outputs["instanceId"],
 		LabelFingerprint: outputs["labelFingerprint"],
 		Labels: outputs["labels"],
@@ -41,11 +43,9 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		MetadataFingerprint: outputs["metadataFingerprint"],
 		MetadataStartupScript: outputs["metadataStartupScript"],
 		MinCpuPlatform: outputs["minCpuPlatform"],
-		Networks: outputs["networks"],
 		NetworkInterfaces: outputs["networkInterfaces"],
 		Schedulings: outputs["schedulings"],
 		ScratchDisks: outputs["scratchDisks"],
-		SelfLink: outputs["selfLink"],
 		ServiceAccounts: outputs["serviceAccounts"],
 		Tags: outputs["tags"],
 		TagsFingerprint: outputs["tagsFingerprint"],
@@ -61,6 +61,8 @@ type GetInstanceArgs struct {
 	// If `self_link` is provided, this value is ignored.  If neither `self_link`
 	// nor `project` are provided, the provider project is used.
 	Project interface{}
+	// The self link of the instance. One of `name` or `self_link` must be provided.
+	SelfLink interface{}
 	// The zone of the instance. If `self_link` is provided, this
 	// value is ignored.  If neither `self_link` nor `zone` are provided, the
 	// provider zone is used.
@@ -86,6 +88,7 @@ type GetInstanceResult struct {
 	Disks interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators interface{}
+	Hostname interface{}
 	// The server-assigned unique identifier of this instance.
 	InstanceId interface{}
 	// The unique fingerprint of the labels.
@@ -101,16 +104,12 @@ type GetInstanceResult struct {
 	MetadataStartupScript interface{}
 	// The minimum CPU platform specified for the VM instance.
 	MinCpuPlatform interface{}
-	// The name or self_link of the network attached to this interface.
-	Networks interface{}
 	// The networks attached to the instance. Structure is documented below.
 	NetworkInterfaces interface{}
 	// The scheduling strategy being used by the instance.
 	Schedulings interface{}
 	// The scratch disks attached to the instance. Structure is documented below.
 	ScratchDisks interface{}
-	// The URI of the created resource.
-	SelfLink interface{}
 	// The service account to attach to the instance. Structure is documented below.
 	ServiceAccounts interface{}
 	// The list of tags attached to the instance.

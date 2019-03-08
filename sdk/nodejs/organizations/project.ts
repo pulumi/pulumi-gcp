@@ -60,21 +60,6 @@ import * as utilities from "../utilities";
  *     projectId: "your-project-id",
  * });
  * ```
- * 
- * To create a project with an App Engine app attached
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const my_app_engine_app = new gcp.organizations.Project("my-app-engine-app", {
- *     appEngine: {
- *         locationId: "us-central",
- *     },
- *     orgId: "1234567",
- *     projectId: "app-engine-project",
- * });
- * ```
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -89,11 +74,6 @@ export class Project extends pulumi.CustomResource {
         return new Project(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    public readonly appEngine: pulumi.Output<{ authDomain: string, codeBucket: string, defaultBucket: string, defaultHostname: string, featureSettings: { splitHealthChecks?: boolean }, gcrDomain: string, locationId: string, name: string, servingStatus: string, urlDispatchRules: { domain: string, path: string, service: string }[] }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network
@@ -161,7 +141,6 @@ export class Project extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ProjectState = argsOrState as ProjectState | undefined;
-            inputs["appEngine"] = state ? state.appEngine : undefined;
             inputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -176,7 +155,6 @@ export class Project extends pulumi.CustomResource {
             if (!args || args.projectId === undefined) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -195,11 +173,6 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network
@@ -260,11 +233,6 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
     /**
      * Create the 'default' network automatically.  Default true.
      * Note: this might be more accurately described as "Delete Default Network", since the network

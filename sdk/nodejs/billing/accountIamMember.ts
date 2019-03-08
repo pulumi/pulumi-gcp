@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * 
  * const binding = new gcp.billing.AccountIamMember("binding", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     member: "user:jane@example.com",
+ *     member: "user:alice@gmail.com",
  *     role: "roles/billing.viewer",
  * });
  * ```
@@ -47,7 +47,7 @@ export class AccountIamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     public readonly member: pulumi.Output<string>;
     /**
@@ -104,7 +104,7 @@ export interface AccountIamMemberState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member?: pulumi.Input<string>;
     /**
@@ -122,7 +122,7 @@ export interface AccountIamMemberArgs {
      */
     readonly billingAccountId: pulumi.Input<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member: pulumi.Input<string>;
     /**

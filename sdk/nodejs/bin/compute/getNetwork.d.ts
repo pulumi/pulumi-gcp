@@ -1,0 +1,55 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Get a network within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_network = pulumi.output(gcp.compute.getNetwork({
+ *     name: "default-us-east1",
+ * }));
+ * ```
+ */
+export declare function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult>;
+/**
+ * A collection of arguments for invoking getNetwork.
+ */
+export interface GetNetworkArgs {
+    /**
+     * The name of the network.
+     */
+    readonly name: string;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project?: string;
+}
+/**
+ * A collection of values returned by getNetwork.
+ */
+export interface GetNetworkResult {
+    /**
+     * Description of this network.
+     */
+    readonly description: string;
+    /**
+     * The IP address of the gateway.
+     */
+    readonly gatewayIpv4: string;
+    /**
+     * The URI of the resource.
+     */
+    readonly selfLink: string;
+    /**
+     * the list of subnetworks which belong to the network
+     */
+    readonly subnetworksSelfLinks: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+}

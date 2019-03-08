@@ -1,0 +1,43 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Get an active folder within GCP by `display_name` and `parent`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = pulumi.output(gcp.organizations.getActiveFolder({
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * }));
+ * ```
+ */
+export declare function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult>;
+/**
+ * A collection of arguments for invoking getActiveFolder.
+ */
+export interface GetActiveFolderArgs {
+    /**
+     * The folder's display name.
+     */
+    readonly displayName: string;
+    /**
+     * The resource name of the parent Folder or Organization.
+     */
+    readonly parent: string;
+}
+/**
+ * A collection of values returned by getActiveFolder.
+ */
+export interface GetActiveFolderResult {
+    /**
+     * The resource name of the Folder. This uniquely identifies the folder.
+     */
+    readonly name: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+}

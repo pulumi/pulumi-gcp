@@ -65,11 +65,22 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly datasetId: pulumi.Output<string>;
     /**
+     * The default partition expiration
+     * for all partitioned tables in the dataset, in milliseconds.
+     */
+    public readonly defaultPartitionExpirationMs: pulumi.Output<number | undefined>;
+    /**
      * The default lifetime of all
      * tables in the dataset, in milliseconds. The minimum value is 3600000
      * milliseconds (one hour).
      */
     public readonly defaultTableExpirationMs: pulumi.Output<number | undefined>;
+    /**
+     * If set to `true`, delete all the
+     * tables in the dataset when destroying the resource; otherwise, destroying
+     * the resource will fail if tables are present.
+     */
+    public readonly deleteContentsOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * A user-friendly description of the dataset.
      */
@@ -121,7 +132,9 @@ export class Dataset extends pulumi.CustomResource {
             inputs["accesses"] = state ? state.accesses : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
+            inputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
             inputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
+            inputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["friendlyName"] = state ? state.friendlyName : undefined;
@@ -137,7 +150,9 @@ export class Dataset extends pulumi.CustomResource {
             }
             inputs["accesses"] = args ? args.accesses : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
+            inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
             inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
+            inputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -170,11 +185,22 @@ export interface DatasetState {
      */
     readonly datasetId?: pulumi.Input<string>;
     /**
+     * The default partition expiration
+     * for all partitioned tables in the dataset, in milliseconds.
+     */
+    readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
+    /**
      * The default lifetime of all
      * tables in the dataset, in milliseconds. The minimum value is 3600000
      * milliseconds (one hour).
      */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
+    /**
+     * If set to `true`, delete all the
+     * tables in the dataset when destroying the resource; otherwise, destroying
+     * the resource will fail if tables are present.
+     */
+    readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
     /**
      * A user-friendly description of the dataset.
      */
@@ -226,11 +252,22 @@ export interface DatasetArgs {
      */
     readonly datasetId: pulumi.Input<string>;
     /**
+     * The default partition expiration
+     * for all partitioned tables in the dataset, in milliseconds.
+     */
+    readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
+    /**
      * The default lifetime of all
      * tables in the dataset, in milliseconds. The minimum value is 3600000
      * milliseconds (one hour).
      */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
+    /**
+     * If set to `true`, delete all the
+     * tables in the dataset when destroying the resource; otherwise, destroying
+     * the resource will fail if tables are present.
+     */
+    readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
     /**
      * A user-friendly description of the dataset.
      */

@@ -34,10 +34,10 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["attachedDisks"] = nil
 		inputs["bootDisk"] = nil
 		inputs["canIpForward"] = nil
-		inputs["createTimeout"] = nil
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
 		inputs["guestAccelerators"] = nil
+		inputs["hostname"] = nil
 		inputs["labels"] = nil
 		inputs["machineType"] = nil
 		inputs["metadata"] = nil
@@ -56,10 +56,10 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["attachedDisks"] = args.AttachedDisks
 		inputs["bootDisk"] = args.BootDisk
 		inputs["canIpForward"] = args.CanIpForward
-		inputs["createTimeout"] = args.CreateTimeout
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
 		inputs["guestAccelerators"] = args.GuestAccelerators
+		inputs["hostname"] = args.Hostname
 		inputs["labels"] = args.Labels
 		inputs["machineType"] = args.MachineType
 		inputs["metadata"] = args.Metadata
@@ -98,10 +98,10 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["bootDisk"] = state.BootDisk
 		inputs["canIpForward"] = state.CanIpForward
 		inputs["cpuPlatform"] = state.CpuPlatform
-		inputs["createTimeout"] = state.CreateTimeout
 		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
 		inputs["guestAccelerators"] = state.GuestAccelerators
+		inputs["hostname"] = state.Hostname
 		inputs["instanceId"] = state.InstanceId
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
@@ -144,7 +144,7 @@ func (r *Instance) AllowStoppingForUpdate() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
 }
 
-// List of disks to attach to the instance. Structure is documented below.
+// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
 func (r *Instance) AttachedDisks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["attachedDisks"])
 }
@@ -167,12 +167,6 @@ func (r *Instance) CpuPlatform() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cpuPlatform"])
 }
 
-// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-// Changing this forces a new resource to be created.
-func (r *Instance) CreateTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["createTimeout"])
-}
-
 // Enable deletion protection on this instance. Defaults to false.
 // **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 func (r *Instance) DeletionProtection() *pulumi.BoolOutput {
@@ -188,6 +182,13 @@ func (r *Instance) Description() *pulumi.StringOutput {
 // **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
 func (r *Instance) GuestAccelerators() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
+}
+
+// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+func (r *Instance) Hostname() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // The server-assigned unique identifier of this instance.
@@ -211,7 +212,8 @@ func (r *Instance) MachineType() *pulumi.StringOutput {
 }
 
 // Metadata key/value pairs to make available from
-// within the instance.
+// within the instance. Ssh keys attached in the Cloud Console will be removed.
+// Add them to your config in order to keep them attached to your instance.
 func (r *Instance) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
@@ -299,7 +301,7 @@ type InstanceState struct {
 	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate interface{}
-	// List of disks to attach to the instance. Structure is documented below.
+	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
 	AttachedDisks interface{}
 	// The boot disk for the instance.
 	// Structure is documented below.
@@ -310,9 +312,6 @@ type InstanceState struct {
 	CanIpForward interface{}
 	// The CPU platform used by this instance.
 	CpuPlatform interface{}
-	// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-	// Changing this forces a new resource to be created.
-	CreateTimeout interface{}
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection interface{}
@@ -321,6 +320,10 @@ type InstanceState struct {
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
 	GuestAccelerators interface{}
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	Hostname interface{}
 	// The server-assigned unique identifier of this instance.
 	InstanceId interface{}
 	// The unique fingerprint of the labels.
@@ -330,7 +333,8 @@ type InstanceState struct {
 	// The machine type to create.
 	MachineType interface{}
 	// Metadata key/value pairs to make available from
-	// within the instance.
+	// within the instance. Ssh keys attached in the Cloud Console will be removed.
+	// Add them to your config in order to keep them attached to your instance.
 	Metadata interface{}
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint interface{}
@@ -378,7 +382,7 @@ type InstanceArgs struct {
 	// If true, allows Terraform to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate interface{}
-	// List of disks to attach to the instance. Structure is documented below.
+	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
 	AttachedDisks interface{}
 	// The boot disk for the instance.
 	// Structure is documented below.
@@ -387,9 +391,6 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward interface{}
-	// Configurable timeout in minutes for creating instances. Default is 4 minutes.
-	// Changing this forces a new resource to be created.
-	CreateTimeout interface{}
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
 	DeletionProtection interface{}
@@ -398,12 +399,17 @@ type InstanceArgs struct {
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
 	GuestAccelerators interface{}
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+	Hostname interface{}
 	// A set of key/value label pairs to assign to the instance.
 	Labels interface{}
 	// The machine type to create.
 	MachineType interface{}
 	// Metadata key/value pairs to make available from
-	// within the instance.
+	// within the instance. Ssh keys attached in the Cloud Console will be removed.
+	// Add them to your config in order to keep them attached to your instance.
 	Metadata interface{}
 	// An alternative to using the
 	// startup-script metadata key, except this one forces the instance to be

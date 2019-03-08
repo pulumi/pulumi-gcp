@@ -8,9 +8,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a subscription in Google's pubsub queueing system. For more information see
-// [the official documentation](https://cloud.google.com/pubsub/docs) and
-// [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
+// A named resource representing the stream of messages from a single,
+// specific topic, to be delivered to the subscribing application.
+// 
+// 
+// To get more information about Subscription, see:
+// 
+// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+// * How-to Guides
+//     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 type Subscription struct {
 	s *pulumi.ResourceState
 }
@@ -24,12 +30,14 @@ func NewSubscription(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["ackDeadlineSeconds"] = nil
+		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["pushConfig"] = nil
 		inputs["topic"] = nil
 	} else {
 		inputs["ackDeadlineSeconds"] = args.AckDeadlineSeconds
+		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["pushConfig"] = args.PushConfig
@@ -50,6 +58,7 @@ func GetSubscription(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["ackDeadlineSeconds"] = state.AckDeadlineSeconds
+		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["path"] = state.Path
 		inputs["project"] = state.Project
@@ -73,80 +82,57 @@ func (r *Subscription) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The maximum number of seconds a
-// subscriber has to acknowledge a received message, otherwise the message is
-// redelivered. Changing this forces a new resource to be created.
 func (r *Subscription) AckDeadlineSeconds() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ackDeadlineSeconds"])
 }
 
-// A unique name for the resource, required by pubsub.
-// Changing this forces a new resource to be created.
+func (r *Subscription) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
 func (r *Subscription) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
 func (r *Subscription) Path() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["path"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Subscription) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// Block configuration for push options. More
-// configuration options are detailed below.
 func (r *Subscription) PushConfig() *pulumi.Output {
 	return r.s.State["pushConfig"]
 }
 
-// The topic name or id to bind this subscription to, required by pubsub.
-// Changing this forces a new resource to be created.
 func (r *Subscription) Topic() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Input properties used for looking up and filtering Subscription resources.
 type SubscriptionState struct {
-	// The maximum number of seconds a
-	// subscriber has to acknowledge a received message, otherwise the message is
-	// redelivered. Changing this forces a new resource to be created.
 	AckDeadlineSeconds interface{}
-	// A unique name for the resource, required by pubsub.
-	// Changing this forces a new resource to be created.
+	Labels interface{}
 	Name interface{}
-	// Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
 	Path interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// Block configuration for push options. More
-	// configuration options are detailed below.
 	PushConfig interface{}
-	// The topic name or id to bind this subscription to, required by pubsub.
-	// Changing this forces a new resource to be created.
 	Topic interface{}
 }
 
 // The set of arguments for constructing a Subscription resource.
 type SubscriptionArgs struct {
-	// The maximum number of seconds a
-	// subscriber has to acknowledge a received message, otherwise the message is
-	// redelivered. Changing this forces a new resource to be created.
 	AckDeadlineSeconds interface{}
-	// A unique name for the resource, required by pubsub.
-	// Changing this forces a new resource to be created.
+	Labels interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// Block configuration for push options. More
-	// configuration options are detailed below.
 	PushConfig interface{}
-	// The topic name or id to bind this subscription to, required by pubsub.
-	// Changing this forces a new resource to be created.
 	Topic interface{}
 }

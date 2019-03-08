@@ -52,6 +52,8 @@ func NewBucketObject(ctx *pulumi.Context,
 	}
 	inputs["crc32c"] = nil
 	inputs["md5hash"] = nil
+	inputs["outputName"] = nil
+	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:storage/bucketObject:BucketObject", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -76,6 +78,8 @@ func GetBucketObject(ctx *pulumi.Context,
 		inputs["detectMd5hash"] = state.DetectMd5hash
 		inputs["md5hash"] = state.Md5hash
 		inputs["name"] = state.Name
+		inputs["outputName"] = state.OutputName
+		inputs["selfLink"] = state.SelfLink
 		inputs["source"] = state.Source
 		inputs["storageClass"] = state.StorageClass
 	}
@@ -147,9 +151,20 @@ func (r *BucketObject) Md5hash() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["md5hash"])
 }
 
-// The name of the object.
+// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
 func (r *BucketObject) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
+}
+
+// (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
+// `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+func (r *BucketObject) OutputName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["outputName"])
+}
+
+// (Computed) A url reference to this object.
+func (r *BucketObject) SelfLink() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A path to the data you want to upload. Must be defined
@@ -188,8 +203,13 @@ type BucketObjectState struct {
 	DetectMd5hash interface{}
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash interface{}
-	// The name of the object.
+	// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
 	Name interface{}
+	// (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
+	// `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+	OutputName interface{}
+	// (Computed) A url reference to this object.
+	SelfLink interface{}
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
 	Source interface{}
@@ -218,7 +238,7 @@ type BucketObjectArgs struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType interface{}
 	DetectMd5hash interface{}
-	// The name of the object.
+	// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
 	Name interface{}
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.

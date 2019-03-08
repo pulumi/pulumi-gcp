@@ -1,0 +1,1 @@
+{"version":3,"file":"getRule.js","sourceRoot":"","sources":["../../iam/getRule.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAGzC;;;;;;;;;;;;;GAaG;AACH,SAAgB,OAAO,CAAC,IAAiB,EAAE,IAA2B;IAClE,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,yBAAyB,EAAE;QACpD,MAAM,EAAE,IAAI,CAAC,IAAI;KACpB,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AAJD,0BAIC"}

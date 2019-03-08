@@ -118,7 +118,7 @@ export class Environment extends pulumi.CustomResource {
         return new Environment(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string} } }>;
+    public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string}, pythonVersion: string } }>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export class Environment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Environment resources.
  */
 export interface EnvironmentState {
-    readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }> }>;
+    readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pythonVersion?: pulumi.Input<string> }> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
@@ -176,7 +176,7 @@ export interface EnvironmentState {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
-    readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }> }>;
+    readonly config?: pulumi.Input<{ airflowUri?: pulumi.Input<string>, dagGcsPrefix?: pulumi.Input<string>, gkeCluster?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, machineType?: pulumi.Input<string>, network?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, serviceAccount?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone: pulumi.Input<string> }>, nodeCount?: pulumi.Input<number>, softwareConfig?: pulumi.Input<{ airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, imageVersion?: pulumi.Input<string>, pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pythonVersion?: pulumi.Input<string> }> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**

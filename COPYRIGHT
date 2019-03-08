@@ -6,6 +6,6 @@ This project is a larger work that combines with software written
 by third parties, licensed under their own terms.
 
 Notably, this larger work combines with the Terraform Google Cloud
-Provider, which is licensed under the Mozilla Public License 2.0 (see
+Beta Provider, which is licensed under the Mozilla Public License 2.0 (see
 <https://www.mozilla.org/en-US/MPL/2.0/> or the project itself at
-<https://github.com/terraform-providers/terraform-provider-google>).
+<https://github.com/terraform-providers/terraform-provider-google-beta>).

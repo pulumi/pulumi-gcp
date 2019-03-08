@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const grpcService = new gcp.endpoints.Service("grpc_service", {
  *     grpcConfig: fs.readFileSync("service_spec.yml", "utf-8"),
  *     project: "project-id",
- *     protocOutput: fs.readFileSync("compiled_descriptor_file.pb", "utf-8"),
+ *     protocOutputBase64: Buffer.from(fs.readFileSync("compiled_descriptor_file.pb", "utf-8")).toString("base64"),
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  * });
  * const openapiService = new gcp.endpoints.Service("openapi_service", {
@@ -49,7 +49,6 @@ export class Service extends pulumi.CustomResource {
     public readonly grpcConfig: pulumi.Output<string | undefined>;
     public readonly openapiConfig: pulumi.Output<string | undefined>;
     public readonly project: pulumi.Output<string>;
-    public readonly protocOutput: pulumi.Output<string | undefined>;
     public readonly protocOutputBase64: pulumi.Output<string | undefined>;
     public readonly serviceName: pulumi.Output<string>;
 
@@ -72,7 +71,6 @@ export class Service extends pulumi.CustomResource {
             inputs["grpcConfig"] = state ? state.grpcConfig : undefined;
             inputs["openapiConfig"] = state ? state.openapiConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["protocOutput"] = state ? state.protocOutput : undefined;
             inputs["protocOutputBase64"] = state ? state.protocOutputBase64 : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
@@ -83,7 +81,6 @@ export class Service extends pulumi.CustomResource {
             inputs["grpcConfig"] = args ? args.grpcConfig : undefined;
             inputs["openapiConfig"] = args ? args.openapiConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["protocOutput"] = args ? args.protocOutput : undefined;
             inputs["protocOutputBase64"] = args ? args.protocOutputBase64 : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["apis"] = undefined /*out*/;
@@ -106,7 +103,6 @@ export interface ServiceState {
     readonly grpcConfig?: pulumi.Input<string>;
     readonly openapiConfig?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly protocOutput?: pulumi.Input<string>;
     readonly protocOutputBase64?: pulumi.Input<string>;
     readonly serviceName?: pulumi.Input<string>;
 }
@@ -118,7 +114,6 @@ export interface ServiceArgs {
     readonly grpcConfig?: pulumi.Input<string>;
     readonly openapiConfig?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly protocOutput?: pulumi.Input<string>;
     readonly protocOutputBase64?: pulumi.Input<string>;
     readonly serviceName: pulumi.Input<string>;
 }

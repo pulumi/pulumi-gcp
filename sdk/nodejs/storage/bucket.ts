@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
  * 
+ * **Note**: When importing a bucket or using only the default provider project for bucket creation, you will need to enable the Compute API and will otherwise get an error with a link to the API enablement page. If you would prefer not to enable the Compute API, make sure to explicitly set `project` on the bucket resource.
  * 
  * ## Example Usage
  * 
@@ -86,6 +87,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     /**
+     * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
+     */
+    public readonly requesterPays: pulumi.Output<boolean | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
@@ -127,6 +132,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = state ? state.logging : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["requesterPays"] = state ? state.requesterPays : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
             inputs["url"] = state ? state.url : undefined;
@@ -143,6 +149,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = args ? args.logging : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requesterPays"] = args ? args.requesterPays : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["websites"] = args ? args.websites : undefined;
@@ -196,6 +203,10 @@ export interface BucketState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
+     */
+    readonly requesterPays?: pulumi.Input<boolean>;
     /**
      * The URI of the created resource.
      */
@@ -261,6 +272,10 @@ export interface BucketArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
+     */
+    readonly requesterPays?: pulumi.Input<boolean>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */

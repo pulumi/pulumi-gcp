@@ -1,0 +1,145 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Represents an Image resource.
+ *
+ * Google Compute Engine uses operating system images to create the root
+ * persistent disks for your instances. You specify an image when you create
+ * an instance. Images contain a boot loader, an operating system, and a
+ * root file system. Linux operating system images are also capable of
+ * running containers on Compute Engine.
+ *
+ * Images can be either public or custom.
+ *
+ * Public images are provided and maintained by Google, open-source
+ * communities, and third-party vendors. By default, all projects have
+ * access to these images and can use them to create instances.  Custom
+ * images are available only to your project. You can create a custom image
+ * from root persistent disks and other images. Then, use the custom image
+ * to create an instance.
+ *
+ *
+ * To get more information about Image, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/images)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+ *
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=image_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Image Basic
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.compute.Image("example", {
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+ *     },
+ * });
+ * ```
+ */
+export declare class Image extends pulumi.CustomResource {
+    /**
+     * Get an existing Image resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image;
+    readonly archiveSizeBytes: pulumi.Output<number>;
+    readonly creationTimestamp: pulumi.Output<string>;
+    readonly description: pulumi.Output<string | undefined>;
+    readonly diskSizeGb: pulumi.Output<number>;
+    readonly family: pulumi.Output<string | undefined>;
+    readonly labelFingerprint: pulumi.Output<string>;
+    readonly labels: pulumi.Output<{
+        [key: string]: string;
+    } | undefined>;
+    readonly licenses: pulumi.Output<string[]>;
+    readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    readonly project: pulumi.Output<string>;
+    readonly rawDisk: pulumi.Output<{
+        containerType?: string;
+        sha1?: string;
+        source: string;
+    } | undefined>;
+    /**
+     * The URI of the created resource.
+     */
+    readonly selfLink: pulumi.Output<string>;
+    readonly sourceDisk: pulumi.Output<string | undefined>;
+    /**
+     * Create a Image resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args?: ImageArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering Image resources.
+ */
+export interface ImageState {
+    readonly archiveSizeBytes?: pulumi.Input<number>;
+    readonly creationTimestamp?: pulumi.Input<string>;
+    readonly description?: pulumi.Input<string>;
+    readonly diskSizeGb?: pulumi.Input<number>;
+    readonly family?: pulumi.Input<string>;
+    readonly labelFingerprint?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
+    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
+    readonly rawDisk?: pulumi.Input<{
+        containerType?: pulumi.Input<string>;
+        sha1?: pulumi.Input<string>;
+        source: pulumi.Input<string>;
+    }>;
+    /**
+     * The URI of the created resource.
+     */
+    readonly selfLink?: pulumi.Input<string>;
+    readonly sourceDisk?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a Image resource.
+ */
+export interface ImageArgs {
+    readonly description?: pulumi.Input<string>;
+    readonly diskSizeGb?: pulumi.Input<number>;
+    readonly family?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{
+        [key: string]: pulumi.Input<string>;
+    }>;
+    readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
+    readonly rawDisk?: pulumi.Input<{
+        containerType?: pulumi.Input<string>;
+        sha1?: pulumi.Input<string>;
+        source: pulumi.Input<string>;
+    }>;
+    readonly sourceDisk?: pulumi.Input<string>;
+}

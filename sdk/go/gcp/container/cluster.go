@@ -7,13 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a Google Kubernetes Engine (GKE) cluster. For more information see
+// Manages a Google Kubernetes Engine (GKE) cluster. For more information see
 // [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
-// and
-// [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters).
+// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters).
 // 
-// > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+// > **Note:** All arguments and attributes, including basic auth username and
+// passwords as well as certificate outputs will be stored in the raw state as
+// plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 type Cluster struct {
 	s *pulumi.ResourceState
 }
@@ -25,7 +25,9 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil {
 		inputs["additionalZones"] = nil
 		inputs["addonsConfig"] = nil
+		inputs["clusterAutoscaling"] = nil
 		inputs["clusterIpv4Cidr"] = nil
+		inputs["defaultMaxPodsPerNode"] = nil
 		inputs["description"] = nil
 		inputs["enableBinaryAuthorization"] = nil
 		inputs["enableKubernetesAlpha"] = nil
@@ -37,7 +39,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["maintenancePolicy"] = nil
 		inputs["masterAuth"] = nil
 		inputs["masterAuthorizedNetworksConfig"] = nil
-		inputs["masterIpv4CidrBlock"] = nil
 		inputs["minMasterVersion"] = nil
 		inputs["monitoringService"] = nil
 		inputs["name"] = nil
@@ -47,7 +48,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["nodePools"] = nil
 		inputs["nodeVersion"] = nil
 		inputs["podSecurityPolicyConfig"] = nil
-		inputs["privateCluster"] = nil
 		inputs["privateClusterConfig"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
@@ -58,7 +58,9 @@ func NewCluster(ctx *pulumi.Context,
 	} else {
 		inputs["additionalZones"] = args.AdditionalZones
 		inputs["addonsConfig"] = args.AddonsConfig
+		inputs["clusterAutoscaling"] = args.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = args.ClusterIpv4Cidr
+		inputs["defaultMaxPodsPerNode"] = args.DefaultMaxPodsPerNode
 		inputs["description"] = args.Description
 		inputs["enableBinaryAuthorization"] = args.EnableBinaryAuthorization
 		inputs["enableKubernetesAlpha"] = args.EnableKubernetesAlpha
@@ -70,7 +72,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["maintenancePolicy"] = args.MaintenancePolicy
 		inputs["masterAuth"] = args.MasterAuth
 		inputs["masterAuthorizedNetworksConfig"] = args.MasterAuthorizedNetworksConfig
-		inputs["masterIpv4CidrBlock"] = args.MasterIpv4CidrBlock
 		inputs["minMasterVersion"] = args.MinMasterVersion
 		inputs["monitoringService"] = args.MonitoringService
 		inputs["name"] = args.Name
@@ -80,7 +81,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["nodePools"] = args.NodePools
 		inputs["nodeVersion"] = args.NodeVersion
 		inputs["podSecurityPolicyConfig"] = args.PodSecurityPolicyConfig
-		inputs["privateCluster"] = args.PrivateCluster
 		inputs["privateClusterConfig"] = args.PrivateClusterConfig
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -92,6 +92,7 @@ func NewCluster(ctx *pulumi.Context,
 	inputs["endpoint"] = nil
 	inputs["instanceGroupUrls"] = nil
 	inputs["masterVersion"] = nil
+	inputs["tpuIpv4CidrBlock"] = nil
 	s, err := ctx.RegisterResource("gcp:container/cluster:Cluster", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -107,7 +108,9 @@ func GetCluster(ctx *pulumi.Context,
 	if state != nil {
 		inputs["additionalZones"] = state.AdditionalZones
 		inputs["addonsConfig"] = state.AddonsConfig
+		inputs["clusterAutoscaling"] = state.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = state.ClusterIpv4Cidr
+		inputs["defaultMaxPodsPerNode"] = state.DefaultMaxPodsPerNode
 		inputs["description"] = state.Description
 		inputs["enableBinaryAuthorization"] = state.EnableBinaryAuthorization
 		inputs["enableKubernetesAlpha"] = state.EnableKubernetesAlpha
@@ -121,7 +124,6 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["maintenancePolicy"] = state.MaintenancePolicy
 		inputs["masterAuth"] = state.MasterAuth
 		inputs["masterAuthorizedNetworksConfig"] = state.MasterAuthorizedNetworksConfig
-		inputs["masterIpv4CidrBlock"] = state.MasterIpv4CidrBlock
 		inputs["masterVersion"] = state.MasterVersion
 		inputs["minMasterVersion"] = state.MinMasterVersion
 		inputs["monitoringService"] = state.MonitoringService
@@ -132,13 +134,13 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["nodePools"] = state.NodePools
 		inputs["nodeVersion"] = state.NodeVersion
 		inputs["podSecurityPolicyConfig"] = state.PodSecurityPolicyConfig
-		inputs["privateCluster"] = state.PrivateCluster
 		inputs["privateClusterConfig"] = state.PrivateClusterConfig
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
 		inputs["resourceLabels"] = state.ResourceLabels
 		inputs["subnetwork"] = state.Subnetwork
+		inputs["tpuIpv4CidrBlock"] = state.TpuIpv4CidrBlock
 		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("gcp:container/cluster:Cluster", name, id, inputs, opts...)
@@ -172,10 +174,22 @@ func (r *Cluster) AddonsConfig() *pulumi.Output {
 	return r.s.State["addonsConfig"]
 }
 
+// )
+// Configuration for cluster autoscaling (also called autoprovisioning), as described in
+// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
+// Structure is documented below.
+func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
+	return r.s.State["clusterAutoscaling"]
+}
+
 // The IP address range of the kubernetes pods in
 // this cluster. Default is an automatically assigned CIDR.
 func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
+}
+
+func (r *Cluster) DefaultMaxPodsPerNode() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["defaultMaxPodsPerNode"])
 }
 
 // Description of the cluster.
@@ -183,10 +197,8 @@ func (r *Cluster) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Enable Binary Authorization for this cluster.
+// ) Enable Binary Authorization for this cluster.
 // If enabled, all container images will be validated by Google Binary Authorization.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *Cluster) EnableBinaryAuthorization() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableBinaryAuthorization"])
 }
@@ -206,10 +218,8 @@ func (r *Cluster) EnableLegacyAbac() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableLegacyAbac"])
 }
 
-// Whether to enable Cloud TPU resources in this cluster.
+// ) Whether to enable Cloud TPU resources in this cluster.
 // See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *Cluster) EnableTpu() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableTpu"])
 }
@@ -264,16 +274,6 @@ func (r *Cluster) MasterAuthorizedNetworksConfig() *pulumi.Output {
 	return r.s.State["masterAuthorizedNetworksConfig"]
 }
 
-// Specifies a private
-// [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
-// The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-// This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
-func (r *Cluster) MasterIpv4CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterIpv4CidrBlock"])
-}
-
 // The current version of the master in the cluster. This may
 // be different than the `min_master_version` set in the config if the master
 // has been updated by GKE.
@@ -285,7 +285,10 @@ func (r *Cluster) MasterVersion() *pulumi.StringOutput {
 // will auto-update the master to new versions, so this does not guarantee the
 // current master version--use the read-only `master_version` field to obtain that.
 // If unset, the cluster's version will be set by GKE to the version of the most recent
-// official release (which is not necessarily the latest version).
+// official release (which is not necessarily the latest version).  Most users will find
+// the `google_container_engine_versions` data source useful - it indicates which versions
+// are available.  If you intend to specify versions manually, [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+// describe the various acceptable formats for this field.
 func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["minMasterVersion"])
 }
@@ -339,35 +342,22 @@ func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 
 // The Kubernetes version on the nodes. Must either be unset
 // or set to the same value as `min_master_version` on create. Defaults to the default
-// version set by GKE which is not necessarily the latest version.
+// version set by GKE which is not necessarily the latest version. This only affects
+// nodes in the default node pool. To update nodes in other node pools, use the `version`
+// attribute on the node pool.
 func (r *Cluster) NodeVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nodeVersion"])
 }
 
-// Configuration for the
+// ) Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *Cluster) PodSecurityPolicyConfig() *pulumi.Output {
 	return r.s.State["podSecurityPolicyConfig"]
 }
 
-// If true, a
-// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
-// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
-// `ip_allocation_policy` with this option.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-// This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
-func (r *Cluster) PrivateCluster() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["privateCluster"])
-}
-
 // A set of options for creating
 // a private cluster. Structure is documented below.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *Cluster) PrivateClusterConfig() *pulumi.Output {
 	return r.s.State["privateClusterConfig"]
 }
@@ -398,6 +388,13 @@ func (r *Cluster) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
+// ([Beta](https://terraform.io/docs/providers/google/provider_versions.html)) The IP address range of the Cloud TPUs in this cluster, in
+// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+// notation (e.g. `1.2.3.4/29`).
+func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
+}
+
 // The zone that the master and the number of nodes specified
 // in `initial_node_count` should be created in. Only one of `zone` and `region`
 // may be set. If neither zone nor region are set, the provider zone is used.
@@ -415,15 +412,19 @@ type ClusterState struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
+	// )
+	// Configuration for cluster autoscaling (also called autoprovisioning), as described in
+	// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
+	// Structure is documented below.
+	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
 	Description interface{}
-	// Enable Binary Authorization for this cluster.
+	// ) Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	EnableBinaryAuthorization interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -434,10 +435,8 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac interface{}
-	// Whether to enable Cloud TPU resources in this cluster.
+	// ) Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	EnableTpu interface{}
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint interface{}
@@ -465,13 +464,6 @@ type ClusterState struct {
 	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
 	// external access (except the cluster node IPs, which GKE automatically whitelists).
 	MasterAuthorizedNetworksConfig interface{}
-	// Specifies a private
-	// [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
-	// The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	// This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
-	MasterIpv4CidrBlock interface{}
 	// The current version of the master in the cluster. This may
 	// be different than the `min_master_version` set in the config if the master
 	// has been updated by GKE.
@@ -480,7 +472,10 @@ type ClusterState struct {
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `master_version` field to obtain that.
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
-	// official release (which is not necessarily the latest version).
+	// official release (which is not necessarily the latest version).  Most users will find
+	// the `google_container_engine_versions` data source useful - it indicates which versions
+	// are available.  If you intend to specify versions manually, [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+	// describe the various acceptable formats for this field.
 	MinMasterVersion interface{}
 	// The monitoring service that the cluster
 	// should write metrics to.
@@ -513,26 +508,16 @@ type ClusterState struct {
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default
-	// version set by GKE which is not necessarily the latest version.
+	// version set by GKE which is not necessarily the latest version. This only affects
+	// nodes in the default node pool. To update nodes in other node pools, use the `version`
+	// attribute on the node pool.
 	NodeVersion interface{}
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	PodSecurityPolicyConfig interface{}
-	// If true, a
-	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
-	// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
-	// `ip_allocation_policy` with this option.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	// This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
-	PrivateCluster interface{}
 	// A set of options for creating
 	// a private cluster. Structure is documented below.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -545,6 +530,10 @@ type ClusterState struct {
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
+	// ([Beta](https://terraform.io/docs/providers/google/provider_versions.html)) The IP address range of the Cloud TPUs in this cluster, in
+	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+	// notation (e.g. `1.2.3.4/29`).
+	TpuIpv4CidrBlock interface{}
 	// The zone that the master and the number of nodes specified
 	// in `initial_node_count` should be created in. Only one of `zone` and `region`
 	// may be set. If neither zone nor region are set, the provider zone is used.
@@ -561,15 +550,19 @@ type ClusterArgs struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
+	// )
+	// Configuration for cluster autoscaling (also called autoprovisioning), as described in
+	// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
+	// Structure is documented below.
+	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
 	Description interface{}
-	// Enable Binary Authorization for this cluster.
+	// ) Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	EnableBinaryAuthorization interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -580,10 +573,8 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac interface{}
-	// Whether to enable Cloud TPU resources in this cluster.
+	// ) Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	EnableTpu interface{}
 	// The number of nodes to create in this
 	// cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
@@ -606,18 +597,14 @@ type ClusterArgs struct {
 	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
 	// external access (except the cluster node IPs, which GKE automatically whitelists).
 	MasterAuthorizedNetworksConfig interface{}
-	// Specifies a private
-	// [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
-	// The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	// This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
-	MasterIpv4CidrBlock interface{}
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `master_version` field to obtain that.
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
-	// official release (which is not necessarily the latest version).
+	// official release (which is not necessarily the latest version).  Most users will find
+	// the `google_container_engine_versions` data source useful - it indicates which versions
+	// are available.  If you intend to specify versions manually, [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+	// describe the various acceptable formats for this field.
 	MinMasterVersion interface{}
 	// The monitoring service that the cluster
 	// should write metrics to.
@@ -650,26 +637,16 @@ type ClusterArgs struct {
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
 	// or set to the same value as `min_master_version` on create. Defaults to the default
-	// version set by GKE which is not necessarily the latest version.
+	// version set by GKE which is not necessarily the latest version. This only affects
+	// nodes in the default node pool. To update nodes in other node pools, use the `version`
+	// attribute on the node pool.
 	NodeVersion interface{}
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	PodSecurityPolicyConfig interface{}
-	// If true, a
-	// [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
-	// nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
-	// `ip_allocation_policy` with this option.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-	// This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
-	PrivateCluster interface{}
 	// A set of options for creating
 	// a private cluster. Structure is documented below.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

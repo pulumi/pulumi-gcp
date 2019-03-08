@@ -25,6 +25,7 @@ func NewBackendService(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["affinityCookieTtlSec"] = nil
 		inputs["backends"] = nil
 		inputs["cdnPolicy"] = nil
 		inputs["connectionDrainingTimeoutSec"] = nil
@@ -41,6 +42,7 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["sessionAffinity"] = nil
 		inputs["timeoutSec"] = nil
 	} else {
+		inputs["affinityCookieTtlSec"] = args.AffinityCookieTtlSec
 		inputs["backends"] = args.Backends
 		inputs["cdnPolicy"] = args.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
@@ -72,6 +74,7 @@ func GetBackendService(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *BackendServiceState, opts ...pulumi.ResourceOpt) (*BackendService, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["affinityCookieTtlSec"] = state.AffinityCookieTtlSec
 		inputs["backends"] = state.Backends
 		inputs["cdnPolicy"] = state.CdnPolicy
 		inputs["connectionDrainingTimeoutSec"] = state.ConnectionDrainingTimeoutSec
@@ -107,6 +110,13 @@ func (r *BackendService) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Lifetime of cookies in seconds if session_affinity is
+// `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+// the browser session (or equivalent). The maximum allowed value for TTL is one day.
+func (r *BackendService) AffinityCookieTtlSec() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["affinityCookieTtlSec"])
+}
+
 // The list of backends that serve this BackendService. Structure is documented below.
 func (r *BackendService) Backends() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["backends"])
@@ -123,10 +133,8 @@ func (r *BackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
 }
 
-// Headers that the
+// ) Headers that the
 // HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *BackendService) CustomRequestHeaders() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["customRequestHeaders"])
 }
@@ -207,6 +215,10 @@ func (r *BackendService) TimeoutSec() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering BackendService resources.
 type BackendServiceState struct {
+	// Lifetime of cookies in seconds if session_affinity is
+	// `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+	// the browser session (or equivalent). The maximum allowed value for TTL is one day.
+	AffinityCookieTtlSec interface{}
 	// The list of backends that serve this BackendService. Structure is documented below.
 	Backends interface{}
 	// Cloud CDN configuration for this BackendService. Structure is documented below.
@@ -214,10 +226,8 @@ type BackendServiceState struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
-	// Headers that the
+	// ) Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	CustomRequestHeaders interface{}
 	// The textual description for the backend service.
 	Description interface{}
@@ -258,6 +268,10 @@ type BackendServiceState struct {
 
 // The set of arguments for constructing a BackendService resource.
 type BackendServiceArgs struct {
+	// Lifetime of cookies in seconds if session_affinity is
+	// `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+	// the browser session (or equivalent). The maximum allowed value for TTL is one day.
+	AffinityCookieTtlSec interface{}
 	// The list of backends that serve this BackendService. Structure is documented below.
 	Backends interface{}
 	// Cloud CDN configuration for this BackendService. Structure is documented below.
@@ -265,10 +279,8 @@ type BackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new connections,
 	// but still work to finish started ones). Defaults to `300`.
 	ConnectionDrainingTimeoutSec interface{}
-	// Headers that the
+	// ) Headers that the
 	// HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	CustomRequestHeaders interface{}
 	// The textual description for the backend service.
 	Description interface{}

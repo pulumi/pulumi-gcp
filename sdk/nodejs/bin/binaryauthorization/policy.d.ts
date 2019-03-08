@@ -1,0 +1,126 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * A policy for container image binary authorization.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ *
+ * To get more information about Policy, see:
+ *
+ * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *
+ * ## Example Usage - Binary Authorization Policy Basic
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "My attestor",
+ *         },
+ *     },
+ * });
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *     },
+ * });
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
+ *     admissionWhitelistPatterns: [{
+ *         namePattern: "gcr.io/google_containers/*",
+ *     }],
+ *     clusterAdmissionRules: [{
+ *         cluster: "us-central1-a.prod-cluster",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         requireAttestationsBies: [attestor.name],
+ *     }],
+ *     defaultAdmissionRule: {
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         evaluationMode: "ALWAYS_ALLOW",
+ *     },
+ * });
+ * ```
+ */
+export declare class Policy extends pulumi.CustomResource {
+    /**
+     * Get an existing Policy resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState, opts?: pulumi.CustomResourceOptions): Policy;
+    readonly admissionWhitelistPatterns: pulumi.Output<{
+        namePattern?: string;
+    }[] | undefined>;
+    readonly clusterAdmissionRules: pulumi.Output<{
+        cluster: string;
+        enforcementMode?: string;
+        evaluationMode?: string;
+        requireAttestationsBies?: string[];
+    }[] | undefined>;
+    readonly defaultAdmissionRule: pulumi.Output<{
+        enforcementMode: string;
+        evaluationMode: string;
+        requireAttestationsBies?: string[];
+    }>;
+    readonly description: pulumi.Output<string | undefined>;
+    readonly project: pulumi.Output<string>;
+    /**
+     * Create a Policy resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering Policy resources.
+ */
+export interface PolicyState {
+    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<{
+        namePattern?: pulumi.Input<string>;
+    }>[]>;
+    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<{
+        cluster: pulumi.Input<string>;
+        enforcementMode?: pulumi.Input<string>;
+        evaluationMode?: pulumi.Input<string>;
+        requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]>;
+    }>[]>;
+    readonly defaultAdmissionRule?: pulumi.Input<{
+        enforcementMode: pulumi.Input<string>;
+        evaluationMode: pulumi.Input<string>;
+        requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]>;
+    }>;
+    readonly description?: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a Policy resource.
+ */
+export interface PolicyArgs {
+    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<{
+        namePattern?: pulumi.Input<string>;
+    }>[]>;
+    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<{
+        cluster: pulumi.Input<string>;
+        enforcementMode?: pulumi.Input<string>;
+        evaluationMode?: pulumi.Input<string>;
+        requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]>;
+    }>[]>;
+    readonly defaultAdmissionRule: pulumi.Input<{
+        enforcementMode: pulumi.Input<string>;
+        evaluationMode: pulumi.Input<string>;
+        requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]>;
+    }>;
+    readonly description?: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
+}

@@ -87,7 +87,7 @@ func (r *IAMMember) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// The identity that will be granted the privilege in the `role`.
+// The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 // This field can have one of the following values:
 // * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 // * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -109,7 +109,7 @@ type IAMMemberState struct {
 	Etag interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// The identity that will be granted the privilege in the `role`.
+	// The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// This field can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -125,7 +125,7 @@ type IAMMemberState struct {
 type IAMMemberArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// The identity that will be granted the privilege in the `role`.
+	// The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// This field can have one of the following values:
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

@@ -10,6 +10,10 @@ import (
 
 // Allows creation and management of a single binding within IAM policy for
 // an existing Google Cloud KMS crypto key.
+// 
+// > **Note:** On create, this resource will overwrite members of any existing roles.
+//     Use `terraform import` and inspect the `terraform plan` output to ensure
+//     your existing members are preserved.
 type CryptoKeyIAMBinding struct {
 	s *pulumi.ResourceState
 }
@@ -85,7 +89,7 @@ func (r *CryptoKeyIAMBinding) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// A list of users that the role should apply to.
+// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *CryptoKeyIAMBinding) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
@@ -106,7 +110,7 @@ type CryptoKeyIAMBindingState struct {
 	CryptoKeyId interface{}
 	// (Computed) The etag of the crypto key's IAM policy.
 	Etag interface{}
-	// A list of users that the role should apply to.
+	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
 	// `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -121,7 +125,7 @@ type CryptoKeyIAMBindingArgs struct {
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
 	// In the second form, the provider's project setting will be used as a fallback.
 	CryptoKeyId interface{}
-	// A list of users that the role should apply to.
+	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
 	// `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format

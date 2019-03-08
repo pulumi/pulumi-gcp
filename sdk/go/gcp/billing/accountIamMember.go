@@ -86,7 +86,7 @@ func (r *AccountIamMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The user that the role should apply to.
+// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *AccountIamMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
@@ -102,7 +102,7 @@ type AccountIamMemberState struct {
 	BillingAccountId interface{}
 	// (Computed) The etag of the billing account's IAM policy.
 	Etag interface{}
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The role that should be applied.
 	Role interface{}
@@ -112,7 +112,7 @@ type AccountIamMemberState struct {
 type AccountIamMemberArgs struct {
 	// The billing account id.
 	BillingAccountId interface{}
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The role that should be applied.
 	Role interface{}

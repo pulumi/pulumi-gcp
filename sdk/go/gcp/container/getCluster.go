@@ -25,6 +25,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		AddonsConfigs: outputs["addonsConfigs"],
 		ClusterAutoscalings: outputs["clusterAutoscalings"],
 		ClusterIpv4Cidr: outputs["clusterIpv4Cidr"],
+		DefaultMaxPodsPerNode: outputs["defaultMaxPodsPerNode"],
 		Description: outputs["description"],
 		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
 		EnableKubernetesAlpha: outputs["enableKubernetesAlpha"],
@@ -53,6 +54,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
 		Subnetwork: outputs["subnetwork"],
+		TpuIpv4CidrBlock: outputs["tpuIpv4CidrBlock"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -74,6 +76,7 @@ type GetClusterResult struct {
 	AddonsConfigs interface{}
 	ClusterAutoscalings interface{}
 	ClusterIpv4Cidr interface{}
+	DefaultMaxPodsPerNode interface{}
 	Description interface{}
 	EnableBinaryAuthorization interface{}
 	EnableKubernetesAlpha interface{}
@@ -102,6 +105,7 @@ type GetClusterResult struct {
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
 	Subnetwork interface{}
+	TpuIpv4CidrBlock interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -7,6 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
  * 
+ * > Creation of service accounts is eventually consistent, and that can lead to
+ * errors when you try to apply ACLs to service accounts immediately after
+ * creation. If using these resources in the same config, you can add a
+ * [`sleep` using `local-exec`](https://github.com/hashicorp/terraform/issues/17726#issuecomment-377357866).
+ * 
  * ## Example Usage
  * 
  * This snippet creates a service account, then gives it objectViewer
@@ -36,8 +41,10 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The service account ID.
-     * Changing this forces a new service account to be created.
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     public readonly accountId: pulumi.Output<string>;
     /**
@@ -55,12 +62,6 @@ export class Account extends pulumi.CustomResource {
      * The fully-qualified name of the service account.
      */
     public /*out*/ readonly name: pulumi.Output<string>;
-    /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    public readonly policyData: pulumi.Output<string | undefined>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
@@ -87,7 +88,6 @@ export class Account extends pulumi.CustomResource {
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
@@ -97,7 +97,6 @@ export class Account extends pulumi.CustomResource {
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["email"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -112,8 +111,10 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * The service account ID.
-     * Changing this forces a new service account to be created.
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -132,12 +133,6 @@ export interface AccountState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    readonly policyData?: pulumi.Input<string>;
-    /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
@@ -153,8 +148,10 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The service account ID.
-     * Changing this forces a new service account to be created.
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     readonly accountId: pulumi.Input<string>;
     /**
@@ -162,12 +159,6 @@ export interface AccountArgs {
      * Can be updated without creating a new resource.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * The `google_iam_policy` data source that represents
-     * the IAM policy that will be applied to the service account. The policy will be
-     * merged with any existing policy.
-     */
-    readonly policyData?: pulumi.Input<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.

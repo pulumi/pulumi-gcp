@@ -1,0 +1,71 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * AccessPolicy is a container for AccessLevels (which define the necessary
+ * attributes to use GCP services) and ServicePerimeters (which define
+ * regions of services able to freely pass data within a perimeter). An
+ * access policy is globally visible within an organization, and the
+ * restrictions it specifies apply to all projects within an organization.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+ *
+ * To get more information about AccessPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies)
+ * * How-to Guides
+ *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *
+ * ## Example Usage - Access Context Manager Access Policy Basic
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * ```
+ */
+export declare class AccessPolicy extends pulumi.CustomResource {
+    /**
+     * Get an existing AccessPolicy resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessPolicyState, opts?: pulumi.CustomResourceOptions): AccessPolicy;
+    readonly createTime: pulumi.Output<string>;
+    readonly name: pulumi.Output<string>;
+    readonly parent: pulumi.Output<string>;
+    readonly title: pulumi.Output<string>;
+    readonly updateTime: pulumi.Output<string>;
+    /**
+     * Create a AccessPolicy resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering AccessPolicy resources.
+ */
+export interface AccessPolicyState {
+    readonly createTime?: pulumi.Input<string>;
+    readonly name?: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
+    readonly title?: pulumi.Input<string>;
+    readonly updateTime?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a AccessPolicy resource.
+ */
+export interface AccessPolicyArgs {
+    readonly parent: pulumi.Input<string>;
+    readonly title: pulumi.Input<string>;
+}

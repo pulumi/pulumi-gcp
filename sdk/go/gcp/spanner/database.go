@@ -8,7 +8,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
+// A Cloud Spanner Database which is hosted on a Spanner instance.
+// 
+// 
+// To get more information about Database, see:
+// 
+// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/spanner/)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=spanner_database_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type Database struct {
 	s *pulumi.ResourceState
 }
@@ -68,65 +81,45 @@ func (r *Database) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// An optional list of DDL statements to run inside the newly created
-// database. Statements can create tables, indexes, etc. These statements execute atomically
-// with the creation of the database: if there is an error in any statement, the database
-// is not created.
 func (r *Database) Ddls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["ddls"])
 }
 
-// The name of the instance that will serve the new database.
 func (r *Database) Instance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instance"])
 }
 
-// The name of the database.
 func (r *Database) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which to look for the `instance` specified. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Database) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The current state of the database.
 func (r *Database) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Database resources.
 type DatabaseState struct {
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements execute atomically
-	// with the creation of the database: if there is an error in any statement, the database
-	// is not created.
 	Ddls interface{}
-	// The name of the instance that will serve the new database.
 	Instance interface{}
-	// The name of the database.
 	Name interface{}
-	// The ID of the project in which to look for the `instance` specified. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The current state of the database.
 	State interface{}
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements execute atomically
-	// with the creation of the database: if there is an error in any statement, the database
-	// is not created.
 	Ddls interface{}
-	// The name of the instance that will serve the new database.
 	Instance interface{}
-	// The name of the database.
 	Name interface{}
-	// The ID of the project in which to look for the `instance` specified. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

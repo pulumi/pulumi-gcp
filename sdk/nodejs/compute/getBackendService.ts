@@ -45,6 +45,7 @@ export interface GetBackendServiceArgs {
  * A collection of values returned by getBackendService.
  */
 export interface GetBackendServiceResult {
+    readonly affinityCookieTtlSec: number;
     /**
      * The list of backends that serve this Backend Service.
      */
@@ -71,7 +72,7 @@ export interface GetBackendServiceResult {
      * The list of HTTP/HTTPS health checks used by the Backend Service.
      */
     readonly healthChecks: string[];
-    readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string }[];
+    readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string }[];
     /**
      * The name of a service that has been added to an instance group in this backend.
      */

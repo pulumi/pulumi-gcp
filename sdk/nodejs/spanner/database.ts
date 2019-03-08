@@ -5,11 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a Google Spanner Database within a Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases).
+ * A Cloud Spanner Database which is hosted on a Spanner instance.
  * 
- * ## Example Usage
  * 
- * Example creating a Spanner database.
+ * To get more information about Database, see:
+ * 
+ * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/spanner/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=spanner_database_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Spanner Database Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +30,7 @@ import * as utilities from "../utilities";
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
  * });
- * const db = new gcp.spanner.Database("db", {
+ * const database = new gcp.spanner.Database("database", {
  *     ddls: [
  *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
@@ -41,29 +52,14 @@ export class Database extends pulumi.CustomResource {
         return new Database(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     public readonly ddls: pulumi.Output<string[] | undefined>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     public readonly instance: pulumi.Output<string>;
-    /**
-     * The name of the database.
-     */
     public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The current state of the database.
-     */
     public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
@@ -102,29 +98,14 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     readonly instance?: pulumi.Input<string>;
-    /**
-     * The name of the database.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The current state of the database.
-     */
     readonly state?: pulumi.Input<string>;
 }
 
@@ -132,24 +113,12 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements execute atomically
-     * with the creation of the database: if there is an error in any statement, the database
-     * is not created.
-     */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the instance that will serve the new database.
-     */
     readonly instance: pulumi.Input<string>;
-    /**
-     * The name of the database.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which to look for the `instance` specified. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }

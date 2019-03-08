@@ -1,0 +1,118 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Allows creation and management of a single member for a single binding within
+ * the IAM policy for an existing Google Cloud Platform folder.
+ *
+ * > **Note:** This resource _must not_ be used in conjunction with
+ *    `google_folder_iam_policy` or they will fight over what your policy
+ *    should be. Similarly, roles controlled by `google_folder_iam_binding`
+ *    should not be assigned to using `google_folder_iam_member`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const admin = new gcp.folder.IAMMember("admin", {
+ *     folder: department1.name,
+ *     member: "user:alice@gmail.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ */
+export declare class IAMMember extends pulumi.CustomResource {
+    /**
+     * Get an existing IAMMember resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMMemberState, opts?: pulumi.CustomResourceOptions): IAMMember;
+    /**
+     * (Computed) The etag of the folder's IAM policy.
+     */
+    readonly etag: pulumi.Output<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
+    readonly folder: pulumi.Output<string>;
+    /**
+     * The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * This field can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
+    readonly member: pulumi.Output<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Output<string>;
+    /**
+     * Create a IAMMember resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: IAMMemberArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering IAMMember resources.
+ */
+export interface IAMMemberState {
+    /**
+     * (Computed) The etag of the folder's IAM policy.
+     */
+    readonly etag?: pulumi.Input<string>;
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
+    readonly folder?: pulumi.Input<string>;
+    /**
+     * The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * This field can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
+    readonly member?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a IAMMember resource.
+ */
+export interface IAMMemberArgs {
+    /**
+     * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+     */
+    readonly folder: pulumi.Input<string>;
+    /**
+     * The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * This field can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
+    readonly member: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Input<string>;
+}

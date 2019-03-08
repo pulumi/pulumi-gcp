@@ -51,6 +51,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "5f10fee965225ac1eecdc234c09daf5cd9e7f7b6"
+  version = "v1.2.1"
 
 [[projects]]
   digest = "1:a93eae425b2bb209ecba9f76a8e513bb11c67fc46aba4d7465c0d35a7d94ace3"
@@ -123,6 +124,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "4aabc24848ce5fd31929f7d1e4ea74d3709c14cd"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:79421244ba5848aae4b0a5c41e633a04e4894cb0b164a219dc8c15ec7facb7f1"
@@ -130,6 +132,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "2ee87856327ba09384cabd113bc6b5d174e9ec0f"
+  version = "v3.5.1"
 
 [[projects]]
   branch = "master"
@@ -145,6 +148,7 @@
   packages = ["spew"]
   pruneopts = ""
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
 
 [[projects]]
   digest = "1:82d115eea49c038ccbcd74608c4815e7addc2f30ce861544d725d2770900c280"
@@ -192,6 +196,20 @@
   version = "v1.12.0"
 
 [[projects]]
+  digest = "1:9d6b4cbcf2348346b61657d15680df5937e8ebeccaaef9edd90af6b65f0d1372"
+  name = "github.com/gammazero/deque"
+  packages = ["."]
+  pruneopts = ""
+  revision = "f6adf94963e448a692b33e9ddc931ff10afbb79b"
+
+[[projects]]
+  digest = "1:b386b044273914284acb726e420223eb68edb49ef376319c241f3e3fab87f6d4"
+  name = "github.com/gammazero/workerpool"
+  packages = ["."]
+  pruneopts = ""
+  revision = "86a96b5d5d92a0b49e0b9f278ae4615090b6172d"
+
+[[projects]]
   branch = "master"
   digest = "1:f406e345c8ef92f06e3e02f72dec4415c6f0721da43bc7f47ecd65899a417e2f"
   name = "github.com/gedex/inflector"
@@ -205,17 +223,17 @@
   packages = ["."]
   pruneopts = ""
   revision = "766e555c68dc8bda90d197ee8946c37519c19409"
+  version = "v1.23.1"
 
 [[projects]]
-  digest = "1:ac02823572830fb544c7a94152465ca7833aaf1f186aeb4445ce9d34aacfcc4a"
+  digest = "1:a4724325f1d3bd4127dac415e980c7c28f2e08f4d0ba2513e7de9980906604ef"
   name = "github.com/gofrs/flock"
   packages = ["."]
   pruneopts = ""
-  revision = "7f43ea2e6a643ad441fc12d0ecc0d3388b300c53"
-  version = "v0.7.0"
+  revision = "392e7fae8f1b0bdbd67dad7237d23f618feb6dbb"
+  version = "v0.7.1"
 
 [[projects]]
-  branch = "master"
   digest = "1:107b233e45174dbab5b1324201d092ea9448e58243ab9f039e4c0f332e121e3a"
   name = "github.com/golang/glog"
   packages = ["."]
@@ -223,7 +241,7 @@
   revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 
 [[projects]]
-  digest = "1:3dd078fda7500c341bc26cfbc6c6a34614f295a2457149fc1045cab767cbcf18"
+  digest = "1:d3d38150b6d77b2aad42a9e105170538b6563518993d43df78a1add6e31cce62"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -237,8 +255,8 @@
     "ptypes/wrappers",
   ]
   pruneopts = ""
-  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
-  version = "v1.2.0"
+  revision = "c823c79ea1570fb5ff454033735a8e68575d1d0f"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:2a5888946cdbc8aa360fd43301f9fc7869d663f60d5eedae7d4e6e5e4f06f2bf"
@@ -396,7 +414,7 @@
   revision = "35d82b055591e9d47a254e68754216d8849ba67a"
 
 [[projects]]
-  digest = "1:2c5107b33045697e7399295a4c103d0bab44633e67e647259b69a4182d9577df"
+  digest = "1:f456e83bcfd64a79936e2f19ca5c8ac806e28f9c2ca4641a2f59228f034f4e32"
   name = "github.com/hashicorp/vault"
   packages = [
     "helper/compressutil",
@@ -404,7 +422,8 @@
     "helper/pgpkeys",
   ]
   pruneopts = ""
-  revision = "6faf8365e922c4cf1bde05b6b886a17881b9ebca"
+  revision = "6b29fb2b7f70ed538ee2b3c057335d706b6d4e36"
+  version = "v0.8.3"
 
 [[projects]]
   digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"
@@ -467,20 +486,20 @@
   revision = "433e2f3d43ef1bd31387582a899389b2fbe2005e"
 
 [[projects]]
-  digest = "1:6a874e3ddfb9db2b42bd8c85b6875407c702fa868eed20634ff489bc896ccfd3"
+  digest = "1:0f51cee70b0d254dbc93c22666ea2abf211af81c1701a96d04e2284b408621db"
   name = "github.com/konsorten/go-windows-terminal-sequences"
   packages = ["."]
   pruneopts = ""
-  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
-  version = "v1.0.1"
+  revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
+  version = "v1.0.2"
 
 [[projects]]
-  digest = "1:0f79867e9aac8a4e20bc1b0956d81f340da9ade9bcc00a4bfb1ebd738c152f7a"
+  digest = "1:85fdd2ce48a3fd1ddc4671b972f50a47dcf2eebb24813e90b28a8a1fcf65ee5a"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   pruneopts = ""
-  revision = "efa589957cd060542a26d2dd7832fd6a6c6c3ade"
-  version = "v0.1.0"
+  revision = "3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
+  version = "v0.1.1"
 
 [[projects]]
   digest = "1:3140e04675a6a91d2a20ea9d10bdadf6072085502e6def6768361260aee4b967"
@@ -488,6 +507,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
+  version = "v0.0.4"
 
 [[projects]]
   branch = "master"
@@ -611,7 +631,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3c76a905563ef19b7bdbe787e0ed94f62a623f547ba3d301b9d2d5e10c8fc248"
+  digest = "1:9758be02eb76a0099604588e147573b1236e01659681c787da5a3f5bec1d1ae5"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -658,18 +678,18 @@
     "sdk/proto/go",
   ]
   pruneopts = ""
-  revision = "ce26bd871f42b9ff346058aa0760b1a0b30677ef"
+  revision = "680f7bf84e9e0343a579ed4ddf0055695dfda785"
 
 [[projects]]
   branch = "master"
-  digest = "1:9e48cffeb9b65db24f10f9271e27ed2987c037b07d7b7c0c3641bf13498bd09a"
+  digest = "1:46841b839dc0f4b17ba41a4362c243c468c3dc080c4d62a9db2777806a5f8041"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen",
   ]
   pruneopts = ""
-  revision = "0b5b9753f915a7366dd177d9a3a106fbce2fa6de"
+  revision = "5eeb7b8513a3639e061c76b285feaa3fb1289dcc"
 
 [[projects]]
   branch = "master"
@@ -738,25 +758,26 @@
   packages = ["."]
   pruneopts = ""
   revision = "c8136b55823dc6af966d084a06056c5575f6400f"
+  version = "v1.0.1"
 
 [[projects]]
-  digest = "1:381bcbeb112a51493d9d998bbba207a529c73dbb49b3fd789e48c63fac1f192c"
+  digest = "1:c587772fb8ad29ad4db67575dad25ba17a51f072ff18a22b4f0257a4d9c24f75"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   pruneopts = ""
-  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
-  version = "v1.3.0"
+  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
+  version = "v1.2.2"
 
 [[projects]]
-  digest = "1:6ffa3e181101aba9129b398de1cd20b40b189f3ca09604641c0af3ec7e084e2d"
-  name = "github.com/terraform-providers/terraform-provider-google"
+  digest = "1:f3aef90bed0ae71ccf9a7f6a13a38bbbd2aee7edc936e70a5ec41dee0de86411"
+  name = "github.com/terraform-providers/terraform-provider-google-beta"
   packages = [
-    "google",
+    "google-beta",
     "version",
   ]
   pruneopts = ""
-  revision = "104bbbe70e6d4c9a713afb9c1adc512f85f5857d"
-  version = "v1.20.0"
+  revision = "d4903d0f4a0becd05efa2431c9555d95a7c77055"
+  version = "v2.1.0"
 
 [[projects]]
   branch = "master"
@@ -806,14 +827,15 @@
   ]
   pruneopts = ""
   revision = "0c6b41e72360850ca4f98dc341fd999726ea007f"
+  version = "v0.5.4"
 
 [[projects]]
-  digest = "1:afc0b8068986a01e2d8f449917829753a54f6bd4d1265c2b4ad9cba75560020f"
+  digest = "1:172f94a6b3644a8f9e6b5e5b7fc9fe1e42d424f52a0300b2e7ab1e57db73f85d"
   name = "github.com/xanzy/ssh-agent"
   packages = ["."]
   pruneopts = ""
-  revision = "640f0ab560aeb89d523bb6ac322b1244d5c3796c"
-  version = "v0.2.0"
+  revision = "6a3e2ff9e7c564f36873c2e36413f634534f1c44"
+  version = "v0.2.1"
 
 [[projects]]
   digest = "1:7a191bb780a26bed90cc17063a3f1028803e8538448ee1ba10388f2f54089df4"
@@ -921,15 +943,13 @@
   revision = "49385e6e15226593f68b26af201feec29d5bba22"
 
 [[projects]]
-  digest = "1:81b646c1c57e4bc00252a9c6ae7bb5f121697275bf6bf1c59d358a81f9020a2d"
+  digest = "1:5acd3512b047305d49e8763eef7ba423901e85d5dd2fd1e71778a0ea8de10bd4"
   name = "golang.org/x/text"
   packages = [
     "collate",
     "collate/build",
     "internal/colltab",
     "internal/gen",
-    "internal/language",
-    "internal/language/compact",
     "internal/tag",
     "internal/triegen",
     "internal/ucd",
@@ -942,12 +962,14 @@
     "unicode/rangetable",
   ]
   pruneopts = ""
-  revision = "6e3c4e7365ddcc329f090f96e4348398f6310088"
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [[projects]]
-  digest = "1:eb827d6da85caaee0e445a5d2038275ba362bd3a2166d2f919c68b2e62553462"
+  digest = "1:7873bd40db14885e3c790a4134341e998abf3d83d0872a93613f765025903026"
   name = "google.golang.org/api"
   packages = [
+    "accesscontextmanager/v1beta",
     "appengine/v1",
     "bigquery/v2",
     "cloudbilling/v1",
@@ -957,7 +979,7 @@
     "cloudkms/v1",
     "cloudresourcemanager/v1",
     "cloudresourcemanager/v2beta1",
-    "composer/v1",
+    "composer/v1beta1",
     "compute/v0.beta",
     "compute/v1",
     "container/v1",
@@ -977,21 +999,22 @@
     "logging/v2",
     "option",
     "pubsub/v1",
-    "redis/v1beta1",
     "runtimeconfig/v1beta1",
     "servicemanagement/v1",
-    "serviceusage/v1beta1",
+    "servicenetworking/v1beta",
+    "serviceusage/v1",
     "sourcerepo/v1",
     "spanner/v1",
     "sqladmin/v1beta4",
     "storage/v1",
+    "storagetransfer/v1",
     "transport",
     "transport/grpc",
     "transport/http",
     "transport/http/internal/propagation",
   ]
   pruneopts = ""
-  revision = "04bb50b6b83d0e72253821af8cf3252d8e866517"
+  revision = "65a46cafb132eff435c7d1e0f439cc73c8eebb85"
 
 [[projects]]
   digest = "1:3d882ec44666a4ef2c99a20737552a7a15da16044a2374603b42c8003eb3955a"
@@ -1029,7 +1052,7 @@
   revision = "c66870c02cf823ceb633bcd05be3c7cda29976f4"
 
 [[projects]]
-  digest = "1:c6449f9165a1b472bffc1f1a7ccd25d9cff2e895f53fc93e6c72e63f871d0610"
+  digest = "1:ca75b3775a5d4e5d1fb48f57ef0865b4aaa8b3f00e6b52be68db991c4594e0a7"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -1063,7 +1086,8 @@
     "tap",
   ]
   pruneopts = ""
-  revision = "da7e20b83ed88b8423d1eb0a8ef5d54c4c25eeb0"
+  revision = "32fb0ac620c32ba40a4626ddf94d90d12cce3455"
+  version = "v1.14.0"
 
 [[projects]]
   digest = "1:17d1f647fe6a7d4eebb15e0e468178c058e365e4e734d1402ca7215169dd8d29"
@@ -1172,7 +1196,7 @@
     "github.com/pulumi/pulumi/sdk/go/pulumi",
     "github.com/pulumi/pulumi/sdk/go/pulumi/config",
     "github.com/stretchr/testify/assert",
-    "github.com/terraform-providers/terraform-provider-google/google",
+    "github.com/terraform-providers/terraform-provider-google-beta/google-beta",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,0 +1,135 @@
+import * as pulumi from "@pulumi/pulumi";
+/**
+ * Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
+ *
+ * * `google_kms_key_ring_iam_policy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+ * * `google_kms_key_ring_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+ * * `google_kms_key_ring_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+ *
+ * > **Note:** `google_kms_key_ring_iam_policy` **cannot** be used in conjunction with `google_kms_key_ring_iam_binding` and `google_kms_key_ring_iam_member` or they will fight over what your policy should be.
+ *
+ * > **Note:** `google_kms_key_ring_iam_binding` resources **can be** used in conjunction with `google_kms_key_ring_iam_member` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_kms\_key\_ring\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     policyData: admin.apply(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_kms\_key\_ring\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_kms\_key\_ring\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ */
+export declare class KeyRingIAMBinding extends pulumi.CustomResource {
+    /**
+     * Get an existing KeyRingIAMBinding resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param state Any extra arguments used during the lookup.
+     */
+    static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyRingIAMBindingState, opts?: pulumi.CustomResourceOptions): KeyRingIAMBinding;
+    /**
+     * (Computed) The etag of the key ring's IAM policy.
+     */
+    readonly etag: pulumi.Output<string>;
+    /**
+     * The key ring ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}` or
+     * `{location_name}/{key_ring_name}`. In the second form, the provider's
+     * project setting will be used as a fallback.
+     */
+    readonly keyRingId: pulumi.Output<string>;
+    readonly members: pulumi.Output<string[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_key_ring_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Output<string>;
+    /**
+     * Create a KeyRingIAMBinding resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: KeyRingIAMBindingArgs, opts?: pulumi.CustomResourceOptions);
+}
+/**
+ * Input properties used for looking up and filtering KeyRingIAMBinding resources.
+ */
+export interface KeyRingIAMBindingState {
+    /**
+     * (Computed) The etag of the key ring's IAM policy.
+     */
+    readonly etag?: pulumi.Input<string>;
+    /**
+     * The key ring ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}` or
+     * `{location_name}/{key_ring_name}`. In the second form, the provider's
+     * project setting will be used as a fallback.
+     */
+    readonly keyRingId?: pulumi.Input<string>;
+    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_key_ring_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role?: pulumi.Input<string>;
+}
+/**
+ * The set of arguments for constructing a KeyRingIAMBinding resource.
+ */
+export interface KeyRingIAMBindingArgs {
+    /**
+     * The key ring ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}` or
+     * `{location_name}/{key_ring_name}`. In the second form, the provider's
+     * project setting will be used as a fallback.
+     */
+    readonly keyRingId: pulumi.Input<string>;
+    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `google_kms_key_ring_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
+    readonly role: pulumi.Input<string>;
+}

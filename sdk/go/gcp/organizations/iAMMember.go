@@ -81,7 +81,7 @@ func (r *IAMMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The user that the role should apply to.
+// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *IAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
@@ -101,7 +101,7 @@ func (r *IAMMember) Role() *pulumi.StringOutput {
 type IAMMemberState struct {
 	// (Computed) The etag of the organization's IAM policy.
 	Etag interface{}
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
@@ -112,7 +112,7 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
-	// The user that the role should apply to.
+	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}

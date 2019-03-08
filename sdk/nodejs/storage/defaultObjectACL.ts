@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
+ * Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
+ * without managing the bucket itself.
  * 
  * > Note that for each object, its creator will have the `"OWNER"` role in addition
  * to the default ACL that has been defined.
@@ -56,7 +57,9 @@ export class DefaultObjectACL extends pulumi.CustomResource {
      */
     public readonly bucket: pulumi.Output<string>;
     /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * List of role/entity pairs in the form `ROLE:entity`.
+     * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * Omitting the field is the same as providing an empty list.
      */
     public readonly roleEntities: pulumi.Output<string[]>;
 
@@ -95,7 +98,9 @@ export interface DefaultObjectACLState {
      */
     readonly bucket?: pulumi.Input<string>;
     /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * List of role/entity pairs in the form `ROLE:entity`.
+     * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * Omitting the field is the same as providing an empty list.
      */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -109,7 +114,9 @@ export interface DefaultObjectACLArgs {
      */
     readonly bucket: pulumi.Input<string>;
     /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * List of role/entity pairs in the form `ROLE:entity`.
+     * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+     * Omitting the field is the same as providing an empty list.
      */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

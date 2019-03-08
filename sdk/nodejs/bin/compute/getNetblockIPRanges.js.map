@@ -1,0 +1,1 @@
+{"version":3,"file":"getNetblockIPRanges.js","sourceRoot":"","sources":["../../compute/getNetblockIPRanges.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAGzC;;;;;;;;;;;;;;;;;GAiBG;AACH,SAAgB,mBAAmB,CAAC,IAA2B;IAC3D,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,qDAAqD,EAAE,EACnF,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AAHD,kDAGC"}

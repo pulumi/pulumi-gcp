@@ -6,7 +6,7 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/terraform-providers/terraform-provider-google/google"
+	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
@@ -19,38 +19,41 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
-	gcpAppEngine           = "appengine"           // AppEngine resources
-	gcpBigQuery            = "bigquery"            // BigQuery resources
-	gcpBigTable            = "bigtable"            // BitTable resources
-	gcpBilling             = "billing"             // Billing resources
-	gcpBinaryAuthorization = "binaryauthorization" // Binary Authorization resources
-	gcpCloudBuild          = "cloudbuild"          // CloudBuild resources
-	gcpCloudFunctions      = "cloudfunctions"      // CloudFunction resources
-	gcpComposer            = "composer"            // Cloud Composer resources
-	gcpCompute             = "compute"             // Compute resoures
-	gcpContainerAnalysis   = "containeranalysis"   // Container Analysis resources
-	gcpDNS                 = "dns"                 // DNS resources
-	gcpDataFolow           = "dataflow"            // DataFlow resources
-	gcpDataProc            = "dataproc"            // DataProc resources
-	gcpEndPoints           = "endpoints"           // End Point resources
-	gcpFilestore           = "filestore"           // Filestore resources
-	gcpFolder              = "folder"              // Folder resources
-	gcpIAM                 = "iam"                 // IAM resources
-	gcpKMS                 = "kms"                 // KMS resources
-	gcpKubernetes          = "container"           // Kubernetes Engine resources
-	gcpLogging             = "logging"             // Logging resources
-	gcpMonitoring          = "monitoring"          // Monitoring resources
-	gcpOrganization        = "organizations"       // Organization resources
-	gcpProject             = "projects"            // Project resources
-	gcpPubSub              = "pubsub"              // PubSub resources
-	gcpRedis               = "redis"               // Redis resources
-	gcpResourceManager     = "resourcemanager"     // Resource Manager resources
-	gcpRuntimeConfig       = "runtimeconfig"       // Runtime Config resources
-	gcpSQL                 = "sql"                 // SQL resources
-	gcpServiceAccount      = "serviceAccount"      // Service Account resources
-	gcpSourceRepo          = "sourcerepo"          // Source Repo resources
-	gcpSpanner             = "spanner"             // Spanner Resources
-	gcpStorage             = "storage"             // Storage resources
+	gcpAccessContextManager = "accesscontextmanager" // Access Context Manager resources
+	gcpAppEngine            = "appengine"            // AppEngine resources
+	gcpBigQuery             = "bigquery"             // BigQuery resources
+	gcpBigTable             = "bigtable"             // BitTable resources
+	gcpBilling              = "billing"              // Billing resources
+	gcpBinaryAuthorization  = "binaryauthorization"  // Binary Authorization resources
+	gcpCloudBuild           = "cloudbuild"           // CloudBuild resources
+	gcpCloudFunctions       = "cloudfunctions"       // CloudFunction resources
+	gcpCloudScheduler       = "cloudscheduler"       // Cloud Scheduler resources
+	gcpComposer             = "composer"             // Cloud Composer resources
+	gcpCompute              = "compute"              // Compute resoures
+	gcpContainerAnalysis    = "containeranalysis"    // Container Analysis resources
+	gcpDNS                  = "dns"                  // DNS resources
+	gcpDataFolow            = "dataflow"             // DataFlow resources
+	gcpDataProc             = "dataproc"             // DataProc resources
+	gcpEndPoints            = "endpoints"            // End Point resources
+	gcpFilestore            = "filestore"            // Filestore resources
+	gcpFolder               = "folder"               // Folder resources
+	gcpIAM                  = "iam"                  // IAM resources
+	gcpKMS                  = "kms"                  // KMS resources
+	gcpKubernetes           = "container"            // Kubernetes Engine resources
+	gcpLogging              = "logging"              // Logging resources
+	gcpMonitoring           = "monitoring"           // Monitoring resources
+	gcpOrganization         = "organizations"        // Organization resources
+	gcpProject              = "projects"             // Project resources
+	gcpPubSub               = "pubsub"               // PubSub resources
+	gcpRedis                = "redis"                // Redis resources
+	gcpResourceManager      = "resourcemanager"      // Resource Manager resources
+	gcpRuntimeConfig        = "runtimeconfig"        // Runtime Config resources
+	gcpServiceNetworking    = "servicenetworking"    // Service Networking resources
+	gcpSQL                  = "sql"                  // SQL resources
+	gcpServiceAccount       = "serviceAccount"       // Service Account resources
+	gcpSourceRepo           = "sourcerepo"           // Source Repo resources
+	gcpSpanner              = "spanner"              // Spanner Resources
+	gcpStorage              = "storage"              // Storage resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -81,13 +84,14 @@ func gcpResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := google.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "google",
-		Description: "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:    []string{"pulumi", "gcp"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-gcp",
+		P:              p,
+		Name:           "google-beta",
+		ResourcePrefix: "google",
+		Description:    "A Pulumi package for creating and managing Google Cloud Platform resources.",
+		Keywords:       []string{"pulumi", "gcp"},
+		License:        "Apache-2.0",
+		Homepage:       "https://pulumi.io",
+		Repository:     "https://github.com/pulumi/pulumi-gcp",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"credentials": {
 				Default: &tfbridge.DefaultInfo{
@@ -128,8 +132,20 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			// Access Context Manager
+			"google_access_context_manager_access_level":      {Tok: gcpResource(gcpAccessContextManager, "AccessLevel")},
+			"google_access_context_manager_access_policy":     {Tok: gcpResource(gcpAccessContextManager, "AccessPolicy")},
+			"google_access_context_manager_service_perimeter": {Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter")},
+
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
+			"google_app_engine_firewall_rule": {
+				Tok: gcpResource(gcpAppEngine, "FirewallRule"),
+				Docs: &tfbridge.DocInfo{
+					Source: "appengine_firewall_rule.html.markdown",
+				},
+			},
+
 			// BigQuery
 			"google_bigquery_dataset": {Tok: gcpResource(gcpBigQuery, "Dataset")},
 			"google_bigquery_table":   {Tok: gcpResource(gcpBigQuery, "Table")},
@@ -177,6 +193,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cloud Functions
 			"google_cloudfunctions_function": {Tok: gcpResource(gcpCloudFunctions, "Function")},
+
+			// Cloud Scheduler
+			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
 
 			// Composer
 			"google_composer_environment": {Tok: gcpResource(gcpComposer, "Environment")},
@@ -246,6 +265,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpOrganization, "Project"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
+				},
+			},
+			"google_project_iam_audit_config": {
+				Tok: gcpResource(gcpProject, "IAMAuditConfig"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_project_iam_audit_config.html.markdown",
 				},
 			},
 			"google_project_iam_binding": {
@@ -373,6 +398,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
 			"google_compute_instance_template":             {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
 			"google_compute_interconnect_attachment":       {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
+			"google_compute_managed_ssl_certificate":       {Tok: gcpResource(gcpCompute, "MangedSslCertificate")},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
 			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
 			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
@@ -509,6 +535,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_runtimeconfig_config":   {Tok: gcpResource(gcpRuntimeConfig, "Config")},
 			"google_runtimeconfig_variable": {Tok: gcpResource(gcpRuntimeConfig, "Variavble")},
 
+			// Service Networking resources
+			"google_service_networking_connection": {Tok: gcpResource(gcpServiceNetworking, "Connection")},
+
 			// Source Repository resources
 			"google_sourcerepo_repository": {Tok: gcpResource(gcpSourceRepo, "Repository")},
 
@@ -607,6 +636,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_notification":                  {Tok: gcpResource(gcpStorage, "Notification")},
 			"google_storage_object_access_control":         {Tok: gcpResource(gcpStorage, "ObjectAccessControl")},
 			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
+			"google_storage_transfer_job":                  {Tok: gcpResource(gcpStorage, "TransferJob")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -666,6 +696,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpOrganization, "getClientConfig"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_client_config.html.markdown",
+				},
+			},
+			"google_client_openid_userinfo": {
+				Tok: gcpDataSource(gcpOrganization, "getClientOpenIdUserInfo"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_client_openid_userinfo.html.markdown",
 				},
 			},
 			"google_cloudfunctions_function": {
@@ -842,6 +878,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_iam_policy.html.markdown",
 				},
 			},
+			"google_kms_crypto_key": {
+				Tok: gcpDataSource(gcpKMS, "getKMSCryptoKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_crypto_key.html.markdown",
+				},
+			},
+			"google_kms_key_ring": {
+				Tok: gcpDataSource(gcpKMS, "getKMSKeyRing"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_key_ring.html.markdown",
+				},
+			},
 			"google_kms_secret": {
 				Tok: gcpDataSource(gcpKMS, "getKMSSecret"),
 				Docs: &tfbridge.DocInfo{
@@ -854,6 +902,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_organization.html.markdown",
 				},
 			},
+			"google_storage_bucket_object": {
+				Tok: gcpDataSource(gcpStorage, "getBucketObject"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bucket_object.html.markdown",
+				},
+			},
 			"google_storage_object_signed_url": {
 				Tok: gcpDataSource(gcpStorage, "getObjectSignedUrl"),
 				Docs: &tfbridge.DocInfo{
@@ -864,6 +918,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpStorage, "getProjectServiceAccount"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_storage_project_service_account.html.markdown",
+				},
+			},
+			"google_storage_transfer_project_service_account": {
+				Tok: gcpDataSource(gcpStorage, "getTransferProjectServieAccount"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_storage_transfer_project_service_account.html.markdown",
 				},
 			},
 			"google_service_account": {

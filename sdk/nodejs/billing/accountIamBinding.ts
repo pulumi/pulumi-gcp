@@ -12,6 +12,10 @@ import * as utilities from "../utilities";
  *    `google_billing_account_iam_member` for the __same role__ or they will fight over
  *    what your policy should be.
  * 
+ * > **Note:** On create, this resource will overwrite members of any existing roles.
+ *     Use `terraform import` and inspect the `terraform plan` output to ensure
+ *     your existing members are preserved.
+ * 
  * ## Example Usage
  * 
  * ```typescript
@@ -20,7 +24,7 @@ import * as utilities from "../utilities";
  * 
  * const binding = new gcp.billing.AccountIamBinding("binding", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     members: ["user:jane@example.com"],
+ *     members: ["user:alice@gmail.com"],
  *     role: "roles/billing.viewer",
  * });
  * ```
@@ -47,7 +51,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     public readonly members: pulumi.Output<string[]>;
     /**
@@ -104,7 +108,7 @@ export interface AccountIamBindingState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -122,7 +126,7 @@ export interface AccountIamBindingArgs {
      */
     readonly billingAccountId: pulumi.Input<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
