@@ -1,5 +1,9 @@
 ## 0.17.2 (Unreleased)
 
+## Improvements
+
+- Fix a bug where setting a property value back to the default results in no change
+
 ## 0.17.1 (Released March 6, 2019)
 
 ## Improvements
