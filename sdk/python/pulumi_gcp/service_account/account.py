@@ -11,8 +11,10 @@ from .. import utilities, tables
 class Account(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
-    The service account ID.
-    Changing this forces a new service account to be created.
+    The account id that is used to generate the service
+    account email address and a stable unique id. It is unique within a project,
+    must be 6-30 characters long, and match the regular expression `a-z`
+    to comply with RFC1035. Changing this forces a new service account to be created.
     """
     display_name: pulumi.Output[str]
     """
@@ -29,12 +31,6 @@ class Account(pulumi.CustomResource):
     """
     The fully-qualified name of the service account.
     """
-    policy_data: pulumi.Output[str]
-    """
-    The `google_iam_policy` data source that represents
-    the IAM policy that will be applied to the service account. The policy will be
-    merged with any existing policy.
-    """
     project: pulumi.Output[str]
     """
     The ID of the project that the service account will be created in.
@@ -44,19 +40,23 @@ class Account(pulumi.CustomResource):
     """
     The unique id of the service account.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, display_name=None, policy_data=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_id=None, display_name=None, project=None, __name__=None, __opts__=None):
         """
         Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
         
+        > Creation of service accounts is eventually consistent, and that can lead to
+        errors when you try to apply ACLs to service accounts immediately after
+        creation. If using these resources in the same config, you can add a
+        [`sleep` using `local-exec`](https://github.com/hashicorp/terraform/issues/17726#issuecomment-377357866).
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The service account ID.
-               Changing this forces a new service account to be created.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
-        :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
-               the IAM policy that will be applied to the service account. The policy will be
-               merged with any existing policy.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         """
@@ -80,8 +80,6 @@ class Account(pulumi.CustomResource):
         __props__['account_id'] = account_id
 
         __props__['display_name'] = display_name
-
-        __props__['policy_data'] = policy_data
 
         __props__['project'] = project
 

@@ -60,21 +60,6 @@ import * as utilities from "../utilities";
  *     projectId: "your-project-id",
  * });
  * ```
- * 
- * To create a project with an App Engine app attached
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const my_app_engine_app = new gcp.organizations.Project("my-app-engine-app", {
- *     appEngine: {
- *         locationId: "us-central",
- *     },
- *     orgId: "1234567",
- *     projectId: "app-engine-project",
- * });
- * ```
  */
 export class UsageExportBucket extends pulumi.CustomResource {
     /**

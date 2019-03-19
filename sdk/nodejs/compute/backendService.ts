@@ -66,6 +66,12 @@ export class BackendService extends pulumi.CustomResource {
     }
 
     /**
+     * Lifetime of cookies in seconds if session_affinity is
+     * `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+     * the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     */
+    public readonly affinityCookieTtlSec: pulumi.Output<number | undefined>;
+    /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
     public readonly backends: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
@@ -79,10 +85,8 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * Headers that the
+     * ) Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
     /**
@@ -106,7 +110,7 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */
-    public readonly iap: pulumi.Output<{ oauth2ClientId: string, oauth2ClientSecret: string } | undefined>;
+    public readonly iap: pulumi.Output<{ oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string } | undefined>;
     /**
      * The name of the backend service.
      */
@@ -159,6 +163,7 @@ export class BackendService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: BackendServiceState = argsOrState as BackendServiceState | undefined;
+            inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
@@ -181,6 +186,7 @@ export class BackendService extends pulumi.CustomResource {
             if (!args || args.healthChecks === undefined) {
                 throw new Error("Missing required property 'healthChecks'");
             }
+            inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
@@ -208,6 +214,12 @@ export class BackendService extends pulumi.CustomResource {
  */
 export interface BackendServiceState {
     /**
+     * Lifetime of cookies in seconds if session_affinity is
+     * `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+     * the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     */
+    readonly affinityCookieTtlSec?: pulumi.Input<number>;
+    /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
@@ -221,10 +233,8 @@ export interface BackendServiceState {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Headers that the
+     * ) Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -248,7 +258,7 @@ export interface BackendServiceState {
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */
-    readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string> }>;
+    readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string>, oauth2ClientSecretSha256?: pulumi.Input<string> }>;
     /**
      * The name of the backend service.
      */
@@ -295,6 +305,12 @@ export interface BackendServiceState {
  */
 export interface BackendServiceArgs {
     /**
+     * Lifetime of cookies in seconds if session_affinity is
+     * `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+     * the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     */
+    readonly affinityCookieTtlSec?: pulumi.Input<number>;
+    /**
      * The list of backends that serve this BackendService. Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
@@ -308,10 +324,8 @@ export interface BackendServiceArgs {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Headers that the
+     * ) Headers that the
      * HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -331,7 +345,7 @@ export interface BackendServiceArgs {
     /**
      * Specification for the Identity-Aware proxy. Disabled if not specified. Structure is documented below.
      */
-    readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string> }>;
+    readonly iap?: pulumi.Input<{ oauth2ClientId: pulumi.Input<string>, oauth2ClientSecret: pulumi.Input<string>, oauth2ClientSecretSha256?: pulumi.Input<string> }>;
     /**
      * The name of the backend service.
      */

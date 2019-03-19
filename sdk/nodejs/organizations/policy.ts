@@ -106,7 +106,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, suggestedValue: string } | undefined>;
+    public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
     /**
      * The numeric ID of the organization to set the policy for.
      */
@@ -184,7 +184,7 @@ export interface PolicyState {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
      * The numeric ID of the organization to set the policy for.
      */
@@ -218,7 +218,7 @@ export interface PolicyArgs {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
      * The numeric ID of the organization to set the policy for.
      */

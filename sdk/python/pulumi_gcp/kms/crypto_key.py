@@ -29,10 +29,14 @@ class CryptoKey(pulumi.CustomResource):
     """
     The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
     """
-    def __init__(__self__, resource_name, opts=None, key_ring=None, name=None, rotation_period=None, __name__=None, __opts__=None):
+    version_template: pulumi.Output[dict]
+    """
+    A template describing settings for new crypto key versions. Structure is documented below.
+    """
+    def __init__(__self__, resource_name, opts=None, key_ring=None, name=None, rotation_period=None, version_template=None, __name__=None, __opts__=None):
         """
         Allows creation of a Google Cloud Platform KMS CryptoKey. For more information see
-        [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#cryptokey)
+        [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
         and
         [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
         
@@ -56,6 +60,7 @@ class CryptoKey(pulumi.CustomResource):
                the primary. The first rotation will take place after the specified period. The rotation period has the format
                of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
                a day (ie, 86400).
+        :param pulumi.Input[dict] version_template: A template describing settings for new crypto key versions. Structure is documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,6 +84,8 @@ class CryptoKey(pulumi.CustomResource):
         __props__['name'] = name
 
         __props__['rotation_period'] = rotation_period
+
+        __props__['version_template'] = version_template
 
         __props__['self_link'] = None
 

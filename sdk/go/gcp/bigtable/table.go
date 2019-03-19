@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a Google Bigtable table inside an instance. For more information see
+// Creates a Google Cloud Bigtable table inside an instance. For more information see
 // [the official documentation](https://cloud.google.com/bigtable/) and
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
 type Table struct {
@@ -23,11 +23,13 @@ func NewTable(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["columnFamilies"] = nil
 		inputs["instanceName"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["splitKeys"] = nil
 	} else {
+		inputs["columnFamilies"] = args.ColumnFamilies
 		inputs["instanceName"] = args.InstanceName
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
@@ -46,6 +48,7 @@ func GetTable(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *TableState, opts ...pulumi.ResourceOpt) (*Table, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["columnFamilies"] = state.ColumnFamilies
 		inputs["instanceName"] = state.InstanceName
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -66,6 +69,11 @@ func (r *Table) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Table) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+func (r *Table) ColumnFamilies() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["columnFamilies"])
 }
 
 // The name of the Bigtable instance.
@@ -91,6 +99,8 @@ func (r *Table) SplitKeys() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Table resources.
 type TableState struct {
+	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+	ColumnFamilies interface{}
 	// The name of the Bigtable instance.
 	InstanceName interface{}
 	// The name of the table.
@@ -104,6 +114,8 @@ type TableState struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+	ColumnFamilies interface{}
 	// The name of the Bigtable instance.
 	InstanceName interface{}
 	// The name of the table.

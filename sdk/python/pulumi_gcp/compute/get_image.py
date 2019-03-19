@@ -13,8 +13,8 @@ class GetImageResult:
     A collection of values returned by getImage.
     """
     def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None, id=None):
-        if archive_size_bytes and not isinstance(archive_size_bytes, int):
-            raise TypeError('Expected argument archive_size_bytes to be a int')
+        if archive_size_bytes and not isinstance(archive_size_bytes, float):
+            raise TypeError('Expected argument archive_size_bytes to be a float')
         __self__.archive_size_bytes = archive_size_bytes
         """
         The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
@@ -31,8 +31,8 @@ class GetImageResult:
         """
         An optional description of this image.
         """
-        if disk_size_gb and not isinstance(disk_size_gb, int):
-            raise TypeError('Expected argument disk_size_gb to be a int')
+        if disk_size_gb and not isinstance(disk_size_gb, float):
+            raise TypeError('Expected argument disk_size_gb to be a float')
         __self__.disk_size_gb = disk_size_gb
         """
         The size of the image when restored onto a persistent disk in gigabytes.

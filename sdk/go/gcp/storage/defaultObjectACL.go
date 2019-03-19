@@ -8,7 +8,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new default object ACL in Google Cloud Storage service (GCS). For more information see
+// Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
+// without managing the bucket itself.
 // 
 // > Note that for each object, its creator will have the `"OWNER"` role in addition
 // to the default ACL that has been defined.
@@ -76,7 +77,9 @@ func (r *DefaultObjectACL) Bucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucket"])
 }
 
-// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+// List of role/entity pairs in the form `ROLE:entity`.
+// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+// Omitting the field is the same as providing an empty list.
 func (r *DefaultObjectACL) RoleEntities() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["roleEntities"])
 }
@@ -85,7 +88,9 @@ func (r *DefaultObjectACL) RoleEntities() *pulumi.ArrayOutput {
 type DefaultObjectACLState struct {
 	// The name of the bucket it applies to.
 	Bucket interface{}
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+	// List of role/entity pairs in the form `ROLE:entity`.
+	// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+	// Omitting the field is the same as providing an empty list.
 	RoleEntities interface{}
 }
 
@@ -93,6 +98,8 @@ type DefaultObjectACLState struct {
 type DefaultObjectACLArgs struct {
 	// The name of the bucket it applies to.
 	Bucket interface{}
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+	// List of role/entity pairs in the form `ROLE:entity`.
+	// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+	// Omitting the field is the same as providing an empty list.
 	RoleEntities interface{}
 }

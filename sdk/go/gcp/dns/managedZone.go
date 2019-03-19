@@ -8,8 +8,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
-// [API](https://cloud.google.com/dns/api/v1/managedZones).
+// A zone is a subtree of the DNS namespace under one administrative
+// responsibility. A ManagedZone is a resource that represents a DNS zone
+// hosted by the Cloud DNS service.
+// 
+// 
+// To get more information about ManagedZone, see:
+// 
+// * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
+// * How-to Guides
+//     * [Managing Zones](https://cloud.google.com/dns/zones/)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=dns_managed_zone_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type ManagedZone struct {
 	s *pulumi.ResourceState
 }
@@ -24,15 +38,21 @@ func NewManagedZone(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["dnsName"] = nil
+		inputs["forwardingConfig"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["privateVisibilityConfig"] = nil
 		inputs["project"] = nil
+		inputs["visibility"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["dnsName"] = args.DnsName
+		inputs["forwardingConfig"] = args.ForwardingConfig
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["privateVisibilityConfig"] = args.PrivateVisibilityConfig
 		inputs["project"] = args.Project
+		inputs["visibility"] = args.Visibility
 	}
 	inputs["nameServers"] = nil
 	s, err := ctx.RegisterResource("gcp:dns/managedZone:ManagedZone", name, true, inputs, opts...)
@@ -50,10 +70,13 @@ func GetManagedZone(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["dnsName"] = state.DnsName
+		inputs["forwardingConfig"] = state.ForwardingConfig
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["nameServers"] = state.NameServers
+		inputs["privateVisibilityConfig"] = state.PrivateVisibilityConfig
 		inputs["project"] = state.Project
+		inputs["visibility"] = state.Visibility
 	}
 	s, err := ctx.ReadResource("gcp:dns/managedZone:ManagedZone", name, id, inputs, opts...)
 	if err != nil {
@@ -72,72 +95,69 @@ func (r *ManagedZone) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// A textual description field. Defaults to 'Managed by Terraform'.
 func (r *ManagedZone) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 func (r *ManagedZone) DnsName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
-// A set of key/value label pairs to assign to the instance.
+func (r *ManagedZone) ForwardingConfig() *pulumi.Output {
+	return r.s.State["forwardingConfig"]
+}
+
 func (r *ManagedZone) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *ManagedZone) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The list of nameservers that will be authoritative for this
-// domain. Use NS records to redirect from your DNS provider to these names,
-// thus making Google Cloud DNS authoritative for this zone.
 func (r *ManagedZone) NameServers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nameServers"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+func (r *ManagedZone) PrivateVisibilityConfig() *pulumi.Output {
+	return r.s.State["privateVisibilityConfig"]
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *ManagedZone) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *ManagedZone) Visibility() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["visibility"])
+}
+
 // Input properties used for looking up and filtering ManagedZone resources.
 type ManagedZoneState struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
-	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
-	// A set of key/value label pairs to assign to the instance.
+	ForwardingConfig interface{}
 	Labels interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The list of nameservers that will be authoritative for this
-	// domain. Use NS records to redirect from your DNS provider to these names,
-	// thus making Google Cloud DNS authoritative for this zone.
 	NameServers interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	PrivateVisibilityConfig interface{}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
+	Visibility interface{}
 }
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
-	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
-	// A set of key/value label pairs to assign to the instance.
+	ForwardingConfig interface{}
 	Labels interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	PrivateVisibilityConfig interface{}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
+	Visibility interface{}
 }

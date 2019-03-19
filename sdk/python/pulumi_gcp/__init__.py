@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Make subpackages available:
-__all__ = ['appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'folder', 'iam', 'kms', 'logging', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'service_account', 'sourcerepo', 'spanner', 'sql', 'storage']
+__all__ = ['accesscontextmanager', 'appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'cloudscheduler', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'folder', 'iam', 'kms', 'logging', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'service_account', 'servicenetworking', 'sourcerepo', 'spanner', 'sql', 'storage', 'tpu']
 
 # Export this package's modules as members:
 from .provider import *

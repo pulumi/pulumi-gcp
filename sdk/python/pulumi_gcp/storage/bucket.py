@@ -48,6 +48,10 @@ class Bucket(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
+    requester_pays: pulumi.Output[bool]
+    """
+    Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -68,7 +72,7 @@ class Bucket(pulumi.CustomResource):
     """
     Configuration if the bucket acts as a website. Structure is documented below.
     """
-    def __init__(__self__, resource_name, opts=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -79,6 +83,8 @@ class Bucket(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/overview)
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+        
+        **Note**: When importing a bucket or using only the default provider project for bucket creation, you will need to enable the Compute API and will otherwise get an error with a link to the API enablement page. If you would prefer not to enable the Compute API, make sure to explicitly set `project` on the bucket resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,6 +100,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[list] websites: Configuration if the bucket acts as a website. Structure is documented below.
@@ -130,6 +137,8 @@ class Bucket(pulumi.CustomResource):
         __props__['name'] = name
 
         __props__['project'] = project
+
+        __props__['requester_pays'] = requester_pays
 
         __props__['storage_class'] = storage_class
 

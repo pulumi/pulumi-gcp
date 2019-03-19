@@ -22,11 +22,11 @@ class IAMBinding(pulumi.CustomResource):
     """
     service_account_id: pulumi.Output[str]
     """
-    The service account id to apply policy to.
+    The fully-qualified name of the service account to apply policy to.
     """
     def __init__(__self__, resource_name, opts=None, members=None, role=None, service_account_id=None, __name__=None, __opts__=None):
         """
-        When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource to configure permissions for who can edit the service account. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
+        When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource **to configure permissions for who can edit the service account**. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
         
         Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
         
@@ -43,7 +43,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_service_account_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_account_id: The service account id to apply policy to.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

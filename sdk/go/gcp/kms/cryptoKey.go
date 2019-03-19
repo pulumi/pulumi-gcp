@@ -9,7 +9,7 @@ import (
 )
 
 // Allows creation of a Google Cloud Platform KMS CryptoKey. For more information see
-// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#cryptokey)
+// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
 // and
 // [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
 // 
@@ -38,10 +38,12 @@ func NewCryptoKey(ctx *pulumi.Context,
 		inputs["keyRing"] = nil
 		inputs["name"] = nil
 		inputs["rotationPeriod"] = nil
+		inputs["versionTemplate"] = nil
 	} else {
 		inputs["keyRing"] = args.KeyRing
 		inputs["name"] = args.Name
 		inputs["rotationPeriod"] = args.RotationPeriod
+		inputs["versionTemplate"] = args.VersionTemplate
 	}
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:kms/cryptoKey:CryptoKey", name, true, inputs, opts...)
@@ -61,6 +63,7 @@ func GetCryptoKey(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["rotationPeriod"] = state.RotationPeriod
 		inputs["selfLink"] = state.SelfLink
+		inputs["versionTemplate"] = state.VersionTemplate
 	}
 	s, err := ctx.ReadResource("gcp:kms/cryptoKey:CryptoKey", name, id, inputs, opts...)
 	if err != nil {
@@ -103,6 +106,11 @@ func (r *CryptoKey) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// A template describing settings for new crypto key versions. Structure is documented below.
+func (r *CryptoKey) VersionTemplate() *pulumi.Output {
+	return r.s.State["versionTemplate"]
+}
+
 // Input properties used for looking up and filtering CryptoKey resources.
 type CryptoKeyState struct {
 	// The id of the Google Cloud Platform KeyRing to which the key shall belong.
@@ -117,6 +125,8 @@ type CryptoKeyState struct {
 	RotationPeriod interface{}
 	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
 	SelfLink interface{}
+	// A template describing settings for new crypto key versions. Structure is documented below.
+	VersionTemplate interface{}
 }
 
 // The set of arguments for constructing a CryptoKey resource.
@@ -131,4 +141,6 @@ type CryptoKeyArgs struct {
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
 	// a day (ie, 86400).
 	RotationPeriod interface{}
+	// A template describing settings for new crypto key versions. Structure is documented below.
+	VersionTemplate interface{}
 }

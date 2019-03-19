@@ -31,8 +31,10 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		Labels: outputs["labels"],
 		RetryOnFailure: outputs["retryOnFailure"],
 		Runtime: outputs["runtime"],
+		ServiceAccountEmail: outputs["serviceAccountEmail"],
 		SourceArchiveBucket: outputs["sourceArchiveBucket"],
 		SourceArchiveObject: outputs["sourceArchiveObject"],
+		SourceRepositories: outputs["sourceRepositories"],
 		Timeout: outputs["timeout"],
 		TriggerBucket: outputs["triggerBucket"],
 		TriggerHttp: outputs["triggerHttp"],
@@ -71,17 +73,17 @@ type GetFunctionResult struct {
 	RetryOnFailure interface{}
 	// The runtime in which the function is running.
 	Runtime interface{}
+	ServiceAccountEmail interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
+	SourceRepositories interface{}
 	// Function execution timeout (in seconds).
 	Timeout interface{}
-	// If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
 	TriggerBucket interface{}
 	// If function is triggered by HTTP, this boolean is set.
 	TriggerHttp interface{}
-	// If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
 	TriggerTopic interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

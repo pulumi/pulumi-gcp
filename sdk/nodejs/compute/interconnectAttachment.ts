@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  * information, see Creating VLAN Attachments.
  * 
  * 
- * ## Example Usage
+ * 
+ * ## Example Usage - Interconnect Attachment Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,7 +20,7 @@ import * as utilities from "../utilities";
  * const foobar = new gcp.compute.Router("foobar", {
  *     network: google_compute_network_foobar.name,
  * });
- * const defaultInterconnectAttachment = new gcp.compute.InterconnectAttachment("default", {
+ * const onPrem = new gcp.compute.InterconnectAttachment("on_prem", {
  *     interconnect: "my-interconnect-id",
  *     router: foobar.selfLink,
  * });
@@ -37,13 +39,17 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         return new InterconnectAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly candidateSubnets: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly cloudRouterIpAddress: pulumi.Output<string>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public /*out*/ readonly customerRouterIpAddress: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
+    public readonly edgeAvailabilityDomain: pulumi.Output<string | undefined>;
     public /*out*/ readonly googleReferenceId: pulumi.Output<string>;
-    public readonly interconnect: pulumi.Output<string>;
+    public readonly interconnect: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
+    public /*out*/ readonly pairingKey: pulumi.Output<string>;
+    public /*out*/ readonly partnerAsn: pulumi.Output<string>;
     public /*out*/ readonly privateInterconnectInfo: pulumi.Output<{ tag8021q: number }>;
     /**
      * The ID of the project in which the resource belongs.
@@ -56,6 +62,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly state: pulumi.Output<string>;
+    public readonly type: pulumi.Output<string>;
+    public readonly vlanTag8021q: pulumi.Output<number | undefined>;
 
     /**
      * Create a InterconnectAttachment resource with the given unique name, arguments, and options.
@@ -69,38 +78,49 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: InterconnectAttachmentState = argsOrState as InterconnectAttachmentState | undefined;
+            inputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             inputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
             inputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
             inputs["interconnect"] = state ? state.interconnect : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["pairingKey"] = state ? state.pairingKey : undefined;
+            inputs["partnerAsn"] = state ? state.partnerAsn : undefined;
             inputs["privateInterconnectInfo"] = state ? state.privateInterconnectInfo : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["router"] = state ? state.router : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["state"] = state ? state.state : undefined;
+            inputs["type"] = state ? state.type : undefined;
+            inputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
-            if (!args || args.interconnect === undefined) {
-                throw new Error("Missing required property 'interconnect'");
-            }
             if (!args || args.router === undefined) {
                 throw new Error("Missing required property 'router'");
             }
+            inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["router"] = args ? args.router : undefined;
+            inputs["type"] = args ? args.type : undefined;
+            inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             inputs["cloudRouterIpAddress"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customerRouterIpAddress"] = undefined /*out*/;
             inputs["googleReferenceId"] = undefined /*out*/;
+            inputs["pairingKey"] = undefined /*out*/;
+            inputs["partnerAsn"] = undefined /*out*/;
             inputs["privateInterconnectInfo"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         super("gcp:compute/interconnectAttachment:InterconnectAttachment", name, inputs, opts);
     }
@@ -110,13 +130,17 @@ export class InterconnectAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InterconnectAttachment resources.
  */
 export interface InterconnectAttachmentState {
+    readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly cloudRouterIpAddress?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly customerRouterIpAddress?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     readonly googleReferenceId?: pulumi.Input<string>;
     readonly interconnect?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly pairingKey?: pulumi.Input<string>;
+    readonly partnerAsn?: pulumi.Input<string>;
     readonly privateInterconnectInfo?: pulumi.Input<{ tag8021q?: pulumi.Input<number> }>;
     /**
      * The ID of the project in which the resource belongs.
@@ -129,14 +153,19 @@ export interface InterconnectAttachmentState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly state?: pulumi.Input<string>;
+    readonly type?: pulumi.Input<string>;
+    readonly vlanTag8021q?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a InterconnectAttachment resource.
  */
 export interface InterconnectAttachmentArgs {
+    readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly description?: pulumi.Input<string>;
-    readonly interconnect: pulumi.Input<string>;
+    readonly edgeAvailabilityDomain?: pulumi.Input<string>;
+    readonly interconnect?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -145,4 +174,6 @@ export interface InterconnectAttachmentArgs {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly router: pulumi.Input<string>;
+    readonly type?: pulumi.Input<string>;
+    readonly vlanTag8021q?: pulumi.Input<number>;
 }

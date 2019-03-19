@@ -28,7 +28,7 @@ class RegionDisk(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     snapshot: pulumi.Output[str]
     source_snapshot_encryption_key: pulumi.Output[dict]
     source_snapshot_id: pulumi.Output[str]

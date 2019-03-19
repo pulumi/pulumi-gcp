@@ -13,12 +13,13 @@ class AlertPolicy(pulumi.CustomResource):
     conditions: pulumi.Output[list]
     creation_record: pulumi.Output[dict]
     display_name: pulumi.Output[str]
+    documentation: pulumi.Output[dict]
     enabled: pulumi.Output[bool]
     labels: pulumi.Output[list]
     name: pulumi.Output[str]
     notification_channels: pulumi.Output[list]
     project: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, enabled=None, labels=None, notification_channels=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None, __name__=None, __opts__=None):
         """
         A description of the conditions under which some aspect of your system is
         considered to be "unhealthy" and the ways to notify people or services
@@ -30,6 +31,12 @@ class AlertPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=monitoring_alert_policy_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -61,8 +68,8 @@ class AlertPolicy(pulumi.CustomResource):
             raise TypeError('Missing required property display_name')
         __props__['display_name'] = display_name
 
-        if enabled is None:
-            raise TypeError('Missing required property enabled')
+        __props__['documentation'] = documentation
+
         __props__['enabled'] = enabled
 
         __props__['labels'] = labels

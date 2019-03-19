@@ -10,11 +10,15 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('gcp')
 
+access_token = __config__.get('accessToken')
+
 credentials = __config__.get('credentials') or utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
 
 project = __config__.get('project') or utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 
 region = __config__.get('region') or utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+
+scopes = __config__.get('scopes')
 
 zone = __config__.get('zone') or utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

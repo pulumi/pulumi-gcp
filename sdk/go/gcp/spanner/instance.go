@@ -8,7 +8,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates and manages a Google Spanner Instance. For more information, see the [official documentation](https://cloud.google.com/spanner/), or the [JSON API](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances).
+// An isolated set of Cloud Spanner resources on which databases can be
+// hosted.
+// 
+// 
+// To get more information about Instance, see:
+// 
+// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/spanner/)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=spanner_instance_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -77,101 +91,57 @@ func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The name of the instance's configuration (similar but not
-// quite the same as a region) which defines defines the geographic placement and
-// replication of your databases in this instance. It determines where your data
-// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-// In order to obtain a valid list please consult the
-// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 func (r *Instance) Config() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["config"])
 }
 
-// The descriptive name for this instance as it appears
-// in UIs. Can be updated, however should be kept globally unique to avoid confusion.
 func (r *Instance) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
-// A mapping (key/value pairs) of labels to assign to the instance.
 func (r *Instance) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// The unique name (ID) of the instance. If the name is left
-// blank, Terraform will randomly generate one when the instance is first
-// created.
 func (r *Instance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The number of nodes allocated to this instance.
-// Defaults to `1`. This can be updated after creation.
 func (r *Instance) NumNodes() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["numNodes"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Instance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The current state of the instance.
 func (r *Instance) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
-	// replication of your databases in this instance. It determines where your data
-	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-	// In order to obtain a valid list please consult the
-	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config interface{}
-	// The descriptive name for this instance as it appears
-	// in UIs. Can be updated, however should be kept globally unique to avoid confusion.
 	DisplayName interface{}
-	// A mapping (key/value pairs) of labels to assign to the instance.
 	Labels interface{}
-	// The unique name (ID) of the instance. If the name is left
-	// blank, Terraform will randomly generate one when the instance is first
-	// created.
 	Name interface{}
-	// The number of nodes allocated to this instance.
-	// Defaults to `1`. This can be updated after creation.
 	NumNodes interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The current state of the instance.
 	State interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The name of the instance's configuration (similar but not
-	// quite the same as a region) which defines defines the geographic placement and
-	// replication of your databases in this instance. It determines where your data
-	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
-	// In order to obtain a valid list please consult the
-	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config interface{}
-	// The descriptive name for this instance as it appears
-	// in UIs. Can be updated, however should be kept globally unique to avoid confusion.
 	DisplayName interface{}
-	// A mapping (key/value pairs) of labels to assign to the instance.
 	Labels interface{}
-	// The unique name (ID) of the instance. If the name is left
-	// blank, Terraform will randomly generate one when the instance is first
-	// created.
 	Name interface{}
-	// The number of nodes allocated to this instance.
-	// Defaults to `1`. This can be updated after creation.
 	NumNodes interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

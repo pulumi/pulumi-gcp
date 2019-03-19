@@ -9,6 +9,10 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
+    column_families: pulumi.Output[list]
+    """
+    A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+    """
     instance_name: pulumi.Output[str]
     """
     The name of the Bigtable instance.
@@ -26,14 +30,15 @@ class Table(pulumi.CustomResource):
     """
     A list of predefined keys to split the table on.
     """
-    def __init__(__self__, resource_name, opts=None, instance_name=None, name=None, project=None, split_keys=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, column_families=None, instance_name=None, name=None, project=None, split_keys=None, __name__=None, __opts__=None):
         """
-        Creates a Google Bigtable table inside an instance. For more information see
+        Creates a Google Cloud Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -54,6 +59,8 @@ class Table(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['column_families'] = column_families
 
         if instance_name is None:
             raise TypeError('Missing required property instance_name')

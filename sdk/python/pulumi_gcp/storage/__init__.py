@@ -14,5 +14,8 @@ from .default_object_acl import *
 from .notification import *
 from .object_access_control import *
 from .object_acl import *
+from .transfer_job import *
+from .get_bucket_object import *
 from .get_object_signed_url import *
 from .get_project_service_account import *
+from .get_transfer_project_servie_account import *

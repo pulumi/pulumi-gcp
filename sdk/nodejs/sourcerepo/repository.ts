@@ -5,19 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * For more information, see [the official
- * documentation](https://cloud.google.com/source-repositories/) and
- * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+ * A repository (or repo) is a Git repository storing versioned source content.
  * 
- * ## Example Usage
  * 
- * This example is the common case of creating a repository within Google Cloud Source Repositories:
+ * To get more information about Repository, see:
+ * 
+ * * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/source-repositories/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=sourcerepo_repository_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Sourcerepo Repository Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const frontend = new gcp.sourcerepo.Repository("frontend", {});
+ * const my_repo = new gcp.sourcerepo.Repository("my-repo", {});
  * ```
  */
 export class Repository extends pulumi.CustomResource {
@@ -33,22 +42,13 @@ export class Repository extends pulumi.CustomResource {
         return new Repository(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the repository that will be created.
-     */
     public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
-    /**
-     * The size of the repository.
-     */
     public /*out*/ readonly size: pulumi.Output<number>;
-    /**
-     * The url to clone the repository.
-     */
     public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
@@ -82,22 +82,13 @@ export class Repository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Repository resources.
  */
 export interface RepositoryState {
-    /**
-     * The name of the repository that will be created.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The size of the repository.
-     */
     readonly size?: pulumi.Input<number>;
-    /**
-     * The url to clone the repository.
-     */
     readonly url?: pulumi.Input<string>;
 }
 
@@ -105,13 +96,10 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
-    /**
-     * The name of the repository that will be created.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }

@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  * </div>
  * ## Example Usage - Storage Object Access Control Public Object
  * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,7 +45,7 @@ import * as utilities from "../utilities";
  * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
  *     bucket: bucket.name,
  *     entity: "allUsers",
- *     object: object.name,
+ *     object: object.outputName,
  *     role: "READER",
  * });
  * ```

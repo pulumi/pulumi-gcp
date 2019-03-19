@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a Google Bigtable table inside an instance. For more information see
+ * Creates a Google Cloud Bigtable table inside an instance. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  * 
@@ -46,6 +46,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+     */
+    public readonly columnFamilies: pulumi.Output<{ family: string }[] | undefined>;
+    /**
      * The name of the Bigtable instance.
      */
     public readonly instanceName: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class Table extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: TableState = argsOrState as TableState | undefined;
+            inputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -84,6 +89,7 @@ export class Table extends pulumi.CustomResource {
             if (!args || args.instanceName === undefined) {
                 throw new Error("Missing required property 'instanceName'");
             }
+            inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -97,6 +103,10 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+     */
+    readonly columnFamilies?: pulumi.Input<pulumi.Input<{ family: pulumi.Input<string> }>[]>;
     /**
      * The name of the Bigtable instance.
      */
@@ -120,6 +130,10 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+     */
+    readonly columnFamilies?: pulumi.Input<pulumi.Input<{ family: pulumi.Input<string> }>[]>;
     /**
      * The name of the Bigtable instance.
      */

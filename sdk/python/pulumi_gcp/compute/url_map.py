@@ -9,66 +9,41 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class URLMap(pulumi.CustomResource):
+    creation_timestamp: pulumi.Output[str]
     default_service: pulumi.Output[str]
-    """
-    The backend service or backend bucket to use when none of the given rules match.
-    """
     description: pulumi.Output[str]
-    """
-    A brief description of this resource.
-    """
     fingerprint: pulumi.Output[str]
-    """
-    The unique fingerprint for this resource.
-    """
     host_rules: pulumi.Output[list]
-    """
-    A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
-    """
-    map_id: pulumi.Output[str]
-    """
-    The GCE assigned ID of the resource.
-    """
+    map_id: pulumi.Output[float]
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by GCE.
-    Changing this forces a new resource to be created.
-    """
     path_matchers: pulumi.Output[list]
-    """
-    A list of paths to match. Structure is documented below.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     tests: pulumi.Output[list]
-    """
-    The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
-    """
     def __init__(__self__, resource_name, opts=None, default_service=None, description=None, host_rules=None, name=None, path_matchers=None, project=None, tests=None, __name__=None, __opts__=None):
         """
-        Manages a URL Map resource within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
+        UrlMaps are used to route requests to a backend service based on rules
+        that you define for the host and path of an incoming URL.
+        
+        
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=url_map_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
-        :param pulumi.Input[str] description: A brief description of this resource.
-        :param pulumi.Input[list] host_rules: A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[list] path_matchers: A list of paths to match. Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[list] tests: The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,6 +76,7 @@ class URLMap(pulumi.CustomResource):
 
         __props__['tests'] = tests
 
+        __props__['creation_timestamp'] = None
         __props__['fingerprint'] = None
         __props__['map_id'] = None
         __props__['self_link'] = None

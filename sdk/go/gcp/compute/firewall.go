@@ -189,16 +189,16 @@ func (r *Firewall) SourceRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sourceRanges"])
 }
 
-func (r *Firewall) SourceServiceAccounts() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceServiceAccounts"])
+func (r *Firewall) SourceServiceAccounts() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["sourceServiceAccounts"])
 }
 
 func (r *Firewall) SourceTags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sourceTags"])
 }
 
-func (r *Firewall) TargetServiceAccounts() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["targetServiceAccounts"])
+func (r *Firewall) TargetServiceAccounts() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["targetServiceAccounts"])
 }
 
 func (r *Firewall) TargetTags() *pulumi.ArrayOutput {

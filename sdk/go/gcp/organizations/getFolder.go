@@ -45,7 +45,7 @@ type GetFolderResult struct {
 	DisplayName interface{}
 	// The Folder's current lifecycle state.
 	LifecycleState interface{}
-	// The resource name of the Folder in the form `folders/{organization_id}`.
+	// The resource name of the Folder in the form `folders/{folder_id}`.
 	Name interface{}
 	// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
 	Organization interface{}

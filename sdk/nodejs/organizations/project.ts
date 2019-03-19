@@ -60,21 +60,6 @@ import * as utilities from "../utilities";
  *     projectId: "your-project-id",
  * });
  * ```
- * 
- * To create a project with an App Engine app attached
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const my_app_engine_app = new gcp.organizations.Project("my-app-engine-app", {
- *     appEngine: {
- *         locationId: "us-central",
- *     },
- *     orgId: "1234567",
- *     projectId: "app-engine-project",
- * });
- * ```
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -90,16 +75,10 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    public readonly appEngine: pulumi.Output<{ authDomain: string, codeBucket: string, defaultBucket: string, defaultHostname: string, featureSettings: { splitHealthChecks?: boolean }, gcrDomain: string, locationId: string, name: string, servingStatus: string, urlDispatchRules: { domain: string, path: string, service: string }[] }>;
-    /**
-     * Create the 'default' network automatically.  Default true.
-     * Note: this might be more accurately described as "Delete Default Network", since the network
-     * is created automatically then deleted before project creation returns, but we choose this
-     * name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
-     * API which is required to delete the network.
+     * Create the 'default' network automatically.  Default `true`.
+     * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
+     * will still need to have 1 network slot available to create the project succesfully, even if
+     * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     public readonly autoCreateNetwork: pulumi.Output<boolean | undefined>;
     /**
@@ -161,7 +140,6 @@ export class Project extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ProjectState = argsOrState as ProjectState | undefined;
-            inputs["appEngine"] = state ? state.appEngine : undefined;
             inputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -176,7 +154,6 @@ export class Project extends pulumi.CustomResource {
             if (!args || args.projectId === undefined) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -196,16 +173,10 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
-    /**
-     * Create the 'default' network automatically.  Default true.
-     * Note: this might be more accurately described as "Delete Default Network", since the network
-     * is created automatically then deleted before project creation returns, but we choose this
-     * name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
-     * API which is required to delete the network.
+     * Create the 'default' network automatically.  Default `true`.
+     * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
+     * will still need to have 1 network slot available to create the project succesfully, even if
+     * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
     /**
@@ -261,16 +232,10 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * A block of configuration to enable an App Engine app. Setting this
-     * field will enabled the App Engine Admin API, which is required to manage the app.
-     */
-    readonly appEngine?: pulumi.Input<{ authDomain?: pulumi.Input<string>, codeBucket?: pulumi.Input<string>, defaultBucket?: pulumi.Input<string>, defaultHostname?: pulumi.Input<string>, featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>, gcrDomain?: pulumi.Input<string>, locationId?: pulumi.Input<string>, name?: pulumi.Input<string>, servingStatus?: pulumi.Input<string>, urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]> }>;
-    /**
-     * Create the 'default' network automatically.  Default true.
-     * Note: this might be more accurately described as "Delete Default Network", since the network
-     * is created automatically then deleted before project creation returns, but we choose this
-     * name to match the GCP Console UI. Setting this field to false will enable the Compute Engine
-     * API which is required to delete the network.
+     * Create the 'default' network automatically.  Default `true`.
+     * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
+     * will still need to have 1 network slot available to create the project succesfully, even if
+     * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
     /**

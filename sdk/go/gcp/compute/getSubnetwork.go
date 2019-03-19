@@ -14,6 +14,7 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
+		inputs["selfLink"] = args.SelfLink
 	}
 	outputs, err := ctx.Invoke("gcp:compute/getSubnetwork:getSubnetwork", inputs)
 	if err != nil {
@@ -35,7 +36,8 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 
 // A collection of arguments for invoking getSubnetwork.
 type GetSubnetworkArgs struct {
-	// The name of the subnetwork.
+	// The name of the subnetwork. One of `name` or `self_link`
+	// must be specified.
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -43,6 +45,9 @@ type GetSubnetworkArgs struct {
 	// The region this subnetwork has been created in. If
 	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
+	// The self link of the subnetwork. If `self_link` is
+	// specified, `name`, `project`, and `region` are ignored.
+	SelfLink interface{}
 }
 
 // A collection of values returned by getSubnetwork.
@@ -66,7 +71,6 @@ type GetSubnetworkResult struct {
 	// An array of configurations for secondary IP ranges for
 	// VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges interface{}
-	// The URI of the created resource.
 	SelfLink interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

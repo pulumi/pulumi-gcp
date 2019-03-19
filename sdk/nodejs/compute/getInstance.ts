@@ -23,10 +23,12 @@ import * as utilities from "../utilities";
  * }));
  * ```
  */
-export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
+export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
+    args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {
         "name": args.name,
         "project": args.project,
+        "selfLink": args.selfLink,
         "zone": args.zone,
     }, opts);
 }
@@ -38,13 +40,17 @@ export interface GetInstanceArgs {
     /**
      * The name of the instance. One of `name` or `self_link` must be provided.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
      * The ID of the project in which the resource belongs.
      * If `self_link` is provided, this value is ignored.  If neither `self_link`
      * nor `project` are provided, the provider project is used.
      */
     readonly project?: string;
+    /**
+     * The self link of the instance. One of `name` or `self_link` must be provided.
+     */
+    readonly selfLink?: string;
     /**
      * The zone of the instance. If `self_link` is provided, this
      * value is ignored.  If neither `self_link` nor `zone` are provided, the
@@ -88,6 +94,7 @@ export interface GetInstanceResult {
      * List of the type and count of accelerator cards attached to the instance. Structure is documented below.
      */
     readonly guestAccelerators: { count: number, type: string }[];
+    readonly hostname: string;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -118,10 +125,6 @@ export interface GetInstanceResult {
      */
     readonly minCpuPlatform: string;
     /**
-     * The name or self_link of the network attached to this interface.
-     */
-    readonly networks: { address: string, externalAddress: string, internalAddress: string, name: string, source: string }[];
-    /**
      * The networks attached to the instance. Structure is documented below.
      */
     readonly networkInterfaces: { accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[];
@@ -133,10 +136,6 @@ export interface GetInstanceResult {
      * The scratch disks attached to the instance. Structure is documented below.
      */
     readonly scratchDisks: { interface: string }[];
-    /**
-     * The URI of the created resource.
-     */
-    readonly selfLink: string;
     /**
      * The service account to attach to the instance. Structure is documented below.
      */

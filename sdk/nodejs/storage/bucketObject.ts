@@ -80,9 +80,18 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly md5hash: pulumi.Output<string>;
     /**
-     * The name of the object.
+     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
      */
     public readonly name: pulumi.Output<string>;
+    /**
+     * (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
+     * `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+     */
+    public /*out*/ readonly outputName: pulumi.Output<string>;
+    /**
+     * (Computed) A url reference to this object.
+     */
+    public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
@@ -118,6 +127,8 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             inputs["md5hash"] = state ? state.md5hash : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["outputName"] = state ? state.outputName : undefined;
+            inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["source"] = state ? state.source : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
         } else {
@@ -138,6 +149,8 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["crc32c"] = undefined /*out*/;
             inputs["md5hash"] = undefined /*out*/;
+            inputs["outputName"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         }
         super("gcp:storage/bucketObject:BucketObject", name, inputs, opts);
     }
@@ -187,9 +200,18 @@ export interface BucketObjectState {
      */
     readonly md5hash?: pulumi.Input<string>;
     /**
-     * The name of the object.
+     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
+     * `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+     */
+    readonly outputName?: pulumi.Input<string>;
+    /**
+     * (Computed) A url reference to this object.
+     */
+    readonly selfLink?: pulumi.Input<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
@@ -239,7 +261,7 @@ export interface BucketObjectArgs {
     readonly contentType?: pulumi.Input<string>;
     readonly detectMd5hash?: pulumi.Input<string>;
     /**
-     * The name of the object.
+     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
      */
     readonly name?: pulumi.Input<string>;
     /**

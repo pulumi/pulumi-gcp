@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const binding = new gcp.organizations.IAMMember("binding", {
- *     member: "user:jane@example.com",
+ *     member: "user:alice@gmail.com",
  *     orgId: "0123456789",
  *     role: "roles/editor",
  * });
@@ -43,7 +43,7 @@ export class IAMMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     public readonly member: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export interface IAMMemberState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member?: pulumi.Input<string>;
     /**
@@ -120,7 +120,7 @@ export interface IAMMemberState {
  */
 export interface IAMMemberArgs {
     /**
-     * The user that the role should apply to.
+     * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly member: pulumi.Input<string>;
     /**

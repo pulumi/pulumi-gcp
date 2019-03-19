@@ -12,8 +12,6 @@ class Disk(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     disk_encryption_key: pulumi.Output[dict]
-    disk_encryption_key_raw: pulumi.Output[str]
-    disk_encryption_key_sha256: pulumi.Output[str]
     image: pulumi.Output[str]
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
@@ -29,7 +27,7 @@ class Disk(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     snapshot: pulumi.Output[str]
     source_image_encryption_key: pulumi.Output[dict]
     source_image_id: pulumi.Output[str]
@@ -38,7 +36,7 @@ class Disk(pulumi.CustomResource):
     type: pulumi.Output[str]
     users: pulumi.Output[list]
     zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, disk_encryption_key_raw=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
         """
         Persistent disks are durable storage devices that function similarly to
         the physical disks in a desktop or a server. Compute Engine manages the
@@ -97,8 +95,6 @@ class Disk(pulumi.CustomResource):
 
         __props__['disk_encryption_key'] = disk_encryption_key
 
-        __props__['disk_encryption_key_raw'] = disk_encryption_key_raw
-
         __props__['image'] = image
 
         __props__['labels'] = labels
@@ -120,7 +116,6 @@ class Disk(pulumi.CustomResource):
         __props__['zone'] = zone
 
         __props__['creation_timestamp'] = None
-        __props__['disk_encryption_key_sha256'] = None
         __props__['label_fingerprint'] = None
         __props__['last_attach_timestamp'] = None
         __props__['last_detach_timestamp'] = None

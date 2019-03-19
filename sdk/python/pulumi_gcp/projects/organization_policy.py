@@ -37,7 +37,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     """
     (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
     """
-    version: pulumi.Output[int]
+    version: pulumi.Output[float]
     """
     Version of the Policy. Default version is 0.
     """
@@ -55,7 +55,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below. 
-        :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
+        :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

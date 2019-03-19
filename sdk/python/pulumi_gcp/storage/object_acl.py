@@ -11,33 +11,42 @@ from .. import utilities, tables
 class ObjectACL(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
-    The name of the bucket it applies to.
+    The name of the bucket the object is stored in.
     """
     object: pulumi.Output[str]
     """
-    The name of the object it applies to.
+    The name of the object to apply the acl to.
     """
     predefined_acl: pulumi.Output[str]
     """
-    The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+    The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
     """
     role_entities: pulumi.Output[list]
     """
-    List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details. Must be set if `predefined_acl` is not.
+    List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+    Must be set if `predefined_acl` is not.
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, object=None, predefined_acl=None, role_entities=None, __name__=None, __opts__=None):
         """
-        Creates a new object ACL in Google cloud storage service (GCS). For more information see 
+        Authoritatively manages the access control list (ACL) for an object in a Google
+        Cloud Storage (GCS) bucket. Removing a `google_storage_object_acl` sets the
+        acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
+        
+        For more information see
         [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
         
+        > Want fine-grained control over object ACLs? Use `google_storage_object_access_control` to control individual
+        role entity pairs.
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-        :param pulumi.Input[str] object: The name of the object it applies to.
-        :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details. Must be set if `predefined_acl` is not.
+        :param pulumi.Input[str] bucket: The name of the bucket the object is stored in.
+        :param pulumi.Input[str] object: The name of the object to apply the acl to.
+        :param pulumi.Input[str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
+               Must be set if `predefined_acl` is not.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

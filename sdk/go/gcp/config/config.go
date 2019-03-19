@@ -8,6 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+func GetAccessToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:accessToken")
+}
+
 func GetCredentials(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:credentials")
 	if err == nil {
@@ -39,6 +43,10 @@ func GetRegion(ctx *pulumi.Context) string {
 		return dv
 	}
 	return v
+}
+
+func GetScopes(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:scopes")
 }
 
 func GetZone(ctx *pulumi.Context) string {

@@ -4,4 +4,5 @@
 // Export members:
 export * from "./getManagedZone";
 export * from "./managedZone";
+export * from "./policy";
 export * from "./recordSet";

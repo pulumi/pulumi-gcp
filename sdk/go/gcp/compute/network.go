@@ -7,10 +7,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a network within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/vpc)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+// Manages a VPC network or legacy network resource on GCP.
+// 
+// 
+// To get more information about Network, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=network_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type Network struct {
 	s *pulumi.ResourceState
 }
@@ -75,47 +85,32 @@ func (r *Network) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// If set to true, this network will be
-// created in auto subnet mode, and Google will create a subnet for each region
-// automatically. If set to false, a custom subnetted network will be created that
-// can support `google_compute_subnetwork` resources. Defaults to true.
 func (r *Network) AutoCreateSubnetworks() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateSubnetworks"])
 }
 
-// A brief description of this resource.
 func (r *Network) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The IPv4 address of the gateway.
 func (r *Network) GatewayIpv4() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["gatewayIpv4"])
 }
 
-// If set to a CIDR block, uses the legacy VPC API with the
-// specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-// explicitly set to false.
 func (r *Network) Ipv4Range() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv4Range"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *Network) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Network) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// Sets the network-wide routing mode for Cloud Routers
-// to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-// Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-// for more details.
 func (r *Network) RoutingMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["routingMode"])
 }
@@ -127,29 +122,14 @@ func (r *Network) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Network resources.
 type NetworkState struct {
-	// If set to true, this network will be
-	// created in auto subnet mode, and Google will create a subnet for each region
-	// automatically. If set to false, a custom subnetted network will be created that
-	// can support `google_compute_subnetwork` resources. Defaults to true.
 	AutoCreateSubnetworks interface{}
-	// A brief description of this resource.
 	Description interface{}
-	// The IPv4 address of the gateway.
 	GatewayIpv4 interface{}
-	// If set to a CIDR block, uses the legacy VPC API with the
-	// specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-	// explicitly set to false.
 	Ipv4Range interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// Sets the network-wide routing mode for Cloud Routers
-	// to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-	// Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-	// for more details.
 	RoutingMode interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -157,26 +137,12 @@ type NetworkState struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
-	// If set to true, this network will be
-	// created in auto subnet mode, and Google will create a subnet for each region
-	// automatically. If set to false, a custom subnetted network will be created that
-	// can support `google_compute_subnetwork` resources. Defaults to true.
 	AutoCreateSubnetworks interface{}
-	// A brief description of this resource.
 	Description interface{}
-	// If set to a CIDR block, uses the legacy VPC API with the
-	// specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-	// explicitly set to false.
 	Ipv4Range interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// Sets the network-wide routing mode for Cloud Routers
-	// to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-	// Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-	// for more details.
 	RoutingMode interface{}
 }

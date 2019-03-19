@@ -9,55 +9,35 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Subscription(pulumi.CustomResource):
-    ack_deadline_seconds: pulumi.Output[int]
-    """
-    The maximum number of seconds a
-    subscriber has to acknowledge a received message, otherwise the message is
-    redelivered. Changing this forces a new resource to be created.
-    """
+    ack_deadline_seconds: pulumi.Output[float]
+    labels: pulumi.Output[dict]
+    message_retention_duration: pulumi.Output[str]
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by pubsub.
-    Changing this forces a new resource to be created.
-    """
     path: pulumi.Output[str]
-    """
-    Path of the subscription in the format `projects/{project}/subscriptions/{sub}`
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     push_config: pulumi.Output[dict]
-    """
-    Block configuration for push options. More
-    configuration options are detailed below.
-    """
+    retain_acked_messages: pulumi.Output[bool]
     topic: pulumi.Output[str]
-    """
-    The topic name or id to bind this subscription to, required by pubsub.
-    Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, name=None, project=None, push_config=None, topic=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __name__=None, __opts__=None):
         """
-        Creates a subscription in Google's pubsub queueing system. For more information see
-        [the official documentation](https://cloud.google.com/pubsub/docs) and
-        [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions).
+        A named resource representing the stream of messages from a single,
+        specific topic, to be delivered to the subscribing application.
+        
+        
+        To get more information about Subscription, see:
+        
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+        * How-to Guides
+            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ack_deadline_seconds: The maximum number of seconds a
-               subscriber has to acknowledge a received message, otherwise the message is
-               redelivered. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] name: A unique name for the resource, required by pubsub.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[dict] push_config: Block configuration for push options. More
-               configuration options are detailed below.
-        :param pulumi.Input[str] topic: The topic name or id to bind this subscription to, required by pubsub.
-               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,11 +56,17 @@ class Subscription(pulumi.CustomResource):
 
         __props__['ack_deadline_seconds'] = ack_deadline_seconds
 
+        __props__['labels'] = labels
+
+        __props__['message_retention_duration'] = message_retention_duration
+
         __props__['name'] = name
 
         __props__['project'] = project
 
         __props__['push_config'] = push_config
+
+        __props__['retain_acked_messages'] = retain_acked_messages
 
         if topic is None:
             raise TypeError('Missing required property topic')

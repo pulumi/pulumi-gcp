@@ -5,91 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a Node Pool resource within GKE. For more information see
- * [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
- * and
- * [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
- * 
- * ## Example usage
- * 
- * ### Standard usage
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const primary = new gcp.container.Cluster("primary", {
- *     additionalZones: [
- *         "us-central1-b",
- *         "us-central1-c",
- *     ],
- *     initialNodeCount: 3,
- *     masterAuth: {
- *         password: "adoy.rm",
- *         username: "mr.yoda",
- *     },
- *     nodeConfig: {
- *         guestAccelerators: [{
- *             count: 1,
- *             type: "nvidia-tesla-k80",
- *         }],
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/compute",
- *             "https://www.googleapis.com/auth/devstorage.read_only",
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
- *     },
- *     zone: "us-central1-a",
- * });
- * const np = new gcp.container.NodePool("np", {
- *     cluster: primary.name,
- *     nodeCount: 3,
- *     zone: "us-central1-a",
- * });
- * ```
- * ### Usage with an empty default pool.
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const primary = new gcp.container.Cluster("primary", {
- *     nodePools: [{
- *         name: "default-pool",
- *     }],
- *     zone: "us-central1-a",
- * });
- * const np = new gcp.container.NodePool("np", {
- *     cluster: primary.name,
- *     nodeConfig: {
- *         machineType: "n1-standard-1",
- *         oauthScopes: [
- *             "compute-rw",
- *             "storage-ro",
- *             "logging-write",
- *             "monitoring",
- *         ],
- *         preemptible: true,
- *     },
- *     nodeCount: 1,
- *     zone: "us-central1-a",
- * });
- * ```
- * 
- * ### Usage with a regional cluster
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const regional = new gcp.container.Cluster("regional", {
- *     region: "us-central1",
- * });
- * const regional_np = new gcp.container.NodePool("regional-np", {
- *     cluster: google_container_cluster_primary.name,
- *     nodeCount: 1,
- *     region: "us-central1",
- * });
- * ```
+ * Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+ * the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+ * and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
  */
 export class NodePool extends pulumi.CustomResource {
     /**
@@ -125,11 +43,9 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly management: pulumi.Output<{ autoRepair?: boolean, autoUpgrade?: boolean }>;
     /**
-     * The maximum number of pods per node in this node pool.
+     * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly maxPodsPerNode: pulumi.Output<number>;
     /**
@@ -137,10 +53,6 @@ export class NodePool extends pulumi.CustomResource {
      * auto-generate a unique name.
      */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
-     */
     public readonly namePrefix: pulumi.Output<string>;
     /**
      * The node configuration of the pool. See
@@ -159,14 +71,15 @@ export class NodePool extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     public readonly region: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `auto_upgrade` are both specified, they will fight each other for what the node version should
-     * be, so setting both is highly discouraged.
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     public readonly version: pulumi.Output<string>;
     /**
@@ -249,11 +162,9 @@ export interface NodePoolState {
      */
     readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
     /**
-     * The maximum number of pods per node in this node pool.
+     * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -261,10 +172,6 @@ export interface NodePoolState {
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See
@@ -283,14 +190,15 @@ export interface NodePoolState {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly region?: pulumi.Input<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `auto_upgrade` are both specified, they will fight each other for what the node version should
-     * be, so setting both is highly discouraged.
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     readonly version?: pulumi.Input<string>;
     /**
@@ -323,11 +231,9 @@ export interface NodePoolArgs {
      */
     readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
     /**
-     * The maximum number of pods per node in this node pool.
+     * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -335,10 +241,6 @@ export interface NodePoolArgs {
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See
@@ -357,14 +259,15 @@ export interface NodePoolArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for regional clusters).
-     * This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
      */
     readonly region?: pulumi.Input<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `auto_upgrade` are both specified, they will fight each other for what the node version should
-     * be, so setting both is highly discouraged.
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as Terraform will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
     readonly version?: pulumi.Input<string>;
     /**

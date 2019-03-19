@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource to configure permissions for who can edit the service account. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
+// When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource **to configure permissions for who can edit the service account**. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
 // 
 // Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
 // 
@@ -97,7 +97,7 @@ func (r *IAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
-// The service account id to apply policy to.
+// The fully-qualified name of the service account to apply policy to.
 func (r *IAMBinding) ServiceAccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["serviceAccountId"])
 }
@@ -111,7 +111,7 @@ type IAMBindingState struct {
 	// `google_service_account_iam_binding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The service account id to apply policy to.
+	// The fully-qualified name of the service account to apply policy to.
 	ServiceAccountId interface{}
 }
 
@@ -122,6 +122,6 @@ type IAMBindingArgs struct {
 	// `google_service_account_iam_binding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The service account id to apply policy to.
+	// The fully-qualified name of the service account to apply policy to.
 	ServiceAccountId interface{}
 }

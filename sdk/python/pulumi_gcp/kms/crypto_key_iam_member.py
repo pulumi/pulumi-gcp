@@ -22,7 +22,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     """
     member: pulumi.Output[str]
     """
-    The user that the role should apply to.
+    The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
     """
     role: pulumi.Output[str]
     """
@@ -45,7 +45,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
                the provider's project setting will be used as a fallback.
-        :param pulumi.Input[str] member: The user that the role should apply to.
+        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """

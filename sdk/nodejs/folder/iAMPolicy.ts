@@ -44,7 +44,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -94,7 +94,7 @@ export class IAMPolicy extends pulumi.CustomResource {
  */
 export interface IAMPolicyState {
     /**
-     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     readonly etag?: pulumi.Input<string>;
     /**

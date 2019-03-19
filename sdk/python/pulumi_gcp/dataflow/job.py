@@ -9,7 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
-    max_workers: pulumi.Output[int]
+    max_workers: pulumi.Output[float]
     """
     The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
     """
@@ -63,7 +63,7 @@ class Job(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+        :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).

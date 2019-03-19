@@ -4,5 +4,6 @@
 
 # Export this package's modules as members:
 from .managed_zone import *
+from .policy import *
 from .record_set import *
 from .get_managed_zone import *

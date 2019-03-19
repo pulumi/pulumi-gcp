@@ -31,7 +31,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetAccountArgs {
     /**
-     * The Service account id.
+     * The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
      */
     readonly accountId: string;
     /**

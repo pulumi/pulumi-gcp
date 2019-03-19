@@ -85,8 +85,10 @@ func (r *IAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
-// The project ID. If not specified, uses the
-// ID of the project configured with the provider.
+// The project ID. If not specified for `google_project_iam_binding`
+// or `google_project_iam_member`, uses the ID of the project configured with the provider.
+// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+// will not be inferred from the provider.
 func (r *IAMMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -103,8 +105,10 @@ type IAMMemberState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
 	Member interface{}
-	// The project ID. If not specified, uses the
-	// ID of the project configured with the provider.
+	// The project ID. If not specified for `google_project_iam_binding`
+	// or `google_project_iam_member`, uses the ID of the project configured with the provider.
+	// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+	// will not be inferred from the provider.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -115,8 +119,10 @@ type IAMMemberState struct {
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
 	Member interface{}
-	// The project ID. If not specified, uses the
-	// ID of the project configured with the provider.
+	// The project ID. If not specified for `google_project_iam_binding`
+	// or `google_project_iam_member`, uses the ID of the project configured with the provider.
+	// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+	// will not be inferred from the provider.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `google_project_iam_binding` can be used per role. Note that custom roles must be of the format

@@ -106,7 +106,7 @@ func (r *RecordSet) Project() *pulumi.StringOutput {
 }
 
 // The string data for the records in this record set
-// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
+// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 func (r *RecordSet) Rrdatas() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["rrdatas"])
 }
@@ -132,7 +132,7 @@ type RecordSetState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 	Rrdatas interface{}
 	// The time-to-live of this record set (seconds).
 	Ttl interface{}
@@ -151,7 +151,7 @@ type RecordSetArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces.
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 	Rrdatas interface{}
 	// The time-to-live of this record set (seconds).
 	Ttl interface{}

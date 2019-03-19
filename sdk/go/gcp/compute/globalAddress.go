@@ -31,6 +31,7 @@ func NewGlobalAddress(ctx *pulumi.Context,
 	name string, args *GlobalAddressArgs, opts ...pulumi.ResourceOpt) (*GlobalAddress, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["address"] = nil
 		inputs["addressType"] = nil
 		inputs["description"] = nil
 		inputs["ipVersion"] = nil
@@ -41,6 +42,7 @@ func NewGlobalAddress(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["purpose"] = nil
 	} else {
+		inputs["address"] = args.Address
 		inputs["addressType"] = args.AddressType
 		inputs["description"] = args.Description
 		inputs["ipVersion"] = args.IpVersion
@@ -51,7 +53,6 @@ func NewGlobalAddress(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["purpose"] = args.Purpose
 	}
-	inputs["address"] = nil
 	inputs["creationTimestamp"] = nil
 	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
@@ -176,6 +177,7 @@ type GlobalAddressState struct {
 
 // The set of arguments for constructing a GlobalAddress resource.
 type GlobalAddressArgs struct {
+	Address interface{}
 	AddressType interface{}
 	Description interface{}
 	IpVersion interface{}

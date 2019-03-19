@@ -32,15 +32,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
     You cannot provide this and `ip_address`.
     """
     label_fingerprint: pulumi.Output[str]
-    """
-    The current label fingerprint. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-    """
     labels: pulumi.Output[dict]
     """
-    
-    A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+    )
+    A set of key/value label pairs to assign to the resource.
     """
     name: pulumi.Output[str]
     """
@@ -90,9 +85,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: 
                The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
                You cannot provide this and `ip_address`.
-        :param pulumi.Input[dict] labels: 
-               A set of key/value label pairs to assign to the resource. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
+        :param pulumi.Input[dict] labels: )
+               A set of key/value label pairs to assign to the resource.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] port_range: A range e.g. "1024-2048" or a single port "1024"

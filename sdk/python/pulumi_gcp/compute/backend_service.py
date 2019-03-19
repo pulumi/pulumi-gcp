@@ -9,6 +9,12 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class BackendService(pulumi.CustomResource):
+    affinity_cookie_ttl_sec: pulumi.Output[float]
+    """
+    Lifetime of cookies in seconds if session_affinity is
+    `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+    the browser session (or equivalent). The maximum allowed value for TTL is one day.
+    """
     backends: pulumi.Output[list]
     """
     The list of backends that serve this BackendService. Structure is documented below.
@@ -17,17 +23,15 @@ class BackendService(pulumi.CustomResource):
     """
     Cloud CDN configuration for this BackendService. Structure is documented below.
     """
-    connection_draining_timeout_sec: pulumi.Output[int]
+    connection_draining_timeout_sec: pulumi.Output[float]
     """
     Time for which instance will be drained (not accept new connections,
     but still work to finish started ones). Defaults to `300`.
     """
     custom_request_headers: pulumi.Output[list]
     """
-    Headers that the
+    ) Headers that the
     HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     description: pulumi.Output[str]
     """
@@ -85,12 +89,12 @@ class BackendService(pulumi.CustomResource):
     affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
     `GENERATED_COOKIE` (distribute load using a generated session cookie).
     """
-    timeout_sec: pulumi.Output[int]
+    timeout_sec: pulumi.Output[float]
     """
     The number of secs to wait for a backend to respond
     to a request before considering the request failed. Defaults to `30`.
     """
-    def __init__(__self__, resource_name, opts=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
         """
         A Backend Service defines a group of virtual machines that will serve traffic for load balancing. For more information
         see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -100,14 +104,15 @@ class BackendService(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
+               `GENERATED_COOKIE`. If set to 0, the cookie is non-persistent and lasts only until the end of
+               the browser session (or equivalent). The maximum allowed value for TTL is one day.
         :param pulumi.Input[list] backends: The list of backends that serve this BackendService. Structure is documented below.
         :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService. Structure is documented below.
-        :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new connections,
+        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new connections,
                but still work to finish started ones). Defaults to `300`.
-        :param pulumi.Input[list] custom_request_headers: Headers that the
+        :param pulumi.Input[list] custom_request_headers: ) Headers that the
                HTTP/S load balancer should add to proxied requests. See [guide](https://cloud.google.com/compute/docs/load-balancing/http/backend-service#user-defined-request-headers) for details.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] description: The textual description for the backend service.
         :param pulumi.Input[bool] enable_cdn: Whether or not to enable the Cloud CDN on the backend service.
         :param pulumi.Input[str] health_checks: Specifies a list of HTTP/HTTPS health checks
@@ -126,7 +131,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are `NONE` (no
                affinity), `CLIENT_IP` (hash of the source/dest addresses / ports), and
                `GENERATED_COOKIE` (distribute load using a generated session cookie).
-        :param pulumi.Input[int] timeout_sec: The number of secs to wait for a backend to respond
+        :param pulumi.Input[float] timeout_sec: The number of secs to wait for a backend to respond
                to a request before considering the request failed. Defaults to `30`.
         """
         if __name__ is not None:
@@ -143,6 +148,8 @@ class BackendService(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
 
         __props__['backends'] = backends
 

@@ -63,9 +63,6 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
-        """
-        The URI of the created resource.
-        """
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -73,7 +70,7 @@ class GetSubnetworkResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnetwork(name=None,project=None,region=None,opts=None):
+async def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a subnetwork within GCE from its name and region.
     """
@@ -82,6 +79,7 @@ async def get_subnetwork(name=None,project=None,region=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
+    __args__['selfLink'] = self_link
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts)
 
     return GetSubnetworkResult(

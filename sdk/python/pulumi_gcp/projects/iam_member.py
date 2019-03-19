@@ -16,8 +16,10 @@ class IAMMember(pulumi.CustomResource):
     member: pulumi.Output[str]
     project: pulumi.Output[str]
     """
-    The project ID. If not specified, uses the
-    ID of the project configured with the provider.
+    The project ID. If not specified for `google_project_iam_binding`
+    or `google_project_iam_member`, uses the ID of the project configured with the provider.
+    Required for `google_project_iam_policy` - you must explicitly set the project, and it
+    will not be inferred from the provider.
     """
     role: pulumi.Output[str]
     """
@@ -39,8 +41,10 @@ class IAMMember(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] project: The project ID. If not specified, uses the
-               ID of the project configured with the provider.
+        :param pulumi.Input[str] project: The project ID. If not specified for `google_project_iam_binding`
+               or `google_project_iam_member`, uses the ID of the project configured with the provider.
+               Required for `google_project_iam_policy` - you must explicitly set the project, and it
+               will not be inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

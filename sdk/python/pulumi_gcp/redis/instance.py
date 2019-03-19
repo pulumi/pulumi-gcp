@@ -17,9 +17,9 @@ class Instance(pulumi.CustomResource):
     host: pulumi.Output[str]
     labels: pulumi.Output[dict]
     location_id: pulumi.Output[str]
-    memory_size_gb: pulumi.Output[int]
+    memory_size_gb: pulumi.Output[float]
     name: pulumi.Output[str]
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.

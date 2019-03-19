@@ -48,7 +48,7 @@ class InstanceGroup(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     The number of instances in the group.
     """
@@ -61,6 +61,10 @@ class InstanceGroup(pulumi.CustomResource):
         Creates a group of dissimilar Compute Engine virtual machine instances.
         For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+        
+        > Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. You can avoid this error with a
+        Terraform `lifecycle` block as outlined in the example below.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,6 +9,11 @@ import (
 )
 
 // Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+// 
+// > Creation of service accounts is eventually consistent, and that can lead to
+// errors when you try to apply ACLs to service accounts immediately after
+// creation. If using these resources in the same config, you can add a
+// [`sleep` using `local-exec`](https://github.com/hashicorp/terraform/issues/17726#issuecomment-377357866).
 type Account struct {
 	s *pulumi.ResourceState
 }
@@ -23,12 +28,10 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil {
 		inputs["accountId"] = nil
 		inputs["displayName"] = nil
-		inputs["policyData"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["accountId"] = args.AccountId
 		inputs["displayName"] = args.DisplayName
-		inputs["policyData"] = args.PolicyData
 		inputs["project"] = args.Project
 	}
 	inputs["email"] = nil
@@ -51,7 +54,6 @@ func GetAccount(ctx *pulumi.Context,
 		inputs["displayName"] = state.DisplayName
 		inputs["email"] = state.Email
 		inputs["name"] = state.Name
-		inputs["policyData"] = state.PolicyData
 		inputs["project"] = state.Project
 		inputs["uniqueId"] = state.UniqueId
 	}
@@ -72,8 +74,10 @@ func (r *Account) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The service account ID.
-// Changing this forces a new service account to be created.
+// The account id that is used to generate the service
+// account email address and a stable unique id. It is unique within a project,
+// must be 6-30 characters long, and match the regular expression `a-z`
+// to comply with RFC1035. Changing this forces a new service account to be created.
 func (r *Account) AccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accountId"])
 }
@@ -96,13 +100,6 @@ func (r *Account) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The `google_iam_policy` data source that represents
-// the IAM policy that will be applied to the service account. The policy will be
-// merged with any existing policy.
-func (r *Account) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
-}
-
 // The ID of the project that the service account will be created in.
 // Defaults to the provider project configuration.
 func (r *Account) Project() *pulumi.StringOutput {
@@ -116,8 +113,10 @@ func (r *Account) UniqueId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Account resources.
 type AccountState struct {
-	// The service account ID.
-	// Changing this forces a new service account to be created.
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
@@ -128,10 +127,6 @@ type AccountState struct {
 	Email interface{}
 	// The fully-qualified name of the service account.
 	Name interface{}
-	// The `google_iam_policy` data source that represents
-	// the IAM policy that will be applied to the service account. The policy will be
-	// merged with any existing policy.
-	PolicyData interface{}
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}
@@ -141,16 +136,14 @@ type AccountState struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// The service account ID.
-	// Changing this forces a new service account to be created.
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName interface{}
-	// The `google_iam_policy` data source that represents
-	// the IAM policy that will be applied to the service account. The policy will be
-	// merged with any existing policy.
-	PolicyData interface{}
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project interface{}

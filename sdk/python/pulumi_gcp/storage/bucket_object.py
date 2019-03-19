@@ -50,7 +50,16 @@ class BucketObject(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the object.
+    The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+    """
+    output_name: pulumi.Output[str]
+    """
+    (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
+    `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+    """
+    self_link: pulumi.Output[str]
+    """
+    (Computed) A url reference to this object.
     """
     source: pulumi.Output[pulumi.Archive]
     """
@@ -83,7 +92,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-        :param pulumi.Input[str] name: The name of the object.
+        :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[pulumi.Archive] source: A path to the data you want to upload. Must be defined
                if `content` is not.
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
@@ -131,6 +140,8 @@ class BucketObject(pulumi.CustomResource):
 
         __props__['crc32c'] = None
         __props__['md5hash'] = None
+        __props__['output_name'] = None
+        __props__['self_link'] = None
 
         super(BucketObject, __self__).__init__(
             'gcp:storage/bucketObject:BucketObject',

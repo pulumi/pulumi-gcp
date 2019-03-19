@@ -27,10 +27,12 @@ func NewService(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["disableDependentServices"] = nil
 		inputs["disableOnDestroy"] = nil
 		inputs["project"] = nil
 		inputs["service"] = nil
 	} else {
+		inputs["disableDependentServices"] = args.DisableDependentServices
 		inputs["disableOnDestroy"] = args.DisableOnDestroy
 		inputs["project"] = args.Project
 		inputs["service"] = args.Service
@@ -48,6 +50,7 @@ func GetService(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ServiceState, opts ...pulumi.ResourceOpt) (*Service, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["disableDependentServices"] = state.DisableDependentServices
 		inputs["disableOnDestroy"] = state.DisableOnDestroy
 		inputs["project"] = state.Project
 		inputs["service"] = state.Service
@@ -69,6 +72,12 @@ func (r *Service) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+func (r *Service) DisableDependentServices() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["disableDependentServices"])
+}
+
 // If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 func (r *Service) DisableOnDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disableOnDestroy"])
@@ -86,6 +95,9 @@ func (r *Service) Service() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Service resources.
 type ServiceState struct {
+	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	DisableDependentServices interface{}
 	// If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy interface{}
 	// The project ID. If not provided, the provider project is used.
@@ -96,6 +108,9 @@ type ServiceState struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	DisableDependentServices interface{}
 	// If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy interface{}
 	// The project ID. If not provided, the provider project is used.

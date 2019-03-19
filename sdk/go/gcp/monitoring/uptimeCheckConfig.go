@@ -15,7 +15,7 @@ import (
 // 
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+//     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 // 
 // <div class = "oics-button" style="float: right; margin: 0 0 -15px">
 //   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
@@ -64,6 +64,7 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 		inputs["timeout"] = args.Timeout
 	}
 	inputs["name"] = nil
+	inputs["uptimeCheckId"] = nil
 	s, err := ctx.RegisterResource("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -90,6 +91,7 @@ func GetUptimeCheckConfig(ctx *pulumi.Context,
 		inputs["selectedRegions"] = state.SelectedRegions
 		inputs["tcpCheck"] = state.TcpCheck
 		inputs["timeout"] = state.Timeout
+		inputs["uptimeCheckId"] = state.UptimeCheckId
 	}
 	s, err := ctx.ReadResource("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, id, inputs, opts...)
 	if err != nil {
@@ -162,6 +164,10 @@ func (r *UptimeCheckConfig) Timeout() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["timeout"])
 }
 
+func (r *UptimeCheckConfig) UptimeCheckId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["uptimeCheckId"])
+}
+
 // Input properties used for looking up and filtering UptimeCheckConfig resources.
 type UptimeCheckConfigState struct {
 	ContentMatchers interface{}
@@ -179,6 +185,7 @@ type UptimeCheckConfigState struct {
 	SelectedRegions interface{}
 	TcpCheck interface{}
 	Timeout interface{}
+	UptimeCheckId interface{}
 }
 
 // The set of arguments for constructing a UptimeCheckConfig resource.

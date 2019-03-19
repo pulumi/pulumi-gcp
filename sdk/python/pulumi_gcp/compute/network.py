@@ -10,72 +10,41 @@ from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
     auto_create_subnetworks: pulumi.Output[bool]
-    """
-    If set to true, this network will be
-    created in auto subnet mode, and Google will create a subnet for each region
-    automatically. If set to false, a custom subnetted network will be created that
-    can support `google_compute_subnetwork` resources. Defaults to true.
-    """
     description: pulumi.Output[str]
-    """
-    A brief description of this resource.
-    """
     gateway_ipv4: pulumi.Output[str]
-    """
-    The IPv4 address of the gateway.
-    """
     ipv4_range: pulumi.Output[str]
-    """
-    If set to a CIDR block, uses the legacy VPC API with the
-    specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-    explicitly set to false.
-    """
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by GCE.
-    Changing this forces a new resource to be created.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     routing_mode: pulumi.Output[str]
-    """
-    Sets the network-wide routing mode for Cloud Routers
-    to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-    Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-    for more details.
-    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, description=None, ipv4_range=None, name=None, project=None, routing_mode=None, __name__=None, __opts__=None):
         """
-        Manages a network within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/vpc)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+        Manages a VPC network or legacy network resource on GCP.
+        
+        
+        To get more information about Network, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=network_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create_subnetworks: If set to true, this network will be
-               created in auto subnet mode, and Google will create a subnet for each region
-               automatically. If set to false, a custom subnetted network will be created that
-               can support `google_compute_subnetwork` resources. Defaults to true.
-        :param pulumi.Input[str] description: A brief description of this resource.
-        :param pulumi.Input[str] ipv4_range: If set to a CIDR block, uses the legacy VPC API with the
-               specified range. This API is deprecated. If set, `auto_create_subnetworks` must be
-               explicitly set to false.
-        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[str] routing_mode: Sets the network-wide routing mode for Cloud Routers
-               to use. Accepted values are `"GLOBAL"` or `"REGIONAL"`. Defaults to `"REGIONAL"`.
-               Refer to the [Cloud Router documentation](https://cloud.google.com/router/docs/concepts/overview#dynamic-routing-mode)
-               for more details.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

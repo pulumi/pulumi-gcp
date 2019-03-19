@@ -14,7 +14,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     email: pulumi.Output[str]
     entity: pulumi.Output[str]
     entity_id: pulumi.Output[str]
-    generation: pulumi.Output[int]
+    generation: pulumi.Output[float]
     object: pulumi.Output[str]
     project_team: pulumi.Output[dict]
     role: pulumi.Output[str]

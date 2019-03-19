@@ -48,6 +48,7 @@ export class ForwardingRule extends pulumi.CustomResource {
         return new ForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly allPorts: pulumi.Output<boolean | undefined>;
     public readonly backendService: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
@@ -89,6 +90,7 @@ export class ForwardingRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ForwardingRuleState = argsOrState as ForwardingRuleState | undefined;
+            inputs["allPorts"] = state ? state.allPorts : undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -112,6 +114,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
+            inputs["allPorts"] = args ? args.allPorts : undefined;
             inputs["backendService"] = args ? args.backendService : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -142,6 +145,7 @@ export class ForwardingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ForwardingRule resources.
  */
 export interface ForwardingRuleState {
+    readonly allPorts?: pulumi.Input<boolean>;
     readonly backendService?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
@@ -176,6 +180,7 @@ export interface ForwardingRuleState {
  * The set of arguments for constructing a ForwardingRule resource.
  */
 export interface ForwardingRuleArgs {
+    readonly allPorts?: pulumi.Input<boolean>;
     readonly backendService?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly ipAddress?: pulumi.Input<string>;

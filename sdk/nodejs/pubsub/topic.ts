@@ -5,18 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a topic in Google's pubsub queueing system. For more information see
- * [the official documentation](https://cloud.google.com/pubsub/docs) and
- * [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
+ * A named resource to which messages are sent by publishers.
  * 
  * 
- * ## Example Usage
+ * To get more information about Topic, see:
+ * 
+ * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+ * * How-to Guides
+ *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=pubsub_topic_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Pubsub Topic Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const mytopic = new gcp.pubsub.Topic("mytopic", {});
+ * const example = new gcp.pubsub.Topic("example", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
  * ```
  */
 export class Topic extends pulumi.CustomResource {
@@ -32,14 +46,11 @@ export class Topic extends pulumi.CustomResource {
         return new Topic(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
+    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
 
@@ -55,10 +66,12 @@ export class Topic extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: TopicState = argsOrState as TopicState | undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
@@ -70,14 +83,11 @@ export class Topic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Topic resources.
  */
 export interface TopicState {
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }
@@ -86,14 +96,11 @@ export interface TopicState {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
-    /**
-     * A unique name for the pubsub topic.
-     * Changing this forces a new resource to be created.
-     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }
