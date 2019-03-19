@@ -1,6 +1,12 @@
-## 0.17.2 (Unreleased)
+## 0.18.0 (Unreleased)
+
+### Important
+
+Version 0.18.0 of `pulumi-gcp` is now based on v2.2.0 of the Google Beta Terraform Provider, which has a variety of breaking changes from the previous version.
 
 ## Improvements
+
+- Update to v2.2.0 of the Google Beta Terraform Provider.
 
 - Fix a bug where setting a property value back to the default results in no change
 
