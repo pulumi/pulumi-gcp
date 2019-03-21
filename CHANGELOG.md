@@ -1,5 +1,10 @@
 ## 0.18.1 (Unreleased)
 
+## Improvements
+
+- storage.BucketObject::source is now of type FileAsset instead of FileArchive, meaning changes in the
+  file locally are now reflected as diffs.
+
 ## 0.18.0 (Released March 21, 2019)
 
 ### Important

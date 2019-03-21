@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const image = new gcp.storage.BucketObject("image", {
  *     bucket: image_store.name,
- *     source: new pulumi.asset.FileArchive("image1.jpg"),
+ *     source: new pulumi.asset.FileAsset("image1.jpg"),
  * });
  * const image_store_acl = new gcp.storage.ObjectACL("image-store-acl", {
  *     bucket: image_store.name,

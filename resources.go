@@ -634,10 +634,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpStorage, "BucketObject"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"source": {
-						// TODO[pulumi/pulum#280] This property should be mapped as accepting an Asset, not an Archive,
-						// but we do the later for now so that users can programmatically construct archives to upload.
 						Asset: &tfbridge.AssetTranslation{
-							Kind:   tfbridge.FileArchive,
+							Kind:   tfbridge.FileAsset,
 							Format: resource.ZIPArchive,
 						},
 					},

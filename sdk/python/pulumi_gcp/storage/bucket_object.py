@@ -61,7 +61,7 @@ class BucketObject(pulumi.CustomResource):
     """
     (Computed) A url reference to this object.
     """
-    source: pulumi.Output[pulumi.Archive]
+    source: pulumi.Output[pulumi.Asset]
     """
     A path to the data you want to upload. Must be defined
     if `content` is not.
@@ -93,7 +93,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
-        :param pulumi.Input[pulumi.Archive] source: A path to the data you want to upload. Must be defined
+        :param pulumi.Input[pulumi.Asset] source: A path to the data you want to upload. Must be defined
                if `content` is not.
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default

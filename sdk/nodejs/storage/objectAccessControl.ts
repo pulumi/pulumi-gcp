@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileArchive("../static/img/header-logo.png"),
+ *     source: new pulumi.asset.FileAsset("../static/img/header-logo.png"),
  * });
  * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
  *     bucket: bucket.name,
