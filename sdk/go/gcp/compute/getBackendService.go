@@ -21,6 +21,7 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		return nil, err
 	}
 	return &GetBackendServiceResult{
+		AffinityCookieTtlSec: outputs["affinityCookieTtlSec"],
 		Backends: outputs["backends"],
 		CdnPolicies: outputs["cdnPolicies"],
 		ConnectionDrainingTimeoutSec: outputs["connectionDrainingTimeoutSec"],
@@ -51,6 +52,7 @@ type GetBackendServiceArgs struct {
 
 // A collection of values returned by getBackendService.
 type GetBackendServiceResult struct {
+	AffinityCookieTtlSec interface{}
 	// The list of backends that serve this Backend Service.
 	Backends interface{}
 	CdnPolicies interface{}

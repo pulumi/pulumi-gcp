@@ -23,26 +23,6 @@ import * as utilities from "../utilities";
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * ## Example Usage - Filestore Instance Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instance = new gcp.filestore.Instance("instance", {
- *     fileShares: {
- *         capacityGb: 2660,
- *         name: "share1",
- *     },
- *     networks: [{
- *         modes: ["MODE_IPV4"],
- *         network: "default",
- *     }],
- *     tier: "PREMIUM",
- *     zone: "us-central1-b",
- * });
- * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

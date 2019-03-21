@@ -10,47 +10,41 @@ from .. import utilities, tables
 
 class ManagedZone(pulumi.CustomResource):
     description: pulumi.Output[str]
-    """
-    A textual description field. Defaults to 'Managed by Terraform'.
-    """
     dns_name: pulumi.Output[str]
-    """
-    The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-    """
+    forwarding_config: pulumi.Output[dict]
     labels: pulumi.Output[dict]
-    """
-    A set of key/value label pairs to assign to the instance.
-    """
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by GCE.
-    Changing this forces a new resource to be created.
-    """
     name_servers: pulumi.Output[list]
-    """
-    The list of nameservers that will be authoritative for this
-    domain. Use NS records to redirect from your DNS provider to these names,
-    thus making Google Cloud DNS authoritative for this zone.
-    """
+    private_visibility_config: pulumi.Output[dict]
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, labels=None, name=None, project=None, __name__=None, __opts__=None):
+    visibility: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, forwarding_config=None, labels=None, name=None, private_visibility_config=None, project=None, visibility=None, __name__=None, __opts__=None):
         """
-        Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
-        [API](https://cloud.google.com/dns/api/v1/managedZones).
+        A zone is a subtree of the DNS namespace under one administrative
+        responsibility. A ManagedZone is a resource that represents a DNS zone
+        hosted by the Cloud DNS service.
+        
+        
+        To get more information about ManagedZone, see:
+        
+        * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
+        * How-to Guides
+            * [Managing Zones](https://cloud.google.com/dns/zones/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=dns_managed_zone_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
-        :param pulumi.Input[str] dns_name: The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the instance.
-        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,11 +67,17 @@ class ManagedZone(pulumi.CustomResource):
             raise TypeError('Missing required property dns_name')
         __props__['dns_name'] = dns_name
 
+        __props__['forwarding_config'] = forwarding_config
+
         __props__['labels'] = labels
 
         __props__['name'] = name
 
+        __props__['private_visibility_config'] = private_visibility_config
+
         __props__['project'] = project
+
+        __props__['visibility'] = visibility
 
         __props__['name_servers'] = None
 

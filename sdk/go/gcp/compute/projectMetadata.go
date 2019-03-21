@@ -8,13 +8,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages metadata common to all instances for a project in GCE. For more information see
+// Authoritatively manages metadata common to all instances for a project in GCE. For more information see
 // [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
 // 
-// > **Note:**  If you want to manage only single key/value pairs within the project metadata
-// rather than the entire set, then use
+// > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
+// Keys unset in config but set on the server will be removed. If you want to manage only single
+// key/value pairs within the project metadata rather than the entire set, then use
 // google_compute_project_metadata_item.
 type ProjectMetadata struct {
 	s *pulumi.ResourceState
@@ -67,8 +68,7 @@ func (r *ProjectMetadata) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// A series of key value pairs. Changing this resource
-// updates the GCE state.
+// A series of key value pairs.
 func (r *ProjectMetadata) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
@@ -81,8 +81,7 @@ func (r *ProjectMetadata) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ProjectMetadata resources.
 type ProjectMetadataState struct {
-	// A series of key value pairs. Changing this resource
-	// updates the GCE state.
+	// A series of key value pairs.
 	Metadata interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -91,8 +90,7 @@ type ProjectMetadataState struct {
 
 // The set of arguments for constructing a ProjectMetadata resource.
 type ProjectMetadataArgs struct {
-	// A series of key value pairs. Changing this resource
-	// updates the GCE state.
+	// A series of key value pairs.
 	Metadata interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

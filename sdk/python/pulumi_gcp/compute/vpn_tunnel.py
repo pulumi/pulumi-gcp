@@ -12,7 +12,7 @@ class VPNTunnel(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     detailed_status: pulumi.Output[str]
-    ike_version: pulumi.Output[int]
+    ike_version: pulumi.Output[float]
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
     local_traffic_selectors: pulumi.Output[list]

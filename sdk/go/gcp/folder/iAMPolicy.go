@@ -66,7 +66,7 @@ func (r *IAMPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 func (r *IAMPolicy) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -85,7 +85,7 @@ func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMPolicy resources.
 type IAMPolicyState struct {
-	// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+	// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}

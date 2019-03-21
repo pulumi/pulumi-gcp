@@ -14,6 +14,10 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `google_organization_iam_member` for the __same role__ or they will fight over
 //    what your policy should be.
+// 
+// > **Note:** On create, this resource will overwrite members of any existing roles.
+//     Use `terraform import` and inspect the `terraform plan` output to ensure
+//     your existing members are preserved.
 type IAMBinding struct {
 	s *pulumi.ResourceState
 }
@@ -81,7 +85,7 @@ func (r *IAMBinding) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// A list of users that the role should apply to.
+// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *IAMBinding) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
@@ -102,7 +106,7 @@ func (r *IAMBinding) Role() *pulumi.StringOutput {
 type IAMBindingState struct {
 	// (Computed) The etag of the organization's IAM policy.
 	Etag interface{}
-	// A list of users that the role should apply to.
+	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
@@ -114,7 +118,7 @@ type IAMBindingState struct {
 
 // The set of arguments for constructing a IAMBinding resource.
 type IAMBindingArgs struct {
-	// A list of users that the role should apply to.
+	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}

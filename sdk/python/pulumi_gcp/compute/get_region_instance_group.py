@@ -34,8 +34,8 @@ class GetRegionInstanceGroupResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError('Expected argument self_link to be a str')
         __self__.self_link = self_link
-        if size and not isinstance(size, int):
-            raise TypeError('Expected argument size to be a int')
+        if size and not isinstance(size, float):
+            raise TypeError('Expected argument size to be a float')
         __self__.size = size
         """
         The number of instances in the group.

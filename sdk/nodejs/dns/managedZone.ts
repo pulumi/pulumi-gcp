@@ -5,21 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a zone within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/zones/) and
- * [API](https://cloud.google.com/dns/api/v1/managedZones).
+ * A zone is a subtree of the DNS namespace under one administrative
+ * responsibility. A ManagedZone is a resource that represents a DNS zone
+ * hosted by the Cloud DNS service.
  * 
- * ## Example Usage
+ * 
+ * To get more information about ManagedZone, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
+ * * How-to Guides
+ *     * [Managing Zones](https://cloud.google.com/dns/zones/)
+ * 
+ * <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+ *   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=dns_managed_zone_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+ *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+ *   </a>
+ * </div>
+ * ## Example Usage - Dns Managed Zone Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * 
+ * const rnd = new random.RandomId("rnd", {
+ *     byteLength: 4,
+ * });
+ * const example_zone = new gcp.dns.ManagedZone("example-zone", {
+ *     description: "Example DNS zone",
+ *     dnsName: rnd.hex.apply(hex => `example-${hex}.com.`),
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Dns Managed Zone Private
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const prod = new gcp.dns.ManagedZone("prod", {
- *     description: "Production DNS zone",
- *     dnsName: "prod.mydomain.com.",
+ * const network_1 = new gcp.compute.Network("network-1", {
+ *     autoCreateSubnetworks: false,
+ * });
+ * const network_2 = new gcp.compute.Network("network-2", {
+ *     autoCreateSubnetworks: false,
+ * });
+ * const private_zone = new gcp.dns.ManagedZone("private-zone", {
+ *     description: "Example private DNS zone",
+ *     dnsName: "private.example.com.",
+ *     forwardingConfig: {
+ *         targetNameServers: [
+ *             {
+ *                 ipv4Address: "172.16.1.10",
+ *             },
+ *             {
+ *                 ipv4Address: "172.16.1.20",
+ *             },
+ *         ],
+ *     },
  *     labels: {
  *         foo: "bar",
  *     },
+ *     privateVisibilityConfig: {
+ *         networks: [
+ *             {
+ *                 networkUrl: network_1.selfLink,
+ *             },
+ *             {
+ *                 networkUrl: network_2.selfLink,
+ *             },
+ *         ],
+ *     },
+ *     visibility: "private",
  * });
  * ```
  */
@@ -36,34 +96,19 @@ export class ManagedZone extends pulumi.CustomResource {
         return new ManagedZone(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     public readonly dnsName: pulumi.Output<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
+    public readonly forwardingConfig: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The list of nameservers that will be authoritative for this
-     * domain. Use NS records to redirect from your DNS provider to these names,
-     * thus making Google Cloud DNS authoritative for this zone.
-     */
     public /*out*/ readonly nameServers: pulumi.Output<string[]>;
+    public readonly privateVisibilityConfig: pulumi.Output<{ networks?: { networkUrl?: string }[] } | undefined>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project: pulumi.Output<string>;
+    public readonly visibility: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedZone resource with the given unique name, arguments, and options.
@@ -79,10 +124,13 @@ export class ManagedZone extends pulumi.CustomResource {
             const state: ManagedZoneState = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
+            inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nameServers"] = state ? state.nameServers : undefined;
+            inputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
             if (!args || args.dnsName === undefined) {
@@ -90,9 +138,12 @@ export class ManagedZone extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
+            inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["visibility"] = args ? args.visibility : undefined;
             inputs["nameServers"] = undefined /*out*/;
         }
         super("gcp:dns/managedZone:ManagedZone", name, inputs, opts);
@@ -103,60 +154,35 @@ export class ManagedZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ManagedZone resources.
  */
 export interface ManagedZoneState {
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     readonly dnsName?: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
+    readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The list of nameservers that will be authoritative for this
-     * domain. Use NS records to redirect from your DNS provider to these names,
-     * thus making Google Cloud DNS authoritative for this zone.
-     */
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly visibility?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
-    /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     readonly dnsName: pulumi.Input<string>;
-    /**
-     * A set of key/value label pairs to assign to the instance.
-     */
+    readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
-     */
     readonly name?: pulumi.Input<string>;
+    readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly visibility?: pulumi.Input<string>;
 }

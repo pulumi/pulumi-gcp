@@ -5,6 +5,7 @@
 export * from "./provider";
 
 // Export sub-modules:
+import * as accesscontextmanager from "./accesscontextmanager/index";
 import * as appengine from "./appengine/index";
 import * as bigquery from "./bigquery/index";
 import * as bigtable from "./bigtable/index";
@@ -12,6 +13,7 @@ import * as billing from "./billing/index";
 import * as binaryauthorization from "./binaryauthorization/index";
 import * as cloudbuild from "./cloudbuild/index";
 import * as cloudfunctions from "./cloudfunctions/index";
+import * as cloudscheduler from "./cloudscheduler/index";
 import * as composer from "./composer/index";
 import * as compute from "./compute/index";
 import * as config from "./config/index";
@@ -35,8 +37,10 @@ import * as resourcemanager from "./resourcemanager/index";
 import * as runtimeconfig from "./runtimeconfig/index";
 import * as serverless from "./serverless/index";
 import * as serviceAccount from "./serviceAccount/index";
+import * as servicenetworking from "./servicenetworking/index";
 import * as sourcerepo from "./sourcerepo/index";
 import * as spanner from "./spanner/index";
 import * as sql from "./sql/index";
 import * as storage from "./storage/index";
-export {appengine, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, filestore, folder, iam, kms, logging, monitoring, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, sourcerepo, spanner, sql, storage};
+import * as tpu from "./tpu/index";
+export {accesscontextmanager, appengine, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, cloudscheduler, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, filestore, folder, iam, kms, logging, monitoring, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, servicenetworking, sourcerepo, spanner, sql, storage, tpu};

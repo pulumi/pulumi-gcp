@@ -91,9 +91,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     public readonly sourceRanges: pulumi.Output<string[]>;
-    public readonly sourceServiceAccounts: pulumi.Output<string | undefined>;
+    public readonly sourceServiceAccounts: pulumi.Output<string[] | undefined>;
     public readonly sourceTags: pulumi.Output<string[] | undefined>;
-    public readonly targetServiceAccounts: pulumi.Output<string | undefined>;
+    public readonly targetServiceAccounts: pulumi.Output<string[] | undefined>;
     public readonly targetTags: pulumi.Output<string[] | undefined>;
 
     /**
@@ -179,9 +179,9 @@ export interface FirewallState {
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly sourceServiceAccounts?: pulumi.Input<string>;
+    readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly targetServiceAccounts?: pulumi.Input<string>;
+    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     readonly targetTags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -205,8 +205,8 @@ export interface FirewallArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly sourceServiceAccounts?: pulumi.Input<string>;
+    readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     readonly sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly targetServiceAccounts?: pulumi.Input<string>;
+    readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     readonly targetTags?: pulumi.Input<pulumi.Input<string>[]>;
 }

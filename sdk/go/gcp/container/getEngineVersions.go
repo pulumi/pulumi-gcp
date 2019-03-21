@@ -8,11 +8,16 @@ import (
 )
 
 // Provides access to available Google Container Engine versions in a zone or region for a given project.
+// 
+// > If you are using the `google_container_engine_versions` datasource with a regional cluster, ensure that you have provided a `region`
+// to the datasource. A `region` can have a different set of supported versions than its corresponding `zone`s, and not all `zone`s in a 
+// `region` are guaranteed to support the same version.
 func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*GetEngineVersionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
+		inputs["versionPrefix"] = args.VersionPrefix
 		inputs["zone"] = args.Zone
 	}
 	outputs, err := ctx.Invoke("gcp:container/getEngineVersions:getEngineVersions", inputs)
@@ -34,11 +39,14 @@ type GetEngineVersionsArgs struct {
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
 	Project interface{}
-	// Region to list available cluster versions for. Should match the region the cluster will be deployed in.
-	// For regional clusters, this value must be specified and cannot be inferred from provider-level region. One of zone,
-	// region, or provider-level zone is required. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Region interface{}
+	// If provided, Terraform will only return versions
+	// that match the string prefix. For example, `1.11.` will match all `1.11` series
+	// releases. Since this is just a string match, it's recommended that you append a
+	// `.` after minor versions to ensure that prefixes such as `1.1` don't match
+	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
+	// for full details on how version strings are formatted.
+	VersionPrefix interface{}
 	// Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
 	// If not specified, the provider-level zone is used. One of zone or provider-level zone is required.
 	Zone interface{}

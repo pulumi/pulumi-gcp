@@ -9,10 +9,10 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class HealthCheck(pulumi.CustomResource):
-    check_interval_sec: pulumi.Output[int]
+    check_interval_sec: pulumi.Output[float]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
-    healthy_threshold: pulumi.Output[int]
+    healthy_threshold: pulumi.Output[float]
     http_health_check: pulumi.Output[dict]
     https_health_check: pulumi.Output[dict]
     name: pulumi.Output[str]
@@ -27,9 +27,9 @@ class HealthCheck(pulumi.CustomResource):
     """
     ssl_health_check: pulumi.Output[dict]
     tcp_health_check: pulumi.Output[dict]
-    timeout_sec: pulumi.Output[int]
+    timeout_sec: pulumi.Output[float]
     type: pulumi.Output[str]
-    unhealthy_threshold: pulumi.Output[int]
+    unhealthy_threshold: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __name__=None, __opts__=None):
         """
         Health Checks determine whether instances are responsive and able to do work.

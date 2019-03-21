@@ -17,7 +17,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    proxy_id: pulumi.Output[int]
+    proxy_id: pulumi.Output[float]
     quic_override: pulumi.Output[str]
     self_link: pulumi.Output[str]
     """

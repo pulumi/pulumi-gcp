@@ -8,10 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a Node Pool resource within GKE. For more information see
-// [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
-// and
-// [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
+// Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+// the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+// and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
 type NodePool struct {
 	s *pulumi.ResourceState
 }
@@ -125,11 +124,9 @@ func (r *NodePool) Management() *pulumi.Output {
 	return r.s.State["management"]
 }
 
-// The maximum number of pods per node in this node pool.
+// ) The maximum number of pods per node in this node pool.
 // Note that this does not work on node pools which are "route-based" - that is, node
 // pools belonging to clusters that do not have IP Aliasing enabled.
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
@@ -140,8 +137,6 @@ func (r *NodePool) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Creates a unique name for the node pool beginning
-// with the specified prefix. Conflicts with `name`.
 func (r *NodePool) NamePrefix() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
 }
@@ -165,15 +160,16 @@ func (r *NodePool) Project() *pulumi.StringOutput {
 }
 
 // The region in which the cluster resides (for regional clusters).
-// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 func (r *NodePool) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The Kubernetes version for the nodes in this pool. Note that if this field
 // and `auto_upgrade` are both specified, they will fight each other for what the node version should
-// be, so setting both is highly discouraged.
+// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+// recommended that you specify explicit versions as Terraform will see spurious diffs
+// when fuzzy versions are used. See the `google_container_engine_versions` data source's
+// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 func (r *NodePool) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
@@ -197,17 +193,13 @@ type NodePoolState struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
-	// The maximum number of pods per node in this node pool.
+	// ) The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
 	// The node configuration of the pool. See
 	// google_container_cluster for schema.
@@ -219,12 +211,13 @@ type NodePoolState struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for regional clusters).
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-	// be, so setting both is highly discouraged.
+	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
+	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
+	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
 	// The zone in which the cluster resides.
 	Zone interface{}
@@ -243,17 +236,13 @@ type NodePoolArgs struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
-	// The maximum number of pods per node in this node pool.
+	// ) The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
 	Name interface{}
-	// Creates a unique name for the node pool beginning
-	// with the specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
 	// The node configuration of the pool. See
 	// google_container_cluster for schema.
@@ -265,12 +254,13 @@ type NodePoolArgs struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for regional clusters).
-	// This property is in beta, and should be used with the terraform-provider-google-beta provider.
-	// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-	// be, so setting both is highly discouraged.
+	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+	// recommended that you specify explicit versions as Terraform will see spurious diffs
+	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
+	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
 	// The zone in which the cluster resides.
 	Zone interface{}

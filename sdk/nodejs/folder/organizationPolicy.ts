@@ -112,7 +112,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      * A policy that can define specific values that are allowed or denied for the given constraint. It 
      * can also be used to allow or deny all values. Structure is documented below.
      */
-    public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, suggestedValue: string } | undefined>;
+    public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below. 
      */
@@ -191,7 +191,7 @@ export interface OrganizationPolicyState {
      * A policy that can define specific values that are allowed or denied for the given constraint. It 
      * can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below. 
      */
@@ -226,7 +226,7 @@ export interface OrganizationPolicyArgs {
      * A policy that can define specific values that are allowed or denied for the given constraint. It 
      * can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below. 
      */

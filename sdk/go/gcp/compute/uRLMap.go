@@ -8,10 +8,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a URL Map resource within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/url-map)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/urlMaps).
+// UrlMaps are used to route requests to a backend service based on rules
+// that you define for the host and path of an incoming URL.
+// 
+// 
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=url_map_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type URLMap struct {
 	s *pulumi.ResourceState
 }
@@ -40,6 +46,7 @@ func NewURLMap(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["tests"] = args.Tests
 	}
+	inputs["creationTimestamp"] = nil
 	inputs["fingerprint"] = nil
 	inputs["mapId"] = nil
 	inputs["selfLink"] = nil
@@ -56,6 +63,7 @@ func GetURLMap(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *URLMapState, opts ...pulumi.ResourceOpt) (*URLMap, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["defaultService"] = state.DefaultService
 		inputs["description"] = state.Description
 		inputs["fingerprint"] = state.Fingerprint
@@ -84,44 +92,40 @@ func (r *URLMap) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The backend service or backend bucket to use when none of the given rules match.
+func (r *URLMap) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *URLMap) DefaultService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultService"])
 }
 
-// A brief description of this resource.
 func (r *URLMap) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The unique fingerprint for this resource.
 func (r *URLMap) Fingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
-// A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
 func (r *URLMap) HostRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["hostRules"])
 }
 
-// The GCE assigned ID of the resource.
-func (r *URLMap) MapId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mapId"])
+func (r *URLMap) MapId() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["mapId"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *URLMap) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// A list of paths to match. Structure is documented below.
 func (r *URLMap) PathMatchers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["pathMatchers"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *URLMap) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -131,53 +135,37 @@ func (r *URLMap) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
 func (r *URLMap) Tests() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tests"])
 }
 
 // Input properties used for looking up and filtering URLMap resources.
 type URLMapState struct {
-	// The backend service or backend bucket to use when none of the given rules match.
+	CreationTimestamp interface{}
 	DefaultService interface{}
-	// A brief description of this resource.
 	Description interface{}
-	// The unique fingerprint for this resource.
 	Fingerprint interface{}
-	// A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
 	HostRules interface{}
-	// The GCE assigned ID of the resource.
 	MapId interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// A list of paths to match. Structure is documented below.
 	PathMatchers interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
 	Tests interface{}
 }
 
 // The set of arguments for constructing a URLMap resource.
 type URLMapArgs struct {
-	// The backend service or backend bucket to use when none of the given rules match.
 	DefaultService interface{}
-	// A brief description of this resource.
 	Description interface{}
-	// A list of host rules. Multiple blocks of this type are permitted. Structure is documented below.
 	HostRules interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// A list of paths to match. Structure is documented below.
 	PathMatchers interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The test to perform.  Multiple blocks of this type are permitted. Structure is documented below.
 	Tests interface{}
 }

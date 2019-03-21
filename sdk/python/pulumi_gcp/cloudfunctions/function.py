@@ -9,7 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Function(pulumi.CustomResource):
-    available_memory_mb: pulumi.Output[int]
+    available_memory_mb: pulumi.Output[float]
     """
     Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
     """
@@ -19,7 +19,7 @@ class Function(pulumi.CustomResource):
     """
     entry_point: pulumi.Output[str]
     """
-    Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+    Name of the function that will be executed when the Google Cloud Function is triggered.
     """
     environment_variables: pulumi.Output[dict]
     """
@@ -49,14 +49,13 @@ class Function(pulumi.CustomResource):
     """
     Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
     """
-    retry_on_failure: pulumi.Output[bool]
-    """
-    Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
-    Deprecated. Use `event_trigger.failure_policy.retry` instead.
-    """
     runtime: pulumi.Output[str]
     """
     The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+    """
+    service_account_email: pulumi.Output[str]
+    """
+    If provided, the self-provided service account to run the function with.
     """
     source_archive_bucket: pulumi.Output[str]
     """
@@ -66,25 +65,20 @@ class Function(pulumi.CustomResource):
     """
     The source archive object (file) in archive bucket.
     """
-    timeout: pulumi.Output[int]
+    source_repository: pulumi.Output[dict]
+    """
+    Represents parameters related to source repository where a function is hosted.
+    Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+    """
+    timeout: pulumi.Output[float]
     """
     Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
-    """
-    trigger_bucket: pulumi.Output[str]
-    """
-    Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
-    Deprecated. Use `event_trigger` instead.
     """
     trigger_http: pulumi.Output[bool]
     """
     Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
     """
-    trigger_topic: pulumi.Output[str]
-    """
-    Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
-    Deprecated. Use `event_trigger` instead.
-    """
-    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, __name__=None, __opts__=None):
         """
         Creates a new Cloud Function. For more information see
         [the official documentation](https://cloud.google.com/functions/docs/)
@@ -93,9 +87,9 @@ class Function(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         :param pulumi.Input[str] description: Description of the function.
-        :param pulumi.Input[str] entry_point: Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
+        :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[dict] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[dict] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
@@ -103,17 +97,14 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
-        :param pulumi.Input[bool] retry_on_failure: Whether the function should be retried on failure. This only applies to bucket and topic triggers, not HTTPS triggers.
-               Deprecated. Use `event_trigger.failure_policy.retry` instead.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+        :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
-        :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
-        :param pulumi.Input[str] trigger_bucket: Google Cloud Storage bucket name. Every change in files in this bucket will trigger function execution. Cannot be used with `trigger_http` and `trigger_topic`.
-               Deprecated. Use `event_trigger` instead.
+        :param pulumi.Input[dict] source_repository: Represents parameters related to source repository where a function is hosted.
+               Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+        :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
-        :param pulumi.Input[str] trigger_topic: Name of Pub/Sub topic. Every message published in this topic will trigger function execution with message contents passed as input data. Cannot be used with `trigger_http` and `trigger_bucket`.
-               Deprecated. Use `event_trigger` instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,25 +141,19 @@ class Function(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['retry_on_failure'] = retry_on_failure
-
         __props__['runtime'] = runtime
 
-        if source_archive_bucket is None:
-            raise TypeError('Missing required property source_archive_bucket')
+        __props__['service_account_email'] = service_account_email
+
         __props__['source_archive_bucket'] = source_archive_bucket
 
-        if source_archive_object is None:
-            raise TypeError('Missing required property source_archive_object')
         __props__['source_archive_object'] = source_archive_object
+
+        __props__['source_repository'] = source_repository
 
         __props__['timeout'] = timeout
 
-        __props__['trigger_bucket'] = trigger_bucket
-
         __props__['trigger_http'] = trigger_http
-
-        __props__['trigger_topic'] = trigger_topic
 
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',

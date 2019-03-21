@@ -19,7 +19,7 @@ class AccountIamBinding(pulumi.CustomResource):
     """
     members: pulumi.Output[list]
     """
-    A list of users that the role should apply to.
+    A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
     """
     role: pulumi.Output[str]
     """
@@ -34,10 +34,14 @@ class AccountIamBinding(pulumi.CustomResource):
            `google_billing_account_iam_member` for the __same role__ or they will fight over
            what your policy should be.
         
+        > **Note:** On create, this resource will overwrite members of any existing roles.
+            Use `terraform import` and inspect the `terraform plan` output to ensure
+            your existing members are preserved.
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
-        :param pulumi.Input[list] members: A list of users that the role should apply to.
+        :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied.
         """
         if __name__ is not None:

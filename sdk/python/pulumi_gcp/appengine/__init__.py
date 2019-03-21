@@ -4,3 +4,4 @@
 
 # Export this package's modules as members:
 from .application import *
+from .firewall_rule import *

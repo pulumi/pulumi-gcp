@@ -17,6 +17,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     deletion_protection: pulumi.Output[bool]
     description: pulumi.Output[str]
     guest_accelerators: pulumi.Output[list]
+    hostname: pulumi.Output[str]
     instance_id: pulumi.Output[str]
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
@@ -48,7 +49,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     The zone that the machine should be created in. If not
     set, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -96,6 +97,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__['description'] = description
 
         __props__['guest_accelerators'] = guest_accelerators
+
+        __props__['hostname'] = hostname
 
         __props__['labels'] = labels
 

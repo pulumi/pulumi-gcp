@@ -26,6 +26,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     selected_regions: pulumi.Output[list]
     tcp_check: pulumi.Output[dict]
     timeout: pulumi.Output[str]
+    uptime_check_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, __name__=None, __opts__=None):
         """
         This message configures which resources and services to monitor for availability.
@@ -35,7 +36,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
+            * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
         
         <div class = "oics-button" style="float: right; margin: 0 0 -15px">
           <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=uptime_check_config_http&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
@@ -92,6 +93,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__['timeout'] = timeout
 
         __props__['name'] = None
+        __props__['uptime_check_id'] = None
 
         super(UptimeCheckConfig, __self__).__init__(
             'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',

@@ -15,7 +15,7 @@ class IAMMember(pulumi.CustomResource):
     """
     member: pulumi.Output[str]
     """
-    The user that the role should apply to.
+    The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
     """
     org_id: pulumi.Output[str]
     """
@@ -37,7 +37,7 @@ class IAMMember(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] member: The user that the role should apply to.
+        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

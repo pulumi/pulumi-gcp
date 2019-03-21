@@ -3,4 +3,4 @@
 
 // Export members:
 export * from "./config";
-export * from "./variavble";
+export * from "./variable";

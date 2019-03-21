@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
  * Allows creation and management of a single binding within IAM policy for
  * an existing Google Cloud KMS crypto key.
  * 
+ * > **Note:** On create, this resource will overwrite members of any existing roles.
+ *     Use `terraform import` and inspect the `terraform plan` output to ensure
+ *     your existing members are preserved.
+ * 
  * ## Example Usage
  * 
  * ```typescript
@@ -16,7 +20,7 @@ import * as utilities from "../utilities";
  * 
  * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
  *     cryptoKeyId: "my-gcp-project/us-central1/my-key-ring/my-crypto-key",
- *     members: ["user:jane@example.com"],
+ *     members: ["user:alice@gmail.com"],
  *     role: "roles/editor",
  * });
  * ```
@@ -46,7 +50,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     public readonly members: pulumi.Output<string[]>;
     /**
@@ -108,7 +112,7 @@ export interface CryptoKeyIAMBindingState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -131,7 +135,7 @@ export interface CryptoKeyIAMBindingArgs {
      */
     readonly cryptoKeyId: pulumi.Input<string>;
     /**
-     * A list of users that the role should apply to.
+     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**

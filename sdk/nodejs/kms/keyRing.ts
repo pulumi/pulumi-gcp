@@ -6,8 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Allows creation of a Google Cloud Platform KMS KeyRing. For more information see
- * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#keyring)
- * and 
+ * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
+ * and
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
  * 
  * A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project

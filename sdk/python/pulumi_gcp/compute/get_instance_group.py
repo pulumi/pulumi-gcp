@@ -46,8 +46,8 @@ class GetInstanceGroupResult:
         """
         The URI of the resource.
         """
-        if size and not isinstance(size, int):
-            raise TypeError('Expected argument size to be a int')
+        if size and not isinstance(size, float):
+            raise TypeError('Expected argument size to be a float')
         __self__.size = size
         """
         The number of instances in the group.

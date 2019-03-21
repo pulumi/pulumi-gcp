@@ -9,79 +9,62 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Image(pulumi.CustomResource):
-    create_timeout: pulumi.Output[int]
-    """
-    Configurable timeout in minutes for creating images. Default is 4 minutes.
-    """
+    archive_size_bytes: pulumi.Output[float]
+    creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
-    """
-    The description of the image to be created
-    """
+    disk_size_gb: pulumi.Output[float]
     family: pulumi.Output[str]
-    """
-    The name of the image family to which this image belongs.
-    """
     label_fingerprint: pulumi.Output[str]
-    """
-    The fingerprint of the assigned labels.
-    """
     labels: pulumi.Output[dict]
-    """
-    A set of key/value label pairs to assign to the image.
-    """
     licenses: pulumi.Output[list]
-    """
-    A list of license URIs to apply to this image. Changing this
-    forces a new resource to be created.
-    """
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by GCE.
-    Changing this forces a new resource to be created.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     raw_disk: pulumi.Output[dict]
-    """
-    The raw disk that will be used as the source of the image.
-    Changing this forces a new resource to be created. Structure is documented
-    below.
-    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     source_disk: pulumi.Output[str]
-    """
-    The URL of a disk that will be used as the source of the
-    image. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, create_timeout=None, description=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __name__=None, __opts__=None):
         """
-        Creates a bootable VM image resource for Google Compute Engine from an existing
-        tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
-        [API](https://cloud.google.com/compute/docs/reference/latest/images).
+        Represents an Image resource.
+        
+        Google Compute Engine uses operating system images to create the root
+        persistent disks for your instances. You specify an image when you create
+        an instance. Images contain a boot loader, an operating system, and a
+        root file system. Linux operating system images are also capable of
+        running containers on Compute Engine.
+        
+        Images can be either public or custom.
+        
+        Public images are provided and maintained by Google, open-source
+        communities, and third-party vendors. By default, all projects have
+        access to these images and can use them to create instances.  Custom
+        images are available only to your project. You can create a custom image
+        from root persistent disks and other images. Then, use the custom image
+        to create an instance.
+        
+        
+        To get more information about Image, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/images)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/images)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=image_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] create_timeout: Configurable timeout in minutes for creating images. Default is 4 minutes.
-        :param pulumi.Input[str] description: The description of the image to be created
-        :param pulumi.Input[str] family: The name of the image family to which this image belongs.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the image.
-        :param pulumi.Input[list] licenses: A list of license URIs to apply to this image. Changing this
-               forces a new resource to be created.
-        :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[dict] raw_disk: The raw disk that will be used as the source of the image.
-               Changing this forces a new resource to be created. Structure is documented
-               below.
-        :param pulumi.Input[str] source_disk: The URL of a disk that will be used as the source of the
-               image. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,9 +81,9 @@ class Image(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['create_timeout'] = create_timeout
-
         __props__['description'] = description
+
+        __props__['disk_size_gb'] = disk_size_gb
 
         __props__['family'] = family
 
@@ -116,6 +99,8 @@ class Image(pulumi.CustomResource):
 
         __props__['source_disk'] = source_disk
 
+        __props__['archive_size_bytes'] = None
+        __props__['creation_timestamp'] = None
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None
 

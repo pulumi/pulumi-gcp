@@ -10,7 +10,7 @@ from .. import utilities, tables
 
 class SSLCertificate(pulumi.CustomResource):
     certificate: pulumi.Output[str]
-    certificate_id: pulumi.Output[int]
+    certificate_id: pulumi.Output[float]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     name: pulumi.Output[str]

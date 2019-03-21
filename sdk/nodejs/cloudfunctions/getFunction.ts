@@ -82,6 +82,7 @@ export interface GetFunctionResult {
      * The runtime in which the function is running.
      */
     readonly runtime: string;
+    readonly serviceAccountEmail: string;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
@@ -90,21 +91,16 @@ export interface GetFunctionResult {
      * The source archive object (file) in archive bucket.
      */
     readonly sourceArchiveObject: string;
+    readonly sourceRepositories: { deployedUrl: string, url: string }[];
     /**
      * Function execution timeout (in seconds).
      */
     readonly timeout: number;
-    /**
-     * If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
-     */
     readonly triggerBucket: string;
     /**
      * If function is triggered by HTTP, this boolean is set.
      */
     readonly triggerHttp: boolean;
-    /**
-     * If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
-     */
     readonly triggerTopic: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

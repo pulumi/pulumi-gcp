@@ -14,7 +14,7 @@ class RegionBackendService(pulumi.CustomResource):
     The list of backends that serve this BackendService.
     Structure is documented below.
     """
-    connection_draining_timeout_sec: pulumi.Output[int]
+    connection_draining_timeout_sec: pulumi.Output[float]
     """
     Time for which instance will be drained
     (not accept new connections, but still work to finish started ones). Defaults to `0`.
@@ -62,7 +62,7 @@ class RegionBackendService(pulumi.CustomResource):
     affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
     Defaults to `NONE`.
     """
-    timeout_sec: pulumi.Output[int]
+    timeout_sec: pulumi.Output[float]
     """
     The number of secs to wait for a backend to respond
     to a request before considering the request failed. Defaults to `30`.
@@ -80,7 +80,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backends: The list of backends that serve this BackendService.
                Structure is documented below.
-        :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained
+        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained
                (not accept new connections, but still work to finish started ones). Defaults to `0`.
         :param pulumi.Input[str] description: The textual description for the backend service.
         :param pulumi.Input[str] health_checks: Specifies a list of health checks
@@ -96,7 +96,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are `NONE` (no
                affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
                Defaults to `NONE`.
-        :param pulumi.Input[int] timeout_sec: The number of secs to wait for a backend to respond
+        :param pulumi.Input[float] timeout_sec: The number of secs to wait for a backend to respond
                to a request before considering the request failed. Defaults to `30`.
         """
         if __name__ is not None:

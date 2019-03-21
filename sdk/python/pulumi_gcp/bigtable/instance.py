@@ -9,13 +9,9 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
-    cluster: pulumi.Output[dict]
+    clusters: pulumi.Output[list]
     """
-    A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
-    """
-    cluster_id: pulumi.Output[str]
-    """
-    The ID of the Cloud Bigtable cluster.
+    A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
     """
     display_name: pulumi.Output[str]
     """
@@ -27,26 +23,14 @@ class Instance(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the Cloud Bigtable instance.
-    """
-    num_nodes: pulumi.Output[int]
-    """
-    The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+    The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
     """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
-    storage_type: pulumi.Output[str]
-    """
-    The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
-    """
-    zone: pulumi.Output[str]
-    """
-    The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-    """
-    def __init__(__self__, resource_name, opts=None, cluster=None, cluster_id=None, display_name=None, instance_type=None, name=None, num_nodes=None, project=None, storage_type=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusters=None, display_name=None, instance_type=None, name=None, project=None, __name__=None, __opts__=None):
         """
         Creates a Google Bigtable instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -54,16 +38,12 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cluster: A block of cluster configuration options. Either `cluster` or `cluster_id` must be used. Only one cluster may be specified. See structure below.
-        :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster.
+        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
-        :param pulumi.Input[str] name: The name of the Cloud Bigtable instance.
-        :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster. Minimum of `3` for a `PRODUCTION` instance. Cannot be set for a `DEVELOPMENT` instance.
+        :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or `"HDD"`. Defaults to `"SSD"`.
-        :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. Zones that support Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,9 +60,9 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['cluster'] = cluster
-
-        __props__['cluster_id'] = cluster_id
+        if clusters is None:
+            raise TypeError('Missing required property clusters')
+        __props__['clusters'] = clusters
 
         __props__['display_name'] = display_name
 
@@ -90,13 +70,7 @@ class Instance(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        __props__['num_nodes'] = num_nodes
-
         __props__['project'] = project
-
-        __props__['storage_type'] = storage_type
-
-        __props__['zone'] = zone
 
         super(Instance, __self__).__init__(
             'gcp:bigtable/instance:Instance',

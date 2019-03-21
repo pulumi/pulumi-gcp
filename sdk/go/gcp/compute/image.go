@@ -7,9 +7,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a bootable VM image resource for Google Compute Engine from an existing
-// tarball. For more information see [the official documentation](https://cloud.google.com/compute/docs/images) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/images).
+// Represents an Image resource.
+// 
+// Google Compute Engine uses operating system images to create the root
+// persistent disks for your instances. You specify an image when you create
+// an instance. Images contain a boot loader, an operating system, and a
+// root file system. Linux operating system images are also capable of
+// running containers on Compute Engine.
+// 
+// Images can be either public or custom.
+// 
+// Public images are provided and maintained by Google, open-source
+// communities, and third-party vendors. By default, all projects have
+// access to these images and can use them to create instances.  Custom
+// images are available only to your project. You can create a custom image
+// from root persistent disks and other images. Then, use the custom image
+// to create an instance.
+// 
+// 
+// To get more information about Image, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/images)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=image_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type Image struct {
 	s *pulumi.ResourceState
 }
@@ -19,8 +45,8 @@ func NewImage(ctx *pulumi.Context,
 	name string, args *ImageArgs, opts ...pulumi.ResourceOpt) (*Image, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["createTimeout"] = nil
 		inputs["description"] = nil
+		inputs["diskSizeGb"] = nil
 		inputs["family"] = nil
 		inputs["labels"] = nil
 		inputs["licenses"] = nil
@@ -29,8 +55,8 @@ func NewImage(ctx *pulumi.Context,
 		inputs["rawDisk"] = nil
 		inputs["sourceDisk"] = nil
 	} else {
-		inputs["createTimeout"] = args.CreateTimeout
 		inputs["description"] = args.Description
+		inputs["diskSizeGb"] = args.DiskSizeGb
 		inputs["family"] = args.Family
 		inputs["labels"] = args.Labels
 		inputs["licenses"] = args.Licenses
@@ -39,6 +65,8 @@ func NewImage(ctx *pulumi.Context,
 		inputs["rawDisk"] = args.RawDisk
 		inputs["sourceDisk"] = args.SourceDisk
 	}
+	inputs["archiveSizeBytes"] = nil
+	inputs["creationTimestamp"] = nil
 	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/image:Image", name, true, inputs, opts...)
@@ -54,8 +82,10 @@ func GetImage(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ImageState, opts ...pulumi.ResourceOpt) (*Image, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["createTimeout"] = state.CreateTimeout
+		inputs["archiveSizeBytes"] = state.ArchiveSizeBytes
+		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
+		inputs["diskSizeGb"] = state.DiskSizeGb
 		inputs["family"] = state.Family
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
@@ -83,52 +113,48 @@ func (r *Image) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Configurable timeout in minutes for creating images. Default is 4 minutes.
-func (r *Image) CreateTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["createTimeout"])
+func (r *Image) ArchiveSizeBytes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["archiveSizeBytes"])
 }
 
-// The description of the image to be created
+func (r *Image) CreationTimestamp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+}
+
 func (r *Image) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The name of the image family to which this image belongs.
+func (r *Image) DiskSizeGb() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["diskSizeGb"])
+}
+
 func (r *Image) Family() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["family"])
 }
 
-// The fingerprint of the assigned labels.
 func (r *Image) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-// A set of key/value label pairs to assign to the image.
 func (r *Image) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// A list of license URIs to apply to this image. Changing this
-// forces a new resource to be created.
 func (r *Image) Licenses() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["licenses"])
 }
 
-// A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
 func (r *Image) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Image) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The raw disk that will be used as the source of the image.
-// Changing this forces a new resource to be created. Structure is documented
-// below.
 func (r *Image) RawDisk() *pulumi.Output {
 	return r.s.State["rawDisk"]
 }
@@ -138,68 +164,41 @@ func (r *Image) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The URL of a disk that will be used as the source of the
-// image. Changing this forces a new resource to be created.
 func (r *Image) SourceDisk() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceDisk"])
 }
 
 // Input properties used for looking up and filtering Image resources.
 type ImageState struct {
-	// Configurable timeout in minutes for creating images. Default is 4 minutes.
-	CreateTimeout interface{}
-	// The description of the image to be created
+	ArchiveSizeBytes interface{}
+	CreationTimestamp interface{}
 	Description interface{}
-	// The name of the image family to which this image belongs.
+	DiskSizeGb interface{}
 	Family interface{}
-	// The fingerprint of the assigned labels.
 	LabelFingerprint interface{}
-	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
-	// A list of license URIs to apply to this image. Changing this
-	// forces a new resource to be created.
 	Licenses interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The raw disk that will be used as the source of the image.
-	// Changing this forces a new resource to be created. Structure is documented
-	// below.
 	RawDisk interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The URL of a disk that will be used as the source of the
-	// image. Changing this forces a new resource to be created.
 	SourceDisk interface{}
 }
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// Configurable timeout in minutes for creating images. Default is 4 minutes.
-	CreateTimeout interface{}
-	// The description of the image to be created
 	Description interface{}
-	// The name of the image family to which this image belongs.
+	DiskSizeGb interface{}
 	Family interface{}
-	// A set of key/value label pairs to assign to the image.
 	Labels interface{}
-	// A list of license URIs to apply to this image. Changing this
-	// forces a new resource to be created.
 	Licenses interface{}
-	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The raw disk that will be used as the source of the image.
-	// Changing this forces a new resource to be created. Structure is documented
-	// below.
 	RawDisk interface{}
-	// The URL of a disk that will be used as the source of the
-	// image. Changing this forces a new resource to be created.
 	SourceDisk interface{}
 }

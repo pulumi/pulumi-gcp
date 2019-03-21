@@ -7,9 +7,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// For more information, see [the official
-// documentation](https://cloud.google.com/source-repositories/) and
-// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+// A repository (or repo) is a Git repository storing versioned source content.
+// 
+// 
+// To get more information about Repository, see:
+// 
+// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/source-repositories/)
+// 
+// <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+//   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=sourcerepo_repository_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+//     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+//   </a>
+// </div>
 type Repository struct {
 	s *pulumi.ResourceState
 }
@@ -62,45 +73,38 @@ func (r *Repository) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The name of the repository that will be created.
 func (r *Repository) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Repository) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The size of the repository.
 func (r *Repository) Size() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["size"])
 }
 
-// The url to clone the repository.
 func (r *Repository) Url() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering Repository resources.
 type RepositoryState struct {
-	// The name of the repository that will be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The size of the repository.
 	Size interface{}
-	// The url to clone the repository.
 	Url interface{}
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// The name of the repository that will be created.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

@@ -57,9 +57,10 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     readonly additionalZones: string[];
-    readonly addonsConfigs: { horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
+    readonly addonsConfigs: { cloudrunConfigs: { disabled: boolean }[], horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], istioConfigs: { auth: string, disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
     readonly clusterAutoscalings: { enabled: boolean, resourceLimits: { maximum: number, minimum: number, resourceType: string }[] }[];
     readonly clusterIpv4Cidr: string;
+    readonly defaultMaxPodsPerNode: number;
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
     readonly enableKubernetesAlpha: boolean;
@@ -68,7 +69,7 @@ export interface GetClusterResult {
     readonly endpoint: string;
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
-    readonly ipAllocationPolicies: { clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork: boolean, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName: string }[];
+    readonly ipAllocationPolicies: { clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork: boolean, nodeIpv4CidrBlock: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName: string, useIpAliases: boolean }[];
     readonly loggingService: string;
     readonly maintenancePolicies: { dailyMaintenanceWindows: { duration: string, startTime: string }[] }[];
     readonly masterAuths: { clientCertificate: string, clientCertificateConfigs: { issueClientCertificate: boolean }[], clientKey: string, clusterCaCertificate: string, password: string, username: string }[];
@@ -88,6 +89,7 @@ export interface GetClusterResult {
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly subnetwork: string;
+    readonly tpuIpv4CidrBlock: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

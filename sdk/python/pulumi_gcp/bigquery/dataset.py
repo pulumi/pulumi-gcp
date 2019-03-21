@@ -14,7 +14,7 @@ class Dataset(pulumi.CustomResource):
     An array of objects that define dataset access for
     one or more entities. Structure is documented below.
     """
-    creation_time: pulumi.Output[int]
+    creation_time: pulumi.Output[float]
     """
     The time when this dataset was created, in milliseconds since the epoch.
     """
@@ -22,11 +22,22 @@ class Dataset(pulumi.CustomResource):
     """
     The ID of the dataset containing this table.
     """
-    default_table_expiration_ms: pulumi.Output[int]
+    default_partition_expiration_ms: pulumi.Output[float]
+    """
+    The default partition expiration
+    for all partitioned tables in the dataset, in milliseconds.
+    """
+    default_table_expiration_ms: pulumi.Output[float]
     """
     The default lifetime of all
     tables in the dataset, in milliseconds. The minimum value is 3600000
     milliseconds (one hour).
+    """
+    delete_contents_on_destroy: pulumi.Output[bool]
+    """
+    If set to `true`, delete all the
+    tables in the dataset when destroying the resource; otherwise, destroying
+    the resource will fail if tables are present.
     """
     description: pulumi.Output[str]
     """
@@ -44,7 +55,7 @@ class Dataset(pulumi.CustomResource):
     """
     A mapping of labels to assign to the resource.
     """
-    last_modified_time: pulumi.Output[int]
+    last_modified_time: pulumi.Output[float]
     """
     The date when this dataset or any of its tables was last modified,
     in milliseconds since the epoch.
@@ -63,7 +74,7 @@ class Dataset(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_table_expiration_ms=None, description=None, friendly_name=None, labels=None, location=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, friendly_name=None, labels=None, location=None, project=None, __name__=None, __opts__=None):
         """
         Creates a dataset resource for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -74,9 +85,14 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[list] accesses: An array of objects that define dataset access for
                one or more entities. Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
-        :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all
+        :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration
+               for all partitioned tables in the dataset, in milliseconds.
+        :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all
                tables in the dataset, in milliseconds. The minimum value is 3600000
                milliseconds (one hour).
+        :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the
+               tables in the dataset when destroying the resource; otherwise, destroying
+               the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset.
         :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
@@ -106,7 +122,11 @@ class Dataset(pulumi.CustomResource):
             raise TypeError('Missing required property dataset_id')
         __props__['dataset_id'] = dataset_id
 
+        __props__['default_partition_expiration_ms'] = default_partition_expiration_ms
+
         __props__['default_table_expiration_ms'] = default_table_expiration_ms
+
+        __props__['delete_contents_on_destroy'] = delete_contents_on_destroy
 
         __props__['description'] = description
 

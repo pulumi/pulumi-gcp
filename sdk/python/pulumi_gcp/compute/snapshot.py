@@ -11,7 +11,7 @@ from .. import utilities, tables
 class Snapshot(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
-    disk_size_gb: pulumi.Output[int]
+    disk_size_gb: pulumi.Output[float]
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
     licenses: pulumi.Output[list]
@@ -26,17 +26,13 @@ class Snapshot(pulumi.CustomResource):
     The URI of the created resource.
     """
     snapshot_encryption_key: pulumi.Output[dict]
-    snapshot_encryption_key_raw: pulumi.Output[str]
-    snapshot_encryption_key_sha256: pulumi.Output[str]
-    snapshot_id: pulumi.Output[int]
+    snapshot_id: pulumi.Output[float]
     source_disk: pulumi.Output[str]
     source_disk_encryption_key: pulumi.Output[dict]
-    source_disk_encryption_key_raw: pulumi.Output[str]
-    source_disk_encryption_key_sha256: pulumi.Output[str]
     source_disk_link: pulumi.Output[str]
-    storage_bytes: pulumi.Output[int]
+    storage_bytes: pulumi.Output[float]
     zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, snapshot_encryption_key_raw=None, source_disk=None, source_disk_encryption_key=None, source_disk_encryption_key_raw=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, zone=None, __name__=None, __opts__=None):
         """
         Represents a Persistent Disk Snapshot resource.
         
@@ -57,6 +53,12 @@ class Snapshot(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=snapshot_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,15 +90,11 @@ class Snapshot(pulumi.CustomResource):
 
         __props__['snapshot_encryption_key'] = snapshot_encryption_key
 
-        __props__['snapshot_encryption_key_raw'] = snapshot_encryption_key_raw
-
         if source_disk is None:
             raise TypeError('Missing required property source_disk')
         __props__['source_disk'] = source_disk
 
         __props__['source_disk_encryption_key'] = source_disk_encryption_key
-
-        __props__['source_disk_encryption_key_raw'] = source_disk_encryption_key_raw
 
         __props__['zone'] = zone
 
@@ -105,9 +103,7 @@ class Snapshot(pulumi.CustomResource):
         __props__['label_fingerprint'] = None
         __props__['licenses'] = None
         __props__['self_link'] = None
-        __props__['snapshot_encryption_key_sha256'] = None
         __props__['snapshot_id'] = None
-        __props__['source_disk_encryption_key_sha256'] = None
         __props__['source_disk_link'] = None
         __props__['storage_bytes'] = None
 

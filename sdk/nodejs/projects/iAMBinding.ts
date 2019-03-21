@@ -18,7 +18,11 @@ import * as utilities from "../utilities";
  * ## google\_project\_iam\_policy
  * 
  * > **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Proceed with caution.
+ *    using this resource. Deleting a `google_project_iam_policy` removes access
+ *    from anyone without organization-level access to the project. Proceed with caution.
+ *    It's not recommended to use `google_project_iam_policy` with your provider project
+ *    to avoid locking yourself out, and it should generally only be used with projects
+ *    fully managed by Terraform.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,8 +87,10 @@ export class IAMBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag: pulumi.Output<string>;
     public readonly members: pulumi.Output<string[]>;
     /**
-     * The project ID. If not specified, uses the
-     * ID of the project configured with the provider.
+     * The project ID. If not specified for `google_project_iam_binding`
+     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
+     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * will not be inferred from the provider.
      */
     public readonly project: pulumi.Output<string | undefined>;
     /**
@@ -137,8 +143,10 @@ export interface IAMBindingState {
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project ID. If not specified, uses the
-     * ID of the project configured with the provider.
+     * The project ID. If not specified for `google_project_iam_binding`
+     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
+     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * will not be inferred from the provider.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -155,8 +163,10 @@ export interface IAMBindingState {
 export interface IAMBindingArgs {
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project ID. If not specified, uses the
-     * ID of the project configured with the provider.
+     * The project ID. If not specified for `google_project_iam_binding`
+     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
+     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * will not be inferred from the provider.
      */
     readonly project?: pulumi.Input<string>;
     /**

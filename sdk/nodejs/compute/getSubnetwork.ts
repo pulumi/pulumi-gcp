@@ -19,11 +19,13 @@ import * as utilities from "../utilities";
  * }));
  * ```
  */
-export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
+export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
+    args = args || {};
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
+        "selfLink": args.selfLink,
     }, opts);
 }
 
@@ -32,9 +34,10 @@ export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetSubnetworkArgs {
     /**
-     * The name of the subnetwork.
+     * The name of the subnetwork. One of `name` or `self_link`
+     * must be specified.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -45,6 +48,11 @@ export interface GetSubnetworkArgs {
      * unspecified, this defaults to the region configured in the provider.
      */
     readonly region?: string;
+    /**
+     * The self link of the subnetwork. If `self_link` is
+     * specified, `name`, `project`, and `region` are ignored.
+     */
+    readonly selfLink?: string;
 }
 
 /**
@@ -82,9 +90,6 @@ export interface GetSubnetworkResult {
      * VM instances contained in this subnetwork. Structure is documented below.
      */
     readonly secondaryIpRanges: { ipCidrRange: string, rangeName: string }[];
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

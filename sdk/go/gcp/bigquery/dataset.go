@@ -25,7 +25,9 @@ func NewDataset(ctx *pulumi.Context,
 	if args == nil {
 		inputs["accesses"] = nil
 		inputs["datasetId"] = nil
+		inputs["defaultPartitionExpirationMs"] = nil
 		inputs["defaultTableExpirationMs"] = nil
+		inputs["deleteContentsOnDestroy"] = nil
 		inputs["description"] = nil
 		inputs["friendlyName"] = nil
 		inputs["labels"] = nil
@@ -34,7 +36,9 @@ func NewDataset(ctx *pulumi.Context,
 	} else {
 		inputs["accesses"] = args.Accesses
 		inputs["datasetId"] = args.DatasetId
+		inputs["defaultPartitionExpirationMs"] = args.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = args.DefaultTableExpirationMs
+		inputs["deleteContentsOnDestroy"] = args.DeleteContentsOnDestroy
 		inputs["description"] = args.Description
 		inputs["friendlyName"] = args.FriendlyName
 		inputs["labels"] = args.Labels
@@ -61,7 +65,9 @@ func GetDataset(ctx *pulumi.Context,
 		inputs["accesses"] = state.Accesses
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
+		inputs["defaultPartitionExpirationMs"] = state.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = state.DefaultTableExpirationMs
+		inputs["deleteContentsOnDestroy"] = state.DeleteContentsOnDestroy
 		inputs["description"] = state.Description
 		inputs["etag"] = state.Etag
 		inputs["friendlyName"] = state.FriendlyName
@@ -104,11 +110,24 @@ func (r *Dataset) DatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
+// The default partition expiration
+// for all partitioned tables in the dataset, in milliseconds.
+func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["defaultPartitionExpirationMs"])
+}
+
 // The default lifetime of all
 // tables in the dataset, in milliseconds. The minimum value is 3600000
 // milliseconds (one hour).
 func (r *Dataset) DefaultTableExpirationMs() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["defaultTableExpirationMs"])
+}
+
+// If set to `true`, delete all the
+// tables in the dataset when destroying the resource; otherwise, destroying
+// the resource will fail if tables are present.
+func (r *Dataset) DeleteContentsOnDestroy() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["deleteContentsOnDestroy"])
 }
 
 // A user-friendly description of the dataset.
@@ -163,10 +182,17 @@ type DatasetState struct {
 	CreationTime interface{}
 	// The ID of the dataset containing this table.
 	DatasetId interface{}
+	// The default partition expiration
+	// for all partitioned tables in the dataset, in milliseconds.
+	DefaultPartitionExpirationMs interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000
 	// milliseconds (one hour).
 	DefaultTableExpirationMs interface{}
+	// If set to `true`, delete all the
+	// tables in the dataset when destroying the resource; otherwise, destroying
+	// the resource will fail if tables are present.
+	DeleteContentsOnDestroy interface{}
 	// A user-friendly description of the dataset.
 	Description interface{}
 	// A hash of the resource.
@@ -195,10 +221,17 @@ type DatasetArgs struct {
 	Accesses interface{}
 	// The ID of the dataset containing this table.
 	DatasetId interface{}
+	// The default partition expiration
+	// for all partitioned tables in the dataset, in milliseconds.
+	DefaultPartitionExpirationMs interface{}
 	// The default lifetime of all
 	// tables in the dataset, in milliseconds. The minimum value is 3600000
 	// milliseconds (one hour).
 	DefaultTableExpirationMs interface{}
+	// If set to `true`, delete all the
+	// tables in the dataset when destroying the resource; otherwise, destroying
+	// the resource will fail if tables are present.
+	DeleteContentsOnDestroy interface{}
 	// A user-friendly description of the dataset.
 	Description interface{}
 	// A descriptive name for the dataset.

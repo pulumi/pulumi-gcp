@@ -8,6 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Manages a Cloud NAT. For more information see
+// [the official documentation](https://cloud.google.com/nat/docs/overview)
+// and
+// [API](https://cloud.google.com/compute/docs/reference/rest/beta/routers).
 type RouterNat struct {
 	s *pulumi.ResourceState
 }
@@ -95,88 +99,193 @@ func (r *RouterNat) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Timeout (in seconds) for ICMP connections.
+// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 func (r *RouterNat) IcmpIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["icmpIdleTimeoutSec"])
 }
 
+// Minimum number of ports allocated to a VM
+// from this NAT config. If not set, a default number of ports is allocated to a VM.
+// Changing this forces a new NAT to be created.
 func (r *RouterNat) MinPortsPerVm() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["minPortsPerVm"])
 }
 
+// A unique name for Cloud NAT, required by GCE. Changing
+// this forces a new NAT to be created.
 func (r *RouterNat) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// How external IPs should be allocated for
+// this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
+// a new NAT to be created.
 func (r *RouterNat) NatIpAllocateOption() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["natIpAllocateOption"])
 }
 
+// List of `self_link`s of external IPs. Only valid if
+// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+// new NAT to be created.
 func (r *RouterNat) NatIps() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["natIps"])
 }
 
+// The ID of the project in which this NAT's router belongs. If it
+// is not provided, the provider project is used. Changing this forces a new NAT to be created.
 func (r *RouterNat) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The region this NAT's router sits in. If not specified,
+// the project region will be used. Changing this forces a new NAT to be
+// created.
 func (r *RouterNat) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// The name of the router in which this NAT will be configured.
+// Changing this forces a new NAT to be created.
 func (r *RouterNat) Router() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["router"])
 }
 
+// How NAT should be configured
+// per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
+// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
+// this forces a new NAT to be created.
 func (r *RouterNat) SourceSubnetworkIpRangesToNat() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceSubnetworkIpRangesToNat"])
 }
 
+// One or more subnetwork NAT configurations. Only used
+// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+// the section below for details on configuration.
 func (r *RouterNat) Subnetworks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["subnetworks"])
 }
 
+// Timeout (in seconds) for TCP
+// established connections. Defaults to 1200s if not set. Changing this forces
+// a new NAT to be created.
 func (r *RouterNat) TcpEstablishedIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["tcpEstablishedIdleTimeoutSec"])
 }
 
+// Timeout (in seconds) for TCP
+// transitory connections. Defaults to 30s if not set. Changing this forces a
+// new NAT to be created.
 func (r *RouterNat) TcpTransitoryIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["tcpTransitoryIdleTimeoutSec"])
 }
 
+// Timeout (in seconds) for UDP connections.
+// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 func (r *RouterNat) UdpIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["udpIdleTimeoutSec"])
 }
 
 // Input properties used for looking up and filtering RouterNat resources.
 type RouterNatState struct {
+	// Timeout (in seconds) for ICMP connections.
+	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	IcmpIdleTimeoutSec interface{}
+	// Minimum number of ports allocated to a VM
+	// from this NAT config. If not set, a default number of ports is allocated to a VM.
+	// Changing this forces a new NAT to be created.
 	MinPortsPerVm interface{}
+	// A unique name for Cloud NAT, required by GCE. Changing
+	// this forces a new NAT to be created.
 	Name interface{}
+	// How external IPs should be allocated for
+	// this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
+	// a new NAT to be created.
 	NatIpAllocateOption interface{}
+	// List of `self_link`s of external IPs. Only valid if
+	// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+	// new NAT to be created.
 	NatIps interface{}
+	// The ID of the project in which this NAT's router belongs. If it
+	// is not provided, the provider project is used. Changing this forces a new NAT to be created.
 	Project interface{}
+	// The region this NAT's router sits in. If not specified,
+	// the project region will be used. Changing this forces a new NAT to be
+	// created.
 	Region interface{}
+	// The name of the router in which this NAT will be configured.
+	// Changing this forces a new NAT to be created.
 	Router interface{}
+	// How NAT should be configured
+	// per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
+	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
+	// this forces a new NAT to be created.
 	SourceSubnetworkIpRangesToNat interface{}
+	// One or more subnetwork NAT configurations. Only used
+	// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+	// the section below for details on configuration.
 	Subnetworks interface{}
+	// Timeout (in seconds) for TCP
+	// established connections. Defaults to 1200s if not set. Changing this forces
+	// a new NAT to be created.
 	TcpEstablishedIdleTimeoutSec interface{}
+	// Timeout (in seconds) for TCP
+	// transitory connections. Defaults to 30s if not set. Changing this forces a
+	// new NAT to be created.
 	TcpTransitoryIdleTimeoutSec interface{}
+	// Timeout (in seconds) for UDP connections.
+	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	UdpIdleTimeoutSec interface{}
 }
 
 // The set of arguments for constructing a RouterNat resource.
 type RouterNatArgs struct {
+	// Timeout (in seconds) for ICMP connections.
+	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	IcmpIdleTimeoutSec interface{}
+	// Minimum number of ports allocated to a VM
+	// from this NAT config. If not set, a default number of ports is allocated to a VM.
+	// Changing this forces a new NAT to be created.
 	MinPortsPerVm interface{}
+	// A unique name for Cloud NAT, required by GCE. Changing
+	// this forces a new NAT to be created.
 	Name interface{}
+	// How external IPs should be allocated for
+	// this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
+	// a new NAT to be created.
 	NatIpAllocateOption interface{}
+	// List of `self_link`s of external IPs. Only valid if
+	// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+	// new NAT to be created.
 	NatIps interface{}
+	// The ID of the project in which this NAT's router belongs. If it
+	// is not provided, the provider project is used. Changing this forces a new NAT to be created.
 	Project interface{}
+	// The region this NAT's router sits in. If not specified,
+	// the project region will be used. Changing this forces a new NAT to be
+	// created.
 	Region interface{}
+	// The name of the router in which this NAT will be configured.
+	// Changing this forces a new NAT to be created.
 	Router interface{}
+	// How NAT should be configured
+	// per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
+	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
+	// this forces a new NAT to be created.
 	SourceSubnetworkIpRangesToNat interface{}
+	// One or more subnetwork NAT configurations. Only used
+	// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+	// the section below for details on configuration.
 	Subnetworks interface{}
+	// Timeout (in seconds) for TCP
+	// established connections. Defaults to 1200s if not set. Changing this forces
+	// a new NAT to be created.
 	TcpEstablishedIdleTimeoutSec interface{}
+	// Timeout (in seconds) for TCP
+	// transitory connections. Defaults to 30s if not set. Changing this forces a
+	// new NAT to be created.
 	TcpTransitoryIdleTimeoutSec interface{}
+	// Timeout (in seconds) for UDP connections.
+	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	UdpIdleTimeoutSec interface{}
 }

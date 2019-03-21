@@ -35,7 +35,7 @@ class GetFolderResult:
             raise TypeError('Expected argument name to be a str')
         __self__.name = name
         """
-        The resource name of the Folder in the form `folders/{organization_id}`.
+        The resource name of the Folder in the form `folders/{folder_id}`.
         """
         if organization and not isinstance(organization, str):
             raise TypeError('Expected argument organization to be a str')

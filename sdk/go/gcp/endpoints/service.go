@@ -24,14 +24,12 @@ func NewService(ctx *pulumi.Context,
 		inputs["grpcConfig"] = nil
 		inputs["openapiConfig"] = nil
 		inputs["project"] = nil
-		inputs["protocOutput"] = nil
 		inputs["protocOutputBase64"] = nil
 		inputs["serviceName"] = nil
 	} else {
 		inputs["grpcConfig"] = args.GrpcConfig
 		inputs["openapiConfig"] = args.OpenapiConfig
 		inputs["project"] = args.Project
-		inputs["protocOutput"] = args.ProtocOutput
 		inputs["protocOutputBase64"] = args.ProtocOutputBase64
 		inputs["serviceName"] = args.ServiceName
 	}
@@ -59,7 +57,6 @@ func GetService(ctx *pulumi.Context,
 		inputs["grpcConfig"] = state.GrpcConfig
 		inputs["openapiConfig"] = state.OpenapiConfig
 		inputs["project"] = state.Project
-		inputs["protocOutput"] = state.ProtocOutput
 		inputs["protocOutputBase64"] = state.ProtocOutputBase64
 		inputs["serviceName"] = state.ServiceName
 	}
@@ -108,10 +105,6 @@ func (r *Service) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Service) ProtocOutput() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocOutput"])
-}
-
 func (r *Service) ProtocOutputBase64() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocOutputBase64"])
 }
@@ -129,7 +122,6 @@ type ServiceState struct {
 	GrpcConfig interface{}
 	OpenapiConfig interface{}
 	Project interface{}
-	ProtocOutput interface{}
 	ProtocOutputBase64 interface{}
 	ServiceName interface{}
 }
@@ -139,7 +131,6 @@ type ServiceArgs struct {
 	GrpcConfig interface{}
 	OpenapiConfig interface{}
 	Project interface{}
-	ProtocOutput interface{}
 	ProtocOutputBase64 interface{}
 	ServiceName interface{}
 }

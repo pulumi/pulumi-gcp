@@ -12,9 +12,9 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, retry_on_failure=None, runtime=None, source_archive_bucket=None, source_archive_object=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
-        if available_memory_mb and not isinstance(available_memory_mb, int):
-            raise TypeError('Expected argument available_memory_mb to be a int')
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, retry_on_failure=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+        if available_memory_mb and not isinstance(available_memory_mb, float):
+            raise TypeError('Expected argument available_memory_mb to be a float')
         __self__.available_memory_mb = available_memory_mb
         """
         Available memory (in MB) to the function.
@@ -61,6 +61,9 @@ class GetFunctionResult:
         """
         The runtime in which the function is running.
         """
+        if service_account_email and not isinstance(service_account_email, str):
+            raise TypeError('Expected argument service_account_email to be a str')
+        __self__.service_account_email = service_account_email
         if source_archive_bucket and not isinstance(source_archive_bucket, str):
             raise TypeError('Expected argument source_archive_bucket to be a str')
         __self__.source_archive_bucket = source_archive_bucket
@@ -73,8 +76,11 @@ class GetFunctionResult:
         """
         The source archive object (file) in archive bucket.
         """
-        if timeout and not isinstance(timeout, int):
-            raise TypeError('Expected argument timeout to be a int')
+        if source_repositories and not isinstance(source_repositories, list):
+            raise TypeError('Expected argument source_repositories to be a list')
+        __self__.source_repositories = source_repositories
+        if timeout and not isinstance(timeout, float):
+            raise TypeError('Expected argument timeout to be a float')
         __self__.timeout = timeout
         """
         Function execution timeout (in seconds).
@@ -82,9 +88,6 @@ class GetFunctionResult:
         if trigger_bucket and not isinstance(trigger_bucket, str):
             raise TypeError('Expected argument trigger_bucket to be a str')
         __self__.trigger_bucket = trigger_bucket
-        """
-        If function is triggered by bucket, bucket name is set here. Deprecated. Use `event_trigger` instead.
-        """
         if trigger_http and not isinstance(trigger_http, bool):
             raise TypeError('Expected argument trigger_http to be a bool')
         __self__.trigger_http = trigger_http
@@ -94,9 +97,6 @@ class GetFunctionResult:
         if trigger_topic and not isinstance(trigger_topic, str):
             raise TypeError('Expected argument trigger_topic to be a str')
         __self__.trigger_topic = trigger_topic
-        """
-        If function is triggered by Pub/Sub topic, name of topic is set here. Deprecated. Use `event_trigger` instead.
-        """
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -127,8 +127,10 @@ async def get_function(name=None,project=None,region=None,opts=None):
         labels=__ret__.get('labels'),
         retry_on_failure=__ret__.get('retryOnFailure'),
         runtime=__ret__.get('runtime'),
+        service_account_email=__ret__.get('serviceAccountEmail'),
         source_archive_bucket=__ret__.get('sourceArchiveBucket'),
         source_archive_object=__ret__.get('sourceArchiveObject'),
+        source_repositories=__ret__.get('sourceRepositories'),
         timeout=__ret__.get('timeout'),
         trigger_bucket=__ret__.get('triggerBucket'),
         trigger_http=__ret__.get('triggerHttp'),

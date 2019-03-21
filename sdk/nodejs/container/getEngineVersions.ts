@@ -7,11 +7,18 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Container Engine versions in a zone or region for a given project.
  * 
+ * > If you are using the `google_container_engine_versions` datasource with a regional cluster, ensure that you have provided a `region`
+ * to the datasource. A `region` can have a different set of supported versions than its corresponding `zone`s, and not all `zone`s in a 
+ * `region` are guaranteed to support the same version.
+ * 
+ * ## Example Usage
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const central1b = pulumi.output(gcp.container.getEngineVersions({
+ *     versionPrefix: "1.12.",
  *     zone: "us-central1-b",
  * }));
  * const foo = new gcp.container.Cluster("foo", {
@@ -30,6 +37,7 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "project": args.project,
         "region": args.region,
+        "versionPrefix": args.versionPrefix,
         "zone": args.zone,
     }, opts);
 }
@@ -43,13 +51,16 @@ export interface GetEngineVersionsArgs {
      * Defaults to the project that the provider is authenticated with.
      */
     readonly project?: string;
-    /**
-     * Region to list available cluster versions for. Should match the region the cluster will be deployed in.
-     * For regional clusters, this value must be specified and cannot be inferred from provider-level region. One of zone,
-     * region, or provider-level zone is required. This property is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-     */
     readonly region?: string;
+    /**
+     * If provided, Terraform will only return versions
+     * that match the string prefix. For example, `1.11.` will match all `1.11` series
+     * releases. Since this is just a string match, it's recommended that you append a
+     * `.` after minor versions to ensure that prefixes such as `1.1` don't match
+     * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
+     * for full details on how version strings are formatted.
+     */
+    readonly versionPrefix?: string;
     /**
      * Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
      * If not specified, the provider-level zone is used. One of zone or provider-level zone is required.

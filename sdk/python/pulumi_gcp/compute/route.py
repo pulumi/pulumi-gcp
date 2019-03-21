@@ -25,7 +25,7 @@ class Route(pulumi.CustomResource):
     next_hop_ip: pulumi.Output[str]
     next_hop_network: pulumi.Output[str]
     next_hop_vpn_tunnel: pulumi.Output[str]
-    priority: pulumi.Output[int]
+    priority: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.

@@ -40,10 +40,22 @@ export interface GetDefaultServiceAccountArgs {
  */
 export interface GetDefaultServiceAccountResult {
     /**
+     * The display name for the service account.
+     */
+    readonly displayName: string;
+    /**
      * Email address of the default service account used by VMs running in this project
      */
     readonly email: string;
+    /**
+     * The fully-qualified name of the service account.
+     */
+    readonly name: string;
     readonly project: string;
+    /**
+     * The unique id of the service account.
+     */
+    readonly uniqueId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

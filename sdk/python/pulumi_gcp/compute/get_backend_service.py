@@ -12,7 +12,10 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, port_name=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+        if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, float):
+            raise TypeError('Expected argument affinity_cookie_ttl_sec to be a float')
+        __self__.affinity_cookie_ttl_sec = affinity_cookie_ttl_sec
         if backends and not isinstance(backends, list):
             raise TypeError('Expected argument backends to be a list')
         __self__.backends = backends
@@ -22,8 +25,8 @@ class GetBackendServiceResult:
         if cdn_policies and not isinstance(cdn_policies, list):
             raise TypeError('Expected argument cdn_policies to be a list')
         __self__.cdn_policies = cdn_policies
-        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, int):
-            raise TypeError('Expected argument connection_draining_timeout_sec to be a int')
+        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, float):
+            raise TypeError('Expected argument connection_draining_timeout_sec to be a float')
         __self__.connection_draining_timeout_sec = connection_draining_timeout_sec
         """
         Time for which instance will be drained (not accept new connections, but still work to finish started ones).
@@ -88,8 +91,8 @@ class GetBackendServiceResult:
         """
         The Backend Service session stickyness configuration.
         """
-        if timeout_sec and not isinstance(timeout_sec, int):
-            raise TypeError('Expected argument timeout_sec to be a int')
+        if timeout_sec and not isinstance(timeout_sec, float):
+            raise TypeError('Expected argument timeout_sec to be a float')
         __self__.timeout_sec = timeout_sec
         """
         The number of seconds to wait for a backend to respond to a request before considering the request failed.
@@ -114,6 +117,7 @@ async def get_backend_service(name=None,project=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts)
 
     return GetBackendServiceResult(
+        affinity_cookie_ttl_sec=__ret__.get('affinityCookieTtlSec'),
         backends=__ret__.get('backends'),
         cdn_policies=__ret__.get('cdnPolicies'),
         connection_draining_timeout_sec=__ret__.get('connectionDrainingTimeoutSec'),

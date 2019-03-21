@@ -21,21 +21,27 @@ class Cluster(pulumi.CustomResource):
     The configuration for addons supported by GKE.
     Structure is documented below.
     """
+    cluster_autoscaling: pulumi.Output[dict]
+    """
+    )
+    Configuration for cluster autoscaling (also called autoprovisioning), as described in
+    [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
+    Structure is documented below.
+    """
     cluster_ipv4_cidr: pulumi.Output[str]
     """
     The IP address range of the kubernetes pods in
     this cluster. Default is an automatically assigned CIDR.
     """
+    default_max_pods_per_node: pulumi.Output[float]
     description: pulumi.Output[str]
     """
     Description of the cluster.
     """
     enable_binary_authorization: pulumi.Output[bool]
     """
-    Enable Binary Authorization for this cluster.
+    ) Enable Binary Authorization for this cluster.
     If enabled, all container images will be validated by Google Binary Authorization.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     enable_kubernetes_alpha: pulumi.Output[bool]
     """
@@ -52,16 +58,14 @@ class Cluster(pulumi.CustomResource):
     """
     enable_tpu: pulumi.Output[bool]
     """
-    Whether to enable Cloud TPU resources in this cluster.
+    ) Whether to enable Cloud TPU resources in this cluster.
     See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     endpoint: pulumi.Output[str]
     """
     The IP address of this cluster's Kubernetes master.
     """
-    initial_node_count: pulumi.Output[int]
+    initial_node_count: pulumi.Output[float]
     """
     The number of nodes to create in this
     cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
@@ -99,15 +103,6 @@ class Cluster(pulumi.CustomResource):
     for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
     external access (except the cluster node IPs, which GKE automatically whitelists).
     """
-    master_ipv4_cidr_block: pulumi.Output[str]
-    """
-    Specifies a private
-    [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
-    The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-    This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
-    """
     master_version: pulumi.Output[str]
     """
     The current version of the master in the cluster. This may
@@ -120,7 +115,12 @@ class Cluster(pulumi.CustomResource):
     will auto-update the master to new versions, so this does not guarantee the
     current master version--use the read-only `master_version` field to obtain that.
     If unset, the cluster's version will be set by GKE to the version of the most recent
-    official release (which is not necessarily the latest version).
+    official release (which is not necessarily the latest version).  Most users will find
+    the `google_container_engine_versions` data source useful - it indicates which versions
+    are available, and can be use to approximate fuzzy versions in a
+    Terraform-compatible way. If you intend to specify versions manually,
+    [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+    describe the various acceptable formats for this field.
     """
     monitoring_service: pulumi.Output[str]
     """
@@ -167,32 +167,23 @@ class Cluster(pulumi.CustomResource):
     """
     The Kubernetes version on the nodes. Must either be unset
     or set to the same value as `min_master_version` on create. Defaults to the default
-    version set by GKE which is not necessarily the latest version.
+    version set by GKE which is not necessarily the latest version. This only affects
+    nodes in the default node pool. While a fuzzy version can be specified, it's
+    recommended that you specify explicit versions as Terraform will see spurious diffs
+    when fuzzy versions are used. See the `google_container_engine_versions` data source's
+    `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
+    To update nodes in other node pools, use the `version` attribute on the node pool.
     """
     pod_security_policy_config: pulumi.Output[dict]
     """
-    Configuration for the
+    ) Configuration for the
     [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
     Structure is documented below.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-    """
-    private_cluster: pulumi.Output[bool]
-    """
-    If true, a
-    [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
-    nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
-    `ip_allocation_policy` with this option.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-    This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
     """
     private_cluster_config: pulumi.Output[dict]
     """
     A set of options for creating
     a private cluster. Structure is documented below.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     project: pulumi.Output[str]
     """
@@ -213,21 +204,27 @@ class Cluster(pulumi.CustomResource):
     The name or self_link of the Google Compute Engine subnetwork in
     which the cluster's instances are launched.
     """
+    tpu_ipv4_cidr_block: pulumi.Output[str]
+    """
+    ([Beta](https://terraform.io/docs/providers/google/provider_versions.html)) The IP address range of the Cloud TPUs in this cluster, in
+    [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+    notation (e.g. `1.2.3.4/29`).
+    """
     zone: pulumi.Output[str]
     """
     The zone that the master and the number of nodes specified
     in `initial_node_count` should be created in. Only one of `zone` and `region`
     may be set. If neither zone nor region are set, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_ipv4_cidr=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
         """
-        Creates a Google Kubernetes Engine (GKE) cluster. For more information see
+        Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
-        and
-        [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters).
+        and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters).
         
-        > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        > **Note:** All arguments and attributes, including basic auth username and
+        passwords as well as certificate outputs will be stored in the raw state as
+        plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -237,13 +234,15 @@ class Cluster(pulumi.CustomResource):
                all specified zones.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[dict] cluster_autoscaling: )
+               Configuration for cluster autoscaling (also called autoprovisioning), as described in
+               [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
+               Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
                this cluster. Default is an automatically assigned CIDR.
         :param pulumi.Input[str] description: Description of the cluster.
-        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
+        :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -251,11 +250,9 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
+        :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-        :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
+        :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
                cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
         :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
                This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
@@ -270,17 +267,16 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
-        :param pulumi.Input[str] master_ipv4_cidr_block: Specifies a private
-               [RFC1918](https://tools.ietf.org/html/rfc1918) block for the master's VPC. The master range must not overlap with any subnet in your cluster's VPC.
-               The master and your cluster use VPC peering. Must be specified in CIDR notation and must be `/28` subnet.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-               This field is deprecated, use `private_cluster_config.master_ipv4_cidr_block` instead.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
                If unset, the cluster's version will be set by GKE to the version of the most recent
-               official release (which is not necessarily the latest version).
+               official release (which is not necessarily the latest version).  Most users will find
+               the `google_container_engine_versions` data source useful - it indicates which versions
+               are available, and can be use to approximate fuzzy versions in a
+               Terraform-compatible way. If you intend to specify versions manually,
+               [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+               describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -306,23 +302,17 @@ class Cluster(pulumi.CustomResource):
                google_container_node_pool resource instead of this property.
         :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
                or set to the same value as `min_master_version` on create. Defaults to the default
-               version set by GKE which is not necessarily the latest version.
-        :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
+               version set by GKE which is not necessarily the latest version. This only affects
+               nodes in the default node pool. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as Terraform will see spurious diffs
+               when fuzzy versions are used. See the `google_container_engine_versions` data source's
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
+               To update nodes in other node pools, use the `version` attribute on the node pool.
+        :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-        :param pulumi.Input[bool] private_cluster: If true, a
-               [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters) will be created, meaning
-               nodes do not get public IP addresses. It is mandatory to specify `master_ipv4_cidr_block` and
-               `ip_allocation_policy` with this option.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
-               This field is deprecated, use `private_cluster_config.enable_private_nodes` instead.
         :param pulumi.Input[dict] private_cluster_config: A set of options for creating
                a private cluster. Structure is documented below.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[bool] remove_default_node_pool: If true, deletes the default node pool upon cluster creation.
@@ -352,7 +342,11 @@ class Cluster(pulumi.CustomResource):
 
         __props__['addons_config'] = addons_config
 
+        __props__['cluster_autoscaling'] = cluster_autoscaling
+
         __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
+
+        __props__['default_max_pods_per_node'] = default_max_pods_per_node
 
         __props__['description'] = description
 
@@ -376,8 +370,6 @@ class Cluster(pulumi.CustomResource):
 
         __props__['master_authorized_networks_config'] = master_authorized_networks_config
 
-        __props__['master_ipv4_cidr_block'] = master_ipv4_cidr_block
-
         __props__['min_master_version'] = min_master_version
 
         __props__['monitoring_service'] = monitoring_service
@@ -396,8 +388,6 @@ class Cluster(pulumi.CustomResource):
 
         __props__['pod_security_policy_config'] = pod_security_policy_config
 
-        __props__['private_cluster'] = private_cluster
-
         __props__['private_cluster_config'] = private_cluster_config
 
         __props__['project'] = project
@@ -415,6 +405,7 @@ class Cluster(pulumi.CustomResource):
         __props__['endpoint'] = None
         __props__['instance_group_urls'] = None
         __props__['master_version'] = None
+        __props__['tpu_ipv4_cidr_block'] = None
 
         super(Cluster, __self__).__init__(
             'gcp:container/cluster:Cluster',

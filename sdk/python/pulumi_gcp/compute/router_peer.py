@@ -9,7 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
-    advertised_route_priority: pulumi.Output[int]
+    advertised_route_priority: pulumi.Output[float]
     """
     The priority of routes advertised to this BGP peer.
     Changing this forces a new peer to be created.
@@ -28,7 +28,7 @@ class RouterPeer(pulumi.CustomResource):
     A unique name for BGP peer, required by GCE. Changing
     this forces a new peer to be created.
     """
-    peer_asn: pulumi.Output[int]
+    peer_asn: pulumi.Output[float]
     """
     Peer BGP Autonomous System Number (ASN).
     Changing this forces a new peer to be created.
@@ -63,13 +63,13 @@ class RouterPeer(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
+        :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] name: A unique name for BGP peer, required by GCE. Changing
                this forces a new peer to be created.
-        :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
+        :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN).
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud.
                Changing this forces a new peer to be created.

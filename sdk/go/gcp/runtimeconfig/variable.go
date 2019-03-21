@@ -12,13 +12,13 @@ import (
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
-type Variavble struct {
+type Variable struct {
 	s *pulumi.ResourceState
 }
 
-// NewVariavble registers a new resource with the given unique name, arguments, and options.
-func NewVariavble(ctx *pulumi.Context,
-	name string, args *VariavbleArgs, opts ...pulumi.ResourceOpt) (*Variavble, error) {
+// NewVariable registers a new resource with the given unique name, arguments, and options.
+func NewVariable(ctx *pulumi.Context,
+	name string, args *VariableArgs, opts ...pulumi.ResourceOpt) (*Variable, error) {
 	if args == nil || args.Parent == nil {
 		return nil, errors.New("missing required argument 'Parent'")
 	}
@@ -37,17 +37,17 @@ func NewVariavble(ctx *pulumi.Context,
 		inputs["value"] = args.Value
 	}
 	inputs["updateTime"] = nil
-	s, err := ctx.RegisterResource("gcp:runtimeconfig/variavble:Variavble", name, true, inputs, opts...)
+	s, err := ctx.RegisterResource("gcp:runtimeconfig/variable:Variable", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Variavble{s: s}, nil
+	return &Variable{s: s}, nil
 }
 
-// GetVariavble gets an existing Variavble resource's state with the given name, ID, and optional
+// GetVariable gets an existing Variable resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetVariavble(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *VariavbleState, opts ...pulumi.ResourceOpt) (*Variavble, error) {
+func GetVariable(ctx *pulumi.Context,
+	name string, id pulumi.ID, state *VariableState, opts ...pulumi.ResourceOpt) (*Variable, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["name"] = state.Name
@@ -57,58 +57,58 @@ func GetVariavble(ctx *pulumi.Context,
 		inputs["updateTime"] = state.UpdateTime
 		inputs["value"] = state.Value
 	}
-	s, err := ctx.ReadResource("gcp:runtimeconfig/variavble:Variavble", name, id, inputs, opts...)
+	s, err := ctx.ReadResource("gcp:runtimeconfig/variable:Variable", name, id, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Variavble{s: s}, nil
+	return &Variable{s: s}, nil
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Variavble) URN() *pulumi.URNOutput {
+func (r *Variable) URN() *pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Variavble) ID() *pulumi.IDOutput {
+func (r *Variable) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the variable to manage. Note that variable
 // names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-func (r *Variavble) Name() *pulumi.StringOutput {
+func (r *Variable) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the RuntimeConfig resource containing this
 // variable.
-func (r *Variavble) Parent() *pulumi.StringOutput {
+func (r *Variable) Parent() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Variavble) Project() *pulumi.StringOutput {
+func (r *Variable) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Variavble) Text() *pulumi.StringOutput {
+func (r *Variable) Text() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["text"])
 }
 
 // (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 // accurate to nanoseconds, representing when the variable was last updated.
 // Example: "2016-10-09T12:33:37.578138407Z".
-func (r *Variavble) UpdateTime() *pulumi.StringOutput {
+func (r *Variable) UpdateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
-func (r *Variavble) Value() *pulumi.StringOutput {
+func (r *Variable) Value() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["value"])
 }
 
-// Input properties used for looking up and filtering Variavble resources.
-type VariavbleState struct {
+// Input properties used for looking up and filtering Variable resources.
+type VariableState struct {
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name interface{}
@@ -126,8 +126,8 @@ type VariavbleState struct {
 	Value interface{}
 }
 
-// The set of arguments for constructing a Variavble resource.
-type VariavbleArgs struct {
+// The set of arguments for constructing a Variable resource.
+type VariableArgs struct {
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name interface{}

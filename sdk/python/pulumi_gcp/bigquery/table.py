@@ -9,7 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
-    creation_time: pulumi.Output[int]
+    creation_time: pulumi.Output[float]
     """
     The time when this table was created, in milliseconds since the epoch.
     """
@@ -26,7 +26,7 @@ class Table(pulumi.CustomResource):
     """
     A hash of the resource.
     """
-    expiration_time: pulumi.Output[int]
+    expiration_time: pulumi.Output[float]
     """
     The time when this table expires, in
     milliseconds since the epoch. If not present, the table will persist
@@ -41,7 +41,7 @@ class Table(pulumi.CustomResource):
     """
     A mapping of labels to assign to the resource.
     """
-    last_modified_time: pulumi.Output[int]
+    last_modified_time: pulumi.Output[float]
     """
     The time when this table was last modified, in milliseconds since the epoch.
     """
@@ -49,15 +49,15 @@ class Table(pulumi.CustomResource):
     """
     The geographic location where the table resides. This value is inherited from the dataset.
     """
-    num_bytes: pulumi.Output[int]
+    num_bytes: pulumi.Output[float]
     """
     The size of this table in bytes, excluding any data in the streaming buffer.
     """
-    num_long_term_bytes: pulumi.Output[int]
+    num_long_term_bytes: pulumi.Output[float]
     """
     The number of bytes in the table that are considered "long-term storage".
     """
-    num_rows: pulumi.Output[int]
+    num_rows: pulumi.Output[float]
     """
     The number of rows of data in this table, excluding any data in the streaming buffer.
     """
@@ -104,7 +104,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The field description.
-        :param pulumi.Input[int] expiration_time: The time when this table expires, in
+        :param pulumi.Input[float] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.

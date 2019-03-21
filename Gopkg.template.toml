@@ -7,12 +7,12 @@
   name = "github.com/pulumi/pulumi-terraform"
 
 [[constraint]]
-  version = "v1.20.0"
-  name = "github.com/terraform-providers/terraform-provider-google"
+  version = "v2.2.0"
+  name = "github.com/terraform-providers/terraform-provider-google-beta"
 
   [constraint.metadata]
-    govendor-override = true
-    govendor-exclude-prefixes = [
+    gomod-override = true
+    gomod-exclude-prefixes = [
       "github.com/golang/protobuf",
     ]
 

@@ -46,6 +46,8 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	inputs["connectionName"] = nil
 	inputs["firstIpAddress"] = nil
 	inputs["ipAddresses"] = nil
+	inputs["privateIpAddress"] = nil
+	inputs["publicIpAddress"] = nil
 	inputs["selfLink"] = nil
 	inputs["serverCaCert"] = nil
 	inputs["serviceAccountEmailAddress"] = nil
@@ -68,7 +70,9 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 		inputs["ipAddresses"] = state.IpAddresses
 		inputs["masterInstanceName"] = state.MasterInstanceName
 		inputs["name"] = state.Name
+		inputs["privateIpAddress"] = state.PrivateIpAddress
 		inputs["project"] = state.Project
+		inputs["publicIpAddress"] = state.PublicIpAddress
 		inputs["region"] = state.Region
 		inputs["replicaConfiguration"] = state.ReplicaConfiguration
 		inputs["selfLink"] = state.SelfLink
@@ -93,7 +97,8 @@ func (r *DatabaseInstance) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The connection name of the instance to be used in connection strings.
+// The connection name of the instance to be used in
+// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["connectionName"])
 }
@@ -102,13 +107,13 @@ func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 // use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-// for more information. `POSTGRES_9_6` support is in beta.
+// for more information.
 func (r *DatabaseInstance) DatabaseVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
 
-// The first IPv4 address of the addresses assigned. This is
-// is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
+// The first IPv4 address of any type assigned. This is to
+// support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
 // when the resource is configured with a `count`.
 func (r *DatabaseInstance) FirstIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["firstIpAddress"])
@@ -133,10 +138,26 @@ func (r *DatabaseInstance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The first private (`PRIVATE`) IPv4 address assigned. This is
+// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+// but also provides a convenient way to access an IP of a specific type without
+// performing filtering in a Terraform config.
+func (r *DatabaseInstance) PrivateIpAddress() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["privateIpAddress"])
+}
+
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
 func (r *DatabaseInstance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
+}
+
+// The first public (`PRIMARY`) IPv4 address assigned. This is
+// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+// but also provides a convenient way to access an IP of a specific type without
+// performing filtering in a Terraform config.
+func (r *DatabaseInstance) PublicIpAddress() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["publicIpAddress"])
 }
 
 // The region the instance will sit in. Note, first-generation Cloud SQL instance
@@ -179,16 +200,17 @@ func (r *DatabaseInstance) Settings() *pulumi.Output {
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type DatabaseInstanceState struct {
-	// The connection name of the instance to be used in connection strings.
+	// The connection name of the instance to be used in
+	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName interface{}
 	// The MySQL version to
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in beta.
+	// for more information.
 	DatabaseVersion interface{}
-	// The first IPv4 address of the addresses assigned. This is
-	// is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
+	// The first IPv4 address of any type assigned. This is to
+	// support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
 	// when the resource is configured with a `count`.
 	FirstIpAddress interface{}
 	IpAddresses interface{}
@@ -201,9 +223,19 @@ type DatabaseInstanceState struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
+	// The first private (`PRIVATE`) IPv4 address assigned. This is
+	// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
+	PrivateIpAddress interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	// The first public (`PRIMARY`) IPv4 address assigned. This is
+	// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+	// but also provides a convenient way to access an IP of a specific type without
+	// performing filtering in a Terraform config.
+	PublicIpAddress interface{}
 	// The region the instance will sit in. Note, first-generation Cloud SQL instance
 	// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -232,7 +264,7 @@ type DatabaseInstanceArgs struct {
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-	// for more information. `POSTGRES_9_6` support is in beta.
+	// for more information.
 	DatabaseVersion interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have

@@ -10,6 +10,9 @@ from .. import utilities, tables
 
 class IAMCustomRole(pulumi.CustomResource):
     deleted: pulumi.Output[bool]
+    """
+    (Optional) The current deleted state of the role.
+    """
     description: pulumi.Output[str]
     """
     A human-readable description for the role.
@@ -37,7 +40,7 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     A human-readable title for the role.
     """
-    def __init__(__self__, resource_name, opts=None, deleted=None, description=None, permissions=None, project=None, role_id=None, stage=None, title=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, permissions=None, project=None, role_id=None, stage=None, title=None, __name__=None, __opts__=None):
         """
         Allows management of a customized Cloud IAM project role. For more information see
         [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -78,8 +81,6 @@ class IAMCustomRole(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['deleted'] = deleted
-
         __props__['description'] = description
 
         if permissions is None:
@@ -97,6 +98,8 @@ class IAMCustomRole(pulumi.CustomResource):
         if title is None:
             raise TypeError('Missing required property title')
         __props__['title'] = title
+
+        __props__['deleted'] = None
 
         super(IAMCustomRole, __self__).__init__(
             'gcp:projects/iAMCustomRole:IAMCustomRole',

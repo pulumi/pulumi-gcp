@@ -11,8 +11,7 @@ from .. import utilities, tables
 class ProjectMetadata(pulumi.CustomResource):
     metadata: pulumi.Output[dict]
     """
-    A series of key value pairs. Changing this resource
-    updates the GCE state.
+    A series of key value pairs.
     """
     project: pulumi.Output[str]
     """
@@ -21,19 +20,19 @@ class ProjectMetadata(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, metadata=None, project=None, __name__=None, __opts__=None):
         """
-        Manages metadata common to all instances for a project in GCE. For more information see
+        Authoritatively manages metadata common to all instances for a project in GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
         
-        > **Note:**  If you want to manage only single key/value pairs within the project metadata
-        rather than the entire set, then use
+        > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
+        Keys unset in config but set on the server will be removed. If you want to manage only single
+        key/value pairs within the project metadata rather than the entire set, then use
         google_compute_project_metadata_item.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] metadata: A series of key value pairs. Changing this resource
-               updates the GCE state.
+        :param pulumi.Input[dict] metadata: A series of key value pairs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """

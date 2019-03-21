@@ -32,6 +32,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 	name string, args *ForwardingRuleArgs, opts ...pulumi.ResourceOpt) (*ForwardingRule, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["allPorts"] = nil
 		inputs["backendService"] = nil
 		inputs["description"] = nil
 		inputs["ipAddress"] = nil
@@ -50,6 +51,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["subnetwork"] = nil
 		inputs["target"] = nil
 	} else {
+		inputs["allPorts"] = args.AllPorts
 		inputs["backendService"] = args.BackendService
 		inputs["description"] = args.Description
 		inputs["ipAddress"] = args.IpAddress
@@ -85,6 +87,7 @@ func GetForwardingRule(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ForwardingRuleState, opts ...pulumi.ResourceOpt) (*ForwardingRule, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["allPorts"] = state.AllPorts
 		inputs["backendService"] = state.BackendService
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
@@ -122,6 +125,10 @@ func (r *ForwardingRule) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ForwardingRule) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *ForwardingRule) AllPorts() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["allPorts"])
 }
 
 func (r *ForwardingRule) BackendService() *pulumi.StringOutput {
@@ -213,6 +220,7 @@ func (r *ForwardingRule) Target() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ForwardingRule resources.
 type ForwardingRuleState struct {
+	AllPorts interface{}
 	BackendService interface{}
 	CreationTimestamp interface{}
 	Description interface{}
@@ -241,6 +249,7 @@ type ForwardingRuleState struct {
 
 // The set of arguments for constructing a ForwardingRule resource.
 type ForwardingRuleArgs struct {
+	AllPorts interface{}
 	BackendService interface{}
 	Description interface{}
 	IpAddress interface{}

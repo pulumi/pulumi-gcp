@@ -13,13 +13,28 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     auditConfigs: [{
+ *         auditLogConfigs: [
+ *             {
+ *                 exemptedMembers: ["user:you@domain.com"],
+ *                 logType: "DATA_READ",
+ *             },
+ *             {
+ *                 logType: "DATA_WRITE",
+ *             },
+ *             {
+ *                 logType: "ADMIN_READ",
+ *             },
+ *         ],
+ *         service: "cloudkms.googleapis.com",
+ *     }],
  *     bindings: [
  *         {
  *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
  *             role: "roles/compute.instanceAdmin",
  *         },
  *         {
- *             members: ["user:jane@example.com"],
+ *             members: ["user:alice@gmail.com"],
  *             role: "roles/storage.objectViewer",
  *         },
  *     ],
@@ -36,6 +51,7 @@ import * as utilities from "../utilities";
  */
 export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
     return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
+        "auditConfigs": args.auditConfigs,
         "bindings": args.bindings,
     }, opts);
 }
@@ -44,6 +60,10 @@ export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getIAMPolicy.
  */
 export interface GetIAMPolicyArgs {
+    /**
+     * A nested configuration block that defines logging additional configuration for your project.
+     */
+    readonly auditConfigs?: { auditLogConfigs: { exemptedMembers?: string[], logType: string }[], service: string }[];
     /**
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple

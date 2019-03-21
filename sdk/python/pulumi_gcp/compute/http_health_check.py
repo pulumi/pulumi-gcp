@@ -9,13 +9,13 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class HttpHealthCheck(pulumi.CustomResource):
-    check_interval_sec: pulumi.Output[int]
+    check_interval_sec: pulumi.Output[float]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
-    healthy_threshold: pulumi.Output[int]
+    healthy_threshold: pulumi.Output[float]
     host: pulumi.Output[str]
     name: pulumi.Output[str]
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -26,8 +26,8 @@ class HttpHealthCheck(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    timeout_sec: pulumi.Output[int]
-    unhealthy_threshold: pulumi.Output[int]
+    timeout_sec: pulumi.Output[float]
+    unhealthy_threshold: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, host=None, name=None, port=None, project=None, request_path=None, timeout_sec=None, unhealthy_threshold=None, __name__=None, __opts__=None):
         """
         An HttpHealthCheck resource. This resource defines a template for how

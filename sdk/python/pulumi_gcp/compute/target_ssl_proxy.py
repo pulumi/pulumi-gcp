@@ -19,7 +19,7 @@ class TargetSSLProxy(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     proxy_header: pulumi.Output[str]
-    proxy_id: pulumi.Output[int]
+    proxy_id: pulumi.Output[float]
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.

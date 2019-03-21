@@ -9,28 +9,34 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Topic(pulumi.CustomResource):
+    labels: pulumi.Output[dict]
     name: pulumi.Output[str]
-    """
-    A unique name for the pubsub topic.
-    Changing this forces a new resource to be created.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, labels=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        Creates a topic in Google's pubsub queueing system. For more information see
-        [the official documentation](https://cloud.google.com/pubsub/docs) and
-        [API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics).
+        A named resource to which messages are sent by publishers.
+        
+        
+        To get more information about Topic, see:
+        
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+        * How-to Guides
+            * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=pubsub_topic_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A unique name for the pubsub topic.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -46,6 +52,8 @@ class Topic(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['labels'] = labels
 
         __props__['name'] = name
 

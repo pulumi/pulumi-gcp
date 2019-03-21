@@ -18,7 +18,7 @@ class GlobalAddress(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     name: pulumi.Output[str]
     network: pulumi.Output[str]
-    prefix_length: pulumi.Output[int]
+    prefix_length: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -29,7 +29,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __name__=None, __opts__=None):
         """
         Represents a Global Address resource. Global addresses are used for
         HTTP(S) load balancing.
@@ -67,6 +67,8 @@ class GlobalAddress(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__['address'] = address
+
         __props__['address_type'] = address_type
 
         __props__['description'] = description
@@ -85,7 +87,6 @@ class GlobalAddress(pulumi.CustomResource):
 
         __props__['purpose'] = purpose
 
-        __props__['address'] = None
         __props__['creation_timestamp'] = None
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None

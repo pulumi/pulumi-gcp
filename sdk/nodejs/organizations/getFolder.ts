@@ -63,7 +63,7 @@ export interface GetFolderResult {
      */
     readonly lifecycleState: string;
     /**
-     * The resource name of the Folder in the form `folders/{organization_id}`.
+     * The resource name of the Folder in the form `folders/{folder_id}`.
      */
     readonly name: string;
     /**

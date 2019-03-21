@@ -11,7 +11,8 @@ from .. import utilities, tables
 class DatabaseInstance(pulumi.CustomResource):
     connection_name: pulumi.Output[str]
     """
-    The connection name of the instance to be used in connection strings.
+    The connection name of the instance to be used in
+    connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
     """
     database_version: pulumi.Output[str]
     """
@@ -19,12 +20,12 @@ class DatabaseInstance(pulumi.CustomResource):
     use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
     instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
     See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-    for more information. `POSTGRES_9_6` support is in beta.
+    for more information.
     """
     first_ip_address: pulumi.Output[str]
     """
-    The first IPv4 address of the addresses assigned. This is
-    is to support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
+    The first IPv4 address of any type assigned. This is to
+    support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
     when the resource is configured with a `count`.
     """
     ip_addresses: pulumi.Output[list]
@@ -41,10 +42,24 @@ class DatabaseInstance(pulumi.CustomResource):
     created. This is done because after a name is used, it cannot be reused for
     up to [one week](https://cloud.google.com/sql/docs/delete-instance).
     """
+    private_ip_address: pulumi.Output[str]
+    """
+    The first private (`PRIVATE`) IPv4 address assigned. This is
+    a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+    but also provides a convenient way to access an IP of a specific type without
+    performing filtering in a Terraform config.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
+    """
+    public_ip_address: pulumi.Output[str]
+    """
+    The first public (`PRIMARY`) IPv4 address assigned. This is
+    a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
+    but also provides a convenient way to access an IP of a specific type without
+    performing filtering in a Terraform config.
     """
     region: pulumi.Output[str]
     """
@@ -92,7 +107,7 @@ class DatabaseInstance(pulumi.CustomResource):
                use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
                instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
                See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-               for more information. `POSTGRES_9_6` support is in beta.
+               for more information.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
@@ -148,6 +163,8 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__['connection_name'] = None
         __props__['first_ip_address'] = None
         __props__['ip_addresses'] = None
+        __props__['private_ip_address'] = None
+        __props__['public_ip_address'] = None
         __props__['self_link'] = None
         __props__['server_ca_cert'] = None
         __props__['service_account_email_address'] = None

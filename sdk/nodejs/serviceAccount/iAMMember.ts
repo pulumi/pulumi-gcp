@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource to configure permissions for who can edit the service account. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
+ * When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource **to configure permissions for who can edit the service account**. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
  * 
  * Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
  * 
@@ -26,12 +26,16 @@ import * as utilities from "../utilities";
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
+ *         role: "roles/iam.serviceAccountUser",
  *     }],
  * }));
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that only Jane can interact with",
+ * });
  * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
  *     policyData: admin.apply(admin => admin.policyData),
- *     serviceAccountId: "your-service-account-id",
+ *     serviceAccountId: sa.name,
  * });
  * ```
  * 
@@ -41,10 +45,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that only Jane can use",
+ * });
  * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
  *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- *     serviceAccountId: "your-service-account-id",
+ *     role: "roles/iam.serviceAccountUser",
+ *     serviceAccountId: sa.name,
  * });
  * ```
  * 
@@ -54,10 +62,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const defaultDefaultServiceAccount = pulumi.output(gcp.compute.getDefaultServiceAccount({}));
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that Jane can use",
+ * });
  * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
  *     member: "user:jane@example.com",
- *     role: "roles/editor",
- *     serviceAccountId: "your-service-account-id",
+ *     role: "roles/iam.serviceAccountUser",
+ *     serviceAccountId: sa.name,
+ * });
+ * // Allow SA service account use the default GCE account
+ * const gce_default_account_iam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
+ *     member: sa.email.apply(email => `serviceAccount:${email}`),
+ *     role: "roles/iam.serviceAccountUser",
+ *     serviceAccountId: defaultDefaultServiceAccount.apply(defaultDefaultServiceAccount => defaultDefaultServiceAccount.name),
  * });
  * ```
  */
@@ -86,7 +105,7 @@ export class IAMMember extends pulumi.CustomResource {
      */
     public readonly role: pulumi.Output<string>;
     /**
-     * The service account id to apply policy to.
+     * The fully-qualified name of the service account to apply policy to.
      */
     public readonly serviceAccountId: pulumi.Output<string>;
 
@@ -142,7 +161,7 @@ export interface IAMMemberState {
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The service account id to apply policy to.
+     * The fully-qualified name of the service account to apply policy to.
      */
     readonly serviceAccountId?: pulumi.Input<string>;
 }
@@ -159,7 +178,7 @@ export interface IAMMemberArgs {
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The service account id to apply policy to.
+     * The fully-qualified name of the service account to apply policy to.
      */
     readonly serviceAccountId: pulumi.Input<string>;
 }

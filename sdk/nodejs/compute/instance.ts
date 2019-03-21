@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly allowStoppingForUpdate: pulumi.Output<boolean | undefined>;
     /**
-     * List of disks to attach to the instance. Structure is documented below.
+     * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
     public readonly attachedDisks: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, mode?: string, source: string }[] | undefined>;
     /**
@@ -87,11 +87,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpuPlatform: pulumi.Output<string>;
     /**
-     * Configurable timeout in minutes for creating instances. Default is 4 minutes.
-     * Changing this forces a new resource to be created.
-     */
-    public readonly createTimeout: pulumi.Output<number | undefined>;
-    /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      */
@@ -105,6 +100,12 @@ export class Instance extends pulumi.CustomResource {
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
     public readonly guestAccelerators: pulumi.Output<{ count: number, type: string }[]>;
+    /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+     * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+     * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
+    public readonly hostname: pulumi.Output<string | undefined>;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -123,7 +124,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly machineType: pulumi.Output<string>;
     /**
      * Metadata key/value pairs to make available from
-     * within the instance.
+     * within the instance. Ssh keys attached in the Cloud Console will be removed.
+     * Add them to your config in order to keep them attached to your instance.
      */
     public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -153,7 +155,7 @@ export class Instance extends pulumi.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName?: string }[], address: string, aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string, publicPtrDomainName?: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -209,10 +211,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
-            inputs["createTimeout"] = state ? state.createTimeout : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
+            inputs["hostname"] = state ? state.hostname : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -246,10 +248,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
             inputs["bootDisk"] = args ? args.bootDisk : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
-            inputs["createTimeout"] = args ? args.createTimeout : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
+            inputs["hostname"] = args ? args.hostname : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
@@ -284,7 +286,7 @@ export interface InstanceState {
      */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
-     * List of disks to attach to the instance. Structure is documented below.
+     * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
     readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
@@ -303,11 +305,6 @@ export interface InstanceState {
      */
     readonly cpuPlatform?: pulumi.Input<string>;
     /**
-     * Configurable timeout in minutes for creating instances. Default is 4 minutes.
-     * Changing this forces a new resource to be created.
-     */
-    readonly createTimeout?: pulumi.Input<number>;
-    /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      */
@@ -321,6 +318,12 @@ export interface InstanceState {
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+     * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+     * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
+    readonly hostname?: pulumi.Input<string>;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -339,7 +342,8 @@ export interface InstanceState {
     readonly machineType?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
-     * within the instance.
+     * within the instance. Ssh keys attached in the Cloud Console will be removed.
+     * Add them to your config in order to keep them attached to your instance.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -369,7 +373,7 @@ export interface InstanceState {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -419,7 +423,7 @@ export interface InstanceArgs {
      */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
-     * List of disks to attach to the instance. Structure is documented below.
+     * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
     readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
@@ -433,11 +437,6 @@ export interface InstanceArgs {
      * This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
-    /**
-     * Configurable timeout in minutes for creating instances. Default is 4 minutes.
-     * Changing this forces a new resource to be created.
-     */
-    readonly createTimeout?: pulumi.Input<number>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
@@ -453,6 +452,12 @@ export interface InstanceArgs {
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+     * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+     * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
+    readonly hostname?: pulumi.Input<string>;
+    /**
      * A set of key/value label pairs to assign to the instance.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -462,7 +467,8 @@ export interface InstanceArgs {
     readonly machineType: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
-     * within the instance.
+     * within the instance. Ssh keys attached in the Cloud Console will be removed.
+     * Add them to your config in order to keep them attached to your instance.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -488,7 +494,7 @@ export interface InstanceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ assignedNatIp?: pulumi.Input<string>, natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, address?: pulumi.Input<string>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

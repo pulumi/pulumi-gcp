@@ -10,33 +10,34 @@ from .. import utilities, tables
 
 class Repository(pulumi.CustomResource):
     name: pulumi.Output[str]
-    """
-    The name of the repository that will be created.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
-    size: pulumi.Output[int]
-    """
-    The size of the repository.
-    """
+    size: pulumi.Output[float]
     url: pulumi.Output[str]
-    """
-    The url to clone the repository.
-    """
     def __init__(__self__, resource_name, opts=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        For more information, see [the official
-        documentation](https://cloud.google.com/source-repositories/) and
-        [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        A repository (or repo) is a Git repository storing versioned source content.
+        
+        
+        To get more information about Repository, see:
+        
+        * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/source-repositories/)
+        
+        <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+          <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=sourcerepo_repository_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+            <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
+          </a>
+        </div>
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the repository that will be created.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

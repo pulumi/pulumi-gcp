@@ -23,6 +23,7 @@ from .instance_group import *
 from .instance_group_manager import *
 from .instance_template import *
 from .interconnect_attachment import *
+from .manged_ssl_certificate import *
 from .network import *
 from .network_peering import *
 from .project_metadata import *

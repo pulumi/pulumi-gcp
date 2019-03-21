@@ -39,6 +39,7 @@ export * from "./instanceGroup";
 export * from "./instanceGroupManager";
 export * from "./instanceTemplate";
 export * from "./interconnectAttachment";
+export * from "./mangedSslCertificate";
 export * from "./network";
 export * from "./networkPeering";
 export * from "./projectMetadata";

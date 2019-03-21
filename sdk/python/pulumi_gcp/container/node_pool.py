@@ -18,7 +18,7 @@ class NodePool(pulumi.CustomResource):
     """
     The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
     """
-    initial_node_count: pulumi.Output[int]
+    initial_node_count: pulumi.Output[float]
     """
     The initial node count for the pool. Changing this will force
     recreation of the resource.
@@ -29,13 +29,11 @@ class NodePool(pulumi.CustomResource):
     Node management configuration, wherein auto-repair and
     auto-upgrade is configured. Structure is documented below.
     """
-    max_pods_per_node: pulumi.Output[int]
+    max_pods_per_node: pulumi.Output[float]
     """
-    The maximum number of pods per node in this node pool.
+    ) The maximum number of pods per node in this node pool.
     Note that this does not work on node pools which are "route-based" - that is, node
     pools belonging to clusters that do not have IP Aliasing enabled.
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     name: pulumi.Output[str]
     """
@@ -43,16 +41,12 @@ class NodePool(pulumi.CustomResource):
     auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
-    """
-    Creates a unique name for the node pool beginning
-    with the specified prefix. Conflicts with `name`.
-    """
     node_config: pulumi.Output[dict]
     """
     The node configuration of the pool. See
     google_container_cluster for schema.
     """
-    node_count: pulumi.Output[int]
+    node_count: pulumi.Output[float]
     """
     The number of nodes per instance group. This field can be used to
     update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -65,14 +59,15 @@ class NodePool(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region in which the cluster resides (for regional clusters).
-    This property is in beta, and should be used with the terraform-provider-google-beta provider.
-    See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
     """
     version: pulumi.Output[str]
     """
     The Kubernetes version for the nodes in this pool. Note that if this field
     and `auto_upgrade` are both specified, they will fight each other for what the node version should
-    be, so setting both is highly discouraged.
+    be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+    recommended that you specify explicit versions as Terraform will see spurious diffs
+    when fuzzy versions are used. See the `google_container_engine_versions` data source's
+    `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
     """
     zone: pulumi.Output[str]
     """
@@ -80,41 +75,37 @@ class NodePool(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None, __name__=None, __opts__=None):
         """
-        Manages a Node Pool resource within GKE. For more information see
-        [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
-        and
-        [API](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
+        Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+        the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+        and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[str] cluster: The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
-        :param pulumi.Input[int] initial_node_count: The initial node count for the pool. Changing this will force
+        :param pulumi.Input[float] initial_node_count: The initial node count for the pool. Changing this will force
                recreation of the resource.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
-        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool.
+        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, Terraform will
                auto-generate a unique name.
-        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
-               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                google_container_cluster for schema.
-        :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
+        :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input[str] region: The region in which the cluster resides (for regional clusters).
-               This property is in beta, and should be used with the terraform-provider-google-beta provider.
-               See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta fields.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
-               be, so setting both is highly discouraged.
+               be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as Terraform will see spurious diffs
+               when fuzzy versions are used. See the `google_container_engine_versions` data source's
+               `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
         :param pulumi.Input[str] zone: The zone in which the cluster resides.
         """
         if __name__ is not None:

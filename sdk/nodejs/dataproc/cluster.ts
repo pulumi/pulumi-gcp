@@ -13,7 +13,18 @@ import * as utilities from "../utilities";
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
  * whole cluster!
  * 
- * ## Example usage
+ * ## Example Usage - Basic
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
+ *     region: "us-central1",
+ * });
+ * ```
+ * 
+ * ## Example Usage - Advanced
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +46,7 @@ import * as utilities from "../utilities";
  *         }],
  *         masterConfig: {
  *             diskConfig: {
- *                 bootDiskSizeGb: 10,
+ *                 bootDiskSizeGb: 15,
  *                 bootDiskType: "pd-ssd",
  *             },
  *             machineType: "n1-standard-1",
@@ -54,7 +65,7 @@ import * as utilities from "../utilities";
  *         stagingBucket: "dataproc-staging-bucket",
  *         workerConfig: {
  *             diskConfig: {
- *                 bootDiskSizeGb: 10,
+ *                 bootDiskSizeGb: 15,
  *                 numLocalSsds: 1,
  *             },
  *             machineType: "n1-standard-1",
@@ -66,7 +77,26 @@ import * as utilities from "../utilities";
  *     },
  *     region: "us-central1",
  * });
- * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
+ * ```
+ * 
+ * ## Example Usage - Using a GPU accelerator
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
+ *     clusterConfig: {
+ *         gceClusterConfig: {
+ *             zone: "us-central1-a",
+ *         },
+ *         masterConfig: {
+ *             accelerators: [{
+ *                 acceleratorCount: 1,
+ *                 acceleratorType: "nvidia-tesla-k80",
+ *             }],
+ *         },
+ *     },
  *     region: "us-central1",
  * });
  * ```
@@ -88,7 +118,7 @@ export class Cluster extends pulumi.CustomResource {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    public readonly clusterConfig: pulumi.Output<{ bucket: string, deleteAutogenBucket?: boolean, gceClusterConfig: { internalIpOnly?: boolean, metadata?: {[key: string]: string}, network: string, serviceAccount?: string, serviceAccountScopes: string[], subnetwork?: string, tags?: string[], zone: string }, initializationActions?: { script: string, timeoutSec?: number }[], masterConfig: { diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, instanceNames: string[], machineType: string, numInstances: number }, preemptibleWorkerConfig: { diskConfig: { bootDiskSizeGb: number }, instanceNames: string[], numInstances: number }, softwareConfig: { imageVersion: string, overrideProperties?: {[key: string]: string}, properties: {[key: string]: any} }, stagingBucket?: string, workerConfig: { diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, instanceNames: string[], machineType: string, numInstances: number } }>;
+    public readonly clusterConfig: pulumi.Output<{ bucket: string, encryptionConfig?: { kmsKeyName: string }, gceClusterConfig: { internalIpOnly?: boolean, metadata?: {[key: string]: string}, network: string, serviceAccount?: string, serviceAccountScopes: string[], subnetwork?: string, tags?: string[], zone: string }, initializationActions?: { script: string, timeoutSec?: number }[], masterConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number }, preemptibleWorkerConfig: { diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, instanceNames: string[], numInstances: number }, softwareConfig: { imageVersion: string, overrideProperties?: {[key: string]: string}, properties: {[key: string]: any} }, stagingBucket?: string, workerConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number } }>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -148,7 +178,7 @@ export interface ClusterState {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    readonly clusterConfig?: pulumi.Input<{ bucket?: pulumi.Input<string>, deleteAutogenBucket?: pulumi.Input<boolean>, gceClusterConfig?: pulumi.Input<{ internalIpOnly?: pulumi.Input<boolean>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, network?: pulumi.Input<string>, serviceAccount?: pulumi.Input<string>, serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, initializationActions?: pulumi.Input<pulumi.Input<{ script: pulumi.Input<string>, timeoutSec?: pulumi.Input<number> }>[]>, masterConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }>, preemptibleWorkerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, numInstances?: pulumi.Input<number> }>, softwareConfig?: pulumi.Input<{ imageVersion?: pulumi.Input<string>, overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, properties?: pulumi.Input<{[key: string]: any}> }>, stagingBucket?: pulumi.Input<string>, workerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }> }>;
+    readonly clusterConfig?: pulumi.Input<{ bucket?: pulumi.Input<string>, encryptionConfig?: pulumi.Input<{ kmsKeyName: pulumi.Input<string> }>, gceClusterConfig?: pulumi.Input<{ internalIpOnly?: pulumi.Input<boolean>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, network?: pulumi.Input<string>, serviceAccount?: pulumi.Input<string>, serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, initializationActions?: pulumi.Input<pulumi.Input<{ script: pulumi.Input<string>, timeoutSec?: pulumi.Input<number> }>[]>, masterConfig?: pulumi.Input<{ accelerators?: pulumi.Input<pulumi.Input<{ acceleratorCount: pulumi.Input<number>, acceleratorType: pulumi.Input<string> }>[]>, diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, imageUri?: pulumi.Input<string>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }>, preemptibleWorkerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, numInstances?: pulumi.Input<number> }>, softwareConfig?: pulumi.Input<{ imageVersion?: pulumi.Input<string>, overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, properties?: pulumi.Input<{[key: string]: any}> }>, stagingBucket?: pulumi.Input<string>, workerConfig?: pulumi.Input<{ accelerators?: pulumi.Input<pulumi.Input<{ acceleratorCount: pulumi.Input<number>, acceleratorType: pulumi.Input<string> }>[]>, diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, imageUri?: pulumi.Input<string>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }> }>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -180,7 +210,7 @@ export interface ClusterArgs {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    readonly clusterConfig?: pulumi.Input<{ bucket?: pulumi.Input<string>, deleteAutogenBucket?: pulumi.Input<boolean>, gceClusterConfig?: pulumi.Input<{ internalIpOnly?: pulumi.Input<boolean>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, network?: pulumi.Input<string>, serviceAccount?: pulumi.Input<string>, serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, initializationActions?: pulumi.Input<pulumi.Input<{ script: pulumi.Input<string>, timeoutSec?: pulumi.Input<number> }>[]>, masterConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }>, preemptibleWorkerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, numInstances?: pulumi.Input<number> }>, softwareConfig?: pulumi.Input<{ imageVersion?: pulumi.Input<string>, overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, properties?: pulumi.Input<{[key: string]: any}> }>, stagingBucket?: pulumi.Input<string>, workerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }> }>;
+    readonly clusterConfig?: pulumi.Input<{ bucket?: pulumi.Input<string>, encryptionConfig?: pulumi.Input<{ kmsKeyName: pulumi.Input<string> }>, gceClusterConfig?: pulumi.Input<{ internalIpOnly?: pulumi.Input<boolean>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, network?: pulumi.Input<string>, serviceAccount?: pulumi.Input<string>, serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>, subnetwork?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, zone?: pulumi.Input<string> }>, initializationActions?: pulumi.Input<pulumi.Input<{ script: pulumi.Input<string>, timeoutSec?: pulumi.Input<number> }>[]>, masterConfig?: pulumi.Input<{ accelerators?: pulumi.Input<pulumi.Input<{ acceleratorCount: pulumi.Input<number>, acceleratorType: pulumi.Input<string> }>[]>, diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, imageUri?: pulumi.Input<string>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }>, preemptibleWorkerConfig?: pulumi.Input<{ diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, numInstances?: pulumi.Input<number> }>, softwareConfig?: pulumi.Input<{ imageVersion?: pulumi.Input<string>, overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, properties?: pulumi.Input<{[key: string]: any}> }>, stagingBucket?: pulumi.Input<string>, workerConfig?: pulumi.Input<{ accelerators?: pulumi.Input<pulumi.Input<{ acceleratorCount: pulumi.Input<number>, acceleratorType: pulumi.Input<string> }>[]>, diskConfig?: pulumi.Input<{ bootDiskSizeGb?: pulumi.Input<number>, bootDiskType?: pulumi.Input<string>, numLocalSsds?: pulumi.Input<number> }>, imageUri?: pulumi.Input<string>, instanceNames?: pulumi.Input<pulumi.Input<string>[]>, machineType?: pulumi.Input<string>, numInstances?: pulumi.Input<number> }> }>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`

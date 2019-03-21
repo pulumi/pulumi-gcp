@@ -35,6 +35,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
 		inputs["guestAccelerators"] = nil
+		inputs["hostname"] = nil
 		inputs["labels"] = nil
 		inputs["machineType"] = nil
 		inputs["metadata"] = nil
@@ -57,6 +58,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
 		inputs["guestAccelerators"] = args.GuestAccelerators
+		inputs["hostname"] = args.Hostname
 		inputs["labels"] = args.Labels
 		inputs["machineType"] = args.MachineType
 		inputs["metadata"] = args.Metadata
@@ -99,6 +101,7 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
 		inputs["guestAccelerators"] = state.GuestAccelerators
+		inputs["hostname"] = state.Hostname
 		inputs["instanceId"] = state.InstanceId
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
@@ -166,6 +169,10 @@ func (r *InstanceFromTemplate) Description() *pulumi.StringOutput {
 
 func (r *InstanceFromTemplate) GuestAccelerators() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
+}
+
+func (r *InstanceFromTemplate) Hostname() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 func (r *InstanceFromTemplate) InstanceId() *pulumi.StringOutput {
@@ -260,6 +267,7 @@ type InstanceFromTemplateState struct {
 	DeletionProtection interface{}
 	Description interface{}
 	GuestAccelerators interface{}
+	Hostname interface{}
 	InstanceId interface{}
 	LabelFingerprint interface{}
 	Labels interface{}
@@ -296,6 +304,7 @@ type InstanceFromTemplateArgs struct {
 	DeletionProtection interface{}
 	Description interface{}
 	GuestAccelerators interface{}
+	Hostname interface{}
 	Labels interface{}
 	MachineType interface{}
 	Metadata interface{}
