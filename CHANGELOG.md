@@ -1,8 +1,11 @@
-## 0.18.0 (Unreleased)
+## 0.18.1 (Unreleased)
+
+## 0.18.0 (Released March 21, 2019)
 
 ### Important
 
-- Version 0.18.0 of `pulumi-gcp` is now based on v2.2.0 of the Google Beta Terraform Provider, which has a variety of breaking changes from the previous version.
+- Version 0.18.0 of `pulumi-gcp` is now based on v2.2.0 of the Google Beta Terraform Provider, which has a variety of breaking changes from the previous version. A complete list of backward incompatibilities can be found on the
+  upstream Google Beta Provider [Changelog][https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/CHANGELOG.md#200-february-12-2019].
 
 - `gcp.runtimeconfig.Variavble` has now been correct to `gcp.runtimeconfig.Variable`.
 
