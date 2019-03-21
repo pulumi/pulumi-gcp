@@ -26,7 +26,6 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-
 	// Set the configurations.
 	project := os.Getenv("GOOGLE_PROJECT")
 	if project == "" {
@@ -65,7 +64,7 @@ func TestExamples(t *testing.T) {
 
 	pythonBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			filepath.Join("..", "..", "sdk", "python", "bin"),
+			filepath.Join("..", "sdk", "python", "bin"),
 		},
 	})
 
@@ -104,7 +103,7 @@ func TestExamples(t *testing.T) {
 
 	for _, ex := range tests {
 		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
+		t.Run(filepath.Base(example.Dir), func(t *testing.T) {
 			integration.ProgramTest(t, &example)
 		})
 	}
