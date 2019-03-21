@@ -17,6 +17,7 @@ package examples
 import (
 	"os"
 	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -25,7 +26,6 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-
 	// Set the configurations.
 	project := os.Getenv("GOOGLE_PROJECT")
 	if project == "" {
@@ -56,24 +56,39 @@ func TestExamples(t *testing.T) {
 		},
 	}
 
+	jsBase := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"@pulumi/gcp",
+		},
+	})
+
+	pythonBase := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			filepath.Join("..", "sdk", "python", "bin"),
+		},
+	})
+
 	shortTests := []integration.ProgramTestOptions{
-		base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
-		base.With(integration.ProgramTestOptions{
+		jsBase.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
+		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "serverless"),
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
 		}),
+		pythonBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "minimal-py"),
+		}),
 	}
 
 	longTests := []integration.ProgramTestOptions{
-		base.With(integration.ProgramTestOptions{
+		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "loadbalancer"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
 			SkipRefresh: true,
 		}),
-		base.With(integration.ProgramTestOptions{
+		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "webserver"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
@@ -88,7 +103,7 @@ func TestExamples(t *testing.T) {
 
 	for _, ex := range tests {
 		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
+		t.Run(filepath.Base(example.Dir), func(t *testing.T) {
 			integration.ProgramTest(t, &example)
 		})
 	}
