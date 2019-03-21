@@ -210,7 +210,7 @@
         "resourcemanager/lien.ts",
         "runtimeconfig/config.ts",
         "runtimeconfig/index.ts",
-        "runtimeconfig/variavble.ts",
+        "runtimeconfig/variable.ts",
         "serverless/function.ts",
         "serverless/index.ts",
         "serviceAccount/account.ts",

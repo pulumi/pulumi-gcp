@@ -2,7 +2,9 @@
 
 ### Important
 
-Version 0.18.0 of `pulumi-gcp` is now based on v2.2.0 of the Google Beta Terraform Provider, which has a variety of breaking changes from the previous version.
+- Version 0.18.0 of `pulumi-gcp` is now based on v2.2.0 of the Google Beta Terraform Provider, which has a variety of breaking changes from the previous version.
+
+- `gcp.runtimeconfig.Variavble` has now been correct to `gcp.runtimeconfig.Variable`.
 
 ## Improvements
 

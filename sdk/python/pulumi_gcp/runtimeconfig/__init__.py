@@ -4,4 +4,4 @@
 
 # Export this package's modules as members:
 from .config import *
-from .variavble import *
+from .variable import *

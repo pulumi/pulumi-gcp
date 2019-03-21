@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
- * const environment = new gcp.runtimeconfig.Variavble("environment", {
+ * const environment = new gcp.runtimeconfig.Variable("environment", {
  *     parent: my_runtime_config.name,
  *     text: "example.com",
  * });
@@ -40,23 +40,23 @@ import * as utilities from "../utilities";
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
- * const my_secret = new gcp.runtimeconfig.Variavble("my-secret", {
+ * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
  *     parent: my_runtime_config.name,
  *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", "utf-8")).toString("base64"),
  * });
  * ```
  */
-export class Variavble extends pulumi.CustomResource {
+export class Variable extends pulumi.CustomResource {
     /**
-     * Get an existing Variavble resource's state with the given name, ID, and optional extra
+     * Get an existing Variable resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VariavbleState, opts?: pulumi.CustomResourceOptions): Variavble {
-        return new Variavble(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VariableState, opts?: pulumi.CustomResourceOptions): Variable {
+        return new Variable(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -84,17 +84,17 @@ export class Variavble extends pulumi.CustomResource {
     public readonly value: pulumi.Output<string | undefined>;
 
     /**
-     * Create a Variavble resource with the given unique name, arguments, and options.
+     * Create a Variable resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VariavbleArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: VariavbleArgs | VariavbleState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: VariableArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: VariableArgs | VariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VariavbleState = argsOrState as VariavbleState | undefined;
+            const state: VariableState = argsOrState as VariableState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -102,7 +102,7 @@ export class Variavble extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["value"] = state ? state.value : undefined;
         } else {
-            const args = argsOrState as VariavbleArgs | undefined;
+            const args = argsOrState as VariableArgs | undefined;
             if (!args || args.parent === undefined) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -113,14 +113,14 @@ export class Variavble extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["updateTime"] = undefined /*out*/;
         }
-        super("gcp:runtimeconfig/variavble:Variavble", name, inputs, opts);
+        super("gcp:runtimeconfig/variable:Variable", name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Variavble resources.
+ * Input properties used for looking up and filtering Variable resources.
  */
-export interface VariavbleState {
+export interface VariableState {
     /**
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
@@ -147,9 +147,9 @@ export interface VariavbleState {
 }
 
 /**
- * The set of arguments for constructing a Variavble resource.
+ * The set of arguments for constructing a Variable resource.
  */
-export interface VariavbleArgs {
+export interface VariableArgs {
     /**
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").

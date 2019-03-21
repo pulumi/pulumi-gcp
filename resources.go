@@ -540,7 +540,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Runtime Config resources
 			"google_runtimeconfig_config":   {Tok: gcpResource(gcpRuntimeConfig, "Config")},
-			"google_runtimeconfig_variable": {Tok: gcpResource(gcpRuntimeConfig, "Variavble")},
+			"google_runtimeconfig_variable": {Tok: gcpResource(gcpRuntimeConfig, "Variable")},
 
 			// Service Networking resources
 			"google_service_networking_connection": {Tok: gcpResource(gcpServiceNetworking, "Connection")},

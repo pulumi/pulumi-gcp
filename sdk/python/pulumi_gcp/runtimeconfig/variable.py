@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Variavble(pulumi.CustomResource):
+class Variable(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
     The name of the variable to manage. Note that variable
@@ -77,8 +77,8 @@ class Variavble(pulumi.CustomResource):
 
         __props__['update_time'] = None
 
-        super(Variavble, __self__).__init__(
-            'gcp:runtimeconfig/variavble:Variavble',
+        super(Variable, __self__).__init__(
+            'gcp:runtimeconfig/variable:Variable',
             resource_name,
             __props__,
             opts)
