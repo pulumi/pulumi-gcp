@@ -145,7 +145,8 @@ export class CallbackFunction extends cloudfunctions.Function {
 }
 
 /**
- * An http
+ * An http-triggered Cloud-Function that, when invoked, will execute the code supplied by a user-provided
+ * JavaScript-Function.
  */
 export class HttpCallbackFunction extends CallbackFunction {
     constructor(name: string, args: HttpCallbackFunctionArgs, opts: pulumi.ComponentResourceOptions = {}) {
@@ -274,13 +275,13 @@ export interface CallbackFunctionArgs extends BaseCallbackFunctionArgs {
 
     /**
      * The Javascript function instance that will be called to produce the callback function that is
-     * the entrypoint for the GCP CloudFunction. Either [callback] or [callbackFactory] must be
+     * the entrypoint for the GCP Cloud Function. Either [callback] or [callbackFactory] must be
      * provided.
      *
      * This form is useful when there is expensive initialization work that should only be executed
-     * once.  The factory-function will be invoked once when the final GCP CloudFunction module is
+     * once.  The factory-function will be invoked once when the final GCP Cloud Function module is
      * loaded. It can run whatever code it needs, and will end by returning the actual function that
-     * Function will call into each time the Function is invoked.
+     * Function will call into each time the Cloud Function is invoked.
      */
     callbackFactory?: Function;
 }
@@ -316,17 +317,6 @@ export interface HttpCallbackFunctionArgs extends CallbackFunctionArgs {
      */
     callbackFactory?: HttpCallbackFactory;
 
-    /**
-    * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function
-    * execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is
-    * returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
-    */
     triggerHttp?: never
-
-    /**
-     * A source that fires events in response to a condition in another service. Structure is
-     * documented below. Cannot be used with `trigger_http`.
-     */
     eventTrigger?: never;
 }
-
