@@ -70,10 +70,7 @@ export interface FunctionOptions {
    excludePackages?: string[];
 }
 
-/**
- * Function is a higher-level API for creating and managing GCP Cloud Function resources implemented
- * by a given handler.
- */
+/** @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead. */
 export class Function extends pulumi.ComponentResource {
     public readonly options: FunctionOptions;
     public readonly function: cloudfunctions.Function;
