@@ -15,10 +15,27 @@
 import * as gcp from "@pulumi/gcp";
 
 // Create the Function resource
-let f = new gcp.serverless.Function("f", {}, 
-    (req: any, res: any) => {
+let f = new gcp.cloudfunctions.HttpCallbackFunction("f", {
+    callback: (req: any, res: any) => {
         res.send(`Hello ${req.body.name || 'World'}!`);
-    });
+    },
+});
+
+let bucket = new gcp.storage.Bucket("cy");
+bucket.onObjectFinalized("cy-ev", async (ev, ct) => {
+    try {
+        console.log("ev: " + JSON.stringify(ev));
+        console.error("ev: " + JSON.stringify(ev));
+
+        console.log("ct: " + JSON.stringify(ct));
+        console.error("ct: " + JSON.stringify(ct));
+    }
+    catch (err) {
+        console.log("got error");
+        console.error("got error");
+    }
+})
 
 // Export the HTTPS url for invoking the function
-export let url = f.function.httpsTriggerUrl;
+export let url = f.httpsTriggerUrl;
+export let bucketName = bucket.name;

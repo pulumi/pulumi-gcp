@@ -981,7 +981,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"cloudfunctions": {
 						DestFiles: []string{
-							"cloudfunctionsMixins.ts",
+							"packageMixins.ts",
 						},
 					},
 					"storage": {
