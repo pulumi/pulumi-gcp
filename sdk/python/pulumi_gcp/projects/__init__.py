@@ -12,4 +12,5 @@ from .organization_policy import *
 from .service import *
 from .services import *
 from .usage_export_bucket import *
+from .get_organization_policy import *
 from .get_project import *

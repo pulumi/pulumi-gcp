@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about TargetTcpProxy, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetTcpProxies)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
  * * How-to Guides
  *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
  * 

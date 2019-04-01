@@ -113,7 +113,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
     /**
@@ -191,7 +191,7 @@ export interface OrganizationPolicyState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
@@ -225,7 +225,7 @@ export interface OrganizationPolicyArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**

@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * ```
  * 
  * ### Private IP Instance
- * 
+ * > **NOTE**: For private IP instance setup, note that the `google_sql_database_instance` does not actually interpolate values from `google_service_networking_connection`. You must explicitly add a `depends_on`reference as shown below.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

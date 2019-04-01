@@ -20,7 +20,7 @@ import (
 // 
 // To get more information about HttpHealthCheck, see:
 // 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/httpHealthChecks)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
 // * How-to Guides
 //     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 // 

@@ -887,6 +887,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_folder.html.markdown",
 				},
 			},
+			"google_folder_organization_policy": {
+				Tok: gcpDataSource(gcpFolder, "getOrganizationPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_folder_organization_policy.html.markdown",
+				},
+			},
 			"google_iam_policy": {
 				Tok: gcpDataSource(gcpOrganization, "getIAMPolicy"),
 				Docs: &tfbridge.DocInfo{
@@ -921,6 +927,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpProject, "getProject"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_projects.html.markdown",
+				},
+			},
+			"google_project_organization_policy": {
+				Tok: gcpDataSource(gcpProject, "getOrganizationPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_project_organization_policy.html.markdown",
 				},
 			},
 			"google_storage_bucket_object": {

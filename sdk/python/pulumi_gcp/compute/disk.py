@@ -18,6 +18,7 @@ class Disk(pulumi.CustomResource):
     last_attach_timestamp: pulumi.Output[str]
     last_detach_timestamp: pulumi.Output[str]
     name: pulumi.Output[str]
+    physical_block_size_bytes: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -36,7 +37,7 @@ class Disk(pulumi.CustomResource):
     type: pulumi.Output[str]
     users: pulumi.Output[list]
     zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, physical_block_size_bytes=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
         """
         Persistent disks are durable storage devices that function similarly to
         the physical disks in a desktop or a server. Compute Engine manages the
@@ -57,7 +58,7 @@ class Disk(pulumi.CustomResource):
         
         To get more information about Disk, see:
         
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/disks)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
         * How-to Guides
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
         
@@ -100,6 +101,8 @@ class Disk(pulumi.CustomResource):
         __props__['labels'] = labels
 
         __props__['name'] = name
+
+        __props__['physical_block_size_bytes'] = physical_block_size_bytes
 
         __props__['project'] = project
 

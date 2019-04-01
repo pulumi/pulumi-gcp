@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getOrganizationPolicy";
 export * from "./iAMBinding";
 export * from "./iAMMember";
 export * from "./iAMPolicy";

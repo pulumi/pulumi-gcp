@@ -11,7 +11,7 @@ from .. import utilities, tables
 class OrganizationPolicy(pulumi.CustomResource):
     boolean_policy: pulumi.Output[dict]
     """
-    A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+    A boolean policy is a constraint that is either enforced or not. Structure is documented below.
     """
     constraint: pulumi.Output[str]
     """
@@ -19,7 +19,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     """
     etag: pulumi.Output[str]
     """
-    (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+    (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
     """
     folder: pulumi.Output[str]
     """
@@ -27,12 +27,12 @@ class OrganizationPolicy(pulumi.CustomResource):
     """
     list_policy: pulumi.Output[dict]
     """
-    A policy that can define specific values that are allowed or denied for the given constraint. It 
+    A policy that can define specific values that are allowed or denied for the given constraint. It
     can also be used to allow or deny all values. Structure is documented below.
     """
     restore_policy: pulumi.Output[dict]
     """
-    A restore policy is a constraint to restore the default policy. Structure is documented below. 
+    A restore policy is a constraint to restore the default policy. Structure is documented below.
     """
     update_time: pulumi.Output[str]
     """
@@ -51,12 +51,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+        :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         :param pulumi.Input[str] folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-        :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It 
+        :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It
                can also be used to allow or deny all values. Structure is documented below.
-        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below. 
+        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
         """
         if __name__ is not None:

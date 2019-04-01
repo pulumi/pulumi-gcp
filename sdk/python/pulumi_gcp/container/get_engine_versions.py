@@ -50,16 +50,19 @@ class GetEngineVersionsResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_engine_versions(project=None,region=None,version_prefix=None,zone=None,opts=None):
+async def get_engine_versions(location=None,project=None,region=None,version_prefix=None,zone=None,opts=None):
     """
-    Provides access to available Google Container Engine versions in a zone or region for a given project.
+    Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
     
-    > If you are using the `google_container_engine_versions` datasource with a regional cluster, ensure that you have provided a `region`
-    to the datasource. A `region` can have a different set of supported versions than its corresponding `zone`s, and not all `zone`s in a 
-    `region` are guaranteed to support the same version.
+    > If you are using the `google_container_engine_versions` datasource with a
+    regional cluster, ensure that you have provided a region as the `location` to
+    the datasource. A region can have a different set of supported versions than
+    its component zones, and not all zones in a region are guaranteed to
+    support the same version.
     """
     __args__ = dict()
 
+    __args__['location'] = location
     __args__['project'] = project
     __args__['region'] = region
     __args__['versionPrefix'] = version_prefix

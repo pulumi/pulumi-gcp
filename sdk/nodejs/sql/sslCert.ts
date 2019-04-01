@@ -51,17 +51,17 @@ export class SslCert extends pulumi.CustomResource {
      */
     public /*out*/ readonly certSerialNumber: pulumi.Output<string>;
     /**
-     * The common name to be used in the certificate to identify the 
+     * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
     public readonly commonName: pulumi.Output<string>;
     /**
-     * The time when the certificate was created in RFC 3339 format, 
+     * The time when the certificate was created in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
     public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The time when the certificate expires in RFC 3339 format, 
+     * The time when the certificate expires in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
     public /*out*/ readonly expirationTime: pulumi.Output<string>;
@@ -74,6 +74,11 @@ export class SslCert extends pulumi.CustomResource {
      * The private key associated with the client certificate.
      */
     public /*out*/ readonly privateKey: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    public readonly project: pulumi.Output<string>;
     /**
      * The CA cert of the server this client cert was generated from.
      */
@@ -102,6 +107,7 @@ export class SslCert extends pulumi.CustomResource {
             inputs["expirationTime"] = state ? state.expirationTime : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["privateKey"] = state ? state.privateKey : undefined;
+            inputs["project"] = state ? state.project : undefined;
             inputs["serverCaCert"] = state ? state.serverCaCert : undefined;
             inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
         } else {
@@ -114,6 +120,7 @@ export class SslCert extends pulumi.CustomResource {
             }
             inputs["commonName"] = args ? args.commonName : undefined;
             inputs["instance"] = args ? args.instance : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["cert"] = undefined /*out*/;
             inputs["certSerialNumber"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -139,17 +146,17 @@ export interface SslCertState {
      */
     readonly certSerialNumber?: pulumi.Input<string>;
     /**
-     * The common name to be used in the certificate to identify the 
+     * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
     readonly commonName?: pulumi.Input<string>;
     /**
-     * The time when the certificate was created in RFC 3339 format, 
+     * The time when the certificate was created in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * The time when the certificate expires in RFC 3339 format, 
+     * The time when the certificate expires in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
     readonly expirationTime?: pulumi.Input<string>;
@@ -162,6 +169,11 @@ export interface SslCertState {
      * The private key associated with the client certificate.
      */
     readonly privateKey?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
     /**
      * The CA cert of the server this client cert was generated from.
      */
@@ -177,7 +189,7 @@ export interface SslCertState {
  */
 export interface SslCertArgs {
     /**
-     * The common name to be used in the certificate to identify the 
+     * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
     readonly commonName: pulumi.Input<string>;
@@ -186,4 +198,9 @@ export interface SslCertArgs {
      * forces a new resource to be created.
      */
     readonly instance: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    readonly project?: pulumi.Input<string>;
 }

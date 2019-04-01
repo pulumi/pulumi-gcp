@@ -13,7 +13,7 @@ import (
 // 
 // To get more information about GlobalAddress, see:
 // 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/globalAddresses)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
 // * How-to Guides
 //     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 // 

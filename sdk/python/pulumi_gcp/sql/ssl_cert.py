@@ -19,17 +19,17 @@ class SslCert(pulumi.CustomResource):
     """
     common_name: pulumi.Output[str]
     """
-    The common name to be used in the certificate to identify the 
+    The common name to be used in the certificate to identify the
     client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
     """
     create_time: pulumi.Output[str]
     """
-    The time when the certificate was created in RFC 3339 format, 
+    The time when the certificate was created in RFC 3339 format,
     for example 2012-11-15T16:19:00.094Z.
     """
     expiration_time: pulumi.Output[str]
     """
-    The time when the certificate expires in RFC 3339 format, 
+    The time when the certificate expires in RFC 3339 format,
     for example 2012-11-15T16:19:00.094Z.
     """
     instance: pulumi.Output[str]
@@ -41,6 +41,11 @@ class SslCert(pulumi.CustomResource):
     """
     The private key associated with the client certificate.
     """
+    project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If it
+    is not provided, the provider project is used.
+    """
     server_ca_cert: pulumi.Output[str]
     """
     The CA cert of the server this client cert was generated from.
@@ -49,7 +54,7 @@ class SslCert(pulumi.CustomResource):
     """
     The SHA1 Fingerprint of the certificate.
     """
-    def __init__(__self__, resource_name, opts=None, common_name=None, instance=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, common_name=None, instance=None, project=None, __name__=None, __opts__=None):
         """
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
         
@@ -58,10 +63,12 @@ class SslCert(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] common_name: The common name to be used in the certificate to identify the 
+        :param pulumi.Input[str] common_name: The common name to be used in the certificate to identify the
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,6 +92,8 @@ class SslCert(pulumi.CustomResource):
         if instance is None:
             raise TypeError('Missing required property instance')
         __props__['instance'] = instance
+
+        __props__['project'] = project
 
         __props__['cert'] = None
         __props__['cert_serial_number'] = None

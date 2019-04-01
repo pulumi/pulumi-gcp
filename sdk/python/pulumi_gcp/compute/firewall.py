@@ -52,7 +52,7 @@ class Firewall(pulumi.CustomResource):
         
         To get more information about Firewall, see:
         
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/firewalls)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
         

@@ -82,7 +82,7 @@ func (r *OrganizationPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 func (r *OrganizationPolicy) BooleanPolicy() *pulumi.Output {
 	return r.s.State["booleanPolicy"]
 }
@@ -92,7 +92,7 @@ func (r *OrganizationPolicy) Constraint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["constraint"])
 }
 
-// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 func (r *OrganizationPolicy) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -102,13 +102,13 @@ func (r *OrganizationPolicy) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// A policy that can define specific values that are allowed or denied for the given constraint. It 
+// A policy that can define specific values that are allowed or denied for the given constraint. It
 // can also be used to allow or deny all values. Structure is documented below.
 func (r *OrganizationPolicy) ListPolicy() *pulumi.Output {
 	return r.s.State["listPolicy"]
 }
 
-// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+// A restore policy is a constraint to restore the default policy. Structure is documented below.
 func (r *OrganizationPolicy) RestorePolicy() *pulumi.Output {
 	return r.s.State["restorePolicy"]
 }
@@ -125,18 +125,18 @@ func (r *OrganizationPolicy) Version() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering OrganizationPolicy resources.
 type OrganizationPolicyState struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy interface{}
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint interface{}
-	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag interface{}
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder interface{}
-	// A policy that can define specific values that are allowed or denied for the given constraint. It 
+	// A policy that can define specific values that are allowed or denied for the given constraint. It
 	// can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime interface{}
@@ -146,16 +146,16 @@ type OrganizationPolicyState struct {
 
 // The set of arguments for constructing a OrganizationPolicy resource.
 type OrganizationPolicyArgs struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy interface{}
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint interface{}
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder interface{}
-	// A policy that can define specific values that are allowed or denied for the given constraint. It 
+	// A policy that can define specific values that are allowed or denied for the given constraint. It
 	// can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// Version of the Policy. Default version is 0.
 	Version interface{}

@@ -26,6 +26,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["autoscaling"] = nil
 		inputs["cluster"] = nil
 		inputs["initialNodeCount"] = nil
+		inputs["location"] = nil
 		inputs["management"] = nil
 		inputs["maxPodsPerNode"] = nil
 		inputs["name"] = nil
@@ -40,6 +41,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["autoscaling"] = args.Autoscaling
 		inputs["cluster"] = args.Cluster
 		inputs["initialNodeCount"] = args.InitialNodeCount
+		inputs["location"] = args.Location
 		inputs["management"] = args.Management
 		inputs["maxPodsPerNode"] = args.MaxPodsPerNode
 		inputs["name"] = args.Name
@@ -69,6 +71,7 @@ func GetNodePool(ctx *pulumi.Context,
 		inputs["cluster"] = state.Cluster
 		inputs["initialNodeCount"] = state.InitialNodeCount
 		inputs["instanceGroupUrls"] = state.InstanceGroupUrls
+		inputs["location"] = state.Location
 		inputs["management"] = state.Management
 		inputs["maxPodsPerNode"] = state.MaxPodsPerNode
 		inputs["name"] = state.Name
@@ -118,6 +121,12 @@ func (r *NodePool) InstanceGroupUrls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
 }
 
+// The location (region or zone) in which the cluster
+// resides.
+func (r *NodePool) Location() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["location"])
+}
+
 // Node management configuration, wherein auto-repair and
 // auto-upgrade is configured. Structure is documented below.
 func (r *NodePool) Management() *pulumi.Output {
@@ -159,7 +168,8 @@ func (r *NodePool) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region in which the cluster resides (for regional clusters).
+// The region in which the cluster resides (for
+// regional clusters). `zone` has been deprecated in favor of `location`.
 func (r *NodePool) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -174,7 +184,8 @@ func (r *NodePool) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
 
-// The zone in which the cluster resides.
+// The zone in which the cluster resides. `zone`
+// has been deprecated in favor of `location`.
 func (r *NodePool) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -190,6 +201,9 @@ type NodePoolState struct {
 	// recreation of the resource.
 	InitialNodeCount interface{}
 	InstanceGroupUrls interface{}
+	// The location (region or zone) in which the cluster
+	// resides.
+	Location interface{}
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
@@ -210,7 +224,8 @@ type NodePoolState struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}
-	// The region in which the cluster resides (for regional clusters).
+	// The region in which the cluster resides (for
+	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -219,7 +234,8 @@ type NodePoolState struct {
 	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
 	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
-	// The zone in which the cluster resides.
+	// The zone in which the cluster resides. `zone`
+	// has been deprecated in favor of `location`.
 	Zone interface{}
 }
 
@@ -233,6 +249,9 @@ type NodePoolArgs struct {
 	// The initial node count for the pool. Changing this will force
 	// recreation of the resource.
 	InitialNodeCount interface{}
+	// The location (region or zone) in which the cluster
+	// resides.
+	Location interface{}
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management interface{}
@@ -253,7 +272,8 @@ type NodePoolArgs struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}
-	// The region in which the cluster resides (for regional clusters).
+	// The region in which the cluster resides (for
+	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -262,6 +282,7 @@ type NodePoolArgs struct {
 	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
 	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
-	// The zone in which the cluster resides.
+	// The zone in which the cluster resides. `zone`
+	// has been deprecated in favor of `location`.
 	Zone interface{}
 }

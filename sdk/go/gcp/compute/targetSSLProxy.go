@@ -15,7 +15,7 @@ import (
 // 
 // To get more information about TargetSslProxy, see:
 // 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetSslProxies)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
 // * How-to Guides
 //     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 // 
