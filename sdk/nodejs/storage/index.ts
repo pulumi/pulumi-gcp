@@ -17,4 +17,5 @@ export * from "./getTransferProjectServieAccount";
 export * from "./notification";
 export * from "./objectACL";
 export * from "./objectAccessControl";
+export * from "./storageMixins";
 export * from "./transferJob";

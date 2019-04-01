@@ -30,6 +30,7 @@
         "binaryauthorization/policy.ts",
         "cloudbuild/index.ts",
         "cloudbuild/trigger.ts",
+        "cloudfunctions/cloudfunctionsMixins.ts",
         "cloudfunctions/function.ts",
         "cloudfunctions/getFunction.ts",
         "cloudfunctions/index.ts",
@@ -255,10 +256,12 @@
         "storage/notification.ts",
         "storage/objectACL.ts",
         "storage/objectAccessControl.ts",
+        "storage/storageMixins.ts",
         "storage/transferJob.ts",
         "tpu/index.ts",
         "tpu/node.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "utils.ts"
     ]
 }
 
