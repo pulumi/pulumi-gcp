@@ -76,6 +76,9 @@ func TestExamples(t *testing.T) {
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
 		}),
+		jsBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "bucket"),
+		}),
 		pythonBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "minimal-py"),
 		}),

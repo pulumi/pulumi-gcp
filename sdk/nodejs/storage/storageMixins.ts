@@ -32,66 +32,27 @@ export interface BucketEventArgs {
 
 export interface BucketEvent {
     "kind": "storage#object",
-    "id": string,
-    "selfLink": string,
-    "name": string,
+
     "bucket": string,
-    "generation": number,
-    "metageneration": number,
     "contentType": string,
-    "timeCreated": Date,
-    "updated": Date,
-    "timeDeleted": Date,
-    "temporaryHold": boolean,
-    "eventBasedHold": boolean,
-    "retentionExpirationTime": Date,
-    "storageClass": string,
-    "timeStorageClassUpdated": Date,
-    "size": number,
+    "crc32c": string,
+    "etag": string,
+    "generation": number,
+    "id": string,
     "md5Hash": string,
     "mediaLink": string,
-    "contentEncoding": string,
-    "contentDisposition": string,
-    "contentLanguage": string,
-    "cacheControl": string,
-    "metadata": {
-        (key): string
-    },
-    "acl": [
-        {
-            "kind": "storage#objectAccessControl",
-            "id": string,
-            "selfLink": string,
-            "bucket": string,
-            "object": string,
-            "generation": number,
-            "entity": string,
-            "role": string,
-            "email": string,
-            "entityId": string,
-            "domain": string,
-            "projectTeam": {
-                "projectNumber": string,
-                "team": string
-            },
-            "etag": string
-        }
-    ],
-    "owner": {
-        "entity": string,
-        "entityId": string
-    },
-    "crc32c": string,
-    "componentCount": number,
-    "etag": string,
-    "customerEncryption": {
-        "encryptionAlgorithm": string,
-        "keySha256": string
-    },
-    "kmsKeyName": string
+    "metadata": Record<string, string>;
+    "metageneration": number,
+    "name": string,
+    "selfLink": string,
+    "size": number,
+    "storageClass": string,
+    "timeCreated": Date,
+    "timeStorageClassUpdated": Date,
+    "updated": Date,
 }
 
-export type BucketEventHandler = cloudfunctions.Callback<BucketEvent, void>;
+export type BucketEventHandler =cloudfunctions.Callback<BucketEvent, void>;
 
 declare module "./bucket" {
     interface Bucket {
@@ -128,5 +89,12 @@ Bucket.prototype.onObjectEvent = function (this: Bucket, name, handler, args, op
             failurePolicy: args.failurePolicy,
             eventType: `google.storage.object.${args.triggerType}`,
         }
-    }, { parent: this, ...opts})
+    }, { parent: this, ...opts })
+}
+
+export enum BucketEventTriggerType {
+    "finalize",
+    "delete",
+    "archive",
+    "metadataUpdate"
 }

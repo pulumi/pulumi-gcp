@@ -14,7 +14,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as express from "express";
-import * as cloudfunctions from "../cloudfunctions";
+import * as cloudfunctions from ".";
 import * as storage from "../storage";
 
 import * as filepath from "path";

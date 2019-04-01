@@ -14,12 +14,25 @@
 
 import * as gcp from "@pulumi/gcp";
 
-// Create the Function resource
-let f = new gcp.cloudfunctions.HttpCallbackFunction("f", {
-    callback: (req: any, res: any) => {
-        res.send(`Hello ${req.body.name || 'World'}!`);
-    },
-});
+let bucket = new gcp.storage.Bucket("test");
+bucket.onObjectFinalized("test-finalized", async (ev, ct) => {
+    console.log("Object finalized");
+    console.log(JSON.stringify(ev));
+})
 
-// Export the HTTPS url for invoking the function
-export let url = f.httpsTriggerUrl;
+bucket.onObjectDeleted("test-deleted", async (ev, ct) => {
+    console.log("Object deleted");
+    console.log(JSON.stringify(ev));
+})
+
+bucket.onObjectArchived("test-archived", async (ev, ct) => {
+    console.log("Object archived");
+    console.log(JSON.stringify(ev));
+})
+
+bucket.onObjectMetadataUpdated("test-updated", async (ev, ct) => {
+    console.log("Object updated");
+    console.log(JSON.stringify(ev));
+})
+
+export let bucketName = bucket.name;
