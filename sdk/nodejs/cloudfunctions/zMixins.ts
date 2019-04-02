@@ -37,7 +37,7 @@ export interface Context {
     eventType: string;
 
     /** The resource that emitted the event. */
-    resource: string;
+    resource: any;
 }
 
 /**
@@ -53,10 +53,20 @@ export interface Context {
  * [callback] A callback to signal completion of the function's execution. Follows the "errback"
  * convention, which interprets the first argument as an error.
  *
- * This function can be synchronous or asynchronous function.  If async, [callback] does not need to
- * be called.  If sync, then [callback] must be called to end the call.
+ * You must signal when background functions have completed. Otherwise, your function can continue
+ * to run and be forcibly terminated by the system. You can signal function completion by:
+ *
+ * 1. Invoking the callback argument,
+ * 2. Returning a Promise,
+ * 3. Wrapping your function using the async keyword (which causes your function to implicitly
+ *    return a Promise), or
+ * 4. Returning a value.
+ *
+ * If invoking the callback argument or synchronously returning a value, ensure that all
+ * asynchronous processes have completed first. If returning a Promise, Cloud Functions ensures that
+ * the Promise is settled before terminating.
  */
-export type Callback<E, R> = (event: E, context: Context, callback: (error?: any, result?: R) => void) => Promise<R> | void;
+export type Callback<E, C extends Context, R> = (event: E, context: C, callback: (error?: any, result?: R) => void) => Promise<R> | void;
 
 /**
  * CallbackFactory is the signature for a function that will be called once to produce the
@@ -64,7 +74,7 @@ export type Callback<E, R> = (event: E, context: Context, callback: (error?: any
  * state once that can then be used across all invocations of the Function (as long as the Function
  * is using the same warm node instance).
  */
-export type CallbackFactory<E, R> = () => Callback<E, R>;
+export type CallbackFactory<E, C extends Context, R> = () => Callback<E, C, R>;
 
 /**
  * Describes the policy in case of function's execution failure. If empty, then defaults to ignoring
@@ -89,11 +99,22 @@ export interface FailurePolicy {
  * https://github.com/pulumi/docs/blob/master/reference/serializing-functions.md for additional
  * details on this process.
  */
-export class CallbackFunction extends cloudfunctions.Function {
+export class CallbackFunction extends pulumi.ComponentResource {
+    /**
+     * Bucket and BucketObject storing all the files that comprise the Function.  The contents of
+     * these files will be generated automatically from the JavaScript callback function passed in
+     * as well as the package.json file for your pulumi app.
+     */
     public readonly bucket: storage.Bucket;
     public readonly bucketObject: storage.BucketObject;
 
+    /** Underlying raw resource for the Function that is created. */
+    public readonly function: cloudfunctions.Function;
+
     constructor(name: string, args: CallbackFunctionArgs, opts: pulumi.ComponentResourceOptions = {}) {
+        super("gcp:cloudfunctions:CallbackFunction", name, undefined, opts);
+
+        const parentOpts = { parent: this };
         const handlerName = "handler";
         const serializedFileNameNoExtension = "index";
 
@@ -111,14 +132,14 @@ export class CallbackFunction extends cloudfunctions.Function {
         const codePaths = computeCodePaths(
             closure, serializedFileNameNoExtension, args.codePathOptions);
 
-        const bucket = new storage.Bucket(`${name}`, {
+        this.bucket = new storage.Bucket(`${name}`, {
             project: args.project,
-        }, opts);
+        }, parentOpts);
 
-        const bucketObject = new storage.BucketObject(`${name}`, {
-            bucket: bucket.name,
+        this.bucketObject = new storage.BucketObject(`${name}`, {
+            bucket: this.bucket.name,
             source: new pulumi.asset.AssetArchive(codePaths),
-        }, opts);
+        }, parentOpts);
 
         const argsCopy = {
             ...args
@@ -128,33 +149,42 @@ export class CallbackFunction extends cloudfunctions.Function {
         delete argsCopy.callbackFactory;
         delete argsCopy.codePathOptions;
 
-        const runtime = utils.ifUndefined(args.runtime, "nodejs8")
-        const superArgs: cloudfunctions.FunctionArgs = {
+        this.function = new cloudfunctions.Function(name, {
             ...argsCopy,
-            runtime,
+            runtime: utils.ifUndefined(args.runtime, "nodejs8"),
             entryPoint: handlerName,
-            sourceArchiveBucket: bucket.name,
-            sourceArchiveObject: bucketObject.name,
-        };
+            sourceArchiveBucket: this.bucket.name,
+            sourceArchiveObject: this.bucketObject.name,
+        }, parentOpts);
 
-        super(name, superArgs, opts);
-
-        this.bucket = bucket;
-        this.bucketObject = bucketObject;
+        this.registerOutputs();
     }
 }
 
 /**
- * An http-triggered Cloud-Function that, when invoked, will execute the code supplied by a user-provided
- * JavaScript-Function.
+ * An http-triggered Cloud-Function that, when invoked, will execute the code supplied by a
+ * user-provided JavaScript-Function.  To handle HTTP, Cloud Functions uses Express 4.16.3.
+ *
+ * You invoke HTTP functions from standard HTTP requests. These HTTP requests wait for the response
+ * and support handling of common HTTP request methods like GET, PUT, POST, DELETE and OPTIONS. When
+ * you use Cloud Functions, a TLS certificate is automatically provisioned for you, so all HTTP
+ * functions can be invoked via a secure connection.
+ *
+ * See more information at: https://cloud.google.com/functions/docs/writing/http
  */
 export class HttpCallbackFunction extends CallbackFunction {
+    /**
+     * URL which triggers function execution.
+     */
+    public readonly httpsTriggerUrl: pulumi.Output<string>;
+
     constructor(name: string, args: HttpCallbackFunctionArgs, opts: pulumi.ComponentResourceOptions = {}) {
-        const superArgs = {
+        super(name, {
             ...args,
             triggerHttp: true,
-        };
-        super(name, superArgs, opts)
+        }, opts)
+
+        this.httpsTriggerUrl = this.function.httpsTriggerUrl;
     }
 }
 

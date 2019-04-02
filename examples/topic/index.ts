@@ -15,9 +15,10 @@
 import * as gcp from "@pulumi/gcp";
 
 let topic = new gcp.pubsub.Topic("test");
-topic.onMessagePublished("test-published", async (ev, ct) => {
+topic.onMessagePublished("test-published", async (ev, ctx) => {
     console.log("Message published");
     console.log("raw: " + JSON.stringify(ev));
+    console.log("ctx: " + JSON.stringify(ctx));
     console.log("dec: " + Buffer.from(ev.data, "base64").toString());
 })
 

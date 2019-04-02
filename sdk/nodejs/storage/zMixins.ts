@@ -52,7 +52,19 @@ export interface BucketEvent {
     "updated": Date,
 }
 
-export type BucketEventHandler =cloudfunctions.Callback<BucketEvent, void>;
+export interface BucketContext extends cloudfunctions.Context {
+    /** The type of the event. */
+    eventType: "google.storage.object.finalize" | "google.storage.object.delete" | "google.storage.object.archive" | "google.storage.object.metadataUpdate";
+
+    /** The resource that emitted the event. */
+    resource: {
+        service: "storage.googleapis.com",
+        name: string,
+        type: "storage#object",
+    };
+}
+
+export type BucketEventHandler =cloudfunctions.Callback<BucketEvent, BucketContext, void>;
 
 declare module "./bucket" {
     interface Bucket {

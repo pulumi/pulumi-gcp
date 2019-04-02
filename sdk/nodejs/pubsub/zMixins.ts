@@ -16,6 +16,16 @@ export interface TopicMessagePublishedArgs {
     failurePolicy?: cloudfunctions.FailurePolicy;
 }
 
+export interface TopicContext extends cloudfunctions.Context {
+    eventType: "google.pubsub.topic.publish";
+
+    resource: {
+        service: "pubsub.googleapis.com",
+        name: string,
+        type: "type.googleapis.com/google.pubsub.v1.PubsubMessage"
+    };
+}
+
 export interface TopicEventArgs {
     triggerType: "publish"
     failurePolicy?: cloudfunctions.FailurePolicy;
@@ -36,7 +46,7 @@ export interface TopicEvent {
     data: string;
 }
 
-export type TopicEventHandler = cloudfunctions.Callback<TopicEvent, void>;
+export type TopicEventHandler = cloudfunctions.Callback<TopicEvent, TopicContext, void>;
 
 declare module "./topic" {
     interface Topic {
