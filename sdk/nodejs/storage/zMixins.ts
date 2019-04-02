@@ -92,9 +92,6 @@ Bucket.prototype.onObjectEvent = function (this: Bucket, name, handler, args, op
     }, { parent: this, ...opts })
 }
 
-export enum BucketEventTriggerType {
-    "finalize",
-    "delete",
-    "archive",
-    "metadataUpdate"
-}
+// Needed so that typescript won't elide this module
+/** @internal */
+export const __unused = 0;

@@ -981,12 +981,23 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"cloudfunctions": {
 						DestFiles: []string{
-							"packageMixins.ts",
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
+						},
+					},
+					"pubsub": {
+						DestFiles: []string{
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
 						},
 					},
 					"storage": {
 						DestFiles: []string{
-							"storageMixins.ts",
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
 						},
 					},
 				},

@@ -4,4 +4,4 @@
 // Export members:
 export * from "./function";
 export * from "./getFunction";
-export * from "./packageMixins";
+export * from "./zMixins";

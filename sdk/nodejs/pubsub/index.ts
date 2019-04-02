@@ -10,3 +10,4 @@ export * from "./topic";
 export * from "./topicIAMBinding";
 export * from "./topicIAMMember";
 export * from "./topicIAMPolicy";
+export * from "./zMixins";
