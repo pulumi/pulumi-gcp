@@ -16,7 +16,7 @@ import * as gcp from "@pulumi/gcp";
 
 // Create the Function resource
 let f = new gcp.cloudfunctions.HttpCallbackFunction("f", {
-    callback: (req: any, res: any) => {
+    callback: (req, res) => {
         res.send(`Hello ${req.body.name || 'World'}!`);
     },
 });

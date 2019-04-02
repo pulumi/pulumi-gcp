@@ -36,15 +36,16 @@ export interface Context {
     /** The type of the event. For example: "google.pubsub.topic.publish". */
     eventType: string;
 
-    /** The resource that emitted the event. */
+    /** The resource that emitted the event. See derived contexts for more specific information
+     * about the shape of this property. */
     resource: any;
 }
 
 /**
  * Callback is the signature for an GCP Cloud Function entrypoint.
  *
- * [event] is the data passed in by specific services calling the Function (like storage, or
- * pubsub).  The shape of it will be specific to individual services.
+ * [data] is the data passed in by specific services calling the Function (like storage, or pubsub).
+ * The shape of it will be specific to individual services.
  *
  * [context] Cloud Functions uses this parameter to provide details of your Function's execution.
  * For more information, see
@@ -66,7 +67,7 @@ export interface Context {
  * asynchronous processes have completed first. If returning a Promise, Cloud Functions ensures that
  * the Promise is settled before terminating.
  */
-export type Callback<E, C extends Context, R> = (event: E, context: C, callback: (error?: any, result?: R) => void) => Promise<R> | void;
+export type Callback<D, C extends Context, R> = (data: D, context: C, callback: (error?: any, result?: R) => void) => Promise<R> | void;
 
 /**
  * CallbackFactory is the signature for a function that will be called once to produce the
@@ -74,7 +75,7 @@ export type Callback<E, C extends Context, R> = (event: E, context: C, callback:
  * state once that can then be used across all invocations of the Function (as long as the Function
  * is using the same warm node instance).
  */
-export type CallbackFactory<E, C extends Context, R> = () => Callback<E, C, R>;
+export type CallbackFactory<D, C extends Context, R> = () => Callback<D, C, R>;
 
 /**
  * Describes the policy in case of function's execution failure. If empty, then defaults to ignoring

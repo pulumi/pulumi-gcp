@@ -30,7 +30,7 @@ export interface BucketEventArgs {
     failurePolicy?: cloudfunctions.FailurePolicy;
 }
 
-export interface BucketEvent {
+export interface BucketData {
     "kind": "storage#object",
 
     "bucket": string,
@@ -64,7 +64,7 @@ export interface BucketContext extends cloudfunctions.Context {
     };
 }
 
-export type BucketEventHandler =cloudfunctions.Callback<BucketEvent, BucketContext, void>;
+export type BucketEventHandler =cloudfunctions.Callback<BucketData, BucketContext, void>;
 
 declare module "./bucket" {
     interface Bucket {

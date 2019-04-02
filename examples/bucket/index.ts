@@ -15,27 +15,27 @@
 import * as gcp from "@pulumi/gcp";
 
 let bucket = new gcp.storage.Bucket("test");
-bucket.onObjectFinalized("test-finalized", async (ev, ctx) => {
+bucket.onObjectFinalized("test-finalized", async (data, ctx) => {
     console.log("Object finalized");
-    console.log("raw: " + JSON.stringify(ev));
+    console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
 })
 
-bucket.onObjectDeleted("test-deleted", async (ev, ctx) => {
+bucket.onObjectDeleted("test-deleted", async (data, ctx) => {
     console.log("Object deleted");
-    console.log("raw: " + JSON.stringify(ev));
+    console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
 })
 
-bucket.onObjectArchived("test-archived", async (ev, ctx) => {
+bucket.onObjectArchived("test-archived", async (data, ctx) => {
     console.log("Object archived");
-    console.log("raw: " + JSON.stringify(ev));
+    console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
 })
 
-bucket.onObjectMetadataUpdated("test-updated", async (ev, ctx) => {
+bucket.onObjectMetadataUpdated("test-updated", async (data, ctx) => {
     console.log("Object updated");
-    console.log("raw: " + JSON.stringify(ev));
+    console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
 })
 
