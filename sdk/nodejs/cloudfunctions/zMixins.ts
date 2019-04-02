@@ -23,8 +23,8 @@ import * as readPackageJson from "read-package-json";
 import * as utils from "../utils";
 
 /**
- * Cloud Functions uses this parameter to provide details of your Function's execution. For more
- * information, see https://cloud.google.com/functions/docs/writing/background#function_parameters
+ * Google Cloud Functions uses this parameter to provide details of your Function's execution. For
+ * more information, see https://cloud.google.com/functions/docs/writing/background#function_parameters
  */
 export interface Context {
     /** A unique ID for the event. For example: "70172329041928". */
@@ -42,7 +42,7 @@ export interface Context {
 }
 
 /**
- * Callback is the signature for an GCP Cloud Function entrypoint.
+ * Callback is the signature for an Google Cloud Function entrypoint.
  *
  * [data] is the data passed in by specific services calling the Function (like storage, or pubsub).
  * The shape of it will be specific to individual services.
@@ -99,6 +99,12 @@ export interface FailurePolicy {
  * (including dependencies) into a form that can be used by AWS Lambda.  See
  * https://github.com/pulumi/docs/blob/master/reference/serializing-functions.md for additional
  * details on this process.
+ *
+ * Note: CallbackFunctions create Google Cloud Function that uses the [nodejs8] runtime.
+ * Importantly, calls follow the `(data, context) => ...` form, not the `(event, callback) => ...`
+ * form.  This also adds support for asynchronous functions as well. See
+ * https://cloud.google.com/functions/docs/writing/background#functions_background_parameters-node8
+ * for more details.
  */
 export class CallbackFunction extends pulumi.ComponentResource {
     /**
@@ -146,6 +152,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
             ...args
         };
 
+        // remove the values we've added on top of everything.
         delete argsCopy.callback;
         delete argsCopy.callbackFactory;
         delete argsCopy.codePathOptions;
@@ -251,6 +258,10 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
     });
 }
 
+/**
+ * Arguments that control both how a user function is serialized and how the final Cloud Function
+ * is created.  Can be used to override values if the defaults are not desirable.
+ */
 export interface CallbackFunctionArgs {
     /**
      * Options to control which paths/packages should be included or excluded in the zip file containing
@@ -341,6 +352,9 @@ export interface CallbackFunctionArgs {
 export type HttpCallback = (req: express.Request, res: express.Response) => void;
 export type HttpCallbackFactory = () => HttpCallback;
 
+/**
+ * Specialized arguments to use when specifically creating an [HttpCallbackFunction].
+ */
 export interface HttpCallbackFunctionArgs extends CallbackFunctionArgs {
     /**
      * The Javascript callback to use as the entrypoint for the GCP CloudFunction out of.  Either

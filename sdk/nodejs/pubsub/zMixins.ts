@@ -5,18 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import { Topic } from "./topic";
 import * as cloudfunctions from "../cloudfunctions";
 
+/**
+ * Arguments that can be provided to control the Cloud Function created as the serverless endpoint
+ * for a topic event.
+ */
 export interface TopicEventCallbackFunctionArgs extends cloudfunctions.CallbackFunctionArgs {
     callback?: TopicEventHandler;
     callbackFactory?: () => TopicEventHandler;
+
+    // should never be passed in.
+
     httpsTriggerUrl?: never;
     triggerHttp?: never;
     eventTrigger?: never;
 }
 
+/**
+ * Arguments to control how GCP will respond if the Cloud Function fails.  Currently, the only
+ * specialized behavior supported is to attempt retrying the Cloud Function.
+ * [cloudfunctions.FailurePolicy] for more information on this.
+ */
 export interface TopicMessagePublishedArgs {
     failurePolicy?: cloudfunctions.FailurePolicy;
 }
 
+/**
+ * Shape of the [context] object passed to a Cloud Function when a topic event fires.
+ */
 export interface TopicContext extends cloudfunctions.Context {
     eventType: "google.pubsub.topic.publish";
 
@@ -27,11 +42,9 @@ export interface TopicContext extends cloudfunctions.Context {
     };
 }
 
-export interface TopicEventArgs {
-    triggerType: "publish"
-    failurePolicy?: cloudfunctions.FailurePolicy;
-}
-
+/**
+ * Shape of the [data] object passed to a Cloud Function when a topic event fires.
+ */
 export interface TopicData {
     "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
 
@@ -51,6 +64,14 @@ export type TopicEventHandler = cloudfunctions.Callback<TopicData, TopicContext,
 
 declare module "./topic" {
     interface Topic {
+        /**
+         * Creates and publishes a Cloud Functions that can be triggered by messages published to
+         * Cloud Pub/Sub topics in the same GCP project as the function. Cloud Pub/Sub is a globally
+         * distributed message bus that automatically scales as you need it and provides a
+         * foundation for building your own robust, global services.
+         *
+         * See https://cloud.google.com/functions/docs/calling/pubsub for more details.
+         */
         onMessagePublished(name: string, handler: TopicEventHandler | TopicEventCallbackFunctionArgs, args?: TopicMessagePublishedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
     }
 }

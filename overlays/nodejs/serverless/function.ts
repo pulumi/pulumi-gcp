@@ -20,6 +20,8 @@ import * as filepath from "path";
 import * as readPackageJson from "read-package-json";
 
 /**
+ * @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead.
+ *
  * Handler is the signature for a serverless function.
  * For HTTP Function it accepts Request and Response from Express.
  * See https://cloud.google.com/functions/docs/writing/http.
@@ -27,6 +29,8 @@ import * as readPackageJson from "read-package-json";
 export type Handler = (req: express.Request, resp: express.Response) => void;
 
 /**
+ * @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead.
+ *
  * FunctionOptions provides configuration options for the serverless Function.
  */
 export interface FunctionOptions {
