@@ -14,11 +14,12 @@
 
 import * as gcp from "@pulumi/gcp";
 
-// Create the Function resource
-let f = new gcp.cloudfunctions.HttpCallbackFunction("f",
-    (req, res) => {
-        res.send(`Hello ${req.body.name || 'World'}!`);
-    });
+let topic = new gcp.pubsub.Topic("test");
+topic.onMessagePublished("test-published", async (data, ctx) => {
+    console.log("Message published");
+    console.log("raw: " + JSON.stringify(data));
+    console.log("ctx: " + JSON.stringify(ctx));
+    console.log("dec: " + Buffer.from(data.data, "base64").toString());
+})
 
-// Export the HTTPS url for invoking the function
-export let url = f.httpsTriggerUrl;
+export let topicName = topic.name;

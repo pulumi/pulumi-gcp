@@ -974,7 +974,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.17.1",
+				"@pulumi/pulumi":    "^0.17.4",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -982,10 +982,34 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Overlay: &tfbridge.OverlayInfo{
+				DestFiles: []string{
+					"utils.ts", // Helpers,
+				},
 				Modules: map[string]*tfbridge.OverlayInfo{
 					"serverless": {
 						Files: []string{
 							"function.ts", // a serverless function that works with language closures.
+						},
+					},
+					"cloudfunctions": {
+						DestFiles: []string{
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
+						},
+					},
+					"pubsub": {
+						DestFiles: []string{
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
+						},
+					},
+					"storage": {
+						DestFiles: []string{
+							// named with 'z' to come after all relevant files in package since the
+							// generator sorts these by name.
+							"zMixins.ts",
 						},
 					},
 				},

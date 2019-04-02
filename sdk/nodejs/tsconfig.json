@@ -33,6 +33,7 @@
         "cloudfunctions/function.ts",
         "cloudfunctions/getFunction.ts",
         "cloudfunctions/index.ts",
+        "cloudfunctions/zMixins.ts",
         "cloudscheduler/index.ts",
         "cloudscheduler/job.ts",
         "composer/environment.ts",
@@ -206,6 +207,7 @@
         "pubsub/topicIAMBinding.ts",
         "pubsub/topicIAMMember.ts",
         "pubsub/topicIAMPolicy.ts",
+        "pubsub/zMixins.ts",
         "redis/index.ts",
         "redis/instance.ts",
         "resourcemanager/index.ts",
@@ -258,9 +260,11 @@
         "storage/objectACL.ts",
         "storage/objectAccessControl.ts",
         "storage/transferJob.ts",
+        "storage/zMixins.ts",
         "tpu/index.ts",
         "tpu/node.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "utils.ts"
     ]
 }
 

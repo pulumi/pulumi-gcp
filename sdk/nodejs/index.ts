@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./provider";
+export * from "./utils";
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager/index";

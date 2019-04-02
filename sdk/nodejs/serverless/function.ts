@@ -20,6 +20,8 @@ import * as filepath from "path";
 import * as readPackageJson from "read-package-json";
 
 /**
+ * @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead.
+ *
  * Handler is the signature for a serverless function.
  * For HTTP Function it accepts Request and Response from Express.
  * See https://cloud.google.com/functions/docs/writing/http.
@@ -27,6 +29,8 @@ import * as readPackageJson from "read-package-json";
 export type Handler = (req: express.Request, resp: express.Response) => void;
 
 /**
+ * @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead.
+ *
  * FunctionOptions provides configuration options for the serverless Function.
  */
 export interface FunctionOptions {
@@ -39,11 +43,13 @@ export interface FunctionOptions {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * A set of key/value environment variable pairs to assign to the function.
+     */
+    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
      * A set of key/value label pairs to assign to the function.
      */
-    readonly labels?: pulumi.Input<{
-        [key: string]: any;
-    }>;
+    readonly labels?: pulumi.Input<{[key: string]: any;}>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
@@ -52,6 +58,10 @@ export interface FunctionOptions {
      * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     */
+    readonly runtime?: pulumi.Input<string>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
@@ -64,10 +74,7 @@ export interface FunctionOptions {
    excludePackages?: string[];
 }
 
-/**
- * Function is a higher-level API for creating and managing GCP Cloud Function resources implemented
- * by a given handler.
- */
+/** @deprecated Use [gpc.cloudfunctions.CallbackFunction] instead. */
 export class Function extends pulumi.ComponentResource {
     public readonly options: FunctionOptions;
     public readonly function: cloudfunctions.Function;
@@ -158,7 +165,7 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
             if (err) {
               return reject(err);
             }
-            
+
             // Override dependencies by removing @pulumi and excludedPackages
             const dependencies = Object.keys(packageJson.dependencies)
                 .filter(pkg => !excludedPackages.has(pkg) && !pkg.startsWith("@pulumi"))
