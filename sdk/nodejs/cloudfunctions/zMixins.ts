@@ -197,9 +197,18 @@ async function computeCodePaths(
     serializedFileNameNoExtension: string,
     codePathOptions: pulumi.runtime.CodePathOptions = {}): Promise<pulumi.asset.AssetMap> {
 
-    const serializedFunction = await closure;
-
+    codePathOptions.extraIncludePaths = codePathOptions.extraIncludePaths || [];
+    codePathOptions.extraIncludePackages = codePathOptions.extraIncludePackages || [];
     codePathOptions.extraExcludePackages = codePathOptions.extraExcludePackages || [];
+
+    if (codePathOptions.extraIncludePaths.length > 0) {
+        throw new pulumi.ResourceError("codePathOptions.extraIncludePaths not currently supported in GCP.", codePathOptions.logResource);
+    }
+    if (codePathOptions.extraIncludePackages.length > 0) {
+        throw new pulumi.ResourceError("codePathOptions.extraIncludePackages not currently supported in GCP.", codePathOptions.logResource);
+    }
+
+    const serializedFunction = await closure;
 
     const excludedPackages = new Set<string>();
     for (const p of codePathOptions.extraExcludePackages) {
