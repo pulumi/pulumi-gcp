@@ -136,8 +136,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
             isFactoryFunction: !!args.callbackFactory,
         });
 
-        const codePaths = computeCodePaths(
-            closure, serializedFileNameNoExtension, args.codePathOptions);
+        const codePaths = computeCodePaths(closure, serializedFileNameNoExtension, args.codePathOptions);
 
         this.bucket = args.bucket || new storage.Bucket(`${name}`, {
             project: args.project,
