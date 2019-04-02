@@ -84,9 +84,15 @@ func TestExamples(t *testing.T) {
 		}),
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "bucket"),
+			// One change is known to occur during refresh of the resources in this example:
+			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
+			ExpectRefreshChanges: true,
 		}),
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "topic"),
+			// One change is known to occur during refresh of the resources in this example:
+			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
+			ExpectRefreshChanges: true,
 		}),
 		pythonBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "minimal-py"),
