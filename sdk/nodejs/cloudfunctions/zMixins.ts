@@ -85,10 +85,9 @@ export interface FailurePolicy {
     /**
      * Whether the function should be retried on failure.
      *
-     * Describes the retry policy in case of function's execution failure. A function execution will
-     * be retried on any failure. A failed execution will be retried up to 7 days with an
-     * exponential backoff (capped at 10 seconds). Retried execution is charged as any other
-     * execution.
+     * If true, a function execution will be retried on any failure. A failed execution will be
+     * retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is
+     * charged as any other execution.
      */
     retry: pulumi.Input<boolean>
 }
