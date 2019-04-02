@@ -24,7 +24,7 @@ export interface BucketEventCallbackFunctionArgs extends cloudfunctions.Callback
 /**
  * Arguments to control how GCP will respond if the Cloud Function fails.  Currently, the only
  * specialized behavior supported is to attempt retrying the Cloud Function.
- * [cloudfunctions.FailurePolicy] for more information on this.
+ * See [cloudfunctions.FailurePolicy] for more information on this.
  */
 export interface SimpleBucketEventArgs {
     failurePolicy?: cloudfunctions.FailurePolicy;
