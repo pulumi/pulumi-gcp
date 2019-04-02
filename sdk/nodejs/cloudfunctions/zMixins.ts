@@ -99,9 +99,10 @@ export interface FailurePolicy {
  * https://github.com/pulumi/docs/blob/master/reference/serializing-functions.md for additional
  * details on this process.
  *
- * Note: CallbackFunctions create Google Cloud Function that uses the [nodejs8] runtime.
+ * Note: CallbackFunctions create Google Cloud Functions that uses the [nodejs8] runtime.
  * Importantly, calls follow the `(data, context) => ...` form, not the `(event, callback) => ...`
- * form.  This also adds support for asynchronous functions as well. See
+ * form that is used with the [nodejs6] runtime.  This also adds support for asynchronous functions
+ * as well. See
  * https://cloud.google.com/functions/docs/writing/background#functions_background_parameters-node8
  * for more details.
  */
