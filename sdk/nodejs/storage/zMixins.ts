@@ -77,7 +77,7 @@ export interface BucketData {
     "updated": string,
 }
 
-export type BucketEventHandler =cloudfunctions.Callback<BucketData, BucketContext, void>;
+export type BucketEventHandler = cloudfunctions.Callback<BucketData, BucketContext, void>;
 
 declare module "./bucket" {
     interface Bucket {
