@@ -1,2 +1,2 @@
-# examples/gcp/bucket
+# examples/gcp/topic
 
