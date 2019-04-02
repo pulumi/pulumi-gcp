@@ -48,9 +48,9 @@ export interface BucketData {
     "selfLink": string,
     "size": number,
     "storageClass": string,
-    "timeCreated": Date,
-    "timeStorageClassUpdated": Date,
-    "updated": Date,
+    "timeCreated": string,
+    "timeStorageClassUpdated": string,
+    "updated": string,
 }
 
 export interface BucketContext extends cloudfunctions.Context {
