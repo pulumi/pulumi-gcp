@@ -186,8 +186,8 @@ export class HttpCallbackFunction extends CallbackFunction {
      */
     public readonly httpsTriggerUrl: pulumi.Output<string>;
 
-    constructor(name: string, callback: HttpCallback, opts: pulumi.ComponentResourceOptions);
-    constructor(name: string, args: HttpCallbackFunctionArgs, opts: pulumi.ComponentResourceOptions);
+    constructor(name: string, callback: HttpCallback, opts?: pulumi.ComponentResourceOptions);
+    constructor(name: string, args: HttpCallbackFunctionArgs, opts?: pulumi.ComponentResourceOptions);
     constructor(name: string, callbackOrArgs: HttpCallback | HttpCallbackFunctionArgs, opts: pulumi.ComponentResourceOptions = {}) {
         const argsCopy: CallbackFunctionArgs = callbackOrArgs instanceof Function
             ? { callback: callbackOrArgs, triggerHttp: true }
