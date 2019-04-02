@@ -15,11 +15,10 @@
 import * as gcp from "@pulumi/gcp";
 
 // Create the Function resource
-let f = new gcp.cloudfunctions.HttpCallbackFunction("f", {
-    callback: (req, res) => {
+let f = new gcp.cloudfunctions.HttpCallbackFunction("f",
+    (req, res) => {
         res.send(`Hello ${req.body.name || 'World'}!`);
-    },
-});
+    });
 
 // Export the HTTPS url for invoking the function
 export let url = f.httpsTriggerUrl;
