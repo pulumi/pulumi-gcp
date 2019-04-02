@@ -95,7 +95,7 @@ export interface FailurePolicy {
 /**
  * A CallbackFunction is a special type of gcp.cloudfunctions.Function that can be created out of an
  * actual JavaScript function instance.  The function instance will be analyzed and packaged up
- * (including dependencies) into a form that can be used by AWS Lambda.  See
+ * (including dependencies) into a form that can be used by Cloud Functions.  See
  * https://github.com/pulumi/docs/blob/master/reference/serializing-functions.md for additional
  * details on this process.
  *
