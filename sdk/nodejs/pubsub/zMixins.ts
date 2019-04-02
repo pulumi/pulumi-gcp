@@ -44,6 +44,8 @@ export interface TopicContext extends cloudfunctions.Context {
 
 /**
  * Shape of the [data] object passed to a Cloud Function when a topic event fires.
+ *
+ * See https://cloud.google.com/pubsub/docs/reference/rest/v1/PubsubMessage for more details.
  */
 export interface TopicData {
     "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
