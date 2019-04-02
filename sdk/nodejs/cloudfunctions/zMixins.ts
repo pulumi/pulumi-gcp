@@ -133,7 +133,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
         const codePaths = computeCodePaths(
             closure, serializedFileNameNoExtension, args.codePathOptions);
 
-        this.bucket = new storage.Bucket(`${name}`, {
+        this.bucket = args.bucket || new storage.Bucket(`${name}`, {
             project: args.project,
         }, parentOpts);
 
@@ -242,7 +242,7 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
     });
 }
 
-export interface BaseCallbackFunctionArgs {
+export interface CallbackFunctionArgs {
     /**
      * Options to control which paths/packages should be included or excluded in the zip file containing
      * the code for the GCP Function.
@@ -318,9 +318,7 @@ export interface BaseCallbackFunctionArgs {
     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
     */
     triggerHttp?: pulumi.Input<boolean>;
-}
 
-export interface CallbackFunctionArgs extends BaseCallbackFunctionArgs {
     /**
      * The Javascript callback to use as the entrypoint for the GCP CloudFunction out of.  Either
      * [callback] or [callbackFactory] must be provided.
@@ -338,6 +336,13 @@ export interface CallbackFunctionArgs extends BaseCallbackFunctionArgs {
      * Function will call into each time the Cloud Function is invoked.
      */
     callbackFactory?: Function;
+
+    /**
+     * The bucket to use as the sourceArchiveBucket for the generated CloudFunctions Function source
+     * to be placed in.  A fresh [storage.BucketObject] will be made there containing the serialized
+     * code.
+     */
+    bucket?: storage.Bucket;
 }
 
 /**
