@@ -283,8 +283,26 @@ export interface BaseCallbackFunctionArgs {
     region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run. If empty, defaults to `"nodejs8"`.
+     *
+     * Note: it is not recommended that you pass in [nodejs6] if you are using TypeScript.  When
+     * using the [nodejs6] runtime Google Cloud Functions changes how they call their functions. The
+     * signatures between [nodejs6] and [nodejs8] are not compatible.
+     *
+     * If [nodejs6] is necessary, it is still possible to use TypeScript in the following manner:
+     *
+     * ```ts
+     *  bucket.onObjectFinished("name", <any>((event, callback) => { }));
+     * ```
+     *
+     * This allows you to access the nodejs6 'event' and 'callback' values as the 'any' type,
+     * instead of having TypeScript infer or complain that they have the respective 'Data' and
+     * 'Context' types.
+     *
+     * For more details between how the shapes of these types differ between nodejs6 and nodejs8 see:
+     * https://cloud.google.com/functions/docs/writing/background#functions_background_parameters-node6 and
+     * https://cloud.google.com/functions/docs/writing/background#functions_background_parameters-node8
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<"nodejs6" | "nodejs8">;
     /**
      * If provided, the self-provided service account to run the function with.
      */

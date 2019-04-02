@@ -1,5 +1,5 @@
 {
-    "name": "serverless",
+    "name": "bucket",
     "version": "0.0.2",
     "main": "bin/index.js",
     "typings": "bin/index.d.ts",
