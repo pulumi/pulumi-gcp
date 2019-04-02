@@ -1,8 +1,6 @@
-## 0.18.2 (Unreleased)
+## 0.18.3 (Unreleased)
 
-## 0.18.1 (Released April 1, 2019)
-
-- Update to v2.3.0 of the Google Beta Terraform Provider.
+## 0.18.2 (Release April 2, 2019)
 
 - Adds a new gcp.cloudfunctions.CallbackFunction component.  This component makes it simple to
   create Cloud Functions from an existing JavaScript function.  See
@@ -13,6 +11,10 @@
     1. http triggers.  i.e. when accessing some url.
     2. storage triggers.  For example, when an object is created in a bucket.
     3. pubsub triggers.  For example, when a message is published to a topic.
+
+## 0.18.1 (Released April 1, 2019)
+
+- Update to v2.3.0 of the Google Beta Terraform Provider.
 
 ## 0.18.0 (Released March 21, 2019)
 
