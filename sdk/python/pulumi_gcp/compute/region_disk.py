@@ -17,6 +17,7 @@ class RegionDisk(pulumi.CustomResource):
     last_attach_timestamp: pulumi.Output[str]
     last_detach_timestamp: pulumi.Output[str]
     name: pulumi.Output[str]
+    physical_block_size_bytes: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -34,7 +35,7 @@ class RegionDisk(pulumi.CustomResource):
     source_snapshot_id: pulumi.Output[str]
     type: pulumi.Output[str]
     users: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, labels=None, name=None, project=None, region=None, replica_zones=None, size=None, snapshot=None, source_snapshot_encryption_key=None, type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, labels=None, name=None, physical_block_size_bytes=None, project=None, region=None, replica_zones=None, size=None, snapshot=None, source_snapshot_encryption_key=None, type=None, __name__=None, __opts__=None):
         """
         Persistent disks are durable storage devices that function similarly to
         the physical disks in a desktop or a server. Compute Engine manages the
@@ -96,6 +97,8 @@ class RegionDisk(pulumi.CustomResource):
         __props__['labels'] = labels
 
         __props__['name'] = name
+
+        __props__['physical_block_size_bytes'] = physical_block_size_bytes
 
         __props__['project'] = project
 

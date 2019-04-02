@@ -769,15 +769,15 @@
   version = "v1.2.2"
 
 [[projects]]
-  digest = "1:bfd37482addfadbe4e00fb48179c791ef356b034dba4ed214eafccc25a8865ee"
+  digest = "1:420a2b3a9bd6ba6134a0af9393d988e8d71790a98dfd499a735293fce9014d80"
   name = "github.com/terraform-providers/terraform-provider-google-beta"
   packages = [
     "google-beta",
     "version",
   ]
   pruneopts = ""
-  revision = "43e501b133fe7878b7e4b08f61a243b2561c0a45"
-  version = "v2.2.0"
+  revision = "8ee58e6dda3cda1aa81804518bfa263ce87e2a51"
+  version = "v2.3.0"
 
 [[projects]]
   branch = "master"

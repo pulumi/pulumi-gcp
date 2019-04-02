@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
  *     cidrBlock: "10.2.0.0/29",
- *     tensorflowVersion: "1.9",
+ *     tensorflowVersion: "1.13",
  *     zone: "us-central1-b",
  * });
  * ```
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     schedulingConfig: {
  *         preemptible: true,
  *     },
- *     tensorflowVersion: "1.12",
+ *     tensorflowVersion: "1.13",
  *     zone: "us-central1-b",
  * });
  * ```

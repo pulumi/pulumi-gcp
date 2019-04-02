@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get info about a cluster within GKE from its name and zone.
+ * Get info about a GKE cluster from its name and location.
  * 
  * ## Example Usage
  * 
@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const myCluster = pulumi.output(gcp.container.getCluster({
+ *     location: "us-east1-a",
  *     name: "my-cluster",
- *     zone: "us-east1-a",
  * }));
  * 
  * export const clusterPassword = myCluster.apply(myCluster => myCluster.masterAuths[0].password);
@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("gcp:container/getCluster:getCluster", {
+        "location": args.location,
         "name": args.name,
         "project": args.project,
         "region": args.region,
@@ -40,6 +41,12 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetClusterArgs {
     /**
+     * The location (zone or region) this cluster has been
+     * created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+     * be specified.
+     */
+    readonly location?: string;
+    /**
      * The name of the cluster.
      */
     readonly name: string;
@@ -48,7 +55,15 @@ export interface GetClusterArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
+    /**
+     * The region this cluster has been created in. Deprecated
+     * in favour of `location`.
+     */
     readonly region?: string;
+    /**
+     * The zone this cluster has been created in. Deprecated in
+     * favour of `location`.
+     */
     readonly zone?: string;
 }
 
@@ -81,6 +96,7 @@ export interface GetClusterResult {
     readonly network: string;
     readonly networkPolicies: { enabled: boolean, provider: string }[];
     readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
+    readonly nodeLocations: string[];
     readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];

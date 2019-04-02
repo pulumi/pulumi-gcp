@@ -38,6 +38,11 @@ export class NodePool extends pulumi.CustomResource {
     public readonly initialNodeCount: pulumi.Output<number>;
     public /*out*/ readonly instanceGroupUrls: pulumi.Output<string[]>;
     /**
+     * The location (region or zone) in which the cluster
+     * resides.
+     */
+    public readonly location: pulumi.Output<string>;
+    /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
@@ -58,7 +63,7 @@ export class NodePool extends pulumi.CustomResource {
      * The node configuration of the pool. See
      * google_container_cluster for schema.
      */
-    public readonly nodeConfig: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    public readonly nodeConfig: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -70,9 +75,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     /**
-     * The region in which the cluster resides (for regional clusters).
+     * The region in which the cluster resides (for
+     * regional clusters). `zone` has been deprecated in favor of `location`.
      */
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly region: pulumi.Output<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -83,7 +89,8 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly version: pulumi.Output<string>;
     /**
-     * The zone in which the cluster resides.
+     * The zone in which the cluster resides. `zone`
+     * has been deprecated in favor of `location`.
      */
     public readonly zone: pulumi.Output<string>;
 
@@ -103,6 +110,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
+            inputs["location"] = state ? state.location : undefined;
             inputs["management"] = state ? state.management : undefined;
             inputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -121,6 +129,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["management"] = args ? args.management : undefined;
             inputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -157,6 +166,11 @@ export interface NodePoolState {
     readonly initialNodeCount?: pulumi.Input<number>;
     readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The location (region or zone) in which the cluster
+     * resides.
+     */
+    readonly location?: pulumi.Input<string>;
+    /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
@@ -189,7 +203,8 @@ export interface NodePoolState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region in which the cluster resides (for regional clusters).
+     * The region in which the cluster resides (for
+     * regional clusters). `zone` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -202,7 +217,8 @@ export interface NodePoolState {
      */
     readonly version?: pulumi.Input<string>;
     /**
-     * The zone in which the cluster resides.
+     * The zone in which the cluster resides. `zone`
+     * has been deprecated in favor of `location`.
      */
     readonly zone?: pulumi.Input<string>;
 }
@@ -226,6 +242,11 @@ export interface NodePoolArgs {
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
+     * The location (region or zone) in which the cluster
+     * resides.
+     */
+    readonly location?: pulumi.Input<string>;
+    /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
@@ -258,7 +279,8 @@ export interface NodePoolArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region in which the cluster resides (for regional clusters).
+     * The region in which the cluster resides (for
+     * regional clusters). `zone` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -271,7 +293,8 @@ export interface NodePoolArgs {
      */
     readonly version?: pulumi.Input<string>;
     /**
-     * The zone in which the cluster resides.
+     * The zone in which the cluster resides. `zone`
+     * has been deprecated in favor of `location`.
      */
     readonly zone?: pulumi.Input<string>;
 }

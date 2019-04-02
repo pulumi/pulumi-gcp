@@ -5,11 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to available Google Container Engine versions in a zone or region for a given project.
+ * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
  * 
- * > If you are using the `google_container_engine_versions` datasource with a regional cluster, ensure that you have provided a `region`
- * to the datasource. A `region` can have a different set of supported versions than its corresponding `zone`s, and not all `zone`s in a 
- * `region` are guaranteed to support the same version.
+ * > If you are using the `google_container_engine_versions` datasource with a
+ * regional cluster, ensure that you have provided a region as the `location` to
+ * the datasource. A region can have a different set of supported versions than
+ * its component zones, and not all zones in a region are guaranteed to
+ * support the same version.
  * 
  * ## Example Usage
  * 
@@ -18,23 +20,24 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const central1b = pulumi.output(gcp.container.getEngineVersions({
+ *     location: "us-central1-b",
  *     versionPrefix: "1.12.",
- *     zone: "us-central1-b",
  * }));
  * const foo = new gcp.container.Cluster("foo", {
  *     initialNodeCount: 1,
+ *     location: "us-central1-b",
  *     masterAuth: {
  *         password: "adoy.rm",
  *         username: "mr.yoda",
  *     },
  *     nodeVersion: central1b.apply(central1b => central1b.latestNodeVersion),
- *     zone: "us-central1-b",
  * });
  * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
+        "location": args.location,
         "project": args.project,
         "region": args.region,
         "versionPrefix": args.versionPrefix,
@@ -46,6 +49,13 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getEngineVersions.
  */
 export interface GetEngineVersionsArgs {
+    /**
+     * The location (region or zone) to list versions for.
+     * Must exactly match the location the cluster will be deployed in, or listed
+     * versions may not be available. If `location`, `region`, and `zone` are not
+     * specified, the provider-level zone must be set and is used instead.
+     */
+    readonly location?: string;
     /**
      * ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
      * Defaults to the project that the provider is authenticated with.
@@ -61,10 +71,6 @@ export interface GetEngineVersionsArgs {
      * for full details on how version strings are formatted.
      */
     readonly versionPrefix?: string;
-    /**
-     * Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
-     * If not specified, the provider-level zone is used. One of zone or provider-level zone is required.
-     */
     readonly zone?: string;
 }
 

@@ -29,9 +29,11 @@ func NewSslCert(ctx *pulumi.Context,
 	if args == nil {
 		inputs["commonName"] = nil
 		inputs["instance"] = nil
+		inputs["project"] = nil
 	} else {
 		inputs["commonName"] = args.CommonName
 		inputs["instance"] = args.Instance
+		inputs["project"] = args.Project
 	}
 	inputs["cert"] = nil
 	inputs["certSerialNumber"] = nil
@@ -60,6 +62,7 @@ func GetSslCert(ctx *pulumi.Context,
 		inputs["expirationTime"] = state.ExpirationTime
 		inputs["instance"] = state.Instance
 		inputs["privateKey"] = state.PrivateKey
+		inputs["project"] = state.Project
 		inputs["serverCaCert"] = state.ServerCaCert
 		inputs["sha1Fingerprint"] = state.Sha1Fingerprint
 	}
@@ -90,19 +93,19 @@ func (r *SslCert) CertSerialNumber() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["certSerialNumber"])
 }
 
-// The common name to be used in the certificate to identify the 
+// The common name to be used in the certificate to identify the
 // client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
 func (r *SslCert) CommonName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["commonName"])
 }
 
-// The time when the certificate was created in RFC 3339 format, 
+// The time when the certificate was created in RFC 3339 format,
 // for example 2012-11-15T16:19:00.094Z.
 func (r *SslCert) CreateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["createTime"])
 }
 
-// The time when the certificate expires in RFC 3339 format, 
+// The time when the certificate expires in RFC 3339 format,
 // for example 2012-11-15T16:19:00.094Z.
 func (r *SslCert) ExpirationTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expirationTime"])
@@ -117,6 +120,12 @@ func (r *SslCert) Instance() *pulumi.StringOutput {
 // The private key associated with the client certificate.
 func (r *SslCert) PrivateKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+}
+
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
+func (r *SslCert) Project() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The CA cert of the server this client cert was generated from.
@@ -135,13 +144,13 @@ type SslCertState struct {
 	Cert interface{}
 	// The serial number extracted from the certificate data.
 	CertSerialNumber interface{}
-	// The common name to be used in the certificate to identify the 
+	// The common name to be used in the certificate to identify the
 	// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
 	CommonName interface{}
-	// The time when the certificate was created in RFC 3339 format, 
+	// The time when the certificate was created in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	CreateTime interface{}
-	// The time when the certificate expires in RFC 3339 format, 
+	// The time when the certificate expires in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	ExpirationTime interface{}
 	// The name of the Cloud SQL instance. Changing this
@@ -149,6 +158,9 @@ type SslCertState struct {
 	Instance interface{}
 	// The private key associated with the client certificate.
 	PrivateKey interface{}
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project interface{}
 	// The CA cert of the server this client cert was generated from.
 	ServerCaCert interface{}
 	// The SHA1 Fingerprint of the certificate.
@@ -157,10 +169,13 @@ type SslCertState struct {
 
 // The set of arguments for constructing a SslCert resource.
 type SslCertArgs struct {
-	// The common name to be used in the certificate to identify the 
+	// The common name to be used in the certificate to identify the
 	// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
 	CommonName interface{}
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance interface{}
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project interface{}
 }

@@ -11,10 +11,13 @@ from .. import utilities, tables
 class Cluster(pulumi.CustomResource):
     additional_zones: pulumi.Output[list]
     """
-    The list of additional Google Compute Engine
-    locations in which the cluster's nodes should be located. If additional zones are
-    configured, the number of nodes specified in `initial_node_count` is created in
-    all specified zones.
+    The list of zones in which the cluster's nodes
+    should be located. These must be in the same region as the cluster zone for
+    zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+    the number of nodes specified in `initial_node_count` is created in
+    all specified zones as well as the primary zone. If specified for a regional
+    cluster, nodes will only be created in these zones. `additional_zones` has been
+    deprecated in favour of `node_locations`.
     """
     addons_config: pulumi.Output[dict]
     """
@@ -68,7 +71,10 @@ class Cluster(pulumi.CustomResource):
     initial_node_count: pulumi.Output[float]
     """
     The number of nodes to create in this
-    cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+    cluster's default node pool. Must be set if `node_pool` is not set. If
+    you're using `google_container_node_pool` objects with no default node pool,
+    you'll need to set this to a value of at least `1`, alongside setting
+    `remove_default_node_pool` to `true`.
     """
     instance_group_urls: pulumi.Output[list]
     """
@@ -80,6 +86,15 @@ class Cluster(pulumi.CustomResource):
     Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
     This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
     Structure is documented below.
+    """
+    location: pulumi.Output[str]
+    """
+    The location (region or zone) in which the cluster
+    master will be created, as well as the default node location. If you specify a
+    zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+    single cluster master. If you specify a region (such as `us-west1`), the
+    cluster will be a regional cluster with multiple masters spread across zones in
+    the region, and with default node locations in those zones as well.
     """
     logging_service: pulumi.Output[str]
     """
@@ -135,7 +150,7 @@ class Cluster(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
     The name of the cluster, unique within the project and
-    zone.
+    location.
     """
     network: pulumi.Output[str]
     """
@@ -151,8 +166,20 @@ class Cluster(pulumi.CustomResource):
     """
     node_config: pulumi.Output[dict]
     """
-    Parameters used in creating the cluster's nodes.
-    Structure is documented below.
+    Parameters used in creating the default node pool.
+    Generally, this field should not be used at the same time as a
+    `google_container_node_pool` or a `node_pool` block; this configuration
+    manages the default node pool, which isn't recommended to be used with
+    Terraform. Structure is documented below.
+    """
+    node_locations: pulumi.Output[list]
+    """
+    The list of zones in which the cluster's nodes
+    should be located. These must be in the same region as the cluster zone for
+    zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+    the number of nodes specified in `initial_node_count` is created in
+    all specified zones as well as the primary zone. If specified for a regional
+    cluster, nodes will be created in only these zones.
     """
     node_pools: pulumi.Output[list]
     """
@@ -193,7 +220,10 @@ class Cluster(pulumi.CustomResource):
     region: pulumi.Output[str]
     remove_default_node_pool: pulumi.Output[bool]
     """
-    If true, deletes the default node pool upon cluster creation.
+    If `true`, deletes the default node
+    pool upon cluster creation. If you're using `google_container_node_pool`
+    resources with no default node pool, this should be set to `true`, alongside
+    setting `initial_node_count` to at least `1`.
     """
     resource_labels: pulumi.Output[dict]
     """
@@ -212,11 +242,11 @@ class Cluster(pulumi.CustomResource):
     """
     zone: pulumi.Output[str]
     """
-    The zone that the master and the number of nodes specified
-    in `initial_node_count` should be created in. Only one of `zone` and `region`
-    may be set. If neither zone nor region are set, the provider zone is used.
+    The zone that the cluster master and nodes
+    should be created in. If specified, this cluster will be a zonal cluster. `zone`
+    has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -228,10 +258,13 @@ class Cluster(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] additional_zones: The list of additional Google Compute Engine
-               locations in which the cluster's nodes should be located. If additional zones are
-               configured, the number of nodes specified in `initial_node_count` is created in
-               all specified zones.
+        :param pulumi.Input[list] additional_zones: The list of zones in which the cluster's nodes
+               should be located. These must be in the same region as the cluster zone for
+               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+               the number of nodes specified in `initial_node_count` is created in
+               all specified zones as well as the primary zone. If specified for a regional
+               cluster, nodes will only be created in these zones. `additional_zones` has been
+               deprecated in favour of `node_locations`.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
@@ -253,10 +286,19 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
-               cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+               cluster's default node pool. Must be set if `node_pool` is not set. If
+               you're using `google_container_node_pool` objects with no default node pool,
+               you'll need to set this to a value of at least `1`, alongside setting
+               `remove_default_node_pool` to `true`.
         :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
                This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
                Structure is documented below.
+        :param pulumi.Input[str] location: The location (region or zone) in which the cluster
+               master will be created, as well as the default node location. If you specify a
+               zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+               single cluster master. If you specify a region (such as `us-west1`), the
+               cluster will be a regional cluster with multiple masters spread across zones in
+               the region, and with default node locations in those zones as well.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`,
                `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
@@ -285,15 +327,24 @@ class Cluster(pulumi.CustomResource):
                `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
                Defaults to `monitoring.googleapis.com`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
-               zone.
+               location.
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
         :param pulumi.Input[dict] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
-        :param pulumi.Input[dict] node_config: Parameters used in creating the cluster's nodes.
-               Structure is documented below.
+        :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
+               Generally, this field should not be used at the same time as a
+               `google_container_node_pool` or a `node_pool` block; this configuration
+               manages the default node pool, which isn't recommended to be used with
+               Terraform. Structure is documented below.
+        :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
+               should be located. These must be in the same region as the cluster zone for
+               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+               the number of nodes specified in `initial_node_count` is created in
+               all specified zones as well as the primary zone. If specified for a regional
+               cluster, nodes will be created in only these zones.
         :param pulumi.Input[list] node_pools: List of node pools associated with this cluster.
                See google_container_node_pool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -315,13 +366,16 @@ class Cluster(pulumi.CustomResource):
                a private cluster. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[bool] remove_default_node_pool: If true, deletes the default node pool upon cluster creation.
+        :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
+               pool upon cluster creation. If you're using `google_container_node_pool`
+               resources with no default node pool, this should be set to `true`, alongside
+               setting `initial_node_count` to at least `1`.
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
                which the cluster's instances are launched.
-        :param pulumi.Input[str] zone: The zone that the master and the number of nodes specified
-               in `initial_node_count` should be created in. Only one of `zone` and `region`
-               may be set. If neither zone nor region are set, the provider zone is used.
+        :param pulumi.Input[str] zone: The zone that the cluster master and nodes
+               should be created in. If specified, this cluster will be a zonal cluster. `zone`
+               has been deprecated in favour of `location`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -362,6 +416,8 @@ class Cluster(pulumi.CustomResource):
 
         __props__['ip_allocation_policy'] = ip_allocation_policy
 
+        __props__['location'] = location
+
         __props__['logging_service'] = logging_service
 
         __props__['maintenance_policy'] = maintenance_policy
@@ -381,6 +437,8 @@ class Cluster(pulumi.CustomResource):
         __props__['network_policy'] = network_policy
 
         __props__['node_config'] = node_config
+
+        __props__['node_locations'] = node_locations
 
         __props__['node_pools'] = node_pools
 

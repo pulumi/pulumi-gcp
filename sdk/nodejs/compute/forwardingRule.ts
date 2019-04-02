@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about ForwardingRule, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/forwardingRule)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRule)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  * 

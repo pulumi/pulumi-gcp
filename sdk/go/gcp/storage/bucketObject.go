@@ -111,8 +111,7 @@ func (r *BucketObject) CacheControl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cacheControl"])
 }
 
-// Data as `string` to be uploaded. Must be defined if
-// `source` is not.
+// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 func (r *BucketObject) Content() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["content"])
 }
@@ -187,8 +186,7 @@ type BucketObjectState struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl interface{}
-	// Data as `string` to be uploaded. Must be defined if
-	// `source` is not.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content interface{}
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition interface{}
@@ -226,8 +224,7 @@ type BucketObjectArgs struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl interface{}
-	// Data as `string` to be uploaded. Must be defined if
-	// `source` is not.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content interface{}
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition interface{}

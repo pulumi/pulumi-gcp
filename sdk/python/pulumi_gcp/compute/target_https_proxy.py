@@ -34,7 +34,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         
         To get more information about TargetHttpsProxy, see:
         
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetHttpsProxies)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
         

@@ -31,7 +31,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     """
     restore_policy: pulumi.Output[dict]
     """
-    A restore policy is a constraint to restore the default policy. Structure is documented below. 
+    A restore policy is a constraint to restore the default policy. Structure is documented below.
     """
     update_time: pulumi.Output[str]
     """
@@ -54,7 +54,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
-        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below. 
+        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
         """
         if __name__ is not None:

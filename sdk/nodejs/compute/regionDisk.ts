@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+ *     physicalBlockSizeBytes: 4096,
  *     region: "us-central1",
  *     replicaZones: [
  *         "us-central1-a",
@@ -86,6 +87,7 @@ export class RegionDisk extends pulumi.CustomResource {
     public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
     public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
     public readonly name: pulumi.Output<string>;
+    public readonly physicalBlockSizeBytes: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -124,6 +126,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
             inputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["replicaZones"] = state ? state.replicaZones : undefined;
@@ -143,6 +146,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
@@ -174,6 +178,7 @@ export interface RegionDiskState {
     readonly lastAttachTimestamp?: pulumi.Input<string>;
     readonly lastDetachTimestamp?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly physicalBlockSizeBytes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -201,6 +206,7 @@ export interface RegionDiskArgs {
     readonly diskEncryptionKey?: pulumi.Input<{ kmsKeyName?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    readonly physicalBlockSizeBytes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

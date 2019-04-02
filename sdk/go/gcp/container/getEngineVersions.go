@@ -7,14 +7,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides access to available Google Container Engine versions in a zone or region for a given project.
+// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 // 
-// > If you are using the `google_container_engine_versions` datasource with a regional cluster, ensure that you have provided a `region`
-// to the datasource. A `region` can have a different set of supported versions than its corresponding `zone`s, and not all `zone`s in a 
-// `region` are guaranteed to support the same version.
+// > If you are using the `google_container_engine_versions` datasource with a
+// regional cluster, ensure that you have provided a region as the `location` to
+// the datasource. A region can have a different set of supported versions than
+// its component zones, and not all zones in a region are guaranteed to
+// support the same version.
 func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*GetEngineVersionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["location"] = args.Location
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["versionPrefix"] = args.VersionPrefix
@@ -36,6 +39,11 @@ func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*Ge
 
 // A collection of arguments for invoking getEngineVersions.
 type GetEngineVersionsArgs struct {
+	// The location (region or zone) to list versions for.
+	// Must exactly match the location the cluster will be deployed in, or listed
+	// versions may not be available. If `location`, `region`, and `zone` are not
+	// specified, the provider-level zone must be set and is used instead.
+	Location interface{}
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
 	Project interface{}
@@ -47,8 +55,6 @@ type GetEngineVersionsArgs struct {
 	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
 	// for full details on how version strings are formatted.
 	VersionPrefix interface{}
-	// Zone to list available cluster versions for. Should match the zone the cluster will be deployed in.
-	// If not specified, the provider-level zone is used. One of zone or provider-level zone is required.
 	Zone interface{}
 }
 

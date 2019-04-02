@@ -35,6 +35,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["enableTpu"] = nil
 		inputs["initialNodeCount"] = nil
 		inputs["ipAllocationPolicy"] = nil
+		inputs["location"] = nil
 		inputs["loggingService"] = nil
 		inputs["maintenancePolicy"] = nil
 		inputs["masterAuth"] = nil
@@ -45,6 +46,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["network"] = nil
 		inputs["networkPolicy"] = nil
 		inputs["nodeConfig"] = nil
+		inputs["nodeLocations"] = nil
 		inputs["nodePools"] = nil
 		inputs["nodeVersion"] = nil
 		inputs["podSecurityPolicyConfig"] = nil
@@ -68,6 +70,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["enableTpu"] = args.EnableTpu
 		inputs["initialNodeCount"] = args.InitialNodeCount
 		inputs["ipAllocationPolicy"] = args.IpAllocationPolicy
+		inputs["location"] = args.Location
 		inputs["loggingService"] = args.LoggingService
 		inputs["maintenancePolicy"] = args.MaintenancePolicy
 		inputs["masterAuth"] = args.MasterAuth
@@ -78,6 +81,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["network"] = args.Network
 		inputs["networkPolicy"] = args.NetworkPolicy
 		inputs["nodeConfig"] = args.NodeConfig
+		inputs["nodeLocations"] = args.NodeLocations
 		inputs["nodePools"] = args.NodePools
 		inputs["nodeVersion"] = args.NodeVersion
 		inputs["podSecurityPolicyConfig"] = args.PodSecurityPolicyConfig
@@ -120,6 +124,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["initialNodeCount"] = state.InitialNodeCount
 		inputs["instanceGroupUrls"] = state.InstanceGroupUrls
 		inputs["ipAllocationPolicy"] = state.IpAllocationPolicy
+		inputs["location"] = state.Location
 		inputs["loggingService"] = state.LoggingService
 		inputs["maintenancePolicy"] = state.MaintenancePolicy
 		inputs["masterAuth"] = state.MasterAuth
@@ -131,6 +136,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["network"] = state.Network
 		inputs["networkPolicy"] = state.NetworkPolicy
 		inputs["nodeConfig"] = state.NodeConfig
+		inputs["nodeLocations"] = state.NodeLocations
 		inputs["nodePools"] = state.NodePools
 		inputs["nodeVersion"] = state.NodeVersion
 		inputs["podSecurityPolicyConfig"] = state.PodSecurityPolicyConfig
@@ -160,10 +166,13 @@ func (r *Cluster) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The list of additional Google Compute Engine
-// locations in which the cluster's nodes should be located. If additional zones are
-// configured, the number of nodes specified in `initial_node_count` is created in
-// all specified zones.
+// The list of zones in which the cluster's nodes
+// should be located. These must be in the same region as the cluster zone for
+// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+// the number of nodes specified in `initial_node_count` is created in
+// all specified zones as well as the primary zone. If specified for a regional
+// cluster, nodes will only be created in these zones. `additional_zones` has been
+// deprecated in favour of `node_locations`.
 func (r *Cluster) AdditionalZones() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["additionalZones"])
 }
@@ -230,7 +239,10 @@ func (r *Cluster) Endpoint() *pulumi.StringOutput {
 }
 
 // The number of nodes to create in this
-// cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+// cluster's default node pool. Must be set if `node_pool` is not set. If
+// you're using `google_container_node_pool` objects with no default node pool,
+// you'll need to set this to a value of at least `1`, alongside setting
+// `remove_default_node_pool` to `true`.
 func (r *Cluster) InitialNodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
 }
@@ -246,6 +258,16 @@ func (r *Cluster) InstanceGroupUrls() *pulumi.ArrayOutput {
 // Structure is documented below.
 func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
 	return r.s.State["ipAllocationPolicy"]
+}
+
+// The location (region or zone) in which the cluster
+// master will be created, as well as the default node location. If you specify a
+// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+// single cluster master. If you specify a region (such as `us-west1`), the
+// cluster will be a regional cluster with multiple masters spread across zones in
+// the region, and with default node locations in those zones as well.
+func (r *Cluster) Location() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The logging service that the cluster should
@@ -307,7 +329,7 @@ func (r *Cluster) MonitoringService() *pulumi.StringOutput {
 }
 
 // The name of the cluster, unique within the project and
-// zone.
+// location.
 func (r *Cluster) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -326,10 +348,23 @@ func (r *Cluster) NetworkPolicy() *pulumi.Output {
 	return r.s.State["networkPolicy"]
 }
 
-// Parameters used in creating the cluster's nodes.
-// Structure is documented below.
+// Parameters used in creating the default node pool.
+// Generally, this field should not be used at the same time as a
+// `google_container_node_pool` or a `node_pool` block; this configuration
+// manages the default node pool, which isn't recommended to be used with
+// Terraform. Structure is documented below.
 func (r *Cluster) NodeConfig() *pulumi.Output {
 	return r.s.State["nodeConfig"]
+}
+
+// The list of zones in which the cluster's nodes
+// should be located. These must be in the same region as the cluster zone for
+// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+// the number of nodes specified in `initial_node_count` is created in
+// all specified zones as well as the primary zone. If specified for a regional
+// cluster, nodes will be created in only these zones.
+func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["nodeLocations"])
 }
 
 // List of node pools associated with this cluster.
@@ -377,7 +412,10 @@ func (r *Cluster) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// If true, deletes the default node pool upon cluster creation.
+// If `true`, deletes the default node
+// pool upon cluster creation. If you're using `google_container_node_pool`
+// resources with no default node pool, this should be set to `true`, alongside
+// setting `initial_node_count` to at least `1`.
 func (r *Cluster) RemoveDefaultNodePool() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["removeDefaultNodePool"])
 }
@@ -400,19 +438,22 @@ func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
 }
 
-// The zone that the master and the number of nodes specified
-// in `initial_node_count` should be created in. Only one of `zone` and `region`
-// may be set. If neither zone nor region are set, the provider zone is used.
+// The zone that the cluster master and nodes
+// should be created in. If specified, this cluster will be a zonal cluster. `zone`
+// has been deprecated in favour of `location`.
 func (r *Cluster) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Cluster resources.
 type ClusterState struct {
-	// The list of additional Google Compute Engine
-	// locations in which the cluster's nodes should be located. If additional zones are
-	// configured, the number of nodes specified in `initial_node_count` is created in
-	// all specified zones.
+	// The list of zones in which the cluster's nodes
+	// should be located. These must be in the same region as the cluster zone for
+	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+	// the number of nodes specified in `initial_node_count` is created in
+	// all specified zones as well as the primary zone. If specified for a regional
+	// cluster, nodes will only be created in these zones. `additional_zones` has been
+	// deprecated in favour of `node_locations`.
 	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
@@ -446,7 +487,10 @@ type ClusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint interface{}
 	// The number of nodes to create in this
-	// cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+	// cluster's default node pool. Must be set if `node_pool` is not set. If
+	// you're using `google_container_node_pool` objects with no default node pool,
+	// you'll need to set this to a value of at least `1`, alongside setting
+	// `remove_default_node_pool` to `true`.
 	InitialNodeCount interface{}
 	// List of instance group URLs which have been assigned
 	// to the cluster.
@@ -455,6 +499,13 @@ type ClusterState struct {
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 	// Structure is documented below.
 	IpAllocationPolicy interface{}
+	// The location (region or zone) in which the cluster
+	// master will be created, as well as the default node location. If you specify a
+	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+	// single cluster master. If you specify a region (such as `us-west1`), the
+	// cluster will be a regional cluster with multiple masters spread across zones in
+	// the region, and with default node locations in those zones as well.
+	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
 	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
@@ -493,7 +544,7 @@ type ClusterState struct {
 	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
-	// zone.
+	// location.
 	Name interface{}
 	// The name or self_link of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -503,9 +554,19 @@ type ClusterState struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy interface{}
-	// Parameters used in creating the cluster's nodes.
-	// Structure is documented below.
+	// Parameters used in creating the default node pool.
+	// Generally, this field should not be used at the same time as a
+	// `google_container_node_pool` or a `node_pool` block; this configuration
+	// manages the default node pool, which isn't recommended to be used with
+	// Terraform. Structure is documented below.
 	NodeConfig interface{}
+	// The list of zones in which the cluster's nodes
+	// should be located. These must be in the same region as the cluster zone for
+	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+	// the number of nodes specified in `initial_node_count` is created in
+	// all specified zones as well as the primary zone. If specified for a regional
+	// cluster, nodes will be created in only these zones.
+	NodeLocations interface{}
 	// List of node pools associated with this cluster.
 	// See google_container_node_pool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -533,7 +594,10 @@ type ClusterState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
-	// If true, deletes the default node pool upon cluster creation.
+	// If `true`, deletes the default node
+	// pool upon cluster creation. If you're using `google_container_node_pool`
+	// resources with no default node pool, this should be set to `true`, alongside
+	// setting `initial_node_count` to at least `1`.
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
@@ -544,18 +608,21 @@ type ClusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock interface{}
-	// The zone that the master and the number of nodes specified
-	// in `initial_node_count` should be created in. Only one of `zone` and `region`
-	// may be set. If neither zone nor region are set, the provider zone is used.
+	// The zone that the cluster master and nodes
+	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
+	// has been deprecated in favour of `location`.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The list of additional Google Compute Engine
-	// locations in which the cluster's nodes should be located. If additional zones are
-	// configured, the number of nodes specified in `initial_node_count` is created in
-	// all specified zones.
+	// The list of zones in which the cluster's nodes
+	// should be located. These must be in the same region as the cluster zone for
+	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+	// the number of nodes specified in `initial_node_count` is created in
+	// all specified zones as well as the primary zone. If specified for a regional
+	// cluster, nodes will only be created in these zones. `additional_zones` has been
+	// deprecated in favour of `node_locations`.
 	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
@@ -587,12 +654,22 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu interface{}
 	// The number of nodes to create in this
-	// cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+	// cluster's default node pool. Must be set if `node_pool` is not set. If
+	// you're using `google_container_node_pool` objects with no default node pool,
+	// you'll need to set this to a value of at least `1`, alongside setting
+	// `remove_default_node_pool` to `true`.
 	InitialNodeCount interface{}
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 	// Structure is documented below.
 	IpAllocationPolicy interface{}
+	// The location (region or zone) in which the cluster
+	// master will be created, as well as the default node location. If you specify a
+	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+	// single cluster master. If you specify a region (such as `us-west1`), the
+	// cluster will be a regional cluster with multiple masters spread across zones in
+	// the region, and with default node locations in those zones as well.
+	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
 	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
@@ -627,7 +704,7 @@ type ClusterArgs struct {
 	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
-	// zone.
+	// location.
 	Name interface{}
 	// The name or self_link of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -637,9 +714,19 @@ type ClusterArgs struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy interface{}
-	// Parameters used in creating the cluster's nodes.
-	// Structure is documented below.
+	// Parameters used in creating the default node pool.
+	// Generally, this field should not be used at the same time as a
+	// `google_container_node_pool` or a `node_pool` block; this configuration
+	// manages the default node pool, which isn't recommended to be used with
+	// Terraform. Structure is documented below.
 	NodeConfig interface{}
+	// The list of zones in which the cluster's nodes
+	// should be located. These must be in the same region as the cluster zone for
+	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+	// the number of nodes specified in `initial_node_count` is created in
+	// all specified zones as well as the primary zone. If specified for a regional
+	// cluster, nodes will be created in only these zones.
+	NodeLocations interface{}
 	// List of node pools associated with this cluster.
 	// See google_container_node_pool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -667,15 +754,18 @@ type ClusterArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
-	// If true, deletes the default node pool upon cluster creation.
+	// If `true`, deletes the default node
+	// pool upon cluster creation. If you're using `google_container_node_pool`
+	// resources with no default node pool, this should be set to `true`, alongside
+	// setting `initial_node_count` to at least `1`.
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
-	// The zone that the master and the number of nodes specified
-	// in `initial_node_count` should be created in. Only one of `zone` and `region`
-	// may be set. If neither zone nor region are set, the provider zone is used.
+	// The zone that the cluster master and nodes
+	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
+	// has been deprecated in favour of `location`.
 	Zone interface{}
 }
