@@ -52,15 +52,10 @@ export type TopicEventHandler = cloudfunctions.Callback<TopicData, TopicContext,
 declare module "./topic" {
     interface Topic {
         onMessagePublished(name: string, handler: TopicEventHandler | TopicEventCallbackFunctionArgs, args?: TopicMessagePublishedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
-        onMessageEvent(name: string, handler: TopicEventHandler | TopicEventCallbackFunctionArgs, args: TopicEventArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
     }
 }
 
-Topic.prototype.onMessagePublished = function (this: Topic, name, handler, args, opts) {
-    return this.onMessageEvent(name, handler, { ...args, triggerType: "publish" }, opts);
-}
-
-Topic.prototype.onMessageEvent = function (this: Topic, name, handlerOrCallbackArgs, args, opts = {}) {
+Topic.prototype.onMessagePublished = function (this: Topic, name, handlerOrCallbackArgs, args, opts) {
     const callbackArgs = handlerOrCallbackArgs instanceof Function
         ? { callback: handlerOrCallbackArgs }
         : handlerOrCallbackArgs;
@@ -70,7 +65,7 @@ Topic.prototype.onMessageEvent = function (this: Topic, name, handlerOrCallbackA
         eventTrigger: {
             resource: this.name,
             failurePolicy: args.failurePolicy,
-            eventType: `google.pubsub.topic.${args.triggerType}`,
+            eventType: `google.pubsub.topic.publish`,
         }
     }, { parent: this, ...opts })
 }
