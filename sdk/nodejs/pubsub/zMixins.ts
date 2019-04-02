@@ -13,7 +13,8 @@ export interface TopicEventCallbackFunctionArgs extends cloudfunctions.CallbackF
     callback?: TopicEventHandler;
     callbackFactory?: () => TopicEventHandler;
 
-    // should never be passed in.
+    // never provided.  type them as 'never' so TypeScript will complain if a user tries to include
+    // these.
 
     httpsTriggerUrl?: never;
     triggerHttp?: never;
@@ -67,8 +68,8 @@ export type TopicEventHandler = cloudfunctions.Callback<TopicData, TopicContext,
 declare module "./topic" {
     interface Topic {
         /**
-         * Creates and publishes a Cloud Functions that can be triggered by messages published to
-         * Cloud Pub/Sub topics in the same GCP project as the function. Cloud Pub/Sub is a globally
+         * Creates and publishes a Cloud Functions that will be triggered by messages published to
+         * Cloud Pub/Sub topics in the same GCP project as the Function. Cloud Pub/Sub is a globally
          * distributed message bus that automatically scales as you need it and provides a
          * foundation for building your own robust, global services.
          *
