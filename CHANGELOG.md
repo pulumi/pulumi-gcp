@@ -6,9 +6,9 @@
 
 - Using the above, serverless event handlers have been added that enable creating Cloud Functions
   from a JavaScript function and then invoking that function in response to:
-    1. http triggers (i.e. hitting some url).
-    2. storage triggers (for example, when an object is created in the bucket).
-    3. pubsub triggers (for executing a Cloud Function when a message is published to a topic).
+    1. http triggers.  i.e. when accessing some url.
+    2. storage triggers.  For example, when an object is created in a bucket.
+    3. pubsub triggers.  For example, when a message is published to a topic.
 
 ## 0.18.0 (Released March 21, 2019)
 
