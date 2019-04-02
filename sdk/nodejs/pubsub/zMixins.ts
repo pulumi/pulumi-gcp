@@ -79,7 +79,7 @@ declare module "./topic" {
     }
 }
 
-Topic.prototype.onMessagePublished = function (this: Topic, name, handlerOrCallbackArgs, args, opts) {
+Topic.prototype.onMessagePublished = function (this: Topic, name, handlerOrCallbackArgs, args = {}, opts = {}) {
     const callbackArgs = handlerOrCallbackArgs instanceof Function
         ? { callback: handlerOrCallbackArgs }
         : handlerOrCallbackArgs;
