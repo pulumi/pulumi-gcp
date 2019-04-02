@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about Disk, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/disks)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         environment: "dev",
  *     },
+ *     physicalBlockSizeBytes: 4096,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
@@ -76,6 +77,7 @@ export class Disk extends pulumi.CustomResource {
     public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
     public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
     public readonly name: pulumi.Output<string>;
+    public readonly physicalBlockSizeBytes: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -116,6 +118,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
             inputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -134,6 +137,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["image"] = args ? args.image : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshot"] = args ? args.snapshot : undefined;
@@ -167,6 +171,7 @@ export interface DiskState {
     readonly lastAttachTimestamp?: pulumi.Input<string>;
     readonly lastDetachTimestamp?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly physicalBlockSizeBytes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -196,6 +201,7 @@ export interface DiskArgs {
     readonly image?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    readonly physicalBlockSizeBytes?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

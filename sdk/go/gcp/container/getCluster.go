@@ -7,10 +7,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Get info about a cluster within GKE from its name and zone.
+// Get info about a GKE cluster from its name and location.
 func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["location"] = args.Location
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -46,6 +47,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		Network: outputs["network"],
 		NetworkPolicies: outputs["networkPolicies"],
 		NodeConfigs: outputs["nodeConfigs"],
+		NodeLocations: outputs["nodeLocations"],
 		NodePools: outputs["nodePools"],
 		NodeVersion: outputs["nodeVersion"],
 		PodSecurityPolicyConfigs: outputs["podSecurityPolicyConfigs"],
@@ -61,12 +63,20 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 
 // A collection of arguments for invoking getCluster.
 type GetClusterArgs struct {
+	// The location (zone or region) this cluster has been
+	// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+	// be specified.
+	Location interface{}
 	// The name of the cluster.
 	Name interface{}
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	// The region this cluster has been created in. Deprecated
+	// in favour of `location`.
 	Region interface{}
+	// The zone this cluster has been created in. Deprecated in
+	// favour of `location`.
 	Zone interface{}
 }
 
@@ -97,6 +107,7 @@ type GetClusterResult struct {
 	Network interface{}
 	NetworkPolicies interface{}
 	NodeConfigs interface{}
+	NodeLocations interface{}
 	NodePools interface{}
 	NodeVersion interface{}
 	PodSecurityPolicyConfigs interface{}

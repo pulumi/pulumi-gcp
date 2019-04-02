@@ -7,7 +7,7 @@
   name = "github.com/pulumi/pulumi-terraform"
 
 [[constraint]]
-  version = "v2.2.0"
+  version = "v2.3.0"
   name = "github.com/terraform-providers/terraform-provider-google-beta"
 
   [constraint.metadata]

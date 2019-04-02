@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about TargetHttpsProxy, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/targetHttpsProxies)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  * 

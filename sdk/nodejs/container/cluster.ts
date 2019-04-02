@@ -21,27 +21,12 @@ import * as utilities from "../utilities";
  * 
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 1,
+ *     location: "us-central1",
  *     // Setting an empty username and password explicitly disables basic auth
  *     masterAuth: {
  *         password: "",
  *         username: "",
  *     },
- *     nodeConfig: {
- *         labels: {
- *             foo: "bar",
- *         },
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/compute",
- *             "https://www.googleapis.com/auth/devstorage.read_only",
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
- *         tags: [
- *             "foo",
- *             "bar",
- *         ],
- *     },
- *     region: "us-central1",
  *     // We can't create a cluster with no node pool defined, but we want to only use
  *     // separately managed node pools. So we create the smallest possible default
  *     // node pool and immediately delete it.
@@ -49,18 +34,19 @@ import * as utilities from "../utilities";
  * });
  * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
  *     cluster: primary.name,
+ *     location: "us-central1",
  *     nodeConfig: {
  *         machineType: "n1-standard-1",
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
  *         oauthScopes: [
- *             "https://www.googleapis.com/auth/compute",
- *             "https://www.googleapis.com/auth/devstorage.read_only",
  *             "https://www.googleapis.com/auth/logging.write",
  *             "https://www.googleapis.com/auth/monitoring",
  *         ],
  *         preemptible: true,
  *     },
  *     nodeCount: 1,
- *     region: "us-central1",
  * });
  * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
@@ -78,6 +64,7 @@ import * as utilities from "../utilities";
  * 
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 3,
+ *     location: "us-central1-a",
  *     // Setting an empty username and password explicitly disables basic auth
  *     masterAuth: {
  *         password: "",
@@ -87,9 +74,10 @@ import * as utilities from "../utilities";
  *         labels: {
  *             foo: "bar",
  *         },
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
  *         oauthScopes: [
- *             "https://www.googleapis.com/auth/compute",
- *             "https://www.googleapis.com/auth/devstorage.read_only",
  *             "https://www.googleapis.com/auth/logging.write",
  *             "https://www.googleapis.com/auth/monitoring",
  *         ],
@@ -102,7 +90,6 @@ import * as utilities from "../utilities";
  *         create: "30m",
  *         update: "40m",
  *     }],
- *     zone: "us-central1-a",
  * });
  * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
@@ -126,10 +113,13 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The list of additional Google Compute Engine
-     * locations in which the cluster's nodes should be located. If additional zones are
-     * configured, the number of nodes specified in `initial_node_count` is created in
-     * all specified zones.
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will only be created in these zones. `additional_zones` has been
+     * deprecated in favour of `node_locations`.
      */
     public readonly additionalZones: pulumi.Output<string[]>;
     /**
@@ -183,7 +173,10 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * The number of nodes to create in this
-     * cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+     * cluster's default node pool. Must be set if `node_pool` is not set. If
+     * you're using `google_container_node_pool` objects with no default node pool,
+     * you'll need to set this to a value of at least `1`, alongside setting
+     * `remove_default_node_pool` to `true`.
      */
     public readonly initialNodeCount: pulumi.Output<number | undefined>;
     /**
@@ -197,6 +190,15 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly ipAllocationPolicy: pulumi.Output<{ clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork?: boolean, nodeIpv4CidrBlock?: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName?: string, useIpAliases?: boolean }>;
+    /**
+     * The location (region or zone) in which the cluster
+     * master will be created, as well as the default node location. If you specify a
+     * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+     * single cluster master. If you specify a region (such as `us-west1`), the
+     * cluster will be a regional cluster with multiple masters spread across zones in
+     * the region, and with default node locations in those zones as well.
+     */
+    public readonly location: pulumi.Output<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -250,7 +252,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly monitoringService: pulumi.Output<string>;
     /**
      * The name of the cluster, unique within the project and
-     * zone.
+     * location.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -266,10 +268,22 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly networkPolicy: pulumi.Output<{ enabled?: boolean, provider?: string }>;
     /**
-     * Parameters used in creating the cluster's nodes.
-     * Structure is documented below.
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * Terraform. Structure is documented below.
      */
-    public readonly nodeConfig: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    public readonly nodeConfig: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    /**
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will be created in only these zones.
+     */
+    public readonly nodeLocations: pulumi.Output<string[]>;
     /**
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
@@ -278,7 +292,7 @@ export class Cluster extends pulumi.CustomResource {
      * to say "these are the _only_ node pools associated with this cluster", use the
      * google_container_node_pool resource instead of this property.
      */
-    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata?: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
+    public readonly nodePools: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -308,7 +322,10 @@ export class Cluster extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
     /**
-     * If true, deletes the default node pool upon cluster creation.
+     * If `true`, deletes the default node
+     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * resources with no default node pool, this should be set to `true`, alongside
+     * setting `initial_node_count` to at least `1`.
      */
     public readonly removeDefaultNodePool: pulumi.Output<boolean | undefined>;
     /**
@@ -327,9 +344,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock: pulumi.Output<string>;
     /**
-     * The zone that the master and the number of nodes specified
-     * in `initial_node_count` should be created in. Only one of `zone` and `region`
-     * may be set. If neither zone nor region are set, the provider zone is used.
+     * The zone that the cluster master and nodes
+     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
+     * has been deprecated in favour of `location`.
      */
     public readonly zone: pulumi.Output<string>;
 
@@ -359,6 +376,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
             inputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
+            inputs["location"] = state ? state.location : undefined;
             inputs["loggingService"] = state ? state.loggingService : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             inputs["masterAuth"] = state ? state.masterAuth : undefined;
@@ -370,6 +388,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["network"] = state ? state.network : undefined;
             inputs["networkPolicy"] = state ? state.networkPolicy : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
+            inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["nodePools"] = state ? state.nodePools : undefined;
             inputs["nodeVersion"] = state ? state.nodeVersion : undefined;
             inputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
@@ -395,6 +414,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableTpu"] = args ? args.enableTpu : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["loggingService"] = args ? args.loggingService : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["masterAuth"] = args ? args.masterAuth : undefined;
@@ -405,6 +425,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["networkPolicy"] = args ? args.networkPolicy : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
+            inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
             inputs["nodeVersion"] = args ? args.nodeVersion : undefined;
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
@@ -429,10 +450,13 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The list of additional Google Compute Engine
-     * locations in which the cluster's nodes should be located. If additional zones are
-     * configured, the number of nodes specified in `initial_node_count` is created in
-     * all specified zones.
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will only be created in these zones. `additional_zones` has been
+     * deprecated in favour of `node_locations`.
      */
     readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -486,7 +510,10 @@ export interface ClusterState {
     readonly endpoint?: pulumi.Input<string>;
     /**
      * The number of nodes to create in this
-     * cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+     * cluster's default node pool. Must be set if `node_pool` is not set. If
+     * you're using `google_container_node_pool` objects with no default node pool,
+     * you'll need to set this to a value of at least `1`, alongside setting
+     * `remove_default_node_pool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
@@ -500,6 +527,15 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
+    /**
+     * The location (region or zone) in which the cluster
+     * master will be created, as well as the default node location. If you specify a
+     * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+     * single cluster master. If you specify a region (such as `us-west1`), the
+     * cluster will be a regional cluster with multiple masters spread across zones in
+     * the region, and with default node locations in those zones as well.
+     */
+    readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -553,7 +589,7 @@ export interface ClusterState {
     readonly monitoringService?: pulumi.Input<string>;
     /**
      * The name of the cluster, unique within the project and
-     * zone.
+     * location.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -569,10 +605,22 @@ export interface ClusterState {
      */
     readonly networkPolicy?: pulumi.Input<{ enabled?: pulumi.Input<boolean>, provider?: pulumi.Input<string> }>;
     /**
-     * Parameters used in creating the cluster's nodes.
-     * Structure is documented below.
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * Terraform. Structure is documented below.
      */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    /**
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will be created in only these zones.
+     */
+    readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
@@ -611,7 +659,10 @@ export interface ClusterState {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     /**
-     * If true, deletes the default node pool upon cluster creation.
+     * If `true`, deletes the default node
+     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * resources with no default node pool, this should be set to `true`, alongside
+     * setting `initial_node_count` to at least `1`.
      */
     readonly removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
@@ -630,9 +681,9 @@ export interface ClusterState {
      */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
-     * The zone that the master and the number of nodes specified
-     * in `initial_node_count` should be created in. Only one of `zone` and `region`
-     * may be set. If neither zone nor region are set, the provider zone is used.
+     * The zone that the cluster master and nodes
+     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
+     * has been deprecated in favour of `location`.
      */
     readonly zone?: pulumi.Input<string>;
 }
@@ -642,10 +693,13 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The list of additional Google Compute Engine
-     * locations in which the cluster's nodes should be located. If additional zones are
-     * configured, the number of nodes specified in `initial_node_count` is created in
-     * all specified zones.
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will only be created in these zones. `additional_zones` has been
+     * deprecated in favour of `node_locations`.
      */
     readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -695,7 +749,10 @@ export interface ClusterArgs {
     readonly enableTpu?: pulumi.Input<boolean>;
     /**
      * The number of nodes to create in this
-     * cluster (not including the Kubernetes master). Must be set if `node_pool` is not set.
+     * cluster's default node pool. Must be set if `node_pool` is not set. If
+     * you're using `google_container_node_pool` objects with no default node pool,
+     * you'll need to set this to a value of at least `1`, alongside setting
+     * `remove_default_node_pool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
@@ -704,6 +761,15 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
+    /**
+     * The location (region or zone) in which the cluster
+     * master will be created, as well as the default node location. If you specify a
+     * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+     * single cluster master. If you specify a region (such as `us-west1`), the
+     * cluster will be a regional cluster with multiple masters spread across zones in
+     * the region, and with default node locations in those zones as well.
+     */
+    readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
@@ -751,7 +817,7 @@ export interface ClusterArgs {
     readonly monitoringService?: pulumi.Input<string>;
     /**
      * The name of the cluster, unique within the project and
-     * zone.
+     * location.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -767,10 +833,22 @@ export interface ClusterArgs {
      */
     readonly networkPolicy?: pulumi.Input<{ enabled?: pulumi.Input<boolean>, provider?: pulumi.Input<string> }>;
     /**
-     * Parameters used in creating the cluster's nodes.
-     * Structure is documented below.
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * Terraform. Structure is documented below.
      */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    /**
+     * The list of zones in which the cluster's nodes
+     * should be located. These must be in the same region as the cluster zone for
+     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
+     * the number of nodes specified in `initial_node_count` is created in
+     * all specified zones as well as the primary zone. If specified for a regional
+     * cluster, nodes will be created in only these zones.
+     */
+    readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of node pools associated with this cluster.
      * See google_container_node_pool for schema.
@@ -809,7 +887,10 @@ export interface ClusterArgs {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     /**
-     * If true, deletes the default node pool upon cluster creation.
+     * If `true`, deletes the default node
+     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * resources with no default node pool, this should be set to `true`, alongside
+     * setting `initial_node_count` to at least `1`.
      */
     readonly removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
@@ -822,9 +903,9 @@ export interface ClusterArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * The zone that the master and the number of nodes specified
-     * in `initial_node_count` should be created in. Only one of `zone` and `region`
-     * may be set. If neither zone nor region are set, the provider zone is used.
+     * The zone that the cluster master and nodes
+     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
+     * has been deprecated in favour of `location`.
      */
     readonly zone?: pulumi.Input<string>;
 }

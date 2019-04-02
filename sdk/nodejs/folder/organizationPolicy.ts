@@ -93,7 +93,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     public readonly booleanPolicy: pulumi.Output<{ enforced: boolean } | undefined>;
     /**
@@ -101,7 +101,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     public readonly constraint: pulumi.Output<string>;
     /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -109,12 +109,12 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     public readonly folder: pulumi.Output<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * A policy that can define specific values that are allowed or denied for the given constraint. It
      * can also be used to allow or deny all values. Structure is documented below.
      */
     public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
     /**
@@ -172,7 +172,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
  */
 export interface OrganizationPolicyState {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
     /**
@@ -180,7 +180,7 @@ export interface OrganizationPolicyState {
      */
     readonly constraint?: pulumi.Input<string>;
     /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     readonly etag?: pulumi.Input<string>;
     /**
@@ -188,12 +188,12 @@ export interface OrganizationPolicyState {
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * A policy that can define specific values that are allowed or denied for the given constraint. It
      * can also be used to allow or deny all values. Structure is documented below.
      */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
@@ -211,7 +211,7 @@ export interface OrganizationPolicyState {
  */
 export interface OrganizationPolicyArgs {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
     /**
@@ -223,12 +223,12 @@ export interface OrganizationPolicyArgs {
      */
     readonly folder: pulumi.Input<string>;
     /**
-     * A policy that can define specific values that are allowed or denied for the given constraint. It 
+     * A policy that can define specific values that are allowed or denied for the given constraint. It
      * can also be used to allow or deny all values. Structure is documented below.
      */
     readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**

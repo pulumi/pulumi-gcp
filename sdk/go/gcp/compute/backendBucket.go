@@ -19,7 +19,7 @@ import (
 // 
 // To get more information about BackendBucket, see:
 // 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/backendBuckets)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
 // * How-to Guides
 //     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 // 

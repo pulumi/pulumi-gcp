@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError('Expected argument additional_zones to be a list')
         __self__.additional_zones = additional_zones
@@ -88,6 +88,9 @@ class GetClusterResult:
         if node_configs and not isinstance(node_configs, list):
             raise TypeError('Expected argument node_configs to be a list')
         __self__.node_configs = node_configs
+        if node_locations and not isinstance(node_locations, list):
+            raise TypeError('Expected argument node_locations to be a list')
+        __self__.node_locations = node_locations
         if node_pools and not isinstance(node_pools, list):
             raise TypeError('Expected argument node_pools to be a list')
         __self__.node_pools = node_pools
@@ -122,12 +125,13 @@ class GetClusterResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_cluster(name=None,project=None,region=None,zone=None,opts=None):
+async def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
     """
-    Get info about a cluster within GKE from its name and zone.
+    Get info about a GKE cluster from its name and location.
     """
     __args__ = dict()
 
+    __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
@@ -160,6 +164,7 @@ async def get_cluster(name=None,project=None,region=None,zone=None,opts=None):
         network=__ret__.get('network'),
         network_policies=__ret__.get('networkPolicies'),
         node_configs=__ret__.get('nodeConfigs'),
+        node_locations=__ret__.get('nodeLocations'),
         node_pools=__ret__.get('nodePools'),
         node_version=__ret__.get('nodeVersion'),
         pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),

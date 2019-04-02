@@ -24,6 +24,11 @@ class NodePool(pulumi.CustomResource):
     recreation of the resource.
     """
     instance_group_urls: pulumi.Output[list]
+    location: pulumi.Output[str]
+    """
+    The location (region or zone) in which the cluster
+    resides.
+    """
     management: pulumi.Output[dict]
     """
     Node management configuration, wherein auto-repair and
@@ -58,7 +63,8 @@ class NodePool(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The region in which the cluster resides (for regional clusters).
+    The region in which the cluster resides (for
+    regional clusters). `zone` has been deprecated in favor of `location`.
     """
     version: pulumi.Output[str]
     """
@@ -71,9 +77,10 @@ class NodePool(pulumi.CustomResource):
     """
     zone: pulumi.Output[str]
     """
-    The zone in which the cluster resides.
+    The zone in which the cluster resides. `zone`
+    has been deprecated in favor of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
@@ -86,6 +93,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
         :param pulumi.Input[float] initial_node_count: The initial node count for the pool. Changing this will force
                recreation of the resource.
+        :param pulumi.Input[str] location: The location (region or zone) in which the cluster
+               resides.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
@@ -99,14 +108,16 @@ class NodePool(pulumi.CustomResource):
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[str] region: The region in which the cluster resides (for regional clusters).
+        :param pulumi.Input[str] region: The region in which the cluster resides (for
+               regional clusters). `zone` has been deprecated in favor of `location`.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as Terraform will see spurious diffs
                when fuzzy versions are used. See the `google_container_engine_versions` data source's
                `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
-        :param pulumi.Input[str] zone: The zone in which the cluster resides.
+        :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
+               has been deprecated in favor of `location`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,6 +141,8 @@ class NodePool(pulumi.CustomResource):
         __props__['cluster'] = cluster
 
         __props__['initial_node_count'] = initial_node_count
+
+        __props__['location'] = location
 
         __props__['management'] = management
 

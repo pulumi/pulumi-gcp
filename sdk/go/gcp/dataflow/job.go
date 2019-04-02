@@ -41,6 +41,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["parameters"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
+		inputs["serviceAccountEmail"] = nil
 		inputs["tempGcsLocation"] = nil
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
@@ -51,6 +52,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["parameters"] = args.Parameters
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
+		inputs["serviceAccountEmail"] = args.ServiceAccountEmail
 		inputs["tempGcsLocation"] = args.TempGcsLocation
 		inputs["templateGcsPath"] = args.TemplateGcsPath
 		inputs["zone"] = args.Zone
@@ -75,6 +77,7 @@ func GetJob(ctx *pulumi.Context,
 		inputs["parameters"] = state.Parameters
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
+		inputs["serviceAccountEmail"] = state.ServiceAccountEmail
 		inputs["state"] = state.State
 		inputs["tempGcsLocation"] = state.TempGcsLocation
 		inputs["templateGcsPath"] = state.TemplateGcsPath
@@ -126,6 +129,11 @@ func (r *Job) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// The Service Account email used to create the job.
+func (r *Job) ServiceAccountEmail() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
+}
+
 // The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 func (r *Job) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
@@ -159,6 +167,8 @@ type JobState struct {
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
+	// The Service Account email used to create the job.
+	ServiceAccountEmail interface{}
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -182,6 +192,8 @@ type JobArgs struct {
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
+	// The Service Account email used to create the job.
+	ServiceAccountEmail interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation interface{}
 	// The GCS path to the Dataflow job template.

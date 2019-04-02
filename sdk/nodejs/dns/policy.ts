@@ -22,41 +22,6 @@ import * as utilities from "../utilities";
  *     <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
  *   </a>
  * </div>
- * ## Example Usage - Dns Policy Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const network_1 = new gcp.compute.Network("network-1", {
- *     autoCreateSubnetworks: false,
- * });
- * const network_2 = new gcp.compute.Network("network-2", {
- *     autoCreateSubnetworks: false,
- * });
- * const example_policy = new gcp.dns.Policy("example-policy", {
- *     alternativeNameServerConfig: {
- *         targetNameServers: [
- *             {
- *                 ipv4Address: "172.16.1.10",
- *             },
- *             {
- *                 ipv4Address: "172.16.1.20",
- *             },
- *         ],
- *     },
- *     enableInboundForwarding: true,
- *     networks: [
- *         {
- *             networkUrl: network_1.selfLink,
- *         },
- *         {
- *             networkUrl: network_2.selfLink,
- *         },
- *     ],
- * });
- * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

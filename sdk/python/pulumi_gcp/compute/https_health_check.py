@@ -43,7 +43,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
         
         To get more information about HttpsHealthCheck, see:
         
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/httpsHealthChecks)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpsHealthChecks)
         * How-to Guides
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
         

@@ -69,6 +69,10 @@ export class Job extends pulumi.CustomResource {
     public readonly project: pulumi.Output<string | undefined>;
     public readonly region: pulumi.Output<string | undefined>;
     /**
+     * The Service Account email used to create the job.
+     */
+    public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     public /*out*/ readonly state: pulumi.Output<string>;
@@ -103,6 +107,7 @@ export class Job extends pulumi.CustomResource {
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             inputs["state"] = state ? state.state : undefined;
             inputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
@@ -121,6 +126,7 @@ export class Job extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -155,6 +161,10 @@ export interface JobState {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * The Service Account email used to create the job.
+     */
+    readonly serviceAccountEmail?: pulumi.Input<string>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
@@ -198,6 +208,10 @@ export interface JobArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * The Service Account email used to create the job.
+     */
+    readonly serviceAccountEmail?: pulumi.Input<string>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      */

@@ -56,6 +56,7 @@ func NewRegionDisk(ctx *pulumi.Context,
 		inputs["diskEncryptionKey"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["physicalBlockSizeBytes"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["replicaZones"] = nil
@@ -68,6 +69,7 @@ func NewRegionDisk(ctx *pulumi.Context,
 		inputs["diskEncryptionKey"] = args.DiskEncryptionKey
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["physicalBlockSizeBytes"] = args.PhysicalBlockSizeBytes
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["replicaZones"] = args.ReplicaZones
@@ -104,6 +106,7 @@ func GetRegionDisk(ctx *pulumi.Context,
 		inputs["lastAttachTimestamp"] = state.LastAttachTimestamp
 		inputs["lastDetachTimestamp"] = state.LastDetachTimestamp
 		inputs["name"] = state.Name
+		inputs["physicalBlockSizeBytes"] = state.PhysicalBlockSizeBytes
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["replicaZones"] = state.ReplicaZones
@@ -164,6 +167,10 @@ func (r *RegionDisk) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+func (r *RegionDisk) PhysicalBlockSizeBytes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["physicalBlockSizeBytes"])
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (r *RegionDisk) Project() *pulumi.StringOutput {
@@ -217,6 +224,7 @@ type RegionDiskState struct {
 	LastAttachTimestamp interface{}
 	LastDetachTimestamp interface{}
 	Name interface{}
+	PhysicalBlockSizeBytes interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
@@ -238,6 +246,7 @@ type RegionDiskArgs struct {
 	DiskEncryptionKey interface{}
 	Labels interface{}
 	Name interface{}
+	PhysicalBlockSizeBytes interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}

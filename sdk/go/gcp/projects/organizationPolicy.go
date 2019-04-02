@@ -107,7 +107,7 @@ func (r *OrganizationPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+// A restore policy is a constraint to restore the default policy. Structure is documented below.
 func (r *OrganizationPolicy) RestorePolicy() *pulumi.Output {
 	return r.s.State["restorePolicy"]
 }
@@ -134,7 +134,7 @@ type OrganizationPolicyState struct {
 	ListPolicy interface{}
 	// The project id of the project to set the policy for.
 	Project interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime interface{}
@@ -152,7 +152,7 @@ type OrganizationPolicyArgs struct {
 	ListPolicy interface{}
 	// The project id of the project to set the policy for.
 	Project interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// Version of the Policy. Default version is 0.
 	Version interface{}

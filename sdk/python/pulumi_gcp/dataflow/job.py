@@ -30,6 +30,10 @@ class Job(pulumi.CustomResource):
     The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    service_account_email: pulumi.Output[str]
+    """
+    The Service Account email used to create the job.
+    """
     state: pulumi.Output[str]
     """
     The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -46,7 +50,7 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
@@ -68,6 +72,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -98,6 +103,8 @@ class Job(pulumi.CustomResource):
         __props__['project'] = project
 
         __props__['region'] = region
+
+        __props__['service_account_email'] = service_account_email
 
         if temp_gcs_location is None:
             raise TypeError('Missing required property temp_gcs_location')

@@ -26,7 +26,7 @@ import (
 // 
 // To get more information about Disk, see:
 // 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/disks)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
 // * How-to Guides
 //     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 // 
@@ -53,6 +53,7 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["image"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["physicalBlockSizeBytes"] = nil
 		inputs["project"] = nil
 		inputs["size"] = nil
 		inputs["snapshot"] = nil
@@ -66,6 +67,7 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["image"] = args.Image
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["physicalBlockSizeBytes"] = args.PhysicalBlockSizeBytes
 		inputs["project"] = args.Project
 		inputs["size"] = args.Size
 		inputs["snapshot"] = args.Snapshot
@@ -104,6 +106,7 @@ func GetDisk(ctx *pulumi.Context,
 		inputs["lastAttachTimestamp"] = state.LastAttachTimestamp
 		inputs["lastDetachTimestamp"] = state.LastDetachTimestamp
 		inputs["name"] = state.Name
+		inputs["physicalBlockSizeBytes"] = state.PhysicalBlockSizeBytes
 		inputs["project"] = state.Project
 		inputs["selfLink"] = state.SelfLink
 		inputs["size"] = state.Size
@@ -169,6 +172,10 @@ func (r *Disk) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+func (r *Disk) PhysicalBlockSizeBytes() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["physicalBlockSizeBytes"])
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (r *Disk) Project() *pulumi.StringOutput {
@@ -227,6 +234,7 @@ type DiskState struct {
 	LastAttachTimestamp interface{}
 	LastDetachTimestamp interface{}
 	Name interface{}
+	PhysicalBlockSizeBytes interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
@@ -250,6 +258,7 @@ type DiskArgs struct {
 	Image interface{}
 	Labels interface{}
 	Name interface{}
+	PhysicalBlockSizeBytes interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
