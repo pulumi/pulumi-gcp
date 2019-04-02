@@ -10,6 +10,7 @@ export interface BucketEventCallbackFunctionArgs extends cloudfunctions.Callback
     callbackFactory?: () => BucketEventHandler;
     httpsTriggerUrl?: never;
     triggerHttp?: never;
+    eventTrigger?: never;
 }
 
 export interface BucketFinalizedArgs {
@@ -68,12 +69,12 @@ export type BucketEventHandler =cloudfunctions.Callback<BucketData, BucketContex
 
 declare module "./bucket" {
     interface Bucket {
-        onObjectFinalized(name: string, handler: BucketEventHandler, args?: BucketFinalizedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
-        onObjectDeleted(name: string, handler: BucketEventHandler, args?: BucketDeletedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
-        onObjectArchived(name: string, handler: BucketEventHandler, args?: BucketArchivedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
-        onObjectMetadataUpdated(name: string, handler: BucketEventHandler, args?: BucketMetadataUpdatedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onObjectFinalized(name: string, handler: BucketEventHandler | BucketEventCallbackFunctionArgs, args?: BucketFinalizedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onObjectDeleted(name: string, handler: BucketEventHandler | BucketEventCallbackFunctionArgs, args?: BucketDeletedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onObjectArchived(name: string, handler: BucketEventHandler | BucketEventCallbackFunctionArgs, args?: BucketArchivedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onObjectMetadataUpdated(name: string, handler: BucketEventHandler | BucketEventCallbackFunctionArgs, args?: BucketMetadataUpdatedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
 
-        onObjectEvent(name: string, handler: BucketEventHandler, args: BucketEventArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onObjectEvent(name: string, handler: BucketEventHandler | BucketEventCallbackFunctionArgs, args: BucketEventArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
     }
 }
 
@@ -93,9 +94,13 @@ Bucket.prototype.onObjectMetadataUpdated = function (this: Bucket, name, handler
     return this.onObjectEvent(name, handler, { ...args, triggerType: "metadataUpdate" }, opts);
 }
 
-Bucket.prototype.onObjectEvent = function (this: Bucket, name, handler, args, opts = {}) {
+Bucket.prototype.onObjectEvent = function (this: Bucket, name, handlerOrCallbackArgs, args, opts = {}) {
+    const callbackArgs = handlerOrCallbackArgs instanceof Function
+        ? { callback: handlerOrCallbackArgs }
+        : handlerOrCallbackArgs;
+
     return new cloudfunctions.CallbackFunction(name, {
-        callback: handler,
+        ...callbackArgs,
         eventTrigger: {
             resource: this.name,
             failurePolicy: args.failurePolicy,

@@ -10,6 +10,7 @@ export interface TopicEventCallbackFunctionArgs extends cloudfunctions.CallbackF
     callbackFactory?: () => TopicEventHandler;
     httpsTriggerUrl?: never;
     triggerHttp?: never;
+    eventTrigger?: never;
 }
 
 export interface TopicMessagePublishedArgs {
@@ -50,8 +51,8 @@ export type TopicEventHandler = cloudfunctions.Callback<TopicData, TopicContext,
 
 declare module "./topic" {
     interface Topic {
-        onMessagePublished(name: string, handler: TopicEventHandler, args?: TopicMessagePublishedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
-        onMessageEvent(name: string, handler: TopicEventHandler, args: TopicEventArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onMessagePublished(name: string, handler: TopicEventHandler | TopicEventCallbackFunctionArgs, args?: TopicMessagePublishedArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
+        onMessageEvent(name: string, handler: TopicEventHandler | TopicEventCallbackFunctionArgs, args: TopicEventArgs, opts?: pulumi.ComponentResourceOptions): cloudfunctions.CallbackFunction;
     }
 }
 
@@ -59,9 +60,13 @@ Topic.prototype.onMessagePublished = function (this: Topic, name, handler, args,
     return this.onMessageEvent(name, handler, { ...args, triggerType: "publish" }, opts);
 }
 
-Topic.prototype.onMessageEvent = function (this: Topic, name, handler, args, opts = {}) {
+Topic.prototype.onMessageEvent = function (this: Topic, name, handlerOrCallbackArgs, args, opts = {}) {
+    const callbackArgs = handlerOrCallbackArgs instanceof Function
+        ? { callback: handlerOrCallbackArgs }
+        : handlerOrCallbackArgs;
+
     return new cloudfunctions.CallbackFunction(name, {
-        callback: handler,
+        ...callbackArgs,
         eventTrigger: {
             resource: this.name,
             failurePolicy: args.failurePolicy,
