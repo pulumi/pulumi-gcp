@@ -22,6 +22,13 @@ export interface TopicEventArgs {
 }
 
 export interface TopicEvent {
+    "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
+
+    /**
+     * key/value pairs included with the topic even.
+     */
+    attributes: Record<string, string>;
+
     /**
      * Base64 encoded data.  Use `Buffer.from(pubSubMessage.data, 'base64')` to get raw bytes of the
      * message.

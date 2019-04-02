@@ -79,6 +79,9 @@ func TestExamples(t *testing.T) {
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "bucket"),
 		}),
+		jsBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "topic"),
+		}),
 		pythonBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "minimal-py"),
 		}),
