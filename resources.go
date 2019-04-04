@@ -204,7 +204,7 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Name must start with a letter followed by up to 62 letters, numbers, or
 					// hyphens, and cannot end with a hyphen
-					"name": tfbridge.AutoName("name", 40),
+					"name": tfbridge.AutoName("name", 63),
 				},
 			},
 
