@@ -138,7 +138,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
 
         const codePaths = computeCodePaths(closure, serializedFileNameNoExtension, args.codePathOptions);
 
-        // https://cloud.google.com/storage/docs/naming:
+        // https://cloud.google.com/storage/docs/naming
         //
         // Bucket names must contain only lowercase letters, numbers, dashes (-), underscores (_),
         // and dots.

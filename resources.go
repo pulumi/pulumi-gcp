@@ -198,7 +198,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Cloud Functions
-			"google_cloudfunctions_function": {Tok: gcpResource(gcpCloudFunctions, "Function")},
+			"google_cloudfunctions_function": {
+				Tok: gcpResource(gcpCloudFunctions, "Function"),
+
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// Name must start with a letter followed by up to 62 letters, numbers, or
+					// hyphens, and cannot end with a hyphen
+					"name": tfbridge.AutoName("name", 40),
+				},
+			},
 
 			// Cloud Scheduler
 			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
@@ -610,7 +618,16 @@ func Provider() tfbridge.ProviderInfo {
 			"google_logging_project_sink":              {Tok: gcpResource(gcpLogging, "ProjectSink")},
 
 			// Storage resources
-			"google_storage_bucket":     {Tok: gcpResource(gcpStorage, "Bucket")},
+			"google_storage_bucket": {
+				Tok: gcpResource(gcpStorage, "Bucket"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// https://cloud.google.com/storage/docs/naming
+					// Bucket names must contain 3 to 63 characters. Names containing dots can
+					// contain up to 222 characters, but each dot-separated component can be no
+					// longer than 63 characters.
+					"name": tfbridge.AutoName("name", 222),
+				},
+			},
 			"google_storage_bucket_acl": {Tok: gcpResource(gcpStorage, "BucketACL")},
 			"google_storage_bucket_iam_binding": {
 				Tok: gcpResource(gcpStorage, "BucketIAMBinding"),
