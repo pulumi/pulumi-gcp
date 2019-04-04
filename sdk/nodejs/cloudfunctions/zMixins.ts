@@ -138,7 +138,14 @@ export class CallbackFunction extends pulumi.ComponentResource {
 
         const codePaths = computeCodePaths(closure, serializedFileNameNoExtension, args.codePathOptions);
 
-        this.bucket = args.bucket || new storage.Bucket(`${name}`, {
+        // https://cloud.google.com/storage/docs/naming:
+        //
+        // Bucket names must contain only lowercase letters, numbers, dashes (-), underscores (_),
+        // and dots.
+
+        const bucketName = name.toLowerCase().replace(/[^-_a-z0-9]/gi, "-");
+
+        this.bucket = args.bucket || new storage.Bucket(bucketName, {
             project: args.project,
         }, parentOpts);
 
@@ -156,7 +163,10 @@ export class CallbackFunction extends pulumi.ComponentResource {
         delete argsCopy.callbackFactory;
         delete argsCopy.codePathOptions;
 
-        this.function = new cloudfunctions.Function(name, {
+        // Function names : can only contain letters, numbers, underscores and hyphens
+        const functionName = name.replace(/[^-_a-z0-9]/gi, "-");
+
+        this.function = new cloudfunctions.Function(functionName, {
             ...argsCopy,
             runtime: utils.ifUndefined((<any>args).runtime, "nodejs8"),
             entryPoint: handlerName,
