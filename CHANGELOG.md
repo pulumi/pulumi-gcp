@@ -1,6 +1,11 @@
-## 0.18.3 (Unreleased)
+## 0.18.4 (Unreleased)
 
-## 0.18.2 (Release April 2, 2019)
+## 0.18.3 (Released April 5, 2019)
+
+- Fixed issue where picking certain names for `cloudfunction.Function`s or `storage.Bucket`s would
+  result in an error.
+
+## 0.18.2 (Released April 2, 2019)
 
 - Adds a new gcp.cloudfunctions.CallbackFunction component.  This component makes it simple to
   create Cloud Functions from an existing JavaScript function.  See
