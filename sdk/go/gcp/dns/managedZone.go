@@ -35,8 +35,8 @@ func NewManagedZone(ctx *pulumi.Context,
 		return nil, errors.New("missing required argument 'DnsName'")
 	}
 	inputs := make(map[string]interface{})
+	inputs["description"] = "Managed by Pulumi"
 	if args == nil {
-		inputs["description"] = nil
 		inputs["dnsName"] = nil
 		inputs["forwardingConfig"] = nil
 		inputs["labels"] = nil

@@ -81,6 +81,9 @@ func gcpResource(mod string, res string) tokens.Type {
 	return gcpType(mod+"/"+fn, res)
 }
 
+// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
+var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
+
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	p := google.Provider().(*schema.Provider)
@@ -480,7 +483,14 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dataproc_job":     {Tok: gcpResource(gcpDataProc, "Job")},
 
 			// DNS resources
-			"google_dns_managed_zone": {Tok: gcpResource(gcpDNS, "ManagedZone")},
+			"google_dns_managed_zone": {
+				Tok: gcpResource(gcpDNS, "ManagedZone"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"description": {
+						Default: managedByPulumi,
+					},
+				},
+			},
 			"google_dns_policy":       {Tok: gcpResource(gcpDNS, "Policy")},
 			"google_dns_record_set":   {Tok: gcpResource(gcpDNS, "RecordSet")},
 

@@ -96,7 +96,7 @@ export class ManagedZone extends pulumi.CustomResource {
         return new ManagedZone(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description: pulumi.Output<string>;
     public readonly dnsName: pulumi.Output<string>;
     public readonly forwardingConfig: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -136,7 +136,7 @@ export class ManagedZone extends pulumi.CustomResource {
             if (!args || args.dnsName === undefined) {
                 throw new Error("Missing required property 'dnsName'");
             }
-            inputs["description"] = args ? args.description : undefined;
+            inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
             inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
