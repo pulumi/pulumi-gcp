@@ -61,6 +61,8 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = dict()
 
+        if description is None:
+            description = 'Managed by Pulumi'
         __props__['description'] = description
 
         if dns_name is None:
