@@ -22,6 +22,7 @@ func LookupProjectServices(ctx *pulumi.Context, args *GetProjectServicesArgs) (*
 	}
 	return &GetProjectServicesResult{
 		DisableOnDestroy: outputs["disableOnDestroy"],
+		Project: outputs["project"],
 		Services: outputs["services"],
 		Id: outputs["id"],
 	}, nil
@@ -36,6 +37,7 @@ type GetProjectServicesArgs struct {
 // A collection of values returned by getProjectServices.
 type GetProjectServicesResult struct {
 	DisableOnDestroy interface{}
+	Project interface{}
 	Services interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

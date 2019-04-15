@@ -58,6 +58,7 @@ export interface GetGlobalAddressResult {
      * The IP of the created resource.
      */
     readonly address: string;
+    readonly name: string;
     readonly project: string;
     /**
      * The URI of the created resource.

@@ -64,15 +64,15 @@ class IAMBinding(pulumi.CustomResource):
         __props__ = dict()
 
         if members is None:
-            raise TypeError('Missing required property members')
+            raise TypeError("Missing required property 'members'")
         __props__['members'] = members
 
         if org_id is None:
-            raise TypeError('Missing required property org_id')
+            raise TypeError("Missing required property 'org_id'")
         __props__['org_id'] = org_id
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['etag'] = None

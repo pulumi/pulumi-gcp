@@ -52,6 +52,8 @@ export interface GetNetworkResult {
      * The IP address of the gateway.
      */
     readonly gatewayIpv4: string;
+    readonly name: string;
+    readonly project?: string;
     /**
      * The URI of the resource.
      */

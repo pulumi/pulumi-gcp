@@ -77,11 +77,11 @@ class OrganizationPolicy(pulumi.CustomResource):
         __props__['boolean_policy'] = boolean_policy
 
         if constraint is None:
-            raise TypeError('Missing required property constraint')
+            raise TypeError("Missing required property 'constraint'")
         __props__['constraint'] = constraint
 
         if folder is None:
-            raise TypeError('Missing required property folder')
+            raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
 
         __props__['list_policy'] = list_policy

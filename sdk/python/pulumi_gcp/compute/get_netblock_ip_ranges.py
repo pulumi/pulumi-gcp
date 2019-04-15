@@ -14,25 +14,25 @@ class GetNetblockIPRangesResult:
     """
     def __init__(__self__, cidr_blocks=None, cidr_blocks_ipv4s=None, cidr_blocks_ipv6s=None, id=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
-            raise TypeError('Expected argument cidr_blocks to be a list')
+            raise TypeError("Expected argument 'cidr_blocks' to be a list")
         __self__.cidr_blocks = cidr_blocks
         """
         Retrieve list of all CIDR blocks.
         """
         if cidr_blocks_ipv4s and not isinstance(cidr_blocks_ipv4s, list):
-            raise TypeError('Expected argument cidr_blocks_ipv4s to be a list')
+            raise TypeError("Expected argument 'cidr_blocks_ipv4s' to be a list")
         __self__.cidr_blocks_ipv4s = cidr_blocks_ipv4s
         """
         Retrieve list of the IP4 CIDR blocks
         """
         if cidr_blocks_ipv6s and not isinstance(cidr_blocks_ipv6s, list):
-            raise TypeError('Expected argument cidr_blocks_ipv6s to be a list')
+            raise TypeError("Expected argument 'cidr_blocks_ipv6s' to be a list")
         __self__.cidr_blocks_ipv6s = cidr_blocks_ipv6s
         """
         Retrieve list of the IP6 CIDR blocks.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

@@ -87,11 +87,11 @@ class RouterInterface(pulumi.CustomResource):
         __props__['region'] = region
 
         if router is None:
-            raise TypeError('Missing required property router')
+            raise TypeError("Missing required property 'router'")
         __props__['router'] = router
 
         if vpn_tunnel is None:
-            raise TypeError('Missing required property vpn_tunnel')
+            raise TypeError("Missing required property 'vpn_tunnel'")
         __props__['vpn_tunnel'] = vpn_tunnel
 
         super(RouterInterface, __self__).__init__(

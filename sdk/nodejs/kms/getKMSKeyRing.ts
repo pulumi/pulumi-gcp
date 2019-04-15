@@ -58,6 +58,9 @@ export interface GetKMSKeyRingArgs {
  * A collection of values returned by getKMSKeyRing.
  */
 export interface GetKMSKeyRingResult {
+    readonly location: string;
+    readonly name: string;
+    readonly project?: string;
     /**
      * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
      */

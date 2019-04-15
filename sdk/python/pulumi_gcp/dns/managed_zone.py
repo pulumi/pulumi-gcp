@@ -66,7 +66,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__['description'] = description
 
         if dns_name is None:
-            raise TypeError('Missing required property dns_name')
+            raise TypeError("Missing required property 'dns_name'")
         __props__['dns_name'] = dns_name
 
         __props__['forwarding_config'] = forwarding_config

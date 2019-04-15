@@ -75,7 +75,7 @@ class RecordSet(pulumi.CustomResource):
         __props__ = dict()
 
         if managed_zone is None:
-            raise TypeError('Missing required property managed_zone')
+            raise TypeError("Missing required property 'managed_zone'")
         __props__['managed_zone'] = managed_zone
 
         __props__['name'] = name
@@ -83,15 +83,15 @@ class RecordSet(pulumi.CustomResource):
         __props__['project'] = project
 
         if rrdatas is None:
-            raise TypeError('Missing required property rrdatas')
+            raise TypeError("Missing required property 'rrdatas'")
         __props__['rrdatas'] = rrdatas
 
         if ttl is None:
-            raise TypeError('Missing required property ttl')
+            raise TypeError("Missing required property 'ttl'")
         __props__['ttl'] = ttl
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         super(RecordSet, __self__).__init__(

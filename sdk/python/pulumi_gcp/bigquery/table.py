@@ -136,7 +136,7 @@ class Table(pulumi.CustomResource):
         __props__ = dict()
 
         if dataset_id is None:
-            raise TypeError('Missing required property dataset_id')
+            raise TypeError("Missing required property 'dataset_id'")
         __props__['dataset_id'] = dataset_id
 
         __props__['description'] = description
@@ -152,7 +152,7 @@ class Table(pulumi.CustomResource):
         __props__['schema'] = schema
 
         if table_id is None:
-            raise TypeError('Missing required property table_id')
+            raise TypeError("Missing required property 'table_id'")
         __props__['table_id'] = table_id
 
         __props__['time_partitioning'] = time_partitioning

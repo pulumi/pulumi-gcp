@@ -80,7 +80,7 @@ class Notification(pulumi.CustomResource):
         __props__ = dict()
 
         if bucket is None:
-            raise TypeError('Missing required property bucket')
+            raise TypeError("Missing required property 'bucket'")
         __props__['bucket'] = bucket
 
         __props__['custom_attributes'] = custom_attributes
@@ -90,11 +90,11 @@ class Notification(pulumi.CustomResource):
         __props__['object_name_prefix'] = object_name_prefix
 
         if payload_format is None:
-            raise TypeError('Missing required property payload_format')
+            raise TypeError("Missing required property 'payload_format'")
         __props__['payload_format'] = payload_format
 
         if topic is None:
-            raise TypeError('Missing required property topic')
+            raise TypeError("Missing required property 'topic'")
         __props__['topic'] = topic
 
         __props__['self_link'] = None

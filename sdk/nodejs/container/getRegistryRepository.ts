@@ -41,6 +41,7 @@ export interface GetRegistryRepositoryArgs {
  */
 export interface GetRegistryRepositoryResult {
     readonly project: string;
+    readonly region?: string;
     readonly repositoryUrl: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

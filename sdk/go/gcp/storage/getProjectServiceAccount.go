@@ -27,6 +27,7 @@ func LookupProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAcc
 	return &GetProjectServiceAccountResult{
 		EmailAddress: outputs["emailAddress"],
 		Project: outputs["project"],
+		UserProject: outputs["userProject"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -46,6 +47,7 @@ type GetProjectServiceAccountResult struct {
 	// in order to grant IAM permissions.
 	EmailAddress interface{}
 	Project interface{}
+	UserProject interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

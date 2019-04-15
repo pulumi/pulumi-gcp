@@ -22,6 +22,7 @@ func LookupAddress(ctx *pulumi.Context, args *GetAddressArgs) (*GetAddressResult
 	}
 	return &GetAddressResult{
 		Address: outputs["address"],
+		Name: outputs["name"],
 		Project: outputs["project"],
 		Region: outputs["region"],
 		SelfLink: outputs["selfLink"],
@@ -46,6 +47,7 @@ type GetAddressArgs struct {
 type GetAddressResult struct {
 	// The IP of the created resource.
 	Address interface{}
+	Name interface{}
 	Project interface{}
 	Region interface{}
 	// The URI of the created resource.

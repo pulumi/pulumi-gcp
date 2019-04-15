@@ -183,7 +183,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__['description'] = description
 
         if disks is None:
-            raise TypeError('Missing required property disks')
+            raise TypeError("Missing required property 'disks'")
         __props__['disks'] = disks
 
         __props__['guest_accelerators'] = guest_accelerators
@@ -193,7 +193,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__['labels'] = labels
 
         if machine_type is None:
-            raise TypeError('Missing required property machine_type')
+            raise TypeError("Missing required property 'machine_type'")
         __props__['machine_type'] = machine_type
 
         __props__['metadata'] = metadata

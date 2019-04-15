@@ -20,9 +20,11 @@ func LookupAccount(ctx *pulumi.Context, args *GetAccountArgs) (*GetAccountResult
 		return nil, err
 	}
 	return &GetAccountResult{
+		AccountId: outputs["accountId"],
 		DisplayName: outputs["displayName"],
 		Email: outputs["email"],
 		Name: outputs["name"],
+		Project: outputs["project"],
 		UniqueId: outputs["uniqueId"],
 		Id: outputs["id"],
 	}, nil
@@ -39,6 +41,7 @@ type GetAccountArgs struct {
 
 // A collection of values returned by getAccount.
 type GetAccountResult struct {
+	AccountId interface{}
 	// The display name for the service account.
 	DisplayName interface{}
 	// The e-mail address of the service account. This value
@@ -47,6 +50,7 @@ type GetAccountResult struct {
 	Email interface{}
 	// The fully-qualified name of the service account.
 	Name interface{}
+	Project interface{}
 	// The unique id of the service account.
 	UniqueId interface{}
 	// id is the provider-assigned unique ID for this managed resource.

@@ -30,6 +30,7 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		OrgId: outputs["orgId"],
 		PolicyData: outputs["policyData"],
 		PolicyEtag: outputs["policyEtag"],
+		ProjectId: outputs["projectId"],
 		SkipDelete: outputs["skipDelete"],
 		Id: outputs["id"],
 	}, nil
@@ -53,6 +54,7 @@ type GetProjectResult struct {
 	OrgId interface{}
 	PolicyData interface{}
 	PolicyEtag interface{}
+	ProjectId interface{}
 	SkipDelete interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

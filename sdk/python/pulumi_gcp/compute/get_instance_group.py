@@ -12,51 +12,54 @@ class GetInstanceGroupResult:
     """
     A collection of values returned by getInstanceGroup.
     """
-    def __init__(__self__, description=None, instances=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None, id=None):
+    def __init__(__self__, description=None, instances=None, name=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None, id=None):
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         Textual description of the instance group.
         """
         if instances and not isinstance(instances, list):
-            raise TypeError('Expected argument instances to be a list')
+            raise TypeError("Expected argument 'instances' to be a list")
         __self__.instances = instances
         """
         List of instances in the group.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if named_ports and not isinstance(named_ports, list):
-            raise TypeError('Expected argument named_ports to be a list')
+            raise TypeError("Expected argument 'named_ports' to be a list")
         __self__.named_ports = named_ports
         """
         List of named ports in the group.
         """
         if network and not isinstance(network, str):
-            raise TypeError('Expected argument network to be a str')
+            raise TypeError("Expected argument 'network' to be a str")
         __self__.network = network
         """
         The URL of the network the instance group is in.
         """
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
         if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
+            raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
         """
         The URI of the resource.
         """
         if size and not isinstance(size, float):
-            raise TypeError('Expected argument size to be a float')
+            raise TypeError("Expected argument 'size' to be a float")
         __self__.size = size
         """
         The number of instances in the group.
         """
         if zone and not isinstance(zone, str):
-            raise TypeError('Expected argument zone to be a str')
+            raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -79,6 +82,7 @@ async def get_instance_group(name=None,project=None,self_link=None,zone=None,opt
     return GetInstanceGroupResult(
         description=__ret__.get('description'),
         instances=__ret__.get('instances'),
+        name=__ret__.get('name'),
         named_ports=__ret__.get('namedPorts'),
         network=__ret__.get('network'),
         project=__ret__.get('project'),

@@ -14,34 +14,34 @@ class GetRegionInstanceGroupResult:
     """
     def __init__(__self__, instances=None, name=None, project=None, region=None, self_link=None, size=None, id=None):
         if instances and not isinstance(instances, list):
-            raise TypeError('Expected argument instances to be a list')
+            raise TypeError("Expected argument 'instances' to be a list")
         __self__.instances = instances
         """
         List of instances in the group, as a list of resources, each containing:
         """
         if name and not isinstance(name, str):
-            raise TypeError('Expected argument name to be a str')
+            raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         """
         String port name
         """
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
+            raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
         if size and not isinstance(size, float):
-            raise TypeError('Expected argument size to be a float')
+            raise TypeError("Expected argument 'size' to be a float")
         __self__.size = size
         """
         The number of instances in the group.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

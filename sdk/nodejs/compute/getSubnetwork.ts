@@ -72,6 +72,7 @@ export interface GetSubnetworkResult {
      * secondary range.
      */
     readonly ipCidrRange: string;
+    readonly name?: string;
     /**
      * The network name or resource link to the parent
      * network of this subnetwork.

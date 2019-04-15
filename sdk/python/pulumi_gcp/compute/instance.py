@@ -214,7 +214,7 @@ class Instance(pulumi.CustomResource):
         __props__['attached_disks'] = attached_disks
 
         if boot_disk is None:
-            raise TypeError('Missing required property boot_disk')
+            raise TypeError("Missing required property 'boot_disk'")
         __props__['boot_disk'] = boot_disk
 
         __props__['can_ip_forward'] = can_ip_forward
@@ -230,7 +230,7 @@ class Instance(pulumi.CustomResource):
         __props__['labels'] = labels
 
         if machine_type is None:
-            raise TypeError('Missing required property machine_type')
+            raise TypeError("Missing required property 'machine_type'")
         __props__['machine_type'] = machine_type
 
         __props__['metadata'] = metadata
@@ -242,7 +242,7 @@ class Instance(pulumi.CustomResource):
         __props__['name'] = name
 
         if network_interfaces is None:
-            raise TypeError('Missing required property network_interfaces')
+            raise TypeError("Missing required property 'network_interfaces'")
         __props__['network_interfaces'] = network_interfaces
 
         __props__['project'] = project

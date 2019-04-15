@@ -25,6 +25,7 @@ func LookupForwardingRule(ctx *pulumi.Context, args *GetForwardingRuleArgs) (*Ge
 		IpAddress: outputs["ipAddress"],
 		IpProtocol: outputs["ipProtocol"],
 		LoadBalancingScheme: outputs["loadBalancingScheme"],
+		Name: outputs["name"],
 		Network: outputs["network"],
 		PortRange: outputs["portRange"],
 		Ports: outputs["ports"],
@@ -61,6 +62,7 @@ type GetForwardingRuleResult struct {
 	IpProtocol interface{}
 	// Type of load balancing of this forwarding rule.
 	LoadBalancingScheme interface{}
+	Name interface{}
 	// Network of this forwarding rule.
 	Network interface{}
 	// Port range, if this forwarding rule has one.

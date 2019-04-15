@@ -73,7 +73,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['project'] = project
@@ -81,7 +81,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         __props__['region'] = region
 
         if subnetwork is None:
-            raise TypeError('Missing required property subnetwork')
+            raise TypeError("Missing required property 'subnetwork'")
         __props__['subnetwork'] = subnetwork
 
         __props__['etag'] = None

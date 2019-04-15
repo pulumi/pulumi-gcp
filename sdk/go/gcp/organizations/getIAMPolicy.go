@@ -29,6 +29,8 @@ func LookupIAMPolicy(ctx *pulumi.Context, args *GetIAMPolicyArgs) (*GetIAMPolicy
 		return nil, err
 	}
 	return &GetIAMPolicyResult{
+		AuditConfigs: outputs["auditConfigs"],
+		Bindings: outputs["bindings"],
 		PolicyData: outputs["policyData"],
 		Id: outputs["id"],
 	}, nil
@@ -46,6 +48,8 @@ type GetIAMPolicyArgs struct {
 
 // A collection of values returned by getIAMPolicy.
 type GetIAMPolicyResult struct {
+	AuditConfigs interface{}
+	Bindings interface{}
 	// The above bindings serialized in a format suitable for
 	// referencing from a resource that supports IAM.
 	PolicyData interface{}

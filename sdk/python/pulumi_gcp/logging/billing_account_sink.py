@@ -72,11 +72,11 @@ class BillingAccountSink(pulumi.CustomResource):
         __props__ = dict()
 
         if billing_account is None:
-            raise TypeError('Missing required property billing_account')
+            raise TypeError("Missing required property 'billing_account'")
         __props__['billing_account'] = billing_account
 
         if destination is None:
-            raise TypeError('Missing required property destination')
+            raise TypeError("Missing required property 'destination'")
         __props__['destination'] = destination
 
         __props__['filter'] = filter

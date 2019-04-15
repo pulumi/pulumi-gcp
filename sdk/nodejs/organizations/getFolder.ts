@@ -58,10 +58,12 @@ export interface GetFolderResult {
      * The folder's display name.
      */
     readonly displayName: string;
+    readonly folder: string;
     /**
      * The Folder's current lifecycle state.
      */
     readonly lifecycleState: string;
+    readonly lookupOrganization?: boolean;
     /**
      * The resource name of the Folder in the form `folders/{folder_id}`.
      */

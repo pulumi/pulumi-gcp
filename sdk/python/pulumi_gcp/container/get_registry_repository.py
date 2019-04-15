@@ -12,15 +12,18 @@ class GetRegistryRepositoryResult:
     """
     A collection of values returned by getRegistryRepository.
     """
-    def __init__(__self__, project=None, repository_url=None, id=None):
+    def __init__(__self__, project=None, region=None, repository_url=None, id=None):
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        __self__.region = region
         if repository_url and not isinstance(repository_url, str):
-            raise TypeError('Expected argument repository_url to be a str')
+            raise TypeError("Expected argument 'repository_url' to be a str")
         __self__.repository_url = repository_url
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -40,5 +43,6 @@ async def get_registry_repository(project=None,region=None,opts=None):
 
     return GetRegistryRepositoryResult(
         project=__ret__.get('project'),
+        region=__ret__.get('region'),
         repository_url=__ret__.get('repositoryUrl'),
         id=__ret__.get('id'))

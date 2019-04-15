@@ -69,7 +69,7 @@ class Subscription(pulumi.CustomResource):
         __props__['retain_acked_messages'] = retain_acked_messages
 
         if topic is None:
-            raise TypeError('Missing required property topic')
+            raise TypeError("Missing required property 'topic'")
         __props__['topic'] = topic
 
         __props__['path'] = None

@@ -69,17 +69,17 @@ class InstanceIAMBinding(pulumi.CustomResource):
         __props__ = dict()
 
         if instance is None:
-            raise TypeError('Missing required property instance')
+            raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
 
         if members is None:
-            raise TypeError('Missing required property members')
+            raise TypeError("Missing required property 'members'")
         __props__['members'] = members
 
         __props__['project'] = project
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['etag'] = None

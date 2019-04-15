@@ -21,7 +21,9 @@ func LookupFolder(ctx *pulumi.Context, args *GetFolderArgs) (*GetFolderResult, e
 	return &GetFolderResult{
 		CreateTime: outputs["createTime"],
 		DisplayName: outputs["displayName"],
+		Folder: outputs["folder"],
 		LifecycleState: outputs["lifecycleState"],
+		LookupOrganization: outputs["lookupOrganization"],
 		Name: outputs["name"],
 		Organization: outputs["organization"],
 		Parent: outputs["parent"],
@@ -43,8 +45,10 @@ type GetFolderResult struct {
 	CreateTime interface{}
 	// The folder's display name.
 	DisplayName interface{}
+	Folder interface{}
 	// The Folder's current lifecycle state.
 	LifecycleState interface{}
+	LookupOrganization interface{}
 	// The resource name of the Folder in the form `folders/{folder_id}`.
 	Name interface{}
 	// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.

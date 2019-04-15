@@ -57,15 +57,15 @@ class AlertPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if combiner is None:
-            raise TypeError('Missing required property combiner')
+            raise TypeError("Missing required property 'combiner'")
         __props__['combiner'] = combiner
 
         if conditions is None:
-            raise TypeError('Missing required property conditions')
+            raise TypeError("Missing required property 'conditions'")
         __props__['conditions'] = conditions
 
         if display_name is None:
-            raise TypeError('Missing required property display_name')
+            raise TypeError("Missing required property 'display_name'")
         __props__['display_name'] = display_name
 
         __props__['documentation'] = documentation

@@ -82,19 +82,19 @@ class TransferJob(pulumi.CustomResource):
         __props__ = dict()
 
         if description is None:
-            raise TypeError('Missing required property description')
+            raise TypeError("Missing required property 'description'")
         __props__['description'] = description
 
         __props__['project'] = project
 
         if schedule is None:
-            raise TypeError('Missing required property schedule')
+            raise TypeError("Missing required property 'schedule'")
         __props__['schedule'] = schedule
 
         __props__['status'] = status
 
         if transfer_spec is None:
-            raise TypeError('Missing required property transfer_spec')
+            raise TypeError("Missing required property 'transfer_spec'")
         __props__['transfer_spec'] = transfer_spec
 
         __props__['creation_time'] = None

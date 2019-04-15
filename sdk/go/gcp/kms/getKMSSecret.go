@@ -28,6 +28,8 @@ func LookupKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs) (*GetKMSSecret
 		return nil, err
 	}
 	return &GetKMSSecretResult{
+		Ciphertext: outputs["ciphertext"],
+		CryptoKey: outputs["cryptoKey"],
 		Plaintext: outputs["plaintext"],
 		Id: outputs["id"],
 	}, nil
@@ -45,6 +47,8 @@ type GetKMSSecretArgs struct {
 
 // A collection of values returned by getKMSSecret.
 type GetKMSSecretResult struct {
+	Ciphertext interface{}
+	CryptoKey interface{}
 	// Contains the result of decrypting the provided ciphertext.
 	Plaintext interface{}
 	// id is the provider-assigned unique ID for this managed resource.

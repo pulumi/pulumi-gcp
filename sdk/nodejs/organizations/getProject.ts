@@ -51,6 +51,7 @@ export interface GetProjectResult {
     readonly orgId: string;
     readonly policyData: string;
     readonly policyEtag: string;
+    readonly projectId?: string;
     readonly skipDelete: boolean;
     /**
      * id is the provider-assigned unique ID for this managed resource.

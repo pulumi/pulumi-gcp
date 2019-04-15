@@ -61,7 +61,7 @@ class URLMap(pulumi.CustomResource):
         __props__ = dict()
 
         if default_service is None:
-            raise TypeError('Missing required property default_service')
+            raise TypeError("Missing required property 'default_service'")
         __props__['default_service'] = default_service
 
         __props__['description'] = description

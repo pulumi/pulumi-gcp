@@ -65,6 +65,7 @@ export interface GetInstanceGroupResult {
      * List of instances in the group.
      */
     readonly instances: string[];
+    readonly name?: string;
     /**
      * List of named ports in the group.
      */

@@ -42,6 +42,7 @@ export interface GetRuleResult {
      * specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
      */
     readonly includedPermissions: string[];
+    readonly name: string;
     /**
      * indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
      */

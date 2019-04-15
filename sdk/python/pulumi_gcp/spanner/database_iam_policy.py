@@ -71,15 +71,15 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if database is None:
-            raise TypeError('Missing required property database')
+            raise TypeError("Missing required property 'database'")
         __props__['database'] = database
 
         if instance is None:
-            raise TypeError('Missing required property instance')
+            raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['project'] = project

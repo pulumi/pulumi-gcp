@@ -61,7 +61,7 @@ class Instance(pulumi.CustomResource):
         __props__ = dict()
 
         if clusters is None:
-            raise TypeError('Missing required property clusters')
+            raise TypeError("Missing required property 'clusters'")
         __props__['clusters'] = clusters
 
         __props__['display_name'] = display_name

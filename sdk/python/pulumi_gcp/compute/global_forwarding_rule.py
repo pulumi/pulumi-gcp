@@ -133,7 +133,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__['project'] = project
 
         if target is None:
-            raise TypeError('Missing required property target')
+            raise TypeError("Missing required property 'target'")
         __props__['target'] = target
 
         __props__['label_fingerprint'] = None

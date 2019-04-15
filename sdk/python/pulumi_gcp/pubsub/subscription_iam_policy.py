@@ -63,13 +63,13 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['project'] = project
 
         if subscription is None:
-            raise TypeError('Missing required property subscription')
+            raise TypeError("Missing required property 'subscription'")
         __props__['subscription'] = subscription
 
         __props__['etag'] = None

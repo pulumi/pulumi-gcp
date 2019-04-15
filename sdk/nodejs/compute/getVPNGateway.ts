@@ -54,6 +54,7 @@ export interface GetVPNGatewayResult {
      * Description of this VPN gateway.
      */
     readonly description: string;
+    readonly name: string;
     /**
      * The network of this VPN gateway.
      */

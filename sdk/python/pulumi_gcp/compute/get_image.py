@@ -14,37 +14,37 @@ class GetImageResult:
     """
     def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None, id=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, float):
-            raise TypeError('Expected argument archive_size_bytes to be a float')
+            raise TypeError("Expected argument 'archive_size_bytes' to be a float")
         __self__.archive_size_bytes = archive_size_bytes
         """
         The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
         """
         if creation_timestamp and not isinstance(creation_timestamp, str):
-            raise TypeError('Expected argument creation_timestamp to be a str')
+            raise TypeError("Expected argument 'creation_timestamp' to be a str")
         __self__.creation_timestamp = creation_timestamp
         """
         The creation timestamp in RFC3339 text format.
         """
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         An optional description of this image.
         """
         if disk_size_gb and not isinstance(disk_size_gb, float):
-            raise TypeError('Expected argument disk_size_gb to be a float')
+            raise TypeError("Expected argument 'disk_size_gb' to be a float")
         __self__.disk_size_gb = disk_size_gb
         """
         The size of the image when restored onto a persistent disk in gigabytes.
         """
         if family and not isinstance(family, str):
-            raise TypeError('Expected argument family to be a str')
+            raise TypeError("Expected argument 'family' to be a str")
         __self__.family = family
         """
         The family name of the image.
         """
         if image_encryption_key_sha256 and not isinstance(image_encryption_key_sha256, str):
-            raise TypeError('Expected argument image_encryption_key_sha256 to be a str')
+            raise TypeError("Expected argument 'image_encryption_key_sha256' to be a str")
         __self__.image_encryption_key_sha256 = image_encryption_key_sha256
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
@@ -52,52 +52,52 @@ class GetImageResult:
         that protects this image.
         """
         if image_id and not isinstance(image_id, str):
-            raise TypeError('Expected argument image_id to be a str')
+            raise TypeError("Expected argument 'image_id' to be a str")
         __self__.image_id = image_id
         """
         The unique identifier for the image.
         """
         if label_fingerprint and not isinstance(label_fingerprint, str):
-            raise TypeError('Expected argument label_fingerprint to be a str')
+            raise TypeError("Expected argument 'label_fingerprint' to be a str")
         __self__.label_fingerprint = label_fingerprint
         """
         A fingerprint for the labels being applied to this image.
         """
         if labels and not isinstance(labels, dict):
-            raise TypeError('Expected argument labels to be a dict')
+            raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
         """
         A map of labels applied to this image.
         """
         if licenses and not isinstance(licenses, list):
-            raise TypeError('Expected argument licenses to be a list')
+            raise TypeError("Expected argument 'licenses' to be a list")
         __self__.licenses = licenses
         """
         A list of applicable license URI.
         """
         if name and not isinstance(name, str):
-            raise TypeError('Expected argument name to be a str')
+            raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         """
         The name of the image.
         """
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
         if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
+            raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
         """
         The URI of the image.
         """
         if source_disk and not isinstance(source_disk, str):
-            raise TypeError('Expected argument source_disk to be a str')
+            raise TypeError("Expected argument 'source_disk' to be a str")
         __self__.source_disk = source_disk
         """
         The URL of the source disk used to create this image.
         """
         if source_disk_encryption_key_sha256 and not isinstance(source_disk_encryption_key_sha256, str):
-            raise TypeError('Expected argument source_disk_encryption_key_sha256 to be a str')
+            raise TypeError("Expected argument 'source_disk_encryption_key_sha256' to be a str")
         __self__.source_disk_encryption_key_sha256 = source_disk_encryption_key_sha256
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
@@ -105,25 +105,25 @@ class GetImageResult:
         that protects this image.
         """
         if source_disk_id and not isinstance(source_disk_id, str):
-            raise TypeError('Expected argument source_disk_id to be a str')
+            raise TypeError("Expected argument 'source_disk_id' to be a str")
         __self__.source_disk_id = source_disk_id
         """
         The ID value of the disk used to create this image.
         """
         if source_image_id and not isinstance(source_image_id, str):
-            raise TypeError('Expected argument source_image_id to be a str')
+            raise TypeError("Expected argument 'source_image_id' to be a str")
         __self__.source_image_id = source_image_id
         """
         The ID value of the image used to create this image.
         """
         if status and not isinstance(status, str):
-            raise TypeError('Expected argument status to be a str')
+            raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
         """
         The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

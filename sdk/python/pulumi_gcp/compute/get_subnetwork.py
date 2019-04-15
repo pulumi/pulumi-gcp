@@ -12,35 +12,38 @@ class GetSubnetworkResult:
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, ip_cidr_range=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, id=None):
+    def __init__(__self__, description=None, gateway_address=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, id=None):
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         Description of this subnetwork.
         """
         if gateway_address and not isinstance(gateway_address, str):
-            raise TypeError('Expected argument gateway_address to be a str')
+            raise TypeError("Expected argument 'gateway_address' to be a str")
         __self__.gateway_address = gateway_address
         """
         The IP address of the gateway.
         """
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
-            raise TypeError('Expected argument ip_cidr_range to be a str')
+            raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         __self__.ip_cidr_range = ip_cidr_range
         """
         The range of IP addresses belonging to this subnetwork
         secondary range.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if network and not isinstance(network, str):
-            raise TypeError('Expected argument network to be a str')
+            raise TypeError("Expected argument 'network' to be a str")
         __self__.network = network
         """
         The network name or resource link to the parent
         network of this subnetwork.
         """
         if private_ip_google_access and not isinstance(private_ip_google_access, bool):
-            raise TypeError('Expected argument private_ip_google_access to be a bool')
+            raise TypeError("Expected argument 'private_ip_google_access' to be a bool")
         __self__.private_ip_google_access = private_ip_google_access
         """
         Whether the VMs in this subnet
@@ -48,23 +51,23 @@ class GetSubnetworkResult:
         addresses.
         """
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         if secondary_ip_ranges and not isinstance(secondary_ip_ranges, list):
-            raise TypeError('Expected argument secondary_ip_ranges to be a list')
+            raise TypeError("Expected argument 'secondary_ip_ranges' to be a list")
         __self__.secondary_ip_ranges = secondary_ip_ranges
         """
         An array of configurations for secondary IP ranges for
         VM instances contained in this subnetwork. Structure is documented below.
         """
         if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
+            raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -86,6 +89,7 @@ async def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=
         description=__ret__.get('description'),
         gateway_address=__ret__.get('gatewayAddress'),
         ip_cidr_range=__ret__.get('ipCidrRange'),
+        name=__ret__.get('name'),
         network=__ret__.get('network'),
         private_ip_google_access=__ret__.get('privateIpGoogleAccess'),
         project=__ret__.get('project'),

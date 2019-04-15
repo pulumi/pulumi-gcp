@@ -91,7 +91,7 @@ class Job(pulumi.CustomResource):
         __props__['pig_config'] = pig_config
 
         if placement is None:
-            raise TypeError('Missing required property placement')
+            raise TypeError("Missing required property 'placement'")
         __props__['placement'] = placement
 
         __props__['project'] = project

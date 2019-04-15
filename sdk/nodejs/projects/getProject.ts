@@ -43,6 +43,7 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
+    readonly filter: string;
     /**
      * A list of projects matching the provided filter. Structure is defined below.
      */

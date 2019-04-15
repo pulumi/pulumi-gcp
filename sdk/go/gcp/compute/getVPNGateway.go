@@ -21,6 +21,7 @@ func LookupVPNGateway(ctx *pulumi.Context, args *GetVPNGatewayArgs) (*GetVPNGate
 	}
 	return &GetVPNGatewayResult{
 		Description: outputs["description"],
+		Name: outputs["name"],
 		Network: outputs["network"],
 		Project: outputs["project"],
 		Region: outputs["region"],
@@ -45,6 +46,7 @@ type GetVPNGatewayArgs struct {
 type GetVPNGatewayResult struct {
 	// Description of this VPN gateway.
 	Description interface{}
+	Name interface{}
 	// The network of this VPN gateway.
 	Network interface{}
 	Project interface{}

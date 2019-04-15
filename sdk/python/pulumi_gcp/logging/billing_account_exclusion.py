@@ -68,7 +68,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         __props__ = dict()
 
         if billing_account is None:
-            raise TypeError('Missing required property billing_account')
+            raise TypeError("Missing required property 'billing_account'")
         __props__['billing_account'] = billing_account
 
         __props__['description'] = description
@@ -76,7 +76,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         __props__['disabled'] = disabled
 
         if filter is None:
-            raise TypeError('Missing required property filter')
+            raise TypeError("Missing required property 'filter'")
         __props__['filter'] = filter
 
         __props__['name'] = name

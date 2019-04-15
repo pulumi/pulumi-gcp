@@ -38,19 +38,19 @@ class Lien(pulumi.CustomResource):
         __props__ = dict()
 
         if origin is None:
-            raise TypeError('Missing required property origin')
+            raise TypeError("Missing required property 'origin'")
         __props__['origin'] = origin
 
         if parent is None:
-            raise TypeError('Missing required property parent')
+            raise TypeError("Missing required property 'parent'")
         __props__['parent'] = parent
 
         if reason is None:
-            raise TypeError('Missing required property reason')
+            raise TypeError("Missing required property 'reason'")
         __props__['reason'] = reason
 
         if restrictions is None:
-            raise TypeError('Missing required property restrictions')
+            raise TypeError("Missing required property 'restrictions'")
         __props__['restrictions'] = restrictions
 
         __props__['create_time'] = None

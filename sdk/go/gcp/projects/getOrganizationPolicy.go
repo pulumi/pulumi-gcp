@@ -22,8 +22,10 @@ func LookupOrganizationPolicy(ctx *pulumi.Context, args *GetOrganizationPolicyAr
 	}
 	return &GetOrganizationPolicyResult{
 		BooleanPolicies: outputs["booleanPolicies"],
+		Constraint: outputs["constraint"],
 		Etag: outputs["etag"],
 		ListPolicies: outputs["listPolicies"],
+		Project: outputs["project"],
 		RestorePolicies: outputs["restorePolicies"],
 		UpdateTime: outputs["updateTime"],
 		Version: outputs["version"],
@@ -42,8 +44,10 @@ type GetOrganizationPolicyArgs struct {
 // A collection of values returned by getOrganizationPolicy.
 type GetOrganizationPolicyResult struct {
 	BooleanPolicies interface{}
+	Constraint interface{}
 	Etag interface{}
 	ListPolicies interface{}
+	Project interface{}
 	RestorePolicies interface{}
 	UpdateTime interface{}
 	Version interface{}

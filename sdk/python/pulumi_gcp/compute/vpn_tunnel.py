@@ -86,7 +86,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__['name'] = name
 
         if peer_ip is None:
-            raise TypeError('Missing required property peer_ip')
+            raise TypeError("Missing required property 'peer_ip'")
         __props__['peer_ip'] = peer_ip
 
         __props__['project'] = project
@@ -98,11 +98,11 @@ class VPNTunnel(pulumi.CustomResource):
         __props__['router'] = router
 
         if shared_secret is None:
-            raise TypeError('Missing required property shared_secret')
+            raise TypeError("Missing required property 'shared_secret'")
         __props__['shared_secret'] = shared_secret
 
         if target_vpn_gateway is None:
-            raise TypeError('Missing required property target_vpn_gateway')
+            raise TypeError("Missing required property 'target_vpn_gateway'")
         __props__['target_vpn_gateway'] = target_vpn_gateway
 
         __props__['creation_timestamp'] = None

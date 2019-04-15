@@ -12,18 +12,24 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, names=None, project=None, id=None):
+    def __init__(__self__, names=None, project=None, region=None, status=None, id=None):
         if names and not isinstance(names, list):
-            raise TypeError('Expected argument names to be a list')
+            raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
         """
         A list of zones available in the given region
         """
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        __self__.region = region
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -44,4 +50,6 @@ async def get_zones(project=None,region=None,status=None,opts=None):
     return GetZonesResult(
         names=__ret__.get('names'),
         project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        status=__ret__.get('status'),
         id=__ret__.get('id'))

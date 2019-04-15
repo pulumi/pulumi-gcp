@@ -55,6 +55,8 @@ export interface GetKMSCryptoKeyArgs {
  * A collection of values returned by getKMSCryptoKey.
  */
 export interface GetKMSCryptoKeyResult {
+    readonly keyRing: string;
+    readonly name: string;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format

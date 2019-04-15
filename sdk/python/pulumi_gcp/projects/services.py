@@ -63,7 +63,7 @@ class Services(pulumi.CustomResource):
         __props__['project'] = project
 
         if services is None:
-            raise TypeError('Missing required property services')
+            raise TypeError("Missing required property 'services'")
         __props__['services'] = services
 
         super(Services, __self__).__init__(

@@ -60,7 +60,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         __props__ = dict()
 
         if autoscaling_policy is None:
-            raise TypeError('Missing required property autoscaling_policy')
+            raise TypeError("Missing required property 'autoscaling_policy'")
         __props__['autoscaling_policy'] = autoscaling_policy
 
         __props__['description'] = description
@@ -72,7 +72,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         __props__['region'] = region
 
         if target is None:
-            raise TypeError('Missing required property target')
+            raise TypeError("Missing required property 'target'")
         __props__['target'] = target
 
         __props__['creation_timestamp'] = None

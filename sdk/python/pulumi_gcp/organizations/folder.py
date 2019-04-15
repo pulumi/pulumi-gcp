@@ -71,11 +71,11 @@ class Folder(pulumi.CustomResource):
         __props__ = dict()
 
         if display_name is None:
-            raise TypeError('Missing required property display_name')
+            raise TypeError("Missing required property 'display_name'")
         __props__['display_name'] = display_name
 
         if parent is None:
-            raise TypeError('Missing required property parent')
+            raise TypeError("Missing required property 'parent'")
         __props__['parent'] = parent
 
         __props__['create_time'] = None

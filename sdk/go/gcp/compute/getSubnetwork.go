@@ -24,6 +24,7 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 		Description: outputs["description"],
 		GatewayAddress: outputs["gatewayAddress"],
 		IpCidrRange: outputs["ipCidrRange"],
+		Name: outputs["name"],
 		Network: outputs["network"],
 		PrivateIpGoogleAccess: outputs["privateIpGoogleAccess"],
 		Project: outputs["project"],
@@ -59,6 +60,7 @@ type GetSubnetworkResult struct {
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
 	IpCidrRange interface{}
+	Name interface{}
 	// The network name or resource link to the parent
 	// network of this subnetwork.
 	Network interface{}

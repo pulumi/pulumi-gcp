@@ -25,7 +25,9 @@ func LookupManagedZone(ctx *pulumi.Context, args *GetManagedZoneArgs) (*GetManag
 	return &GetManagedZoneResult{
 		Description: outputs["description"],
 		DnsName: outputs["dnsName"],
+		Name: outputs["name"],
 		NameServers: outputs["nameServers"],
+		Project: outputs["project"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -44,10 +46,12 @@ type GetManagedZoneResult struct {
 	Description interface{}
 	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
+	Name interface{}
 	// The list of nameservers that will be authoritative for this
 	// domain. Use NS records to redirect from your DNS provider to these names,
 	// thus making Google Cloud DNS authoritative for this zone.
 	NameServers interface{}
+	Project interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

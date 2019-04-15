@@ -12,15 +12,27 @@ class GetRegistryImageResult:
     """
     A collection of values returned by getRegistryImage.
     """
-    def __init__(__self__, image_url=None, project=None, id=None):
+    def __init__(__self__, digest=None, image_url=None, name=None, project=None, region=None, tag=None, id=None):
+        if digest and not isinstance(digest, str):
+            raise TypeError("Expected argument 'digest' to be a str")
+        __self__.digest = digest
         if image_url and not isinstance(image_url, str):
-            raise TypeError('Expected argument image_url to be a str')
+            raise TypeError("Expected argument 'image_url' to be a str")
         __self__.image_url = image_url
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if project and not isinstance(project, str):
-            raise TypeError('Expected argument project to be a str')
+            raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        __self__.region = region
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        __self__.tag = tag
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -42,6 +54,10 @@ async def get_registry_image(digest=None,name=None,project=None,region=None,tag=
     __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts)
 
     return GetRegistryImageResult(
+        digest=__ret__.get('digest'),
         image_url=__ret__.get('imageUrl'),
+        name=__ret__.get('name'),
         project=__ret__.get('project'),
+        region=__ret__.get('region'),
+        tag=__ret__.get('tag'),
         id=__ret__.get('id'))

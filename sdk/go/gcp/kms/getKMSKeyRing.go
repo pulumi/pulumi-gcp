@@ -26,6 +26,9 @@ func LookupKMSKeyRing(ctx *pulumi.Context, args *GetKMSKeyRingArgs) (*GetKMSKeyR
 		return nil, err
 	}
 	return &GetKMSKeyRingResult{
+		Location: outputs["location"],
+		Name: outputs["name"],
+		Project: outputs["project"],
 		SelfLink: outputs["selfLink"],
 		Id: outputs["id"],
 	}, nil
@@ -46,6 +49,9 @@ type GetKMSKeyRingArgs struct {
 
 // A collection of values returned by getKMSKeyRing.
 type GetKMSKeyRingResult struct {
+	Location interface{}
+	Name interface{}
+	Project interface{}
 	// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
 	SelfLink interface{}
 	// id is the provider-assigned unique ID for this managed resource.

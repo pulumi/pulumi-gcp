@@ -45,6 +45,7 @@ export interface GetAccountArgs {
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
+    readonly accountId: string;
     /**
      * The display name for the service account.
      */
@@ -59,6 +60,7 @@ export interface GetAccountResult {
      * The fully-qualified name of the service account.
      */
     readonly name: string;
+    readonly project?: string;
     /**
      * The unique id of the service account.
      */

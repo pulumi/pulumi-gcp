@@ -59,12 +59,14 @@ export interface GetManagedZoneResult {
      * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
      */
     readonly dnsName: string;
+    readonly name: string;
     /**
      * The list of nameservers that will be authoritative for this
      * domain. Use NS records to redirect from your DNS provider to these names,
      * thus making Google Cloud DNS authoritative for this zone.
      */
     readonly nameServers: string[];
+    readonly project?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -63,11 +63,11 @@ class Node(pulumi.CustomResource):
         __props__ = dict()
 
         if accelerator_type is None:
-            raise TypeError('Missing required property accelerator_type')
+            raise TypeError("Missing required property 'accelerator_type'")
         __props__['accelerator_type'] = accelerator_type
 
         if cidr_block is None:
-            raise TypeError('Missing required property cidr_block')
+            raise TypeError("Missing required property 'cidr_block'")
         __props__['cidr_block'] = cidr_block
 
         __props__['description'] = description
@@ -83,11 +83,11 @@ class Node(pulumi.CustomResource):
         __props__['scheduling_config'] = scheduling_config
 
         if tensorflow_version is None:
-            raise TypeError('Missing required property tensorflow_version')
+            raise TypeError("Missing required property 'tensorflow_version'")
         __props__['tensorflow_version'] = tensorflow_version
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['network_endpoints'] = None

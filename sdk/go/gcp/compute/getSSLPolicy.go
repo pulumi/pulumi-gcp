@@ -26,7 +26,9 @@ func LookupSSLPolicy(ctx *pulumi.Context, args *GetSSLPolicyArgs) (*GetSSLPolicy
 		EnabledFeatures: outputs["enabledFeatures"],
 		Fingerprint: outputs["fingerprint"],
 		MinTlsVersion: outputs["minTlsVersion"],
+		Name: outputs["name"],
 		Profile: outputs["profile"],
+		Project: outputs["project"],
 		SelfLink: outputs["selfLink"],
 		Id: outputs["id"],
 	}, nil
@@ -56,8 +58,10 @@ type GetSSLPolicyResult struct {
 	Fingerprint interface{}
 	// The minimum supported TLS version of this policy.
 	MinTlsVersion interface{}
+	Name interface{}
 	// The Google-curated or custom profile used by this policy.
 	Profile interface{}
+	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	// id is the provider-assigned unique ID for this managed resource.

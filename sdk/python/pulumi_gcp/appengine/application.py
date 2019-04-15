@@ -88,7 +88,7 @@ class Application(pulumi.CustomResource):
         __props__['feature_settings'] = feature_settings
 
         if location_id is None:
-            raise TypeError('Missing required property location_id')
+            raise TypeError("Missing required property 'location_id'")
         __props__['location_id'] = location_id
 
         __props__['project'] = project

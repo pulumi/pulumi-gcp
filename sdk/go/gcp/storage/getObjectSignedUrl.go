@@ -27,6 +27,14 @@ func LookupObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs) (*
 		return nil, err
 	}
 	return &GetObjectSignedUrlResult{
+		Bucket: outputs["bucket"],
+		ContentMd5: outputs["contentMd5"],
+		ContentType: outputs["contentType"],
+		Credentials: outputs["credentials"],
+		Duration: outputs["duration"],
+		ExtensionHeaders: outputs["extensionHeaders"],
+		HttpMethod: outputs["httpMethod"],
+		Path: outputs["path"],
 		SignedUrl: outputs["signedUrl"],
 		Id: outputs["id"],
 	}, nil
@@ -59,6 +67,14 @@ type GetObjectSignedUrlArgs struct {
 
 // A collection of values returned by getObjectSignedUrl.
 type GetObjectSignedUrlResult struct {
+	Bucket interface{}
+	ContentMd5 interface{}
+	ContentType interface{}
+	Credentials interface{}
+	Duration interface{}
+	ExtensionHeaders interface{}
+	HttpMethod interface{}
+	Path interface{}
 	// The signed URL that can be used to access the storage object without authentication.
 	SignedUrl interface{}
 	// id is the provider-assigned unique ID for this managed resource.

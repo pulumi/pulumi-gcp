@@ -57,7 +57,7 @@ class FirewallRule(pulumi.CustomResource):
         __props__ = dict()
 
         if action is None:
-            raise TypeError('Missing required property action')
+            raise TypeError("Missing required property 'action'")
         __props__['action'] = action
 
         __props__['description'] = description
@@ -67,7 +67,7 @@ class FirewallRule(pulumi.CustomResource):
         __props__['project'] = project
 
         if source_range is None:
-            raise TypeError('Missing required property source_range')
+            raise TypeError("Missing required property 'source_range'")
         __props__['source_range'] = source_range
 
         super(FirewallRule, __self__).__init__(

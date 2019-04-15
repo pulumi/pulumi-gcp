@@ -51,11 +51,11 @@ class IAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if folder is None:
-            raise TypeError('Missing required property folder')
+            raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['etag'] = None

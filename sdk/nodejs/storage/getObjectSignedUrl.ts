@@ -89,6 +89,14 @@ export interface GetObjectSignedUrlArgs {
  * A collection of values returned by getObjectSignedUrl.
  */
 export interface GetObjectSignedUrlResult {
+    readonly bucket: string;
+    readonly contentMd5?: string;
+    readonly contentType?: string;
+    readonly credentials?: string;
+    readonly duration?: string;
+    readonly extensionHeaders?: {[key: string]: string};
+    readonly httpMethod?: string;
+    readonly path: string;
     /**
      * The signed URL that can be used to access the storage object without authentication.
      */

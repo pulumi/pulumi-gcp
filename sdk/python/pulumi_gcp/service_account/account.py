@@ -76,7 +76,7 @@ class Account(pulumi.CustomResource):
         __props__ = dict()
 
         if account_id is None:
-            raise TypeError('Missing required property account_id')
+            raise TypeError("Missing required property 'account_id'")
         __props__['account_id'] = account_id
 
         __props__['display_name'] = display_name

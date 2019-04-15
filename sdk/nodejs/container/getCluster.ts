@@ -85,6 +85,7 @@ export interface GetClusterResult {
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
     readonly ipAllocationPolicies: { clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork: boolean, nodeIpv4CidrBlock: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName: string, useIpAliases: boolean }[];
+    readonly location?: string;
     readonly loggingService: string;
     readonly maintenancePolicies: { dailyMaintenanceWindows: { duration: string, startTime: string }[] }[];
     readonly masterAuths: { clientCertificate: string, clientCertificateConfigs: { issueClientCertificate: boolean }[], clientKey: string, clusterCaCertificate: string, password: string, username: string }[];
@@ -93,6 +94,7 @@ export interface GetClusterResult {
     readonly masterVersion: string;
     readonly minMasterVersion: string;
     readonly monitoringService: string;
+    readonly name: string;
     readonly network: string;
     readonly networkPolicies: { enabled: boolean, provider: string }[];
     readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
@@ -102,10 +104,13 @@ export interface GetClusterResult {
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
     readonly privateCluster: boolean;
     readonly privateClusterConfigs: { enablePrivateEndpoint: boolean, enablePrivateNodes: boolean, masterIpv4CidrBlock: string, privateEndpoint: string, publicEndpoint: string }[];
+    readonly project?: string;
+    readonly region?: string;
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;
+    readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

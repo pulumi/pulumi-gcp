@@ -20,6 +20,7 @@ func LookupBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs) (*Ge
 		return nil, err
 	}
 	return &GetBillingAccountResult{
+		BillingAccount: outputs["billingAccount"],
 		DisplayName: outputs["displayName"],
 		Name: outputs["name"],
 		Open: outputs["open"],
@@ -40,6 +41,7 @@ type GetBillingAccountArgs struct {
 
 // A collection of values returned by getBillingAccount.
 type GetBillingAccountResult struct {
+	BillingAccount interface{}
 	DisplayName interface{}
 	// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
 	Name interface{}

@@ -25,6 +25,7 @@ func LookupInstanceGroup(ctx *pulumi.Context, args *GetInstanceGroupArgs) (*GetI
 	return &GetInstanceGroupResult{
 		Description: outputs["description"],
 		Instances: outputs["instances"],
+		Name: outputs["name"],
 		NamedPorts: outputs["namedPorts"],
 		Network: outputs["network"],
 		Project: outputs["project"],
@@ -55,6 +56,7 @@ type GetInstanceGroupResult struct {
 	Description interface{}
 	// List of instances in the group.
 	Instances interface{}
+	Name interface{}
 	// List of named ports in the group.
 	NamedPorts interface{}
 	// The URL of the network the instance group is in.

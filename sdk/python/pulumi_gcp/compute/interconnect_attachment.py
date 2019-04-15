@@ -75,7 +75,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__['region'] = region
 
         if router is None:
-            raise TypeError('Missing required property router')
+            raise TypeError("Missing required property 'router'")
         __props__['router'] = router
 
         __props__['type'] = type

@@ -49,11 +49,11 @@ class BucketIAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if bucket is None:
-            raise TypeError('Missing required property bucket')
+            raise TypeError("Missing required property 'bucket'")
         __props__['bucket'] = bucket
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['etag'] = None

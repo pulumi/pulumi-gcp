@@ -21,7 +21,10 @@ func LookupAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs) (*GetAccount
 	}
 	return &GetAccountKeyResult{
 		KeyAlgorithm: outputs["keyAlgorithm"],
+		Name: outputs["name"],
+		Project: outputs["project"],
 		PublicKey: outputs["publicKey"],
+		PublicKeyType: outputs["publicKeyType"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -42,8 +45,11 @@ type GetAccountKeyArgs struct {
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	KeyAlgorithm interface{}
+	Name interface{}
+	Project interface{}
 	// The public key, base64 encoded
 	PublicKey interface{}
+	PublicKeyType interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

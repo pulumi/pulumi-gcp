@@ -157,7 +157,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__['replica_configuration'] = replica_configuration
 
         if settings is None:
-            raise TypeError('Missing required property settings')
+            raise TypeError("Missing required property 'settings'")
         __props__['settings'] = settings
 
         __props__['connection_name'] = None

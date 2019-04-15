@@ -31,7 +31,9 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		Fingerprint: outputs["fingerprint"],
 		HealthChecks: outputs["healthChecks"],
 		Iaps: outputs["iaps"],
+		Name: outputs["name"],
 		PortName: outputs["portName"],
+		Project: outputs["project"],
 		Protocol: outputs["protocol"],
 		Region: outputs["region"],
 		SecurityPolicy: outputs["securityPolicy"],
@@ -68,8 +70,10 @@ type GetBackendServiceResult struct {
 	// The list of HTTP/HTTPS health checks used by the Backend Service.
 	HealthChecks interface{}
 	Iaps interface{}
+	Name interface{}
 	// The name of a service that has been added to an instance group in this backend.
 	PortName interface{}
+	Project interface{}
 	// The protocol for incoming requests.
 	Protocol interface{}
 	Region interface{}

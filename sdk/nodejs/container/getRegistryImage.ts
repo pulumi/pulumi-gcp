@@ -47,8 +47,12 @@ export interface GetRegistryImageArgs {
  * A collection of values returned by getRegistryImage.
  */
 export interface GetRegistryImageResult {
+    readonly digest?: string;
     readonly imageUrl: string;
+    readonly name: string;
     readonly project: string;
+    readonly region?: string;
+    readonly tag?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

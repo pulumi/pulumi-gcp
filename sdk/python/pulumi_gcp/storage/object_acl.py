@@ -64,11 +64,11 @@ class ObjectACL(pulumi.CustomResource):
         __props__ = dict()
 
         if bucket is None:
-            raise TypeError('Missing required property bucket')
+            raise TypeError("Missing required property 'bucket'")
         __props__['bucket'] = bucket
 
         if object is None:
-            raise TypeError('Missing required property object')
+            raise TypeError("Missing required property 'object'")
         __props__['object'] = object
 
         __props__['predefined_acl'] = predefined_acl
