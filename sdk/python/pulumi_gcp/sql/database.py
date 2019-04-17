@@ -85,7 +85,7 @@ class Database(pulumi.CustomResource):
         __props__['collation'] = collation
 
         if instance is None:
-            raise TypeError('Missing required property instance')
+            raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
 
         __props__['name'] = name

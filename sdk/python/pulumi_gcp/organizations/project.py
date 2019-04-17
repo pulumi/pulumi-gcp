@@ -148,7 +148,7 @@ class Project(pulumi.CustomResource):
         __props__['org_id'] = org_id
 
         if project_id is None:
-            raise TypeError('Missing required property project_id')
+            raise TypeError("Missing required property 'project_id'")
         __props__['project_id'] = project_id
 
         __props__['skip_delete'] = skip_delete

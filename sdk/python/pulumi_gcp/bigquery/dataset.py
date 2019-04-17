@@ -119,7 +119,7 @@ class Dataset(pulumi.CustomResource):
         __props__['accesses'] = accesses
 
         if dataset_id is None:
-            raise TypeError('Missing required property dataset_id')
+            raise TypeError("Missing required property 'dataset_id'")
         __props__['dataset_id'] = dataset_id
 
         __props__['default_partition_expiration_ms'] = default_partition_expiration_ms

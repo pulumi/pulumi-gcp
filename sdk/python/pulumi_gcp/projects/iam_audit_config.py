@@ -36,13 +36,13 @@ class IAMAuditConfig(pulumi.CustomResource):
         __props__ = dict()
 
         if audit_log_configs is None:
-            raise TypeError('Missing required property audit_log_configs')
+            raise TypeError("Missing required property 'audit_log_configs'")
         __props__['audit_log_configs'] = audit_log_configs
 
         __props__['project'] = project
 
         if service is None:
-            raise TypeError('Missing required property service')
+            raise TypeError("Missing required property 'service'")
         __props__['service'] = service
 
         __props__['etag'] = None

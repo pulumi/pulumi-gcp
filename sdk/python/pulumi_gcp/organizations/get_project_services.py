@@ -12,15 +12,18 @@ class GetProjectServicesResult:
     """
     A collection of values returned by getProjectServices.
     """
-    def __init__(__self__, disable_on_destroy=None, services=None, id=None):
+    def __init__(__self__, disable_on_destroy=None, project=None, services=None, id=None):
         if disable_on_destroy and not isinstance(disable_on_destroy, bool):
-            raise TypeError('Expected argument disable_on_destroy to be a bool')
+            raise TypeError("Expected argument 'disable_on_destroy' to be a bool")
         __self__.disable_on_destroy = disable_on_destroy
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
         if services and not isinstance(services, list):
-            raise TypeError('Expected argument services to be a list')
+            raise TypeError("Expected argument 'services' to be a list")
         __self__.services = services
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -40,5 +43,6 @@ async def get_project_services(project=None,opts=None):
 
     return GetProjectServicesResult(
         disable_on_destroy=__ret__.get('disableOnDestroy'),
+        project=__ret__.get('project'),
         services=__ret__.get('services'),
         id=__ret__.get('id'))

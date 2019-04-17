@@ -60,6 +60,7 @@ export interface GetProjectServiceAccountResult {
      */
     readonly emailAddress: string;
     readonly project: string;
+    readonly userProject?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

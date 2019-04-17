@@ -19,7 +19,9 @@ func LookupActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs) (*GetAct
 		return nil, err
 	}
 	return &GetActiveFolderResult{
+		DisplayName: outputs["displayName"],
 		Name: outputs["name"],
+		Parent: outputs["parent"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -34,8 +36,10 @@ type GetActiveFolderArgs struct {
 
 // A collection of values returned by getActiveFolder.
 type GetActiveFolderResult struct {
+	DisplayName interface{}
 	// The resource name of the Folder. This uniquely identifies the folder.
 	Name interface{}
+	Parent interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

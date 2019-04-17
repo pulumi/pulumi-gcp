@@ -52,13 +52,13 @@ class ProjectMetadataItem(pulumi.CustomResource):
         __props__ = dict()
 
         if key is None:
-            raise TypeError('Missing required property key')
+            raise TypeError("Missing required property 'key'")
         __props__['key'] = key
 
         __props__['project'] = project
 
         if value is None:
-            raise TypeError('Missing required property value')
+            raise TypeError("Missing required property 'value'")
         __props__['value'] = value
 
         super(ProjectMetadataItem, __self__).__init__(

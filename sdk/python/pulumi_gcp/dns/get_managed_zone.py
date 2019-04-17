@@ -12,29 +12,35 @@ class GetManagedZoneResult:
     """
     A collection of values returned by getManagedZone.
     """
-    def __init__(__self__, description=None, dns_name=None, name_servers=None, id=None):
+    def __init__(__self__, description=None, dns_name=None, name=None, name_servers=None, project=None, id=None):
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         A textual description field.
         """
         if dns_name and not isinstance(dns_name, str):
-            raise TypeError('Expected argument dns_name to be a str')
+            raise TypeError("Expected argument 'dns_name' to be a str")
         __self__.dns_name = dns_name
         """
         The fully qualified DNS name of this zone, e.g. `terraform.io.`.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if name_servers and not isinstance(name_servers, list):
-            raise TypeError('Expected argument name_servers to be a list')
+            raise TypeError("Expected argument 'name_servers' to be a list")
         __self__.name_servers = name_servers
         """
         The list of nameservers that will be authoritative for this
         domain. Use NS records to redirect from your DNS provider to these names,
         thus making Google Cloud DNS authoritative for this zone.
         """
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -57,5 +63,7 @@ async def get_managed_zone(name=None,project=None,opts=None):
     return GetManagedZoneResult(
         description=__ret__.get('description'),
         dns_name=__ret__.get('dnsName'),
+        name=__ret__.get('name'),
         name_servers=__ret__.get('nameServers'),
+        project=__ret__.get('project'),
         id=__ret__.get('id'))

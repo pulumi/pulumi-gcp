@@ -20,6 +20,7 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		return nil, err
 	}
 	return &GetProjectResult{
+		Filter: outputs["filter"],
 		Projects: outputs["projects"],
 		Id: outputs["id"],
 	}, nil
@@ -33,6 +34,7 @@ type GetProjectArgs struct {
 
 // A collection of values returned by getProject.
 type GetProjectResult struct {
+	Filter interface{}
 	// A list of projects matching the provided filter. Structure is defined below.
 	Projects interface{}
 	// id is the provider-assigned unique ID for this managed resource.

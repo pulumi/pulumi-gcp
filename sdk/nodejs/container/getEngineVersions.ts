@@ -90,6 +90,9 @@ export interface GetEngineVersionsResult {
      * The latest version available in the given zone for use with node instances.
      */
     readonly latestNodeVersion: string;
+    readonly location?: string;
+    readonly project?: string;
+    readonly region?: string;
     /**
      * A list of versions available in the given zone for use with master instances.
      */
@@ -98,6 +101,8 @@ export interface GetEngineVersionsResult {
      * A list of versions available in the given zone for use with node instances.
      */
     readonly validNodeVersions: string[];
+    readonly versionPrefix?: string;
+    readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

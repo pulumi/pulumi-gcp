@@ -123,7 +123,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__['service_account'] = service_account
 
         if source_instance_template is None:
-            raise TypeError('Missing required property source_instance_template')
+            raise TypeError("Missing required property 'source_instance_template'")
         __props__['source_instance_template'] = source_instance_template
 
         __props__['tags'] = tags

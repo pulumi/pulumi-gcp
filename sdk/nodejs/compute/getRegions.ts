@@ -55,6 +55,7 @@ export interface GetRegionsResult {
      */
     readonly names: string[];
     readonly project: string;
+    readonly status?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

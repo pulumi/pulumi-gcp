@@ -164,7 +164,7 @@ class BackendService(pulumi.CustomResource):
         __props__['enable_cdn'] = enable_cdn
 
         if health_checks is None:
-            raise TypeError('Missing required property health_checks')
+            raise TypeError("Missing required property 'health_checks'")
         __props__['health_checks'] = health_checks
 
         __props__['iap'] = iap

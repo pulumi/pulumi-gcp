@@ -29,6 +29,9 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		EventTriggers: outputs["eventTriggers"],
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
 		Labels: outputs["labels"],
+		Name: outputs["name"],
+		Project: outputs["project"],
+		Region: outputs["region"],
 		RetryOnFailure: outputs["retryOnFailure"],
 		Runtime: outputs["runtime"],
 		ServiceAccountEmail: outputs["serviceAccountEmail"],
@@ -70,6 +73,10 @@ type GetFunctionResult struct {
 	HttpsTriggerUrl interface{}
 	// A map of labels applied to this function.
 	Labels interface{}
+	// The name of the Cloud Function.
+	Name interface{}
+	Project interface{}
+	Region interface{}
 	RetryOnFailure interface{}
 	// The runtime in which the function is running.
 	Runtime interface{}

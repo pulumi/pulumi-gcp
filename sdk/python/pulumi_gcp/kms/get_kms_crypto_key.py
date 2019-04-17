@@ -12,9 +12,15 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, rotation_period=None, self_link=None, version_templates=None, id=None):
+    def __init__(__self__, key_ring=None, name=None, rotation_period=None, self_link=None, version_templates=None, id=None):
+        if key_ring and not isinstance(key_ring, str):
+            raise TypeError("Expected argument 'key_ring' to be a str")
+        __self__.key_ring = key_ring
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if rotation_period and not isinstance(rotation_period, str):
-            raise TypeError('Expected argument rotation_period to be a str')
+            raise TypeError("Expected argument 'rotation_period' to be a str")
         __self__.rotation_period = rotation_period
         """
         Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -22,16 +28,16 @@ class GetKMSCryptoKeyResult:
         of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
         """
         if self_link and not isinstance(self_link, str):
-            raise TypeError('Expected argument self_link to be a str')
+            raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
         """
         The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
         """
         if version_templates and not isinstance(version_templates, list):
-            raise TypeError('Expected argument version_templates to be a list')
+            raise TypeError("Expected argument 'version_templates' to be a list")
         __self__.version_templates = version_templates
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -54,6 +60,8 @@ async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts)
 
     return GetKMSCryptoKeyResult(
+        key_ring=__ret__.get('keyRing'),
+        name=__ret__.get('name'),
         rotation_period=__ret__.get('rotationPeriod'),
         self_link=__ret__.get('selfLink'),
         version_templates=__ret__.get('versionTemplates'),

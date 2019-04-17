@@ -43,6 +43,8 @@ export interface GetKMSSecretArgs {
  * A collection of values returned by getKMSSecret.
  */
 export interface GetKMSSecretResult {
+    readonly ciphertext: string;
+    readonly cryptoKey: string;
     /**
      * Contains the result of decrypting the provided ciphertext.
      */

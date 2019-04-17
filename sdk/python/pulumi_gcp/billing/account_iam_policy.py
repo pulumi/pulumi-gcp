@@ -57,11 +57,11 @@ class AccountIamPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if billing_account_id is None:
-            raise TypeError('Missing required property billing_account_id')
+            raise TypeError("Missing required property 'billing_account_id'")
         __props__['billing_account_id'] = billing_account_id
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['etag'] = None

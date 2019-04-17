@@ -43,7 +43,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
         __props__ = dict()
 
         if project is None:
-            raise TypeError('Missing required property project')
+            raise TypeError("Missing required property 'project'")
         __props__['project'] = project
 
         super(SharedVPCHostProject, __self__).__init__(

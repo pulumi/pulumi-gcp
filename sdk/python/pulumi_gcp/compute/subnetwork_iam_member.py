@@ -76,7 +76,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         __props__ = dict()
 
         if member is None:
-            raise TypeError('Missing required property member')
+            raise TypeError("Missing required property 'member'")
         __props__['member'] = member
 
         __props__['project'] = project
@@ -84,11 +84,11 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         __props__['region'] = region
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         if subnetwork is None:
-            raise TypeError('Missing required property subnetwork')
+            raise TypeError("Missing required property 'subnetwork'")
         __props__['subnetwork'] = subnetwork
 
         __props__['etag'] = None

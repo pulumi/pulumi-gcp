@@ -43,12 +43,16 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		MetadataFingerprint: outputs["metadataFingerprint"],
 		MetadataStartupScript: outputs["metadataStartupScript"],
 		MinCpuPlatform: outputs["minCpuPlatform"],
+		Name: outputs["name"],
 		NetworkInterfaces: outputs["networkInterfaces"],
+		Project: outputs["project"],
 		Schedulings: outputs["schedulings"],
 		ScratchDisks: outputs["scratchDisks"],
+		SelfLink: outputs["selfLink"],
 		ServiceAccounts: outputs["serviceAccounts"],
 		Tags: outputs["tags"],
 		TagsFingerprint: outputs["tagsFingerprint"],
+		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -104,18 +108,23 @@ type GetInstanceResult struct {
 	MetadataStartupScript interface{}
 	// The minimum CPU platform specified for the VM instance.
 	MinCpuPlatform interface{}
+	Name interface{}
 	// The networks attached to the instance. Structure is documented below.
 	NetworkInterfaces interface{}
+	Project interface{}
 	// The scheduling strategy being used by the instance.
 	Schedulings interface{}
 	// The scratch disks attached to the instance. Structure is documented below.
 	ScratchDisks interface{}
+	// The URI of the created resource.
+	SelfLink interface{}
 	// The service account to attach to the instance. Structure is documented below.
 	ServiceAccounts interface{}
 	// The list of tags attached to the instance.
 	Tags interface{}
 	// The unique fingerprint of the tags.
 	TagsFingerprint interface{}
+	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

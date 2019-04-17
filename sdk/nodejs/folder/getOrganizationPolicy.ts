@@ -49,7 +49,9 @@ export interface GetOrganizationPolicyArgs {
  */
 export interface GetOrganizationPolicyResult {
     readonly booleanPolicies: { enforced: boolean }[];
+    readonly constraint: string;
     readonly etag: string;
+    readonly folder: string;
     readonly listPolicies: { allows: { all: boolean, values: string[] }[], denies: { all: boolean, values: string[] }[], inheritFromParent: boolean, suggestedValue: string }[];
     readonly restorePolicies: { default: boolean }[];
     readonly updateTime: string;

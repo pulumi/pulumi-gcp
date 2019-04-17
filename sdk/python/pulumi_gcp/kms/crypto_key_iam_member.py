@@ -65,15 +65,15 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         __props__ = dict()
 
         if crypto_key_id is None:
-            raise TypeError('Missing required property crypto_key_id')
+            raise TypeError("Missing required property 'crypto_key_id'")
         __props__['crypto_key_id'] = crypto_key_id
 
         if member is None:
-            raise TypeError('Missing required property member')
+            raise TypeError("Missing required property 'member'")
         __props__['member'] = member
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['etag'] = None

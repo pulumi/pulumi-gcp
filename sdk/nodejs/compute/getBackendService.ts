@@ -73,10 +73,12 @@ export interface GetBackendServiceResult {
      */
     readonly healthChecks: string[];
     readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string }[];
+    readonly name: string;
     /**
      * The name of a service that has been added to an instance group in this backend.
      */
     readonly portName: string;
+    readonly project?: string;
     /**
      * The protocol for incoming requests.
      */

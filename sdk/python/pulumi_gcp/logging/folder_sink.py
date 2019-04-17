@@ -79,13 +79,13 @@ class FolderSink(pulumi.CustomResource):
         __props__ = dict()
 
         if destination is None:
-            raise TypeError('Missing required property destination')
+            raise TypeError("Missing required property 'destination'")
         __props__['destination'] = destination
 
         __props__['filter'] = filter
 
         if folder is None:
-            raise TypeError('Missing required property folder')
+            raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
 
         __props__['include_children'] = include_children

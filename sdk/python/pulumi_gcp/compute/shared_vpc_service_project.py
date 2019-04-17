@@ -49,11 +49,11 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         __props__ = dict()
 
         if host_project is None:
-            raise TypeError('Missing required property host_project')
+            raise TypeError("Missing required property 'host_project'")
         __props__['host_project'] = host_project
 
         if service_project is None:
-            raise TypeError('Missing required property service_project')
+            raise TypeError("Missing required property 'service_project'")
         __props__['service_project'] = service_project
 
         super(SharedVPCServiceProject, __self__).__init__(

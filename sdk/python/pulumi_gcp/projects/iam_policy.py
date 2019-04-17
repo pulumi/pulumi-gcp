@@ -64,11 +64,11 @@ class IAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         if project is None:
-            raise TypeError('Missing required property project')
+            raise TypeError("Missing required property 'project'")
         __props__['project'] = project
 
         __props__['etag'] = None

@@ -45,6 +45,7 @@ export interface GetProjectServicesArgs {
  */
 export interface GetProjectServicesResult {
     readonly disableOnDestroy: boolean;
+    readonly project?: string;
     readonly services: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

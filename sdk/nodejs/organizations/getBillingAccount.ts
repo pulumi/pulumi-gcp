@@ -53,6 +53,7 @@ export interface GetBillingAccountArgs {
  * A collection of values returned by getBillingAccount.
  */
 export interface GetBillingAccountResult {
+    readonly billingAccount?: string;
     readonly displayName: string;
     /**
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.

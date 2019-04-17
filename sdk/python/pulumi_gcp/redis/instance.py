@@ -78,7 +78,7 @@ class Instance(pulumi.CustomResource):
         __props__['location_id'] = location_id
 
         if memory_size_gb is None:
-            raise TypeError('Missing required property memory_size_gb')
+            raise TypeError("Missing required property 'memory_size_gb'")
         __props__['memory_size_gb'] = memory_size_gb
 
         __props__['name'] = name

@@ -75,13 +75,13 @@ class Policy(pulumi.CustomResource):
         __props__['boolean_policy'] = boolean_policy
 
         if constraint is None:
-            raise TypeError('Missing required property constraint')
+            raise TypeError("Missing required property 'constraint'")
         __props__['constraint'] = constraint
 
         __props__['list_policy'] = list_policy
 
         if org_id is None:
-            raise TypeError('Missing required property org_id')
+            raise TypeError("Missing required property 'org_id'")
         __props__['org_id'] = org_id
 
         __props__['restore_policy'] = restore_policy

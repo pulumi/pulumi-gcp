@@ -66,17 +66,17 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         __props__ = dict()
 
         if member is None:
-            raise TypeError('Missing required property member')
+            raise TypeError("Missing required property 'member'")
         __props__['member'] = member
 
         __props__['project'] = project
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         if subscription is None:
-            raise TypeError('Missing required property subscription')
+            raise TypeError("Missing required property 'subscription'")
         __props__['subscription'] = subscription
 
         __props__['etag'] = None

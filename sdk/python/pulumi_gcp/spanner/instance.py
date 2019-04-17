@@ -59,11 +59,11 @@ class Instance(pulumi.CustomResource):
         __props__ = dict()
 
         if config is None:
-            raise TypeError('Missing required property config')
+            raise TypeError("Missing required property 'config'")
         __props__['config'] = config
 
         if display_name is None:
-            raise TypeError('Missing required property display_name')
+            raise TypeError("Missing required property 'display_name'")
         __props__['display_name'] = display_name
 
         __props__['labels'] = labels

@@ -66,7 +66,7 @@ class Variable(pulumi.CustomResource):
         __props__['name'] = name
 
         if parent is None:
-            raise TypeError('Missing required property parent')
+            raise TypeError("Missing required property 'parent'")
         __props__['parent'] = parent
 
         __props__['project'] = project

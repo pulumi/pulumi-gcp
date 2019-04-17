@@ -12,15 +12,21 @@ class GetKMSSecretResult:
     """
     A collection of values returned by getKMSSecret.
     """
-    def __init__(__self__, plaintext=None, id=None):
+    def __init__(__self__, ciphertext=None, crypto_key=None, plaintext=None, id=None):
+        if ciphertext and not isinstance(ciphertext, str):
+            raise TypeError("Expected argument 'ciphertext' to be a str")
+        __self__.ciphertext = ciphertext
+        if crypto_key and not isinstance(crypto_key, str):
+            raise TypeError("Expected argument 'crypto_key' to be a str")
+        __self__.crypto_key = crypto_key
         if plaintext and not isinstance(plaintext, str):
-            raise TypeError('Expected argument plaintext to be a str')
+            raise TypeError("Expected argument 'plaintext' to be a str")
         __self__.plaintext = plaintext
         """
         Contains the result of decrypting the provided ciphertext.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -46,5 +52,7 @@ async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts)
 
     return GetKMSSecretResult(
+        ciphertext=__ret__.get('ciphertext'),
+        crypto_key=__ret__.get('cryptoKey'),
         plaintext=__ret__.get('plaintext'),
         id=__ret__.get('id'))

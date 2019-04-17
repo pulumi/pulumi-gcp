@@ -65,19 +65,19 @@ class ObjectAccessControl(pulumi.CustomResource):
         __props__ = dict()
 
         if bucket is None:
-            raise TypeError('Missing required property bucket')
+            raise TypeError("Missing required property 'bucket'")
         __props__['bucket'] = bucket
 
         if entity is None:
-            raise TypeError('Missing required property entity')
+            raise TypeError("Missing required property 'entity'")
         __props__['entity'] = entity
 
         if object is None:
-            raise TypeError('Missing required property object')
+            raise TypeError("Missing required property 'object'")
         __props__['object'] = object
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['domain'] = None

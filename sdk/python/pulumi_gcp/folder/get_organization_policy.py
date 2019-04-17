@@ -12,27 +12,33 @@ class GetOrganizationPolicyResult:
     """
     A collection of values returned by getOrganizationPolicy.
     """
-    def __init__(__self__, boolean_policies=None, etag=None, list_policies=None, restore_policies=None, update_time=None, version=None, id=None):
+    def __init__(__self__, boolean_policies=None, constraint=None, etag=None, folder=None, list_policies=None, restore_policies=None, update_time=None, version=None, id=None):
         if boolean_policies and not isinstance(boolean_policies, list):
-            raise TypeError('Expected argument boolean_policies to be a list')
+            raise TypeError("Expected argument 'boolean_policies' to be a list")
         __self__.boolean_policies = boolean_policies
+        if constraint and not isinstance(constraint, str):
+            raise TypeError("Expected argument 'constraint' to be a str")
+        __self__.constraint = constraint
         if etag and not isinstance(etag, str):
-            raise TypeError('Expected argument etag to be a str')
+            raise TypeError("Expected argument 'etag' to be a str")
         __self__.etag = etag
+        if folder and not isinstance(folder, str):
+            raise TypeError("Expected argument 'folder' to be a str")
+        __self__.folder = folder
         if list_policies and not isinstance(list_policies, list):
-            raise TypeError('Expected argument list_policies to be a list')
+            raise TypeError("Expected argument 'list_policies' to be a list")
         __self__.list_policies = list_policies
         if restore_policies and not isinstance(restore_policies, list):
-            raise TypeError('Expected argument restore_policies to be a list')
+            raise TypeError("Expected argument 'restore_policies' to be a list")
         __self__.restore_policies = restore_policies
         if update_time and not isinstance(update_time, str):
-            raise TypeError('Expected argument update_time to be a str')
+            raise TypeError("Expected argument 'update_time' to be a str")
         __self__.update_time = update_time
         if version and not isinstance(version, float):
-            raise TypeError('Expected argument version to be a float')
+            raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -52,7 +58,9 @@ async def get_organization_policy(constraint=None,folder=None,opts=None):
 
     return GetOrganizationPolicyResult(
         boolean_policies=__ret__.get('booleanPolicies'),
+        constraint=__ret__.get('constraint'),
         etag=__ret__.get('etag'),
+        folder=__ret__.get('folder'),
         list_policies=__ret__.get('listPolicies'),
         restore_policies=__ret__.get('restorePolicies'),
         update_time=__ret__.get('updateTime'),

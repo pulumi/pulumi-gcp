@@ -86,7 +86,7 @@ class ProjectSink(pulumi.CustomResource):
         __props__ = dict()
 
         if destination is None:
-            raise TypeError('Missing required property destination')
+            raise TypeError("Missing required property 'destination'")
         __props__['destination'] = destination
 
         __props__['filter'] = filter

@@ -12,18 +12,27 @@ class GetAccountKeyResult:
     """
     A collection of values returned by getAccountKey.
     """
-    def __init__(__self__, key_algorithm=None, public_key=None, id=None):
+    def __init__(__self__, key_algorithm=None, name=None, project=None, public_key=None, public_key_type=None, id=None):
         if key_algorithm and not isinstance(key_algorithm, str):
-            raise TypeError('Expected argument key_algorithm to be a str')
+            raise TypeError("Expected argument 'key_algorithm' to be a str")
         __self__.key_algorithm = key_algorithm
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
         if public_key and not isinstance(public_key, str):
-            raise TypeError('Expected argument public_key to be a str')
+            raise TypeError("Expected argument 'public_key' to be a str")
         __self__.public_key = public_key
         """
         The public key, base64 encoded
         """
+        if public_key_type and not isinstance(public_key_type, str):
+            raise TypeError("Expected argument 'public_key_type' to be a str")
+        __self__.public_key_type = public_key_type
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -42,5 +51,8 @@ async def get_account_key(name=None,project=None,public_key_type=None,opts=None)
 
     return GetAccountKeyResult(
         key_algorithm=__ret__.get('keyAlgorithm'),
+        name=__ret__.get('name'),
+        project=__ret__.get('project'),
         public_key=__ret__.get('publicKey'),
+        public_key_type=__ret__.get('publicKeyType'),
         id=__ret__.get('id'))

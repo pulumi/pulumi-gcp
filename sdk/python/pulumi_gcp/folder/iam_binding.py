@@ -76,15 +76,15 @@ class IAMBinding(pulumi.CustomResource):
         __props__ = dict()
 
         if folder is None:
-            raise TypeError('Missing required property folder')
+            raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
 
         if members is None:
-            raise TypeError('Missing required property members')
+            raise TypeError("Missing required property 'members'")
         __props__['members'] = members
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['etag'] = None

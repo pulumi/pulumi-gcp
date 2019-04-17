@@ -61,15 +61,15 @@ class Connection(pulumi.CustomResource):
         __props__ = dict()
 
         if network is None:
-            raise TypeError('Missing required property network')
+            raise TypeError("Missing required property 'network'")
         __props__['network'] = network
 
         if reserved_peering_ranges is None:
-            raise TypeError('Missing required property reserved_peering_ranges')
+            raise TypeError("Missing required property 'reserved_peering_ranges'")
         __props__['reserved_peering_ranges'] = reserved_peering_ranges
 
         if service is None:
-            raise TypeError('Missing required property service')
+            raise TypeError("Missing required property 'service'")
         __props__['service'] = service
 
         super(Connection, __self__).__init__(

@@ -64,6 +64,7 @@ export interface GetAddressResult {
      * The IP of the created resource.
      */
     readonly address: string;
+    readonly name: string;
     readonly project: string;
     readonly region: string;
     /**

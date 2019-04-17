@@ -62,11 +62,11 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if key_ring_id is None:
-            raise TypeError('Missing required property key_ring_id')
+            raise TypeError("Missing required property 'key_ring_id'")
         __props__['key_ring_id'] = key_ring_id
 
         if policy_data is None:
-            raise TypeError('Missing required property policy_data')
+            raise TypeError("Missing required property 'policy_data'")
         __props__['policy_data'] = policy_data
 
         __props__['etag'] = None

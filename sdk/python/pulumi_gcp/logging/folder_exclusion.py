@@ -74,11 +74,11 @@ class FolderExclusion(pulumi.CustomResource):
         __props__['disabled'] = disabled
 
         if filter is None:
-            raise TypeError('Missing required property filter')
+            raise TypeError("Missing required property 'filter'")
         __props__['filter'] = filter
 
         if folder is None:
-            raise TypeError('Missing required property folder')
+            raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
 
         __props__['name'] = name

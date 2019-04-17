@@ -86,11 +86,11 @@ class SslCert(pulumi.CustomResource):
         __props__ = dict()
 
         if common_name is None:
-            raise TypeError('Missing required property common_name')
+            raise TypeError("Missing required property 'common_name'")
         __props__['common_name'] = common_name
 
         if instance is None:
-            raise TypeError('Missing required property instance')
+            raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
 
         __props__['project'] = project

@@ -51,6 +51,7 @@ export interface GetBucketObjectArgs {
  * A collection of values returned by getBucketObject.
  */
 export interface GetBucketObjectResult {
+    readonly bucket?: string;
     /**
      * (Computed) [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
      * directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -82,6 +83,7 @@ export interface GetBucketObjectResult {
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     readonly md5hash: string;
+    readonly name?: string;
     readonly outputName: string;
     readonly predefinedAcl: string;
     /**

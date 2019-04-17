@@ -84,19 +84,19 @@ class IAMCustomRole(pulumi.CustomResource):
         __props__['description'] = description
 
         if permissions is None:
-            raise TypeError('Missing required property permissions')
+            raise TypeError("Missing required property 'permissions'")
         __props__['permissions'] = permissions
 
         __props__['project'] = project
 
         if role_id is None:
-            raise TypeError('Missing required property role_id')
+            raise TypeError("Missing required property 'role_id'")
         __props__['role_id'] = role_id
 
         __props__['stage'] = stage
 
         if title is None:
-            raise TypeError('Missing required property title')
+            raise TypeError("Missing required property 'title'")
         __props__['title'] = title
 
         __props__['deleted'] = None

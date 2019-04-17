@@ -63,6 +63,7 @@ export interface GetOrganizationResult {
      * The resource name of the Organization in the form `organizations/{organization_id}`.
      */
     readonly name: string;
+    readonly organization?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

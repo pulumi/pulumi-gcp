@@ -19,6 +19,7 @@ func LookupRule(ctx *pulumi.Context, args *GetRuleArgs) (*GetRuleResult, error) 
 	}
 	return &GetRuleResult{
 		IncludedPermissions: outputs["includedPermissions"],
+		Name: outputs["name"],
 		Stage: outputs["stage"],
 		Title: outputs["title"],
 		Id: outputs["id"],
@@ -35,6 +36,7 @@ type GetRuleArgs struct {
 type GetRuleResult struct {
 	// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
 	IncludedPermissions interface{}
+	Name interface{}
 	// indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
 	Stage interface{}
 	// is a friendly title for the role, such as "Role Viewer"

@@ -66,15 +66,15 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         __props__ = dict()
 
         if crypto_key_id is None:
-            raise TypeError('Missing required property crypto_key_id')
+            raise TypeError("Missing required property 'crypto_key_id'")
         __props__['crypto_key_id'] = crypto_key_id
 
         if members is None:
-            raise TypeError('Missing required property members')
+            raise TypeError("Missing required property 'members'")
         __props__['members'] = members
 
         if role is None:
-            raise TypeError('Missing required property role')
+            raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
         __props__['etag'] = None

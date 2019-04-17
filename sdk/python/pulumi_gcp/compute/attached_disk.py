@@ -52,11 +52,11 @@ class AttachedDisk(pulumi.CustomResource):
         __props__['device_name'] = device_name
 
         if disk is None:
-            raise TypeError('Missing required property disk')
+            raise TypeError("Missing required property 'disk'")
         __props__['disk'] = disk
 
         if instance is None:
-            raise TypeError('Missing required property instance')
+            raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
 
         __props__['mode'] = mode

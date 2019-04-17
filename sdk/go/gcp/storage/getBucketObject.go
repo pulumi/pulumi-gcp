@@ -22,6 +22,7 @@ func LookupBucketObject(ctx *pulumi.Context, args *GetBucketObjectArgs) (*GetBuc
 		return nil, err
 	}
 	return &GetBucketObjectResult{
+		Bucket: outputs["bucket"],
 		CacheControl: outputs["cacheControl"],
 		Content: outputs["content"],
 		ContentDisposition: outputs["contentDisposition"],
@@ -31,6 +32,7 @@ func LookupBucketObject(ctx *pulumi.Context, args *GetBucketObjectArgs) (*GetBuc
 		Crc32c: outputs["crc32c"],
 		DetectMd5hash: outputs["detectMd5hash"],
 		Md5hash: outputs["md5hash"],
+		Name: outputs["name"],
 		OutputName: outputs["outputName"],
 		PredefinedAcl: outputs["predefinedAcl"],
 		SelfLink: outputs["selfLink"],
@@ -50,6 +52,7 @@ type GetBucketObjectArgs struct {
 
 // A collection of values returned by getBucketObject.
 type GetBucketObjectResult struct {
+	Bucket interface{}
 	// (Computed) [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl interface{}
@@ -67,6 +70,7 @@ type GetBucketObjectResult struct {
 	DetectMd5hash interface{}
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash interface{}
+	Name interface{}
 	OutputName interface{}
 	PredefinedAcl interface{}
 	// (Computed) A url reference to this object.

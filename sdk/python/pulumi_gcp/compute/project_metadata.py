@@ -52,7 +52,7 @@ class ProjectMetadata(pulumi.CustomResource):
         __props__ = dict()
 
         if metadata is None:
-            raise TypeError('Missing required property metadata')
+            raise TypeError("Missing required property 'metadata'")
         __props__['metadata'] = metadata
 
         __props__['project'] = project

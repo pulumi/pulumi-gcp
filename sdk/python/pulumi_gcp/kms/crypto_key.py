@@ -78,7 +78,7 @@ class CryptoKey(pulumi.CustomResource):
         __props__ = dict()
 
         if key_ring is None:
-            raise TypeError('Missing required property key_ring')
+            raise TypeError("Missing required property 'key_ring'")
         __props__['key_ring'] = key_ring
 
         __props__['name'] = name

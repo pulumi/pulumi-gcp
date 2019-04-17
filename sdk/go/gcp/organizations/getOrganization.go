@@ -24,6 +24,7 @@ func LookupOrganization(ctx *pulumi.Context, args *GetOrganizationArgs) (*GetOrg
 		Domain: outputs["domain"],
 		LifecycleState: outputs["lifecycleState"],
 		Name: outputs["name"],
+		Organization: outputs["organization"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -47,6 +48,7 @@ type GetOrganizationResult struct {
 	LifecycleState interface{}
 	// The resource name of the Organization in the form `organizations/{organization_id}`.
 	Name interface{}
+	Organization interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

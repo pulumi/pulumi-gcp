@@ -61,7 +61,7 @@ class Instance(pulumi.CustomResource):
         __props__['description'] = description
 
         if file_shares is None:
-            raise TypeError('Missing required property file_shares')
+            raise TypeError("Missing required property 'file_shares'")
         __props__['file_shares'] = file_shares
 
         __props__['labels'] = labels
@@ -69,17 +69,17 @@ class Instance(pulumi.CustomResource):
         __props__['name'] = name
 
         if networks is None:
-            raise TypeError('Missing required property networks')
+            raise TypeError("Missing required property 'networks'")
         __props__['networks'] = networks
 
         __props__['project'] = project
 
         if tier is None:
-            raise TypeError('Missing required property tier')
+            raise TypeError("Missing required property 'tier'")
         __props__['tier'] = tier
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['create_time'] = None

@@ -70,6 +70,7 @@ export interface GetForwardingRuleResult {
      * Type of load balancing of this forwarding rule.
      */
     readonly loadBalancingScheme: string;
+    readonly name: string;
     /**
      * Network of this forwarding rule.
      */

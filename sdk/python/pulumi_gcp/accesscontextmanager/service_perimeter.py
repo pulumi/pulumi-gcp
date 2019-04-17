@@ -61,7 +61,7 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__['name'] = name
 
         if parent is None:
-            raise TypeError('Missing required property parent')
+            raise TypeError("Missing required property 'parent'")
         __props__['parent'] = parent
 
         __props__['perimeter_type'] = perimeter_type
@@ -69,7 +69,7 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__['status'] = status
 
         if title is None:
-            raise TypeError('Missing required property title')
+            raise TypeError("Missing required property 'title'")
         __props__['title'] = title
 
         __props__['create_time'] = None

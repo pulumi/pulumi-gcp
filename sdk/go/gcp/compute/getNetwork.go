@@ -21,6 +21,8 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 	return &GetNetworkResult{
 		Description: outputs["description"],
 		GatewayIpv4: outputs["gatewayIpv4"],
+		Name: outputs["name"],
+		Project: outputs["project"],
 		SelfLink: outputs["selfLink"],
 		SubnetworksSelfLinks: outputs["subnetworksSelfLinks"],
 		Id: outputs["id"],
@@ -42,6 +44,8 @@ type GetNetworkResult struct {
 	Description interface{}
 	// The IP address of the gateway.
 	GatewayIpv4 interface{}
+	Name interface{}
+	Project interface{}
 	// The URI of the resource.
 	SelfLink interface{}
 	// the list of subnetworks which belong to the network

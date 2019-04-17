@@ -76,6 +76,8 @@ export interface GetIAMPolicyArgs {
  * A collection of values returned by getIAMPolicy.
  */
 export interface GetIAMPolicyResult {
+    readonly auditConfigs?: { auditLogConfigs: { exemptedMembers?: string[], logType: string }[], service: string }[];
+    readonly bindings: { members: string[], role: string }[];
     /**
      * The above bindings serialized in a format suitable for
      * referencing from a resource that supports IAM.

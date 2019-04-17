@@ -44,10 +44,12 @@ export interface GetActiveFolderArgs {
  * A collection of values returned by getActiveFolder.
  */
 export interface GetActiveFolderResult {
+    readonly displayName: string;
     /**
      * The resource name of the Folder. This uniquely identifies the folder.
      */
     readonly name: string;
+    readonly parent: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

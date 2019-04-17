@@ -60,10 +60,13 @@ export interface GetAccountKeyArgs {
  */
 export interface GetAccountKeyResult {
     readonly keyAlgorithm: string;
+    readonly name: string;
+    readonly project?: string;
     /**
      * The public key, base64 encoded
      */
     readonly publicKey: string;
+    readonly publicKeyType?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

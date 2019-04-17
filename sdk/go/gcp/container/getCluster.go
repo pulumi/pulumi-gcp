@@ -36,6 +36,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		InitialNodeCount: outputs["initialNodeCount"],
 		InstanceGroupUrls: outputs["instanceGroupUrls"],
 		IpAllocationPolicies: outputs["ipAllocationPolicies"],
+		Location: outputs["location"],
 		LoggingService: outputs["loggingService"],
 		MaintenancePolicies: outputs["maintenancePolicies"],
 		MasterAuths: outputs["masterAuths"],
@@ -44,6 +45,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		MasterVersion: outputs["masterVersion"],
 		MinMasterVersion: outputs["minMasterVersion"],
 		MonitoringService: outputs["monitoringService"],
+		Name: outputs["name"],
 		Network: outputs["network"],
 		NetworkPolicies: outputs["networkPolicies"],
 		NodeConfigs: outputs["nodeConfigs"],
@@ -53,10 +55,13 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		PodSecurityPolicyConfigs: outputs["podSecurityPolicyConfigs"],
 		PrivateCluster: outputs["privateCluster"],
 		PrivateClusterConfigs: outputs["privateClusterConfigs"],
+		Project: outputs["project"],
+		Region: outputs["region"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
 		Subnetwork: outputs["subnetwork"],
 		TpuIpv4CidrBlock: outputs["tpuIpv4CidrBlock"],
+		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -96,6 +101,7 @@ type GetClusterResult struct {
 	InitialNodeCount interface{}
 	InstanceGroupUrls interface{}
 	IpAllocationPolicies interface{}
+	Location interface{}
 	LoggingService interface{}
 	MaintenancePolicies interface{}
 	MasterAuths interface{}
@@ -104,6 +110,7 @@ type GetClusterResult struct {
 	MasterVersion interface{}
 	MinMasterVersion interface{}
 	MonitoringService interface{}
+	Name interface{}
 	Network interface{}
 	NetworkPolicies interface{}
 	NodeConfigs interface{}
@@ -113,10 +120,13 @@ type GetClusterResult struct {
 	PodSecurityPolicyConfigs interface{}
 	PrivateCluster interface{}
 	PrivateClusterConfigs interface{}
+	Project interface{}
+	Region interface{}
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}
+	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

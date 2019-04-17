@@ -91,7 +91,7 @@ class Snapshot(pulumi.CustomResource):
         __props__['snapshot_encryption_key'] = snapshot_encryption_key
 
         if source_disk is None:
-            raise TypeError('Missing required property source_disk')
+            raise TypeError("Missing required property 'source_disk'")
         __props__['source_disk'] = source_disk
 
         __props__['source_disk_encryption_key'] = source_disk_encryption_key

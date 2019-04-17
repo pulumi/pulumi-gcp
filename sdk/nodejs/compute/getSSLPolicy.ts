@@ -68,10 +68,12 @@ export interface GetSSLPolicyResult {
      * The minimum supported TLS version of this policy.
      */
     readonly minTlsVersion: string;
+    readonly name: string;
     /**
      * The Google-curated or custom profile used by this policy.
      */
     readonly profile: string;
+    readonly project?: string;
     /**
      * The URI of the created resource.
      */

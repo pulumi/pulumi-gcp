@@ -121,7 +121,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__['description'] = description
 
         if health_checks is None:
-            raise TypeError('Missing required property health_checks')
+            raise TypeError("Missing required property 'health_checks'")
         __props__['health_checks'] = health_checks
 
         __props__['name'] = name

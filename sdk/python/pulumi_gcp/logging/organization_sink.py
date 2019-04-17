@@ -77,7 +77,7 @@ class OrganizationSink(pulumi.CustomResource):
         __props__ = dict()
 
         if destination is None:
-            raise TypeError('Missing required property destination')
+            raise TypeError("Missing required property 'destination'")
         __props__['destination'] = destination
 
         __props__['filter'] = filter
@@ -87,7 +87,7 @@ class OrganizationSink(pulumi.CustomResource):
         __props__['name'] = name
 
         if org_id is None:
-            raise TypeError('Missing required property org_id')
+            raise TypeError("Missing required property 'org_id'")
         __props__['org_id'] = org_id
 
         __props__['writer_identity'] = None

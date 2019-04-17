@@ -61,7 +61,7 @@ class UsageExportBucket(pulumi.CustomResource):
         __props__ = dict()
 
         if bucket_name is None:
-            raise TypeError('Missing required property bucket_name')
+            raise TypeError("Missing required property 'bucket_name'")
         __props__['bucket_name'] = bucket_name
 
         __props__['prefix'] = prefix

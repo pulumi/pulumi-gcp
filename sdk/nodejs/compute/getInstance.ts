@@ -124,10 +124,12 @@ export interface GetInstanceResult {
      * The minimum CPU platform specified for the VM instance.
      */
     readonly minCpuPlatform: string;
+    readonly name?: string;
     /**
      * The networks attached to the instance. Structure is documented below.
      */
     readonly networkInterfaces: { accessConfigs: { assignedNatIp: string, natIp: string, networkTier: string, publicPtrDomainName: string }[], address: string, aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[];
+    readonly project?: string;
     /**
      * The scheduling strategy being used by the instance.
      */
@@ -136,6 +138,10 @@ export interface GetInstanceResult {
      * The scratch disks attached to the instance. Structure is documented below.
      */
     readonly scratchDisks: { interface: string }[];
+    /**
+     * The URI of the created resource.
+     */
+    readonly selfLink?: string;
     /**
      * The service account to attach to the instance. Structure is documented below.
      */
@@ -148,6 +154,7 @@ export interface GetInstanceResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
