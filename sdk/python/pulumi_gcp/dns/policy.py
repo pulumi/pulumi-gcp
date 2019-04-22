@@ -12,6 +12,7 @@ class Policy(pulumi.CustomResource):
     alternative_name_server_config: pulumi.Output[dict]
     description: pulumi.Output[str]
     enable_inbound_forwarding: pulumi.Output[bool]
+    enable_logging: pulumi.Output[bool]
     name: pulumi.Output[str]
     networks: pulumi.Output[list]
     project: pulumi.Output[str]
@@ -19,7 +20,7 @@ class Policy(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, name=None, networks=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, name=None, networks=None, project=None, __name__=None, __opts__=None):
         """
         A policy is a collection of DNS rules applied to one or more Virtual
         Private Cloud resources.
@@ -58,6 +59,8 @@ class Policy(pulumi.CustomResource):
         __props__['description'] = description
 
         __props__['enable_inbound_forwarding'] = enable_inbound_forwarding
+
+        __props__['enable_logging'] = enable_logging
 
         __props__['name'] = name
 

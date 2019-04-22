@@ -12,7 +12,7 @@ class Trigger(pulumi.CustomResource):
     build: pulumi.Output[dict]
     create_time: pulumi.Output[str]
     description: pulumi.Output[str]
-    disabled: pulumi.Output[str]
+    disabled: pulumi.Output[bool]
     filename: pulumi.Output[str]
     ignored_files: pulumi.Output[list]
     included_files: pulumi.Output[list]

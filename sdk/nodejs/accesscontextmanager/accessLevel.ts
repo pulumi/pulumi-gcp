@@ -8,12 +8,10 @@ import * as utilities from "../utilities";
  * An AccessLevel is a label that can be applied to requests to GCP services,
  * along with a list of requirements necessary for the label to be applied.
  * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
  * 
  * To get more information about AccessLevel, see:
  * 
- * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies.accessLevels)
+ * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
  * * How-to Guides
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  * 
@@ -29,14 +27,14 @@ import * as utilities from "../utilities";
  *         conditions: [{
  *             devicePolicy: {
  *                 osConstraints: [{
- *                     osType: "IOS",
+ *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
  *                 requireScreenLock: false,
  *             },
  *         }],
  *     },
  *     parent: google_access_context_manager_access_policy_test_access.name.apply(name => `accessPolicies/${name}`),
- *     title: "ios_no_lock",
+ *     title: "chromeos_no_lock",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",

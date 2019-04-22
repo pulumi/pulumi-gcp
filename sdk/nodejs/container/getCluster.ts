@@ -90,7 +90,6 @@ export interface GetClusterResult {
     readonly maintenancePolicies: { dailyMaintenanceWindows: { duration: string, startTime: string }[] }[];
     readonly masterAuths: { clientCertificate: string, clientCertificateConfigs: { issueClientCertificate: boolean }[], clientKey: string, clusterCaCertificate: string, password: string, username: string }[];
     readonly masterAuthorizedNetworksConfigs: { cidrBlocks: { cidrBlock: string, displayName: string }[] }[];
-    readonly masterIpv4CidrBlock: string;
     readonly masterVersion: string;
     readonly minMasterVersion: string;
     readonly monitoringService: string;
@@ -102,7 +101,6 @@ export interface GetClusterResult {
     readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
-    readonly privateCluster: boolean;
     readonly privateClusterConfigs: { enablePrivateEndpoint: boolean, enablePrivateNodes: boolean, masterIpv4CidrBlock: string, privateEndpoint: string, publicEndpoint: string }[];
     readonly project?: string;
     readonly region?: string;

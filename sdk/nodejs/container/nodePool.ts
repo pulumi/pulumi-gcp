@@ -51,6 +51,8 @@ export class NodePool extends pulumi.CustomResource {
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
      */
     public readonly maxPodsPerNode: pulumi.Output<number>;
     /**
@@ -179,6 +181,8 @@ export interface NodePoolState {
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
@@ -255,6 +259,8 @@ export interface NodePoolArgs {
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**

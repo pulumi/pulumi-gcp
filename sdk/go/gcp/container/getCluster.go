@@ -41,7 +41,6 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		MaintenancePolicies: outputs["maintenancePolicies"],
 		MasterAuths: outputs["masterAuths"],
 		MasterAuthorizedNetworksConfigs: outputs["masterAuthorizedNetworksConfigs"],
-		MasterIpv4CidrBlock: outputs["masterIpv4CidrBlock"],
 		MasterVersion: outputs["masterVersion"],
 		MinMasterVersion: outputs["minMasterVersion"],
 		MonitoringService: outputs["monitoringService"],
@@ -53,7 +52,6 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		NodePools: outputs["nodePools"],
 		NodeVersion: outputs["nodeVersion"],
 		PodSecurityPolicyConfigs: outputs["podSecurityPolicyConfigs"],
-		PrivateCluster: outputs["privateCluster"],
 		PrivateClusterConfigs: outputs["privateClusterConfigs"],
 		Project: outputs["project"],
 		Region: outputs["region"],
@@ -106,7 +104,6 @@ type GetClusterResult struct {
 	MaintenancePolicies interface{}
 	MasterAuths interface{}
 	MasterAuthorizedNetworksConfigs interface{}
-	MasterIpv4CidrBlock interface{}
 	MasterVersion interface{}
 	MinMasterVersion interface{}
 	MonitoringService interface{}
@@ -118,7 +115,6 @@ type GetClusterResult struct {
 	NodePools interface{}
 	NodeVersion interface{}
 	PodSecurityPolicyConfigs interface{}
-	PrivateCluster interface{}
 	PrivateClusterConfigs interface{}
 	Project interface{}
 	Region interface{}

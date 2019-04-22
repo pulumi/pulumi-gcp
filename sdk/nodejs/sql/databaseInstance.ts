@@ -48,37 +48,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
- * ### Private IP Instance
- * > **NOTE**: For private IP instance setup, note that the `google_sql_database_instance` does not actually interpolate values from `google_service_networking_connection`. You must explicitly add a `depends_on`reference as shown below.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const privateNetwork = new gcp.compute.Network("private_network", {});
- * const privateIpAddress = new gcp.compute.GlobalAddress("private_ip_address", {
- *     addressType: "INTERNAL",
- *     network: privateNetwork.selfLink,
- *     prefixLength: 16,
- *     purpose: "VPC_PEERING",
- * });
- * const privateVpcConnection = new gcp.servicenetworking.Connection("private_vpc_connection", {
- *     network: privateNetwork.selfLink,
- *     reservedPeeringRanges: [privateIpAddress.name],
- *     service: "servicenetworking.googleapis.com",
- * });
- * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     region: "us-central1",
- *     settings: {
- *         ipConfiguration: {
- *             ipv4Enabled: false,
- *             privateNetwork: privateNetwork.selfLink,
- *         },
- *         tier: "db-f1-micro",
- *     },
- * }, {dependsOn: [privateVpcConnection]});
- * ```
  */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**

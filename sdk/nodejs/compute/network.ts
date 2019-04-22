@@ -38,6 +38,7 @@ export class Network extends pulumi.CustomResource {
     }
 
     public readonly autoCreateSubnetworks: pulumi.Output<boolean | undefined>;
+    public readonly deleteDefaultRoutesOnCreate: pulumi.Output<boolean | undefined>;
     public readonly description: pulumi.Output<string | undefined>;
     public /*out*/ readonly gatewayIpv4: pulumi.Output<string>;
     public readonly ipv4Range: pulumi.Output<string | undefined>;
@@ -66,6 +67,7 @@ export class Network extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: NetworkState = argsOrState as NetworkState | undefined;
             inputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
+            inputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
             inputs["ipv4Range"] = state ? state.ipv4Range : undefined;
@@ -76,6 +78,7 @@ export class Network extends pulumi.CustomResource {
         } else {
             const args = argsOrState as NetworkArgs | undefined;
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
+            inputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ipv4Range"] = args ? args.ipv4Range : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -93,6 +96,7 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkState {
     readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly gatewayIpv4?: pulumi.Input<string>;
     readonly ipv4Range?: pulumi.Input<string>;
@@ -114,6 +118,7 @@ export interface NetworkState {
  */
 export interface NetworkArgs {
     readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly ipv4Range?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;

@@ -66,7 +66,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string | undefined>;
+    public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string | undefined>;
     /**
      * The Service Account email used to create the job.

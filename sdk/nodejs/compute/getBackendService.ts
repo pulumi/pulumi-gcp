@@ -50,11 +50,12 @@ export interface GetBackendServiceResult {
      * The list of backends that serve this Backend Service.
      */
     readonly backends: { balancingMode: string, capacityScaler: number, description: string, group: string, maxConnections: number, maxConnectionsPerInstance: number, maxRate: number, maxRatePerInstance: number, maxUtilization: number }[];
-    readonly cdnPolicies: { cacheKeyPolicies: { includeHost: boolean, includeProtocol: boolean, includeQueryString: boolean, queryStringBlacklists: string[], queryStringWhitelists: string[] }[] }[];
+    readonly cdnPolicies: { cacheKeyPolicies: { includeHost: boolean, includeProtocol: boolean, includeQueryString: boolean, queryStringBlacklists: string[], queryStringWhitelists: string[] }[], signedUrlCacheMaxAgeSec: number }[];
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */
     readonly connectionDrainingTimeoutSec: number;
+    readonly creationTimestamp: string;
     readonly customRequestHeaders: string[];
     /**
      * Textual description for the Backend Service.
@@ -73,6 +74,7 @@ export interface GetBackendServiceResult {
      */
     readonly healthChecks: string[];
     readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string }[];
+    readonly loadBalancingScheme: string;
     readonly name: string;
     /**
      * The name of a service that has been added to an instance group in this backend.
@@ -83,7 +85,6 @@ export interface GetBackendServiceResult {
      * The protocol for incoming requests.
      */
     readonly protocol: string;
-    readonly region: string;
     readonly securityPolicy: string;
     /**
      * The URI of the Backend Service.

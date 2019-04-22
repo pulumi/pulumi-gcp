@@ -19,12 +19,10 @@ class AccessLevel(pulumi.CustomResource):
         An AccessLevel is a label that can be applied to requests to GCP services,
         along with a list of requirements necessary for the label to be applied.
         
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
         To get more information about AccessLevel, see:
         
-        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies.accessLevels)
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
         * How-to Guides
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
         
