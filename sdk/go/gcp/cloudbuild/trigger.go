@@ -106,8 +106,8 @@ func (r *Trigger) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *Trigger) Disabled() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["disabled"])
+func (r *Trigger) Disabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 func (r *Trigger) Filename() *pulumi.StringOutput {

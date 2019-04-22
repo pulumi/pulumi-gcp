@@ -1,5 +1,7 @@
 ## 0.18.4 (Unreleased)
 
+- Update to v2.5.0 of the Google Beta Terraform Provider.
+
 ## 0.18.3 (Released April 5, 2019)
 
 - Fixed issue where picking certain names for `cloudfunction.Function`s or `storage.Bucket`s would

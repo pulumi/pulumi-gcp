@@ -15,14 +15,12 @@ import * as utilities from "../utilities";
  * Perimeter Bridges can contain only GCP projects as members, a single GCP
  * project may belong to multiple Service Perimeter Bridges.
  * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
  * 
  * To get more information about ServicePerimeter, see:
  * 
- * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies.servicePerimeters)
+ * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
- *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  * 
  * ## Example Usage - Access Context Manager Service Perimeter Basic
  * 
@@ -36,14 +34,14 @@ import * as utilities from "../utilities";
  *         conditions: [{
  *             devicePolicy: {
  *                 osConstraints: [{
- *                     osType: "IOS",
+ *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
  *                 requireScreenLock: false,
  *             },
  *         }],
  *     },
  *     parent: google_access_context_manager_access_policy_test_access.name.apply(name => `accessPolicies/${name}`),
- *     title: "ios_no_lock",
+ *     title: "chromeos_no_lock",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: google_access_context_manager_access_policy_test_access.name.apply(name => `accessPolicies/${name}`),
  *     status: {
- *         restrictedServices: ["*"],
+ *         restrictedServices: ["storage.googleapis.com"],
  *     },
  *     title: "restrict_all",
  * });
@@ -76,7 +74,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
     public readonly name: pulumi.Output<string>;
     public readonly parent: pulumi.Output<string>;
     public readonly perimeterType: pulumi.Output<string | undefined>;
-    public readonly status: pulumi.Output<{ accessLevels?: string[], resources?: string[], restrictedServices?: string[], unrestrictedServices?: string[] } | undefined>;
+    public readonly status: pulumi.Output<{ accessLevels?: string[], resources?: string[], restrictedServices?: string[] } | undefined>;
     public readonly title: pulumi.Output<string>;
     public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -130,7 +128,7 @@ export interface ServicePerimeterState {
     readonly name?: pulumi.Input<string>;
     readonly parent?: pulumi.Input<string>;
     readonly perimeterType?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]>, unrestrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
     readonly title?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
 }
@@ -143,6 +141,6 @@ export interface ServicePerimeterArgs {
     readonly name?: pulumi.Input<string>;
     readonly parent: pulumi.Input<string>;
     readonly perimeterType?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]>, unrestrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
     readonly title: pulumi.Input<string>;
 }

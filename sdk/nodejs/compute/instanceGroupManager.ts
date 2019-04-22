@@ -45,31 +45,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * 
- * ## Example Usage with multiple versions (`google-beta` provider)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
- *     baseInstanceName: "app",
- *     targetSize: 5,
- *     updateStrategy: "NONE",
- *     versions: [
- *         {
- *             instanceTemplate: google_compute_instance_template_appserver.selfLink,
- *         },
- *         {
- *             instanceTemplate: google_compute_instance_template_appserver_canary.selfLink,
- *             targetSize: {
- *                 fixed: 1,
- *             },
- *         },
- *     ],
- *     zone: "us-central1-a",
- * });
- * ```
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**

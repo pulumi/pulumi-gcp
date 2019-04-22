@@ -39,6 +39,7 @@ export class Policy extends pulumi.CustomResource {
     public readonly alternativeNameServerConfig: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly enableInboundForwarding: pulumi.Output<boolean | undefined>;
+    public readonly enableLogging: pulumi.Output<boolean | undefined>;
     public readonly name: pulumi.Output<string>;
     public readonly networks: pulumi.Output<{ networkUrl?: string }[] | undefined>;
     /**
@@ -62,6 +63,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
+            inputs["enableLogging"] = state ? state.enableLogging : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networks"] = state ? state.networks : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -70,6 +72,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
+            inputs["enableLogging"] = args ? args.enableLogging : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -85,6 +88,7 @@ export interface PolicyState {
     readonly alternativeNameServerConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly description?: pulumi.Input<string>;
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
+    readonly enableLogging?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
     readonly networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]>;
     /**
@@ -101,6 +105,7 @@ export interface PolicyArgs {
     readonly alternativeNameServerConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly description?: pulumi.Input<string>;
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
+    readonly enableLogging?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
     readonly networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]>;
     /**

@@ -56,6 +56,7 @@ export class BackendBucket extends pulumi.CustomResource {
     }
 
     public readonly bucketName: pulumi.Output<string>;
+    public readonly cdnPolicy: pulumi.Output<{ signedUrlCacheMaxAgeSec?: number }>;
     public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
     public readonly enableCdn: pulumi.Output<boolean | undefined>;
@@ -83,6 +84,7 @@ export class BackendBucket extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: BackendBucketState = argsOrState as BackendBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
+            inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableCdn"] = state ? state.enableCdn : undefined;
@@ -95,6 +97,7 @@ export class BackendBucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucketName'");
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
+            inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -111,6 +114,7 @@ export class BackendBucket extends pulumi.CustomResource {
  */
 export interface BackendBucketState {
     readonly bucketName?: pulumi.Input<string>;
+    readonly cdnPolicy?: pulumi.Input<{ signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
@@ -131,6 +135,7 @@ export interface BackendBucketState {
  */
 export interface BackendBucketArgs {
     readonly bucketName: pulumi.Input<string>;
+    readonly cdnPolicy?: pulumi.Input<{ signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;

@@ -41,6 +41,7 @@ func NewManagedZone(ctx *pulumi.Context,
 		inputs["forwardingConfig"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["peeringConfig"] = nil
 		inputs["privateVisibilityConfig"] = nil
 		inputs["project"] = nil
 		inputs["visibility"] = nil
@@ -50,6 +51,7 @@ func NewManagedZone(ctx *pulumi.Context,
 		inputs["forwardingConfig"] = args.ForwardingConfig
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["peeringConfig"] = args.PeeringConfig
 		inputs["privateVisibilityConfig"] = args.PrivateVisibilityConfig
 		inputs["project"] = args.Project
 		inputs["visibility"] = args.Visibility
@@ -74,6 +76,7 @@ func GetManagedZone(ctx *pulumi.Context,
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["nameServers"] = state.NameServers
+		inputs["peeringConfig"] = state.PeeringConfig
 		inputs["privateVisibilityConfig"] = state.PrivateVisibilityConfig
 		inputs["project"] = state.Project
 		inputs["visibility"] = state.Visibility
@@ -119,6 +122,10 @@ func (r *ManagedZone) NameServers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nameServers"])
 }
 
+func (r *ManagedZone) PeeringConfig() *pulumi.Output {
+	return r.s.State["peeringConfig"]
+}
+
 func (r *ManagedZone) PrivateVisibilityConfig() *pulumi.Output {
 	return r.s.State["privateVisibilityConfig"]
 }
@@ -141,6 +148,7 @@ type ManagedZoneState struct {
 	Labels interface{}
 	Name interface{}
 	NameServers interface{}
+	PeeringConfig interface{}
 	PrivateVisibilityConfig interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -155,6 +163,7 @@ type ManagedZoneArgs struct {
 	ForwardingConfig interface{}
 	Labels interface{}
 	Name interface{}
+	PeeringConfig interface{}
 	PrivateVisibilityConfig interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

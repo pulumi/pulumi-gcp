@@ -10,6 +10,7 @@ from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
     auto_create_subnetworks: pulumi.Output[bool]
+    delete_default_routes_on_create: pulumi.Output[bool]
     description: pulumi.Output[str]
     gateway_ipv4: pulumi.Output[str]
     ipv4_range: pulumi.Output[str]
@@ -24,7 +25,7 @@ class Network(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, description=None, ipv4_range=None, name=None, project=None, routing_mode=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, ipv4_range=None, name=None, project=None, routing_mode=None, __name__=None, __opts__=None):
         """
         Manages a VPC network or legacy network resource on GCP.
         
@@ -62,6 +63,8 @@ class Network(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['auto_create_subnetworks'] = auto_create_subnetworks
+
+        __props__['delete_default_routes_on_create'] = delete_default_routes_on_create
 
         __props__['description'] = description
 

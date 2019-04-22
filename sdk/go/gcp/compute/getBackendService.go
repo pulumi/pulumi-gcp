@@ -25,17 +25,18 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		Backends: outputs["backends"],
 		CdnPolicies: outputs["cdnPolicies"],
 		ConnectionDrainingTimeoutSec: outputs["connectionDrainingTimeoutSec"],
+		CreationTimestamp: outputs["creationTimestamp"],
 		CustomRequestHeaders: outputs["customRequestHeaders"],
 		Description: outputs["description"],
 		EnableCdn: outputs["enableCdn"],
 		Fingerprint: outputs["fingerprint"],
 		HealthChecks: outputs["healthChecks"],
 		Iaps: outputs["iaps"],
+		LoadBalancingScheme: outputs["loadBalancingScheme"],
 		Name: outputs["name"],
 		PortName: outputs["portName"],
 		Project: outputs["project"],
 		Protocol: outputs["protocol"],
-		Region: outputs["region"],
 		SecurityPolicy: outputs["securityPolicy"],
 		SelfLink: outputs["selfLink"],
 		SessionAffinity: outputs["sessionAffinity"],
@@ -60,6 +61,7 @@ type GetBackendServiceResult struct {
 	CdnPolicies interface{}
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
 	ConnectionDrainingTimeoutSec interface{}
+	CreationTimestamp interface{}
 	CustomRequestHeaders interface{}
 	// Textual description for the Backend Service.
 	Description interface{}
@@ -70,13 +72,13 @@ type GetBackendServiceResult struct {
 	// The list of HTTP/HTTPS health checks used by the Backend Service.
 	HealthChecks interface{}
 	Iaps interface{}
+	LoadBalancingScheme interface{}
 	Name interface{}
 	// The name of a service that has been added to an instance group in this backend.
 	PortName interface{}
 	Project interface{}
 	// The protocol for incoming requests.
 	Protocol interface{}
-	Region interface{}
 	SecurityPolicy interface{}
 	// The URI of the Backend Service.
 	SelfLink interface{}

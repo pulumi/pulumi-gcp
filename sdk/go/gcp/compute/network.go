@@ -31,6 +31,7 @@ func NewNetwork(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["autoCreateSubnetworks"] = nil
+		inputs["deleteDefaultRoutesOnCreate"] = nil
 		inputs["description"] = nil
 		inputs["ipv4Range"] = nil
 		inputs["name"] = nil
@@ -38,6 +39,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["routingMode"] = nil
 	} else {
 		inputs["autoCreateSubnetworks"] = args.AutoCreateSubnetworks
+		inputs["deleteDefaultRoutesOnCreate"] = args.DeleteDefaultRoutesOnCreate
 		inputs["description"] = args.Description
 		inputs["ipv4Range"] = args.Ipv4Range
 		inputs["name"] = args.Name
@@ -60,6 +62,7 @@ func GetNetwork(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["autoCreateSubnetworks"] = state.AutoCreateSubnetworks
+		inputs["deleteDefaultRoutesOnCreate"] = state.DeleteDefaultRoutesOnCreate
 		inputs["description"] = state.Description
 		inputs["gatewayIpv4"] = state.GatewayIpv4
 		inputs["ipv4Range"] = state.Ipv4Range
@@ -87,6 +90,10 @@ func (r *Network) ID() *pulumi.IDOutput {
 
 func (r *Network) AutoCreateSubnetworks() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateSubnetworks"])
+}
+
+func (r *Network) DeleteDefaultRoutesOnCreate() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["deleteDefaultRoutesOnCreate"])
 }
 
 func (r *Network) Description() *pulumi.StringOutput {
@@ -123,6 +130,7 @@ func (r *Network) SelfLink() *pulumi.StringOutput {
 // Input properties used for looking up and filtering Network resources.
 type NetworkState struct {
 	AutoCreateSubnetworks interface{}
+	DeleteDefaultRoutesOnCreate interface{}
 	Description interface{}
 	GatewayIpv4 interface{}
 	Ipv4Range interface{}
@@ -138,6 +146,7 @@ type NetworkState struct {
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
 	AutoCreateSubnetworks interface{}
+	DeleteDefaultRoutesOnCreate interface{}
 	Description interface{}
 	Ipv4Range interface{}
 	Name interface{}

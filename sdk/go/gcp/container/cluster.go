@@ -184,9 +184,7 @@ func (r *Cluster) AddonsConfig() *pulumi.Output {
 }
 
 // )
-// Configuration for cluster autoscaling (also called autoprovisioning), as described in
-// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-// Structure is documented below.
+// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
 func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
 	return r.s.State["clusterAutoscaling"]
 }
@@ -197,6 +195,11 @@ func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
 }
 
+// ) The default maximum number of pods per node in this cluster.
+// Note that this does not work on node pools which are "route-based" - that is, node
+// pools belonging to clusters that do not have IP Aliasing enabled.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+// for more information.
 func (r *Cluster) DefaultMaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["defaultMaxPodsPerNode"])
 }
@@ -255,7 +258,8 @@ func (r *Cluster) InstanceGroupUrls() *pulumi.ArrayOutput {
 
 // Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 // This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-// Structure is documented below.
+// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+// in order to support explicit removal with `ip_allocation_policy = []`.
 func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
 	return r.s.State["ipAllocationPolicy"]
 }
@@ -459,13 +463,16 @@ type ClusterState struct {
 	// Structure is documented below.
 	AddonsConfig interface{}
 	// )
-	// Configuration for cluster autoscaling (also called autoprovisioning), as described in
-	// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-	// Structure is documented below.
+	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	// ) The default maximum number of pods per node in this cluster.
+	// Note that this does not work on node pools which are "route-based" - that is, node
+	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// for more information.
 	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
 	Description interface{}
@@ -497,7 +504,8 @@ type ClusterState struct {
 	InstanceGroupUrls interface{}
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-	// Structure is documented below.
+	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// in order to support explicit removal with `ip_allocation_policy = []`.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
@@ -628,13 +636,16 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	AddonsConfig interface{}
 	// )
-	// Configuration for cluster autoscaling (also called autoprovisioning), as described in
-	// [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-	// Structure is documented below.
+	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	// ) The default maximum number of pods per node in this cluster.
+	// Note that this does not work on node pools which are "route-based" - that is, node
+	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// for more information.
 	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
 	Description interface{}
@@ -661,7 +672,8 @@ type ClusterArgs struct {
 	InitialNodeCount interface{}
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-	// Structure is documented below.
+	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// in order to support explicit removal with `ip_allocation_policy = []`.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a

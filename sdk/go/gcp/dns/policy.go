@@ -36,6 +36,7 @@ func NewPolicy(ctx *pulumi.Context,
 		inputs["alternativeNameServerConfig"] = nil
 		inputs["description"] = nil
 		inputs["enableInboundForwarding"] = nil
+		inputs["enableLogging"] = nil
 		inputs["name"] = nil
 		inputs["networks"] = nil
 		inputs["project"] = nil
@@ -43,6 +44,7 @@ func NewPolicy(ctx *pulumi.Context,
 		inputs["alternativeNameServerConfig"] = args.AlternativeNameServerConfig
 		inputs["description"] = args.Description
 		inputs["enableInboundForwarding"] = args.EnableInboundForwarding
+		inputs["enableLogging"] = args.EnableLogging
 		inputs["name"] = args.Name
 		inputs["networks"] = args.Networks
 		inputs["project"] = args.Project
@@ -63,6 +65,7 @@ func GetPolicy(ctx *pulumi.Context,
 		inputs["alternativeNameServerConfig"] = state.AlternativeNameServerConfig
 		inputs["description"] = state.Description
 		inputs["enableInboundForwarding"] = state.EnableInboundForwarding
+		inputs["enableLogging"] = state.EnableLogging
 		inputs["name"] = state.Name
 		inputs["networks"] = state.Networks
 		inputs["project"] = state.Project
@@ -96,6 +99,10 @@ func (r *Policy) EnableInboundForwarding() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableInboundForwarding"])
 }
 
+func (r *Policy) EnableLogging() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableLogging"])
+}
+
 func (r *Policy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -115,6 +122,7 @@ type PolicyState struct {
 	AlternativeNameServerConfig interface{}
 	Description interface{}
 	EnableInboundForwarding interface{}
+	EnableLogging interface{}
 	Name interface{}
 	Networks interface{}
 	// The ID of the project in which the resource belongs.
@@ -127,6 +135,7 @@ type PolicyArgs struct {
 	AlternativeNameServerConfig interface{}
 	Description interface{}
 	EnableInboundForwarding interface{}
+	EnableLogging interface{}
 	Name interface{}
 	Networks interface{}
 	// The ID of the project in which the resource belongs.

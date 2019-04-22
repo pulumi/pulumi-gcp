@@ -12,7 +12,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, name=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, connection_draining_timeout_sec=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, float):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a float")
         __self__.affinity_cookie_ttl_sec = affinity_cookie_ttl_sec
@@ -31,6 +31,9 @@ class GetBackendServiceResult:
         """
         Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         """
+        if creation_timestamp and not isinstance(creation_timestamp, str):
+            raise TypeError("Expected argument 'creation_timestamp' to be a str")
+        __self__.creation_timestamp = creation_timestamp
         if custom_request_headers and not isinstance(custom_request_headers, list):
             raise TypeError("Expected argument 'custom_request_headers' to be a list")
         __self__.custom_request_headers = custom_request_headers
@@ -61,6 +64,9 @@ class GetBackendServiceResult:
         if iaps and not isinstance(iaps, list):
             raise TypeError("Expected argument 'iaps' to be a list")
         __self__.iaps = iaps
+        if load_balancing_scheme and not isinstance(load_balancing_scheme, str):
+            raise TypeError("Expected argument 'load_balancing_scheme' to be a str")
+        __self__.load_balancing_scheme = load_balancing_scheme
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -79,9 +85,6 @@ class GetBackendServiceResult:
         """
         The protocol for incoming requests.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
         if security_policy and not isinstance(security_policy, str):
             raise TypeError("Expected argument 'security_policy' to be a str")
         __self__.security_policy = security_policy
@@ -127,17 +130,18 @@ async def get_backend_service(name=None,project=None,opts=None):
         backends=__ret__.get('backends'),
         cdn_policies=__ret__.get('cdnPolicies'),
         connection_draining_timeout_sec=__ret__.get('connectionDrainingTimeoutSec'),
+        creation_timestamp=__ret__.get('creationTimestamp'),
         custom_request_headers=__ret__.get('customRequestHeaders'),
         description=__ret__.get('description'),
         enable_cdn=__ret__.get('enableCdn'),
         fingerprint=__ret__.get('fingerprint'),
         health_checks=__ret__.get('healthChecks'),
         iaps=__ret__.get('iaps'),
+        load_balancing_scheme=__ret__.get('loadBalancingScheme'),
         name=__ret__.get('name'),
         port_name=__ret__.get('portName'),
         project=__ret__.get('project'),
         protocol=__ret__.get('protocol'),
-        region=__ret__.get('region'),
         security_policy=__ret__.get('securityPolicy'),
         self_link=__ret__.get('selfLink'),
         session_affinity=__ret__.get('sessionAffinity'),
