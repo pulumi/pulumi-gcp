@@ -1,4 +1,8 @@
-## 0.18.4 (Unreleased)
+## 0.18.5 (Unreleased)
+
+## 0.18.4 (Released April 24, 2019)
+
+- Documentation updates.
 
 ## 0.18.3 (Released April 5, 2019)
 
