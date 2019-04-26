@@ -482,8 +482,6 @@ github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190326192
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190326192708-8ee58e6dda3c/go.mod h1:CpzhSIbfXdv2LdOTGFdPeBUjzE8g72jLGBPCJBraaVo=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190418162215-5f98464803d1 h1:76rNU5wpS6wUpL09S3z1KDdnQEZKRvwL9+qhTTawVt8=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190418162215-5f98464803d1/go.mod h1:NOgI6aSsPpIzrPSQopCGvLu8vEU16bTwcsHaJ/Ah1rU=
-github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190422203630-616e8a9b048b h1:r1hEsOLBkrRVIn3QknOzR1I4zlr0wmUSN0z/vejI5QE=
-github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190422203630-616e8a9b048b/go.mod h1:NOgI6aSsPpIzrPSQopCGvLu8vEU16bTwcsHaJ/Ah1rU=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0 h1:5geKRJJExxlrSNHSTHIZJnYKgbdBPAXC970fRYbcx9I=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0/go.mod h1:BrATop584KxlljJ8f2L2GNvs8Ys0SKEvhEuREGtKg4M=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
