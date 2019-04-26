@@ -29,7 +29,6 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		BootDisks: outputs["bootDisks"],
 		CanIpForward: outputs["canIpForward"],
 		CpuPlatform: outputs["cpuPlatform"],
-		CreateTimeout: outputs["createTimeout"],
 		DeletionProtection: outputs["deletionProtection"],
 		Description: outputs["description"],
 		Disks: outputs["disks"],
@@ -84,7 +83,6 @@ type GetInstanceResult struct {
 	CanIpForward interface{}
 	// The CPU platform used by this instance.
 	CpuPlatform interface{}
-	CreateTimeout interface{}
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection interface{}
 	// A brief description of the resource.

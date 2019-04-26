@@ -10,6 +10,7 @@ from .. import utilities, tables
 
 class BackendBucket(pulumi.CustomResource):
     bucket_name: pulumi.Output[str]
+    cdn_policy: pulumi.Output[dict]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     enable_cdn: pulumi.Output[bool]
@@ -23,7 +24,7 @@ class BackendBucket(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, bucket_name=None, description=None, enable_cdn=None, name=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket_name=None, cdn_policy=None, description=None, enable_cdn=None, name=None, project=None, __name__=None, __opts__=None):
         """
         Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
         load balancing.
@@ -63,6 +64,8 @@ class BackendBucket(pulumi.CustomResource):
         if bucket_name is None:
             raise TypeError("Missing required property 'bucket_name'")
         __props__['bucket_name'] = bucket_name
+
+        __props__['cdn_policy'] = cdn_policy
 
         __props__['description'] = description
 

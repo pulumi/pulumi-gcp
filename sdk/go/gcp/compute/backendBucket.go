@@ -35,12 +35,14 @@ func NewBackendBucket(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["bucketName"] = nil
+		inputs["cdnPolicy"] = nil
 		inputs["description"] = nil
 		inputs["enableCdn"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["bucketName"] = args.BucketName
+		inputs["cdnPolicy"] = args.CdnPolicy
 		inputs["description"] = args.Description
 		inputs["enableCdn"] = args.EnableCdn
 		inputs["name"] = args.Name
@@ -62,6 +64,7 @@ func GetBackendBucket(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["bucketName"] = state.BucketName
+		inputs["cdnPolicy"] = state.CdnPolicy
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["enableCdn"] = state.EnableCdn
@@ -88,6 +91,10 @@ func (r *BackendBucket) ID() *pulumi.IDOutput {
 
 func (r *BackendBucket) BucketName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucketName"])
+}
+
+func (r *BackendBucket) CdnPolicy() *pulumi.Output {
+	return r.s.State["cdnPolicy"]
 }
 
 func (r *BackendBucket) CreationTimestamp() *pulumi.StringOutput {
@@ -120,6 +127,7 @@ func (r *BackendBucket) SelfLink() *pulumi.StringOutput {
 // Input properties used for looking up and filtering BackendBucket resources.
 type BackendBucketState struct {
 	BucketName interface{}
+	CdnPolicy interface{}
 	CreationTimestamp interface{}
 	Description interface{}
 	EnableCdn interface{}
@@ -134,6 +142,7 @@ type BackendBucketState struct {
 // The set of arguments for constructing a BackendBucket resource.
 type BackendBucketArgs struct {
 	BucketName interface{}
+	CdnPolicy interface{}
 	Description interface{}
 	EnableCdn interface{}
 	Name interface{}

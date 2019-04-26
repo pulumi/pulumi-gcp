@@ -9,14 +9,14 @@ import (
 )
 
 // Represents an Autoscaler resource.
-// 
+//
 // Autoscalers allow you to automatically scale virtual machine instances in
 // managed instance groups according to an autoscaling policy that you
 // define.
-// 
-// 
+//
+//
 // To get more information about Autoscaler, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
 // * How-to Guides
 //     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
@@ -127,21 +127,21 @@ func (r *Autoscalar) Zone() *pulumi.StringOutput {
 type AutoscalarState struct {
 	AutoscalingPolicy interface{}
 	CreationTimestamp interface{}
-	Description interface{}
-	Name interface{}
-	Project interface{}
+	Description       interface{}
+	Name              interface{}
+	Project           interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	Target interface{}
-	Zone interface{}
+	Target   interface{}
+	Zone     interface{}
 }
 
 // The set of arguments for constructing a Autoscalar resource.
 type AutoscalarArgs struct {
 	AutoscalingPolicy interface{}
-	Description interface{}
-	Name interface{}
-	Project interface{}
-	Target interface{}
-	Zone interface{}
+	Description       interface{}
+	Name              interface{}
+	Project           interface{}
+	Target            interface{}
+	Zone              interface{}
 }

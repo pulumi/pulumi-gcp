@@ -80,7 +80,6 @@ export interface GetInstanceResult {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform: string;
-    readonly createTimeout: number;
     /**
      * Whether deletion protection is enabled on this instance.
      */

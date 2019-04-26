@@ -70,7 +70,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    public readonly lifecycleRules: pulumi.Output<{ action: { storageClass?: string, type: string }, condition: { age?: number, createdBefore?: string, isLive?: boolean, matchesStorageClasses?: string[], numNewerVersions?: number } }[] | undefined>;
+    public readonly lifecycleRules: pulumi.Output<{ action: { storageClass?: string, type: string }, condition: { age?: number, createdBefore?: string, isLive: boolean, matchesStorageClasses?: string[], numNewerVersions?: number, withState: string } }[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
@@ -187,7 +187,7 @@ export interface BucketState {
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }>[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number>, withState?: pulumi.Input<string> }> }>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
@@ -256,7 +256,7 @@ export interface BucketArgs {
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number> }> }>[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<{ storageClass?: pulumi.Input<string>, type: pulumi.Input<string> }>, condition: pulumi.Input<{ age?: pulumi.Input<number>, createdBefore?: pulumi.Input<string>, isLive?: pulumi.Input<boolean>, matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>, numNewerVersions?: pulumi.Input<number>, withState?: pulumi.Input<string> }> }>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */

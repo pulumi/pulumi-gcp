@@ -32,7 +32,6 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		Name: outputs["name"],
 		Project: outputs["project"],
 		Region: outputs["region"],
-		RetryOnFailure: outputs["retryOnFailure"],
 		Runtime: outputs["runtime"],
 		ServiceAccountEmail: outputs["serviceAccountEmail"],
 		SourceArchiveBucket: outputs["sourceArchiveBucket"],
@@ -77,7 +76,6 @@ type GetFunctionResult struct {
 	Name interface{}
 	Project interface{}
 	Region interface{}
-	RetryOnFailure interface{}
 	// The runtime in which the function is running.
 	Runtime interface{}
 	ServiceAccountEmail interface{}

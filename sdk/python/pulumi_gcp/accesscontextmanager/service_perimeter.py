@@ -29,14 +29,12 @@ class ServicePerimeter(pulumi.CustomResource):
         Perimeter Bridges can contain only GCP projects as members, a single GCP
         project may belong to multiple Service Perimeter Bridges.
         
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
         To get more information about ServicePerimeter, see:
         
-        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies.servicePerimeters)
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
-            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+            * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

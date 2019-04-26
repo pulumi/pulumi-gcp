@@ -22,12 +22,10 @@ class AccessPolicy(pulumi.CustomResource):
         access policy is globally visible within an organization, and the
         restrictions it specifies apply to all projects within an organization.
         
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
         To get more information about AccessPolicy, see:
         
-        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1beta/accessPolicies)
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
         * How-to Guides
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
         
