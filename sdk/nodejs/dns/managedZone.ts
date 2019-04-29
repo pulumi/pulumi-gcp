@@ -51,16 +51,6 @@ import * as utilities from "../utilities";
  * const private_zone = new gcp.dns.ManagedZone("private-zone", {
  *     description: "Example private DNS zone",
  *     dnsName: "private.example.com.",
- *     forwardingConfig: {
- *         targetNameServers: [
- *             {
- *                 ipv4Address: "172.16.1.10",
- *             },
- *             {
- *                 ipv4Address: "172.16.1.20",
- *             },
- *         ],
- *     },
  *     labels: {
  *         foo: "bar",
  *     },
@@ -97,6 +87,7 @@ export class ManagedZone extends pulumi.CustomResource {
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name: pulumi.Output<string>;
     public /*out*/ readonly nameServers: pulumi.Output<string[]>;
+    public readonly peeringConfig: pulumi.Output<{ targetNetwork?: { networkUrl?: string } } | undefined>;
     public readonly privateVisibilityConfig: pulumi.Output<{ networks?: { networkUrl?: string }[] } | undefined>;
     /**
      * The ID of the project in which the resource belongs.
@@ -123,6 +114,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nameServers"] = state ? state.nameServers : undefined;
+            inputs["peeringConfig"] = state ? state.peeringConfig : undefined;
             inputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["visibility"] = state ? state.visibility : undefined;
@@ -136,6 +128,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["peeringConfig"] = args ? args.peeringConfig : undefined;
             inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
@@ -155,6 +148,7 @@ export interface ManagedZoneState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly peeringConfig?: pulumi.Input<{ targetNetwork?: pulumi.Input<{ networkUrl?: pulumi.Input<string> }> }>;
     readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
     /**
      * The ID of the project in which the resource belongs.
@@ -173,6 +167,7 @@ export interface ManagedZoneArgs {
     readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
+    readonly peeringConfig?: pulumi.Input<{ targetNetwork?: pulumi.Input<{ networkUrl?: pulumi.Input<string> }> }>;
     readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
     /**
      * The ID of the project in which the resource belongs.

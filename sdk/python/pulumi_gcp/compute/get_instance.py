@@ -12,7 +12,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, create_timeout=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, tags=None, tags_fingerprint=None, zone=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, tags=None, tags_fingerprint=None, zone=None, id=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -40,9 +40,6 @@ class GetInstanceResult:
         """
         The CPU platform used by this instance.
         """
-        if create_timeout and not isinstance(create_timeout, float):
-            raise TypeError("Expected argument 'create_timeout' to be a float")
-        __self__.create_timeout = create_timeout
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         __self__.deletion_protection = deletion_protection
@@ -191,7 +188,6 @@ async def get_instance(name=None,project=None,self_link=None,zone=None,opts=None
         boot_disks=__ret__.get('bootDisks'),
         can_ip_forward=__ret__.get('canIpForward'),
         cpu_platform=__ret__.get('cpuPlatform'),
-        create_timeout=__ret__.get('createTimeout'),
         deletion_protection=__ret__.get('deletionProtection'),
         description=__ret__.get('description'),
         disks=__ret__.get('disks'),

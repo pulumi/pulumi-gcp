@@ -83,7 +83,6 @@ export interface GetFunctionResult {
     readonly name: string;
     readonly project?: string;
     readonly region?: string;
-    readonly retryOnFailure: boolean;
     /**
      * The runtime in which the function is running.
      */

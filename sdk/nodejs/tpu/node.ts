@@ -21,10 +21,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const available = pulumi.output(gcp.TpuTensorflowVersions({}));
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
  *     cidrBlock: "10.2.0.0/29",
- *     tensorflowVersion: "1.13",
+ *     tensorflowVersion: available.apply(available => available.versions[0]),
  *     zone: "us-central1-b",
  * });
  * ```
@@ -35,6 +36,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const available = pulumi.output(gcp.TpuTensorflowVersions({}));
  * const tpuNetwork = new gcp.compute.Network("tpu_network", {
  *     autoCreateSubnetworks: false,
  * });
@@ -49,7 +51,7 @@ import * as utilities from "../utilities";
  *     schedulingConfig: {
  *         preemptible: true,
  *     },
- *     tensorflowVersion: "1.13",
+ *     tensorflowVersion: available.apply(available => available.versions[0]),
  *     zone: "us-central1-b",
  * });
  * ```

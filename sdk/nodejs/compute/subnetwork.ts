@@ -85,7 +85,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
-    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[]>;
+    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[] | undefined>;
     /**
      * The URI of the created resource.
      */

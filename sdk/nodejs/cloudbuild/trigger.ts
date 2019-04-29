@@ -47,10 +47,10 @@ export class Trigger extends pulumi.CustomResource {
         return new Trigger(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly build: pulumi.Output<{ images?: string[], steps?: { args?: string[], name?: string }[], tags?: string[] } | undefined>;
+    public readonly build: pulumi.Output<{ images?: string[], steps?: { args?: string[], dir?: string, entrypoint?: string, envs?: string[], id?: string, name?: string, secretEnvs?: string[], timeout?: string, timing?: string, volumes?: { name?: string, path?: string }[], waitFors?: string[] }[], tags?: string[] } | undefined>;
     public /*out*/ readonly createTime: pulumi.Output<string>;
     public readonly description: pulumi.Output<string | undefined>;
-    public readonly disabled: pulumi.Output<string | undefined>;
+    public readonly disabled: pulumi.Output<boolean | undefined>;
     public readonly filename: pulumi.Output<string | undefined>;
     public readonly ignoredFiles: pulumi.Output<string[] | undefined>;
     public readonly includedFiles: pulumi.Output<string[] | undefined>;
@@ -108,10 +108,10 @@ export class Trigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Trigger resources.
  */
 export interface TriggerState {
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, name?: pulumi.Input<string> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, dir?: pulumi.Input<string>, entrypoint?: pulumi.Input<string>, envs?: pulumi.Input<pulumi.Input<string>[]>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, secretEnvs?: pulumi.Input<pulumi.Input<string>[]>, timeout?: pulumi.Input<string>, timing?: pulumi.Input<string>, volumes?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, path?: pulumi.Input<string> }>[]>, waitFors?: pulumi.Input<pulumi.Input<string>[]> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
     readonly createTime?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    readonly disabled?: pulumi.Input<string>;
+    readonly disabled?: pulumi.Input<boolean>;
     readonly filename?: pulumi.Input<string>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -129,9 +129,9 @@ export interface TriggerState {
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, name?: pulumi.Input<string> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, dir?: pulumi.Input<string>, entrypoint?: pulumi.Input<string>, envs?: pulumi.Input<pulumi.Input<string>[]>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, secretEnvs?: pulumi.Input<pulumi.Input<string>[]>, timeout?: pulumi.Input<string>, timing?: pulumi.Input<string>, volumes?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, path?: pulumi.Input<string> }>[]>, waitFors?: pulumi.Input<pulumi.Input<string>[]> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
     readonly description?: pulumi.Input<string>;
-    readonly disabled?: pulumi.Input<string>;
+    readonly disabled?: pulumi.Input<boolean>;
     readonly filename?: pulumi.Input<string>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;

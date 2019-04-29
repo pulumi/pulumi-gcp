@@ -27,9 +27,7 @@ class Cluster(pulumi.CustomResource):
     cluster_autoscaling: pulumi.Output[dict]
     """
     )
-    Configuration for cluster autoscaling (also called autoprovisioning), as described in
-    [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-    Structure is documented below.
+    Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
     """
     cluster_ipv4_cidr: pulumi.Output[str]
     """
@@ -37,6 +35,13 @@ class Cluster(pulumi.CustomResource):
     this cluster. Default is an automatically assigned CIDR.
     """
     default_max_pods_per_node: pulumi.Output[float]
+    """
+    ) The default maximum number of pods per node in this cluster.
+    Note that this does not work on node pools which are "route-based" - that is, node
+    pools belonging to clusters that do not have IP Aliasing enabled.
+    See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+    for more information.
+    """
     description: pulumi.Output[str]
     """
     Description of the cluster.
@@ -85,7 +90,8 @@ class Cluster(pulumi.CustomResource):
     """
     Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
     This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-    Structure is documented below.
+    Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+    in order to support explicit removal with `ip_allocation_policy = []`.
     """
     location: pulumi.Output[str]
     """
@@ -268,11 +274,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
-               Configuration for cluster autoscaling (also called autoprovisioning), as described in
-               [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-               Structure is documented below.
+               Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
                this cluster. Default is an automatically assigned CIDR.
+        :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
+               Note that this does not work on node pools which are "route-based" - that is, node
+               pools belonging to clusters that do not have IP Aliasing enabled.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+               for more information.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
@@ -292,7 +301,8 @@ class Cluster(pulumi.CustomResource):
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
                This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-               Structure is documented below.
+               Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+               in order to support explicit removal with `ip_allocation_policy = []`.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a

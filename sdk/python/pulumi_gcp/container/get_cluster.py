@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_ipv4_cidr_block=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -70,9 +70,6 @@ class GetClusterResult:
         if master_authorized_networks_configs and not isinstance(master_authorized_networks_configs, list):
             raise TypeError("Expected argument 'master_authorized_networks_configs' to be a list")
         __self__.master_authorized_networks_configs = master_authorized_networks_configs
-        if master_ipv4_cidr_block and not isinstance(master_ipv4_cidr_block, str):
-            raise TypeError("Expected argument 'master_ipv4_cidr_block' to be a str")
-        __self__.master_ipv4_cidr_block = master_ipv4_cidr_block
         if master_version and not isinstance(master_version, str):
             raise TypeError("Expected argument 'master_version' to be a str")
         __self__.master_version = master_version
@@ -106,9 +103,6 @@ class GetClusterResult:
         if pod_security_policy_configs and not isinstance(pod_security_policy_configs, list):
             raise TypeError("Expected argument 'pod_security_policy_configs' to be a list")
         __self__.pod_security_policy_configs = pod_security_policy_configs
-        if private_cluster and not isinstance(private_cluster, bool):
-            raise TypeError("Expected argument 'private_cluster' to be a bool")
-        __self__.private_cluster = private_cluster
         if private_cluster_configs and not isinstance(private_cluster_configs, list):
             raise TypeError("Expected argument 'private_cluster_configs' to be a list")
         __self__.private_cluster_configs = private_cluster_configs
@@ -173,7 +167,6 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
         maintenance_policies=__ret__.get('maintenancePolicies'),
         master_auths=__ret__.get('masterAuths'),
         master_authorized_networks_configs=__ret__.get('masterAuthorizedNetworksConfigs'),
-        master_ipv4_cidr_block=__ret__.get('masterIpv4CidrBlock'),
         master_version=__ret__.get('masterVersion'),
         min_master_version=__ret__.get('minMasterVersion'),
         monitoring_service=__ret__.get('monitoringService'),
@@ -185,7 +178,6 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
         node_pools=__ret__.get('nodePools'),
         node_version=__ret__.get('nodeVersion'),
         pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),
-        private_cluster=__ret__.get('privateCluster'),
         private_cluster_configs=__ret__.get('privateClusterConfigs'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),

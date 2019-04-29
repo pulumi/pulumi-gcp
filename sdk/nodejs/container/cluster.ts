@@ -129,9 +129,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly addonsConfig: pulumi.Output<{ cloudrunConfig: { disabled?: boolean }, horizontalPodAutoscaling: { disabled?: boolean }, httpLoadBalancing: { disabled?: boolean }, istioConfig: { auth?: string, disabled?: boolean }, kubernetesDashboard: { disabled?: boolean }, networkPolicyConfig: { disabled?: boolean } }>;
     /**
      * )
-     * Configuration for cluster autoscaling (also called autoprovisioning), as described in
-     * [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-     * Structure is documented below.
+     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
      */
     public readonly clusterAutoscaling: pulumi.Output<{ enabled: boolean, resourceLimits?: { maximum?: number, minimum?: number, resourceType: string }[] }>;
     /**
@@ -139,6 +137,13 @@ export class Cluster extends pulumi.CustomResource {
      * this cluster. Default is an automatically assigned CIDR.
      */
     public readonly clusterIpv4Cidr: pulumi.Output<string>;
+    /**
+     * ) The default maximum number of pods per node in this cluster.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
+     */
     public readonly defaultMaxPodsPerNode: pulumi.Output<number>;
     /**
      * Description of the cluster.
@@ -187,9 +192,10 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below.
+     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+     * in order to support explicit removal with `ip_allocation_policy = []`.
      */
-    public readonly ipAllocationPolicy: pulumi.Output<{ clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork?: boolean, nodeIpv4CidrBlock?: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName?: string, useIpAliases?: boolean }>;
+    public readonly ipAllocationPolicy: pulumi.Output<{ clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork?: boolean, nodeIpv4CidrBlock: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName?: string, useIpAliases?: boolean }>;
     /**
      * The location (region or zone) in which the cluster
      * master will be created, as well as the default node location. If you specify a
@@ -220,7 +226,7 @@ export class Cluster extends pulumi.CustomResource {
      * for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
      * external access (except the cluster node IPs, which GKE automatically whitelists).
      */
-    public readonly masterAuthorizedNetworksConfig: pulumi.Output<{ cidrBlocks: { cidrBlock: string, displayName?: string }[] } | undefined>;
+    public readonly masterAuthorizedNetworksConfig: pulumi.Output<{ cidrBlocks?: { cidrBlock: string, displayName?: string }[] } | undefined>;
     /**
      * The current version of the master in the cluster. This may
      * be different than the `min_master_version` set in the config if the master
@@ -466,9 +472,7 @@ export interface ClusterState {
     readonly addonsConfig?: pulumi.Input<{ cloudrunConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, horizontalPodAutoscaling?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, httpLoadBalancing?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, istioConfig?: pulumi.Input<{ auth?: pulumi.Input<string>, disabled?: pulumi.Input<boolean> }>, kubernetesDashboard?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, networkPolicyConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }> }>;
     /**
      * )
-     * Configuration for cluster autoscaling (also called autoprovisioning), as described in
-     * [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-     * Structure is documented below.
+     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
      */
     readonly clusterAutoscaling?: pulumi.Input<{ enabled: pulumi.Input<boolean>, resourceLimits?: pulumi.Input<pulumi.Input<{ maximum?: pulumi.Input<number>, minimum?: pulumi.Input<number>, resourceType: pulumi.Input<string> }>[]> }>;
     /**
@@ -476,6 +480,13 @@ export interface ClusterState {
      * this cluster. Default is an automatically assigned CIDR.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ) The default maximum number of pods per node in this cluster.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
+     */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
      * Description of the cluster.
@@ -524,7 +535,8 @@ export interface ClusterState {
     /**
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below.
+     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+     * in order to support explicit removal with `ip_allocation_policy = []`.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
     /**
@@ -709,9 +721,7 @@ export interface ClusterArgs {
     readonly addonsConfig?: pulumi.Input<{ cloudrunConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, horizontalPodAutoscaling?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, httpLoadBalancing?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, istioConfig?: pulumi.Input<{ auth?: pulumi.Input<string>, disabled?: pulumi.Input<boolean> }>, kubernetesDashboard?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, networkPolicyConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }> }>;
     /**
      * )
-     * Configuration for cluster autoscaling (also called autoprovisioning), as described in
-     * [the docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning).
-     * Structure is documented below.
+     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
      */
     readonly clusterAutoscaling?: pulumi.Input<{ enabled: pulumi.Input<boolean>, resourceLimits?: pulumi.Input<pulumi.Input<{ maximum?: pulumi.Input<number>, minimum?: pulumi.Input<number>, resourceType: pulumi.Input<string> }>[]> }>;
     /**
@@ -719,6 +729,13 @@ export interface ClusterArgs {
      * this cluster. Default is an automatically assigned CIDR.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ) The default maximum number of pods per node in this cluster.
+     * Note that this does not work on node pools which are "route-based" - that is, node
+     * pools belonging to clusters that do not have IP Aliasing enabled.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * for more information.
+     */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
      * Description of the cluster.
@@ -758,7 +775,8 @@ export interface ClusterArgs {
     /**
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below.
+     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+     * in order to support explicit removal with `ip_allocation_policy = []`.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
     /**

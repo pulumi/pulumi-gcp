@@ -136,6 +136,8 @@ func (r *NodePool) Management() *pulumi.Output {
 // ) The maximum number of pods per node in this node pool.
 // Note that this does not work on node pools which are "route-based" - that is, node
 // pools belonging to clusters that do not have IP Aliasing enabled.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+// for more information.
 func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
@@ -210,6 +212,8 @@ type NodePoolState struct {
 	// ) The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// for more information.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
@@ -258,6 +262,8 @@ type NodePoolArgs struct {
 	// ) The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// for more information.
 	MaxPodsPerNode interface{}
 	// The name of the node pool. If left blank, Terraform will
 	// auto-generate a unique name.
