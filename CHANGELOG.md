@@ -1,10 +1,12 @@
-## 0.18.5 (Unreleased)
+## 0.18.6 (Unreleased)
+
+## 0.18.5 (Released April 29, 2019)
+
+- Update to v2.5.1 of the Google Beta Terraform Provider.
 
 ## 0.18.4 (Released April 24, 2019)
 
 - Documentation updates.
-
-- Update to v2.5.1 of the Google Beta Terraform Provider.
 
 ## 0.18.3 (Released April 5, 2019)
 
