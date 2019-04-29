@@ -8,9 +8,9 @@ require (
 	github.com/hashicorp/terraform v0.12.0-alpha4.0.20190417210818-177a7afb781f
 	github.com/pkg/errors v0.8.0
 	github.com/pulumi/pulumi v0.17.6-0.20190410045519-ef5e148a73c0
-	github.com/pulumi/pulumi-terraform v0.14.1-dev.0.20190423021607-1090d14a55ea
+	github.com/pulumi/pulumi-terraform v0.14.1-dev.0.20190429193411-faa74dde44d2
 	github.com/stretchr/testify v1.3.0
-	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190418162215-5f98464803d1
+	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190422203630-616e8a9b048b
 )
 
 replace (
