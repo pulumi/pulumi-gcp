@@ -8,14 +8,14 @@ import * as utilities from "../utilities";
  * Creates a dataset resource for Google BigQuery. For more information see
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
- *
- *
+ * 
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultDataset = new gcp.bigquery.Dataset("default", {
  *     accesses: [
  *         {
@@ -128,7 +128,7 @@ export class Dataset extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatasetArgs | DatasetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as DatasetState | undefined;
+            const state: DatasetState = argsOrState as DatasetState | undefined;
             inputs["accesses"] = state ? state.accesses : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;

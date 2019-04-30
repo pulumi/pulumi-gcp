@@ -9,16 +9,16 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/nat/docs/overview)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/beta/routers).
- *
+ * 
  * ## Example Usage
- *
+ * 
  * A simple NAT configuration: enable NAT for all Subnetworks associated with
  * the Network associated with the given Router.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultNetwork = new gcp.compute.Network("default", {});
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     ipCidrRange: "10.0.0.0/16",
@@ -39,14 +39,14 @@ import * as utilities from "../utilities";
  *     sourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES",
  * });
  * ```
- *
+ * 
  * A production-like configuration: enable NAT for one Subnetwork and use a list of
  * static external IP addresses.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const address: gcp.compute.Address[] = [];
  * for (let i = 0; i < 2; i++) {
  *     address.push(new gcp.compute.Address(`address-${i}`, {
@@ -177,7 +177,7 @@ export class RouterNat extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterNatArgs | RouterNatState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RouterNatState | undefined;
+            const state: RouterNatState = argsOrState as RouterNatState | undefined;
             inputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             inputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
             inputs["name"] = state ? state.name : undefined;

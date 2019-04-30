@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * A named resource to which messages are sent by publishers.
- *
- *
+ * 
+ * 
  * To get more information about Topic, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
  * * How-to Guides
  *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
- *
+ * 
  * ## Example Usage - Pubsub Topic Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const example = new gcp.pubsub.Topic("example", {
  *     labels: {
  *         foo: "bar",
@@ -60,7 +60,7 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as TopicState | undefined;
+            const state: TopicState = argsOrState as TopicState | undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;

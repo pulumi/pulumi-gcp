@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
  * Manages a folder-level logging exclusion. For more information see
  * [the official documentation](https://cloud.google.com/logging/docs/) and
  * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
- *
+ * 
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with Terraform.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const my_folder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
@@ -79,7 +79,7 @@ export class FolderExclusion extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderExclusionArgs | FolderExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as FolderExclusionState | undefined;
+            const state: FolderExclusionState = argsOrState as FolderExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["filter"] = state ? state.filter : undefined;

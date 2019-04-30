@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
- *  For more information see
- * [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
- * and
+ *  For more information see 
+ * [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
+ * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
- *
+ * 
  * In order to enable notifications, a special Google Cloud Storage service account unique to the project
  * must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
  * account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
  * for an example of enabling notifications by granting the correct IAM permission. See
  * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const gcsAccount = pulumi.output(gcp.storage.getProjectServiceAccount({}));
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const bucket = new gcp.storage.Bucket("bucket", {});
@@ -83,7 +83,7 @@ export class Notification extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
      */
@@ -100,7 +100,7 @@ export class Notification extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NotificationArgs | NotificationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as NotificationState | undefined;
+            const state: NotificationState = argsOrState as NotificationState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["eventTypes"] = state ? state.eventTypes : undefined;
@@ -160,7 +160,7 @@ export interface NotificationState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
      */
@@ -192,7 +192,7 @@ export interface NotificationArgs {
      */
     readonly payloadFormat: pulumi.Input<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
      */

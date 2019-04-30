@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Health Checks determine whether instances are responsive and able to do work.
  * They are an important part of a comprehensive load balancing configuration,
  * as they enable monitoring instances behind load balancers.
- *
+ * 
  * Health Checks poll instances at a specified interval. Instances that
  * do not respond successfully to some number of probes in a row are marked
  * as unhealthy. No new connections are sent to unhealthy instances,
@@ -16,21 +16,21 @@ import * as utilities from "../utilities";
  * continue to poll unhealthy instances. If an instance later responds
  * successfully to some number of consecutive probes, it is marked
  * healthy again and can receive new connections.
- *
- *
+ * 
+ * 
  * To get more information about HealthCheck, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
- *
+ * 
  * ## Example Usage - Health Check Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const internal_health_check = new gcp.compute.HealthCheck("internal-health-check", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -86,7 +86,7 @@ export class HealthCheck extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: HealthCheckArgs | HealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as HealthCheckState | undefined;
+            const state: HealthCheckState = argsOrState as HealthCheckState | undefined;
             inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

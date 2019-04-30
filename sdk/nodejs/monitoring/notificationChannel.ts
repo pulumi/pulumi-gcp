@@ -9,21 +9,21 @@ import * as utilities from "../utilities";
  * when a policy violation is detected. Examples of channels include email, SMS,
  * and third-party messaging applications. Fields containing sensitive information
  * like authentication tokens or contact info are only partially populated on retrieval.
- *
- *
+ * 
+ * 
  * To get more information about NotificationChannel, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/api/v3/)
- *
+ * 
  * ## Example Usage - Notification Channel Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const basic = new gcp.monitoring.NotificationChannel("basic", {
  *     displayName: "Test Notification Channel",
  *     labels: {
@@ -71,7 +71,7 @@ export class NotificationChannel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NotificationChannelArgs | NotificationChannelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as NotificationChannelState | undefined;
+            const state: NotificationChannelState = argsOrState as NotificationChannelState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;

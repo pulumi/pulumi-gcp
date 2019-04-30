@@ -8,14 +8,14 @@ import * as utilities from "../utilities";
  * Creates a Google Bigtable instance. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
- *
- *
+ * 
+ * 
  * ## Example Usage - Production Instance
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const production_instance = new gcp.bigtable.Instance("production-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * 
  * ## Example Usage - Development Instance
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const development_instance = new gcp.bigtable.Instance("development-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
@@ -88,7 +88,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as InstanceState | undefined;
+            const state: InstanceState = argsOrState as InstanceState | undefined;
             inputs["clusters"] = state ? state.clusters : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;

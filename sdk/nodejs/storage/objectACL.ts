@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
  * Authoritatively manages the access control list (ACL) for an object in a Google
  * Cloud Storage (GCS) bucket. Removing a `google_storage_object_acl` sets the
  * acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
- *
+ * 
  * For more information see
- * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
- * and
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+ * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
- *
+ * 
  * > Want fine-grained control over object ACLs? Use `google_storage_object_access_control` to control individual
  * role entity pairs.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * Create an object ACL with one owner and one reader.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
  * });
@@ -84,7 +84,7 @@ export class ObjectACL extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ObjectACLArgs | ObjectACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ObjectACLState | undefined;
+            const state: ObjectACLState = argsOrState as ObjectACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["object"] = state ? state.object : undefined;
             inputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;

@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
- *
+ * 
  * * `google_pubsub_subscription_iam_policy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
  * * `google_pubsub_subscription_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
  * * `google_pubsub_subscription_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
- *
+ * 
  * > **Note:** `google_pubsub_subscription_iam_policy` **cannot** be used in conjunction with `google_pubsub_subscription_iam_binding` and `google_pubsub_subscription_iam_member` or they will fight over what your policy should be.
- *
+ * 
  * > **Note:** `google_pubsub_subscription_iam_binding` resources **can be** used in conjunction with `google_pubsub_subscription_iam_member` resources **only if** they do not grant privilege to the same role.
- *
+ * 
  * ## google\_pubsub\_subscription\_iam\_policy
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -32,26 +32,26 @@ import * as utilities from "../utilities";
  *     subscription: "your-subscription-name",
  * });
  * ```
- *
+ * 
  * ## google\_pubsub\_subscription\_iam\_binding
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const editor = new gcp.pubsub.SubscriptionIAMBinding("editor", {
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
  *     subscription: "your-subscription-name",
  * });
  * ```
- *
+ * 
  * ## google\_pubsub\_subscription\_iam\_member
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const editor = new gcp.pubsub.SubscriptionIAMMember("editor", {
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -102,7 +102,7 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubscriptionIAMPolicyArgs | SubscriptionIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as SubscriptionIAMPolicyState | undefined;
+            const state: SubscriptionIAMPolicyState = argsOrState as SubscriptionIAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
             inputs["project"] = state ? state.project : undefined;

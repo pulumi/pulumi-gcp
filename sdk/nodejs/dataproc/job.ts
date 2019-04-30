@@ -7,15 +7,15 @@ import * as utilities from "../utilities";
 /**
  * Manages a job resource within a Dataproc cluster within GCE. For more information see
  * [the official dataproc documentation](https://cloud.google.com/dataproc/).
- *
+ * 
  * !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
- *
+ * 
  * ## Example usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     region: "us-central1",
  * });
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- *
+ * 
  * export const pysparkStatus = pyspark.status.apply(status => status.state);
  * // Check out current state of the jobs
  * export const sparkStatus = spark.status.apply(status => status.state);
@@ -126,7 +126,7 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as JobState | undefined;
+            const state: JobState = argsOrState as JobState | undefined;
             inputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
             inputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;

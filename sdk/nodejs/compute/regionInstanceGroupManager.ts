@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
  * of homogeneous Compute Engine virtual machine instances from a common instance
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
- *
+ * 
  * > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
- *
+ * 
  * ## Example Usage with top level instance template (`google` provider)
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const autohealing = new gcp.compute.HealthCheck("autohealing", {
  *     checkIntervalSec: 5,
  *     healthyThreshold: 2,
@@ -48,13 +48,13 @@ import * as utilities from "../utilities";
  *     targetSize: 2,
  * });
  * ```
- *
+ * 
  * ## Example Usage with multiple versions (`google-beta` provider)
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
  *     baseInstanceName: "app",
  *     region: "us-central1",
@@ -185,7 +185,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionInstanceGroupManagerArgs | RegionInstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RegionInstanceGroupManagerState | undefined;
+            const state: RegionInstanceGroupManagerState = argsOrState as RegionInstanceGroupManagerState | undefined;
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
             inputs["description"] = state ? state.description : undefined;

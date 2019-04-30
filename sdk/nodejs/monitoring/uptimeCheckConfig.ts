@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * This message configures which resources and services to monitor for availability.
- *
- *
+ * 
+ * 
  * To get more information about UptimeCheckConfig, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
- *
+ * 
  * ## Example Usage - Uptime Check Config Http
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const http = new gcp.monitoring.UptimeCheckConfig("http", {
  *     contentMatchers: [{
  *         content: "example",
@@ -41,12 +41,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Uptime Check Tcp
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const check = new gcp.monitoring.Group("check", {
  *     displayName: "uptime-check-group",
  *     filter: "resource.metadata.name=has_substring(\"foo\")",
@@ -107,7 +107,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UptimeCheckConfigArgs | UptimeCheckConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as UptimeCheckConfigState | undefined;
+            const state: UptimeCheckConfigState = argsOrState as UptimeCheckConfigState | undefined;
             inputs["contentMatchers"] = state ? state.contentMatchers : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["httpCheck"] = state ? state.httpCheck : undefined;

@@ -9,33 +9,33 @@ import * as utilities from "../utilities";
  * has a filter that is matched against monitored resources and their
  * associated metadata. If a group's filter matches an available monitored
  * resource, then that resource is a member of that group.
- *
- *
+ * 
+ * 
  * To get more information about Group, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
- *
+ * 
  * ## Example Usage - Monitoring Group Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const basic = new gcp.monitoring.Group("basic", {
  *     displayName: "New Test Group",
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
  * ## Example Usage - Monitoring Group Subgroup
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const parent = new gcp.monitoring.Group("parent", {
  *     displayName: "New Test SubGroup",
  *     filter: "resource.metadata.region=\"europe-west2\"",
@@ -82,7 +82,7 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as GroupState | undefined;
+            const state: GroupState = argsOrState as GroupState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["isCluster"] = state ? state.isCluster : undefined;

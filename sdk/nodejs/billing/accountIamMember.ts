@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of a single member for a single binding within
  * the IAM policy for an existing Google Cloud Platform Billing Account.
- *
+ * 
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `google_billing_account_iam_binding` for the __same role__ or they will fight over
  *    what your policy should be.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const binding = new gcp.billing.AccountIamMember("binding", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
  *     member: "user:alice@gmail.com",
@@ -66,7 +66,7 @@ export class AccountIamMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountIamMemberArgs | AccountIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as AccountIamMemberState | undefined;
+            const state: AccountIamMemberState = argsOrState as AccountIamMemberState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;

@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource **to configure permissions for who can edit the service account**. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
- *
+ * 
  * Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
- *
+ * 
  * * `google_service_account_iam_policy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
  * * `google_service_account_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
  * * `google_service_account_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
- *
+ * 
  * > **Note:** `google_service_account_iam_policy` **cannot** be used in conjunction with `google_service_account_iam_binding` and `google_service_account_iam_member` or they will fight over what your policy should be.
- *
+ * 
  * > **Note:** `google_service_account_iam_binding` resources **can be** used in conjunction with `google_service_account_iam_member` resources **only if** they do not grant privilege to the same role.
- *
+ * 
  * ## google\_service\_account\_iam\_policy
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -38,13 +38,13 @@ import * as utilities from "../utilities";
  *     serviceAccountId: sa.name,
  * });
  * ```
- *
+ * 
  * ## google\_service\_account\_iam\_binding
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const sa = new gcp.serviceAccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
@@ -55,13 +55,13 @@ import * as utilities from "../utilities";
  *     serviceAccountId: sa.name,
  * });
  * ```
- *
+ * 
  * ## google\_service\_account\_iam\_member
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultDefaultServiceAccount = pulumi.output(gcp.compute.getDefaultServiceAccount({}));
  * const sa = new gcp.serviceAccount.Account("sa", {
  *     accountId: "my-service-account",
@@ -118,7 +118,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as IAMPolicyState | undefined;
+            const state: IAMPolicyState = argsOrState as IAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;

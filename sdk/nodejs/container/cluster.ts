@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
  * Manages a Google Kubernetes Engine (GKE) cluster. For more information see
  * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters).
- *
+ * 
  * > **Note:** All arguments and attributes, including basic auth username and
  * passwords as well as certificate outputs will be stored in the raw state as
  * plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
+ * 
  * ## Example Usage - with a separately managed node pool (recommended)
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 1,
  *     location: "us-central1",
@@ -48,20 +48,20 @@ import * as utilities from "../utilities";
  *     },
  *     nodeCount: 1,
  * });
- *
+ * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
  * // by using certificate-based authentication.
  * export const clientCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clientCertificate);
  * export const clientKey = primary.masterAuth.apply(masterAuth => masterAuth.clientKey);
  * export const clusterCaCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clusterCaCertificate);
  * ```
- *
+ * 
  * ## Example Usage - with the default node pool
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 3,
  *     location: "us-central1-a",
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  *         update: "40m",
  *     }],
  * });
- *
+ * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
  * // by using certificate-based authentication.
  * export const clientCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clientCertificate);
@@ -367,7 +367,7 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ClusterState | undefined;
+            const state: ClusterState = argsOrState as ClusterState | undefined;
             inputs["additionalZones"] = state ? state.additionalZones : undefined;
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;

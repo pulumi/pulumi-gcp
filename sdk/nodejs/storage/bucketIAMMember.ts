@@ -6,52 +6,52 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
- *
+ * 
  * * `google_storage_bucket_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
  * * `google_storage_bucket_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
  * * `google_storage_bucket_iam_policy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple google_storage_bucket_iam_binding resources will be much safer. See the usage example on how to work with policy correctly.
- *
- *
+ * 
+ * 
  * > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
- *
+ * 
  * ## google\_storage\_bucket\_iam\_binding
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const binding = new gcp.storage.BucketIAMBinding("binding", {
  *     bucket: "your-bucket-name",
  *     members: ["user:jane@example.com"],
  *     role: "roles/storage.objectViewer",
  * });
  * ```
- *
+ * 
  * ## google\_storage\_bucket\_iam\_member
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const member = new gcp.storage.BucketIAMMember("member", {
  *     bucket: "your-bucket-name",
  *     member: "user:jane@example.com",
  *     role: "roles/storage.objectViewer",
  * });
  * ```
- *
+ * 
  * ## google\_storage\_bucket\_iam\_policy
- *
+ * 
  * When applying a policy that does not include the roles listed below, you lose the default permissions which google adds to your bucket:
  * * `roles/storage.legacyBucketOwner`
  * * `roles/storage.legacyBucketReader`
- *
+ * 
  * If this happens only an entity with `roles/storage.admin` privileges can repair this bucket's policies. It is recommended to include the above roles in policies to get the same behaviour as with the other two options.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const foo_policy = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["group:yourgroup@example.com"],
@@ -103,7 +103,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketIAMMemberArgs | BucketIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as BucketIAMMemberState | undefined;
+            const state: BucketIAMMemberState = argsOrState as BucketIAMMemberState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;

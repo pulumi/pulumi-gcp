@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const foobar = new gcp.compute.RouterPeer("foobar", {
  *     advertisedRoutePriority: 100,
  *     interface: "interface-1",
@@ -96,7 +96,7 @@ export class RouterPeer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterPeerArgs | RouterPeerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RouterPeerState | undefined;
+            const state: RouterPeerState = argsOrState as RouterPeerState | undefined;
             inputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             inputs["interface"] = state ? state.interface : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;

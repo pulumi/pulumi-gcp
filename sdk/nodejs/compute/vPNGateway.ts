@@ -7,19 +7,19 @@ import * as utilities from "../utilities";
 /**
  * Represents a VPN gateway running in GCP. This virtual device is managed
  * by Google, but used only by you.
- *
- *
+ * 
+ * 
  * To get more information about VpnGateway, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
- *
+ * 
  * ## Example Usage - Target Vpn Gateway Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {});
  * const network1 = new gcp.compute.Network("network1", {});
  * const targetGateway = new gcp.compute.VPNGateway("target_gateway", {
@@ -94,7 +94,7 @@ export class VPNGateway extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VPNGatewayArgs | VPNGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as VPNGatewayState | undefined;
+            const state: VPNGatewayState = argsOrState as VPNGatewayState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;

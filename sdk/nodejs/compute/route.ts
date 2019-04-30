@@ -6,14 +6,14 @@ import * as utilities from "../utilities";
 
 /**
  * Represents a Route resource.
- *
+ * 
  * A route is a rule that specifies how certain packets should be handled by
  * the virtual network. Routes are associated with virtual machines by tag,
  * and the set of routes for a particular virtual machine is called its
  * routing table. For each packet leaving a virtual machine, the system
  * searches that virtual machine's routing table for a single best matching
  * route.
- *
+ * 
  * Routes match packets by destination IP address, preferring smaller or more
  * specific ranges over larger ones. If there is a tie, the system selects
  * the route with the smallest priority value. If there is still a tie, it
@@ -23,24 +23,24 @@ import * as utilities from "../utilities";
  * machine destination, a virtual machine gateway or a Compute
  * Engine-operated gateway. Packets that do not match any route in the
  * sending virtual machine's routing table will be dropped.
- *
+ * 
  * A Route resource must have exactly one specification of either
  * nextHopGateway, nextHopInstance, nextHopIp, or nextHopVpnTunnel.
- *
- *
+ * 
+ * 
  * To get more information about Route, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
  * * How-to Guides
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
- *
+ * 
  * ## Example Usage - Route Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultNetwork = new gcp.compute.Network("default", {});
  * const defaultRoute = new gcp.compute.Route("default", {
  *     destRange: "15.0.0.0/24",
@@ -102,7 +102,7 @@ export class Route extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouteArgs | RouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RouteState | undefined;
+            const state: RouteState = argsOrState as RouteState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destRange"] = state ? state.destRange : undefined;
             inputs["name"] = state ? state.name : undefined;

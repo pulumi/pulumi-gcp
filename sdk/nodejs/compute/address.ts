@@ -6,43 +6,43 @@ import * as utilities from "../utilities";
 
 /**
  * Represents an Address resource.
- *
+ * 
  * Each virtual machine instance has an ephemeral internal IP address and,
  * optionally, an external IP address. To communicate between instances on
  * the same network, you can use an instance's internal IP address. To
  * communicate with the Internet and instances outside of the same network,
  * you must specify the instance's external IP address.
- *
+ * 
  * Internal IP addresses are ephemeral and only belong to an instance for
  * the lifetime of the instance; if the instance is deleted and recreated,
  * the instance is assigned a new internal IP address, either by Compute
  * Engine or by you. External IP addresses can be either ephemeral or
  * static.
- *
- *
+ * 
+ * 
  * To get more information about Address, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
  * * How-to Guides
  *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
  *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
- *
+ * 
  * ## Example Usage - Address Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const ipAddress = new gcp.compute.Address("ip_address", {});
  * ```
  * ## Example Usage - Address With Subnetwork
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultNetwork = new gcp.compute.Network("default", {});
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     ipCidrRange: "10.0.0.0/16",
@@ -57,12 +57,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Instance With Ip
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const debianImage = pulumi.output(gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -133,7 +133,7 @@ export class Address extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AddressArgs | AddressState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as AddressState | undefined;
+            const state: AddressState = argsOrState as AddressState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["addressType"] = state ? state.addressType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;

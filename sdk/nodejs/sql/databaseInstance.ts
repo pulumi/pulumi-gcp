@@ -7,20 +7,20 @@ import * as utilities from "../utilities";
 /**
  * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- *
+ * 
  * > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
  * default 'root'@'%' user with no password. This user will be deleted by Terraform on
  * instance creation. You should use `google_sql_user` to define a custom user with
  * a restricted host and strong password.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ### SQL First Generation
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     databaseVersion: "MYSQL_5_6",
  *     // First-generation instance regions are not the conventional
@@ -31,13 +31,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * 
  * ### SQL Second generation
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     databaseVersion: "POSTGRES_9_6",
  *     region: "us-central1",
@@ -156,7 +156,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseInstanceArgs | DatabaseInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as DatabaseInstanceState | undefined;
+            const state: DatabaseInstanceState = argsOrState as DatabaseInstanceState | undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
             inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             inputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;

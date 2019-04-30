@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
  * Manages a project-level logging exclusion. For more information see
  * [the official documentation](https://cloud.google.com/logging/docs/) and
  * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
- *
+ * 
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with Terraform.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const my_exclusion = new gcp.logging.ProjectExclusion("my-exclusion", {
  *     description: "Exclude GCE instance debug logs",
  *     // Exclude all DEBUG or lower severity messages relating to instances
@@ -74,7 +74,7 @@ export class ProjectExclusion extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectExclusionArgs | ProjectExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ProjectExclusionState | undefined;
+            const state: ProjectExclusionState = argsOrState as ProjectExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["filter"] = state ? state.filter : undefined;

@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
  * Enables the Google Compute Engine
  * [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
  * feature for a project, assigning it as a Shared VPC host project.
- *
+ * 
  * For more information, see,
  * [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
  * where the Shared VPC feature is referred to by its former name "XPN".
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * // A host project provides network resources to associated service projects.
  * const host = new gcp.compute.SharedVPCHostProject("host", {
  *     project: "host-project-id",
@@ -64,7 +64,7 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SharedVPCHostProjectArgs | SharedVPCHostProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as SharedVPCHostProjectState | undefined;
+            const state: SharedVPCHostProjectState = argsOrState as SharedVPCHostProjectState | undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as SharedVPCHostProjectArgs | undefined;

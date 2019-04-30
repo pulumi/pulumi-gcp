@@ -107,7 +107,7 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as NodePoolState | undefined;
+            const state: NodePoolState = argsOrState as NodePoolState | undefined;
             inputs["autoscaling"] = state ? state.autoscaling : undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;

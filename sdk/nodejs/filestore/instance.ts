@@ -6,12 +6,12 @@ import * as utilities from "../utilities";
 
 /**
  * A Google Cloud Filestore instance.
- *
+ * 
  * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
  * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- *
+ * 
  * To get more information about Instance, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
@@ -53,7 +53,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as InstanceState | undefined;
+            const state: InstanceState = argsOrState as InstanceState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["etag"] = state ? state.etag : undefined;

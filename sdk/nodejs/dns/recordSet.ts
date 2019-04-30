@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
  * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
- *
+ * 
  * > **Note:** The Google Cloud DNS API requires NS records be present at all
  * times. To accommodate this, when creating NS records, the default records
  * Google automatically creates will be silently overwritten.  Also, when
  * destroying NS records, Terraform will not actually remove NS records, but will
  * report that it did.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ### Binding a DNS name to the ephemeral IP of a new instance:
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const frontendInstance = new gcp.compute.Instance("frontend", {
  *     bootDisk: {
  *         initializeParams: {
@@ -45,13 +45,13 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
- *
+ * 
  * ### Adding an A record
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
  * });
@@ -62,13 +62,13 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
- *
+ * 
  * ### Adding an MX record
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
  * });
@@ -85,15 +85,15 @@ import * as utilities from "../utilities";
  *     type: "MX",
  * });
  * ```
- *
+ * 
  * ### Adding an SPF record
- *
+ * 
  * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
  * });
@@ -104,15 +104,15 @@ import * as utilities from "../utilities";
  *     type: "TXT",
  * });
  * ```
- *
+ * 
  * ### Adding a CNAME record
- *
+ * 
  *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const prod = new gcp.dns.ManagedZone("prod", {
  *     dnsName: "prod.mydomain.com.",
  * });
@@ -176,7 +176,7 @@ export class RecordSet extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RecordSetArgs | RecordSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RecordSetState | undefined;
+            const state: RecordSetState = argsOrState as RecordSetState | undefined;
             inputs["managedZone"] = state ? state.managedZone : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;

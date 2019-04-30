@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const foobar = new gcp.compute.RouterInterface("foobar", {
  *     ipRange: "169.254.1.1/30",
  *     region: "us-central1",
@@ -80,7 +80,7 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as RouterInterfaceState | undefined;
+            const state: RouterInterfaceState = argsOrState as RouterInterfaceState | undefined;
             inputs["ipRange"] = state ? state.ipRange : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;

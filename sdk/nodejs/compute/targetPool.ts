@@ -10,14 +10,14 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
- *
- *
+ * 
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -109,7 +109,7 @@ export class TargetPool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetPoolArgs | TargetPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as TargetPoolState | undefined;
+            const state: TargetPoolState = argsOrState as TargetPoolState | undefined;
             inputs["backupPool"] = state ? state.backupPool : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["failoverRatio"] = state ? state.failoverRatio : undefined;

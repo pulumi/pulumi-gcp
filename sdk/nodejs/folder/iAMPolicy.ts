@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of the IAM policy for an existing Google Cloud
  * Platform folder.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -69,7 +69,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as IAMPolicyState | undefined;
+            const state: IAMPolicyState = argsOrState as IAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;

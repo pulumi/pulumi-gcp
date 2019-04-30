@@ -6,19 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
- *
+ * 
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html). Passwords will not be retrieved when running
  * "terraform import".
- *
+ * 
  * ## Example Usage
- *
+ * 
  * Example creating a SQL User.
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",
@@ -81,7 +81,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as UserState | undefined;
+            const state: UserState = argsOrState as UserState | undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;

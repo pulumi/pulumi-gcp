@@ -5,20 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Allows management of a single API service for an existing Google Cloud Platform project.
- *
+ * Allows management of a single API service for an existing Google Cloud Platform project. 
+ * 
  * For a list of services available, visit the
  * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
- *
+ * 
  * > **Note:** This resource _must not_ be used in conjunction with
  *    `google_project_services` or they will fight over which services should be enabled.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const project = new gcp.projects.Service("project", {
  *     disableDependentServices: true,
  *     project: "your-project-id",
@@ -68,7 +68,7 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ServiceState | undefined;
+            const state: ServiceState = argsOrState as ServiceState | undefined;
             inputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
             inputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
             inputs["project"] = state ? state.project : undefined;

@@ -7,16 +7,16 @@ import * as utilities from "../utilities";
 /**
  * Creates a BackendService resource in the specified project using the data
  * included in the request.
- *
- *
- *
+ * 
+ * 
+ * 
  * ## Example Usage - Backend Service Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -79,7 +79,7 @@ export class BackendService extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BackendServiceArgs | BackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as BackendServiceState | undefined;
+            const state: BackendServiceState = argsOrState as BackendServiceState | undefined;
             inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;

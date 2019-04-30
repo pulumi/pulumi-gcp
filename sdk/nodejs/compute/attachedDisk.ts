@@ -10,22 +10,22 @@ import * as utilities from "../utilities";
  * However there may be situations where managing the attached disks via the compute
  * instance config isn't preferable or possible, such as attaching dynamic
  * numbers of disks using the `count` variable.
- *
- *
+ * 
+ * 
  * To get more information about attaching disks, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
  * * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- *
- *
+ * 
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultAttachedDisk = new gcp.compute.AttachedDisk("default", {
  *     disk: google_compute_disk_default.selfLink,
  *     instance: google_compute_instance_default.selfLink,
@@ -63,7 +63,7 @@ export class AttachedDisk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AttachedDiskArgs | AttachedDiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as AttachedDiskState | undefined;
+            const state: AttachedDiskState = argsOrState as AttachedDiskState | undefined;
             inputs["deviceName"] = state ? state.deviceName : undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["instance"] = state ? state.instance : undefined;

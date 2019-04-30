@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for pubsub topic. Each of these resources serves a different use case:
- *
+ * 
  * * `google_pubsub_topic_iam_policy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
  * * `google_pubsub_topic_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
  * * `google_pubsub_topic_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
- *
+ * 
  * > **Note:** `google_pubsub_topic_iam_policy` **cannot** be used in conjunction with `google_pubsub_topic_iam_binding` and `google_pubsub_topic_iam_member` or they will fight over what your policy should be.
- *
+ * 
  * > **Note:** `google_pubsub_topic_iam_binding` resources **can be** used in conjunction with `google_pubsub_topic_iam_member` resources **only if** they do not grant privilege to the same role.
- *
+ * 
  * ## google\_pubsub\_topic\_iam\_policy
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -32,26 +32,26 @@ import * as utilities from "../utilities";
  *     topic: "your-topic-name",
  * });
  * ```
- *
+ * 
  * ## google\_pubsub\_topic\_iam\_binding
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const editor = new gcp.pubsub.TopicIAMBinding("editor", {
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
  *     topic: "your-topic-name",
  * });
  * ```
- *
+ * 
  * ## google\_pubsub\_topic\_iam\_member
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const editor = new gcp.pubsub.TopicIAMMember("editor", {
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -104,7 +104,7 @@ export class TopicIAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicIAMBindingArgs | TopicIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as TopicIAMBindingState | undefined;
+            const state: TopicIAMBindingState = argsOrState as TopicIAMBindingState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;

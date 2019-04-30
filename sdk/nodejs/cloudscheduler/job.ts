@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * A scheduled job that can publish a pubsub message or a http request
  * every X interval of time, using crontab format string
- *
- *
+ * 
+ * 
  * To get more information about Job, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
- *
+ * 
  * ## Example Usage - Scheduler Job Pubsub
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const job = new gcp.cloudscheduler.Job("job", {
  *     description: "test job",
@@ -33,12 +33,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Scheduler Job Http
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const job = new gcp.cloudscheduler.Job("job", {
  *     description: "test http job",
  *     httpTarget: {
@@ -50,12 +50,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Scheduler Job App Engine
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const job = new gcp.cloudscheduler.Job("job", {
  *     appEngineHttpTarget: {
  *         appEngineRouting: {
@@ -111,7 +111,7 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as JobState | undefined;
+            const state: JobState = argsOrState as JobState | undefined;
             inputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["httpTarget"] = state ? state.httpTarget : undefined;

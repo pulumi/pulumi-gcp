@@ -7,18 +7,18 @@ import * as utilities from "../utilities";
 /**
  * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
  * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- *
+ * 
  * Manages a private VPC connection with a GCP service provider. For more information see
  * [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
  * and
  * [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
- *
+ * 
  * ## Example usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const peeringNetwork = new gcp.compute.Network("peering_network", {});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     addressType: "INTERNAL",
@@ -74,7 +74,7 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ConnectionState | undefined;
+            const state: ConnectionState = argsOrState as ConnectionState | undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
             inputs["service"] = state ? state.service : undefined;

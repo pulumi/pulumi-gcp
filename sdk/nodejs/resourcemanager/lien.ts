@@ -6,16 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * A Lien represents an encumbrance on the actions that can be performed on a resource.
- *
- *
- *
+ * 
+ * 
+ * 
  * ## Example Usage - Resource Manager Lien
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const project = new gcp.organizations.Project("project", {
  *     projectId: "staging-project",
  * });
@@ -58,7 +58,7 @@ export class Lien extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LienArgs | LienState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as LienState | undefined;
+            const state: LienState = argsOrState as LienState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["origin"] = state ? state.origin : undefined;

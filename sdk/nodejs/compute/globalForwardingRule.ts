@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  * information see [the official
  * documentation](https://cloud.google.com/compute/docs/load-balancing/http/global-forwarding-rules) and
  * [API](https://cloud.google.com/compute/docs/reference/latest/globalForwardingRules).
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -83,7 +83,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipProtocol: pulumi.Output<string>;
     /**
-     *
+     * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
      * You cannot provide this and `ip_address`.
      */
@@ -135,7 +135,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as GlobalForwardingRuleState | undefined;
+            const state: GlobalForwardingRuleState = argsOrState as GlobalForwardingRuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
@@ -189,7 +189,7 @@ export interface GlobalForwardingRuleState {
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
-     *
+     * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
      * You cannot provide this and `ip_address`.
      */
@@ -252,7 +252,7 @@ export interface GlobalForwardingRuleArgs {
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
-     *
+     * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
      * You cannot provide this and `ip_address`.
      */

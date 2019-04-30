@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * A policy for container image binary authorization.
- *
+ * 
  * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
  * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- *
+ * 
  * To get more information about Policy, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
- *
+ * 
  * ## Example Usage - Binary Authorization Policy Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const note = new gcp.containeranalysis.Note("note", {
  *     attestationAuthority: {
  *         hint: {
@@ -82,7 +82,7 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as PolicyState | undefined;
+            const state: PolicyState = argsOrState as PolicyState | undefined;
             inputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
             inputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
             inputs["defaultAdmissionRule"] = state ? state.defaultAdmissionRule : undefined;

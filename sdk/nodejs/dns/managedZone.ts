@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
  * A zone is a subtree of the DNS namespace under one administrative
  * responsibility. A ManagedZone is a resource that represents a DNS zone
  * hosted by the Cloud DNS service.
- *
- *
+ * 
+ * 
  * To get more information about ManagedZone, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
  *     * [Managing Zones](https://cloud.google.com/dns/zones/)
- *
+ * 
  * ## Example Usage - Dns Managed Zone Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
- *
+ * 
  * const rnd = new random.RandomId("rnd", {
  *     byteLength: 4,
  * });
@@ -36,12 +36,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Dns Managed Zone Private
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const network_1 = new gcp.compute.Network("network-1", {
  *     autoCreateSubnetworks: false,
  * });
@@ -107,7 +107,7 @@ export class ManagedZone extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ManagedZoneArgs | ManagedZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ManagedZoneState | undefined;
+            const state: ManagedZoneState = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
             inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;

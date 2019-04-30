@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Configuration for an automated build in response to source repository changes.
- *
- *
+ * 
+ * 
  * To get more information about Trigger, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
  * * How-to Guides
  *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
- *
+ * 
  * ## Example Usage - Cloudbuild Trigger Filename
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
  *     filename: "cloudbuild.yaml",
  *     substitutions: {
@@ -74,7 +74,7 @@ export class Trigger extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as TriggerState | undefined;
+            const state: TriggerState = argsOrState as TriggerState | undefined;
             inputs["build"] = state ? state.build : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;

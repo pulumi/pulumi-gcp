@@ -9,14 +9,14 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instances)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
- *
- *
+ * 
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const defaultInstance = new gcp.compute.Instance("default", {
  *     bootDisk: {
  *         initializeParams: {
@@ -205,7 +205,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as InstanceState | undefined;
+            const state: InstanceState = argsOrState as InstanceState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;

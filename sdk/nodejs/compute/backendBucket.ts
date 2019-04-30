@@ -7,26 +7,26 @@ import * as utilities from "../utilities";
 /**
  * Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
  * load balancing.
- *
+ * 
  * An HTTP(S) load balancer can direct traffic to specified URLs to a
  * backend bucket rather than a backend service. It can send requests for
  * static content to a Cloud Storage bucket and requests for dynamic content
  * a virtual machine instance.
- *
- *
+ * 
+ * 
  * To get more information about BackendBucket, see:
- *
+ * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
  * * How-to Guides
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
- *
+ * 
  * ## Example Usage - Backend Bucket Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const imageBucket = new gcp.storage.Bucket("image_bucket", {
  *     location: "EU",
  * });
@@ -77,7 +77,7 @@ export class BackendBucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BackendBucketArgs | BackendBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as BackendBucketState | undefined;
+            const state: BackendBucketState = argsOrState as BackendBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;

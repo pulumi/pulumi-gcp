@@ -7,16 +7,16 @@ import * as utilities from "../utilities";
 /**
  * Represents an InterconnectAttachment (VLAN attachment) resource. For more
  * information, see Creating VLAN Attachments.
- *
- *
- *
+ * 
+ * 
+ * 
  * ## Example Usage - Interconnect Attachment Basic
- *
- *
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const foobar = new gcp.compute.Router("foobar", {
  *     network: google_compute_network_foobar.name,
  * });
@@ -77,7 +77,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InterconnectAttachmentArgs | InterconnectAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as InterconnectAttachmentState | undefined;
+            const state: InterconnectAttachmentState = argsOrState as InterconnectAttachmentState | undefined;
             inputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             inputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;

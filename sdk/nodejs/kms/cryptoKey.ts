@@ -9,10 +9,10 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
  * and
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
- *
+ * 
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
- *
+ * 
  * > Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
  * Terraform-managed CryptoKey will remove it from state and delete all
  * CryptoKeyVersions, rendering the key unusable, but **will not delete the
@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * previously encrypted with these keys will be irrecoverable. For this reason, it
  * is strongly recommended that you add lifecycle hooks to the resource to prevent
  * accidental destruction.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
  *     location: "us-central1",
  *     project: "my-project",
@@ -86,7 +86,7 @@ export class CryptoKey extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CryptoKeyArgs | CryptoKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as CryptoKeyState | undefined;
+            const state: CryptoKeyState = argsOrState as CryptoKeyState | undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;

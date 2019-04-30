@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of a single member for a single binding within
  * the IAM policy for an existing Google Cloud Platform Organization.
- *
+ * 
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `google_organization_iam_binding` for the __same role__ or they will fight over
  *    what your policy should be.
- *
+ * 
  * ## Example Usage
- *
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- *
+ * 
  * const binding = new gcp.organizations.IAMMember("binding", {
  *     member: "user:alice@gmail.com",
  *     orgId: "0123456789",
@@ -67,7 +67,7 @@ export class IAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMMemberArgs | IAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as IAMMemberState | undefined;
+            const state: IAMMemberState = argsOrState as IAMMemberState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
