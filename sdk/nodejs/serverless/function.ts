@@ -126,6 +126,8 @@ export class Function extends pulumi.ComponentResource {
             region: options.region,
             timeout: options.timeout
         }, { parent: this });
+
+        this.options = options;
     }
 }
 
