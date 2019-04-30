@@ -6,24 +6,24 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
- * 
+ *
  * * `google_spanner_database_iam_policy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
- * 
+ *
  * > **Warning:** It's entirely possibly to lock yourself out of your database using `google_spanner_database_iam_policy`. Any permissions granted by default will be removed unless you include them in your config.
- * 
+ *
  * * `google_spanner_database_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
  * * `google_spanner_database_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
- * 
+ *
  * > **Note:** `google_spanner_database_iam_policy` **cannot** be used in conjunction with `google_spanner_database_iam_binding` and `google_spanner_database_iam_member` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `google_spanner_database_iam_binding` resources **can be** used in conjunction with `google_spanner_database_iam_member` resources **only if** they do not grant privilege to the same role.
- * 
+ *
  * ## google\_spanner\_database\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -36,13 +36,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.apply(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * ## google\_spanner\_database\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const database = new gcp.spanner.DatabaseIAMBinding("database", {
  *     database: "your-database-name",
  *     instance: "your-instance-name",
@@ -50,13 +50,13 @@ import * as utilities from "../utilities";
  *     role: "roles/compute.networkUser",
  * });
  * ```
- * 
+ *
  * ## google\_spanner\_database\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const database = new gcp.spanner.DatabaseIAMMember("database", {
  *     database: "your-database-name",
  *     instance: "your-instance-name",
@@ -114,7 +114,7 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseIAMMemberArgs | DatabaseIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseIAMMemberState = argsOrState as DatabaseIAMMemberState | undefined;
+            const state = argsOrState as DatabaseIAMMemberState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;

@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * An isolated set of Cloud Spanner resources on which databases can be
  * hosted.
- * 
- * 
+ *
+ *
  * To get more information about Instance, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/spanner/)
- * 
+ *
  * ## Example Usage - Spanner Instance Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const example = new gcp.spanner.Instance("example", {
  *     config: "regional-us-central1",
  *     displayName: "Test Spanner Instance",
@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["labels"] = state ? state.labels : undefined;

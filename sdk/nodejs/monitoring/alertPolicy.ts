@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
  * A description of the conditions under which some aspect of your system is
  * considered to be "unhealthy" and the ways to notify people or services
  * about this state.
- * 
- * 
+ *
+ *
  * To get more information about AlertPolicy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
- * 
+ *
  * ## Example Usage - Monitoring Alert Policy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
  *     combiner: "OR",
  *     conditions: [{
@@ -76,7 +76,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AlertPolicyArgs | AlertPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AlertPolicyState = argsOrState as AlertPolicyState | undefined;
+            const state = argsOrState as AlertPolicyState | undefined;
             inputs["combiner"] = state ? state.combiner : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
             inputs["creationRecord"] = state ? state.creationRecord : undefined;

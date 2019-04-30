@@ -6,14 +6,14 @@ import * as utilities from "../utilities";
 
 /**
  * This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const grpcService = new gcp.endpoints.Service("grpc_service", {
  *     grpcConfig: fs.readFileSync("service_spec.yml", "utf-8"),
  *     project: "project-id",
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  * });
  * ```
- * 
+ *
  * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
  */
 export class Service extends pulumi.CustomResource {
@@ -63,7 +63,7 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServiceState = argsOrState as ServiceState | undefined;
+            const state = argsOrState as ServiceState | undefined;
             inputs["apis"] = state ? state.apis : undefined;
             inputs["configId"] = state ? state.configId : undefined;
             inputs["dnsAddress"] = state ? state.dnsAddress : undefined;

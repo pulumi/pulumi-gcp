@@ -10,35 +10,35 @@ import * as utilities from "../utilities";
  * hardware behind these devices to ensure data redundancy and optimize
  * performance for you. Persistent disks are available as either standard
  * hard disk drives (HDD) or solid-state drives (SSD).
- * 
+ *
  * Persistent disks are located independently from your virtual machine
  * instances, so you can detach or move persistent disks to keep your data
  * even after you delete your instances. Persistent disk performance scales
  * automatically with size, so you can resize your existing persistent disks
  * or add more persistent disks to an instance to meet your performance and
  * storage space requirements.
- * 
+ *
  * Add a persistent disk to your instance when you need reliable and
  * affordable storage with consistent performance characteristics.
- * 
- * 
+ *
+ *
  * To get more information about Disk, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- * 
+ *
  * > **Warning:** All arguments including the disk encryption key will be stored in the raw
  * state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
+ *
  * ## Example Usage - Disk Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultDisk = new gcp.compute.Disk("default", {
  *     image: "debian-8-jessie-v20170523",
  *     labels: {
@@ -103,7 +103,7 @@ export class Disk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DiskState = argsOrState as DiskState | undefined;
+            const state = argsOrState as DiskState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;

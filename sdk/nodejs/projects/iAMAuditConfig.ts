@@ -33,7 +33,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMAuditConfigArgs | IAMAuditConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMAuditConfigState = argsOrState as IAMAuditConfigState | undefined;
+            const state = argsOrState as IAMAuditConfigState | undefined;
             inputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["project"] = state ? state.project : undefined;

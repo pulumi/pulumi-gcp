@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * Represents a TargetHttpProxy resource, which is used by one or more global
  * forwarding rule to route incoming HTTP requests to a URL map.
- * 
- * 
+ *
+ *
  * To get more information about TargetHttpProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
- * 
+ *
  * ## Example Usage - Target Http Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -92,7 +92,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetHttpProxyArgs | TargetHttpProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetHttpProxyState = argsOrState as TargetHttpProxyState | undefined;
+            const state = argsOrState as TargetHttpProxyState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;

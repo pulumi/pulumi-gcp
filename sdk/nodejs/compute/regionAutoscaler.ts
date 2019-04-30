@@ -6,25 +6,25 @@ import * as utilities from "../utilities";
 
 /**
  * Represents an Autoscaler resource.
- * 
+ *
  * Autoscalers allow you to automatically scale virtual machine instances in
  * managed instance groups according to an autoscaling policy that you
  * define.
- * 
- * 
+ *
+ *
  * To get more information about RegionAutoscaler, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
  * * How-to Guides
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
- * 
+ *
  * ## Example Usage - Region Autoscaler Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debian9 = pulumi.output(gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -110,7 +110,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionAutoscalerArgs | RegionAutoscalerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegionAutoscalerState = argsOrState as RegionAutoscalerState | undefined;
+            const state = argsOrState as RegionAutoscalerState | undefined;
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

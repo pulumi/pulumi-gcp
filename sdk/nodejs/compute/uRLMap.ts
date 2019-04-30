@@ -7,16 +7,16 @@ import * as utilities from "../utilities";
 /**
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Url Map Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -117,7 +117,7 @@ export class URLMap extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: URLMapArgs | URLMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: URLMapState = argsOrState as URLMapState | undefined;
+            const state = argsOrState as URLMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -6,18 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
- * 
+ *
  * > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * Example creating a SQL Client Certificate.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",
@@ -99,7 +99,7 @@ export class SslCert extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SslCertArgs | SslCertState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SslCertState = argsOrState as SslCertState | undefined;
+            const state = argsOrState as SslCertState | undefined;
             inputs["cert"] = state ? state.cert : undefined;
             inputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
             inputs["commonName"] = state ? state.commonName : undefined;

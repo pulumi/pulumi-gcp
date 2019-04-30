@@ -8,30 +8,30 @@ import * as utilities from "../utilities";
  * The ObjectAccessControls resources represent the Access Control Lists
  * (ACLs) for objects within Google Cloud Storage. ACLs let you specify
  * who has access to your data and to what extent.
- * 
+ *
  * There are two roles that can be assigned to an entity:
- * 
+ *
  * READERs can get an object, though the acl property will not be revealed.
  * OWNERs are READERs, and they can get the acl property, update an object,
  * and call all objectAccessControls methods on the object. The owner of an
  * object is always an OWNER.
  * For more information, see Access Control, with the caveat that this API
  * uses READER and OWNER instead of READ and FULL_CONTROL.
- * 
- * 
+ *
+ *
  * To get more information about ObjectAccessControl, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
- * 
+ *
  * ## Example Usage - Storage Object Access Control Public Object
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
@@ -79,7 +79,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ObjectAccessControlArgs | ObjectAccessControlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ObjectAccessControlState = argsOrState as ObjectAccessControlState | undefined;
+            const state = argsOrState as ObjectAccessControlState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["email"] = state ? state.email : undefined;

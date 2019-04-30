@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * Example creating a RuntimeConfig variable.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
@@ -26,17 +26,17 @@ import * as utilities from "../utilities";
  *     text: "example.com",
  * });
  * ```
- * 
+ *
  * You can also encode binary content using the `value` argument instead. The
  * value must be base64 encoded.
- * 
+ *
  * Example of using the `value` argument.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
@@ -94,7 +94,7 @@ export class Variable extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VariableArgs | VariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VariableState = argsOrState as VariableState | undefined;
+            const state = argsOrState as VariableState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
             inputs["project"] = state ? state.project : undefined;

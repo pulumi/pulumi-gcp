@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Represents a Router resource.
- * 
- * 
+ *
+ *
  * To get more information about Router, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
- * 
+ *
  * ## Example Usage - Router Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const foobarNetwork = new gcp.compute.Network("foobar", {
  *     autoCreateSubnetworks: false,
  * });
@@ -82,7 +82,7 @@ export class Router extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterState = argsOrState as RouterState | undefined;
+            const state = argsOrState as RouterState | undefined;
             inputs["bgp"] = state ? state.bgp : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -7,18 +7,18 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of a single member for a single binding within
  * the IAM policy for an existing Google Cloud KMS crypto key.
- * 
+ *
  * > **Note:** This resource _must not_ be used in conjunction with
  *    `google_kms_crypto_key_iam_policy` or they will fight over what your policy
  *    should be. Similarly, roles controlled by `google_kms_crypto_key_iam_binding`
  *    should not be assigned to using `google_kms_crypto_key_iam_member`.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: "your-crypto-key-id",
  *     member: "user:alice@gmail.com",
@@ -71,7 +71,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CryptoKeyIAMMemberArgs | CryptoKeyIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: CryptoKeyIAMMemberState = argsOrState as CryptoKeyIAMMemberState | undefined;
+            const state = argsOrState as CryptoKeyIAMMemberState | undefined;
             inputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;

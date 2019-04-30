@@ -9,18 +9,18 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instances)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
- * 
+ *
  * This resource is specifically to create a compute instance from a given
  * `source_instance_template`. To create an instance without a template, use the
  * `google_compute_instance` resource.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tpl", {
  *     canIpForward: true,
  *     disks: [{
@@ -113,7 +113,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceFromTemplateArgs | InstanceFromTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceFromTemplateState = argsOrState as InstanceFromTemplateState | undefined;
+            const state = argsOrState as InstanceFromTemplateState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;

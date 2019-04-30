@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
  * Manages a folder-level logging sink. For more information see
  * [the official documentation](https://cloud.google.com/logging/docs/) and
  * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
- * 
+ *
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with terraform.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my_folder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
@@ -94,7 +94,7 @@ export class FolderSink extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderSinkArgs | FolderSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FolderSinkState = argsOrState as FolderSinkState | undefined;
+            const state = argsOrState as FolderSinkState | undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["folder"] = state ? state.folder : undefined;

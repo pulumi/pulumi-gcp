@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
  *  Creates a device registry in Google's Cloud IoT Core platform. For more information see
  * [the official documentation](https://cloud.google.com/iot/docs/) and
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
  * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
  * const default_registry = new gcp.kms.Registry("default-registry", {
@@ -55,7 +55,7 @@ export class Registry extends pulumi.CustomResource {
     }
 
     /**
-     * List of public key certificates to authenticate devices. Structure is documented below. 
+     * List of public key certificates to authenticate devices. Structure is documented below.
      */
     public readonly credentials: pulumi.Output<{ publicKeyCertificate?: { certificate: string, format: string } }[] | undefined>;
     /**
@@ -99,7 +99,7 @@ export class Registry extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegistryState = argsOrState as RegistryState | undefined;
+            const state = argsOrState as RegistryState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["eventNotificationConfig"] = state ? state.eventNotificationConfig : undefined;
             inputs["httpConfig"] = state ? state.httpConfig : undefined;
@@ -128,7 +128,7 @@ export class Registry extends pulumi.CustomResource {
  */
 export interface RegistryState {
     /**
-     * List of public key certificates to authenticate devices. Structure is documented below. 
+     * List of public key certificates to authenticate devices. Structure is documented below.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<{ publicKeyCertificate?: pulumi.Input<{ certificate: pulumi.Input<string>, format: pulumi.Input<string> }> }>[]>;
     /**
@@ -167,7 +167,7 @@ export interface RegistryState {
  */
 export interface RegistryArgs {
     /**
-     * List of public key certificates to authenticate devices. Structure is documented below. 
+     * List of public key certificates to authenticate devices. Structure is documented below.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<{ publicKeyCertificate?: pulumi.Input<{ certificate: pulumi.Input<string>, format: pulumi.Input<string> }> }>[]>;
     /**

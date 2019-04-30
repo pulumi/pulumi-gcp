@@ -6,22 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Transfer Job in Google Cloud Storage Transfer.
- * 
+ *
  * To get more information about Google Cloud Storage Transfer, see:
- * 
+ *
  * * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
- * 
+ *
  * ## Example Usage
- * 
+ *
  * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultTransferProjectServieAccount = pulumi.output(gcp.storage.getTransferProjectServieAccount({
  *     project: var_project,
  * }));
@@ -139,7 +139,7 @@ export class TransferJob extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TransferJobArgs | TransferJobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TransferJobState = argsOrState as TransferJobState | undefined;
+            const state = argsOrState as TransferJobState | undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["deletionTime"] = state ? state.deletionTime : undefined;
             inputs["description"] = state ? state.description : undefined;

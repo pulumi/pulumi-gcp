@@ -7,18 +7,18 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of a single member for a single binding within
  * the IAM policy for an existing Google Cloud Platform folder.
- * 
+ *
  * > **Note:** This resource _must not_ be used in conjunction with
  *    `google_folder_iam_policy` or they will fight over what your policy
  *    should be. Similarly, roles controlled by `google_folder_iam_binding`
  *    should not be assigned to using `google_folder_iam_member`.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const department1 = new gcp.organizations.Folder("department1", {
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
@@ -77,7 +77,7 @@ export class IAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMMemberArgs | IAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMMemberState = argsOrState as IAMMemberState | undefined;
+            const state = argsOrState as IAMMemberState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["member"] = state ? state.member : undefined;

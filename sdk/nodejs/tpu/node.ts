@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * A Cloud TPU instance.
- * 
- * 
+ *
+ *
  * To get more information about Node, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
- * 
+ *
  * ## Example Usage - Tpu Node Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const available = pulumi.output(gcp.TpuTensorflowVersions({}));
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
@@ -30,12 +30,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Tpu Node Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const available = pulumi.output(gcp.TpuTensorflowVersions({}));
  * const tpuNetwork = new gcp.compute.Network("tpu_network", {
  *     autoCreateSubnetworks: false,
@@ -97,7 +97,7 @@ export class Node extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeArgs | NodeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeState = argsOrState as NodeState | undefined;
+            const state = argsOrState as NodeState | undefined;
             inputs["acceleratorType"] = state ? state.acceleratorType : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;

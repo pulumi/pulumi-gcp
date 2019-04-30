@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
  * A ForwardingRule resource. A ForwardingRule resource specifies which pool
  * of target virtual machines to forward a packet to if it matches the given
  * [IPAddress, IPProtocol, portRange] tuple.
- * 
- * 
+ *
+ *
  * To get more information about ForwardingRule, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRule)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
- * 
+ *
  * ## Example Usage - Forwarding Rule Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultTargetPool = new gcp.compute.TargetPool("default", {});
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
  *     portRange: "80",
@@ -84,7 +84,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ForwardingRuleArgs | ForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ForwardingRuleState = argsOrState as ForwardingRuleState | undefined;
+            const state = argsOrState as ForwardingRuleState | undefined;
             inputs["allPorts"] = state ? state.allPorts : undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;

@@ -6,26 +6,26 @@ import * as utilities from "../utilities";
 
 /**
  * VPN tunnel resource.
- * 
- * 
+ *
+ *
  * To get more information about VpnTunnel, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
  * * How-to Guides
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
- * 
+ *
  * > **Warning:** All arguments including the shared secret will be stored in the raw
  * state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
+ *
  * ## Example Usage - Vpn Tunnel Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {});
  * const network1 = new gcp.compute.Network("network1", {});
  * const targetGateway = new gcp.compute.VPNGateway("target_gateway", {
@@ -110,7 +110,7 @@ export class VPNTunnel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VPNTunnelArgs | VPNTunnelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VPNTunnelState = argsOrState as VPNTunnelState | undefined;
+            const state = argsOrState as VPNTunnelState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["detailedStatus"] = state ? state.detailedStatus : undefined;

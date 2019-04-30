@@ -7,29 +7,29 @@ import * as utilities from "../utilities";
 /**
  * Manages a Cloud Dataproc cluster resource within GCP. For more information see
  * [the official dataproc documentation](https://cloud.google.com/dataproc/).
- * 
- * 
+ *
+ *
  * !> **Warning:** Due to limitations of the API, all arguments except
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
  * whole cluster!
- * 
+ *
  * ## Example Usage - Basic
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
  *     region: "us-central1",
  * });
  * ```
- * 
+ *
  * ## Example Usage - Advanced
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
@@ -78,13 +78,13 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * 
+ *
  * ## Example Usage - Using a GPU accelerator
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
@@ -152,7 +152,7 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ClusterState = argsOrState as ClusterState | undefined;
+            const state = argsOrState as ClusterState | undefined;
             inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;

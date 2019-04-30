@@ -8,30 +8,30 @@ import * as utilities from "../utilities";
  * Creates a group of dissimilar Compute Engine virtual machine instances.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
- * 
+ *
  * > Recreating an instance group that's in use by another resource will give a
  * `resourceInUseByAnotherResource` error. You can avoid this error with a
  * Terraform `lifecycle` block as outlined in the example below.
- * 
+ *
  * ## Example Usage - Empty instance group
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const test = new gcp.compute.InstanceGroup("test", {
  *     description: "Terraform test instance group",
  *     network: google_compute_network_default.selfLink,
  *     zone: "us-central1-a",
  * });
  * ```
- * 
+ *
  * ### Example Usage - With instances and named ports
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const webservers = new gcp.compute.InstanceGroup("webservers", {
  *     description: "Terraform test instance group",
  *     instances: [
@@ -51,16 +51,16 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- * 
+ *
  * ### Example Usage - Recreating an instance group in use
  * Recreating an instance group that's in use by another resource will give a
  * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
  * as shown in this example to avoid this type of error.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debianImage = pulumi.output(gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -176,7 +176,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceGroupState = argsOrState as InstanceGroupState | undefined;
+            const state = argsOrState as InstanceGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instances"] = state ? state.instances : undefined;
             inputs["name"] = state ? state.name : undefined;

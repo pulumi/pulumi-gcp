@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/functions/docs/)
  * and
  * [API](https://cloud.google.com/functions/docs/apis).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
@@ -132,7 +132,7 @@ export class Function extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FunctionState = argsOrState as FunctionState | undefined;
+            const state = argsOrState as FunctionState | undefined;
             inputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["entryPoint"] = state ? state.entryPoint : undefined;

@@ -5,22 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
+ * Creates a new object inside an existing bucket in Google cloud storage service (GCS).
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `google_storage_object_acl` resource.
- *  For more information see 
- * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
- * and 
+ *  For more information see
+ * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+ * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
+ *
  * Example creating a public object in an existing `image-store` bucket.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const picture = new gcp.storage.BucketObject("picture", {
  *     bucket: "image-store",
  *     source: new pulumi.asset.FileArchive("/images/nature/garden-tiger-moth.jpg"),
@@ -114,7 +114,7 @@ export class BucketObject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketObjectState = argsOrState as BucketObjectState | undefined;
+            const state = argsOrState as BucketObjectState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["cacheControl"] = state ? state.cacheControl : undefined;
             inputs["content"] = state ? state.content : undefined;

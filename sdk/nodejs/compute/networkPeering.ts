@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
- * 
+ *
  * > **Note:** Both network must create a peering with each other for the peering to be functional.
- * 
+ *
  * > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultNetwork = new gcp.compute.Network("default", {
  *     autoCreateSubnetworks: false,
  * });
@@ -86,7 +86,7 @@ export class NetworkPeering extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NetworkPeeringArgs | NetworkPeeringState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NetworkPeeringState = argsOrState as NetworkPeeringState | undefined;
+            const state = argsOrState as NetworkPeeringState | undefined;
             inputs["autoCreateRoutes"] = state ? state.autoCreateRoutes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;

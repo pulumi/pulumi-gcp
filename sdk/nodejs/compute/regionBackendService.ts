@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
  * A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
  * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
- * 
+ *
  * > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
  *   `google_compute_backend_service` instead.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -137,7 +137,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionBackendServiceArgs | RegionBackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegionBackendServiceState = argsOrState as RegionBackendServiceState | undefined;
+            const state = argsOrState as RegionBackendServiceState | undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
             inputs["description"] = state ? state.description : undefined;

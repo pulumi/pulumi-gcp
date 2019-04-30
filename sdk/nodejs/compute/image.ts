@@ -6,36 +6,36 @@ import * as utilities from "../utilities";
 
 /**
  * Represents an Image resource.
- * 
+ *
  * Google Compute Engine uses operating system images to create the root
  * persistent disks for your instances. You specify an image when you create
  * an instance. Images contain a boot loader, an operating system, and a
  * root file system. Linux operating system images are also capable of
  * running containers on Compute Engine.
- * 
+ *
  * Images can be either public or custom.
- * 
+ *
  * Public images are provided and maintained by Google, open-source
  * communities, and third-party vendors. By default, all projects have
  * access to these images and can use them to create instances.  Custom
  * images are available only to your project. You can create a custom image
  * from root persistent disks and other images. Then, use the custom image
  * to create an instance.
- * 
- * 
+ *
+ *
  * To get more information about Image, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
- * 
+ *
  * ## Example Usage - Image Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const example = new gcp.compute.Image("example", {
  *     rawDisk: {
  *         source: "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
@@ -88,7 +88,7 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ImageState = argsOrState as ImageState | undefined;
+            const state = argsOrState as ImageState | undefined;
             inputs["archiveSizeBytes"] = state ? state.archiveSizeBytes : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -5,19 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new bucket ACL in Google cloud storage service (GCS). For more information see 
- * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
- * and 
+ * Creates a new bucket ACL in Google cloud storage service (GCS). For more information see
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+ * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * Example creating an ACL on a bucket with one owner, and one reader.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
  * });
@@ -71,7 +71,7 @@ export class BucketACL extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketACLArgs | BucketACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketACLState = argsOrState as BucketACLState | undefined;
+            const state = argsOrState as BucketACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["defaultAcl"] = state ? state.defaultAcl : undefined;
             inputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;

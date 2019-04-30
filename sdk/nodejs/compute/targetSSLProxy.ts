@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
  * Represents a TargetSslProxy resource, which is used by one or more
  * global forwarding rule to route incoming SSL requests to a backend
  * service.
- * 
- * 
+ *
+ *
  * To get more information about TargetSslProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
  * * How-to Guides
  *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
- * 
+ *
  * ## Example Usage - Target Ssl Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -87,7 +87,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetSSLProxyArgs | TargetSSLProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetSSLProxyState = argsOrState as TargetSSLProxyState | undefined;
+            const state = argsOrState as TargetSSLProxyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

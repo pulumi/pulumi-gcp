@@ -7,12 +7,12 @@ import * as utilities from "../utilities";
 /**
  * A policy is a collection of DNS rules applied to one or more Virtual
  * Private Cloud resources.
- * 
+ *
  * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
  * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
+ *
  * To get more information about Policy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
  * * How-to Guides
  *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
@@ -53,7 +53,7 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PolicyState = argsOrState as PolicyState | undefined;
+            const state = argsOrState as PolicyState | undefined;
             inputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;

@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
  * Represents a TargetTcpProxy resource, which is used by one or more
  * global forwarding rule to route incoming TCP requests to a Backend
  * service.
- * 
- * 
+ *
+ *
  * To get more information about TargetTcpProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
  * * How-to Guides
  *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
- * 
+ *
  * ## Example Usage - Target Tcp Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -80,7 +80,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetTCPProxyArgs | TargetTCPProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetTCPProxyState = argsOrState as TargetTCPProxyState | undefined;
+            const state = argsOrState as TargetTCPProxyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

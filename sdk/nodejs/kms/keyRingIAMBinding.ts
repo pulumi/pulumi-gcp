@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
- * 
+ *
  * * `google_kms_key_ring_iam_policy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
  * * `google_kms_key_ring_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
  * * `google_kms_key_ring_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
- * 
+ *
  * > **Note:** `google_kms_key_ring_iam_policy` **cannot** be used in conjunction with `google_kms_key_ring_iam_binding` and `google_kms_key_ring_iam_member` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `google_kms_key_ring_iam_binding` resources **can be** used in conjunction with `google_kms_key_ring_iam_member` resources **only if** they do not grant privilege to the same role.
- * 
+ *
  * ## google\_kms\_key\_ring\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
@@ -32,26 +32,26 @@ import * as utilities from "../utilities";
  *     policyData: admin.apply(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * ## google\_kms\_key\_ring\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
  * });
  * ```
- * 
+ *
  * ## google\_kms\_key\_ring\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     member: "user:jane@example.com",
@@ -102,7 +102,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyRingIAMBindingArgs | KeyRingIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyRingIAMBindingState = argsOrState as KeyRingIAMBindingState | undefined;
+            const state = argsOrState as KeyRingIAMBindingState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["keyRingId"] = state ? state.keyRingId : undefined;
             inputs["members"] = state ? state.members : undefined;

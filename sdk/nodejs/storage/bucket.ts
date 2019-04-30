@@ -9,24 +9,24 @@ import * as utilities from "../utilities";
  * Once a bucket has been created, its location can't be changed.
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
  * using the [`google_storage_bucket_acl` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
- * 
+ *
  * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/overview)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
- * 
+ *
  * **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
  * determined which will require enabling the compute api.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
+ *
  * Example creating a private bucket in standard storage, in the EU region.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
  *     websites: [{
@@ -124,7 +124,7 @@ export class Bucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketState = argsOrState as BucketState | undefined;
+            const state = argsOrState as BucketState | undefined;
             inputs["cors"] = state ? state.cors : undefined;
             inputs["encryption"] = state ? state.encryption : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;

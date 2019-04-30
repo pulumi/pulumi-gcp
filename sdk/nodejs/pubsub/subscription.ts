@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * A named resource representing the stream of messages from a single,
  * specific topic, to be delivered to the subscribing application.
- * 
- * 
+ *
+ *
  * To get more information about Subscription, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
  * * How-to Guides
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
- * 
+ *
  * ## Example Usage - Pubsub Subscription Push
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("example", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     ackDeadlineSeconds: 20,
@@ -38,12 +38,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Pubsub Subscription Pull
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("example", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     ackDeadlineSeconds: 20,
@@ -57,12 +57,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Pubsub Subscription Different Project
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("example", {
  *     project: "topic-project",
  * });
@@ -110,7 +110,7 @@ export class Subscription extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubscriptionState = argsOrState as SubscriptionState | undefined;
+            const state = argsOrState as SubscriptionState | undefined;
             inputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;

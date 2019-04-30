@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
  * An SslCertificate resource, used for HTTPS load balancing. This resource
  * provides a mechanism to upload an SSL key and certificate to
  * the load balancer to serve secure connections from the user.
- * 
- * 
+ *
+ *
  * To get more information about SslCertificate, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- * 
+ *
  * ## Example Usage - Ssl Certificate Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
  *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
  *     description: "a description",
@@ -32,14 +32,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Ssl Certificate Random Provider
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
- * 
+ *
  * const certificate = new random.RandomId("certificate", {
  *     byteLength: 4,
  *     // For security, do not expose raw certificate values in the output
@@ -62,13 +62,13 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Ssl Certificate Target Https Proxies
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/",
@@ -152,7 +152,7 @@ export class SSLCertificate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SSLCertificateArgs | SSLCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SSLCertificateState = argsOrState as SSLCertificateState | undefined;
+            const state = argsOrState as SSLCertificateState | undefined;
             inputs["certificate"] = state ? state.certificate : undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;

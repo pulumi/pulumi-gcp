@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * A single firewall rule that is evaluated against incoming traffic
  * and provides an action to take on matched requests.
- * 
- * 
+ *
+ *
  * To get more information about FirewallRule, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
- * 
+ *
  * ## Example Usage - App Engine Firewall Rule Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myProject = new gcp.organizations.Project("my_project", {
  *     orgId: "123456789",
  *     projectId: "test-project",
@@ -72,7 +72,7 @@ export class FirewallRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallRuleState = argsOrState as FirewallRuleState | undefined;
+            const state = argsOrState as FirewallRuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["priority"] = state ? state.priority : undefined;

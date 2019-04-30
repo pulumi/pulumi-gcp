@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
  * Manages a billing account logging sink. For more information see
  * [the official documentation](https://cloud.google.com/logging/docs/) and
  * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
- * 
+ *
  * > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
  * the credentials used with Terraform. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
  * typical IAM roles granted on a project.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
  *     billingAccount: "ABCDEF-012345-GHIJKL",
@@ -84,7 +84,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BillingAccountSinkArgs | BillingAccountSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BillingAccountSinkState = argsOrState as BillingAccountSinkState | undefined;
+            const state = argsOrState as BillingAccountSinkState | undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;

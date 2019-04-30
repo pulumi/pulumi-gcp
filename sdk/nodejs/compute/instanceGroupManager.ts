@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
  * of homogeneous Compute Engine virtual machine instances from a common instance
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
- * 
+ *
  * > **Note:** Use [google_compute_region_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
- * 
+ *
  * ## Example Usage with top level instance template (`google` provider)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const autohealing = new gcp.compute.HealthCheck("autohealing", {
  *     checkIntervalSec: 5,
  *     healthyThreshold: 2,
@@ -153,7 +153,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceGroupManagerArgs | InstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceGroupManagerState = argsOrState as InstanceGroupManagerState | undefined;
+            const state = argsOrState as InstanceGroupManagerState | undefined;
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
             inputs["description"] = state ? state.description : undefined;

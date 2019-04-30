@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
- * 
+ *
  * > Creation of service accounts is eventually consistent, and that can lead to
  * errors when you try to apply ACLs to service accounts immediately after
  * creation. If using these resources in the same config, you can add a
  * [`sleep` using `local-exec`](https://github.com/hashicorp/terraform/issues/17726#issuecomment-377357866).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * This snippet creates a service account, then gives it objectViewer
  * permission in a project.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const objectViewer = new gcp.serviceAccount.Account("object_viewer", {
  *     accountId: "object-viewer",
  *     displayName: "Object viewer",
@@ -83,7 +83,7 @@ export class Account extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountState = argsOrState as AccountState | undefined;
+            const state = argsOrState as AccountState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;

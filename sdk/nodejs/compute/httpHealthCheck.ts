@@ -7,28 +7,28 @@ import * as utilities from "../utilities";
 /**
  * An HttpHealthCheck resource. This resource defines a template for how
  * individual VMs should be checked for health, via HTTP.
- * 
- * 
+ *
+ *
  * > **Note:** google_compute_http_health_check is a legacy health check.
  * The newer [google_compute_health_check](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
  * should be preferred for all uses except
  * [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
  * which still require the legacy version.
- * 
- * 
+ *
+ *
  * To get more information about HttpHealthCheck, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
  * * How-to Guides
  *     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
- * 
+ *
  * ## Example Usage - Http Health Check Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/health_check",
@@ -80,7 +80,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: HttpHealthCheckArgs | HttpHealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: HttpHealthCheckState = argsOrState as HttpHealthCheckState | undefined;
+            const state = argsOrState as HttpHealthCheckState | undefined;
             inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;

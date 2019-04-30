@@ -10,17 +10,17 @@ import * as utilities from "../utilities";
  * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs)
  * and
  * [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
- * 
+ *
  * > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.
- * 
+ *
  * > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my_sink = new gcp.logging.ProjectSink("my-sink", {
  *     // Can export to pubsub, cloud storage, or bigtable
  *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
@@ -30,16 +30,16 @@ import * as utilities from "../utilities";
  *     uniqueWriterIdentity: true,
  * });
  * ```
- * 
+ *
  * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
  * cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
  * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
  * used with terraform.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * // Our logged compute instance
  * const my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
  *     bootDisk: {
@@ -130,7 +130,7 @@ export class ProjectSink extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectSinkArgs | ProjectSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectSinkState = argsOrState as ProjectSinkState | undefined;
+            const state = argsOrState as ProjectSinkState | undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["name"] = state ? state.name : undefined;
