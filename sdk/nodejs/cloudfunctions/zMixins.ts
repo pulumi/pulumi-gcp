@@ -18,7 +18,6 @@ import * as cloudfunctions from ".";
 import * as storage from "../storage";
 
 import * as filepath from "path";
-import * as readPackageJson from "read-package-json";
 
 import * as utils from "../utils";
 
@@ -247,7 +246,8 @@ async function computeCodePaths(
 // GCP will restore the packages itself.
 function producePackageJson(excludedPackages: Set<string>): Promise<string> {
     return new Promise((resolve, reject) => {
-        readPackageJson(filepath.basename('package.json'), null, false, (err, packageJson) => {
+        const readPackageJson = require("read-package-json");
+        readPackageJson(filepath.basename('package.json'), null, false, (err: Error, packageJson: any) => {
             if (err) {
                 return reject(err);
             }
@@ -258,7 +258,7 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
                 .reduce((obj, key) => {
                     obj[key] = packageJson.dependencies[key];
                     return obj;
-                }, {});
+                }, <Record<string, string>>{});
 
             resolve(JSON.stringify({
                 dependencies: dependencies,
