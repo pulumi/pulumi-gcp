@@ -1014,7 +1014,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{
 					"serverless": {
-						Files: []string{
+						DestFiles: []string{
 							"function.ts", // a serverless function that works with language closures.
 						},
 					},
