@@ -21,6 +21,8 @@ import (
 // * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
 // * How-to Guides
 //     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+// 
+// **Note:** When using `compute_attached_disk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute_instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 type AttachedDisk struct {
 	s *pulumi.ResourceState
 }

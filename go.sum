@@ -486,6 +486,8 @@ github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190418162
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190418162215-5f98464803d1/go.mod h1:NOgI6aSsPpIzrPSQopCGvLu8vEU16bTwcsHaJ/Ah1rU=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190422203630-616e8a9b048b h1:r1hEsOLBkrRVIn3QknOzR1I4zlr0wmUSN0z/vejI5QE=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190422203630-616e8a9b048b/go.mod h1:NOgI6aSsPpIzrPSQopCGvLu8vEU16bTwcsHaJ/Ah1rU=
+github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190507200920-93900d1e4d4d h1:E/CMax0jKDH/fSn9T/9QCWw8bZSmlyi9qvcQais/eOU=
+github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190507200920-93900d1e4d4d/go.mod h1:uca9g0VJdbuuXlUKqCag1aSHhBFrxS1vRbjMGH3gRqE=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0 h1:5geKRJJExxlrSNHSTHIZJnYKgbdBPAXC970fRYbcx9I=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0/go.mod h1:BrATop584KxlljJ8f2L2GNvs8Ys0SKEvhEuREGtKg4M=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
@@ -523,6 +525,8 @@ go.opencensus.io v0.19.1/go.mod h1:gug0GbSHa8Pafr0d2urOSgoXHZ6x/RUlaiT0d9pqb4A=
 go.opencensus.io v0.19.2/go.mod h1:NO/8qkisMZLZ1FCsKNqtJPwc8/TaclWyY0B6wcYNg9M=
 go.opencensus.io v0.20.0 h1:L/ARO58pdktB6dLmYI0zAyW1XnavEmGziFd0MKfxnck=
 go.opencensus.io v0.20.0/go.mod h1:NO/8qkisMZLZ1FCsKNqtJPwc8/TaclWyY0B6wcYNg9M=
+go.opencensus.io v0.21.0 h1:mU6zScU4U1YAFPHEHYk+3JC4SY7JxgkqS10ZOSyksNg=
+go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=
 go.uber.org/atomic v1.3.2/go.mod h1:gD2HeocX3+yG+ygLZcrzQJaqmWj9AIm7n08wl/qW/PE=
 go.uber.org/multierr v1.1.0/go.mod h1:wR5kodmAFQ0UK8QlbwjlSNy0Z68gJhDJUG5sjR94q/0=
 go.uber.org/zap v1.9.1/go.mod h1:vwi/ZaCAaUcBkycHslxD9B2zi4UTXhF60s6SWpuDF0Q=
@@ -613,6 +617,8 @@ google.golang.org/api v0.1.0/go.mod h1:UGEZY7KEX120AnNLIHFMKIo4obdJhkp2tPbaPlQx1
 google.golang.org/api v0.2.0/go.mod h1:IfRCZScioGtypHNTlz3gFk67J8uePVW7uDTBzXuIkhU=
 google.golang.org/api v0.3.0 h1:UIJY20OEo3+tK5MBlcdx37kmdH6EnRjGkW78mc6+EeA=
 google.golang.org/api v0.3.0/go.mod h1:IuvZyQh8jgscv8qWfQ4ABd8m7hEudgBFM/EdhA3BnXw=
+google.golang.org/api v0.4.0 h1:KKgc1aqhV8wDPbDzlDtpvyjZFY3vjz85FP7p4wcQUyI=
+google.golang.org/api v0.4.0/go.mod h1:8k5glujaEP+g9n7WNsDg8QP6cUVNI86fCNMcbazEtwE=
 google.golang.org/appengine v0.0.0-20180827170113-03cac3b07182/go.mod h1:becAO19CitOrUq7nfYuyxycOBJNZgjTqYPI+mvwLjCs=
 google.golang.org/appengine v1.1.0/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9YwlJXL52JkM=
 google.golang.org/appengine v1.2.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=

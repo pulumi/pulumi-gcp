@@ -7,8 +7,6 @@ import * as utilities from "../utilities";
 /**
  * A Google Cloud Filestore instance.
  * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
  * 
  * To get more information about Instance, see:
  * 
@@ -17,6 +15,27 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
  *     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
  *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+ * 
+ * ## Example Usage - Filestore Instance Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     fileShares: {
+ *         capacityGb: 2660,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "PREMIUM",
+ *     zone: "us-central1-b",
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

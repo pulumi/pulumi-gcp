@@ -47,6 +47,9 @@ import * as utilities from "../utilities";
  * const exampleTopic = new gcp.pubsub.Topic("example", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     ackDeadlineSeconds: 20,
+ *     expirationPolicy: {
+ *         ttl: "300000.5s",
+ *     },
  *     labels: {
  *         foo: "bar",
  *     },
@@ -86,6 +89,7 @@ export class Subscription extends pulumi.CustomResource {
     }
 
     public readonly ackDeadlineSeconds: pulumi.Output<number>;
+    public readonly expirationPolicy: pulumi.Output<{ ttl?: string }>;
     public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly messageRetentionDuration: pulumi.Output<string | undefined>;
     public readonly name: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Subscription extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: SubscriptionState = argsOrState as SubscriptionState | undefined;
             inputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
+            inputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -126,6 +131,7 @@ export class Subscription extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            inputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -144,6 +150,7 @@ export class Subscription extends pulumi.CustomResource {
  */
 export interface SubscriptionState {
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
+    readonly expirationPolicy?: pulumi.Input<{ ttl?: pulumi.Input<string> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly messageRetentionDuration?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -163,6 +170,7 @@ export interface SubscriptionState {
  */
 export interface SubscriptionArgs {
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
+    readonly expirationPolicy?: pulumi.Input<{ ttl?: pulumi.Input<string> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly messageRetentionDuration?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;

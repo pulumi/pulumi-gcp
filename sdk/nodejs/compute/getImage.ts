@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const myImage = pulumi.output(gcp.compute.getImage({
- *     name: "debian-9",
+ *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
  * const defaultInstance = new gcp.compute.Instance("default", {

@@ -80,6 +80,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly labels: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The limit on the maximum number of function instances that may coexist at a given time.
+     */
+    public readonly maxInstances: pulumi.Output<number | undefined>;
+    /**
      * A user-defined name of the function. Function names must be unique globally.
      */
     public readonly name: pulumi.Output<string>;
@@ -140,6 +144,7 @@ export class Function extends pulumi.CustomResource {
             inputs["eventTrigger"] = state ? state.eventTrigger : undefined;
             inputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["maxInstances"] = state ? state.maxInstances : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -159,6 +164,7 @@ export class Function extends pulumi.CustomResource {
             inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
             inputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -206,6 +212,10 @@ export interface FunctionState {
      * A set of key/value label pairs to assign to the function.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The limit on the maximum number of function instances that may coexist at a given time.
+     */
+    readonly maxInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
@@ -281,6 +291,10 @@ export interface FunctionArgs {
      * A set of key/value label pairs to assign to the function.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The limit on the maximum number of function instances that may coexist at a given time.
+     */
+    readonly maxInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */

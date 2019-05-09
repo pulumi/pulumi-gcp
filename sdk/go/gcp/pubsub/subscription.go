@@ -30,6 +30,7 @@ func NewSubscription(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["ackDeadlineSeconds"] = nil
+		inputs["expirationPolicy"] = nil
 		inputs["labels"] = nil
 		inputs["messageRetentionDuration"] = nil
 		inputs["name"] = nil
@@ -39,6 +40,7 @@ func NewSubscription(ctx *pulumi.Context,
 		inputs["topic"] = nil
 	} else {
 		inputs["ackDeadlineSeconds"] = args.AckDeadlineSeconds
+		inputs["expirationPolicy"] = args.ExpirationPolicy
 		inputs["labels"] = args.Labels
 		inputs["messageRetentionDuration"] = args.MessageRetentionDuration
 		inputs["name"] = args.Name
@@ -62,6 +64,7 @@ func GetSubscription(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["ackDeadlineSeconds"] = state.AckDeadlineSeconds
+		inputs["expirationPolicy"] = state.ExpirationPolicy
 		inputs["labels"] = state.Labels
 		inputs["messageRetentionDuration"] = state.MessageRetentionDuration
 		inputs["name"] = state.Name
@@ -90,6 +93,10 @@ func (r *Subscription) ID() *pulumi.IDOutput {
 
 func (r *Subscription) AckDeadlineSeconds() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ackDeadlineSeconds"])
+}
+
+func (r *Subscription) ExpirationPolicy() *pulumi.Output {
+	return r.s.State["expirationPolicy"]
 }
 
 func (r *Subscription) Labels() *pulumi.MapOutput {
@@ -129,6 +136,7 @@ func (r *Subscription) Topic() *pulumi.StringOutput {
 // Input properties used for looking up and filtering Subscription resources.
 type SubscriptionState struct {
 	AckDeadlineSeconds interface{}
+	ExpirationPolicy interface{}
 	Labels interface{}
 	MessageRetentionDuration interface{}
 	Name interface{}
@@ -144,6 +152,7 @@ type SubscriptionState struct {
 // The set of arguments for constructing a Subscription resource.
 type SubscriptionArgs struct {
 	AckDeadlineSeconds interface{}
+	ExpirationPolicy interface{}
 	Labels interface{}
 	MessageRetentionDuration interface{}
 	Name interface{}

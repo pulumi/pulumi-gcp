@@ -74,6 +74,7 @@ import * as utilities from "../utilities";
  *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
  *     subnetworks: [{
  *         name: google_compute_subnetwork_subnetwork.selfLink,
+ *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
  *     }],
  * });
  * ```

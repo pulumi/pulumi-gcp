@@ -93,7 +93,7 @@ class InstanceTemplate(pulumi.CustomResource):
     resource is tied to a specific region. Defaults to the region of the
     Provider if no value is given.
     """
-    schedulings: pulumi.Output[list]
+    scheduling: pulumi.Output[dict]
     """
     The scheduling strategy to use. More details about
     this configuration option are detailed below.
@@ -114,7 +114,7 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     The unique fingerprint of the tags.
     """
-    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, schedulings=None, service_account=None, tags=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, tags=None, __name__=None, __opts__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -158,7 +158,7 @@ class InstanceTemplate(pulumi.CustomResource):
                region where that resource resides. For example, a custom `subnetwork`
                resource is tied to a specific region. Defaults to the region of the
                Provider if no value is given.
-        :param pulumi.Input[list] schedulings: The scheduling strategy to use. More details about
+        :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[dict] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input[list] tags: Tags to attach to the instance.
@@ -212,7 +212,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['schedulings'] = schedulings
+        __props__['scheduling'] = scheduling
 
         __props__['service_account'] = service_account
 

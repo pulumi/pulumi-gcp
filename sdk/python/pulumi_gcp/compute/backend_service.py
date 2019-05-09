@@ -38,8 +38,17 @@ class BackendService(pulumi.CustomResource):
     timeout_sec: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
         """
-        Creates a BackendService resource in the specified project using the data
-        included in the request.
+        A Backend Service defines a group of virtual machines that will serve
+        traffic for load balancing. This resource is a global backend service,
+        appropriate for external load balancing. For internal load balancing, use
+        a regional backend service instead.
+        
+        
+        To get more information about BackendService, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

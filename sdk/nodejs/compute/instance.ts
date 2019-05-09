@@ -165,7 +165,7 @@ export class Instance extends pulumi.CustomResource {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling: pulumi.Output<{ automaticRestart?: boolean, onHostMaintenance: string, preemptible?: boolean }>;
+    public readonly scheduling: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
@@ -383,7 +383,7 @@ export interface InstanceState {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
@@ -504,7 +504,7 @@ export interface InstanceArgs {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.

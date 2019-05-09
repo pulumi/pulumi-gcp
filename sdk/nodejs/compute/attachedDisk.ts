@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
+ * **Note:** When using `compute_attached_disk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute_instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
  * 
  * ## Example Usage
  * 
@@ -26,9 +27,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "n1-standard-1",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     zone: "us-west1-a",
+ * });
  * const defaultAttachedDisk = new gcp.compute.AttachedDisk("default", {
  *     disk: google_compute_disk_default.selfLink,
- *     instance: google_compute_instance_default.selfLink,
+ *     instance: defaultInstance.selfLink,
  * });
  * ```
  */

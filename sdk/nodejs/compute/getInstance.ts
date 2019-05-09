@@ -132,7 +132,7 @@ export interface GetInstanceResult {
     /**
      * The scheduling strategy being used by the instance.
      */
-    readonly schedulings: { automaticRestart: boolean, onHostMaintenance: string, preemptible: boolean }[];
+    readonly schedulings: { automaticRestart: boolean, nodeAffinities: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible: boolean }[];
     /**
      * The scratch disks attached to the instance. Structure is documented below.
      */

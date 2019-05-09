@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -25,6 +25,9 @@ class GetClusterResult:
         if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, str):
             raise TypeError("Expected argument 'cluster_ipv4_cidr' to be a str")
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
+        if database_encryptions and not isinstance(database_encryptions, list):
+            raise TypeError("Expected argument 'database_encryptions' to be a list")
+        __self__.database_encryptions = database_encryptions
         if default_max_pods_per_node and not isinstance(default_max_pods_per_node, float):
             raise TypeError("Expected argument 'default_max_pods_per_node' to be a float")
         __self__.default_max_pods_per_node = default_max_pods_per_node
@@ -152,6 +155,7 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
         addons_configs=__ret__.get('addonsConfigs'),
         cluster_autoscalings=__ret__.get('clusterAutoscalings'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
+        database_encryptions=__ret__.get('databaseEncryptions'),
         default_max_pods_per_node=__ret__.get('defaultMaxPodsPerNode'),
         description=__ret__.get('description'),
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),

@@ -4,6 +4,7 @@
 // Export members:
 export * from "./account";
 export * from "./getAccount";
+export * from "./getAccountAccessToken";
 export * from "./getAccountKey";
 export * from "./iAMBinding";
 export * from "./iAMMember";

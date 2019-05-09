@@ -10,6 +10,7 @@ from .. import utilities, tables
 
 class Subscription(pulumi.CustomResource):
     ack_deadline_seconds: pulumi.Output[float]
+    expiration_policy: pulumi.Output[dict]
     labels: pulumi.Output[dict]
     message_retention_duration: pulumi.Output[str]
     name: pulumi.Output[str]
@@ -22,7 +23,7 @@ class Subscription(pulumi.CustomResource):
     push_config: pulumi.Output[dict]
     retain_acked_messages: pulumi.Output[bool]
     topic: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __name__=None, __opts__=None):
         """
         A named resource representing the stream of messages from a single,
         specific topic, to be delivered to the subscribing application.
@@ -55,6 +56,8 @@ class Subscription(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['ack_deadline_seconds'] = ack_deadline_seconds
+
+        __props__['expiration_policy'] = expiration_policy
 
         __props__['labels'] = labels
 

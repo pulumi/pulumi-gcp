@@ -20,7 +20,11 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  * 
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {
+ *     byteLength: 4,
+ * });
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     databaseVersion: "MYSQL_5_6",
  *     // First-generation instance regions are not the conventional
@@ -68,7 +72,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionName: pulumi.Output<string>;
     /**
-     * The MySQL version to
+     * The MySQL or PostgreSQL version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
@@ -207,7 +211,7 @@ export interface DatabaseInstanceState {
      */
     readonly connectionName?: pulumi.Input<string>;
     /**
-     * The MySQL version to
+     * The MySQL or PostgreSQL version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
@@ -290,7 +294,7 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The MySQL version to
+     * The MySQL or PostgreSQL version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)

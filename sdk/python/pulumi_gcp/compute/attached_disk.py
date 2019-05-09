@@ -31,6 +31,8 @@ class AttachedDisk(pulumi.CustomResource):
         * How-to Guides
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
         
+        **Note:** When using `compute_attached_disk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute_instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """

@@ -19,7 +19,8 @@ class AlertPolicy(pulumi.CustomResource):
     name: pulumi.Output[str]
     notification_channels: pulumi.Output[list]
     project: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None, __name__=None, __opts__=None):
+    user_labels: pulumi.Output[dict]
+    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None, user_labels=None, __name__=None, __opts__=None):
         """
         A description of the conditions under which some aspect of your system is
         considered to be "unhealthy" and the ways to notify people or services
@@ -71,6 +72,8 @@ class AlertPolicy(pulumi.CustomResource):
         __props__['notification_channels'] = notification_channels
 
         __props__['project'] = project
+
+        __props__['user_labels'] = user_labels
 
         __props__['creation_record'] = None
         __props__['name'] = None

@@ -9,4 +9,5 @@ from .iam_member import *
 from .iam_policy import *
 from .key import *
 from .get_account import *
+from .get_account_access_token import *
 from .get_account_key import *

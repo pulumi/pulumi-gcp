@@ -29,6 +29,42 @@ import * as utilities from "../utilities";
  *     target: defaultTargetPool.selfLink,
  * });
  * ```
+ * ## Example Usage - Forwarding Rule Internallb
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     autoCreateSubnetworks: false,
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     healthChecks: hc.selfLink,
+ *     region: "us-central1",
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     ipCidrRange: "10.0.0.0/16",
+ *     network: defaultNetwork.selfLink,
+ *     region: "us-central1",
+ * });
+ * // Forwarding rule for Internal Load Balancing
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
+ *     allPorts: true,
+ *     backendService: backend.selfLink,
+ *     loadBalancingScheme: "INTERNAL",
+ *     network: defaultNetwork.name,
+ *     region: "us-central1",
+ *     subnetwork: defaultSubnetwork.name,
+ * });
+ * ```
  */
 export class ForwardingRule extends pulumi.CustomResource {
     /**

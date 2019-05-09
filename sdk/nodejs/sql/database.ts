@@ -16,7 +16,11 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  * 
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {
+ *     byteLength: 4,
+ * });
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     settings: {
  *         tier: "D0",

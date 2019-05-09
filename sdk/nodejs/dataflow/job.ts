@@ -56,6 +56,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly name: pulumi.Output<string>;
     /**
+     * The network to which VMs will be assigned. If it is not provided, "default" will be used.
+     */
+    public readonly network: pulumi.Output<string | undefined>;
+    /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
      */
     public readonly onDelete: pulumi.Output<string | undefined>;
@@ -76,6 +80,10 @@ export class Job extends pulumi.CustomResource {
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     */
+    public readonly subnetwork: pulumi.Output<string | undefined>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      */
@@ -103,12 +111,14 @@ export class Job extends pulumi.CustomResource {
             const state: JobState = argsOrState as JobState | undefined;
             inputs["maxWorkers"] = state ? state.maxWorkers : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["onDelete"] = state ? state.onDelete : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             inputs["state"] = state ? state.state : undefined;
+            inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -122,11 +132,13 @@ export class Job extends pulumi.CustomResource {
             }
             inputs["maxWorkers"] = args ? args.maxWorkers : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["onDelete"] = args ? args.onDelete : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -149,6 +161,10 @@ export interface JobState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The network to which VMs will be assigned. If it is not provided, "default" will be used.
+     */
+    readonly network?: pulumi.Input<string>;
+    /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
      */
     readonly onDelete?: pulumi.Input<string>;
@@ -169,6 +185,10 @@ export interface JobState {
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     */
+    readonly subnetwork?: pulumi.Input<string>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      */
@@ -196,6 +216,10 @@ export interface JobArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The network to which VMs will be assigned. If it is not provided, "default" will be used.
+     */
+    readonly network?: pulumi.Input<string>;
+    /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
      */
     readonly onDelete?: pulumi.Input<string>;
@@ -212,6 +236,10 @@ export interface JobArgs {
      * The Service Account email used to create the job.
      */
     readonly serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     */
+    readonly subnetwork?: pulumi.Input<string>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      */

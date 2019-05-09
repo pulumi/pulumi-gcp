@@ -76,6 +76,7 @@ export class Subnetwork extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint: pulumi.Output<string>;
     public /*out*/ readonly gatewayAddress: pulumi.Output<string>;
     public readonly ipCidrRange: pulumi.Output<string>;
+    public readonly logConfig: pulumi.Output<{ aggregationInterval?: string, flowSampling?: number, metadata?: string }>;
     public readonly name: pulumi.Output<string>;
     public readonly network: pulumi.Output<string>;
     public readonly privateIpGoogleAccess: pulumi.Output<boolean | undefined>;
@@ -85,7 +86,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly project: pulumi.Output<string>;
     public readonly region: pulumi.Output<string>;
-    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[] | undefined>;
+    public readonly secondaryIpRanges: pulumi.Output<{ ipCidrRange: string, rangeName: string }[]>;
     /**
      * The URI of the created resource.
      */
@@ -109,6 +110,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
             inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
@@ -127,6 +129,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
@@ -152,6 +155,7 @@ export interface SubnetworkState {
     readonly fingerprint?: pulumi.Input<string>;
     readonly gatewayAddress?: pulumi.Input<string>;
     readonly ipCidrRange?: pulumi.Input<string>;
+    readonly logConfig?: pulumi.Input<{ aggregationInterval?: pulumi.Input<string>, flowSampling?: pulumi.Input<number>, metadata?: pulumi.Input<string> }>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
@@ -175,6 +179,7 @@ export interface SubnetworkArgs {
     readonly description?: pulumi.Input<string>;
     readonly enableFlowLogs?: pulumi.Input<boolean>;
     readonly ipCidrRange: pulumi.Input<string>;
+    readonly logConfig?: pulumi.Input<{ aggregationInterval?: pulumi.Input<string>, flowSampling?: pulumi.Input<number>, metadata?: pulumi.Input<string> }>;
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;

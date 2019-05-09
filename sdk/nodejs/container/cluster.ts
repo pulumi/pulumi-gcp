@@ -138,6 +138,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterIpv4Cidr: pulumi.Output<string>;
     /**
+     * ).
+     * Structure is documented below.
+     */
+    public readonly databaseEncryption: pulumi.Output<{ keyName: string, state: string }>;
+    /**
      * ) The default maximum number of pods per node in this cluster.
      * Note that this does not work on node pools which are "route-based" - that is, node
      * pools belonging to clusters that do not have IP Aliasing enabled.
@@ -372,6 +377,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
+            inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
@@ -412,6 +418,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
+            inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
@@ -480,6 +487,11 @@ export interface ClusterState {
      * this cluster. Default is an automatically assigned CIDR.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ).
+     * Structure is documented below.
+     */
+    readonly databaseEncryption?: pulumi.Input<{ keyName: pulumi.Input<string>, state: pulumi.Input<string> }>;
     /**
      * ) The default maximum number of pods per node in this cluster.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -729,6 +741,11 @@ export interface ClusterArgs {
      * this cluster. Default is an automatically assigned CIDR.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ).
+     * Structure is documented below.
+     */
+    readonly databaseEncryption?: pulumi.Input<{ keyName: pulumi.Input<string>, state: pulumi.Input<string> }>;
     /**
      * ) The default maximum number of pods per node in this cluster.
      * Note that this does not work on node pools which are "route-based" - that is, node
