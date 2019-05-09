@@ -56,6 +56,7 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["enableFlowLogs"] = nil
 		inputs["ipCidrRange"] = nil
+		inputs["logConfig"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["privateIpGoogleAccess"] = nil
@@ -66,6 +67,7 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["enableFlowLogs"] = args.EnableFlowLogs
 		inputs["ipCidrRange"] = args.IpCidrRange
+		inputs["logConfig"] = args.LogConfig
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["privateIpGoogleAccess"] = args.PrivateIpGoogleAccess
@@ -96,6 +98,7 @@ func GetSubnetwork(ctx *pulumi.Context,
 		inputs["fingerprint"] = state.Fingerprint
 		inputs["gatewayAddress"] = state.GatewayAddress
 		inputs["ipCidrRange"] = state.IpCidrRange
+		inputs["logConfig"] = state.LogConfig
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["privateIpGoogleAccess"] = state.PrivateIpGoogleAccess
@@ -145,6 +148,10 @@ func (r *Subnetwork) IpCidrRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipCidrRange"])
 }
 
+func (r *Subnetwork) LogConfig() *pulumi.Output {
+	return r.s.State["logConfig"]
+}
+
 func (r *Subnetwork) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -184,6 +191,7 @@ type SubnetworkState struct {
 	Fingerprint interface{}
 	GatewayAddress interface{}
 	IpCidrRange interface{}
+	LogConfig interface{}
 	Name interface{}
 	Network interface{}
 	PrivateIpGoogleAccess interface{}
@@ -201,6 +209,7 @@ type SubnetworkArgs struct {
 	Description interface{}
 	EnableFlowLogs interface{}
 	IpCidrRange interface{}
+	LogConfig interface{}
 	Name interface{}
 	Network interface{}
 	PrivateIpGoogleAccess interface{}

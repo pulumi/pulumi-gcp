@@ -37,6 +37,10 @@ class Function(pulumi.CustomResource):
     """
     A set of key/value label pairs to assign to the function.
     """
+    max_instances: pulumi.Output[float]
+    """
+    The limit on the maximum number of function instances that may coexist at a given time.
+    """
     name: pulumi.Output[str]
     """
     A user-defined name of the function. Function names must be unique globally.
@@ -78,7 +82,7 @@ class Function(pulumi.CustomResource):
     """
     Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
     """
-    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, __name__=None, __opts__=None):
         """
         Creates a new Cloud Function. For more information see
         [the official documentation](https://cloud.google.com/functions/docs/)
@@ -94,6 +98,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[dict] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the function.
+        :param pulumi.Input[float] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
@@ -134,6 +139,8 @@ class Function(pulumi.CustomResource):
         __props__['https_trigger_url'] = https_trigger_url
 
         __props__['labels'] = labels
+
+        __props__['max_instances'] = max_instances
 
         __props__['name'] = name
 

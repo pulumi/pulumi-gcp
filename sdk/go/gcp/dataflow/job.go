@@ -37,22 +37,26 @@ func NewJob(ctx *pulumi.Context,
 	if args == nil {
 		inputs["maxWorkers"] = nil
 		inputs["name"] = nil
+		inputs["network"] = nil
 		inputs["onDelete"] = nil
 		inputs["parameters"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["serviceAccountEmail"] = nil
+		inputs["subnetwork"] = nil
 		inputs["tempGcsLocation"] = nil
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
 	} else {
 		inputs["maxWorkers"] = args.MaxWorkers
 		inputs["name"] = args.Name
+		inputs["network"] = args.Network
 		inputs["onDelete"] = args.OnDelete
 		inputs["parameters"] = args.Parameters
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["serviceAccountEmail"] = args.ServiceAccountEmail
+		inputs["subnetwork"] = args.Subnetwork
 		inputs["tempGcsLocation"] = args.TempGcsLocation
 		inputs["templateGcsPath"] = args.TemplateGcsPath
 		inputs["zone"] = args.Zone
@@ -73,12 +77,14 @@ func GetJob(ctx *pulumi.Context,
 	if state != nil {
 		inputs["maxWorkers"] = state.MaxWorkers
 		inputs["name"] = state.Name
+		inputs["network"] = state.Network
 		inputs["onDelete"] = state.OnDelete
 		inputs["parameters"] = state.Parameters
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["serviceAccountEmail"] = state.ServiceAccountEmail
 		inputs["state"] = state.State
+		inputs["subnetwork"] = state.Subnetwork
 		inputs["tempGcsLocation"] = state.TempGcsLocation
 		inputs["templateGcsPath"] = state.TemplateGcsPath
 		inputs["zone"] = state.Zone
@@ -110,6 +116,11 @@ func (r *Job) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+func (r *Job) Network() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["network"])
+}
+
 // One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
 func (r *Job) OnDelete() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["onDelete"])
@@ -139,6 +150,11 @@ func (r *Job) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
 
+// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+func (r *Job) Subnetwork() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
+}
+
 // A writeable location on GCS for the Dataflow job to dump its temporary data.
 func (r *Job) TempGcsLocation() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tempGcsLocation"])
@@ -160,6 +176,8 @@ type JobState struct {
 	MaxWorkers interface{}
 	// A unique name for the resource, required by Dataflow.
 	Name interface{}
+	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+	Network interface{}
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
 	OnDelete interface{}
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
@@ -171,6 +189,8 @@ type JobState struct {
 	ServiceAccountEmail interface{}
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State interface{}
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	Subnetwork interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation interface{}
 	// The GCS path to the Dataflow job template.
@@ -185,6 +205,8 @@ type JobArgs struct {
 	MaxWorkers interface{}
 	// A unique name for the resource, required by Dataflow.
 	Name interface{}
+	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+	Network interface{}
 	// One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
 	OnDelete interface{}
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
@@ -194,6 +216,8 @@ type JobArgs struct {
 	Region interface{}
 	// The Service Account email used to create the job.
 	ServiceAccountEmail interface{}
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	Subnetwork interface{}
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation interface{}
 	// The GCS path to the Dataflow job template.

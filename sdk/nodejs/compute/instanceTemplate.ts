@@ -56,10 +56,10 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
- *     schedulings: [{
+ *     scheduling: {
  *         automaticRestart: true,
  *         onHostMaintenance: "MIGRATE",
- *     }],
+ *     },
  *     serviceAccount: {
  *         scopes: [
  *             "userinfo-email",
@@ -269,7 +269,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly schedulings: pulumi.Output<{ automaticRestart?: boolean, onHostMaintenance: string, preemptible?: boolean }[]>;
+    public readonly scheduling: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
     /**
      * The URI of the created resource.
      */
@@ -315,7 +315,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
-            inputs["schedulings"] = state ? state.schedulings : undefined;
+            inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -343,7 +343,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["schedulings"] = args ? args.schedulings : undefined;
+            inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["metadataFingerprint"] = undefined /*out*/;
@@ -446,7 +446,7 @@ export interface InstanceTemplateState {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly schedulings?: pulumi.Input<pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>[]>;
+    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     /**
      * The URI of the created resource.
      */
@@ -553,7 +553,7 @@ export interface InstanceTemplateArgs {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly schedulings?: pulumi.Input<pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>[]>;
+    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */

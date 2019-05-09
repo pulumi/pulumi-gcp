@@ -8,12 +8,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Region Backend Service defines a regionally-scoped group of virtual machines that will serve traffic for load balancing.
-// For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/)
-// and [API](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices).
+// A Region Backend Service defines a regionally-scoped group of virtual
+// machines that will serve traffic for load balancing.
 // 
-// > **Note**: Region backend services can only be used when using internal load balancing. For external load balancing, use
-//   `google_compute_backend_service` instead.
+// Region backend services can only be used when using internal load balancing.
+// For external load balancing, use a global backend service instead.
+// 
+// 
+// To get more information about RegionBackendService, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+// * How-to Guides
+//     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 type RegionBackendService struct {
 	s *pulumi.ResourceState
 }
@@ -30,6 +36,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["connectionDrainingTimeoutSec"] = nil
 		inputs["description"] = nil
 		inputs["healthChecks"] = nil
+		inputs["loadBalancingScheme"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["protocol"] = nil
@@ -41,6 +48,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
 		inputs["description"] = args.Description
 		inputs["healthChecks"] = args.HealthChecks
+		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["protocol"] = args.Protocol
@@ -68,6 +76,7 @@ func GetRegionBackendService(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["fingerprint"] = state.Fingerprint
 		inputs["healthChecks"] = state.HealthChecks
+		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["protocol"] = state.Protocol
@@ -93,54 +102,44 @@ func (r *RegionBackendService) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The list of backends that serve this BackendService.
-// Structure is documented below.
 func (r *RegionBackendService) Backends() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["backends"])
 }
 
-// Time for which instance will be drained
-// (not accept new connections, but still work to finish started ones). Defaults to `0`.
 func (r *RegionBackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
 }
 
-// The textual description for the backend service.
 func (r *RegionBackendService) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The fingerprint of the backend service.
 func (r *RegionBackendService) Fingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
-// Specifies a list of health checks
-// for checking the health of the backend service. Currently at most
-// one health check can be specified, and a health check is required.
 func (r *RegionBackendService) HealthChecks() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["healthChecks"])
 }
 
-// The name of the backend service.
+func (r *RegionBackendService) LoadBalancingScheme() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
+}
+
 func (r *RegionBackendService) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *RegionBackendService) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The protocol for incoming requests. Defaults to
-// `TCP`.
 func (r *RegionBackendService) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// The Region in which the created address should reside.
-// If it is not provided, the provider region is used.
 func (r *RegionBackendService) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -150,87 +149,47 @@ func (r *RegionBackendService) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// How to distribute load. Options are `NONE` (no
-// affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
-// Defaults to `NONE`.
 func (r *RegionBackendService) SessionAffinity() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sessionAffinity"])
 }
 
-// The number of secs to wait for a backend to respond
-// to a request before considering the request failed. Defaults to `30`.
 func (r *RegionBackendService) TimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeoutSec"])
 }
 
 // Input properties used for looking up and filtering RegionBackendService resources.
 type RegionBackendServiceState struct {
-	// The list of backends that serve this BackendService.
-	// Structure is documented below.
 	Backends interface{}
-	// Time for which instance will be drained
-	// (not accept new connections, but still work to finish started ones). Defaults to `0`.
 	ConnectionDrainingTimeoutSec interface{}
-	// The textual description for the backend service.
 	Description interface{}
-	// The fingerprint of the backend service.
 	Fingerprint interface{}
-	// Specifies a list of health checks
-	// for checking the health of the backend service. Currently at most
-	// one health check can be specified, and a health check is required.
 	HealthChecks interface{}
-	// The name of the backend service.
+	LoadBalancingScheme interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The protocol for incoming requests. Defaults to
-	// `TCP`.
 	Protocol interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// How to distribute load. Options are `NONE` (no
-	// affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
-	// Defaults to `NONE`.
 	SessionAffinity interface{}
-	// The number of secs to wait for a backend to respond
-	// to a request before considering the request failed. Defaults to `30`.
 	TimeoutSec interface{}
 }
 
 // The set of arguments for constructing a RegionBackendService resource.
 type RegionBackendServiceArgs struct {
-	// The list of backends that serve this BackendService.
-	// Structure is documented below.
 	Backends interface{}
-	// Time for which instance will be drained
-	// (not accept new connections, but still work to finish started ones). Defaults to `0`.
 	ConnectionDrainingTimeoutSec interface{}
-	// The textual description for the backend service.
 	Description interface{}
-	// Specifies a list of health checks
-	// for checking the health of the backend service. Currently at most
-	// one health check can be specified, and a health check is required.
 	HealthChecks interface{}
-	// The name of the backend service.
+	LoadBalancingScheme interface{}
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The protocol for incoming requests. Defaults to
-	// `TCP`.
 	Protocol interface{}
-	// The Region in which the created address should reside.
-	// If it is not provided, the provider region is used.
 	Region interface{}
-	// How to distribute load. Options are `NONE` (no
-	// affinity), `CLIENT_IP`, `CLIENT_IP_PROTO`, or `CLIENT_IP_PORT_PROTO`.
-	// Defaults to `NONE`.
 	SessionAffinity interface{}
-	// The number of secs to wait for a backend to respond
-	// to a request before considering the request failed. Defaults to `30`.
 	TimeoutSec interface{}
 }

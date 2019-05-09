@@ -17,6 +17,10 @@ class Job(pulumi.CustomResource):
     """
     A unique name for the resource, required by Dataflow.
     """
+    network: pulumi.Output[str]
+    """
+    The network to which VMs will be assigned. If it is not provided, "default" will be used.
+    """
     on_delete: pulumi.Output[str]
     """
     One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
@@ -38,6 +42,10 @@ class Job(pulumi.CustomResource):
     """
     The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
     """
+    subnetwork: pulumi.Output[str]
+    """
+    The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+    """
     temp_gcs_location: pulumi.Output[str]
     """
     A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -50,7 +58,7 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, max_workers=None, name=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
@@ -69,10 +77,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -96,6 +106,8 @@ class Job(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        __props__['network'] = network
+
         __props__['on_delete'] = on_delete
 
         __props__['parameters'] = parameters
@@ -105,6 +117,8 @@ class Job(pulumi.CustomResource):
         __props__['region'] = region
 
         __props__['service_account_email'] = service_account_email
+
+        __props__['subnetwork'] = subnetwork
 
         if temp_gcs_location is None:
             raise TypeError("Missing required property 'temp_gcs_location'")

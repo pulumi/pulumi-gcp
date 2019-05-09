@@ -103,7 +103,7 @@ func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["connectionName"])
 }
 
-// The MySQL version to
+// The MySQL or PostgreSQL version to
 // use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
@@ -203,7 +203,7 @@ type DatabaseInstanceState struct {
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName interface{}
-	// The MySQL version to
+	// The MySQL or PostgreSQL version to
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
@@ -260,7 +260,7 @@ type DatabaseInstanceState struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The MySQL version to
+	// The MySQL or PostgreSQL version to
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)

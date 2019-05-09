@@ -27,6 +27,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = nil
 		inputs["clusterAutoscaling"] = nil
 		inputs["clusterIpv4Cidr"] = nil
+		inputs["databaseEncryption"] = nil
 		inputs["defaultMaxPodsPerNode"] = nil
 		inputs["description"] = nil
 		inputs["enableBinaryAuthorization"] = nil
@@ -62,6 +63,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = args.AddonsConfig
 		inputs["clusterAutoscaling"] = args.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = args.ClusterIpv4Cidr
+		inputs["databaseEncryption"] = args.DatabaseEncryption
 		inputs["defaultMaxPodsPerNode"] = args.DefaultMaxPodsPerNode
 		inputs["description"] = args.Description
 		inputs["enableBinaryAuthorization"] = args.EnableBinaryAuthorization
@@ -114,6 +116,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["addonsConfig"] = state.AddonsConfig
 		inputs["clusterAutoscaling"] = state.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = state.ClusterIpv4Cidr
+		inputs["databaseEncryption"] = state.DatabaseEncryption
 		inputs["defaultMaxPodsPerNode"] = state.DefaultMaxPodsPerNode
 		inputs["description"] = state.Description
 		inputs["enableBinaryAuthorization"] = state.EnableBinaryAuthorization
@@ -193,6 +196,12 @@ func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
 // this cluster. Default is an automatically assigned CIDR.
 func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
+}
+
+// ).
+// Structure is documented below.
+func (r *Cluster) DatabaseEncryption() *pulumi.Output {
+	return r.s.State["databaseEncryption"]
 }
 
 // ) The default maximum number of pods per node in this cluster.
@@ -468,6 +477,9 @@ type ClusterState struct {
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	// ).
+	// Structure is documented below.
+	DatabaseEncryption interface{}
 	// ) The default maximum number of pods per node in this cluster.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
@@ -641,6 +653,9 @@ type ClusterArgs struct {
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
 	ClusterIpv4Cidr interface{}
+	// ).
+	// Structure is documented below.
+	DatabaseEncryption interface{}
 	// ) The default maximum number of pods per node in this cluster.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.

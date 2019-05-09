@@ -26,6 +26,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		AddonsConfigs: outputs["addonsConfigs"],
 		ClusterAutoscalings: outputs["clusterAutoscalings"],
 		ClusterIpv4Cidr: outputs["clusterIpv4Cidr"],
+		DatabaseEncryptions: outputs["databaseEncryptions"],
 		DefaultMaxPodsPerNode: outputs["defaultMaxPodsPerNode"],
 		Description: outputs["description"],
 		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
@@ -89,6 +90,7 @@ type GetClusterResult struct {
 	AddonsConfigs interface{}
 	ClusterAutoscalings interface{}
 	ClusterIpv4Cidr interface{}
+	DatabaseEncryptions interface{}
 	DefaultMaxPodsPerNode interface{}
 	Description interface{}
 	EnableBinaryAuthorization interface{}

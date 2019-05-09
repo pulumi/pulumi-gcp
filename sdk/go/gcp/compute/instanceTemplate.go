@@ -42,7 +42,7 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 		inputs["networkInterfaces"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
-		inputs["schedulings"] = nil
+		inputs["scheduling"] = nil
 		inputs["serviceAccount"] = nil
 		inputs["tags"] = nil
 	} else {
@@ -61,7 +61,7 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 		inputs["networkInterfaces"] = args.NetworkInterfaces
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
-		inputs["schedulings"] = args.Schedulings
+		inputs["scheduling"] = args.Scheduling
 		inputs["serviceAccount"] = args.ServiceAccount
 		inputs["tags"] = args.Tags
 	}
@@ -97,7 +97,7 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 		inputs["networkInterfaces"] = state.NetworkInterfaces
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
-		inputs["schedulings"] = state.Schedulings
+		inputs["scheduling"] = state.Scheduling
 		inputs["selfLink"] = state.SelfLink
 		inputs["serviceAccount"] = state.ServiceAccount
 		inputs["tags"] = state.Tags
@@ -222,8 +222,8 @@ func (r *InstanceTemplate) Region() *pulumi.StringOutput {
 
 // The scheduling strategy to use. More details about
 // this configuration option are detailed below.
-func (r *InstanceTemplate) Schedulings() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["schedulings"])
+func (r *InstanceTemplate) Scheduling() *pulumi.Output {
+	return r.s.State["scheduling"]
 }
 
 // The URI of the created resource.
@@ -302,7 +302,7 @@ type InstanceTemplateState struct {
 	Region interface{}
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
-	Schedulings interface{}
+	Scheduling interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	// Service account to attach to the instance. Structure is documented below.
@@ -367,7 +367,7 @@ type InstanceTemplateArgs struct {
 	Region interface{}
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
-	Schedulings interface{}
+	Scheduling interface{}
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount interface{}
 	// Tags to attach to the instance.

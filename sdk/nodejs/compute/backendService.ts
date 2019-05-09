@@ -5,10 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a BackendService resource in the specified project using the data
- * included in the request.
+ * A Backend Service defines a group of virtual machines that will serve
+ * traffic for load balancing. This resource is a global backend service,
+ * appropriate for external load balancing. For internal load balancing, use
+ * a regional backend service instead.
  * 
  * 
+ * To get more information about BackendService, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
  * ## Example Usage - Backend Service Basic
  * 

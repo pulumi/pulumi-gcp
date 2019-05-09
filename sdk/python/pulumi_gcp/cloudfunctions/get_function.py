@@ -12,7 +12,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, float):
             raise TypeError("Expected argument 'available_memory_mb' to be a float")
         __self__.available_memory_mb = available_memory_mb
@@ -52,6 +52,9 @@ class GetFunctionResult:
         """
         A map of labels applied to this function.
         """
+        if max_instances and not isinstance(max_instances, float):
+            raise TypeError("Expected argument 'max_instances' to be a float")
+        __self__.max_instances = max_instances
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -134,6 +137,7 @@ async def get_function(name=None,project=None,region=None,opts=None):
         event_triggers=__ret__.get('eventTriggers'),
         https_trigger_url=__ret__.get('httpsTriggerUrl'),
         labels=__ret__.get('labels'),
+        max_instances=__ret__.get('maxInstances'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),

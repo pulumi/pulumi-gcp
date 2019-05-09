@@ -34,6 +34,11 @@ class Cluster(pulumi.CustomResource):
     The IP address range of the kubernetes pods in
     this cluster. Default is an automatically assigned CIDR.
     """
+    database_encryption: pulumi.Output[dict]
+    """
+    ).
+    Structure is documented below.
+    """
     default_max_pods_per_node: pulumi.Output[float]
     """
     ) The default maximum number of pods per node in this cluster.
@@ -252,7 +257,7 @@ class Cluster(pulumi.CustomResource):
     should be created in. If specified, this cluster will be a zonal cluster. `zone`
     has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -277,6 +282,8 @@ class Cluster(pulumi.CustomResource):
                Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
                this cluster. Default is an automatically assigned CIDR.
+        :param pulumi.Input[dict] database_encryption: ).
+               Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
@@ -409,6 +416,8 @@ class Cluster(pulumi.CustomResource):
         __props__['cluster_autoscaling'] = cluster_autoscaling
 
         __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
+
+        __props__['database_encryption'] = database_encryption
 
         __props__['default_max_pods_per_node'] = default_max_pods_per_node
 

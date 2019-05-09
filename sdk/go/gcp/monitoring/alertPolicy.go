@@ -44,6 +44,7 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		inputs["labels"] = nil
 		inputs["notificationChannels"] = nil
 		inputs["project"] = nil
+		inputs["userLabels"] = nil
 	} else {
 		inputs["combiner"] = args.Combiner
 		inputs["conditions"] = args.Conditions
@@ -53,6 +54,7 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		inputs["labels"] = args.Labels
 		inputs["notificationChannels"] = args.NotificationChannels
 		inputs["project"] = args.Project
+		inputs["userLabels"] = args.UserLabels
 	}
 	inputs["creationRecord"] = nil
 	inputs["name"] = nil
@@ -79,6 +81,7 @@ func GetAlertPolicy(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["notificationChannels"] = state.NotificationChannels
 		inputs["project"] = state.Project
+		inputs["userLabels"] = state.UserLabels
 	}
 	s, err := ctx.ReadResource("gcp:monitoring/alertPolicy:AlertPolicy", name, id, inputs, opts...)
 	if err != nil {
@@ -137,6 +140,10 @@ func (r *AlertPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *AlertPolicy) UserLabels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["userLabels"])
+}
+
 // Input properties used for looking up and filtering AlertPolicy resources.
 type AlertPolicyState struct {
 	Combiner interface{}
@@ -149,6 +156,7 @@ type AlertPolicyState struct {
 	Name interface{}
 	NotificationChannels interface{}
 	Project interface{}
+	UserLabels interface{}
 }
 
 // The set of arguments for constructing a AlertPolicy resource.
@@ -161,4 +169,5 @@ type AlertPolicyArgs struct {
 	Labels interface{}
 	NotificationChannels interface{}
 	Project interface{}
+	UserLabels interface{}
 }

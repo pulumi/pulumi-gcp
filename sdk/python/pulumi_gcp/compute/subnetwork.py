@@ -15,6 +15,7 @@ class Subnetwork(pulumi.CustomResource):
     fingerprint: pulumi.Output[str]
     gateway_address: pulumi.Output[str]
     ip_cidr_range: pulumi.Output[str]
+    log_config: pulumi.Output[dict]
     name: pulumi.Output[str]
     network: pulumi.Output[str]
     private_ip_google_access: pulumi.Output[bool]
@@ -29,7 +30,7 @@ class Subnetwork(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, __name__=None, __opts__=None):
         """
         A VPC network is a virtual version of the traditional physical networks
         that exist within and between physical data centers. A VPC network
@@ -89,6 +90,8 @@ class Subnetwork(pulumi.CustomResource):
         if ip_cidr_range is None:
             raise TypeError("Missing required property 'ip_cidr_range'")
         __props__['ip_cidr_range'] = ip_cidr_range
+
+        __props__['log_config'] = log_config
 
         __props__['name'] = name
 

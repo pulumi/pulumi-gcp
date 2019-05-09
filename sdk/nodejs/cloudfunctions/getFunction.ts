@@ -77,6 +77,7 @@ export interface GetFunctionResult {
      * A map of labels applied to this function.
      */
     readonly labels: {[key: string]: any};
+    readonly maxInstances: number;
     /**
      * The name of the Cloud Function.
      */

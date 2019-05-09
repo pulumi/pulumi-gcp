@@ -16,7 +16,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     database_version: pulumi.Output[str]
     """
-    The MySQL version to
+    The MySQL or PostgreSQL version to
     use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
     instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
     See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
@@ -103,7 +103,7 @@ class DatabaseInstance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_version: The MySQL version to
+        :param pulumi.Input[str] database_version: The MySQL or PostgreSQL version to
                use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
                instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
                See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)

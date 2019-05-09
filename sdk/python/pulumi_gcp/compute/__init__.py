@@ -25,7 +25,10 @@ from .instance_template import *
 from .interconnect_attachment import *
 from .manged_ssl_certificate import *
 from .network import *
+from .network_endpoint_group import *
 from .network_peering import *
+from .node_group import *
+from .node_template import *
 from .project_metadata import *
 from .project_metadata_item import *
 from .region_autoscaler import *
@@ -49,12 +52,14 @@ from .subnetwork_iam_member import *
 from .subnetwork_iam_policy import *
 from .target_http_proxy import *
 from .target_https_proxy import *
+from .target_instance import *
 from .target_pool import *
 from .target_ssl_proxy import *
 from .target_tcp_proxy import *
 from .url_map import *
 from .vpn_gateway import *
 from .vpn_tunnel import *
+from .security_scan_config import *
 from .get_address import *
 from .get_backend_service import *
 from .get_default_service_account import *
@@ -65,6 +70,7 @@ from .get_instance import *
 from .get_instance_group import *
 from .get_lbip_ranges import *
 from .get_network import *
+from .get_node_types import *
 from .get_region_instance_group import *
 from .get_regions import *
 from .get_ssl_policy import *

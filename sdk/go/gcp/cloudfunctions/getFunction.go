@@ -29,6 +29,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		EventTriggers: outputs["eventTriggers"],
 		HttpsTriggerUrl: outputs["httpsTriggerUrl"],
 		Labels: outputs["labels"],
+		MaxInstances: outputs["maxInstances"],
 		Name: outputs["name"],
 		Project: outputs["project"],
 		Region: outputs["region"],
@@ -72,6 +73,7 @@ type GetFunctionResult struct {
 	HttpsTriggerUrl interface{}
 	// A map of labels applied to this function.
 	Labels interface{}
+	MaxInstances interface{}
 	// The name of the Cloud Function.
 	Name interface{}
 	Project interface{}

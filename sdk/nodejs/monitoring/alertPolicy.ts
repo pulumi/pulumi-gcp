@@ -38,6 +38,9 @@ import * as utilities from "../utilities";
  *         displayName: "test condition",
  *     }],
  *     displayName: "My Alert Policy",
+ *     userLabels: {
+ *         foo: "bar",
+ *     },
  * });
  * ```
  */
@@ -64,6 +67,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     public /*out*/ readonly name: pulumi.Output<string>;
     public readonly notificationChannels: pulumi.Output<string[] | undefined>;
     public readonly project: pulumi.Output<string>;
+    public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a AlertPolicy resource with the given unique name, arguments, and options.
@@ -87,6 +91,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationChannels"] = state ? state.notificationChannels : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
             if (!args || args.combiner === undefined) {
@@ -106,6 +111,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["creationRecord"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
@@ -127,6 +133,7 @@ export interface AlertPolicyState {
     readonly name?: pulumi.Input<string>;
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly project?: pulumi.Input<string>;
+    readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -141,4 +148,5 @@ export interface AlertPolicyArgs {
     readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly project?: pulumi.Input<string>;
+    readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

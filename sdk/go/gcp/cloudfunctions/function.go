@@ -27,6 +27,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["eventTrigger"] = nil
 		inputs["httpsTriggerUrl"] = nil
 		inputs["labels"] = nil
+		inputs["maxInstances"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
@@ -45,6 +46,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["eventTrigger"] = args.EventTrigger
 		inputs["httpsTriggerUrl"] = args.HttpsTriggerUrl
 		inputs["labels"] = args.Labels
+		inputs["maxInstances"] = args.MaxInstances
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -76,6 +78,7 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["eventTrigger"] = state.EventTrigger
 		inputs["httpsTriggerUrl"] = state.HttpsTriggerUrl
 		inputs["labels"] = state.Labels
+		inputs["maxInstances"] = state.MaxInstances
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
@@ -137,6 +140,11 @@ func (r *Function) HttpsTriggerUrl() *pulumi.StringOutput {
 // A set of key/value label pairs to assign to the function.
 func (r *Function) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
+// The limit on the maximum number of function instances that may coexist at a given time.
+func (r *Function) MaxInstances() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["maxInstances"])
 }
 
 // A user-defined name of the function. Function names must be unique globally.
@@ -206,6 +214,8 @@ type FunctionState struct {
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
 	Labels interface{}
+	// The limit on the maximum number of function instances that may coexist at a given time.
+	MaxInstances interface{}
 	// A user-defined name of the function. Function names must be unique globally.
 	Name interface{}
 	// Project of the function. If it is not provided, the provider project is used.
@@ -245,6 +255,8 @@ type FunctionArgs struct {
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
 	Labels interface{}
+	// The limit on the maximum number of function instances that may coexist at a given time.
+	MaxInstances interface{}
 	// A user-defined name of the function. Function names must be unique globally.
 	Name interface{}
 	// Project of the function. If it is not provided, the provider project is used.

@@ -75,6 +75,7 @@ export interface GetClusterResult {
     readonly addonsConfigs: { cloudrunConfigs: { disabled: boolean }[], horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], istioConfigs: { auth: string, disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
     readonly clusterAutoscalings: { enabled: boolean, resourceLimits: { maximum: number, minimum: number, resourceType: string }[] }[];
     readonly clusterIpv4Cidr: string;
+    readonly databaseEncryptions: { keyName: string, state: string }[];
     readonly defaultMaxPodsPerNode: number;
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
