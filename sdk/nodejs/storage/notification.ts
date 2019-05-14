@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     members: [gcsAccount.apply(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
+ *     members: [pulumi.interpolate`serviceAccount:${gcsAccount.emailAddress}`],
  *     role: "roles/pubsub.publisher",
  *     topic: topic.name,
  * });

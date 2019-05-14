@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * });
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my_sink = new gcp.logging.FolderSink("my-sink", {
- *     destination: log_bucket.name.apply(name => `storage.googleapis.com/${name}`),
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     // Log all WARN or higher severity messages relating to instances
  *     filter: "resource.type = gce_instance AND severity >= WARN",
  *     folder: my_folder.name,

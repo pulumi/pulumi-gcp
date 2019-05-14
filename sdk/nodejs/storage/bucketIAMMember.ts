@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * }));
  * const member = new gcp.storage.BucketIAMPolicy("member", {
  *     bucket: "your-bucket-name",
- *     policyData: foo_policy.apply(foo_policy => foo_policy.policyData),
+ *     policyData: foo_policy.policyData,
  * });
  * ```
  */

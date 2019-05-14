@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *         password: "adoy.rm",
  *         username: "mr.yoda",
  *     },
- *     nodeVersion: central1b.apply(central1b => central1b.latestNodeVersion),
+ *     nodeVersion: central1b.latestNodeVersion,
  * });
  * ```
  */

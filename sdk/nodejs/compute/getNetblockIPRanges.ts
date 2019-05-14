@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * 
  * const netblock = pulumi.output(gcp.compute.getNetblockIPRanges({}));
  * 
- * export const cidrBlocks = netblock.apply(netblock => netblock.cidrBlocks);
- * export const cidrBlocksIpv4 = netblock.apply(netblock => netblock.cidrBlocksIpv4s);
- * export const cidrBlocksIpv6 = netblock.apply(netblock => netblock.cidrBlocksIpv6s);
+ * export const cidrBlocks = netblock.cidrBlocks;
+ * export const cidrBlocksIpv4 = netblock.cidrBlocksIpv4s;
+ * export const cidrBlocksIpv6 = netblock.cidrBlocksIpv6s;
  * ```
  */
 export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {

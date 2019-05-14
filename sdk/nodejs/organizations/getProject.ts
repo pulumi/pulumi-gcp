@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const project = pulumi.output(gcp.organizations.getProject({}));
  * 
- * export const projectNumber = project.apply(project => project.number);
+ * export const projectNumber = project.number;
  * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {

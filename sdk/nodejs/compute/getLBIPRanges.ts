@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *         protocol: "tcp",
  *     }],
  *     network: google_compute_network_main.name,
- *     sourceRanges: ranges.apply(ranges => ranges.networks),
+ *     sourceRanges: ranges.networks,
  *     targetTags: ["InstanceBehindLoadBalancer"],
  * });
  * ```

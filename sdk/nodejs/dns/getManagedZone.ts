@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     name: "qa-zone",
  * }));
  * const dns = new gcp.dns.RecordSet("dns", {
- *     managedZone: envDnsZone.apply(envDnsZone => envDnsZone.name),
+ *     managedZone: envDnsZone.name,
  *     rrdatas: ["test"],
  *     ttl: 300,
  *     type: "TXT",

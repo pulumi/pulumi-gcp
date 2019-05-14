@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * }));
  * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
  *     instance: "your-instance-name",
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  * });
  * ```
  * 

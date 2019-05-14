@@ -58,8 +58,8 @@ import * as utilities from "../utilities";
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * // Our sink; this logs all activity related to our "my-logged-instance" instance
  * const instance_sink = new gcp.logging.ProjectSink("instance-sink", {
- *     destination: log_bucket.name.apply(name => `storage.googleapis.com/${name}`),
- *     filter: my_logged_instance.instanceId.apply(instanceId => `resource.type = gce_instance AND resource.labels.instance_id = "${instanceId}"`),
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
+ *     filter: pulumi.interpolate`resource.type = gce_instance AND resource.labels.instance_id = "${my_logged_instance.instanceId}"`,
  *     uniqueWriterIdentity: true,
  * });
  * // Because our sink uses a unique_writer, we must grant that writer access to the bucket.

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * }));
  * const policy = new gcp.organizations.IAMPolicy("policy", {
  *     orgId: "123456789",
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  * });
  * ```
  */

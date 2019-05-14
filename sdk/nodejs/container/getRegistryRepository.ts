@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const foo = pulumi.output(gcp.container.getRegistryRepository({}));
  * 
- * export const gcrLocation = foo.apply(foo => foo.repositoryUrl);
+ * export const gcrLocation = foo.repositoryUrl;
  * ```
  */
 export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {

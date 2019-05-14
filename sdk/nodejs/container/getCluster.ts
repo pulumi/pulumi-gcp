@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  *     name: "my-cluster",
  * }));
  * 
- * export const clusterPassword = myCluster.apply(myCluster => myCluster.masterAuths[0].password);
- * export const clusterUsername = myCluster.apply(myCluster => myCluster.masterAuths[0].username);
- * export const endpoint = myCluster.apply(myCluster => myCluster.endpoint);
- * export const instanceGroupUrls = myCluster.apply(myCluster => myCluster.instanceGroupUrls);
- * export const nodeConfig = myCluster.apply(myCluster => myCluster.nodeConfigs);
- * export const nodePools = myCluster.apply(myCluster => myCluster.nodePools);
+ * export const clusterPassword = myCluster.masterAuths[0].password;
+ * export const clusterUsername = myCluster.masterAuths[0].username;
+ * export const endpoint = myCluster.endpoint;
+ * export const instanceGroupUrls = myCluster.instanceGroupUrls;
+ * export const nodeConfig = myCluster.nodeConfigs;
+ * export const nodePools = myCluster.nodePools;
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {

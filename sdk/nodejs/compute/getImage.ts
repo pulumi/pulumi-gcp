@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const defaultInstance = new gcp.compute.Instance("default", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: myImage.apply(myImage => myImage.selfLink),
+ *             image: myImage.selfLink,
  *         },
  *     },
  * });

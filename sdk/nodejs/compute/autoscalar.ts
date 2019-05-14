@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
  *     canIpForward: false,
  *     disks: [{
- *         sourceImage: debian9.apply(debian9 => debian9.selfLink),
+ *         sourceImage: debian9.selfLink,
  *     }],
  *     machineType: "n1-standard-1",
  *     metadata: {

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     displayName: "A service account that only Jane can interact with",
  * });
  * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  *     serviceAccountId: sa.name,
  * });
  * ```
@@ -74,9 +74,9 @@ import * as utilities from "../utilities";
  * });
  * // Allow SA service account use the default GCE account
  * const gce_default_account_iam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
- *     member: sa.email.apply(email => `serviceAccount:${email}`),
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
  *     role: "roles/iam.serviceAccountUser",
- *     serviceAccountId: defaultDefaultServiceAccount.apply(defaultDefaultServiceAccount => defaultDefaultServiceAccount.name),
+ *     serviceAccountId: defaultDefaultServiceAccount.name,
  * });
  * ```
  */

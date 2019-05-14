@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     }],
  * }));
  * const project = new gcp.projects.IAMPolicy("project", {
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  *     project: "your-project-id",
  * });
  * ```

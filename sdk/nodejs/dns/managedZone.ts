@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * });
  * const example_zone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
- *     dnsName: rnd.hex.apply(hex => `example-${hex}.com.`),
+ *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
  *     labels: {
  *         foo: "bar",
  *     },

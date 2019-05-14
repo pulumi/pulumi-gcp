@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     }],
  * }));
  * const subnet = new gcp.compute.SubnetworkIAMPolicy("subnet", {
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  *     subnetwork: "your-subnetwork-id",
  * });
  * ```

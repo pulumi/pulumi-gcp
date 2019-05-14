@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * const stagingVm = new gcp.compute.Instance("staging_vm", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: debianImage.apply(debianImage => debianImage.selfLink),
+ *             image: debianImage.selfLink,
  *         },
  *     },
  *     machineType: "n1-standard-1",

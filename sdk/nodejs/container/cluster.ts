@@ -51,9 +51,9 @@ import * as utilities from "../utilities";
  * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
  * // by using certificate-based authentication.
- * export const clientCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clientCertificate);
- * export const clientKey = primary.masterAuth.apply(masterAuth => masterAuth.clientKey);
- * export const clusterCaCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clusterCaCertificate);
+ * export const clientCertificate = primary.masterAuth.clientCertificate;
+ * export const clientKey = primary.masterAuth.clientKey;
+ * export const clusterCaCertificate = primary.masterAuth.clusterCaCertificate;
  * ```
  * 
  * ## Example Usage - with the default node pool
@@ -94,9 +94,9 @@ import * as utilities from "../utilities";
  * 
  * // The following outputs allow authentication and connectivity to the GKE Cluster
  * // by using certificate-based authentication.
- * export const clientCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clientCertificate);
- * export const clientKey = primary.masterAuth.apply(masterAuth => masterAuth.clientKey);
- * export const clusterCaCertificate = primary.masterAuth.apply(masterAuth => masterAuth.clusterCaCertificate);
+ * export const clientCertificate = primary.masterAuth.clientCertificate;
+ * export const clientKey = primary.masterAuth.clientKey;
+ * export const clusterCaCertificate = primary.masterAuth.clusterCaCertificate;
  * ```
  */
 export class Cluster extends pulumi.CustomResource {
