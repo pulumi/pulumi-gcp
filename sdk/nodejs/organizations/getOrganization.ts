@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * }));
  * const sales = new gcp.organizations.Folder("sales", {
  *     displayName: "Sales",
- *     parent: org.apply(org => org.name),
+ *     parent: org.name,
  * });
  * ```
  */

@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     }],
  * }));
  * const editor = new gcp.pubsub.SubscriptionIAMPolicy("editor", {
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  *     subscription: "your-subscription-name",
  * });
  * ```

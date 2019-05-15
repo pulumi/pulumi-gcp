@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
  *     billingAccount: "ABCDEF-012345-GHIJKL",
- *     destination: log_bucket.name.apply(name => `storage.googleapis.com/${name}`),
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  * });
  * const log_writer = new gcp.projects.IAMBinding("log-writer", {
  *     members: [my_sink.writerIdentity],

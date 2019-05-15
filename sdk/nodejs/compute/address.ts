@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: debianImage.apply(debianImage => debianImage.selfLink),
+ *             image: debianImage.selfLink,
  *         },
  *     },
  *     machineType: "f1-micro",

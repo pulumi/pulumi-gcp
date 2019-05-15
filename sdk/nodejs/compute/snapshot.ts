@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * }));
  * const persistent = new gcp.compute.Disk("persistent", {
- *     image: debian.apply(debian => debian.selfLink),
+ *     image: debian.selfLink,
  *     size: 10,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",

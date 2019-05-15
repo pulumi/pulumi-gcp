@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const frontend = new gcp.dns.RecordSet("frontend", {
  *     managedZone: prod.name,
- *     rrdatas: [myAddress.apply(myAddress => myAddress.address)],
+ *     rrdatas: [myAddress.address],
  *     ttl: 300,
  *     type: "A",
  * });

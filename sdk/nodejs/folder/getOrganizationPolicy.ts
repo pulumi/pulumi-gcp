@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     folder: "folders/folderid",
  * }));
  * 
- * export const version = policy.apply(policy => policy.version);
+ * export const version = policy.version;
  * ```
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {

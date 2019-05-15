@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *     open: true,
  * }));
  * const myProject = new gcp.organizations.Project("my_project", {
- *     billingAccount: acct.apply(acct => acct.id),
+ *     billingAccount: acct.id,
  *     orgId: "1234567",
  *     projectId: "your-project-id",
  * });

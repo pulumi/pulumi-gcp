@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
- *     parent: google_access_context_manager_access_policy_test_access.name.apply(name => `accessPolicies/${name}`),
+ *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
  *     title: "chromeos_no_lock",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *     title: "my policy",
  * });
  * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
- *     parent: google_access_context_manager_access_policy_test_access.name.apply(name => `accessPolicies/${name}`),
+ *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },

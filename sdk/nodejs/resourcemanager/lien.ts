@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * });
  * const lien = new gcp.resourcemanager.Lien("lien", {
  *     origin: "machine-readable-explanation",
- *     parent: project.number.apply(number => `projects/${number}`),
+ *     parent: pulumi.interpolate`projects/${project.number}`,
  *     reason: "This project is an important environment",
  *     restrictions: ["resourcemanager.projects.delete"],
  * });

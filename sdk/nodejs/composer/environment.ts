@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
- *     member: testAccount.email.apply(email => `serviceAccount:${email}`),
+ *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
  *     role: "roles/composer.worker",
  * });
  * const testEnvironment = new gcp.composer.Environment("test", {

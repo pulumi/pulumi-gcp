@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
  *     database: "your-database-name",
  *     instance: "your-instance-name",
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  * });
  * ```
  * 

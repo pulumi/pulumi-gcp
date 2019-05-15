@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * }));
  * const policy = new gcp.billing.AccountIamPolicy("policy", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  * });
  * ```
  */

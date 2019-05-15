@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     }],
  * }));
  * const editor = new gcp.pubsub.TopicIAMPolicy("editor", {
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  *     topic: "your-topic-name",
  * });
  * ```

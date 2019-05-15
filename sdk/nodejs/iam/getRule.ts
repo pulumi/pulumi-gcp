@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *     name: "roles/compute.viewer",
  * }));
  * 
- * export const theRolePermissions = roleinfo.apply(roleinfo => roleinfo.includedPermissions);
+ * export const theRolePermissions = roleinfo.includedPermissions;
  * ```
  */
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {

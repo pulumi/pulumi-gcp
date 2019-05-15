@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * }));
  * const foobar = new gcp.compute.Disk("foobar", {
- *     image: myImage.apply(myImage => myImage.selfLink),
+ *     image: myImage.selfLink,
  *     size: 10,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
@@ -138,7 +138,7 @@ import * as utilities from "../utilities";
  *     // boot disk
  *     disks: [{
  *         initializeParams: [{
- *             image: myImage.apply(myImage => myImage.selfLink),
+ *             image: myImage.selfLink,
  *         }],
  *     }],
  *     machineType: "n1-standard-1",

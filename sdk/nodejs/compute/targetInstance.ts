@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const target_vm = new gcp.compute.Instance("target-vm", {
  *     bootDisk: {
  *         initializeParams: {
- *             image: vmimage.apply(vmimage => vmimage.selfLink),
+ *             image: vmimage.selfLink,
  *         },
  *     },
  *     machineType: "n1-standard-1",

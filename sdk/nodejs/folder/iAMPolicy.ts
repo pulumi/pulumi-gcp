@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * });
  * const folderAdminPolicy = new gcp.folder.IAMPolicy("folder_admin_policy", {
  *     folder: department1.name,
- *     policyData: admin.apply(admin => admin.policyData),
+ *     policyData: admin.policyData,
  * });
  * ```
  */

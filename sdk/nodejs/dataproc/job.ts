@@ -55,9 +55,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * 
- * export const pysparkStatus = pyspark.status.apply(status => status.state);
+ * export const pysparkStatus = pyspark.status.state;
  * // Check out current state of the jobs
- * export const sparkStatus = spark.status.apply(status => status.state);
+ * export const sparkStatus = spark.status.state;
  * ```
  */
 export class Job extends pulumi.CustomResource {
