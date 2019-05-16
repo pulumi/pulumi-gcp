@@ -51,6 +51,10 @@ async def get_iam_policy(audit_configs=None,bindings=None,opts=None):
 
     __args__['auditConfigs'] = audit_configs
     __args__['bindings'] = bindings
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts)
 
     return GetIAMPolicyResult(

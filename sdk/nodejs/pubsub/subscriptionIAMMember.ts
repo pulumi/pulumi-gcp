@@ -75,23 +75,23 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly member: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly member!: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_pubsub_subscription_iam_binding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
     /**
      * The subscription name or id to bind to attach IAM policy to.
      */
-    public readonly subscription: pulumi.Output<string>;
+    public readonly subscription!: pulumi.Output<string>;
 
     /**
      * Create a SubscriptionIAMMember resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubscriptionIAMMemberArgs | SubscriptionIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubscriptionIAMMemberState = argsOrState as SubscriptionIAMMemberState | undefined;
+            const state = argsOrState as SubscriptionIAMMemberState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -126,6 +126,13 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["subscription"] = args ? args.subscription : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, inputs, opts);
     }

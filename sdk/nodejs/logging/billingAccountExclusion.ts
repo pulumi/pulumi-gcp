@@ -42,26 +42,26 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
     /**
      * The billing account to create the exclusion for.
      */
-    public readonly billingAccount: pulumi.Output<string>;
+    public readonly billingAccount!: pulumi.Output<string>;
     /**
      * A human-readable description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    public readonly disabled: pulumi.Output<boolean | undefined>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    public readonly filter: pulumi.Output<string>;
+    public readonly filter!: pulumi.Output<string>;
     /**
      * The name of the logging exclusion.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a BillingAccountExclusion resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BillingAccountExclusionArgs | BillingAccountExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BillingAccountExclusionState = argsOrState as BillingAccountExclusionState | undefined;
+            const state = argsOrState as BillingAccountExclusionState | undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
@@ -93,6 +93,13 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, inputs, opts);
     }

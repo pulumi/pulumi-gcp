@@ -50,21 +50,21 @@ export class BackendBucket extends pulumi.CustomResource {
         return new BackendBucket(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly bucketName: pulumi.Output<string>;
-    public readonly cdnPolicy: pulumi.Output<{ signedUrlCacheMaxAgeSec?: number }>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly enableCdn: pulumi.Output<boolean | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly bucketName!: pulumi.Output<string>;
+    public readonly cdnPolicy!: pulumi.Output<{ signedUrlCacheMaxAgeSec?: number }>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a BackendBucket resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class BackendBucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BackendBucketArgs | BackendBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BackendBucketState = argsOrState as BackendBucketState | undefined;
+            const state = argsOrState as BackendBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -99,6 +99,13 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/backendBucket:BackendBucket", name, inputs, opts);
     }

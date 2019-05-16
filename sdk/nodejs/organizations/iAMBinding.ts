@@ -45,21 +45,21 @@ export class IAMBinding extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
-    public readonly members: pulumi.Output<string[]>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    public readonly orgId: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a IAMBinding resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class IAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMBindingArgs | IAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMBindingState = argsOrState as IAMBindingState | undefined;
+            const state = argsOrState as IAMBindingState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
@@ -92,6 +92,13 @@ export class IAMBinding extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/iAMBinding:IAMBinding", name, inputs, opts);
     }

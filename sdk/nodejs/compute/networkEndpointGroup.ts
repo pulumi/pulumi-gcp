@@ -38,19 +38,19 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         return new NetworkEndpointGroup(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly defaultPort: pulumi.Output<number | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string>;
-    public readonly networkEndpointType: pulumi.Output<string | undefined>;
+    public readonly defaultPort!: pulumi.Output<number | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
+    public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public /*out*/ readonly size: pulumi.Output<number>;
-    public readonly subnetwork: pulumi.Output<string | undefined>;
-    public readonly zone: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
+    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -63,7 +63,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NetworkEndpointGroupArgs | NetworkEndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NetworkEndpointGroupState = argsOrState as NetworkEndpointGroupState | undefined;
+            const state = argsOrState as NetworkEndpointGroupState | undefined;
             inputs["defaultPort"] = state ? state.defaultPort : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -87,6 +87,13 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["size"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, inputs, opts);
     }

@@ -77,24 +77,24 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         return new UptimeCheckConfig(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly contentMatchers: pulumi.Output<{ content?: string }[] | undefined>;
-    public readonly displayName: pulumi.Output<string>;
-    public readonly httpCheck: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
-    public readonly internalCheckers: pulumi.Output<{ displayName?: string, gcpZone?: string, name?: string, network?: string, peerProjectId?: string }[] | undefined>;
-    public readonly isInternal: pulumi.Output<boolean | undefined>;
-    public readonly monitoredResource: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;
-    public /*out*/ readonly name: pulumi.Output<string>;
-    public readonly period: pulumi.Output<string | undefined>;
+    public readonly contentMatchers!: pulumi.Output<{ content?: string }[] | undefined>;
+    public readonly displayName!: pulumi.Output<string>;
+    public readonly httpCheck!: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
+    public readonly internalCheckers!: pulumi.Output<{ displayName?: string, gcpZone?: string, name?: string, network?: string, peerProjectId?: string }[] | undefined>;
+    public readonly isInternal!: pulumi.Output<boolean | undefined>;
+    public readonly monitoredResource!: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly period!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly resourceGroup: pulumi.Output<{ groupId?: string, resourceType?: string } | undefined>;
-    public readonly selectedRegions: pulumi.Output<string[] | undefined>;
-    public readonly tcpCheck: pulumi.Output<{ port: number } | undefined>;
-    public readonly timeout: pulumi.Output<string>;
-    public /*out*/ readonly uptimeCheckId: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly resourceGroup!: pulumi.Output<{ groupId?: string, resourceType?: string } | undefined>;
+    public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
+    public readonly tcpCheck!: pulumi.Output<{ port: number } | undefined>;
+    public readonly timeout!: pulumi.Output<string>;
+    public /*out*/ readonly uptimeCheckId!: pulumi.Output<string>;
 
     /**
      * Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -107,7 +107,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UptimeCheckConfigArgs | UptimeCheckConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UptimeCheckConfigState = argsOrState as UptimeCheckConfigState | undefined;
+            const state = argsOrState as UptimeCheckConfigState | undefined;
             inputs["contentMatchers"] = state ? state.contentMatchers : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["httpCheck"] = state ? state.httpCheck : undefined;
@@ -144,6 +144,13 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["uptimeCheckId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, inputs, opts);
     }

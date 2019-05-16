@@ -85,20 +85,20 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly appEngineHttpTarget: pulumi.Output<{ appEngineRouting?: { instance?: string, service?: string, version?: string }, body?: string, headers?: {[key: string]: string}, httpMethod?: string, relativeUri: string } | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly httpTarget: pulumi.Output<{ body?: string, headers?: {[key: string]: string}, httpMethod?: string, uri: string } | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly appEngineHttpTarget!: pulumi.Output<{ appEngineRouting?: { instance?: string, service?: string, version?: string }, body?: string, headers?: {[key: string]: string}, httpMethod?: string, relativeUri: string } | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly httpTarget!: pulumi.Output<{ body?: string, headers?: {[key: string]: string}, httpMethod?: string, uri: string } | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly pubsubTarget: pulumi.Output<{ attributes?: {[key: string]: string}, data?: string, topicName: string } | undefined>;
-    public readonly region: pulumi.Output<string>;
-    public readonly retryConfig: pulumi.Output<{ maxBackoffDuration?: string, maxDoublings?: number, maxRetryDuration?: string, minBackoffDuration?: string, retryCount?: number } | undefined>;
-    public readonly schedule: pulumi.Output<string | undefined>;
-    public readonly timeZone: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly pubsubTarget!: pulumi.Output<{ attributes?: {[key: string]: string}, data?: string, topicName: string } | undefined>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly retryConfig!: pulumi.Output<{ maxBackoffDuration?: string, maxDoublings?: number, maxRetryDuration?: string, minBackoffDuration?: string, retryCount?: number } | undefined>;
+    public readonly schedule!: pulumi.Output<string | undefined>;
+    public readonly timeZone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: JobState = argsOrState as JobState | undefined;
+            const state = argsOrState as JobState | undefined;
             inputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["httpTarget"] = state ? state.httpTarget : undefined;
@@ -134,6 +134,13 @@ export class Job extends pulumi.CustomResource {
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:cloudscheduler/job:Job", name, inputs, opts);
     }

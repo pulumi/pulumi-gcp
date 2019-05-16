@@ -46,6 +46,10 @@ async def get_netblock_ip_ranges(opts=None):
     """
     __args__ = dict()
 
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts)
 
     return GetNetblockIPRangesResult(

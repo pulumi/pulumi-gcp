@@ -53,21 +53,21 @@ export class TargetTCPProxy extends pulumi.CustomResource {
         return new TargetTCPProxy(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly backendService: pulumi.Output<string>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly backendService!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly proxyHeader: pulumi.Output<string | undefined>;
-    public /*out*/ readonly proxyId: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly proxyHeader!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly proxyId!: pulumi.Output<number>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a TargetTCPProxy resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetTCPProxyArgs | TargetTCPProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetTCPProxyState = argsOrState as TargetTCPProxyState | undefined;
+            const state = argsOrState as TargetTCPProxyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -102,6 +102,13 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, inputs, opts);
     }

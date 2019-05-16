@@ -30,17 +30,17 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly alternativeNameServerConfig: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly enableInboundForwarding: pulumi.Output<boolean | undefined>;
-    public readonly enableLogging: pulumi.Output<boolean | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly networks: pulumi.Output<{ networkUrl?: string }[] | undefined>;
+    public readonly alternativeNameServerConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableInboundForwarding!: pulumi.Output<boolean | undefined>;
+    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly networks!: pulumi.Output<{ networkUrl?: string }[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -53,7 +53,7 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PolicyState = argsOrState as PolicyState | undefined;
+            const state = argsOrState as PolicyState | undefined;
             inputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
@@ -70,6 +70,13 @@ export class Policy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:dns/policy:Policy", name, inputs, opts);
     }

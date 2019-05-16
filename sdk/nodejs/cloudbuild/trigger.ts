@@ -47,21 +47,21 @@ export class Trigger extends pulumi.CustomResource {
         return new Trigger(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly build: pulumi.Output<{ images?: string[], steps?: { args?: string[], dir?: string, entrypoint?: string, envs?: string[], id?: string, name?: string, secretEnvs?: string[], timeout?: string, timing?: string, volumes?: { name?: string, path?: string }[], waitFors?: string[] }[], tags?: string[] } | undefined>;
-    public /*out*/ readonly createTime: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly disabled: pulumi.Output<boolean | undefined>;
-    public readonly filename: pulumi.Output<string | undefined>;
-    public readonly ignoredFiles: pulumi.Output<string[] | undefined>;
-    public readonly includedFiles: pulumi.Output<string[] | undefined>;
+    public readonly build!: pulumi.Output<{ images?: string[], steps?: { args?: string[], dir?: string, entrypoint?: string, envs?: string[], id?: string, name?: string, secretEnvs?: string[], timeout?: string, timing?: string, volumes?: { name?: string, path?: string }[], waitFors?: string[] }[], tags?: string[] } | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    public readonly filename!: pulumi.Output<string | undefined>;
+    public readonly ignoredFiles!: pulumi.Output<string[] | undefined>;
+    public readonly includedFiles!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly substitutions: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly triggerId: pulumi.Output<string>;
-    public readonly triggerTemplate: pulumi.Output<{ branchName?: string, commitSha?: string, dir?: string, projectId: string, repoName?: string, tagName?: string } | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    public readonly triggerTemplate!: pulumi.Output<{ branchName?: string, commitSha?: string, dir?: string, projectId: string, repoName?: string, tagName?: string } | undefined>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class Trigger extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TriggerState = argsOrState as TriggerState | undefined;
+            const state = argsOrState as TriggerState | undefined;
             inputs["build"] = state ? state.build : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -99,6 +99,13 @@ export class Trigger extends pulumi.CustomResource {
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["triggerId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:cloudbuild/trigger:Trigger", name, inputs, opts);
     }

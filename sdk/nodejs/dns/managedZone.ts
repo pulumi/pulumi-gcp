@@ -81,20 +81,20 @@ export class ManagedZone extends pulumi.CustomResource {
         return new ManagedZone(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly description: pulumi.Output<string>;
-    public readonly dnsName: pulumi.Output<string>;
-    public readonly forwardingConfig: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public /*out*/ readonly nameServers: pulumi.Output<string[]>;
-    public readonly peeringConfig: pulumi.Output<{ targetNetwork?: { networkUrl?: string } } | undefined>;
-    public readonly privateVisibilityConfig: pulumi.Output<{ networks?: { networkUrl?: string }[] } | undefined>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly dnsName!: pulumi.Output<string>;
+    public readonly forwardingConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
+    public readonly peeringConfig!: pulumi.Output<{ targetNetwork?: { networkUrl?: string } } | undefined>;
+    public readonly privateVisibilityConfig!: pulumi.Output<{ networks?: { networkUrl?: string }[] } | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly visibility: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly visibility!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedZone resource with the given unique name, arguments, and options.
@@ -107,7 +107,7 @@ export class ManagedZone extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ManagedZoneArgs | ManagedZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ManagedZoneState = argsOrState as ManagedZoneState | undefined;
+            const state = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
             inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
@@ -133,6 +133,13 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
             inputs["nameServers"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:dns/managedZone:ManagedZone", name, inputs, opts);
     }

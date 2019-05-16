@@ -48,6 +48,10 @@ async def get_rule(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts)
 
     return GetRuleResult(

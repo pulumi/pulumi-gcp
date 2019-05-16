@@ -48,24 +48,24 @@ export class Table extends pulumi.CustomResource {
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    public readonly columnFamilies: pulumi.Output<{ family: string }[] | undefined>;
+    public readonly columnFamilies!: pulumi.Output<{ family: string }[] | undefined>;
     /**
      * The name of the Bigtable instance.
      */
-    public readonly instanceName: pulumi.Output<string>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * The name of the table.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A list of predefined keys to split the table on.
      */
-    public readonly splitKeys: pulumi.Output<string[] | undefined>;
+    public readonly splitKeys!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export class Table extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TableState = argsOrState as TableState | undefined;
+            const state = argsOrState as TableState | undefined;
             inputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -94,6 +94,13 @@ export class Table extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["splitKeys"] = args ? args.splitKeys : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:bigtable/table:Table", name, inputs, opts);
     }

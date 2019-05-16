@@ -41,33 +41,33 @@ export class RouterInterface extends pulumi.CustomResource {
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
-    public readonly ipRange: pulumi.Output<string | undefined>;
+    public readonly ipRange!: pulumi.Output<string | undefined>;
     /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which this interface's router belongs. If it
      * is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region this interface's router sits in. If not specified,
      * the project region will be used. Changing this forces a new interface to be
      * created.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
      */
-    public readonly router: pulumi.Output<string>;
+    public readonly router!: pulumi.Output<string>;
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created.
      */
-    public readonly vpnTunnel: pulumi.Output<string>;
+    public readonly vpnTunnel!: pulumi.Output<string>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterInterfaceState = argsOrState as RouterInterfaceState | undefined;
+            const state = argsOrState as RouterInterfaceState | undefined;
             inputs["ipRange"] = state ? state.ipRange : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -101,6 +101,13 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["router"] = args ? args.router : undefined;
             inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/routerInterface:RouterInterface", name, inputs, opts);
     }

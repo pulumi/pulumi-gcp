@@ -46,31 +46,31 @@ export class Account extends pulumi.CustomResource {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    public readonly accountId: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    public readonly displayName: pulumi.Output<string | undefined>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The e-mail address of the service account. This value
      * should be referenced from any `google_iam_policy` data sources
      * that would grant the service account privileges.
      */
-    public /*out*/ readonly email: pulumi.Output<string>;
+    public /*out*/ readonly email!: pulumi.Output<string>;
     /**
      * The fully-qualified name of the service account.
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The unique id of the service account.
      */
-    public /*out*/ readonly uniqueId: pulumi.Output<string>;
+    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class Account extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountState = argsOrState as AccountState | undefined;
+            const state = argsOrState as AccountState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
@@ -101,6 +101,13 @@ export class Account extends pulumi.CustomResource {
             inputs["email"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:serviceAccount/account:Account", name, inputs, opts);
     }

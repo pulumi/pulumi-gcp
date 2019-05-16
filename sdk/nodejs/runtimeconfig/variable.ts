@@ -63,25 +63,25 @@ export class Variable extends pulumi.CustomResource {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
      */
-    public readonly parent: pulumi.Output<string>;
+    public readonly parent!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly text: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly text!: pulumi.Output<string | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds, representing when the variable was last updated.
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
-    public /*out*/ readonly updateTime: pulumi.Output<string>;
-    public readonly value: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Variable resource with the given unique name, arguments, and options.
@@ -94,7 +94,7 @@ export class Variable extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VariableArgs | VariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VariableState = argsOrState as VariableState | undefined;
+            const state = argsOrState as VariableState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -112,6 +112,13 @@ export class Variable extends pulumi.CustomResource {
             inputs["text"] = args ? args.text : undefined;
             inputs["value"] = args ? args.value : undefined;
             inputs["updateTime"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:runtimeconfig/variable:Variable", name, inputs, opts);
     }

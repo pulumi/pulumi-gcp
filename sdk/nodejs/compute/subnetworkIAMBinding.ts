@@ -78,28 +78,28 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly members: pulumi.Output<string[]>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region of the subnetwork. If
      * unspecified, this defaults to the region configured in the provider.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
     /**
      * The name of the subnetwork.
      */
-    public readonly subnetwork: pulumi.Output<string>;
+    public readonly subnetwork!: pulumi.Output<string>;
 
     /**
      * Create a SubnetworkIAMBinding resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubnetworkIAMBindingArgs | SubnetworkIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubnetworkIAMBindingState = argsOrState as SubnetworkIAMBindingState | undefined;
+            const state = argsOrState as SubnetworkIAMBindingState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -136,6 +136,13 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, inputs, opts);
     }

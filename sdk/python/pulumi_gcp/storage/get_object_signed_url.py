@@ -66,6 +66,10 @@ async def get_object_signed_url(bucket=None,content_md5=None,content_type=None,c
     __args__['extensionHeaders'] = extension_headers
     __args__['httpMethod'] = http_method
     __args__['path'] = path
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts)
 
     return GetObjectSignedUrlResult(

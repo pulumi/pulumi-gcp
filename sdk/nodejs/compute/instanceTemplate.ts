@@ -185,77 +185,77 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      */
-    public readonly canIpForward: pulumi.Output<boolean | undefined>;
+    public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
      * A brief description of this resource.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Disks to attach to instances created from this template.
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    public readonly disks: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskEncryptionKey?: { kmsKeySelfLink?: string }, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, mode: string, source?: string, sourceImage: string, type: string }[]>;
+    public readonly disks!: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskEncryptionKey?: { kmsKeySelfLink?: string }, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, mode: string, source?: string, sourceImage: string, type: string }[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    public readonly guestAccelerators: pulumi.Output<{ count: number, type: string }[] | undefined>;
+    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[] | undefined>;
     /**
      * A brief description to use for instances
      * created from this template.
      */
-    public readonly instanceDescription: pulumi.Output<string | undefined>;
+    public readonly instanceDescription!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template,
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The machine type to create.
      */
-    public readonly machineType: pulumi.Output<string>;
+    public readonly machineType!: pulumi.Output<string>;
     /**
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
     /**
      * An alternative to using the
      * startup-script metadata key, mostly to match the compute_instance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
-    public readonly metadataStartupScript: pulumi.Output<string | undefined>;
+    public readonly metadataStartupScript!: pulumi.Output<string | undefined>;
     /**
      * Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
-    public readonly minCpuPlatform: pulumi.Output<string | undefined>;
+    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
     /**
      * The name of the instance template. If you leave
      * this blank, Terraform will auto-generate a unique name.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
      * prefix. Conflicts with `name`.
      */
-    public readonly namePrefix: pulumi.Output<string>;
+    public readonly namePrefix!: pulumi.Output<string>;
     /**
      * Networks to attach to instances created from
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], network: string, networkIp?: string, subnetwork: string, subnetworkProject: string }[] | undefined>;
+    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], network: string, networkIp?: string, subnetwork: string, subnetworkProject: string }[] | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -264,28 +264,28 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * resource is tied to a specific region. Defaults to the region of the
      * Provider if no value is given.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
+    public readonly scheduling!: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    public readonly serviceAccount: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
+    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
      * Tags to attach to the instance.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -298,7 +298,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceTemplateArgs | InstanceTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceTemplateState = argsOrState as InstanceTemplateState | undefined;
+            const state = argsOrState as InstanceTemplateState | undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disks"] = state ? state.disks : undefined;
@@ -349,6 +349,13 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["metadataFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/instanceTemplate:InstanceTemplate", name, inputs, opts);
     }

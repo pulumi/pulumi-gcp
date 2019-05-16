@@ -59,30 +59,30 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * An optional description of this security policy. Max size is 2048.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource.
      */
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The name of the security policy.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    public readonly rules: pulumi.Output<{ action: string, description?: string, match: { config: { srcIpRanges: string[] }, versionedExpr: string }, preview?: boolean, priority: number }[]>;
+    public readonly rules!: pulumi.Output<{ action: string, description?: string, match: { config: { srcIpRanges: string[] }, versionedExpr: string }, preview?: boolean, priority: number }[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecurityPolicyState = argsOrState as SecurityPolicyState | undefined;
+            const state = argsOrState as SecurityPolicyState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -110,6 +110,13 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["rules"] = args ? args.rules : undefined;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/securityPolicy:SecurityPolicy", name, inputs, opts);
     }

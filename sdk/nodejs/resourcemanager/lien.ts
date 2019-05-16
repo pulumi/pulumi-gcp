@@ -40,12 +40,12 @@ export class Lien extends pulumi.CustomResource {
         return new Lien(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly createTime: pulumi.Output<string>;
-    public /*out*/ readonly name: pulumi.Output<string>;
-    public readonly origin: pulumi.Output<string>;
-    public readonly parent: pulumi.Output<string>;
-    public readonly reason: pulumi.Output<string>;
-    public readonly restrictions: pulumi.Output<string[]>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly origin!: pulumi.Output<string>;
+    public readonly parent!: pulumi.Output<string>;
+    public readonly reason!: pulumi.Output<string>;
+    public readonly restrictions!: pulumi.Output<string[]>;
 
     /**
      * Create a Lien resource with the given unique name, arguments, and options.
@@ -58,7 +58,7 @@ export class Lien extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LienArgs | LienState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LienState = argsOrState as LienState | undefined;
+            const state = argsOrState as LienState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["origin"] = state ? state.origin : undefined;
@@ -85,6 +85,13 @@ export class Lien extends pulumi.CustomResource {
             inputs["restrictions"] = args ? args.restrictions : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:resourcemanager/lien:Lien", name, inputs, opts);
     }

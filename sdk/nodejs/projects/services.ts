@@ -45,18 +45,18 @@ export class Services extends pulumi.CustomResource {
         return new Services(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly disableOnDestroy: pulumi.Output<boolean | undefined>;
+    public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID.
      * Changing this forces Terraform to attempt to disable all previously managed
      * API services in the previous project.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The list of services that are enabled. Supports
      * update.
      */
-    public readonly services: pulumi.Output<string[]>;
+    public readonly services!: pulumi.Output<string[]>;
 
     /**
      * Create a Services resource with the given unique name, arguments, and options.
@@ -69,7 +69,7 @@ export class Services extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServicesArgs | ServicesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServicesState = argsOrState as ServicesState | undefined;
+            const state = argsOrState as ServicesState | undefined;
             inputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["services"] = state ? state.services : undefined;
@@ -81,6 +81,13 @@ export class Services extends pulumi.CustomResource {
             inputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["services"] = args ? args.services : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:projects/services:Services", name, inputs, opts);
     }

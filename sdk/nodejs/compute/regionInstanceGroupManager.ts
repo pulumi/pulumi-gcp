@@ -91,7 +91,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * ) The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    public readonly autoHealingPolicies: pulumi.Output<{ healthCheck: string, initialDelaySec: number } | undefined>;
+    public readonly autoHealingPolicies!: pulumi.Output<{ healthCheck: string, initialDelaySec: number } | undefined>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -100,79 +100,79 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * appending a hyphen and a random four-character string to the base instance
      * name.
      */
-    public readonly baseInstanceName: pulumi.Output<string>;
+    public readonly baseInstanceName!: pulumi.Output<string>;
     /**
      * An optional textual description of the instance
      * group manager.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      * - - -
      */
-    public readonly distributionPolicyZones: pulumi.Output<string[]>;
+    public readonly distributionPolicyZones!: pulumi.Output<string[]>;
     /**
      * The fingerprint of the instance group manager.
      */
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The full URL of the instance group created by the manager.
      */
-    public /*out*/ readonly instanceGroup: pulumi.Output<string>;
+    public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
      * The name of the instance group manager. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    public readonly namedPorts: pulumi.Output<{ name: string, port: number }[] | undefined>;
+    public readonly namedPorts!: pulumi.Output<{ name: string, port: number }[] | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region where the managed instance group resides.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URL of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    public readonly targetPools: pulumi.Output<string[] | undefined>;
+    public readonly targetPools!: pulumi.Output<string[] | undefined>;
     /**
      * The target number of running instances for this managed
      * instance group. This value should always be explicitly set unless this resource is attached to
      * an autoscaler, in which case it should never be set. Defaults to `0`.
      */
-    public readonly targetSize: pulumi.Output<number>;
+    public readonly targetSize!: pulumi.Output<number>;
     /**
      * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
-    public readonly updatePolicy: pulumi.Output<{ maxSurgeFixed: number, maxSurgePercent?: number, maxUnavailableFixed: number, maxUnavailablePercent?: number, minReadySec?: number, minimalAction: string, type: string }>;
+    public readonly updatePolicy!: pulumi.Output<{ maxSurgeFixed: number, maxSurgePercent?: number, maxUnavailableFixed: number, maxUnavailablePercent?: number, minReadySec?: number, minimalAction: string, type: string }>;
     /**
      * ) Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
      */
-    public readonly versions: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
+    public readonly versions!: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, Terraform will
      * continue trying until it times out.
      */
-    public readonly waitForInstances: pulumi.Output<boolean | undefined>;
+    public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegionInstanceGroupManager resource with the given unique name, arguments, and options.
@@ -185,7 +185,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionInstanceGroupManagerArgs | RegionInstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegionInstanceGroupManagerState = argsOrState as RegionInstanceGroupManagerState | undefined;
+            const state = argsOrState as RegionInstanceGroupManagerState | undefined;
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -229,6 +229,13 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, inputs, opts);
     }

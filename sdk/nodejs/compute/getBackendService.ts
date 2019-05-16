@@ -21,6 +21,13 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
         "name": args.name,
         "project": args.project,

@@ -25,6 +25,13 @@ import * as utilities from "../utilities";
  */
 export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("gcp:organizations/getProjectServices:getProjectServices", {
         "project": args.project,
     }, opts);

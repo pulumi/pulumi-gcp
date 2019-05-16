@@ -26,27 +26,27 @@ export class NodePool extends pulumi.CustomResource {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    public readonly autoscaling: pulumi.Output<{ maxNodeCount: number, minNodeCount: number } | undefined>;
+    public readonly autoscaling!: pulumi.Output<{ maxNodeCount: number, minNodeCount: number } | undefined>;
     /**
      * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
      */
-    public readonly cluster: pulumi.Output<string>;
+    public readonly cluster!: pulumi.Output<string>;
     /**
      * The initial node count for the pool. Changing this will force
      * recreation of the resource.
      */
-    public readonly initialNodeCount: pulumi.Output<number>;
-    public /*out*/ readonly instanceGroupUrls: pulumi.Output<string[]>;
+    public readonly initialNodeCount!: pulumi.Output<number>;
+    public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * The location (region or zone) in which the cluster
      * resides.
      */
-    public readonly location: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    public readonly management: pulumi.Output<{ autoRepair?: boolean, autoUpgrade?: boolean }>;
+    public readonly management!: pulumi.Output<{ autoRepair?: boolean, autoUpgrade?: boolean }>;
     /**
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -54,33 +54,33 @@ export class NodePool extends pulumi.CustomResource {
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
-    public readonly maxPodsPerNode: pulumi.Output<number>;
+    public readonly maxPodsPerNode!: pulumi.Output<number>;
     /**
      * The name of the node pool. If left blank, Terraform will
      * auto-generate a unique name.
      */
-    public readonly name: pulumi.Output<string>;
-    public readonly namePrefix: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly namePrefix!: pulumi.Output<string>;
     /**
      * The node configuration of the pool. See
      * google_container_cluster for schema.
      */
-    public readonly nodeConfig: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
-    public readonly nodeCount: pulumi.Output<number>;
+    public readonly nodeCount!: pulumi.Output<number>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region in which the cluster resides (for
      * regional clusters). `zone` has been deprecated in favor of `location`.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -89,12 +89,12 @@ export class NodePool extends pulumi.CustomResource {
      * when fuzzy versions are used. See the `google_container_engine_versions` data source's
      * `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
      */
-    public readonly version: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string>;
     /**
      * The zone in which the cluster resides. `zone`
      * has been deprecated in favor of `location`.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -107,7 +107,7 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodePoolState = argsOrState as NodePoolState | undefined;
+            const state = argsOrState as NodePoolState | undefined;
             inputs["autoscaling"] = state ? state.autoscaling : undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
@@ -143,6 +143,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["version"] = args ? args.version : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:container/nodePool:NodePool", name, inputs, opts);
     }

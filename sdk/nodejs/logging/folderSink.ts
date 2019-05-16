@@ -56,32 +56,32 @@ export class FolderSink extends pulumi.CustomResource {
      * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
-    public readonly destination: pulumi.Output<string>;
+    public readonly destination!: pulumi.Output<string>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    public readonly filter: pulumi.Output<string | undefined>;
+    public readonly filter!: pulumi.Output<string | undefined>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    public readonly folder: pulumi.Output<string>;
+    public readonly folder!: pulumi.Output<string>;
     /**
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    public readonly includeChildren: pulumi.Output<boolean | undefined>;
+    public readonly includeChildren!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the logging sink.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    public /*out*/ readonly writerIdentity: pulumi.Output<string>;
+    public /*out*/ readonly writerIdentity!: pulumi.Output<string>;
 
     /**
      * Create a FolderSink resource with the given unique name, arguments, and options.
@@ -94,7 +94,7 @@ export class FolderSink extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderSinkArgs | FolderSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FolderSinkState = argsOrState as FolderSinkState | undefined;
+            const state = argsOrState as FolderSinkState | undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["folder"] = state ? state.folder : undefined;
@@ -115,6 +115,13 @@ export class FolderSink extends pulumi.CustomResource {
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/folderSink:FolderSink", name, inputs, opts);
     }

@@ -73,23 +73,23 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         return new TargetHttpsProxy(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public /*out*/ readonly proxyId: pulumi.Output<number>;
-    public readonly quicOverride: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    public readonly quicOverride!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sslCertificates: pulumi.Output<string[]>;
-    public readonly sslPolicy: pulumi.Output<string | undefined>;
-    public readonly urlMap: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sslCertificates!: pulumi.Output<string[]>;
+    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    public readonly urlMap!: pulumi.Output<string>;
 
     /**
      * Create a TargetHttpsProxy resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetHttpsProxyArgs | TargetHttpsProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetHttpsProxyState = argsOrState as TargetHttpsProxyState | undefined;
+            const state = argsOrState as TargetHttpsProxyState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -131,6 +131,13 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/targetHttpsProxy:TargetHttpsProxy", name, inputs, opts);
     }

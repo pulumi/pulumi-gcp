@@ -53,7 +53,7 @@ export class Database extends pulumi.CustomResource {
      * for more details and supported values. Postgres databases are in beta
      * and have limited `charset` support; they only support a value of `UTF8` at creation time.
      */
-    public readonly charset: pulumi.Output<string>;
+    public readonly charset!: pulumi.Output<string>;
     /**
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -61,24 +61,24 @@ export class Database extends pulumi.CustomResource {
      * for more details and supported values. Postgres databases are in beta
      * and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
      */
-    public readonly collation: pulumi.Output<string>;
+    public readonly collation!: pulumi.Output<string>;
     /**
      * The name of containing instance.
      */
-    public readonly instance: pulumi.Output<string>;
+    public readonly instance!: pulumi.Output<string>;
     /**
      * The name of the database.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -91,7 +91,7 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseState = argsOrState as DatabaseState | undefined;
+            const state = argsOrState as DatabaseState | undefined;
             inputs["charset"] = state ? state.charset : undefined;
             inputs["collation"] = state ? state.collation : undefined;
             inputs["instance"] = state ? state.instance : undefined;
@@ -109,6 +109,13 @@ export class Database extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:sql/database:Database", name, inputs, opts);
     }

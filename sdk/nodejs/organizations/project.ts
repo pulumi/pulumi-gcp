@@ -80,7 +80,7 @@ export class Project extends pulumi.CustomResource {
      * will still need to have 1 network slot available to create the project succesfully, even if
      * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
-    public readonly autoCreateNetwork: pulumi.Output<boolean | undefined>;
+    public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with Terraform
@@ -88,7 +88,7 @@ export class Project extends pulumi.CustomResource {
      * the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
      * for more details.
      */
-    public readonly billingAccount: pulumi.Output<string | undefined>;
+    public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `org_id` or `folder_id` may be
@@ -96,19 +96,19 @@ export class Project extends pulumi.CustomResource {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    public readonly folderId: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * A set of key/value label pairs to assign to the project.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The display name of the project.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The numeric identifier of the project.
      */
-    public /*out*/ readonly number: pulumi.Output<string>;
+    public /*out*/ readonly number!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -117,16 +117,16 @@ export class Project extends pulumi.CustomResource {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    public readonly orgId: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    public readonly projectId: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * If true, the Terraform resource can be deleted
      * without deleting the Project via the Google API.
      */
-    public readonly skipDelete: pulumi.Output<boolean>;
+    public readonly skipDelete!: pulumi.Output<boolean>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectState = argsOrState as ProjectState | undefined;
+            const state = argsOrState as ProjectState | undefined;
             inputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -163,6 +163,13 @@ export class Project extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["skipDelete"] = args ? args.skipDelete : undefined;
             inputs["number"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/project:Project", name, inputs, opts);
     }

@@ -45,23 +45,23 @@ export class NodeTemplate extends pulumi.CustomResource {
         return new NodeTemplate(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly nodeAffinityLabels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly nodeType: pulumi.Output<string | undefined>;
-    public readonly nodeTypeFlexibility: pulumi.Output<{ cpus?: string, localSsd: string, memory?: string } | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly nodeType!: pulumi.Output<string | undefined>;
+    public readonly nodeTypeFlexibility!: pulumi.Output<{ cpus?: string, localSsd: string, memory?: string } | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly serverBinding: pulumi.Output<{ type: string }>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly serverBinding!: pulumi.Output<{ type: string }>;
 
     /**
      * Create a NodeTemplate resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeTemplateArgs | NodeTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeTemplateState = argsOrState as NodeTemplateState | undefined;
+            const state = argsOrState as NodeTemplateState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -97,6 +97,13 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["serverBinding"] = args ? args.serverBinding : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/nodeTemplate:NodeTemplate", name, inputs, opts);
     }

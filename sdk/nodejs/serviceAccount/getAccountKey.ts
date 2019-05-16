@@ -27,6 +27,13 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
         "name": args.name,
         "project": args.project,

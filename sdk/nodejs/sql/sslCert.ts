@@ -49,48 +49,48 @@ export class SslCert extends pulumi.CustomResource {
     /**
      * The actual certificate data for this client certificate.
      */
-    public /*out*/ readonly cert: pulumi.Output<string>;
+    public /*out*/ readonly cert!: pulumi.Output<string>;
     /**
      * The serial number extracted from the certificate data.
      */
-    public /*out*/ readonly certSerialNumber: pulumi.Output<string>;
+    public /*out*/ readonly certSerialNumber!: pulumi.Output<string>;
     /**
      * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
-    public readonly commonName: pulumi.Output<string>;
+    public readonly commonName!: pulumi.Output<string>;
     /**
      * The time when the certificate was created in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The time when the certificate expires in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    public /*out*/ readonly expirationTime: pulumi.Output<string>;
+    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    public readonly instance: pulumi.Output<string>;
+    public readonly instance!: pulumi.Output<string>;
     /**
      * The private key associated with the client certificate.
      */
-    public /*out*/ readonly privateKey: pulumi.Output<string>;
+    public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The CA cert of the server this client cert was generated from.
      */
-    public /*out*/ readonly serverCaCert: pulumi.Output<string>;
+    public /*out*/ readonly serverCaCert!: pulumi.Output<string>;
     /**
      * The SHA1 Fingerprint of the certificate.
      */
-    public /*out*/ readonly sha1Fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly sha1Fingerprint!: pulumi.Output<string>;
 
     /**
      * Create a SslCert resource with the given unique name, arguments, and options.
@@ -103,7 +103,7 @@ export class SslCert extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SslCertArgs | SslCertState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SslCertState = argsOrState as SslCertState | undefined;
+            const state = argsOrState as SslCertState | undefined;
             inputs["cert"] = state ? state.cert : undefined;
             inputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
             inputs["commonName"] = state ? state.commonName : undefined;
@@ -132,6 +132,13 @@ export class SslCert extends pulumi.CustomResource {
             inputs["privateKey"] = undefined /*out*/;
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["sha1Fingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:sql/sslCert:SslCert", name, inputs, opts);
     }

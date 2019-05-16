@@ -70,7 +70,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
-    public /*out*/ readonly connectionName: pulumi.Output<string>;
+    public /*out*/ readonly connectionName!: pulumi.Output<string>;
     /**
      * The MySQL or PostgreSQL version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
@@ -78,46 +78,46 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
      */
-    public readonly databaseVersion: pulumi.Output<string | undefined>;
+    public readonly databaseVersion!: pulumi.Output<string | undefined>;
     /**
      * The first IPv4 address of any type assigned. This is to
      * support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
      * when the resource is configured with a `count`.
      */
-    public /*out*/ readonly firstIpAddress: pulumi.Output<string>;
-    public /*out*/ readonly ipAddresses: pulumi.Output<{ ipAddress: string, timeToRetire: string, type: string }[]>;
+    public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
+    public /*out*/ readonly ipAddresses!: pulumi.Output<{ ipAddress: string, timeToRetire: string, type: string }[]>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
      * `binary_log_enabled` set, as well as existing backups.
      */
-    public readonly masterInstanceName: pulumi.Output<string>;
+    public readonly masterInstanceName!: pulumi.Output<string>;
     /**
      * The name of the instance. If the name is left
      * blank, Terraform will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned. This is
      * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
      * but also provides a convenient way to access an IP of a specific type without
      * performing filtering in a Terraform config.
      */
-    public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
+    public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned. This is
      * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
      * but also provides a convenient way to access an IP of a specific type without
      * performing filtering in a Terraform config.
      */
-    public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
+    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
      * The region the instance will sit in. Note, first-generation Cloud SQL instance
      * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
@@ -127,27 +127,27 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
      * If you choose not to provide the `region` argument for this resource, make sure you understand this.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    public readonly replicaConfiguration: pulumi.Output<{ caCertificate?: string, clientCertificate?: string, clientKey?: string, connectRetryInterval?: number, dumpFilePath?: string, failoverTarget?: boolean, masterHeartbeatPeriod?: number, password?: string, sslCipher?: string, username?: string, verifyServerCertificate?: boolean }>;
+    public readonly replicaConfiguration!: pulumi.Output<{ caCertificate?: string, clientCertificate?: string, clientKey?: string, connectRetryInterval?: number, dumpFilePath?: string, failoverTarget?: boolean, masterHeartbeatPeriod?: number, password?: string, sslCipher?: string, username?: string, verifyServerCertificate?: boolean }>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public /*out*/ readonly serverCaCert: pulumi.Output<{ cert: string, commonName: string, createTime: string, expirationTime: string, sha1Fingerprint: string }>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly serverCaCert!: pulumi.Output<{ cert: string, commonName: string, createTime: string, expirationTime: string, sha1Fingerprint: string }>;
     /**
      * The service account email address assigned to the
      * instance. This property is applicable only to Second Generation instances.
      */
-    public /*out*/ readonly serviceAccountEmailAddress: pulumi.Output<string>;
+    public /*out*/ readonly serviceAccountEmailAddress!: pulumi.Output<string>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below.
      */
-    public readonly settings: pulumi.Output<{ activationPolicy: string, authorizedGaeApplications?: string[], availabilityType: string, backupConfiguration: { binaryLogEnabled?: boolean, enabled?: boolean, startTime: string }, crashSafeReplication: boolean, databaseFlags?: { name?: string, value?: string }[], diskAutoresize?: boolean, diskSize: number, diskType: string, ipConfiguration: { authorizedNetworks?: { expirationTime?: string, name?: string, value?: string }[], ipv4Enabled: boolean, privateNetwork?: string, requireSsl?: boolean }, locationPreference: { followGaeApplication?: string, zone?: string }, maintenanceWindow?: { day?: number, hour?: number, updateTrack?: string }, pricingPlan?: string, replicationType?: string, tier: string, userLabels?: {[key: string]: string}, version: number }>;
+    public readonly settings!: pulumi.Output<{ activationPolicy: string, authorizedGaeApplications?: string[], availabilityType: string, backupConfiguration: { binaryLogEnabled?: boolean, enabled?: boolean, startTime: string }, crashSafeReplication: boolean, databaseFlags?: { name?: string, value?: string }[], diskAutoresize?: boolean, diskSize: number, diskType: string, ipConfiguration: { authorizedNetworks?: { expirationTime?: string, name?: string, value?: string }[], ipv4Enabled: boolean, privateNetwork?: string, requireSsl?: boolean }, locationPreference: { followGaeApplication?: string, zone?: string }, maintenanceWindow?: { day?: number, hour?: number, updateTrack?: string }, pricingPlan?: string, replicationType?: string, tier: string, userLabels?: {[key: string]: string}, version: number }>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -160,7 +160,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseInstanceArgs | DatabaseInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseInstanceState = argsOrState as DatabaseInstanceState | undefined;
+            const state = argsOrState as DatabaseInstanceState | undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
             inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             inputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
@@ -196,6 +196,13 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["serviceAccountEmailAddress"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:sql/databaseInstance:DatabaseInstance", name, inputs, opts);
     }

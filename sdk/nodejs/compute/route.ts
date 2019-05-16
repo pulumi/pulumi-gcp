@@ -63,33 +63,33 @@ export class Route extends pulumi.CustomResource {
         return new Route(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly destRange: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string>;
-    public readonly nextHopGateway: pulumi.Output<string | undefined>;
-    public readonly nextHopInstance: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly destRange!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
+    public readonly nextHopGateway!: pulumi.Output<string | undefined>;
+    public readonly nextHopInstance!: pulumi.Output<string | undefined>;
     /**
      * (Optional when `next_hop_instance` is
      * specified)  The zone of the instance specified in
      * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
      * a URL.
      */
-    public readonly nextHopInstanceZone: pulumi.Output<string | undefined>;
-    public readonly nextHopIp: pulumi.Output<string | undefined>;
-    public /*out*/ readonly nextHopNetwork: pulumi.Output<string>;
-    public readonly nextHopVpnTunnel: pulumi.Output<string | undefined>;
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly nextHopInstanceZone!: pulumi.Output<string | undefined>;
+    public readonly nextHopIp!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
+    public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class Route extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouteArgs | RouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouteState = argsOrState as RouteState | undefined;
+            const state = argsOrState as RouteState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destRange"] = state ? state.destRange : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -139,6 +139,13 @@ export class Route extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["nextHopNetwork"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/route:Route", name, inputs, opts);
     }

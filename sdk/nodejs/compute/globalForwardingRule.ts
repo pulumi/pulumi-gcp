@@ -69,36 +69,36 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * Textual description field.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The static IP. (if not set, an ephemeral IP is
      * used). This should be the literal IP address to be used, not the `self_link`
      * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
      * resource, use the `address` property instead of the `self_link` property.)
      */
-    public readonly ipAddress: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The IP protocol to route, one of "TCP" "UDP" "AH"
      * "ESP" or "SCTP". (default "TCP").
      */
-    public readonly ipProtocol: pulumi.Output<string>;
+    public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * 
      * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
      * You cannot provide this and `ip_address`.
      */
-    public readonly ipVersion: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * )
      * A set of key/value label pairs to assign to the resource.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A range e.g. "1024-2048" or a single port "1024"
      * (defaults to all ports!).
@@ -109,20 +109,20 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
      * * Target VPN gateway: 500, 4500
      */
-    public readonly portRange: pulumi.Output<string | undefined>;
+    public readonly portRange!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * URL of target HTTP or HTTPS proxy.
      */
-    public readonly target: pulumi.Output<string>;
+    public readonly target!: pulumi.Output<string>;
 
     /**
      * Create a GlobalForwardingRule resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GlobalForwardingRuleState = argsOrState as GlobalForwardingRuleState | undefined;
+            const state = argsOrState as GlobalForwardingRuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
@@ -163,6 +163,13 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["target"] = args ? args.target : undefined;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, inputs, opts);
     }

@@ -22,6 +22,13 @@ import * as utilities from "../utilities";
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("gcp:organizations/getOrganization:getOrganization", {
         "domain": args.domain,
         "organization": args.organization,

@@ -80,12 +80,12 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
     /**
      * The name of the bucket it applies to.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly policyData: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly policyData!: pulumi.Output<string>;
 
     /**
      * Create a BucketIAMPolicy resource with the given unique name, arguments, and options.
@@ -98,7 +98,7 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketIAMPolicyArgs | BucketIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketIAMPolicyState = argsOrState as BucketIAMPolicyState | undefined;
+            const state = argsOrState as BucketIAMPolicyState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -113,6 +113,13 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, inputs, opts);
     }

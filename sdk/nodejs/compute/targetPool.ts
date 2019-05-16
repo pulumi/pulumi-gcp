@@ -49,21 +49,21 @@ export class TargetPool extends pulumi.CustomResource {
      * URL to the backup target pool. Must also set
      * failover\_ratio.
      */
-    public readonly backupPool: pulumi.Output<string | undefined>;
+    public readonly backupPool!: pulumi.Output<string | undefined>;
     /**
      * Textual description field.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Ratio (0 to 1) of failed nodes before using the
      * backup pool (which must also be set).
      */
-    public readonly failoverRatio: pulumi.Output<number | undefined>;
+    public readonly failoverRatio!: pulumi.Output<number | undefined>;
     /**
      * List of zero or one health check name or self_link. Only
      * legacy `google_compute_http_health_check` is supported.
      */
-    public readonly healthChecks: pulumi.Output<string | undefined>;
+    public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -71,32 +71,32 @@ export class TargetPool extends pulumi.CustomResource {
      * Terraform interpolators to create a dependency on the instances from the
      * target pool.
      */
-    public readonly instances: pulumi.Output<string[]>;
+    public readonly instances!: pulumi.Output<string[]>;
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Where the target pool resides. Defaults to project
      * region.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * How to distribute load. Options are "NONE" (no
      * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
      * "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
      */
-    public readonly sessionAffinity: pulumi.Output<string | undefined>;
+    public readonly sessionAffinity!: pulumi.Output<string | undefined>;
 
     /**
      * Create a TargetPool resource with the given unique name, arguments, and options.
@@ -109,7 +109,7 @@ export class TargetPool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetPoolArgs | TargetPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetPoolState = argsOrState as TargetPoolState | undefined;
+            const state = argsOrState as TargetPoolState | undefined;
             inputs["backupPool"] = state ? state.backupPool : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["failoverRatio"] = state ? state.failoverRatio : undefined;
@@ -132,6 +132,13 @@ export class TargetPool extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/targetPool:TargetPool", name, inputs, opts);
     }

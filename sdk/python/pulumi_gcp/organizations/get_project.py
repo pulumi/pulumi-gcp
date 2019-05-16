@@ -65,6 +65,10 @@ async def get_project(project_id=None,opts=None):
     __args__ = dict()
 
     __args__['projectId'] = project_id
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts)
 
     return GetProjectResult(

@@ -58,6 +58,10 @@ class BucketIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(BucketIAMPolicy, __self__).__init__(
             'gcp:storage/bucketIAMPolicy:BucketIAMPolicy',
             resource_name,

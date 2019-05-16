@@ -57,17 +57,17 @@ export class AlertPolicy extends pulumi.CustomResource {
         return new AlertPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly combiner: pulumi.Output<string>;
-    public readonly conditions: pulumi.Output<{ conditionAbsent?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], duration: string, filter?: string, trigger?: { count?: number, percent?: number } }, conditionThreshold?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], comparison: string, denominatorAggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], denominatorFilter?: string, duration: string, filter?: string, thresholdValue?: number, trigger?: { count?: number, percent?: number } }, displayName: string, name: string }[]>;
-    public /*out*/ readonly creationRecord: pulumi.Output<{ mutateTime: string, mutatedBy: string }>;
-    public readonly displayName: pulumi.Output<string>;
-    public readonly documentation: pulumi.Output<{ content?: string, mimeType?: string } | undefined>;
-    public readonly enabled: pulumi.Output<boolean | undefined>;
-    public readonly labels: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly name: pulumi.Output<string>;
-    public readonly notificationChannels: pulumi.Output<string[] | undefined>;
-    public readonly project: pulumi.Output<string>;
-    public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly combiner!: pulumi.Output<string>;
+    public readonly conditions!: pulumi.Output<{ conditionAbsent?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], duration: string, filter?: string, trigger?: { count?: number, percent?: number } }, conditionThreshold?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], comparison: string, denominatorAggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], denominatorFilter?: string, duration: string, filter?: string, thresholdValue?: number, trigger?: { count?: number, percent?: number } }, displayName: string, name: string }[]>;
+    public /*out*/ readonly creationRecord!: pulumi.Output<{ mutateTime: string, mutatedBy: string }>;
+    public readonly displayName!: pulumi.Output<string>;
+    public readonly documentation!: pulumi.Output<{ content?: string, mimeType?: string } | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly labels!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a AlertPolicy resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AlertPolicyArgs | AlertPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AlertPolicyState = argsOrState as AlertPolicyState | undefined;
+            const state = argsOrState as AlertPolicyState | undefined;
             inputs["combiner"] = state ? state.combiner : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
             inputs["creationRecord"] = state ? state.creationRecord : undefined;
@@ -114,6 +114,13 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["creationRecord"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:monitoring/alertPolicy:AlertPolicy", name, inputs, opts);
     }

@@ -51,17 +51,17 @@ export class IAMPolicy extends pulumi.CustomResource {
         return new IAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    public readonly orgId: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * The `google_iam_policy` data source that represents
      * the IAM policy that will be applied to the organization. This policy overrides any existing
      * policy applied to the organization.
      */
-    public readonly policyData: pulumi.Output<string>;
+    public readonly policyData!: pulumi.Output<string>;
 
     /**
      * Create a IAMPolicy resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMPolicyState = argsOrState as IAMPolicyState | undefined;
+            const state = argsOrState as IAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -89,6 +89,13 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/iAMPolicy:IAMPolicy", name, inputs, opts);
     }

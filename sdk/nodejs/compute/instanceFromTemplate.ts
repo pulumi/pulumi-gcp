@@ -61,46 +61,46 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
         return new InstanceFromTemplate(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly allowStoppingForUpdate: pulumi.Output<boolean>;
-    public readonly attachedDisks: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, mode: string, source: string }[]>;
-    public readonly bootDisk: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
-    public readonly canIpForward: pulumi.Output<boolean>;
-    public /*out*/ readonly cpuPlatform: pulumi.Output<string>;
-    public readonly deletionProtection: pulumi.Output<boolean>;
-    public readonly description: pulumi.Output<string>;
-    public readonly guestAccelerators: pulumi.Output<{ count: number, type: string }[]>;
-    public readonly hostname: pulumi.Output<string>;
-    public /*out*/ readonly instanceId: pulumi.Output<string>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string}>;
-    public readonly machineType: pulumi.Output<string>;
-    public readonly metadata: pulumi.Output<{[key: string]: string}>;
-    public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
-    public readonly metadataStartupScript: pulumi.Output<string>;
-    public readonly minCpuPlatform: pulumi.Output<string>;
+    public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
+    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, mode: string, source: string }[]>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
+    public readonly canIpForward!: pulumi.Output<boolean>;
+    public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[]>;
+    public readonly hostname!: pulumi.Output<string>;
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly machineType!: pulumi.Output<string>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
+    public readonly metadataStartupScript!: pulumi.Output<string>;
+    public readonly minCpuPlatform!: pulumi.Output<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    public readonly name: pulumi.Output<string>;
-    public readonly networkInterfaces: pulumi.Output<{ accessConfigs: { natIp: string, networkTier: string, publicPtrDomainName: string }[], aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
-    public readonly project: pulumi.Output<string>;
-    public readonly scheduling: pulumi.Output<{ automaticRestart: boolean, nodeAffinities: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible: boolean }>;
-    public readonly scratchDisks: pulumi.Output<{ interface: string }[]>;
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly serviceAccount: pulumi.Output<{ email: string, scopes: string[] }>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs: { natIp: string, networkTier: string, publicPtrDomainName: string }[], aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly scheduling!: pulumi.Output<{ automaticRestart: boolean, nodeAffinities: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible: boolean }>;
+    public readonly scratchDisks!: pulumi.Output<{ interface: string }[]>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] }>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
      */
-    public readonly sourceInstanceTemplate: pulumi.Output<string>;
-    public readonly tags: pulumi.Output<string[]>;
-    public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    public readonly sourceInstanceTemplate!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<string[]>;
+    public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a InstanceFromTemplate resource with the given unique name, arguments, and options.
@@ -113,7 +113,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceFromTemplateArgs | InstanceFromTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceFromTemplateState = argsOrState as InstanceFromTemplateState | undefined;
+            const state = argsOrState as InstanceFromTemplateState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
@@ -175,6 +175,13 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["metadataFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, inputs, opts);
     }

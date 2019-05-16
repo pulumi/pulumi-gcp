@@ -57,36 +57,36 @@ export class Registry extends pulumi.CustomResource {
     /**
      * List of public key certificates to authenticate devices. Structure is documented below. 
      */
-    public readonly credentials: pulumi.Output<{ publicKeyCertificate?: { certificate: string, format: string } }[] | undefined>;
+    public readonly credentials!: pulumi.Output<{ publicKeyCertificate?: { certificate: string, format: string } }[] | undefined>;
     /**
      * A PubSub topics to publish device events. Structure is documented below.
      */
-    public readonly eventNotificationConfig: pulumi.Output<{ pubsubTopicName: string } | undefined>;
+    public readonly eventNotificationConfig!: pulumi.Output<{ pubsubTopicName: string } | undefined>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
      */
-    public readonly httpConfig: pulumi.Output<{ httpEnabledState: string }>;
+    public readonly httpConfig!: pulumi.Output<{ httpEnabledState: string }>;
     /**
      * Activate or deactivate MQTT. Structure is documented below.
      */
-    public readonly mqttConfig: pulumi.Output<{ mqttEnabledState: string }>;
+    public readonly mqttConfig!: pulumi.Output<{ mqttEnabledState: string }>;
     /**
      * A unique name for the resource, required by device registry.
      * Changing this forces a new resource to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The Region in which the created address should reside. If it is not provided, the provider region is used.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A PubSub topic to publish device state updates. Structure is documented below.
      */
-    public readonly stateNotificationConfig: pulumi.Output<{ pubsubTopicName: string } | undefined>;
+    public readonly stateNotificationConfig!: pulumi.Output<{ pubsubTopicName: string } | undefined>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -99,7 +99,7 @@ export class Registry extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegistryState = argsOrState as RegistryState | undefined;
+            const state = argsOrState as RegistryState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["eventNotificationConfig"] = state ? state.eventNotificationConfig : undefined;
             inputs["httpConfig"] = state ? state.httpConfig : undefined;
@@ -118,6 +118,13 @@ export class Registry extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:kms/registry:Registry", name, inputs, opts);
     }

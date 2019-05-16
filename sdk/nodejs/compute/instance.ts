@@ -66,72 +66,72 @@ export class Instance extends pulumi.CustomResource {
      * If true, allows Terraform to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    public readonly allowStoppingForUpdate: pulumi.Output<boolean | undefined>;
+    public readonly allowStoppingForUpdate!: pulumi.Output<boolean | undefined>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    public readonly attachedDisks: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, mode?: string, source: string }[] | undefined>;
+    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, mode?: string, source: string }[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    public readonly bootDisk: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
      * This defaults to false.
      */
-    public readonly canIpForward: pulumi.Output<boolean | undefined>;
+    public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
      * The CPU platform used by this instance.
      */
-    public /*out*/ readonly cpuPlatform: pulumi.Output<string>;
+    public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
      */
-    public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * A brief description of this resource.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      */
-    public readonly guestAccelerators: pulumi.Output<{ count: number, type: string }[]>;
+    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    public readonly hostname: pulumi.Output<string | undefined>;
+    public readonly hostname!: pulumi.Output<string | undefined>;
     /**
      * The server-assigned unique identifier of this instance.
      */
-    public /*out*/ readonly instanceId: pulumi.Output<string>;
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
     /**
      * The unique fingerprint of the labels.
      */
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * A set of key/value label pairs to assign to the instance.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The machine type to create.
      */
-    public readonly machineType: pulumi.Output<string>;
+    public readonly machineType!: pulumi.Output<string>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
      * Add them to your config in order to keep them attached to your instance.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
     /**
      * An alternative to using the
      * startup-script metadata key, except this one forces the instance to be
@@ -139,60 +139,60 @@ export class Instance extends pulumi.CustomResource {
      * startup-script metadata key on the created instance and thus the two
      * mechanisms are not allowed to be used simultaneously.
      */
-    public readonly metadataStartupScript: pulumi.Output<string | undefined>;
+    public readonly metadataStartupScript!: pulumi.Output<string | undefined>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
-    public readonly minCpuPlatform: pulumi.Output<string | undefined>;
+    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    public readonly networkInterfaces: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string, publicPtrDomainName?: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string, publicPtrDomainName?: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
+    public readonly scheduling!: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    public readonly scratchDisks: pulumi.Output<{ interface?: string }[] | undefined>;
+    public readonly scratchDisks!: pulumi.Output<{ interface?: string }[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
-    public readonly serviceAccount: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
+    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
      * A list of tags to attach to the instance.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
     /**
      * The zone that the machine should be created in.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -205,7 +205,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
@@ -271,6 +271,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["metadataFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/instance:Instance", name, inputs, opts);
     }

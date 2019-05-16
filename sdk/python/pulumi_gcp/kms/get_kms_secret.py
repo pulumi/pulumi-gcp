@@ -49,6 +49,10 @@ async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
 
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts)
 
     return GetKMSSecretResult(

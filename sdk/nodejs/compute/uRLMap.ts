@@ -87,24 +87,24 @@ export class URLMap extends pulumi.CustomResource {
         return new URLMap(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly defaultService: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    public readonly hostRules: pulumi.Output<{ description?: string, hosts: string[], pathMatcher: string }[] | undefined>;
-    public /*out*/ readonly mapId: pulumi.Output<number>;
-    public readonly name: pulumi.Output<string>;
-    public readonly pathMatchers: pulumi.Output<{ defaultService: string, description?: string, name: string, pathRules?: { paths: string[], service: string }[] }[] | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly defaultService!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    public readonly hostRules!: pulumi.Output<{ description?: string, hosts: string[], pathMatcher: string }[] | undefined>;
+    public /*out*/ readonly mapId!: pulumi.Output<number>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly pathMatchers!: pulumi.Output<{ defaultService: string, description?: string, name: string, pathRules?: { paths: string[], service: string }[] }[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly tests: pulumi.Output<{ description?: string, host: string, path: string, service: string }[] | undefined>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly tests!: pulumi.Output<{ description?: string, host: string, path: string, service: string }[] | undefined>;
 
     /**
      * Create a URLMap resource with the given unique name, arguments, and options.
@@ -117,7 +117,7 @@ export class URLMap extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: URLMapArgs | URLMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: URLMapState = argsOrState as URLMapState | undefined;
+            const state = argsOrState as URLMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -145,6 +145,13 @@ export class URLMap extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["mapId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/uRLMap:URLMap", name, inputs, opts);
     }

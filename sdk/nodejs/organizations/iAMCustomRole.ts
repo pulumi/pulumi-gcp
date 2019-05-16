@@ -54,33 +54,33 @@ export class IAMCustomRole extends pulumi.CustomResource {
     /**
      * (Optional) The current deleted state of the role.
      */
-    public /*out*/ readonly deleted: pulumi.Output<boolean>;
+    public /*out*/ readonly deleted!: pulumi.Output<boolean>;
     /**
      * A human-readable description for the role.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    public readonly orgId: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
-    public readonly permissions: pulumi.Output<string[]>;
+    public readonly permissions!: pulumi.Output<string[]>;
     /**
      * The role id to use for this role.
      */
-    public readonly roleId: pulumi.Output<string>;
+    public readonly roleId!: pulumi.Output<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    public readonly stage: pulumi.Output<string | undefined>;
+    public readonly stage!: pulumi.Output<string | undefined>;
     /**
      * A human-readable title for the role.
      */
-    public readonly title: pulumi.Output<string>;
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a IAMCustomRole resource with the given unique name, arguments, and options.
@@ -93,7 +93,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMCustomRoleArgs | IAMCustomRoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMCustomRoleState = argsOrState as IAMCustomRoleState | undefined;
+            const state = argsOrState as IAMCustomRoleState | undefined;
             inputs["deleted"] = state ? state.deleted : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
@@ -122,6 +122,13 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["stage"] = args ? args.stage : undefined;
             inputs["title"] = args ? args.title : undefined;
             inputs["deleted"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/iAMCustomRole:IAMCustomRole", name, inputs, opts);
     }

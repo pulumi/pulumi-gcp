@@ -53,26 +53,26 @@ export class RegionBackendService extends pulumi.CustomResource {
         return new RegionBackendService(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly backends: pulumi.Output<{ description?: string, group?: string }[] | undefined>;
-    public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    public readonly healthChecks: pulumi.Output<string>;
-    public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly backends!: pulumi.Output<{ description?: string, group?: string }[] | undefined>;
+    public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    public readonly healthChecks!: pulumi.Output<string>;
+    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly protocol: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sessionAffinity: pulumi.Output<string>;
-    public readonly timeoutSec: pulumi.Output<number>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sessionAffinity!: pulumi.Output<string>;
+    public readonly timeoutSec!: pulumi.Output<number>;
 
     /**
      * Create a RegionBackendService resource with the given unique name, arguments, and options.
@@ -85,7 +85,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionBackendServiceArgs | RegionBackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegionBackendServiceState = argsOrState as RegionBackendServiceState | undefined;
+            const state = argsOrState as RegionBackendServiceState | undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -117,6 +117,13 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/regionBackendService:RegionBackendService", name, inputs, opts);
     }

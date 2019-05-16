@@ -58,24 +58,24 @@ export class Instance extends pulumi.CustomResource {
     /**
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
-    public readonly clusters: pulumi.Output<{ clusterId: string, numNodes?: number, storageType?: string, zone: string }[]>;
+    public readonly clusters!: pulumi.Output<{ clusterId: string, numNodes?: number, storageType?: string, zone: string }[]>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
-    public readonly displayName: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
      */
-    public readonly instanceType: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
      * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -88,7 +88,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["clusters"] = state ? state.clusters : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
@@ -104,6 +104,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:bigtable/instance:Instance", name, inputs, opts);
     }

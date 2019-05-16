@@ -56,87 +56,87 @@ export class Table extends pulumi.CustomResource {
     /**
      * The time when this table was created, in milliseconds since the epoch.
      */
-    public /*out*/ readonly creationTime: pulumi.Output<number>;
+    public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
      * The dataset ID to create the table in.
      * Changing this forces a new resource to be created.
      */
-    public readonly datasetId: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * The field description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A hash of the resource.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The time when this table expires, in
      * milliseconds since the epoch. If not present, the table will persist
      * indefinitely. Expired tables will be deleted and their storage
      * reclaimed.
      */
-    public readonly expirationTime: pulumi.Output<number>;
+    public readonly expirationTime!: pulumi.Output<number>;
     /**
      * A descriptive name for the table.
      */
-    public readonly friendlyName: pulumi.Output<string | undefined>;
+    public readonly friendlyName!: pulumi.Output<string | undefined>;
     /**
      * A mapping of labels to assign to the resource.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time when this table was last modified, in milliseconds since the epoch.
      */
-    public /*out*/ readonly lastModifiedTime: pulumi.Output<number>;
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
     /**
      * The geographic location where the table resides. This value is inherited from the dataset.
      */
-    public /*out*/ readonly location: pulumi.Output<string>;
+    public /*out*/ readonly location!: pulumi.Output<string>;
     /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
-    public /*out*/ readonly numBytes: pulumi.Output<number>;
+    public /*out*/ readonly numBytes!: pulumi.Output<number>;
     /**
      * The number of bytes in the table that are considered "long-term storage".
      */
-    public /*out*/ readonly numLongTermBytes: pulumi.Output<number>;
+    public /*out*/ readonly numLongTermBytes!: pulumi.Output<number>;
     /**
      * The number of rows of data in this table, excluding any data in the streaming buffer.
      */
-    public /*out*/ readonly numRows: pulumi.Output<number>;
+    public /*out*/ readonly numRows!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A JSON schema for the table.
      */
-    public readonly schema: pulumi.Output<string>;
+    public readonly schema!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A unique ID for the resource.
      * Changing this forces a new resource to be created.
      */
-    public readonly tableId: pulumi.Output<string>;
+    public readonly tableId!: pulumi.Output<string>;
     /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    public readonly timePartitioning: pulumi.Output<{ expirationMs?: number, field?: string, requirePartitionFilter?: boolean, type: string } | undefined>;
+    public readonly timePartitioning!: pulumi.Output<{ expirationMs?: number, field?: string, requirePartitionFilter?: boolean, type: string } | undefined>;
     /**
      * Describes the table type.
      */
-    public /*out*/ readonly type: pulumi.Output<string>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * If specified, configures this table as a view.
      * Structure is documented below.
      */
-    public readonly view: pulumi.Output<{ query: string, useLegacySql?: boolean } | undefined>;
+    public readonly view!: pulumi.Output<{ query: string, useLegacySql?: boolean } | undefined>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -149,7 +149,7 @@ export class Table extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TableState = argsOrState as TableState | undefined;
+            const state = argsOrState as TableState | undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -196,6 +196,13 @@ export class Table extends pulumi.CustomResource {
             inputs["numRows"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:bigquery/table:Table", name, inputs, opts);
     }

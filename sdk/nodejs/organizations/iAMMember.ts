@@ -41,20 +41,20 @@ export class IAMMember extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
-    public readonly member: pulumi.Output<string>;
+    public readonly member!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
-    public readonly orgId: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a IAMMember resource with the given unique name, arguments, and options.
@@ -67,7 +67,7 @@ export class IAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMMemberArgs | IAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMMemberState = argsOrState as IAMMemberState | undefined;
+            const state = argsOrState as IAMMemberState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
@@ -87,6 +87,13 @@ export class IAMMember extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/iAMMember:IAMMember", name, inputs, opts);
     }

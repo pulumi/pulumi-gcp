@@ -60,62 +60,62 @@ export class Key extends pulumi.CustomResource {
      * [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
      * (only used on create)
      */
-    public readonly keyAlgorithm: pulumi.Output<string | undefined>;
+    public readonly keyAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * The name used for this key pair
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * An optional PGP key to encrypt the resulting private
      * key material. Only used when creating or importing a new key pair. May either be
      * a base64-encoded public key or a `keybase:keybaseusername` string for looking up
      * in Vault.
      */
-    public readonly pgpKey: pulumi.Output<string | undefined>;
+    public readonly pgpKey!: pulumi.Output<string | undefined>;
     /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
      * service account keys through the CLI or web console. This is only populated when creating a new key, and when no
      * `pgp_key` is provided.
      */
-    public /*out*/ readonly privateKey: pulumi.Output<string>;
+    public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
      * The private key material, base 64 encoded and
      * encrypted with the given `pgp_key`. This is only populated when creating a new
      * key and `pgp_key` is supplied
      */
-    public /*out*/ readonly privateKeyEncrypted: pulumi.Output<string>;
+    public /*out*/ readonly privateKeyEncrypted!: pulumi.Output<string>;
     /**
      * The MD5 public key fingerprint for the encrypted
      * private key. This is only populated when creating a new key and `pgp_key` is supplied
      */
-    public /*out*/ readonly privateKeyFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly privateKeyFingerprint!: pulumi.Output<string>;
     /**
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */
-    public readonly privateKeyType: pulumi.Output<string | undefined>;
+    public readonly privateKeyType!: pulumi.Output<string | undefined>;
     /**
      * The public key, base64 encoded
      */
-    public /*out*/ readonly publicKey: pulumi.Output<string>;
+    public /*out*/ readonly publicKey!: pulumi.Output<string>;
     /**
      * The output format of the public key requested. X509_PEM is the default output format.
      */
-    public readonly publicKeyType: pulumi.Output<string | undefined>;
+    public readonly publicKeyType!: pulumi.Output<string | undefined>;
     /**
      * The Service account id of the Key Pair. This can be a string in the format
      * `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
      * unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
      */
-    public readonly serviceAccountId: pulumi.Output<string>;
+    public readonly serviceAccountId!: pulumi.Output<string>;
     /**
      * The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly validAfter: pulumi.Output<string>;
+    public /*out*/ readonly validAfter!: pulumi.Output<string>;
     /**
      * The key can be used before this timestamp.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly validBefore: pulumi.Output<string>;
+    public /*out*/ readonly validBefore!: pulumi.Output<string>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -128,7 +128,7 @@ export class Key extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyArgs | KeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyState = argsOrState as KeyState | undefined;
+            const state = argsOrState as KeyState | undefined;
             inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["pgpKey"] = state ? state.pgpKey : undefined;
@@ -158,6 +158,13 @@ export class Key extends pulumi.CustomResource {
             inputs["publicKey"] = undefined /*out*/;
             inputs["validAfter"] = undefined /*out*/;
             inputs["validBefore"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:serviceAccount/key:Key", name, inputs, opts);
     }

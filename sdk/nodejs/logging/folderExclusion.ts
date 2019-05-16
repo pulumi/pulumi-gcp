@@ -46,27 +46,27 @@ export class FolderExclusion extends pulumi.CustomResource {
     /**
      * A human-readable description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    public readonly disabled: pulumi.Output<boolean | undefined>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    public readonly filter: pulumi.Output<string>;
+    public readonly filter!: pulumi.Output<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    public readonly folder: pulumi.Output<string>;
+    public readonly folder!: pulumi.Output<string>;
     /**
      * The name of the logging exclusion.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a FolderExclusion resource with the given unique name, arguments, and options.
@@ -79,7 +79,7 @@ export class FolderExclusion extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderExclusionArgs | FolderExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FolderExclusionState = argsOrState as FolderExclusionState | undefined;
+            const state = argsOrState as FolderExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["filter"] = state ? state.filter : undefined;
@@ -98,6 +98,13 @@ export class FolderExclusion extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["folder"] = args ? args.folder : undefined;
             inputs["name"] = args ? args.name : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/folderExclusion:FolderExclusion", name, inputs, opts);
     }

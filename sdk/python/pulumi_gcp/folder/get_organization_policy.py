@@ -54,6 +54,10 @@ async def get_organization_policy(constraint=None,folder=None,opts=None):
 
     __args__['constraint'] = constraint
     __args__['folder'] = folder
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts)
 
     return GetOrganizationPolicyResult(

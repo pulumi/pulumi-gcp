@@ -69,22 +69,22 @@ export class Node extends pulumi.CustomResource {
         return new Node(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly acceleratorType: pulumi.Output<string>;
-    public readonly cidrBlock: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string>;
-    public /*out*/ readonly networkEndpoints: pulumi.Output<{ ipAddress: string, port: number }[]>;
+    public readonly acceleratorType!: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
+    public /*out*/ readonly networkEndpoints!: pulumi.Output<{ ipAddress: string, port: number }[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly schedulingConfig: pulumi.Output<{ preemptible?: boolean } | undefined>;
-    public /*out*/ readonly serviceAccount: pulumi.Output<string>;
-    public readonly tensorflowVersion: pulumi.Output<string>;
-    public readonly zone: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly schedulingConfig!: pulumi.Output<{ preemptible?: boolean } | undefined>;
+    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    public readonly tensorflowVersion!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -97,7 +97,7 @@ export class Node extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeArgs | NodeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeState = argsOrState as NodeState | undefined;
+            const state = argsOrState as NodeState | undefined;
             inputs["acceleratorType"] = state ? state.acceleratorType : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -136,6 +136,13 @@ export class Node extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["networkEndpoints"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:tpu/node:Node", name, inputs, opts);
     }

@@ -29,6 +29,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super("gcp", name, inputs, opts);
     }
 }
