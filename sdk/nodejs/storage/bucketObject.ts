@@ -43,65 +43,65 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * The name of the containing bucket.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
      * directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
      */
-    public readonly cacheControl: pulumi.Output<string | undefined>;
+    public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
      * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
-    public readonly content: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string | undefined>;
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
      */
-    public readonly contentDisposition: pulumi.Output<string | undefined>;
+    public readonly contentDisposition!: pulumi.Output<string | undefined>;
     /**
      * [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
      */
-    public readonly contentEncoding: pulumi.Output<string | undefined>;
+    public readonly contentEncoding!: pulumi.Output<string | undefined>;
     /**
      * [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
      */
-    public readonly contentLanguage: pulumi.Output<string | undefined>;
+    public readonly contentLanguage!: pulumi.Output<string | undefined>;
     /**
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
-    public readonly contentType: pulumi.Output<string>;
+    public readonly contentType!: pulumi.Output<string>;
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
-    public /*out*/ readonly crc32c: pulumi.Output<string>;
-    public readonly detectMd5hash: pulumi.Output<string | undefined>;
+    public /*out*/ readonly crc32c!: pulumi.Output<string>;
+    public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
-    public /*out*/ readonly md5hash: pulumi.Output<string>;
+    public /*out*/ readonly md5hash!: pulumi.Output<string>;
     /**
      * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
      * `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
      */
-    public /*out*/ readonly outputName: pulumi.Output<string>;
+    public /*out*/ readonly outputName!: pulumi.Output<string>;
     /**
      * (Computed) A url reference to this object.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      */
-    public readonly source: pulumi.Output<pulumi.asset.Archive | undefined>;
+    public readonly source!: pulumi.Output<pulumi.asset.Archive | undefined>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
-    public readonly storageClass: pulumi.Output<string>;
+    public readonly storageClass!: pulumi.Output<string>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ export class BucketObject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketObjectState = argsOrState as BucketObjectState | undefined;
+            const state = argsOrState as BucketObjectState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["cacheControl"] = state ? state.cacheControl : undefined;
             inputs["content"] = state ? state.content : undefined;
@@ -150,6 +150,13 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["md5hash"] = undefined /*out*/;
             inputs["outputName"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/bucketObject:BucketObject", name, inputs, opts);
     }

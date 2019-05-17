@@ -43,47 +43,47 @@ export class RouterPeer extends pulumi.CustomResource {
      * The priority of routes advertised to this BGP peer.
      * Changing this forces a new peer to be created.
      */
-    public readonly advertisedRoutePriority: pulumi.Output<number | undefined>;
+    public readonly advertisedRoutePriority!: pulumi.Output<number | undefined>;
     /**
      * The name of the interface the BGP peer is associated with.
      * Changing this forces a new peer to be created.
      */
-    public readonly interface: pulumi.Output<string>;
+    public readonly interface!: pulumi.Output<string>;
     /**
      * IP address of the interface inside Google Cloud Platform.
      */
-    public /*out*/ readonly ipAddress: pulumi.Output<string>;
+    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
      * A unique name for BGP peer, required by GCE. Changing
      * this forces a new peer to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Peer BGP Autonomous System Number (ASN).
      * Changing this forces a new peer to be created.
      */
-    public readonly peerAsn: pulumi.Output<number>;
+    public readonly peerAsn!: pulumi.Output<number>;
     /**
      * IP address of the BGP interface outside Google Cloud.
      * Changing this forces a new peer to be created.
      */
-    public readonly peerIpAddress: pulumi.Output<string | undefined>;
+    public readonly peerIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which this peer's router belongs. If it
      * is not provided, the provider project is used. Changing this forces a new peer to be created.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region this peer's router sits in. If not specified,
      * the project region will be used. Changing this forces a new peer to be
      * created.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The name of the router in which this BGP peer will be configured.
      * Changing this forces a new peer to be created.
      */
-    public readonly router: pulumi.Output<string>;
+    public readonly router!: pulumi.Output<string>;
 
     /**
      * Create a RouterPeer resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ export class RouterPeer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterPeerArgs | RouterPeerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterPeerState = argsOrState as RouterPeerState | undefined;
+            const state = argsOrState as RouterPeerState | undefined;
             inputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             inputs["interface"] = state ? state.interface : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -126,6 +126,13 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["router"] = args ? args.router : undefined;
             inputs["ipAddress"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/routerPeer:RouterPeer", name, inputs, opts);
     }

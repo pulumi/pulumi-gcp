@@ -45,19 +45,19 @@ export class AccountIamBinding extends pulumi.CustomResource {
     /**
      * The billing account id.
      */
-    public readonly billingAccountId: pulumi.Output<string>;
+    public readonly billingAccountId!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the billing account's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
-    public readonly members: pulumi.Output<string[]>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a AccountIamBinding resource with the given unique name, arguments, and options.
@@ -70,7 +70,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountIamBindingArgs | AccountIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountIamBindingState = argsOrState as AccountIamBindingState | undefined;
+            const state = argsOrState as AccountIamBindingState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -90,6 +90,13 @@ export class AccountIamBinding extends pulumi.CustomResource {
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:billing/accountIamBinding:AccountIamBinding", name, inputs, opts);
     }

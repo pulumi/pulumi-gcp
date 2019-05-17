@@ -62,14 +62,14 @@ export class Metric extends pulumi.CustomResource {
         return new Metric(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly bucketOptions: pulumi.Output<{ explicit?: { bounds?: string[] }, exponentialBuckets?: { growthFactor?: number, numFiniteBuckets?: number, scale?: number }, linearBuckets?: { numFiniteBuckets?: number, offset?: number, width?: number } } | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly filter: pulumi.Output<string>;
-    public readonly labelExtractors: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly metricDescriptor: pulumi.Output<{ labels?: { description?: string, key: string, valueType?: string }[], metricKind: string, valueType: string }>;
-    public readonly name: pulumi.Output<string>;
-    public readonly project: pulumi.Output<string>;
-    public readonly valueExtractor: pulumi.Output<string | undefined>;
+    public readonly bucketOptions!: pulumi.Output<{ explicit?: { bounds?: string[] }, exponentialBuckets?: { growthFactor?: number, numFiniteBuckets?: number, scale?: number }, linearBuckets?: { numFiniteBuckets?: number, offset?: number, width?: number } } | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly filter!: pulumi.Output<string>;
+    public readonly labelExtractors!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly metricDescriptor!: pulumi.Output<{ labels?: { description?: string, key: string, valueType?: string }[], metricKind: string, valueType: string }>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly valueExtractor!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Metric resource with the given unique name, arguments, and options.
@@ -82,7 +82,7 @@ export class Metric extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MetricArgs | MetricState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: MetricState = argsOrState as MetricState | undefined;
+            const state = argsOrState as MetricState | undefined;
             inputs["bucketOptions"] = state ? state.bucketOptions : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["filter"] = state ? state.filter : undefined;
@@ -107,6 +107,13 @@ export class Metric extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["valueExtractor"] = args ? args.valueExtractor : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/metric:Metric", name, inputs, opts);
     }

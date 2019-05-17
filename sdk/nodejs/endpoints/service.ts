@@ -42,15 +42,15 @@ export class Service extends pulumi.CustomResource {
         return new Service(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly apis: pulumi.Output<{ methods: { name: string, requestType: string, responseType: string, syntax: string }[], name: string, syntax: string, version: string }[]>;
-    public /*out*/ readonly configId: pulumi.Output<string>;
-    public /*out*/ readonly dnsAddress: pulumi.Output<string>;
-    public /*out*/ readonly endpoints: pulumi.Output<{ address: string, name: string }[]>;
-    public readonly grpcConfig: pulumi.Output<string | undefined>;
-    public readonly openapiConfig: pulumi.Output<string | undefined>;
-    public readonly project: pulumi.Output<string>;
-    public readonly protocOutputBase64: pulumi.Output<string | undefined>;
-    public readonly serviceName: pulumi.Output<string>;
+    public /*out*/ readonly apis!: pulumi.Output<{ methods: { name: string, requestType: string, responseType: string, syntax: string }[], name: string, syntax: string, version: string }[]>;
+    public /*out*/ readonly configId!: pulumi.Output<string>;
+    public /*out*/ readonly dnsAddress!: pulumi.Output<string>;
+    public /*out*/ readonly endpoints!: pulumi.Output<{ address: string, name: string }[]>;
+    public readonly grpcConfig!: pulumi.Output<string | undefined>;
+    public readonly openapiConfig!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly protocOutputBase64!: pulumi.Output<string | undefined>;
+    public readonly serviceName!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -63,7 +63,7 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServiceState = argsOrState as ServiceState | undefined;
+            const state = argsOrState as ServiceState | undefined;
             inputs["apis"] = state ? state.apis : undefined;
             inputs["configId"] = state ? state.configId : undefined;
             inputs["dnsAddress"] = state ? state.dnsAddress : undefined;
@@ -87,6 +87,13 @@ export class Service extends pulumi.CustomResource {
             inputs["configId"] = undefined /*out*/;
             inputs["dnsAddress"] = undefined /*out*/;
             inputs["endpoints"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:endpoints/service:Service", name, inputs, opts);
     }

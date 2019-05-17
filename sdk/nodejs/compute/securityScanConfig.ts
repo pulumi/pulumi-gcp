@@ -29,21 +29,21 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         return new SecurityScanConfig(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly authentication: pulumi.Output<{ customAccount?: { loginUrl: string, password: string, username: string }, googleAccount?: { password: string, username: string } } | undefined>;
-    public readonly blacklistPatterns: pulumi.Output<string[] | undefined>;
-    public readonly displayName: pulumi.Output<string>;
-    public readonly exportToSecurityCommandCenter: pulumi.Output<string | undefined>;
-    public readonly maxQps: pulumi.Output<number | undefined>;
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public readonly authentication!: pulumi.Output<{ customAccount?: { loginUrl: string, password: string, username: string }, googleAccount?: { password: string, username: string } } | undefined>;
+    public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
+    public readonly displayName!: pulumi.Output<string>;
+    public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
+    public readonly maxQps!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly schedule: pulumi.Output<{ intervalDurationDays: number, scheduleTime?: string } | undefined>;
-    public readonly startingUrls: pulumi.Output<string[]>;
-    public readonly targetPlatforms: pulumi.Output<string[] | undefined>;
-    public readonly userAgent: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly schedule!: pulumi.Output<{ intervalDurationDays: number, scheduleTime?: string } | undefined>;
+    public readonly startingUrls!: pulumi.Output<string[]>;
+    public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
+    public readonly userAgent!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityScanConfig resource with the given unique name, arguments, and options.
@@ -56,7 +56,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecurityScanConfigArgs | SecurityScanConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecurityScanConfigState = argsOrState as SecurityScanConfigState | undefined;
+            const state = argsOrState as SecurityScanConfigState | undefined;
             inputs["authentication"] = state ? state.authentication : undefined;
             inputs["blacklistPatterns"] = state ? state.blacklistPatterns : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -87,6 +87,13 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             inputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
             inputs["userAgent"] = args ? args.userAgent : undefined;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/securityScanConfig:SecurityScanConfig", name, inputs, opts);
     }

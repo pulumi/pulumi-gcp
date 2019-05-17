@@ -41,13 +41,13 @@ export class Topic extends pulumi.CustomResource {
         return new Topic(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -60,7 +60,7 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TopicState = argsOrState as TopicState | undefined;
+            const state = argsOrState as TopicState | undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -69,6 +69,13 @@ export class Topic extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:pubsub/topic:Topic", name, inputs, opts);
     }

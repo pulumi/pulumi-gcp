@@ -95,36 +95,36 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    public readonly booleanPolicy: pulumi.Output<{ enforced: boolean } | undefined>;
+    public readonly booleanPolicy!: pulumi.Output<{ enforced: boolean } | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
-    public readonly constraint: pulumi.Output<string>;
+    public readonly constraint!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
      */
-    public readonly folder: pulumi.Output<string>;
+    public readonly folder!: pulumi.Output<string>;
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It
      * can also be used to allow or deny all values. Structure is documented below.
      */
-    public readonly listPolicy: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
+    public readonly listPolicy!: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
-    public readonly restorePolicy: pulumi.Output<{ default: boolean } | undefined>;
+    public readonly restorePolicy!: pulumi.Output<{ default: boolean } | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
-    public /*out*/ readonly updateTime: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Version of the Policy. Default version is 0.
      */
-    public readonly version: pulumi.Output<number>;
+    public readonly version!: pulumi.Output<number>;
 
     /**
      * Create a OrganizationPolicy resource with the given unique name, arguments, and options.
@@ -137,7 +137,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: OrganizationPolicyArgs | OrganizationPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: OrganizationPolicyState = argsOrState as OrganizationPolicyState | undefined;
+            const state = argsOrState as OrganizationPolicyState | undefined;
             inputs["booleanPolicy"] = state ? state.booleanPolicy : undefined;
             inputs["constraint"] = state ? state.constraint : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -162,6 +162,13 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             inputs["version"] = args ? args.version : undefined;
             inputs["etag"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:folder/organizationPolicy:OrganizationPolicy", name, inputs, opts);
     }

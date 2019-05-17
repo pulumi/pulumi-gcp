@@ -60,16 +60,16 @@ export class Group extends pulumi.CustomResource {
         return new Group(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly displayName: pulumi.Output<string>;
-    public readonly filter: pulumi.Output<string>;
-    public readonly isCluster: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly name: pulumi.Output<string>;
-    public readonly parentName: pulumi.Output<string | undefined>;
+    public readonly displayName!: pulumi.Output<string>;
+    public readonly filter!: pulumi.Output<string>;
+    public readonly isCluster!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly parentName!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -82,7 +82,7 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupState = argsOrState as GroupState | undefined;
+            const state = argsOrState as GroupState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["isCluster"] = state ? state.isCluster : undefined;
@@ -103,6 +103,13 @@ export class Group extends pulumi.CustomResource {
             inputs["parentName"] = args ? args.parentName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:monitoring/group:Group", name, inputs, opts);
     }

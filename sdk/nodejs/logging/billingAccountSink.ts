@@ -47,7 +47,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     /**
      * The billing account exported to the sink.
      */
-    public readonly billingAccount: pulumi.Output<string>;
+    public readonly billingAccount!: pulumi.Output<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -56,22 +56,22 @@ export class BillingAccountSink extends pulumi.CustomResource {
      * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
-    public readonly destination: pulumi.Output<string>;
+    public readonly destination!: pulumi.Output<string>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    public readonly filter: pulumi.Output<string | undefined>;
+    public readonly filter!: pulumi.Output<string | undefined>;
     /**
      * The name of the logging sink.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    public /*out*/ readonly writerIdentity: pulumi.Output<string>;
+    public /*out*/ readonly writerIdentity!: pulumi.Output<string>;
 
     /**
      * Create a BillingAccountSink resource with the given unique name, arguments, and options.
@@ -84,7 +84,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BillingAccountSinkArgs | BillingAccountSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BillingAccountSinkState = argsOrState as BillingAccountSinkState | undefined;
+            const state = argsOrState as BillingAccountSinkState | undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
@@ -103,6 +103,13 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/billingAccountSink:BillingAccountSink", name, inputs, opts);
     }

@@ -54,21 +54,21 @@ export class NodeGroup extends pulumi.CustomResource {
         return new NodeGroup(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly nodeTemplate: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly nodeTemplate!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly size: pulumi.Output<number>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<number>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NodeGroup resource with the given unique name, arguments, and options.
@@ -81,7 +81,7 @@ export class NodeGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NodeGroupArgs | NodeGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NodeGroupState = argsOrState as NodeGroupState | undefined;
+            const state = argsOrState as NodeGroupState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -106,6 +106,13 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/nodeGroup:NodeGroup", name, inputs, opts);
     }

@@ -121,49 +121,49 @@ export class InstanceGroup extends pulumi.CustomResource {
      * An optional textual description of the instance
      * group.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of instances in the group. They should be given
      * as self_link URLs. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
-    public readonly instances: pulumi.Output<string[]>;
+    public readonly instances!: pulumi.Output<string[]>;
     /**
      * The name of the instance group. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    public readonly namedPorts: pulumi.Output<{ name: string, port: number }[] | undefined>;
+    public readonly namedPorts!: pulumi.Output<{ name: string, port: number }[] | undefined>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    public readonly network: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The number of instances in the group.
      */
-    public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * The zone that this instance group should be created in.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a InstanceGroup resource with the given unique name, arguments, and options.
@@ -176,7 +176,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceGroupState = argsOrState as InstanceGroupState | undefined;
+            const state = argsOrState as InstanceGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instances"] = state ? state.instances : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -197,6 +197,13 @@ export class InstanceGroup extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["selfLink"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/instanceGroup:InstanceGroup", name, inputs, opts);
     }

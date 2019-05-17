@@ -39,6 +39,10 @@ async def get_project_services(project=None,opts=None):
     __args__ = dict()
 
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__, opts=opts)
 
     return GetProjectServicesResult(

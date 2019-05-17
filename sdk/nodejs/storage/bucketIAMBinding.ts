@@ -80,17 +80,17 @@ export class BucketIAMBinding extends pulumi.CustomResource {
     /**
      * The name of the bucket it applies to.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly members: pulumi.Output<string[]>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a BucketIAMBinding resource with the given unique name, arguments, and options.
@@ -103,7 +103,7 @@ export class BucketIAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketIAMBindingArgs | BucketIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketIAMBindingState = argsOrState as BucketIAMBindingState | undefined;
+            const state = argsOrState as BucketIAMBindingState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -123,6 +123,13 @@ export class BucketIAMBinding extends pulumi.CustomResource {
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/bucketIAMBinding:BucketIAMBinding", name, inputs, opts);
     }

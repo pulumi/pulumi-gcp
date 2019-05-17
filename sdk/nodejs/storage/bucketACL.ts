@@ -46,19 +46,19 @@ export class BucketACL extends pulumi.CustomResource {
     /**
      * The name of the bucket it applies to.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * Configure this ACL to be the default ACL.
      */
-    public readonly defaultAcl: pulumi.Output<string | undefined>;
+    public readonly defaultAcl!: pulumi.Output<string | undefined>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
      */
-    public readonly predefinedAcl: pulumi.Output<string | undefined>;
+    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
      */
-    public readonly roleEntities: pulumi.Output<string[]>;
+    public readonly roleEntities!: pulumi.Output<string[]>;
 
     /**
      * Create a BucketACL resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class BucketACL extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketACLArgs | BucketACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketACLState = argsOrState as BucketACLState | undefined;
+            const state = argsOrState as BucketACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["defaultAcl"] = state ? state.defaultAcl : undefined;
             inputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
@@ -85,6 +85,13 @@ export class BucketACL extends pulumi.CustomResource {
             inputs["defaultAcl"] = args ? args.defaultAcl : undefined;
             inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/bucketACL:BucketACL", name, inputs, opts);
     }

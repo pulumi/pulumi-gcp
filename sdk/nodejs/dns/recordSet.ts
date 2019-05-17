@@ -141,29 +141,29 @@ export class RecordSet extends pulumi.CustomResource {
      * The name of the zone in which this record set will
      * reside.
      */
-    public readonly managedZone: pulumi.Output<string>;
+    public readonly managedZone!: pulumi.Output<string>;
     /**
      * The DNS name this record set will apply to.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The string data for the records in this record set
      * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
      */
-    public readonly rrdatas: pulumi.Output<string[]>;
+    public readonly rrdatas!: pulumi.Output<string[]>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The DNS record set type.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a RecordSet resource with the given unique name, arguments, and options.
@@ -176,7 +176,7 @@ export class RecordSet extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RecordSetArgs | RecordSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RecordSetState = argsOrState as RecordSetState | undefined;
+            const state = argsOrState as RecordSetState | undefined;
             inputs["managedZone"] = state ? state.managedZone : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -203,6 +203,13 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["rrdatas"] = args ? args.rrdatas : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:dns/recordSet:RecordSet", name, inputs, opts);
     }

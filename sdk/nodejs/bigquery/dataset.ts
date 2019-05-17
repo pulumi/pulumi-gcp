@@ -55,67 +55,67 @@ export class Dataset extends pulumi.CustomResource {
      * An array of objects that define dataset access for
      * one or more entities. Structure is documented below.
      */
-    public readonly accesses: pulumi.Output<{ domain?: string, groupByEmail?: string, role?: string, specialGroup?: string, userByEmail?: string, view?: { datasetId: string, projectId: string, tableId: string } }[]>;
+    public readonly accesses!: pulumi.Output<{ domain?: string, groupByEmail?: string, role?: string, specialGroup?: string, userByEmail?: string, view?: { datasetId: string, projectId: string, tableId: string } }[]>;
     /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
-    public /*out*/ readonly creationTime: pulumi.Output<number>;
+    public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
      * The ID of the dataset containing this table.
      */
-    public readonly datasetId: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * The default partition expiration
      * for all partitioned tables in the dataset, in milliseconds.
      */
-    public readonly defaultPartitionExpirationMs: pulumi.Output<number | undefined>;
+    public readonly defaultPartitionExpirationMs!: pulumi.Output<number | undefined>;
     /**
      * The default lifetime of all
      * tables in the dataset, in milliseconds. The minimum value is 3600000
      * milliseconds (one hour).
      */
-    public readonly defaultTableExpirationMs: pulumi.Output<number | undefined>;
+    public readonly defaultTableExpirationMs!: pulumi.Output<number | undefined>;
     /**
      * If set to `true`, delete all the
      * tables in the dataset when destroying the resource; otherwise, destroying
      * the resource will fail if tables are present.
      */
-    public readonly deleteContentsOnDestroy: pulumi.Output<boolean | undefined>;
+    public readonly deleteContentsOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * A user-friendly description of the dataset.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A hash of the resource.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * A descriptive name for the dataset.
      */
-    public readonly friendlyName: pulumi.Output<string | undefined>;
+    public readonly friendlyName!: pulumi.Output<string | undefined>;
     /**
      * A mapping of labels to assign to the resource.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The date when this dataset or any of its tables was last modified,
      * in milliseconds since the epoch.
      */
-    public /*out*/ readonly lastModifiedTime: pulumi.Output<number>;
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
      */
-    public readonly location: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -128,7 +128,7 @@ export class Dataset extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatasetArgs | DatasetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatasetState = argsOrState as DatasetState | undefined;
+            const state = argsOrState as DatasetState | undefined;
             inputs["accesses"] = state ? state.accesses : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
@@ -162,6 +162,13 @@ export class Dataset extends pulumi.CustomResource {
             inputs["etag"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:bigquery/dataset:Dataset", name, inputs, opts);
     }

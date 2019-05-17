@@ -61,33 +61,33 @@ export class Notification extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
      */
-    public readonly eventTypes: pulumi.Output<string[] | undefined>;
+    public readonly eventTypes!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
      */
-    public readonly objectNamePrefix: pulumi.Output<string | undefined>;
+    public readonly objectNamePrefix!: pulumi.Output<string | undefined>;
     /**
      * The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
      */
-    public readonly payloadFormat: pulumi.Output<string>;
+    public readonly payloadFormat!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The Cloud PubSub topic to which this subscription publishes. Expects either the 
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
      */
-    public readonly topic: pulumi.Output<string>;
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ export class Notification extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NotificationArgs | NotificationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NotificationState = argsOrState as NotificationState | undefined;
+            const state = argsOrState as NotificationState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["eventTypes"] = state ? state.eventTypes : undefined;
@@ -126,6 +126,13 @@ export class Notification extends pulumi.CustomResource {
             inputs["payloadFormat"] = args ? args.payloadFormat : undefined;
             inputs["topic"] = args ? args.topic : undefined;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/notification:Notification", name, inputs, opts);
     }

@@ -47,15 +47,15 @@ export class Database extends pulumi.CustomResource {
         return new Database(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly ddls: pulumi.Output<string[] | undefined>;
-    public readonly instance: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
+    public readonly ddls!: pulumi.Output<string[] | undefined>;
+    public readonly instance!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public /*out*/ readonly state: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -68,7 +68,7 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseState = argsOrState as DatabaseState | undefined;
+            const state = argsOrState as DatabaseState | undefined;
             inputs["ddls"] = state ? state.ddls : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -84,6 +84,13 @@ export class Database extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:spanner/database:Database", name, inputs, opts);
     }

@@ -34,6 +34,10 @@ async def get_tensorflow_versions(project=None,zone=None,opts=None):
 
     __args__['project'] = project
     __args__['zone'] = zone
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts)
 
     return GetTensorflowVersionsResult(

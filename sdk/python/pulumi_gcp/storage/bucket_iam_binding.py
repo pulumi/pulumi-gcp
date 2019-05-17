@@ -69,6 +69,10 @@ class BucketIAMBinding(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(BucketIAMBinding, __self__).__init__(
             'gcp:storage/bucketIAMBinding:BucketIAMBinding',
             resource_name,

@@ -45,11 +45,11 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
     /**
      * The ID of a host project to associate.
      */
-    public readonly hostProject: pulumi.Output<string>;
+    public readonly hostProject!: pulumi.Output<string>;
     /**
      * The ID of the project that will serve as a Shared VPC service project.
      */
-    public readonly serviceProject: pulumi.Output<string>;
+    public readonly serviceProject!: pulumi.Output<string>;
 
     /**
      * Create a SharedVPCServiceProject resource with the given unique name, arguments, and options.
@@ -62,7 +62,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SharedVPCServiceProjectArgs | SharedVPCServiceProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SharedVPCServiceProjectState = argsOrState as SharedVPCServiceProjectState | undefined;
+            const state = argsOrState as SharedVPCServiceProjectState | undefined;
             inputs["hostProject"] = state ? state.hostProject : undefined;
             inputs["serviceProject"] = state ? state.serviceProject : undefined;
         } else {
@@ -75,6 +75,13 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             }
             inputs["hostProject"] = args ? args.hostProject : undefined;
             inputs["serviceProject"] = args ? args.serviceProject : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, inputs, opts);
     }

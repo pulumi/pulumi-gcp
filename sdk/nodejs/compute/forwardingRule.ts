@@ -79,35 +79,35 @@ export class ForwardingRule extends pulumi.CustomResource {
         return new ForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly allPorts: pulumi.Output<boolean | undefined>;
-    public readonly backendService: pulumi.Output<string | undefined>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly ipAddress: pulumi.Output<string>;
-    public readonly ipProtocol: pulumi.Output<string>;
-    public readonly ipVersion: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string>;
-    public readonly networkTier: pulumi.Output<string>;
-    public readonly portRange: pulumi.Output<string | undefined>;
-    public readonly ports: pulumi.Output<string[] | undefined>;
+    public readonly allPorts!: pulumi.Output<boolean | undefined>;
+    public readonly backendService!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly ipAddress!: pulumi.Output<string>;
+    public readonly ipProtocol!: pulumi.Output<string>;
+    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
+    public readonly networkTier!: pulumi.Output<string>;
+    public readonly portRange!: pulumi.Output<string | undefined>;
+    public readonly ports!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly serviceLabel: pulumi.Output<string | undefined>;
-    public /*out*/ readonly serviceName: pulumi.Output<string>;
-    public readonly subnetwork: pulumi.Output<string>;
-    public readonly target: pulumi.Output<string | undefined>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly serviceLabel!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly serviceName!: pulumi.Output<string>;
+    public readonly subnetwork!: pulumi.Output<string>;
+    public readonly target!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ForwardingRule resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ForwardingRuleArgs | ForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ForwardingRuleState = argsOrState as ForwardingRuleState | undefined;
+            const state = argsOrState as ForwardingRuleState | undefined;
             inputs["allPorts"] = state ? state.allPorts : undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -167,6 +167,13 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["serviceName"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/forwardingRule:ForwardingRule", name, inputs, opts);
     }

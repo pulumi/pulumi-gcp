@@ -41,6 +41,10 @@ async def get_node_types(project=None,zone=None,opts=None):
 
     __args__['project'] = project
     __args__['zone'] = zone
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts)
 
     return GetNodeTypesResult(

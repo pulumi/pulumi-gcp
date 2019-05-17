@@ -69,6 +69,10 @@ class Service(pulumi.CustomResource):
             raise TypeError("Missing required property 'service'")
         __props__['service'] = service
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Service, __self__).__init__(
             'gcp:projects/service:Service',
             resource_name,

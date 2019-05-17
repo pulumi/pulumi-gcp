@@ -84,20 +84,20 @@ export class IAMPolicy extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The `google_iam_policy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      */
-    public readonly policyData: pulumi.Output<string>;
+    public readonly policyData!: pulumi.Output<string>;
     /**
      * The project ID. If not specified for `google_project_iam_binding`
      * or `google_project_iam_member`, uses the ID of the project configured with the provider.
      * Required for `google_project_iam_policy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a IAMPolicy resource with the given unique name, arguments, and options.
@@ -110,7 +110,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMPolicyState = argsOrState as IAMPolicyState | undefined;
+            const state = argsOrState as IAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -125,6 +125,13 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:projects/iAMPolicy:IAMPolicy", name, inputs, opts);
     }

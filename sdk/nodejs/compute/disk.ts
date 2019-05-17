@@ -63,34 +63,34 @@ export class Disk extends pulumi.CustomResource {
         return new Disk(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly diskEncryptionKey: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
-    public readonly image: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
-    public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public readonly physicalBlockSizeBytes: pulumi.Output<number>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly image!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly lastAttachTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly lastDetachTimestamp!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly physicalBlockSizeBytes!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly size: pulumi.Output<number>;
-    public readonly snapshot: pulumi.Output<string | undefined>;
-    public readonly sourceImageEncryptionKey: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
-    public /*out*/ readonly sourceImageId: pulumi.Output<string>;
-    public readonly sourceSnapshotEncryptionKey: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
-    public /*out*/ readonly sourceSnapshotId: pulumi.Output<string>;
-    public readonly type: pulumi.Output<string | undefined>;
-    public /*out*/ readonly users: pulumi.Output<string[]>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<number>;
+    public readonly snapshot!: pulumi.Output<string | undefined>;
+    public readonly sourceImageEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
+    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly users!: pulumi.Output<string[]>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -103,7 +103,7 @@ export class Disk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DiskState = argsOrState as DiskState | undefined;
+            const state = argsOrState as DiskState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -148,6 +148,13 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceImageId"] = undefined /*out*/;
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/disk:Disk", name, inputs, opts);
     }

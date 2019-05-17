@@ -101,26 +101,26 @@ export class Address extends pulumi.CustomResource {
     /**
      * The IP of the created resource.
      */
-    public readonly address: pulumi.Output<string>;
-    public readonly addressType: pulumi.Output<string | undefined>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly networkTier: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
+    public readonly addressType!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly networkTier!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly subnetwork: pulumi.Output<string>;
-    public /*out*/ readonly users: pulumi.Output<string[]>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly subnetwork!: pulumi.Output<string>;
+    public /*out*/ readonly users!: pulumi.Output<string[]>;
 
     /**
      * Create a Address resource with the given unique name, arguments, and options.
@@ -133,7 +133,7 @@ export class Address extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AddressArgs | AddressState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AddressState = argsOrState as AddressState | undefined;
+            const state = argsOrState as AddressState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["addressType"] = state ? state.addressType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -162,6 +162,13 @@ export class Address extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/address:Address", name, inputs, opts);
     }

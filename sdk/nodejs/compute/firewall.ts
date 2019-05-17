@@ -65,31 +65,31 @@ export class Firewall extends pulumi.CustomResource {
         return new Firewall(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly allows: pulumi.Output<{ ports?: string[], protocol: string }[] | undefined>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly denies: pulumi.Output<{ ports?: string[], protocol: string }[] | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly destinationRanges: pulumi.Output<string[]>;
-    public readonly direction: pulumi.Output<string>;
-    public readonly disabled: pulumi.Output<boolean | undefined>;
-    public readonly enableLogging: pulumi.Output<boolean | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string>;
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly allows!: pulumi.Output<{ ports?: string[], protocol: string }[] | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly denies!: pulumi.Output<{ ports?: string[], protocol: string }[] | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly destinationRanges!: pulumi.Output<string[]>;
+    public readonly direction!: pulumi.Output<string>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sourceRanges: pulumi.Output<string[]>;
-    public readonly sourceServiceAccounts: pulumi.Output<string[] | undefined>;
-    public readonly sourceTags: pulumi.Output<string[] | undefined>;
-    public readonly targetServiceAccounts: pulumi.Output<string[] | undefined>;
-    public readonly targetTags: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sourceRanges!: pulumi.Output<string[]>;
+    public readonly sourceServiceAccounts!: pulumi.Output<string[] | undefined>;
+    public readonly sourceTags!: pulumi.Output<string[] | undefined>;
+    public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
+    public readonly targetTags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class Firewall extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallState = argsOrState as FirewallState | undefined;
+            const state = argsOrState as FirewallState | undefined;
             inputs["allows"] = state ? state.allows : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["denies"] = state ? state.denies : undefined;
@@ -144,6 +144,13 @@ export class Firewall extends pulumi.CustomResource {
             inputs["targetTags"] = args ? args.targetTags : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/firewall:Firewall", name, inputs, opts);
     }

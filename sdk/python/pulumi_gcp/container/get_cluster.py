@@ -148,6 +148,10 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts)
 
     return GetClusterResult(

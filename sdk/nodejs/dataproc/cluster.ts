@@ -118,28 +118,28 @@ export class Cluster extends pulumi.CustomResource {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    public readonly clusterConfig: pulumi.Output<{ bucket: string, encryptionConfig?: { kmsKeyName: string }, gceClusterConfig: { internalIpOnly?: boolean, metadata?: {[key: string]: string}, network: string, serviceAccount?: string, serviceAccountScopes: string[], subnetwork?: string, tags?: string[], zone: string }, initializationActions?: { script: string, timeoutSec?: number }[], masterConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number }, preemptibleWorkerConfig: { diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, instanceNames: string[], numInstances: number }, softwareConfig: { imageVersion: string, overrideProperties?: {[key: string]: string}, properties: {[key: string]: any} }, stagingBucket?: string, workerConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number } }>;
+    public readonly clusterConfig!: pulumi.Output<{ bucket: string, encryptionConfig?: { kmsKeyName: string }, gceClusterConfig: { internalIpOnly?: boolean, metadata?: {[key: string]: string}, network: string, serviceAccount?: string, serviceAccountScopes: string[], subnetwork?: string, tags?: string[], zone: string }, initializationActions?: { script: string, timeoutSec?: number }[], masterConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number }, preemptibleWorkerConfig: { diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, instanceNames: string[], numInstances: number }, softwareConfig: { imageVersion: string, overrideProperties?: {[key: string]: string}, properties: {[key: string]: any} }, stagingBucket?: string, workerConfig: { accelerators?: { acceleratorCount: number, acceleratorType: string }[], diskConfig: { bootDiskSizeGb: number, bootDiskType?: string, numLocalSsds: number }, imageUri: string, instanceNames: string[], machineType: string, numInstances: number } }>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the `cluster` will exist. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region in which the cluster and associated nodes will be created in.
      * Defaults to `global`.
      */
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -152,7 +152,7 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ClusterState = argsOrState as ClusterState | undefined;
+            const state = argsOrState as ClusterState | undefined;
             inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -165,6 +165,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:dataproc/cluster:Cluster", name, inputs, opts);
     }

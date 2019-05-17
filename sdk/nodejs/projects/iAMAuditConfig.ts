@@ -17,10 +17,10 @@ export class IAMAuditConfig extends pulumi.CustomResource {
         return new IAMAuditConfig(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly auditLogConfigs: pulumi.Output<{ exemptedMembers?: string[], logType: string }[]>;
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly project: pulumi.Output<string | undefined>;
-    public readonly service: pulumi.Output<string>;
+    public readonly auditLogConfigs!: pulumi.Output<{ exemptedMembers?: string[], logType: string }[]>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string | undefined>;
+    public readonly service!: pulumi.Output<string>;
 
     /**
      * Create a IAMAuditConfig resource with the given unique name, arguments, and options.
@@ -33,7 +33,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMAuditConfigArgs | IAMAuditConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMAuditConfigState = argsOrState as IAMAuditConfigState | undefined;
+            const state = argsOrState as IAMAuditConfigState | undefined;
             inputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -50,6 +50,13 @@ export class IAMAuditConfig extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, inputs, opts);
     }

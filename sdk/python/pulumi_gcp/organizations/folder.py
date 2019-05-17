@@ -82,6 +82,10 @@ class Folder(pulumi.CustomResource):
         __props__['lifecycle_state'] = None
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Folder, __self__).__init__(
             'gcp:organizations/folder:Folder',
             resource_name,

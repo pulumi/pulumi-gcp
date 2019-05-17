@@ -49,19 +49,19 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Name of VPC network connected with service producers using VPC peering.
      */
-    public readonly network: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for
      * this service provider. Note that invoking this method with a different range when connection
      * is already established will not reallocate already provisioned service producer subnetworks.
      */
-    public readonly reservedPeeringRanges: pulumi.Output<string[]>;
+    public readonly reservedPeeringRanges!: pulumi.Output<string[]>;
     /**
      * Provider peering service that is managing peering connectivity for a
      * service provider organization. For Google services that support this functionality it is
      * 'servicenetworking.googleapis.com'.
      */
-    public readonly service: pulumi.Output<string>;
+    public readonly service!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ConnectionState = argsOrState as ConnectionState | undefined;
+            const state = argsOrState as ConnectionState | undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
             inputs["service"] = state ? state.service : undefined;
@@ -92,6 +92,13 @@ export class Connection extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
             inputs["service"] = args ? args.service : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:servicenetworking/connection:Connection", name, inputs, opts);
     }

@@ -46,17 +46,17 @@ export class IAMPolicy extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      */
-    public readonly folder: pulumi.Output<string>;
+    public readonly folder!: pulumi.Output<string>;
     /**
      * The `google_iam_policy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing
      * policy applied to the folder.
      */
-    public readonly policyData: pulumi.Output<string>;
+    public readonly policyData!: pulumi.Output<string>;
 
     /**
      * Create a IAMPolicy resource with the given unique name, arguments, and options.
@@ -69,7 +69,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IAMPolicyState = argsOrState as IAMPolicyState | undefined;
+            const state = argsOrState as IAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -84,6 +84,13 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["folder"] = args ? args.folder : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:folder/iAMPolicy:IAMPolicy", name, inputs, opts);
     }

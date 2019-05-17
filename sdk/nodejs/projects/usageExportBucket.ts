@@ -74,9 +74,9 @@ export class UsageExportBucket extends pulumi.CustomResource {
         return new UsageExportBucket(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly bucketName: pulumi.Output<string>;
-    public readonly prefix: pulumi.Output<string | undefined>;
-    public readonly project: pulumi.Output<string>;
+    public readonly bucketName!: pulumi.Output<string>;
+    public readonly prefix!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a UsageExportBucket resource with the given unique name, arguments, and options.
@@ -89,7 +89,7 @@ export class UsageExportBucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UsageExportBucketArgs | UsageExportBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UsageExportBucketState = argsOrState as UsageExportBucketState | undefined;
+            const state = argsOrState as UsageExportBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["prefix"] = state ? state.prefix : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -101,6 +101,13 @@ export class UsageExportBucket extends pulumi.CustomResource {
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["prefix"] = args ? args.prefix : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:projects/usageExportBucket:UsageExportBucket", name, inputs, opts);
     }

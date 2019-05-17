@@ -55,13 +55,13 @@ export class DefaultObjectACL extends pulumi.CustomResource {
     /**
      * The name of the bucket it applies to.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`.
      * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Omitting the field is the same as providing an empty list.
      */
-    public readonly roleEntities: pulumi.Output<string[]>;
+    public readonly roleEntities!: pulumi.Output<string[]>;
 
     /**
      * Create a DefaultObjectACL resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class DefaultObjectACL extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DefaultObjectACLArgs | DefaultObjectACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DefaultObjectACLState = argsOrState as DefaultObjectACLState | undefined;
+            const state = argsOrState as DefaultObjectACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["roleEntities"] = state ? state.roleEntities : undefined;
         } else {
@@ -84,6 +84,13 @@ export class DefaultObjectACL extends pulumi.CustomResource {
             }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/defaultObjectACL:DefaultObjectACL", name, inputs, opts);
     }

@@ -87,17 +87,17 @@ export class Autoscalar extends pulumi.CustomResource {
         return new Autoscalar(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly autoscalingPolicy: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { filter?: string, name: string, singleInstanceAssignment?: number, target?: number, type?: string }[], minReplicas: number }>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly project: pulumi.Output<string>;
+    public readonly autoscalingPolicy!: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { filter?: string, name: string, singleInstanceAssignment?: number, target?: number, type?: string }[], minReplicas: number }>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly target: pulumi.Output<string>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly target!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Autoscalar resource with the given unique name, arguments, and options.
@@ -110,7 +110,7 @@ export class Autoscalar extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AutoscalarArgs | AutoscalarState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AutoscalarState = argsOrState as AutoscalarState | undefined;
+            const state = argsOrState as AutoscalarState | undefined;
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -135,6 +135,13 @@ export class Autoscalar extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/autoscalar:Autoscalar", name, inputs, opts);
     }

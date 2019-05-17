@@ -76,44 +76,44 @@ export class Job extends pulumi.CustomResource {
     /**
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      */
-    public /*out*/ readonly driverControlsFilesUri: pulumi.Output<string>;
+    public /*out*/ readonly driverControlsFilesUri!: pulumi.Output<string>;
     /**
      * A URI pointing to the location of the stdout of the job's driver program.
      */
-    public /*out*/ readonly driverOutputResourceUri: pulumi.Output<string>;
+    public /*out*/ readonly driverOutputResourceUri!: pulumi.Output<string>;
     /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    public readonly forceDelete: pulumi.Output<boolean | undefined>;
-    public readonly hadoopConfig: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
-    public readonly hiveConfig: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    public readonly hadoopConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
+    public readonly hiveConfig!: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly pigConfig: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
-    public readonly placement: pulumi.Output<{ clusterName: string, clusterUuid: string }>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly pigConfig!: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
+    public readonly placement!: pulumi.Output<{ clusterName: string, clusterUuid: string }>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly pysparkConfig: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainPythonFileUri: string, properties?: {[key: string]: string}, pythonFileUris?: string[] } | undefined>;
-    public readonly reference: pulumi.Output<{ jobId: string }>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly pysparkConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainPythonFileUri: string, properties?: {[key: string]: string}, pythonFileUris?: string[] } | undefined>;
+    public readonly reference!: pulumi.Output<{ jobId: string }>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * Optional. Job scheduling configuration.
      */
-    public readonly scheduling: pulumi.Output<{ maxFailuresPerHour?: number } | undefined>;
-    public readonly sparkConfig: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
-    public readonly sparksqlConfig: pulumi.Output<{ jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
-    public /*out*/ readonly status: pulumi.Output<{ details: string, state: string, stateStartTime: string, substate: string }>;
+    public readonly scheduling!: pulumi.Output<{ maxFailuresPerHour?: number } | undefined>;
+    public readonly sparkConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
+    public readonly sparksqlConfig!: pulumi.Output<{ jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
+    public /*out*/ readonly status!: pulumi.Output<{ details: string, state: string, stateStartTime: string, substate: string }>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -126,7 +126,7 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: JobState = argsOrState as JobState | undefined;
+            const state = argsOrState as JobState | undefined;
             inputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
             inputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
@@ -164,6 +164,13 @@ export class Job extends pulumi.CustomResource {
             inputs["driverControlsFilesUri"] = undefined /*out*/;
             inputs["driverOutputResourceUri"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:dataproc/job:Job", name, inputs, opts);
     }

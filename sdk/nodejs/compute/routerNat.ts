@@ -96,76 +96,76 @@ export class RouterNat extends pulumi.CustomResource {
      * Timeout (in seconds) for ICMP connections.
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
-    public readonly icmpIdleTimeoutSec: pulumi.Output<number | undefined>;
+    public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
      * Changing this forces a new NAT to be created.
      */
-    public readonly minPortsPerVm: pulumi.Output<number | undefined>;
+    public readonly minPortsPerVm!: pulumi.Output<number | undefined>;
     /**
      * A unique name for Cloud NAT, required by GCE. Changing
      * this forces a new NAT to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * How external IPs should be allocated for
      * this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
      * a new NAT to be created.
      */
-    public readonly natIpAllocateOption: pulumi.Output<string>;
+    public readonly natIpAllocateOption!: pulumi.Output<string>;
     /**
      * List of `self_link`s of external IPs. Only valid if
      * `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
      * new NAT to be created.
      */
-    public readonly natIps: pulumi.Output<string[] | undefined>;
+    public readonly natIps!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which this NAT's router belongs. If it
      * is not provided, the provider project is used. Changing this forces a new NAT to be created.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The region this NAT's router sits in. If not specified,
      * the project region will be used. Changing this forces a new NAT to be
      * created.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The name of the router in which this NAT will be configured.
      * Changing this forces a new NAT to be created.
      */
-    public readonly router: pulumi.Output<string>;
+    public readonly router!: pulumi.Output<string>;
     /**
      * How NAT should be configured
      * per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
      * `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
      * this forces a new NAT to be created.
      */
-    public readonly sourceSubnetworkIpRangesToNat: pulumi.Output<string | undefined>;
+    public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used
      * if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
-    public readonly subnetworks: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats: string[] }[] | undefined>;
+    public readonly subnetworks!: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats: string[] }[] | undefined>;
     /**
      * Timeout (in seconds) for TCP
      * established connections. Defaults to 1200s if not set. Changing this forces
      * a new NAT to be created.
      */
-    public readonly tcpEstablishedIdleTimeoutSec: pulumi.Output<number | undefined>;
+    public readonly tcpEstablishedIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
      * Timeout (in seconds) for TCP
      * transitory connections. Defaults to 30s if not set. Changing this forces a
      * new NAT to be created.
      */
-    public readonly tcpTransitoryIdleTimeoutSec: pulumi.Output<number | undefined>;
+    public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
      * Timeout (in seconds) for UDP connections.
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
-    public readonly udpIdleTimeoutSec: pulumi.Output<number | undefined>;
+    public readonly udpIdleTimeoutSec!: pulumi.Output<number | undefined>;
 
     /**
      * Create a RouterNat resource with the given unique name, arguments, and options.
@@ -178,7 +178,7 @@ export class RouterNat extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterNatArgs | RouterNatState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterNatState = argsOrState as RouterNatState | undefined;
+            const state = argsOrState as RouterNatState | undefined;
             inputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             inputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -213,6 +213,13 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
             inputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
             inputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/routerNat:RouterNat", name, inputs, opts);
     }

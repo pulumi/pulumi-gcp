@@ -44,21 +44,21 @@ export class KeyRing extends pulumi.CustomResource {
      * The Google Cloud Platform location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    public readonly location: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The KeyRing's name.
      * A KeyRing’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a KeyRing resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class KeyRing extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyRingArgs | KeyRingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyRingState = argsOrState as KeyRingState | undefined;
+            const state = argsOrState as KeyRingState | undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -85,6 +85,13 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:kms/keyRing:KeyRing", name, inputs, opts);
     }

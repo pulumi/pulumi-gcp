@@ -43,19 +43,19 @@ export class Service extends pulumi.CustomResource {
      * If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
      * If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
      */
-    public readonly disableDependentServices: pulumi.Output<boolean | undefined>;
+    public readonly disableDependentServices!: pulumi.Output<boolean | undefined>;
     /**
      * If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
      */
-    public readonly disableOnDestroy: pulumi.Output<boolean | undefined>;
+    public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The service to enable.
      */
-    public readonly service: pulumi.Output<string>;
+    public readonly service!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -68,7 +68,7 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServiceState = argsOrState as ServiceState | undefined;
+            const state = argsOrState as ServiceState | undefined;
             inputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
             inputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -82,6 +82,13 @@ export class Service extends pulumi.CustomResource {
             inputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["service"] = args ? args.service : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:projects/service:Service", name, inputs, opts);
     }

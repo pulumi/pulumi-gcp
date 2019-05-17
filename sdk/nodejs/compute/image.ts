@@ -56,26 +56,26 @@ export class Image extends pulumi.CustomResource {
         return new Image(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly archiveSizeBytes: pulumi.Output<number>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly diskSizeGb: pulumi.Output<number>;
-    public readonly family: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly licenses: pulumi.Output<string[]>;
-    public readonly name: pulumi.Output<string>;
+    public /*out*/ readonly archiveSizeBytes!: pulumi.Output<number>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly diskSizeGb!: pulumi.Output<number>;
+    public readonly family!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly licenses!: pulumi.Output<string[]>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly rawDisk: pulumi.Output<{ containerType?: string, sha1?: string, source: string } | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly rawDisk!: pulumi.Output<{ containerType?: string, sha1?: string, source: string } | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sourceDisk: pulumi.Output<string | undefined>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sourceDisk!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -88,7 +88,7 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ImageState = argsOrState as ImageState | undefined;
+            const state = argsOrState as ImageState | undefined;
             inputs["archiveSizeBytes"] = state ? state.archiveSizeBytes : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -117,6 +117,13 @@ export class Image extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/image:Image", name, inputs, opts);
     }

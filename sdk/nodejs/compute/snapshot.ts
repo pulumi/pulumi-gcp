@@ -64,29 +64,29 @@ export class Snapshot extends pulumi.CustomResource {
         return new Snapshot(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly diskSizeGb: pulumi.Output<number>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly licenses: pulumi.Output<string[]>;
-    public readonly name: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly diskSizeGb!: pulumi.Output<number>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly licenses!: pulumi.Output<string[]>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly snapshotEncryptionKey: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
-    public /*out*/ readonly snapshotId: pulumi.Output<number>;
-    public readonly sourceDisk: pulumi.Output<string>;
-    public readonly sourceDiskEncryptionKey: pulumi.Output<{ rawKey?: string } | undefined>;
-    public /*out*/ readonly sourceDiskLink: pulumi.Output<string>;
-    public /*out*/ readonly storageBytes: pulumi.Output<number>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly snapshotEncryptionKey!: pulumi.Output<{ rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly snapshotId!: pulumi.Output<number>;
+    public readonly sourceDisk!: pulumi.Output<string>;
+    public readonly sourceDiskEncryptionKey!: pulumi.Output<{ rawKey?: string } | undefined>;
+    public /*out*/ readonly sourceDiskLink!: pulumi.Output<string>;
+    public /*out*/ readonly storageBytes!: pulumi.Output<number>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -99,7 +99,7 @@ export class Snapshot extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SnapshotArgs | SnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SnapshotState = argsOrState as SnapshotState | undefined;
+            const state = argsOrState as SnapshotState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
@@ -137,6 +137,13 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["snapshotId"] = undefined /*out*/;
             inputs["sourceDiskLink"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/snapshot:Snapshot", name, inputs, opts);
     }

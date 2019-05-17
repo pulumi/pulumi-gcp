@@ -40,6 +40,10 @@ async def get_active_folder(display_name=None,parent=None,opts=None):
 
     __args__['displayName'] = display_name
     __args__['parent'] = parent
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts)
 
     return GetActiveFolderResult(

@@ -58,6 +58,10 @@ async def get_managed_zone(name=None,project=None,opts=None):
 
     __args__['name'] = name
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts)
 
     return GetManagedZoneResult(

@@ -50,16 +50,16 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly createTime: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly fileShares: pulumi.Output<{ capacityGb: number, name: string }>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly networks: pulumi.Output<{ ipAddresses: string[], modes: string[], network: string, reservedIpRange: string }[]>;
-    public readonly project: pulumi.Output<string>;
-    public readonly tier: pulumi.Output<string>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly fileShares!: pulumi.Output<{ capacityGb: number, name: string }>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly networks!: pulumi.Output<{ ipAddresses: string[], modes: string[], network: string, reservedIpRange: string }[]>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly tier!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -107,6 +107,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:filestore/instance:Instance", name, inputs, opts);
     }

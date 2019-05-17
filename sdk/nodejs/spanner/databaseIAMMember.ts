@@ -81,27 +81,27 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
     /**
      * The name of the Spanner database.
      */
-    public readonly database: pulumi.Output<string>;
+    public readonly database!: pulumi.Output<string>;
     /**
      * (Computed) The etag of the database's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Spanner instance the database belongs to.
      */
-    public readonly instance: pulumi.Output<string>;
-    public readonly member: pulumi.Output<string>;
+    public readonly instance!: pulumi.Output<string>;
+    public readonly member!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_spanner_database_iam_binding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a DatabaseIAMMember resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseIAMMemberArgs | DatabaseIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseIAMMemberState = argsOrState as DatabaseIAMMemberState | undefined;
+            const state = argsOrState as DatabaseIAMMemberState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
@@ -141,6 +141,13 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:spanner/databaseIAMMember:DatabaseIAMMember", name, inputs, opts);
     }

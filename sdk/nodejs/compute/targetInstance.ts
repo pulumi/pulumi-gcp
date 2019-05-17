@@ -60,21 +60,21 @@ export class TargetInstance extends pulumi.CustomResource {
         return new TargetInstance(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly instance: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public readonly natPolicy: pulumi.Output<string | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly instance!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly natPolicy!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly zone: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a TargetInstance resource with the given unique name, arguments, and options.
@@ -87,7 +87,7 @@ export class TargetInstance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetInstanceArgs | TargetInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetInstanceState = argsOrState as TargetInstanceState | undefined;
+            const state = argsOrState as TargetInstanceState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instance"] = state ? state.instance : undefined;
@@ -109,6 +109,13 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/targetInstance:TargetInstance", name, inputs, opts);
     }

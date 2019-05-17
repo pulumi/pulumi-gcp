@@ -29,9 +29,9 @@ export class Note extends pulumi.CustomResource {
         return new Note(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly attestationAuthority: pulumi.Output<{ hint: { humanReadableName: string } }>;
-    public readonly name: pulumi.Output<string>;
-    public readonly project: pulumi.Output<string>;
+    public readonly attestationAuthority!: pulumi.Output<{ hint: { humanReadableName: string } }>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Note resource with the given unique name, arguments, and options.
@@ -44,7 +44,7 @@ export class Note extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NoteArgs | NoteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NoteState = argsOrState as NoteState | undefined;
+            const state = argsOrState as NoteState | undefined;
             inputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -56,6 +56,13 @@ export class Note extends pulumi.CustomResource {
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:containeranalysis/note:Note", name, inputs, opts);
     }

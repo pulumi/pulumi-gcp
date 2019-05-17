@@ -66,20 +66,20 @@ export class TargetHttpProxy extends pulumi.CustomResource {
         return new TargetHttpProxy(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public /*out*/ readonly proxyId: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
+    public /*out*/ readonly proxyId!: pulumi.Output<number>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly urlMap: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly urlMap!: pulumi.Output<string>;
 
     /**
      * Create a TargetHttpProxy resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TargetHttpProxyArgs | TargetHttpProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TargetHttpProxyState = argsOrState as TargetHttpProxyState | undefined;
+            const state = argsOrState as TargetHttpProxyState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -112,6 +112,13 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/targetHttpProxy:TargetHttpProxy", name, inputs, opts);
     }

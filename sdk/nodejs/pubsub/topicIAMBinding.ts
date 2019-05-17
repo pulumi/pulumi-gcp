@@ -75,23 +75,23 @@ export class TopicIAMBinding extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the topic's IAM policy.
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
-    public readonly members: pulumi.Output<string[]>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
     /**
      * The topic name or id to bind to attach IAM policy to.
      */
-    public readonly topic: pulumi.Output<string>;
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a TopicIAMBinding resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ export class TopicIAMBinding extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicIAMBindingArgs | TopicIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TopicIAMBindingState = argsOrState as TopicIAMBindingState | undefined;
+            const state = argsOrState as TopicIAMBindingState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -126,6 +126,13 @@ export class TopicIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:pubsub/topicIAMBinding:TopicIAMBinding", name, inputs, opts);
     }

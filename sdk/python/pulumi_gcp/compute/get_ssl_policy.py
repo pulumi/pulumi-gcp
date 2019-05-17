@@ -82,6 +82,10 @@ async def get_ssl_policy(name=None,project=None,opts=None):
 
     __args__['name'] = name
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts)
 
     return GetSSLPolicyResult(

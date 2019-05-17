@@ -74,32 +74,32 @@ export class RegionDisk extends pulumi.CustomResource {
         return new RegionDisk(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly diskEncryptionKey: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
-    public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public readonly physicalBlockSizeBytes: pulumi.Output<number>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly lastAttachTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly lastDetachTimestamp!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly physicalBlockSizeBytes!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
-    public readonly replicaZones: pulumi.Output<string[]>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly replicaZones!: pulumi.Output<string[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly size: pulumi.Output<number>;
-    public readonly snapshot: pulumi.Output<string | undefined>;
-    public readonly sourceSnapshotEncryptionKey: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
-    public /*out*/ readonly sourceSnapshotId: pulumi.Output<string>;
-    public readonly type: pulumi.Output<string | undefined>;
-    public /*out*/ readonly users: pulumi.Output<string[]>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<number>;
+    public readonly snapshot!: pulumi.Output<string | undefined>;
+    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
+    public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly users!: pulumi.Output<string[]>;
 
     /**
      * Create a RegionDisk resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export class RegionDisk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RegionDiskArgs | RegionDiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RegionDiskState = argsOrState as RegionDiskState | undefined;
+            const state = argsOrState as RegionDiskState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -156,6 +156,13 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/regionDisk:RegionDisk", name, inputs, opts);
     }

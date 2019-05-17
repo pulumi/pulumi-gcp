@@ -55,11 +55,11 @@ export class AccessLevel extends pulumi.CustomResource {
         return new AccessLevel(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly basic: pulumi.Output<{ combiningFunction?: string, conditions: { devicePolicy?: { allowedDeviceManagementLevels?: string[], allowedEncryptionStatuses?: string[], osConstraints?: { minimumVersion?: string, osType?: string }[], requireScreenLock?: boolean }, ipSubnetworks?: string[], members?: string[], negate?: boolean, requiredAccessLevels?: string[] }[] } | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly parent: pulumi.Output<string>;
-    public readonly title: pulumi.Output<string>;
+    public readonly basic!: pulumi.Output<{ combiningFunction?: string, conditions: { devicePolicy?: { allowedDeviceManagementLevels?: string[], allowedEncryptionStatuses?: string[], osConstraints?: { minimumVersion?: string, osType?: string }[], requireScreenLock?: boolean }, ipSubnetworks?: string[], members?: string[], negate?: boolean, requiredAccessLevels?: string[] }[] } | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly parent!: pulumi.Output<string>;
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a AccessLevel resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class AccessLevel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccessLevelArgs | AccessLevelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccessLevelState = argsOrState as AccessLevelState | undefined;
+            const state = argsOrState as AccessLevelState | undefined;
             inputs["basic"] = state ? state.basic : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -91,6 +91,13 @@ export class AccessLevel extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, inputs, opts);
     }

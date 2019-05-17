@@ -58,20 +58,20 @@ export class ObjectACL extends pulumi.CustomResource {
     /**
      * The name of the bucket the object is stored in.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * The name of the object to apply the acl to.
      */
-    public readonly object: pulumi.Output<string>;
+    public readonly object!: pulumi.Output<string>;
     /**
      * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
      */
-    public readonly predefinedAcl: pulumi.Output<string | undefined>;
+    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefined_acl` is not.
      */
-    public readonly roleEntities: pulumi.Output<string[]>;
+    public readonly roleEntities!: pulumi.Output<string[]>;
 
     /**
      * Create a ObjectACL resource with the given unique name, arguments, and options.
@@ -84,7 +84,7 @@ export class ObjectACL extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ObjectACLArgs | ObjectACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ObjectACLState = argsOrState as ObjectACLState | undefined;
+            const state = argsOrState as ObjectACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["object"] = state ? state.object : undefined;
             inputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
@@ -101,6 +101,13 @@ export class ObjectACL extends pulumi.CustomResource {
             inputs["object"] = args ? args.object : undefined;
             inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/objectACL:ObjectACL", name, inputs, opts);
     }

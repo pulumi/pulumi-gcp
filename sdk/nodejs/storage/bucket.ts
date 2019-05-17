@@ -52,66 +52,66 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    public readonly cors: pulumi.Output<{ maxAgeSeconds?: number, methods?: string[], origins?: string[], responseHeaders?: string[] }[] | undefined>;
+    public readonly cors!: pulumi.Output<{ maxAgeSeconds?: number, methods?: string[], origins?: string[], responseHeaders?: string[] }[] | undefined>;
     /**
      * The bucket's encryption configuration.
      */
-    public readonly encryption: pulumi.Output<{ defaultKmsKeyName: string } | undefined>;
+    public readonly encryption!: pulumi.Output<{ defaultKmsKeyName: string } | undefined>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
      * bucket that contains objects, Terraform will fail that run.
      */
-    public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * A set of key/value label pairs to assign to the bucket.
      */
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    public readonly lifecycleRules: pulumi.Output<{ action: { storageClass?: string, type: string }, condition: { age?: number, createdBefore?: string, isLive: boolean, matchesStorageClasses?: string[], numNewerVersions?: number, withState: string } }[] | undefined>;
+    public readonly lifecycleRules!: pulumi.Output<{ action: { storageClass?: string, type: string }, condition: { age?: number, createdBefore?: string, isLive: boolean, matchesStorageClasses?: string[], numNewerVersions?: number, withState: string } }[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
-    public readonly location: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
      */
-    public readonly logging: pulumi.Output<{ logBucket: string, logObjectPrefix: string } | undefined>;
+    public readonly logging!: pulumi.Output<{ logBucket: string, logObjectPrefix: string } | undefined>;
     /**
      * The name of the bucket.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */
-    public readonly requesterPays: pulumi.Output<boolean | undefined>;
+    public readonly requesterPays!: pulumi.Output<boolean | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
-    public readonly storageClass: pulumi.Output<string | undefined>;
+    public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */
-    public /*out*/ readonly url: pulumi.Output<string>;
+    public /*out*/ readonly url!: pulumi.Output<string>;
     /**
      * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
      */
-    public readonly versioning: pulumi.Output<{ enabled?: boolean } | undefined>;
+    public readonly versioning!: pulumi.Output<{ enabled?: boolean } | undefined>;
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    public readonly websites: pulumi.Output<{ mainPageSuffix?: string, notFoundPage?: string }[] | undefined>;
+    public readonly websites!: pulumi.Output<{ mainPageSuffix?: string, notFoundPage?: string }[] | undefined>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -124,7 +124,7 @@ export class Bucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketState = argsOrState as BucketState | undefined;
+            const state = argsOrState as BucketState | undefined;
             inputs["cors"] = state ? state.cors : undefined;
             inputs["encryption"] = state ? state.encryption : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
@@ -157,6 +157,13 @@ export class Bucket extends pulumi.CustomResource {
             inputs["websites"] = args ? args.websites : undefined;
             inputs["selfLink"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/bucket:Bucket", name, inputs, opts);
     }

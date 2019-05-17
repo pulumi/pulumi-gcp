@@ -61,6 +61,10 @@ async def get_account(account_id=None,project=None,opts=None):
 
     __args__['accountId'] = account_id
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts)
 
     return GetAccountResult(

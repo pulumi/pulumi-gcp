@@ -36,6 +36,10 @@ async def get_transfer_project_servie_account(project=None,opts=None):
     __args__ = dict()
 
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts)
 
     return GetTransferProjectServieAccountResult(

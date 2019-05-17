@@ -74,30 +74,30 @@ export class VPNTunnel extends pulumi.CustomResource {
         return new VPNTunnel(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly detailedStatus: pulumi.Output<string>;
-    public readonly ikeVersion: pulumi.Output<number | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly localTrafficSelectors: pulumi.Output<string[]>;
-    public readonly name: pulumi.Output<string>;
-    public readonly peerIp: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
+    public readonly ikeVersion!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly localTrafficSelectors!: pulumi.Output<string[]>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly peerIp!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
-    public readonly remoteTrafficSelectors: pulumi.Output<string[]>;
-    public readonly router: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly remoteTrafficSelectors!: pulumi.Output<string[]>;
+    public readonly router!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sharedSecret: pulumi.Output<string>;
-    public /*out*/ readonly sharedSecretHash: pulumi.Output<string>;
-    public readonly targetVpnGateway: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sharedSecret!: pulumi.Output<string>;
+    public /*out*/ readonly sharedSecretHash!: pulumi.Output<string>;
+    public readonly targetVpnGateway!: pulumi.Output<string>;
 
     /**
      * Create a VPNTunnel resource with the given unique name, arguments, and options.
@@ -110,7 +110,7 @@ export class VPNTunnel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VPNTunnelArgs | VPNTunnelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VPNTunnelState = argsOrState as VPNTunnelState | undefined;
+            const state = argsOrState as VPNTunnelState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["detailedStatus"] = state ? state.detailedStatus : undefined;
@@ -156,6 +156,13 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["sharedSecretHash"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/vPNTunnel:VPNTunnel", name, inputs, opts);
     }

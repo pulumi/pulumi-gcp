@@ -51,15 +51,15 @@ export class FirewallRule extends pulumi.CustomResource {
         return new FirewallRule(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly action: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly action!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly sourceRange: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly sourceRange!: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class FirewallRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallRuleState = argsOrState as FirewallRuleState | undefined;
+            const state = argsOrState as FirewallRuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["priority"] = state ? state.priority : undefined;
@@ -91,6 +91,13 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:appengine/firewallRule:FirewallRule", name, inputs, opts);
     }

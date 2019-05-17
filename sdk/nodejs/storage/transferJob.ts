@@ -93,40 +93,40 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * When the Transfer Job was created.
      */
-    public /*out*/ readonly creationTime: pulumi.Output<string>;
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
      * When the Transfer Job was deleted.
      */
-    public /*out*/ readonly deletionTime: pulumi.Output<string>;
+    public /*out*/ readonly deletionTime!: pulumi.Output<string>;
     /**
      * Unique description to identify the Transfer Job.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * When the Transfer Job was last modified.
      */
-    public /*out*/ readonly lastModificationTime: pulumi.Output<string>;
+    public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
     /**
      * The name of the Transfer Job.
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
      */
-    public readonly schedule: pulumi.Output<{ scheduleEndDate?: { day: number, month: number, year: number }, scheduleStartDate: { day: number, month: number, year: number }, startTimeOfDay?: { hours: number, minutes: number, nanos: number, seconds: number } }>;
+    public readonly schedule!: pulumi.Output<{ scheduleEndDate?: { day: number, month: number, year: number }, scheduleStartDate: { day: number, month: number, year: number }, startTimeOfDay?: { hours: number, minutes: number, nanos: number, seconds: number } }>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    public readonly status: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string | undefined>;
     /**
      * Transfer specification. Structure documented below.
      */
-    public readonly transferSpec: pulumi.Output<{ awsS3DataSource?: { awsAccessKey: { accessKeyId: string, secretAccessKey: string }, bucketName: string }, gcsDataSink?: { bucketName: string }, gcsDataSource?: { bucketName: string }, httpDataSource?: { listUrl: string }, objectConditions?: { excludePrefixes?: string[], includePrefixes?: string[], maxTimeElapsedSinceLastModification?: string, minTimeElapsedSinceLastModification?: string }, transferOptions?: { deleteObjectsFromSourceAfterTransfer?: boolean, deleteObjectsUniqueInSink?: boolean, overwriteObjectsAlreadyExistingInSink?: boolean } }>;
+    public readonly transferSpec!: pulumi.Output<{ awsS3DataSource?: { awsAccessKey: { accessKeyId: string, secretAccessKey: string }, bucketName: string }, gcsDataSink?: { bucketName: string }, gcsDataSource?: { bucketName: string }, httpDataSource?: { listUrl: string }, objectConditions?: { excludePrefixes?: string[], includePrefixes?: string[], maxTimeElapsedSinceLastModification?: string, minTimeElapsedSinceLastModification?: string }, transferOptions?: { deleteObjectsFromSourceAfterTransfer?: boolean, deleteObjectsUniqueInSink?: boolean, overwriteObjectsAlreadyExistingInSink?: boolean } }>;
 
     /**
      * Create a TransferJob resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export class TransferJob extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TransferJobArgs | TransferJobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TransferJobState = argsOrState as TransferJobState | undefined;
+            const state = argsOrState as TransferJobState | undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["deletionTime"] = state ? state.deletionTime : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -169,6 +169,13 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["deletionTime"] = undefined /*out*/;
             inputs["lastModificationTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/transferJob:TransferJob", name, inputs, opts);
     }

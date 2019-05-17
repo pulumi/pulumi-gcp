@@ -54,15 +54,15 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
         return new DefaultObjectAccessControl(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly bucket: pulumi.Output<string>;
-    public /*out*/ readonly domain: pulumi.Output<string>;
-    public /*out*/ readonly email: pulumi.Output<string>;
-    public readonly entity: pulumi.Output<string>;
-    public /*out*/ readonly entityId: pulumi.Output<string>;
-    public /*out*/ readonly generation: pulumi.Output<number>;
-    public readonly object: pulumi.Output<string | undefined>;
-    public /*out*/ readonly projectTeam: pulumi.Output<{ projectNumber?: string, team?: string }>;
-    public readonly role: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
+    public /*out*/ readonly domain!: pulumi.Output<string>;
+    public /*out*/ readonly email!: pulumi.Output<string>;
+    public readonly entity!: pulumi.Output<string>;
+    public /*out*/ readonly entityId!: pulumi.Output<string>;
+    public /*out*/ readonly generation!: pulumi.Output<number>;
+    public readonly object!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly projectTeam!: pulumi.Output<{ projectNumber?: string, team?: string }>;
+    public readonly role!: pulumi.Output<string>;
 
     /**
      * Create a DefaultObjectAccessControl resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DefaultObjectAccessControlArgs | DefaultObjectAccessControlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DefaultObjectAccessControlState = argsOrState as DefaultObjectAccessControlState | undefined;
+            const state = argsOrState as DefaultObjectAccessControlState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["email"] = state ? state.email : undefined;
@@ -105,6 +105,13 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["entityId"] = undefined /*out*/;
             inputs["generation"] = undefined /*out*/;
             inputs["projectTeam"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl", name, inputs, opts);
     }

@@ -53,27 +53,27 @@ export class NetworkPeering extends pulumi.CustomResource {
      * If set to `true`, the routes between the two networks will
      * be created and managed automatically. Defaults to `true`.
      */
-    public readonly autoCreateRoutes: pulumi.Output<boolean | undefined>;
+    public readonly autoCreateRoutes!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the peering.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Resource link of the network to add a peering to.
      */
-    public readonly network: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * Resource link of the peer network.
      */
-    public readonly peerNetwork: pulumi.Output<string>;
+    public readonly peerNetwork!: pulumi.Output<string>;
     /**
      * State for the peering.
      */
-    public /*out*/ readonly state: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Details about the current state of the peering.
      */
-    public /*out*/ readonly stateDetails: pulumi.Output<string>;
+    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
 
     /**
      * Create a NetworkPeering resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class NetworkPeering extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NetworkPeeringArgs | NetworkPeeringState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NetworkPeeringState = argsOrState as NetworkPeeringState | undefined;
+            const state = argsOrState as NetworkPeeringState | undefined;
             inputs["autoCreateRoutes"] = state ? state.autoCreateRoutes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -107,6 +107,13 @@ export class NetworkPeering extends pulumi.CustomResource {
             inputs["peerNetwork"] = args ? args.peerNetwork : undefined;
             inputs["state"] = undefined /*out*/;
             inputs["stateDetails"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/networkPeering:NetworkPeering", name, inputs, opts);
     }

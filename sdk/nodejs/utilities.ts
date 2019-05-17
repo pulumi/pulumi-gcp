@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-import * as pulumi from "@pulumi/pulumi";
-
 export function getEnv(...vars: string[]): string | undefined {
     for (const v of vars) {
         const value = process.env[v];
@@ -40,13 +38,12 @@ export function getEnvNumber(...vars: string[]): number | undefined {
     return undefined;
 }
 
-export function requireWithDefault<T>(req: () => T, def: T | undefined): T {
-    try {
-        return req();
-    } catch (err) {
-        if (def === undefined) {
-            throw err;
-        }
+export function getVersion(): string {
+    let version = require('./package.json').version;
+    // Node allows for the version to be prefixed by a "v", while semver doesn't.
+    // If there is a v, strip it off.
+    if (version.indexOf('v') === 0) {
+        version = version.slice(1);
     }
-    return def;
+    return version;
 }

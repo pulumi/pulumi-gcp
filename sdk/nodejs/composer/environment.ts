@@ -118,15 +118,15 @@ export class Environment extends pulumi.CustomResource {
         return new Environment(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly config: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string}, pythonVersion: string } }>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly config!: pulumi.Output<{ airflowUri: string, dagGcsPrefix: string, gkeCluster: string, nodeConfig: { diskSizeGb: number, machineType: string, network: string, oauthScopes: string[], serviceAccount: string, subnetwork?: string, tags?: string[], zone: string }, nodeCount: number, softwareConfig: { airflowConfigOverrides?: {[key: string]: string}, envVariables?: {[key: string]: string}, imageVersion: string, pypiPackages?: {[key: string]: string}, pythonVersion: string } }>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export class Environment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: EnvironmentArgs | EnvironmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: EnvironmentState = argsOrState as EnvironmentState | undefined;
+            const state = argsOrState as EnvironmentState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -152,6 +152,13 @@ export class Environment extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:composer/environment:Environment", name, inputs, opts);
     }

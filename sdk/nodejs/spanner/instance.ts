@@ -45,17 +45,17 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly config: pulumi.Output<string>;
-    public readonly displayName: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly numNodes: pulumi.Output<number | undefined>;
+    public readonly config!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly numNodes!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public /*out*/ readonly state: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -91,6 +91,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["numNodes"] = args ? args.numNodes : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:spanner/instance:Instance", name, inputs, opts);
     }

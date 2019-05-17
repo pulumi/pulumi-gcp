@@ -53,27 +53,27 @@ export class CryptoKey extends pulumi.CustomResource {
     /**
      * The id of the Google Cloud Platform KeyRing to which the key shall belong.
      */
-    public readonly keyRing: pulumi.Output<string>;
+    public readonly keyRing!: pulumi.Output<string>;
     /**
      * The CryptoKey's name.
      * A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
      * a day (ie, 86400).
      */
-    public readonly rotationPeriod: pulumi.Output<string | undefined>;
+    public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     /**
      * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A template describing settings for new crypto key versions. Structure is documented below.
      */
-    public readonly versionTemplate: pulumi.Output<{ algorithm: string, protectionLevel?: string }>;
+    public readonly versionTemplate!: pulumi.Output<{ algorithm: string, protectionLevel?: string }>;
 
     /**
      * Create a CryptoKey resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class CryptoKey extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CryptoKeyArgs | CryptoKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: CryptoKeyState = argsOrState as CryptoKeyState | undefined;
+            const state = argsOrState as CryptoKeyState | undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
@@ -102,6 +102,13 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:kms/cryptoKey:CryptoKey", name, inputs, opts);
     }

@@ -38,16 +38,16 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
     /**
      * The metadata key to set.
      */
-    public readonly key: pulumi.Output<string>;
+    public readonly key!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The value to set for the given metadata key.
      */
-    public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
 
     /**
      * Create a ProjectMetadataItem resource with the given unique name, arguments, and options.
@@ -60,7 +60,7 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectMetadataItemArgs | ProjectMetadataItemState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectMetadataItemState = argsOrState as ProjectMetadataItemState | undefined;
+            const state = argsOrState as ProjectMetadataItemState | undefined;
             inputs["key"] = state ? state.key : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["value"] = state ? state.value : undefined;
@@ -75,6 +75,13 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
             inputs["key"] = args ? args.key : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["value"] = args ? args.value : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/projectMetadataItem:ProjectMetadataItem", name, inputs, opts);
     }

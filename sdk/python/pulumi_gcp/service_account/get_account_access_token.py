@@ -51,6 +51,10 @@ async def get_account_access_token(delegates=None,lifetime=None,scopes=None,targ
     __args__['lifetime'] = lifetime
     __args__['scopes'] = scopes
     __args__['targetServiceAccount'] = target_service_account
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts)
 
     return GetAccountAccessTokenResult(

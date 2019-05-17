@@ -37,22 +37,22 @@ export class Network extends pulumi.CustomResource {
         return new Network(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly autoCreateSubnetworks: pulumi.Output<boolean | undefined>;
-    public readonly deleteDefaultRoutesOnCreate: pulumi.Output<boolean | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public /*out*/ readonly gatewayIpv4: pulumi.Output<string>;
-    public readonly ipv4Range: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
+    public readonly autoCreateSubnetworks!: pulumi.Output<boolean | undefined>;
+    public readonly deleteDefaultRoutesOnCreate!: pulumi.Output<boolean | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
+    public readonly ipv4Range!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly routingMode: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly routingMode!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -65,7 +65,7 @@ export class Network extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NetworkState = argsOrState as NetworkState | undefined;
+            const state = argsOrState as NetworkState | undefined;
             inputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
             inputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -86,6 +86,13 @@ export class Network extends pulumi.CustomResource {
             inputs["routingMode"] = args ? args.routingMode : undefined;
             inputs["gatewayIpv4"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/network:Network", name, inputs, opts);
     }

@@ -53,26 +53,26 @@ export class User extends pulumi.CustomResource {
      * for MySQL instances. Don't set this field for PostgreSQL instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    public readonly host: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    public readonly instance: pulumi.Output<string>;
+    public readonly instance!: pulumi.Output<string>;
     /**
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The password for the user. Can be updated.
      */
-    public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -85,7 +85,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserState = argsOrState as UserState | undefined;
+            const state = argsOrState as UserState | undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -101,6 +101,13 @@ export class User extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:sql/user:User", name, inputs, opts);
     }

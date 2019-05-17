@@ -65,11 +65,11 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly admissionWhitelistPatterns: pulumi.Output<{ namePattern?: string }[] | undefined>;
-    public readonly clusterAdmissionRules: pulumi.Output<{ cluster: string, enforcementMode?: string, evaluationMode?: string, requireAttestationsBies?: string[] }[] | undefined>;
-    public readonly defaultAdmissionRule: pulumi.Output<{ enforcementMode: string, evaluationMode: string, requireAttestationsBies?: string[] }>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly project: pulumi.Output<string>;
+    public readonly admissionWhitelistPatterns!: pulumi.Output<{ namePattern?: string }[] | undefined>;
+    public readonly clusterAdmissionRules!: pulumi.Output<{ cluster: string, enforcementMode?: string, evaluationMode?: string, requireAttestationsBies?: string[] }[] | undefined>;
+    public readonly defaultAdmissionRule!: pulumi.Output<{ enforcementMode: string, evaluationMode: string, requireAttestationsBies?: string[] }>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -82,7 +82,7 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PolicyState = argsOrState as PolicyState | undefined;
+            const state = argsOrState as PolicyState | undefined;
             inputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
             inputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
             inputs["defaultAdmissionRule"] = state ? state.defaultAdmissionRule : undefined;
@@ -98,6 +98,13 @@ export class Policy extends pulumi.CustomResource {
             inputs["defaultAdmissionRule"] = args ? args.defaultAdmissionRule : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:binaryauthorization/policy:Policy", name, inputs, opts);
     }

@@ -47,33 +47,33 @@ export class BackendService extends pulumi.CustomResource {
         return new BackendService(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly affinityCookieTtlSec: pulumi.Output<number | undefined>;
-    public readonly backends: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
-    public readonly cdnPolicy: pulumi.Output<{ cacheKeyPolicy?: { includeHost?: boolean, includeProtocol?: boolean, includeQueryString?: boolean, queryStringBlacklists?: string[], queryStringWhitelists?: string[] }, signedUrlCacheMaxAgeSec?: number }>;
-    public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly enableCdn: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
-    public readonly healthChecks: pulumi.Output<string>;
-    public readonly iap: pulumi.Output<{ oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string } | undefined>;
-    public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly portName: pulumi.Output<string>;
+    public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
+    public readonly backends!: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
+    public readonly cdnPolicy!: pulumi.Output<{ cacheKeyPolicy?: { includeHost?: boolean, includeProtocol?: boolean, includeQueryString?: boolean, queryStringBlacklists?: string[], queryStringWhitelists?: string[] }, signedUrlCacheMaxAgeSec?: number }>;
+    public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    public readonly healthChecks!: pulumi.Output<string>;
+    public readonly iap!: pulumi.Output<{ oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string } | undefined>;
+    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly portName!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly protocol: pulumi.Output<string>;
-    public readonly securityPolicy: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
+    public readonly securityPolicy!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
-    public readonly sessionAffinity: pulumi.Output<string>;
-    public readonly timeoutSec: pulumi.Output<number>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    public readonly sessionAffinity!: pulumi.Output<string>;
+    public readonly timeoutSec!: pulumi.Output<number>;
 
     /**
      * Create a BackendService resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class BackendService extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BackendServiceArgs | BackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BackendServiceState = argsOrState as BackendServiceState | undefined;
+            const state = argsOrState as BackendServiceState | undefined;
             inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
@@ -132,6 +132,13 @@ export class BackendService extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/backendService:BackendService", name, inputs, opts);
     }

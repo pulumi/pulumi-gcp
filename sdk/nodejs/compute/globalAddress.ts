@@ -38,26 +38,26 @@ export class GlobalAddress extends pulumi.CustomResource {
         return new GlobalAddress(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly address: pulumi.Output<string>;
-    public readonly addressType: pulumi.Output<string | undefined>;
-    public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly ipVersion: pulumi.Output<string | undefined>;
-    public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly network: pulumi.Output<string | undefined>;
-    public readonly prefixLength: pulumi.Output<number | undefined>;
+    public readonly address!: pulumi.Output<string>;
+    public readonly addressType!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string | undefined>;
+    public readonly prefixLength!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly purpose: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly purpose!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a GlobalAddress resource with the given unique name, arguments, and options.
@@ -70,7 +70,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GlobalAddressArgs | GlobalAddressState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GlobalAddressState = argsOrState as GlobalAddressState | undefined;
+            const state = argsOrState as GlobalAddressState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["addressType"] = state ? state.addressType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -99,6 +99,13 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:compute/globalAddress:GlobalAddress", name, inputs, opts);
     }

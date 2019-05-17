@@ -50,6 +50,10 @@ async def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts)
 
     return GetKMSKeyRingResult(

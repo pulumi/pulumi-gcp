@@ -41,27 +41,27 @@ export class ProjectExclusion extends pulumi.CustomResource {
     /**
      * A human-readable description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    public readonly disabled: pulumi.Output<boolean | undefined>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    public readonly filter: pulumi.Output<string>;
+    public readonly filter!: pulumi.Output<string>;
     /**
      * The name of the logging exclusion.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project to create the exclusion in. If omitted, the project associated with the provider is
      * used.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a ProjectExclusion resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class ProjectExclusion extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectExclusionArgs | ProjectExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectExclusionState = argsOrState as ProjectExclusionState | undefined;
+            const state = argsOrState as ProjectExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["filter"] = state ? state.filter : undefined;
@@ -90,6 +90,13 @@ export class ProjectExclusion extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:logging/projectExclusion:ProjectExclusion", name, inputs, opts);
     }

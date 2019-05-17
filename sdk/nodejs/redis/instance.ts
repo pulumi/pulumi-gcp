@@ -62,27 +62,27 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly alternativeLocationId: pulumi.Output<string>;
-    public readonly authorizedNetwork: pulumi.Output<string>;
-    public /*out*/ readonly createTime: pulumi.Output<string>;
-    public /*out*/ readonly currentLocationId: pulumi.Output<string>;
-    public readonly displayName: pulumi.Output<string | undefined>;
-    public /*out*/ readonly host: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly locationId: pulumi.Output<string>;
-    public readonly memorySizeGb: pulumi.Output<number>;
-    public readonly name: pulumi.Output<string>;
-    public /*out*/ readonly port: pulumi.Output<number>;
+    public readonly alternativeLocationId!: pulumi.Output<string>;
+    public readonly authorizedNetwork!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly host!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly locationId!: pulumi.Output<string>;
+    public readonly memorySizeGb!: pulumi.Output<number>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly port!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project: pulumi.Output<string>;
-    public readonly redisConfigs: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly redisVersion: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
-    public readonly reservedIpRange: pulumi.Output<string>;
-    public readonly tier: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly redisVersion!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly reservedIpRange!: pulumi.Output<string>;
+    public readonly tier!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["alternativeLocationId"] = state ? state.alternativeLocationId : undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -135,6 +135,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:redis/instance:Instance", name, inputs, opts);
     }

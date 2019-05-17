@@ -51,14 +51,14 @@ export class AccountIamPolicy extends pulumi.CustomResource {
     /**
      * The billing account id.
      */
-    public readonly billingAccountId: pulumi.Output<string>;
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public readonly billingAccountId!: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The `google_iam_policy` data source that represents
      * the IAM policy that will be applied to the billing account. This policy overrides any existing
      * policy applied to the billing account.
      */
-    public readonly policyData: pulumi.Output<string>;
+    public readonly policyData!: pulumi.Output<string>;
 
     /**
      * Create a AccountIamPolicy resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class AccountIamPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountIamPolicyArgs | AccountIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountIamPolicyState = argsOrState as AccountIamPolicyState | undefined;
+            const state = argsOrState as AccountIamPolicyState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -86,6 +86,13 @@ export class AccountIamPolicy extends pulumi.CustomResource {
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, inputs, opts);
     }

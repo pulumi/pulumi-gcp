@@ -57,6 +57,10 @@ async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
 
     __args__['keyRing'] = key_ring
     __args__['name'] = name
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts)
 
     return GetKMSCryptoKeyResult(

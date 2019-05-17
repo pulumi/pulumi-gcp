@@ -54,25 +54,25 @@ export class Folder extends pulumi.CustomResource {
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The folder’s display name.
      * A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
      */
-    public readonly displayName: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */
-    public /*out*/ readonly lifecycleState: pulumi.Output<string>;
+    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
     /**
      * The resource name of the Folder. Its format is folders/{folder_id}.
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The resource name of the parent Folder or Organization.
      * Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
-    public readonly parent: pulumi.Output<string>;
+    public readonly parent!: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -85,7 +85,7 @@ export class Folder extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FolderState = argsOrState as FolderState | undefined;
+            const state = argsOrState as FolderState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
@@ -104,6 +104,13 @@ export class Folder extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:organizations/folder:Folder", name, inputs, opts);
     }

@@ -44,45 +44,45 @@ export class Application extends pulumi.CustomResource {
     /**
      * The domain to authenticate users with when using App Engine's User API.
      */
-    public readonly authDomain: pulumi.Output<string>;
+    public readonly authDomain!: pulumi.Output<string>;
     /**
      * The GCS bucket code is being stored in for this app.
      */
-    public /*out*/ readonly codeBucket: pulumi.Output<string>;
+    public /*out*/ readonly codeBucket!: pulumi.Output<string>;
     /**
      * The GCS bucket content is being stored in for this app.
      */
-    public /*out*/ readonly defaultBucket: pulumi.Output<string>;
+    public /*out*/ readonly defaultBucket!: pulumi.Output<string>;
     /**
      * The default hostname for this app.
      */
-    public /*out*/ readonly defaultHostname: pulumi.Output<string>;
+    public /*out*/ readonly defaultHostname!: pulumi.Output<string>;
     /**
      * A block of optional settings to configure specific App Engine features:
      */
-    public readonly featureSettings: pulumi.Output<{ splitHealthChecks?: boolean }>;
+    public readonly featureSettings!: pulumi.Output<{ splitHealthChecks?: boolean }>;
     /**
      * The GCR domain used for storing managed Docker images for this app.
      */
-    public /*out*/ readonly gcrDomain: pulumi.Output<string>;
+    public /*out*/ readonly gcrDomain!: pulumi.Output<string>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.
      */
-    public readonly locationId: pulumi.Output<string>;
+    public readonly locationId!: pulumi.Output<string>;
     /**
      * Unique name of the app, usually `apps/{PROJECT_ID}`
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
-    public readonly project: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The serving status of the app.
      */
-    public readonly servingStatus: pulumi.Output<string>;
+    public readonly servingStatus!: pulumi.Output<string>;
     /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
-    public /*out*/ readonly urlDispatchRules: pulumi.Output<{ domain: string, path: string, service: string }[]>;
+    public /*out*/ readonly urlDispatchRules!: pulumi.Output<{ domain: string, path: string, service: string }[]>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class Application extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ApplicationState = argsOrState as ApplicationState | undefined;
+            const state = argsOrState as ApplicationState | undefined;
             inputs["authDomain"] = state ? state.authDomain : undefined;
             inputs["codeBucket"] = state ? state.codeBucket : undefined;
             inputs["defaultBucket"] = state ? state.defaultBucket : undefined;
@@ -123,6 +123,13 @@ export class Application extends pulumi.CustomResource {
             inputs["gcrDomain"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["urlDispatchRules"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("gcp:appengine/application:Application", name, inputs, opts);
     }
