@@ -49,6 +49,7 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		ScratchDisks: outputs["scratchDisks"],
 		SelfLink: outputs["selfLink"],
 		ServiceAccounts: outputs["serviceAccounts"],
+		ShieldedInstanceConfigs: outputs["shieldedInstanceConfigs"],
 		Tags: outputs["tags"],
 		TagsFingerprint: outputs["tagsFingerprint"],
 		Zone: outputs["zone"],
@@ -118,6 +119,8 @@ type GetInstanceResult struct {
 	SelfLink interface{}
 	// The service account to attach to the instance. Structure is documented below.
 	ServiceAccounts interface{}
+	// The shielded vm config being used by the instance. Structure is documented below.
+	ShieldedInstanceConfigs interface{}
 	// The list of tags attached to the instance.
 	Tags interface{}
 	// The unique fingerprint of the tags.

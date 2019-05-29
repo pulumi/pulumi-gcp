@@ -70,12 +70,12 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, mode?: string, source: string }[] | undefined>;
+    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, kmsKeySelfLink?: string, mode?: string, source: string }[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink?: string, source: string }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -182,6 +182,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
+    /**
      * A list of tags to attach to the instance.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -230,6 +235,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -263,6 +269,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["cpuPlatform"] = undefined /*out*/;
@@ -295,12 +302,12 @@ export interface InstanceState {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, source?: pulumi.Input<string> }>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -407,6 +414,11 @@ export interface InstanceState {
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    /**
      * A list of tags to attach to the instance.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -432,12 +444,12 @@ export interface InstanceArgs {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, source?: pulumi.Input<string> }>;
+    readonly bootDisk: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -523,6 +535,11 @@ export interface InstanceArgs {
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
      * A list of tags to attach to the instance.
      */

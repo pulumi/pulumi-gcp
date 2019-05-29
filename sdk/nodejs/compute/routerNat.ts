@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     router: router.name,
  *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
  *     subnetworks: [{
- *         name: google_compute_subnetwork_subnetwork.selfLink,
+ *         name: defaultSubnetwork.selfLink,
  *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
  *     }],
  * });

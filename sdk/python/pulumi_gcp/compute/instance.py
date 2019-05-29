@@ -128,6 +128,11 @@ class Instance(pulumi.CustomResource):
     Structure is documented below.
     **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
     """
+    shielded_instance_config: pulumi.Output[dict]
+    """
+    Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+    **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+    """
     tags: pulumi.Output[list]
     """
     A list of tags to attach to the instance.
@@ -140,7 +145,7 @@ class Instance(pulumi.CustomResource):
     """
     The zone that the machine should be created in.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, tags=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -191,6 +196,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+               **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
         """
@@ -252,6 +259,8 @@ class Instance(pulumi.CustomResource):
         __props__['scratch_disks'] = scratch_disks
 
         __props__['service_account'] = service_account
+
+        __props__['shielded_instance_config'] = shielded_instance_config
 
         __props__['tags'] = tags
 

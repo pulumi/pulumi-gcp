@@ -279,6 +279,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
+    /**
      * Tags to attach to the instance.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -318,6 +323,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
         } else {
@@ -345,6 +351,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["metadataFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -463,6 +470,11 @@ export interface InstanceTemplateState {
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    /**
      * Tags to attach to the instance.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -565,6 +577,11 @@ export interface InstanceTemplateArgs {
      * Service account to attach to the instance. Structure is documented below.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    /**
+     * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
      * Tags to attach to the instance.
      */

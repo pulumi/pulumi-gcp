@@ -39,6 +39,7 @@ const (
 	gcpFirestore            = "firestore"            // Firestore resources
 	gcpFolder               = "folder"               // Folder resources
 	gcpIAM                  = "iam"                  // IAM resources
+	gcpIAP                  = "iap"                  // IAP resources
 	gcpKMS                  = "kms"                  // KMS resources
 	gcpKubernetes           = "container"            // Kubernetes Engine resources
 	gcpLogging              = "logging"              // Logging resources
@@ -401,19 +402,37 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_service.html.markdown",
 				},
 			},
-			"google_compute_disk":                          {Tok: gcpResource(gcpCompute, "Disk")},
-			"google_compute_firewall":                      {Tok: gcpResource(gcpCompute, "Firewall")},
-			"google_compute_forwarding_rule":               {Tok: gcpResource(gcpCompute, "ForwardingRule")},
-			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
-			"google_compute_global_forwarding_rule":        {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
-			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
-			"google_compute_http_health_check":             {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
-			"google_compute_https_health_check":            {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
-			"google_compute_image":                         {Tok: gcpResource(gcpCompute, "Image")},
-			"google_compute_instance":                      {Tok: gcpResource(gcpCompute, "Instance")},
-			"google_compute_instance_from_template":        {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
-			"google_compute_instance_group":                {Tok: gcpResource(gcpCompute, "InstanceGroup")},
-			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
+			"google_compute_disk":                   {Tok: gcpResource(gcpCompute, "Disk")},
+			"google_compute_firewall":               {Tok: gcpResource(gcpCompute, "Firewall")},
+			"google_compute_forwarding_rule":        {Tok: gcpResource(gcpCompute, "ForwardingRule")},
+			"google_compute_global_address":         {Tok: gcpResource(gcpCompute, "GlobalAddress")},
+			"google_compute_global_forwarding_rule": {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
+			"google_compute_health_check":           {Tok: gcpResource(gcpCompute, "HealthCheck")},
+			"google_compute_http_health_check":      {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
+			"google_compute_https_health_check":     {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
+			"google_compute_image":                  {Tok: gcpResource(gcpCompute, "Image")},
+			"google_compute_instance":               {Tok: gcpResource(gcpCompute, "Instance")},
+			"google_compute_instance_from_template": {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
+			"google_compute_instance_group":         {Tok: gcpResource(gcpCompute, "InstanceGroup")},
+			"google_compute_instance_group_manager": {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
+			"google_compute_instance_iam_binding": {
+				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_instance_iam.html.markdown",
+				},
+			},
+			"google_compute_instance_iam_member": {
+				Tok: gcpResource(gcpCompute, "InstanceIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_instance_iam.html.markdown",
+				},
+			},
+			"google_compute_instance_iam_policy": {
+				Tok: gcpResource(gcpCompute, "InstanceIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_instance_iam.html.markdown",
+				},
+			},
 			"google_compute_instance_template":             {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
 			"google_compute_interconnect_attachment":       {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
 			"google_compute_managed_ssl_certificate":       {Tok: gcpResource(gcpCompute, "MangedSslCertificate")},
@@ -486,7 +505,43 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Data Proc resources
 			"google_dataproc_cluster": {Tok: gcpResource(gcpDataProc, "Cluster")},
-			"google_dataproc_job":     {Tok: gcpResource(gcpDataProc, "Job")},
+			"google_dataproc_cluster_iam_binding": {
+				Tok: gcpResource(gcpDataProc, "ClusterIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_cluster_iam.html.markdown",
+				},
+			},
+			"google_dataproc_cluster_iam_member": {
+				Tok: gcpResource(gcpDataProc, "ClusterIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_cluster_iam.html.markdown",
+				},
+			},
+			"google_dataproc_cluster_iam_policy": {
+				Tok: gcpResource(gcpDataProc, "ClusterIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_cluster_iam.html.markdown",
+				},
+			},
+			"google_dataproc_job": {Tok: gcpResource(gcpDataProc, "Job")},
+			"google_dataproc_job_iam_binding": {
+				Tok: gcpResource(gcpDataProc, "JobIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_job_iam.html.markdown",
+				},
+			},
+			"google_dataproc_job_iam_member": {
+				Tok: gcpResource(gcpDataProc, "JobIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_job_iam.html.markdown",
+				},
+			},
+			"google_dataproc_job_iam_policy": {
+				Tok: gcpResource(gcpDataProc, "JobIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_job_iam.html.markdown",
+				},
+			},
 
 			// DNS resources
 			"google_dns_managed_zone": {
@@ -736,6 +791,26 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cloud IoT Core resources
 			"google_cloudiot_registry": {Tok: gcpResource(gcpKMS, "Registry")},
+
+			// Cloud IAP Resources
+			"google_iap_tunnel_instance_iam_binding": {
+				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_iap_tunnel_instance_iam.markdown",
+				},
+			},
+			"google_iap_tunnel_instance_iam_member": {
+				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_iap_tunnel_instance_iam.markdown",
+				},
+			},
+			"google_iap_tunnel_instance_iam_policy": {
+				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_iap_tunnel_instance_iam.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

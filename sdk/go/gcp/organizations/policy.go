@@ -82,7 +82,7 @@ func (r *Policy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 func (r *Policy) BooleanPolicy() *pulumi.Output {
 	return r.s.State["booleanPolicy"]
 }
@@ -92,7 +92,7 @@ func (r *Policy) Constraint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["constraint"])
 }
 
-// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 func (r *Policy) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -107,7 +107,7 @@ func (r *Policy) OrgId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["orgId"])
 }
 
-// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+// A restore policy is a constraint to restore the default policy. Structure is documented below.
 func (r *Policy) RestorePolicy() *pulumi.Output {
 	return r.s.State["restorePolicy"]
 }
@@ -124,17 +124,17 @@ func (r *Policy) Version() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering Policy resources.
 type PolicyState struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy interface{}
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint interface{}
-	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag interface{}
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy interface{}
 	// The numeric ID of the organization to set the policy for.
 	OrgId interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime interface{}
@@ -144,7 +144,7 @@ type PolicyState struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy interface{}
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint interface{}
@@ -152,7 +152,7 @@ type PolicyArgs struct {
 	ListPolicy interface{}
 	// The numeric ID of the organization to set the policy for.
 	OrgId interface{}
-	// A restore policy is a constraint to restore the default policy. Structure is documented below. 
+	// A restore policy is a constraint to restore the default policy. Structure is documented below.
 	RestorePolicy interface{}
 	// Version of the Policy. Default version is 0.
 	Version interface{}

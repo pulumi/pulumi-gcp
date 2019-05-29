@@ -47,6 +47,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["scheduling"] = nil
 		inputs["scratchDisks"] = nil
 		inputs["serviceAccount"] = nil
+		inputs["shieldedInstanceConfig"] = nil
 		inputs["sourceInstanceTemplate"] = nil
 		inputs["tags"] = nil
 		inputs["zone"] = nil
@@ -70,6 +71,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["scheduling"] = args.Scheduling
 		inputs["scratchDisks"] = args.ScratchDisks
 		inputs["serviceAccount"] = args.ServiceAccount
+		inputs["shieldedInstanceConfig"] = args.ShieldedInstanceConfig
 		inputs["sourceInstanceTemplate"] = args.SourceInstanceTemplate
 		inputs["tags"] = args.Tags
 		inputs["zone"] = args.Zone
@@ -117,6 +119,7 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["scratchDisks"] = state.ScratchDisks
 		inputs["selfLink"] = state.SelfLink
 		inputs["serviceAccount"] = state.ServiceAccount
+		inputs["shieldedInstanceConfig"] = state.ShieldedInstanceConfig
 		inputs["sourceInstanceTemplate"] = state.SourceInstanceTemplate
 		inputs["tags"] = state.Tags
 		inputs["tagsFingerprint"] = state.TagsFingerprint
@@ -237,6 +240,10 @@ func (r *InstanceFromTemplate) ServiceAccount() *pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
+func (r *InstanceFromTemplate) ShieldedInstanceConfig() *pulumi.Output {
+	return r.s.State["shieldedInstanceConfig"]
+}
+
 // Name or self link of an instance
 // template to create the instance based on.
 func (r *InstanceFromTemplate) SourceInstanceTemplate() *pulumi.StringOutput {
@@ -285,6 +292,7 @@ type InstanceFromTemplateState struct {
 	ScratchDisks interface{}
 	SelfLink interface{}
 	ServiceAccount interface{}
+	ShieldedInstanceConfig interface{}
 	// Name or self link of an instance
 	// template to create the instance based on.
 	SourceInstanceTemplate interface{}
@@ -318,6 +326,7 @@ type InstanceFromTemplateArgs struct {
 	Scheduling interface{}
 	ScratchDisks interface{}
 	ServiceAccount interface{}
+	ShieldedInstanceConfig interface{}
 	// Name or self link of an instance
 	// template to create the instance based on.
 	SourceInstanceTemplate interface{}

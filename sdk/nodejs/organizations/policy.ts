@@ -92,7 +92,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     public readonly booleanPolicy!: pulumi.Output<{ enforced: boolean } | undefined>;
     /**
@@ -100,7 +100,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly constraint!: pulumi.Output<string>;
     /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     public readonly restorePolicy!: pulumi.Output<{ default: boolean } | undefined>;
     /**
@@ -177,7 +177,7 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
     /**
@@ -185,7 +185,7 @@ export interface PolicyState {
      */
     readonly constraint?: pulumi.Input<string>;
     /**
-     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. 
+     * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     readonly etag?: pulumi.Input<string>;
     /**
@@ -197,7 +197,7 @@ export interface PolicyState {
      */
     readonly orgId?: pulumi.Input<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**
@@ -215,7 +215,7 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below. 
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
     readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
     /**
@@ -231,7 +231,7 @@ export interface PolicyArgs {
      */
     readonly orgId: pulumi.Input<string>;
     /**
-     * A restore policy is a constraint to restore the default policy. Structure is documented below. 
+     * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
     readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
     /**

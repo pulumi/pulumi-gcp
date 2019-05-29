@@ -74,11 +74,11 @@ export interface GetInstanceResult {
     /**
      * List of disks attached to the instance. Structure is documented below.
      */
-    readonly attachedDisks: { deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, mode: string, source: string }[];
+    readonly attachedDisks: { deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[];
     /**
      * The boot disk for the instance. Sructure is documented below.
      */
-    readonly bootDisks: { autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }[], source: string }[];
+    readonly bootDisks: { autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }[], kmsKeySelfLink: string, source: string }[];
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
@@ -152,6 +152,10 @@ export interface GetInstanceResult {
      * The service account to attach to the instance. Structure is documented below.
      */
     readonly serviceAccounts: { email: string, scopes: string[] }[];
+    /**
+     * The shielded vm config being used by the instance. Structure is documented below.
+     */
+    readonly shieldedInstanceConfigs: { enableIntegrityMonitoring: boolean, enableSecureBoot: boolean, enableVtpm: boolean }[];
     /**
      * The list of tags attached to the instance.
      */

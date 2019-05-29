@@ -21,6 +21,9 @@ from .instance import *
 from .instance_from_template import *
 from .instance_group import *
 from .instance_group_manager import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
+from .instance_iam_policy import *
 from .instance_template import *
 from .interconnect_attachment import *
 from .manged_ssl_certificate import *

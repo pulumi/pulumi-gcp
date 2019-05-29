@@ -12,7 +12,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, tags=None, tags_fingerprint=None, zone=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -145,6 +145,12 @@ class GetInstanceResult:
         """
         The service account to attach to the instance. Structure is documented below.
         """
+        if shielded_instance_configs and not isinstance(shielded_instance_configs, list):
+            raise TypeError("Expected argument 'shielded_instance_configs' to be a list")
+        __self__.shielded_instance_configs = shielded_instance_configs
+        """
+        The shielded vm config being used by the instance. Structure is documented below.
+        """
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         __self__.tags = tags
@@ -212,6 +218,7 @@ async def get_instance(name=None,project=None,self_link=None,zone=None,opts=None
         scratch_disks=__ret__.get('scratchDisks'),
         self_link=__ret__.get('selfLink'),
         service_accounts=__ret__.get('serviceAccounts'),
+        shielded_instance_configs=__ret__.get('shieldedInstanceConfigs'),
         tags=__ret__.get('tags'),
         tags_fingerprint=__ret__.get('tagsFingerprint'),
         zone=__ret__.get('zone'),
