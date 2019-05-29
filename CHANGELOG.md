@@ -1,4 +1,7 @@
-## 0.18.6 (Unreleased)
+## 0.18.7 (Unreleased)
+
+
+## 0.18.6 (Released May 29, 2019)
 
 - Update to v2.7.0 of the Google Beta Terraform Provider.
 
