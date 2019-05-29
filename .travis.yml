@@ -18,7 +18,7 @@ install:
     - if [ ! -d $HOME/google-cloud-sdk ]; then curl https://sdk.cloud.google.com | bash; fi
     - export PATH=$PATH:$HOME/google-cloud-sdk/bin
     - export CLOUDSDK_CORE_DISABLE_PROMPTS=1
-    - openssl aes-256-cbc -K $encrypted_289ace6c29ed_key -iv $encrypted_289ace6c29ed_iv -in gcp-credentials.json.enc -out gcp-credentials.json -d
+    - openssl aes-256-cbc -K $encrypted_9ddc6194f0f2_key -iv $encrypted_9ddc6194f0f2_iv -in gcp-credentials.json.enc -out gcp-credentials.json -d
     - export GOOGLE_CREDENTIALS=$(cat gcp-credentials.json)
     - gcloud auth activate-service-account --key-file gcp-credentials.json
     # Install Pulumi
