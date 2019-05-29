@@ -49,6 +49,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["scheduling"] = nil
 		inputs["scratchDisks"] = nil
 		inputs["serviceAccount"] = nil
+		inputs["shieldedInstanceConfig"] = nil
 		inputs["tags"] = nil
 		inputs["zone"] = nil
 	} else {
@@ -71,6 +72,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["scheduling"] = args.Scheduling
 		inputs["scratchDisks"] = args.ScratchDisks
 		inputs["serviceAccount"] = args.ServiceAccount
+		inputs["shieldedInstanceConfig"] = args.ShieldedInstanceConfig
 		inputs["tags"] = args.Tags
 		inputs["zone"] = args.Zone
 	}
@@ -117,6 +119,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["scratchDisks"] = state.ScratchDisks
 		inputs["selfLink"] = state.SelfLink
 		inputs["serviceAccount"] = state.ServiceAccount
+		inputs["shieldedInstanceConfig"] = state.ShieldedInstanceConfig
 		inputs["tags"] = state.Tags
 		inputs["tagsFingerprint"] = state.TagsFingerprint
 		inputs["zone"] = state.Zone
@@ -281,6 +284,12 @@ func (r *Instance) ServiceAccount() *pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
+// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+func (r *Instance) ShieldedInstanceConfig() *pulumi.Output {
+	return r.s.State["shieldedInstanceConfig"]
+}
+
 // A list of tags to attach to the instance.
 func (r *Instance) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
@@ -369,6 +378,9 @@ type InstanceState struct {
 	// Structure is documented below.
 	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
 	ServiceAccount interface{}
+	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	ShieldedInstanceConfig interface{}
 	// A list of tags to attach to the instance.
 	Tags interface{}
 	// The unique fingerprint of the tags.
@@ -440,6 +452,9 @@ type InstanceArgs struct {
 	// Structure is documented below.
 	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
 	ServiceAccount interface{}
+	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	ShieldedInstanceConfig interface{}
 	// A list of tags to attach to the instance.
 	Tags interface{}
 	// The zone that the machine should be created in.

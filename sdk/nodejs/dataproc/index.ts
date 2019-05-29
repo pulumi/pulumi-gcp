@@ -3,4 +3,10 @@
 
 // Export members:
 export * from "./cluster";
+export * from "./clusterIAMBinding";
+export * from "./clusterIAMMember";
+export * from "./clusterIAMPolicy";
 export * from "./job";
+export * from "./jobIAMBinding";
+export * from "./jobIAMMember";
+export * from "./jobIAMPolicy";

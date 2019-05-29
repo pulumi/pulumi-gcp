@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const my_sink = new gcp.logging.ProjectSink("my-sink", {
- *     // Can export to pubsub, cloud storage, or bigtable
+ *     // Can export to pubsub, cloud storage, or bigquery
  *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
  *     // Log all WARN or higher severity messages relating to instances
  *     filter: "resource.type = gce_instance AND severity >= WARN",

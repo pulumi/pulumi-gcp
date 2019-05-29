@@ -62,8 +62,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     }
 
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
-    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, mode: string, source: string }[]>;
-    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, source: string }>;
+    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[]>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
     public readonly canIpForward!: pulumi.Output<boolean>;
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean>;
@@ -89,6 +89,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public readonly scratchDisks!: pulumi.Output<{ interface: string }[]>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] }>;
+    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring: boolean, enableSecureBoot: boolean, enableVtpm: boolean }>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
@@ -138,6 +139,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["sourceInstanceTemplate"] = state ? state.sourceInstanceTemplate : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
@@ -166,6 +168,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -192,8 +195,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
  */
 export interface InstanceFromTemplateState {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, source?: pulumi.Input<string> }>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly cpuPlatform?: pulumi.Input<string>;
     readonly deletionProtection?: pulumi.Input<boolean>;
@@ -219,6 +222,7 @@ export interface InstanceFromTemplateState {
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     readonly selfLink?: pulumi.Input<string>;
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
@@ -238,8 +242,8 @@ export interface InstanceFromTemplateState {
  */
 export interface InstanceFromTemplateArgs {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, source?: pulumi.Input<string> }>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
@@ -260,6 +264,7 @@ export interface InstanceFromTemplateArgs {
     readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.

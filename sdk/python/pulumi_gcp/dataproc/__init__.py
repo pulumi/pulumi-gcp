@@ -4,4 +4,10 @@
 
 # Export this package's modules as members:
 from .cluster import *
+from .cluster_iam_binding import *
+from .cluster_iam_member import *
+from .cluster_iam_policy import *
 from .job import *
+from .job_iam_binding import *
+from .job_iam_member import *
+from .job_iam_policy import *

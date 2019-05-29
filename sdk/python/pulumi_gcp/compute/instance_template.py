@@ -106,6 +106,11 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     Service account to attach to the instance. Structure is documented below.
     """
+    shielded_instance_config: pulumi.Output[dict]
+    """
+    Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+    **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+    """
     tags: pulumi.Output[list]
     """
     Tags to attach to the instance.
@@ -114,7 +119,7 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     The unique fingerprint of the tags.
     """
-    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, tags=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, shielded_instance_config=None, tags=None, __name__=None, __opts__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -161,6 +166,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[dict] service_account: Service account to attach to the instance. Structure is documented below.
+        :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+               **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: Tags to attach to the instance.
         """
         if __name__ is not None:
@@ -215,6 +222,8 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__['scheduling'] = scheduling
 
         __props__['service_account'] = service_account
+
+        __props__['shielded_instance_config'] = shielded_instance_config
 
         __props__['tags'] = tags
 

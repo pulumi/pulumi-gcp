@@ -42,6 +42,8 @@ class SecurityPolicy(pulumi.CustomResource):
         see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
         
+        Security Policy is used by [`google_compute_backend_service`](https://www.terraform.io/docs/providers/google/r/compute_backend_service.html#security_policy).
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.

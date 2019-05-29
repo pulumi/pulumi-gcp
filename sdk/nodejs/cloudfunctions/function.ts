@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "my-label": "my-label-value",
  *     },
+ *     runtime: "nodejs10",
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
  *     timeout: 60,
@@ -96,9 +97,12 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     * The runtime in which the function is going to run. One
+     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+     * defaults to `"nodejs6"`. It's recommended that you override the default, as
+     * `"nodejs6"` is deprecated.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    public readonly runtime!: pulumi.Output<string | undefined>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
@@ -236,7 +240,10 @@ export interface FunctionState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     * The runtime in which the function is going to run. One
+     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+     * defaults to `"nodejs6"`. It's recommended that you override the default, as
+     * `"nodejs6"` is deprecated.
      */
     readonly runtime?: pulumi.Input<string>;
     /**
@@ -315,7 +322,10 @@ export interface FunctionArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+     * The runtime in which the function is going to run. One
+     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+     * defaults to `"nodejs6"`. It's recommended that you override the default, as
+     * `"nodejs6"` is deprecated.
      */
     readonly runtime?: pulumi.Input<string>;
     /**

@@ -162,7 +162,10 @@ func (r *Function) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+// The runtime in which the function is going to run. One
+// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+// defaults to `"nodejs6"`. It's recommended that you override the default, as
+// `"nodejs6"` is deprecated.
 func (r *Function) Runtime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["runtime"])
 }
@@ -222,7 +225,10 @@ type FunctionState struct {
 	Project interface{}
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
-	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+	// The runtime in which the function is going to run. One
+	// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+	// defaults to `"nodejs6"`. It's recommended that you override the default, as
+	// `"nodejs6"` is deprecated.
 	Runtime interface{}
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail interface{}
@@ -263,7 +269,10 @@ type FunctionArgs struct {
 	Project interface{}
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region interface{}
-	// The runtime in which the function is going to run. If empty, defaults to `"nodejs6"`.
+	// The runtime in which the function is going to run. One
+	// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
+	// defaults to `"nodejs6"`. It's recommended that you override the default, as
+	// `"nodejs6"` is deprecated.
 	Runtime interface{}
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail interface{}

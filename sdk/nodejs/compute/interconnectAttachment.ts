@@ -64,7 +64,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public /*out*/ readonly state!: pulumi.Output<string>;
     public readonly type!: pulumi.Output<string>;
-    public readonly vlanTag8021q!: pulumi.Output<number | undefined>;
+    public readonly vlanTag8021q!: pulumi.Output<number>;
 
     /**
      * Create a InterconnectAttachment resource with the given unique name, arguments, and options.

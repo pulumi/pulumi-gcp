@@ -37,6 +37,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     scratch_disks: pulumi.Output[list]
     self_link: pulumi.Output[str]
     service_account: pulumi.Output[dict]
+    shielded_instance_config: pulumi.Output[dict]
     source_instance_template: pulumi.Output[str]
     """
     Name or self link of an instance
@@ -49,7 +50,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     The zone that the machine should be created in. If not
     set, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, source_instance_template=None, tags=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -121,6 +122,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__['scratch_disks'] = scratch_disks
 
         __props__['service_account'] = service_account
+
+        __props__['shielded_instance_config'] = shielded_instance_config
 
         if source_instance_template is None:
             raise TypeError("Missing required property 'source_instance_template'")
