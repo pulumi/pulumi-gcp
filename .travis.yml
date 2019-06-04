@@ -8,6 +8,7 @@ git:
 cache:
   directories:
     - $HOME/google-cloud-sdk/
+    - $HOME/go/pkg/mod/cache/
 before_install:
     - git clone https://github.com/pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
     - source ${GOPATH}/src/github.com/pulumi/scripts/ci/prepare-environment.sh
