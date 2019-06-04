@@ -8,7 +8,7 @@ require (
 	github.com/hashicorp/terraform v0.12.0-rc1.0.20190517222244-f19903073985
 	github.com/pkg/errors v0.8.0
 	github.com/pulumi/pulumi v0.17.6-0.20190410045519-ef5e148a73c0
-	github.com/pulumi/pulumi-terraform v0.18.1
+	github.com/pulumi/pulumi-terraform v0.18.3-0.20190604022008-550896fbaf3b
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190521203540-24e8ee9d5527
 	labix.org/v2/mgo v0.0.0-20140701140051-000000000287 // indirect
