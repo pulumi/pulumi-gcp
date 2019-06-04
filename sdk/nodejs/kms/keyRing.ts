@@ -5,25 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Allows creation of a Google Cloud Platform KMS KeyRing. For more information see
- * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
- * and
- * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+ * A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
  * 
- * A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
- * and resides in a specific location.
  * 
- * > Note: KeyRings cannot be deleted from Google Cloud Platform. Destroying a Terraform-managed KeyRing will remove it
- * from state but **will not delete the resource on the server**.
+ * > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
+ * Destroying a Terraform-managed KeyRing will remove it from state but
+ * *will not delete the resource on the server.*
  * 
- * ## Example Usage
+ * 
+ * To get more information about KeyRing, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
+ * * How-to Guides
+ *     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+ * 
+ * ## Example Usage - Kms Key Ring Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
- *     location: "us-central1",
+ * const example_keyring = new gcp.kms.KeyRing("example-keyring", {
+ *     location: "global",
  * });
  * ```
  */
@@ -40,24 +44,13 @@ export class KeyRing extends pulumi.CustomResource {
         return new KeyRing(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The Google Cloud Platform location for the KeyRing.
-     * A full list of valid locations can be found by running `gcloud kms locations list`.
-     */
     public readonly location!: pulumi.Output<string>;
-    /**
-     * The KeyRing's name.
-     * A KeyRing’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
@@ -101,24 +94,13 @@ export class KeyRing extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyRing resources.
  */
 export interface KeyRingState {
-    /**
-     * The Google Cloud Platform location for the KeyRing.
-     * A full list of valid locations can be found by running `gcloud kms locations list`.
-     */
     readonly location?: pulumi.Input<string>;
-    /**
-     * The KeyRing's name.
-     * A KeyRing’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-     */
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -126,19 +108,11 @@ export interface KeyRingState {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
-    /**
-     * The Google Cloud Platform location for the KeyRing.
-     * A full list of valid locations can be found by running `gcloud kms locations list`.
-     */
     readonly location: pulumi.Input<string>;
-    /**
-     * The KeyRing's name.
-     * A KeyRing’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }

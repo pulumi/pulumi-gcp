@@ -5,12 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a Global Forwarding Rule within GCE. This binds an ip and port to a target HTTP(s) proxy. For more
- * information see [the official
- * documentation](https://cloud.google.com/compute/docs/load-balancing/http/global-forwarding-rules) and
- * [API](https://cloud.google.com/compute/docs/reference/latest/globalForwardingRules).
+ * Represents a GlobalForwardingRule resource. Global forwarding rules are
+ * used to forward traffic to the correct load balancer for HTTP load
+ * balancing. Global forwarding rules can only be used for HTTP load
+ * balancing.
  * 
- * ## Example Usage
+ * For more information, see
+ * https://cloud.google.com/compute/docs/load-balancing/http/
+ * 
+ * 
+ * 
+ * ## Example Usage - Global Forwarding Rule Http
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,62 +72,25 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
         return new GlobalForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Textual description field.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     public readonly ipAddress!: pulumi.Output<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     public readonly ipProtocol!: pulumi.Output<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
-    /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
-     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
+    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
+    public readonly network!: pulumi.Output<string>;
     public readonly portRange!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     public readonly target!: pulumi.Output<string>;
 
     /**
@@ -142,7 +111,9 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["portRange"] = state ? state.portRange : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -157,7 +128,9 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["portRange"] = args ? args.portRange : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["target"] = args ? args.target : undefined;
@@ -179,62 +152,25 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalForwardingRule resources.
  */
 export interface GlobalForwardingRuleState {
-    /**
-     * Textual description field.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     readonly ipVersion?: pulumi.Input<string>;
     readonly labelFingerprint?: pulumi.Input<string>;
-    /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
+    readonly loadBalancingScheme?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
+    readonly network?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     readonly target?: pulumi.Input<string>;
 }
 
@@ -242,56 +178,19 @@ export interface GlobalForwardingRuleState {
  * The set of arguments for constructing a GlobalForwardingRule resource.
  */
 export interface GlobalForwardingRuleArgs {
-    /**
-     * Textual description field.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The static IP. (if not set, an ephemeral IP is
-     * used). This should be the literal IP address to be used, not the `self_link`
-     * to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-     * resource, use the `address` property instead of the `self_link` property.)
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * The IP protocol to route, one of "TCP" "UDP" "AH"
-     * "ESP" or "SCTP". (default "TCP").
-     */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * 
-     * The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-     * You cannot provide this and `ip_address`.
-     */
     readonly ipVersion?: pulumi.Input<string>;
-    /**
-     * )
-     * A set of key/value label pairs to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A unique name for the resource, required by GCE. Changing
-     * this forces a new resource to be created.
-     */
+    readonly loadBalancingScheme?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * A range e.g. "1024-2048" or a single port "1024"
-     * (defaults to all ports!).
-     * Some types of forwarding targets have constraints on the acceptable ports:
-     * * Target HTTP proxy: 80, 8080
-     * * Target HTTPS proxy: 443
-     * * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-     * * Target VPN gateway: 500, 4500
-     */
+    readonly network?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * URL of target HTTP or HTTPS proxy.
-     */
     readonly target: pulumi.Input<string>;
 }

@@ -83,6 +83,7 @@ export class ManagedZone extends pulumi.CustomResource {
 
     public readonly description!: pulumi.Output<string>;
     public readonly dnsName!: pulumi.Output<string>;
+    public readonly dnssecConfig!: pulumi.Output<{ defaultKeySpecs: { algorithm?: string, keyLength?: number, keyType?: string, kind?: string }[], kind?: string, nonExistence: string, state?: string } | undefined>;
     public readonly forwardingConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -110,6 +111,7 @@ export class ManagedZone extends pulumi.CustomResource {
             const state = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
+            inputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
             inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -125,6 +127,7 @@ export class ManagedZone extends pulumi.CustomResource {
             }
             inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
             inputs["dnsName"] = args ? args.dnsName : undefined;
+            inputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
             inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -151,6 +154,7 @@ export class ManagedZone extends pulumi.CustomResource {
 export interface ManagedZoneState {
     readonly description?: pulumi.Input<string>;
     readonly dnsName?: pulumi.Input<string>;
+    readonly dnssecConfig?: pulumi.Input<{ defaultKeySpecs?: pulumi.Input<pulumi.Input<{ algorithm?: pulumi.Input<string>, keyLength?: pulumi.Input<number>, keyType?: pulumi.Input<string>, kind?: pulumi.Input<string> }>[]>, kind?: pulumi.Input<string>, nonExistence?: pulumi.Input<string>, state?: pulumi.Input<string> }>;
     readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
@@ -171,6 +175,7 @@ export interface ManagedZoneState {
 export interface ManagedZoneArgs {
     readonly description?: pulumi.Input<string>;
     readonly dnsName: pulumi.Input<string>;
+    readonly dnssecConfig?: pulumi.Input<{ defaultKeySpecs?: pulumi.Input<pulumi.Input<{ algorithm?: pulumi.Input<string>, keyLength?: pulumi.Input<number>, keyType?: pulumi.Input<string>, kind?: pulumi.Input<string> }>[]>, kind?: pulumi.Input<string>, nonExistence?: pulumi.Input<string>, state?: pulumi.Input<string> }>;
     readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;

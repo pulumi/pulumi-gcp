@@ -57,6 +57,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["removeDefaultNodePool"] = nil
 		inputs["resourceLabels"] = nil
 		inputs["subnetwork"] = nil
+		inputs["verticalPodAutoscaling"] = nil
 		inputs["zone"] = nil
 	} else {
 		inputs["additionalZones"] = args.AdditionalZones
@@ -93,11 +94,13 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
 		inputs["resourceLabels"] = args.ResourceLabels
 		inputs["subnetwork"] = args.Subnetwork
+		inputs["verticalPodAutoscaling"] = args.VerticalPodAutoscaling
 		inputs["zone"] = args.Zone
 	}
 	inputs["endpoint"] = nil
 	inputs["instanceGroupUrls"] = nil
 	inputs["masterVersion"] = nil
+	inputs["servicesIpv4Cidr"] = nil
 	inputs["tpuIpv4CidrBlock"] = nil
 	s, err := ctx.RegisterResource("gcp:container/cluster:Cluster", name, true, inputs, opts...)
 	if err != nil {
@@ -148,8 +151,10 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
 		inputs["resourceLabels"] = state.ResourceLabels
+		inputs["servicesIpv4Cidr"] = state.ServicesIpv4Cidr
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["tpuIpv4CidrBlock"] = state.TpuIpv4CidrBlock
+		inputs["verticalPodAutoscaling"] = state.VerticalPodAutoscaling
 		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("gcp:container/cluster:Cluster", name, id, inputs, opts...)
@@ -438,6 +443,14 @@ func (r *Cluster) ResourceLabels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["resourceLabels"])
 }
 
+// The IP address range of the Kubernetes services in this
+// cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+// `/16` from the container CIDR.
+func (r *Cluster) ServicesIpv4Cidr() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["servicesIpv4Cidr"])
+}
+
 // The name or self_link of the Google Compute Engine subnetwork in
 // which the cluster's instances are launched.
 func (r *Cluster) Subnetwork() *pulumi.StringOutput {
@@ -449,6 +462,12 @@ func (r *Cluster) Subnetwork() *pulumi.StringOutput {
 // notation (e.g. `1.2.3.4/29`).
 func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
+}
+
+// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+// Structure is documented below.
+func (r *Cluster) VerticalPodAutoscaling() *pulumi.Output {
+	return r.s.State["verticalPodAutoscaling"]
 }
 
 // The zone that the cluster master and nodes
@@ -621,6 +640,11 @@ type ClusterState struct {
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
+	// The IP address range of the Kubernetes services in this
+	// cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+	// `/16` from the container CIDR.
+	ServicesIpv4Cidr interface{}
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
@@ -628,6 +652,9 @@ type ClusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock interface{}
+	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+	// Structure is documented below.
+	VerticalPodAutoscaling interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
 	// has been deprecated in favour of `location`.
@@ -791,6 +818,9 @@ type ClusterArgs struct {
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
+	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+	// Structure is documented below.
+	VerticalPodAutoscaling interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
 	// has been deprecated in favour of `location`.

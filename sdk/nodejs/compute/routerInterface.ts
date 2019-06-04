@@ -38,6 +38,13 @@ export class RouterInterface extends pulumi.CustomResource {
     }
 
     /**
+     * The name or resource link to the
+     * VLAN interconnect for this interface. Changing this forces a new interface to
+     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * specified.
+     */
+    public readonly interconnectAttachment!: pulumi.Output<string | undefined>;
+    /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
@@ -65,9 +72,10 @@ export class RouterInterface extends pulumi.CustomResource {
     public readonly router!: pulumi.Output<string>;
     /**
      * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
+     * interface will be linked to. Changing this forces a new interface to be created. Only
+     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
      */
-    public readonly vpnTunnel!: pulumi.Output<string>;
+    public readonly vpnTunnel!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -81,6 +89,7 @@ export class RouterInterface extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
+            inputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
             inputs["ipRange"] = state ? state.ipRange : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -92,9 +101,7 @@ export class RouterInterface extends pulumi.CustomResource {
             if (!args || args.router === undefined) {
                 throw new Error("Missing required property 'router'");
             }
-            if (!args || args.vpnTunnel === undefined) {
-                throw new Error("Missing required property 'vpnTunnel'");
-            }
+            inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
             inputs["ipRange"] = args ? args.ipRange : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -117,6 +124,13 @@ export class RouterInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterInterface resources.
  */
 export interface RouterInterfaceState {
+    /**
+     * The name or resource link to the
+     * VLAN interconnect for this interface. Changing this forces a new interface to
+     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * specified.
+     */
+    readonly interconnectAttachment?: pulumi.Input<string>;
     /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -145,7 +159,8 @@ export interface RouterInterfaceState {
     readonly router?: pulumi.Input<string>;
     /**
      * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
+     * interface will be linked to. Changing this forces a new interface to be created. Only
+     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
      */
     readonly vpnTunnel?: pulumi.Input<string>;
 }
@@ -154,6 +169,13 @@ export interface RouterInterfaceState {
  * The set of arguments for constructing a RouterInterface resource.
  */
 export interface RouterInterfaceArgs {
+    /**
+     * The name or resource link to the
+     * VLAN interconnect for this interface. Changing this forces a new interface to
+     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * specified.
+     */
+    readonly interconnectAttachment?: pulumi.Input<string>;
     /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -182,7 +204,8 @@ export interface RouterInterfaceArgs {
     readonly router: pulumi.Input<string>;
     /**
      * The name or resource link to the VPN tunnel this
-     * interface will be linked to. Changing this forces a new interface to be created.
+     * interface will be linked to. Changing this forces a new interface to be created. Only
+     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
      */
-    readonly vpnTunnel: pulumi.Input<string>;
+    readonly vpnTunnel?: pulumi.Input<string>;
 }

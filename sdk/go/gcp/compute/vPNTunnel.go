@@ -28,14 +28,8 @@ type VPNTunnel struct {
 // NewVPNTunnel registers a new resource with the given unique name, arguments, and options.
 func NewVPNTunnel(ctx *pulumi.Context,
 	name string, args *VPNTunnelArgs, opts ...pulumi.ResourceOpt) (*VPNTunnel, error) {
-	if args == nil || args.PeerIp == nil {
-		return nil, errors.New("missing required argument 'PeerIp'")
-	}
 	if args == nil || args.SharedSecret == nil {
 		return nil, errors.New("missing required argument 'SharedSecret'")
-	}
-	if args == nil || args.TargetVpnGateway == nil {
-		return nil, errors.New("missing required argument 'TargetVpnGateway'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
@@ -44,6 +38,9 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		inputs["labels"] = nil
 		inputs["localTrafficSelectors"] = nil
 		inputs["name"] = nil
+		inputs["peerExternalGateway"] = nil
+		inputs["peerExternalGatewayInterface"] = nil
+		inputs["peerGcpGateway"] = nil
 		inputs["peerIp"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
@@ -51,12 +48,17 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		inputs["router"] = nil
 		inputs["sharedSecret"] = nil
 		inputs["targetVpnGateway"] = nil
+		inputs["vpnGateway"] = nil
+		inputs["vpnGatewayInterface"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["ikeVersion"] = args.IkeVersion
 		inputs["labels"] = args.Labels
 		inputs["localTrafficSelectors"] = args.LocalTrafficSelectors
 		inputs["name"] = args.Name
+		inputs["peerExternalGateway"] = args.PeerExternalGateway
+		inputs["peerExternalGatewayInterface"] = args.PeerExternalGatewayInterface
+		inputs["peerGcpGateway"] = args.PeerGcpGateway
 		inputs["peerIp"] = args.PeerIp
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -64,6 +66,8 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		inputs["router"] = args.Router
 		inputs["sharedSecret"] = args.SharedSecret
 		inputs["targetVpnGateway"] = args.TargetVpnGateway
+		inputs["vpnGateway"] = args.VpnGateway
+		inputs["vpnGatewayInterface"] = args.VpnGatewayInterface
 	}
 	inputs["creationTimestamp"] = nil
 	inputs["detailedStatus"] = nil
@@ -91,6 +95,9 @@ func GetVPNTunnel(ctx *pulumi.Context,
 		inputs["labels"] = state.Labels
 		inputs["localTrafficSelectors"] = state.LocalTrafficSelectors
 		inputs["name"] = state.Name
+		inputs["peerExternalGateway"] = state.PeerExternalGateway
+		inputs["peerExternalGatewayInterface"] = state.PeerExternalGatewayInterface
+		inputs["peerGcpGateway"] = state.PeerGcpGateway
 		inputs["peerIp"] = state.PeerIp
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
@@ -100,6 +107,8 @@ func GetVPNTunnel(ctx *pulumi.Context,
 		inputs["sharedSecret"] = state.SharedSecret
 		inputs["sharedSecretHash"] = state.SharedSecretHash
 		inputs["targetVpnGateway"] = state.TargetVpnGateway
+		inputs["vpnGateway"] = state.VpnGateway
+		inputs["vpnGatewayInterface"] = state.VpnGatewayInterface
 	}
 	s, err := ctx.ReadResource("gcp:compute/vPNTunnel:VPNTunnel", name, id, inputs, opts...)
 	if err != nil {
@@ -150,6 +159,18 @@ func (r *VPNTunnel) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+func (r *VPNTunnel) PeerExternalGateway() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["peerExternalGateway"])
+}
+
+func (r *VPNTunnel) PeerExternalGatewayInterface() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["peerExternalGatewayInterface"])
+}
+
+func (r *VPNTunnel) PeerGcpGateway() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["peerGcpGateway"])
+}
+
 func (r *VPNTunnel) PeerIp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerIp"])
 }
@@ -189,6 +210,14 @@ func (r *VPNTunnel) TargetVpnGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["targetVpnGateway"])
 }
 
+func (r *VPNTunnel) VpnGateway() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["vpnGateway"])
+}
+
+func (r *VPNTunnel) VpnGatewayInterface() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["vpnGatewayInterface"])
+}
+
 // Input properties used for looking up and filtering VPNTunnel resources.
 type VPNTunnelState struct {
 	CreationTimestamp interface{}
@@ -199,6 +228,9 @@ type VPNTunnelState struct {
 	Labels interface{}
 	LocalTrafficSelectors interface{}
 	Name interface{}
+	PeerExternalGateway interface{}
+	PeerExternalGatewayInterface interface{}
+	PeerGcpGateway interface{}
 	PeerIp interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -211,6 +243,8 @@ type VPNTunnelState struct {
 	SharedSecret interface{}
 	SharedSecretHash interface{}
 	TargetVpnGateway interface{}
+	VpnGateway interface{}
+	VpnGatewayInterface interface{}
 }
 
 // The set of arguments for constructing a VPNTunnel resource.
@@ -220,6 +254,9 @@ type VPNTunnelArgs struct {
 	Labels interface{}
 	LocalTrafficSelectors interface{}
 	Name interface{}
+	PeerExternalGateway interface{}
+	PeerExternalGatewayInterface interface{}
+	PeerGcpGateway interface{}
 	PeerIp interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -229,4 +266,6 @@ type VPNTunnelArgs struct {
 	Router interface{}
 	SharedSecret interface{}
 	TargetVpnGateway interface{}
+	VpnGateway interface{}
+	VpnGatewayInterface interface{}
 }

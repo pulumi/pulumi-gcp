@@ -22,11 +22,9 @@ func NewRouterInterface(ctx *pulumi.Context,
 	if args == nil || args.Router == nil {
 		return nil, errors.New("missing required argument 'Router'")
 	}
-	if args == nil || args.VpnTunnel == nil {
-		return nil, errors.New("missing required argument 'VpnTunnel'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["interconnectAttachment"] = nil
 		inputs["ipRange"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
@@ -34,6 +32,7 @@ func NewRouterInterface(ctx *pulumi.Context,
 		inputs["router"] = nil
 		inputs["vpnTunnel"] = nil
 	} else {
+		inputs["interconnectAttachment"] = args.InterconnectAttachment
 		inputs["ipRange"] = args.IpRange
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
@@ -54,6 +53,7 @@ func GetRouterInterface(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *RouterInterfaceState, opts ...pulumi.ResourceOpt) (*RouterInterface, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["interconnectAttachment"] = state.InterconnectAttachment
 		inputs["ipRange"] = state.IpRange
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -76,6 +76,14 @@ func (r *RouterInterface) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *RouterInterface) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The name or resource link to the
+// VLAN interconnect for this interface. Changing this forces a new interface to
+// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+// specified.
+func (r *RouterInterface) InterconnectAttachment() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["interconnectAttachment"])
 }
 
 // IP address and range of the interface. The IP range must be
@@ -110,13 +118,19 @@ func (r *RouterInterface) Router() *pulumi.StringOutput {
 }
 
 // The name or resource link to the VPN tunnel this
-// interface will be linked to. Changing this forces a new interface to be created.
+// interface will be linked to. Changing this forces a new interface to be created. Only
+// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
 func (r *RouterInterface) VpnTunnel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vpnTunnel"])
 }
 
 // Input properties used for looking up and filtering RouterInterface resources.
 type RouterInterfaceState struct {
+	// The name or resource link to the
+	// VLAN interconnect for this interface. Changing this forces a new interface to
+	// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+	// specified.
+	InterconnectAttachment interface{}
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange interface{}
@@ -134,12 +148,18 @@ type RouterInterfaceState struct {
 	// Changing this forces a new interface to be created.
 	Router interface{}
 	// The name or resource link to the VPN tunnel this
-	// interface will be linked to. Changing this forces a new interface to be created.
+	// interface will be linked to. Changing this forces a new interface to be created. Only
+	// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
 	VpnTunnel interface{}
 }
 
 // The set of arguments for constructing a RouterInterface resource.
 type RouterInterfaceArgs struct {
+	// The name or resource link to the
+	// VLAN interconnect for this interface. Changing this forces a new interface to
+	// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+	// specified.
+	InterconnectAttachment interface{}
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange interface{}
@@ -157,6 +177,7 @@ type RouterInterfaceArgs struct {
 	// Changing this forces a new interface to be created.
 	Router interface{}
 	// The name or resource link to the VPN tunnel this
-	// interface will be linked to. Changing this forces a new interface to be created.
+	// interface will be linked to. Changing this forces a new interface to be created. Only
+	// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
 	VpnTunnel interface{}
 }

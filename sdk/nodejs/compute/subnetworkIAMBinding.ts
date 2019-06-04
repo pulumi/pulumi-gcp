@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * ## google\compute\_subnetwork\_iam\_member
+ * ## google\_compute\_subnetwork\_iam\_member
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

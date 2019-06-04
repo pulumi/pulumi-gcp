@@ -32,11 +32,15 @@ func NewNetworkPeering(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["autoCreateRoutes"] = nil
+		inputs["exportCustomRoutes"] = nil
+		inputs["importCustomRoutes"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["peerNetwork"] = nil
 	} else {
 		inputs["autoCreateRoutes"] = args.AutoCreateRoutes
+		inputs["exportCustomRoutes"] = args.ExportCustomRoutes
+		inputs["importCustomRoutes"] = args.ImportCustomRoutes
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["peerNetwork"] = args.PeerNetwork
@@ -57,6 +61,8 @@ func GetNetworkPeering(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["autoCreateRoutes"] = state.AutoCreateRoutes
+		inputs["exportCustomRoutes"] = state.ExportCustomRoutes
+		inputs["importCustomRoutes"] = state.ImportCustomRoutes
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["peerNetwork"] = state.PeerNetwork
@@ -84,6 +90,14 @@ func (r *NetworkPeering) ID() *pulumi.IDOutput {
 // be created and managed automatically. Defaults to `true`.
 func (r *NetworkPeering) AutoCreateRoutes() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateRoutes"])
+}
+
+func (r *NetworkPeering) ExportCustomRoutes() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["exportCustomRoutes"])
+}
+
+func (r *NetworkPeering) ImportCustomRoutes() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["importCustomRoutes"])
 }
 
 // Name of the peering.
@@ -116,6 +130,8 @@ type NetworkPeeringState struct {
 	// If set to `true`, the routes between the two networks will
 	// be created and managed automatically. Defaults to `true`.
 	AutoCreateRoutes interface{}
+	ExportCustomRoutes interface{}
+	ImportCustomRoutes interface{}
 	// Name of the peering.
 	Name interface{}
 	// Resource link of the network to add a peering to.
@@ -133,6 +149,8 @@ type NetworkPeeringArgs struct {
 	// If set to `true`, the routes between the two networks will
 	// be created and managed automatically. Defaults to `true`.
 	AutoCreateRoutes interface{}
+	ExportCustomRoutes interface{}
+	ImportCustomRoutes interface{}
 	// Name of the peering.
 	Name interface{}
 	// Resource link of the network to add a peering to.

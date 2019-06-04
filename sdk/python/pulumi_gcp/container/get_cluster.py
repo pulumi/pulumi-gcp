@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, tpu_ipv4_cidr_block=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -121,12 +121,18 @@ class GetClusterResult:
         if resource_labels and not isinstance(resource_labels, dict):
             raise TypeError("Expected argument 'resource_labels' to be a dict")
         __self__.resource_labels = resource_labels
+        if services_ipv4_cidr and not isinstance(services_ipv4_cidr, str):
+            raise TypeError("Expected argument 'services_ipv4_cidr' to be a str")
+        __self__.services_ipv4_cidr = services_ipv4_cidr
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
         __self__.subnetwork = subnetwork
         if tpu_ipv4_cidr_block and not isinstance(tpu_ipv4_cidr_block, str):
             raise TypeError("Expected argument 'tpu_ipv4_cidr_block' to be a str")
         __self__.tpu_ipv4_cidr_block = tpu_ipv4_cidr_block
+        if vertical_pod_autoscalings and not isinstance(vertical_pod_autoscalings, list):
+            raise TypeError("Expected argument 'vertical_pod_autoscalings' to be a list")
+        __self__.vertical_pod_autoscalings = vertical_pod_autoscalings
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
@@ -191,7 +197,9 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
         region=__ret__.get('region'),
         remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
         resource_labels=__ret__.get('resourceLabels'),
+        services_ipv4_cidr=__ret__.get('servicesIpv4Cidr'),
         subnetwork=__ret__.get('subnetwork'),
         tpu_ipv4_cidr_block=__ret__.get('tpuIpv4CidrBlock'),
+        vertical_pod_autoscalings=__ret__.get('verticalPodAutoscalings'),
         zone=__ret__.get('zone'),
         id=__ret__.get('id'))

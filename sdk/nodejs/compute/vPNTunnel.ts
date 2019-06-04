@@ -82,6 +82,9 @@ export class VPNTunnel extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly localTrafficSelectors!: pulumi.Output<string[]>;
     public readonly name!: pulumi.Output<string>;
+    public readonly peerExternalGateway!: pulumi.Output<string | undefined>;
+    public readonly peerExternalGatewayInterface!: pulumi.Output<number | undefined>;
+    public readonly peerGcpGateway!: pulumi.Output<string | undefined>;
     public readonly peerIp!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -97,7 +100,9 @@ export class VPNTunnel extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public readonly sharedSecret!: pulumi.Output<string>;
     public /*out*/ readonly sharedSecretHash!: pulumi.Output<string>;
-    public readonly targetVpnGateway!: pulumi.Output<string>;
+    public readonly targetVpnGateway!: pulumi.Output<string | undefined>;
+    public readonly vpnGateway!: pulumi.Output<string | undefined>;
+    public readonly vpnGatewayInterface!: pulumi.Output<number | undefined>;
 
     /**
      * Create a VPNTunnel resource with the given unique name, arguments, and options.
@@ -119,6 +124,9 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["localTrafficSelectors"] = state ? state.localTrafficSelectors : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["peerExternalGateway"] = state ? state.peerExternalGateway : undefined;
+            inputs["peerExternalGatewayInterface"] = state ? state.peerExternalGatewayInterface : undefined;
+            inputs["peerGcpGateway"] = state ? state.peerGcpGateway : undefined;
             inputs["peerIp"] = state ? state.peerIp : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -128,22 +136,21 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["sharedSecret"] = state ? state.sharedSecret : undefined;
             inputs["sharedSecretHash"] = state ? state.sharedSecretHash : undefined;
             inputs["targetVpnGateway"] = state ? state.targetVpnGateway : undefined;
+            inputs["vpnGateway"] = state ? state.vpnGateway : undefined;
+            inputs["vpnGatewayInterface"] = state ? state.vpnGatewayInterface : undefined;
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
-            if (!args || args.peerIp === undefined) {
-                throw new Error("Missing required property 'peerIp'");
-            }
             if (!args || args.sharedSecret === undefined) {
                 throw new Error("Missing required property 'sharedSecret'");
-            }
-            if (!args || args.targetVpnGateway === undefined) {
-                throw new Error("Missing required property 'targetVpnGateway'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["ikeVersion"] = args ? args.ikeVersion : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["localTrafficSelectors"] = args ? args.localTrafficSelectors : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["peerExternalGateway"] = args ? args.peerExternalGateway : undefined;
+            inputs["peerExternalGatewayInterface"] = args ? args.peerExternalGatewayInterface : undefined;
+            inputs["peerGcpGateway"] = args ? args.peerGcpGateway : undefined;
             inputs["peerIp"] = args ? args.peerIp : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -151,6 +158,8 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
+            inputs["vpnGateway"] = args ? args.vpnGateway : undefined;
+            inputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["detailedStatus"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
@@ -180,6 +189,9 @@ export interface VPNTunnelState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
+    readonly peerExternalGateway?: pulumi.Input<string>;
+    readonly peerExternalGatewayInterface?: pulumi.Input<number>;
+    readonly peerGcpGateway?: pulumi.Input<string>;
     readonly peerIp?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -196,6 +208,8 @@ export interface VPNTunnelState {
     readonly sharedSecret?: pulumi.Input<string>;
     readonly sharedSecretHash?: pulumi.Input<string>;
     readonly targetVpnGateway?: pulumi.Input<string>;
+    readonly vpnGateway?: pulumi.Input<string>;
+    readonly vpnGatewayInterface?: pulumi.Input<number>;
 }
 
 /**
@@ -207,7 +221,10 @@ export interface VPNTunnelArgs {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
-    readonly peerIp: pulumi.Input<string>;
+    readonly peerExternalGateway?: pulumi.Input<string>;
+    readonly peerExternalGatewayInterface?: pulumi.Input<number>;
+    readonly peerGcpGateway?: pulumi.Input<string>;
+    readonly peerIp?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -217,5 +234,7 @@ export interface VPNTunnelArgs {
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     readonly router?: pulumi.Input<string>;
     readonly sharedSecret: pulumi.Input<string>;
-    readonly targetVpnGateway: pulumi.Input<string>;
+    readonly targetVpnGateway?: pulumi.Input<string>;
+    readonly vpnGateway?: pulumi.Input<string>;
+    readonly vpnGatewayInterface?: pulumi.Input<number>;
 }

@@ -1,5 +1,12 @@
 ## 0.18.7 (Unreleased)
 
+### Important
+
+- The `auto_create_routes` field on `google_compute_network_peering` has been deprecated
+
+### Improvements
+
+- Update to v2.8.0 of the Google Beta Terraform Provider.
 
 ## 0.18.6 (Released May 29, 2019)
 

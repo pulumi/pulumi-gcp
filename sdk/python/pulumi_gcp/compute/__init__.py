@@ -13,6 +13,7 @@ from .firewall import *
 from .forwarding_rule import *
 from .global_address import *
 from .global_forwarding_rule import *
+from .ha_vpn_gateway import *
 from .health_check import *
 from .http_health_check import *
 from .https_health_check import *
@@ -76,6 +77,7 @@ from .get_network import *
 from .get_node_types import *
 from .get_region_instance_group import *
 from .get_regions import *
+from .get_certificate import *
 from .get_ssl_policy import *
 from .get_subnetwork import *
 from .get_vpn_gateway import *

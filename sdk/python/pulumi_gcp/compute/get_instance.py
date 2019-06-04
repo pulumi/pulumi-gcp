@@ -26,7 +26,7 @@ class GetInstanceResult:
             raise TypeError("Expected argument 'boot_disks' to be a list")
         __self__.boot_disks = boot_disks
         """
-        The boot disk for the instance. Sructure is documented below.
+        The boot disk for the instance. Structure is documented below.
         """
         if can_ip_forward and not isinstance(can_ip_forward, bool):
             raise TypeError("Expected argument 'can_ip_forward' to be a bool")

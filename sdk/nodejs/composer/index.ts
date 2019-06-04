@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./environment";
+export * from "./getImageVersions";

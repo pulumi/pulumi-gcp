@@ -47,6 +47,10 @@ export interface GetClientConfigResult {
      */
     readonly region: string;
     /**
+     * The zone to operate under.
+     */
+    readonly zone: string;
+    /**
      * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

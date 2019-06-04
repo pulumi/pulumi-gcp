@@ -53,9 +53,10 @@ export class RegionBackendService extends pulumi.CustomResource {
         return new RegionBackendService(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly backends!: pulumi.Output<{ description?: string, group?: string }[] | undefined>;
+    public readonly backends!: pulumi.Output<{ description?: string, failover?: boolean, group?: string }[] | undefined>;
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly failoverPolicy!: pulumi.Output<{ disableConnectionDrainOnFailover?: boolean, dropTrafficIfUnhealthy?: boolean, failoverRatio?: number } | undefined>;
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     public readonly healthChecks!: pulumi.Output<string>;
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
@@ -89,6 +90,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["backends"] = state ? state.backends : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["healthChecks"] = state ? state.healthChecks : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
@@ -107,6 +109,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["backends"] = args ? args.backends : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -133,9 +136,10 @@ export class RegionBackendService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionBackendService resources.
  */
 export interface RegionBackendServiceState {
-    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }>[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, failover?: pulumi.Input<boolean>, group?: pulumi.Input<string> }>[]>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
+    readonly failoverPolicy?: pulumi.Input<{ disableConnectionDrainOnFailover?: pulumi.Input<boolean>, dropTrafficIfUnhealthy?: pulumi.Input<boolean>, failoverRatio?: pulumi.Input<number> }>;
     readonly fingerprint?: pulumi.Input<string>;
     readonly healthChecks?: pulumi.Input<string>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
@@ -159,9 +163,10 @@ export interface RegionBackendServiceState {
  * The set of arguments for constructing a RegionBackendService resource.
  */
 export interface RegionBackendServiceArgs {
-    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, group?: pulumi.Input<string> }>[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, failover?: pulumi.Input<boolean>, group?: pulumi.Input<string> }>[]>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
+    readonly failoverPolicy?: pulumi.Input<{ disableConnectionDrainOnFailover?: pulumi.Input<boolean>, dropTrafficIfUnhealthy?: pulumi.Input<boolean>, failoverRatio?: pulumi.Input<number> }>;
     readonly healthChecks: pulumi.Input<string>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;

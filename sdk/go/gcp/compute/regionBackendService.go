@@ -35,6 +35,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["backends"] = nil
 		inputs["connectionDrainingTimeoutSec"] = nil
 		inputs["description"] = nil
+		inputs["failoverPolicy"] = nil
 		inputs["healthChecks"] = nil
 		inputs["loadBalancingScheme"] = nil
 		inputs["name"] = nil
@@ -47,6 +48,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["backends"] = args.Backends
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
 		inputs["description"] = args.Description
+		inputs["failoverPolicy"] = args.FailoverPolicy
 		inputs["healthChecks"] = args.HealthChecks
 		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
 		inputs["name"] = args.Name
@@ -74,6 +76,7 @@ func GetRegionBackendService(ctx *pulumi.Context,
 		inputs["backends"] = state.Backends
 		inputs["connectionDrainingTimeoutSec"] = state.ConnectionDrainingTimeoutSec
 		inputs["description"] = state.Description
+		inputs["failoverPolicy"] = state.FailoverPolicy
 		inputs["fingerprint"] = state.Fingerprint
 		inputs["healthChecks"] = state.HealthChecks
 		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
@@ -112,6 +115,10 @@ func (r *RegionBackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput 
 
 func (r *RegionBackendService) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *RegionBackendService) FailoverPolicy() *pulumi.Output {
+	return r.s.State["failoverPolicy"]
 }
 
 func (r *RegionBackendService) Fingerprint() *pulumi.StringOutput {
@@ -162,6 +169,7 @@ type RegionBackendServiceState struct {
 	Backends interface{}
 	ConnectionDrainingTimeoutSec interface{}
 	Description interface{}
+	FailoverPolicy interface{}
 	Fingerprint interface{}
 	HealthChecks interface{}
 	LoadBalancingScheme interface{}
@@ -182,6 +190,7 @@ type RegionBackendServiceArgs struct {
 	Backends interface{}
 	ConnectionDrainingTimeoutSec interface{}
 	Description interface{}
+	FailoverPolicy interface{}
 	HealthChecks interface{}
 	LoadBalancingScheme interface{}
 	Name interface{}

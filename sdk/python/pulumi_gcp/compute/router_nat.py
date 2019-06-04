@@ -14,6 +14,7 @@ class RouterNat(pulumi.CustomResource):
     Timeout (in seconds) for ICMP connections.
     Defaults to 30s if not set. Changing this forces a new NAT to be created.
     """
+    log_config: pulumi.Output[dict]
     min_ports_per_vm: pulumi.Output[float]
     """
     Minimum number of ports allocated to a VM
@@ -83,7 +84,7 @@ class RouterNat(pulumi.CustomResource):
     Timeout (in seconds) for UDP connections.
     Defaults to 30s if not set. Changing this forces a new NAT to be created.
     """
-    def __init__(__self__, resource_name, opts=None, icmp_idle_timeout_sec=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __name__=None, __opts__=None):
         """
         Manages a Cloud NAT. For more information see
         [the official documentation](https://cloud.google.com/nat/docs/overview)
@@ -144,6 +145,8 @@ class RouterNat(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['icmp_idle_timeout_sec'] = icmp_idle_timeout_sec
+
+        __props__['log_config'] = log_config
 
         __props__['min_ports_per_vm'] = min_ports_per_vm
 
