@@ -9,6 +9,13 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class RouterInterface(pulumi.CustomResource):
+    interconnect_attachment: pulumi.Output[str]
+    """
+    The name or resource link to the
+    VLAN interconnect for this interface. Changing this forces a new interface to
+    be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+    specified.
+    """
     ip_range: pulumi.Output[str]
     """
     IP address and range of the interface. The IP range must be
@@ -38,9 +45,10 @@ class RouterInterface(pulumi.CustomResource):
     vpn_tunnel: pulumi.Output[str]
     """
     The name or resource link to the VPN tunnel this
-    interface will be linked to. Changing this forces a new interface to be created.
+    interface will be linked to. Changing this forces a new interface to be created. Only
+    one of `vpn_tunnel` and `interconnect_attachment` can be specified.
     """
-    def __init__(__self__, resource_name, opts=None, ip_range=None, name=None, project=None, region=None, router=None, vpn_tunnel=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, interconnect_attachment=None, ip_range=None, name=None, project=None, region=None, router=None, vpn_tunnel=None, __name__=None, __opts__=None):
         """
         Manages a Cloud Router interface. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
@@ -49,6 +57,10 @@ class RouterInterface(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
+               VLAN interconnect for this interface. Changing this forces a new interface to
+               be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+               specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
@@ -61,7 +73,8 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
-               interface will be linked to. Changing this forces a new interface to be created.
+               interface will be linked to. Changing this forces a new interface to be created. Only
+               one of `vpn_tunnel` and `interconnect_attachment` can be specified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -78,6 +91,8 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__['interconnect_attachment'] = interconnect_attachment
+
         __props__['ip_range'] = ip_range
 
         __props__['name'] = name
@@ -90,8 +105,6 @@ class RouterInterface(pulumi.CustomResource):
             raise TypeError("Missing required property 'router'")
         __props__['router'] = router
 
-        if vpn_tunnel is None:
-            raise TypeError("Missing required property 'vpn_tunnel'")
         __props__['vpn_tunnel'] = vpn_tunnel
 
         if opts is None:

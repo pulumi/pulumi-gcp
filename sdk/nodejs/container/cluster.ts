@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 1,
  *     location: "us-central1",
- *     // Setting an empty username and password explicitly disables basic auth
  *     masterAuth: {
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
  *         password: "",
  *         username: "",
  *     },
@@ -48,12 +50,6 @@ import * as utilities from "../utilities";
  *     },
  *     nodeCount: 1,
  * });
- * 
- * // The following outputs allow authentication and connectivity to the GKE Cluster
- * // by using certificate-based authentication.
- * export const clientCertificate = primary.masterAuth.clientCertificate;
- * export const clientKey = primary.masterAuth.clientKey;
- * export const clusterCaCertificate = primary.masterAuth.clusterCaCertificate;
  * ```
  * 
  * ## Example Usage - with the default node pool
@@ -65,8 +61,10 @@ import * as utilities from "../utilities";
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 3,
  *     location: "us-central1-a",
- *     // Setting an empty username and password explicitly disables basic auth
  *     masterAuth: {
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
  *         password: "",
  *         username: "",
  *     },
@@ -91,12 +89,6 @@ import * as utilities from "../utilities";
  *         update: "40m",
  *     }],
  * });
- * 
- * // The following outputs allow authentication and connectivity to the GKE Cluster
- * // by using certificate-based authentication.
- * export const clientCertificate = primary.masterAuth.clientCertificate;
- * export const clientKey = primary.masterAuth.clientKey;
- * export const clusterCaCertificate = primary.masterAuth.clusterCaCertificate;
  * ```
  */
 export class Cluster extends pulumi.CustomResource {
@@ -225,7 +217,7 @@ export class Cluster extends pulumi.CustomResource {
      * The authentication information for accessing the
      * Kubernetes master. Structure is documented below.
      */
-    public readonly masterAuth!: pulumi.Output<{ clientCertificate: string, clientCertificateConfig?: { issueClientCertificate: boolean }, clientKey: string, clusterCaCertificate: string, password?: string, username?: string }>;
+    public readonly masterAuth!: pulumi.Output<{ clientCertificate: string, clientCertificateConfig: { issueClientCertificate: boolean }, clientKey: string, clusterCaCertificate: string, password?: string, username?: string }>;
     /**
      * The desired configuration options
      * for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
@@ -344,6 +336,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
+     */
+    public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
+    /**
      * The name or self_link of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.
      */
@@ -354,6 +353,11 @@ export class Cluster extends pulumi.CustomResource {
      * notation (e.g. `1.2.3.4/29`).
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
+    /**
+     * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+     * Structure is documented below.
+     */
+    public readonly verticalPodAutoscaling!: pulumi.Output<{ enabled?: boolean } | undefined>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`
@@ -409,8 +413,10 @@ export class Cluster extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = state ? state.resourceLabels : undefined;
+            inputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
+            inputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -448,10 +454,12 @@ export class Cluster extends pulumi.CustomResource {
             inputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
+            inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["endpoint"] = undefined /*out*/;
             inputs["instanceGroupUrls"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
+            inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
         if (!opts) {
@@ -701,6 +709,13 @@ export interface ClusterState {
      */
     readonly resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
+     */
+    readonly servicesIpv4Cidr?: pulumi.Input<string>;
+    /**
      * The name or self_link of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.
      */
@@ -711,6 +726,11 @@ export interface ClusterState {
      * notation (e.g. `1.2.3.4/29`).
      */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
+    /**
+     * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+     * Structure is documented below.
+     */
+    readonly verticalPodAutoscaling?: pulumi.Input<{ enabled?: pulumi.Input<boolean> }>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`
@@ -944,6 +964,11 @@ export interface ClusterArgs {
      * which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;
+    /**
+     * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+     * Structure is documented below.
+     */
+    readonly verticalPodAutoscaling?: pulumi.Input<{ enabled?: pulumi.Input<boolean> }>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`

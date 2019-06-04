@@ -35,6 +35,7 @@ func NewJob(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["machineType"] = nil
 		inputs["maxWorkers"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
@@ -48,6 +49,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["machineType"] = args.MachineType
 		inputs["maxWorkers"] = args.MaxWorkers
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
@@ -75,6 +77,7 @@ func GetJob(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *JobState, opts ...pulumi.ResourceOpt) (*Job, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["machineType"] = state.MachineType
 		inputs["maxWorkers"] = state.MaxWorkers
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
@@ -104,6 +107,11 @@ func (r *Job) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Job) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The machine type to use for the job.
+func (r *Job) MachineType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["machineType"])
 }
 
 // The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -172,6 +180,8 @@ func (r *Job) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Job resources.
 type JobState struct {
+	// The machine type to use for the job.
+	MachineType interface{}
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
 	MaxWorkers interface{}
 	// A unique name for the resource, required by Dataflow.
@@ -201,6 +211,8 @@ type JobState struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// The machine type to use for the job.
+	MachineType interface{}
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
 	MaxWorkers interface{}
 	// A unique name for the resource, required by Dataflow.

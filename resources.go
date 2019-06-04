@@ -407,6 +407,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_forwarding_rule":        {Tok: gcpResource(gcpCompute, "ForwardingRule")},
 			"google_compute_global_address":         {Tok: gcpResource(gcpCompute, "GlobalAddress")},
 			"google_compute_global_forwarding_rule": {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
+			"google_compute_ha_vpn_gateway":         {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
 			"google_compute_health_check":           {Tok: gcpResource(gcpCompute, "HealthCheck")},
 			"google_compute_http_health_check":      {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
 			"google_compute_https_health_check":     {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
@@ -885,6 +886,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_network.html.markdown",
 				},
 			},
+			"google_composer_image_versions": {
+				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_composer_image_versions.html.markdown",
+				},
+			},
 			"google_iam_role": {
 				Tok: gcpDataSource(gcpIAM, "getRule"),
 				Docs: &tfbridge.DocInfo{
@@ -934,6 +941,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpCompute, "getRegions"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_compute_regions.html.markdown",
+				},
+			},
+			"google_compute_ssl_certificate": {
+				Tok: gcpDataSource(gcpCompute, "getCertificate"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_ssl_certificate.html.markdown",
 				},
 			},
 			"google_compute_ssl_policy": {

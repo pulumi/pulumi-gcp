@@ -54,6 +54,8 @@ export class NetworkPeering extends pulumi.CustomResource {
      * be created and managed automatically. Defaults to `true`.
      */
     public readonly autoCreateRoutes!: pulumi.Output<boolean | undefined>;
+    public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
+    public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the peering.
      */
@@ -88,6 +90,8 @@ export class NetworkPeering extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
             inputs["autoCreateRoutes"] = state ? state.autoCreateRoutes : undefined;
+            inputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
+            inputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["peerNetwork"] = state ? state.peerNetwork : undefined;
@@ -102,6 +106,8 @@ export class NetworkPeering extends pulumi.CustomResource {
                 throw new Error("Missing required property 'peerNetwork'");
             }
             inputs["autoCreateRoutes"] = args ? args.autoCreateRoutes : undefined;
+            inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
+            inputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["peerNetwork"] = args ? args.peerNetwork : undefined;
@@ -128,6 +134,8 @@ export interface NetworkPeeringState {
      * be created and managed automatically. Defaults to `true`.
      */
     readonly autoCreateRoutes?: pulumi.Input<boolean>;
+    readonly exportCustomRoutes?: pulumi.Input<boolean>;
+    readonly importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * Name of the peering.
      */
@@ -159,6 +167,8 @@ export interface NetworkPeeringArgs {
      * be created and managed automatically. Defaults to `true`.
      */
     readonly autoCreateRoutes?: pulumi.Input<boolean>;
+    readonly exportCustomRoutes?: pulumi.Input<boolean>;
+    readonly importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * Name of the peering.
      */

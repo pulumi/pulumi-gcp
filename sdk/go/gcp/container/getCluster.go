@@ -58,8 +58,10 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		Region: outputs["region"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
+		ServicesIpv4Cidr: outputs["servicesIpv4Cidr"],
 		Subnetwork: outputs["subnetwork"],
 		TpuIpv4CidrBlock: outputs["tpuIpv4CidrBlock"],
+		VerticalPodAutoscalings: outputs["verticalPodAutoscalings"],
 		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
@@ -122,8 +124,10 @@ type GetClusterResult struct {
 	Region interface{}
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
+	ServicesIpv4Cidr interface{}
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}
+	VerticalPodAutoscalings interface{}
 	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

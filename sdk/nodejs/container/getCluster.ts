@@ -114,8 +114,10 @@ export interface GetClusterResult {
     readonly region?: string;
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
+    readonly servicesIpv4Cidr: string;
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;
+    readonly verticalPodAutoscalings: { enabled: boolean }[];
     readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

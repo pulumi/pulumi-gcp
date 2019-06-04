@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * ## google\compute\_instance\_iam\_member
+ * ## google\_compute\_instance\_iam\_member
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

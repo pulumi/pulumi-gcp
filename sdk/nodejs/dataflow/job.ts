@@ -48,6 +48,10 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * The machine type to use for the job.
+     */
+    public readonly machineType!: pulumi.Output<string | undefined>;
+    /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
     public readonly maxWorkers!: pulumi.Output<number | undefined>;
@@ -109,6 +113,7 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as JobState | undefined;
+            inputs["machineType"] = state ? state.machineType : undefined;
             inputs["maxWorkers"] = state ? state.maxWorkers : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -130,6 +135,7 @@ export class Job extends pulumi.CustomResource {
             if (!args || args.templateGcsPath === undefined) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
+            inputs["machineType"] = args ? args.machineType : undefined;
             inputs["maxWorkers"] = args ? args.maxWorkers : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -159,6 +165,10 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
+    /**
+     * The machine type to use for the job.
+     */
+    readonly machineType?: pulumi.Input<string>;
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
@@ -214,6 +224,10 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * The machine type to use for the job.
+     */
+    readonly machineType?: pulumi.Input<string>;
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */

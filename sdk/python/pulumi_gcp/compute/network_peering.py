@@ -14,6 +14,8 @@ class NetworkPeering(pulumi.CustomResource):
     If set to `true`, the routes between the two networks will
     be created and managed automatically. Defaults to `true`.
     """
+    export_custom_routes: pulumi.Output[bool]
+    import_custom_routes: pulumi.Output[bool]
     name: pulumi.Output[str]
     """
     Name of the peering.
@@ -34,7 +36,7 @@ class NetworkPeering(pulumi.CustomResource):
     """
     Details about the current state of the peering.
     """
-    def __init__(__self__, resource_name, opts=None, auto_create_routes=None, name=None, network=None, peer_network=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __name__=None, __opts__=None):
         """
         Manages a network peering within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
@@ -69,6 +71,10 @@ class NetworkPeering(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['auto_create_routes'] = auto_create_routes
+
+        __props__['export_custom_routes'] = export_custom_routes
+
+        __props__['import_custom_routes'] = import_custom_routes
 
         __props__['name'] = name
 

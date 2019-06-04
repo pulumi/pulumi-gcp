@@ -12,7 +12,7 @@ class GetClientConfigResult:
     """
     A collection of values returned by getClientConfig.
     """
-    def __init__(__self__, access_token=None, project=None, region=None, id=None):
+    def __init__(__self__, access_token=None, project=None, region=None, zone=None, id=None):
         if access_token and not isinstance(access_token, str):
             raise TypeError("Expected argument 'access_token' to be a str")
         __self__.access_token = access_token
@@ -30,6 +30,12 @@ class GetClientConfigResult:
         __self__.region = region
         """
         The region to operate under.
+        """
+        if zone and not isinstance(zone, str):
+            raise TypeError("Expected argument 'zone' to be a str")
+        __self__.zone = zone
+        """
+        The zone to operate under.
         """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -54,4 +60,5 @@ async def get_client_config(opts=None):
         access_token=__ret__.get('accessToken'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
+        zone=__ret__.get('zone'),
         id=__ret__.get('id'))

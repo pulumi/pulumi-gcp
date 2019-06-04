@@ -240,6 +240,13 @@ class Cluster(pulumi.CustomResource):
     """
     The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
     """
+    services_ipv4_cidr: pulumi.Output[str]
+    """
+    The IP address range of the Kubernetes services in this
+    cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+    notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+    `/16` from the container CIDR.
+    """
     subnetwork: pulumi.Output[str]
     """
     The name or self_link of the Google Compute Engine subnetwork in
@@ -251,13 +258,18 @@ class Cluster(pulumi.CustomResource):
     [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
     notation (e.g. `1.2.3.4/29`).
     """
+    vertical_pod_autoscaling: pulumi.Output[dict]
+    """
+    Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+    Structure is documented below.
+    """
     zone: pulumi.Output[str]
     """
     The zone that the cluster master and nodes
     should be created in. If specified, this cluster will be a zonal cluster. `zone`
     has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, vertical_pod_autoscaling=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -390,6 +402,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
                which the cluster's instances are launched.
+        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+               Structure is documented below.
         :param pulumi.Input[str] zone: The zone that the cluster master and nodes
                should be created in. If specified, this cluster will be a zonal cluster. `zone`
                has been deprecated in favour of `location`.
@@ -477,11 +491,14 @@ class Cluster(pulumi.CustomResource):
 
         __props__['subnetwork'] = subnetwork
 
+        __props__['vertical_pod_autoscaling'] = vertical_pod_autoscaling
+
         __props__['zone'] = zone
 
         __props__['endpoint'] = None
         __props__['instance_group_urls'] = None
         __props__['master_version'] = None
+        __props__['services_ipv4_cidr'] = None
         __props__['tpu_ipv4_cidr_block'] = None
 
         if opts is None:

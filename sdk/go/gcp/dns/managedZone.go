@@ -32,6 +32,7 @@ func NewManagedZone(ctx *pulumi.Context,
 	inputs["description"] = "Managed by Pulumi"
 	if args == nil {
 		inputs["dnsName"] = nil
+		inputs["dnssecConfig"] = nil
 		inputs["forwardingConfig"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
@@ -42,6 +43,7 @@ func NewManagedZone(ctx *pulumi.Context,
 	} else {
 		inputs["description"] = args.Description
 		inputs["dnsName"] = args.DnsName
+		inputs["dnssecConfig"] = args.DnssecConfig
 		inputs["forwardingConfig"] = args.ForwardingConfig
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
@@ -66,6 +68,7 @@ func GetManagedZone(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["dnsName"] = state.DnsName
+		inputs["dnssecConfig"] = state.DnssecConfig
 		inputs["forwardingConfig"] = state.ForwardingConfig
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
@@ -98,6 +101,10 @@ func (r *ManagedZone) Description() *pulumi.StringOutput {
 
 func (r *ManagedZone) DnsName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dnsName"])
+}
+
+func (r *ManagedZone) DnssecConfig() *pulumi.Output {
+	return r.s.State["dnssecConfig"]
 }
 
 func (r *ManagedZone) ForwardingConfig() *pulumi.Output {
@@ -138,6 +145,7 @@ func (r *ManagedZone) Visibility() *pulumi.StringOutput {
 type ManagedZoneState struct {
 	Description interface{}
 	DnsName interface{}
+	DnssecConfig interface{}
 	ForwardingConfig interface{}
 	Labels interface{}
 	Name interface{}
@@ -154,6 +162,7 @@ type ManagedZoneState struct {
 type ManagedZoneArgs struct {
 	Description interface{}
 	DnsName interface{}
+	DnssecConfig interface{}
 	ForwardingConfig interface{}
 	Labels interface{}
 	Name interface{}

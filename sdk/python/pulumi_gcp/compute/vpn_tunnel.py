@@ -17,6 +17,9 @@ class VPNTunnel(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     local_traffic_selectors: pulumi.Output[list]
     name: pulumi.Output[str]
+    peer_external_gateway: pulumi.Output[str]
+    peer_external_gateway_interface: pulumi.Output[float]
+    peer_gcp_gateway: pulumi.Output[str]
     peer_ip: pulumi.Output[str]
     project: pulumi.Output[str]
     """
@@ -33,7 +36,9 @@ class VPNTunnel(pulumi.CustomResource):
     shared_secret: pulumi.Output[str]
     shared_secret_hash: pulumi.Output[str]
     target_vpn_gateway: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, __name__=None, __opts__=None):
+    vpn_gateway: pulumi.Output[str]
+    vpn_gateway_interface: pulumi.Output[float]
+    def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None, __name__=None, __opts__=None):
         """
         VPN tunnel resource.
         
@@ -79,8 +84,12 @@ class VPNTunnel(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if peer_ip is None:
-            raise TypeError("Missing required property 'peer_ip'")
+        __props__['peer_external_gateway'] = peer_external_gateway
+
+        __props__['peer_external_gateway_interface'] = peer_external_gateway_interface
+
+        __props__['peer_gcp_gateway'] = peer_gcp_gateway
+
         __props__['peer_ip'] = peer_ip
 
         __props__['project'] = project
@@ -95,9 +104,11 @@ class VPNTunnel(pulumi.CustomResource):
             raise TypeError("Missing required property 'shared_secret'")
         __props__['shared_secret'] = shared_secret
 
-        if target_vpn_gateway is None:
-            raise TypeError("Missing required property 'target_vpn_gateway'")
         __props__['target_vpn_gateway'] = target_vpn_gateway
+
+        __props__['vpn_gateway'] = vpn_gateway
+
+        __props__['vpn_gateway_interface'] = vpn_gateway_interface
 
         __props__['creation_timestamp'] = None
         __props__['detailed_status'] = None

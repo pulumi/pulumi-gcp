@@ -67,6 +67,10 @@ import * as utilities from "../utilities";
  *     region: defaultSubnetwork.region,
  * });
  * const advanced_nat = new gcp.compute.RouterNat("advanced-nat", {
+ *     logConfig: {
+ *         enable: true,
+ *         filter: "TRANSLATIONS_ONLY",
+ *     },
  *     natIpAllocateOption: "MANUAL_ONLY",
  *     natIps: address.map(v => v.selfLink),
  *     region: "us-central1",
@@ -97,6 +101,7 @@ export class RouterNat extends pulumi.CustomResource {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    public readonly logConfig!: pulumi.Output<{ enable: boolean, filter: string } | undefined>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
@@ -180,6 +185,7 @@ export class RouterNat extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as RouterNatState | undefined;
             inputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
+            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
@@ -201,6 +207,7 @@ export class RouterNat extends pulumi.CustomResource {
                 throw new Error("Missing required property 'router'");
             }
             inputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
+            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
@@ -234,6 +241,7 @@ export interface RouterNatState {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
+    readonly logConfig?: pulumi.Input<{ enable: pulumi.Input<boolean>, filter: pulumi.Input<string> }>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
@@ -314,6 +322,7 @@ export interface RouterNatArgs {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
+    readonly logConfig?: pulumi.Input<{ enable: pulumi.Input<boolean>, filter: pulumi.Input<string> }>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.

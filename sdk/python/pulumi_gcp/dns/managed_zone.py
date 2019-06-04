@@ -11,6 +11,7 @@ from .. import utilities, tables
 class ManagedZone(pulumi.CustomResource):
     description: pulumi.Output[str]
     dns_name: pulumi.Output[str]
+    dnssec_config: pulumi.Output[dict]
     forwarding_config: pulumi.Output[dict]
     labels: pulumi.Output[dict]
     name: pulumi.Output[str]
@@ -23,7 +24,7 @@ class ManagedZone(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     visibility: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, visibility=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, visibility=None, __name__=None, __opts__=None):
         """
         A zone is a subtree of the DNS namespace under one administrative
         responsibility. A ManagedZone is a resource that represents a DNS zone
@@ -63,6 +64,8 @@ class ManagedZone(pulumi.CustomResource):
         if dns_name is None:
             raise TypeError("Missing required property 'dns_name'")
         __props__['dns_name'] = dns_name
+
+        __props__['dnssec_config'] = dnssec_config
 
         __props__['forwarding_config'] = forwarding_config
 

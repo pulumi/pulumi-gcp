@@ -17,6 +17,7 @@ func LookupClientConfig(ctx *pulumi.Context) (*GetClientConfigResult, error) {
 		AccessToken: outputs["accessToken"],
 		Project: outputs["project"],
 		Region: outputs["region"],
+		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -29,6 +30,8 @@ type GetClientConfigResult struct {
 	Project interface{}
 	// The region to operate under.
 	Region interface{}
+	// The zone to operate under.
+	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

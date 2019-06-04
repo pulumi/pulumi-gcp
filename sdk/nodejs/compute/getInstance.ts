@@ -76,7 +76,7 @@ export interface GetInstanceResult {
      */
     readonly attachedDisks: { deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[];
     /**
-     * The boot disk for the instance. Sructure is documented below.
+     * The boot disk for the instance. Structure is documented below.
      */
     readonly bootDisks: { autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }[], kmsKeySelfLink: string, source: string }[];
     /**

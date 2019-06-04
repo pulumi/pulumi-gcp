@@ -8,10 +8,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a Global Forwarding Rule within GCE. This binds an ip and port to a target HTTP(s) proxy. For more
-// information see [the official
-// documentation](https://cloud.google.com/compute/docs/load-balancing/http/global-forwarding-rules) and
-// [API](https://cloud.google.com/compute/docs/reference/latest/globalForwardingRules).
+// Represents a GlobalForwardingRule resource. Global forwarding rules are
+// used to forward traffic to the correct load balancer for HTTP load
+// balancing. Global forwarding rules can only be used for HTTP load
+// balancing.
+// 
+// For more information, see
+// https://cloud.google.com/compute/docs/load-balancing/http/
 type GlobalForwardingRule struct {
 	s *pulumi.ResourceState
 }
@@ -29,7 +32,9 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["ipProtocol"] = nil
 		inputs["ipVersion"] = nil
 		inputs["labels"] = nil
+		inputs["loadBalancingScheme"] = nil
 		inputs["name"] = nil
+		inputs["network"] = nil
 		inputs["portRange"] = nil
 		inputs["project"] = nil
 		inputs["target"] = nil
@@ -39,7 +44,9 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["ipProtocol"] = args.IpProtocol
 		inputs["ipVersion"] = args.IpVersion
 		inputs["labels"] = args.Labels
+		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
 		inputs["name"] = args.Name
+		inputs["network"] = args.Network
 		inputs["portRange"] = args.PortRange
 		inputs["project"] = args.Project
 		inputs["target"] = args.Target
@@ -65,7 +72,9 @@ func GetGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["ipVersion"] = state.IpVersion
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
+		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
 		inputs["name"] = state.Name
+		inputs["network"] = state.Network
 		inputs["portRange"] = state.PortRange
 		inputs["project"] = state.Project
 		inputs["selfLink"] = state.SelfLink
@@ -88,28 +97,18 @@ func (r *GlobalForwardingRule) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Textual description field.
 func (r *GlobalForwardingRule) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The static IP. (if not set, an ephemeral IP is
-// used). This should be the literal IP address to be used, not the `self_link`
-// to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-// resource, use the `address` property instead of the `self_link` property.)
 func (r *GlobalForwardingRule) IpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
-// The IP protocol to route, one of "TCP" "UDP" "AH"
-// "ESP" or "SCTP". (default "TCP").
 func (r *GlobalForwardingRule) IpProtocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipProtocol"])
 }
 
-// 
-// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-// You cannot provide this and `ip_address`.
 func (r *GlobalForwardingRule) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
@@ -118,32 +117,28 @@ func (r *GlobalForwardingRule) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-// )
-// A set of key/value label pairs to assign to the resource.
 func (r *GlobalForwardingRule) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// A unique name for the resource, required by GCE. Changing
-// this forces a new resource to be created.
+func (r *GlobalForwardingRule) LoadBalancingScheme() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
+}
+
 func (r *GlobalForwardingRule) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// A range e.g. "1024-2048" or a single port "1024"
-// (defaults to all ports!).
-// Some types of forwarding targets have constraints on the acceptable ports:
-// * Target HTTP proxy: 80, 8080
-// * Target HTTPS proxy: 443
-// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-// * Target VPN gateway: 500, 4500
+func (r *GlobalForwardingRule) Network() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["network"])
+}
+
 func (r *GlobalForwardingRule) PortRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["portRange"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *GlobalForwardingRule) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -153,86 +148,43 @@ func (r *GlobalForwardingRule) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// URL of target HTTP or HTTPS proxy.
 func (r *GlobalForwardingRule) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
 // Input properties used for looking up and filtering GlobalForwardingRule resources.
 type GlobalForwardingRuleState struct {
-	// Textual description field.
 	Description interface{}
-	// The static IP. (if not set, an ephemeral IP is
-	// used). This should be the literal IP address to be used, not the `self_link`
-	// to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-	// resource, use the `address` property instead of the `self_link` property.)
 	IpAddress interface{}
-	// The IP protocol to route, one of "TCP" "UDP" "AH"
-	// "ESP" or "SCTP". (default "TCP").
 	IpProtocol interface{}
-	// 
-	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
 	LabelFingerprint interface{}
-	// )
-	// A set of key/value label pairs to assign to the resource.
 	Labels interface{}
-	// A unique name for the resource, required by GCE. Changing
-	// this forces a new resource to be created.
+	LoadBalancingScheme interface{}
 	Name interface{}
-	// A range e.g. "1024-2048" or a single port "1024"
-	// (defaults to all ports!).
-	// Some types of forwarding targets have constraints on the acceptable ports:
-	// * Target HTTP proxy: 80, 8080
-	// * Target HTTPS proxy: 443
-	// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target VPN gateway: 500, 4500
+	Network interface{}
 	PortRange interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// URL of target HTTP or HTTPS proxy.
 	Target interface{}
 }
 
 // The set of arguments for constructing a GlobalForwardingRule resource.
 type GlobalForwardingRuleArgs struct {
-	// Textual description field.
 	Description interface{}
-	// The static IP. (if not set, an ephemeral IP is
-	// used). This should be the literal IP address to be used, not the `self_link`
-	// to a `google_compute_global_address` resource. (If using a `google_compute_global_address`
-	// resource, use the `address` property instead of the `self_link` property.)
 	IpAddress interface{}
-	// The IP protocol to route, one of "TCP" "UDP" "AH"
-	// "ESP" or "SCTP". (default "TCP").
 	IpProtocol interface{}
-	// 
-	// The IP Version that will be used by this resource's address. One of `"IPV4"` or `"IPV6"`.
-	// You cannot provide this and `ip_address`.
 	IpVersion interface{}
-	// )
-	// A set of key/value label pairs to assign to the resource.
 	Labels interface{}
-	// A unique name for the resource, required by GCE. Changing
-	// this forces a new resource to be created.
+	LoadBalancingScheme interface{}
 	Name interface{}
-	// A range e.g. "1024-2048" or a single port "1024"
-	// (defaults to all ports!).
-	// Some types of forwarding targets have constraints on the acceptable ports:
-	// * Target HTTP proxy: 80, 8080
-	// * Target HTTPS proxy: 443
-	// * Target TCP proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target SSL proxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222
-	// * Target VPN gateway: 500, 4500
+	Network interface{}
 	PortRange interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// URL of target HTTP or HTTPS proxy.
 	Target interface{}
 }

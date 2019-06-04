@@ -78,7 +78,7 @@ type GetInstanceResult struct {
 	AllowStoppingForUpdate interface{}
 	// List of disks attached to the instance. Structure is documented below.
 	AttachedDisks interface{}
-	// The boot disk for the instance. Sructure is documented below.
+	// The boot disk for the instance. Structure is documented below.
 	BootDisks interface{}
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward interface{}

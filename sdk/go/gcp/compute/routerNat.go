@@ -28,6 +28,7 @@ func NewRouterNat(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["icmpIdleTimeoutSec"] = nil
+		inputs["logConfig"] = nil
 		inputs["minPortsPerVm"] = nil
 		inputs["name"] = nil
 		inputs["natIpAllocateOption"] = nil
@@ -42,6 +43,7 @@ func NewRouterNat(ctx *pulumi.Context,
 		inputs["udpIdleTimeoutSec"] = nil
 	} else {
 		inputs["icmpIdleTimeoutSec"] = args.IcmpIdleTimeoutSec
+		inputs["logConfig"] = args.LogConfig
 		inputs["minPortsPerVm"] = args.MinPortsPerVm
 		inputs["name"] = args.Name
 		inputs["natIpAllocateOption"] = args.NatIpAllocateOption
@@ -69,6 +71,7 @@ func GetRouterNat(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["icmpIdleTimeoutSec"] = state.IcmpIdleTimeoutSec
+		inputs["logConfig"] = state.LogConfig
 		inputs["minPortsPerVm"] = state.MinPortsPerVm
 		inputs["name"] = state.Name
 		inputs["natIpAllocateOption"] = state.NatIpAllocateOption
@@ -103,6 +106,10 @@ func (r *RouterNat) ID() *pulumi.IDOutput {
 // Defaults to 30s if not set. Changing this forces a new NAT to be created.
 func (r *RouterNat) IcmpIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["icmpIdleTimeoutSec"])
+}
+
+func (r *RouterNat) LogConfig() *pulumi.Output {
+	return r.s.State["logConfig"]
 }
 
 // Minimum number of ports allocated to a VM
@@ -191,6 +198,7 @@ type RouterNatState struct {
 	// Timeout (in seconds) for ICMP connections.
 	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	IcmpIdleTimeoutSec interface{}
+	LogConfig interface{}
 	// Minimum number of ports allocated to a VM
 	// from this NAT config. If not set, a default number of ports is allocated to a VM.
 	// Changing this forces a new NAT to be created.
@@ -243,6 +251,7 @@ type RouterNatArgs struct {
 	// Timeout (in seconds) for ICMP connections.
 	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
 	IcmpIdleTimeoutSec interface{}
+	LogConfig interface{}
 	// Minimum number of ports allocated to a VM
 	// from this NAT config. If not set, a default number of ports is allocated to a VM.
 	// Changing this forces a new NAT to be created.

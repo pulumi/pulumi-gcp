@@ -8,42 +8,36 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class RegionBackendService(pulumi.CustomResource):
-    backends: pulumi.Output[list]
-    connection_draining_timeout_sec: pulumi.Output[float]
+class HaVpnGateway(pulumi.CustomResource):
     description: pulumi.Output[str]
-    failover_policy: pulumi.Output[dict]
-    fingerprint: pulumi.Output[str]
-    health_checks: pulumi.Output[str]
-    load_balancing_scheme: pulumi.Output[str]
     name: pulumi.Output[str]
+    network: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    protocol: pulumi.Output[str]
     region: pulumi.Output[str]
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
-    session_affinity: pulumi.Output[str]
-    timeout_sec: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, backends=None, connection_draining_timeout_sec=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
+    vpn_interfaces: pulumi.Output[list]
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, network=None, project=None, region=None, __name__=None, __opts__=None):
         """
-        A Region Backend Service defines a regionally-scoped group of virtual
-        machines that will serve traffic for load balancing.
+        Represents a VPN gateway running in GCP. This virtual device is managed
+        by Google, but used only by you. This type of VPN Gateway allows for the creation
+        of VPN solutions with higher availability than classic Target VPN Gateways.
         
-        Region backend services can only be used when using internal load balancing.
-        For external load balancing, use a global backend service instead.
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
+        To get more information about HaVpnGateway, see:
         
-        To get more information about RegionBackendService, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
         * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+            * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -65,41 +59,27 @@ class RegionBackendService(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['backends'] = backends
-
-        __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
-
         __props__['description'] = description
-
-        __props__['failover_policy'] = failover_policy
-
-        if health_checks is None:
-            raise TypeError("Missing required property 'health_checks'")
-        __props__['health_checks'] = health_checks
-
-        __props__['load_balancing_scheme'] = load_balancing_scheme
 
         __props__['name'] = name
 
-        __props__['project'] = project
+        if network is None:
+            raise TypeError("Missing required property 'network'")
+        __props__['network'] = network
 
-        __props__['protocol'] = protocol
+        __props__['project'] = project
 
         __props__['region'] = region
 
-        __props__['session_affinity'] = session_affinity
-
-        __props__['timeout_sec'] = timeout_sec
-
-        __props__['fingerprint'] = None
         __props__['self_link'] = None
+        __props__['vpn_interfaces'] = None
 
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
             opts.version = utilities.get_version()
-        super(RegionBackendService, __self__).__init__(
-            'gcp:compute/regionBackendService:RegionBackendService',
+        super(HaVpnGateway, __self__).__init__(
+            'gcp:compute/haVpnGateway:HaVpnGateway',
             resource_name,
             __props__,
             opts)
