@@ -69,6 +69,25 @@ export class ServicePerimeter extends pulumi.CustomResource {
         return new ServicePerimeter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter';
+
+    /**
+     * Returns true if the given object is an instance of ServicePerimeter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ServicePerimeter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ServicePerimeter.__pulumiType;
+    }
+
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -115,14 +134,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:accesscontextmanager/servicePerimeter:ServicePerimeter", name, inputs, opts);
+        super(ServicePerimeter.__pulumiType, name, inputs, opts);
     }
 }
 

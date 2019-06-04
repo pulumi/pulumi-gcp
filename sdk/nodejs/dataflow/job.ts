@@ -47,6 +47,25 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:dataflow/job:Job';
+
+    /**
+     * Returns true if the given object is an instance of Job.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Job {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Job.__pulumiType;
+    }
+
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
@@ -144,14 +163,7 @@ export class Job extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dataflow/job:Job", name, inputs, opts);
+        super(Job.__pulumiType, name, inputs, opts);
     }
 }
 

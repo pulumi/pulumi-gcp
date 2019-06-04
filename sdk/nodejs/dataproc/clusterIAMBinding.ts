@@ -74,6 +74,25 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
         return new ClusterIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of ClusterIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ClusterIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ClusterIAMBinding.__pulumiType;
+    }
+
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
@@ -136,14 +155,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dataproc/clusterIAMBinding:ClusterIAMBinding", name, inputs, opts);
+        super(ClusterIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

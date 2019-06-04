@@ -47,6 +47,25 @@ export class Database extends pulumi.CustomResource {
         return new Database(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:spanner/database:Database';
+
+    /**
+     * Returns true if the given object is an instance of Database.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Database {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Database.__pulumiType;
+    }
+
     public readonly ddls!: pulumi.Output<string[] | undefined>;
     public readonly instance!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
@@ -85,14 +104,7 @@ export class Database extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:spanner/database:Database", name, inputs, opts);
+        super(Database.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -51,6 +51,25 @@ export class FirewallRule extends pulumi.CustomResource {
         return new FirewallRule(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:appengine/firewallRule:FirewallRule';
+
+    /**
+     * Returns true if the given object is an instance of FirewallRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FirewallRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === FirewallRule.__pulumiType;
+    }
+
     public readonly action!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly priority!: pulumi.Output<number | undefined>;
@@ -92,14 +111,7 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:appengine/firewallRule:FirewallRule", name, inputs, opts);
+        super(FirewallRule.__pulumiType, name, inputs, opts);
     }
 }
 

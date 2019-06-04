@@ -107,10 +107,6 @@ async def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts)
 
     return GetForwardingRuleResult(

@@ -79,6 +79,25 @@ export class ForwardingRule extends pulumi.CustomResource {
         return new ForwardingRule(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/forwardingRule:ForwardingRule';
+
+    /**
+     * Returns true if the given object is an instance of ForwardingRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ForwardingRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ForwardingRule.__pulumiType;
+    }
+
     public readonly allPorts!: pulumi.Output<boolean | undefined>;
     public readonly backendService!: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -168,14 +187,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["serviceName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/forwardingRule:ForwardingRule", name, inputs, opts);
+        super(ForwardingRule.__pulumiType, name, inputs, opts);
     }
 }
 

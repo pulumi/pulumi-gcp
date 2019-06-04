@@ -186,10 +186,6 @@ async def get_instance(name=None,project=None,self_link=None,zone=None,opts=None
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts)
 
     return GetInstanceResult(

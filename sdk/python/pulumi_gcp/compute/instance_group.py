@@ -119,10 +119,6 @@ class InstanceGroup(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['size'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(InstanceGroup, __self__).__init__(
             'gcp:compute/instanceGroup:InstanceGroup',
             resource_name,

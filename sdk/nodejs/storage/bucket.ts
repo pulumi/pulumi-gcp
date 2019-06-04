@@ -49,6 +49,25 @@ export class Bucket extends pulumi.CustomResource {
         return new Bucket(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:storage/bucket:Bucket';
+
+    /**
+     * Returns true if the given object is an instance of Bucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Bucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Bucket.__pulumiType;
+    }
+
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
@@ -158,14 +177,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/bucket:Bucket", name, inputs, opts);
+        super(Bucket.__pulumiType, name, inputs, opts);
     }
 }
 

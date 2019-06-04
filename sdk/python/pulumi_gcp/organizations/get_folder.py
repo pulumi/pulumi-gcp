@@ -70,10 +70,6 @@ async def get_folder(folder=None,lookup_organization=None,opts=None):
 
     __args__['folder'] = folder
     __args__['lookupOrganization'] = lookup_organization
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__, opts=opts)
 
     return GetFolderResult(

@@ -50,6 +50,25 @@ export class BackendBucket extends pulumi.CustomResource {
         return new BackendBucket(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/backendBucket:BackendBucket';
+
+    /**
+     * Returns true if the given object is an instance of BackendBucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BackendBucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BackendBucket.__pulumiType;
+    }
+
     public readonly bucketName!: pulumi.Output<string>;
     public readonly cdnPolicy!: pulumi.Output<{ signedUrlCacheMaxAgeSec?: number }>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -100,14 +119,7 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/backendBucket:BackendBucket", name, inputs, opts);
+        super(BackendBucket.__pulumiType, name, inputs, opts);
     }
 }
 

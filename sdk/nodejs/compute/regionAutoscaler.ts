@@ -87,6 +87,25 @@ export class RegionAutoscaler extends pulumi.CustomResource {
         return new RegionAutoscaler(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/regionAutoscaler:RegionAutoscaler';
+
+    /**
+     * Returns true if the given object is an instance of RegionAutoscaler.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RegionAutoscaler {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RegionAutoscaler.__pulumiType;
+    }
+
     public readonly autoscalingPolicy!: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { filter?: string, name: string, singleInstanceAssignment?: number, target?: number, type?: string }[], minReplicas: number }>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -136,14 +155,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/regionAutoscaler:RegionAutoscaler", name, inputs, opts);
+        super(RegionAutoscaler.__pulumiType, name, inputs, opts);
     }
 }
 

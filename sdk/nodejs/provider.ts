@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
+    private static readonly __pulumiType = 'gcp';
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -29,14 +30,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp", name, inputs, opts);
+        super(Provider.__pulumiType, name, inputs, opts);
     }
 }
 

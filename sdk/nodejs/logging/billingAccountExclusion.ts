@@ -39,6 +39,25 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
         return new BillingAccountExclusion(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:logging/billingAccountExclusion:BillingAccountExclusion';
+
+    /**
+     * Returns true if the given object is an instance of BillingAccountExclusion.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BillingAccountExclusion {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BillingAccountExclusion.__pulumiType;
+    }
+
     /**
      * The billing account to create the exclusion for.
      */
@@ -94,14 +113,7 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, inputs, opts);
+        super(BillingAccountExclusion.__pulumiType, name, inputs, opts);
     }
 }
 

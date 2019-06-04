@@ -58,6 +58,25 @@ export class Notification extends pulumi.CustomResource {
         return new Notification(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:storage/notification:Notification';
+
+    /**
+     * Returns true if the given object is an instance of Notification.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Notification {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Notification.__pulumiType;
+    }
+
     /**
      * The name of the bucket.
      */
@@ -127,14 +146,7 @@ export class Notification extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/notification:Notification", name, inputs, opts);
+        super(Notification.__pulumiType, name, inputs, opts);
     }
 }
 

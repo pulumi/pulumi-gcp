@@ -85,6 +85,25 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:cloudscheduler/job:Job';
+
+    /**
+     * Returns true if the given object is an instance of Job.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Job {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Job.__pulumiType;
+    }
+
     public readonly appEngineHttpTarget!: pulumi.Output<{ appEngineRouting?: { instance?: string, service?: string, version?: string }, body?: string, headers?: {[key: string]: string}, httpMethod?: string, relativeUri: string } | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly httpTarget!: pulumi.Output<{ body?: string, headers?: {[key: string]: string}, httpMethod?: string, uri: string } | undefined>;
@@ -135,14 +154,7 @@ export class Job extends pulumi.CustomResource {
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:cloudscheduler/job:Job", name, inputs, opts);
+        super(Job.__pulumiType, name, inputs, opts);
     }
 }
 

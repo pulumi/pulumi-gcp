@@ -137,6 +137,25 @@ export class RecordSet extends pulumi.CustomResource {
         return new RecordSet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:dns/recordSet:RecordSet';
+
+    /**
+     * Returns true if the given object is an instance of RecordSet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RecordSet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RecordSet.__pulumiType;
+    }
+
     /**
      * The name of the zone in which this record set will
      * reside.
@@ -204,14 +223,7 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dns/recordSet:RecordSet", name, inputs, opts);
+        super(RecordSet.__pulumiType, name, inputs, opts);
     }
 }
 

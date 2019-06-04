@@ -181,6 +181,25 @@ export class InstanceTemplate extends pulumi.CustomResource {
         return new InstanceTemplate(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/instanceTemplate:InstanceTemplate';
+
+    /**
+     * Returns true if the given object is an instance of InstanceTemplate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceTemplate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === InstanceTemplate.__pulumiType;
+    }
+
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
@@ -357,14 +376,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/instanceTemplate:InstanceTemplate", name, inputs, opts);
+        super(InstanceTemplate.__pulumiType, name, inputs, opts);
     }
 }
 

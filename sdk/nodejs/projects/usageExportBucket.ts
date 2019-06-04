@@ -74,6 +74,25 @@ export class UsageExportBucket extends pulumi.CustomResource {
         return new UsageExportBucket(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:projects/usageExportBucket:UsageExportBucket';
+
+    /**
+     * Returns true if the given object is an instance of UsageExportBucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UsageExportBucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UsageExportBucket.__pulumiType;
+    }
+
     public readonly bucketName!: pulumi.Output<string>;
     public readonly prefix!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
@@ -102,14 +121,7 @@ export class UsageExportBucket extends pulumi.CustomResource {
             inputs["prefix"] = args ? args.prefix : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:projects/usageExportBucket:UsageExportBucket", name, inputs, opts);
+        super(UsageExportBucket.__pulumiType, name, inputs, opts);
     }
 }
 

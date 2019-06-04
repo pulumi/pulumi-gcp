@@ -30,13 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
     }, opts);
 }

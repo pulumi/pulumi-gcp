@@ -77,6 +77,25 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         return new UptimeCheckConfig(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig';
+
+    /**
+     * Returns true if the given object is an instance of UptimeCheckConfig.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UptimeCheckConfig {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UptimeCheckConfig.__pulumiType;
+    }
+
     public readonly contentMatchers!: pulumi.Output<{ content?: string }[] | undefined>;
     public readonly displayName!: pulumi.Output<string>;
     public readonly httpCheck!: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
@@ -145,14 +164,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["uptimeCheckId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, inputs, opts);
+        super(UptimeCheckConfig.__pulumiType, name, inputs, opts);
     }
 }
 

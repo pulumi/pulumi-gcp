@@ -72,10 +72,6 @@ class Instance(pulumi.CustomResource):
 
         __props__['project'] = project
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Instance, __self__).__init__(
             'gcp:bigtable/instance:Instance',
             resource_name,

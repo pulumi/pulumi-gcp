@@ -48,6 +48,25 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
         return new SharedVPCHostProject(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/sharedVPCHostProject:SharedVPCHostProject';
+
+    /**
+     * Returns true if the given object is an instance of SharedVPCHostProject.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SharedVPCHostProject {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SharedVPCHostProject.__pulumiType;
+    }
+
     /**
      * The ID of the project that will serve as a Shared VPC host project
      */
@@ -73,14 +92,7 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
             }
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/sharedVPCHostProject:SharedVPCHostProject", name, inputs, opts);
+        super(SharedVPCHostProject.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -77,6 +77,25 @@ export class BucketIAMMember extends pulumi.CustomResource {
         return new BucketIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:storage/bucketIAMMember:BucketIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of BucketIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BucketIAMMember.__pulumiType;
+    }
+
     /**
      * The name of the bucket it applies to.
      */
@@ -124,14 +143,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/bucketIAMMember:BucketIAMMember", name, inputs, opts);
+        super(BucketIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

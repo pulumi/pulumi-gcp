@@ -44,6 +44,25 @@ export class BillingAccountSink extends pulumi.CustomResource {
         return new BillingAccountSink(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:logging/billingAccountSink:BillingAccountSink';
+
+    /**
+     * Returns true if the given object is an instance of BillingAccountSink.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BillingAccountSink {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BillingAccountSink.__pulumiType;
+    }
+
     /**
      * The billing account exported to the sink.
      */
@@ -104,14 +123,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/billingAccountSink:BillingAccountSink", name, inputs, opts);
+        super(BillingAccountSink.__pulumiType, name, inputs, opts);
     }
 }
 

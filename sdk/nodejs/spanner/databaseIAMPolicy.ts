@@ -78,6 +78,25 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
         return new DatabaseIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of DatabaseIAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatabaseIAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DatabaseIAMPolicy.__pulumiType;
+    }
+
     /**
      * The name of the Spanner database.
      */
@@ -135,14 +154,7 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, inputs, opts);
+        super(DatabaseIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

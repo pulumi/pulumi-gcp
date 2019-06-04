@@ -57,10 +57,6 @@ class Service(pulumi.CustomResource):
         __props__['dns_address'] = None
         __props__['endpoints'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Service, __self__).__init__(
             'gcp:endpoints/service:Service',
             resource_name,

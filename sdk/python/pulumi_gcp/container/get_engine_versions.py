@@ -82,10 +82,6 @@ async def get_engine_versions(location=None,project=None,region=None,version_pre
     __args__['region'] = region
     __args__['versionPrefix'] = version_prefix
     __args__['zone'] = zone
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts)
 
     return GetEngineVersionsResult(

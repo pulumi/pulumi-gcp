@@ -73,6 +73,25 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:dataproc/job:Job';
+
+    /**
+     * Returns true if the given object is an instance of Job.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Job {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Job.__pulumiType;
+    }
+
     /**
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      */
@@ -165,14 +184,7 @@ export class Job extends pulumi.CustomResource {
             inputs["driverOutputResourceUri"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dataproc/job:Job", name, inputs, opts);
+        super(Job.__pulumiType, name, inputs, opts);
     }
 }
 

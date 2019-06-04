@@ -78,6 +78,25 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
         return new DatabaseIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:spanner/databaseIAMMember:DatabaseIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of DatabaseIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatabaseIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DatabaseIAMMember.__pulumiType;
+    }
+
     /**
      * The name of the Spanner database.
      */
@@ -142,14 +161,7 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:spanner/databaseIAMMember:DatabaseIAMMember", name, inputs, opts);
+        super(DatabaseIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

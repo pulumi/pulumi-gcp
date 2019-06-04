@@ -37,6 +37,25 @@ export class RouterInterface extends pulumi.CustomResource {
         return new RouterInterface(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/routerInterface:RouterInterface';
+
+    /**
+     * Returns true if the given object is an instance of RouterInterface.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterInterface {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RouterInterface.__pulumiType;
+    }
+
     /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -102,14 +121,7 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/routerInterface:RouterInterface", name, inputs, opts);
+        super(RouterInterface.__pulumiType, name, inputs, opts);
     }
 }
 

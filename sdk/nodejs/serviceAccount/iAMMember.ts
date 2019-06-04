@@ -93,6 +93,25 @@ export class IAMMember extends pulumi.CustomResource {
         return new IAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:serviceAccount/iAMMember:IAMMember';
+
+    /**
+     * Returns true if the given object is an instance of IAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === IAMMember.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the service account IAM policy.
      */
@@ -141,14 +160,7 @@ export class IAMMember extends pulumi.CustomResource {
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:serviceAccount/iAMMember:IAMMember", name, inputs, opts);
+        super(IAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

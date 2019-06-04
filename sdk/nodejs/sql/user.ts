@@ -48,6 +48,25 @@ export class User extends pulumi.CustomResource {
         return new User(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:sql/user:User';
+
+    /**
+     * Returns true if the given object is an instance of User.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is User {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === User.__pulumiType;
+    }
+
     /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
@@ -102,14 +121,7 @@ export class User extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:sql/user:User", name, inputs, opts);
+        super(User.__pulumiType, name, inputs, opts);
     }
 }
 

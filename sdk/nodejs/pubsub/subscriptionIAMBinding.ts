@@ -72,6 +72,25 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
         return new SubscriptionIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of SubscriptionIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SubscriptionIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SubscriptionIAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -127,14 +146,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
             inputs["subscription"] = args ? args.subscription : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, inputs, opts);
+        super(SubscriptionIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

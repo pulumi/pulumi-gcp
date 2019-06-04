@@ -65,6 +65,25 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:binaryauthorization/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Policy.__pulumiType;
+    }
+
     public readonly admissionWhitelistPatterns!: pulumi.Output<{ namePattern?: string }[] | undefined>;
     public readonly clusterAdmissionRules!: pulumi.Output<{ cluster: string, enforcementMode?: string, evaluationMode?: string, requireAttestationsBies?: string[] }[] | undefined>;
     public readonly defaultAdmissionRule!: pulumi.Output<{ enforcementMode: string, evaluationMode: string, requireAttestationsBies?: string[] }>;
@@ -99,14 +118,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:binaryauthorization/policy:Policy", name, inputs, opts);
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 

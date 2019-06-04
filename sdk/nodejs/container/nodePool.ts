@@ -22,6 +22,25 @@ export class NodePool extends pulumi.CustomResource {
         return new NodePool(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:container/nodePool:NodePool';
+
+    /**
+     * Returns true if the given object is an instance of NodePool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodePool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === NodePool.__pulumiType;
+    }
+
     /**
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
@@ -144,14 +163,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:container/nodePool:NodePool", name, inputs, opts);
+        super(NodePool.__pulumiType, name, inputs, opts);
     }
 }
 

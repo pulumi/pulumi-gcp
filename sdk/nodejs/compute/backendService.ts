@@ -47,6 +47,25 @@ export class BackendService extends pulumi.CustomResource {
         return new BackendService(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/backendService:BackendService';
+
+    /**
+     * Returns true if the given object is an instance of BackendService.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BackendService {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BackendService.__pulumiType;
+    }
+
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
     public readonly backends!: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
     public readonly cdnPolicy!: pulumi.Output<{ cacheKeyPolicy?: { includeHost?: boolean, includeProtocol?: boolean, includeQueryString?: boolean, queryStringBlacklists?: string[], queryStringWhitelists?: string[] }, signedUrlCacheMaxAgeSec?: number }>;
@@ -133,14 +152,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/backendService:BackendService", name, inputs, opts);
+        super(BackendService.__pulumiType, name, inputs, opts);
     }
 }
 

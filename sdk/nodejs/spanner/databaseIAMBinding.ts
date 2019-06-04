@@ -78,6 +78,25 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
         return new DatabaseIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of DatabaseIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatabaseIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DatabaseIAMBinding.__pulumiType;
+    }
+
     /**
      * The name of the Spanner database.
      */
@@ -142,14 +161,7 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, inputs, opts);
+        super(DatabaseIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

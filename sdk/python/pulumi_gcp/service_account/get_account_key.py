@@ -47,10 +47,6 @@ async def get_account_key(name=None,project=None,public_key_type=None,opts=None)
     __args__['name'] = name
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts)
 
     return GetAccountKeyResult(

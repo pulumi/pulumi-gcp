@@ -29,6 +29,25 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         return new SecurityScanConfig(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/securityScanConfig:SecurityScanConfig';
+
+    /**
+     * Returns true if the given object is an instance of SecurityScanConfig.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecurityScanConfig {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SecurityScanConfig.__pulumiType;
+    }
+
     public readonly authentication!: pulumi.Output<{ customAccount?: { loginUrl: string, password: string, username: string }, googleAccount?: { password: string, username: string } } | undefined>;
     public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
     public readonly displayName!: pulumi.Output<string>;
@@ -88,14 +107,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             inputs["userAgent"] = args ? args.userAgent : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/securityScanConfig:SecurityScanConfig", name, inputs, opts);
+        super(SecurityScanConfig.__pulumiType, name, inputs, opts);
     }
 }
 

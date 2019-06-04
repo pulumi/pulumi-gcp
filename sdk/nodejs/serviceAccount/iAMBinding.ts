@@ -93,6 +93,25 @@ export class IAMBinding extends pulumi.CustomResource {
         return new IAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:serviceAccount/iAMBinding:IAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of IAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === IAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the service account IAM policy.
      */
@@ -141,14 +160,7 @@ export class IAMBinding extends pulumi.CustomResource {
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:serviceAccount/iAMBinding:IAMBinding", name, inputs, opts);
+        super(IAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

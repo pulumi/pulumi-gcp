@@ -62,6 +62,25 @@ export class Metric extends pulumi.CustomResource {
         return new Metric(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:logging/metric:Metric';
+
+    /**
+     * Returns true if the given object is an instance of Metric.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Metric {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Metric.__pulumiType;
+    }
+
     public readonly bucketOptions!: pulumi.Output<{ explicit?: { bounds?: string[] }, exponentialBuckets?: { growthFactor?: number, numFiniteBuckets?: number, scale?: number }, linearBuckets?: { numFiniteBuckets?: number, offset?: number, width?: number } } | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly filter!: pulumi.Output<string>;
@@ -108,14 +127,7 @@ export class Metric extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["valueExtractor"] = args ? args.valueExtractor : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/metric:Metric", name, inputs, opts);
+        super(Metric.__pulumiType, name, inputs, opts);
     }
 }
 

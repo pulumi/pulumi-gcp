@@ -49,6 +49,25 @@ export class NetworkPeering extends pulumi.CustomResource {
         return new NetworkPeering(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/networkPeering:NetworkPeering';
+
+    /**
+     * Returns true if the given object is an instance of NetworkPeering.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NetworkPeering {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === NetworkPeering.__pulumiType;
+    }
+
     /**
      * If set to `true`, the routes between the two networks will
      * be created and managed automatically. Defaults to `true`.
@@ -108,14 +127,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["stateDetails"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/networkPeering:NetworkPeering", name, inputs, opts);
+        super(NetworkPeering.__pulumiType, name, inputs, opts);
     }
 }
 

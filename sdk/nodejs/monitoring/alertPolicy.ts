@@ -57,6 +57,25 @@ export class AlertPolicy extends pulumi.CustomResource {
         return new AlertPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:monitoring/alertPolicy:AlertPolicy';
+
+    /**
+     * Returns true if the given object is an instance of AlertPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AlertPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === AlertPolicy.__pulumiType;
+    }
+
     public readonly combiner!: pulumi.Output<string>;
     public readonly conditions!: pulumi.Output<{ conditionAbsent?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], duration: string, filter?: string, trigger?: { count?: number, percent?: number } }, conditionThreshold?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], comparison: string, denominatorAggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], denominatorFilter?: string, duration: string, filter?: string, thresholdValue?: number, trigger?: { count?: number, percent?: number } }, displayName: string, name: string }[]>;
     public /*out*/ readonly creationRecord!: pulumi.Output<{ mutateTime: string, mutatedBy: string }>;
@@ -115,14 +134,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["creationRecord"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:monitoring/alertPolicy:AlertPolicy", name, inputs, opts);
+        super(AlertPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

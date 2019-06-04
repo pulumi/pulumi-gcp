@@ -75,6 +75,25 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
         return new SubnetworkIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:compute/subnetworkIAMMember:SubnetworkIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of SubnetworkIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SubnetworkIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SubnetworkIAMMember.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -137,14 +156,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, inputs, opts);
+        super(SubnetworkIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

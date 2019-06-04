@@ -41,6 +41,25 @@ export class Application extends pulumi.CustomResource {
         return new Application(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:appengine/application:Application';
+
+    /**
+     * Returns true if the given object is an instance of Application.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Application {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Application.__pulumiType;
+    }
+
     /**
      * The domain to authenticate users with when using App Engine's User API.
      */
@@ -124,14 +143,7 @@ export class Application extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["urlDispatchRules"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:appengine/application:Application", name, inputs, opts);
+        super(Application.__pulumiType, name, inputs, opts);
     }
 }
 

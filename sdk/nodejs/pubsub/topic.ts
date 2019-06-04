@@ -41,6 +41,25 @@ export class Topic extends pulumi.CustomResource {
         return new Topic(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:pubsub/topic:Topic';
+
+    /**
+     * Returns true if the given object is an instance of Topic.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Topic {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Topic.__pulumiType;
+    }
+
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
@@ -70,14 +89,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:pubsub/topic:Topic", name, inputs, opts);
+        super(Topic.__pulumiType, name, inputs, opts);
     }
 }
 

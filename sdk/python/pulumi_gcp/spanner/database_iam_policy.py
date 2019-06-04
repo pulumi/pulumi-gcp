@@ -86,10 +86,6 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(DatabaseIAMPolicy, __self__).__init__(
             'gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy',
             resource_name,

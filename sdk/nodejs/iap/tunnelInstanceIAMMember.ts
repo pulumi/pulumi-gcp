@@ -75,6 +75,25 @@ export class TunnelInstanceIAMMember extends pulumi.CustomResource {
         return new TunnelInstanceIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of TunnelInstanceIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TunnelInstanceIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === TunnelInstanceIAMMember.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -137,14 +156,7 @@ export class TunnelInstanceIAMMember extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember", name, inputs, opts);
+        super(TunnelInstanceIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

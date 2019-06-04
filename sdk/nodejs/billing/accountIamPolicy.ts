@@ -48,6 +48,25 @@ export class AccountIamPolicy extends pulumi.CustomResource {
         return new AccountIamPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'gcp:billing/accountIamPolicy:AccountIamPolicy';
+
+    /**
+     * Returns true if the given object is an instance of AccountIamPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountIamPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === AccountIamPolicy.__pulumiType;
+    }
+
     /**
      * The billing account id.
      */
@@ -87,14 +106,7 @@ export class AccountIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:billing/accountIamPolicy:AccountIamPolicy", name, inputs, opts);
+        super(AccountIamPolicy.__pulumiType, name, inputs, opts);
     }
 }
 
