@@ -1,4 +1,7 @@
-## 0.18.7 (Unreleased)
+## 0.18.8 (Unreleased)
+
+
+## 0.18.7 (Released June 4, 2019)
 
 ### Important
 
