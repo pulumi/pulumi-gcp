@@ -72,6 +72,20 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
         return new KeyRingIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:kms/keyRingIAMMember:KeyRingIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of KeyRingIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KeyRingIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KeyRingIAMMember.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -123,14 +137,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, inputs, opts);
+        super(KeyRingIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

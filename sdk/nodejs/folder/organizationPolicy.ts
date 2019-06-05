@@ -92,6 +92,20 @@ export class OrganizationPolicy extends pulumi.CustomResource {
         return new OrganizationPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:folder/organizationPolicy:OrganizationPolicy';
+
+    /**
+     * Returns true if the given object is an instance of OrganizationPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is OrganizationPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === OrganizationPolicy.__pulumiType;
+    }
+
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
@@ -163,14 +177,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             inputs["etag"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:folder/organizationPolicy:OrganizationPolicy", name, inputs, opts);
+        super(OrganizationPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -54,6 +54,20 @@ export class Key extends pulumi.CustomResource {
         return new Key(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:serviceAccount/key:Key';
+
+    /**
+     * Returns true if the given object is an instance of Key.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Key {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Key.__pulumiType;
+    }
+
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
@@ -159,14 +173,7 @@ export class Key extends pulumi.CustomResource {
             inputs["validAfter"] = undefined /*out*/;
             inputs["validBefore"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:serviceAccount/key:Key", name, inputs, opts);
+        super(Key.__pulumiType, name, inputs, opts);
     }
 }
 

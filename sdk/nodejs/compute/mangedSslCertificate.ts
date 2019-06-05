@@ -47,6 +47,20 @@ export class MangedSslCertificate extends pulumi.CustomResource {
         return new MangedSslCertificate(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/mangedSslCertificate:MangedSslCertificate';
+
+    /**
+     * Returns true if the given object is an instance of MangedSslCertificate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MangedSslCertificate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === MangedSslCertificate.__pulumiType;
+    }
+
     public readonly certificateId!: pulumi.Output<number>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -100,14 +114,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["subjectAlternativeNames"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, inputs, opts);
+        super(MangedSslCertificate.__pulumiType, name, inputs, opts);
     }
 }
 

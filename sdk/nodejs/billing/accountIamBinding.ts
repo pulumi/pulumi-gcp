@@ -42,6 +42,20 @@ export class AccountIamBinding extends pulumi.CustomResource {
         return new AccountIamBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:billing/accountIamBinding:AccountIamBinding';
+
+    /**
+     * Returns true if the given object is an instance of AccountIamBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountIamBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccountIamBinding.__pulumiType;
+    }
+
     /**
      * The billing account id.
      */
@@ -91,14 +105,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:billing/accountIamBinding:AccountIamBinding", name, inputs, opts);
+        super(AccountIamBinding.__pulumiType, name, inputs, opts);
     }
 }
 

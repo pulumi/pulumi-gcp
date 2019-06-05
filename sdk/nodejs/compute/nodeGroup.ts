@@ -54,6 +54,20 @@ export class NodeGroup extends pulumi.CustomResource {
         return new NodeGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/nodeGroup:NodeGroup';
+
+    /**
+     * Returns true if the given object is an instance of NodeGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodeGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NodeGroup.__pulumiType;
+    }
+
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -107,14 +121,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/nodeGroup:NodeGroup", name, inputs, opts);
+        super(NodeGroup.__pulumiType, name, inputs, opts);
     }
 }
 

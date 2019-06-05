@@ -46,6 +46,20 @@ export class Database extends pulumi.CustomResource {
         return new Database(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:sql/database:Database';
+
+    /**
+     * Returns true if the given object is an instance of Database.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Database {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Database.__pulumiType;
+    }
+
     /**
      * The charset value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -110,14 +124,7 @@ export class Database extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:sql/database:Database", name, inputs, opts);
+        super(Database.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -40,6 +40,20 @@ export class Account extends pulumi.CustomResource {
         return new Account(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:serviceAccount/account:Account';
+
+    /**
+     * Returns true if the given object is an instance of Account.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Account {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Account.__pulumiType;
+    }
+
     /**
      * The account id that is used to generate the service
      * account email address and a stable unique id. It is unique within a project,
@@ -102,14 +116,7 @@ export class Account extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:serviceAccount/account:Account", name, inputs, opts);
+        super(Account.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -29,13 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "name": args.name,

@@ -39,6 +39,20 @@ export class OrganizationExclusion extends pulumi.CustomResource {
         return new OrganizationExclusion(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:logging/organizationExclusion:OrganizationExclusion';
+
+    /**
+     * Returns true if the given object is an instance of OrganizationExclusion.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is OrganizationExclusion {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === OrganizationExclusion.__pulumiType;
+    }
+
     /**
      * A human-readable description.
      */
@@ -94,14 +108,7 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["orgId"] = args ? args.orgId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/organizationExclusion:OrganizationExclusion", name, inputs, opts);
+        super(OrganizationExclusion.__pulumiType, name, inputs, opts);
     }
 }
 

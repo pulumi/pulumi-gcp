@@ -44,6 +44,20 @@ export class KeyRing extends pulumi.CustomResource {
         return new KeyRing(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:kms/keyRing:KeyRing';
+
+    /**
+     * Returns true if the given object is an instance of KeyRing.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KeyRing {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KeyRing.__pulumiType;
+    }
+
     public readonly location!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     /**
@@ -79,14 +93,7 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:kms/keyRing:KeyRing", name, inputs, opts);
+        super(KeyRing.__pulumiType, name, inputs, opts);
     }
 }
 

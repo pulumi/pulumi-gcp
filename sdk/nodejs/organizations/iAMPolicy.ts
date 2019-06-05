@@ -51,6 +51,20 @@ export class IAMPolicy extends pulumi.CustomResource {
         return new IAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:organizations/iAMPolicy:IAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of IAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === IAMPolicy.__pulumiType;
+    }
+
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
@@ -90,14 +104,7 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:organizations/iAMPolicy:IAMPolicy", name, inputs, opts);
+        super(IAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

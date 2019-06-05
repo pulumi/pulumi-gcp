@@ -45,6 +45,20 @@ export class Services extends pulumi.CustomResource {
         return new Services(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:projects/services:Services';
+
+    /**
+     * Returns true if the given object is an instance of Services.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Services {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Services.__pulumiType;
+    }
+
     public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID.
@@ -82,14 +96,7 @@ export class Services extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["services"] = args ? args.services : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:projects/services:Services", name, inputs, opts);
+        super(Services.__pulumiType, name, inputs, opts);
     }
 }
 

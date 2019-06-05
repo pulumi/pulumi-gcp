@@ -50,6 +50,20 @@ export class Folder extends pulumi.CustomResource {
         return new Folder(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:organizations/folder:Folder';
+
+    /**
+     * Returns true if the given object is an instance of Folder.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Folder {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Folder.__pulumiType;
+    }
+
     /**
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -105,14 +119,7 @@ export class Folder extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:organizations/folder:Folder", name, inputs, opts);
+        super(Folder.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -87,6 +87,20 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         return new RegionInstanceGroupManager(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager';
+
+    /**
+     * Returns true if the given object is an instance of RegionInstanceGroupManager.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RegionInstanceGroupManager {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RegionInstanceGroupManager.__pulumiType;
+    }
+
     /**
      * ) The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -230,14 +244,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, inputs, opts);
+        super(RegionInstanceGroupManager.__pulumiType, name, inputs, opts);
     }
 }
 

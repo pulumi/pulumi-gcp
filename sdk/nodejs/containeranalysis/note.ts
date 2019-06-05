@@ -29,6 +29,20 @@ export class Note extends pulumi.CustomResource {
         return new Note(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:containeranalysis/note:Note';
+
+    /**
+     * Returns true if the given object is an instance of Note.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Note {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Note.__pulumiType;
+    }
+
     public readonly attestationAuthority!: pulumi.Output<{ hint: { humanReadableName: string } }>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -57,14 +71,7 @@ export class Note extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:containeranalysis/note:Note", name, inputs, opts);
+        super(Note.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -17,6 +17,20 @@ export class IAMAuditConfig extends pulumi.CustomResource {
         return new IAMAuditConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:projects/iAMAuditConfig:IAMAuditConfig';
+
+    /**
+     * Returns true if the given object is an instance of IAMAuditConfig.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IAMAuditConfig {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === IAMAuditConfig.__pulumiType;
+    }
+
     public readonly auditLogConfigs!: pulumi.Output<{ exemptedMembers?: string[], logType: string }[]>;
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string | undefined>;
@@ -51,14 +65,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, inputs, opts);
+        super(IAMAuditConfig.__pulumiType, name, inputs, opts);
     }
 }
 

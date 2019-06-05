@@ -39,6 +39,20 @@ export class RouterPeer extends pulumi.CustomResource {
         return new RouterPeer(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/routerPeer:RouterPeer';
+
+    /**
+     * Returns true if the given object is an instance of RouterPeer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterPeer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouterPeer.__pulumiType;
+    }
+
     /**
      * The priority of routes advertised to this BGP peer.
      * Changing this forces a new peer to be created.
@@ -127,14 +141,7 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["ipAddress"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/routerPeer:RouterPeer", name, inputs, opts);
+        super(RouterPeer.__pulumiType, name, inputs, opts);
     }
 }
 

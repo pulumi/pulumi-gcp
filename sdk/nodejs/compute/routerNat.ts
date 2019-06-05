@@ -96,6 +96,20 @@ export class RouterNat extends pulumi.CustomResource {
         return new RouterNat(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/routerNat:RouterNat';
+
+    /**
+     * Returns true if the given object is an instance of RouterNat.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterNat {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouterNat.__pulumiType;
+    }
+
     /**
      * Timeout (in seconds) for ICMP connections.
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
@@ -221,14 +235,7 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
             inputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/routerNat:RouterNat", name, inputs, opts);
+        super(RouterNat.__pulumiType, name, inputs, opts);
     }
 }
 

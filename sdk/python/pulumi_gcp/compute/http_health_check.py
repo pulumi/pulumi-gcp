@@ -90,10 +90,6 @@ class HttpHealthCheck(pulumi.CustomResource):
         __props__['creation_timestamp'] = None
         __props__['self_link'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(HttpHealthCheck, __self__).__init__(
             'gcp:compute/httpHealthCheck:HttpHealthCheck',
             resource_name,

@@ -83,10 +83,6 @@ async def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=
     __args__['project'] = project
     __args__['region'] = region
     __args__['selfLink'] = self_link
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts)
 
     return GetSubnetworkResult(

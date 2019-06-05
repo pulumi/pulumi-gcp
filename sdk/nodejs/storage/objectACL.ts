@@ -55,6 +55,20 @@ export class ObjectACL extends pulumi.CustomResource {
         return new ObjectACL(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:storage/objectACL:ObjectACL';
+
+    /**
+     * Returns true if the given object is an instance of ObjectACL.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ObjectACL {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ObjectACL.__pulumiType;
+    }
+
     /**
      * The name of the bucket the object is stored in.
      */
@@ -102,14 +116,7 @@ export class ObjectACL extends pulumi.CustomResource {
             inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/objectACL:ObjectACL", name, inputs, opts);
+        super(ObjectACL.__pulumiType, name, inputs, opts);
     }
 }
 

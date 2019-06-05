@@ -54,6 +54,20 @@ export class Registry extends pulumi.CustomResource {
         return new Registry(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:kms/registry:Registry';
+
+    /**
+     * Returns true if the given object is an instance of Registry.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Registry {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Registry.__pulumiType;
+    }
+
     /**
      * List of public key certificates to authenticate devices. Structure is documented below. 
      */
@@ -119,14 +133,7 @@ export class Registry extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:kms/registry:Registry", name, inputs, opts);
+        super(Registry.__pulumiType, name, inputs, opts);
     }
 }
 

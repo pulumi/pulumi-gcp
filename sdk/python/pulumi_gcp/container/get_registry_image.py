@@ -51,10 +51,6 @@ async def get_registry_image(digest=None,name=None,project=None,region=None,tag=
     __args__['project'] = project
     __args__['region'] = region
     __args__['tag'] = tag
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts)
 
     return GetRegistryImageResult(

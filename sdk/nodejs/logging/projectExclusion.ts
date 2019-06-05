@@ -38,6 +38,20 @@ export class ProjectExclusion extends pulumi.CustomResource {
         return new ProjectExclusion(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:logging/projectExclusion:ProjectExclusion';
+
+    /**
+     * Returns true if the given object is an instance of ProjectExclusion.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ProjectExclusion {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ProjectExclusion.__pulumiType;
+    }
+
     /**
      * A human-readable description.
      */
@@ -91,14 +105,7 @@ export class ProjectExclusion extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/projectExclusion:ProjectExclusion", name, inputs, opts);
+        super(ProjectExclusion.__pulumiType, name, inputs, opts);
     }
 }
 

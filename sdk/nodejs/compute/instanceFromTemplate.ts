@@ -61,6 +61,20 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
         return new InstanceFromTemplate(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/instanceFromTemplate:InstanceFromTemplate';
+
+    /**
+     * Returns true if the given object is an instance of InstanceFromTemplate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceFromTemplate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InstanceFromTemplate.__pulumiType;
+    }
+
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
     public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[]>;
     public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
@@ -179,14 +193,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, inputs, opts);
+        super(InstanceFromTemplate.__pulumiType, name, inputs, opts);
     }
 }
 

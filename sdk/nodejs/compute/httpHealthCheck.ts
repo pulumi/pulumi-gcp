@@ -49,6 +49,20 @@ export class HttpHealthCheck extends pulumi.CustomResource {
         return new HttpHealthCheck(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/httpHealthCheck:HttpHealthCheck';
+
+    /**
+     * Returns true if the given object is an instance of HttpHealthCheck.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is HttpHealthCheck {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === HttpHealthCheck.__pulumiType;
+    }
+
     public readonly checkIntervalSec!: pulumi.Output<number | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -108,14 +122,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/httpHealthCheck:HttpHealthCheck", name, inputs, opts);
+        super(HttpHealthCheck.__pulumiType, name, inputs, opts);
     }
 }
 

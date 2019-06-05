@@ -53,6 +53,20 @@ export class TargetTCPProxy extends pulumi.CustomResource {
         return new TargetTCPProxy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/targetTCPProxy:TargetTCPProxy';
+
+    /**
+     * Returns true if the given object is an instance of TargetTCPProxy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TargetTCPProxy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TargetTCPProxy.__pulumiType;
+    }
+
     public readonly backendService!: pulumi.Output<string>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -103,14 +117,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, inputs, opts);
+        super(TargetTCPProxy.__pulumiType, name, inputs, opts);
     }
 }
 

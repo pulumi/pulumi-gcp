@@ -39,6 +39,20 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
         return new CryptoKeyIAMMember(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember';
+
+    /**
+     * Returns true if the given object is an instance of CryptoKeyIAMMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is CryptoKeyIAMMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === CryptoKeyIAMMember.__pulumiType;
+    }
+
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -92,14 +106,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, inputs, opts);
+        super(CryptoKeyIAMMember.__pulumiType, name, inputs, opts);
     }
 }
 

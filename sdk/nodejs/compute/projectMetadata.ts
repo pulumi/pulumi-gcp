@@ -43,6 +43,20 @@ export class ProjectMetadata extends pulumi.CustomResource {
         return new ProjectMetadata(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/projectMetadata:ProjectMetadata';
+
+    /**
+     * Returns true if the given object is an instance of ProjectMetadata.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ProjectMetadata {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ProjectMetadata.__pulumiType;
+    }
+
     /**
      * A series of key value pairs.
      */
@@ -75,14 +89,7 @@ export class ProjectMetadata extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/projectMetadata:ProjectMetadata", name, inputs, opts);
+        super(ProjectMetadata.__pulumiType, name, inputs, opts);
     }
 }
 

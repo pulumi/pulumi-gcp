@@ -74,6 +74,20 @@ export class RegionDisk extends pulumi.CustomResource {
         return new RegionDisk(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/regionDisk:RegionDisk';
+
+    /**
+     * Returns true if the given object is an instance of RegionDisk.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RegionDisk {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RegionDisk.__pulumiType;
+    }
+
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
@@ -157,14 +171,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/regionDisk:RegionDisk", name, inputs, opts);
+        super(RegionDisk.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -53,6 +53,20 @@ export class RegionBackendService extends pulumi.CustomResource {
         return new RegionBackendService(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/regionBackendService:RegionBackendService';
+
+    /**
+     * Returns true if the given object is an instance of RegionBackendService.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RegionBackendService {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RegionBackendService.__pulumiType;
+    }
+
     public readonly backends!: pulumi.Output<{ description?: string, failover?: boolean, group?: string }[] | undefined>;
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -121,14 +135,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/regionBackendService:RegionBackendService", name, inputs, opts);
+        super(RegionBackendService.__pulumiType, name, inputs, opts);
     }
 }
 

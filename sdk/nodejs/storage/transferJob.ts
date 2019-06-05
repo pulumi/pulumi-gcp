@@ -90,6 +90,20 @@ export class TransferJob extends pulumi.CustomResource {
         return new TransferJob(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:storage/transferJob:TransferJob';
+
+    /**
+     * Returns true if the given object is an instance of TransferJob.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TransferJob {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TransferJob.__pulumiType;
+    }
+
     /**
      * When the Transfer Job was created.
      */
@@ -170,14 +184,7 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["lastModificationTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/transferJob:TransferJob", name, inputs, opts);
+        super(TransferJob.__pulumiType, name, inputs, opts);
     }
 }
 

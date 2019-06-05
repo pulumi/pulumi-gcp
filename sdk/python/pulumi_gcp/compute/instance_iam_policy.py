@@ -83,10 +83,6 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(InstanceIAMPolicy, __self__).__init__(
             'gcp:compute/instanceIAMPolicy:InstanceIAMPolicy',
             resource_name,

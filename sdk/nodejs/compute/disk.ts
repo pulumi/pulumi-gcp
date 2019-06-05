@@ -63,6 +63,20 @@ export class Disk extends pulumi.CustomResource {
         return new Disk(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/disk:Disk';
+
+    /**
+     * Returns true if the given object is an instance of Disk.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Disk {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Disk.__pulumiType;
+    }
+
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
@@ -149,14 +163,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/disk:Disk", name, inputs, opts);
+        super(Disk.__pulumiType, name, inputs, opts);
     }
 }
 

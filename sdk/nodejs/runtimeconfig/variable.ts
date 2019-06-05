@@ -59,6 +59,20 @@ export class Variable extends pulumi.CustomResource {
         return new Variable(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:runtimeconfig/variable:Variable';
+
+    /**
+     * Returns true if the given object is an instance of Variable.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Variable {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Variable.__pulumiType;
+    }
+
     /**
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
@@ -113,14 +127,7 @@ export class Variable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:runtimeconfig/variable:Variable", name, inputs, opts);
+        super(Variable.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -38,6 +38,20 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         return new NetworkEndpointGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/networkEndpointGroup:NetworkEndpointGroup';
+
+    /**
+     * Returns true if the given object is an instance of NetworkEndpointGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NetworkEndpointGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NetworkEndpointGroup.__pulumiType;
+    }
+
     public readonly defaultPort!: pulumi.Output<number | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -88,14 +102,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, inputs, opts);
+        super(NetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }
 }
 

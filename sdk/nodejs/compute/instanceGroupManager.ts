@@ -59,6 +59,20 @@ export class InstanceGroupManager extends pulumi.CustomResource {
         return new InstanceGroupManager(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/instanceGroupManager:InstanceGroupManager';
+
+    /**
+     * Returns true if the given object is an instance of InstanceGroupManager.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceGroupManager {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InstanceGroupManager.__pulumiType;
+    }
+
     /**
      * ) The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -193,14 +207,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/instanceGroupManager:InstanceGroupManager", name, inputs, opts);
+        super(InstanceGroupManager.__pulumiType, name, inputs, opts);
     }
 }
 

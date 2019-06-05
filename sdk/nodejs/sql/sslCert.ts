@@ -46,6 +46,20 @@ export class SslCert extends pulumi.CustomResource {
         return new SslCert(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:sql/sslCert:SslCert';
+
+    /**
+     * Returns true if the given object is an instance of SslCert.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SslCert {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SslCert.__pulumiType;
+    }
+
     /**
      * The actual certificate data for this client certificate.
      */
@@ -133,14 +147,7 @@ export class SslCert extends pulumi.CustomResource {
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["sha1Fingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:sql/sslCert:SslCert", name, inputs, opts);
+        super(SslCert.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -25,13 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:compute/getRegions:getRegions", {
         "project": args.project,
         "status": args.status,

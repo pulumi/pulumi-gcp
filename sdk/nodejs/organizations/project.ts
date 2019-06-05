@@ -74,6 +74,20 @@ export class Project extends pulumi.CustomResource {
         return new Project(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:organizations/project:Project';
+
+    /**
+     * Returns true if the given object is an instance of Project.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Project {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Project.__pulumiType;
+    }
+
     /**
      * Create the 'default' network automatically.  Default `true`.
      * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
@@ -164,14 +178,7 @@ export class Project extends pulumi.CustomResource {
             inputs["skipDelete"] = args ? args.skipDelete : undefined;
             inputs["number"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:organizations/project:Project", name, inputs, opts);
+        super(Project.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -38,6 +38,20 @@ export class GlobalAddress extends pulumi.CustomResource {
         return new GlobalAddress(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/globalAddress:GlobalAddress';
+
+    /**
+     * Returns true if the given object is an instance of GlobalAddress.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is GlobalAddress {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === GlobalAddress.__pulumiType;
+    }
+
     public readonly address!: pulumi.Output<string>;
     public readonly addressType!: pulumi.Output<string | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -100,14 +114,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/globalAddress:GlobalAddress", name, inputs, opts);
+        super(GlobalAddress.__pulumiType, name, inputs, opts);
     }
 }
 

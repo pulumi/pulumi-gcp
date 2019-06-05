@@ -169,10 +169,6 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__['server_ca_cert'] = None
         __props__['service_account_email_address'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
             resource_name,

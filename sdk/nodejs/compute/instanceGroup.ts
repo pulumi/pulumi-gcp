@@ -117,6 +117,20 @@ export class InstanceGroup extends pulumi.CustomResource {
         return new InstanceGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/instanceGroup:InstanceGroup';
+
+    /**
+     * Returns true if the given object is an instance of InstanceGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InstanceGroup.__pulumiType;
+    }
+
     /**
      * An optional textual description of the instance
      * group.
@@ -198,14 +212,7 @@ export class InstanceGroup extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/instanceGroup:InstanceGroup", name, inputs, opts);
+        super(InstanceGroup.__pulumiType, name, inputs, opts);
     }
 }
 

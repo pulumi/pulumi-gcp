@@ -20,13 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {
         "displayName": args.displayName,
         "parent": args.parent,

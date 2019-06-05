@@ -66,6 +66,20 @@ export class DatabaseInstance extends pulumi.CustomResource {
         return new DatabaseInstance(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:sql/databaseInstance:DatabaseInstance';
+
+    /**
+     * Returns true if the given object is an instance of DatabaseInstance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatabaseInstance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DatabaseInstance.__pulumiType;
+    }
+
     /**
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -197,14 +211,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:sql/databaseInstance:DatabaseInstance", name, inputs, opts);
+        super(DatabaseInstance.__pulumiType, name, inputs, opts);
     }
 }
 

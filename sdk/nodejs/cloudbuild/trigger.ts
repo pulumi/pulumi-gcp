@@ -47,6 +47,20 @@ export class Trigger extends pulumi.CustomResource {
         return new Trigger(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:cloudbuild/trigger:Trigger';
+
+    /**
+     * Returns true if the given object is an instance of Trigger.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Trigger {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Trigger.__pulumiType;
+    }
+
     public readonly build!: pulumi.Output<{ images?: string[], steps?: { args?: string[], dir?: string, entrypoint?: string, envs?: string[], id?: string, name?: string, secretEnvs?: string[], timeout?: string, timing?: string, volumes?: { name?: string, path?: string }[], waitFors?: string[] }[], tags?: string[] } | undefined>;
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -100,14 +114,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["triggerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:cloudbuild/trigger:Trigger", name, inputs, opts);
+        super(Trigger.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -88,6 +88,20 @@ export class Subscription extends pulumi.CustomResource {
         return new Subscription(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:pubsub/subscription:Subscription';
+
+    /**
+     * Returns true if the given object is an instance of Subscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Subscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Subscription.__pulumiType;
+    }
+
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     public readonly expirationPolicy!: pulumi.Output<{ ttl?: string }>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -141,14 +155,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["path"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:pubsub/subscription:Subscription", name, inputs, opts);
+        super(Subscription.__pulumiType, name, inputs, opts);
     }
 }
 

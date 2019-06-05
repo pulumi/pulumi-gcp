@@ -30,6 +30,20 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:dns/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Policy.__pulumiType;
+    }
+
     public readonly alternativeNameServerConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableInboundForwarding!: pulumi.Output<boolean | undefined>;
@@ -71,14 +85,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dns/policy:Policy", name, inputs, opts);
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 

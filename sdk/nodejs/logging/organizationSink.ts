@@ -44,6 +44,20 @@ export class OrganizationSink extends pulumi.CustomResource {
         return new OrganizationSink(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:logging/organizationSink:OrganizationSink';
+
+    /**
+     * Returns true if the given object is an instance of OrganizationSink.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is OrganizationSink {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === OrganizationSink.__pulumiType;
+    }
+
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -111,14 +125,7 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/organizationSink:OrganizationSink", name, inputs, opts);
+        super(OrganizationSink.__pulumiType, name, inputs, opts);
     }
 }
 
