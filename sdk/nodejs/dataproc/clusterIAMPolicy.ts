@@ -74,6 +74,20 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
         return new ClusterIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of ClusterIAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ClusterIAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ClusterIAMPolicy.__pulumiType;
+    }
+
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
@@ -128,14 +142,7 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, inputs, opts);
+        super(ClusterIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

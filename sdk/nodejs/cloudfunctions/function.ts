@@ -52,6 +52,20 @@ export class Function extends pulumi.CustomResource {
         return new Function(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:cloudfunctions/function:Function';
+
+    /**
+     * Returns true if the given object is an instance of Function.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Function {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Function.__pulumiType;
+    }
+
     /**
      * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
      */
@@ -180,14 +194,7 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["triggerHttp"] = args ? args.triggerHttp : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:cloudfunctions/function:Function", name, inputs, opts);
+        super(Function.__pulumiType, name, inputs, opts);
     }
 }
 

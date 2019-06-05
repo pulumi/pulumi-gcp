@@ -42,6 +42,20 @@ export class Service extends pulumi.CustomResource {
         return new Service(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:endpoints/service:Service';
+
+    /**
+     * Returns true if the given object is an instance of Service.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Service {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Service.__pulumiType;
+    }
+
     public /*out*/ readonly apis!: pulumi.Output<{ methods: { name: string, requestType: string, responseType: string, syntax: string }[], name: string, syntax: string, version: string }[]>;
     public /*out*/ readonly configId!: pulumi.Output<string>;
     public /*out*/ readonly dnsAddress!: pulumi.Output<string>;
@@ -88,14 +102,7 @@ export class Service extends pulumi.CustomResource {
             inputs["dnsAddress"] = undefined /*out*/;
             inputs["endpoints"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:endpoints/service:Service", name, inputs, opts);
+        super(Service.__pulumiType, name, inputs, opts);
     }
 }
 

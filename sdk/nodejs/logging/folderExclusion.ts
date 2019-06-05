@@ -43,6 +43,20 @@ export class FolderExclusion extends pulumi.CustomResource {
         return new FolderExclusion(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:logging/folderExclusion:FolderExclusion';
+
+    /**
+     * Returns true if the given object is an instance of FolderExclusion.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FolderExclusion {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FolderExclusion.__pulumiType;
+    }
+
     /**
      * A human-readable description.
      */
@@ -99,14 +113,7 @@ export class FolderExclusion extends pulumi.CustomResource {
             inputs["folder"] = args ? args.folder : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/folderExclusion:FolderExclusion", name, inputs, opts);
+        super(FolderExclusion.__pulumiType, name, inputs, opts);
     }
 }
 

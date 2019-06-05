@@ -75,10 +75,6 @@ class ObjectACL(pulumi.CustomResource):
 
         __props__['role_entities'] = role_entities
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(ObjectACL, __self__).__init__(
             'gcp:storage/objectACL:ObjectACL',
             resource_name,

@@ -68,6 +68,20 @@ export class Attestor extends pulumi.CustomResource {
         return new Attestor(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:binaryauthorization/attestor:Attestor';
+
+    /**
+     * Returns true if the given object is an instance of Attestor.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Attestor {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Attestor.__pulumiType;
+    }
+
     public readonly attestationAuthorityNote!: pulumi.Output<{ delegationServiceAccountEmail: string, noteReference: string, publicKeys?: { asciiArmoredPgpPublicKey: string, comment?: string, id: string }[] }>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -99,14 +113,7 @@ export class Attestor extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:binaryauthorization/attestor:Attestor", name, inputs, opts);
+        super(Attestor.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -46,6 +46,20 @@ export class Connection extends pulumi.CustomResource {
         return new Connection(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:servicenetworking/connection:Connection';
+
+    /**
+     * Returns true if the given object is an instance of Connection.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Connection {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Connection.__pulumiType;
+    }
+
     /**
      * Name of VPC network connected with service producers using VPC peering.
      */
@@ -93,14 +107,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
             inputs["service"] = args ? args.service : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:servicenetworking/connection:Connection", name, inputs, opts);
+        super(Connection.__pulumiType, name, inputs, opts);
     }
 }
 

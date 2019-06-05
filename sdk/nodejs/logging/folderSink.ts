@@ -48,6 +48,20 @@ export class FolderSink extends pulumi.CustomResource {
         return new FolderSink(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:logging/folderSink:FolderSink';
+
+    /**
+     * Returns true if the given object is an instance of FolderSink.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FolderSink {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FolderSink.__pulumiType;
+    }
+
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -116,14 +130,7 @@ export class FolderSink extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:logging/folderSink:FolderSink", name, inputs, opts);
+        super(FolderSink.__pulumiType, name, inputs, opts);
     }
 }
 

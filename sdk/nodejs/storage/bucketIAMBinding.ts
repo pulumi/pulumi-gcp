@@ -77,6 +77,20 @@ export class BucketIAMBinding extends pulumi.CustomResource {
         return new BucketIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:storage/bucketIAMBinding:BucketIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of BucketIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BucketIAMBinding.__pulumiType;
+    }
+
     /**
      * The name of the bucket it applies to.
      */
@@ -124,14 +138,7 @@ export class BucketIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/bucketIAMBinding:BucketIAMBinding", name, inputs, opts);
+        super(BucketIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

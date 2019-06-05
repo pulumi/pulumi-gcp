@@ -72,6 +72,20 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         return new InstanceIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/instanceIAMBinding:InstanceIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of InstanceIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InstanceIAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -134,14 +148,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, inputs, opts);
+        super(InstanceIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

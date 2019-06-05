@@ -63,6 +63,20 @@ export class Route extends pulumi.CustomResource {
         return new Route(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/route:Route';
+
+    /**
+     * Returns true if the given object is an instance of Route.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Route {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Route.__pulumiType;
+    }
+
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly destRange!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
@@ -140,14 +154,7 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopNetwork"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/route:Route", name, inputs, opts);
+        super(Route.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -150,10 +150,6 @@ class Bucket(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['url'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Bucket, __self__).__init__(
             'gcp:storage/bucket:Bucket',
             resource_name,

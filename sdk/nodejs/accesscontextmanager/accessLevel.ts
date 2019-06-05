@@ -55,6 +55,20 @@ export class AccessLevel extends pulumi.CustomResource {
         return new AccessLevel(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:accesscontextmanager/accessLevel:AccessLevel';
+
+    /**
+     * Returns true if the given object is an instance of AccessLevel.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccessLevel {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccessLevel.__pulumiType;
+    }
+
     public readonly basic!: pulumi.Output<{ combiningFunction?: string, conditions: { devicePolicy?: { allowedDeviceManagementLevels?: string[], allowedEncryptionStatuses?: string[], osConstraints?: { minimumVersion?: string, osType?: string }[], requireScreenLock?: boolean }, ipSubnetworks?: string[], members?: string[], negate?: boolean, requiredAccessLevels?: string[] }[] } | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -92,14 +106,7 @@ export class AccessLevel extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:accesscontextmanager/accessLevel:AccessLevel", name, inputs, opts);
+        super(AccessLevel.__pulumiType, name, inputs, opts);
     }
 }
 

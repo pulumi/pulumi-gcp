@@ -50,13 +50,6 @@ import * as utilities from "../utilities";
  * for a list of these restrictions.
  */
 export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
         "auditConfigs": args.auditConfigs,
         "bindings": args.bindings,

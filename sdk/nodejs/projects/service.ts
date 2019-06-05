@@ -39,6 +39,20 @@ export class Service extends pulumi.CustomResource {
         return new Service(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:projects/service:Service';
+
+    /**
+     * Returns true if the given object is an instance of Service.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Service {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Service.__pulumiType;
+    }
+
     /**
      * If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
      * If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
@@ -83,14 +97,7 @@ export class Service extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["service"] = args ? args.service : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:projects/service:Service", name, inputs, opts);
+        super(Service.__pulumiType, name, inputs, opts);
     }
 }
 

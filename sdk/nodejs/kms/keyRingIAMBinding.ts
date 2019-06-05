@@ -72,6 +72,20 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
         return new KeyRingIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:kms/keyRingIAMBinding:KeyRingIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of KeyRingIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KeyRingIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KeyRingIAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -123,14 +137,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", name, inputs, opts);
+        super(KeyRingIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

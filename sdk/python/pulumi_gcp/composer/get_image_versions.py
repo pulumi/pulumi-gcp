@@ -40,10 +40,6 @@ async def get_image_versions(project=None,region=None,opts=None):
 
     __args__['project'] = project
     __args__['region'] = region
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts)
 
     return GetImageVersionsResult(

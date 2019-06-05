@@ -84,10 +84,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
         __props__['size'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(NetworkEndpointGroup, __self__).__init__(
             'gcp:compute/networkEndpointGroup:NetworkEndpointGroup',
             resource_name,

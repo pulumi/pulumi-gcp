@@ -46,6 +46,20 @@ export class NotificationChannel extends pulumi.CustomResource {
         return new NotificationChannel(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:monitoring/notificationChannel:NotificationChannel';
+
+    /**
+     * Returns true if the given object is an instance of NotificationChannel.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NotificationChannel {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NotificationChannel.__pulumiType;
+    }
+
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly displayName!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
@@ -99,14 +113,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["verificationStatus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:monitoring/notificationChannel:NotificationChannel", name, inputs, opts);
+        super(NotificationChannel.__pulumiType, name, inputs, opts);
     }
 }
 

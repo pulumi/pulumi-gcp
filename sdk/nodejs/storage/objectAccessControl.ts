@@ -58,6 +58,20 @@ export class ObjectAccessControl extends pulumi.CustomResource {
         return new ObjectAccessControl(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:storage/objectAccessControl:ObjectAccessControl';
+
+    /**
+     * Returns true if the given object is an instance of ObjectAccessControl.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ObjectAccessControl {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ObjectAccessControl.__pulumiType;
+    }
+
     public readonly bucket!: pulumi.Output<string>;
     public /*out*/ readonly domain!: pulumi.Output<string>;
     public /*out*/ readonly email!: pulumi.Output<string>;
@@ -113,14 +127,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             inputs["generation"] = undefined /*out*/;
             inputs["projectTeam"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/objectAccessControl:ObjectAccessControl", name, inputs, opts);
+        super(ObjectAccessControl.__pulumiType, name, inputs, opts);
     }
 }
 

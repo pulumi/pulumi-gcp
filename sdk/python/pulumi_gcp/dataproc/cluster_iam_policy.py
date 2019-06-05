@@ -81,10 +81,6 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(ClusterIAMPolicy, __self__).__init__(
             'gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy',
             resource_name,

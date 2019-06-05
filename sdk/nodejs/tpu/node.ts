@@ -69,6 +69,20 @@ export class Node extends pulumi.CustomResource {
         return new Node(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:tpu/node:Node';
+
+    /**
+     * Returns true if the given object is an instance of Node.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Node {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Node.__pulumiType;
+    }
+
     public readonly acceleratorType!: pulumi.Output<string>;
     public readonly cidrBlock!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -137,14 +151,7 @@ export class Node extends pulumi.CustomResource {
             inputs["networkEndpoints"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:tpu/node:Node", name, inputs, opts);
+        super(Node.__pulumiType, name, inputs, opts);
     }
 }
 

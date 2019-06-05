@@ -24,13 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", {
         "constraint": args.constraint,
         "project": args.project,

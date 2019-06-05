@@ -77,10 +77,6 @@ async def get_instance_group(name=None,project=None,self_link=None,zone=None,opt
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    if opts is None:
-        opts = pulumi.ResourceOptions()
-    if opts.version is None:
-        opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts)
 
     return GetInstanceGroupResult(

@@ -72,6 +72,20 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
         return new TopicIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:pubsub/topicIAMPolicy:TopicIAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of TopicIAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TopicIAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TopicIAMPolicy.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the topic's IAM policy.
      */
@@ -120,14 +134,7 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, inputs, opts);
+        super(TopicIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

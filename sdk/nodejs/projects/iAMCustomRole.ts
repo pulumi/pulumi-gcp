@@ -50,6 +50,20 @@ export class IAMCustomRole extends pulumi.CustomResource {
         return new IAMCustomRole(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:projects/iAMCustomRole:IAMCustomRole';
+
+    /**
+     * Returns true if the given object is an instance of IAMCustomRole.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IAMCustomRole {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === IAMCustomRole.__pulumiType;
+    }
+
     /**
      * (Optional) The current deleted state of the role.
      */
@@ -120,14 +134,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["title"] = args ? args.title : undefined;
             inputs["deleted"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, inputs, opts);
+        super(IAMCustomRole.__pulumiType, name, inputs, opts);
     }
 }
 

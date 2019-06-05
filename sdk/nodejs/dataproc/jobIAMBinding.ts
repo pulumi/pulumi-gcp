@@ -74,6 +74,20 @@ export class JobIAMBinding extends pulumi.CustomResource {
         return new JobIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:dataproc/jobIAMBinding:JobIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of JobIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is JobIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === JobIAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the jobs's IAM policy.
      */
@@ -133,14 +147,7 @@ export class JobIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, inputs, opts);
+        super(JobIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -75,6 +75,20 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
         return new SubnetworkIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of SubnetworkIAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SubnetworkIAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SubnetworkIAMPolicy.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -130,14 +144,7 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, inputs, opts);
+        super(SubnetworkIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

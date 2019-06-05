@@ -77,6 +77,20 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
         return new BucketIAMPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:storage/bucketIAMPolicy:BucketIAMPolicy';
+
+    /**
+     * Returns true if the given object is an instance of BucketIAMPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketIAMPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BucketIAMPolicy.__pulumiType;
+    }
+
     /**
      * The name of the bucket it applies to.
      */
@@ -114,14 +128,7 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, inputs, opts);
+        super(BucketIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

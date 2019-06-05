@@ -501,10 +501,6 @@ class Cluster(pulumi.CustomResource):
         __props__['services_ipv4_cidr'] = None
         __props__['tpu_ipv4_cidr_block'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Cluster, __self__).__init__(
             'gcp:container/cluster:Cluster',
             resource_name,

@@ -51,6 +51,20 @@ export class Dataset extends pulumi.CustomResource {
         return new Dataset(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:bigquery/dataset:Dataset';
+
+    /**
+     * Returns true if the given object is an instance of Dataset.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Dataset {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Dataset.__pulumiType;
+    }
+
     /**
      * An array of objects that define dataset access for
      * one or more entities. Structure is documented below.
@@ -163,14 +177,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["lastModifiedTime"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:bigquery/dataset:Dataset", name, inputs, opts);
+        super(Dataset.__pulumiType, name, inputs, opts);
     }
 }
 

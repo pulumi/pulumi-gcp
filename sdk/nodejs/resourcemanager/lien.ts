@@ -40,6 +40,20 @@ export class Lien extends pulumi.CustomResource {
         return new Lien(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:resourcemanager/lien:Lien';
+
+    /**
+     * Returns true if the given object is an instance of Lien.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Lien {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Lien.__pulumiType;
+    }
+
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly origin!: pulumi.Output<string>;
@@ -86,14 +100,7 @@ export class Lien extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:resourcemanager/lien:Lien", name, inputs, opts);
+        super(Lien.__pulumiType, name, inputs, opts);
     }
 }
 

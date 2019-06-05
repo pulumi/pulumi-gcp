@@ -58,6 +58,20 @@ export class SecurityPolicy extends pulumi.CustomResource {
         return new SecurityPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/securityPolicy:SecurityPolicy';
+
+    /**
+     * Returns true if the given object is an instance of SecurityPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecurityPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SecurityPolicy.__pulumiType;
+    }
+
     /**
      * An optional description of this security policy. Max size is 2048.
      */
@@ -113,14 +127,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/securityPolicy:SecurityPolicy", name, inputs, opts);
+        super(SecurityPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

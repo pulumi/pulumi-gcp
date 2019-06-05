@@ -75,6 +75,20 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
         return new TunnelInstanceIAMBinding(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding';
+
+    /**
+     * Returns true if the given object is an instance of TunnelInstanceIAMBinding.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TunnelInstanceIAMBinding {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TunnelInstanceIAMBinding.__pulumiType;
+    }
+
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -137,14 +151,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", name, inputs, opts);
+        super(TunnelInstanceIAMBinding.__pulumiType, name, inputs, opts);
     }
 }
 

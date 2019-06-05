@@ -6,13 +6,6 @@ import * as utilities from "../utilities";
 
 export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
-
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
     return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
         "zone": args.zone,

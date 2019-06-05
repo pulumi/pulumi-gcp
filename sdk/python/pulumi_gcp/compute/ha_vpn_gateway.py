@@ -74,10 +74,6 @@ class HaVpnGateway(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['vpn_interfaces'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(HaVpnGateway, __self__).__init__(
             'gcp:compute/haVpnGateway:HaVpnGateway',
             resource_name,

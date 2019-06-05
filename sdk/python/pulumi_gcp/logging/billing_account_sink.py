@@ -85,10 +85,6 @@ class BillingAccountSink(pulumi.CustomResource):
 
         __props__['writer_identity'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(BillingAccountSink, __self__).__init__(
             'gcp:logging/billingAccountSink:BillingAccountSink',
             resource_name,

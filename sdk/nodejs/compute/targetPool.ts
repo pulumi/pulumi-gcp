@@ -45,6 +45,20 @@ export class TargetPool extends pulumi.CustomResource {
         return new TargetPool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'gcp:compute/targetPool:TargetPool';
+
+    /**
+     * Returns true if the given object is an instance of TargetPool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TargetPool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TargetPool.__pulumiType;
+    }
+
     /**
      * URL to the backup target pool. Must also set
      * failover\_ratio.
@@ -133,14 +147,7 @@ export class TargetPool extends pulumi.CustomResource {
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("gcp:compute/targetPool:TargetPool", name, inputs, opts);
+        super(TargetPool.__pulumiType, name, inputs, opts);
     }
 }
 
