@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-gcp/sdk/go/...
 
+## Configuring credentials
+
+There are a variety of ways credentials may be configured for the GCP provider, appropriate for
+different use cases. They are enumerated [in the quickstart guide](
+https://pulumi.io/quickstart/gcp/setup/).
+
 ## Reference
 
 For detailed reference documentation, please visit [the API docs](
