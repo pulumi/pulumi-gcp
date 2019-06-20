@@ -8,36 +8,31 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Job(pulumi.CustomResource):
-    app_engine_http_target: pulumi.Output[dict]
-    description: pulumi.Output[str]
-    http_target: pulumi.Output[dict]
-    name: pulumi.Output[str]
+class NetworkEndpoint(pulumi.CustomResource):
+    instance: pulumi.Output[str]
+    ip_address: pulumi.Output[str]
+    network_endpoint_group: pulumi.Output[str]
+    port: pulumi.Output[float]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    pubsub_target: pulumi.Output[dict]
-    region: pulumi.Output[str]
-    retry_config: pulumi.Output[dict]
-    schedule: pulumi.Output[str]
-    time_zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __name__=None, __opts__=None):
+    zone: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, instance=None, ip_address=None, network_endpoint_group=None, port=None, project=None, zone=None, __name__=None, __opts__=None):
         """
-        A scheduled job that can publish a pubsub message or a http request
-        every X interval of time, using crontab format string.
+        A Network endpoint represents a IP address and port combination that is
+        part of a specific network endpoint group (NEG). NEGs are zonals
+        collection of these endpoints for GCP resources within a
+        single subnet. **NOTE**: Network endpoints cannot be created outside of a
+        network endpoint group.
         
-        To use Cloud Scheduler your project must contain an App Engine app
-        that is located in one of the supported regions. If your project
-        does not have an App Engine app, you must create one.
         
+        To get more information about NetworkEndpoint, see:
         
-        To get more information about Job, see:
-        
-        * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,28 +54,28 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['app_engine_http_target'] = app_engine_http_target
+        if instance is None:
+            raise TypeError("Missing required property 'instance'")
+        __props__['instance'] = instance
 
-        __props__['description'] = description
+        if ip_address is None:
+            raise TypeError("Missing required property 'ip_address'")
+        __props__['ip_address'] = ip_address
 
-        __props__['http_target'] = http_target
+        if network_endpoint_group is None:
+            raise TypeError("Missing required property 'network_endpoint_group'")
+        __props__['network_endpoint_group'] = network_endpoint_group
 
-        __props__['name'] = name
+        if port is None:
+            raise TypeError("Missing required property 'port'")
+        __props__['port'] = port
 
         __props__['project'] = project
 
-        __props__['pubsub_target'] = pubsub_target
+        __props__['zone'] = zone
 
-        __props__['region'] = region
-
-        __props__['retry_config'] = retry_config
-
-        __props__['schedule'] = schedule
-
-        __props__['time_zone'] = time_zone
-
-        super(Job, __self__).__init__(
-            'gcp:cloudscheduler/job:Job',
+        super(NetworkEndpoint, __self__).__init__(
+            'gcp:compute/networkEndpoint:NetworkEndpoint',
             resource_name,
             __props__,
             opts)

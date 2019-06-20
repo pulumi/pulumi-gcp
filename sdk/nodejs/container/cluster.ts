@@ -134,6 +134,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<{ cloudrunConfig: { disabled?: boolean }, horizontalPodAutoscaling: { disabled?: boolean }, httpLoadBalancing: { disabled?: boolean }, istioConfig: { auth?: string, disabled?: boolean }, kubernetesDashboard: { disabled?: boolean }, networkPolicyConfig: { disabled?: boolean } }>;
     /**
+     * ) Configuration for the
+     * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+     * Structure is documented below.
+     */
+    public readonly authenticatorGroupsConfig!: pulumi.Output<{ securityGroup: string }>;
+    /**
      * )
      * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
      */
@@ -165,6 +171,11 @@ export class Cluster extends pulumi.CustomResource {
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
+    /**
+     * )
+     * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+     */
+    public readonly enableIntranodeVisibility!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -368,10 +379,17 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
+     * )
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<{ enabled?: boolean } | undefined>;
+    /**
+     * )
+     * Workload Identity allows Kubernetes service accounts to act as a user-managed
+     * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     */
+    public readonly workloadIdentityConfig!: pulumi.Output<{ identityNamespace: string } | undefined>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`
@@ -393,12 +411,14 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             inputs["additionalZones"] = state ? state.additionalZones : undefined;
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
+            inputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
+            inputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
             inputs["enableTpu"] = state ? state.enableTpu : undefined;
@@ -431,17 +451,20 @@ export class Cluster extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
             inputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
+            inputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             inputs["additionalZones"] = args ? args.additionalZones : undefined;
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
+            inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
+            inputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
             inputs["enableTpu"] = args ? args.enableTpu : undefined;
@@ -469,6 +492,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
+            inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["endpoint"] = undefined /*out*/;
             inputs["instanceGroupUrls"] = undefined /*out*/;
@@ -499,6 +523,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly addonsConfig?: pulumi.Input<{ cloudrunConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, horizontalPodAutoscaling?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, httpLoadBalancing?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, istioConfig?: pulumi.Input<{ auth?: pulumi.Input<string>, disabled?: pulumi.Input<boolean> }>, kubernetesDashboard?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, networkPolicyConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }> }>;
+    /**
+     * ) Configuration for the
+     * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+     * Structure is documented below.
+     */
+    readonly authenticatorGroupsConfig?: pulumi.Input<{ securityGroup: pulumi.Input<string> }>;
     /**
      * )
      * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
@@ -531,6 +561,11 @@ export interface ClusterState {
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+     */
+    readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -734,10 +769,17 @@ export interface ClusterState {
      */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
+     * )
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<{ enabled?: pulumi.Input<boolean> }>;
+    /**
+     * )
+     * Workload Identity allows Kubernetes service accounts to act as a user-managed
+     * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     */
+    readonly workloadIdentityConfig?: pulumi.Input<{ identityNamespace: pulumi.Input<string> }>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`
@@ -765,6 +807,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     readonly addonsConfig?: pulumi.Input<{ cloudrunConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, horizontalPodAutoscaling?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, httpLoadBalancing?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, istioConfig?: pulumi.Input<{ auth?: pulumi.Input<string>, disabled?: pulumi.Input<boolean> }>, kubernetesDashboard?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }>, networkPolicyConfig?: pulumi.Input<{ disabled?: pulumi.Input<boolean> }> }>;
+    /**
+     * ) Configuration for the
+     * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+     * Structure is documented below.
+     */
+    readonly authenticatorGroupsConfig?: pulumi.Input<{ securityGroup: pulumi.Input<string> }>;
     /**
      * )
      * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
@@ -797,6 +845,11 @@ export interface ClusterArgs {
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+     */
+    readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -972,10 +1025,17 @@ export interface ClusterArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
+     * )
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<{ enabled?: pulumi.Input<boolean> }>;
+    /**
+     * )
+     * Workload Identity allows Kubernetes service accounts to act as a user-managed
+     * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     */
+    readonly workloadIdentityConfig?: pulumi.Input<{ identityNamespace: pulumi.Input<string> }>;
     /**
      * The zone that the cluster master and nodes
      * should be created in. If specified, this cluster will be a zonal cluster. `zone`

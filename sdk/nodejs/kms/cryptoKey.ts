@@ -5,35 +5,55 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Allows creation of a Google Cloud Platform KMS CryptoKey. For more information see
- * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
- * and
- * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+ * A `CryptoKey` represents a logical key that can be used for cryptographic operations.
  * 
- * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
- * Google Cloud KMS KeyRing.
  * 
- * > Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
- * Terraform-managed CryptoKey will remove it from state and delete all
- * CryptoKeyVersions, rendering the key unusable, but **will not delete the
- * resource on the server**. When Terraform destroys these keys, any data
- * previously encrypted with these keys will be irrecoverable. For this reason, it
- * is strongly recommended that you add lifecycle hooks to the resource to prevent
- * accidental destruction.
+ * > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+ * Destroying a Terraform-managed CryptoKey will remove it from state
+ * and delete all CryptoKeyVersions, rendering the key unusable, but *will
+ * not delete the resource on the server.* When Terraform destroys these keys,
+ * any data previously encrypted with these keys will be irrecoverable.
+ * For this reason, it is strongly recommended that you add lifecycle hooks
+ * to the resource to prevent accidental destruction.
  * 
- * ## Example Usage
+ * 
+ * To get more information about CryptoKey, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+ * * How-to Guides
+ *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+ * 
+ * ## Example Usage - Kms Crypto Key Basic
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
- *     location: "us-central1",
- *     project: "my-project",
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     location: "global",
  * });
- * const myCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
- *     keyRing: myKeyRing.selfLink,
+ * const example_key = new gcp.kms.CryptoKey("example-key", {
+ *     keyRing: keyring.selfLink,
  *     rotationPeriod: "100000s",
+ * });
+ * ```
+ * ## Example Usage - Kms Crypto Key Asymmetric Sign
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     location: "global",
+ * });
+ * const example_asymmetric_sign_key = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
+ *     keyRing: keyring.selfLink,
+ *     purpose: "ASYMMETRIC_SIGN",
+ *     versionTemplate: {
+ *         algorithm: "EC_SIGN_P384_SHA384",
+ *     },
  * });
  * ```
  */
@@ -64,29 +84,11 @@ export class CryptoKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === CryptoKey.__pulumiType;
     }
 
-    /**
-     * The id of the Google Cloud Platform KeyRing to which the key shall belong.
-     */
     public readonly keyRing!: pulumi.Output<string>;
-    /**
-     * The CryptoKey's name.
-     * A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Every time this period passes, generate a new CryptoKeyVersion and set it as
-     * the primary. The first rotation will take place after the specified period. The rotation period has the format
-     * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 86400).
-     */
+    public readonly purpose!: pulumi.Output<string | undefined>;
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
-    /**
-     * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
-     * A template describing settings for new crypto key versions. Structure is documented below.
-     */
     public readonly versionTemplate!: pulumi.Output<{ algorithm: string, protectionLevel?: string }>;
 
     /**
@@ -103,6 +105,7 @@ export class CryptoKey extends pulumi.CustomResource {
             const state = argsOrState as CryptoKeyState | undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["purpose"] = state ? state.purpose : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
@@ -113,6 +116,7 @@ export class CryptoKey extends pulumi.CustomResource {
             }
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
@@ -125,29 +129,11 @@ export class CryptoKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKey resources.
  */
 export interface CryptoKeyState {
-    /**
-     * The id of the Google Cloud Platform KeyRing to which the key shall belong.
-     */
     readonly keyRing?: pulumi.Input<string>;
-    /**
-     * The CryptoKey's name.
-     * A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Every time this period passes, generate a new CryptoKeyVersion and set it as
-     * the primary. The first rotation will take place after the specified period. The rotation period has the format
-     * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 86400).
-     */
+    readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;
-    /**
-     * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-     */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * A template describing settings for new crypto key versions. Structure is documented below.
-     */
     readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
 }
 
@@ -155,24 +141,9 @@ export interface CryptoKeyState {
  * The set of arguments for constructing a CryptoKey resource.
  */
 export interface CryptoKeyArgs {
-    /**
-     * The id of the Google Cloud Platform KeyRing to which the key shall belong.
-     */
     readonly keyRing: pulumi.Input<string>;
-    /**
-     * The CryptoKey's name.
-     * A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Every time this period passes, generate a new CryptoKeyVersion and set it as
-     * the primary. The first rotation will take place after the specified period. The rotation period has the format
-     * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-     * a day (ie, 86400).
-     */
+    readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;
-    /**
-     * A template describing settings for new crypto key versions. Structure is documented below.
-     */
     readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
 }

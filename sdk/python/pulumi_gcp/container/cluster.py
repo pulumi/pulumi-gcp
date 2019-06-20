@@ -24,6 +24,12 @@ class Cluster(pulumi.CustomResource):
     The configuration for addons supported by GKE.
     Structure is documented below.
     """
+    authenticator_groups_config: pulumi.Output[dict]
+    """
+    ) Configuration for the
+    [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+    Structure is documented below.
+    """
     cluster_autoscaling: pulumi.Output[dict]
     """
     )
@@ -55,6 +61,11 @@ class Cluster(pulumi.CustomResource):
     """
     ) Enable Binary Authorization for this cluster.
     If enabled, all container images will be validated by Google Binary Authorization.
+    """
+    enable_intranode_visibility: pulumi.Output[bool]
+    """
+    )
+    Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
     """
     enable_kubernetes_alpha: pulumi.Output[bool]
     """
@@ -260,8 +271,15 @@ class Cluster(pulumi.CustomResource):
     """
     vertical_pod_autoscaling: pulumi.Output[dict]
     """
+    )
     Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
     Structure is documented below.
+    """
+    workload_identity_config: pulumi.Output[dict]
+    """
+    )
+    Workload Identity allows Kubernetes service accounts to act as a user-managed
+    [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
     """
     zone: pulumi.Output[str]
     """
@@ -269,7 +287,7 @@ class Cluster(pulumi.CustomResource):
     should be created in. If specified, this cluster will be a zonal cluster. `zone`
     has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, vertical_pod_autoscaling=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -290,6 +308,9 @@ class Cluster(pulumi.CustomResource):
                deprecated in favour of `node_locations`.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[dict] authenticator_groups_config: ) Configuration for the
+               [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+               Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
                Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
@@ -304,6 +325,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
+        :param pulumi.Input[bool] enable_intranode_visibility: )
+               Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -402,8 +425,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
                which the cluster's instances are launched.
-        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[dict] vertical_pod_autoscaling: )
+               Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
+        :param pulumi.Input[dict] workload_identity_config: )
+               Workload Identity allows Kubernetes service accounts to act as a user-managed
+               [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
         :param pulumi.Input[str] zone: The zone that the cluster master and nodes
                should be created in. If specified, this cluster will be a zonal cluster. `zone`
                has been deprecated in favour of `location`.
@@ -427,6 +454,8 @@ class Cluster(pulumi.CustomResource):
 
         __props__['addons_config'] = addons_config
 
+        __props__['authenticator_groups_config'] = authenticator_groups_config
+
         __props__['cluster_autoscaling'] = cluster_autoscaling
 
         __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
@@ -438,6 +467,8 @@ class Cluster(pulumi.CustomResource):
         __props__['description'] = description
 
         __props__['enable_binary_authorization'] = enable_binary_authorization
+
+        __props__['enable_intranode_visibility'] = enable_intranode_visibility
 
         __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
 
@@ -492,6 +523,8 @@ class Cluster(pulumi.CustomResource):
         __props__['subnetwork'] = subnetwork
 
         __props__['vertical_pod_autoscaling'] = vertical_pod_autoscaling
+
+        __props__['workload_identity_config'] = workload_identity_config
 
         __props__['zone'] = zone
 

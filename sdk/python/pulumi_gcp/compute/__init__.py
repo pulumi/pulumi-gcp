@@ -9,6 +9,7 @@ from .autoscalar import *
 from .backend_bucket import *
 from .backend_service import *
 from .disk import *
+from .external_vpn_gateway import *
 from .firewall import *
 from .forwarding_rule import *
 from .global_address import *
@@ -29,6 +30,7 @@ from .instance_template import *
 from .interconnect_attachment import *
 from .manged_ssl_certificate import *
 from .network import *
+from .network_endpoint import *
 from .network_endpoint_group import *
 from .network_peering import *
 from .node_group import *
@@ -39,6 +41,7 @@ from .region_autoscaler import *
 from .region_backend_service import *
 from .region_disk import *
 from .region_instance_group_manager import *
+from .resource_policy import *
 from .route import *
 from .router import *
 from .router_interface import *

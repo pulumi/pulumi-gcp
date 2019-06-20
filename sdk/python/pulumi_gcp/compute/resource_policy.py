@@ -8,36 +8,22 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Job(pulumi.CustomResource):
-    app_engine_http_target: pulumi.Output[dict]
-    description: pulumi.Output[str]
-    http_target: pulumi.Output[dict]
+class ResourcePolicy(pulumi.CustomResource):
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    pubsub_target: pulumi.Output[dict]
     region: pulumi.Output[str]
-    retry_config: pulumi.Output[dict]
-    schedule: pulumi.Output[str]
-    time_zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __name__=None, __opts__=None):
+    self_link: pulumi.Output[str]
+    snapshot_schedule_policy: pulumi.Output[dict]
+    def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __name__=None, __opts__=None):
         """
-        A scheduled job that can publish a pubsub message or a http request
-        every X interval of time, using crontab format string.
+        A policy that can be attached to a resource to specify or schedule actions on that resource.
         
-        To use Cloud Scheduler your project must contain an App Engine app
-        that is located in one of the supported regions. If your project
-        does not have an App Engine app, you must create one.
-        
-        
-        To get more information about Job, see:
-        
-        * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,28 +45,18 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['app_engine_http_target'] = app_engine_http_target
-
-        __props__['description'] = description
-
-        __props__['http_target'] = http_target
-
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['pubsub_target'] = pubsub_target
-
         __props__['region'] = region
 
-        __props__['retry_config'] = retry_config
+        __props__['snapshot_schedule_policy'] = snapshot_schedule_policy
 
-        __props__['schedule'] = schedule
+        __props__['self_link'] = None
 
-        __props__['time_zone'] = time_zone
-
-        super(Job, __self__).__init__(
-            'gcp:cloudscheduler/job:Job',
+        super(ResourcePolicy, __self__).__init__(
+            'gcp:compute/resourcePolicy:ResourcePolicy',
             resource_name,
             __props__,
             opts)

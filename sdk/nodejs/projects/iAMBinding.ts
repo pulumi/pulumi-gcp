@@ -106,7 +106,7 @@ export class IAMBinding extends pulumi.CustomResource {
      * Required for `google_project_iam_policy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format

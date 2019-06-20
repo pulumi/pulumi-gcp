@@ -28,6 +28,7 @@ func NewBucket(ctx *pulumi.Context,
 	name string, args *BucketArgs, opts ...pulumi.ResourceOpt) (*Bucket, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["bucketPolicyOnly"] = nil
 		inputs["cors"] = nil
 		inputs["encryption"] = nil
 		inputs["forceDestroy"] = nil
@@ -42,6 +43,7 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["versioning"] = nil
 		inputs["websites"] = nil
 	} else {
+		inputs["bucketPolicyOnly"] = args.BucketPolicyOnly
 		inputs["cors"] = args.Cors
 		inputs["encryption"] = args.Encryption
 		inputs["forceDestroy"] = args.ForceDestroy
@@ -71,6 +73,7 @@ func GetBucket(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *BucketState, opts ...pulumi.ResourceOpt) (*Bucket, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["bucketPolicyOnly"] = state.BucketPolicyOnly
 		inputs["cors"] = state.Cors
 		inputs["encryption"] = state.Encryption
 		inputs["forceDestroy"] = state.ForceDestroy
@@ -102,6 +105,11 @@ func (r *Bucket) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Bucket) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+func (r *Bucket) BucketPolicyOnly() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["bucketPolicyOnly"])
 }
 
 // The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -184,6 +192,8 @@ func (r *Bucket) Websites() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Bucket resources.
 type BucketState struct {
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	BucketPolicyOnly interface{}
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors interface{}
 	// The bucket's encryption configuration.
@@ -221,6 +231,8 @@ type BucketState struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	BucketPolicyOnly interface{}
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors interface{}
 	// The bucket's encryption configuration.

@@ -24,12 +24,14 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 	return &GetClusterResult{
 		AdditionalZones: outputs["additionalZones"],
 		AddonsConfigs: outputs["addonsConfigs"],
+		AuthenticatorGroupsConfigs: outputs["authenticatorGroupsConfigs"],
 		ClusterAutoscalings: outputs["clusterAutoscalings"],
 		ClusterIpv4Cidr: outputs["clusterIpv4Cidr"],
 		DatabaseEncryptions: outputs["databaseEncryptions"],
 		DefaultMaxPodsPerNode: outputs["defaultMaxPodsPerNode"],
 		Description: outputs["description"],
 		EnableBinaryAuthorization: outputs["enableBinaryAuthorization"],
+		EnableIntranodeVisibility: outputs["enableIntranodeVisibility"],
 		EnableKubernetesAlpha: outputs["enableKubernetesAlpha"],
 		EnableLegacyAbac: outputs["enableLegacyAbac"],
 		EnableTpu: outputs["enableTpu"],
@@ -62,6 +64,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		Subnetwork: outputs["subnetwork"],
 		TpuIpv4CidrBlock: outputs["tpuIpv4CidrBlock"],
 		VerticalPodAutoscalings: outputs["verticalPodAutoscalings"],
+		WorkloadIdentityConfigs: outputs["workloadIdentityConfigs"],
 		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
@@ -90,12 +93,14 @@ type GetClusterArgs struct {
 type GetClusterResult struct {
 	AdditionalZones interface{}
 	AddonsConfigs interface{}
+	AuthenticatorGroupsConfigs interface{}
 	ClusterAutoscalings interface{}
 	ClusterIpv4Cidr interface{}
 	DatabaseEncryptions interface{}
 	DefaultMaxPodsPerNode interface{}
 	Description interface{}
 	EnableBinaryAuthorization interface{}
+	EnableIntranodeVisibility interface{}
 	EnableKubernetesAlpha interface{}
 	EnableLegacyAbac interface{}
 	EnableTpu interface{}
@@ -128,6 +133,7 @@ type GetClusterResult struct {
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}
 	VerticalPodAutoscalings interface{}
+	WorkloadIdentityConfigs interface{}
 	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

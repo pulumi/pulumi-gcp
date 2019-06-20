@@ -8,21 +8,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Allows creation of a Google Cloud Platform KMS CryptoKey. For more information see
-// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
-// and
-// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+// A `CryptoKey` represents a logical key that can be used for cryptographic operations.
 // 
-// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
-// Google Cloud KMS KeyRing.
 // 
-// > Note: CryptoKeys cannot be deleted from Google Cloud Platform. Destroying a
-// Terraform-managed CryptoKey will remove it from state and delete all
-// CryptoKeyVersions, rendering the key unusable, but **will not delete the
-// resource on the server**. When Terraform destroys these keys, any data
-// previously encrypted with these keys will be irrecoverable. For this reason, it
-// is strongly recommended that you add lifecycle hooks to the resource to prevent
-// accidental destruction.
+// > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+// Destroying a Terraform-managed CryptoKey will remove it from state
+// and delete all CryptoKeyVersions, rendering the key unusable, but *will
+// not delete the resource on the server.* When Terraform destroys these keys,
+// any data previously encrypted with these keys will be irrecoverable.
+// For this reason, it is strongly recommended that you add lifecycle hooks
+// to the resource to prevent accidental destruction.
+// 
+// 
+// To get more information about CryptoKey, see:
+// 
+// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+// * How-to Guides
+//     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 type CryptoKey struct {
 	s *pulumi.ResourceState
 }
@@ -37,11 +39,13 @@ func NewCryptoKey(ctx *pulumi.Context,
 	if args == nil {
 		inputs["keyRing"] = nil
 		inputs["name"] = nil
+		inputs["purpose"] = nil
 		inputs["rotationPeriod"] = nil
 		inputs["versionTemplate"] = nil
 	} else {
 		inputs["keyRing"] = args.KeyRing
 		inputs["name"] = args.Name
+		inputs["purpose"] = args.Purpose
 		inputs["rotationPeriod"] = args.RotationPeriod
 		inputs["versionTemplate"] = args.VersionTemplate
 	}
@@ -61,6 +65,7 @@ func GetCryptoKey(ctx *pulumi.Context,
 	if state != nil {
 		inputs["keyRing"] = state.KeyRing
 		inputs["name"] = state.Name
+		inputs["purpose"] = state.Purpose
 		inputs["rotationPeriod"] = state.RotationPeriod
 		inputs["selfLink"] = state.SelfLink
 		inputs["versionTemplate"] = state.VersionTemplate
@@ -82,65 +87,45 @@ func (r *CryptoKey) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The id of the Google Cloud Platform KeyRing to which the key shall belong.
 func (r *CryptoKey) KeyRing() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["keyRing"])
 }
 
-// The CryptoKey's name.
-// A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 func (r *CryptoKey) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Every time this period passes, generate a new CryptoKeyVersion and set it as
-// the primary. The first rotation will take place after the specified period. The rotation period has the format
-// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-// a day (ie, 86400).
+func (r *CryptoKey) Purpose() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["purpose"])
+}
+
 func (r *CryptoKey) RotationPeriod() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["rotationPeriod"])
 }
 
-// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
 func (r *CryptoKey) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// A template describing settings for new crypto key versions. Structure is documented below.
 func (r *CryptoKey) VersionTemplate() *pulumi.Output {
 	return r.s.State["versionTemplate"]
 }
 
 // Input properties used for looking up and filtering CryptoKey resources.
 type CryptoKeyState struct {
-	// The id of the Google Cloud Platform KeyRing to which the key shall belong.
 	KeyRing interface{}
-	// The CryptoKey's name.
-	// A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	Name interface{}
-	// Every time this period passes, generate a new CryptoKeyVersion and set it as
-	// the primary. The first rotation will take place after the specified period. The rotation period has the format
-	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-	// a day (ie, 86400).
+	Purpose interface{}
 	RotationPeriod interface{}
-	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
 	SelfLink interface{}
-	// A template describing settings for new crypto key versions. Structure is documented below.
 	VersionTemplate interface{}
 }
 
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
-	// The id of the Google Cloud Platform KeyRing to which the key shall belong.
 	KeyRing interface{}
-	// The CryptoKey's name.
-	// A CryptoKey’s name must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	Name interface{}
-	// Every time this period passes, generate a new CryptoKeyVersion and set it as
-	// the primary. The first rotation will take place after the specified period. The rotation period has the format
-	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds). It must be greater than
-	// a day (ie, 86400).
+	Purpose interface{}
 	RotationPeriod interface{}
-	// A template describing settings for new crypto key versions. Structure is documented below.
 	VersionTemplate interface{}
 }

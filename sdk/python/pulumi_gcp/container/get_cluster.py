@@ -12,13 +12,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         __self__.addons_configs = addons_configs
+        if authenticator_groups_configs and not isinstance(authenticator_groups_configs, list):
+            raise TypeError("Expected argument 'authenticator_groups_configs' to be a list")
+        __self__.authenticator_groups_configs = authenticator_groups_configs
         if cluster_autoscalings and not isinstance(cluster_autoscalings, list):
             raise TypeError("Expected argument 'cluster_autoscalings' to be a list")
         __self__.cluster_autoscalings = cluster_autoscalings
@@ -37,6 +40,9 @@ class GetClusterResult:
         if enable_binary_authorization and not isinstance(enable_binary_authorization, bool):
             raise TypeError("Expected argument 'enable_binary_authorization' to be a bool")
         __self__.enable_binary_authorization = enable_binary_authorization
+        if enable_intranode_visibility and not isinstance(enable_intranode_visibility, bool):
+            raise TypeError("Expected argument 'enable_intranode_visibility' to be a bool")
+        __self__.enable_intranode_visibility = enable_intranode_visibility
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError("Expected argument 'enable_kubernetes_alpha' to be a bool")
         __self__.enable_kubernetes_alpha = enable_kubernetes_alpha
@@ -133,6 +139,9 @@ class GetClusterResult:
         if vertical_pod_autoscalings and not isinstance(vertical_pod_autoscalings, list):
             raise TypeError("Expected argument 'vertical_pod_autoscalings' to be a list")
         __self__.vertical_pod_autoscalings = vertical_pod_autoscalings
+        if workload_identity_configs and not isinstance(workload_identity_configs, list):
+            raise TypeError("Expected argument 'workload_identity_configs' to be a list")
+        __self__.workload_identity_configs = workload_identity_configs
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
@@ -159,12 +168,14 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
     return GetClusterResult(
         additional_zones=__ret__.get('additionalZones'),
         addons_configs=__ret__.get('addonsConfigs'),
+        authenticator_groups_configs=__ret__.get('authenticatorGroupsConfigs'),
         cluster_autoscalings=__ret__.get('clusterAutoscalings'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
         database_encryptions=__ret__.get('databaseEncryptions'),
         default_max_pods_per_node=__ret__.get('defaultMaxPodsPerNode'),
         description=__ret__.get('description'),
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
+        enable_intranode_visibility=__ret__.get('enableIntranodeVisibility'),
         enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
         enable_legacy_abac=__ret__.get('enableLegacyAbac'),
         enable_tpu=__ret__.get('enableTpu'),
@@ -197,5 +208,6 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
         subnetwork=__ret__.get('subnetwork'),
         tpu_ipv4_cidr_block=__ret__.get('tpuIpv4CidrBlock'),
         vertical_pod_autoscalings=__ret__.get('verticalPodAutoscalings'),
+        workload_identity_configs=__ret__.get('workloadIdentityConfigs'),
         zone=__ret__.get('zone'),
         id=__ret__.get('id'))

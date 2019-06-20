@@ -9,7 +9,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_token=None, credentials=None, project=None, region=None, scopes=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_context_manager_custom_endpoint=None, access_token=None, app_engine_custom_endpoint=None, bigquery_custom_endpoint=None, binary_authorization_custom_endpoint=None, cloud_billing_custom_endpoint=None, cloud_build_custom_endpoint=None, cloud_functions_custom_endpoint=None, cloud_iot_custom_endpoint=None, cloud_scheduler_custom_endpoint=None, composer_custom_endpoint=None, compute_beta_custom_endpoint=None, compute_custom_endpoint=None, container_analysis_custom_endpoint=None, container_beta_custom_endpoint=None, container_custom_endpoint=None, credentials=None, dataflow_custom_endpoint=None, dataproc_beta_custom_endpoint=None, dataproc_custom_endpoint=None, dns_beta_custom_endpoint=None, dns_custom_endpoint=None, filestore_custom_endpoint=None, firestore_custom_endpoint=None, iam_credentials_custom_endpoint=None, iam_custom_endpoint=None, iap_custom_endpoint=None, kms_custom_endpoint=None, logging_custom_endpoint=None, monitoring_custom_endpoint=None, project=None, pubsub_custom_endpoint=None, redis_custom_endpoint=None, region=None, resource_manager_custom_endpoint=None, resource_manager_v2beta1_custom_endpoint=None, runtimeconfig_custom_endpoint=None, scopes=None, security_scanner_custom_endpoint=None, service_management_custom_endpoint=None, service_networking_custom_endpoint=None, service_usage_custom_endpoint=None, source_repo_custom_endpoint=None, spanner_custom_endpoint=None, sql_custom_endpoint=None, storage_custom_endpoint=None, storage_transfer_custom_endpoint=None, tpu_custom_endpoint=None, zone=None, __name__=None, __opts__=None):
         """
         The provider type for the google-beta package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -34,21 +34,107 @@ class Provider(pulumi.ProviderResource):
 
         __props__ = dict()
 
+        __props__['access_context_manager_custom_endpoint'] = access_context_manager_custom_endpoint
+
         __props__['access_token'] = access_token
+
+        __props__['app_engine_custom_endpoint'] = app_engine_custom_endpoint
+
+        __props__['bigquery_custom_endpoint'] = bigquery_custom_endpoint
+
+        __props__['binary_authorization_custom_endpoint'] = binary_authorization_custom_endpoint
+
+        __props__['cloud_billing_custom_endpoint'] = cloud_billing_custom_endpoint
+
+        __props__['cloud_build_custom_endpoint'] = cloud_build_custom_endpoint
+
+        __props__['cloud_functions_custom_endpoint'] = cloud_functions_custom_endpoint
+
+        __props__['cloud_iot_custom_endpoint'] = cloud_iot_custom_endpoint
+
+        __props__['cloud_scheduler_custom_endpoint'] = cloud_scheduler_custom_endpoint
+
+        __props__['composer_custom_endpoint'] = composer_custom_endpoint
+
+        __props__['compute_beta_custom_endpoint'] = compute_beta_custom_endpoint
+
+        __props__['compute_custom_endpoint'] = compute_custom_endpoint
+
+        __props__['container_analysis_custom_endpoint'] = container_analysis_custom_endpoint
+
+        __props__['container_beta_custom_endpoint'] = container_beta_custom_endpoint
+
+        __props__['container_custom_endpoint'] = container_custom_endpoint
 
         if credentials is None:
             credentials = utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
         __props__['credentials'] = credentials
 
+        __props__['dataflow_custom_endpoint'] = dataflow_custom_endpoint
+
+        __props__['dataproc_beta_custom_endpoint'] = dataproc_beta_custom_endpoint
+
+        __props__['dataproc_custom_endpoint'] = dataproc_custom_endpoint
+
+        __props__['dns_beta_custom_endpoint'] = dns_beta_custom_endpoint
+
+        __props__['dns_custom_endpoint'] = dns_custom_endpoint
+
+        __props__['filestore_custom_endpoint'] = filestore_custom_endpoint
+
+        __props__['firestore_custom_endpoint'] = firestore_custom_endpoint
+
+        __props__['iam_credentials_custom_endpoint'] = iam_credentials_custom_endpoint
+
+        __props__['iam_custom_endpoint'] = iam_custom_endpoint
+
+        __props__['iap_custom_endpoint'] = iap_custom_endpoint
+
+        __props__['kms_custom_endpoint'] = kms_custom_endpoint
+
+        __props__['logging_custom_endpoint'] = logging_custom_endpoint
+
+        __props__['monitoring_custom_endpoint'] = monitoring_custom_endpoint
+
         if project is None:
             project = utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         __props__['project'] = project
+
+        __props__['pubsub_custom_endpoint'] = pubsub_custom_endpoint
+
+        __props__['redis_custom_endpoint'] = redis_custom_endpoint
 
         if region is None:
             region = utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
         __props__['region'] = region
 
+        __props__['resource_manager_custom_endpoint'] = resource_manager_custom_endpoint
+
+        __props__['resource_manager_v2beta1_custom_endpoint'] = resource_manager_v2beta1_custom_endpoint
+
+        __props__['runtimeconfig_custom_endpoint'] = runtimeconfig_custom_endpoint
+
         __props__['scopes'] = pulumi.Output.from_input(scopes).apply(json.dumps) if scopes is not None else None
+
+        __props__['security_scanner_custom_endpoint'] = security_scanner_custom_endpoint
+
+        __props__['service_management_custom_endpoint'] = service_management_custom_endpoint
+
+        __props__['service_networking_custom_endpoint'] = service_networking_custom_endpoint
+
+        __props__['service_usage_custom_endpoint'] = service_usage_custom_endpoint
+
+        __props__['source_repo_custom_endpoint'] = source_repo_custom_endpoint
+
+        __props__['spanner_custom_endpoint'] = spanner_custom_endpoint
+
+        __props__['sql_custom_endpoint'] = sql_custom_endpoint
+
+        __props__['storage_custom_endpoint'] = storage_custom_endpoint
+
+        __props__['storage_transfer_custom_endpoint'] = storage_transfer_custom_endpoint
+
+        __props__['tpu_custom_endpoint'] = tpu_custom_endpoint
 
         if zone is None:
             zone = utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
