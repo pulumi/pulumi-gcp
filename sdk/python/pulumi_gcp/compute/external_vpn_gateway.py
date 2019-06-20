@@ -8,36 +8,27 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Job(pulumi.CustomResource):
-    app_engine_http_target: pulumi.Output[dict]
+class ExternalVpnGateway(pulumi.CustomResource):
     description: pulumi.Output[str]
-    http_target: pulumi.Output[dict]
+    interfaces: pulumi.Output[list]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    pubsub_target: pulumi.Output[dict]
-    region: pulumi.Output[str]
-    retry_config: pulumi.Output[dict]
-    schedule: pulumi.Output[str]
-    time_zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __name__=None, __opts__=None):
+    redundancy_type: pulumi.Output[str]
+    self_link: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, __name__=None, __opts__=None):
         """
-        A scheduled job that can publish a pubsub message or a http request
-        every X interval of time, using crontab format string.
+        Represents a VPN gateway managed outside of GCP.
         
-        To use Cloud Scheduler your project must contain an App Engine app
-        that is located in one of the supported regions. If your project
-        does not have an App Engine app, you must create one.
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
         
+        To get more information about ExternalVpnGateway, see:
         
-        To get more information about Job, see:
-        
-        * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,28 +50,20 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['app_engine_http_target'] = app_engine_http_target
-
         __props__['description'] = description
 
-        __props__['http_target'] = http_target
+        __props__['interfaces'] = interfaces
 
         __props__['name'] = name
 
         __props__['project'] = project
 
-        __props__['pubsub_target'] = pubsub_target
+        __props__['redundancy_type'] = redundancy_type
 
-        __props__['region'] = region
+        __props__['self_link'] = None
 
-        __props__['retry_config'] = retry_config
-
-        __props__['schedule'] = schedule
-
-        __props__['time_zone'] = time_zone
-
-        super(Job, __self__).__init__(
-            'gcp:cloudscheduler/job:Job',
+        super(ExternalVpnGateway, __self__).__init__(
+            'gcp:compute/externalVpnGateway:ExternalVpnGateway',
             resource_name,
             __props__,
             opts)

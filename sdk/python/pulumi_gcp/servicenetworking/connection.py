@@ -27,9 +27,6 @@ class Connection(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, network=None, reserved_peering_ranges=None, service=None, __name__=None, __opts__=None):
         """
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
         Manages a private VPC connection with a GCP service provider. For more information see
         [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
         and

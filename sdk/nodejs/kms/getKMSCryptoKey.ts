@@ -58,6 +58,10 @@ export interface GetKMSCryptoKeyResult {
     readonly keyRing: string;
     readonly name: string;
     /**
+     * Defines the cryptographic capabilities of the key.
+     */
+    readonly purpose: string;
+    /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).

@@ -33,7 +33,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
 
     public readonly auditLogConfigs!: pulumi.Output<{ exemptedMembers?: string[], logType: string }[]>;
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly project!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
     public readonly service!: pulumi.Output<string>;
 
     /**

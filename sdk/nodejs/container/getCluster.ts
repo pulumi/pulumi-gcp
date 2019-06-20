@@ -73,12 +73,14 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly additionalZones: string[];
     readonly addonsConfigs: { cloudrunConfigs: { disabled: boolean }[], horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], istioConfigs: { auth: string, disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
+    readonly authenticatorGroupsConfigs: { securityGroup: string }[];
     readonly clusterAutoscalings: { enabled: boolean, resourceLimits: { maximum: number, minimum: number, resourceType: string }[] }[];
     readonly clusterIpv4Cidr: string;
     readonly databaseEncryptions: { keyName: string, state: string }[];
     readonly defaultMaxPodsPerNode: number;
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
+    readonly enableIntranodeVisibility: boolean;
     readonly enableKubernetesAlpha: boolean;
     readonly enableLegacyAbac: boolean;
     readonly enableTpu: boolean;
@@ -111,6 +113,7 @@ export interface GetClusterResult {
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;
     readonly verticalPodAutoscalings: { enabled: boolean }[];
+    readonly workloadIdentityConfigs: { identityNamespace: string }[];
     readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

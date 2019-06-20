@@ -27,6 +27,7 @@ func LookupKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs) (*GetKMS
 	return &GetKMSCryptoKeyResult{
 		KeyRing: outputs["keyRing"],
 		Name: outputs["name"],
+		Purpose: outputs["purpose"],
 		RotationPeriod: outputs["rotationPeriod"],
 		SelfLink: outputs["selfLink"],
 		VersionTemplates: outputs["versionTemplates"],
@@ -47,6 +48,8 @@ type GetKMSCryptoKeyArgs struct {
 type GetKMSCryptoKeyResult struct {
 	KeyRing interface{}
 	Name interface{}
+	// Defines the cryptographic capabilities of the key.
+	Purpose interface{}
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
 	// the primary. The first rotation will take place after the specified period. The rotation period has the format
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).

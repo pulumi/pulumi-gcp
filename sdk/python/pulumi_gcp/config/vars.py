@@ -10,15 +10,101 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('gcp')
 
+access_context_manager_custom_endpoint = __config__.get('accessContextManagerCustomEndpoint')
+
 access_token = __config__.get('accessToken')
+
+app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
+
+bigquery_custom_endpoint = __config__.get('bigqueryCustomEndpoint')
+
+binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
+
+cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')
+
+cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')
+
+cloud_functions_custom_endpoint = __config__.get('cloudFunctionsCustomEndpoint')
+
+cloud_iot_custom_endpoint = __config__.get('cloudIotCustomEndpoint')
+
+cloud_scheduler_custom_endpoint = __config__.get('cloudSchedulerCustomEndpoint')
+
+composer_custom_endpoint = __config__.get('composerCustomEndpoint')
+
+compute_beta_custom_endpoint = __config__.get('computeBetaCustomEndpoint')
+
+compute_custom_endpoint = __config__.get('computeCustomEndpoint')
+
+container_analysis_custom_endpoint = __config__.get('containerAnalysisCustomEndpoint')
+
+container_beta_custom_endpoint = __config__.get('containerBetaCustomEndpoint')
+
+container_custom_endpoint = __config__.get('containerCustomEndpoint')
 
 credentials = __config__.get('credentials') or utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
 
+dataflow_custom_endpoint = __config__.get('dataflowCustomEndpoint')
+
+dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')
+
+dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
+
+dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
+
+dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
+
+filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
+
+firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
+
+iam_credentials_custom_endpoint = __config__.get('iamCredentialsCustomEndpoint')
+
+iam_custom_endpoint = __config__.get('iamCustomEndpoint')
+
+iap_custom_endpoint = __config__.get('iapCustomEndpoint')
+
+kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
+
+logging_custom_endpoint = __config__.get('loggingCustomEndpoint')
+
+monitoring_custom_endpoint = __config__.get('monitoringCustomEndpoint')
+
 project = __config__.get('project') or utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+
+pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')
+
+redis_custom_endpoint = __config__.get('redisCustomEndpoint')
 
 region = __config__.get('region') or utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
 
+resource_manager_custom_endpoint = __config__.get('resourceManagerCustomEndpoint')
+
+resource_manager_v2beta1_custom_endpoint = __config__.get('resourceManagerV2beta1CustomEndpoint')
+
+runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
+
 scopes = __config__.get('scopes')
+
+security_scanner_custom_endpoint = __config__.get('securityScannerCustomEndpoint')
+
+service_management_custom_endpoint = __config__.get('serviceManagementCustomEndpoint')
+
+service_networking_custom_endpoint = __config__.get('serviceNetworkingCustomEndpoint')
+
+service_usage_custom_endpoint = __config__.get('serviceUsageCustomEndpoint')
+
+source_repo_custom_endpoint = __config__.get('sourceRepoCustomEndpoint')
+
+spanner_custom_endpoint = __config__.get('spannerCustomEndpoint')
+
+sql_custom_endpoint = __config__.get('sqlCustomEndpoint')
+
+storage_custom_endpoint = __config__.get('storageCustomEndpoint')
+
+storage_transfer_custom_endpoint = __config__.get('storageTransferCustomEndpoint')
+
+tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
 
 zone = __config__.get('zone') or utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

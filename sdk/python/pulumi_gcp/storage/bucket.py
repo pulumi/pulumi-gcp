@@ -9,6 +9,10 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Bucket(pulumi.CustomResource):
+    bucket_policy_only: pulumi.Output[bool]
+    """
+    Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+    """
     cors: pulumi.Output[list]
     """
     The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -72,7 +76,7 @@ class Bucket(pulumi.CustomResource):
     """
     Configuration if the bucket acts as a website. Structure is documented below.
     """
-    def __init__(__self__, resource_name, opts=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -89,6 +93,7 @@ class Bucket(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
         :param pulumi.Input[list] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -120,6 +125,8 @@ class Bucket(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['bucket_policy_only'] = bucket_policy_only
 
         __props__['cors'] = cors
 

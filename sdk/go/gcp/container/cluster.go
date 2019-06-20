@@ -25,12 +25,14 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil {
 		inputs["additionalZones"] = nil
 		inputs["addonsConfig"] = nil
+		inputs["authenticatorGroupsConfig"] = nil
 		inputs["clusterAutoscaling"] = nil
 		inputs["clusterIpv4Cidr"] = nil
 		inputs["databaseEncryption"] = nil
 		inputs["defaultMaxPodsPerNode"] = nil
 		inputs["description"] = nil
 		inputs["enableBinaryAuthorization"] = nil
+		inputs["enableIntranodeVisibility"] = nil
 		inputs["enableKubernetesAlpha"] = nil
 		inputs["enableLegacyAbac"] = nil
 		inputs["enableTpu"] = nil
@@ -58,16 +60,19 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["resourceLabels"] = nil
 		inputs["subnetwork"] = nil
 		inputs["verticalPodAutoscaling"] = nil
+		inputs["workloadIdentityConfig"] = nil
 		inputs["zone"] = nil
 	} else {
 		inputs["additionalZones"] = args.AdditionalZones
 		inputs["addonsConfig"] = args.AddonsConfig
+		inputs["authenticatorGroupsConfig"] = args.AuthenticatorGroupsConfig
 		inputs["clusterAutoscaling"] = args.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = args.ClusterIpv4Cidr
 		inputs["databaseEncryption"] = args.DatabaseEncryption
 		inputs["defaultMaxPodsPerNode"] = args.DefaultMaxPodsPerNode
 		inputs["description"] = args.Description
 		inputs["enableBinaryAuthorization"] = args.EnableBinaryAuthorization
+		inputs["enableIntranodeVisibility"] = args.EnableIntranodeVisibility
 		inputs["enableKubernetesAlpha"] = args.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = args.EnableLegacyAbac
 		inputs["enableTpu"] = args.EnableTpu
@@ -95,6 +100,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["resourceLabels"] = args.ResourceLabels
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["verticalPodAutoscaling"] = args.VerticalPodAutoscaling
+		inputs["workloadIdentityConfig"] = args.WorkloadIdentityConfig
 		inputs["zone"] = args.Zone
 	}
 	inputs["endpoint"] = nil
@@ -117,12 +123,14 @@ func GetCluster(ctx *pulumi.Context,
 	if state != nil {
 		inputs["additionalZones"] = state.AdditionalZones
 		inputs["addonsConfig"] = state.AddonsConfig
+		inputs["authenticatorGroupsConfig"] = state.AuthenticatorGroupsConfig
 		inputs["clusterAutoscaling"] = state.ClusterAutoscaling
 		inputs["clusterIpv4Cidr"] = state.ClusterIpv4Cidr
 		inputs["databaseEncryption"] = state.DatabaseEncryption
 		inputs["defaultMaxPodsPerNode"] = state.DefaultMaxPodsPerNode
 		inputs["description"] = state.Description
 		inputs["enableBinaryAuthorization"] = state.EnableBinaryAuthorization
+		inputs["enableIntranodeVisibility"] = state.EnableIntranodeVisibility
 		inputs["enableKubernetesAlpha"] = state.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = state.EnableLegacyAbac
 		inputs["enableTpu"] = state.EnableTpu
@@ -155,6 +163,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["tpuIpv4CidrBlock"] = state.TpuIpv4CidrBlock
 		inputs["verticalPodAutoscaling"] = state.VerticalPodAutoscaling
+		inputs["workloadIdentityConfig"] = state.WorkloadIdentityConfig
 		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("gcp:container/cluster:Cluster", name, id, inputs, opts...)
@@ -189,6 +198,13 @@ func (r *Cluster) AdditionalZones() *pulumi.ArrayOutput {
 // Structure is documented below.
 func (r *Cluster) AddonsConfig() *pulumi.Output {
 	return r.s.State["addonsConfig"]
+}
+
+// ) Configuration for the
+// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+// Structure is documented below.
+func (r *Cluster) AuthenticatorGroupsConfig() *pulumi.Output {
+	return r.s.State["authenticatorGroupsConfig"]
 }
 
 // )
@@ -227,6 +243,12 @@ func (r *Cluster) Description() *pulumi.StringOutput {
 // If enabled, all container images will be validated by Google Binary Authorization.
 func (r *Cluster) EnableBinaryAuthorization() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableBinaryAuthorization"])
+}
+
+// )
+// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+func (r *Cluster) EnableIntranodeVisibility() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableIntranodeVisibility"])
 }
 
 // Whether to enable Kubernetes Alpha features for
@@ -464,10 +486,18 @@ func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
 }
 
+// )
 // Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 // Structure is documented below.
 func (r *Cluster) VerticalPodAutoscaling() *pulumi.Output {
 	return r.s.State["verticalPodAutoscaling"]
+}
+
+// )
+// Workload Identity allows Kubernetes service accounts to act as a user-managed
+// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+func (r *Cluster) WorkloadIdentityConfig() *pulumi.Output {
+	return r.s.State["workloadIdentityConfig"]
 }
 
 // The zone that the cluster master and nodes
@@ -490,6 +520,10 @@ type ClusterState struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
+	// ) Configuration for the
+	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+	// Structure is documented below.
+	AuthenticatorGroupsConfig interface{}
 	// )
 	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
 	ClusterAutoscaling interface{}
@@ -510,6 +544,9 @@ type ClusterState struct {
 	// ) Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization interface{}
+	// )
+	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+	EnableIntranodeVisibility interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -652,9 +689,14 @@ type ClusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock interface{}
+	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling interface{}
+	// )
+	// Workload Identity allows Kubernetes service accounts to act as a user-managed
+	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+	WorkloadIdentityConfig interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
 	// has been deprecated in favour of `location`.
@@ -674,6 +716,10 @@ type ClusterArgs struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
+	// ) Configuration for the
+	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+	// Structure is documented below.
+	AuthenticatorGroupsConfig interface{}
 	// )
 	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
 	ClusterAutoscaling interface{}
@@ -694,6 +740,9 @@ type ClusterArgs struct {
 	// ) Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization interface{}
+	// )
+	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+	EnableIntranodeVisibility interface{}
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -818,9 +867,14 @@ type ClusterArgs struct {
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
+	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling interface{}
+	// )
+	// Workload Identity allows Kubernetes service accounts to act as a user-managed
+	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+	WorkloadIdentityConfig interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
 	// has been deprecated in favour of `location`.
