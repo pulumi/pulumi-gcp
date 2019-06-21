@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+* Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
 * Update to v2.9.1 of the Google Beta Terraform Provider.
 ---
 
