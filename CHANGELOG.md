@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+___NULL___
+
+---
+
+## 0.18.9 (2019-06-21)
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
 * Update to v2.9.1 of the Google Beta Terraform Provider.
----
 
 ## 0.18.8 (2019-06-20)
 * Add TypeScript type guards for each resource class ([7ace3e9b5f](https://github.com/pulumi/pulumi-terraform/commit/7ace3e9b5f2dcd4692b029ba4b80360582d7949a))
