@@ -30,6 +30,7 @@ export let dnsBetaCustomEndpoint: string | undefined = __config.get("dnsBetaCust
 export let dnsCustomEndpoint: string | undefined = __config.get("dnsCustomEndpoint");
 export let filestoreCustomEndpoint: string | undefined = __config.get("filestoreCustomEndpoint");
 export let firestoreCustomEndpoint: string | undefined = __config.get("firestoreCustomEndpoint");
+export let healthcareCustomEndpoint: string | undefined = __config.get("healthcareCustomEndpoint");
 export let iamCredentialsCustomEndpoint: string | undefined = __config.get("iamCredentialsCustomEndpoint");
 export let iamCustomEndpoint: string | undefined = __config.get("iamCustomEndpoint");
 export let iapCustomEndpoint: string | undefined = __config.get("iapCustomEndpoint");

@@ -58,6 +58,8 @@ filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
 
 firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
 
+healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
+
 iam_credentials_custom_endpoint = __config__.get('iamCredentialsCustomEndpoint')
 
 iam_custom_endpoint = __config__.get('iamCustomEndpoint')

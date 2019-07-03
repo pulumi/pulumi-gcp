@@ -83,6 +83,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public /*out*/ readonly size!: pulumi.Output<number>;
     public readonly subnetwork!: pulumi.Output<string | undefined>;
     public readonly zone!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["network"] = state ? state.network : undefined;
             inputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -121,6 +126,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["selfLink"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
         super(NetworkEndpointGroup.__pulumiType, name, inputs, opts);
@@ -141,6 +147,10 @@ export interface NetworkEndpointGroupState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
+    readonly selfLink?: pulumi.Input<string>;
     readonly size?: pulumi.Input<number>;
     readonly subnetwork?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;

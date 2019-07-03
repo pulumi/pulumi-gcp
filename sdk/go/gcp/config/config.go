@@ -111,6 +111,10 @@ func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
 }
 
+func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
+}
+
 func GetIamCredentialsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iamCredentialsCustomEndpoint")
 }

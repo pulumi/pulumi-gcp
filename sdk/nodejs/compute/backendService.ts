@@ -64,7 +64,7 @@ export class BackendService extends pulumi.CustomResource {
     }
 
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
-    public readonly backends!: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
+    public readonly backends!: pulumi.Output<{ balancingMode?: string, capacityScaler?: number, description?: string, group?: string, maxConnections?: number, maxConnectionsPerEndpoint?: number, maxConnectionsPerInstance?: number, maxRate?: number, maxRatePerEndpoint?: number, maxRatePerInstance?: number, maxUtilization?: number }[] | undefined>;
     public readonly cdnPolicy!: pulumi.Output<{ cacheKeyPolicy?: { includeHost?: boolean, includeProtocol?: boolean, includeQueryString?: boolean, queryStringBlacklists?: string[], queryStringWhitelists?: string[] }, signedUrlCacheMaxAgeSec?: number }>;
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -158,7 +158,7 @@ export class BackendService extends pulumi.CustomResource {
  */
 export interface BackendServiceState {
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
-    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerEndpoint?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerEndpoint?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     readonly cdnPolicy?: pulumi.Input<{ cacheKeyPolicy?: pulumi.Input<{ includeHost?: pulumi.Input<boolean>, includeProtocol?: pulumi.Input<boolean>, includeQueryString?: pulumi.Input<boolean>, queryStringBlacklists?: pulumi.Input<pulumi.Input<string>[]>, queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]> }>, signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     readonly creationTimestamp?: pulumi.Input<string>;
@@ -191,7 +191,7 @@ export interface BackendServiceState {
  */
 export interface BackendServiceArgs {
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
-    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<{ balancingMode?: pulumi.Input<string>, capacityScaler?: pulumi.Input<number>, description?: pulumi.Input<string>, group?: pulumi.Input<string>, maxConnections?: pulumi.Input<number>, maxConnectionsPerEndpoint?: pulumi.Input<number>, maxConnectionsPerInstance?: pulumi.Input<number>, maxRate?: pulumi.Input<number>, maxRatePerEndpoint?: pulumi.Input<number>, maxRatePerInstance?: pulumi.Input<number>, maxUtilization?: pulumi.Input<number> }>[]>;
     readonly cdnPolicy?: pulumi.Input<{ cacheKeyPolicy?: pulumi.Input<{ includeHost?: pulumi.Input<boolean>, includeProtocol?: pulumi.Input<boolean>, includeQueryString?: pulumi.Input<boolean>, queryStringBlacklists?: pulumi.Input<pulumi.Input<string>[]>, queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]> }>, signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;

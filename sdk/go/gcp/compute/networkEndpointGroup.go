@@ -55,6 +55,7 @@ func NewNetworkEndpointGroup(ctx *pulumi.Context,
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["zone"] = args.Zone
 	}
+	inputs["selfLink"] = nil
 	inputs["size"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, true, inputs, opts...)
 	if err != nil {
@@ -75,6 +76,7 @@ func GetNetworkEndpointGroup(ctx *pulumi.Context,
 		inputs["network"] = state.Network
 		inputs["networkEndpointType"] = state.NetworkEndpointType
 		inputs["project"] = state.Project
+		inputs["selfLink"] = state.SelfLink
 		inputs["size"] = state.Size
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["zone"] = state.Zone
@@ -122,6 +124,11 @@ func (r *NetworkEndpointGroup) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The URI of the created resource.
+func (r *NetworkEndpointGroup) SelfLink() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+}
+
 func (r *NetworkEndpointGroup) Size() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["size"])
 }
@@ -144,6 +151,8 @@ type NetworkEndpointGroupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The URI of the created resource.
+	SelfLink interface{}
 	Size interface{}
 	Subnetwork interface{}
 	Zone interface{}

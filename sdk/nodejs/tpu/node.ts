@@ -37,9 +37,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const available = pulumi.output(gcp.tpu.getTensorflowVersions({}));
- * const tpuNetwork = new gcp.compute.Network("tpu_network", {
- *     autoCreateSubnetworks: false,
- * });
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
  *     cidrBlock: "10.3.0.0/29",
@@ -47,7 +44,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
- *     network: tpuNetwork.name,
+ *     network: "default",
  *     schedulingConfig: {
  *         preemptible: true,
  *     },

@@ -38,12 +38,14 @@ func NewCryptoKey(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["keyRing"] = nil
+		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["purpose"] = nil
 		inputs["rotationPeriod"] = nil
 		inputs["versionTemplate"] = nil
 	} else {
 		inputs["keyRing"] = args.KeyRing
+		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["purpose"] = args.Purpose
 		inputs["rotationPeriod"] = args.RotationPeriod
@@ -64,6 +66,7 @@ func GetCryptoKey(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["keyRing"] = state.KeyRing
+		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["purpose"] = state.Purpose
 		inputs["rotationPeriod"] = state.RotationPeriod
@@ -91,6 +94,10 @@ func (r *CryptoKey) KeyRing() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["keyRing"])
 }
 
+func (r *CryptoKey) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
+}
+
 func (r *CryptoKey) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -114,6 +121,7 @@ func (r *CryptoKey) VersionTemplate() *pulumi.Output {
 // Input properties used for looking up and filtering CryptoKey resources.
 type CryptoKeyState struct {
 	KeyRing interface{}
+	Labels interface{}
 	Name interface{}
 	Purpose interface{}
 	RotationPeriod interface{}
@@ -124,6 +132,7 @@ type CryptoKeyState struct {
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
 	KeyRing interface{}
+	Labels interface{}
 	Name interface{}
 	Purpose interface{}
 	RotationPeriod interface{}

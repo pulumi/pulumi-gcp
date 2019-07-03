@@ -99,9 +99,9 @@ export interface GetClusterResult {
     readonly name: string;
     readonly network: string;
     readonly networkPolicies: { enabled: boolean, provider: string }[];
-    readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
+    readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, sandboxConfigs: { sandboxType: string }[], serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
     readonly nodeLocations: string[];
-    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
+    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, sandboxConfigs: { sandboxType: string }[], serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
     readonly nodeVersion: string;
     readonly podSecurityPolicyConfigs: { enabled: boolean }[];
     readonly privateClusterConfigs: { enablePrivateEndpoint: boolean, enablePrivateNodes: boolean, masterIpv4CidrBlock: string, privateEndpoint: string, publicEndpoint: string }[];
@@ -109,6 +109,7 @@ export interface GetClusterResult {
     readonly region?: string;
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
+    readonly resourceUsageExportConfigs: { bigqueryDestinations: { datasetId: string }[], enableNetworkEgressMetering: boolean }[];
     readonly servicesIpv4Cidr: string;
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;

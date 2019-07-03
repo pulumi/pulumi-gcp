@@ -85,6 +85,7 @@ export class CryptoKey extends pulumi.CustomResource {
     }
 
     public readonly keyRing!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly purpose!: pulumi.Output<string | undefined>;
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
@@ -104,6 +105,7 @@ export class CryptoKey extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["purpose"] = state ? state.purpose : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
@@ -115,6 +117,7 @@ export class CryptoKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyRing'");
             }
             inputs["keyRing"] = args ? args.keyRing : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
@@ -130,6 +133,7 @@ export class CryptoKey extends pulumi.CustomResource {
  */
 export interface CryptoKeyState {
     readonly keyRing?: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;
@@ -142,6 +146,7 @@ export interface CryptoKeyState {
  */
 export interface CryptoKeyArgs {
     readonly keyRing: pulumi.Input<string>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;

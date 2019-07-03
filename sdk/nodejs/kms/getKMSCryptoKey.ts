@@ -56,6 +56,7 @@ export interface GetKMSCryptoKeyArgs {
  */
 export interface GetKMSCryptoKeyResult {
     readonly keyRing: string;
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * Defines the cryptographic capabilities of the key.

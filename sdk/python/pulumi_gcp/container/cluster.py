@@ -33,7 +33,11 @@ class Cluster(pulumi.CustomResource):
     cluster_autoscaling: pulumi.Output[dict]
     """
     )
-    Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+    Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+    automatically adjust the size of the cluster and create/delete node pools based
+    on the current needs of the cluster's workload. See the
+    [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+    for more details. Structure is documented below.
     """
     cluster_ipv4_cidr: pulumi.Output[str]
     """
@@ -122,7 +126,7 @@ class Cluster(pulumi.CustomResource):
     """
     The logging service that the cluster should
     write logs to. Available options include `logging.googleapis.com`,
-    `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+    `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
     """
     maintenance_policy: pulumi.Output[dict]
     """
@@ -132,7 +136,11 @@ class Cluster(pulumi.CustomResource):
     master_auth: pulumi.Output[dict]
     """
     The authentication information for accessing the
-    Kubernetes master. Structure is documented below.
+    Kubernetes master. Some values in this block are only returned by the API if
+    your service account has permission to get credentials for your GKE cluster. If
+    you see an unexpected diff removing a username/password or unsetting your client
+    cert, ensure you have the `container.clusters.getCredentials` permission.
+    Structure is documented below.
     """
     master_authorized_networks_config: pulumi.Output[dict]
     """
@@ -166,7 +174,7 @@ class Cluster(pulumi.CustomResource):
     Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
     VM metrics will be collected by Google Compute Engine regardless of this setting
     Available options include
-    `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+    `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
     Defaults to `monitoring.googleapis.com`
     """
     name: pulumi.Output[str]
@@ -251,6 +259,12 @@ class Cluster(pulumi.CustomResource):
     """
     The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
     """
+    resource_usage_export_config: pulumi.Output[dict]
+    """
+    ) Configuration for the
+    [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+    Structure is documented below.
+    """
     services_ipv4_cidr: pulumi.Output[str]
     """
     The IP address range of the Kubernetes services in this
@@ -287,7 +301,7 @@ class Cluster(pulumi.CustomResource):
     should be created in. If specified, this cluster will be a zonal cluster. `zone`
     has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -312,7 +326,11 @@ class Cluster(pulumi.CustomResource):
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
-               Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+               Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+               automatically adjust the size of the cluster and create/delete node pools based
+               on the current needs of the cluster's workload. See the
+               [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+               for more details. Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
                this cluster. Default is an automatically assigned CIDR.
         :param pulumi.Input[dict] database_encryption: ).
@@ -353,11 +371,15 @@ class Cluster(pulumi.CustomResource):
                the region, and with default node locations in those zones as well.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`,
-               `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
         :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[dict] master_auth: The authentication information for accessing the
-               Kubernetes master. Structure is documented below.
+               Kubernetes master. Some values in this block are only returned by the API if
+               your service account has permission to get credentials for your GKE cluster. If
+               you see an unexpected diff removing a username/password or unsetting your client
+               cert, ensure you have the `container.clusters.getCredentials` permission.
+               Structure is documented below.
         :param pulumi.Input[dict] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
@@ -376,7 +398,7 @@ class Cluster(pulumi.CustomResource):
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
                VM metrics will be collected by Google Compute Engine regardless of this setting
                Available options include
-               `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+               `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
                Defaults to `monitoring.googleapis.com`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
@@ -423,6 +445,9 @@ class Cluster(pulumi.CustomResource):
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[dict] resource_usage_export_config: ) Configuration for the
+               [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+               Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
                which the cluster's instances are launched.
         :param pulumi.Input[dict] vertical_pod_autoscaling: )
@@ -519,6 +544,8 @@ class Cluster(pulumi.CustomResource):
         __props__['remove_default_node_pool'] = remove_default_node_pool
 
         __props__['resource_labels'] = resource_labels
+
+        __props__['resource_usage_export_config'] = resource_usage_export_config
 
         __props__['subnetwork'] = subnetwork
 

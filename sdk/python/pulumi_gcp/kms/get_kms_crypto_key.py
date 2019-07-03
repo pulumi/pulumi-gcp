@@ -12,10 +12,13 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, key_ring=None, name=None, purpose=None, rotation_period=None, self_link=None, version_templates=None, id=None):
+    def __init__(__self__, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, version_templates=None, id=None):
         if key_ring and not isinstance(key_ring, str):
             raise TypeError("Expected argument 'key_ring' to be a str")
         __self__.key_ring = key_ring
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        __self__.labels = labels
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -67,6 +70,7 @@ async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
 
     return GetKMSCryptoKeyResult(
         key_ring=__ret__.get('keyRing'),
+        labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         purpose=__ret__.get('purpose'),
         rotation_period=__ret__.get('rotationPeriod'),

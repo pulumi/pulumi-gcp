@@ -59,6 +59,12 @@ export class Services extends pulumi.CustomResource {
         return obj['__pulumiType'] === Services.__pulumiType;
     }
 
+    /**
+     * Whether or not to disable APIs on project
+     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * true and the project is changed, Terraform will force disable API services
+     * managed by Terraform for the previous project.
+     */
     public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID.
@@ -104,6 +110,12 @@ export class Services extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Services resources.
  */
 export interface ServicesState {
+    /**
+     * Whether or not to disable APIs on project
+     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * true and the project is changed, Terraform will force disable API services
+     * managed by Terraform for the previous project.
+     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID.
@@ -122,6 +134,12 @@ export interface ServicesState {
  * The set of arguments for constructing a Services resource.
  */
 export interface ServicesArgs {
+    /**
+     * Whether or not to disable APIs on project
+     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * true and the project is changed, Terraform will force disable API services
+     * managed by Terraform for the previous project.
+     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID.

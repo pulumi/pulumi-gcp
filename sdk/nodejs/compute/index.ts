@@ -53,6 +53,7 @@ export * from "./networkEndpointGroup";
 export * from "./networkPeering";
 export * from "./nodeGroup";
 export * from "./nodeTemplate";
+export * from "./projectDefaultNetworkTier";
 export * from "./projectMetadata";
 export * from "./projectMetadataItem";
 export * from "./regionAutoscaler";

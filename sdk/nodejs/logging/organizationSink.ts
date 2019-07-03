@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  *     filter: "resource.type = gce_instance AND severity >= WARN",
  *     orgId: "123456789",
  * });
- * const log_writer = new gcp.projects.IAMBinding("log-writer", {
- *     members: [my_sink.writerIdentity],
+ * const log_writer = new gcp.projects.IAMMember("log-writer", {
+ *     member: my_sink.writerIdentity,
  *     role: "roles/storage.objectCreator",
  * });
  * ```

@@ -38,6 +38,7 @@ const (
 	gcpFilestore            = "filestore"            // Filestore resources
 	gcpFirestore            = "firestore"            // Firestore resources
 	gcpFolder               = "folder"               // Folder resources
+	gcpHealthcare           = "healthcare"           // Healthcare resources
 	gcpIAM                  = "iam"                  // IAM resources
 	gcpIAP                  = "iap"                  // IAP resources
 	gcpKMS                  = "kms"                  // KMS resources
@@ -444,6 +445,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_network_endpoint_group":        {Tok: gcpResource(gcpCompute, "NetworkEndpointGroup")},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
 			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
+			"google_compute_project_default_network_tier":  {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
 			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
 			"google_compute_project_metadata_item":         {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
 			"google_compute_region_autoscaler":             {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
@@ -813,6 +815,104 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_iap_tunnel_instance_iam.markdown",
+				},
+			},
+
+			// Healthcare resources
+			"google_healthcare_dataset": {
+				Tok: gcpResource(gcpHealthcare, "Dataset"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dataset.html.markdown",
+				},
+			},
+			"google_healthcare_dataset_iam_binding": {
+				Tok: gcpResource(gcpHealthcare, "DatasetIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dataset_iam.html.markdown",
+				},
+			},
+			"google_healthcare_dataset_iam_member": {
+				Tok: gcpResource(gcpHealthcare, "DatasetIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dataset_iam.html.markdown",
+				},
+			},
+			"google_healthcare_dataset_iam_policy": {
+				Tok: gcpResource(gcpHealthcare, "DatasetIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dataset_iam.html.markdown",
+				},
+			},
+			"google_healthcare_dicom_store": {
+				Tok: gcpResource(gcpHealthcare, "DicomStore"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dicom_store.html.markdown",
+				},
+			},
+			"google_healthcare_dicom_store_iam_binding": {
+				Tok: gcpResource(gcpHealthcare, "DicomStoreIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dicom_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_dicom_store_iam_member": {
+				Tok: gcpResource(gcpHealthcare, "DicomStoreIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dicom_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_dicom_store_iam_policy": {
+				Tok: gcpResource(gcpHealthcare, "DicomStoreIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_dicom_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_fhir_store": {
+				Tok: gcpResource(gcpHealthcare, "FhirStore"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_fhir_store.html.markdown",
+				},
+			},
+			"google_healthcare_fhir_store_iam_binding": {
+				Tok: gcpResource(gcpHealthcare, "FhirStoreIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_fhir_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_fhir_store_iam_member": {
+				Tok: gcpResource(gcpHealthcare, "FhirStoreIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_fhir_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_fhir_store_iam_policy": {
+				Tok: gcpResource(gcpHealthcare, "FhirStoreIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_fhir_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_hl7_v2_store": {
+				Tok: gcpResource(gcpHealthcare, "Hl7Store"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_hl7_v2_store.html.markdown",
+				},
+			},
+			"google_healthcare_hl7_v2_store_iam_binding": {
+				Tok: gcpResource(gcpHealthcare, "Hl7StoreIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_hl7_v2_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_hl7_v2_store_iam_member": {
+				Tok: gcpResource(gcpHealthcare, "Hl7StoreIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_hl7_v2_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_hl7_v2_store_iam_policy": {
+				Tok: gcpResource(gcpHealthcare, "Hl7StoreIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_hl7_v2_store_iam.html.markdown",
 				},
 			},
 		},

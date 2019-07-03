@@ -5,20 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provide acces to a Backend Service's attribute. For more information
+ * Provide access to a Backend Service's attribute. For more information
  * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const baz = pulumi.output(gcp.compute.getBackendService({
- *     name: "foobar",
- * }));
- * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
@@ -47,9 +36,9 @@ export interface GetBackendServiceArgs {
 export interface GetBackendServiceResult {
     readonly affinityCookieTtlSec: number;
     /**
-     * The list of backends that serve this Backend Service.
+     * The set of backends that serve this Backend Service.
      */
-    readonly backends: { balancingMode: string, capacityScaler: number, description: string, group: string, maxConnections: number, maxConnectionsPerInstance: number, maxRate: number, maxRatePerInstance: number, maxUtilization: number }[];
+    readonly backends: { balancingMode: string, capacityScaler: number, description: string, group: string, maxConnections: number, maxConnectionsPerEndpoint: number, maxConnectionsPerInstance: number, maxRate: number, maxRatePerEndpoint: number, maxRatePerInstance: number, maxUtilization: number }[];
     readonly cdnPolicies: { cacheKeyPolicies: { includeHost: boolean, includeProtocol: boolean, includeQueryString: boolean, queryStringBlacklists: string[], queryStringWhitelists: string[] }[], signedUrlCacheMaxAgeSec: number }[];
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
@@ -70,7 +59,7 @@ export interface GetBackendServiceResult {
      */
     readonly fingerprint: string;
     /**
-     * The list of HTTP/HTTPS health checks used by the Backend Service.
+     * The set of HTTP/HTTPS health checks used by the Backend Service.
      */
     readonly healthChecks: string[];
     readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string }[];
