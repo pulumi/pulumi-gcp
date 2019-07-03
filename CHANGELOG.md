@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to v2.10.0 of the Google Beta Terraform Provider.
+___NULL___
 
 ---
+
+## 0.18.10 (2019-07-03)
+* Update to v2.10.0 of the Google Beta Terraform Provider.
 
 ## 0.18.9 (2019-06-21)
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
