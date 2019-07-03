@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     storageClass: "NEARLINE",
  * });
  * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucket", {
- *     bucket: var_aws_s3_bucket,
+ *     bucket: s3_backup_bucketBucket.name,
  *     member: pulumi.interpolate`serviceAccount:${defaultTransferProjectServieAccount.email}`,
  *     role: "roles/storage.admin",
  * }, {dependsOn: [s3_backup_bucketBucket]});
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *             bucketName: var_aws_s3_bucket,
  *         },
  *         gcsDataSink: {
- *             bucketName: `${var_aws_s3_bucket}-backup`,
+ *             bucketName: s3_backup_bucketBucket.name,
  *         },
  *         objectConditions: {
  *             excludePrefixes: ["requests.gz"],

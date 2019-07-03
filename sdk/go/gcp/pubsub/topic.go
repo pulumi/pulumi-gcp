@@ -24,10 +24,12 @@ func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOpt) (*Topic, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["kmsKeyName"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 	} else {
+		inputs["kmsKeyName"] = args.KmsKeyName
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
@@ -45,6 +47,7 @@ func GetTopic(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *TopicState, opts ...pulumi.ResourceOpt) (*Topic, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["kmsKeyName"] = state.KmsKeyName
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -66,6 +69,10 @@ func (r *Topic) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+func (r *Topic) KmsKeyName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["kmsKeyName"])
+}
+
 func (r *Topic) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
@@ -82,6 +89,7 @@ func (r *Topic) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Topic resources.
 type TopicState struct {
+	KmsKeyName interface{}
 	Labels interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.
@@ -91,6 +99,7 @@ type TopicState struct {
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
+	KmsKeyName interface{}
 	Labels interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.

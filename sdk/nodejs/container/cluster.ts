@@ -141,7 +141,11 @@ export class Cluster extends pulumi.CustomResource {
     public readonly authenticatorGroupsConfig!: pulumi.Output<{ securityGroup: string }>;
     /**
      * )
-     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+     * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+     * automatically adjust the size of the cluster and create/delete node pools based
+     * on the current needs of the cluster's workload. See the
+     * [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+     * for more details. Structure is documented below.
      */
     public readonly clusterAutoscaling!: pulumi.Output<{ enabled: boolean, resourceLimits?: { maximum?: number, minimum?: number, resourceType: string }[] }>;
     /**
@@ -230,7 +234,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
      */
     public readonly loggingService!: pulumi.Output<string>;
     /**
@@ -240,7 +244,11 @@ export class Cluster extends pulumi.CustomResource {
     public readonly maintenancePolicy!: pulumi.Output<{ dailyMaintenanceWindow: { duration: string, startTime: string } } | undefined>;
     /**
      * The authentication information for accessing the
-     * Kubernetes master. Structure is documented below.
+     * Kubernetes master. Some values in this block are only returned by the API if
+     * your service account has permission to get credentials for your GKE cluster. If
+     * you see an unexpected diff removing a username/password or unsetting your client
+     * cert, ensure you have the `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     public readonly masterAuth!: pulumi.Output<{ clientCertificate: string, clientCertificateConfig: { issueClientCertificate: boolean }, clientKey: string, clusterCaCertificate: string, password?: string, username?: string }>;
     /**
@@ -274,7 +282,7 @@ export class Cluster extends pulumi.CustomResource {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
      * Defaults to `monitoring.googleapis.com`
      */
     public readonly monitoringService!: pulumi.Output<string>;
@@ -302,7 +310,7 @@ export class Cluster extends pulumi.CustomResource {
      * manages the default node pool, which isn't recommended to be used with
      * Terraform. Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
     /**
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
@@ -320,7 +328,7 @@ export class Cluster extends pulumi.CustomResource {
      * to say "these are the _only_ node pools associated with this cluster", use the
      * google_container_node_pool resource instead of this property.
      */
-    public readonly nodePools!: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels?: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, serviceAccount: string, tags?: string[], taints?: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
+    public readonly nodePools!: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -360,6 +368,12 @@ export class Cluster extends pulumi.CustomResource {
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * ) Configuration for the
+     * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+     * Structure is documented below.
+     */
+    public readonly resourceUsageExportConfig!: pulumi.Output<{ bigqueryDestination: { datasetId: string }, enableNetworkEgressMetering?: boolean } | undefined>;
     /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -447,6 +461,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = state ? state.resourceLabels : undefined;
+            inputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
             inputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
@@ -490,6 +505,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
+            inputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
@@ -531,7 +547,11 @@ export interface ClusterState {
     readonly authenticatorGroupsConfig?: pulumi.Input<{ securityGroup: pulumi.Input<string> }>;
     /**
      * )
-     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+     * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+     * automatically adjust the size of the cluster and create/delete node pools based
+     * on the current needs of the cluster's workload. See the
+     * [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+     * for more details. Structure is documented below.
      */
     readonly clusterAutoscaling?: pulumi.Input<{ enabled: pulumi.Input<boolean>, resourceLimits?: pulumi.Input<pulumi.Input<{ maximum?: pulumi.Input<number>, minimum?: pulumi.Input<number>, resourceType: pulumi.Input<string> }>[]> }>;
     /**
@@ -620,7 +640,7 @@ export interface ClusterState {
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -630,7 +650,11 @@ export interface ClusterState {
     readonly maintenancePolicy?: pulumi.Input<{ dailyMaintenanceWindow: pulumi.Input<{ duration?: pulumi.Input<string>, startTime: pulumi.Input<string> }> }>;
     /**
      * The authentication information for accessing the
-     * Kubernetes master. Structure is documented below.
+     * Kubernetes master. Some values in this block are only returned by the API if
+     * your service account has permission to get credentials for your GKE cluster. If
+     * you see an unexpected diff removing a username/password or unsetting your client
+     * cert, ensure you have the `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     readonly masterAuth?: pulumi.Input<{ clientCertificate?: pulumi.Input<string>, clientCertificateConfig?: pulumi.Input<{ issueClientCertificate: pulumi.Input<boolean> }>, clientKey?: pulumi.Input<string>, clusterCaCertificate?: pulumi.Input<string>, password?: pulumi.Input<string>, username?: pulumi.Input<string> }>;
     /**
@@ -664,7 +688,7 @@ export interface ClusterState {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
      * Defaults to `monitoring.googleapis.com`
      */
     readonly monitoringService?: pulumi.Input<string>;
@@ -692,7 +716,7 @@ export interface ClusterState {
      * manages the default node pool, which isn't recommended to be used with
      * Terraform. Structure is documented below.
      */
-    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
@@ -710,7 +734,7 @@ export interface ClusterState {
      * to say "these are the _only_ node pools associated with this cluster", use the
      * google_container_node_pool resource instead of this property.
      */
-    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -750,6 +774,12 @@ export interface ClusterState {
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     readonly resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * ) Configuration for the
+     * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+     * Structure is documented below.
+     */
+    readonly resourceUsageExportConfig?: pulumi.Input<{ bigqueryDestination: pulumi.Input<{ datasetId: pulumi.Input<string> }>, enableNetworkEgressMetering?: pulumi.Input<boolean> }>;
     /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -815,7 +845,11 @@ export interface ClusterArgs {
     readonly authenticatorGroupsConfig?: pulumi.Input<{ securityGroup: pulumi.Input<string> }>;
     /**
      * )
-     * Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+     * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+     * automatically adjust the size of the cluster and create/delete node pools based
+     * on the current needs of the cluster's workload. See the
+     * [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+     * for more details. Structure is documented below.
      */
     readonly clusterAutoscaling?: pulumi.Input<{ enabled: pulumi.Input<boolean>, resourceLimits?: pulumi.Input<pulumi.Input<{ maximum?: pulumi.Input<number>, minimum?: pulumi.Input<number>, resourceType: pulumi.Input<string> }>[]> }>;
     /**
@@ -895,7 +929,7 @@ export interface ClusterArgs {
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -905,7 +939,11 @@ export interface ClusterArgs {
     readonly maintenancePolicy?: pulumi.Input<{ dailyMaintenanceWindow: pulumi.Input<{ duration?: pulumi.Input<string>, startTime: pulumi.Input<string> }> }>;
     /**
      * The authentication information for accessing the
-     * Kubernetes master. Structure is documented below.
+     * Kubernetes master. Some values in this block are only returned by the API if
+     * your service account has permission to get credentials for your GKE cluster. If
+     * you see an unexpected diff removing a username/password or unsetting your client
+     * cert, ensure you have the `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     readonly masterAuth?: pulumi.Input<{ clientCertificate?: pulumi.Input<string>, clientCertificateConfig?: pulumi.Input<{ issueClientCertificate: pulumi.Input<boolean> }>, clientKey?: pulumi.Input<string>, clusterCaCertificate?: pulumi.Input<string>, password?: pulumi.Input<string>, username?: pulumi.Input<string> }>;
     /**
@@ -933,7 +971,7 @@ export interface ClusterArgs {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
      * Defaults to `monitoring.googleapis.com`
      */
     readonly monitoringService?: pulumi.Input<string>;
@@ -961,7 +999,7 @@ export interface ClusterArgs {
      * manages the default node pool, which isn't recommended to be used with
      * Terraform. Structure is documented below.
      */
-    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
@@ -979,7 +1017,7 @@ export interface ClusterArgs {
      * to say "these are the _only_ node pools associated with this cluster", use the
      * google_container_node_pool resource instead of this property.
      */
-    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `min_master_version` on create. Defaults to the default
@@ -1019,6 +1057,12 @@ export interface ClusterArgs {
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     readonly resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * ) Configuration for the
+     * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+     * Structure is documented below.
+     */
+    readonly resourceUsageExportConfig?: pulumi.Input<{ bigqueryDestination: pulumi.Input<{ datasetId: pulumi.Input<string> }>, enableNetworkEgressMetering?: pulumi.Input<boolean> }>;
     /**
      * The name or self_link of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.

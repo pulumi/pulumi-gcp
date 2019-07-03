@@ -58,6 +58,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["removeDefaultNodePool"] = nil
 		inputs["resourceLabels"] = nil
+		inputs["resourceUsageExportConfig"] = nil
 		inputs["subnetwork"] = nil
 		inputs["verticalPodAutoscaling"] = nil
 		inputs["workloadIdentityConfig"] = nil
@@ -98,6 +99,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
 		inputs["resourceLabels"] = args.ResourceLabels
+		inputs["resourceUsageExportConfig"] = args.ResourceUsageExportConfig
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["verticalPodAutoscaling"] = args.VerticalPodAutoscaling
 		inputs["workloadIdentityConfig"] = args.WorkloadIdentityConfig
@@ -159,6 +161,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
 		inputs["resourceLabels"] = state.ResourceLabels
+		inputs["resourceUsageExportConfig"] = state.ResourceUsageExportConfig
 		inputs["servicesIpv4Cidr"] = state.ServicesIpv4Cidr
 		inputs["subnetwork"] = state.Subnetwork
 		inputs["tpuIpv4CidrBlock"] = state.TpuIpv4CidrBlock
@@ -208,7 +211,11 @@ func (r *Cluster) AuthenticatorGroupsConfig() *pulumi.Output {
 }
 
 // )
-// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+// automatically adjust the size of the cluster and create/delete node pools based
+// on the current needs of the cluster's workload. See the
+// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+// for more details. Structure is documented below.
 func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
 	return r.s.State["clusterAutoscaling"]
 }
@@ -312,7 +319,7 @@ func (r *Cluster) Location() *pulumi.StringOutput {
 
 // The logging service that the cluster should
 // write logs to. Available options include `logging.googleapis.com`,
-// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
 func (r *Cluster) LoggingService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["loggingService"])
 }
@@ -324,7 +331,11 @@ func (r *Cluster) MaintenancePolicy() *pulumi.Output {
 }
 
 // The authentication information for accessing the
-// Kubernetes master. Structure is documented below.
+// Kubernetes master. Some values in this block are only returned by the API if
+// your service account has permission to get credentials for your GKE cluster. If
+// you see an unexpected diff removing a username/password or unsetting your client
+// cert, ensure you have the `container.clusters.getCredentials` permission.
+// Structure is documented below.
 func (r *Cluster) MasterAuth() *pulumi.Output {
 	return r.s.State["masterAuth"]
 }
@@ -362,7 +373,7 @@ func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
 // Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 // VM metrics will be collected by Google Compute Engine regardless of this setting
 // Available options include
-// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
 // Defaults to `monitoring.googleapis.com`
 func (r *Cluster) MonitoringService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["monitoringService"])
@@ -465,6 +476,13 @@ func (r *Cluster) ResourceLabels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["resourceLabels"])
 }
 
+// ) Configuration for the
+// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+// Structure is documented below.
+func (r *Cluster) ResourceUsageExportConfig() *pulumi.Output {
+	return r.s.State["resourceUsageExportConfig"]
+}
+
 // The IP address range of the Kubernetes services in this
 // cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 // notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -525,7 +543,11 @@ type ClusterState struct {
 	// Structure is documented below.
 	AuthenticatorGroupsConfig interface{}
 	// )
-	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+	// automatically adjust the size of the cluster and create/delete node pools based
+	// on the current needs of the cluster's workload. See the
+	// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
@@ -584,13 +606,17 @@ type ClusterState struct {
 	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy interface{}
 	// The authentication information for accessing the
-	// Kubernetes master. Structure is documented below.
+	// Kubernetes master. Some values in this block are only returned by the API if
+	// your service account has permission to get credentials for your GKE cluster. If
+	// you see an unexpected diff removing a username/password or unsetting your client
+	// cert, ensure you have the `container.clusters.getCredentials` permission.
+	// Structure is documented below.
 	MasterAuth interface{}
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
@@ -616,7 +642,7 @@ type ClusterState struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
 	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
@@ -677,6 +703,10 @@ type ClusterState struct {
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
+	// ) Configuration for the
+	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+	// Structure is documented below.
+	ResourceUsageExportConfig interface{}
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -721,7 +751,11 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	AuthenticatorGroupsConfig interface{}
 	// )
-	// Configuration for per-cluster autoscaling features, including node autoprovisioning. See [guide in Google docs](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning). Structure is documented below.
+	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+	// automatically adjust the size of the cluster and create/delete node pools based
+	// on the current needs of the cluster's workload. See the
+	// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the kubernetes pods in
 	// this cluster. Default is an automatically assigned CIDR.
@@ -775,13 +809,17 @@ type ClusterArgs struct {
 	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes` (beta), and `none`. Defaults to `logging.googleapis.com`
+	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy interface{}
 	// The authentication information for accessing the
-	// Kubernetes master. Structure is documented below.
+	// Kubernetes master. Some values in this block are only returned by the API if
+	// your service account has permission to get credentials for your GKE cluster. If
+	// you see an unexpected diff removing a username/password or unsetting your client
+	// cert, ensure you have the `container.clusters.getCredentials` permission.
+	// Structure is documented below.
 	MasterAuth interface{}
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
@@ -803,7 +841,7 @@ type ClusterArgs struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes` (beta) and `none`.
+	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
 	// Defaults to `monitoring.googleapis.com`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
@@ -864,6 +902,10 @@ type ClusterArgs struct {
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
+	// ) Configuration for the
+	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+	// Structure is documented below.
+	ResourceUsageExportConfig interface{}
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}

@@ -9,6 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Topic(pulumi.CustomResource):
+    kms_key_name: pulumi.Output[str]
     labels: pulumi.Output[dict]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
@@ -16,7 +17,7 @@ class Topic(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, labels=None, name=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, name=None, project=None, __name__=None, __opts__=None):
         """
         A named resource to which messages are sent by publishers.
         
@@ -46,6 +47,8 @@ class Topic(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['kms_key_name'] = kms_key_name
 
         __props__['labels'] = labels
 

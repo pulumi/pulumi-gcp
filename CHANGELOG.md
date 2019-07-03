@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Update to v2.10.0 of the Google Beta Terraform Provider.
 
 ---
 

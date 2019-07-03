@@ -10,12 +10,13 @@ from .. import utilities, tables
 
 class CryptoKey(pulumi.CustomResource):
     key_ring: pulumi.Output[str]
+    labels: pulumi.Output[dict]
     name: pulumi.Output[str]
     purpose: pulumi.Output[str]
     rotation_period: pulumi.Output[str]
     self_link: pulumi.Output[str]
     version_template: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, key_ring=None, name=None, purpose=None, rotation_period=None, version_template=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, version_template=None, __name__=None, __opts__=None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
         
@@ -56,6 +57,8 @@ class CryptoKey(pulumi.CustomResource):
         if key_ring is None:
             raise TypeError("Missing required property 'key_ring'")
         __props__['key_ring'] = key_ring
+
+        __props__['labels'] = labels
 
         __props__['name'] = name
 

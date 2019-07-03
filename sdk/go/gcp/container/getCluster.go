@@ -60,6 +60,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		Region: outputs["region"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
+		ResourceUsageExportConfigs: outputs["resourceUsageExportConfigs"],
 		ServicesIpv4Cidr: outputs["servicesIpv4Cidr"],
 		Subnetwork: outputs["subnetwork"],
 		TpuIpv4CidrBlock: outputs["tpuIpv4CidrBlock"],
@@ -129,6 +130,7 @@ type GetClusterResult struct {
 	Region interface{}
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
+	ResourceUsageExportConfigs interface{}
 	ServicesIpv4Cidr interface{}
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}

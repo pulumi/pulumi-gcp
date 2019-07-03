@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provide acces to a Backend Service's attribute. For more information
+// Provide access to a Backend Service's attribute. For more information
 // see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*GetBackendServiceResult, error) {
@@ -56,7 +56,7 @@ type GetBackendServiceArgs struct {
 // A collection of values returned by getBackendService.
 type GetBackendServiceResult struct {
 	AffinityCookieTtlSec interface{}
-	// The list of backends that serve this Backend Service.
+	// The set of backends that serve this Backend Service.
 	Backends interface{}
 	CdnPolicies interface{}
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
@@ -69,7 +69,7 @@ type GetBackendServiceResult struct {
 	EnableCdn interface{}
 	// The fingerprint of the Backend Service.
 	Fingerprint interface{}
-	// The list of HTTP/HTTPS health checks used by the Backend Service.
+	// The set of HTTP/HTTPS health checks used by the Backend Service.
 	HealthChecks interface{}
 	Iaps interface{}
 	LoadBalancingScheme interface{}

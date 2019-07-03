@@ -27,6 +27,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ## Example Usage - Pubsub Topic Cmek
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     location: "global",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     keyRing: keyRing.selfLink,
+ * });
+ * const example = new gcp.pubsub.Topic("example", {
+ *     kmsKeyName: cryptoKey.selfLink,
+ * });
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -55,6 +72,7 @@ export class Topic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
@@ -75,11 +93,13 @@ export class Topic extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TopicState | undefined;
+            inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
+            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -92,6 +112,7 @@ export class Topic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Topic resources.
  */
 export interface TopicState {
+    readonly kmsKeyName?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**
@@ -105,6 +126,7 @@ export interface TopicState {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
+    readonly kmsKeyName?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     /**

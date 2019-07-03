@@ -26,6 +26,7 @@ func LookupKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs) (*GetKMS
 	}
 	return &GetKMSCryptoKeyResult{
 		KeyRing: outputs["keyRing"],
+		Labels: outputs["labels"],
 		Name: outputs["name"],
 		Purpose: outputs["purpose"],
 		RotationPeriod: outputs["rotationPeriod"],
@@ -47,6 +48,7 @@ type GetKMSCryptoKeyArgs struct {
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
 	KeyRing interface{}
+	Labels interface{}
 	Name interface{}
 	// Defines the cryptographic capabilities of the key.
 	Purpose interface{}

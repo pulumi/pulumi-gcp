@@ -19,6 +19,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     size: pulumi.Output[float]
     subnetwork: pulumi.Output[str]
     zone: pulumi.Output[str]
@@ -80,6 +84,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
         __props__['zone'] = zone
 
+        __props__['self_link'] = None
         __props__['size'] = None
 
         super(NetworkEndpointGroup, __self__).__init__(

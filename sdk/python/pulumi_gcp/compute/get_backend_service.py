@@ -20,7 +20,7 @@ class GetBackendServiceResult:
             raise TypeError("Expected argument 'backends' to be a list")
         __self__.backends = backends
         """
-        The list of backends that serve this Backend Service.
+        The set of backends that serve this Backend Service.
         """
         if cdn_policies and not isinstance(cdn_policies, list):
             raise TypeError("Expected argument 'cdn_policies' to be a list")
@@ -59,7 +59,7 @@ class GetBackendServiceResult:
             raise TypeError("Expected argument 'health_checks' to be a list")
         __self__.health_checks = health_checks
         """
-        The list of HTTP/HTTPS health checks used by the Backend Service.
+        The set of HTTP/HTTPS health checks used by the Backend Service.
         """
         if iaps and not isinstance(iaps, list):
             raise TypeError("Expected argument 'iaps' to be a list")
@@ -115,7 +115,7 @@ class GetBackendServiceResult:
 
 async def get_backend_service(name=None,project=None,opts=None):
     """
-    Provide acces to a Backend Service's attribute. For more information
+    Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
     """

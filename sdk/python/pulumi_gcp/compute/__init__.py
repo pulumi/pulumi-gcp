@@ -35,6 +35,7 @@ from .network_endpoint_group import *
 from .network_peering import *
 from .node_group import *
 from .node_template import *
+from .project_default_network_tier import *
 from .project_metadata import *
 from .project_metadata_item import *
 from .region_autoscaler import *

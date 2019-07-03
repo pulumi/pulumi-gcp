@@ -73,6 +73,10 @@ func (r *Services) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Whether or not to disable APIs on project
+// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+// true and the project is changed, Terraform will force disable API services
+// managed by Terraform for the previous project.
 func (r *Services) DisableOnDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disableOnDestroy"])
 }
@@ -92,6 +96,10 @@ func (r *Services) Services() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Services resources.
 type ServicesState struct {
+	// Whether or not to disable APIs on project
+	// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+	// true and the project is changed, Terraform will force disable API services
+	// managed by Terraform for the previous project.
 	DisableOnDestroy interface{}
 	// The project ID.
 	// Changing this forces Terraform to attempt to disable all previously managed
@@ -104,6 +112,10 @@ type ServicesState struct {
 
 // The set of arguments for constructing a Services resource.
 type ServicesArgs struct {
+	// Whether or not to disable APIs on project
+	// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+	// true and the project is changed, Terraform will force disable API services
+	// managed by Terraform for the previous project.
 	DisableOnDestroy interface{}
 	// The project ID.
 	// Changing this forces Terraform to attempt to disable all previously managed
