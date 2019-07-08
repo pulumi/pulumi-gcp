@@ -6,6 +6,9 @@ ___NULL___
 
 ---
 
+## 0.18.11 (2019-07-08)
+* Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
+
 ## 0.18.10 (2019-07-03)
 * Update to v2.10.0 of the Google Beta Terraform Provider.
 
