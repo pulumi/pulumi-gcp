@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * export const cidrBlocksIpv4 = netblock.cidrBlocksIpv4s;
  * export const cidrBlocksIpv6 = netblock.cidrBlocksIpv6s;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
  */
 export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {

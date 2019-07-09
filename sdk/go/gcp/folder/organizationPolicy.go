@@ -12,6 +12,8 @@ import (
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
 // [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_organization_policy.html.markdown.
 type OrganizationPolicy struct {
 	s *pulumi.ResourceState
 }

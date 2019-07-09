@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_url_map.html.markdown.
  */
 export class URLMap extends pulumi.CustomResource {
     /**

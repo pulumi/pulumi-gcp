@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  *     instance: target_vm.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_instance.html.markdown.
  */
 export class TargetInstance extends pulumi.CustomResource {
     /**

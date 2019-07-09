@@ -59,6 +59,8 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
         :param pulumi.Input[dict] state_notification_config: A PubSub topic to publish device state updates. Structure is documented below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

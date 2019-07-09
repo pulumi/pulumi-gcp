@@ -69,6 +69,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
                template to create the instance based on.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

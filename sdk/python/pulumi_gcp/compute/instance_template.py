@@ -64,10 +64,6 @@ class InstanceTemplate(pulumi.CustomResource):
     `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
     """
     name: pulumi.Output[str]
-    """
-    The name of the instance template. If you leave
-    this blank, Terraform will auto-generate a unique name.
-    """
     name_prefix: pulumi.Output[str]
     """
     Creates a unique name beginning with the specified
@@ -148,8 +144,6 @@ class InstanceTemplate(pulumi.CustomResource):
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, Terraform will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
         :param pulumi.Input[list] network_interfaces: Networks to attach to instances created from
@@ -169,6 +163,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: Tags to attach to the instance.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_template.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

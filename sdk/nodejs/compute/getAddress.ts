@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_address.html.markdown.
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getAddress:getAddress", {

@@ -8,16 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A policy for container image binary authorization.
-// 
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-// 
-// To get more information about Policy, see:
-// 
-// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/binary-authorization/)
 type Policy struct {
 	s *pulumi.ResourceState
 }

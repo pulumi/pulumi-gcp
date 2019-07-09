@@ -8,6 +8,8 @@ import (
 )
 
 // Get info about a GKE cluster from its name and location.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_cluster.html.markdown.
 func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

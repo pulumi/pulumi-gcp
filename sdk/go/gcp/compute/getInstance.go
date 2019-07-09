@@ -11,6 +11,8 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instances)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
 func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

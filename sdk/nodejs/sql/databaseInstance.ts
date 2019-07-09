@@ -4,55 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
- * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- * 
- * > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
- * default 'root'@'%' user with no password. This user will be deleted by Terraform on
- * instance creation. You should use `google_sql_user` to define a custom user with
- * a restricted host and strong password.
- * 
- * ## Example Usage
- * 
- * ### SQL First Generation
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- * 
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {
- *     byteLength: 4,
- * });
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "MYSQL_5_6",
- *     // First-generation instance regions are not the conventional
- *     // Google Compute Engine regions. See argument reference below.
- *     region: "us-central",
- *     settings: {
- *         tier: "D0",
- *     },
- * });
- * ```
- * 
- * ### SQL Second generation
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "POSTGRES_9_6",
- *     region: "us-central1",
- *     settings: {
- *         // Second-generation instance tiers are based on the machine
- *         // type. See argument reference below.
- *         tier: "db-f1-micro",
- *     },
- * });
- * ```
- */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Get an existing DatabaseInstance resource's state with the given name, ID, and optional extra
@@ -93,11 +44,6 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * for more information.
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
-    /**
-     * The first IPv4 address of any type assigned. This is to
-     * support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
-     * when the resource is configured with a `count`.
-     */
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<{ ipAddress: string, timeToRetire: string, type: string }[]>;
     /**
@@ -106,31 +52,13 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * `binary_log_enabled` set, as well as existing backups.
      */
     public readonly masterInstanceName!: pulumi.Output<string>;
-    /**
-     * The name of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The first private (`PRIVATE`) IPv4 address assigned. This is
-     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-     * but also provides a convenient way to access an IP of a specific type without
-     * performing filtering in a Terraform config.
-     */
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The first public (`PRIMARY`) IPv4 address assigned. This is
-     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-     * but also provides a convenient way to access an IP of a specific type without
-     * performing filtering in a Terraform config.
-     */
     public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
      * The region the instance will sit in. Note, first-generation Cloud SQL instance
@@ -232,11 +160,6 @@ export interface DatabaseInstanceState {
      * for more information.
      */
     readonly databaseVersion?: pulumi.Input<string>;
-    /**
-     * The first IPv4 address of any type assigned. This is to
-     * support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
-     * when the resource is configured with a `count`.
-     */
     readonly firstIpAddress?: pulumi.Input<string>;
     readonly ipAddresses?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, timeToRetire?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
@@ -245,31 +168,13 @@ export interface DatabaseInstanceState {
      * `binary_log_enabled` set, as well as existing backups.
      */
     readonly masterInstanceName?: pulumi.Input<string>;
-    /**
-     * The name of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The first private (`PRIVATE`) IPv4 address assigned. This is
-     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-     * but also provides a convenient way to access an IP of a specific type without
-     * performing filtering in a Terraform config.
-     */
     readonly privateIpAddress?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The first public (`PRIMARY`) IPv4 address assigned. This is
-     * a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-     * but also provides a convenient way to access an IP of a specific type without
-     * performing filtering in a Terraform config.
-     */
     readonly publicIpAddress?: pulumi.Input<string>;
     /**
      * The region the instance will sit in. Note, first-generation Cloud SQL instance
@@ -321,12 +226,6 @@ export interface DatabaseInstanceArgs {
      * `binary_log_enabled` set, as well as existing backups.
      */
     readonly masterInstanceName?: pulumi.Input<string>;
-    /**
-     * The name of the instance. If the name is left
-     * blank, Terraform will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it

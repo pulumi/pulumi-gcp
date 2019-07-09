@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * 
  * export const version = policy.version;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder_organization_policy.html.markdown.
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
     return pulumi.runtime.invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {

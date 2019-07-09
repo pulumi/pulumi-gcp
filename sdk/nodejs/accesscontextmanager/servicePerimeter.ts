@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *     title: "restrict_all",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_service_perimeter.html.markdown.
  */
 export class ServicePerimeter extends pulumi.CustomResource {
     /**

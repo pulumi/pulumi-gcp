@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     projectId: my_org_projects.projects[0].projectId,
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     return pulumi.runtime.invoke("gcp:projects/getProject:getProject", {

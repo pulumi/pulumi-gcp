@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * 
  * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_address.html.markdown.
  */
 export class GlobalAddress extends pulumi.CustomResource {
     /**

@@ -51,6 +51,8 @@ import * as utilities from "../utilities";
  *     sourceTags: ["web"],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_firewall.html.markdown.
  */
 export class Firewall extends pulumi.CustomResource {
     /**

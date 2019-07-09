@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     networkTier: "PREMIUM",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_default_network_tier.html.markdown.
  */
 export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     /**

@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_https_health_check.html.markdown.
  */
 export class HttpsHealthCheck extends pulumi.CustomResource {
     /**

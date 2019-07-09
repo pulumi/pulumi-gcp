@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * 
  * export const projectNumber = project.number;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};

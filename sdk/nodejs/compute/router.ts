@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     network: foobarNetwork.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
  */
 export class Router extends pulumi.CustomResource {
     /**

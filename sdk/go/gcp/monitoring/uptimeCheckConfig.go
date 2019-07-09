@@ -16,6 +16,8 @@ import (
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
 type UptimeCheckConfig struct {
 	s *pulumi.ResourceState
 }

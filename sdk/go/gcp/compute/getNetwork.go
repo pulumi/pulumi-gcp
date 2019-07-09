@@ -8,6 +8,8 @@ import (
 )
 
 // Get a network within GCE from its name.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_network.html.markdown.
 func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

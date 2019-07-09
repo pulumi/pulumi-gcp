@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  *     target: foobarRegionInstanceGroupManager.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_autoscaler.html.markdown.
  */
 export class RegionAutoscaler extends pulumi.CustomResource {
     /**

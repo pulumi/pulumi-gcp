@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "forwarding-rule-us-east1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
  */
 export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
     return pulumi.runtime.invoke("gcp:compute/getForwardingRule:getForwardingRule", {

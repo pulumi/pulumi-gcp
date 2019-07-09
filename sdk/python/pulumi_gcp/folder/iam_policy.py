@@ -34,6 +34,8 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
                the IAM policy that will be applied to the folder. This policy overrides any existing
                policy applied to the folder.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

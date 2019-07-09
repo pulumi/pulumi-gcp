@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_route.html.markdown.
  */
 export class Route extends pulumi.CustomResource {
     /**

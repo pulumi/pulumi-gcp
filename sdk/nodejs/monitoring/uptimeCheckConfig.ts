@@ -63,6 +63,8 @@ import * as utilities from "../utilities";
  *     timeout: "60s",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
  */
 export class UptimeCheckConfig extends pulumi.CustomResource {
     /**

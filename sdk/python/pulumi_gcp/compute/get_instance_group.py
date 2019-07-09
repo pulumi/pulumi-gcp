@@ -70,6 +70,8 @@ async def get_instance_group(name=None,project=None,self_link=None,zone=None,opt
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
     """
     __args__ = dict()
 

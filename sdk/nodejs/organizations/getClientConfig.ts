@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * 
  * export const project = current.project;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_config.html.markdown.
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
     return pulumi.runtime.invoke("gcp:organizations/getClientConfig:getClientConfig", {

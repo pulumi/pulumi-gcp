@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     topic: topic.id,
  * }, {dependsOn: [binding]});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
  */
 export class Notification extends pulumi.CustomResource {
     /**

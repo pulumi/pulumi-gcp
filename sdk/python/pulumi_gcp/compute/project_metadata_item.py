@@ -24,10 +24,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, key=None, project=None, value=None, __name__=None, __opts__=None):
         """
-        Manages a single key/value pair on metadata common to all instances for
-        a project in GCE. Using `google_compute_project_metadata_item` lets you
-        manage a single key/value setting in Terraform rather than the entire
-        project metadata map.
+        Create a ProjectMetadataItem resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -35,6 +32,8 @@ class ProjectMetadataItem(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] value: The value to set for the given metadata key.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata_item.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -101,6 +101,8 @@ class GetForwardingRuleResult:
 async def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     """
     Get a forwarding rule within GCE from its name.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
     """
     __args__ = dict()
 

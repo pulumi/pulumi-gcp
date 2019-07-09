@@ -47,6 +47,8 @@ class IAMPolicy(pulumi.CustomResource):
                or `google_project_iam_member`, uses the ID of the project configured with the provider.
                Required for `google_project_iam_policy` - you must explicitly set the project, and it
                will not be inferred from the provider.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

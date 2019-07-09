@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows creation and management of an App Engine application.
- * 
- * > App Engine applications cannot be deleted once they're created; you have to delete the
- *    entire project to delete the application. Terraform will report the application has been
- *    successfully deleted; this is a limitation of Terraform, and will go away in the future.
- *    Terraform is not able to delete App Engine applications.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myProject = new gcp.organizations.Project("my_project", {
- *     orgId: "1234567",
- *     projectId: "your-project-id",
- * });
- * const app = new gcp.appengine.Application("app", {
- *     locationId: "us-central",
- *     project: myProject.projectId,
- * });
- * ```
- */
 export class Application extends pulumi.CustomResource {
     /**
      * Get an existing Application resource's state with the given name, ID, and optional extra

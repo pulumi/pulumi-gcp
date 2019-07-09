@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     sslCertificates: defaultSSLCertificate.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_ssl_proxy.html.markdown.
  */
 export class TargetSSLProxy extends pulumi.CustomResource {
     /**

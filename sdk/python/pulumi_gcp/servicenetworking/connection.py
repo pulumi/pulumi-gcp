@@ -41,6 +41,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_networking_connection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

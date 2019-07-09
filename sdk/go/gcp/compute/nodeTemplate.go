@@ -17,6 +17,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
 // * How-to Guides
 //     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
 type NodeTemplate struct {
 	s *pulumi.ResourceState
 }

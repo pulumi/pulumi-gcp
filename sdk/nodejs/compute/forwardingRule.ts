@@ -65,6 +65,8 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
  */
 export class ForwardingRule extends pulumi.CustomResource {
     /**

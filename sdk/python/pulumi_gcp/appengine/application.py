@@ -53,12 +53,7 @@ class Application(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, location_id=None, project=None, serving_status=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of an App Engine application.
-        
-        > App Engine applications cannot be deleted once they're created; you have to delete the
-           entire project to delete the application. Terraform will report the application has been
-           successfully deleted; this is a limitation of Terraform, and will go away in the future.
-           Terraform is not able to delete App Engine applications.
+        Create a Application resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -67,6 +62,8 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] serving_status: The serving status of the app.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

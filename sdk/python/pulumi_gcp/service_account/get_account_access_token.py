@@ -44,6 +44,8 @@ async def get_account_access_token(delegates=None,lifetime=None,scopes=None,targ
     
     For more information see
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_access_token.html.markdown.
     """
     __args__ = dict()
 

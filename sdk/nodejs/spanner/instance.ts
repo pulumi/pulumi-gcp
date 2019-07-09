@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     numNodes: 2,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

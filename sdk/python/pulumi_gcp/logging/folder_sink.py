@@ -42,12 +42,7 @@ class FolderSink(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, destination=None, filter=None, folder=None, include_children=None, name=None, __name__=None, __opts__=None):
         """
-        Manages a folder-level logging sink. For more information see
-        [the official documentation](https://cloud.google.com/logging/docs/) and
-        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-        
-        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        granted to the credentials used with terraform.
+        Create a FolderSink resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -62,6 +57,8 @@ class FolderSink(pulumi.CustomResource):
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
         :param pulumi.Input[str] name: The name of the logging sink.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_folder_sink.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

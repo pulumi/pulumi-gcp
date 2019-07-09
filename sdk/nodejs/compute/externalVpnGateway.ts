@@ -4,16 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Represents a VPN gateway managed outside of GCP.
- * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
- * To get more information about ExternalVpnGateway, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
- */
 export class ExternalVpnGateway extends pulumi.CustomResource {
     /**
      * Get an existing ExternalVpnGateway resource's state with the given name, ID, and optional extra

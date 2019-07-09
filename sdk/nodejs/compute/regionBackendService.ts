@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
  */
 export class RegionBackendService extends pulumi.CustomResource {
     /**

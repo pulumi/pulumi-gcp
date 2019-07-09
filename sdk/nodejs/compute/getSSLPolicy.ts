@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     name: "production-ssl-policy",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_policy.html.markdown.
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
     return pulumi.runtime.invoke("gcp:compute/getSSLPolicy:getSSLPolicy", {

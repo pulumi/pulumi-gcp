@@ -35,16 +35,7 @@ class IAMBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, folder=None, members=None, role=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of a single binding within IAM policy for
-        an existing Google Cloud Platform folder.
-        
-        > **Note:** This resource _must not_ be used in conjunction with
-           `google_folder_iam_policy` or they will fight over what your policy
-           should be.
-        
-        > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `terraform import` and inspect the `terraform plan` output to ensure
-            your existing members are preserved.
+        Create a IAMBinding resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,6 +50,8 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

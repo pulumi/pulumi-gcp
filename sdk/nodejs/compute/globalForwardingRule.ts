@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     target: defaultTargetHttpProxy.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
  */
 export class GlobalForwardingRule extends pulumi.CustomResource {
     /**

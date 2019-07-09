@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     restrictions: ["resourcemanager.projects.delete"],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/resource_manager_lien.html.markdown.
  */
 export class Lien extends pulumi.CustomResource {
     /**

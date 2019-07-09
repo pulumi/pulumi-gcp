@@ -12,6 +12,8 @@ import (
 // [the official documentation](https://cloud.google.com/nat/docs/overview)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/rest/beta/routers).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
 type RouterNat struct {
 	s *pulumi.ResourceState
 }

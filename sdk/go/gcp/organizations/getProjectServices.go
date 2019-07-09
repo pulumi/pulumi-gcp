@@ -11,6 +11,8 @@ import (
 // 
 // For a list of services available, visit the
 // [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_services.html.markdown.
 func LookupProjectServices(ctx *pulumi.Context, args *GetProjectServicesArgs) (*GetProjectServicesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     role: "READER",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_access_control.html.markdown.
  */
 export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**

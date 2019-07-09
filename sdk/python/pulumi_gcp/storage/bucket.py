@@ -22,11 +22,6 @@ class Bucket(pulumi.CustomResource):
     The bucket's encryption configuration.
     """
     force_destroy: pulumi.Output[bool]
-    """
-    When deleting a bucket, this
-    boolean option will delete all contained objects. If you try to delete a
-    bucket that contains objects, Terraform will fail that run.
-    """
     labels: pulumi.Output[dict]
     """
     A set of key/value label pairs to assign to the bucket.
@@ -96,9 +91,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
         :param pulumi.Input[list] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
-        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, Terraform will fail that run.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the bucket.
         :param pulumi.Input[list] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
@@ -110,6 +102,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[list] websites: Configuration if the bucket acts as a website. Structure is documented below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

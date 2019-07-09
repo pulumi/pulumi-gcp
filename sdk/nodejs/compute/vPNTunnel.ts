@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     priority: 1000,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
  */
 export class VPNTunnel extends pulumi.CustomResource {
     /**

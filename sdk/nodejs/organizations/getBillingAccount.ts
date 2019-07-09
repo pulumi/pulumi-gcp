@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     projectId: "your-project-id",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
  */
 export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};

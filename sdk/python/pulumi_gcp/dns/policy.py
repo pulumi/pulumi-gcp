@@ -22,22 +22,14 @@ class Policy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, name=None, networks=None, project=None, __name__=None, __opts__=None):
         """
-        A policy is a collection of DNS rules applied to one or more Virtual
-        Private Cloud resources.
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        To get more information about Policy, see:
-        
-        * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
-        * How-to Guides
-            * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+        Create a Policy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

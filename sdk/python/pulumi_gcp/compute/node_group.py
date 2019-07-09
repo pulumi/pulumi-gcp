@@ -26,24 +26,14 @@ class NodeGroup(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, name=None, node_template=None, project=None, size=None, zone=None, __name__=None, __opts__=None):
         """
-        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
-        
-        
-        To get more information about NodeGroup, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
-        * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-        
-        > **Warning:** Due to limitations of the API, Terraform cannot update the
-        number of nodes in a node group and changes to node group size either
-        through Terraform config or through external changes will cause
-        Terraform to delete and recreate the node group.
+        Create a NodeGroup resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

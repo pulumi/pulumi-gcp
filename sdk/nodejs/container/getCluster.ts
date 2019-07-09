@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  * export const nodeConfig = myCluster.nodeConfigs;
  * export const nodePools = myCluster.nodePools;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_cluster.html.markdown.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("gcp:container/getCluster:getCluster", {

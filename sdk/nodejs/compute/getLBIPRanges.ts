@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     targetTags: ["InstanceBehindLoadBalancer"],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_lb_ip_ranges.html.markdown.
  */
 export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
     return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {

@@ -14,6 +14,8 @@ import (
 // !> **Warning:** Due to limitations of the API, all arguments except
 // `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
 // whole cluster!
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
 type Cluster struct {
 	s *pulumi.ResourceState
 }

@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     type: "TXT",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
  */
 export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {
     return pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
@@ -55,9 +57,6 @@ export interface GetManagedZoneResult {
      * A textual description field.
      */
     readonly description: string;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-     */
     readonly dnsName: string;
     readonly name: string;
     /**

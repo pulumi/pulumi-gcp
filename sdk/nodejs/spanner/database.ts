@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     instance: main.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

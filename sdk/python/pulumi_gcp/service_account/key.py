@@ -90,6 +90,8 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

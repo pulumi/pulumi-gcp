@@ -121,6 +121,8 @@ async def get_function(name=None,project=None,region=None,opts=None):
     Get information about a Google Cloud Function. For more information see
     the [official documentation](https://cloud.google.com/functions/docs/)
     and [API](https://cloud.google.com/functions/docs/apis).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/cloudfunctions_function.html.markdown.
     """
     __args__ = dict()
 

@@ -43,6 +43,8 @@ async def get_netblock_ip_ranges(opts=None):
     Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
     
     https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
     """
     __args__ = dict()
 

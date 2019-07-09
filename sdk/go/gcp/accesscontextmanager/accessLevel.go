@@ -17,6 +17,8 @@ import (
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
 type AccessLevel struct {
 	s *pulumi.ResourceState
 }

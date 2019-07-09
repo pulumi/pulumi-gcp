@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     type: "A",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_global_address.html.markdown.
  */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {

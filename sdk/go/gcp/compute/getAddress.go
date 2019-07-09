@@ -9,6 +9,8 @@ import (
 
 // Get the IP address from a static address. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_address.html.markdown.
 func LookupAddress(ctx *pulumi.Context, args *GetAddressArgs) (*GetAddressResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

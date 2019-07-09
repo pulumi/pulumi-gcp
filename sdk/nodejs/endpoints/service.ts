@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * ```
  * 
  * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

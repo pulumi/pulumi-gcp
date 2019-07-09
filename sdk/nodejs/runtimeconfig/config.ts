@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     description: "Runtime configuration values for my service",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config.html.markdown.
  */
 export class Config extends pulumi.CustomResource {
     /**

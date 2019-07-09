@@ -12,6 +12,8 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
 type RouterPeer struct {
 	s *pulumi.ResourceState
 }

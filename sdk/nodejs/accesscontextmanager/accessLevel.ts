@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     title: "my policy",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
  */
 export class AccessLevel extends pulumi.CustomResource {
     /**

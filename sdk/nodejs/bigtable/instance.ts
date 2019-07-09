@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     instanceType: "DEVELOPMENT",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

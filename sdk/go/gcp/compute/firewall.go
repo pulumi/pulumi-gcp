@@ -27,6 +27,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_firewall.html.markdown.
 type Firewall struct {
 	s *pulumi.ResourceState
 }

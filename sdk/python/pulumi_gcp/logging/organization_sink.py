@@ -41,12 +41,7 @@ class OrganizationSink(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, destination=None, filter=None, include_children=None, name=None, org_id=None, __name__=None, __opts__=None):
         """
-        Manages a organization-level logging sink. For more information see
-        [the official documentation](https://cloud.google.com/logging/docs/) and
-        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-        
-        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        granted to the credentials used with terraform.
+        Create a OrganizationSink resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -60,6 +55,8 @@ class OrganizationSink(pulumi.CustomResource):
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_sink.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

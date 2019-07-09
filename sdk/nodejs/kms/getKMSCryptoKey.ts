@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     name: "my-crypto-key",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key.html.markdown.
  */
 export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {

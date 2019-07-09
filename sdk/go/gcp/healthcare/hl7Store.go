@@ -8,17 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
-// standard for Healthcare information exchange
-// 
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-// 
-// To get more information about Hl7V2Store, see:
-// 
-// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.hl7V2Stores)
-// * How-to Guides
-//     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 type Hl7Store struct {
 	s *pulumi.ResourceState
 }

@@ -80,6 +80,8 @@ class RouterPeer(pulumi.CustomResource):
                created.
         :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
                Changing this forces a new peer to be created.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

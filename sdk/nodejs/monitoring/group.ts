@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  *     parentName: parent.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**

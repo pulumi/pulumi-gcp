@@ -56,6 +56,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

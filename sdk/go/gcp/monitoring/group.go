@@ -19,6 +19,8 @@ import (
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
 type Group struct {
 	s *pulumi.ResourceState
 }

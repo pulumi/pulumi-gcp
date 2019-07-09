@@ -14,6 +14,8 @@ import (
 // the datasource. A region can have a different set of supported versions than
 // its component zones, and not all zones in a region are guaranteed to
 // support the same version.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
 func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*GetEngineVersionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -53,12 +55,6 @@ type GetEngineVersionsArgs struct {
 	// Defaults to the project that the provider is authenticated with.
 	Project interface{}
 	Region interface{}
-	// If provided, Terraform will only return versions
-	// that match the string prefix. For example, `1.11.` will match all `1.11` series
-	// releases. Since this is just a string match, it's recommended that you append a
-	// `.` after minor versions to ensure that prefixes such as `1.1` don't match
-	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
-	// for full details on how version strings are formatted.
 	VersionPrefix interface{}
 	Zone interface{}
 }

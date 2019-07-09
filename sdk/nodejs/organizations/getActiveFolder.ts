@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     parent: "organizations/1234567",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/active_folder.html.markdown.
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
     return pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {

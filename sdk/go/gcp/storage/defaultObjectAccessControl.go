@@ -28,6 +28,8 @@ import (
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_access_control.html.markdown.
 type DefaultObjectAccessControl struct {
 	s *pulumi.ResourceState
 }

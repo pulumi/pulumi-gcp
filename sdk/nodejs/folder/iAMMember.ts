@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     role: "roles/editor",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_member.html.markdown.
  */
 export class IAMMember extends pulumi.CustomResource {
     /**

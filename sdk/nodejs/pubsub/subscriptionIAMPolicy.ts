@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     subscription: "your-subscription-name",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam_policy.html.markdown.
  */
 export class SubscriptionIAMPolicy extends pulumi.CustomResource {
     /**

@@ -34,12 +34,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, billing_account=None, description=None, disabled=None, filter=None, name=None, __name__=None, __opts__=None):
         """
-        Manages a billing account logging exclusion. For more information see
-        [the official documentation](https://cloud.google.com/logging/docs/) and
-        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-        
-        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        granted to the credentials used with Terraform.
+        Create a BillingAccountExclusion resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -51,6 +46,8 @@ class BillingAccountExclusion(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging exclusion.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

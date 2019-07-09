@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     role: "roles/editor",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam_binding.html.markdown.
  */
 export class JobIAMBinding extends pulumi.CustomResource {
     /**
@@ -94,15 +96,7 @@ export class JobIAMBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly jobId!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -161,15 +155,7 @@ export interface JobIAMBindingState {
     readonly etag?: pulumi.Input<string>;
     readonly jobId?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -185,15 +171,7 @@ export interface JobIAMBindingState {
 export interface JobIAMBindingArgs {
     readonly jobId: pulumi.Input<string>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

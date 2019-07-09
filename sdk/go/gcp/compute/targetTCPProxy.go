@@ -18,6 +18,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
 // * How-to Guides
 //     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
 type TargetTCPProxy struct {
 	s *pulumi.ResourceState
 }

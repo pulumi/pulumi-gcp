@@ -42,17 +42,7 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, permissions=None, project=None, role_id=None, stage=None, title=None, __name__=None, __opts__=None):
         """
-        Allows management of a customized Cloud IAM project role. For more information see
-        [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
-        and
-        [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
-        
-        > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
-         from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
-         same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
-         after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
-         made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-         by Terraform, and new roles cannot share that name.
+        Create a IAMCustomRole resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -65,6 +55,8 @@ class IAMCustomRole(pulumi.CustomResource):
                Defaults to `GA`.
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
         :param pulumi.Input[str] title: A human-readable title for the role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_custom_role.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

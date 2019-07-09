@@ -61,6 +61,8 @@ async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     
     A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
     Google Cloud KMS KeyRing.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key.html.markdown.
     """
     __args__ = dict()
 

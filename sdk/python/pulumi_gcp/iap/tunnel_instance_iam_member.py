@@ -36,18 +36,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, instance=None, member=None, project=None, role=None, zone=None, __name__=None, __opts__=None):
         """
-        > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        Three different resources help you manage your IAM policy for IAP Tunnel Instance. Each of these resources serves a different use case:
-        
-        * `google_iap_tunnel_instance_iam_policy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-        * `google_iap_tunnel_instance_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-        * `google_iap_tunnel_instance_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-        
-        > **Note:** `google_iap_tunnel_instance_iam_policy` **cannot** be used in conjunction with `google_iap_tunnel_instance_iam_binding` and `google_iap_tunnel_instance_iam_member` or they will fight over what your policy should be.
-        
-        > **Note:** `google_iap_tunnel_instance_iam_binding` resources **can be** used in conjunction with `google_iap_tunnel_instance_iam_member` resources **only if** they do not grant privilege to the same role.
+        Create a TunnelInstanceIAMMember resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,6 +48,8 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

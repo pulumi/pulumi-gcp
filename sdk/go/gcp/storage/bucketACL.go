@@ -12,6 +12,8 @@ import (
 // [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
 // and 
 // [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
 type BucketACL struct {
 	s *pulumi.ResourceState
 }

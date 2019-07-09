@@ -54,6 +54,8 @@ async def get_region_instance_group(name=None,project=None,region=None,self_link
     
     
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
     """
     __args__ = dict()
 

@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     serviceAccountId: myaccount.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account_key.html.markdown.
  */
 export class Key extends pulumi.CustomResource {
     /**

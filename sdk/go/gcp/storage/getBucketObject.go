@@ -11,6 +11,8 @@ import (
 // See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
 func LookupBucketObject(ctx *pulumi.Context, args *GetBucketObjectArgs) (*GetBucketObjectResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A policy that can be attached to a resource to specify or schedule actions on that resource.
- * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- */
 export class ResourcePolicy extends pulumi.CustomResource {
     /**
      * Get an existing ResourcePolicy resource's state with the given name, ID, and optional extra

@@ -38,6 +38,8 @@ import (
 // * How-to Guides
 //     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
 //     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
 type Subnetwork struct {
 	s *pulumi.ResourceState
 }

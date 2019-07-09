@@ -4,64 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
- * Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
- * 
- * * `google_healthcare_fhir_store_iam_policy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
- * * `google_healthcare_fhir_store_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
- * * `google_healthcare_fhir_store_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
- * 
- * > **Note:** `google_healthcare_fhir_store_iam_policy` **cannot** be used in conjunction with `google_healthcare_fhir_store_iam_binding` and `google_healthcare_fhir_store_iam_member` or they will fight over what your policy should be.
- * 
- * > **Note:** `google_healthcare_fhir_store_iam_binding` resources **can be** used in conjunction with `google_healthcare_fhir_store_iam_member` resources **only if** they do not grant privilege to the same role.
- * 
- * ## google\_healthcare\_fhir\_store\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * }));
- * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhir_store", {
- *     fhirStoreId: "your-fhir-store-id",
- *     policyData: admin.policyData,
- * });
- * ```
- * 
- * ## google\_healthcare\_fhir\_store\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhir_store", {
- *     fhirStoreId: "your-fhir-store-id",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- * 
- * ## google\_healthcare\_fhir\_store\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhir_store", {
- *     fhirStoreId: "your-fhir-store-id",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
- */
 export class FhirStoreIamMember extends pulumi.CustomResource {
     /**
      * Get an existing FhirStoreIamMember resource's state with the given name, ID, and optional extra

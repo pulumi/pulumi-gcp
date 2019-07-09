@@ -41,6 +41,8 @@ class DefaultObjectACL(pulumi.CustomResource):
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`.
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

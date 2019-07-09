@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "default-us-east1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_network.html.markdown.
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {

@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  * // Check out current state of the jobs
  * export const sparkStatus = spark.status.state;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
  */
 export class Job extends pulumi.CustomResource {
     /**

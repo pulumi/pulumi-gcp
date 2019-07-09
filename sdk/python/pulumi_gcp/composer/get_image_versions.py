@@ -35,6 +35,8 @@ class GetImageVersionsResult:
 async def get_image_versions(project=None,region=None,opts=None):
     """
     Provides access to available Cloud Composer versions in a region for a given project.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
     """
     __args__ = dict()
 

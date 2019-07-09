@@ -4,51 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Google Cloud Redis instance.
- * 
- * 
- * To get more information about Instance, see:
- * 
- * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
- * 
- * ## Example Usage - Redis Instance Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const cache = new gcp.redis.Instance("cache", {
- *     memorySizeGb: 1,
- * });
- * ```
- * ## Example Usage - Redis Instance Full
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const auto_network = new gcp.compute.Network("auto-network", {});
- * const cache = new gcp.redis.Instance("cache", {
- *     alternativeLocationId: "us-central1-f",
- *     authorizedNetwork: auto_network.selfLink,
- *     displayName: "Terraform Test Instance",
- *     labels: {
- *         my_key: "my_val",
- *         other_key: "other_val",
- *     },
- *     locationId: "us-central1-a",
- *     memorySizeGb: 1,
- *     redisVersion: "REDIS_3_2",
- *     reservedIpRange: "192.168.0.0/29",
- *     tier: "STANDARD_HA",
- * });
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

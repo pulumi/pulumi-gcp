@@ -17,6 +17,8 @@ import (
 // > **Note:** `google_dataproc_cluster_iam_policy` **cannot** be used in conjunction with `google_dataproc_cluster_iam_binding` and `google_dataproc_cluster_iam_member` or they will fight over what your policy should be. In addition, be careful not to accidentaly unset ownership of the cluster as `google_dataproc_cluster_iam_policy` replaces the entire policy.
 // 
 // > **Note:** `google_dataproc_cluster_iam_binding` resources **can be** used in conjunction with `google_dataproc_cluster_iam_member` resources **only if** they do not grant privilege to the same role.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_binding.html.markdown.
 type ClusterIAMBinding struct {
 	s *pulumi.ResourceState
 }
@@ -99,14 +101,10 @@ func (r *ClusterIAMBinding) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
 
-// The project in which the cluster belongs. If it
-// is not provided, Terraform will use the provider default.
 func (r *ClusterIAMBinding) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region in which the cluster belongs. If it
-// is not provided, Terraform will use the provider default.
 func (r *ClusterIAMBinding) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -125,11 +123,7 @@ type ClusterIAMBindingState struct {
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag interface{}
 	Members interface{}
-	// The project in which the cluster belongs. If it
-	// is not provided, Terraform will use the provider default.
 	Project interface{}
-	// The region in which the cluster belongs. If it
-	// is not provided, Terraform will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -142,11 +136,7 @@ type ClusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster interface{}
 	Members interface{}
-	// The project in which the cluster belongs. If it
-	// is not provided, Terraform will use the provider default.
 	Project interface{}
-	// The region in which the cluster belongs. If it
-	// is not provided, Terraform will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format

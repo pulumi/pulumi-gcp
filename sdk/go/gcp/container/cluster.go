@@ -14,6 +14,8 @@ import (
 // > **Note:** All arguments and attributes, including basic auth username and
 // passwords as well as certificate outputs will be stored in the raw state as
 // plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
 type Cluster struct {
 	s *pulumi.ResourceState
 }
@@ -354,16 +356,6 @@ func (r *Cluster) MasterVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterVersion"])
 }
 
-// The minimum version of the master. GKE
-// will auto-update the master to new versions, so this does not guarantee the
-// current master version--use the read-only `master_version` field to obtain that.
-// If unset, the cluster's version will be set by GKE to the version of the most recent
-// official release (which is not necessarily the latest version).  Most users will find
-// the `google_container_engine_versions` data source useful - it indicates which versions
-// are available, and can be use to approximate fuzzy versions in a
-// Terraform-compatible way. If you intend to specify versions manually,
-// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-// describe the various acceptable formats for this field.
 func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["minMasterVersion"])
 }
@@ -399,11 +391,6 @@ func (r *Cluster) NetworkPolicy() *pulumi.Output {
 	return r.s.State["networkPolicy"]
 }
 
-// Parameters used in creating the default node pool.
-// Generally, this field should not be used at the same time as a
-// `google_container_node_pool` or a `node_pool` block; this configuration
-// manages the default node pool, which isn't recommended to be used with
-// Terraform. Structure is documented below.
 func (r *Cluster) NodeConfig() *pulumi.Output {
 	return r.s.State["nodeConfig"]
 }
@@ -428,14 +415,6 @@ func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodePools"])
 }
 
-// The Kubernetes version on the nodes. Must either be unset
-// or set to the same value as `min_master_version` on create. Defaults to the default
-// version set by GKE which is not necessarily the latest version. This only affects
-// nodes in the default node pool. While a fuzzy version can be specified, it's
-// recommended that you specify explicit versions as Terraform will see spurious diffs
-// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
-// To update nodes in other node pools, use the `version` attribute on the node pool.
 func (r *Cluster) NodeVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nodeVersion"])
 }
@@ -497,9 +476,6 @@ func (r *Cluster) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
-// ([Beta](https://terraform.io/docs/providers/google/provider_versions.html)) The IP address range of the Cloud TPUs in this cluster, in
-// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-// notation (e.g. `1.2.3.4/29`).
 func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
 }
@@ -626,16 +602,6 @@ type ClusterState struct {
 	// be different than the `min_master_version` set in the config if the master
 	// has been updated by GKE.
 	MasterVersion interface{}
-	// The minimum version of the master. GKE
-	// will auto-update the master to new versions, so this does not guarantee the
-	// current master version--use the read-only `master_version` field to obtain that.
-	// If unset, the cluster's version will be set by GKE to the version of the most recent
-	// official release (which is not necessarily the latest version).  Most users will find
-	// the `google_container_engine_versions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// Terraform-compatible way. If you intend to specify versions manually,
-	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-	// describe the various acceptable formats for this field.
 	MinMasterVersion interface{}
 	// The monitoring service that the cluster
 	// should write metrics to.
@@ -656,11 +622,6 @@ type ClusterState struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy interface{}
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `google_container_node_pool` or a `node_pool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// Terraform. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
@@ -676,14 +637,6 @@ type ClusterState struct {
 	// to say "these are the _only_ node pools associated with this cluster", use the
 	// google_container_node_pool resource instead of this property.
 	NodePools interface{}
-	// The Kubernetes version on the nodes. Must either be unset
-	// or set to the same value as `min_master_version` on create. Defaults to the default
-	// version set by GKE which is not necessarily the latest version. This only affects
-	// nodes in the default node pool. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as Terraform will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
-	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion interface{}
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -715,9 +668,6 @@ type ClusterState struct {
 	// The name or self_link of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
-	// ([Beta](https://terraform.io/docs/providers/google/provider_versions.html)) The IP address range of the Cloud TPUs in this cluster, in
-	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock interface{}
 	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
@@ -825,16 +775,6 @@ type ClusterArgs struct {
 	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
 	// external access (except the cluster node IPs, which GKE automatically whitelists).
 	MasterAuthorizedNetworksConfig interface{}
-	// The minimum version of the master. GKE
-	// will auto-update the master to new versions, so this does not guarantee the
-	// current master version--use the read-only `master_version` field to obtain that.
-	// If unset, the cluster's version will be set by GKE to the version of the most recent
-	// official release (which is not necessarily the latest version).  Most users will find
-	// the `google_container_engine_versions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// Terraform-compatible way. If you intend to specify versions manually,
-	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-	// describe the various acceptable formats for this field.
 	MinMasterVersion interface{}
 	// The monitoring service that the cluster
 	// should write metrics to.
@@ -855,11 +795,6 @@ type ClusterArgs struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy interface{}
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `google_container_node_pool` or a `node_pool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// Terraform. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
@@ -875,14 +810,6 @@ type ClusterArgs struct {
 	// to say "these are the _only_ node pools associated with this cluster", use the
 	// google_container_node_pool resource instead of this property.
 	NodePools interface{}
-	// The Kubernetes version on the nodes. Must either be unset
-	// or set to the same value as `min_master_version` on create. Defaults to the default
-	// version set by GKE which is not necessarily the latest version. This only affects
-	// nodes in the default node pool. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as Terraform will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
-	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion interface{}
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.

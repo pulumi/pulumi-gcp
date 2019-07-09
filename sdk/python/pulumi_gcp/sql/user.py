@@ -36,11 +36,7 @@ class User(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, host=None, instance=None, name=None, password=None, project=None, __name__=None, __opts__=None):
         """
-        Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-        
-        > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html). Passwords will not be retrieved when running
-        "terraform import".
+        Create a User resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -54,6 +50,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password for the user. Can be updated.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

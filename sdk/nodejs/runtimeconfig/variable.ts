@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", "utf-8")).toString("base64"),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
  */
 export class Variable extends pulumi.CustomResource {
     /**

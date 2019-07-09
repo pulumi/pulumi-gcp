@@ -15,6 +15,8 @@ import (
 // 
 // > **Note:** This resource _must not_ be used in conjunction with
 //    `google_project_services` or they will fight over which services should be enabled.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_service.html.markdown.
 type Service struct {
 	s *pulumi.ResourceState
 }
@@ -78,7 +80,6 @@ func (r *Service) DisableDependentServices() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disableDependentServices"])
 }
 
-// If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 func (r *Service) DisableOnDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disableOnDestroy"])
 }
@@ -98,7 +99,6 @@ type ServiceState struct {
 	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
 	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
 	DisableDependentServices interface{}
-	// If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy interface{}
 	// The project ID. If not provided, the provider project is used.
 	Project interface{}
@@ -111,7 +111,6 @@ type ServiceArgs struct {
 	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
 	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
 	DisableDependentServices interface{}
-	// If true, disable the service when the terraform resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy interface{}
 	// The project ID. If not provided, the provider project is used.
 	Project interface{}

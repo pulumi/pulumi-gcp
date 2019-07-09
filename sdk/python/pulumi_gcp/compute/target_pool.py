@@ -29,13 +29,6 @@ class TargetPool(pulumi.CustomResource):
     legacy `google_compute_http_health_check` is supported.
     """
     instances: pulumi.Output[list]
-    """
-    List of instances in the pool. They can be given as
-    URLs, or in the form of "zone/name". Note that the instances need not exist
-    at the time of target pool creation, so there is no need to use the
-    Terraform interpolators to create a dependency on the instances from the
-    target pool.
-    """
     name: pulumi.Output[str]
     """
     A unique name for the resource, required by GCE. Changing
@@ -78,11 +71,6 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `google_compute_http_health_check` is supported.
-        :param pulumi.Input[list] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               Terraform interpolators to create a dependency on the instances from the
-               target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -92,6 +80,8 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

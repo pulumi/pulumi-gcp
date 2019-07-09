@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     topic: "your-topic-name",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam_binding.html.markdown.
  */
 export class TopicIAMBinding extends pulumi.CustomResource {
     /**

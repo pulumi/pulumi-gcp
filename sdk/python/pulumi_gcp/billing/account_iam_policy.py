@@ -40,6 +40,8 @@ class AccountIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `google_iam_policy` data source that represents
                the IAM policy that will be applied to the billing account. This policy overrides any existing
                policy applied to the billing account.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -58,13 +58,7 @@ class InstanceGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, instances=None, name=None, named_ports=None, network=None, project=None, zone=None, __name__=None, __opts__=None):
         """
-        Creates a group of dissimilar Compute Engine virtual machine instances.
-        For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
-        and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-        
-        > Recreating an instance group that's in use by another resource will give a
-        `resourceInUseByAnotherResource` error. You can avoid this error with a
-        Terraform `lifecycle` block as outlined in the example below.
+        Create a InstanceGroup resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -86,6 +80,8 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

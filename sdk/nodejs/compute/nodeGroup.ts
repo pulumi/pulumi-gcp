@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
- * 
- * 
- * To get more information about NodeGroup, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
- * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
- * 
- * > **Warning:** Due to limitations of the API, Terraform cannot update the
- * number of nodes in a node group and changes to node group size either
- * through Terraform config or through external changes will cause
- * Terraform to delete and recreate the node group.
- * 
- * ## Example Usage - Node Group Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const central1a = pulumi.output(gcp.compute.getNodeTypes({
- *     zone: "us-central1-a",
- * }));
- * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
- *     nodeType: central1a.apply(central1a => central1a.names[0]),
- *     region: "us-central1",
- * });
- * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     description: "example google_compute_node_group for Terraform Google Provider",
- *     nodeTemplate: soletenant_tmpl.selfLink,
- *     size: 1,
- *     zone: "us-central1-a",
- * });
- * ```
- */
 export class NodeGroup extends pulumi.CustomResource {
     /**
      * Get an existing NodeGroup resource's state with the given name, ID, and optional extra

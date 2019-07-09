@@ -20,15 +20,14 @@ class ResourcePolicy(pulumi.CustomResource):
     snapshot_schedule_policy: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __name__=None, __opts__=None):
         """
-        A policy that can be attached to a resource to specify or schedule actions on that resource.
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
+        Create a ResourcePolicy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

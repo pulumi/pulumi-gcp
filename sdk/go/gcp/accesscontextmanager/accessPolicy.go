@@ -20,6 +20,8 @@ import (
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_policy.html.markdown.
 type AccessPolicy struct {
 	s *pulumi.ResourceState
 }

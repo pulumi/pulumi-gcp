@@ -15,19 +15,12 @@ class Attestor(pulumi.CustomResource):
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, attestation_authority_note=None, description=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        An attestor that attests to container image artifacts.
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        To get more information about Attestor, see:
-        
-        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+        Create a Attestor resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

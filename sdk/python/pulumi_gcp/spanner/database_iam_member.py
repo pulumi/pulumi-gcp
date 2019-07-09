@@ -57,6 +57,8 @@ class DatabaseIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_spanner_database_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

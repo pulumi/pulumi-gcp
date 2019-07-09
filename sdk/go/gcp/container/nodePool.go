@@ -11,6 +11,8 @@ import (
 // Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
 // the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
 // and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
 type NodePool struct {
 	s *pulumi.ResourceState
 }
@@ -142,8 +144,6 @@ func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
 
-// The name of the node pool. If left blank, Terraform will
-// auto-generate a unique name.
 func (r *NodePool) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -176,12 +176,6 @@ func (r *NodePool) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// The Kubernetes version for the nodes in this pool. Note that if this field
-// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-// recommended that you specify explicit versions as Terraform will see spurious diffs
-// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 func (r *NodePool) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
@@ -215,8 +209,6 @@ type NodePoolState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode interface{}
-	// The name of the node pool. If left blank, Terraform will
-	// auto-generate a unique name.
 	Name interface{}
 	NamePrefix interface{}
 	// The node configuration of the pool. See
@@ -231,12 +223,6 @@ type NodePoolState struct {
 	// The region in which the cluster resides (for
 	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
-	// The Kubernetes version for the nodes in this pool. Note that if this field
-	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as Terraform will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
 	// The zone in which the cluster resides. `zone`
 	// has been deprecated in favor of `location`.
@@ -265,8 +251,6 @@ type NodePoolArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode interface{}
-	// The name of the node pool. If left blank, Terraform will
-	// auto-generate a unique name.
 	Name interface{}
 	NamePrefix interface{}
 	// The node configuration of the pool. See
@@ -281,12 +265,6 @@ type NodePoolArgs struct {
 	// The region in which the cluster resides (for
 	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
-	// The Kubernetes version for the nodes in this pool. Note that if this field
-	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as Terraform will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.
 	Version interface{}
 	// The zone in which the cluster resides. `zone`
 	// has been deprecated in favor of `location`.

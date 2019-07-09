@@ -18,6 +18,8 @@ import (
 // * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
 // * How-to Guides
 //     * [Managing Zones](https://cloud.google.com/dns/zones/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
 type ManagedZone struct {
 	s *pulumi.ResourceState
 }

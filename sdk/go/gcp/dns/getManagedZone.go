@@ -12,6 +12,8 @@ import (
 // [the official documentation](https://cloud.google.com/dns/zones/)
 // and
 // [API](https://cloud.google.com/dns/api/v1/managedZones).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
 func LookupManagedZone(ctx *pulumi.Context, args *GetManagedZoneArgs) (*GetManagedZoneResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -44,7 +46,6 @@ type GetManagedZoneArgs struct {
 type GetManagedZoneResult struct {
 	// A textual description field.
 	Description interface{}
-	// The fully qualified DNS name of this zone, e.g. `terraform.io.`.
 	DnsName interface{}
 	Name interface{}
 	// The list of nameservers that will be authoritative for this

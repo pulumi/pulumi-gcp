@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     topic: google_pubsub_topic_topic.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_project_service_account.html.markdown.
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};

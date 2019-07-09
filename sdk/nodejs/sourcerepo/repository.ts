@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * 
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
  */
 export class Repository extends pulumi.CustomResource {
     /**

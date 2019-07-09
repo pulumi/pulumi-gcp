@@ -19,15 +19,7 @@ class ClusterIAMBinding(pulumi.CustomResource):
     """
     members: pulumi.Output[list]
     project: pulumi.Output[str]
-    """
-    The project in which the cluster belongs. If it
-    is not provided, Terraform will use the provider default.
-    """
     region: pulumi.Output[str]
-    """
-    The region in which the cluster belongs. If it
-    is not provided, Terraform will use the provider default.
-    """
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
@@ -49,13 +41,11 @@ class ClusterIAMBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
-        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
-               is not provided, Terraform will use the provider default.
-        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
-               is not provided, Terraform will use the provider default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_binding.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

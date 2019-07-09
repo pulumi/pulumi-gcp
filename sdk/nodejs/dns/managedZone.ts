@@ -67,6 +67,8 @@ import * as utilities from "../utilities";
  *     visibility: "private",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
  */
 export class ManagedZone extends pulumi.CustomResource {
     /**

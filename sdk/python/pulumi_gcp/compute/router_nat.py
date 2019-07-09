@@ -128,6 +128,8 @@ class RouterNat(pulumi.CustomResource):
                new NAT to be created.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
                Defaults to 30s if not set. Changing this forces a new NAT to be created.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

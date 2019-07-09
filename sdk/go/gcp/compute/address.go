@@ -28,6 +28,8 @@ import (
 // * How-to Guides
 //     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
 //     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
 type Address struct {
 	s *pulumi.ResourceState
 }

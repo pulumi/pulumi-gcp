@@ -22,6 +22,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
 // * How-to Guides
 //     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
 type BackendBucket struct {
 	s *pulumi.ResourceState
 }

@@ -15,6 +15,8 @@ import (
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
 // * How-to Guides
 //     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
 type Topic struct {
 	s *pulumi.ResourceState
 }

@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
  */
 export class NodeTemplate extends pulumi.CustomResource {
     /**

@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * export const certificateId = myCert.certificateId;
  * export const selfLink = myCert.selfLink;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_certificate.html.markdown.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     return pulumi.runtime.invoke("gcp:compute/getCertificate:getCertificate", {
