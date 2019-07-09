@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     role: "roles/editor",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_member.html.markdown.
  */
 export class ClusterIAMMember extends pulumi.CustomResource {
     /**
@@ -97,15 +99,7 @@ export class ClusterIAMMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -167,15 +161,7 @@ export interface ClusterIAMMemberState {
      */
     readonly etag?: pulumi.Input<string>;
     readonly member?: pulumi.Input<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -194,15 +180,7 @@ export interface ClusterIAMMemberArgs {
      */
     readonly cluster: pulumi.Input<string>;
     readonly member: pulumi.Input<string>;
-    /**
-     * The project in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster belongs. If it
-     * is not provided, Terraform will use the provider default.
-     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

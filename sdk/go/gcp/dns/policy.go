@@ -7,17 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A policy is a collection of DNS rules applied to one or more Virtual
-// Private Cloud resources.
-// 
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-// 
-// To get more information about Policy, see:
-// 
-// * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
-// * How-to Guides
-//     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 type Policy struct {
 	s *pulumi.ResourceState
 }

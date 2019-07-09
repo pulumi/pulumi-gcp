@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_disk.html.markdown.
  */
 export class Disk extends pulumi.CustomResource {
     /**

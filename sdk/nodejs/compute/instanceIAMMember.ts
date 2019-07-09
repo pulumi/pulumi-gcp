@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     role: "roles/compute.osLogin",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_member.html.markdown.
  */
 export class InstanceIAMMember extends pulumi.CustomResource {
     /**

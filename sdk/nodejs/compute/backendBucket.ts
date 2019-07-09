@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
  */
 export class BackendBucket extends pulumi.CustomResource {
     /**

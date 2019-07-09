@@ -17,6 +17,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRule)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
 type ForwardingRule struct {
 	s *pulumi.ResourceState
 }

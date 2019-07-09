@@ -76,6 +76,8 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [s3_backup_bucketBucketIAMMember]});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
  */
 export class TransferJob extends pulumi.CustomResource {
     /**

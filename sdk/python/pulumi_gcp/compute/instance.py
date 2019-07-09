@@ -10,10 +10,6 @@ from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     allow_stopping_for_update: pulumi.Output[bool]
-    """
-    If true, allows Terraform to stop the instance to update its properties.
-    If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-    """
     attached_disks: pulumi.Output[list]
     """
     Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -34,10 +30,6 @@ class Instance(pulumi.CustomResource):
     The CPU platform used by this instance.
     """
     deletion_protection: pulumi.Output[bool]
-    """
-    Enable deletion protection on this instance. Defaults to false.
-    **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
-    """
     description: pulumi.Output[str]
     """
     A brief description of this resource.
@@ -154,16 +146,12 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties.
-               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[list] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
@@ -200,6 +188,8 @@ class Instance(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

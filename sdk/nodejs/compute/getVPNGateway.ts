@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "vpn-gateway-us-east1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
  */
 export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
     return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {

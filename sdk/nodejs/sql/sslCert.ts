@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     instance: master.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_ssl_cert.html.markdown.
  */
 export class SslCert extends pulumi.CustomResource {
     /**

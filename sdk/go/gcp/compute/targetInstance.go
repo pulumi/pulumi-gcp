@@ -21,6 +21,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
 // * How-to Guides
 //     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_instance.html.markdown.
 type TargetInstance struct {
 	s *pulumi.ResourceState
 }

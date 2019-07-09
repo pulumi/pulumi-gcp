@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
  */
 export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -181,11 +183,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly versions!: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -332,11 +329,6 @@ export interface RegionInstanceGroupManagerState {
      * Structure is documented below.
      */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     readonly waitForInstances?: pulumi.Input<boolean>;
 }
 
@@ -412,10 +404,5 @@ export interface RegionInstanceGroupManagerArgs {
      * Structure is documented below.
      */
     readonly versions: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, Terraform will
-     * continue trying until it times out.
-     */
     readonly waitForInstances?: pulumi.Input<boolean>;
 }

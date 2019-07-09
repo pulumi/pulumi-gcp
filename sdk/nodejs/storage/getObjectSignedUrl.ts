@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     path: "path/to/file",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_object_signed_url.html.markdown.
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
     return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {

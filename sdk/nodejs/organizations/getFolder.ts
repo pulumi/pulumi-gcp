@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * export const myFolder1Organization = myFolder1.organization;
  * export const myFolder2Parent = myFolder2.parent;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
     return pulumi.runtime.invoke("gcp:organizations/getFolder:getFolder", {

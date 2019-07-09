@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     source: new pulumi.asset.FileArchive("/images/nature/garden-tiger-moth.jpg"),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
  */
 export class BucketObject extends pulumi.CustomResource {
     /**

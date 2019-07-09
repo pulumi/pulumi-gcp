@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk.html.markdown.
  */
 export class RegionDisk extends pulumi.CustomResource {
     /**

@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     router: foobar.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
  */
 export class InterconnectAttachment extends pulumi.CustomResource {
     /**

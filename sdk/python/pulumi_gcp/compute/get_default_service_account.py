@@ -50,6 +50,8 @@ class GetDefaultServiceAccountResult:
 async def get_default_service_account(project=None,opts=None):
     """
     Use this data source to retrieve default service account for this project
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_default_service_account.html.markdown.
     """
     __args__ = dict()
 

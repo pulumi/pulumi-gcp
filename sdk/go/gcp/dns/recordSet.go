@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
-// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
-// 
-// > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource in Terraform. In addition, the Google Cloud DNS API requires NS records to be present at all times, so Terraform will not actually remove NS records during destroy but will report that it did.
 type RecordSet struct {
 	s *pulumi.ResourceState
 }
@@ -101,8 +97,6 @@ func (r *RecordSet) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The string data for the records in this record set
-// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 func (r *RecordSet) Rrdatas() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["rrdatas"])
 }
@@ -127,8 +121,6 @@ type RecordSetState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 	Rrdatas interface{}
 	// The time-to-live of this record set (seconds).
 	Ttl interface{}
@@ -146,8 +138,6 @@ type RecordSetArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the Terraform configuration string (e.g. `"first255characters\"\"morecharacters"`).
 	Rrdatas interface{}
 	// The time-to-live of this record set (seconds).
 	Ttl interface{}

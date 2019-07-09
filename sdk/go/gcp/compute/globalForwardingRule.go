@@ -15,6 +15,8 @@ import (
 // 
 // For more information, see
 // https://cloud.google.com/compute/docs/load-balancing/http/
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
 type GlobalForwardingRule struct {
 	s *pulumi.ResourceState
 }

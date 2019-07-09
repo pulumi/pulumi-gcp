@@ -77,6 +77,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_policy.html.markdown.
  */
 export class Policy extends pulumi.CustomResource {
     /**

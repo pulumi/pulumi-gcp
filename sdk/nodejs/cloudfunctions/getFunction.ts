@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     name: "function",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/cloudfunctions_function.html.markdown.
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
     return pulumi.runtime.invoke("gcp:cloudfunctions/getFunction:getFunction", {

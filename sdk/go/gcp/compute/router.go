@@ -16,6 +16,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
 // * How-to Guides
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
 type Router struct {
 	s *pulumi.ResourceState
 }

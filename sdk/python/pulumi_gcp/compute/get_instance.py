@@ -179,6 +179,8 @@ async def get_instance(name=None,project=None,self_link=None,zone=None,opts=None
     [the official documentation](https://cloud.google.com/compute/docs/instances)
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
     """
     __args__ = dict()
 

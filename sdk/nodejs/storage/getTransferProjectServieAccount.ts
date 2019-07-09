@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * 
  * export const defaultAccount = defaultTransferProjectServieAccount.email;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_transfer_project_service_account.html.markdown.
  */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
     args = args || {};

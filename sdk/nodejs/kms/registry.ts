@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
  */
 export class Registry extends pulumi.CustomResource {
     /**

@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows creation and management of a single binding within IAM policy for
- * an existing Google Cloud Platform Organization.
- * 
- * > **Note:** This resource __must not__ be used in conjunction with
- *    `google_organization_iam_member` for the __same role__ or they will fight over
- *    what your policy should be.
- * 
- * > **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `terraform import` and inspect the `terraform plan` output to ensure
- *     your existing members are preserved.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const binding = new gcp.organizations.IAMBinding("binding", {
- *     members: ["user:alice@gmail.com"],
- *     orgId: "123456789",
- *     role: "roles/browser",
- * });
- * ```
- */
 export class IAMBinding extends pulumi.CustomResource {
     /**
      * Get an existing IAMBinding resource's state with the given name, ID, and optional extra

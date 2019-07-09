@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get information about a Google IAM Role.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
 func LookupRule(ctx *pulumi.Context, args *GetRuleArgs) (*GetRuleResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

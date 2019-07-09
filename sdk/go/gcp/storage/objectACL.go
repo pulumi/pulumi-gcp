@@ -19,6 +19,8 @@ import (
 // 
 // > Want fine-grained control over object ACLs? Use `google_storage_object_access_control` to control individual
 // role entity pairs.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
 type ObjectACL struct {
 	s *pulumi.ResourceState
 }

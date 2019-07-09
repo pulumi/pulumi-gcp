@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_key.html.markdown.
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {

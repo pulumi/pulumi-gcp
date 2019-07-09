@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     backendService: defaultBackendService.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
  */
 export class TargetTCPProxy extends pulumi.CustomResource {
     /**

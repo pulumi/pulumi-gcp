@@ -11,6 +11,8 @@ import (
 // Creates a new Google SQL Database on a Google SQL Database Instance. For more information, see
 // the [official documentation](https://cloud.google.com/sql/),
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/databases).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
 type Database struct {
 	s *pulumi.ResourceState
 }

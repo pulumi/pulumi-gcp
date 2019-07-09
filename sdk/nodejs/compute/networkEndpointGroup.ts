@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint_group.html.markdown.
  */
 export class NetworkEndpointGroup extends pulumi.CustomResource {
     /**

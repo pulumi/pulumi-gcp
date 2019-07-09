@@ -11,6 +11,8 @@ import (
 // Creates a dataset resource for Google BigQuery. For more information see
 // [the official documentation](https://cloud.google.com/bigquery/docs/) and
 // [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
 type Dataset struct {
 	s *pulumi.ResourceState
 }

@@ -4,59 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A `CryptoKey` represents a logical key that can be used for cryptographic operations.
- * 
- * 
- * > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
- * Destroying a Terraform-managed CryptoKey will remove it from state
- * and delete all CryptoKeyVersions, rendering the key unusable, but *will
- * not delete the resource on the server.* When Terraform destroys these keys,
- * any data previously encrypted with these keys will be irrecoverable.
- * For this reason, it is strongly recommended that you add lifecycle hooks
- * to the resource to prevent accidental destruction.
- * 
- * 
- * To get more information about CryptoKey, see:
- * 
- * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
- * * How-to Guides
- *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
- * 
- * ## Example Usage - Kms Crypto Key Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const keyring = new gcp.kms.KeyRing("keyring", {
- *     location: "global",
- * });
- * const example_key = new gcp.kms.CryptoKey("example-key", {
- *     keyRing: keyring.selfLink,
- *     rotationPeriod: "100000s",
- * });
- * ```
- * ## Example Usage - Kms Crypto Key Asymmetric Sign
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const keyring = new gcp.kms.KeyRing("keyring", {
- *     location: "global",
- * });
- * const example_asymmetric_sign_key = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
- *     keyRing: keyring.selfLink,
- *     purpose: "ASYMMETRIC_SIGN",
- *     versionTemplate: {
- *         algorithm: "EC_SIGN_P384_SHA384",
- *     },
- * });
- * ```
- */
 export class CryptoKey extends pulumi.CustomResource {
     /**
      * Get an existing CryptoKey resource's state with the given name, ID, and optional extra

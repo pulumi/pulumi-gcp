@@ -7,10 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A policy that can be attached to a resource to specify or schedule actions on that resource.
-// 
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
 type ResourcePolicy struct {
 	s *pulumi.ResourceState
 }

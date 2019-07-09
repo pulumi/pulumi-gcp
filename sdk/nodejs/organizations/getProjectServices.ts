@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * 
  * export const projectServices = project.apply(project => project.services.join(","));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_services.html.markdown.
  */
 export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> {
     args = args || {};

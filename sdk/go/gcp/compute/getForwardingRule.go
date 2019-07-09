@@ -8,6 +8,8 @@ import (
 )
 
 // Get a forwarding rule within GCE from its name.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
 func LookupForwardingRule(ctx *pulumi.Context, args *GetForwardingRuleArgs) (*GetForwardingRuleResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -118,6 +118,8 @@ async def get_backend_service(name=None,project=None,opts=None):
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
     """
     __args__ = dict()
 

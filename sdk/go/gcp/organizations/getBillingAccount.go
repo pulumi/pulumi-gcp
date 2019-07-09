@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get information about a Google Billing Account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
 func LookupBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs) (*GetBillingAccountResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

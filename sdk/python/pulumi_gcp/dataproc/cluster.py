@@ -58,6 +58,8 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

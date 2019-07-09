@@ -27,6 +27,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
 type Snapshot struct {
 	s *pulumi.ResourceState
 }

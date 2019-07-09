@@ -158,6 +158,8 @@ class GetClusterResult:
 async def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
     """
     Get info about a GKE cluster from its name and location.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_cluster.html.markdown.
     """
     __args__ = dict()
 

@@ -34,6 +34,8 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
                This field can take the following values: `PREMIUM` or `STANDARD`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_default_network_tier.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

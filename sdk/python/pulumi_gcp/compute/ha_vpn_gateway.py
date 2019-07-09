@@ -25,24 +25,14 @@ class HaVpnGateway(pulumi.CustomResource):
     vpn_interfaces: pulumi.Output[list]
     def __init__(__self__, resource_name, opts=None, description=None, name=None, network=None, project=None, region=None, __name__=None, __opts__=None):
         """
-        Represents a VPN gateway running in GCP. This virtual device is managed
-        by Google, but used only by you. This type of VPN Gateway allows for the creation
-        of VPN solutions with higher availability than classic Target VPN Gateways.
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        To get more information about HaVpnGateway, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
-        * How-to Guides
-            * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+        Create a HaVpnGateway resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

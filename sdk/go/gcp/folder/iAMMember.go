@@ -15,6 +15,8 @@ import (
 //    `google_folder_iam_policy` or they will fight over what your policy
 //    should be. Similarly, roles controlled by `google_folder_iam_binding`
 //    should not be assigned to using `google_folder_iam_member`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_member.html.markdown.
 type IAMMember struct {
 	s *pulumi.ResourceState
 }

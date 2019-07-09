@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};

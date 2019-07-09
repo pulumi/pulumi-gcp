@@ -75,6 +75,8 @@ import * as utilities from "../utilities";
  *     timeZone: "Europe/London",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
  */
 export class Job extends pulumi.CustomResource {
     /**

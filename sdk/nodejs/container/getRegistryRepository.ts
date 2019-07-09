@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * 
  * export const gcrLocation = foo.repositoryUrl;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_repository.html.markdown.
  */
 export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {
     args = args || {};

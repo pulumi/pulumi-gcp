@@ -22,9 +22,6 @@ class GetManagedZoneResult:
         if dns_name and not isinstance(dns_name, str):
             raise TypeError("Expected argument 'dns_name' to be a str")
         __self__.dns_name = dns_name
-        """
-        The fully qualified DNS name of this zone, e.g. `terraform.io.`.
-        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -53,6 +50,8 @@ async def get_managed_zone(name=None,project=None,opts=None):
     [the official documentation](https://cloud.google.com/dns/zones/)
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
     """
     __args__ = dict()
 

@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     role: "roles/editor",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring_iam_member.html.markdown.
  */
 export class KeyRingIAMMember extends pulumi.CustomResource {
     /**

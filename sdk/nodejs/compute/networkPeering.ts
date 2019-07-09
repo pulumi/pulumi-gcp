@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     peerNetwork: defaultNetwork.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
  */
 export class NetworkPeering extends pulumi.CustomResource {
     /**

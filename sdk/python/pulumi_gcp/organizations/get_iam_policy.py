@@ -46,6 +46,8 @@ async def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     **Note:** Several restrictions apply when setting IAM policies through this API.
     See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
     for a list of these restrictions.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
     """
     __args__ = dict()
 

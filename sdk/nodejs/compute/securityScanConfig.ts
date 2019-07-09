@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A ScanConfig resource contains the configurations to launch a scan.
- * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
- * To get more information about ScanConfig, see:
- * 
- * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
- * * How-to Guides
- *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
- */
 export class SecurityScanConfig extends pulumi.CustomResource {
     /**
      * Get an existing SecurityScanConfig resource's state with the given name, ID, and optional extra

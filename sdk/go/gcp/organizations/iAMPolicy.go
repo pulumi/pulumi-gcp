@@ -22,6 +22,8 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `google_organization_iam_member` or `google_organization_iam_binding`
 //    or they will fight over what your policy should be.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
 type IAMPolicy struct {
 	s *pulumi.ResourceState
 }

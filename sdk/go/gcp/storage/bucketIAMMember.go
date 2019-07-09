@@ -16,6 +16,8 @@ import (
 // 
 // 
 // > **Note:** `google_storage_bucket_iam_binding` resources **can be** used in conjunction with `google_storage_bucket_iam_member` resources **only if** they do not grant privilege to the same role.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_member.html.markdown.
 type BucketIAMMember struct {
 	s *pulumi.ResourceState
 }

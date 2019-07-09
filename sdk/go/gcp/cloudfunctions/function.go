@@ -11,6 +11,8 @@ import (
 // [the official documentation](https://cloud.google.com/functions/docs/)
 // and
 // [API](https://cloud.google.com/functions/docs/apis).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
 type Function struct {
 	s *pulumi.ResourceState
 }

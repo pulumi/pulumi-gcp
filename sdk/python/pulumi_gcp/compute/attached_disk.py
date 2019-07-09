@@ -17,24 +17,12 @@ class AttachedDisk(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, device_name=None, disk=None, instance=None, mode=None, project=None, zone=None, __name__=None, __opts__=None):
         """
-        Persistent disks can be attached to a compute instance using [the `attached_disk`
-        section within the compute instance configuration](https://www.terraform.io/docs/providers/google/r/compute_instance.html#attached_disk).
-        However there may be situations where managing the attached disks via the compute
-        instance config isn't preferable or possible, such as attaching dynamic
-        numbers of disks using the `count` variable.
-        
-        
-        To get more information about attaching disks, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
-        * [Resource: google_compute_disk](https://www.terraform.io/docs/providers/google/r/compute_disk.html)
-        * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-        
-        **Note:** When using `compute_attached_disk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute_instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+        Create a AttachedDisk resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

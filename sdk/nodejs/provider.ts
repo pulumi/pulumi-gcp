@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */

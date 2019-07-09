@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
  */
 export class Bucket extends pulumi.CustomResource {
     /**
@@ -75,11 +77,6 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's encryption configuration.
      */
     public readonly encryption!: pulumi.Output<{ defaultKmsKeyName: string } | undefined>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, Terraform will fail that run.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * A set of key/value label pairs to assign to the bucket.
@@ -198,11 +195,6 @@ export interface BucketState {
      * The bucket's encryption configuration.
      */
     readonly encryption?: pulumi.Input<{ defaultKmsKeyName: pulumi.Input<string> }>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, Terraform will fail that run.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * A set of key/value label pairs to assign to the bucket.
@@ -271,11 +263,6 @@ export interface BucketArgs {
      * The bucket's encryption configuration.
      */
     readonly encryption?: pulumi.Input<{ defaultKmsKeyName: pulumi.Input<string> }>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, Terraform will fail that run.
-     */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * A set of key/value label pairs to assign to the bucket.

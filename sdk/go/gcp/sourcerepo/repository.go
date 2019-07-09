@@ -15,6 +15,8 @@ import (
 // * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/source-repositories/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
 type Repository struct {
 	s *pulumi.ResourceState
 }

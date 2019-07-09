@@ -53,6 +53,8 @@ class GetOrganizationResult:
 async def get_organization(domain=None,organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Organization.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/organization.html.markdown.
     """
     __args__ = dict()
 

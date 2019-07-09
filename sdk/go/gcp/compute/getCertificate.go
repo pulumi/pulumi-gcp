@@ -8,6 +8,8 @@ import (
 )
 
 // Get info about a Google Compute SSL Certificate from its name.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_certificate.html.markdown.
 func LookupCertificate(ctx *pulumi.Context, args *GetCertificateArgs) (*GetCertificateResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

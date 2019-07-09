@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a organization-level logging sink. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/) and
- * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
- * 
- * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
- * granted to the credentials used with terraform.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
- * const my_sink = new gcp.logging.OrganizationSink("my-sink", {
- *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
- *     // Log all WARN or higher severity messages relating to instances
- *     filter: "resource.type = gce_instance AND severity >= WARN",
- *     orgId: "123456789",
- * });
- * const log_writer = new gcp.projects.IAMMember("log-writer", {
- *     member: my_sink.writerIdentity,
- *     role: "roles/storage.objectCreator",
- * });
- * ```
- */
 export class OrganizationSink extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationSink resource's state with the given name, ID, and optional extra

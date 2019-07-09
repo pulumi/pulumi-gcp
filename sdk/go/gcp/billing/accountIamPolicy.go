@@ -19,6 +19,8 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `google_billing_account_iam_member` or `google_billing_account_iam_binding`
 //    or they will fight over what your policy should be.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
 type AccountIamPolicy struct {
 	s *pulumi.ResourceState
 }

@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     valueExtractor: "EXTRACT(jsonPayload.request)",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
  */
 export class Metric extends pulumi.CustomResource {
     /**

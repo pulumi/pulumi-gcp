@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     serviceProject: "service-project-id-2",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_shared_vpc_host_project.html.markdown.
  */
 export class SharedVPCHostProject extends pulumi.CustomResource {
     /**

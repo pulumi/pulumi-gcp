@@ -64,6 +64,8 @@ class Job(pulumi.CustomResource):
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

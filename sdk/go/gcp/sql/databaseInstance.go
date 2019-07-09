@@ -8,13 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-// 
-// > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
-// default 'root'@'%' user with no password. This user will be deleted by Terraform on
-// instance creation. You should use `google_sql_user` to define a custom user with
-// a restricted host and strong password.
 type DatabaseInstance struct {
 	s *pulumi.ResourceState
 }
@@ -112,9 +105,6 @@ func (r *DatabaseInstance) DatabaseVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
 
-// The first IPv4 address of any type assigned. This is to
-// support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
-// when the resource is configured with a `count`.
 func (r *DatabaseInstance) FirstIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["firstIpAddress"])
 }
@@ -130,18 +120,10 @@ func (r *DatabaseInstance) MasterInstanceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterInstanceName"])
 }
 
-// The name of the instance. If the name is left
-// blank, Terraform will randomly generate one when the instance is first
-// created. This is done because after a name is used, it cannot be reused for
-// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (r *DatabaseInstance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The first private (`PRIVATE`) IPv4 address assigned. This is
-// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-// but also provides a convenient way to access an IP of a specific type without
-// performing filtering in a Terraform config.
 func (r *DatabaseInstance) PrivateIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateIpAddress"])
 }
@@ -152,10 +134,6 @@ func (r *DatabaseInstance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The first public (`PRIMARY`) IPv4 address assigned. This is
-// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-// but also provides a convenient way to access an IP of a specific type without
-// performing filtering in a Terraform config.
 func (r *DatabaseInstance) PublicIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["publicIpAddress"])
 }
@@ -209,32 +187,17 @@ type DatabaseInstanceState struct {
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
 	// for more information.
 	DatabaseVersion interface{}
-	// The first IPv4 address of any type assigned. This is to
-	// support accessing the [first address in the list in a terraform output](https://github.com/terraform-providers/terraform-provider-google/issues/912)
-	// when the resource is configured with a `count`.
 	FirstIpAddress interface{}
 	IpAddresses interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
-	// The name of the instance. If the name is left
-	// blank, Terraform will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
-	// The first private (`PRIVATE`) IPv4 address assigned. This is
-	// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-	// but also provides a convenient way to access an IP of a specific type without
-	// performing filtering in a Terraform config.
 	PrivateIpAddress interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The first public (`PRIMARY`) IPv4 address assigned. This is
-	// a workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)
-	// but also provides a convenient way to access an IP of a specific type without
-	// performing filtering in a Terraform config.
 	PublicIpAddress interface{}
 	// The region the instance will sit in. Note, first-generation Cloud SQL instance
 	// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
@@ -270,10 +233,6 @@ type DatabaseInstanceArgs struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
-	// The name of the instance. If the name is left
-	// blank, Terraform will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

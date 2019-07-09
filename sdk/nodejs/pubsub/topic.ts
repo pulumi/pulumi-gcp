@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     kmsKeyName: cryptoKey.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
  */
 export class Topic extends pulumi.CustomResource {
     /**

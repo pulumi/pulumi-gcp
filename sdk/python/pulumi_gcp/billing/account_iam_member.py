@@ -39,6 +39,8 @@ class AccountIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

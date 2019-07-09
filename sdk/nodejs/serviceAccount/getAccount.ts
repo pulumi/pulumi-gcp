@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     accountId: "object-viewer",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {

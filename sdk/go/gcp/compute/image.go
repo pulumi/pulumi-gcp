@@ -30,6 +30,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_image.html.markdown.
 type Image struct {
 	s *pulumi.ResourceState
 }

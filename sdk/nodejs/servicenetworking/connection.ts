@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_networking_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**

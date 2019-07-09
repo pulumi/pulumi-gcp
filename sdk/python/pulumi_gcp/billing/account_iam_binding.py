@@ -27,22 +27,15 @@ class AccountIamBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, billing_account_id=None, members=None, role=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of a single binding within IAM policy for
-        an existing Google Cloud Platform Billing Account.
-        
-        > **Note:** This resource __must not__ be used in conjunction with
-           `google_billing_account_iam_member` for the __same role__ or they will fight over
-           what your policy should be.
-        
-        > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `terraform import` and inspect the `terraform plan` output to ensure
-            your existing members are preserved.
+        Create a AccountIamBinding resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_binding.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -19,6 +19,8 @@ import (
 // > This resource will only work as expected if the provider is configured to
 // use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
 // receive an error otherwise.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_openid_userinfo.html.markdown.
 func LookupClientOpenIdUserInfo(ctx *pulumi.Context) (*GetClientOpenIdUserInfoResult, error) {
 	outputs, err := ctx.Invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", nil)
 	if err != nil {

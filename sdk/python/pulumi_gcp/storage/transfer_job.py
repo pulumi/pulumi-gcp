@@ -65,6 +65,8 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[dict] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[dict] transfer_spec: Transfer specification. Structure documented below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

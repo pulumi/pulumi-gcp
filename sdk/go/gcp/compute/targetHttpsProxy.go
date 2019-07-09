@@ -17,6 +17,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
 type TargetHttpsProxy struct {
 	s *pulumi.ResourceState
 }

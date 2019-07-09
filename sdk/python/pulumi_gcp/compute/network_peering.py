@@ -54,6 +54,8 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: Resource link of the network to add a peering to.
         :param pulumi.Input[str] peer_network: Resource link of the peer network.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -34,19 +34,7 @@ class Folder(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, parent=None, __name__=None, __opts__=None):
         """
-        Allows management of a Google Cloud Platform folder. For more information see 
-        [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
-        and 
-        [API](https://cloud.google.com/resource-manager/reference/rest/v2/folders).
-        
-        A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
-        
-        Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-        
-        The service account used to run Terraform when creating a `google_folder`
-        resource must have `roles/resourcemanager.folderCreator`. See the
-        [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
-        doc for more information.
+        Create a Folder resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -54,6 +42,8 @@ class Folder(pulumi.CustomResource):
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

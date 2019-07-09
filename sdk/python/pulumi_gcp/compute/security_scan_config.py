@@ -26,21 +26,14 @@ class SecurityScanConfig(pulumi.CustomResource):
     user_agent: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, authentication=None, blacklist_patterns=None, display_name=None, export_to_security_command_center=None, max_qps=None, project=None, schedule=None, starting_urls=None, target_platforms=None, user_agent=None, __name__=None, __opts__=None):
         """
-        A ScanConfig resource contains the configurations to launch a scan.
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        To get more information about ScanConfig, see:
-        
-        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
-        * How-to Guides
-            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+        Create a SecurityScanConfig resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     role: "roles/billing.viewer",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
  */
 export class AccountIamMember extends pulumi.CustomResource {
     /**

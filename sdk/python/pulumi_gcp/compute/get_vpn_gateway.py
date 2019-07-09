@@ -53,6 +53,8 @@ class GetVPNGatewayResult:
 async def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     """
     Get a VPN gateway within GCE from its name.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
     """
     __args__ = dict()
 

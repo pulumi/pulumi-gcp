@@ -101,6 +101,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

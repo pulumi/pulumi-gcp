@@ -50,6 +50,8 @@ class GetCertificateResult:
 async def get_certificate(name=None,project=None,opts=None):
     """
     Get info about a Google Compute SSL Certificate from its name.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_certificate.html.markdown.
     """
     __args__ = dict()
 

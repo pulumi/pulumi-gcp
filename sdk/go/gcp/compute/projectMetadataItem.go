@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a single key/value pair on metadata common to all instances for
-// a project in GCE. Using `google_compute_project_metadata_item` lets you
-// manage a single key/value setting in Terraform rather than the entire
-// project metadata map.
 type ProjectMetadataItem struct {
 	s *pulumi.ResourceState
 }

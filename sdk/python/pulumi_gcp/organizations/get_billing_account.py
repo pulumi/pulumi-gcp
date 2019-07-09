@@ -44,6 +44,8 @@ class GetBillingAccountResult:
 async def get_billing_account(billing_account=None,display_name=None,open=None,opts=None):
     """
     Use this data source to get information about a Google Billing Account.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
     """
     __args__ = dict()
 

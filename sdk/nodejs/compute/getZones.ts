@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_zones.html.markdown.
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};

@@ -15,6 +15,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network.html.markdown.
 type Network struct {
 	s *pulumi.ResourceState
 }

@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};

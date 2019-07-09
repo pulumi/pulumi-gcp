@@ -35,12 +35,7 @@ class ProjectExclusion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, disabled=None, filter=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        Manages a project-level logging exclusion. For more information see
-        [the official documentation](https://cloud.google.com/logging/docs/) and
-        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-        
-        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        granted to the credentials used with Terraform.
+        Create a ProjectExclusion resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -53,6 +48,8 @@ class ProjectExclusion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging exclusion.
         :param pulumi.Input[str] project: The project to create the exclusion in. If omitted, the project associated with the provider is
                used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_exclusion.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

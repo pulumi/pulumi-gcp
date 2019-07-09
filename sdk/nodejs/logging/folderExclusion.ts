@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a folder-level logging exclusion. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/) and
- * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
- * 
- * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
- * granted to the credentials used with Terraform.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const my_folder = new gcp.organizations.Folder("my-folder", {
- *     displayName: "My folder",
- *     parent: "organizations/123456",
- * });
- * const my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
- *     description: "Exclude GCE instance debug logs",
- *     // Exclude all DEBUG or lower severity messages relating to instances
- *     filter: "resource.type = gce_instance AND severity <= DEBUG",
- *     folder: my_folder.name,
- * });
- * ```
- */
 export class FolderExclusion extends pulumi.CustomResource {
     /**
      * Get an existing FolderExclusion resource's state with the given name, ID, and optional extra

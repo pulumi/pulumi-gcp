@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     triggerHttp: true,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
  */
 export class Function extends pulumi.CustomResource {
     /**

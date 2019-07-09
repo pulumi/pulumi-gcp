@@ -20,6 +20,8 @@ import (
 // * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/scheduler/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
 type Job struct {
 	s *pulumi.ResourceState
 }

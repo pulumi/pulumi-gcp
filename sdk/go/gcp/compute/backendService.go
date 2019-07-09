@@ -21,6 +21,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
 type BackendService struct {
 	s *pulumi.ResourceState
 }

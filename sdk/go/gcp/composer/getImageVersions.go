@@ -8,6 +8,8 @@ import (
 )
 
 // Provides access to available Cloud Composer versions in a region for a given project.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
 func LookupImageVersions(ctx *pulumi.Context, args *GetImageVersionsArgs) (*GetImageVersionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

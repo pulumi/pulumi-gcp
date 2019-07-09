@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_node_types.html.markdown.
  */
 export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};

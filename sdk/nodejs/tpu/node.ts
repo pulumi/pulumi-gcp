@@ -4,55 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Cloud TPU instance.
- * 
- * 
- * To get more information about Node, see:
- * 
- * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
- * 
- * ## Example Usage - Tpu Node Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const available = pulumi.output(gcp.tpu.getTensorflowVersions({}));
- * const tpu = new gcp.tpu.Node("tpu", {
- *     acceleratorType: "v3-8",
- *     cidrBlock: "10.2.0.0/29",
- *     tensorflowVersion: available.apply(available => available.versions[0]),
- *     zone: "us-central1-b",
- * });
- * ```
- * ## Example Usage - Tpu Node Full
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const available = pulumi.output(gcp.tpu.getTensorflowVersions({}));
- * const tpu = new gcp.tpu.Node("tpu", {
- *     acceleratorType: "v3-8",
- *     cidrBlock: "10.3.0.0/29",
- *     description: "Terraform Google Provider test TPU",
- *     labels: {
- *         foo: "bar",
- *     },
- *     network: "default",
- *     schedulingConfig: {
- *         preemptible: true,
- *     },
- *     tensorflowVersion: available.apply(available => available.versions[0]),
- *     zone: "us-central1-b",
- * });
- * ```
- */
 export class Node extends pulumi.CustomResource {
     /**
      * Get an existing Node resource's state with the given name, ID, and optional extra

@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     router: "router-1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
  */
 export class RouterPeer extends pulumi.CustomResource {
     /**

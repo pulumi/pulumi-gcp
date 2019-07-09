@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultHttpHealthCheck.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
  */
 export class BackendService extends pulumi.CustomResource {
     /**

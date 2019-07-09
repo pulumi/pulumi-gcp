@@ -8,6 +8,8 @@ import (
 )
 
 // Get a subnetwork within GCE from its name and region.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
 func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetworkResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

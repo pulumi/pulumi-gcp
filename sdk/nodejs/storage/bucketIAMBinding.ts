@@ -63,6 +63,8 @@ import * as utilities from "../utilities";
  *     policyData: foo_policy.policyData,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_binding.html.markdown.
  */
 export class BucketIAMBinding extends pulumi.CustomResource {
     /**

@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Represents a VPN gateway running in GCP. This virtual device is managed
- * by Google, but used only by you. This type of VPN Gateway allows for the creation
- * of VPN solutions with higher availability than classic Target VPN Gateways.
- * 
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
- * To get more information about HaVpnGateway, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
- * * How-to Guides
- *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
- */
 export class HaVpnGateway extends pulumi.CustomResource {
     /**
      * Get an existing HaVpnGateway resource's state with the given name, ID, and optional extra

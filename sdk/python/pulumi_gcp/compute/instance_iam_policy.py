@@ -53,6 +53,8 @@ class InstanceIAMPolicy(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

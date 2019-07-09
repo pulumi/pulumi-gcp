@@ -14,6 +14,8 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
 // 
 // > **Note:** Use [google_compute_instance_group_manager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
 type RegionInstanceGroupManager struct {
 	s *pulumi.ResourceState
 }
@@ -205,9 +207,6 @@ func (r *RegionInstanceGroupManager) Versions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
 
-// Whether to wait for all instances to be created/updated before
-// returning. Note that if this is set to true and the operation does not succeed, Terraform will
-// continue trying until it times out.
 func (r *RegionInstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitForInstances"])
 }
@@ -264,9 +263,6 @@ type RegionInstanceGroupManagerState struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions interface{}
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
-	// continue trying until it times out.
 	WaitForInstances interface{}
 }
 
@@ -316,8 +312,5 @@ type RegionInstanceGroupManagerArgs struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions interface{}
-	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, Terraform will
-	// continue trying until it times out.
 	WaitForInstances interface{}
 }

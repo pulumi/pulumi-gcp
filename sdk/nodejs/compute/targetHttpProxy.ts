@@ -52,6 +52,8 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.selfLink,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_http_proxy.html.markdown.
  */
 export class TargetHttpProxy extends pulumi.CustomResource {
     /**

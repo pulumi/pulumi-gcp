@@ -16,20 +16,12 @@ class DicomStore(pulumi.CustomResource):
     self_link: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, __name__=None, __opts__=None):
         """
-        A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
-        (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
-        
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
-        
-        To get more information about DicomStore, see:
-        
-        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.dicomStores)
-        * How-to Guides
-            * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+        Create a DicomStore resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

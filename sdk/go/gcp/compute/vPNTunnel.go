@@ -21,6 +21,8 @@ import (
 // > **Warning:** All arguments including the shared secret will be stored in the raw
 // state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
 type VPNTunnel struct {
 	s *pulumi.ResourceState
 }

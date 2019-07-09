@@ -18,6 +18,8 @@ import (
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
 type Metric struct {
 	s *pulumi.ResourceState
 }

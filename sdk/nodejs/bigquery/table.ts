@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
  */
 export class Table extends pulumi.CustomResource {
     /**

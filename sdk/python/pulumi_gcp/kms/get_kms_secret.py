@@ -44,6 +44,8 @@ async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     resource definitions, but it does not take care of protecting that data in the
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret.html.markdown.
     """
     __args__ = dict()
 

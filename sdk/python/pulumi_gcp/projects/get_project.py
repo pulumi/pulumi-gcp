@@ -34,6 +34,8 @@ async def get_project(filter=None,opts=None):
     Retrieve information about a set of projects based on a filter. See the
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
     """
     __args__ = dict()
 

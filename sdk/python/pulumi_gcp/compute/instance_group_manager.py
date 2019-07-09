@@ -81,11 +81,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     Structure is documented below.
     """
     wait_for_instances: pulumi.Output[bool]
-    """
-    Whether to wait for all instances to be created/updated before
-    returning. Note that if this is set to true and the operation does not succeed, Terraform will
-    continue trying until it times out.
-    """
     zone: pulumi.Output[str]
     """
     The zone that instances in this group should be created
@@ -131,11 +126,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] versions: ) Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, Terraform will
-               continue trying until it times out.
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_manager.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

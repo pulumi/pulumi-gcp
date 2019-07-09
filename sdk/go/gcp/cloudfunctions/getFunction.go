@@ -10,6 +10,8 @@ import (
 // Get information about a Google Cloud Function. For more information see
 // the [official documentation](https://cloud.google.com/functions/docs/)
 // and [API](https://cloud.google.com/functions/docs/apis).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/cloudfunctions_function.html.markdown.
 func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

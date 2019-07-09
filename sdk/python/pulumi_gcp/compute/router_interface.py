@@ -75,6 +75,8 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created. Only
                one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

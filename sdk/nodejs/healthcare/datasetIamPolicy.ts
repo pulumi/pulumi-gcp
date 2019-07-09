@@ -4,64 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
- * See [Provider Versions](https://terraform.io/docs/providers/google/provider_versions.html) for more details on beta resources.
- * 
- * Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
- * 
- * * `google_healthcare_dataset_iam_policy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
- * * `google_healthcare_dataset_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
- * * `google_healthcare_dataset_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
- * 
- * > **Note:** `google_healthcare_dataset_iam_policy` **cannot** be used in conjunction with `google_healthcare_dataset_iam_binding` and `google_healthcare_dataset_iam_member` or they will fight over what your policy should be.
- * 
- * > **Note:** `google_healthcare_dataset_iam_binding` resources **can be** used in conjunction with `google_healthcare_dataset_iam_member` resources **only if** they do not grant privilege to the same role.
- * 
- * ## google\_healthcare\_dataset\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * }));
- * const dataset = new gcp.healthcare.DatasetIamPolicy("dataset", {
- *     datasetId: "your-dataset-id",
- *     policyData: admin.policyData,
- * });
- * ```
- * 
- * ## google\_healthcare\_dataset\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const dataset = new gcp.healthcare.DatasetIamBinding("dataset", {
- *     datasetId: "your-dataset-id",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- * 
- * ## google\_healthcare\_dataset\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const dataset = new gcp.healthcare.DatasetIamMember("dataset", {
- *     datasetId: "your-dataset-id",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
- */
 export class DatasetIamPolicy extends pulumi.CustomResource {
     /**
      * Get an existing DatasetIamPolicy resource's state with the given name, ID, and optional extra

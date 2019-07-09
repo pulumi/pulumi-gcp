@@ -20,6 +20,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
 // * How-to Guides
 //     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
 type RegionBackendService struct {
 	s *pulumi.ResourceState
 }

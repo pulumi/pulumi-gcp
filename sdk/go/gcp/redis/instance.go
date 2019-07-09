@@ -16,6 +16,8 @@ import (
 // * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }

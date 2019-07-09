@@ -19,6 +19,8 @@ import (
 // 
 // **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
 // determined which will require enabling the compute api.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
 type Bucket struct {
 	s *pulumi.ResourceState
 }
@@ -122,9 +124,6 @@ func (r *Bucket) Encryption() *pulumi.Output {
 	return r.s.State["encryption"]
 }
 
-// When deleting a bucket, this
-// boolean option will delete all contained objects. If you try to delete a
-// bucket that contains objects, Terraform will fail that run.
 func (r *Bucket) ForceDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
@@ -198,9 +197,6 @@ type BucketState struct {
 	Cors interface{}
 	// The bucket's encryption configuration.
 	Encryption interface{}
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, Terraform will fail that run.
 	ForceDestroy interface{}
 	// A set of key/value label pairs to assign to the bucket.
 	Labels interface{}
@@ -237,9 +233,6 @@ type BucketArgs struct {
 	Cors interface{}
 	// The bucket's encryption configuration.
 	Encryption interface{}
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, Terraform will fail that run.
 	ForceDestroy interface{}
 	// A set of key/value label pairs to assign to the bucket.
 	Labels interface{}

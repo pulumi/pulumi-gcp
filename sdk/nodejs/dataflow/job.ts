@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
- * the official documentation for
- * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const bigDataJob = new gcp.dataflow.Job("big_data_job", {
- *     parameters: {
- *         baz: "qux",
- *         foo: "bar",
- *     },
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
- *     templateGcsPath: "gs://my-bucket/templates/template_file",
- * });
- * ```
- * 
- * ## Note on "destroy" / "apply"
- * 
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Terraform / Google resources.
- * 
- * The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continously, but may surprise users who use this resource for other kinds of Dataflow jobs.
- * 
- * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your `terraform destroy` to complete.
- */
 export class Job extends pulumi.CustomResource {
     /**
      * Get an existing Job resource's state with the given name, ID, and optional extra
@@ -77,9 +47,6 @@ export class Job extends pulumi.CustomResource {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     public readonly network!: pulumi.Output<string | undefined>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
-     */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as used in the template).
@@ -188,9 +155,6 @@ export interface JobState {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     readonly network?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
-     */
     readonly onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as used in the template).
@@ -247,9 +211,6 @@ export interface JobArgs {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     readonly network?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `terraform destroy`.  See above note.
-     */
     readonly onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as used in the template).

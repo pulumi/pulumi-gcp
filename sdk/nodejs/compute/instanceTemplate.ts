@@ -4,170 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VM instance template resource within GCE. For more information see
- * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
- * and
- * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myImage = pulumi.output(gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * }));
- * const foobar = new gcp.compute.Disk("foobar", {
- *     image: myImage.selfLink,
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
- *     canIpForward: false,
- *     description: "This template is used to create app server instances.",
- *     disks: [
- *         // Create a new boot disk from an image
- *         {
- *             autoDelete: true,
- *             boot: true,
- *             sourceImage: "debian-cloud/debian-9",
- *         },
- *         // Use an existing disk resource
- *         {
- *             autoDelete: false,
- *             boot: false,
- *             // Instance Templates reference disks by name, not self link
- *             source: foobar.name,
- *         },
- *     ],
- *     instanceDescription: "description assigned to instances",
- *     labels: {
- *         environment: "dev",
- *     },
- *     machineType: "n1-standard-1",
- *     metadata: {
- *         foo: "bar",
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *     }],
- *     scheduling: {
- *         automaticRestart: true,
- *         onHostMaintenance: "MIGRATE",
- *     },
- *     serviceAccount: {
- *         scopes: [
- *             "userinfo-email",
- *             "compute-ro",
- *             "storage-ro",
- *         ],
- *     },
- *     tags: [
- *         "foo",
- *         "bar",
- *     ],
- * });
- * ```
- * 
- * ## Using with Instance Group Manager
- * 
- * Instance Templates cannot be updated after creation with the Google
- * Cloud Platform API. In order to update an Instance Template, Terraform will
- * destroy the existing resource and create a replacement. In order to effectively
- * use an Instance Template resource with an [Instance Group Manager resource][1],
- * it's recommended to specify `create_before_destroy` in a [lifecycle][2] block.
- * Either omit the Instance Template `name` attribute, or specify a partial name
- * with `name_prefix`.  Example:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     // boot disk
- *     disks: [{}],
- *     machineType: "n1-standard-1",
- *     namePrefix: "instance-template-",
- *     // networking
- *     networkInterfaces: [{}],
- *     region: "us-central1",
- * });
- * const instanceGroupManager = new gcp.compute.InstanceGroupManager("instance_group_manager", {
- *     baseInstanceName: "instance-group-manager",
- *     instanceTemplate: instanceTemplate.selfLink,
- *     targetSize: 1,
- *     zone: "us-central1-f",
- * });
- * ```
- * 
- * With this setup Terraform generates a unique name for your Instance
- * Template and can then update the Instance Group manager without conflict before
- * destroying the previous Instance Template.
- * 
- * ## Deploying the Latest Image
- * 
- * A common way to use instance templates and managed instance groups is to deploy the
- * latest image in a family, usually the latest build of your application. There are two
- * ways to do this in Terraform, and they have their pros and cons. The difference ends
- * up being in how "latest" is interpreted. You can either deploy the latest image available
- * when Terraform runs, or you can have each instance check what the latest image is when
- * it's being created, either as part of a scaling event or being rebuilt by the instance
- * group manager.
- * 
- * If you're not sure, we recommend deploying the latest image available when Terraform runs,
- * because this means all the instances in your group will be based on the same image, always,
- * and means that no upgrades or changes to your instances happen outside of a `terraform apply`.
- * You can achieve this by using the `google_compute_image`
- * data source, which will retrieve the latest image on every `terraform apply`, and will update
- * the template to use that specific image:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myImage = pulumi.output(gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * }));
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     // boot disk
- *     disks: [{
- *         initializeParams: [{
- *             image: myImage.selfLink,
- *         }],
- *     }],
- *     machineType: "n1-standard-1",
- *     namePrefix: "instance-template-",
- *     region: "us-central1",
- * });
- * ```
- * 
- * To have instances update to the latest on every scaling event or instance re-creation,
- * use the family as the image for the disk, and it will use GCP's default behavior, setting
- * the image for the template to the family:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     // boot disk
- *     disks: [{
- *         initializeParams: [{
- *             image: "debian-cloud/debian-9",
- *         }],
- *     }],
- *     machineType: "n1-standard-1",
- *     namePrefix: "instance-template-",
- *     region: "us-central1",
- * });
- * ```
- */
 export class InstanceTemplate extends pulumi.CustomResource {
     /**
      * Get an existing InstanceTemplate resource's state with the given name, ID, and optional extra
@@ -249,10 +85,6 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the instance template. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -433,10 +265,6 @@ export interface InstanceTemplateState {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * The name of the instance template. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     readonly name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified
@@ -545,10 +373,6 @@ export interface InstanceTemplateArgs {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
-    /**
-     * The name of the instance template. If you leave
-     * this blank, Terraform will auto-generate a unique name.
-     */
     readonly name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified

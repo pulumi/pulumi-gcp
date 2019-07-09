@@ -100,6 +100,8 @@ class Dataset(pulumi.CustomResource):
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

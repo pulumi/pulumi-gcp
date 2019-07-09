@@ -9,6 +9,8 @@ import (
 
 // Provides access to available Google Compute regions for a given project.
 // See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
 func LookupRegions(ctx *pulumi.Context, args *GetRegionsArgs) (*GetRegionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

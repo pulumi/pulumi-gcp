@@ -61,6 +61,8 @@ import * as utilities from "../utilities";
  *     role: "roles/compute.networkUser",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam_binding.html.markdown.
  */
 export class InstanceIAMBinding extends pulumi.CustomResource {
     /**

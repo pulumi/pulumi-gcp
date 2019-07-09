@@ -20,6 +20,8 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
 // * How-to Guides
 //     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_autoscaler.html.markdown.
 type RegionAutoscaler struct {
 	s *pulumi.ResourceState
 }

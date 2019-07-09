@@ -74,6 +74,8 @@ import * as utilities from "../utilities";
  *     topic: exampleTopic.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
  */
 export class Subscription extends pulumi.CustomResource {
     /**

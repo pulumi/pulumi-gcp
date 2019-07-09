@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
  */
 export class InstanceFromTemplate extends pulumi.CustomResource {
     /**

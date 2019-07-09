@@ -119,6 +119,8 @@ class Table(pulumi.CustomResource):
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

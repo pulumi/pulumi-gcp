@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get information about a Google Cloud Organization.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/organization.html.markdown.
 func LookupOrganization(ctx *pulumi.Context, args *GetOrganizationArgs) (*GetOrganizationResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
