@@ -518,6 +518,8 @@ github.com/pulumi/pulumi-terraform v0.18.3 h1:DHpETa+TWnthH9Sw3bHS+HxSgidB1cASkV
 github.com/pulumi/pulumi-terraform v0.18.3/go.mod h1:YHwPNWOBnQTnkibhfiyeShuSxwZnu7ZnKkqIvl0t2C0=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190703150544-a9a9ca8157ca h1:Zj43rjNar4a6eBHLLHKWoXmew8vmW1vCLKSmgFHjB+g=
 github.com/pulumi/pulumi-terraform v0.18.4-0.20190703150544-a9a9ca8157ca/go.mod h1:5QshR5Q/a3gJiSPx1d+AblvcvfJCYC7255q8DtnvJv4=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190709052202-629f7c54269d h1:Pmw7a8wXD20fcgekI6U5QiX4IzRFcaj9YSUgE/LMV5s=
+github.com/pulumi/pulumi-terraform v0.18.4-0.20190709052202-629f7c54269d/go.mod h1:5QshR5Q/a3gJiSPx1d+AblvcvfJCYC7255q8DtnvJv4=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54 h1:J2RvHxEMIzMV6XbaZIj9s5G4lG3hhqWxS7Cl1Jii44c=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54/go.mod h1:1NF/j951kWm+ZnRXpOkBqweImgwhlzFVwTA4A0V7TEU=
