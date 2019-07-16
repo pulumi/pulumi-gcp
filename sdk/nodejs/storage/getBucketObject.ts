@@ -27,12 +27,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
  */
-export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
+export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> & GetBucketObjectResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
+    const promise: Promise<GetBucketObjectResult> = pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

@@ -24,9 +24,11 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
  */
-export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
-    return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
+export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> & GetNetblockIPRangesResult {
+    const promise: Promise<GetNetblockIPRangesResult> = pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

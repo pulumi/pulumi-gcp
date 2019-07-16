@@ -25,11 +25,13 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder_organization_policy.html.markdown.
  */
-export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
-    return pulumi.runtime.invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {
+export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> & GetOrganizationPolicyResult {
+    const promise: Promise<GetOrganizationPolicyResult> = pulumi.runtime.invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {
         "constraint": args.constraint,
         "folder": args.folder,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

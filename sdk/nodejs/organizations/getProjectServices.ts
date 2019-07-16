@@ -25,11 +25,13 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_services.html.markdown.
  */
-export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> {
+export function getProjectServices(args?: GetProjectServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServicesResult> & GetProjectServicesResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:organizations/getProjectServices:getProjectServices", {
+    const promise: Promise<GetProjectServicesResult> = pulumi.runtime.invoke("gcp:organizations/getProjectServices:getProjectServices", {
         "project": args.project,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

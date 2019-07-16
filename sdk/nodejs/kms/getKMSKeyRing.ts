@@ -27,12 +27,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_key_ring.html.markdown.
  */
-export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
-    return pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
+export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> & GetKMSKeyRingResult {
+    const promise: Promise<GetKMSKeyRingResult> = pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,
         "name": args.name,
         "project": args.project,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

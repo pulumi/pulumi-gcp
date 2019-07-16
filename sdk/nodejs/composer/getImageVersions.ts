@@ -26,12 +26,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
  */
-export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
+export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> & GetImageVersionsResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:composer/getImageVersions:getImageVersions", {
+    const promise: Promise<GetImageVersionsResult> = pulumi.runtime.invoke("gcp:composer/getImageVersions:getImageVersions", {
         "project": args.project,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

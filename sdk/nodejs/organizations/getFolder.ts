@@ -27,11 +27,13 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
  */
-export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-    return pulumi.runtime.invoke("gcp:organizations/getFolder:getFolder", {
+export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> & GetFolderResult {
+    const promise: Promise<GetFolderResult> = pulumi.runtime.invoke("gcp:organizations/getFolder:getFolder", {
         "folder": args.folder,
         "lookupOrganization": args.lookupOrganization,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**

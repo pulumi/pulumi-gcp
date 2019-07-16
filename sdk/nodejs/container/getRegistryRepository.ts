@@ -22,12 +22,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_repository.html.markdown.
  */
-export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {
+export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> & GetRegistryRepositoryResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
+    const promise: Promise<GetRegistryRepositoryResult> = pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
         "project": args.project,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise);
 }
 
 /**
