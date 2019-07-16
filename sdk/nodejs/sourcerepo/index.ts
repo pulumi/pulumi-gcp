@@ -3,3 +3,6 @@
 
 // Export members:
 export * from "./repository";
+export * from "./repositoryIamBinding";
+export * from "./repositoryIamMember";
+export * from "./repositoryIamPolicy";

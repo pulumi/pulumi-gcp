@@ -10,6 +10,7 @@ export let accessContextManagerCustomEndpoint: string | undefined = __config.get
 export let accessToken: string | undefined = __config.get("accessToken");
 export let appEngineCustomEndpoint: string | undefined = __config.get("appEngineCustomEndpoint");
 export let bigqueryCustomEndpoint: string | undefined = __config.get("bigqueryCustomEndpoint");
+export let bigtableCustomEndpoint: string | undefined = __config.get("bigtableCustomEndpoint");
 export let binaryAuthorizationCustomEndpoint: string | undefined = __config.get("binaryAuthorizationCustomEndpoint");
 export let cloudBillingCustomEndpoint: string | undefined = __config.get("cloudBillingCustomEndpoint");
 export let cloudBuildCustomEndpoint: string | undefined = __config.get("cloudBuildCustomEndpoint");

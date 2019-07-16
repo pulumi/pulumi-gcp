@@ -160,6 +160,24 @@ func Provider() tfbridge.ProviderInfo {
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
 			"google_bigtable_table":    {Tok: gcpResource(gcpBigTable, "Table")},
+			"google_bigtable_instance_iam_binding": {
+				Tok: gcpResource(gcpBigTable, "InstanceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_instance_iam.html.markdown",
+				},
+			},
+			"google_bigtable_instance_iam_member": {
+				Tok: gcpResource(gcpBigTable, "InstanceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_instance_iam.html.markdown",
+				},
+			},
+			"google_bigtable_instance_iam_policy": {
+				Tok: gcpResource(gcpBigTable, "InstanceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_instance_iam.html.markdown",
+				},
+			},
 
 			// Billing
 			"google_billing_account_iam_binding": {
@@ -397,10 +415,22 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_bucket.html.markdown",
 				},
 			},
+			"google_compute_backend_bucket_signed_url_key": {
+				Tok: gcpResource(gcpCompute, "BackendBucketSignedUrlKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_bucket_signed_url_key.html.markdown",
+				},
+			},
 			"google_compute_backend_service": {
 				Tok: gcpResource(gcpCompute, "BackendService"),
 				Docs: &tfbridge.DocInfo{
 					Source: "compute_backend_service.html.markdown",
+				},
+			},
+			"google_compute_backend_service_signed_url_key": {
+				Tok: gcpResource(gcpCompute, "BackendServiceSignedUrlKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_service_signed_url_key.html.markdown",
 				},
 			},
 			"google_compute_disk":                   {Tok: gcpResource(gcpCompute, "Disk")},
@@ -638,6 +668,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpSourceRepo, "Repository"),
 				Docs: &tfbridge.DocInfo{
 					Source: "source_repo_repository.html.markdown",
+				},
+			},
+			"google_sourcerepo_repository_iam_binding": {
+				Tok: gcpResource(gcpSourceRepo, "RepositoryIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_topic_iam.html.markdown",
+				},
+			},
+			"google_sourcerepo_repository_iam_member": {
+				Tok: gcpResource(gcpSourceRepo, "RepositoryIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_topic_iam.html.markdown",
+				},
+			},
+			"google_sourcerepo_repository_iam_policy": {
+				Tok: gcpResource(gcpSourceRepo, "RepositoryIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "pubsub_topic_iam.html.markdown",
 				},
 			},
 

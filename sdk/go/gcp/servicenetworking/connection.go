@@ -40,6 +40,7 @@ func NewConnection(ctx *pulumi.Context,
 		inputs["reservedPeeringRanges"] = args.ReservedPeeringRanges
 		inputs["service"] = args.Service
 	}
+	inputs["peering"] = nil
 	s, err := ctx.RegisterResource("gcp:servicenetworking/connection:Connection", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -54,6 +55,7 @@ func GetConnection(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["network"] = state.Network
+		inputs["peering"] = state.Peering
 		inputs["reservedPeeringRanges"] = state.ReservedPeeringRanges
 		inputs["service"] = state.Service
 	}
@@ -79,6 +81,10 @@ func (r *Connection) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
+func (r *Connection) Peering() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["peering"])
+}
+
 // Named IP address range(s) of PEERING type reserved for
 // this service provider. Note that invoking this method with a different range when connection
 // is already established will not reallocate already provisioned service producer subnetworks.
@@ -97,6 +103,7 @@ func (r *Connection) Service() *pulumi.StringOutput {
 type ConnectionState struct {
 	// Name of VPC network connected with service producers using VPC peering.
 	Network interface{}
+	Peering interface{}
 	// Named IP address range(s) of PEERING type reserved for
 	// this service provider. Note that invoking this method with a different range when connection
 	// is already established will not reallocate already provisioned service producer subnetworks.

@@ -42,6 +42,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
             inputs["bigqueryCustomEndpoint"] = args ? args.bigqueryCustomEndpoint : undefined;
+            inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
             inputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
             inputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
@@ -101,6 +102,7 @@ export interface ProviderArgs {
     readonly accessToken?: pulumi.Input<string>;
     readonly appEngineCustomEndpoint?: pulumi.Input<string>;
     readonly bigqueryCustomEndpoint?: pulumi.Input<string>;
+    readonly bigtableCustomEndpoint?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBillingCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBuildCustomEndpoint?: pulumi.Input<string>;

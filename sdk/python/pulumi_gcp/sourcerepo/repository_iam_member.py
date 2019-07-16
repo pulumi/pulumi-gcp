@@ -8,28 +8,25 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class TopicIAMBinding(pulumi.CustomResource):
+class RepositoryIamMember(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the topic's IAM policy.
     """
-    members: pulumi.Output[list]
+    member: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
+    repository: pulumi.Output[str]
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
     `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    topic: pulumi.Output[str]
-    """
-    The topic name or id to bind to attach IAM policy to.
-    """
-    def __init__(__self__, resource_name, opts=None, members=None, project=None, role=None, topic=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, member=None, project=None, repository=None, role=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for Pubsub Topic. Each of these resources serves a different use case:
         
@@ -48,9 +45,8 @@ class TopicIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] topic: The topic name or id to bind to attach IAM policy to.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam_binding.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,24 +63,24 @@ class TopicIAMBinding(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if members is None:
-            raise TypeError("Missing required property 'members'")
-        __props__['members'] = members
+        if member is None:
+            raise TypeError("Missing required property 'member'")
+        __props__['member'] = member
 
         __props__['project'] = project
+
+        if repository is None:
+            raise TypeError("Missing required property 'repository'")
+        __props__['repository'] = repository
 
         if role is None:
             raise TypeError("Missing required property 'role'")
         __props__['role'] = role
 
-        if topic is None:
-            raise TypeError("Missing required property 'topic'")
-        __props__['topic'] = topic
-
         __props__['etag'] = None
 
-        super(TopicIAMBinding, __self__).__init__(
-            'gcp:pubsub/topicIAMBinding:TopicIAMBinding',
+        super(RepositoryIamMember, __self__).__init__(
+            'gcp:sourcerepo/repositoryIamMember:RepositoryIamMember',
             resource_name,
             __props__,
             opts)

@@ -13,6 +13,7 @@ class Connection(pulumi.CustomResource):
     """
     Name of VPC network connected with service producers using VPC peering.
     """
+    peering: pulumi.Output[str]
     reserved_peering_ranges: pulumi.Output[list]
     """
     Named IP address range(s) of PEERING type reserved for
@@ -70,6 +71,8 @@ class Connection(pulumi.CustomResource):
         if service is None:
             raise TypeError("Missing required property 'service'")
         __props__['service'] = service
+
+        __props__['peering'] = None
 
         super(Connection, __self__).__init__(
             'gcp:servicenetworking/connection:Connection',

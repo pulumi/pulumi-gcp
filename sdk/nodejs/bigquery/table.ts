@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const defaultDataset = new gcp.bigquery.Dataset("default", {
@@ -32,11 +31,37 @@ import * as utilities from "../utilities";
  *     labels: {
  *         env: "default",
  *     },
- *     schema: fs.readFileSync("schema.json", "utf-8"),
+ *     schema: `[
+ *   {
+ *     "name": "permalink",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The Permalink"
+ *   },
+ *   {
+ *     "name": "state",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "State where the head office is located"
+ *   }
+ * ]
+ * `,
  *     tableId: "bar",
  *     timePartitioning: {
  *         type: "DAY",
  *     },
+ * });
+ * const sheet = new gcp.bigquery.Table("sheet", {
+ *     datasetId: defaultDataset.datasetId,
+ *     externalDataConfiguration: {
+ *         autodetect: true,
+ *         googleSheetsOptions: {
+ *             skipLeadingRows: 1,
+ *         },
+ *         sourceFormat: "GOOGLE_SHEETS",
+ *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
+ *     },
+ *     tableId: "scheet",
  * });
  * ```
  *
@@ -94,6 +119,13 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly expirationTime!: pulumi.Output<number>;
     /**
+     * Describes the data format,
+     * location, and other properties of a table stored outside of BigQuery.
+     * By defining these properties, the data source can then be queried as
+     * if it were a standard BigQuery table. Structure is documented below.
+     */
+    public readonly externalDataConfiguration!: pulumi.Output<{ autodetect: boolean, compression?: string, csvOptions?: { allowJaggedRows?: boolean, allowQuotedNewlines?: boolean, encoding?: string, fieldDelimiter?: string, quote: string, skipLeadingRows?: number }, googleSheetsOptions?: { range?: string, skipLeadingRows?: number }, ignoreUnknownValues?: boolean, maxBadRecords?: number, sourceFormat: string, sourceUris: string[] } | undefined>;
+    /**
      * A descriptive name for the table.
      */
     public readonly friendlyName!: pulumi.Output<string | undefined>;
@@ -127,7 +159,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * A JSON schema for the table.
+     * A JSON schema for the table. Schema is required
+     * for CSV and JSON formats and is disallowed for Google Cloud
+     * Bigtable, Cloud Datastore backups, and Avro formats when using
+     * external tables. For more information see the
+     * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
      */
     public readonly schema!: pulumi.Output<string>;
     /**
@@ -171,6 +207,7 @@ export class Table extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["expirationTime"] = state ? state.expirationTime : undefined;
+            inputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
             inputs["friendlyName"] = state ? state.friendlyName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
@@ -196,6 +233,7 @@ export class Table extends pulumi.CustomResource {
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["expirationTime"] = args ? args.expirationTime : undefined;
+            inputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -246,6 +284,13 @@ export interface TableState {
      */
     readonly expirationTime?: pulumi.Input<number>;
     /**
+     * Describes the data format,
+     * location, and other properties of a table stored outside of BigQuery.
+     * By defining these properties, the data source can then be queried as
+     * if it were a standard BigQuery table. Structure is documented below.
+     */
+    readonly externalDataConfiguration?: pulumi.Input<{ autodetect: pulumi.Input<boolean>, compression?: pulumi.Input<string>, csvOptions?: pulumi.Input<{ allowJaggedRows?: pulumi.Input<boolean>, allowQuotedNewlines?: pulumi.Input<boolean>, encoding?: pulumi.Input<string>, fieldDelimiter?: pulumi.Input<string>, quote: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, googleSheetsOptions?: pulumi.Input<{ range?: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, ignoreUnknownValues?: pulumi.Input<boolean>, maxBadRecords?: pulumi.Input<number>, sourceFormat: pulumi.Input<string>, sourceUris: pulumi.Input<pulumi.Input<string>[]> }>;
+    /**
      * A descriptive name for the table.
      */
     readonly friendlyName?: pulumi.Input<string>;
@@ -279,7 +324,11 @@ export interface TableState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A JSON schema for the table.
+     * A JSON schema for the table. Schema is required
+     * for CSV and JSON formats and is disallowed for Google Cloud
+     * Bigtable, Cloud Datastore backups, and Avro formats when using
+     * external tables. For more information see the
+     * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
      */
     readonly schema?: pulumi.Input<string>;
     /**
@@ -328,6 +377,13 @@ export interface TableArgs {
      */
     readonly expirationTime?: pulumi.Input<number>;
     /**
+     * Describes the data format,
+     * location, and other properties of a table stored outside of BigQuery.
+     * By defining these properties, the data source can then be queried as
+     * if it were a standard BigQuery table. Structure is documented below.
+     */
+    readonly externalDataConfiguration?: pulumi.Input<{ autodetect: pulumi.Input<boolean>, compression?: pulumi.Input<string>, csvOptions?: pulumi.Input<{ allowJaggedRows?: pulumi.Input<boolean>, allowQuotedNewlines?: pulumi.Input<boolean>, encoding?: pulumi.Input<string>, fieldDelimiter?: pulumi.Input<string>, quote: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, googleSheetsOptions?: pulumi.Input<{ range?: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, ignoreUnknownValues?: pulumi.Input<boolean>, maxBadRecords?: pulumi.Input<number>, sourceFormat: pulumi.Input<string>, sourceUris: pulumi.Input<pulumi.Input<string>[]> }>;
+    /**
      * A descriptive name for the table.
      */
     readonly friendlyName?: pulumi.Input<string>;
@@ -341,7 +397,11 @@ export interface TableArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A JSON schema for the table.
+     * A JSON schema for the table. Schema is required
+     * for CSV and JSON formats and is disallowed for Google Cloud
+     * Bigtable, Cloud Datastore backups, and Avro formats when using
+     * external tables. For more information see the
+     * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
      */
     readonly schema?: pulumi.Input<string>;
     /**

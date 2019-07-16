@@ -33,6 +33,13 @@ class Table(pulumi.CustomResource):
     indefinitely. Expired tables will be deleted and their storage
     reclaimed.
     """
+    external_data_configuration: pulumi.Output[dict]
+    """
+    Describes the data format,
+    location, and other properties of a table stored outside of BigQuery.
+    By defining these properties, the data source can then be queried as
+    if it were a standard BigQuery table. Structure is documented below.
+    """
     friendly_name: pulumi.Output[str]
     """
     A descriptive name for the table.
@@ -68,7 +75,11 @@ class Table(pulumi.CustomResource):
     """
     schema: pulumi.Output[str]
     """
-    A JSON schema for the table.
+    A JSON schema for the table. Schema is required
+    for CSV and JSON formats and is disallowed for Google Cloud
+    Bigtable, Cloud Datastore backups, and Avro formats when using
+    external tables. For more information see the
+    [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
     """
     self_link: pulumi.Output[str]
     """
@@ -93,7 +104,7 @@ class Table(pulumi.CustomResource):
     If specified, configures this table as a view.
     Structure is documented below.
     """
-    def __init__(__self__, resource_name, opts=None, dataset_id=None, description=None, expiration_time=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dataset_id=None, description=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __name__=None, __opts__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -108,11 +119,19 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
+        :param pulumi.Input[dict] external_data_configuration: Describes the data format,
+               location, and other properties of a table stored outside of BigQuery.
+               By defining these properties, the data source can then be queried as
+               if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] schema: A JSON schema for the table.
+        :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
+               for CSV and JSON formats and is disallowed for Google Cloud
+               Bigtable, Cloud Datastore backups, and Avro formats when using
+               external tables. For more information see the
+               [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[dict] time_partitioning: If specified, configures time-based
@@ -144,6 +163,8 @@ class Table(pulumi.CustomResource):
         __props__['description'] = description
 
         __props__['expiration_time'] = expiration_time
+
+        __props__['external_data_configuration'] = external_data_configuration
 
         __props__['friendly_name'] = friendly_name
 

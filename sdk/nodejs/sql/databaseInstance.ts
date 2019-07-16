@@ -41,7 +41,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public /*out*/ readonly connectionName!: pulumi.Output<string>;
     /**
      * The MySQL or PostgreSQL version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
+     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
@@ -157,7 +157,7 @@ export interface DatabaseInstanceState {
     readonly connectionName?: pulumi.Input<string>;
     /**
      * The MySQL or PostgreSQL version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
+     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
@@ -217,7 +217,7 @@ export interface DatabaseInstanceState {
 export interface DatabaseInstanceArgs {
     /**
      * The MySQL or PostgreSQL version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7` or `POSTGRES_9_6` for second-generation
+     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.

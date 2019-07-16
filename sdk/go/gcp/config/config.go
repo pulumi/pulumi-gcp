@@ -24,6 +24,10 @@ func GetBigqueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryCustomEndpoint")
 }
 
+func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigtableCustomEndpoint")
+}
+
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
