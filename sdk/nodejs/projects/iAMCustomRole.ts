@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_custom_role.html.markdown.
+ */
 export class IAMCustomRole extends pulumi.CustomResource {
     /**
      * Get an existing IAMCustomRole resource's state with the given name, ID, and optional extra

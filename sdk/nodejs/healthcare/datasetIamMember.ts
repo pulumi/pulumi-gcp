@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset_iam_member.html.markdown.
+ */
 export class DatasetIamMember extends pulumi.CustomResource {
     /**
      * Get an existing DatasetIamMember resource's state with the given name, ID, and optional extra
