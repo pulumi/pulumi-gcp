@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.11.0 of the Google Beta Terraform Provider.
+___NULL___
 
 ---
+
+## 0.18.13 (2019-07-16)
+* Upgrade to v2.11.0 of the Google Beta Terraform Provider.
+
 
 ## 0.18.12 (2019-07-09)
 * Fix detailed diffs with nested computed values.
