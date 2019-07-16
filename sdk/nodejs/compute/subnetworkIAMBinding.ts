@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_binding.html.markdown.
+ */
 export class SubnetworkIAMBinding extends pulumi.CustomResource {
     /**
      * Get an existing SubnetworkIAMBinding resource's state with the given name, ID, and optional extra
