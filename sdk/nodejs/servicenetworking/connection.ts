@@ -63,6 +63,7 @@ export class Connection extends pulumi.CustomResource {
      * Name of VPC network connected with service producers using VPC peering.
      */
     public readonly network!: pulumi.Output<string>;
+    public /*out*/ readonly peering!: pulumi.Output<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for
      * this service provider. Note that invoking this method with a different range when connection
@@ -89,6 +90,7 @@ export class Connection extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             inputs["network"] = state ? state.network : undefined;
+            inputs["peering"] = state ? state.peering : undefined;
             inputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
             inputs["service"] = state ? state.service : undefined;
         } else {
@@ -105,6 +107,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
             inputs["service"] = args ? args.service : undefined;
+            inputs["peering"] = undefined /*out*/;
         }
         super(Connection.__pulumiType, name, inputs, opts);
     }
@@ -118,6 +121,7 @@ export interface ConnectionState {
      * Name of VPC network connected with service producers using VPC peering.
      */
     readonly network?: pulumi.Input<string>;
+    readonly peering?: pulumi.Input<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for
      * this service provider. Note that invoking this method with a different range when connection

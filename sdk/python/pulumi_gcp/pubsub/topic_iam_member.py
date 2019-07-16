@@ -31,7 +31,7 @@ class TopicIAMMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, member=None, project=None, role=None, topic=None, __name__=None, __opts__=None):
         """
-        Three different resources help you manage your IAM policy for pubsub topic. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Pubsub Topic. Each of these resources serves a different use case:
         
         * `google_pubsub_topic_iam_policy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
         * `google_pubsub_topic_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.

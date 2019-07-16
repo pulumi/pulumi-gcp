@@ -18,6 +18,8 @@ app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 
 bigquery_custom_endpoint = __config__.get('bigqueryCustomEndpoint')
 
+bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
+
 binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
 
 cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')

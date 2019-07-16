@@ -37,7 +37,7 @@ export interface GetAccountArgs {
      */
     readonly accountId: string;
     /**
-     * The ID of the project that the service account will be created in.
+     * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      */
     readonly project?: string;

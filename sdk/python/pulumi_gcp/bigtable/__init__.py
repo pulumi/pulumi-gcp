@@ -4,4 +4,7 @@
 
 # Export this package's modules as members:
 from .instance import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
+from .instance_iam_policy import *
 from .table import *

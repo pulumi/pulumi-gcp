@@ -31,6 +31,7 @@ func NewTable(ctx *pulumi.Context,
 		inputs["datasetId"] = nil
 		inputs["description"] = nil
 		inputs["expirationTime"] = nil
+		inputs["externalDataConfiguration"] = nil
 		inputs["friendlyName"] = nil
 		inputs["labels"] = nil
 		inputs["project"] = nil
@@ -42,6 +43,7 @@ func NewTable(ctx *pulumi.Context,
 		inputs["datasetId"] = args.DatasetId
 		inputs["description"] = args.Description
 		inputs["expirationTime"] = args.ExpirationTime
+		inputs["externalDataConfiguration"] = args.ExternalDataConfiguration
 		inputs["friendlyName"] = args.FriendlyName
 		inputs["labels"] = args.Labels
 		inputs["project"] = args.Project
@@ -77,6 +79,7 @@ func GetTable(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["etag"] = state.Etag
 		inputs["expirationTime"] = state.ExpirationTime
+		inputs["externalDataConfiguration"] = state.ExternalDataConfiguration
 		inputs["friendlyName"] = state.FriendlyName
 		inputs["labels"] = state.Labels
 		inputs["lastModifiedTime"] = state.LastModifiedTime
@@ -138,6 +141,14 @@ func (r *Table) ExpirationTime() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["expirationTime"])
 }
 
+// Describes the data format,
+// location, and other properties of a table stored outside of BigQuery.
+// By defining these properties, the data source can then be queried as
+// if it were a standard BigQuery table. Structure is documented below.
+func (r *Table) ExternalDataConfiguration() *pulumi.Output {
+	return r.s.State["externalDataConfiguration"]
+}
+
 // A descriptive name for the table.
 func (r *Table) FriendlyName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["friendlyName"])
@@ -179,7 +190,11 @@ func (r *Table) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// A JSON schema for the table.
+// A JSON schema for the table. Schema is required
+// for CSV and JSON formats and is disallowed for Google Cloud
+// Bigtable, Cloud Datastore backups, and Avro formats when using
+// external tables. For more information see the
+// [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
 func (r *Table) Schema() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["schema"])
 }
@@ -228,6 +243,11 @@ type TableState struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime interface{}
+	// Describes the data format,
+	// location, and other properties of a table stored outside of BigQuery.
+	// By defining these properties, the data source can then be queried as
+	// if it were a standard BigQuery table. Structure is documented below.
+	ExternalDataConfiguration interface{}
 	// A descriptive name for the table.
 	FriendlyName interface{}
 	// A mapping of labels to assign to the resource.
@@ -245,7 +265,11 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// A JSON schema for the table.
+	// A JSON schema for the table. Schema is required
+	// for CSV and JSON formats and is disallowed for Google Cloud
+	// Bigtable, Cloud Datastore backups, and Avro formats when using
+	// external tables. For more information see the
+	// [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
 	Schema interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -274,6 +298,11 @@ type TableArgs struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime interface{}
+	// Describes the data format,
+	// location, and other properties of a table stored outside of BigQuery.
+	// By defining these properties, the data source can then be queried as
+	// if it were a standard BigQuery table. Structure is documented below.
+	ExternalDataConfiguration interface{}
 	// A descriptive name for the table.
 	FriendlyName interface{}
 	// A mapping of labels to assign to the resource.
@@ -281,7 +310,11 @@ type TableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// A JSON schema for the table.
+	// A JSON schema for the table. Schema is required
+	// for CSV and JSON formats and is disallowed for Google Cloud
+	// Bigtable, Cloud Datastore backups, and Avro formats when using
+	// external tables. For more information see the
+	// [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
 	Schema interface{}
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.

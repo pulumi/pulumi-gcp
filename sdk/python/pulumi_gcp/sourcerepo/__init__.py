@@ -4,3 +4,6 @@
 
 # Export this package's modules as members:
 from .repository import *
+from .repository_iam_binding import *
+from .repository_iam_member import *
+from .repository_iam_policy import *

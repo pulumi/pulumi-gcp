@@ -36,7 +36,7 @@ func LookupAccount(ctx *pulumi.Context, args *GetAccountArgs) (*GetAccountResult
 type GetAccountArgs struct {
 	// The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
 	AccountId interface{}
-	// The ID of the project that the service account will be created in.
+	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.
 	Project interface{}
 }

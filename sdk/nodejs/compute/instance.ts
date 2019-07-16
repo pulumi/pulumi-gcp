@@ -82,12 +82,12 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, kmsKeySelfLink?: string, mode?: string, source: string }[] | undefined>;
+    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode?: string, source: string }[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink?: string, source: string }>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.

@@ -7,7 +7,9 @@ from .address import *
 from .attached_disk import *
 from .autoscalar import *
 from .backend_bucket import *
+from .backend_bucket_signed_url_key import *
 from .backend_service import *
+from .backend_service_signed_url_key import *
 from .disk import *
 from .external_vpn_gateway import *
 from .firewall import *
