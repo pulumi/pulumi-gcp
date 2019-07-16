@@ -95,6 +95,8 @@ github.com/aws/aws-sdk-go v1.18.6/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN
 github.com/aws/aws-sdk-go v1.19.16/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
 github.com/aws/aws-sdk-go v1.19.18 h1:Hb3+b9HCqrOrbAtFstUWg7H5TQ+/EcklJtE8VShVs8o=
 github.com/aws/aws-sdk-go v1.19.18/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
+github.com/aws/aws-sdk-go v1.20.4 h1:czX3oqFyqz/AELrK/tneNuyZgNIrWnyqP+iQXsQ32E0=
+github.com/aws/aws-sdk-go v1.20.4/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
 github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f/go.mod h1:AuiFmCCPBSrqvVMvuqFuk0qogytodnVFVSN5CeJB8Gc=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d h1:xDfNPAt8lFiC1UJrqV3uuy861HCTo708pDMbjHHdCas=
@@ -252,6 +254,8 @@ github.com/hashicorp/go-getter v1.1.0 h1:iGVeg7L4V5FTFV3D6w+1NAyvth7BIWWSzD60pWl
 github.com/hashicorp/go-getter v1.1.0/go.mod h1:q+PoBhh16brIKwJS9kt18jEtXHTg2EGkmrA9P7HVS+U=
 github.com/hashicorp/go-getter v1.3.0 h1:pFMSFlI9l5NaeuzkpE3L7BYk9qQ9juTAgXW/H0cqxcU=
 github.com/hashicorp/go-getter v1.3.0/go.mod h1:/O1k/AizTN0QmfEKknCYGvICeyKUDqCYA8vvWtGWDeQ=
+github.com/hashicorp/go-getter v1.3.1-0.20190627223108-da0323b9545e h1:6krcdHPiS+aIP9XKzJzSahfjD7jG7Z+4+opm0z39V1M=
+github.com/hashicorp/go-getter v1.3.1-0.20190627223108-da0323b9545e/go.mod h1:/O1k/AizTN0QmfEKknCYGvICeyKUDqCYA8vvWtGWDeQ=
 github.com/hashicorp/go-hclog v0.0.0-20171005151751-ca137eb4b438 h1:HW1KChQ892afBJ553NbXSO5lYNaDhzpwI2rBb1XgT5U=
 github.com/hashicorp/go-hclog v0.0.0-20171005151751-ca137eb4b438/go.mod h1:9bjs9uLqI8l75knNv3lV1kA55veR+WUPSiKIWcQHudI=
 github.com/hashicorp/go-hclog v0.0.0-20180709165350-ff2cf002a8dd/go.mod h1:9bjs9uLqI8l75knNv3lV1kA55veR+WUPSiKIWcQHudI=
@@ -311,6 +315,8 @@ github.com/hashicorp/hcl2 v0.0.0-20190503210054-6e4ec17113ca h1:roLn75Q2QkZE1V3k
 github.com/hashicorp/hcl2 v0.0.0-20190503210054-6e4ec17113ca/go.mod h1:4oI94iqF3GB10QScn46WqbG0kgTUpha97SAzzg2+2ec=
 github.com/hashicorp/hcl2 v0.0.0-20190515223218-4b22149b7cef h1:xZRvbcwHY8zhaxDwgkmpAp2emwZkVn7p3gat0zhq2X0=
 github.com/hashicorp/hcl2 v0.0.0-20190515223218-4b22149b7cef/go.mod h1:4oI94iqF3GB10QScn46WqbG0kgTUpha97SAzzg2+2ec=
+github.com/hashicorp/hcl2 v0.0.0-20190702185634-5b39d9ff3a9a h1:1KfDwkIXrxrfMpqwuW//ujObiYNuR2DqaETSK2NB8Ug=
+github.com/hashicorp/hcl2 v0.0.0-20190702185634-5b39d9ff3a9a/go.mod h1:FSQTwDi9qesxGBsII2VqhIzKQ4r0bHvBkOczWfD7llg=
 github.com/hashicorp/hil v0.0.0-20170512213305-fac2259da677 h1:Yj0RcrbLT/5z2k1UdRW+2r0nDUgrKjUNLQiXzMU4a5k=
 github.com/hashicorp/hil v0.0.0-20170512213305-fac2259da677/go.mod h1:KHvg/R2/dPtaePb16oW4qIyzkMxXOL38xjRN64adsts=
 github.com/hashicorp/hil v0.0.0-20190212112733-ab17b08d6590 h1:2yzhWGdgQUWZUCNK+AoO35V+HTsgEmcM4J9IkArh7PI=
@@ -335,6 +341,8 @@ github.com/hashicorp/terraform v0.12.0 h1:It2vmod2dBMB4+r+aUW2Afx0HlftyUwzNsNH3I
 github.com/hashicorp/terraform v0.12.0/go.mod h1:Ke0ig9gGZ8rhV6OddAhBYt5nXmpvXsuNQQ8w9qYBZfU=
 github.com/hashicorp/terraform v0.12.2 h1:P5yMdQc+IYEc+fWw3olShmKdbBiCN7DtPjVz+GieBpk=
 github.com/hashicorp/terraform v0.12.2/go.mod h1:4MELVjPGm2DO5bK9E7jPXM5F+1pkvT4fYJYtMcQ2CMs=
+github.com/hashicorp/terraform v0.12.4 h1:cm+JE5bOO1RyvltKOkyxmhenGZ6lBIazzzxWdHDmWeE=
+github.com/hashicorp/terraform v0.12.4/go.mod h1:R3nGcJpajl/k9hfg6Q/Mvj/mO9Zg4N2CuqXyGBFhjX0=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20190327195015-8022a2663a70 h1:oZm5nE11yhzsTRz/YrUyDMSvixePqjoZihwn8ipuOYI=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20190327195015-8022a2663a70/go.mod h1:ItvqtvbC3K23FFET62ZwnkwtpbKZm8t8eMcWjmVVjD8=
 github.com/hashicorp/vault v0.8.3 h1:aq9Hr8ocaERhQn5WTX8vtiqpMFS2KSrmgAGsaklINa0=
@@ -620,6 +628,8 @@ github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190621161
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190621161736-0f807634d55c/go.mod h1:6xUuPYNAKm3Ogz+jEu8xk1fa6wKrfnxWBaezaNPIfbM=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190702191547-069d14be9e4e h1:lH6KZTlK8C5qX9e7ZzieoqxKbeuIJA1KC78fJNGAOjo=
 github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190702191547-069d14be9e4e/go.mod h1:6xUuPYNAKm3Ogz+jEu8xk1fa6wKrfnxWBaezaNPIfbM=
+github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190716210823-7702c151de59 h1:bvcIaAIGw3pJu7tdoP6o8LVBW2NlVUbL9cGznoy7soE=
+github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190716210823-7702c151de59/go.mod h1:GBCWP/B5rvc9l5wGCs/OK7fujJA/j1gaUS+kOZ6N7pg=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0 h1:5geKRJJExxlrSNHSTHIZJnYKgbdBPAXC970fRYbcx9I=
 github.com/terraform-providers/terraform-provider-google-beta v1.20.0/go.mod h1:BrATop584KxlljJ8f2L2GNvs8Ys0SKEvhEuREGtKg4M=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
@@ -659,6 +669,9 @@ github.com/zclconf/go-cty v0.0.0-20190430221426-d36a6f0dbffd h1:NZOOU7h+pDtcKo6x
 github.com/zclconf/go-cty v0.0.0-20190430221426-d36a6f0dbffd/go.mod h1:xnAOWiHeOqg2nWS62VtQ7pbOu17FtxJNW8RLEih+O3s=
 github.com/zclconf/go-cty v0.0.0-20190516203816-4fecf87372ec h1:MSeYjmyjucsFbecMTxg63ASg23lcSARP/kr9sClTFfk=
 github.com/zclconf/go-cty v0.0.0-20190516203816-4fecf87372ec/go.mod h1:xnAOWiHeOqg2nWS62VtQ7pbOu17FtxJNW8RLEih+O3s=
+github.com/zclconf/go-cty v1.0.0/go.mod h1:xnAOWiHeOqg2nWS62VtQ7pbOu17FtxJNW8RLEih+O3s=
+github.com/zclconf/go-cty v1.0.1-0.20190708163926-19588f92a98f h1:sq2p8SN6ji66CFEQFIWLlD/gFmGtr5hBrOzv5nLlGfA=
+github.com/zclconf/go-cty v1.0.1-0.20190708163926-19588f92a98f/go.mod h1:xnAOWiHeOqg2nWS62VtQ7pbOu17FtxJNW8RLEih+O3s=
 github.com/zclconf/go-cty-yaml v0.1.0 h1:OP5nkApyAuXB88t8mRUqxD9gbKZocSLuVovrBAt8z10=
 github.com/zclconf/go-cty-yaml v0.1.0/go.mod h1:Lk26EcRlO3XbaQ8U2fxIJbEtbgEteSZFUpEr3XFTtsU=
 go.mongodb.org/mongo-driver v1.0.1/go.mod h1:u7ryQJ+DOzQmeO7zB6MHyr8jkEQvC8vH7qLUO4lqsUM=
