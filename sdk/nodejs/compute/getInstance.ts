@@ -25,14 +25,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
  */
-export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
+export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> & GetInstanceResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {
+    const promise: Promise<GetInstanceResult> = pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {
         "name": args.name,
         "project": args.project,
         "selfLink": args.selfLink,
         "zone": args.zone,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

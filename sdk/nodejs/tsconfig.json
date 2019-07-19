@@ -166,7 +166,7 @@
         "filestore/index.ts",
         "filestore/instance.ts",
         "firestore/index.ts",
-        "firestore/index.ts",
+        "firestore/index_.ts",
         "folder/getOrganizationPolicy.ts",
         "folder/iAMBinding.ts",
         "folder/iAMMember.ts",

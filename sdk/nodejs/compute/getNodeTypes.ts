@@ -25,12 +25,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_node_types.html.markdown.
  */
-export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
+export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> & GetNodeTypesResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
+    const promise: Promise<GetNodeTypesResult> = pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
         "project": args.project,
         "zone": args.zone,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

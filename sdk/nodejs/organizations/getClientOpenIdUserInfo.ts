@@ -31,9 +31,11 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_openid_userinfo.html.markdown.
  */
-export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
-    return pulumi.runtime.invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
+export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> & GetClientOpenIdUserInfoResult {
+    const promise: Promise<GetClientOpenIdUserInfoResult> = pulumi.runtime.invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

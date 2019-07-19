@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Upgrade to pulumi-terraform@98fabcf506
 
 ---
 

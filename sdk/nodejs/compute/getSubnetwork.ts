@@ -21,14 +21,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
  */
-export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
+export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> & GetSubnetworkResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
+    const promise: Promise<GetSubnetworkResult> = pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
         "selfLink": args.selfLink,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

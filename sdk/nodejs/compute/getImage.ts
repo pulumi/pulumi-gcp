@@ -29,13 +29,15 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_image.html.markdown.
  */
-export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
+    const promise: Promise<GetImageResult> = pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "name": args.name,
         "project": args.project,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
