@@ -4,12 +4,14 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
+export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> & GetTensorflowVersionsResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
+    const promise: Promise<GetTensorflowVersionsResult> = pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
         "zone": args.zone,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

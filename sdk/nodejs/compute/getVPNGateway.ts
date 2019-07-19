@@ -20,12 +20,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
  */
-export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
-    return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
+export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> & GetVPNGatewayResult {
+    const promise: Promise<GetVPNGatewayResult> = pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

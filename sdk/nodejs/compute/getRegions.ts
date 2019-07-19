@@ -25,12 +25,14 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
  */
-export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
+export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> & GetRegionsResult {
     args = args || {};
-    return pulumi.runtime.invoke("gcp:compute/getRegions:getRegions", {
+    const promise: Promise<GetRegionsResult> = pulumi.runtime.invoke("gcp:compute/getRegions:getRegions", {
         "project": args.project,
         "status": args.status,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

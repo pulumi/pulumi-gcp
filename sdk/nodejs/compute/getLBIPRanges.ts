@@ -29,9 +29,11 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_lb_ip_ranges.html.markdown.
  */
-export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
-    return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
+export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> & GetLBIPRangesResult {
+    const promise: Promise<GetLBIPRangesResult> = pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
