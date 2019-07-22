@@ -104,7 +104,9 @@ func TestExamples(t *testing.T) {
 			Dir: path.Join(cwd, "loadbalancer"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
-			SkipRefresh: true,
+			SkipRefresh:              true,
+			AllowEmptyPreviewChanges: true,
+			AllowEmptyUpdateChanges:  true,
 		}),
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "webserver"),
