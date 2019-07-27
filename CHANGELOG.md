@@ -101,3 +101,27 @@ ___NULL___
 ## 0.16.0 (2018-10-12)
 * Initial release of the GCP Provider
 
+## 0.15.1 (2018-09-10)
+* Support provider configuration and property values provided by environment variaibles. [pulumi/pulumi-gcp#43](https://github.com/pulumi/pulumi-gcp/pull/43)
+
+## 0.15.0 (2018-08-13)
+* Added support for `new gcp.serverless.Function` to create serverless functions defined inline in the Pulumi program in GCP using Google Cloud Functions.  A big thanks to **[@mikhailshilkov](https://github.com/mikhailshilkov)** for contributing this feature!
+
+```typescript
+import * as gcp from "@pulumi/gcp";
+let f = new gcp.serverless.Function("f", {}, (req, res) => {
+    res.send(`Hello ${req.body.name || 'World'}!`);
+});
+export let url = f.function.httpsTriggerUrl;
+```
+
+## 0.14.3 (2018-07-25)
+* Only apply AutoName to inputs ([pulumi/pulumi-gcp#29](https://github.com/pulumi/pulumi-gcp/pull/29)). Terraform properties named `name` but are not inputs do not have auto naming applied to them.
+* Add a serverless example ([pulumi/pulumi-gcp#12](https://github.com/pulumi/pulumi-gcp/pull/12)). The GCP provider now has better support for creating google cloud functions from code. We have an [example](https://github.com/pulumi/pulumi-gcp/tree/v0.14.3/examples/serverless) of how to use this support. We plan to add higher level support here (similar to what we have with AWS) in a future release.
+
+## 0.14.1 (2018-07-03)
+* The result of calls to data sources now include an `id` property. Special thanks to [@Frassle](https://github.com/Frassle) for adding this support in [pulumi/pulumi-terraform#189](https://github.com/pulumi/pulumi-terraform/pull/189).
+* We've added assets support to the Python runtime and our Python packages. It is now possible to create resources that need an asset like a AWS Lambda or AWS Bucket Object in Python.
+
+## 0.14.0 (2018-06-15)
+* This package is new in this release! Use it to deploy and manage resources for Google Cloud Platform.
