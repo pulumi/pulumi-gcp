@@ -100,14 +100,12 @@ func TestExamples(t *testing.T) {
 	}
 
 	longTests := []integration.ProgramTestOptions{
-		//jsBase.With(integration.ProgramTestOptions{
-		//	Dir: path.Join(cwd, "loadbalancer"),
-		//	// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
-		//	// running the refresh step for now.
-		//	SkipRefresh:              true,
-		//	AllowEmptyPreviewChanges: true,
-		//	AllowEmptyUpdateChanges:  true,
-		//}),
+		jsBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "loadbalancer"),
+			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
+			// running the refresh step for now.
+			SkipRefresh:              true,
+		}),
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "webserver"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip

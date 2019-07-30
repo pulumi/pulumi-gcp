@@ -159,7 +159,7 @@ let httpProxy = new gcp.compute.TargetHttpProxy("http-lb-proxy", {
 let forwardingRule = new gcp.compute.GlobalForwardingRule("default-rule", {
     project: projectName,
     target: httpProxy.selfLink,
-    ipAddress: globalAddress.selfLink,
+    ipAddress: globalAddress.address,
     portRange: "80",
 });
 
