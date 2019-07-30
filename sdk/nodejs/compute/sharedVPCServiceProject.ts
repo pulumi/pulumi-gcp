@@ -92,6 +92,13 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             inputs["hostProject"] = args ? args.hostProject : undefined;
             inputs["serviceProject"] = args ? args.serviceProject : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SharedVPCServiceProject.__pulumiType, name, inputs, opts);
     }
 }

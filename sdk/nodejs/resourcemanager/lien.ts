@@ -102,6 +102,13 @@ export class Lien extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Lien.__pulumiType, name, inputs, opts);
     }
 }

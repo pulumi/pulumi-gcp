@@ -156,6 +156,13 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopNetwork"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Route.__pulumiType, name, inputs, opts);
     }
 }

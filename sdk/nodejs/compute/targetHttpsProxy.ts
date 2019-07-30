@@ -148,6 +148,13 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TargetHttpsProxy.__pulumiType, name, inputs, opts);
     }
 }

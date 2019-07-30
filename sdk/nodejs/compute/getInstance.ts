@@ -27,6 +27,13 @@ import * as utilities from "../utilities";
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> & GetInstanceResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetInstanceResult> = pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {
         "name": args.name,
         "project": args.project,

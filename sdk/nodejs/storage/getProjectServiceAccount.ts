@@ -31,6 +31,13 @@ import * as utilities from "../utilities";
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> & GetProjectServiceAccountResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetProjectServiceAccountResult> = pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
         "project": args.project,
         "userProject": args.userProject,

@@ -157,6 +157,13 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["gatewayAddress"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Subnetwork.__pulumiType, name, inputs, opts);
     }
 }

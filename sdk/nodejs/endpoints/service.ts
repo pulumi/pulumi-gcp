@@ -104,6 +104,13 @@ export class Service extends pulumi.CustomResource {
             inputs["dnsAddress"] = undefined /*out*/;
             inputs["endpoints"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Service.__pulumiType, name, inputs, opts);
     }
 }

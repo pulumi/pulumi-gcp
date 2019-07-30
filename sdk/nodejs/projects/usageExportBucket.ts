@@ -62,6 +62,13 @@ export class UsageExportBucket extends pulumi.CustomResource {
             inputs["prefix"] = args ? args.prefix : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(UsageExportBucket.__pulumiType, name, inputs, opts);
     }
 }

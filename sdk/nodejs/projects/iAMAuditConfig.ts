@@ -65,6 +65,13 @@ export class IAMAuditConfig extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(IAMAuditConfig.__pulumiType, name, inputs, opts);
     }
 }

@@ -74,6 +74,13 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(CryptoKey.__pulumiType, name, inputs, opts);
     }
 }

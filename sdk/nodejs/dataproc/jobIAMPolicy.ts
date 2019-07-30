@@ -133,6 +133,13 @@ export class JobIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(JobIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }

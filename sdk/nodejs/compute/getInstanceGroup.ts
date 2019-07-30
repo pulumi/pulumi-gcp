@@ -23,6 +23,13 @@ import * as utilities from "../utilities";
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> & GetInstanceGroupResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetInstanceGroupResult> = pulumi.runtime.invoke("gcp:compute/getInstanceGroup:getInstanceGroup", {
         "name": args.name,
         "project": args.project,

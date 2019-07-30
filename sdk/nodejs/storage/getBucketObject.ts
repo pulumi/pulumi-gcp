@@ -29,6 +29,13 @@ import * as utilities from "../utilities";
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> & GetBucketObjectResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetBucketObjectResult> = pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
         "name": args.name,

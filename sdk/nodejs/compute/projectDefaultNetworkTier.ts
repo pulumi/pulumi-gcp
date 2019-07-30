@@ -85,6 +85,13 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
             inputs["networkTier"] = args ? args.networkTier : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ProjectDefaultNetworkTier.__pulumiType, name, inputs, opts);
     }
 }

@@ -109,6 +109,13 @@ export class Connection extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["peering"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Connection.__pulumiType, name, inputs, opts);
     }
 }

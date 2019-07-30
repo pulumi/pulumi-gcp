@@ -182,6 +182,13 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["sharedSecretHash"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VPNTunnel.__pulumiType, name, inputs, opts);
     }
 }

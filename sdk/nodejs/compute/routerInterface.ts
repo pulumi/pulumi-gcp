@@ -125,6 +125,13 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RouterInterface.__pulumiType, name, inputs, opts);
     }
 }

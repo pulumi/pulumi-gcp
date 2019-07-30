@@ -87,6 +87,13 @@ export class MangedSslCertificate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["subjectAlternativeNames"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(MangedSslCertificate.__pulumiType, name, inputs, opts);
     }
 }

@@ -88,6 +88,13 @@ export class User extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(User.__pulumiType, name, inputs, opts);
     }
 }

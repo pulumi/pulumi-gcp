@@ -87,6 +87,13 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NodeGroup.__pulumiType, name, inputs, opts);
     }
 }

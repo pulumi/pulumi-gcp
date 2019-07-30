@@ -142,6 +142,13 @@ export class TargetPool extends pulumi.CustomResource {
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TargetPool.__pulumiType, name, inputs, opts);
     }
 }

@@ -484,6 +484,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Cluster.__pulumiType, name, inputs, opts);
     }
 }

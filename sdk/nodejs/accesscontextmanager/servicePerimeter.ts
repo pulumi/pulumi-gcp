@@ -131,6 +131,13 @@ export class ServicePerimeter extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ServicePerimeter.__pulumiType, name, inputs, opts);
     }
 }

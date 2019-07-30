@@ -108,6 +108,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["host"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Instance.__pulumiType, name, inputs, opts);
     }
 }

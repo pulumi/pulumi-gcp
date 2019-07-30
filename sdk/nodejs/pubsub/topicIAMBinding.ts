@@ -145,6 +145,13 @@ export class TopicIAMBinding extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TopicIAMBinding.__pulumiType, name, inputs, opts);
     }
 }

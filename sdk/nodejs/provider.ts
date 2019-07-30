@@ -90,6 +90,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Provider.__pulumiType, name, inputs, opts);
     }
 }

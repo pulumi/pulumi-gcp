@@ -204,6 +204,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(InstanceGroupManager.__pulumiType, name, inputs, opts);
     }
 }

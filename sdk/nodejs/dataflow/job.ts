@@ -134,6 +134,13 @@ export class Job extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["state"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Job.__pulumiType, name, inputs, opts);
     }
 }

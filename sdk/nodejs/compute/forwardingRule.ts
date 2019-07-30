@@ -184,6 +184,13 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["serviceName"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ForwardingRule.__pulumiType, name, inputs, opts);
     }
 }
