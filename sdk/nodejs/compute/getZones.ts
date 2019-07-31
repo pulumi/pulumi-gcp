@@ -28,6 +28,13 @@ import * as utilities from "../utilities";
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("gcp:compute/getZones:getZones", {
         "project": args.project,
         "region": args.region,

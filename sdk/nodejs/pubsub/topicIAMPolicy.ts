@@ -138,6 +138,13 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TopicIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }

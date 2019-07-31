@@ -131,6 +131,13 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["creationRecord"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(AlertPolicy.__pulumiType, name, inputs, opts);
     }
 }

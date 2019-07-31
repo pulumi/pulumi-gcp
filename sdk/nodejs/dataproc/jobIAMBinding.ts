@@ -141,6 +141,13 @@ export class JobIAMBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(JobIAMBinding.__pulumiType, name, inputs, opts);
     }
 }

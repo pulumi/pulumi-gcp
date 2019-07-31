@@ -52,6 +52,13 @@ import * as utilities from "../utilities";
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
  */
 export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> & GetIAMPolicyResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetIAMPolicyResult> = pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
         "auditConfigs": args.auditConfigs,
         "bindings": args.bindings,

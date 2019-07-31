@@ -97,6 +97,13 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NetworkEndpoint.__pulumiType, name, inputs, opts);
     }
 }

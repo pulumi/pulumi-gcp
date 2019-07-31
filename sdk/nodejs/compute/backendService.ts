@@ -151,6 +151,13 @@ export class BackendService extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(BackendService.__pulumiType, name, inputs, opts);
     }
 }

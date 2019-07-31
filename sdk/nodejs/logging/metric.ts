@@ -124,6 +124,13 @@ export class Metric extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["valueExtractor"] = args ? args.valueExtractor : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Metric.__pulumiType, name, inputs, opts);
     }
 }

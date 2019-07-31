@@ -151,6 +151,13 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DatabaseIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }

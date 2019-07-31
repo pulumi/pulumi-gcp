@@ -72,6 +72,13 @@ export class Dataset extends pulumi.CustomResource {
             inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Dataset.__pulumiType, name, inputs, opts);
     }
 }

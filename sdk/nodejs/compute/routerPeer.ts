@@ -143,6 +143,13 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["ipAddress"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RouterPeer.__pulumiType, name, inputs, opts);
     }
 }

@@ -81,6 +81,13 @@ export class HaVpnGateway extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["vpnInterfaces"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(HaVpnGateway.__pulumiType, name, inputs, opts);
     }
 }

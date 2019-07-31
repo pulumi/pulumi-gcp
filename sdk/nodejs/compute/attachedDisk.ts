@@ -74,6 +74,13 @@ export class AttachedDisk extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(AttachedDisk.__pulumiType, name, inputs, opts);
     }
 }

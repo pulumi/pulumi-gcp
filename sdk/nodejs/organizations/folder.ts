@@ -89,6 +89,13 @@ export class Folder extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Folder.__pulumiType, name, inputs, opts);
     }
 }

@@ -118,6 +118,13 @@ export class ObjectACL extends pulumi.CustomResource {
             inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ObjectACL.__pulumiType, name, inputs, opts);
     }
 }

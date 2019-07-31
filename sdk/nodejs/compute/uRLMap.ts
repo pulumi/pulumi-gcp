@@ -162,6 +162,13 @@ export class URLMap extends pulumi.CustomResource {
             inputs["mapId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(URLMap.__pulumiType, name, inputs, opts);
     }
 }

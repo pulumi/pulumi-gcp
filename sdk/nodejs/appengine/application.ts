@@ -117,6 +117,13 @@ export class Application extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["urlDispatchRules"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Application.__pulumiType, name, inputs, opts);
     }
 }

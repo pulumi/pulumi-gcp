@@ -251,6 +251,13 @@ export class Table extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Table.__pulumiType, name, inputs, opts);
     }
 }

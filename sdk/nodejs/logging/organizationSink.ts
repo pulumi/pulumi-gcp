@@ -101,6 +101,13 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(OrganizationSink.__pulumiType, name, inputs, opts);
     }
 }

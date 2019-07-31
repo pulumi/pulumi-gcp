@@ -136,6 +136,13 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ClusterIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }

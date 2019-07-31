@@ -89,6 +89,13 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
             }
             inputs["project"] = args ? args.project : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SharedVPCHostProject.__pulumiType, name, inputs, opts);
     }
 }

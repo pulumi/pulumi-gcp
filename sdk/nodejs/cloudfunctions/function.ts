@@ -196,6 +196,13 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["triggerHttp"] = args ? args.triggerHttp : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Function.__pulumiType, name, inputs, opts);
     }
 }

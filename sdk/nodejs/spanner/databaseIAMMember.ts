@@ -158,6 +158,13 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DatabaseIAMMember.__pulumiType, name, inputs, opts);
     }
 }

@@ -124,6 +124,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Instance.__pulumiType, name, inputs, opts);
     }
 }

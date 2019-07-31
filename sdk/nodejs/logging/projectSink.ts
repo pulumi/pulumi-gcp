@@ -101,6 +101,13 @@ export class ProjectSink extends pulumi.CustomResource {
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ProjectSink.__pulumiType, name, inputs, opts);
     }
 }

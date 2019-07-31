@@ -101,6 +101,13 @@ export class Database extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Database.__pulumiType, name, inputs, opts);
     }
 }

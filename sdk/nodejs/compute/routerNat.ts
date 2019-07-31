@@ -164,6 +164,13 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
             inputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RouterNat.__pulumiType, name, inputs, opts);
     }
 }

@@ -130,6 +130,13 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(BucketIAMPolicy.__pulumiType, name, inputs, opts);
     }
 }

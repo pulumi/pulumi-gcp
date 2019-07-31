@@ -143,6 +143,13 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
             inputs["subscription"] = args ? args.subscription : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SubscriptionIAMBinding.__pulumiType, name, inputs, opts);
     }
 }

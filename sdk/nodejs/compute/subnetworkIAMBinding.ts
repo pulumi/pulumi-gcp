@@ -96,6 +96,13 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SubnetworkIAMBinding.__pulumiType, name, inputs, opts);
     }
 }

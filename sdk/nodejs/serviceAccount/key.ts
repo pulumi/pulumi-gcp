@@ -175,6 +175,13 @@ export class Key extends pulumi.CustomResource {
             inputs["validAfter"] = undefined /*out*/;
             inputs["validBefore"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Key.__pulumiType, name, inputs, opts);
     }
 }

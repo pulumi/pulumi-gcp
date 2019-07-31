@@ -150,6 +150,13 @@ export class InstanceIAMMember extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(InstanceIAMMember.__pulumiType, name, inputs, opts);
     }
 }

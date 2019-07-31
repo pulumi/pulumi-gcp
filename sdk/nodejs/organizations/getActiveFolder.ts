@@ -22,6 +22,13 @@ import * as utilities from "../utilities";
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/active_folder.html.markdown.
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> & GetActiveFolderResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetActiveFolderResult> = pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {
         "displayName": args.displayName,
         "parent": args.parent,

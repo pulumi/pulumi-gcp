@@ -157,6 +157,13 @@ export class Subscription extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["path"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Subscription.__pulumiType, name, inputs, opts);
     }
 }

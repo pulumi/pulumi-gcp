@@ -112,6 +112,13 @@ export class Index extends pulumi.CustomResource {
             inputs["queryScope"] = args ? args.queryScope : undefined;
             inputs["name"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Index.__pulumiType, name, inputs, opts);
     }
 }

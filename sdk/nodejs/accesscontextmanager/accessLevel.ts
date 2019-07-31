@@ -108,6 +108,13 @@ export class AccessLevel extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(AccessLevel.__pulumiType, name, inputs, opts);
     }
 }

@@ -179,6 +179,13 @@ export class Address extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Address.__pulumiType, name, inputs, opts);
     }
 }

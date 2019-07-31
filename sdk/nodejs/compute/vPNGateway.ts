@@ -131,6 +131,13 @@ export class VPNGateway extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VPNGateway.__pulumiType, name, inputs, opts);
     }
 }

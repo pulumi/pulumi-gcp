@@ -135,6 +135,13 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
             inputs["repository"] = args ? args.repository : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RepositoryIamPolicy.__pulumiType, name, inputs, opts);
     }
 }

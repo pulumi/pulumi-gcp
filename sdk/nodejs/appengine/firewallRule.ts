@@ -108,6 +108,13 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(FirewallRule.__pulumiType, name, inputs, opts);
     }
 }

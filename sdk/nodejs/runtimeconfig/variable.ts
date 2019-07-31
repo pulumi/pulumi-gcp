@@ -129,6 +129,13 @@ export class Variable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["updateTime"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Variable.__pulumiType, name, inputs, opts);
     }
 }

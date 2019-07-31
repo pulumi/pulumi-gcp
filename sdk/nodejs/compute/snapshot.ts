@@ -154,6 +154,13 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["sourceDiskLink"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Snapshot.__pulumiType, name, inputs, opts);
     }
 }

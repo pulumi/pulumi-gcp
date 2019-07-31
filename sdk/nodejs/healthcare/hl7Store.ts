@@ -71,6 +71,13 @@ export class Hl7Store extends pulumi.CustomResource {
             inputs["parserConfig"] = args ? args.parserConfig : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Hl7Store.__pulumiType, name, inputs, opts);
     }
 }

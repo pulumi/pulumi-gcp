@@ -161,6 +161,13 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["uptimeCheckId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(UptimeCheckConfig.__pulumiType, name, inputs, opts);
     }
 }

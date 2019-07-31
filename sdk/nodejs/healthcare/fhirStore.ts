@@ -80,6 +80,13 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(FhirStore.__pulumiType, name, inputs, opts);
     }
 }

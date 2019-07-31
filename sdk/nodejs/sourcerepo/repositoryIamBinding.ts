@@ -142,6 +142,13 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RepositoryIamBinding.__pulumiType, name, inputs, opts);
     }
 }

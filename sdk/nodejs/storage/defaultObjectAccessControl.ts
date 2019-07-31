@@ -122,6 +122,13 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["generation"] = undefined /*out*/;
             inputs["projectTeam"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DefaultObjectAccessControl.__pulumiType, name, inputs, opts);
     }
 }
