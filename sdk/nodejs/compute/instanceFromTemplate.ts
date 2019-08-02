@@ -79,7 +79,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
 
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
     public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[]>;
-    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, labels: {[key: string]: any}, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
     public readonly canIpForward!: pulumi.Output<boolean>;
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean>;
@@ -212,7 +212,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
 export interface InstanceFromTemplateState {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly cpuPlatform?: pulumi.Input<string>;
     readonly deletionProtection?: pulumi.Input<boolean>;
@@ -259,7 +259,7 @@ export interface InstanceFromTemplateState {
 export interface InstanceFromTemplateArgs {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;

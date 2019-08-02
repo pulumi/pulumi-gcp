@@ -87,7 +87,7 @@ export class Instance extends pulumi.CustomResource {
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
+    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, labels: {[key: string]: any}, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -311,7 +311,7 @@ export interface InstanceState {
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -445,7 +445,7 @@ export interface InstanceArgs {
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.

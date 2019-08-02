@@ -239,7 +239,7 @@ class Cluster(pulumi.CustomResource):
     services_ipv4_cidr: pulumi.Output[str]
     """
     The IP address range of the Kubernetes services in this
-    cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+    cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
     notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
     `/16` from the container CIDR.
     """

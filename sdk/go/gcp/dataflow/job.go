@@ -24,6 +24,7 @@ func NewJob(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["labels"] = nil
 		inputs["machineType"] = nil
 		inputs["maxWorkers"] = nil
 		inputs["name"] = nil
@@ -38,6 +39,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["labels"] = args.Labels
 		inputs["machineType"] = args.MachineType
 		inputs["maxWorkers"] = args.MaxWorkers
 		inputs["name"] = args.Name
@@ -66,6 +68,7 @@ func GetJob(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *JobState, opts ...pulumi.ResourceOpt) (*Job, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["labels"] = state.Labels
 		inputs["machineType"] = state.MachineType
 		inputs["maxWorkers"] = state.MaxWorkers
 		inputs["name"] = state.Name
@@ -96,6 +99,11 @@ func (r *Job) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Job) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+func (r *Job) Labels() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The machine type to use for the job.
@@ -168,6 +176,8 @@ func (r *Job) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Job resources.
 type JobState struct {
+	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	Labels interface{}
 	// The machine type to use for the job.
 	MachineType interface{}
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -198,6 +208,8 @@ type JobState struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	Labels interface{}
 	// The machine type to use for the job.
 	MachineType interface{}
 	// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.

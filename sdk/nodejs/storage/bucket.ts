@@ -29,10 +29,10 @@ import * as utilities from "../utilities";
  * 
  * const image_store = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
- *     websites: [{
+ *     website: {
  *         mainPageSuffix: "index.html",
  *         notFoundPage: "404.html",
- *     }],
+ *     },
  * });
  * ```
  *
@@ -108,6 +108,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly requesterPays!: pulumi.Output<boolean | undefined>;
     /**
+     * Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+     */
+    public readonly retentionPolicy!: pulumi.Output<{ isLocked?: boolean, retentionPeriod: number } | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -126,7 +130,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    public readonly websites!: pulumi.Output<{ mainPageSuffix?: string, notFoundPage?: string }[] | undefined>;
+    public readonly website!: pulumi.Output<{ mainPageSuffix?: string, notFoundPage?: string } | undefined>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -151,11 +155,12 @@ export class Bucket extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["requesterPays"] = state ? state.requesterPays : undefined;
+            inputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["versioning"] = state ? state.versioning : undefined;
-            inputs["websites"] = state ? state.websites : undefined;
+            inputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
             inputs["bucketPolicyOnly"] = args ? args.bucketPolicyOnly : undefined;
@@ -169,9 +174,10 @@ export class Bucket extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requesterPays"] = args ? args.requesterPays : undefined;
+            inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
-            inputs["websites"] = args ? args.websites : undefined;
+            inputs["website"] = args ? args.website : undefined;
             inputs["selfLink"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
@@ -233,6 +239,10 @@ export interface BucketState {
      */
     readonly requesterPays?: pulumi.Input<boolean>;
     /**
+     * Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+     */
+    readonly retentionPolicy?: pulumi.Input<{ isLocked?: pulumi.Input<boolean>, retentionPeriod: pulumi.Input<number> }>;
+    /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -251,7 +261,7 @@ export interface BucketState {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    readonly websites?: pulumi.Input<pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>[]>;
+    readonly website?: pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>;
 }
 
 /**
@@ -301,6 +311,10 @@ export interface BucketArgs {
      */
     readonly requesterPays?: pulumi.Input<boolean>;
     /**
+     * Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+     */
+    readonly retentionPolicy?: pulumi.Input<{ isLocked?: pulumi.Input<boolean>, retentionPeriod: pulumi.Input<number> }>;
+    /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     readonly storageClass?: pulumi.Input<string>;
@@ -311,5 +325,5 @@ export interface BucketArgs {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    readonly websites?: pulumi.Input<pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>[]>;
+    readonly website?: pulumi.Input<{ mainPageSuffix?: pulumi.Input<string>, notFoundPage?: pulumi.Input<string> }>;
 }

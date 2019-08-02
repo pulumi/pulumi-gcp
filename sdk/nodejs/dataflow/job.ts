@@ -35,6 +35,10 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The machine type to use for the job.
      */
     public readonly machineType!: pulumi.Output<string | undefined>;
@@ -97,6 +101,7 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as JobState | undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["machineType"] = state ? state.machineType : undefined;
             inputs["maxWorkers"] = state ? state.maxWorkers : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -119,6 +124,7 @@ export class Job extends pulumi.CustomResource {
             if (!args || args.templateGcsPath === undefined) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["maxWorkers"] = args ? args.maxWorkers : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -149,6 +155,10 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
+    /**
+     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The machine type to use for the job.
      */
@@ -205,6 +215,10 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
      * The machine type to use for the job.
      */

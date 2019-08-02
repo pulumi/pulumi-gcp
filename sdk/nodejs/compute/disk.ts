@@ -94,6 +94,7 @@ export class Disk extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    public readonly resourcePolicies!: pulumi.Output<string[] | undefined>;
     /**
      * The URI of the created resource.
      */
@@ -131,6 +132,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshot"] = state ? state.snapshot : undefined;
@@ -150,6 +152,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshot"] = args ? args.snapshot : undefined;
             inputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
@@ -195,6 +198,7 @@ export interface DiskState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The URI of the created resource.
      */
@@ -225,6 +229,7 @@ export interface DiskArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
     readonly sourceImageEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;

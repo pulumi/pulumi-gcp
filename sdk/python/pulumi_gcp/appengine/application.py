@@ -43,6 +43,11 @@ class Application(pulumi.CustomResource):
     Unique name of the app, usually `apps/{PROJECT_ID}`
     """
     project: pulumi.Output[str]
+    """
+    The project ID to create the application under.
+    ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+    you may get a "Permission denied" error.
+    """
     serving_status: pulumi.Output[str]
     """
     The serving status of the app.
@@ -61,6 +66,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
+        :param pulumi.Input[str] project: The project ID to create the application under.
+               ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+               you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.

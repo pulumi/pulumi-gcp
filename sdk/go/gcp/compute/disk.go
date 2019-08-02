@@ -51,6 +51,7 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["physicalBlockSizeBytes"] = nil
 		inputs["project"] = nil
+		inputs["resourcePolicies"] = nil
 		inputs["size"] = nil
 		inputs["snapshot"] = nil
 		inputs["sourceImageEncryptionKey"] = nil
@@ -65,6 +66,7 @@ func NewDisk(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["physicalBlockSizeBytes"] = args.PhysicalBlockSizeBytes
 		inputs["project"] = args.Project
+		inputs["resourcePolicies"] = args.ResourcePolicies
 		inputs["size"] = args.Size
 		inputs["snapshot"] = args.Snapshot
 		inputs["sourceImageEncryptionKey"] = args.SourceImageEncryptionKey
@@ -104,6 +106,7 @@ func GetDisk(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["physicalBlockSizeBytes"] = state.PhysicalBlockSizeBytes
 		inputs["project"] = state.Project
+		inputs["resourcePolicies"] = state.ResourcePolicies
 		inputs["selfLink"] = state.SelfLink
 		inputs["size"] = state.Size
 		inputs["snapshot"] = state.Snapshot
@@ -178,6 +181,10 @@ func (r *Disk) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Disk) ResourcePolicies() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["resourcePolicies"])
+}
+
 // The URI of the created resource.
 func (r *Disk) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
@@ -234,6 +241,7 @@ type DiskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	ResourcePolicies interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	Size interface{}
@@ -258,6 +266,7 @@ type DiskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	ResourcePolicies interface{}
 	Size interface{}
 	Snapshot interface{}
 	SourceImageEncryptionKey interface{}

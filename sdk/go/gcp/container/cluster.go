@@ -463,7 +463,7 @@ func (r *Cluster) ResourceUsageExportConfig() *pulumi.Output {
 }
 
 // The IP address range of the Kubernetes services in this
-// cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 // notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
 // `/16` from the container CIDR.
 func (r *Cluster) ServicesIpv4Cidr() *pulumi.StringOutput {
@@ -661,7 +661,7 @@ type ClusterState struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig interface{}
 	// The IP address range of the Kubernetes services in this
-	// cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
 	// `/16` from the container CIDR.
 	ServicesIpv4Cidr interface{}

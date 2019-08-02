@@ -48,7 +48,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    public readonly disks!: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskEncryptionKey?: { kmsKeySelfLink?: string }, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, mode: string, source?: string, sourceImage: string, type: string }[]>;
+    public readonly disks!: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskEncryptionKey?: { kmsKeySelfLink?: string }, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, labels?: {[key: string]: string}, mode: string, source?: string, sourceImage: string, type: string }[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
@@ -235,7 +235,7 @@ export interface InstanceTemplateState {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
@@ -347,7 +347,7 @@ export interface InstanceTemplateArgs {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
+    readonly disks: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */

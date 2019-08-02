@@ -6,6 +6,7 @@ export * from "./cryptoKey";
 export * from "./cryptoKeyIAMBinding";
 export * from "./cryptoKeyIAMMember";
 export * from "./getKMSCryptoKey";
+export * from "./getKMSCryptoKeyVersion";
 export * from "./getKMSKeyRing";
 export * from "./getKMSSecret";
 export * from "./keyRing";
