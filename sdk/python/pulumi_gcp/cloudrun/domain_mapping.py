@@ -8,27 +8,21 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Policy(pulumi.CustomResource):
-    admission_whitelist_patterns: pulumi.Output[list]
-    cluster_admission_rules: pulumi.Output[list]
-    default_admission_rule: pulumi.Output[dict]
-    description: pulumi.Output[str]
+class DomainMapping(pulumi.CustomResource):
+    location: pulumi.Output[str]
+    metadata: pulumi.Output[dict]
+    name: pulumi.Output[str]
     project: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None, __name__=None, __opts__=None):
+    spec: pulumi.Output[dict]
+    status: pulumi.Output[dict]
+    def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __name__=None, __opts__=None):
         """
-        A policy for container image binary authorization.
-        
-        
-        To get more information about Policy, see:
-        
-        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+        Create a DomainMapping resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -45,20 +39,26 @@ class Policy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['admission_whitelist_patterns'] = admission_whitelist_patterns
+        if location is None:
+            raise TypeError("Missing required property 'location'")
+        __props__['location'] = location
 
-        __props__['cluster_admission_rules'] = cluster_admission_rules
+        if metadata is None:
+            raise TypeError("Missing required property 'metadata'")
+        __props__['metadata'] = metadata
 
-        if default_admission_rule is None:
-            raise TypeError("Missing required property 'default_admission_rule'")
-        __props__['default_admission_rule'] = default_admission_rule
-
-        __props__['description'] = description
+        __props__['name'] = name
 
         __props__['project'] = project
 
-        super(Policy, __self__).__init__(
-            'gcp:binaryauthorization/policy:Policy',
+        if spec is None:
+            raise TypeError("Missing required property 'spec'")
+        __props__['spec'] = spec
+
+        __props__['status'] = None
+
+        super(DomainMapping, __self__).__init__(
+            'gcp:cloudrun/domainMapping:DomainMapping',
             resource_name,
             __props__,
             opts)

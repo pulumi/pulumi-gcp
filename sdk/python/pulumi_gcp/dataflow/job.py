@@ -9,6 +9,10 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
+    labels: pulumi.Output[dict]
+    """
+    User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+    """
     machine_type: pulumi.Output[str]
     """
     The machine type to use for the job.
@@ -59,12 +63,13 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
         """
         Create a Job resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -93,6 +98,8 @@ class Job(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['labels'] = labels
 
         __props__['machine_type'] = machine_type
 

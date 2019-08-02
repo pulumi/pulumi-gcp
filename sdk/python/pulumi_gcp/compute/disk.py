@@ -24,6 +24,7 @@ class Disk(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    resource_policies: pulumi.Output[list]
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -37,7 +38,7 @@ class Disk(pulumi.CustomResource):
     type: pulumi.Output[str]
     users: pulumi.Output[list]
     zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, physical_block_size_bytes=None, project=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, physical_block_size_bytes=None, project=None, resource_policies=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __name__=None, __opts__=None):
         """
         Persistent disks are durable storage devices that function similarly to
         the physical disks in a desktop or a server. Compute Engine manages the
@@ -101,6 +102,8 @@ class Disk(pulumi.CustomResource):
         __props__['physical_block_size_bytes'] = physical_block_size_bytes
 
         __props__['project'] = project
+
+        __props__['resource_policies'] = resource_policies
 
         __props__['size'] = size
 

@@ -73,8 +73,8 @@ export class HealthCheck extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
-    public readonly httpHealthCheck!: pulumi.Output<{ host?: string, port?: number, proxyHeader?: string, requestPath?: string, response?: string } | undefined>;
-    public readonly httpsHealthCheck!: pulumi.Output<{ host?: string, port?: number, proxyHeader?: string, requestPath?: string, response?: string } | undefined>;
+    public readonly httpHealthCheck!: pulumi.Output<{ host?: string, port?: number, portName?: string, portSpecification?: string, proxyHeader?: string, requestPath?: string, response?: string } | undefined>;
+    public readonly httpsHealthCheck!: pulumi.Output<{ host?: string, port?: number, portName?: string, portSpecification?: string, proxyHeader?: string, requestPath?: string, response?: string } | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -85,8 +85,8 @@ export class HealthCheck extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly sslHealthCheck!: pulumi.Output<{ port?: number, proxyHeader?: string, request?: string, response?: string } | undefined>;
-    public readonly tcpHealthCheck!: pulumi.Output<{ port?: number, proxyHeader?: string, request?: string, response?: string } | undefined>;
+    public readonly sslHealthCheck!: pulumi.Output<{ port?: number, portName?: string, portSpecification?: string, proxyHeader?: string, request?: string, response?: string } | undefined>;
+    public readonly tcpHealthCheck!: pulumi.Output<{ port?: number, portName?: string, portSpecification?: string, proxyHeader?: string, request?: string, response?: string } | undefined>;
     public readonly timeoutSec!: pulumi.Output<number | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
@@ -153,8 +153,8 @@ export interface HealthCheckState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly healthyThreshold?: pulumi.Input<number>;
-    readonly httpHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
-    readonly httpsHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly httpHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly httpsHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -165,8 +165,8 @@ export interface HealthCheckState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly sslHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
-    readonly tcpHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly sslHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly tcpHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
     readonly timeoutSec?: pulumi.Input<number>;
     readonly type?: pulumi.Input<string>;
     readonly unhealthyThreshold?: pulumi.Input<number>;
@@ -179,16 +179,16 @@ export interface HealthCheckArgs {
     readonly checkIntervalSec?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
     readonly healthyThreshold?: pulumi.Input<number>;
-    readonly httpHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
-    readonly httpsHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly httpHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly httpsHealthCheck?: pulumi.Input<{ host?: pulumi.Input<string>, port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, requestPath?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly sslHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
-    readonly tcpHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly sslHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
+    readonly tcpHealthCheck?: pulumi.Input<{ port?: pulumi.Input<number>, portName?: pulumi.Input<string>, portSpecification?: pulumi.Input<string>, proxyHeader?: pulumi.Input<string>, request?: pulumi.Input<string>, response?: pulumi.Input<string> }>;
     readonly timeoutSec?: pulumi.Input<number>;
     readonly unhealthyThreshold?: pulumi.Input<number>;
 }

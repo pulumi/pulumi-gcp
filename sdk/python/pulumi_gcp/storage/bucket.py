@@ -51,6 +51,10 @@ class Bucket(pulumi.CustomResource):
     """
     Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
     """
+    retention_policy: pulumi.Output[dict]
+    """
+    Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -67,11 +71,11 @@ class Bucket(pulumi.CustomResource):
     """
     The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
     """
-    websites: pulumi.Output[list]
+    website: pulumi.Output[dict]
     """
     Configuration if the bucket acts as a website. Structure is documented below.
     """
-    def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, storage_class=None, versioning=None, websites=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, storage_class=None, versioning=None, website=None, __name__=None, __opts__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -99,9 +103,10 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
+        :param pulumi.Input[dict] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
-        :param pulumi.Input[list] websites: Configuration if the bucket acts as a website. Structure is documented below.
+        :param pulumi.Input[dict] website: Configuration if the bucket acts as a website. Structure is documented below.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
         """
@@ -142,11 +147,13 @@ class Bucket(pulumi.CustomResource):
 
         __props__['requester_pays'] = requester_pays
 
+        __props__['retention_policy'] = retention_policy
+
         __props__['storage_class'] = storage_class
 
         __props__['versioning'] = versioning
 
-        __props__['websites'] = websites
+        __props__['website'] = website
 
         __props__['self_link'] = None
         __props__['url'] = None

@@ -27,6 +27,7 @@ const (
 	gcpBinaryAuthorization  = "binaryauthorization"  // Binary Authorization resources
 	gcpCloudBuild           = "cloudbuild"           // CloudBuild resources
 	gcpCloudFunctions       = "cloudfunctions"       // CloudFunction resources
+	gcpCloudRun             = "cloudrun"             // CloudRun resources
 	gcpCloudScheduler       = "cloudscheduler"       // Cloud Scheduler resources
 	gcpComposer             = "composer"             // Cloud Composer resources
 	gcpCompute              = "compute"              // Compute resoures
@@ -963,6 +964,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "healthcare_hl7_v2_store_iam.html.markdown",
 				},
 			},
+
+			//CloudRun Resources
+			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
+			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1196,6 +1201,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_kms_secret.html.markdown",
 				},
 			},
+			"google_kms_crypto_key_version": {Tok: gcpDataSource(gcpKMS, "getKMSCryptoKeyVersion")},
 			"google_organization": {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),
 				Docs: &tfbridge.DocInfo{

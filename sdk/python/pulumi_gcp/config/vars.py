@@ -16,6 +16,8 @@ access_token = __config__.get('accessToken')
 
 app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 
+batching = __config__.get('batching')
+
 bigquery_custom_endpoint = __config__.get('bigqueryCustomEndpoint')
 
 bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
@@ -29,6 +31,8 @@ cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')
 cloud_functions_custom_endpoint = __config__.get('cloudFunctionsCustomEndpoint')
 
 cloud_iot_custom_endpoint = __config__.get('cloudIotCustomEndpoint')
+
+cloud_run_custom_endpoint = __config__.get('cloudRunCustomEndpoint')
 
 cloud_scheduler_custom_endpoint = __config__.get('cloudSchedulerCustomEndpoint')
 

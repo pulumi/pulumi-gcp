@@ -41,9 +41,10 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["requesterPays"] = nil
+		inputs["retentionPolicy"] = nil
 		inputs["storageClass"] = nil
 		inputs["versioning"] = nil
-		inputs["websites"] = nil
+		inputs["website"] = nil
 	} else {
 		inputs["bucketPolicyOnly"] = args.BucketPolicyOnly
 		inputs["cors"] = args.Cors
@@ -56,9 +57,10 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["requesterPays"] = args.RequesterPays
+		inputs["retentionPolicy"] = args.RetentionPolicy
 		inputs["storageClass"] = args.StorageClass
 		inputs["versioning"] = args.Versioning
-		inputs["websites"] = args.Websites
+		inputs["website"] = args.Website
 	}
 	inputs["selfLink"] = nil
 	inputs["url"] = nil
@@ -86,11 +88,12 @@ func GetBucket(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["requesterPays"] = state.RequesterPays
+		inputs["retentionPolicy"] = state.RetentionPolicy
 		inputs["selfLink"] = state.SelfLink
 		inputs["storageClass"] = state.StorageClass
 		inputs["url"] = state.Url
 		inputs["versioning"] = state.Versioning
-		inputs["websites"] = state.Websites
+		inputs["website"] = state.Website
 	}
 	s, err := ctx.ReadResource("gcp:storage/bucket:Bucket", name, id, inputs, opts...)
 	if err != nil {
@@ -164,6 +167,11 @@ func (r *Bucket) RequesterPays() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["requesterPays"])
 }
 
+// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+func (r *Bucket) RetentionPolicy() *pulumi.Output {
+	return r.s.State["retentionPolicy"]
+}
+
 // The URI of the created resource.
 func (r *Bucket) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
@@ -185,8 +193,8 @@ func (r *Bucket) Versioning() *pulumi.Output {
 }
 
 // Configuration if the bucket acts as a website. Structure is documented below.
-func (r *Bucket) Websites() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["websites"])
+func (r *Bucket) Website() *pulumi.Output {
+	return r.s.State["website"]
 }
 
 // Input properties used for looking up and filtering Bucket resources.
@@ -213,6 +221,8 @@ type BucketState struct {
 	Project interface{}
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays interface{}
+	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+	RetentionPolicy interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
@@ -222,7 +232,7 @@ type BucketState struct {
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning interface{}
 	// Configuration if the bucket acts as a website. Structure is documented below.
-	Websites interface{}
+	Website interface{}
 }
 
 // The set of arguments for constructing a Bucket resource.
@@ -249,10 +259,12 @@ type BucketArgs struct {
 	Project interface{}
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays interface{}
+	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
+	RetentionPolicy interface{}
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass interface{}
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning interface{}
 	// Configuration if the bucket acts as a website. Structure is documented below.
-	Websites interface{}
+	Website interface{}
 }

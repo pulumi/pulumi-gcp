@@ -20,6 +20,10 @@ func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:appEngineCustomEndpoint")
 }
 
+func GetBatching(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:batching")
+}
+
 func GetBigqueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryCustomEndpoint")
 }
@@ -46,6 +50,10 @@ func GetCloudFunctionsCustomEndpoint(ctx *pulumi.Context) string {
 
 func GetCloudIotCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIotCustomEndpoint")
+}
+
+func GetCloudRunCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudRunCustomEndpoint")
 }
 
 func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {

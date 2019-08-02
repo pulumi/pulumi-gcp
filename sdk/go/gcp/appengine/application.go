@@ -122,6 +122,9 @@ func (r *Application) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The project ID to create the application under.
+// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+// you may get a "Permission denied" error.
 func (r *Application) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -155,6 +158,9 @@ type ApplicationState struct {
 	LocationId interface{}
 	// Unique name of the app, usually `apps/{PROJECT_ID}`
 	Name interface{}
+	// The project ID to create the application under.
+	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// you may get a "Permission denied" error.
 	Project interface{}
 	// The serving status of the app.
 	ServingStatus interface{}
@@ -171,6 +177,9 @@ type ApplicationArgs struct {
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId interface{}
+	// The project ID to create the application under.
+	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// you may get a "Permission denied" error.
 	Project interface{}
 	// The serving status of the app.
 	ServingStatus interface{}

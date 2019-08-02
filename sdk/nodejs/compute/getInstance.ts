@@ -82,7 +82,7 @@ export interface GetInstanceResult {
     /**
      * The boot disk for the instance. Structure is documented below.
      */
-    readonly bootDisks: { autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, size: number, type: string }[], kmsKeySelfLink: string, source: string }[];
+    readonly bootDisks: { autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, labels: {[key: string]: any}, size: number, type: string }[], kmsKeySelfLink: string, source: string }[];
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */

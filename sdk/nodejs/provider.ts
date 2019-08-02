@@ -41,6 +41,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
+            inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             inputs["bigqueryCustomEndpoint"] = args ? args.bigqueryCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
@@ -48,6 +49,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
             inputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             inputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
+            inputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             inputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
             inputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             inputs["computeBetaCustomEndpoint"] = args ? args.computeBetaCustomEndpoint : undefined;
@@ -108,6 +110,7 @@ export interface ProviderArgs {
     readonly accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     readonly accessToken?: pulumi.Input<string>;
     readonly appEngineCustomEndpoint?: pulumi.Input<string>;
+    readonly batching?: pulumi.Input<{ enableBatching?: pulumi.Input<boolean>, sendAfter?: pulumi.Input<string> }>;
     readonly bigqueryCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
@@ -115,6 +118,7 @@ export interface ProviderArgs {
     readonly cloudBuildCustomEndpoint?: pulumi.Input<string>;
     readonly cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     readonly cloudIotCustomEndpoint?: pulumi.Input<string>;
+    readonly cloudRunCustomEndpoint?: pulumi.Input<string>;
     readonly cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
     readonly composerCustomEndpoint?: pulumi.Input<string>;
     readonly computeBetaCustomEndpoint?: pulumi.Input<string>;

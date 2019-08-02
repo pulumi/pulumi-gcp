@@ -349,7 +349,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly resourceUsageExportConfig!: pulumi.Output<{ bigqueryDestination: { datasetId: string }, enableNetworkEgressMetering?: boolean } | undefined>;
     /**
      * The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
      * `/16` from the container CIDR.
      */
@@ -728,7 +728,7 @@ export interface ClusterState {
     readonly resourceUsageExportConfig?: pulumi.Input<{ bigqueryDestination: pulumi.Input<{ datasetId: pulumi.Input<string> }>, enableNetworkEgressMetering?: pulumi.Input<boolean> }>;
     /**
      * The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http:en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
      * `/16` from the container CIDR.
      */

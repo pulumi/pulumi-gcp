@@ -15,7 +15,14 @@ class Attestor(pulumi.CustomResource):
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, attestation_authority_note=None, description=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        Create a Attestor resource with the given unique name, props, and options.
+        An attestor that attests to container image artifacts.
+        
+        
+        To get more information about Attestor, see:
+        
+        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/binary-authorization/)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
