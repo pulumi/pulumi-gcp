@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A NotificationChannel is a medium through which an alert is delivered
+ * when a policy violation is detected. Examples of channels include email, SMS,
+ * and third-party messaging applications. Fields containing sensitive information
+ * like authentication tokens or contact info are only partially populated on retrieval.
+ * 
+ * Notification Channels are designed to be flexible and are made up of a supported `type`
+ * and labels to configure that channel. Each `type` has specific labels that need to be
+ * present for that channel to be correctly configured. The labels that are required to be
+ * present for one channel `type` are often different than those requried for another.
+ * Due to these loose constraints it's often best to set up a channel through the UI
+ * and import when setting up a brand new channel type to determine which
+ * labels are required.
+ * 
+ * A list of supported channels per project the `list` endpoint can be
+ * accessed programatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
+ * This provides the channel type and all of the required labels that must be passed.
+ * 
+ * 
+ * To get more information about NotificationChannel, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+ * * How-to Guides
+ *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * ## Example Usage - Notification Channel Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const basic = new gcp.monitoring.NotificationChannel("basic", {
+ *     displayName: "Test Notification Channel",
+ *     labels: {
+ *         email_address: "fake_email@blahblah.com",
+ *     },
+ *     type: "email",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_notification_channel.html.markdown.
  */
 export class NotificationChannel extends pulumi.CustomResource {

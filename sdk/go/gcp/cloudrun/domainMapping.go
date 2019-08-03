@@ -8,6 +8,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Resource to hold the state and status of a user's domain mapping.
+// 
+// **Note:** Cloud Run as a product is in beta, however the REST API is currently still an alpha.
+// Please use this with caution as it may change when the API moves to beta.
+// 
+// 
+// To get more information about DomainMapping, see:
+// 
+// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.domainmappings)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
 type DomainMapping struct {
 	s *pulumi.ResourceState

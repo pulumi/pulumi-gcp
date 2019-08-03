@@ -5,6 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A key for signing Cloud CDN signed URLs for Backend Services.
+ * 
+ * 
+ * To get more information about BackendServiceSignedUrlKey, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+ * * How-to Guides
+ *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ * 
+ * > **Warning:** All arguments including the key's value will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * Because the API does not return the sensitive key value,
+ * we cannot confirm or reverse changes to a key outside of this provider.
+ * 
+ * ## Example Usage - Backend Service Signed Url Key
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     requestPath: "/",
+ *     timeoutSec: 1,
+ * });
+ * const webserver = new gcp.compute.InstanceTemplate("webserver", {
+ *     disks: [{
+ *         autoDelete: true,
+ *         boot: true,
+ *         sourceImage: "debian-cloud/debian-9",
+ *     }],
+ *     machineType: "n1-standard-1",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
+ *     baseInstanceName: "webserver",
+ *     instanceTemplate: webserver.selfLink,
+ *     targetSize: 1,
+ *     zone: "us-central1-f",
+ * });
+ * const exampleBackend = new gcp.compute.BackendService("example_backend", {
+ *     backends: [{
+ *         group: webservers.instanceGroup,
+ *     }],
+ *     description: "Our company website",
+ *     enableCdn: true,
+ *     healthChecks: defaultHttpHealthCheck.selfLink,
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ * });
+ * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backend_key", {
+ *     backendService: exampleBackend.name,
+ *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
  */
 export class BackendServiceSignedUrlKey extends pulumi.CustomResource {

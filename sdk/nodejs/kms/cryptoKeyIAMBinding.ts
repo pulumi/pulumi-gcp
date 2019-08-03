@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Allows creation and management of a single binding within IAM policy for
+ * an existing Google Cloud KMS crypto key.
+ * 
+ * > **Note:** On create, this resource will overwrite members of any existing roles.
+ *     Use `import` and inspect the preview output to ensure
+ *     your existing members are preserved.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ *     cryptoKeyId: "my-gcp-project/us-central1/my-key-ring/my-crypto-key",
+ *     members: ["user:alice@gmail.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_binding.html.markdown.
  */
 export class CryptoKeyIAMBinding extends pulumi.CustomResource {

@@ -22,7 +22,14 @@ class Policy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, name=None, networks=None, project=None, __name__=None, __opts__=None):
         """
-        Create a Policy resource with the given unique name, props, and options.
+        A policy is a collection of DNS rules applied to one or more Virtual
+        Private Cloud resources.
+        
+        To get more information about Policy, see:
+        
+        * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
+        * How-to Guides
+            * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

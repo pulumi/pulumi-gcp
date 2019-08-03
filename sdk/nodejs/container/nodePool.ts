@@ -71,6 +71,10 @@ export class NodePool extends pulumi.CustomResource {
      * for more information.
      */
     public readonly maxPodsPerNode!: pulumi.Output<number>;
+    /**
+     * The name of the node pool. If left blank, this provider will
+     * auto-generate a unique name.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly namePrefix!: pulumi.Output<string>;
     /**
@@ -93,6 +97,14 @@ export class NodePool extends pulumi.CustomResource {
      * regional clusters). `zone` has been deprecated in favor of `location`.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     */
     public readonly version!: pulumi.Output<string>;
     /**
      * The zone in which the cluster resides. `zone`
@@ -196,6 +208,10 @@ export interface NodePoolState {
      * for more information.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
+    /**
+     * The name of the node pool. If left blank, this provider will
+     * auto-generate a unique name.
+     */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
     /**
@@ -218,6 +234,14 @@ export interface NodePoolState {
      * regional clusters). `zone` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * The zone in which the cluster resides. `zone`
@@ -262,6 +286,10 @@ export interface NodePoolArgs {
      * for more information.
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
+    /**
+     * The name of the node pool. If left blank, this provider will
+     * auto-generate a unique name.
+     */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
     /**
@@ -284,6 +312,14 @@ export interface NodePoolArgs {
      * regional clusters). `zone` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * The zone in which the cluster resides. `zone`

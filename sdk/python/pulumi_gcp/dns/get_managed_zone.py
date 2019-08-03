@@ -22,6 +22,9 @@ class GetManagedZoneResult:
         if dns_name and not isinstance(dns_name, str):
             raise TypeError("Expected argument 'dns_name' to be a str")
         __self__.dns_name = dns_name
+        """
+        The fully qualified DNS name of this zone, e.g. `example.com.`.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name

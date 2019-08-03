@@ -190,6 +190,8 @@ func (r *InstanceTemplate) MinCpuPlatform() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["minCpuPlatform"])
 }
 
+// The name of the instance template. If you leave
+// this blank, this provider will auto-generate a unique name.
 func (r *InstanceTemplate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -289,6 +291,8 @@ type InstanceTemplateState struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform interface{}
+	// The name of the instance template. If you leave
+	// this blank, this provider will auto-generate a unique name.
 	Name interface{}
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
@@ -355,6 +359,8 @@ type InstanceTemplateArgs struct {
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform interface{}
+	// The name of the instance template. If you leave
+	// this blank, this provider will auto-generate a unique name.
 	Name interface{}
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.

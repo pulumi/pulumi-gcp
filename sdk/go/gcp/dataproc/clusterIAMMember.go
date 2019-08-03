@@ -101,10 +101,14 @@ func (r *ClusterIAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
+// The project in which the cluster belongs. If it
+// is not provided, this provider will use the provider default.
 func (r *ClusterIAMMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The region in which the cluster belongs. If it
+// is not provided, this provider will use the provider default.
 func (r *ClusterIAMMember) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -123,7 +127,11 @@ type ClusterIAMMemberState struct {
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag interface{}
 	Member interface{}
+	// The project in which the cluster belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
+	// The region in which the cluster belongs. If it
+	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -136,7 +144,11 @@ type ClusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster interface{}
 	Member interface{}
+	// The project in which the cluster belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
+	// The region in which the cluster belongs. If it
+	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format

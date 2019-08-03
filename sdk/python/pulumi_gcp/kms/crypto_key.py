@@ -18,7 +18,23 @@ class CryptoKey(pulumi.CustomResource):
     version_template: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, version_template=None, __name__=None, __opts__=None):
         """
-        Create a CryptoKey resource with the given unique name, props, and options.
+        A `CryptoKey` represents a logical key that can be used for cryptographic operations.
+        
+        
+        > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+        Destroying a CryptoKey will remove it from state
+        and delete all CryptoKeyVersions, rendering the key unusable, but *will
+        not delete the resource on the server.* When this provider destroys these keys,
+        any data previously encrypted with these keys will be irrecoverable.
+        For this reason, it is strongly recommended that you add lifecycle hooks
+        to the resource to prevent accidental destruction.
+        
+        
+        To get more information about CryptoKey, see:
+        
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+        * How-to Guides
+            * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

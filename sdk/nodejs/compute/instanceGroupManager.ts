@@ -146,6 +146,11 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly versions!: pulumi.Output<{ instanceTemplate: string, name: string, targetSize?: { fixed?: number, percent?: number } }[]>;
+    /**
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * continue trying until it times out.
+     */
     public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
     /**
      * The zone that instances in this group should be created
@@ -290,6 +295,11 @@ export interface InstanceGroupManagerState {
      * Structure is documented below.
      */
     readonly versions?: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
+    /**
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * continue trying until it times out.
+     */
     readonly waitForInstances?: pulumi.Input<boolean>;
     /**
      * The zone that instances in this group should be created
@@ -361,6 +371,11 @@ export interface InstanceGroupManagerArgs {
      * Structure is documented below.
      */
     readonly versions: pulumi.Input<pulumi.Input<{ instanceTemplate: pulumi.Input<string>, name: pulumi.Input<string>, targetSize?: pulumi.Input<{ fixed?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>[]>;
+    /**
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * continue trying until it times out.
+     */
     readonly waitForInstances?: pulumi.Input<boolean>;
     /**
      * The zone that instances in this group should be created

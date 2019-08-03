@@ -7,6 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Creates a group of dissimilar Compute Engine virtual machine instances.
+// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+// 
+// > Recreating an instance group that's in use by another resource will give a
+// `resourceInUseByAnotherResource` error.
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
 type InstanceGroup struct {
 	s *pulumi.ResourceState

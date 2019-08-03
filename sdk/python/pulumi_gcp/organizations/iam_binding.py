@@ -29,7 +29,16 @@ class IAMBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, members=None, org_id=None, role=None, __name__=None, __opts__=None):
         """
-        Create a IAMBinding resource with the given unique name, props, and options.
+        Allows creation and management of a single binding within IAM policy for
+        an existing Google Cloud Platform Organization.
+        
+        > **Note:** This resource __must not__ be used in conjunction with
+           `google_organization_iam_member` for the __same role__ or they will fight over
+           what your policy should be.
+        
+        > **Note:** On create, this resource will overwrite members of any existing roles.
+            Use `import` and inspect the preview output to ensure
+            your existing members are preserved.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

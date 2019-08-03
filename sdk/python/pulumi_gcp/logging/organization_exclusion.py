@@ -34,7 +34,12 @@ class OrganizationExclusion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, disabled=None, filter=None, name=None, org_id=None, __name__=None, __opts__=None):
         """
-        Create a OrganizationExclusion resource with the given unique name, props, and options.
+        Manages an organization-level logging exclusion. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+        
+        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        granted to the credentials used with this provider.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

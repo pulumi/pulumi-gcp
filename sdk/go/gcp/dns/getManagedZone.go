@@ -46,6 +46,7 @@ type GetManagedZoneArgs struct {
 type GetManagedZoneResult struct {
 	// A textual description field.
 	Description interface{}
+	// The fully qualified DNS name of this zone, e.g. `example.com.`.
 	DnsName interface{}
 	Name interface{}
 	// The list of nameservers that will be authoritative for this

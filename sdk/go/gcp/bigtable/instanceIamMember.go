@@ -98,6 +98,8 @@ func (r *InstanceIamMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
+// The project in which the instance belongs. If it
+// is not provided, this provider will use the provider default.
 func (r *InstanceIamMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -116,6 +118,8 @@ type InstanceIamMemberState struct {
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance interface{}
 	Member interface{}
+	// The project in which the instance belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `google_bigtable_instance_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -128,6 +132,8 @@ type InstanceIamMemberArgs struct {
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance interface{}
 	Member interface{}
+	// The project in which the instance belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `google_bigtable_instance_iam_binding` can be used per role. Note that custom roles must be of the format

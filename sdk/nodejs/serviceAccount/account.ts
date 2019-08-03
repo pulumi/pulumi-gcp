@@ -5,6 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+ * 
+ * > Creation of service accounts is eventually consistent, and that can lead to
+ * errors when you try to apply ACLs to service accounts immediately after
+ * creation.
+ * 
+ * ## Example Usage
+ * 
+ * This snippet creates a service account, then gives it objectViewer
+ * permission in a project.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const objectViewer = new gcp.serviceAccount.Account("object_viewer", {
+ *     accountId: "object-viewer",
+ *     displayName: "Object viewer",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account.html.markdown.
  */
 export class Account extends pulumi.CustomResource {

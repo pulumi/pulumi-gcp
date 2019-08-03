@@ -265,6 +265,17 @@ export class Cluster extends pulumi.CustomResource {
      * has been updated by GKE.
      */
     public /*out*/ readonly masterVersion!: pulumi.Output<string>;
+    /**
+     * The minimum version of the master. GKE
+     * will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only `master_version` field to obtain that.
+     * If unset, the cluster's version will be set by GKE to the version of the most recent
+     * official release (which is not necessarily the latest version).  Most users will find
+     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+     * describe the various acceptable formats for this field.
+     */
     public readonly minMasterVersion!: pulumi.Output<string | undefined>;
     /**
      * The monitoring service that the cluster
@@ -293,6 +304,13 @@ export class Cluster extends pulumi.CustomResource {
      * feature. Structure is documented below.
      */
     public readonly networkPolicy!: pulumi.Output<{ enabled?: boolean, provider?: string }>;
+    /**
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * this provider. Structure is documented below.
+     */
     public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
     /**
      * The list of zones in which the cluster's nodes
@@ -312,6 +330,16 @@ export class Cluster extends pulumi.CustomResource {
      * google_container_node_pool resource instead of this property.
      */
     public readonly nodePools!: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
+    /**
+     * The Kubernetes version on the nodes. Must either be unset
+     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * version set by GKE which is not necessarily the latest version. This only affects
+     * nodes in the default node pool. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     * To update nodes in other node pools, use the `version` attribute on the node pool.
+     */
     public readonly nodeVersion!: pulumi.Output<string>;
     /**
      * ) Configuration for the
@@ -644,6 +672,17 @@ export interface ClusterState {
      * has been updated by GKE.
      */
     readonly masterVersion?: pulumi.Input<string>;
+    /**
+     * The minimum version of the master. GKE
+     * will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only `master_version` field to obtain that.
+     * If unset, the cluster's version will be set by GKE to the version of the most recent
+     * official release (which is not necessarily the latest version).  Most users will find
+     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+     * describe the various acceptable formats for this field.
+     */
     readonly minMasterVersion?: pulumi.Input<string>;
     /**
      * The monitoring service that the cluster
@@ -672,6 +711,13 @@ export interface ClusterState {
      * feature. Structure is documented below.
      */
     readonly networkPolicy?: pulumi.Input<{ enabled?: pulumi.Input<boolean>, provider?: pulumi.Input<string> }>;
+    /**
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * this provider. Structure is documented below.
+     */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
      * The list of zones in which the cluster's nodes
@@ -691,6 +737,16 @@ export interface ClusterState {
      * google_container_node_pool resource instead of this property.
      */
     readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    /**
+     * The Kubernetes version on the nodes. Must either be unset
+     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * version set by GKE which is not necessarily the latest version. This only affects
+     * nodes in the default node pool. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     * To update nodes in other node pools, use the `version` attribute on the node pool.
+     */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
      * ) Configuration for the
@@ -893,6 +949,17 @@ export interface ClusterArgs {
      * external access (except the cluster node IPs, which GKE automatically whitelists).
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<{ cidrBlocks?: pulumi.Input<pulumi.Input<{ cidrBlock: pulumi.Input<string>, displayName?: pulumi.Input<string> }>[]> }>;
+    /**
+     * The minimum version of the master. GKE
+     * will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only `master_version` field to obtain that.
+     * If unset, the cluster's version will be set by GKE to the version of the most recent
+     * official release (which is not necessarily the latest version).  Most users will find
+     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+     * describe the various acceptable formats for this field.
+     */
     readonly minMasterVersion?: pulumi.Input<string>;
     /**
      * The monitoring service that the cluster
@@ -921,6 +988,13 @@ export interface ClusterArgs {
      * feature. Structure is documented below.
      */
     readonly networkPolicy?: pulumi.Input<{ enabled?: pulumi.Input<boolean>, provider?: pulumi.Input<string> }>;
+    /**
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn't recommended to be used with
+     * this provider. Structure is documented below.
+     */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
      * The list of zones in which the cluster's nodes
@@ -940,6 +1014,16 @@ export interface ClusterArgs {
      * google_container_node_pool resource instead of this property.
      */
     readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
+    /**
+     * The Kubernetes version on the nodes. Must either be unset
+     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * version set by GKE which is not necessarily the latest version. This only affects
+     * nodes in the default node pool. While a fuzzy version can be specified, it's
+     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
+     * `version_prefix` field to approximate fuzzy versions.
+     * To update nodes in other node pools, use the `version` attribute on the node pool.
+     */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
      * ) Configuration for the

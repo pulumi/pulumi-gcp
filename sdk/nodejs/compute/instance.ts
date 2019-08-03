@@ -78,6 +78,10 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * If true, allows this provider to stop the instance to update its properties.
+     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean | undefined>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -98,6 +102,10 @@ export class Instance extends pulumi.CustomResource {
      * The CPU platform used by this instance.
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    /**
+     * Enable deletion protection on this instance. Defaults to false.
+     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * A brief description of this resource.
@@ -302,6 +310,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * If true, allows this provider to stop the instance to update its properties.
+     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -322,6 +334,10 @@ export interface InstanceState {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform?: pulumi.Input<string>;
+    /**
+     * Enable deletion protection on this instance. Defaults to false.
+     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * A brief description of this resource.
@@ -436,6 +452,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * If true, allows this provider to stop the instance to update its properties.
+     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -452,6 +472,10 @@ export interface InstanceArgs {
      * This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * Enable deletion protection on this instance. Defaults to false.
+     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * A brief description of this resource.

@@ -155,6 +155,17 @@ class Cluster(pulumi.CustomResource):
     has been updated by GKE.
     """
     min_master_version: pulumi.Output[str]
+    """
+    The minimum version of the master. GKE
+    will auto-update the master to new versions, so this does not guarantee the
+    current master version--use the read-only `master_version` field to obtain that.
+    If unset, the cluster's version will be set by GKE to the version of the most recent
+    official release (which is not necessarily the latest version).  Most users will find
+    the `google_container_engine_versions` data source useful - it indicates which versions
+    are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+    [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+    describe the various acceptable formats for this field.
+    """
     monitoring_service: pulumi.Output[str]
     """
     The monitoring service that the cluster
@@ -183,6 +194,13 @@ class Cluster(pulumi.CustomResource):
     feature. Structure is documented below.
     """
     node_config: pulumi.Output[dict]
+    """
+    Parameters used in creating the default node pool.
+    Generally, this field should not be used at the same time as a
+    `google_container_node_pool` or a `node_pool` block; this configuration
+    manages the default node pool, which isn't recommended to be used with
+    this provider. Structure is documented below.
+    """
     node_locations: pulumi.Output[list]
     """
     The list of zones in which the cluster's nodes
@@ -202,6 +220,16 @@ class Cluster(pulumi.CustomResource):
     google_container_node_pool resource instead of this property.
     """
     node_version: pulumi.Output[str]
+    """
+    The Kubernetes version on the nodes. Must either be unset
+    or set to the same value as `min_master_version` on create. Defaults to the default
+    version set by GKE which is not necessarily the latest version. This only affects
+    nodes in the default node pool. While a fuzzy version can be specified, it's
+    recommended that you specify explicit versions as this provider will see spurious diffs
+    when fuzzy versions are used. See the `google_container_engine_versions` data source's
+    `version_prefix` field to approximate fuzzy versions.
+    To update nodes in other node pools, use the `version` attribute on the node pool.
+    """
     pod_security_policy_config: pulumi.Output[dict]
     """
     ) Configuration for the
@@ -349,6 +377,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
+        :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
+               will auto-update the master to new versions, so this does not guarantee the
+               current master version--use the read-only `master_version` field to obtain that.
+               If unset, the cluster's version will be set by GKE to the version of the most recent
+               official release (which is not necessarily the latest version).  Most users will find
+               the `google_container_engine_versions` data source useful - it indicates which versions
+               are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+               [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+               describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -364,6 +401,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
+        :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
+               Generally, this field should not be used at the same time as a
+               `google_container_node_pool` or a `node_pool` block; this configuration
+               manages the default node pool, which isn't recommended to be used with
+               this provider. Structure is documented below.
         :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
                should be located. These must be in the same region as the cluster zone for
                zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
@@ -376,6 +418,14 @@ class Cluster(pulumi.CustomResource):
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
                to say "these are the _only_ node pools associated with this cluster", use the
                google_container_node_pool resource instead of this property.
+        :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
+               or set to the same value as `min_master_version` on create. Defaults to the default
+               version set by GKE which is not necessarily the latest version. This only affects
+               nodes in the default node pool. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as this provider will see spurious diffs
+               when fuzzy versions are used. See the `google_container_engine_versions` data source's
+               `version_prefix` field to approximate fuzzy versions.
+               To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.

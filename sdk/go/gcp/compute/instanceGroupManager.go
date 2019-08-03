@@ -190,6 +190,9 @@ func (r *InstanceGroupManager) Versions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
 
+// Whether to wait for all instances to be created/updated before
+// returning. Note that if this is set to true and the operation does not succeed, this provider will
+// continue trying until it times out.
 func (r *InstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitForInstances"])
 }
@@ -247,6 +250,9 @@ type InstanceGroupManagerState struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions interface{}
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances interface{}
 	// The zone that instances in this group should be created
 	// in.
@@ -294,6 +300,9 @@ type InstanceGroupManagerArgs struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions interface{}
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances interface{}
 	// The zone that instances in this group should be created
 	// in.

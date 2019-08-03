@@ -16,7 +16,14 @@ class DicomStore(pulumi.CustomResource):
     self_link: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, __name__=None, __opts__=None):
         """
-        Create a DicomStore resource with the given unique name, props, and options.
+        A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
+        (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+        
+        To get more information about DicomStore, see:
+        
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.dicomStores)
+        * How-to Guides
+            * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

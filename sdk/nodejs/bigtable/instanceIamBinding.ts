@@ -98,6 +98,10 @@ export class InstanceIamBinding extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -164,6 +168,10 @@ export interface InstanceIamBindingState {
      */
     readonly instance?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -182,6 +190,10 @@ export interface InstanceIamBindingArgs {
      */
     readonly instance: pulumi.Input<string>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

@@ -34,7 +34,12 @@ class BillingAccountExclusion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, billing_account=None, description=None, disabled=None, filter=None, name=None, __name__=None, __opts__=None):
         """
-        Create a BillingAccountExclusion resource with the given unique name, props, and options.
+        Manages a billing account logging exclusion. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+        
+        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        granted to the credentials used with this provider.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

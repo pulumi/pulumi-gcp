@@ -64,6 +64,10 @@ class InstanceTemplate(pulumi.CustomResource):
     `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
     """
     name: pulumi.Output[str]
+    """
+    The name of the instance template. If you leave
+    this blank, this provider will auto-generate a unique name.
+    """
     name_prefix: pulumi.Output[str]
     """
     Creates a unique name beginning with the specified
@@ -144,6 +148,8 @@ class InstanceTemplate(pulumi.CustomResource):
                thus the two mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        :param pulumi.Input[str] name: The name of the instance template. If you leave
+               this blank, this provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
         :param pulumi.Input[list] network_interfaces: Networks to attach to instances created from

@@ -19,7 +19,15 @@ class ClusterIAMMember(pulumi.CustomResource):
     """
     member: pulumi.Output[str]
     project: pulumi.Output[str]
+    """
+    The project in which the cluster belongs. If it
+    is not provided, this provider will use the provider default.
+    """
     region: pulumi.Output[str]
+    """
+    The region in which the cluster belongs. If it
+    is not provided, this provider will use the provider default.
+    """
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
@@ -41,6 +49,10 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
+               is not provided, this provider will use the provider default.
+        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
+               is not provided, this provider will use the provider default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

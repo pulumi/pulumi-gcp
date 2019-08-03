@@ -5,6 +5,62 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Allows creation and management of a Google Cloud Platform project.
+ * 
+ * Projects created with this resource must be associated with an Organization.
+ * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+ * 
+ * The service account used to run this provider when creating a `google_project`
+ * resource must have `roles/resourcemanager.projectCreator`. See the
+ * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
+ * doc for more information.
+ * 
+ * Note that prior to 0.8.5, `google_project` functioned like a data source,
+ * meaning any project referenced by it had to be created and managed outside
+ * this provider. As of 0.8.5, `google_project` functions like any other
+ * resource, with this provider creating and managing the project. To replicate the old
+ * behavior, either:
+ * 
+ * * Use the project ID directly in whatever is referencing the project, using the
+ *   [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
+ *   to replace the old `policy_data` property.
+ * * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
+ *   to import your pre-existing project into this provider, where it can be referenced and
+ *   used just like always, keeping in mind that this provider will attempt to undo any changes
+ *   made outside this provider.
+ * 
+ * > It's important to note that any project resources that were added to your config
+ * prior to 0.8.5 will continue to function as they always have, and will not be managed by
+ * this provider. Only newly added projects are affected.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     orgId: "1234567",
+ *     projectId: "your-project-id",
+ * });
+ * ```
+ * 
+ * To create a project under a specific folder
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const my_project_in_a_folder = new gcp.organizations.Project("my_project-in-a-folder", {
+ *     folderId: department1.name,
+ *     projectId: "your-project-id",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
@@ -41,6 +97,13 @@ export class Project extends pulumi.CustomResource {
      * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
+    /**
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with this provider
+     * must have Billing Account Administrator privileges (`roles/billing.admin`) in
+     * the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+     * for more details.
+     */
     public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
      * The numeric ID of the folder this project should be
@@ -75,6 +138,10 @@ export class Project extends pulumi.CustomResource {
      * The project ID. Changing this forces a new project to be created.
      */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
+     */
     public readonly skipDelete!: pulumi.Output<boolean>;
 
     /**
@@ -135,6 +202,13 @@ export interface ProjectState {
      * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
+    /**
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with this provider
+     * must have Billing Account Administrator privileges (`roles/billing.admin`) in
+     * the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+     * for more details.
+     */
     readonly billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
@@ -169,6 +243,10 @@ export interface ProjectState {
      * The project ID. Changing this forces a new project to be created.
      */
     readonly projectId?: pulumi.Input<string>;
+    /**
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
+     */
     readonly skipDelete?: pulumi.Input<boolean>;
 }
 
@@ -183,6 +261,13 @@ export interface ProjectArgs {
      * you set `auto_create_network` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
+    /**
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with this provider
+     * must have Billing Account Administrator privileges (`roles/billing.admin`) in
+     * the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+     * for more details.
+     */
     readonly billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
@@ -213,5 +298,9 @@ export interface ProjectArgs {
      * The project ID. Changing this forces a new project to be created.
      */
     readonly projectId: pulumi.Input<string>;
+    /**
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
+     */
     readonly skipDelete?: pulumi.Input<boolean>;
 }
