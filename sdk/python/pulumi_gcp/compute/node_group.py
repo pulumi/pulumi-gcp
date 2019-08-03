@@ -26,7 +26,19 @@ class NodeGroup(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, name=None, node_template=None, project=None, size=None, zone=None, __name__=None, __opts__=None):
         """
-        Create a NodeGroup resource with the given unique name, props, and options.
+        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+        
+        
+        To get more information about NodeGroup, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+        * How-to Guides
+            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+        
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through config or through external changes will cause
+        this provider to delete and recreate the node group.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

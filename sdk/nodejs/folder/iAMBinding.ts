@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Allows creation and management of a single binding within IAM policy for
+ * an existing Google Cloud Platform folder.
+ * 
+ * > **Note:** This resource _must not_ be used in conjunction with
+ *    `google_folder_iam_policy` or they will fight over what your policy
+ *    should be.
+ * 
+ * > **Note:** On create, this resource will overwrite members of any existing roles.
+ *     Use `import` and inspect the preview output to ensure
+ *     your existing members are preserved.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const admin = new gcp.folder.IAMBinding("admin", {
+ *     folder: department1.name,
+ *     members: ["user:alice@gmail.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
  */
 export class IAMBinding extends pulumi.CustomResource {

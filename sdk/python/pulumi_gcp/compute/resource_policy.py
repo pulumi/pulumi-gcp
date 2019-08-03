@@ -20,7 +20,7 @@ class ResourcePolicy(pulumi.CustomResource):
     snapshot_schedule_policy: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __name__=None, __opts__=None):
         """
-        Create a ResourcePolicy resource with the given unique name, props, and options.
+        A policy that can be attached to a resource to specify or schedule actions on that resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -99,7 +99,15 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The project in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The region in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -168,7 +176,15 @@ export interface ClusterIAMBindingState {
      */
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The region in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -187,7 +203,15 @@ export interface ClusterIAMBindingArgs {
      */
     readonly cluster: pulumi.Input<string>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The project in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The region in which the cluster belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

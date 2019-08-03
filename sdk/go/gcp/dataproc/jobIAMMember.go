@@ -100,10 +100,14 @@ func (r *JobIAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
+// The project in which the job belongs. If it
+// is not provided, this provider will use the provider default.
 func (r *JobIAMMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The region in which the job belongs. If it
+// is not provided, this provider will use the provider default.
 func (r *JobIAMMember) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -121,7 +125,11 @@ type JobIAMMemberState struct {
 	Etag interface{}
 	JobId interface{}
 	Member interface{}
+	// The project in which the job belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
+	// The region in which the job belongs. If it
+	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_job_iam_binding` can be used per role. Note that custom roles must be of the format
@@ -133,7 +141,11 @@ type JobIAMMemberState struct {
 type JobIAMMemberArgs struct {
 	JobId interface{}
 	Member interface{}
+	// The project in which the job belongs. If it
+	// is not provided, this provider will use the provider default.
 	Project interface{}
+	// The region in which the job belongs. If it
+	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `google_dataproc_job_iam_binding` can be used per role. Note that custom roles must be of the format

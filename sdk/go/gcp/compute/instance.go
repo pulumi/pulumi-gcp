@@ -143,6 +143,8 @@ func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// If true, allows this provider to stop the instance to update its properties.
+// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 func (r *Instance) AllowStoppingForUpdate() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
 }
@@ -170,6 +172,8 @@ func (r *Instance) CpuPlatform() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cpuPlatform"])
 }
 
+// Enable deletion protection on this instance. Defaults to false.
+// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
 func (r *Instance) DeletionProtection() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["deletionProtection"])
 }
@@ -305,6 +309,8 @@ func (r *Instance) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
+	// If true, allows this provider to stop the instance to update its properties.
+	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate interface{}
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
 	AttachedDisks interface{}
@@ -317,6 +323,8 @@ type InstanceState struct {
 	CanIpForward interface{}
 	// The CPU platform used by this instance.
 	CpuPlatform interface{}
+	// Enable deletion protection on this instance. Defaults to false.
+	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
 	DeletionProtection interface{}
 	// A brief description of this resource.
 	Description interface{}
@@ -385,6 +393,8 @@ type InstanceState struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// If true, allows this provider to stop the instance to update its properties.
+	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate interface{}
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
 	AttachedDisks interface{}
@@ -395,6 +405,8 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward interface{}
+	// Enable deletion protection on this instance. Defaults to false.
+	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
 	DeletionProtection interface{}
 	// A brief description of this resource.
 	Description interface{}

@@ -5,6 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages an organization-level logging exclusion. For more information see
+ * [the official documentation](https://cloud.google.com/logging/docs/) and
+ * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+ * 
+ * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+ * granted to the credentials used with this provider.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const my_exclusion = new gcp.logging.OrganizationExclusion("my-exclusion", {
+ *     description: "Exclude GCE instance debug logs",
+ *     // Exclude all DEBUG or lower severity messages relating to instances
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
+ *     orgId: "123456789",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_exclusion.html.markdown.
  */
 export class OrganizationExclusion extends pulumi.CustomResource {

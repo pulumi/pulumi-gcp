@@ -17,7 +17,14 @@ class Hl7Store(pulumi.CustomResource):
     self_link: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, parser_config=None, __name__=None, __opts__=None):
         """
-        Create a Hl7Store resource with the given unique name, props, and options.
+        A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
+        standard for Healthcare information exchange
+        
+        To get more information about Hl7V2Store, see:
+        
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.hl7V2Stores)
+        * How-to Guides
+            * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -10,7 +10,18 @@ from .. import utilities, tables
 
 class Services(pulumi.CustomResource):
     disable_on_destroy: pulumi.Output[bool]
+    """
+    Whether or not to disable APIs on project
+    when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+    true and the project is changed, this provider will force disable API services
+    managed by this provider for the previous project.
+    """
     project: pulumi.Output[str]
+    """
+    The project ID.
+    Changing this forces this provider to attempt to disable all previously managed
+    API services in the previous project.
+    """
     services: pulumi.Output[list]
     """
     The list of services that are enabled. Supports
@@ -32,6 +43,13 @@ class Services(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] disable_on_destroy: Whether or not to disable APIs on project
+               when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+               true and the project is changed, this provider will force disable API services
+               managed by this provider for the previous project.
+        :param pulumi.Input[str] project: The project ID.
+               Changing this forces this provider to attempt to disable all previously managed
+               API services in the previous project.
         :param pulumi.Input[list] services: The list of services that are enabled. Supports
                update.
 

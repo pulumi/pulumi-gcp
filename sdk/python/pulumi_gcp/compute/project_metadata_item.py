@@ -24,7 +24,10 @@ class ProjectMetadataItem(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, key=None, project=None, value=None, __name__=None, __opts__=None):
         """
-        Create a ProjectMetadataItem resource with the given unique name, props, and options.
+        Manages a single key/value pair on metadata common to all instances for
+        a project in GCE. Using `google_compute_project_metadata_item` lets you
+        manage a single key/value setting with this provider rather than the entire
+        project metadata map.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

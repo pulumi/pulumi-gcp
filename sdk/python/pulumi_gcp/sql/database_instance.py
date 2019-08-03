@@ -31,13 +31,27 @@ class DatabaseInstance(pulumi.CustomResource):
     `binary_log_enabled` set, as well as existing backups.
     """
     name: pulumi.Output[str]
+    """
+    The name of the instance. If the name is left
+    blank, this provider will randomly generate one when the instance is first
+    created. This is done because after a name is used, it cannot be reused for
+    up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+    """
     private_ip_address: pulumi.Output[str]
+    """
+    The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+    performing filtering.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
     public_ip_address: pulumi.Output[str]
+    """
+    The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+    performing filtering.
+    """
     region: pulumi.Output[str]
     """
     The region the instance will sit in. Note, first-generation Cloud SQL instance
@@ -70,7 +84,13 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, database_version=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, settings=None, __name__=None, __opts__=None):
         """
-        Create a DatabaseInstance resource with the given unique name, props, and options.
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+        
+        > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
+        default 'root'@'%' user with no password. This user will be deleted by this provider on
+        instance creation. You should use `google_sql_user` to define a custom user with
+        a restricted host and strong password.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -82,6 +102,10 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
+        :param pulumi.Input[str] name: The name of the instance. If the name is left
+               blank, this provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. Note, first-generation Cloud SQL instance

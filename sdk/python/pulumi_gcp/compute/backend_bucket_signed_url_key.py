@@ -19,7 +19,19 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, backend_bucket=None, key_value=None, name=None, project=None, __name__=None, __opts__=None):
         """
-        Create a BackendBucketSignedUrlKey resource with the given unique name, props, and options.
+        A key for signing Cloud CDN signed URLs for BackendBuckets.
+        
+        
+        To get more information about BackendBucketSignedUrlKey, see:
+        
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
+        * How-to Guides
+            * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+        
+        > **Warning:** All arguments including the key's value will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        Because the API does not return the sensitive key value,
+        we cannot confirm or reverse changes to a key outside of this provider.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

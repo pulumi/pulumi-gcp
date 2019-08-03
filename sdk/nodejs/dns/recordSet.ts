@@ -5,6 +5,121 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
+ * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+ * 
+ * > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource with this provider. In addition, the Google Cloud DNS API requires NS records to be present at all times, so this provider will not actually remove NS records during destroy but will report that it did.
+ * 
+ * ## Example Usage
+ * 
+ * ### Binding a DNS name to the ephemeral IP of a new instance:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const frontendInstance = new gcp.compute.Instance("frontend", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "g1-small",
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     zone: "us-central1-b",
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const frontendRecordSet = new gcp.dns.RecordSet("frontend", {
+ *     managedZone: prod.name,
+ *     rrdatas: [frontendInstance.networkInterfaces[0].accessConfig.0.natIp],
+ *     ttl: 300,
+ *     type: "A",
+ * });
+ * ```
+ * 
+ * ### Adding an A record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const recordSet = new gcp.dns.RecordSet("a", {
+ *     managedZone: prod.name,
+ *     rrdatas: ["8.8.8.8"],
+ *     ttl: 300,
+ *     type: "A",
+ * });
+ * ```
+ * 
+ * ### Adding an MX record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const mx = new gcp.dns.RecordSet("mx", {
+ *     managedZone: prod.name,
+ *     rrdatas: [
+ *         "1 aspmx.l.google.com.",
+ *         "5 alt1.aspmx.l.google.com.",
+ *         "5 alt2.aspmx.l.google.com.",
+ *         "10 alt3.aspmx.l.google.com.",
+ *         "10 alt4.aspmx.l.google.com.",
+ *     ],
+ *     ttl: 3600,
+ *     type: "MX",
+ * });
+ * ```
+ * 
+ * ### Adding an SPF record
+ * 
+ * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const spf = new gcp.dns.RecordSet("spf", {
+ *     managedZone: prod.name,
+ *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
+ *     ttl: 300,
+ *     type: "TXT",
+ * });
+ * ```
+ * 
+ * ### Adding a CNAME record
+ * 
+ *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const cname = new gcp.dns.RecordSet("cname", {
+ *     managedZone: prod.name,
+ *     rrdatas: ["frontend.mydomain.com."],
+ *     ttl: 300,
+ *     type: "CNAME",
+ * });
+ * ```
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
  */
 export class RecordSet extends pulumi.CustomResource {
@@ -48,6 +163,10 @@ export class RecordSet extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     */
     public readonly rrdatas!: pulumi.Output<string[]>;
     /**
      * The time-to-live of this record set (seconds).
@@ -126,6 +245,10 @@ export interface RecordSetState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     */
     readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).
@@ -155,6 +278,10 @@ export interface RecordSetArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     */
     readonly rrdatas: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).

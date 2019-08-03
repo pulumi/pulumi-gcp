@@ -17,7 +17,17 @@ class DomainMapping(pulumi.CustomResource):
     status: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __name__=None, __opts__=None):
         """
-        Create a DomainMapping resource with the given unique name, props, and options.
+        Resource to hold the state and status of a user's domain mapping.
+        
+        **Note:** Cloud Run as a product is in beta, however the REST API is currently still an alpha.
+        Please use this with caution as it may change when the API moves to beta.
+        
+        
+        To get more information about DomainMapping, see:
+        
+        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.domainmappings)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

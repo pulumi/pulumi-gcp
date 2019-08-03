@@ -108,6 +108,11 @@ func (r *TargetPool) HealthChecks() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["healthChecks"])
 }
 
+// List of instances in the pool. They can be given as
+// URLs, or in the form of "zone/name". Note that the instances need not exist
+// at the time of target pool creation, so there is no need to use
+// interpolators to create a dependency on the instances from the
+// target pool.
 func (r *TargetPool) Instances() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["instances"])
 }
@@ -155,6 +160,11 @@ type TargetPoolState struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `google_compute_http_health_check` is supported.
 	HealthChecks interface{}
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use
+	// interpolators to create a dependency on the instances from the
+	// target pool.
 	Instances interface{}
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -186,6 +196,11 @@ type TargetPoolArgs struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `google_compute_http_health_check` is supported.
 	HealthChecks interface{}
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use
+	// interpolators to create a dependency on the instances from the
+	// target pool.
 	Instances interface{}
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.

@@ -8,6 +8,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+// 
+// > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
+// default 'root'@'%' user with no password. This user will be deleted by this provider on
+// instance creation. You should use `google_sql_user` to define a custom user with
+// a restricted host and strong password.
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
 type DatabaseInstance struct {
 	s *pulumi.ResourceState
@@ -121,10 +129,16 @@ func (r *DatabaseInstance) MasterInstanceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterInstanceName"])
 }
 
+// The name of the instance. If the name is left
+// blank, this provider will randomly generate one when the instance is first
+// created. This is done because after a name is used, it cannot be reused for
+// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (r *DatabaseInstance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+// performing filtering.
 func (r *DatabaseInstance) PrivateIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateIpAddress"])
 }
@@ -135,6 +149,8 @@ func (r *DatabaseInstance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+// performing filtering.
 func (r *DatabaseInstance) PublicIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["publicIpAddress"])
 }
@@ -194,11 +210,19 @@ type DatabaseInstanceState struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
+	// The name of the instance. If the name is left
+	// blank, this provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
+	// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+	// performing filtering.
 	PrivateIpAddress interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
+	// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
+	// performing filtering.
 	PublicIpAddress interface{}
 	// The region the instance will sit in. Note, first-generation Cloud SQL instance
 	// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
@@ -234,6 +258,10 @@ type DatabaseInstanceArgs struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binary_log_enabled` set, as well as existing backups.
 	MasterInstanceName interface{}
+	// The name of the instance. If the name is left
+	// blank, this provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

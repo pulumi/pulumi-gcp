@@ -42,7 +42,11 @@ class Account(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, display_name=None, project=None, __name__=None, __opts__=None):
         """
-        Create a Account resource with the given unique name, props, and options.
+        Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+        
+        > Creation of service accounts is eventually consistent, and that can lead to
+        errors when you try to apply ACLs to service accounts immediately after
+        creation.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -90,6 +90,11 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     Structure is documented below.
     """
     wait_for_instances: pulumi.Output[bool]
+    """
+    Whether to wait for all instances to be created/updated before
+    returning. Note that if this is set to true and the operation does not succeed, this provider will
+    continue trying until it times out.
+    """
     def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, name=None, named_ports=None, project=None, region=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, __name__=None, __opts__=None):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
@@ -133,6 +138,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] versions: ) Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, this provider will
+               continue trying until it times out.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
         """

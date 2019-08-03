@@ -32,7 +32,12 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, crypto_key_id=None, members=None, role=None, __name__=None, __opts__=None):
         """
-        Create a CryptoKeyIAMBinding resource with the given unique name, props, and options.
+        Allows creation and management of a single binding within IAM policy for
+        an existing Google Cloud KMS crypto key.
+        
+        > **Note:** On create, this resource will overwrite members of any existing roles.
+            Use `import` and inspect the preview output to ensure
+            your existing members are preserved.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

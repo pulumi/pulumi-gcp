@@ -36,7 +36,14 @@ class BillingAccountSink(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, billing_account=None, destination=None, filter=None, name=None, __name__=None, __opts__=None):
         """
-        Create a BillingAccountSink resource with the given unique name, props, and options.
+        Manages a billing account logging sink. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/) and
+        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        
+        > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+        [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
+        the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
+        typical IAM roles granted on a project.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -43,6 +43,10 @@ class NodePool(pulumi.CustomResource):
     for more information.
     """
     name: pulumi.Output[str]
+    """
+    The name of the node pool. If left blank, this provider will
+    auto-generate a unique name.
+    """
     name_prefix: pulumi.Output[str]
     node_config: pulumi.Output[dict]
     """
@@ -65,6 +69,14 @@ class NodePool(pulumi.CustomResource):
     regional clusters). `zone` has been deprecated in favor of `location`.
     """
     version: pulumi.Output[str]
+    """
+    The Kubernetes version for the nodes in this pool. Note that if this field
+    and `auto_upgrade` are both specified, they will fight each other for what the node version should
+    be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+    recommended that you specify explicit versions as this provider will see spurious diffs
+    when fuzzy versions are used. See the `google_container_engine_versions` data source's
+    `version_prefix` field to approximate fuzzy versions.
+    """
     zone: pulumi.Output[str]
     """
     The zone in which the cluster resides. `zone`
@@ -92,6 +104,8 @@ class NodePool(pulumi.CustomResource):
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+               auto-generate a unique name.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                google_container_cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
@@ -100,6 +114,12 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[str] region: The region in which the cluster resides (for
                regional clusters). `zone` has been deprecated in favor of `location`.
+        :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
+               and `auto_upgrade` are both specified, they will fight each other for what the node version should
+               be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as this provider will see spurious diffs
+               when fuzzy versions are used. See the `google_container_engine_versions` data source's
+               `version_prefix` field to approximate fuzzy versions.
         :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
                has been deprecated in favor of `location`.
 

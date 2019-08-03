@@ -8,6 +8,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+// 
+// 
+// To get more information about NodeGroup, see:
+// 
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+// * How-to Guides
+//     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+// 
+// > **Warning:** Due to limitations of the API, this provider cannot update the
+// number of nodes in a node group and changes to node group size either
+// through config or through external changes will cause
+// this provider to delete and recreate the node group.
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
 type NodeGroup struct {
 	s *pulumi.ResourceState

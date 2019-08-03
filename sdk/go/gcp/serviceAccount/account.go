@@ -8,6 +8,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
+// 
+// > Creation of service accounts is eventually consistent, and that can lead to
+// errors when you try to apply ACLs to service accounts immediately after
+// creation.
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account.html.markdown.
 type Account struct {
 	s *pulumi.ResourceState

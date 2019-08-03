@@ -80,6 +80,13 @@ export class TargetPool extends pulumi.CustomResource {
      * legacy `google_compute_http_health_check` is supported.
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use
+     * interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     public readonly instances!: pulumi.Output<string[]>;
     /**
      * A unique name for the resource, required by GCE. Changing
@@ -176,6 +183,13 @@ export interface TargetPoolState {
      * legacy `google_compute_http_health_check` is supported.
      */
     readonly healthChecks?: pulumi.Input<string>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use
+     * interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the resource, required by GCE. Changing
@@ -227,6 +241,13 @@ export interface TargetPoolArgs {
      * legacy `google_compute_http_health_check` is supported.
      */
     readonly healthChecks?: pulumi.Input<string>;
+    /**
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of "zone/name". Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use
+     * interpolators to create a dependency on the instances from the
+     * target pool.
+     */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the resource, required by GCE. Changing
