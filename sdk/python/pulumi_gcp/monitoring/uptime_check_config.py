@@ -91,6 +91,10 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__['name'] = None
         __props__['uptime_check_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(UptimeCheckConfig, __self__).__init__(
             'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
             resource_name,

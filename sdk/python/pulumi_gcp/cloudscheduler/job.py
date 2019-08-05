@@ -81,6 +81,10 @@ class Job(pulumi.CustomResource):
 
         __props__['time_zone'] = time_zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Job, __self__).__init__(
             'gcp:cloudscheduler/job:Job',
             resource_name,

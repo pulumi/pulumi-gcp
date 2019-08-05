@@ -170,6 +170,10 @@ class Function(pulumi.CustomResource):
 
         __props__['trigger_http'] = trigger_http
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,

@@ -84,6 +84,10 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TunnelInstanceIAMBinding, __self__).__init__(
             'gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding',
             resource_name,

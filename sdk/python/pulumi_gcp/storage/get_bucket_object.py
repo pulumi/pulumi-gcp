@@ -98,7 +98,15 @@ class GetBucketObjectResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_bucket_object(bucket=None,name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_bucket_object(bucket=None,name=None,opts=None):
     """
     Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
@@ -111,7 +119,11 @@ async def get_bucket_object(bucket=None,name=None,opts=None):
 
     __args__['bucket'] = bucket
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('gcp:storage/getBucketObject:getBucketObject', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getBucketObject:getBucketObject', __args__, opts=opts).value
 
     return GetBucketObjectResult(
         bucket=__ret__.get('bucket'),

@@ -58,6 +58,10 @@ class SharedVPCServiceProject(pulumi.CustomResource):
             raise TypeError("Missing required property 'service_project'")
         __props__['service_project'] = service_project
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SharedVPCServiceProject, __self__).__init__(
             'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
             resource_name,

@@ -65,7 +65,15 @@ class GetEngineVersionsResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_engine_versions(location=None,project=None,region=None,version_prefix=None,zone=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_engine_versions(location=None,project=None,region=None,version_prefix=None,zone=None,opts=None):
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
     
@@ -84,7 +92,11 @@ async def get_engine_versions(location=None,project=None,region=None,version_pre
     __args__['region'] = region
     __args__['versionPrefix'] = version_prefix
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts).value
 
     return GetEngineVersionsResult(
         default_cluster_version=__ret__.get('defaultClusterVersion'),

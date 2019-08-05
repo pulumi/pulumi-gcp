@@ -44,7 +44,15 @@ class GetOrganizationPolicyResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_organization_policy(constraint=None,folder=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_organization_policy(constraint=None,folder=None,opts=None):
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
@@ -56,7 +64,11 @@ async def get_organization_policy(constraint=None,folder=None,opts=None):
 
     __args__['constraint'] = constraint
     __args__['folder'] = folder
-    __ret__ = await pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value
 
     return GetOrganizationPolicyResult(
         boolean_policies=__ret__.get('booleanPolicies'),

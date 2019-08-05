@@ -38,7 +38,15 @@ class GetAccountKeyResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account_key(name=None,project=None,public_key_type=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_account_key(name=None,project=None,public_key_type=None,opts=None):
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
 
@@ -49,7 +57,11 @@ async def get_account_key(name=None,project=None,public_key_type=None,opts=None)
     __args__['name'] = name
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
-    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts).value
 
     return GetAccountKeyResult(
         key_algorithm=__ret__.get('keyAlgorithm'),

@@ -38,7 +38,15 @@ class GetAccountAccessTokenResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_service_account=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_service_account=None,opts=None):
     """
     This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
     
@@ -53,7 +61,11 @@ async def get_account_access_token(delegates=None,lifetime=None,scopes=None,targ
     __args__['lifetime'] = lifetime
     __args__['scopes'] = scopes
     __args__['targetServiceAccount'] = target_service_account
-    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts).value
 
     return GetAccountAccessTokenResult(
         access_token=__ret__.get('accessToken'),

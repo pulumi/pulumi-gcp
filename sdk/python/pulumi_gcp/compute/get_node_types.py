@@ -32,7 +32,15 @@ class GetNodeTypesResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_node_types(project=None,zone=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_node_types(project=None,zone=None,opts=None):
     """
     Provides available node types for Compute Engine sole-tenant nodes in a zone
     for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
@@ -43,7 +51,11 @@ async def get_node_types(project=None,zone=None,opts=None):
 
     __args__['project'] = project
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts).value
 
     return GetNodeTypesResult(
         names=__ret__.get('names'),

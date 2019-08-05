@@ -172,6 +172,10 @@ class NodePool(pulumi.CustomResource):
 
         __props__['instance_group_urls'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NodePool, __self__).__init__(
             'gcp:container/nodePool:NodePool',
             resource_name,

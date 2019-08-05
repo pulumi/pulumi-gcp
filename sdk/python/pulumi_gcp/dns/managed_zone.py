@@ -85,6 +85,10 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__['name_servers'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
             resource_name,

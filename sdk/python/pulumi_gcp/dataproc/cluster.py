@@ -86,6 +86,10 @@ class Cluster(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',
             resource_name,

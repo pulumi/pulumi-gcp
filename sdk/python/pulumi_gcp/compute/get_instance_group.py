@@ -65,7 +65,15 @@ class GetInstanceGroupResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None):
     """
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
@@ -79,7 +87,11 @@ async def get_instance_group(name=None,project=None,self_link=None,zone=None,opt
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts).value
 
     return GetInstanceGroupResult(
         description=__ret__.get('description'),

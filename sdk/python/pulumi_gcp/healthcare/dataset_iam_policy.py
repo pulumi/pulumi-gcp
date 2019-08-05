@@ -65,6 +65,10 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DatasetIamPolicy, __self__).__init__(
             'gcp:healthcare/datasetIamPolicy:DatasetIamPolicy',
             resource_name,

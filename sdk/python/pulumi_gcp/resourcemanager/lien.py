@@ -58,6 +58,10 @@ class Lien(pulumi.CustomResource):
         __props__['create_time'] = None
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Lien, __self__).__init__(
             'gcp:resourcemanager/lien:Lien',
             resource_name,

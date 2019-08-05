@@ -192,6 +192,10 @@ class Table(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['type'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Table, __self__).__init__(
             'gcp:bigquery/table:Table',
             resource_name,

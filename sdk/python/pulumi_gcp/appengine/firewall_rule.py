@@ -66,6 +66,10 @@ class FirewallRule(pulumi.CustomResource):
             raise TypeError("Missing required property 'source_range'")
         __props__['source_range'] = source_range
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(FirewallRule, __self__).__init__(
             'gcp:appengine/firewallRule:FirewallRule',
             resource_name,

@@ -142,6 +142,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['tags_fingerprint'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(InstanceFromTemplate, __self__).__init__(
             'gcp:compute/instanceFromTemplate:InstanceFromTemplate',
             resource_name,

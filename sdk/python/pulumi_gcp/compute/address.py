@@ -102,6 +102,10 @@ class Address(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['users'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Address, __self__).__init__(
             'gcp:compute/address:Address',
             resource_name,

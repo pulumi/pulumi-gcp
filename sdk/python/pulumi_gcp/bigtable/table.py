@@ -74,6 +74,10 @@ class Table(pulumi.CustomResource):
 
         __props__['split_keys'] = split_keys
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Table, __self__).__init__(
             'gcp:bigtable/table:Table',
             resource_name,

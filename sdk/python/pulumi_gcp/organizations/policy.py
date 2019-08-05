@@ -93,6 +93,10 @@ class Policy(pulumi.CustomResource):
         __props__['etag'] = None
         __props__['update_time'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Policy, __self__).__init__(
             'gcp:organizations/policy:Policy',
             resource_name,

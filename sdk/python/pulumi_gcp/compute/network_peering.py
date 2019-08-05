@@ -91,6 +91,10 @@ class NetworkPeering(pulumi.CustomResource):
         __props__['state'] = None
         __props__['state_details'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NetworkPeering, __self__).__init__(
             'gcp:compute/networkPeering:NetworkPeering',
             resource_name,

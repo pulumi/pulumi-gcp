@@ -70,6 +70,10 @@ class Metric(pulumi.CustomResource):
 
         __props__['value_extractor'] = value_extractor
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Metric, __self__).__init__(
             'gcp:logging/metric:Metric',
             resource_name,

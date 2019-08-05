@@ -64,6 +64,10 @@ class Index(pulumi.CustomResource):
 
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Index, __self__).__init__(
             'gcp:firestore/index:Index',
             resource_name,

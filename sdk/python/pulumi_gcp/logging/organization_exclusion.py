@@ -83,6 +83,10 @@ class OrganizationExclusion(pulumi.CustomResource):
             raise TypeError("Missing required property 'org_id'")
         __props__['org_id'] = org_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(OrganizationExclusion, __self__).__init__(
             'gcp:logging/organizationExclusion:OrganizationExclusion',
             resource_name,

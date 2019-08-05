@@ -92,6 +92,10 @@ class RecordSet(pulumi.CustomResource):
             raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RecordSet, __self__).__init__(
             'gcp:dns/recordSet:RecordSet',
             resource_name,

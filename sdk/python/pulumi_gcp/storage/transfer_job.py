@@ -104,6 +104,10 @@ class TransferJob(pulumi.CustomResource):
         __props__['last_modification_time'] = None
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TransferJob, __self__).__init__(
             'gcp:storage/transferJob:TransferJob',
             resource_name,

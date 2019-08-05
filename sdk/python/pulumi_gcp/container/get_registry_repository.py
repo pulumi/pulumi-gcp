@@ -29,7 +29,15 @@ class GetRegistryRepositoryResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_registry_repository(project=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_registry_repository(project=None,region=None,opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
@@ -41,7 +49,11 @@ async def get_registry_repository(project=None,region=None,opts=None):
 
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts).value
 
     return GetRegistryRepositoryResult(
         project=__ret__.get('project'),

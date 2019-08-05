@@ -72,6 +72,10 @@ class DatasetIamMember(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DatasetIamMember, __self__).__init__(
             'gcp:healthcare/datasetIamMember:DatasetIamMember',
             resource_name,

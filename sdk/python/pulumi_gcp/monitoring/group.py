@@ -71,6 +71,10 @@ class Group(pulumi.CustomResource):
 
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Group, __self__).__init__(
             'gcp:monitoring/group:Group',
             resource_name,

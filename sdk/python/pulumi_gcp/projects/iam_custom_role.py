@@ -103,6 +103,10 @@ class IAMCustomRole(pulumi.CustomResource):
 
         __props__['deleted'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(IAMCustomRole, __self__).__init__(
             'gcp:projects/iAMCustomRole:IAMCustomRole',
             resource_name,

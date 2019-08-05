@@ -72,6 +72,10 @@ class Hl7StoreIamMember(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Hl7StoreIamMember, __self__).__init__(
             'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
             resource_name,

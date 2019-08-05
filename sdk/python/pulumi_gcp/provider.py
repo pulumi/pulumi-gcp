@@ -150,6 +150,10 @@ class Provider(pulumi.ProviderResource):
             zone = utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
         __props__['zone'] = zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Provider, __self__).__init__(
             'gcp',
             resource_name,

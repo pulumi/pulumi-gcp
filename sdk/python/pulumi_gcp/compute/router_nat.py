@@ -178,6 +178,10 @@ class RouterNat(pulumi.CustomResource):
 
         __props__['udp_idle_timeout_sec'] = udp_idle_timeout_sec
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RouterNat, __self__).__init__(
             'gcp:compute/routerNat:RouterNat',
             resource_name,

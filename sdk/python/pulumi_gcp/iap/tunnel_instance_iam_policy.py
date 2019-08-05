@@ -77,6 +77,10 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TunnelInstanceIAMPolicy, __self__).__init__(
             'gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy',
             resource_name,

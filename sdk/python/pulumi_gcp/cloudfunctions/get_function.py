@@ -116,7 +116,15 @@ class GetFunctionResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_function(name=None,project=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_function(name=None,project=None,region=None,opts=None):
     """
     Get information about a Google Cloud Function. For more information see
     the [official documentation](https://cloud.google.com/functions/docs/)
@@ -129,7 +137,11 @@ async def get_function(name=None,project=None,region=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts).value
 
     return GetFunctionResult(
         available_memory_mb=__ret__.get('availableMemoryMb'),

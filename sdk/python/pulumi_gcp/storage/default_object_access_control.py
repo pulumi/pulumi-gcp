@@ -81,6 +81,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         __props__['generation'] = None
         __props__['project_team'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DefaultObjectAccessControl, __self__).__init__(
             'gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl',
             resource_name,

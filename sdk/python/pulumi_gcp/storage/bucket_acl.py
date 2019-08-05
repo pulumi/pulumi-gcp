@@ -66,6 +66,10 @@ class BucketACL(pulumi.CustomResource):
 
         __props__['role_entities'] = role_entities
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(BucketACL, __self__).__init__(
             'gcp:storage/bucketACL:BucketACL',
             resource_name,

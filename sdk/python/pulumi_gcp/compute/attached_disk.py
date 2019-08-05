@@ -55,6 +55,10 @@ class AttachedDisk(pulumi.CustomResource):
 
         __props__['zone'] = zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(AttachedDisk, __self__).__init__(
             'gcp:compute/attachedDisk:AttachedDisk',
             resource_name,

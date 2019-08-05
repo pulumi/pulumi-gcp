@@ -128,6 +128,10 @@ class Key(pulumi.CustomResource):
         __props__['valid_after'] = None
         __props__['valid_before'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Key, __self__).__init__(
             'gcp:serviceAccount/key:Key',
             resource_name,

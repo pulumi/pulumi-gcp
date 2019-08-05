@@ -33,7 +33,15 @@ class GetProjectServiceAccountResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project_service_account(project=None,user_project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_project_service_account(project=None,user_project=None,opts=None):
     """
     Get the email address of a project's unique Google Cloud Storage service account.
     
@@ -49,7 +57,11 @@ async def get_project_service_account(project=None,user_project=None,opts=None):
 
     __args__['project'] = project
     __args__['userProject'] = user_project
-    __ret__ = await pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts).value
 
     return GetProjectServiceAccountResult(
         email_address=__ret__.get('emailAddress'),

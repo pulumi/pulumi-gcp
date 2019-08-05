@@ -52,7 +52,15 @@ class GetAccountResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_account(account_id=None,project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_account(account_id=None,project=None,opts=None):
     """
     Get the service account from a project. For more information see
     the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
@@ -63,7 +71,11 @@ async def get_account(account_id=None,project=None,opts=None):
 
     __args__['accountId'] = account_id
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts).value
 
     return GetAccountResult(
         account_id=__ret__.get('accountId'),
