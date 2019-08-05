@@ -54,11 +54,13 @@ const (
 	gcpRuntimeConfig        = "runtimeconfig"        // Runtime Config resources
 	gcpServiceNetworking    = "servicenetworking"    // Service Networking resources
 	gcpSQL                  = "sql"                  // SQL resources
-	gcpServiceAccount       = "serviceAccount"       // Service Account resources
+	gcpServiceAccount       = "serviceaccount"       // Service Account resources
 	gcpSourceRepo           = "sourcerepo"           // Source Repo resources
 	gcpSpanner              = "spanner"              // Spanner Resources
 	gcpStorage              = "storage"              // Storage resources
 	gcpTPU                  = "tpu"                  // Tensor Processing Units
+
+	gcpLegacyServiceAccount = "serviceAccount" // Legacy Service Account resources
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -358,36 +360,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpProject, "UsageExportBucket"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
-				},
-			},
-			"google_service_account": {
-				Tok: gcpResource(gcpServiceAccount, "Account"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account.html.markdown",
-				},
-			},
-			"google_service_account_iam_binding": {
-				Tok: gcpResource(gcpServiceAccount, "IAMBinding"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_iam_member": {
-				Tok: gcpResource(gcpServiceAccount, "IAMMember"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_iam_policy": {
-				Tok: gcpResource(gcpServiceAccount, "IAMPolicy"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_iam.html.markdown",
-				},
-			},
-			"google_service_account_key": {
-				Tok: gcpResource(gcpServiceAccount, "Key"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_service_account_key.html.markdown",
 				},
 			},
 
@@ -1244,24 +1216,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_storage_transfer_project_service_account.html.markdown",
 				},
 			},
-			"google_service_account": {
-				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
-				Docs: &tfbridge.DocInfo{
-					Source: "datasource_google_service_account.html.markdown",
-				},
-			},
-			"google_service_account_access_token": {
-				Tok: gcpDataSource(gcpServiceAccount, "getAccountAccessToken"),
-				Docs: &tfbridge.DocInfo{
-					Source: "datasource_google_service_account_access_token.html.markdown",
-				},
-			},
-			"google_service_account_key": {
-				Tok: gcpDataSource(gcpServiceAccount, "getAccountKey"),
-				Docs: &tfbridge.DocInfo{
-					Source: "datasource_google_service_account_key.html.markdown",
-				},
-			},
 			"google_tpu_tensorflow_versions": {
 				Tok: gcpDataSource(gcpTPU, "getTensorflowVersions"),
 			},
@@ -1316,6 +1270,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	renameLegacyModules(&prov)
+
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
 	const gcpName = "name"
@@ -1336,4 +1292,138 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	return prov
+}
+
+func renameLegacyModules(prov *tfbridge.ProviderInfo) {
+
+	renameResourceWithAlias := func(
+		tfName string,
+		tokName string,
+		newTokName string,
+		legacyModule string,
+		currentModule string,
+		info *tfbridge.ResourceInfo) {
+
+		legacyTFName := tfName + "_legacy"
+
+		if info == nil {
+			info = &tfbridge.ResourceInfo{}
+		}
+		legacyInfo := *info
+		currentInfo := *info
+
+		legacyInfo.Tok = gcpResource(legacyModule, tokName)
+		legacyType := legacyInfo.Tok.String()
+
+		if newTokName != "" {
+			tokName = newTokName
+		}
+
+		currentInfo.Tok = gcpResource(currentModule, tokName)
+		currentInfo.Aliases = []tfbridge.AliasInfo{
+			{Type: &legacyType},
+		}
+
+		if legacyInfo.Docs == nil {
+			legacyInfo.Docs = &tfbridge.DocInfo{
+				Source: tfName[len("azurerm_"):] + ".html.markdown",
+			}
+		}
+
+		prov.Resources[tfName] = &currentInfo
+		prov.Resources[legacyTFName] = &legacyInfo
+		prov.P.ResourcesMap[legacyTFName] = prov.P.ResourcesMap[tfName]
+	}
+
+	renameDataSourceWithAlias := func(
+		tfName string,
+		tokName string,
+		newTokName string,
+		legacyModule string,
+		currentModule string,
+		info *tfbridge.DataSourceInfo) {
+
+		legacyTFName := tfName + "_legacy"
+
+		if info == nil {
+			info = &tfbridge.DataSourceInfo{}
+		}
+		legacyInfo := *info
+		currentInfo := *info
+
+		legacyInfo.Tok = gcpDataSource(legacyModule, tokName)
+
+		if newTokName != "" {
+			tokName = newTokName
+		}
+
+		currentInfo.Tok = gcpDataSource(currentModule, tokName)
+
+		if legacyInfo.Docs == nil {
+			legacyInfo.Docs = &tfbridge.DocInfo{
+				Source: tfName[len("azurerm_"):] + ".html.markdown",
+			}
+		}
+
+		prov.DataSources[tfName] = &currentInfo
+		prov.DataSources[legacyTFName] = &legacyInfo
+		prov.P.DataSourcesMap[legacyTFName] = prov.P.DataSourcesMap[tfName]
+	}
+
+	renameResourceWithAlias("google_service_account", "Account", "", gcpLegacyServiceAccount,
+		gcpServiceAccount, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_service_account.html.markdown",
+			},
+		},
+	)
+	renameResourceWithAlias("google_service_account_iam_binding", "IAMBinding", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_service_account_iam.html.markdown",
+			},
+		},
+	)
+	renameResourceWithAlias("google_service_account_iam_member", "IAMMember", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_service_account_iam.html.markdown",
+			},
+		},
+	)
+	renameResourceWithAlias("google_service_account_iam_policy", "IAMPolicy", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_service_account_iam.html.markdown",
+			},
+		},
+	)
+	renameResourceWithAlias("google_service_account_key", "Key", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_service_account_key.html.markdown",
+			},
+		},
+	)
+	renameDataSourceWithAlias("google_service_account", "getAccount", "", gcpLegacyServiceAccount,
+		gcpServiceAccount, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "datasource_google_service_account.html.markdown",
+			},
+		},
+	)
+	renameDataSourceWithAlias("google_service_account_access_token", "getAccountAccessToken", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "datasource_google_service_account_access_token.html.markdown",
+			},
+		},
+	)
+	renameDataSourceWithAlias("google_service_account_key", "getAccountKey", "",
+		gcpLegacyServiceAccount, gcpServiceAccount, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "datasource_google_service_account_key.html.markdown",
+			},
+		},
+	)
 }
