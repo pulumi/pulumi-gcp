@@ -114,6 +114,10 @@ class Job(pulumi.CustomResource):
         __props__['driver_output_resource_uri'] = None
         __props__['status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,

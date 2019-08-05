@@ -62,6 +62,10 @@ class Dataset(pulumi.CustomResource):
 
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Dataset, __self__).__init__(
             'gcp:healthcare/dataset:Dataset',
             resource_name,

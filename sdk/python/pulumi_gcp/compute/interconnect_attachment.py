@@ -94,6 +94,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['state'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(InterconnectAttachment, __self__).__init__(
             'gcp:compute/interconnectAttachment:InterconnectAttachment',
             resource_name,

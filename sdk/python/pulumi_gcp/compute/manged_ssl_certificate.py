@@ -93,6 +93,10 @@ class MangedSslCertificate(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['subject_alternative_names'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(MangedSslCertificate, __self__).__init__(
             'gcp:compute/mangedSslCertificate:MangedSslCertificate',
             resource_name,

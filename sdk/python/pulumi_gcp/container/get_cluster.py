@@ -155,7 +155,15 @@ class GetClusterResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
     """
     Get info about a GKE cluster from its name and location.
 
@@ -168,7 +176,11 @@ async def get_cluster(location=None,name=None,project=None,region=None,zone=None
     __args__['project'] = project
     __args__['region'] = region
     __args__['zone'] = zone
-    __ret__ = await pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts).value
 
     return GetClusterResult(
         additional_zones=__ret__.get('additionalZones'),

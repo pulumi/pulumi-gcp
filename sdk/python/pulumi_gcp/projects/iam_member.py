@@ -78,6 +78,10 @@ class IAMMember(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(IAMMember, __self__).__init__(
             'gcp:projects/iAMMember:IAMMember',
             resource_name,

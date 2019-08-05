@@ -92,6 +92,10 @@ class NotificationChannel(pulumi.CustomResource):
         __props__['name'] = None
         __props__['verification_status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NotificationChannel, __self__).__init__(
             'gcp:monitoring/notificationChannel:NotificationChannel',
             resource_name,

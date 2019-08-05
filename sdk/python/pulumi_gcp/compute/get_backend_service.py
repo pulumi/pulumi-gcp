@@ -113,7 +113,15 @@ class GetBackendServiceResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_backend_service(name=None,project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_backend_service(name=None,project=None,opts=None):
     """
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -125,7 +133,11 @@ async def get_backend_service(name=None,project=None,opts=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts).value
 
     return GetBackendServiceResult(
         affinity_cookie_ttl_sec=__ret__.get('affinityCookieTtlSec'),

@@ -96,6 +96,10 @@ class RegionBackendService(pulumi.CustomResource):
         __props__['fingerprint'] = None
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RegionBackendService, __self__).__init__(
             'gcp:compute/regionBackendService:RegionBackendService',
             resource_name,

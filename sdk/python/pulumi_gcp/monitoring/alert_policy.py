@@ -80,6 +80,10 @@ class AlertPolicy(pulumi.CustomResource):
         __props__['creation_record'] = None
         __props__['name'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(AlertPolicy, __self__).__init__(
             'gcp:monitoring/alertPolicy:AlertPolicy',
             resource_name,

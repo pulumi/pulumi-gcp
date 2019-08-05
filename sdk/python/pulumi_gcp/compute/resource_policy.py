@@ -54,6 +54,10 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ResourcePolicy, __self__).__init__(
             'gcp:compute/resourcePolicy:ResourcePolicy',
             resource_name,

@@ -122,6 +122,10 @@ class RouterPeer(pulumi.CustomResource):
 
         __props__['ip_address'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
             resource_name,

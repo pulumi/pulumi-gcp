@@ -35,7 +35,15 @@ class GetKMSKeyRingResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_kms_key_ring(location=None,name=None,project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     """
     Provides access to Google Cloud Platform KMS KeyRing. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
@@ -52,7 +60,11 @@ async def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts).value
 
     return GetKMSKeyRingResult(
         location=__ret__.get('location'),

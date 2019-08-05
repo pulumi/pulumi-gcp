@@ -73,7 +73,15 @@ class GetSubnetworkResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a subnetwork within GCE from its name and region.
 
@@ -85,7 +93,11 @@ async def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=
     __args__['project'] = project
     __args__['region'] = region
     __args__['selfLink'] = self_link
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts).value
 
     return GetSubnetworkResult(
         description=__ret__.get('description'),

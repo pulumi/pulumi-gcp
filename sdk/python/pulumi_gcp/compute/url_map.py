@@ -75,6 +75,10 @@ class URLMap(pulumi.CustomResource):
         __props__['map_id'] = None
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(URLMap, __self__).__init__(
             'gcp:compute/uRLMap:URLMap',
             resource_name,

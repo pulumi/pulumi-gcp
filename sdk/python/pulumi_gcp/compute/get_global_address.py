@@ -44,7 +44,15 @@ class GetGlobalAddressResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_global_address(name=None,project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_global_address(name=None,project=None,opts=None):
     """
     Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
@@ -55,7 +63,11 @@ async def get_global_address(name=None,project=None,opts=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts).value
 
     return GetGlobalAddressResult(
         address=__ret__.get('address'),

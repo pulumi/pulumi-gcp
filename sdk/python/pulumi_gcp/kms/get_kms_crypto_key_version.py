@@ -50,7 +50,15 @@ class GetKMSCryptoKeyVersionResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts=None):
     """
     Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
@@ -66,7 +74,11 @@ async def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=Non
     __args__['cryptoKey'] = crypto_key
     __args__['publicKey'] = public_key
     __args__['version'] = version
-    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts).value
 
     return GetKMSCryptoKeyVersionResult(
         algorithm=__ret__.get('algorithm'),

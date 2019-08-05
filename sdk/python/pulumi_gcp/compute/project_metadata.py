@@ -59,6 +59,10 @@ class ProjectMetadata(pulumi.CustomResource):
 
         __props__['project'] = project
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ProjectMetadata, __self__).__init__(
             'gcp:compute/projectMetadata:ProjectMetadata',
             resource_name,

@@ -61,6 +61,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ExternalVpnGateway, __self__).__init__(
             'gcp:compute/externalVpnGateway:ExternalVpnGateway',
             resource_name,

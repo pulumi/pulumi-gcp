@@ -76,6 +76,10 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         __props__['zone'] = zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(NetworkEndpoint, __self__).__init__(
             'gcp:compute/networkEndpoint:NetworkEndpoint',
             resource_name,

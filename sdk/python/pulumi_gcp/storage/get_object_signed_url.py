@@ -50,7 +50,15 @@ class GetObjectSignedUrlResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credentials=None,duration=None,extension_headers=None,http_method=None,path=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credentials=None,duration=None,extension_headers=None,http_method=None,path=None,opts=None):
     """
     The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
     
@@ -68,7 +76,11 @@ async def get_object_signed_url(bucket=None,content_md5=None,content_type=None,c
     __args__['extensionHeaders'] = extension_headers
     __args__['httpMethod'] = http_method
     __args__['path'] = path
-    __ret__ = await pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts).value
 
     return GetObjectSignedUrlResult(
         bucket=__ret__.get('bucket'),

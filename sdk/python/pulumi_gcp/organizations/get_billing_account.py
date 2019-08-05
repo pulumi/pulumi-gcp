@@ -41,7 +41,15 @@ class GetBillingAccountResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_billing_account(billing_account=None,display_name=None,open=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_billing_account(billing_account=None,display_name=None,open=None,opts=None):
     """
     Use this data source to get information about a Google Billing Account.
 
@@ -52,7 +60,11 @@ async def get_billing_account(billing_account=None,display_name=None,open=None,o
     __args__['billingAccount'] = billing_account
     __args__['displayName'] = display_name
     __args__['open'] = open
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts).value
 
     return GetBillingAccountResult(
         billing_account=__ret__.get('billingAccount'),

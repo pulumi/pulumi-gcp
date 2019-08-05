@@ -52,7 +52,15 @@ class GetKMSCryptoKeyResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     """
     Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
@@ -68,7 +76,11 @@ async def get_kms_crypto_key(key_ring=None,name=None,opts=None):
 
     __args__['keyRing'] = key_ring
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts).value
 
     return GetKMSCryptoKeyResult(
         key_ring=__ret__.get('keyRing'),

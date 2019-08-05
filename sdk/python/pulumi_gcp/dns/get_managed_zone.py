@@ -46,7 +46,15 @@ class GetManagedZoneResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_managed_zone(name=None,project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_managed_zone(name=None,project=None,opts=None):
     """
     Provides access to a zone's attributes within Google Cloud DNS.
     For more information see
@@ -60,7 +68,11 @@ async def get_managed_zone(name=None,project=None,opts=None):
 
     __args__['name'] = name
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts).value
 
     return GetManagedZoneResult(
         description=__ret__.get('description'),

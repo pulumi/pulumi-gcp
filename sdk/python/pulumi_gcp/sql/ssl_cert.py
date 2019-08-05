@@ -105,6 +105,10 @@ class SslCert(pulumi.CustomResource):
         __props__['server_ca_cert'] = None
         __props__['sha1_fingerprint'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SslCert, __self__).__init__(
             'gcp:sql/sslCert:SslCert',
             resource_name,

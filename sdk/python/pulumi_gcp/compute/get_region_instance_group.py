@@ -47,7 +47,15 @@ class GetRegionInstanceGroupResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
@@ -63,7 +71,11 @@ async def get_region_instance_group(name=None,project=None,region=None,self_link
     __args__['project'] = project
     __args__['region'] = region
     __args__['selfLink'] = self_link
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts).value
 
     return GetRegionInstanceGroupResult(
         instances=__ret__.get('instances'),

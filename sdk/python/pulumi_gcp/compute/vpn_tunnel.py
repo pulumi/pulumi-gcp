@@ -118,6 +118,10 @@ class VPNTunnel(pulumi.CustomResource):
         __props__['self_link'] = None
         __props__['shared_secret_hash'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
             resource_name,

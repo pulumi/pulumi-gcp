@@ -70,6 +70,10 @@ class UsageExportBucket(pulumi.CustomResource):
 
         __props__['project'] = project
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(UsageExportBucket, __self__).__init__(
             'gcp:projects/usageExportBucket:UsageExportBucket',
             resource_name,

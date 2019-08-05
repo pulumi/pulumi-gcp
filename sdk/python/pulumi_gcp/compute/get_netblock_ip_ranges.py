@@ -38,7 +38,15 @@ class GetNetblockIPRangesResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_netblock_ip_ranges(opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_netblock_ip_ranges(opts=None):
     """
     Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
     
@@ -48,7 +56,11 @@ async def get_netblock_ip_ranges(opts=None):
     """
     __args__ = dict()
 
-    __ret__ = await pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts).value
 
     return GetNetblockIPRangesResult(
         cidr_blocks=__ret__.get('cidrBlocks'),

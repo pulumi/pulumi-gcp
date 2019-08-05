@@ -61,6 +61,10 @@ class AccessPolicy(pulumi.CustomResource):
         __props__['name'] = None
         __props__['update_time'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(AccessPolicy, __self__).__init__(
             'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
             resource_name,

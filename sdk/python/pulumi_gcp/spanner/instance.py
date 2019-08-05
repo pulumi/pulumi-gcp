@@ -72,6 +72,10 @@ class Instance(pulumi.CustomResource):
 
         __props__['state'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Instance, __self__).__init__(
             'gcp:spanner/instance:Instance',
             resource_name,

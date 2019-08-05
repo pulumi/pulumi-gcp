@@ -29,7 +29,15 @@ class GetTransferProjectServieAccountResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_transfer_project_servie_account(project=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_transfer_project_servie_account(project=None,opts=None):
     """
     Use this data source to retrieve Storage Transfer service account for this project
 
@@ -38,7 +46,11 @@ async def get_transfer_project_servie_account(project=None,opts=None):
     __args__ = dict()
 
     __args__['project'] = project
-    __ret__ = await pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts).value
 
     return GetTransferProjectServieAccountResult(
         email=__ret__.get('email'),

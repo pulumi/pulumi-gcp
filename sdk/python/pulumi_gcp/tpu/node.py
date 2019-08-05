@@ -89,6 +89,10 @@ class Node(pulumi.CustomResource):
         __props__['network_endpoints'] = None
         __props__['service_account'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,

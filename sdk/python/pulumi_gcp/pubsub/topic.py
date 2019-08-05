@@ -58,6 +58,10 @@ class Topic(pulumi.CustomResource):
 
         __props__['project'] = project
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,

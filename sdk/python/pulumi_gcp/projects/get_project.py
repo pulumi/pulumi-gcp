@@ -29,7 +29,15 @@ class GetProjectResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project(filter=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_project(filter=None,opts=None):
     """
     Retrieve information about a set of projects based on a filter. See the
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
@@ -40,7 +48,11 @@ async def get_project(filter=None,opts=None):
     __args__ = dict()
 
     __args__['filter'] = filter
-    __ret__ = await pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts).value
 
     return GetProjectResult(
         filter=__ret__.get('filter'),

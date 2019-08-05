@@ -71,6 +71,10 @@ class TargetHttpProxy(pulumi.CustomResource):
         __props__['proxy_id'] = None
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TargetHttpProxy, __self__).__init__(
             'gcp:compute/targetHttpProxy:TargetHttpProxy',
             resource_name,

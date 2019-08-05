@@ -88,6 +88,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(GlobalForwardingRule, __self__).__init__(
             'gcp:compute/globalForwardingRule:GlobalForwardingRule',
             resource_name,

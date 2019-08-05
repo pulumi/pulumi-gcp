@@ -32,7 +32,15 @@ class GetKMSSecretResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -51,7 +59,11 @@ async def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
 
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
-    __ret__ = await pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts).value
 
     return GetKMSSecretResult(
         ciphertext=__ret__.get('ciphertext'),

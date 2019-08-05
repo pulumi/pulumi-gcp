@@ -76,6 +76,10 @@ class TopicIAMPolicy(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TopicIAMPolicy, __self__).__init__(
             'gcp:pubsub/topicIAMPolicy:TopicIAMPolicy',
             resource_name,

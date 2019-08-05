@@ -75,6 +75,10 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__['create_time'] = None
         __props__['update_time'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ServicePerimeter, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
             resource_name,

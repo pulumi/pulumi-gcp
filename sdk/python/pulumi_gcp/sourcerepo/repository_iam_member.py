@@ -79,6 +79,10 @@ class RepositoryIamMember(pulumi.CustomResource):
 
         __props__['etag'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RepositoryIamMember, __self__).__init__(
             'gcp:sourcerepo/repositoryIamMember:RepositoryIamMember',
             resource_name,

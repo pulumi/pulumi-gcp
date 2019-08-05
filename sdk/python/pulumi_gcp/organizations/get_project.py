@@ -56,7 +56,15 @@ class GetProjectResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project(project_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_project(project_id=None,opts=None):
     """
     Use this data source to get project details.
     For more information see 
@@ -67,7 +75,11 @@ async def get_project(project_id=None,opts=None):
     __args__ = dict()
 
     __args__['projectId'] = project_id
-    __ret__ = await pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts).value
 
     return GetProjectResult(
         app_engines=__ret__.get('appEngines'),

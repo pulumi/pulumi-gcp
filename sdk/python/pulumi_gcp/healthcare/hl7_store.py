@@ -60,6 +60,10 @@ class Hl7Store(pulumi.CustomResource):
 
         __props__['self_link'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Hl7Store, __self__).__init__(
             'gcp:healthcare/hl7Store:Hl7Store',
             resource_name,

@@ -93,6 +93,10 @@ class Registry(pulumi.CustomResource):
 
         __props__['state_notification_config'] = state_notification_config
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Registry, __self__).__init__(
             'gcp:kms/registry:Registry',
             resource_name,

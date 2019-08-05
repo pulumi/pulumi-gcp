@@ -109,6 +109,10 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__['vpn_tunnel'] = vpn_tunnel
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RouterInterface, __self__).__init__(
             'gcp:compute/routerInterface:RouterInterface',
             resource_name,
