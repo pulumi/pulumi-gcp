@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update pulumi-terraform to 6bcafb609d
-* Upgrade to v2.12.0 of the Google Beta Terraform Provider.
+___NULL___
 
 ---
+
+# 0.18.15 (2019-08-05)
+* Update pulumi-terraform to 6bcafb609d
+* Upgrade to v2.12.0 of the Google Beta Terraform Provider.
 
 ## 0.18.14 (2019-07-21)
 * Upgrade to pulumi-terraform@98fabcf506 to allow Firestore to be used.
