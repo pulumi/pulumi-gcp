@@ -68,10 +68,6 @@ class IAMBinding(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -80,15 +76,12 @@ class IAMBinding(pulumi.CustomResource):
         if folder is None:
             raise TypeError("Missing required property 'folder'")
         __props__['folder'] = folder
-
         if members is None:
             raise TypeError("Missing required property 'members'")
         __props__['members'] = members
-
         if role is None:
             raise TypeError("Missing required property 'role'")
         __props__['role'] = role
-
         __props__['etag'] = None
 
         if opts is None:
@@ -100,7 +93,6 @@ class IAMBinding(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

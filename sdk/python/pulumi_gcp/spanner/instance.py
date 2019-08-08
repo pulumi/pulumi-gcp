@@ -45,10 +45,6 @@ class Instance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -57,19 +53,13 @@ class Instance(pulumi.CustomResource):
         if config is None:
             raise TypeError("Missing required property 'config'")
         __props__['config'] = config
-
         if display_name is None:
             raise TypeError("Missing required property 'display_name'")
         __props__['display_name'] = display_name
-
         __props__['labels'] = labels
-
         __props__['name'] = name
-
         __props__['num_nodes'] = num_nodes
-
         __props__['project'] = project
-
         __props__['state'] = None
 
         if opts is None:
@@ -81,7 +71,6 @@ class Instance(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

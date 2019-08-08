@@ -65,31 +65,21 @@ class Policy(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['boolean_policy'] = boolean_policy
-
         if constraint is None:
             raise TypeError("Missing required property 'constraint'")
         __props__['constraint'] = constraint
-
         __props__['list_policy'] = list_policy
-
         if org_id is None:
             raise TypeError("Missing required property 'org_id'")
         __props__['org_id'] = org_id
-
         __props__['restore_policy'] = restore_policy
-
         __props__['version'] = version
-
         __props__['etag'] = None
         __props__['update_time'] = None
 
@@ -102,7 +92,6 @@ class Policy(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

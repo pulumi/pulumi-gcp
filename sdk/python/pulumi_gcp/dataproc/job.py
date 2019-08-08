@@ -73,43 +73,26 @@ class Job(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['force_delete'] = force_delete
-
         __props__['hadoop_config'] = hadoop_config
-
         __props__['hive_config'] = hive_config
-
         __props__['labels'] = labels
-
         __props__['pig_config'] = pig_config
-
         if placement is None:
             raise TypeError("Missing required property 'placement'")
         __props__['placement'] = placement
-
         __props__['project'] = project
-
         __props__['pyspark_config'] = pyspark_config
-
         __props__['reference'] = reference
-
         __props__['region'] = region
-
         __props__['scheduling'] = scheduling
-
         __props__['spark_config'] = spark_config
-
         __props__['sparksql_config'] = sparksql_config
-
         __props__['driver_controls_files_uri'] = None
         __props__['driver_output_resource_uri'] = None
         __props__['status'] = None
@@ -123,7 +106,6 @@ class Job(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

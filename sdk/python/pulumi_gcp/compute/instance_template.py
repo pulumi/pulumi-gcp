@@ -178,57 +178,34 @@ class InstanceTemplate(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['can_ip_forward'] = can_ip_forward
-
         __props__['description'] = description
-
         if disks is None:
             raise TypeError("Missing required property 'disks'")
         __props__['disks'] = disks
-
         __props__['guest_accelerators'] = guest_accelerators
-
         __props__['instance_description'] = instance_description
-
         __props__['labels'] = labels
-
         if machine_type is None:
             raise TypeError("Missing required property 'machine_type'")
         __props__['machine_type'] = machine_type
-
         __props__['metadata'] = metadata
-
         __props__['metadata_startup_script'] = metadata_startup_script
-
         __props__['min_cpu_platform'] = min_cpu_platform
-
         __props__['name'] = name
-
         __props__['name_prefix'] = name_prefix
-
         __props__['network_interfaces'] = network_interfaces
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         __props__['scheduling'] = scheduling
-
         __props__['service_account'] = service_account
-
         __props__['shielded_instance_config'] = shielded_instance_config
-
         __props__['tags'] = tags
-
         __props__['metadata_fingerprint'] = None
         __props__['self_link'] = None
         __props__['tags_fingerprint'] = None
@@ -242,7 +219,6 @@ class InstanceTemplate(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

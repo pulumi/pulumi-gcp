@@ -64,51 +64,29 @@ class ForwardingRule(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['all_ports'] = all_ports
-
         __props__['backend_service'] = backend_service
-
         __props__['description'] = description
-
         __props__['ip_address'] = ip_address
-
         __props__['ip_protocol'] = ip_protocol
-
         __props__['ip_version'] = ip_version
-
         __props__['labels'] = labels
-
         __props__['load_balancing_scheme'] = load_balancing_scheme
-
         __props__['name'] = name
-
         __props__['network'] = network
-
         __props__['network_tier'] = network_tier
-
         __props__['port_range'] = port_range
-
         __props__['ports'] = ports
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         __props__['service_label'] = service_label
-
         __props__['subnetwork'] = subnetwork
-
         __props__['target'] = target
-
         __props__['creation_timestamp'] = None
         __props__['label_fingerprint'] = None
         __props__['self_link'] = None
@@ -123,7 +101,6 @@ class ForwardingRule(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

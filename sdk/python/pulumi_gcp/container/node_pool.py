@@ -131,45 +131,27 @@ class NodePool(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['autoscaling'] = autoscaling
-
         if cluster is None:
             raise TypeError("Missing required property 'cluster'")
         __props__['cluster'] = cluster
-
         __props__['initial_node_count'] = initial_node_count
-
         __props__['location'] = location
-
         __props__['management'] = management
-
         __props__['max_pods_per_node'] = max_pods_per_node
-
         __props__['name'] = name
-
         __props__['name_prefix'] = name_prefix
-
         __props__['node_config'] = node_config
-
         __props__['node_count'] = node_count
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         __props__['version'] = version
-
         __props__['zone'] = zone
-
         __props__['instance_group_urls'] = None
 
         if opts is None:
@@ -181,7 +163,6 @@ class NodePool(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

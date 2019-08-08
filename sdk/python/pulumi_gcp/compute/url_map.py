@@ -45,10 +45,6 @@ class URLMap(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -57,19 +53,12 @@ class URLMap(pulumi.CustomResource):
         if default_service is None:
             raise TypeError("Missing required property 'default_service'")
         __props__['default_service'] = default_service
-
         __props__['description'] = description
-
         __props__['host_rules'] = host_rules
-
         __props__['name'] = name
-
         __props__['path_matchers'] = path_matchers
-
         __props__['project'] = project
-
         __props__['tests'] = tests
-
         __props__['creation_timestamp'] = None
         __props__['fingerprint'] = None
         __props__['map_id'] = None
@@ -84,7 +73,6 @@ class URLMap(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

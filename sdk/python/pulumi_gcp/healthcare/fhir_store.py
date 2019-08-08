@@ -40,10 +40,6 @@ class FhirStore(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -52,21 +48,13 @@ class FhirStore(pulumi.CustomResource):
         if dataset is None:
             raise TypeError("Missing required property 'dataset'")
         __props__['dataset'] = dataset
-
         __props__['disable_referential_integrity'] = disable_referential_integrity
-
         __props__['disable_resource_versioning'] = disable_resource_versioning
-
         __props__['enable_history_import'] = enable_history_import
-
         __props__['enable_update_create'] = enable_update_create
-
         __props__['labels'] = labels
-
         __props__['name'] = name
-
         __props__['notification_config'] = notification_config
-
         __props__['self_link'] = None
 
         if opts is None:
@@ -78,7 +66,6 @@ class FhirStore(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -47,10 +47,6 @@ class CryptoKey(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -59,17 +55,11 @@ class CryptoKey(pulumi.CustomResource):
         if key_ring is None:
             raise TypeError("Missing required property 'key_ring'")
         __props__['key_ring'] = key_ring
-
         __props__['labels'] = labels
-
         __props__['name'] = name
-
         __props__['purpose'] = purpose
-
         __props__['rotation_period'] = rotation_period
-
         __props__['version_template'] = version_template
-
         __props__['self_link'] = None
 
         if opts is None:
@@ -81,7 +71,6 @@ class CryptoKey(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

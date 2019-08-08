@@ -27,129 +27,72 @@ class Provider(pulumi.ProviderResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['access_context_manager_custom_endpoint'] = access_context_manager_custom_endpoint
-
         __props__['access_token'] = access_token
-
         __props__['app_engine_custom_endpoint'] = app_engine_custom_endpoint
-
         __props__['batching'] = pulumi.Output.from_input(batching).apply(json.dumps) if batching is not None else None
-
         __props__['bigquery_custom_endpoint'] = bigquery_custom_endpoint
-
         __props__['bigtable_custom_endpoint'] = bigtable_custom_endpoint
-
         __props__['binary_authorization_custom_endpoint'] = binary_authorization_custom_endpoint
-
         __props__['cloud_billing_custom_endpoint'] = cloud_billing_custom_endpoint
-
         __props__['cloud_build_custom_endpoint'] = cloud_build_custom_endpoint
-
         __props__['cloud_functions_custom_endpoint'] = cloud_functions_custom_endpoint
-
         __props__['cloud_iot_custom_endpoint'] = cloud_iot_custom_endpoint
-
         __props__['cloud_run_custom_endpoint'] = cloud_run_custom_endpoint
-
         __props__['cloud_scheduler_custom_endpoint'] = cloud_scheduler_custom_endpoint
-
         __props__['composer_custom_endpoint'] = composer_custom_endpoint
-
         __props__['compute_beta_custom_endpoint'] = compute_beta_custom_endpoint
-
         __props__['compute_custom_endpoint'] = compute_custom_endpoint
-
         __props__['container_analysis_custom_endpoint'] = container_analysis_custom_endpoint
-
         __props__['container_beta_custom_endpoint'] = container_beta_custom_endpoint
-
         __props__['container_custom_endpoint'] = container_custom_endpoint
-
         if credentials is None:
             credentials = utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
         __props__['credentials'] = credentials
-
         __props__['dataflow_custom_endpoint'] = dataflow_custom_endpoint
-
         __props__['dataproc_beta_custom_endpoint'] = dataproc_beta_custom_endpoint
-
         __props__['dataproc_custom_endpoint'] = dataproc_custom_endpoint
-
         __props__['dns_beta_custom_endpoint'] = dns_beta_custom_endpoint
-
         __props__['dns_custom_endpoint'] = dns_custom_endpoint
-
         __props__['filestore_custom_endpoint'] = filestore_custom_endpoint
-
         __props__['firestore_custom_endpoint'] = firestore_custom_endpoint
-
         __props__['healthcare_custom_endpoint'] = healthcare_custom_endpoint
-
         __props__['iam_credentials_custom_endpoint'] = iam_credentials_custom_endpoint
-
         __props__['iam_custom_endpoint'] = iam_custom_endpoint
-
         __props__['iap_custom_endpoint'] = iap_custom_endpoint
-
         __props__['kms_custom_endpoint'] = kms_custom_endpoint
-
         __props__['logging_custom_endpoint'] = logging_custom_endpoint
-
         __props__['monitoring_custom_endpoint'] = monitoring_custom_endpoint
-
         if project is None:
             project = utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         __props__['project'] = project
-
         __props__['pubsub_custom_endpoint'] = pubsub_custom_endpoint
-
         __props__['redis_custom_endpoint'] = redis_custom_endpoint
-
         if region is None:
             region = utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
         __props__['region'] = region
-
         __props__['resource_manager_custom_endpoint'] = resource_manager_custom_endpoint
-
         __props__['resource_manager_v2beta1_custom_endpoint'] = resource_manager_v2beta1_custom_endpoint
-
         __props__['runtimeconfig_custom_endpoint'] = runtimeconfig_custom_endpoint
-
         __props__['scopes'] = pulumi.Output.from_input(scopes).apply(json.dumps) if scopes is not None else None
-
         __props__['security_scanner_custom_endpoint'] = security_scanner_custom_endpoint
-
         __props__['service_management_custom_endpoint'] = service_management_custom_endpoint
-
         __props__['service_networking_custom_endpoint'] = service_networking_custom_endpoint
-
         __props__['service_usage_custom_endpoint'] = service_usage_custom_endpoint
-
         __props__['source_repo_custom_endpoint'] = source_repo_custom_endpoint
-
         __props__['spanner_custom_endpoint'] = spanner_custom_endpoint
-
         __props__['sql_custom_endpoint'] = sql_custom_endpoint
-
         __props__['storage_custom_endpoint'] = storage_custom_endpoint
-
         __props__['storage_transfer_custom_endpoint'] = storage_transfer_custom_endpoint
-
         __props__['tpu_custom_endpoint'] = tpu_custom_endpoint
-
         if zone is None:
             zone = utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
         __props__['zone'] = zone
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -159,7 +102,6 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

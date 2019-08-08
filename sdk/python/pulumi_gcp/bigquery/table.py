@@ -147,10 +147,6 @@ class Table(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -159,29 +155,18 @@ class Table(pulumi.CustomResource):
         if dataset_id is None:
             raise TypeError("Missing required property 'dataset_id'")
         __props__['dataset_id'] = dataset_id
-
         __props__['description'] = description
-
         __props__['expiration_time'] = expiration_time
-
         __props__['external_data_configuration'] = external_data_configuration
-
         __props__['friendly_name'] = friendly_name
-
         __props__['labels'] = labels
-
         __props__['project'] = project
-
         __props__['schema'] = schema
-
         if table_id is None:
             raise TypeError("Missing required property 'table_id'")
         __props__['table_id'] = table_id
-
         __props__['time_partitioning'] = time_partitioning
-
         __props__['view'] = view
-
         __props__['creation_time'] = None
         __props__['etag'] = None
         __props__['last_modified_time'] = None
@@ -201,7 +186,6 @@ class Table(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

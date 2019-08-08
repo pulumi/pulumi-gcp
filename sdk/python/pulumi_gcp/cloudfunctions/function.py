@@ -125,51 +125,29 @@ class Function(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['available_memory_mb'] = available_memory_mb
-
         __props__['description'] = description
-
         __props__['entry_point'] = entry_point
-
         __props__['environment_variables'] = environment_variables
-
         __props__['event_trigger'] = event_trigger
-
         __props__['https_trigger_url'] = https_trigger_url
-
         __props__['labels'] = labels
-
         __props__['max_instances'] = max_instances
-
         __props__['name'] = name
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         __props__['runtime'] = runtime
-
         __props__['service_account_email'] = service_account_email
-
         __props__['source_archive_bucket'] = source_archive_bucket
-
         __props__['source_archive_object'] = source_archive_object
-
         __props__['source_repository'] = source_repository
-
         __props__['timeout'] = timeout
-
         __props__['trigger_http'] = trigger_http
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -179,7 +157,6 @@ class Function(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

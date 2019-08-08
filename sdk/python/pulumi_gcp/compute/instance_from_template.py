@@ -78,63 +78,36 @@ class InstanceFromTemplate(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['allow_stopping_for_update'] = allow_stopping_for_update
-
         __props__['attached_disks'] = attached_disks
-
         __props__['boot_disk'] = boot_disk
-
         __props__['can_ip_forward'] = can_ip_forward
-
         __props__['deletion_protection'] = deletion_protection
-
         __props__['description'] = description
-
         __props__['guest_accelerators'] = guest_accelerators
-
         __props__['hostname'] = hostname
-
         __props__['labels'] = labels
-
         __props__['machine_type'] = machine_type
-
         __props__['metadata'] = metadata
-
         __props__['metadata_startup_script'] = metadata_startup_script
-
         __props__['min_cpu_platform'] = min_cpu_platform
-
         __props__['name'] = name
-
         __props__['network_interfaces'] = network_interfaces
-
         __props__['project'] = project
-
         __props__['scheduling'] = scheduling
-
         __props__['scratch_disks'] = scratch_disks
-
         __props__['service_account'] = service_account
-
         __props__['shielded_instance_config'] = shielded_instance_config
-
         if source_instance_template is None:
             raise TypeError("Missing required property 'source_instance_template'")
         __props__['source_instance_template'] = source_instance_template
-
         __props__['tags'] = tags
-
         __props__['zone'] = zone
-
         __props__['cpu_platform'] = None
         __props__['instance_id'] = None
         __props__['label_fingerprint'] = None
@@ -151,7 +124,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

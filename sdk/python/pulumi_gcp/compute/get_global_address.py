@@ -48,6 +48,8 @@ class GetGlobalAddressResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__

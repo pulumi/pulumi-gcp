@@ -46,10 +46,6 @@ class RegionAutoscaler(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -58,19 +54,13 @@ class RegionAutoscaler(pulumi.CustomResource):
         if autoscaling_policy is None:
             raise TypeError("Missing required property 'autoscaling_policy'")
         __props__['autoscaling_policy'] = autoscaling_policy
-
         __props__['description'] = description
-
         __props__['name'] = name
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         if target is None:
             raise TypeError("Missing required property 'target'")
         __props__['target'] = target
-
         __props__['creation_timestamp'] = None
         __props__['self_link'] = None
 
@@ -83,7 +73,6 @@ class RegionAutoscaler(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

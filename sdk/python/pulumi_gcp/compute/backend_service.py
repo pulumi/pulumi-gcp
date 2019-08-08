@@ -65,51 +65,30 @@ class BackendService(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
-
         __props__['backends'] = backends
-
         __props__['cdn_policy'] = cdn_policy
-
         __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
-
         __props__['custom_request_headers'] = custom_request_headers
-
         __props__['description'] = description
-
         __props__['enable_cdn'] = enable_cdn
-
         if health_checks is None:
             raise TypeError("Missing required property 'health_checks'")
         __props__['health_checks'] = health_checks
-
         __props__['iap'] = iap
-
         __props__['load_balancing_scheme'] = load_balancing_scheme
-
         __props__['name'] = name
-
         __props__['port_name'] = port_name
-
         __props__['project'] = project
-
         __props__['protocol'] = protocol
-
         __props__['security_policy'] = security_policy
-
         __props__['session_affinity'] = session_affinity
-
         __props__['timeout_sec'] = timeout_sec
-
         __props__['creation_timestamp'] = None
         __props__['fingerprint'] = None
         __props__['self_link'] = None
@@ -123,7 +102,6 @@ class BackendService(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

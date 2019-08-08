@@ -137,47 +137,29 @@ class RouterNat(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['icmp_idle_timeout_sec'] = icmp_idle_timeout_sec
-
         __props__['log_config'] = log_config
-
         __props__['min_ports_per_vm'] = min_ports_per_vm
-
         __props__['name'] = name
-
         if nat_ip_allocate_option is None:
             raise TypeError("Missing required property 'nat_ip_allocate_option'")
         __props__['nat_ip_allocate_option'] = nat_ip_allocate_option
-
         __props__['nat_ips'] = nat_ips
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         if router is None:
             raise TypeError("Missing required property 'router'")
         __props__['router'] = router
-
         __props__['source_subnetwork_ip_ranges_to_nat'] = source_subnetwork_ip_ranges_to_nat
-
         __props__['subnetworks'] = subnetworks
-
         __props__['tcp_established_idle_timeout_sec'] = tcp_established_idle_timeout_sec
-
         __props__['tcp_transitory_idle_timeout_sec'] = tcp_transitory_idle_timeout_sec
-
         __props__['udp_idle_timeout_sec'] = udp_idle_timeout_sec
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -187,7 +169,6 @@ class RouterNat(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -461,95 +461,51 @@ class Cluster(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['additional_zones'] = additional_zones
-
         __props__['addons_config'] = addons_config
-
         __props__['authenticator_groups_config'] = authenticator_groups_config
-
         __props__['cluster_autoscaling'] = cluster_autoscaling
-
         __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
-
         __props__['database_encryption'] = database_encryption
-
         __props__['default_max_pods_per_node'] = default_max_pods_per_node
-
         __props__['description'] = description
-
         __props__['enable_binary_authorization'] = enable_binary_authorization
-
         __props__['enable_intranode_visibility'] = enable_intranode_visibility
-
         __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
-
         __props__['enable_legacy_abac'] = enable_legacy_abac
-
         __props__['enable_tpu'] = enable_tpu
-
         __props__['initial_node_count'] = initial_node_count
-
         __props__['ip_allocation_policy'] = ip_allocation_policy
-
         __props__['location'] = location
-
         __props__['logging_service'] = logging_service
-
         __props__['maintenance_policy'] = maintenance_policy
-
         __props__['master_auth'] = master_auth
-
         __props__['master_authorized_networks_config'] = master_authorized_networks_config
-
         __props__['min_master_version'] = min_master_version
-
         __props__['monitoring_service'] = monitoring_service
-
         __props__['name'] = name
-
         __props__['network'] = network
-
         __props__['network_policy'] = network_policy
-
         __props__['node_config'] = node_config
-
         __props__['node_locations'] = node_locations
-
         __props__['node_pools'] = node_pools
-
         __props__['node_version'] = node_version
-
         __props__['pod_security_policy_config'] = pod_security_policy_config
-
         __props__['private_cluster_config'] = private_cluster_config
-
         __props__['project'] = project
-
         __props__['region'] = region
-
         __props__['remove_default_node_pool'] = remove_default_node_pool
-
         __props__['resource_labels'] = resource_labels
-
         __props__['resource_usage_export_config'] = resource_usage_export_config
-
         __props__['subnetwork'] = subnetwork
-
         __props__['vertical_pod_autoscaling'] = vertical_pod_autoscaling
-
         __props__['workload_identity_config'] = workload_identity_config
-
         __props__['zone'] = zone
-
         __props__['endpoint'] = None
         __props__['instance_group_urls'] = None
         __props__['master_version'] = None
@@ -565,7 +521,6 @@ class Cluster(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

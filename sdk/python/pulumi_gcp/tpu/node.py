@@ -49,10 +49,6 @@ class Node(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -61,31 +57,21 @@ class Node(pulumi.CustomResource):
         if accelerator_type is None:
             raise TypeError("Missing required property 'accelerator_type'")
         __props__['accelerator_type'] = accelerator_type
-
         if cidr_block is None:
             raise TypeError("Missing required property 'cidr_block'")
         __props__['cidr_block'] = cidr_block
-
         __props__['description'] = description
-
         __props__['labels'] = labels
-
         __props__['name'] = name
-
         __props__['network'] = network
-
         __props__['project'] = project
-
         __props__['scheduling_config'] = scheduling_config
-
         if tensorflow_version is None:
             raise TypeError("Missing required property 'tensorflow_version'")
         __props__['tensorflow_version'] = tensorflow_version
-
         if zone is None:
             raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
-
         __props__['network_endpoints'] = None
         __props__['service_account'] = None
 
@@ -98,7 +84,6 @@ class Node(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
