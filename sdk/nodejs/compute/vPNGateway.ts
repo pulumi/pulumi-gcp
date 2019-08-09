@@ -20,23 +20,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {});
+ * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {});
  * const network1 = new gcp.compute.Network("network1", {});
- * const targetGateway = new gcp.compute.VPNGateway("target_gateway", {
+ * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {
  *     network: network1.selfLink,
  * });
- * const frEsp = new gcp.compute.ForwardingRule("fr_esp", {
+ * const frEsp = new gcp.compute.ForwardingRule("frEsp", {
  *     ipAddress: vpnStaticIp.address,
  *     ipProtocol: "ESP",
  *     target: targetGateway.selfLink,
  * });
- * const frUdp4500 = new gcp.compute.ForwardingRule("fr_udp4500", {
+ * const frUdp4500 = new gcp.compute.ForwardingRule("frUdp4500", {
  *     ipAddress: vpnStaticIp.address,
  *     ipProtocol: "UDP",
  *     portRange: "4500",
  *     target: targetGateway.selfLink,
  * });
- * const frUdp500 = new gcp.compute.ForwardingRule("fr_udp500", {
+ * const frUdp500 = new gcp.compute.ForwardingRule("frUdp500", {
  *     ipAddress: vpnStaticIp.address,
  *     ipProtocol: "UDP",
  *     portRange: "500",

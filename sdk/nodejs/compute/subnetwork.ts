@@ -43,10 +43,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const custom_test = new gcp.compute.Network("custom-test", {
+ * const customTest = new gcp.compute.Network("custom-test", {
  *     autoCreateSubnetworks: false,
  * });
- * const network_with_private_secondary_ip_ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
+ * const networkWithPrivateSecondaryIpRanges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
  *     ipCidrRange: "10.2.0.0/16",
  *     network: custom_test.selfLink,
  *     region: "us-central1",

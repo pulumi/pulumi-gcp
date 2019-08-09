@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+// This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
 // 
 // For more information see
 // [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -49,7 +49,7 @@ type GetAccountAccessTokenArgs struct {
 
 // A collection of values returned by getAccountAccessToken.
 type GetAccountAccessTokenResult struct {
-	// The `access_token` representing the new generated identity.
+	// The `accessToken` representing the new generated identity.
 	AccessToken interface{}
 	Delegates interface{}
 	Lifetime interface{}

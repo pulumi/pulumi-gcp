@@ -43,14 +43,18 @@ class GetGlobalAddressResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetGlobalAddressResult(
+            address=self.address,
+            name=self.name,
+            project=self.project,
+            self_link=self.self_link,
+            status=self.status,
+            id=self.id)
 
 def get_global_address(name=None,project=None,opts=None):
     """
@@ -69,7 +73,7 @@ def get_global_address(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts).value
 
-    return GetGlobalAddressResult(
+    return AwaitableGetGlobalAddressResult(
         address=__ret__.get('address'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),

@@ -56,7 +56,7 @@ export class RouterInterface extends pulumi.CustomResource {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
      * specified.
      */
     public readonly interconnectAttachment!: pulumi.Output<string | undefined>;
@@ -89,7 +89,7 @@ export class RouterInterface extends pulumi.CustomResource {
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
      */
     public readonly vpnTunnel!: pulumi.Output<string | undefined>;
 
@@ -143,7 +143,7 @@ export interface RouterInterfaceState {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
      * specified.
      */
     readonly interconnectAttachment?: pulumi.Input<string>;
@@ -176,7 +176,7 @@ export interface RouterInterfaceState {
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
      */
     readonly vpnTunnel?: pulumi.Input<string>;
 }
@@ -188,7 +188,7 @@ export interface RouterInterfaceArgs {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
      * specified.
      */
     readonly interconnectAttachment?: pulumi.Input<string>;
@@ -221,7 +221,7 @@ export interface RouterInterfaceArgs {
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
      */
     readonly vpnTunnel?: pulumi.Input<string>;
 }

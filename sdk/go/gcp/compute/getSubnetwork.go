@@ -39,7 +39,7 @@ func LookupSubnetwork(ctx *pulumi.Context, args *GetSubnetworkArgs) (*GetSubnetw
 
 // A collection of arguments for invoking getSubnetwork.
 type GetSubnetworkArgs struct {
-	// The name of the subnetwork. One of `name` or `self_link`
+	// The name of the subnetwork. One of `name` or `selfLink`
 	// must be specified.
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
@@ -48,7 +48,7 @@ type GetSubnetworkArgs struct {
 	// The region this subnetwork has been created in. If
 	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
-	// The self link of the subnetwork. If `self_link` is
+	// The self link of the subnetwork. If `selfLink` is
 	// specified, `name`, `project`, and `region` are ignored.
 	SelfLink interface{}
 }

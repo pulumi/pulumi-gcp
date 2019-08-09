@@ -155,7 +155,7 @@ func (r *NodePool) NamePrefix() *pulumi.StringOutput {
 }
 
 // The node configuration of the pool. See
-// google_container_cluster for schema.
+// container.Cluster for schema.
 func (r *NodePool) NodeConfig() *pulumi.Output {
 	return r.s.State["nodeConfig"]
 }
@@ -179,11 +179,11 @@ func (r *NodePool) Region() *pulumi.StringOutput {
 }
 
 // The Kubernetes version for the nodes in this pool. Note that if this field
-// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 // be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
 // recommended that you specify explicit versions as this provider will see spurious diffs
-// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-// `version_prefix` field to approximate fuzzy versions.
+// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+// `versionPrefix` field to approximate fuzzy versions.
 func (r *NodePool) Version() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["version"])
 }
@@ -222,7 +222,7 @@ type NodePoolState struct {
 	Name interface{}
 	NamePrefix interface{}
 	// The node configuration of the pool. See
-	// google_container_cluster for schema.
+	// container.Cluster for schema.
 	NodeConfig interface{}
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -234,11 +234,11 @@ type NodePoolState struct {
 	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
-	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as this provider will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions.
+	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+	// `versionPrefix` field to approximate fuzzy versions.
 	Version interface{}
 	// The zone in which the cluster resides. `zone`
 	// has been deprecated in favor of `location`.
@@ -272,7 +272,7 @@ type NodePoolArgs struct {
 	Name interface{}
 	NamePrefix interface{}
 	// The node configuration of the pool. See
-	// google_container_cluster for schema.
+	// container.Cluster for schema.
 	NodeConfig interface{}
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -284,11 +284,11 @@ type NodePoolArgs struct {
 	// regional clusters). `zone` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
-	// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as this provider will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions.
+	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+	// `versionPrefix` field to approximate fuzzy versions.
 	Version interface{}
 	// The zone in which the cluster resides. `zone`
 	// has been deprecated in favor of `location`.

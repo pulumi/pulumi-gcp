@@ -27,14 +27,14 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
-    `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+    `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     subnetwork: pulumi.Output[str]
     """
     The name of the subnetwork.
     """
-    def __init__(__self__, resource_name, opts=None, members=None, project=None, region=None, role=None, subnetwork=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, members=None, project=None, region=None, role=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SubnetworkIAMBinding resource with the given unique name, props, and options.
         
@@ -45,7 +45,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the subnetwork. If
                unspecified, this defaults to the region configured in the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subnetwork: The name of the subnetwork.
 
@@ -57,44 +57,65 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if members is None:
-            raise TypeError("Missing required property 'members'")
-        __props__['members'] = members
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        if role is None:
-            raise TypeError("Missing required property 'role'")
-        __props__['role'] = role
-
-        if subnetwork is None:
-            raise TypeError("Missing required property 'subnetwork'")
-        __props__['subnetwork'] = subnetwork
-
-        __props__['etag'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if members is None:
+                raise TypeError("Missing required property 'members'")
+            __props__['members'] = members
+            __props__['project'] = project
+            __props__['region'] = region
+            if role is None:
+                raise TypeError("Missing required property 'role'")
+            __props__['role'] = role
+            if subnetwork is None:
+                raise TypeError("Missing required property 'subnetwork'")
+            __props__['subnetwork'] = subnetwork
+            __props__['etag'] = None
         super(SubnetworkIAMBinding, __self__).__init__(
             'gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, etag=None, members=None, project=None, region=None, role=None, subnetwork=None):
+        """
+        Get an existing SubnetworkIAMBinding resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: (Computed) The etag of the subnetwork's IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the subnetwork. If
+               unspecified, this defaults to the region configured in the provider.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] subnetwork: The name of the subnetwork.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_binding.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["role"] = role
+        __props__["subnetwork"] = subnetwork
+        return SubnetworkIAMBinding(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

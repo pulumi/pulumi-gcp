@@ -32,21 +32,23 @@ class GetProjectServiceAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectServiceAccountResult(
+            email_address=self.email_address,
+            project=self.project,
+            user_project=self.user_project,
+            id=self.id)
 
 def get_project_service_account(project=None,user_project=None,opts=None):
     """
     Get the email address of a project's unique Google Cloud Storage service account.
     
     Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
-    special service account can be used to set up `google_storage_notification` resources.
+    special service account can be used to set up `storage.Notification` resources.
     
     For more information see
     [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
@@ -63,7 +65,7 @@ def get_project_service_account(project=None,user_project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts).value
 
-    return GetProjectServiceAccountResult(
+    return AwaitableGetProjectServiceAccountResult(
         email_address=__ret__.get('emailAddress'),
         project=__ret__.get('project'),
         user_project=__ret__.get('userProject'),

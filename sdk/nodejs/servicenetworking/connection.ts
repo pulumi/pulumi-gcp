@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const peeringNetwork = new gcp.compute.Network("peering_network", {});
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     addressType: "INTERNAL",
  *     network: peeringNetwork.selfLink,
  *     prefixLength: 16,

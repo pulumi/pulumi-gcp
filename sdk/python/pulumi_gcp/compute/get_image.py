@@ -128,14 +128,31 @@ class GetImageResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetImageResult(
+            archive_size_bytes=self.archive_size_bytes,
+            creation_timestamp=self.creation_timestamp,
+            description=self.description,
+            disk_size_gb=self.disk_size_gb,
+            family=self.family,
+            image_encryption_key_sha256=self.image_encryption_key_sha256,
+            image_id=self.image_id,
+            label_fingerprint=self.label_fingerprint,
+            labels=self.labels,
+            licenses=self.licenses,
+            name=self.name,
+            project=self.project,
+            self_link=self.self_link,
+            source_disk=self.source_disk,
+            source_disk_encryption_key_sha256=self.source_disk_encryption_key_sha256,
+            source_disk_id=self.source_disk_id,
+            source_image_id=self.source_image_id,
+            status=self.status,
+            id=self.id)
 
 def get_image(family=None,name=None,project=None,opts=None):
     """
@@ -155,7 +172,7 @@ def get_image(family=None,name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getImage:getImage', __args__, opts=opts).value
 
-    return GetImageResult(
+    return AwaitableGetImageResult(
         archive_size_bytes=__ret__.get('archiveSizeBytes'),
         creation_timestamp=__ret__.get('creationTimestamp'),
         description=__ret__.get('description'),

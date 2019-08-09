@@ -17,7 +17,7 @@ import (
 // 
 // Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
 // 
-// The service account used to run this provider when creating a `google_folder`
+// The service account used to run this provider when creating a `organizations.Folder`
 // resource must have `roles/resourcemanager.folderCreator`. See the
 // [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
 // doc for more information.

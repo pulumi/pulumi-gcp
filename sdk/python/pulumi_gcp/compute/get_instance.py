@@ -172,14 +172,42 @@ class GetInstanceResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetInstanceResult(
+            allow_stopping_for_update=self.allow_stopping_for_update,
+            attached_disks=self.attached_disks,
+            boot_disks=self.boot_disks,
+            can_ip_forward=self.can_ip_forward,
+            cpu_platform=self.cpu_platform,
+            deletion_protection=self.deletion_protection,
+            description=self.description,
+            disks=self.disks,
+            guest_accelerators=self.guest_accelerators,
+            hostname=self.hostname,
+            instance_id=self.instance_id,
+            label_fingerprint=self.label_fingerprint,
+            labels=self.labels,
+            machine_type=self.machine_type,
+            metadata=self.metadata,
+            metadata_fingerprint=self.metadata_fingerprint,
+            metadata_startup_script=self.metadata_startup_script,
+            min_cpu_platform=self.min_cpu_platform,
+            name=self.name,
+            network_interfaces=self.network_interfaces,
+            project=self.project,
+            schedulings=self.schedulings,
+            scratch_disks=self.scratch_disks,
+            self_link=self.self_link,
+            service_accounts=self.service_accounts,
+            shielded_instance_configs=self.shielded_instance_configs,
+            tags=self.tags,
+            tags_fingerprint=self.tags_fingerprint,
+            zone=self.zone,
+            id=self.id)
 
 def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     """
@@ -202,7 +230,7 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts).value
 
-    return GetInstanceResult(
+    return AwaitableGetInstanceResult(
         allow_stopping_for_update=__ret__.get('allowStoppingForUpdate'),
         attached_disks=__ret__.get('attachedDisks'),
         boot_disks=__ret__.get('bootDisks'),

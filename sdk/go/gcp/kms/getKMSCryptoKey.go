@@ -40,7 +40,7 @@ func LookupKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs) (*GetKMS
 
 // A collection of arguments for invoking getKMSCryptoKey.
 type GetKMSCryptoKeyArgs struct {
-	// The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+	// The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
 	KeyRing interface{}
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`

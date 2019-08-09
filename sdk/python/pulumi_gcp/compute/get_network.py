@@ -49,14 +49,19 @@ class GetNetworkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNetworkResult(
+            description=self.description,
+            gateway_ipv4=self.gateway_ipv4,
+            name=self.name,
+            project=self.project,
+            self_link=self.self_link,
+            subnetworks_self_links=self.subnetworks_self_links,
+            id=self.id)
 
 def get_network(name=None,project=None,opts=None):
     """
@@ -74,7 +79,7 @@ def get_network(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__, opts=opts).value
 
-    return GetNetworkResult(
+    return AwaitableGetNetworkResult(
         description=__ret__.get('description'),
         gateway_ipv4=__ret__.get('gatewayIpv4'),
         name=__ret__.get('name'),

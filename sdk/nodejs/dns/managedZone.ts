@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const rnd = new random.RandomId("rnd", {
  *     byteLength: 4,
  * });
- * const example_zone = new gcp.dns.ManagedZone("example-zone", {
+ * const exampleZone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
  *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
  *     labels: {
@@ -42,13 +42,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const network_1 = new gcp.compute.Network("network-1", {
+ * const network1 = new gcp.compute.Network("network-1", {
  *     autoCreateSubnetworks: false,
  * });
- * const network_2 = new gcp.compute.Network("network-2", {
+ * const network2 = new gcp.compute.Network("network-2", {
  *     autoCreateSubnetworks: false,
  * });
- * const private_zone = new gcp.dns.ManagedZone("private-zone", {
+ * const privateZone = new gcp.dns.ManagedZone("private-zone", {
  *     description: "Example private DNS zone",
  *     dnsName: "private.example.com.",
  *     labels: {

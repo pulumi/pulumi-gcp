@@ -49,22 +49,22 @@ export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetInstanceArgs {
     /**
-     * The name of the instance. One of `name` or `self_link` must be provided.
+     * The name of the instance. One of `name` or `selfLink` must be provided.
      */
     readonly name?: string;
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
     readonly project?: string;
     /**
-     * The self link of the instance. One of `name` or `self_link` must be provided.
+     * The self link of the instance. One of `name` or `selfLink` must be provided.
      */
     readonly selfLink?: string;
     /**
-     * The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      */
     readonly zone?: string;

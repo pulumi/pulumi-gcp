@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get an active folder within GCP by `display_name` and `parent`.
+ * Get an active folder within GCP by `displayName` and `parent`.
  * 
  * ## Example Usage
  * 

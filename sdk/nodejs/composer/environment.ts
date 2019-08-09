@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * 
  * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
  * (i.e. at a project level). This will probably require an explicit dependency
- * on the IAM policy binding (see `google_project_iam_member` below).
+ * on the IAM policy binding (see `gcp.projects.IAMMember` below).
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     network: testNetwork.selfLink,
  *     region: "us-central1",
  * });
- * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ * const composerWorker = new gcp.projects.IAMMember("composer-worker", {
  *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
  *     role: "roles/composer.worker",
  * });
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *         nodeCount: 4,
  *     },
  *     region: "us-central1",
- * }, {dependsOn: [composer_worker]});
+ * }, {dependsOn: [composerWorker]});
  * ```
  * 
  * ### With Software (Airflow) Config

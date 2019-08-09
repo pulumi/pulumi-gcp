@@ -64,20 +64,29 @@ class GetEngineVersionsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetEngineVersionsResult(
+            default_cluster_version=self.default_cluster_version,
+            latest_master_version=self.latest_master_version,
+            latest_node_version=self.latest_node_version,
+            location=self.location,
+            project=self.project,
+            region=self.region,
+            valid_master_versions=self.valid_master_versions,
+            valid_node_versions=self.valid_node_versions,
+            version_prefix=self.version_prefix,
+            zone=self.zone,
+            id=self.id)
 
 def get_engine_versions(location=None,project=None,region=None,version_prefix=None,zone=None,opts=None):
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
     
-    > If you are using the `google_container_engine_versions` datasource with a
+    > If you are using the `container.getEngineVersions` datasource with a
     regional cluster, ensure that you have provided a region as the `location` to
     the datasource. A region can have a different set of supported versions than
     its component zones, and not all zones in a region are guaranteed to
@@ -98,7 +107,7 @@ def get_engine_versions(location=None,project=None,region=None,version_prefix=No
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts).value
 
-    return GetEngineVersionsResult(
+    return AwaitableGetEngineVersionsResult(
         default_cluster_version=__ret__.get('defaultClusterVersion'),
         latest_master_version=__ret__.get('latestMasterVersion'),
         latest_node_version=__ret__.get('latestNodeVersion'),

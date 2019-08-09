@@ -89,7 +89,7 @@ func (r *FhirStoreIamBinding) Members() *pulumi.ArrayOutput {
 }
 
 // The role that should be applied. Only one
-// `google_healthcare_fhir_store_iam_binding` can be used per role. Note that custom roles must be of the format
+// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *FhirStoreIamBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -106,7 +106,7 @@ type FhirStoreIamBindingState struct {
 	FhirStoreId interface{}
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_fhir_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -120,7 +120,7 @@ type FhirStoreIamBindingArgs struct {
 	FhirStoreId interface{}
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_fhir_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

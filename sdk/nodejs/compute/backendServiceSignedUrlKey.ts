@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *     targetSize: 1,
  *     zone: "us-central1-f",
  * });
- * const exampleBackend = new gcp.compute.BackendService("example_backend", {
+ * const exampleBackend = new gcp.compute.BackendService("exampleBackend", {
  *     backends: [{
  *         group: webservers.instanceGroup,
  *     }],
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  *     timeoutSec: 10,
  * });
- * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backend_key", {
+ * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backendKey", {
  *     backendService: exampleBackend.name,
  *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
  * });

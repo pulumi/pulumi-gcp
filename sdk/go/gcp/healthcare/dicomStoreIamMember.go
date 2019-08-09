@@ -89,7 +89,7 @@ func (r *DicomStoreIamMember) Member() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_healthcare_dicom_store_iam_binding` can be used per role. Note that custom roles must be of the format
+// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *DicomStoreIamMember) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -106,7 +106,7 @@ type DicomStoreIamMemberState struct {
 	Etag interface{}
 	Member interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_dicom_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -120,7 +120,7 @@ type DicomStoreIamMemberArgs struct {
 	DicomStoreId interface{}
 	Member interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_dicom_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

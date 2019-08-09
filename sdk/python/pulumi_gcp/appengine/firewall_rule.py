@@ -18,7 +18,7 @@ class FirewallRule(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     source_range: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, priority=None, project=None, source_range=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, description=None, priority=None, project=None, source_range=None, __props__=None, __name__=None, __opts__=None):
         """
         A single firewall rule that is evaluated against incoming traffic
         and provides an action to take on matched requests.
@@ -43,40 +43,54 @@ class FirewallRule(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if action is None:
-            raise TypeError("Missing required property 'action'")
-        __props__['action'] = action
-
-        __props__['description'] = description
-
-        __props__['priority'] = priority
-
-        __props__['project'] = project
-
-        if source_range is None:
-            raise TypeError("Missing required property 'source_range'")
-        __props__['source_range'] = source_range
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if action is None:
+                raise TypeError("Missing required property 'action'")
+            __props__['action'] = action
+            __props__['description'] = description
+            __props__['priority'] = priority
+            __props__['project'] = project
+            if source_range is None:
+                raise TypeError("Missing required property 'source_range'")
+            __props__['source_range'] = source_range
         super(FirewallRule, __self__).__init__(
             'gcp:appengine/firewallRule:FirewallRule',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, action=None, description=None, priority=None, project=None, source_range=None):
+        """
+        Get an existing FirewallRule resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_firewall_rule.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["action"] = action
+        __props__["description"] = description
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["source_range"] = source_range
+        return FirewallRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

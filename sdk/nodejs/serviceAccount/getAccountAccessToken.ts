@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+ * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
  * 
  * For more information see
  * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -57,7 +57,7 @@ export interface GetAccountAccessTokenArgs {
  */
 export interface GetAccountAccessTokenResult {
     /**
-     * The `access_token` representing the new generated identity.
+     * The `accessToken` representing the new generated identity.
      */
     readonly accessToken: string;
     readonly delegates?: string[];

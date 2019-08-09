@@ -9,7 +9,7 @@ import (
 )
 
 // Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
-// [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `google_storage_object_acl` resource.
+// [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
 //  For more information see 
 // [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
 // and 
@@ -152,13 +152,13 @@ func (r *BucketObject) Md5hash() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["md5hash"])
 }
 
-// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 func (r *BucketObject) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
-// `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+// (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
+// `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
 func (r *BucketObject) OutputName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["outputName"])
 }
@@ -203,10 +203,10 @@ type BucketObjectState struct {
 	DetectMd5hash interface{}
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash interface{}
-	// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name interface{}
-	// (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
-	// `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+	// (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
+	// `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
 	OutputName interface{}
 	// (Computed) A url reference to this object.
 	SelfLink interface{}
@@ -237,7 +237,7 @@ type BucketObjectArgs struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType interface{}
 	DetectMd5hash interface{}
-	// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name interface{}
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.

@@ -80,7 +80,7 @@ export interface GetFolderResult {
      */
     readonly name: string;
     /**
-     * If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+     * If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
      */
     readonly organization: string;
     /**

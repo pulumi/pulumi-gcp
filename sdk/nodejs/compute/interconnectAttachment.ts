@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const foobar = new gcp.compute.Router("foobar", {
  *     network: google_compute_network_foobar.name,
  * });
- * const onPrem = new gcp.compute.InterconnectAttachment("on_prem", {
+ * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
  *     interconnect: "my-interconnect-id",
  *     router: foobar.selfLink,
  * });

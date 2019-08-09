@@ -49,14 +49,19 @@ class GetOrganizationResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetOrganizationResult(
+            create_time=self.create_time,
+            directory_customer_id=self.directory_customer_id,
+            domain=self.domain,
+            lifecycle_state=self.lifecycle_state,
+            name=self.name,
+            organization=self.organization,
+            id=self.id)
 
 def get_organization(domain=None,organization=None,opts=None):
     """
@@ -74,7 +79,7 @@ def get_organization(domain=None,organization=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__, opts=opts).value
 
-    return GetOrganizationResult(
+    return AwaitableGetOrganizationResult(
         create_time=__ret__.get('createTime'),
         directory_customer_id=__ret__.get('directoryCustomerId'),
         domain=__ret__.get('domain'),

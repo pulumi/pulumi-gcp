@@ -103,7 +103,7 @@ func (r *TargetPool) FailoverRatio() *pulumi.Float64Output {
 }
 
 // List of zero or one health check name or self_link. Only
-// legacy `google_compute_http_health_check` is supported.
+// legacy `compute.HttpHealthCheck` is supported.
 func (r *TargetPool) HealthChecks() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["healthChecks"])
 }
@@ -158,7 +158,7 @@ type TargetPoolState struct {
 	// backup pool (which must also be set).
 	FailoverRatio interface{}
 	// List of zero or one health check name or self_link. Only
-	// legacy `google_compute_http_health_check` is supported.
+	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks interface{}
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -194,7 +194,7 @@ type TargetPoolArgs struct {
 	// backup pool (which must also be set).
 	FailoverRatio interface{}
 	// List of zero or one health check name or self_link. Only
-	// legacy `google_compute_http_health_check` is supported.
+	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks interface{}
 	// List of instances in the pool. They can be given as
 	// URLs, or in the form of "zone/name". Note that the instances need not exist

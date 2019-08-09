@@ -39,7 +39,7 @@ func LookupKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersion
 
 // A collection of arguments for invoking getKMSCryptoKeyVersion.
 type GetKMSCryptoKeyVersionArgs struct {
-	// The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
+	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
 	CryptoKey interface{}
 	PublicKey interface{}
 	// The version number for this CryptoKeyVersion. Defaults to `1`.
@@ -51,7 +51,7 @@ type GetKMSCryptoKeyVersionResult struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm interface{}
 	CryptoKey interface{}
-	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
 	ProtectionLevel interface{}
 	// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
 	PublicKey interface{}

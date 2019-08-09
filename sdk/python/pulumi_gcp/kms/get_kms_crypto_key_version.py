@@ -49,14 +49,19 @@ class GetKMSCryptoKeyVersionResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKMSCryptoKeyVersionResult(
+            algorithm=self.algorithm,
+            crypto_key=self.crypto_key,
+            protection_level=self.protection_level,
+            public_key=self.public_key,
+            state=self.state,
+            version=self.version,
+            id=self.id)
 
 def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts=None):
     """
@@ -80,7 +85,7 @@ def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts).value
 
-    return GetKMSCryptoKeyVersionResult(
+    return AwaitableGetKMSCryptoKeyVersionResult(
         algorithm=__ret__.get('algorithm'),
         crypto_key=__ret__.get('cryptoKey'),
         protection_level=__ret__.get('protectionLevel'),

@@ -64,7 +64,7 @@ export interface GetImageVersionsArgs {
  */
 export interface GetImageVersionsResult {
     /**
-     * A list of composer image versions available in the given project and location. Each `image_version` contains:
+     * A list of composer image versions available in the given project and location. Each `imageVersion` contains:
      */
     readonly imageVersions: { imageVersionId: string, supportedPythonVersions: string[] }[];
     readonly project: string;

@@ -28,14 +28,16 @@ class GetRegistryRepositoryResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRegistryRepositoryResult(
+            project=self.project,
+            region=self.region,
+            repository_url=self.repository_url,
+            id=self.id)
 
 def get_registry_repository(project=None,region=None,opts=None):
     """
@@ -55,7 +57,7 @@ def get_registry_repository(project=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts).value
 
-    return GetRegistryRepositoryResult(
+    return AwaitableGetRegistryRepositoryResult(
         project=__ret__.get('project'),
         region=__ret__.get('region'),
         repository_url=__ret__.get('repositoryUrl'),

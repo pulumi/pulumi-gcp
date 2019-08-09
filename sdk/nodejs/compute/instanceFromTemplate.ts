@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
  * 
  * This resource is specifically to create a compute instance from a given
- * `source_instance_template`. To create an instance without a template, use the
- * `google_compute_instance` resource.
+ * `sourceInstanceTemplate`. To create an instance without a template, use the
+ * `gcp.compute.Instance` resource.
  * 
  * 
  * ## Example Usage
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     // Override fields from instance template
  *     canIpForward: false,
  *     labels: {
- *         my_key: "my_value",
+ *         my_key: "myValue",
  *     },
  *     sourceInstanceTemplate: tplInstanceTemplate.selfLink,
  *     zone: "us-central1-a",

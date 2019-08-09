@@ -27,7 +27,7 @@ class GetAccountResult:
         __self__.email = email
         """
         The e-mail address of the service account. This value
-        should be referenced from any `google_iam_policy` data sources
+        should be referenced from any `organizations.getIAMPolicy` data sources
         that would grant the service account privileges.
         """
         if name and not isinstance(name, str):
@@ -51,14 +51,19 @@ class GetAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAccountResult(
+            account_id=self.account_id,
+            display_name=self.display_name,
+            email=self.email,
+            name=self.name,
+            project=self.project,
+            unique_id=self.unique_id,
+            id=self.id)
 
 def get_account(account_id=None,project=None,opts=None):
     """
@@ -77,7 +82,7 @@ def get_account(account_id=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts).value
 
-    return GetAccountResult(
+    return AwaitableGetAccountResult(
         account_id=__ret__.get('accountId'),
         display_name=__ret__.get('displayName'),
         email=__ret__.get('email'),

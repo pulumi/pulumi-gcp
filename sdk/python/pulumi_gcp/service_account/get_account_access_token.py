@@ -37,14 +37,18 @@ class GetAccountAccessTokenResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAccountAccessTokenResult(
+            access_token=self.access_token,
+            delegates=self.delegates,
+            lifetime=self.lifetime,
+            scopes=self.scopes,
+            target_service_account=self.target_service_account,
+            id=self.id)
 
 def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_service_account=None,opts=None):
     """
@@ -67,7 +71,7 @@ def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_ser
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts).value
 
-    return GetAccountAccessTokenResult(
+    return AwaitableGetAccountAccessTokenResult(
         access_token=__ret__.get('accessToken'),
         delegates=__ret__.get('delegates'),
         lifetime=__ret__.get('lifetime'),

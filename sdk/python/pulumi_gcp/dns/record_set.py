@@ -36,7 +36,7 @@ class RecordSet(pulumi.CustomResource):
     """
     The DNS record set type.
     """
-    def __init__(__self__, resource_name, opts=None, managed_zone=None, name=None, project=None, rrdatas=None, ttl=None, type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, managed_zone=None, name=None, project=None, rrdatas=None, ttl=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
         [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
@@ -63,46 +63,67 @@ class RecordSet(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if managed_zone is None:
-            raise TypeError("Missing required property 'managed_zone'")
-        __props__['managed_zone'] = managed_zone
-
-        __props__['name'] = name
-
-        __props__['project'] = project
-
-        if rrdatas is None:
-            raise TypeError("Missing required property 'rrdatas'")
-        __props__['rrdatas'] = rrdatas
-
-        if ttl is None:
-            raise TypeError("Missing required property 'ttl'")
-        __props__['ttl'] = ttl
-
-        if type is None:
-            raise TypeError("Missing required property 'type'")
-        __props__['type'] = type
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if managed_zone is None:
+                raise TypeError("Missing required property 'managed_zone'")
+            __props__['managed_zone'] = managed_zone
+            __props__['name'] = name
+            __props__['project'] = project
+            if rrdatas is None:
+                raise TypeError("Missing required property 'rrdatas'")
+            __props__['rrdatas'] = rrdatas
+            if ttl is None:
+                raise TypeError("Missing required property 'ttl'")
+            __props__['ttl'] = ttl
+            if type is None:
+                raise TypeError("Missing required property 'type'")
+            __props__['type'] = type
         super(RecordSet, __self__).__init__(
             'gcp:dns/recordSet:RecordSet',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, managed_zone=None, name=None, project=None, rrdatas=None, ttl=None, type=None):
+        """
+        Get an existing RecordSet resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[list] rrdatas: The string data for the records in this record set
+               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+        :param pulumi.Input[float] ttl: The time-to-live of this record set (seconds).
+        :param pulumi.Input[str] type: The DNS record set type.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["managed_zone"] = managed_zone
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rrdatas"] = rrdatas
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        return RecordSet(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

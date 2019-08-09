@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  * 
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {
  *     byteLength: 4,
  * });
  * const master = new gcp.sql.DatabaseInstance("master", {

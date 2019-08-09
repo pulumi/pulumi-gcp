@@ -27,10 +27,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const imageBucket = new gcp.storage.Bucket("image_bucket", {
+ * const imageBucket = new gcp.storage.Bucket("imageBucket", {
  *     location: "EU",
  * });
- * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
  *     bucketName: imageBucket.name,
  *     description: "Contains beautiful images",
  *     enableCdn: true,

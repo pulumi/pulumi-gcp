@@ -29,12 +29,12 @@ import * as utilities from "../utilities";
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     location: "EU",
  * });
- * const testBackend = new gcp.compute.BackendBucket("test_backend", {
+ * const testBackend = new gcp.compute.BackendBucket("testBackend", {
  *     bucketName: bucket.name,
  *     description: "Contains beautiful images",
  *     enableCdn: true,
  * });
- * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backend_key", {
+ * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
  *     backendBucket: testBackend.name,
  *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
  * });

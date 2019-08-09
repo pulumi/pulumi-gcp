@@ -18,7 +18,7 @@ class ResourcePolicy(pulumi.CustomResource):
     region: pulumi.Output[str]
     self_link: pulumi.Output[str]
     snapshot_schedule_policy: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __props__=None, __name__=None, __opts__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
         
@@ -35,36 +35,50 @@ class ResourcePolicy(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['name'] = name
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        __props__['snapshot_schedule_policy'] = snapshot_schedule_policy
-
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['name'] = name
+            __props__['project'] = project
+            __props__['region'] = region
+            __props__['snapshot_schedule_policy'] = snapshot_schedule_policy
+            __props__['self_link'] = None
         super(ResourcePolicy, __self__).__init__(
             'gcp:compute/resourcePolicy:ResourcePolicy',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policy=None):
+        """
+        Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["self_link"] = self_link
+        __props__["snapshot_schedule_policy"] = snapshot_schedule_policy
+        return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

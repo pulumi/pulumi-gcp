@@ -90,7 +90,7 @@ func (r *Account) DisplayName() *pulumi.StringOutput {
 }
 
 // The e-mail address of the service account. This value
-// should be referenced from any `google_iam_policy` data sources
+// should be referenced from any `organizations.getIAMPolicy` data sources
 // that would grant the service account privileges.
 func (r *Account) Email() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["email"])
@@ -123,7 +123,7 @@ type AccountState struct {
 	// Can be updated without creating a new resource.
 	DisplayName interface{}
 	// The e-mail address of the service account. This value
-	// should be referenced from any `google_iam_policy` data sources
+	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email interface{}
 	// The fully-qualified name of the service account.

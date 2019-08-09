@@ -99,7 +99,7 @@ func (r *SubnetworkIAMBinding) Region() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *SubnetworkIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -122,7 +122,7 @@ type SubnetworkIAMBindingState struct {
 	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
 	// The role that should be applied. Only one
-	// `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The name of the subnetwork.
@@ -139,7 +139,7 @@ type SubnetworkIAMBindingArgs struct {
 	// unspecified, this defaults to the region configured in the provider.
 	Region interface{}
 	// The role that should be applied. Only one
-	// `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The name of the subnetwork.

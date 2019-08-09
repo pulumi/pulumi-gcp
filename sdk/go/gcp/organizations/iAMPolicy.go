@@ -12,7 +12,7 @@ import (
 // 
 // > **Warning:** New organizations have several default policies which will,
 //    without extreme caution, be **overwritten** by use of this resource.
-//    The safest alternative is to use multiple `google_organization_iam_binding`
+//    The safest alternative is to use multiple `organizations.IAMBinding`
 //    resources.  It is easy to use this resource to remove your own access to
 //    an organization, which will require a call to Google Support to have
 //    fixed, and can take multiple days to resolve.  If you do use this resource,
@@ -20,7 +20,7 @@ import (
 //    by importing your existing policy, and examining the diff very closely.
 // 
 // > **Note:** This resource __must not__ be used in conjunction with
-//    `google_organization_iam_member` or `google_organization_iam_binding`
+//    `organizations.IAMMember` or `organizations.IAMBinding`
 //    or they will fight over what your policy should be.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
@@ -89,7 +89,7 @@ func (r *IAMPolicy) OrgId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["orgId"])
 }
 
-// The `google_iam_policy` data source that represents
+// The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the organization. This policy overrides any existing
 // policy applied to the organization.
 func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
@@ -101,7 +101,7 @@ type IAMPolicyState struct {
 	Etag interface{}
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. This policy overrides any existing
 	// policy applied to the organization.
 	PolicyData interface{}
@@ -111,7 +111,7 @@ type IAMPolicyState struct {
 type IAMPolicyArgs struct {
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. This policy overrides any existing
 	// policy applied to the organization.
 	PolicyData interface{}

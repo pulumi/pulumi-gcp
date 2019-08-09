@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const my_index = new gcp.firestore.Index("my-index", {
+ * const myIndex = new gcp.firestore.Index("my-index", {
  *     collection: "chatrooms",
  *     fields: [
  *         {

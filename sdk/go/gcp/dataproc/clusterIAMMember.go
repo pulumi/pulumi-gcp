@@ -10,13 +10,13 @@ import (
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
 // 
-// * `google_dataproc_cluster_iam_policy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
-// * `google_dataproc_cluster_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
-// * `google_dataproc_cluster_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+// * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+// * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+// * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 // 
-// > **Note:** `google_dataproc_cluster_iam_policy` **cannot** be used in conjunction with `google_dataproc_cluster_iam_binding` and `google_dataproc_cluster_iam_member` or they will fight over what your policy should be. In addition, be careful not to accidentaly unset ownership of the cluster as `google_dataproc_cluster_iam_policy` replaces the entire policy.
+// > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentaly unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
 // 
-// > **Note:** `google_dataproc_cluster_iam_binding` resources **can be** used in conjunction with `google_dataproc_cluster_iam_member` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_member.html.markdown.
 type ClusterIAMMember struct {
@@ -114,7 +114,7 @@ func (r *ClusterIAMMember) Region() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
+// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *ClusterIAMMember) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -134,7 +134,7 @@ type ClusterIAMMemberState struct {
 	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
-	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -151,7 +151,7 @@ type ClusterIAMMemberArgs struct {
 	// is not provided, this provider will use the provider default.
 	Region interface{}
 	// The role that should be applied. Only one
-	// `google_dataproc_cluster_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

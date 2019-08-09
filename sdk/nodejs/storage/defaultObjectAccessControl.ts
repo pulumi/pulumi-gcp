@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const bucket = new gcp.storage.Bucket("bucket", {});
- * const publicRule = new gcp.storage.DefaultObjectAccessControl("public_rule", {
+ * const publicRule = new gcp.storage.DefaultObjectAccessControl("publicRule", {
  *     bucket: bucket.name,
  *     entity: "allUsers",
  *     role: "READER",

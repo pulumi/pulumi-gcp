@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * 
  * In order to enable notifications, a special Google Cloud Storage service account unique to the project
  * must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
- * account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
+ * account's email address, use the `gcp.storage.getProjectServiceAccount` datasource's `emailAddress` value, and see below
  * for an example of enabling notifications by granting the correct IAM permission. See
  * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
  * 

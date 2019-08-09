@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ * const accessLevel = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
@@ -41,18 +41,18 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
- *     title: "chromeos_no_lock",
+ *     title: "chromeosNoLock",
  * });
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
- * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
- *     title: "restrict_all",
+ *     title: "restrictAll",
  * });
  * ```
  *

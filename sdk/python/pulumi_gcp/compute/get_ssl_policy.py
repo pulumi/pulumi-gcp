@@ -72,14 +72,23 @@ class GetSSLPolicyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSSLPolicyResult(
+            creation_timestamp=self.creation_timestamp,
+            custom_features=self.custom_features,
+            description=self.description,
+            enabled_features=self.enabled_features,
+            fingerprint=self.fingerprint,
+            min_tls_version=self.min_tls_version,
+            name=self.name,
+            profile=self.profile,
+            project=self.project,
+            self_link=self.self_link,
+            id=self.id)
 
 def get_ssl_policy(name=None,project=None,opts=None):
     """
@@ -98,7 +107,7 @@ def get_ssl_policy(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts).value
 
-    return GetSSLPolicyResult(
+    return AwaitableGetSSLPolicyResult(
         creation_timestamp=__ret__.get('creationTimestamp'),
         custom_features=__ret__.get('customFeatures'),
         description=__ret__.get('description'),

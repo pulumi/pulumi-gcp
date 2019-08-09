@@ -36,7 +36,7 @@ class NetworkPeering(pulumi.CustomResource):
     """
     Details about the current state of the peering.
     """
-    def __init__(__self__, resource_name, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a network peering within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
@@ -63,45 +63,65 @@ class NetworkPeering(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['auto_create_routes'] = auto_create_routes
-
-        __props__['export_custom_routes'] = export_custom_routes
-
-        __props__['import_custom_routes'] = import_custom_routes
-
-        __props__['name'] = name
-
-        if network is None:
-            raise TypeError("Missing required property 'network'")
-        __props__['network'] = network
-
-        if peer_network is None:
-            raise TypeError("Missing required property 'peer_network'")
-        __props__['peer_network'] = peer_network
-
-        __props__['state'] = None
-        __props__['state_details'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['auto_create_routes'] = auto_create_routes
+            __props__['export_custom_routes'] = export_custom_routes
+            __props__['import_custom_routes'] = import_custom_routes
+            __props__['name'] = name
+            if network is None:
+                raise TypeError("Missing required property 'network'")
+            __props__['network'] = network
+            if peer_network is None:
+                raise TypeError("Missing required property 'peer_network'")
+            __props__['peer_network'] = peer_network
+            __props__['state'] = None
+            __props__['state_details'] = None
         super(NetworkPeering, __self__).__init__(
             'gcp:compute/networkPeering:NetworkPeering',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, state=None, state_details=None):
+        """
+        Get an existing NetworkPeering resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_create_routes: If set to `true`, the routes between the two networks will
+               be created and managed automatically. Defaults to `true`.
+        :param pulumi.Input[str] name: Name of the peering.
+        :param pulumi.Input[str] network: Resource link of the network to add a peering to.
+        :param pulumi.Input[str] peer_network: Resource link of the peer network.
+        :param pulumi.Input[str] state: State for the peering.
+        :param pulumi.Input[str] state_details: Details about the current state of the peering.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["auto_create_routes"] = auto_create_routes
+        __props__["export_custom_routes"] = export_custom_routes
+        __props__["import_custom_routes"] = import_custom_routes
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["peer_network"] = peer_network
+        __props__["state"] = state
+        __props__["state_details"] = state_details
+        return NetworkPeering(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

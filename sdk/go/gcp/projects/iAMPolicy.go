@@ -10,13 +10,13 @@ import (
 
 // Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
 // 
-// * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
-// * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
-// * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+// * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+// * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+// * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
 // 
-// > **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+// > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding` and `projects.IAMMember` or they will fight over what your policy should be.
 // 
-// > **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_policy.html.markdown.
 type IAMPolicy struct {
@@ -80,16 +80,16 @@ func (r *IAMPolicy) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The `google_iam_policy` data source that represents
+// The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the project. The policy will be
 // merged with any existing policy applied to the project.
 func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["policyData"])
 }
 
-// The project ID. If not specified for `google_project_iam_binding`
-// or `google_project_iam_member`, uses the ID of the project configured with the provider.
-// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+// The project ID. If not specified for `projects.IAMBinding`
+// or `projects.IAMMember`, uses the ID of the project configured with the provider.
+// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 // will not be inferred from the provider.
 func (r *IAMPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
@@ -99,26 +99,26 @@ func (r *IAMPolicy) Project() *pulumi.StringOutput {
 type IAMPolicyState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData interface{}
-	// The project ID. If not specified for `google_project_iam_binding`
-	// or `google_project_iam_member`, uses the ID of the project configured with the provider.
-	// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+	// The project ID. If not specified for `projects.IAMBinding`
+	// or `projects.IAMMember`, uses the ID of the project configured with the provider.
+	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
 	Project interface{}
 }
 
 // The set of arguments for constructing a IAMPolicy resource.
 type IAMPolicyArgs struct {
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData interface{}
-	// The project ID. If not specified for `google_project_iam_binding`
-	// or `google_project_iam_member`, uses the ID of the project configured with the provider.
-	// Required for `google_project_iam_policy` - you must explicitly set the project, and it
+	// The project ID. If not specified for `projects.IAMBinding`
+	// or `projects.IAMMember`, uses the ID of the project configured with the provider.
+	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
 	Project interface{}
 }

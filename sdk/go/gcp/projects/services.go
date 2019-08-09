@@ -18,7 +18,7 @@ import (
 // > **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
 // 	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
 // 	*exclusively* a particular set of APIs are enabled, you should most likely use the
-// 	google_project_service resource, one resource per API.
+// 	projects.Service resource, one resource per API.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_services.html.markdown.
 type Services struct {
@@ -76,7 +76,7 @@ func (r *Services) ID() *pulumi.IDOutput {
 }
 
 // Whether or not to disable APIs on project
-// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+// when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
 // true and the project is changed, this provider will force disable API services
 // managed by this provider for the previous project.
 func (r *Services) DisableOnDestroy() *pulumi.BoolOutput {
@@ -99,7 +99,7 @@ func (r *Services) Services() *pulumi.ArrayOutput {
 // Input properties used for looking up and filtering Services resources.
 type ServicesState struct {
 	// Whether or not to disable APIs on project
-	// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+	// when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
 	// true and the project is changed, this provider will force disable API services
 	// managed by this provider for the previous project.
 	DisableOnDestroy interface{}
@@ -115,7 +115,7 @@ type ServicesState struct {
 // The set of arguments for constructing a Services resource.
 type ServicesArgs struct {
 	// Whether or not to disable APIs on project
-	// when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+	// when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
 	// true and the project is changed, this provider will force disable API services
 	// managed by this provider for the previous project.
 	DisableOnDestroy interface{}

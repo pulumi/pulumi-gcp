@@ -77,7 +77,7 @@ export class TargetPool extends pulumi.CustomResource {
     public readonly failoverRatio!: pulumi.Output<number | undefined>;
     /**
      * List of zero or one health check name or self_link. Only
-     * legacy `google_compute_http_health_check` is supported.
+     * legacy `gcp.compute.HttpHealthCheck` is supported.
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface TargetPoolState {
     readonly failoverRatio?: pulumi.Input<number>;
     /**
      * List of zero or one health check name or self_link. Only
-     * legacy `google_compute_http_health_check` is supported.
+     * legacy `gcp.compute.HttpHealthCheck` is supported.
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**
@@ -238,7 +238,7 @@ export interface TargetPoolArgs {
     readonly failoverRatio?: pulumi.Input<number>;
     /**
      * List of zero or one health check name or self_link. Only
-     * legacy `google_compute_http_health_check` is supported.
+     * legacy `gcp.compute.HttpHealthCheck` is supported.
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**

@@ -46,14 +46,19 @@ class GetRegionInstanceGroupResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRegionInstanceGroupResult(
+            instances=self.instances,
+            name=self.name,
+            project=self.project,
+            region=self.region,
+            self_link=self.self_link,
+            size=self.size,
+            id=self.id)
 
 def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
     """
@@ -77,7 +82,7 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts).value
 
-    return GetRegionInstanceGroupResult(
+    return AwaitableGetRegionInstanceGroupResult(
         instances=__ret__.get('instances'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),

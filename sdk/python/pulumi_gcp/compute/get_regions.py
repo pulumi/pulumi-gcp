@@ -31,14 +31,16 @@ class GetRegionsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRegionsResult(GetRegionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRegionsResult(
+            names=self.names,
+            project=self.project,
+            status=self.status,
+            id=self.id)
 
 def get_regions(project=None,status=None,opts=None):
     """
@@ -57,7 +59,7 @@ def get_regions(project=None,status=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__, opts=opts).value
 
-    return GetRegionsResult(
+    return AwaitableGetRegionsResult(
         names=__ret__.get('names'),
         project=__ret__.get('project'),
         status=__ret__.get('status'),

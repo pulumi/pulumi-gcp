@@ -81,12 +81,12 @@ func (r *BucketACL) DefaultAcl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultAcl"])
 }
 
-// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
 func (r *BucketACL) PredefinedAcl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["predefinedAcl"])
 }
 
-// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
 func (r *BucketACL) RoleEntities() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["roleEntities"])
 }
@@ -97,9 +97,9 @@ type BucketACLState struct {
 	Bucket interface{}
 	// Configure this ACL to be the default ACL.
 	DefaultAcl interface{}
-	// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+	// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl interface{}
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
 	RoleEntities interface{}
 }
 
@@ -109,8 +109,8 @@ type BucketACLArgs struct {
 	Bucket interface{}
 	// Configure this ACL to be the default ACL.
 	DefaultAcl interface{}
-	// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+	// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl interface{}
-	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
 	RoleEntities interface{}
 }

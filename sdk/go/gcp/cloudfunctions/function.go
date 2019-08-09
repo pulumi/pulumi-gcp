@@ -129,12 +129,12 @@ func (r *Function) EnvironmentVariables() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["environmentVariables"])
 }
 
-// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 func (r *Function) EventTrigger() *pulumi.Output {
 	return r.s.State["eventTrigger"]
 }
 
-// URL which triggers function execution. Returned only if `trigger_http` is used.
+// URL which triggers function execution. Returned only if `triggerHttp` is used.
 func (r *Function) HttpsTriggerUrl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["httpsTriggerUrl"])
 }
@@ -188,7 +188,7 @@ func (r *Function) SourceArchiveObject() *pulumi.StringOutput {
 }
 
 // Represents parameters related to source repository where a function is hosted.
-// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
 func (r *Function) SourceRepository() *pulumi.Output {
 	return r.s.State["sourceRepository"]
 }
@@ -198,7 +198,7 @@ func (r *Function) Timeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeout"])
 }
 
-// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
 func (r *Function) TriggerHttp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["triggerHttp"])
 }
@@ -213,9 +213,9 @@ type FunctionState struct {
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
-	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger interface{}
-	// URL which triggers function execution. Returned only if `trigger_http` is used.
+	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
 	Labels interface{}
@@ -239,11 +239,11 @@ type FunctionState struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
 	SourceRepository interface{}
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
 	TriggerHttp interface{}
 }
 
@@ -257,9 +257,9 @@ type FunctionArgs struct {
 	EntryPoint interface{}
 	// A set of key/value environment variable pairs to assign to the function.
 	EnvironmentVariables interface{}
-	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger interface{}
-	// URL which triggers function execution. Returned only if `trigger_http` is used.
+	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl interface{}
 	// A set of key/value label pairs to assign to the function.
 	Labels interface{}
@@ -283,10 +283,10 @@ type FunctionArgs struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject interface{}
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
 	SourceRepository interface{}
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout interface{}
-	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
 	TriggerHttp interface{}
 }

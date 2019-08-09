@@ -61,16 +61,16 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 
 // A collection of arguments for invoking getInstance.
 type GetInstanceArgs struct {
-	// The name of the instance. One of `name` or `self_link` must be provided.
+	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
-	// If `self_link` is provided, this value is ignored.  If neither `self_link`
+	// If `selfLink` is provided, this value is ignored.  If neither `selfLink`
 	// nor `project` are provided, the provider project is used.
 	Project interface{}
-	// The self link of the instance. One of `name` or `self_link` must be provided.
+	// The self link of the instance. One of `name` or `selfLink` must be provided.
 	SelfLink interface{}
-	// The zone of the instance. If `self_link` is provided, this
-	// value is ignored.  If neither `self_link` nor `zone` are provided, the
+	// The zone of the instance. If `selfLink` is provided, this
+	// value is ignored.  If neither `selfLink` nor `zone` are provided, the
 	// provider zone is used.
 	Zone interface{}
 }

@@ -34,14 +34,17 @@ class GetKMSKeyRingResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKMSKeyRingResult(
+            location=self.location,
+            name=self.name,
+            project=self.project,
+            self_link=self.self_link,
+            id=self.id)
 
 def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     """
@@ -66,7 +69,7 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts).value
 
-    return GetKMSKeyRingResult(
+    return AwaitableGetKMSKeyRingResult(
         location=__ret__.get('location'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),

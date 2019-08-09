@@ -34,10 +34,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {
  *     location: "global",
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
  *     keyRing: keyRing.selfLink,
  * });
  * const example = new gcp.pubsub.Topic("example", {

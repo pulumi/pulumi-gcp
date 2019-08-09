@@ -82,7 +82,7 @@ func (r *RouterInterface) ID() *pulumi.IDOutput {
 
 // The name or resource link to the
 // VLAN interconnect for this interface. Changing this forces a new interface to
-// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+// be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
 // specified.
 func (r *RouterInterface) InterconnectAttachment() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["interconnectAttachment"])
@@ -121,7 +121,7 @@ func (r *RouterInterface) Router() *pulumi.StringOutput {
 
 // The name or resource link to the VPN tunnel this
 // interface will be linked to. Changing this forces a new interface to be created. Only
-// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+// one of `vpnTunnel` and `interconnectAttachment` can be specified.
 func (r *RouterInterface) VpnTunnel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vpnTunnel"])
 }
@@ -130,7 +130,7 @@ func (r *RouterInterface) VpnTunnel() *pulumi.StringOutput {
 type RouterInterfaceState struct {
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
-	// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+	// be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
 	// specified.
 	InterconnectAttachment interface{}
 	// IP address and range of the interface. The IP range must be
@@ -151,7 +151,7 @@ type RouterInterfaceState struct {
 	Router interface{}
 	// The name or resource link to the VPN tunnel this
 	// interface will be linked to. Changing this forces a new interface to be created. Only
-	// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+	// one of `vpnTunnel` and `interconnectAttachment` can be specified.
 	VpnTunnel interface{}
 }
 
@@ -159,7 +159,7 @@ type RouterInterfaceState struct {
 type RouterInterfaceArgs struct {
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
-	// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
+	// be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
 	// specified.
 	InterconnectAttachment interface{}
 	// IP address and range of the interface. The IP range must be
@@ -180,6 +180,6 @@ type RouterInterfaceArgs struct {
 	Router interface{}
 	// The name or resource link to the VPN tunnel this
 	// interface will be linked to. Changing this forces a new interface to be created. Only
-	// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+	// one of `vpnTunnel` and `interconnectAttachment` can be specified.
 	VpnTunnel interface{}
 }

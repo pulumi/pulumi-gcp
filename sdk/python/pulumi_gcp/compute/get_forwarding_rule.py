@@ -97,14 +97,27 @@ class GetForwardingRuleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetForwardingRuleResult(
+            backend_service=self.backend_service,
+            description=self.description,
+            ip_address=self.ip_address,
+            ip_protocol=self.ip_protocol,
+            load_balancing_scheme=self.load_balancing_scheme,
+            name=self.name,
+            network=self.network,
+            port_range=self.port_range,
+            ports=self.ports,
+            project=self.project,
+            region=self.region,
+            self_link=self.self_link,
+            subnetwork=self.subnetwork,
+            target=self.target,
+            id=self.id)
 
 def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     """
@@ -123,7 +136,7 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts).value
 
-    return GetForwardingRuleResult(
+    return AwaitableGetForwardingRuleResult(
         backend_service=__ret__.get('backendService'),
         description=__ret__.get('description'),
         ip_address=__ret__.get('ipAddress'),

@@ -55,14 +55,25 @@ class GetProjectResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectResult(
+            app_engines=self.app_engines,
+            auto_create_network=self.auto_create_network,
+            billing_account=self.billing_account,
+            folder_id=self.folder_id,
+            labels=self.labels,
+            name=self.name,
+            number=self.number,
+            org_id=self.org_id,
+            policy_data=self.policy_data,
+            policy_etag=self.policy_etag,
+            project_id=self.project_id,
+            skip_delete=self.skip_delete,
+            id=self.id)
 
 def get_project(project_id=None,opts=None):
     """
@@ -81,7 +92,7 @@ def get_project(project_id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts).value
 
-    return GetProjectResult(
+    return AwaitableGetProjectResult(
         app_engines=__ret__.get('appEngines'),
         auto_create_network=__ret__.get('autoCreateNetwork'),
         billing_account=__ret__.get('billingAccount'),

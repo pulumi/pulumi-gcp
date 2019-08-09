@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const target_vm = new gcp.compute.Instance("target-vm", {
+ * const targetVm = new gcp.compute.Instance("target-vm", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: vmimage.selfLink,

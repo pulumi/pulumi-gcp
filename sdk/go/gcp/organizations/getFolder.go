@@ -53,7 +53,7 @@ type GetFolderResult struct {
 	LookupOrganization interface{}
 	// The resource name of the Folder in the form `folders/{folder_id}`.
 	Name interface{}
-	// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+	// If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
 	Organization interface{}
 	// The resource name of the parent Folder or Organization.
 	Parent interface{}

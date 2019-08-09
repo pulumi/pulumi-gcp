@@ -32,14 +32,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const auto_network = new gcp.compute.Network("auto-network", {});
+ * const autoNetwork = new gcp.compute.Network("auto-network", {});
  * const cache = new gcp.redis.Instance("cache", {
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: auto_network.selfLink,
  *     displayName: "Test Instance",
  *     labels: {
- *         my_key: "my_val",
- *         other_key: "other_val",
+ *         my_key: "myVal",
+ *         other_key: "otherVal",
  *     },
  *     locationId: "us-central1-a",
  *     memorySizeGb: 1,

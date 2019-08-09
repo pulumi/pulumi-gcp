@@ -29,12 +29,12 @@ import * as utilities from "../utilities";
  * const central1a = pulumi.output(gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
  * }));
- * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     nodeType: central1a.apply(central1a => central1a.names[0]),
  *     region: "us-central1",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     description: "example google_compute_node_group for Google Provider",
+ *     description: "example gcp.compute.NodeGroup for Google Provider",
  *     nodeTemplate: soletenant_tmpl.selfLink,
  *     size: 1,
  *     zone: "us-central1-a",

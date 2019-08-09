@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
  *     cryptoKeyId: "my-gcp-project/us-central1/my-key-ring/my-crypto-key",
  *     members: ["user:alice@gmail.com"],
  *     role: "roles/editor",
@@ -71,7 +71,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
-     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -140,7 +140,7 @@ export interface CryptoKeyIAMBindingState {
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
-     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -163,7 +163,7 @@ export interface CryptoKeyIAMBindingArgs {
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
-     * `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

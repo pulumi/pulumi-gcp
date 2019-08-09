@@ -47,7 +47,7 @@ class Job(pulumi.CustomResource):
     spark_config: pulumi.Output[dict]
     sparksql_config: pulumi.Output[dict]
     status: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
@@ -73,58 +73,82 @@ class Job(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['force_delete'] = force_delete
-
-        __props__['hadoop_config'] = hadoop_config
-
-        __props__['hive_config'] = hive_config
-
-        __props__['labels'] = labels
-
-        __props__['pig_config'] = pig_config
-
-        if placement is None:
-            raise TypeError("Missing required property 'placement'")
-        __props__['placement'] = placement
-
-        __props__['project'] = project
-
-        __props__['pyspark_config'] = pyspark_config
-
-        __props__['reference'] = reference
-
-        __props__['region'] = region
-
-        __props__['scheduling'] = scheduling
-
-        __props__['spark_config'] = spark_config
-
-        __props__['sparksql_config'] = sparksql_config
-
-        __props__['driver_controls_files_uri'] = None
-        __props__['driver_output_resource_uri'] = None
-        __props__['status'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['force_delete'] = force_delete
+            __props__['hadoop_config'] = hadoop_config
+            __props__['hive_config'] = hive_config
+            __props__['labels'] = labels
+            __props__['pig_config'] = pig_config
+            if placement is None:
+                raise TypeError("Missing required property 'placement'")
+            __props__['placement'] = placement
+            __props__['project'] = project
+            __props__['pyspark_config'] = pyspark_config
+            __props__['reference'] = reference
+            __props__['region'] = region
+            __props__['scheduling'] = scheduling
+            __props__['spark_config'] = spark_config
+            __props__['sparksql_config'] = sparksql_config
+            __props__['driver_controls_files_uri'] = None
+            __props__['driver_output_resource_uri'] = None
+            __props__['status'] = None
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, driver_controls_files_uri=None, driver_output_resource_uri=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None, status=None):
+        """
+        Get an existing Job resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
+        :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
+               Dataproc. Setting this to true, and calling destroy, will ensure that the
+               job is first cancelled before issuing the delete.
+        :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to add to the job.
+        :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
+               subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
+               for this job to be submitted to. If not specified, defaults to `global`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["driver_controls_files_uri"] = driver_controls_files_uri
+        __props__["driver_output_resource_uri"] = driver_output_resource_uri
+        __props__["force_delete"] = force_delete
+        __props__["hadoop_config"] = hadoop_config
+        __props__["hive_config"] = hive_config
+        __props__["labels"] = labels
+        __props__["pig_config"] = pig_config
+        __props__["placement"] = placement
+        __props__["project"] = project
+        __props__["pyspark_config"] = pyspark_config
+        __props__["reference"] = reference
+        __props__["region"] = region
+        __props__["scheduling"] = scheduling
+        __props__["spark_config"] = spark_config
+        __props__["sparksql_config"] = sparksql_config
+        __props__["status"] = status
+        return Job(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

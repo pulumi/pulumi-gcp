@@ -12,7 +12,7 @@ import (
 // an existing Google Cloud Platform folder.
 // 
 // > **Note:** This resource _must not_ be used in conjunction with
-//    `google_folder_iam_policy` or they will fight over what your policy
+//    `folder.IAMPolicy` or they will fight over what your policy
 //    should be.
 // 
 // > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -104,7 +104,7 @@ func (r *IAMBinding) Members() *pulumi.ArrayOutput {
 }
 
 // The role that should be applied. Only one
-// `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *IAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -125,7 +125,7 @@ type IAMBindingState struct {
 	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -143,7 +143,7 @@ type IAMBindingArgs struct {
 	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const folderAdminPolicy = new gcp.folder.IAMPolicy("folder_admin_policy", {
+ * const folderAdminPolicy = new gcp.folder.IAMPolicy("folderAdminPolicy", {
  *     folder: department1.name,
  *     policyData: admin.policyData,
  * });
@@ -68,7 +68,7 @@ export class IAMPolicy extends pulumi.CustomResource {
      */
     public readonly folder!: pulumi.Output<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing
      * policy applied to the folder.
      */
@@ -125,7 +125,7 @@ export interface IAMPolicyState {
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing
      * policy applied to the folder.
      */
@@ -141,7 +141,7 @@ export interface IAMPolicyArgs {
      */
     readonly folder: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing
      * policy applied to the folder.
      */

@@ -51,7 +51,7 @@ class NodePool(pulumi.CustomResource):
     node_config: pulumi.Output[dict]
     """
     The node configuration of the pool. See
-    google_container_cluster for schema.
+    container.Cluster for schema.
     """
     node_count: pulumi.Output[float]
     """
@@ -74,7 +74,7 @@ class NodePool(pulumi.CustomResource):
     and `auto_upgrade` are both specified, they will fight each other for what the node version should
     be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
     recommended that you specify explicit versions as this provider will see spurious diffs
-    when fuzzy versions are used. See the `google_container_engine_versions` data source's
+    when fuzzy versions are used. See the `container.getEngineVersions` data source's
     `version_prefix` field to approximate fuzzy versions.
     """
     zone: pulumi.Output[str]
@@ -82,7 +82,7 @@ class NodePool(pulumi.CustomResource):
     The zone in which the cluster resides. `zone`
     has been deprecated in favor of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
@@ -107,7 +107,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
                auto-generate a unique name.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
-               google_container_cluster for schema.
+               container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
@@ -118,7 +118,7 @@ class NodePool(pulumi.CustomResource):
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as this provider will see spurious diffs
-               when fuzzy versions are used. See the `google_container_engine_versions` data source's
+               when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
         :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
                has been deprecated in favor of `location`.
@@ -131,58 +131,102 @@ class NodePool(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['autoscaling'] = autoscaling
-
-        if cluster is None:
-            raise TypeError("Missing required property 'cluster'")
-        __props__['cluster'] = cluster
-
-        __props__['initial_node_count'] = initial_node_count
-
-        __props__['location'] = location
-
-        __props__['management'] = management
-
-        __props__['max_pods_per_node'] = max_pods_per_node
-
-        __props__['name'] = name
-
-        __props__['name_prefix'] = name_prefix
-
-        __props__['node_config'] = node_config
-
-        __props__['node_count'] = node_count
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        __props__['version'] = version
-
-        __props__['zone'] = zone
-
-        __props__['instance_group_urls'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['autoscaling'] = autoscaling
+            if cluster is None:
+                raise TypeError("Missing required property 'cluster'")
+            __props__['cluster'] = cluster
+            __props__['initial_node_count'] = initial_node_count
+            __props__['location'] = location
+            __props__['management'] = management
+            __props__['max_pods_per_node'] = max_pods_per_node
+            __props__['name'] = name
+            __props__['name_prefix'] = name_prefix
+            __props__['node_config'] = node_config
+            __props__['node_count'] = node_count
+            __props__['project'] = project
+            __props__['region'] = region
+            __props__['version'] = version
+            __props__['zone'] = zone
+            __props__['instance_group_urls'] = None
         super(NodePool, __self__).__init__(
             'gcp:container/nodePool:NodePool',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, autoscaling=None, cluster=None, initial_node_count=None, instance_group_urls=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, project=None, region=None, version=None, zone=None):
+        """
+        Get an existing NodePool resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
+               the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+        :param pulumi.Input[float] initial_node_count: The initial node count for the pool. Changing this will force
+               recreation of the resource.
+        :param pulumi.Input[str] location: The location (region or zone) in which the cluster
+               resides.
+        :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
+               auto-upgrade is configured. Structure is documented below.
+        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
+               Note that this does not work on node pools which are "route-based" - that is, node
+               pools belonging to clusters that do not have IP Aliasing enabled.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+               for more information.
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+               auto-generate a unique name.
+        :param pulumi.Input[dict] node_config: The node configuration of the pool. See
+               container.Cluster for schema.
+        :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
+               update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
+               the provider-configured project will be used.
+        :param pulumi.Input[str] region: The region in which the cluster resides (for
+               regional clusters). `zone` has been deprecated in favor of `location`.
+        :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
+               and `auto_upgrade` are both specified, they will fight each other for what the node version should
+               be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
+               recommended that you specify explicit versions as this provider will see spurious diffs
+               when fuzzy versions are used. See the `container.getEngineVersions` data source's
+               `version_prefix` field to approximate fuzzy versions.
+        :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
+               has been deprecated in favor of `location`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["autoscaling"] = autoscaling
+        __props__["cluster"] = cluster
+        __props__["initial_node_count"] = initial_node_count
+        __props__["instance_group_urls"] = instance_group_urls
+        __props__["location"] = location
+        __props__["management"] = management
+        __props__["max_pods_per_node"] = max_pods_per_node
+        __props__["name"] = name
+        __props__["name_prefix"] = name_prefix
+        __props__["node_config"] = node_config
+        __props__["node_count"] = node_count
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["version"] = version
+        __props__["zone"] = zone
+        return NodePool(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

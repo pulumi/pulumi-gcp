@@ -10,13 +10,13 @@ import (
 
 // Three different resources help you manage your IAM policy for GCE instance. Each of these resources serves a different use case:
 // 
-// * `google_compute_instance_iam_policy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-// * `google_compute_instance_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-// * `google_compute_instance_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+// * `compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+// * `compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+// * `compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 // 
-// > **Note:** `google_compute_instance_iam_policy` **cannot** be used in conjunction with `google_compute_instance_iam_binding` and `google_compute_instance_iam_member` or they will fight over what your policy should be.
+// > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
 // 
-// > **Note:** `google_compute_instance_iam_binding` resources **can be** used in conjunction with `google_compute_instance_iam_member` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_member.html.markdown.
 type InstanceIAMMember struct {
@@ -108,7 +108,7 @@ func (r *InstanceIAMMember) Project() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_compute_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *InstanceIAMMember) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -131,7 +131,7 @@ type InstanceIAMMemberState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_compute_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The zone of the instance. If
@@ -148,7 +148,7 @@ type InstanceIAMMemberArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_compute_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The zone of the instance. If

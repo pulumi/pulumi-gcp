@@ -78,7 +78,7 @@ func (r *IAMPolicy) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// The `google_iam_policy` data source that represents
+// The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the folder. This policy overrides any existing
 // policy applied to the folder.
 func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
@@ -91,7 +91,7 @@ type IAMPolicyState struct {
 	Etag interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the folder. This policy overrides any existing
 	// policy applied to the folder.
 	PolicyData interface{}
@@ -101,7 +101,7 @@ type IAMPolicyState struct {
 type IAMPolicyArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// The `google_iam_policy` data source that represents
+	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the folder. This policy overrides any existing
 	// policy applied to the folder.
 	PolicyData interface{}

@@ -22,7 +22,7 @@ import (
 // the route with the smallest priority value. If there is still a tie, it
 // uses the layer three and four packet headers to select just one of the
 // remaining matching routes. The packet is then forwarded as specified by
-// the next_hop field of the winning route -- either to another virtual
+// the nextHop field of the winning route -- either to another virtual
 // machine destination, a virtual machine gateway or a Compute
 // Engine-operated gateway. Packets that do not match any route in the
 // sending virtual machine's routing table will be dropped.
@@ -150,9 +150,9 @@ func (r *Route) NextHopInstance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopInstance"])
 }
 
-// (Optional when `next_hop_instance` is
+// (Optional when `nextHopInstance` is
 // specified)  The zone of the instance specified in
-// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 // a URL.
 func (r *Route) NextHopInstanceZone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopInstanceZone"])
@@ -197,9 +197,9 @@ type RouteState struct {
 	Network interface{}
 	NextHopGateway interface{}
 	NextHopInstance interface{}
-	// (Optional when `next_hop_instance` is
+	// (Optional when `nextHopInstance` is
 	// specified)  The zone of the instance specified in
-	// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone interface{}
 	NextHopIp interface{}
@@ -222,9 +222,9 @@ type RouteArgs struct {
 	Network interface{}
 	NextHopGateway interface{}
 	NextHopInstance interface{}
-	// (Optional when `next_hop_instance` is
+	// (Optional when `nextHopInstance` is
 	// specified)  The zone of the instance specified in
-	// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone interface{}
 	NextHopIp interface{}

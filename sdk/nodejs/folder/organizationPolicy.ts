@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serialPortPolicy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     listPolicy: {
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     listPolicy: {
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     folder: "folders/123456789",
  *     restorePolicy: {

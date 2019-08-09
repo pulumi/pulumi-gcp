@@ -54,7 +54,7 @@ class RouterPeer(pulumi.CustomResource):
     The name of the router in which this BGP peer will be configured.
     Changing this forces a new peer to be created.
     """
-    def __init__(__self__, resource_name, opts=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Cloud Router BGP peer. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
@@ -89,50 +89,80 @@ class RouterPeer(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['advertised_route_priority'] = advertised_route_priority
-
-        if interface is None:
-            raise TypeError("Missing required property 'interface'")
-        __props__['interface'] = interface
-
-        __props__['name'] = name
-
-        if peer_asn is None:
-            raise TypeError("Missing required property 'peer_asn'")
-        __props__['peer_asn'] = peer_asn
-
-        __props__['peer_ip_address'] = peer_ip_address
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        if router is None:
-            raise TypeError("Missing required property 'router'")
-        __props__['router'] = router
-
-        __props__['ip_address'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['advertised_route_priority'] = advertised_route_priority
+            if interface is None:
+                raise TypeError("Missing required property 'interface'")
+            __props__['interface'] = interface
+            __props__['name'] = name
+            if peer_asn is None:
+                raise TypeError("Missing required property 'peer_asn'")
+            __props__['peer_asn'] = peer_asn
+            __props__['peer_ip_address'] = peer_ip_address
+            __props__['project'] = project
+            __props__['region'] = region
+            if router is None:
+                raise TypeError("Missing required property 'router'")
+            __props__['router'] = router
+            __props__['ip_address'] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, advertised_route_priority=None, interface=None, ip_address=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
+        """
+        Get an existing RouterPeer resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
+        :param pulumi.Input[str] name: A unique name for BGP peer, required by GCE. Changing
+               this forces a new peer to be created.
+        :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN).
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud.
+               Changing this forces a new peer to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this peer's router belongs. If it
+               is not provided, the provider project is used. Changing this forces a new peer to be created.
+        :param pulumi.Input[str] region: The region this peer's router sits in. If not specified,
+               the project region will be used. Changing this forces a new peer to be
+               created.
+        :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
+               Changing this forces a new peer to be created.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["advertised_route_priority"] = advertised_route_priority
+        __props__["interface"] = interface
+        __props__["ip_address"] = ip_address
+        __props__["name"] = name
+        __props__["peer_asn"] = peer_asn
+        __props__["peer_ip_address"] = peer_ip_address
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["router"] = router
+        return RouterPeer(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

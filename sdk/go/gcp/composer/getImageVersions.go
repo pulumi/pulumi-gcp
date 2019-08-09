@@ -40,7 +40,7 @@ type GetImageVersionsArgs struct {
 
 // A collection of values returned by getImageVersions.
 type GetImageVersionsResult struct {
-	// A list of composer image versions available in the given project and location. Each `image_version` contains:
+	// A list of composer image versions available in the given project and location. Each `imageVersion` contains:
 	ImageVersions interface{}
 	Project interface{}
 	Region interface{}

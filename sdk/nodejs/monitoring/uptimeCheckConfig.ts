@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *             host: "192.168.1.1",
  *             project_id: "example",
  *         },
- *         type: "uptime_url",
+ *         type: "uptimeUrl",
  *     },
  *     timeout: "60s",
  * });
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     displayName: "uptime-check-group",
  *     filter: "resource.metadata.name=has_substring(\"foo\")",
  * });
- * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcp_group", {
+ * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
  *     displayName: "tcp-uptime-check",
  *     resourceGroup: {
  *         groupId: check.name,

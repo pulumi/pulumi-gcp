@@ -84,7 +84,7 @@ class RouterNat(pulumi.CustomResource):
     Timeout (in seconds) for UDP connections.
     Defaults to 30s if not set. Changing this forces a new NAT to be created.
     """
-    def __init__(__self__, resource_name, opts=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Cloud NAT. For more information see
         [the official documentation](https://cloud.google.com/nat/docs/overview)
@@ -137,58 +137,105 @@ class RouterNat(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['icmp_idle_timeout_sec'] = icmp_idle_timeout_sec
-
-        __props__['log_config'] = log_config
-
-        __props__['min_ports_per_vm'] = min_ports_per_vm
-
-        __props__['name'] = name
-
-        if nat_ip_allocate_option is None:
-            raise TypeError("Missing required property 'nat_ip_allocate_option'")
-        __props__['nat_ip_allocate_option'] = nat_ip_allocate_option
-
-        __props__['nat_ips'] = nat_ips
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        if router is None:
-            raise TypeError("Missing required property 'router'")
-        __props__['router'] = router
-
-        __props__['source_subnetwork_ip_ranges_to_nat'] = source_subnetwork_ip_ranges_to_nat
-
-        __props__['subnetworks'] = subnetworks
-
-        __props__['tcp_established_idle_timeout_sec'] = tcp_established_idle_timeout_sec
-
-        __props__['tcp_transitory_idle_timeout_sec'] = tcp_transitory_idle_timeout_sec
-
-        __props__['udp_idle_timeout_sec'] = udp_idle_timeout_sec
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['icmp_idle_timeout_sec'] = icmp_idle_timeout_sec
+            __props__['log_config'] = log_config
+            __props__['min_ports_per_vm'] = min_ports_per_vm
+            __props__['name'] = name
+            if nat_ip_allocate_option is None:
+                raise TypeError("Missing required property 'nat_ip_allocate_option'")
+            __props__['nat_ip_allocate_option'] = nat_ip_allocate_option
+            __props__['nat_ips'] = nat_ips
+            __props__['project'] = project
+            __props__['region'] = region
+            if router is None:
+                raise TypeError("Missing required property 'router'")
+            __props__['router'] = router
+            __props__['source_subnetwork_ip_ranges_to_nat'] = source_subnetwork_ip_ranges_to_nat
+            __props__['subnetworks'] = subnetworks
+            __props__['tcp_established_idle_timeout_sec'] = tcp_established_idle_timeout_sec
+            __props__['tcp_transitory_idle_timeout_sec'] = tcp_transitory_idle_timeout_sec
+            __props__['udp_idle_timeout_sec'] = udp_idle_timeout_sec
         super(RouterNat, __self__).__init__(
             'gcp:compute/routerNat:RouterNat',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None):
+        """
+        Get an existing RouterNat resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections.
+               Defaults to 30s if not set. Changing this forces a new NAT to be created.
+        :param pulumi.Input[float] min_ports_per_vm: Minimum number of ports allocated to a VM
+               from this NAT config. If not set, a default number of ports is allocated to a VM.
+               Changing this forces a new NAT to be created.
+        :param pulumi.Input[str] name: A unique name for Cloud NAT, required by GCE. Changing
+               this forces a new NAT to be created.
+        :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for
+               this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
+               a new NAT to be created.
+        :param pulumi.Input[list] nat_ips: List of `self_link`s of external IPs. Only valid if
+               `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+               new NAT to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this NAT's router belongs. If it
+               is not provided, the provider project is used. Changing this forces a new NAT to be created.
+        :param pulumi.Input[str] region: The region this NAT's router sits in. If not specified,
+               the project region will be used. Changing this forces a new NAT to be
+               created.
+        :param pulumi.Input[str] router: The name of the router in which this NAT will be configured.
+               Changing this forces a new NAT to be created.
+        :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured
+               per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
+               `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
+               this forces a new NAT to be created.
+        :param pulumi.Input[list] subnetworks: One or more subnetwork NAT configurations. Only used
+               if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+               the section below for details on configuration.
+        :param pulumi.Input[float] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP
+               established connections. Defaults to 1200s if not set. Changing this forces
+               a new NAT to be created.
+        :param pulumi.Input[float] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP
+               transitory connections. Defaults to 30s if not set. Changing this forces a
+               new NAT to be created.
+        :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
+               Defaults to 30s if not set. Changing this forces a new NAT to be created.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
+        __props__["log_config"] = log_config
+        __props__["min_ports_per_vm"] = min_ports_per_vm
+        __props__["name"] = name
+        __props__["nat_ip_allocate_option"] = nat_ip_allocate_option
+        __props__["nat_ips"] = nat_ips
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["source_subnetwork_ip_ranges_to_nat"] = source_subnetwork_ip_ranges_to_nat
+        __props__["subnetworks"] = subnetworks
+        __props__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
+        __props__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
+        __props__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
+        return RouterNat(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

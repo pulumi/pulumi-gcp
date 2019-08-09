@@ -50,7 +50,7 @@ export class TunnelInstanceIAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -127,7 +127,7 @@ export interface TunnelInstanceIAMMemberState {
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -154,7 +154,7 @@ export interface TunnelInstanceIAMMemberArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

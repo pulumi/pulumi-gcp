@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myProject = new gcp.organizations.Project("my_project", {
+ * const myProject = new gcp.organizations.Project("myProject", {
  *     orgId: "1234567",
  *     projectId: "your-project-id",
  * });

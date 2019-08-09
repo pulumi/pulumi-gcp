@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
- *    The safest alternative is to use multiple `google_organization_iam_binding`
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
  *    resources.  It is easy to use this resource to remove your own access to
  *    an organization, which will require a call to Google Support to have
  *    fixed, and can take multiple days to resolve.  If you do use this resource,
@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *    by importing your existing policy, and examining the diff very closely.
  * 
  * > **Note:** This resource __must not__ be used in conjunction with
- *    `google_organization_iam_member` or `google_organization_iam_binding`
+ *    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
  *    or they will fight over what your policy should be.
  * 
  * ## Example Usage
@@ -73,7 +73,7 @@ export class IAMPolicy extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the organization. This policy overrides any existing
      * policy applied to the organization.
      */
@@ -127,7 +127,7 @@ export interface IAMPolicyState {
      */
     readonly orgId?: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the organization. This policy overrides any existing
      * policy applied to the organization.
      */
@@ -143,7 +143,7 @@ export interface IAMPolicyArgs {
      */
     readonly orgId: pulumi.Input<string>;
     /**
-     * The `google_iam_policy` data source that represents
+     * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the organization. This policy overrides any existing
      * policy applied to the organization.
      */

@@ -134,8 +134,8 @@ func (r *RouterNat) NatIpAllocateOption() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["natIpAllocateOption"])
 }
 
-// List of `self_link`s of external IPs. Only valid if
-// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+// List of `selfLink`s of external IPs. Only valid if
+// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
 // new NAT to be created.
 func (r *RouterNat) NatIps() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["natIps"])
@@ -169,7 +169,7 @@ func (r *RouterNat) SourceSubnetworkIpRangesToNat() *pulumi.StringOutput {
 }
 
 // One or more subnetwork NAT configurations. Only used
-// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+// if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
 // the section below for details on configuration.
 func (r *RouterNat) Subnetworks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["subnetworks"])
@@ -212,8 +212,8 @@ type RouterNatState struct {
 	// this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
 	// a new NAT to be created.
 	NatIpAllocateOption interface{}
-	// List of `self_link`s of external IPs. Only valid if
-	// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+	// List of `selfLink`s of external IPs. Only valid if
+	// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
 	// new NAT to be created.
 	NatIps interface{}
 	// The ID of the project in which this NAT's router belongs. If it
@@ -232,7 +232,7 @@ type RouterNatState struct {
 	// this forces a new NAT to be created.
 	SourceSubnetworkIpRangesToNat interface{}
 	// One or more subnetwork NAT configurations. Only used
-	// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+	// if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
 	// the section below for details on configuration.
 	Subnetworks interface{}
 	// Timeout (in seconds) for TCP
@@ -265,8 +265,8 @@ type RouterNatArgs struct {
 	// this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
 	// a new NAT to be created.
 	NatIpAllocateOption interface{}
-	// List of `self_link`s of external IPs. Only valid if
-	// `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+	// List of `selfLink`s of external IPs. Only valid if
+	// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
 	// new NAT to be created.
 	NatIps interface{}
 	// The ID of the project in which this NAT's router belongs. If it
@@ -285,7 +285,7 @@ type RouterNatArgs struct {
 	// this forces a new NAT to be created.
 	SourceSubnetworkIpRangesToNat interface{}
 	// One or more subnetwork NAT configurations. Only used
-	// if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+	// if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
 	// the section below for details on configuration.
 	Subnetworks interface{}
 	// Timeout (in seconds) for TCP

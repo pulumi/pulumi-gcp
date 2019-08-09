@@ -177,7 +177,7 @@ func (r *InstanceTemplate) MetadataFingerprint() *pulumi.StringOutput {
 }
 
 // An alternative to using the
-// startup-script metadata key, mostly to match the compute_instance resource.
+// startup-script metadata key, mostly to match the computeInstance resource.
 // This replaces the startup-script metadata key on the created instance and
 // thus the two mechanisms are not allowed to be used simultaneously.
 func (r *InstanceTemplate) MetadataStartupScript() *pulumi.StringOutput {
@@ -242,7 +242,7 @@ func (r *InstanceTemplate) ServiceAccount() *pulumi.Output {
 }
 
 // Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 func (r *InstanceTemplate) ShieldedInstanceConfig() *pulumi.Output {
 	return r.s.State["shieldedInstanceConfig"]
 }
@@ -284,7 +284,7 @@ type InstanceTemplateState struct {
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint interface{}
 	// An alternative to using the
-	// startup-script metadata key, mostly to match the compute_instance resource.
+	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
 	// thus the two mechanisms are not allowed to be used simultaneously.
 	MetadataStartupScript interface{}
@@ -319,7 +319,7 @@ type InstanceTemplateState struct {
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount interface{}
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig interface{}
 	// Tags to attach to the instance.
 	Tags interface{}
@@ -352,7 +352,7 @@ type InstanceTemplateArgs struct {
 	// within instances created from this template.
 	Metadata interface{}
 	// An alternative to using the
-	// startup-script metadata key, mostly to match the compute_instance resource.
+	// startup-script metadata key, mostly to match the computeInstance resource.
 	// This replaces the startup-script metadata key on the created instance and
 	// thus the two mechanisms are not allowed to be used simultaneously.
 	MetadataStartupScript interface{}
@@ -385,7 +385,7 @@ type InstanceTemplateArgs struct {
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount interface{}
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig interface{}
 	// Tags to attach to the instance.
 	Tags interface{}

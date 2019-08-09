@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const objectViewer = new gcp.serviceAccount.Account("object_viewer", {
+ * const objectViewer = new gcp.serviceAccount.Account("objectViewer", {
  *     accountId: "object-viewer",
  *     displayName: "Object viewer",
  * });
@@ -69,7 +69,7 @@ export class Account extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The e-mail address of the service account. This value
-     * should be referenced from any `google_iam_policy` data sources
+     * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
@@ -146,7 +146,7 @@ export interface AccountState {
     readonly displayName?: pulumi.Input<string>;
     /**
      * The e-mail address of the service account. This value
-     * should be referenced from any `google_iam_policy` data sources
+     * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
     readonly email?: pulumi.Input<string>;

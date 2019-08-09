@@ -51,7 +51,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -128,7 +128,7 @@ export interface SubnetworkIAMBindingState {
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -155,7 +155,7 @@ export interface SubnetworkIAMBindingArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_compute_subnetwork_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

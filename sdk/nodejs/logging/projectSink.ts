@@ -60,9 +60,9 @@ export class ProjectSink extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
+     * must set `uniqueWriterIdentity` to true.
      */
     public readonly uniqueWriterIdentity!: pulumi.Output<boolean | undefined>;
     /**
@@ -142,9 +142,9 @@ export interface ProjectSinkState {
     readonly project?: pulumi.Input<string>;
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
+     * must set `uniqueWriterIdentity` to true.
      */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
     /**
@@ -184,9 +184,9 @@ export interface ProjectSinkArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `unique_writer_identity` to true.
+     * must set `uniqueWriterIdentity` to true.
      */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * the route with the smallest priority value. If there is still a tie, it
  * uses the layer three and four packet headers to select just one of the
  * remaining matching routes. The packet is then forwarded as specified by
- * the next_hop field of the winning route -- either to another virtual
+ * the nextHop field of the winning route -- either to another virtual
  * machine destination, a virtual machine gateway or a Compute
  * Engine-operated gateway. Packets that do not match any route in the
  * sending virtual machine's routing table will be dropped.
@@ -86,9 +86,9 @@ export class Route extends pulumi.CustomResource {
     public readonly nextHopGateway!: pulumi.Output<string | undefined>;
     public readonly nextHopInstance!: pulumi.Output<string | undefined>;
     /**
-     * (Optional when `next_hop_instance` is
+     * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
     public readonly nextHopInstanceZone!: pulumi.Output<string | undefined>;
@@ -178,9 +178,9 @@ export interface RouteState {
     readonly nextHopGateway?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
-     * (Optional when `next_hop_instance` is
+     * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
@@ -211,9 +211,9 @@ export interface RouteArgs {
     readonly nextHopGateway?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
-     * (Optional when `next_hop_instance` is
+     * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;

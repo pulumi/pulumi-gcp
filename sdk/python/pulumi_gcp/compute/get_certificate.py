@@ -46,14 +46,22 @@ class GetCertificateResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetCertificateResult(
+            certificate=self.certificate,
+            certificate_id=self.certificate_id,
+            creation_timestamp=self.creation_timestamp,
+            description=self.description,
+            name=self.name,
+            name_prefix=self.name_prefix,
+            private_key=self.private_key,
+            project=self.project,
+            self_link=self.self_link,
+            id=self.id)
 
 def get_certificate(name=None,project=None,opts=None):
     """
@@ -71,7 +79,7 @@ def get_certificate(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getCertificate:getCertificate', __args__, opts=opts).value
 
-    return GetCertificateResult(
+    return AwaitableGetCertificateResult(
         certificate=__ret__.get('certificate'),
         certificate_id=__ret__.get('certificateId'),
         creation_timestamp=__ret__.get('creationTimestamp'),

@@ -43,14 +43,17 @@ class GetClientConfigResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetClientConfigResult(GetClientConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetClientConfigResult(
+            access_token=self.access_token,
+            project=self.project,
+            region=self.region,
+            zone=self.zone,
+            id=self.id)
 
 def get_client_config(opts=None):
     """
@@ -66,7 +69,7 @@ def get_client_config(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__, opts=opts).value
 
-    return GetClientConfigResult(
+    return AwaitableGetClientConfigResult(
         access_token=__ret__.get('accessToken'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),

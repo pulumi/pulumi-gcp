@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const getUrl = pulumi.output(gcp.storage.getObjectSignedUrl({
- *     bucket: "fried_chicken",
+ *     bucket: "friedChicken",
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",
  *     credentials: fs.readFileSync("path/to/credentials.json", "utf-8"),

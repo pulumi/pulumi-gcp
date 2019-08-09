@@ -49,14 +49,19 @@ class GetVPNGatewayResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetVPNGatewayResult(
+            description=self.description,
+            name=self.name,
+            network=self.network,
+            project=self.project,
+            region=self.region,
+            self_link=self.self_link,
+            id=self.id)
 
 def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     """
@@ -75,7 +80,7 @@ def get_vpn_gateway(name=None,project=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__, opts=opts).value
 
-    return GetVPNGatewayResult(
+    return AwaitableGetVPNGatewayResult(
         description=__ret__.get('description'),
         name=__ret__.get('name'),
         network=__ret__.get('network'),

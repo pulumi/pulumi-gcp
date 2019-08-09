@@ -89,7 +89,7 @@ func (r *DatasetIamBinding) Members() *pulumi.ArrayOutput {
 }
 
 // The role that should be applied. Only one
-// `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *DatasetIamBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -106,7 +106,7 @@ type DatasetIamBindingState struct {
 	Etag interface{}
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -120,7 +120,7 @@ type DatasetIamBindingArgs struct {
 	DatasetId interface{}
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

@@ -112,14 +112,33 @@ class GetBackendServiceResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetBackendServiceResult(
+            affinity_cookie_ttl_sec=self.affinity_cookie_ttl_sec,
+            backends=self.backends,
+            cdn_policies=self.cdn_policies,
+            connection_draining_timeout_sec=self.connection_draining_timeout_sec,
+            creation_timestamp=self.creation_timestamp,
+            custom_request_headers=self.custom_request_headers,
+            description=self.description,
+            enable_cdn=self.enable_cdn,
+            fingerprint=self.fingerprint,
+            health_checks=self.health_checks,
+            iaps=self.iaps,
+            load_balancing_scheme=self.load_balancing_scheme,
+            name=self.name,
+            port_name=self.port_name,
+            project=self.project,
+            protocol=self.protocol,
+            security_policy=self.security_policy,
+            self_link=self.self_link,
+            session_affinity=self.session_affinity,
+            timeout_sec=self.timeout_sec,
+            id=self.id)
 
 def get_backend_service(name=None,project=None,opts=None):
     """
@@ -139,7 +158,7 @@ def get_backend_service(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts).value
 
-    return GetBackendServiceResult(
+    return AwaitableGetBackendServiceResult(
         affinity_cookie_ttl_sec=__ret__.get('affinityCookieTtlSec'),
         backends=__ret__.get('backends'),
         cdn_policies=__ret__.get('cdnPolicies'),

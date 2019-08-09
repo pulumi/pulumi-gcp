@@ -10,20 +10,20 @@ import * as utilities from "../utilities";
  * Projects created with this resource must be associated with an Organization.
  * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
  * 
- * The service account used to run this provider when creating a `google_project`
+ * The service account used to run this provider when creating a `gcp.organizations.Project`
  * resource must have `roles/resourcemanager.projectCreator`. See the
  * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
  * doc for more information.
  * 
- * Note that prior to 0.8.5, `google_project` functioned like a data source,
+ * Note that prior to 0.8.5, `gcp.organizations.Project` functioned like a data source,
  * meaning any project referenced by it had to be created and managed outside
- * this provider. As of 0.8.5, `google_project` functions like any other
+ * this provider. As of 0.8.5, `gcp.organizations.Project` functions like any other
  * resource, with this provider creating and managing the project. To replicate the old
  * behavior, either:
  * 
  * * Use the project ID directly in whatever is referencing the project, using the
- *   [google_project_iam_policy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
- *   to replace the old `policy_data` property.
+ *   [gcp.projects.IAMPolicy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
+ *   to replace the old `policyData` property.
  * * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
  *   to import your pre-existing project into this provider, where it can be referenced and
  *   used just like always, keeping in mind that this provider will attempt to undo any changes
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myProject = new gcp.organizations.Project("my_project", {
+ * const myProject = new gcp.organizations.Project("myProject", {
  *     orgId: "1234567",
  *     projectId: "your-project-id",
  * });
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const my_project_in_a_folder = new gcp.organizations.Project("my_project-in-a-folder", {
+ * const myProjectInAFolder = new gcp.organizations.Project("my_project-in-a-folder", {
  *     folderId: department1.name,
  *     projectId: "your-project-id",
  * });
@@ -94,7 +94,7 @@ export class Project extends pulumi.CustomResource {
      * Create the 'default' network automatically.  Default `true`.
      * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
      * will still need to have 1 network slot available to create the project succesfully, even if
-     * you set `auto_create_network` to `false`, since the network will exist momentarily.
+     * you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
      */
     public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
     /**
@@ -107,8 +107,8 @@ export class Project extends pulumi.CustomResource {
     public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
      * The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
@@ -128,7 +128,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.
@@ -199,7 +199,7 @@ export interface ProjectState {
      * Create the 'default' network automatically.  Default `true`.
      * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
      * will still need to have 1 network slot available to create the project succesfully, even if
-     * you set `auto_create_network` to `false`, since the network will exist momentarily.
+     * you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
     /**
@@ -212,8 +212,8 @@ export interface ProjectState {
     readonly billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
@@ -233,7 +233,7 @@ export interface ProjectState {
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.
@@ -258,7 +258,7 @@ export interface ProjectArgs {
      * Create the 'default' network automatically.  Default `true`.
      * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
      * will still need to have 1 network slot available to create the project succesfully, even if
-     * you set `auto_create_network` to `false`, since the network will exist momentarily.
+     * you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
      */
     readonly autoCreateNetwork?: pulumi.Input<boolean>;
     /**
@@ -271,8 +271,8 @@ export interface ProjectArgs {
     readonly billingAccount?: pulumi.Input<string>;
     /**
      * The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
@@ -288,7 +288,7 @@ export interface ProjectArgs {
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.

@@ -46,7 +46,7 @@ class TransferJob(pulumi.CustomResource):
     """
     Transfer specification. Structure documented below.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, project=None, schedule=None, status=None, transfer_spec=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, project=None, schedule=None, status=None, transfer_spec=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new Transfer Job in Google Cloud Storage Transfer.
         
@@ -74,47 +74,72 @@ class TransferJob(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if description is None:
-            raise TypeError("Missing required property 'description'")
-        __props__['description'] = description
-
-        __props__['project'] = project
-
-        if schedule is None:
-            raise TypeError("Missing required property 'schedule'")
-        __props__['schedule'] = schedule
-
-        __props__['status'] = status
-
-        if transfer_spec is None:
-            raise TypeError("Missing required property 'transfer_spec'")
-        __props__['transfer_spec'] = transfer_spec
-
-        __props__['creation_time'] = None
-        __props__['deletion_time'] = None
-        __props__['last_modification_time'] = None
-        __props__['name'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if description is None:
+                raise TypeError("Missing required property 'description'")
+            __props__['description'] = description
+            __props__['project'] = project
+            if schedule is None:
+                raise TypeError("Missing required property 'schedule'")
+            __props__['schedule'] = schedule
+            __props__['status'] = status
+            if transfer_spec is None:
+                raise TypeError("Missing required property 'transfer_spec'")
+            __props__['transfer_spec'] = transfer_spec
+            __props__['creation_time'] = None
+            __props__['deletion_time'] = None
+            __props__['last_modification_time'] = None
+            __props__['name'] = None
         super(TransferJob, __self__).__init__(
             'gcp:storage/transferJob:TransferJob',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, creation_time=None, deletion_time=None, description=None, last_modification_time=None, name=None, project=None, schedule=None, status=None, transfer_spec=None):
+        """
+        Get an existing TransferJob resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_time: When the Transfer Job was created.
+        :param pulumi.Input[str] deletion_time: When the Transfer Job was deleted.
+        :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
+        :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
+        :param pulumi.Input[str] name: The name of the Transfer Job.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[dict] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input[dict] transfer_spec: Transfer specification. Structure documented below.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["creation_time"] = creation_time
+        __props__["deletion_time"] = deletion_time
+        __props__["description"] = description
+        __props__["last_modification_time"] = last_modification_time
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["schedule"] = schedule
+        __props__["status"] = status
+        __props__["transfer_spec"] = transfer_spec
+        return TransferJob(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -45,23 +45,23 @@ export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?:
  */
 export interface GetRegionInstanceGroupArgs {
     /**
-     * The name of the instance group.  One of `name` or `self_link` must be provided.
+     * The name of the instance group.  One of `name` or `selfLink` must be provided.
      */
     readonly name?: string;
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
     readonly project?: string;
     /**
-     * The region in which the resource belongs.  If `self_link`
-     * is provided, this value is ignored.  If neither `self_link` nor `region` are
+     * The region in which the resource belongs.  If `selfLink`
+     * is provided, this value is ignored.  If neither `selfLink` nor `region` are
      * provided, the provider region is used.
      */
     readonly region?: string;
     /**
-     * The link to the instance group.  One of `name` or `self_link` must be provided.
+     * The link to the instance group.  One of `name` or `selfLink` must be provided.
      */
     readonly selfLink?: string;
 }

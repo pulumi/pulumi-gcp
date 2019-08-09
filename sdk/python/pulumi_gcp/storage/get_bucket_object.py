@@ -97,14 +97,29 @@ class GetBucketObjectResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetBucketObjectResult(
+            bucket=self.bucket,
+            cache_control=self.cache_control,
+            content=self.content,
+            content_disposition=self.content_disposition,
+            content_encoding=self.content_encoding,
+            content_language=self.content_language,
+            content_type=self.content_type,
+            crc32c=self.crc32c,
+            detect_md5hash=self.detect_md5hash,
+            md5hash=self.md5hash,
+            name=self.name,
+            output_name=self.output_name,
+            predefined_acl=self.predefined_acl,
+            self_link=self.self_link,
+            source=self.source,
+            storage_class=self.storage_class,
+            id=self.id)
 
 def get_bucket_object(bucket=None,name=None,opts=None):
     """
@@ -125,7 +140,7 @@ def get_bucket_object(bucket=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucketObject:getBucketObject', __args__, opts=opts).value
 
-    return GetBucketObjectResult(
+    return AwaitableGetBucketObjectResult(
         bucket=__ret__.get('bucket'),
         cache_control=__ret__.get('cacheControl'),
         content=__ret__.get('content'),

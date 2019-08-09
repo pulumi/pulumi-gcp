@@ -9,7 +9,7 @@ import (
 )
 
 // Authoritatively manages the access control list (ACL) for an object in a Google
-// Cloud Storage (GCS) bucket. Removing a `google_storage_object_acl` sets the
+// Cloud Storage (GCS) bucket. Removing a `storage.ObjectACL` sets the
 // acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
 // 
 // For more information see
@@ -17,7 +17,7 @@ import (
 // and 
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
 // 
-// > Want fine-grained control over object ACLs? Use `google_storage_object_access_control` to control individual
+// > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
 // role entity pairs.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
@@ -91,13 +91,13 @@ func (r *ObjectACL) Object() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["object"])
 }
 
-// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 func (r *ObjectACL) PredefinedAcl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["predefinedAcl"])
 }
 
 // List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-// Must be set if `predefined_acl` is not.
+// Must be set if `predefinedAcl` is not.
 func (r *ObjectACL) RoleEntities() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["roleEntities"])
 }
@@ -108,10 +108,10 @@ type ObjectACLState struct {
 	Bucket interface{}
 	// The name of the object to apply the acl to.
 	Object interface{}
-	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl interface{}
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefined_acl` is not.
+	// Must be set if `predefinedAcl` is not.
 	RoleEntities interface{}
 }
 
@@ -121,9 +121,9 @@ type ObjectACLArgs struct {
 	Bucket interface{}
 	// The name of the object to apply the acl to.
 	Object interface{}
-	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl interface{}
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-	// Must be set if `predefined_acl` is not.
+	// Must be set if `predefinedAcl` is not.
 	RoleEntities interface{}
 }

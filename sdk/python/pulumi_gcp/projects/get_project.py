@@ -28,14 +28,15 @@ class GetProjectResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectResult(
+            filter=self.filter,
+            projects=self.projects,
+            id=self.id)
 
 def get_project(filter=None,opts=None):
     """
@@ -54,7 +55,7 @@ def get_project(filter=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts).value
 
-    return GetProjectResult(
+    return AwaitableGetProjectResult(
         filter=__ret__.get('filter'),
         projects=__ret__.get('projects'),
         id=__ret__.get('id'))

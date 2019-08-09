@@ -39,7 +39,7 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     A human-readable title for the role.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows management of a customized Cloud IAM organization role. For more information see
         [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
@@ -72,48 +72,69 @@ class IAMCustomRole(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        if org_id is None:
-            raise TypeError("Missing required property 'org_id'")
-        __props__['org_id'] = org_id
-
-        if permissions is None:
-            raise TypeError("Missing required property 'permissions'")
-        __props__['permissions'] = permissions
-
-        if role_id is None:
-            raise TypeError("Missing required property 'role_id'")
-        __props__['role_id'] = role_id
-
-        __props__['stage'] = stage
-
-        if title is None:
-            raise TypeError("Missing required property 'title'")
-        __props__['title'] = title
-
-        __props__['deleted'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            if org_id is None:
+                raise TypeError("Missing required property 'org_id'")
+            __props__['org_id'] = org_id
+            if permissions is None:
+                raise TypeError("Missing required property 'permissions'")
+            __props__['permissions'] = permissions
+            if role_id is None:
+                raise TypeError("Missing required property 'role_id'")
+            __props__['role_id'] = role_id
+            __props__['stage'] = stage
+            if title is None:
+                raise TypeError("Missing required property 'title'")
+            __props__['title'] = title
+            __props__['deleted'] = None
         super(IAMCustomRole, __self__).__init__(
             'gcp:organizations/iAMCustomRole:IAMCustomRole',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, deleted=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
+        """
+        Get an existing IAMCustomRole resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
+        :param pulumi.Input[str] description: A human-readable description for the role.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
+        :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[str] role_id: The role id to use for this role.
+        :param pulumi.Input[str] stage: The current launch stage of the role.
+               Defaults to `GA`.
+               List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
+        :param pulumi.Input[str] title: A human-readable title for the role.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_custom_role.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["deleted"] = deleted
+        __props__["description"] = description
+        __props__["org_id"] = org_id
+        __props__["permissions"] = permissions
+        __props__["role_id"] = role_id
+        __props__["stage"] = stage
+        __props__["title"] = title
+        return IAMCustomRole(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
