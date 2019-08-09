@@ -39,7 +39,7 @@ class Notification(pulumi.CustomResource):
     topic name, assumed to belong to the default GCP provider project, or the project-level name,
     i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
     """
-    def __init__(__self__, resource_name, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
          For more information see 
@@ -49,7 +49,7 @@ class Notification(pulumi.CustomResource):
         
         In order to enable notifications, a special Google Cloud Storage service account unique to the project
         must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
-        account's email address, use the `google_storage_project_service_account` datasource's `email_address` value, and see below
+        account's email address, use the `storage.getProjectServiceAccount` datasource's `email_address` value, and see below
         for an example of enabling notifications by granting the correct IAM permission. See
         [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
         
@@ -72,46 +72,67 @@ class Notification(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if bucket is None:
-            raise TypeError("Missing required property 'bucket'")
-        __props__['bucket'] = bucket
-
-        __props__['custom_attributes'] = custom_attributes
-
-        __props__['event_types'] = event_types
-
-        __props__['object_name_prefix'] = object_name_prefix
-
-        if payload_format is None:
-            raise TypeError("Missing required property 'payload_format'")
-        __props__['payload_format'] = payload_format
-
-        if topic is None:
-            raise TypeError("Missing required property 'topic'")
-        __props__['topic'] = topic
-
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if bucket is None:
+                raise TypeError("Missing required property 'bucket'")
+            __props__['bucket'] = bucket
+            __props__['custom_attributes'] = custom_attributes
+            __props__['event_types'] = event_types
+            __props__['object_name_prefix'] = object_name_prefix
+            if payload_format is None:
+                raise TypeError("Missing required property 'payload_format'")
+            __props__['payload_format'] = payload_format
+            if topic is None:
+                raise TypeError("Missing required property 'topic'")
+            __props__['topic'] = topic
+            __props__['self_link'] = None
         super(Notification, __self__).__init__(
             'gcp:storage/notification:Notification',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, self_link=None, topic=None):
+        """
+        Get an existing Notification resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[dict] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
+        :param pulumi.Input[list] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+        :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
+        :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
+               topic name, assumed to belong to the default GCP provider project, or the project-level name,
+               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["bucket"] = bucket
+        __props__["custom_attributes"] = custom_attributes
+        __props__["event_types"] = event_types
+        __props__["object_name_prefix"] = object_name_prefix
+        __props__["payload_format"] = payload_format
+        __props__["self_link"] = self_link
+        __props__["topic"] = topic
+        return Notification(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

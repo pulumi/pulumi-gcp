@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const internal_health_check = new gcp.compute.HealthCheck("internal-health-check", {
+ * const internalHealthCheck = new gcp.compute.HealthCheck("internal-health-check", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
  *         port: 80,

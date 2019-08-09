@@ -113,7 +113,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
     public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[]>;
     /**
@@ -159,7 +159,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
     /**
@@ -194,12 +194,12 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
     /**
@@ -345,7 +345,7 @@ export interface InstanceState {
     readonly description?: pulumi.Input<string>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
@@ -391,7 +391,7 @@ export interface InstanceState {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -426,12 +426,12 @@ export interface InstanceState {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
@@ -483,7 +483,7 @@ export interface InstanceArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
     /**
@@ -517,7 +517,7 @@ export interface InstanceArgs {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -548,12 +548,12 @@ export interface InstanceArgs {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**

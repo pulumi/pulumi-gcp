@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const keyring = new gcp.kms.KeyRing("keyring", {
  *     location: "global",
  * });
- * const example_key = new gcp.kms.CryptoKey("example-key", {
+ * const exampleKey = new gcp.kms.CryptoKey("example-key", {
  *     keyRing: keyring.selfLink,
  *     rotationPeriod: "100000s",
  * });
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * const keyring = new gcp.kms.KeyRing("keyring", {
  *     location: "global",
  * });
- * const example_asymmetric_sign_key = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
+ * const exampleAsymmetricSignKey = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
  *     keyRing: keyring.selfLink,
  *     purpose: "ASYMMETRIC_SIGN",
  *     versionTemplate: {

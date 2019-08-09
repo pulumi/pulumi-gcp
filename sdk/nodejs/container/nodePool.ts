@@ -79,7 +79,7 @@ export class NodePool extends pulumi.CustomResource {
     public readonly namePrefix!: pulumi.Output<string>;
     /**
      * The node configuration of the pool. See
-     * google_container_cluster for schema.
+     * gcp.container.Cluster for schema.
      */
     public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
     /**
@@ -99,11 +99,11 @@ export class NodePool extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
-     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      */
     public readonly version!: pulumi.Output<string>;
     /**
@@ -216,7 +216,7 @@ export interface NodePoolState {
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See
-     * google_container_cluster for schema.
+     * gcp.container.Cluster for schema.
      */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
@@ -236,11 +236,11 @@ export interface NodePoolState {
     readonly region?: pulumi.Input<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
-     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      */
     readonly version?: pulumi.Input<string>;
     /**
@@ -294,7 +294,7 @@ export interface NodePoolArgs {
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See
-     * google_container_cluster for schema.
+     * gcp.container.Cluster for schema.
      */
     readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
     /**
@@ -314,11 +314,11 @@ export interface NodePoolArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
-     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      */
     readonly version?: pulumi.Input<string>;
     /**

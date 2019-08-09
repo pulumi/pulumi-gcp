@@ -66,7 +66,7 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
@@ -105,60 +105,86 @@ class Job(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['labels'] = labels
-
-        __props__['machine_type'] = machine_type
-
-        __props__['max_workers'] = max_workers
-
-        __props__['name'] = name
-
-        __props__['network'] = network
-
-        __props__['on_delete'] = on_delete
-
-        __props__['parameters'] = parameters
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        __props__['service_account_email'] = service_account_email
-
-        __props__['subnetwork'] = subnetwork
-
-        if temp_gcs_location is None:
-            raise TypeError("Missing required property 'temp_gcs_location'")
-        __props__['temp_gcs_location'] = temp_gcs_location
-
-        if template_gcs_path is None:
-            raise TypeError("Missing required property 'template_gcs_path'")
-        __props__['template_gcs_path'] = template_gcs_path
-
-        __props__['zone'] = zone
-
-        __props__['state'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['labels'] = labels
+            __props__['machine_type'] = machine_type
+            __props__['max_workers'] = max_workers
+            __props__['name'] = name
+            __props__['network'] = network
+            __props__['on_delete'] = on_delete
+            __props__['parameters'] = parameters
+            __props__['project'] = project
+            __props__['region'] = region
+            __props__['service_account_email'] = service_account_email
+            __props__['subnetwork'] = subnetwork
+            if temp_gcs_location is None:
+                raise TypeError("Missing required property 'temp_gcs_location'")
+            __props__['temp_gcs_location'] = temp_gcs_location
+            if template_gcs_path is None:
+                raise TypeError("Missing required property 'template_gcs_path'")
+            __props__['template_gcs_path'] = template_gcs_path
+            __props__['zone'] = zone
+            __props__['state'] = None
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+        """
+        Get an existing Job resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        :param pulumi.Input[str] machine_type: The machine type to use for the job.
+        :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+        :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+        :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
+        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
+        :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["labels"] = labels
+        __props__["machine_type"] = machine_type
+        __props__["max_workers"] = max_workers
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["on_delete"] = on_delete
+        __props__["parameters"] = parameters
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["service_account_email"] = service_account_email
+        __props__["state"] = state
+        __props__["subnetwork"] = subnetwork
+        __props__["temp_gcs_location"] = temp_gcs_location
+        __props__["template_gcs_path"] = template_gcs_path
+        __props__["zone"] = zone
+        return Job(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

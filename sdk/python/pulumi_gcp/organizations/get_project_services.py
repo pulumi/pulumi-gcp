@@ -28,14 +28,16 @@ class GetProjectServicesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProjectServicesResult(GetProjectServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectServicesResult(
+            disable_on_destroy=self.disable_on_destroy,
+            project=self.project,
+            services=self.services,
+            id=self.id)
 
 def get_project_services(project=None,opts=None):
     """
@@ -55,7 +57,7 @@ def get_project_services(project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProjectServices:getProjectServices', __args__, opts=opts).value
 
-    return GetProjectServicesResult(
+    return AwaitableGetProjectServicesResult(
         disable_on_destroy=__ret__.get('disableOnDestroy'),
         project=__ret__.get('project'),
         services=__ret__.get('services'),

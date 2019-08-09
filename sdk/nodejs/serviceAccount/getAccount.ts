@@ -63,7 +63,7 @@ export interface GetAccountResult {
     readonly displayName: string;
     /**
      * The e-mail address of the service account. This value
-     * should be referenced from any `google_iam_policy` data sources
+     * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
     readonly email: string;

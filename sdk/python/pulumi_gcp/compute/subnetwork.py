@@ -30,7 +30,7 @@ class Subnetwork(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
         A VPC network is a virtual version of the traditional physical networks
         that exist within and between physical data centers. A VPC network
@@ -76,55 +76,73 @@ class Subnetwork(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        __props__['enable_flow_logs'] = enable_flow_logs
-
-        if ip_cidr_range is None:
-            raise TypeError("Missing required property 'ip_cidr_range'")
-        __props__['ip_cidr_range'] = ip_cidr_range
-
-        __props__['log_config'] = log_config
-
-        __props__['name'] = name
-
-        if network is None:
-            raise TypeError("Missing required property 'network'")
-        __props__['network'] = network
-
-        __props__['private_ip_google_access'] = private_ip_google_access
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        __props__['secondary_ip_ranges'] = secondary_ip_ranges
-
-        __props__['creation_timestamp'] = None
-        __props__['fingerprint'] = None
-        __props__['gateway_address'] = None
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            __props__['enable_flow_logs'] = enable_flow_logs
+            if ip_cidr_range is None:
+                raise TypeError("Missing required property 'ip_cidr_range'")
+            __props__['ip_cidr_range'] = ip_cidr_range
+            __props__['log_config'] = log_config
+            __props__['name'] = name
+            if network is None:
+                raise TypeError("Missing required property 'network'")
+            __props__['network'] = network
+            __props__['private_ip_google_access'] = private_ip_google_access
+            __props__['project'] = project
+            __props__['region'] = region
+            __props__['secondary_ip_ranges'] = secondary_ip_ranges
+            __props__['creation_timestamp'] = None
+            __props__['fingerprint'] = None
+            __props__['gateway_address'] = None
+            __props__['self_link'] = None
         super(Subnetwork, __self__).__init__(
             'gcp:compute/subnetwork:Subnetwork',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, enable_flow_logs=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
+        """
+        Get an existing Subnetwork resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["creation_timestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["enable_flow_logs"] = enable_flow_logs
+        __props__["fingerprint"] = fingerprint
+        __props__["gateway_address"] = gateway_address
+        __props__["ip_cidr_range"] = ip_cidr_range
+        __props__["log_config"] = log_config
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["private_ip_google_access"] = private_ip_google_access
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["secondary_ip_ranges"] = secondary_ip_ranges
+        __props__["self_link"] = self_link
+        return Subnetwork(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

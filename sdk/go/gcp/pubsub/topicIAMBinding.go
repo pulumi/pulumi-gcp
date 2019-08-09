@@ -10,13 +10,13 @@ import (
 
 // Three different resources help you manage your IAM policy for Pubsub Topic. Each of these resources serves a different use case:
 // 
-// * `google_pubsub_topic_iam_policy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-// * `google_pubsub_topic_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-// * `google_pubsub_topic_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+// * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+// * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+// * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 // 
-// > **Note:** `google_pubsub_topic_iam_policy` **cannot** be used in conjunction with `google_pubsub_topic_iam_binding` and `google_pubsub_topic_iam_member` or they will fight over what your policy should be.
+// > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
 // 
-// > **Note:** `google_pubsub_topic_iam_binding` resources **can be** used in conjunction with `google_pubsub_topic_iam_member` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam_binding.html.markdown.
 type TopicIAMBinding struct {
@@ -100,7 +100,7 @@ func (r *TopicIAMBinding) Project() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
+// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *TopicIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -120,7 +120,7 @@ type TopicIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The topic name or id to bind to attach IAM policy to.
@@ -134,7 +134,7 @@ type TopicIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_pubsub_topic_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The topic name or id to bind to attach IAM policy to.

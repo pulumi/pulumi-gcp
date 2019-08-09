@@ -97,7 +97,7 @@ func (r *CryptoKeyIAMBinding) Members() *pulumi.ArrayOutput {
 }
 
 // The role that should be applied. Only one
-// `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *CryptoKeyIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -115,7 +115,7 @@ type CryptoKeyIAMBindingState struct {
 	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -130,7 +130,7 @@ type CryptoKeyIAMBindingArgs struct {
 	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members interface{}
 	// The role that should be applied. Only one
-	// `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

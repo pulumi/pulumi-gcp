@@ -97,9 +97,9 @@ func (r *ProjectSink) Project() *pulumi.StringOutput {
 }
 
 // Whether or not to create a unique identity associated with this sink. If `false`
-// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
 // then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-// must set `unique_writer_identity` to true.
+// must set `uniqueWriterIdentity` to true.
 func (r *ProjectSink) UniqueWriterIdentity() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["uniqueWriterIdentity"])
 }
@@ -126,9 +126,9 @@ type ProjectSinkState struct {
 	// used.
 	Project interface{}
 	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `unique_writer_identity` to true.
+	// must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity interface{}
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -151,8 +151,8 @@ type ProjectSinkArgs struct {
 	// used.
 	Project interface{}
 	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `unique_writer_identity` to true.
+	// must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity interface{}
 }

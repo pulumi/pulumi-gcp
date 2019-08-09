@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const ipAddress = new gcp.compute.Address("ip_address", {});
+ * const ipAddress = new gcp.compute.Address("ipAddress", {});
  * ```
  * ## Example Usage - Address With Subnetwork
  * 
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.selfLink,
  *     region: "us-central1",
  * });
- * const internalWithSubnetAndAddress = new gcp.compute.Address("internal_with_subnet_and_address", {
+ * const internalWithSubnetAndAddress = new gcp.compute.Address("internalWithSubnetAndAddress", {
  *     address: "10.0.42.42",
  *     addressType: "INTERNAL",
  *     region: "us-central1",
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * }));
  * const static = new gcp.compute.Address("static", {});
- * const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {
+ * const instanceWithIp = new gcp.compute.Instance("instanceWithIp", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: debianImage.selfLink,

@@ -37,14 +37,16 @@ class GetNetblockIPRangesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNetblockIPRangesResult(
+            cidr_blocks=self.cidr_blocks,
+            cidr_blocks_ipv4s=self.cidr_blocks_ipv4s,
+            cidr_blocks_ipv6s=self.cidr_blocks_ipv6s,
+            id=self.id)
 
 def get_netblock_ip_ranges(opts=None):
     """
@@ -62,7 +64,7 @@ def get_netblock_ip_ranges(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts).value
 
-    return GetNetblockIPRangesResult(
+    return AwaitableGetNetblockIPRangesResult(
         cidr_blocks=__ret__.get('cidrBlocks'),
         cidr_blocks_ipv4s=__ret__.get('cidrBlocksIpv4s'),
         cidr_blocks_ipv6s=__ret__.get('cidrBlocksIpv6s'),

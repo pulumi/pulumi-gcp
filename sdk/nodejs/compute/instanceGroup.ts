@@ -64,10 +64,10 @@ import * as utilities from "../utilities";
  *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const stagingHealth = new gcp.compute.HttpsHealthCheck("staging_health", {
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {
  *     requestPath: "/health_check",
  * });
- * const stagingVm = new gcp.compute.Instance("staging_vm", {
+ * const stagingVm = new gcp.compute.Instance("stagingVm", {
  *     bootDisk: {
  *         initializeParams: {
  *             image: debianImage.selfLink,
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  *     }],
  *     zone: "us-central1-c",
  * });
- * const stagingGroup = new gcp.compute.InstanceGroup("staging_group", {
+ * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
  *     instances: [stagingVm.selfLink],
  *     namedPorts: [
  *         {
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *     ],
  *     zone: "us-central1-c",
  * });
- * const stagingService = new gcp.compute.BackendService("staging_service", {
+ * const stagingService = new gcp.compute.BackendService("stagingService", {
  *     backends: [{
  *         group: stagingGroup.selfLink,
  *     }],
@@ -139,7 +139,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of instances in the group. They should be given
-     * as self_link URLs. When adding instances they must all be in the same
+     * as selfLink URLs. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     public readonly instances!: pulumi.Output<string[]>;
@@ -235,7 +235,7 @@ export interface InstanceGroupState {
     readonly description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
-     * as self_link URLs. When adding instances they must all be in the same
+     * as selfLink URLs. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
@@ -288,7 +288,7 @@ export interface InstanceGroupArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
-     * as self_link URLs. When adding instances they must all be in the same
+     * as selfLink URLs. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;

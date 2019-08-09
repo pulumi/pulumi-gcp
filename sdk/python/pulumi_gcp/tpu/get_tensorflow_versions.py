@@ -28,14 +28,16 @@ class GetTensorflowVersionsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetTensorflowVersionsResult(
+            project=self.project,
+            versions=self.versions,
+            zone=self.zone,
+            id=self.id)
 
 def get_tensorflow_versions(project=None,zone=None,opts=None):
     __args__ = dict()
@@ -48,7 +50,7 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts).value
 
-    return GetTensorflowVersionsResult(
+    return AwaitableGetTensorflowVersionsResult(
         project=__ret__.get('project'),
         versions=__ret__.get('versions'),
         zone=__ret__.get('zone'),

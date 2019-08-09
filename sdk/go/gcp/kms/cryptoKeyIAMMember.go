@@ -12,9 +12,9 @@ import (
 // the IAM policy for an existing Google Cloud KMS crypto key.
 // 
 // > **Note:** This resource _must not_ be used in conjunction with
-//    `google_kms_crypto_key_iam_policy` or they will fight over what your policy
-//    should be. Similarly, roles controlled by `google_kms_crypto_key_iam_binding`
-//    should not be assigned to using `google_kms_crypto_key_iam_member`.
+//    `googleKmsCryptoKeyIamPolicy` or they will fight over what your policy
+//    should be. Similarly, roles controlled by `kms.CryptoKeyIAMBinding`
+//    should not be assigned to using `kms.CryptoKeyIAMMember`.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
 type CryptoKeyIAMMember struct {

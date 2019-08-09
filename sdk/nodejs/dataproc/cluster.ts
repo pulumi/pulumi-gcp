@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *                 "bar",
  *             ],
  *         },
- *         // You can define multiple initialization_action blocks
+ *         // You can define multiple initializationAction blocks
  *         initializationActions: [{
  *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
  *             timeoutSec: 500,
@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
+ * const acceleratedCluster = new gcp.dataproc.Cluster("acceleratedCluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
  *             zone: "us-central1-a",

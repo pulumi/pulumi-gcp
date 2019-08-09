@@ -23,7 +23,7 @@ class Service(pulumi.CustomResource):
     """
     The service to enable.
     """
-    def __init__(__self__, resource_name, opts=None, disable_dependent_services=None, disable_on_destroy=None, project=None, service=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, disable_dependent_services=None, disable_on_destroy=None, project=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows management of a single API service for an existing Google Cloud Platform project. 
         
@@ -31,7 +31,7 @@ class Service(pulumi.CustomResource):
         [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
         
         > **Note:** This resource _must not_ be used in conjunction with
-           `google_project_services` or they will fight over which services should be enabled.
+           `projects.Services` or they will fight over which services should be enabled.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -48,36 +48,52 @@ class Service(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['disable_dependent_services'] = disable_dependent_services
-
-        __props__['disable_on_destroy'] = disable_on_destroy
-
-        __props__['project'] = project
-
-        if service is None:
-            raise TypeError("Missing required property 'service'")
-        __props__['service'] = service
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['disable_dependent_services'] = disable_dependent_services
+            __props__['disable_on_destroy'] = disable_on_destroy
+            __props__['project'] = project
+            if service is None:
+                raise TypeError("Missing required property 'service'")
+            __props__['service'] = service
         super(Service, __self__).__init__(
             'gcp:projects/service:Service',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, disable_dependent_services=None, disable_on_destroy=None, project=None, service=None):
+        """
+        Get an existing Service resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
+               If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        :param pulumi.Input[str] project: The project ID. If not provided, the provider project is used.
+        :param pulumi.Input[str] service: The service to enable.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_service.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["disable_dependent_services"] = disable_dependent_services
+        __props__["disable_on_destroy"] = disable_on_destroy
+        __props__["project"] = project
+        __props__["service"] = service
+        return Service(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

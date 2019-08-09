@@ -8,7 +8,7 @@ import (
 )
 
 // Generates an IAM policy document that may be referenced by and applied to
-// other Google Cloud Platform resources, such as the `google_project` resource.
+// other Google Cloud Platform resources, such as the `organizations.Project` resource.
 // 
 // 
 // This data source is used to define IAM policies to apply to other resources.

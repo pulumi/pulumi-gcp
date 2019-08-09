@@ -13,7 +13,7 @@ import (
 // When the `https://www.googleapis.com/auth/userinfo.email` scope is enabled in
 // your provider block, this datasource enables you to export the email of the
 // account you've authenticated the provider with; this can be used alongside
-// `data.google_client_config`'s `access_token` to perform OpenID Connect
+// `data.google_client_config`'s `accessToken` to perform OpenID Connect
 // authentication with GKE and configure an RBAC role for the email used.
 // 
 // > This resource will only work as expected if the provider is configured to

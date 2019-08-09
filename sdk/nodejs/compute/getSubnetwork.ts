@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const my_subnetwork = pulumi.output(gcp.compute.getSubnetwork({
+ * const mySubnetwork = pulumi.output(gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
  * }));
@@ -45,7 +45,7 @@ export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetSubnetworkArgs {
     /**
-     * The name of the subnetwork. One of `name` or `self_link`
+     * The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      */
     readonly name?: string;
@@ -60,7 +60,7 @@ export interface GetSubnetworkArgs {
      */
     readonly region?: string;
     /**
-     * The self link of the subnetwork. If `self_link` is
+     * The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      */
     readonly selfLink?: string;

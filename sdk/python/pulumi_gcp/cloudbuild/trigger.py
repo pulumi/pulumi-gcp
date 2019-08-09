@@ -24,7 +24,7 @@ class Trigger(pulumi.CustomResource):
     substitutions: pulumi.Output[dict]
     trigger_id: pulumi.Output[str]
     trigger_template: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Configuration for an automated build in response to source repository changes.
         
@@ -48,47 +48,62 @@ class Trigger(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['build'] = build
-
-        __props__['description'] = description
-
-        __props__['disabled'] = disabled
-
-        __props__['filename'] = filename
-
-        __props__['ignored_files'] = ignored_files
-
-        __props__['included_files'] = included_files
-
-        __props__['project'] = project
-
-        __props__['substitutions'] = substitutions
-
-        __props__['trigger_template'] = trigger_template
-
-        __props__['create_time'] = None
-        __props__['trigger_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['build'] = build
+            __props__['description'] = description
+            __props__['disabled'] = disabled
+            __props__['filename'] = filename
+            __props__['ignored_files'] = ignored_files
+            __props__['included_files'] = included_files
+            __props__['project'] = project
+            __props__['substitutions'] = substitutions
+            __props__['trigger_template'] = trigger_template
+            __props__['create_time'] = None
+            __props__['trigger_id'] = None
         super(Trigger, __self__).__init__(
             'gcp:cloudbuild/trigger:Trigger',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
+        """
+        Get an existing Trigger resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["build"] = build
+        __props__["create_time"] = create_time
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["filename"] = filename
+        __props__["ignored_files"] = ignored_files
+        __props__["included_files"] = included_files
+        __props__["project"] = project
+        __props__["substitutions"] = substitutions
+        __props__["trigger_id"] = trigger_id
+        __props__["trigger_template"] = trigger_template
+        return Trigger(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

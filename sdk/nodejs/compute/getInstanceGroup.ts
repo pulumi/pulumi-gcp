@@ -45,7 +45,7 @@ export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.Invo
  */
 export interface GetInstanceGroupArgs {
     /**
-     * The name of the instance group. Either `name` or `self_link` must be provided.
+     * The name of the instance group. Either `name` or `selfLink` must be provided.
      */
     readonly name?: string;
     /**
@@ -54,7 +54,7 @@ export interface GetInstanceGroupArgs {
      */
     readonly project?: string;
     /**
-     * The self link of the instance group. Either `name` or `self_link` must be provided.
+     * The self link of the instance group. Either `name` or `selfLink` must be provided.
      */
     readonly selfLink?: string;
     /**

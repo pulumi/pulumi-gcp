@@ -10,13 +10,13 @@ import (
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
 // 
-// * `google_pubsub_subscription_iam_policy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-// * `google_pubsub_subscription_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-// * `google_pubsub_subscription_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+// * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+// * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+// * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 // 
-// > **Note:** `google_pubsub_subscription_iam_policy` **cannot** be used in conjunction with `google_pubsub_subscription_iam_binding` and `google_pubsub_subscription_iam_member` or they will fight over what your policy should be.
+// > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
 // 
-// > **Note:** `google_pubsub_subscription_iam_binding` resources **can be** used in conjunction with `google_pubsub_subscription_iam_member` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam_binding.html.markdown.
 type SubscriptionIAMBinding struct {
@@ -100,7 +100,7 @@ func (r *SubscriptionIAMBinding) Project() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_pubsub_subscription_iam_binding` can be used per role. Note that custom roles must be of the format
+// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *SubscriptionIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -120,7 +120,7 @@ type SubscriptionIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_pubsub_subscription_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The subscription name or id to bind to attach IAM policy to.
@@ -134,7 +134,7 @@ type SubscriptionIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_pubsub_subscription_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The subscription name or id to bind to attach IAM policy to.

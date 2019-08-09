@@ -40,14 +40,17 @@ class GetRuleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRuleResult(GetRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRuleResult(
+            included_permissions=self.included_permissions,
+            name=self.name,
+            stage=self.stage,
+            title=self.title,
+            id=self.id)
 
 def get_rule(name=None,opts=None):
     """
@@ -64,7 +67,7 @@ def get_rule(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts).value
 
-    return GetRuleResult(
+    return AwaitableGetRuleResult(
         included_permissions=__ret__.get('includedPermissions'),
         name=__ret__.get('name'),
         stage=__ret__.get('stage'),

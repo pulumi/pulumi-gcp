@@ -14,13 +14,13 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const grpcService = new gcp.endpoints.Service("grpc_service", {
+ * const grpcService = new gcp.endpoints.Service("grpcService", {
  *     grpcConfig: fs.readFileSync("service_spec.yml", "utf-8"),
  *     project: "project-id",
  *     protocOutputBase64: Buffer.from(fs.readFileSync("compiled_descriptor_file.pb", "utf-8")).toString("base64"),
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  * });
- * const openapiService = new gcp.endpoints.Service("openapi_service", {
+ * const openapiService = new gcp.endpoints.Service("openapiService", {
  *     openapiConfig: fs.readFileSync("openapi_spec.yml", "utf-8"),
  *     project: "project-id",
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",

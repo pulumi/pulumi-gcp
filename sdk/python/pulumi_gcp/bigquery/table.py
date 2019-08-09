@@ -104,7 +104,7 @@ class Table(pulumi.CustomResource):
     If specified, configures this table as a view.
     Structure is documented below.
     """
-    def __init__(__self__, resource_name, opts=None, dataset_id=None, description=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dataset_id=None, description=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -147,62 +147,117 @@ class Table(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if dataset_id is None:
-            raise TypeError("Missing required property 'dataset_id'")
-        __props__['dataset_id'] = dataset_id
-
-        __props__['description'] = description
-
-        __props__['expiration_time'] = expiration_time
-
-        __props__['external_data_configuration'] = external_data_configuration
-
-        __props__['friendly_name'] = friendly_name
-
-        __props__['labels'] = labels
-
-        __props__['project'] = project
-
-        __props__['schema'] = schema
-
-        if table_id is None:
-            raise TypeError("Missing required property 'table_id'")
-        __props__['table_id'] = table_id
-
-        __props__['time_partitioning'] = time_partitioning
-
-        __props__['view'] = view
-
-        __props__['creation_time'] = None
-        __props__['etag'] = None
-        __props__['last_modified_time'] = None
-        __props__['location'] = None
-        __props__['num_bytes'] = None
-        __props__['num_long_term_bytes'] = None
-        __props__['num_rows'] = None
-        __props__['self_link'] = None
-        __props__['type'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if dataset_id is None:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__['dataset_id'] = dataset_id
+            __props__['description'] = description
+            __props__['expiration_time'] = expiration_time
+            __props__['external_data_configuration'] = external_data_configuration
+            __props__['friendly_name'] = friendly_name
+            __props__['labels'] = labels
+            __props__['project'] = project
+            __props__['schema'] = schema
+            if table_id is None:
+                raise TypeError("Missing required property 'table_id'")
+            __props__['table_id'] = table_id
+            __props__['time_partitioning'] = time_partitioning
+            __props__['view'] = view
+            __props__['creation_time'] = None
+            __props__['etag'] = None
+            __props__['last_modified_time'] = None
+            __props__['location'] = None
+            __props__['num_bytes'] = None
+            __props__['num_long_term_bytes'] = None
+            __props__['num_rows'] = None
+            __props__['self_link'] = None
+            __props__['type'] = None
         super(Table, __self__).__init__(
             'gcp:bigquery/table:Table',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, creation_time=None, dataset_id=None, description=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
+        """
+        Get an existing Table resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] creation_time: The time when this table was created, in milliseconds since the epoch.
+        :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[str] etag: A hash of the resource.
+        :param pulumi.Input[float] expiration_time: The time when this table expires, in
+               milliseconds since the epoch. If not present, the table will persist
+               indefinitely. Expired tables will be deleted and their storage
+               reclaimed.
+        :param pulumi.Input[dict] external_data_configuration: Describes the data format,
+               location, and other properties of a table stored outside of BigQuery.
+               By defining these properties, the data source can then be queried as
+               if it were a standard BigQuery table. Structure is documented below.
+        :param pulumi.Input[str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
+        :param pulumi.Input[float] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
+        :param pulumi.Input[float] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
+        :param pulumi.Input[float] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
+        :param pulumi.Input[float] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
+               for CSV and JSON formats and is disallowed for Google Cloud
+               Bigtable, Cloud Datastore backups, and Avro formats when using
+               external tables. For more information see the
+               [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] table_id: A unique ID for the resource.
+               Changing this forces a new resource to be created.
+        :param pulumi.Input[dict] time_partitioning: If specified, configures time-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input[str] type: Describes the table type.
+        :param pulumi.Input[dict] view: If specified, configures this table as a view.
+               Structure is documented below.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["creation_time"] = creation_time
+        __props__["dataset_id"] = dataset_id
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["expiration_time"] = expiration_time
+        __props__["external_data_configuration"] = external_data_configuration
+        __props__["friendly_name"] = friendly_name
+        __props__["labels"] = labels
+        __props__["last_modified_time"] = last_modified_time
+        __props__["location"] = location
+        __props__["num_bytes"] = num_bytes
+        __props__["num_long_term_bytes"] = num_long_term_bytes
+        __props__["num_rows"] = num_rows
+        __props__["project"] = project
+        __props__["schema"] = schema
+        __props__["self_link"] = self_link
+        __props__["table_id"] = table_id
+        __props__["time_partitioning"] = time_partitioning
+        __props__["type"] = type
+        __props__["view"] = view
+        return Table(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

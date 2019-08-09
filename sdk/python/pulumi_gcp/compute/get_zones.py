@@ -34,14 +34,17 @@ class GetZonesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetZonesResult(
+            names=self.names,
+            project=self.project,
+            region=self.region,
+            status=self.status,
+            id=self.id)
 
 def get_zones(project=None,region=None,status=None,opts=None):
     """
@@ -61,7 +64,7 @@ def get_zones(project=None,region=None,status=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__, opts=opts).value
 
-    return GetZonesResult(
+    return AwaitableGetZonesResult(
         names=__ret__.get('names'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),

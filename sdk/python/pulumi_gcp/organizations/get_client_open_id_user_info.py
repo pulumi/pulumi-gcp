@@ -25,14 +25,14 @@ class GetClientOpenIdUserInfoResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetClientOpenIdUserInfoResult(
+            email=self.email,
+            id=self.id)
 
 def get_client_open_id_user_info(opts=None):
     """
@@ -59,6 +59,6 @@ def get_client_open_id_user_info(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts).value
 
-    return GetClientOpenIdUserInfoResult(
+    return AwaitableGetClientOpenIdUserInfoResult(
         email=__ret__.get('email'),
         id=__ret__.get('id'))

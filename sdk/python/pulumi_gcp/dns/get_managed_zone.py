@@ -45,14 +45,18 @@ class GetManagedZoneResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetManagedZoneResult(GetManagedZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetManagedZoneResult(
+            description=self.description,
+            dns_name=self.dns_name,
+            name=self.name,
+            name_servers=self.name_servers,
+            project=self.project,
+            id=self.id)
 
 def get_managed_zone(name=None,project=None,opts=None):
     """
@@ -74,7 +78,7 @@ def get_managed_zone(name=None,project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts).value
 
-    return GetManagedZoneResult(
+    return AwaitableGetManagedZoneResult(
         description=__ret__.get('description'),
         dns_name=__ret__.get('dnsName'),
         name=__ret__.get('name'),

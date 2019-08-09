@@ -40,14 +40,18 @@ class GetBillingAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetBillingAccountResult(GetBillingAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetBillingAccountResult(
+            billing_account=self.billing_account,
+            display_name=self.display_name,
+            name=self.name,
+            open=self.open,
+            project_ids=self.project_ids,
+            id=self.id)
 
 def get_billing_account(billing_account=None,display_name=None,open=None,opts=None):
     """
@@ -66,7 +70,7 @@ def get_billing_account(billing_account=None,display_name=None,open=None,opts=No
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts).value
 
-    return GetBillingAccountResult(
+    return AwaitableGetBillingAccountResult(
         billing_account=__ret__.get('billingAccount'),
         display_name=__ret__.get('displayName'),
         name=__ret__.get('name'),

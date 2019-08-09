@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
- * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
- * const default_registry = new gcp.kms.Registry("default-registry", {
+ * const defaultDevicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const defaultRegistry = new gcp.kms.Registry("default-registry", {
  *     credentials: [{
  *         publicKeyCertificate: {
  *             certificate: fs.readFileSync("rsa_cert.pem", "utf-8"),

@@ -51,14 +51,20 @@ class GetKMSCryptoKeyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKMSCryptoKeyResult(
+            key_ring=self.key_ring,
+            labels=self.labels,
+            name=self.name,
+            purpose=self.purpose,
+            rotation_period=self.rotation_period,
+            self_link=self.self_link,
+            version_templates=self.version_templates,
+            id=self.id)
 
 def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     """
@@ -82,7 +88,7 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts).value
 
-    return GetKMSCryptoKeyResult(
+    return AwaitableGetKMSCryptoKeyResult(
         key_ring=__ret__.get('keyRing'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),

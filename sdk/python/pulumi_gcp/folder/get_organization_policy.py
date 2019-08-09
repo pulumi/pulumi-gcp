@@ -43,14 +43,21 @@ class GetOrganizationPolicyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetOrganizationPolicyResult(
+            boolean_policies=self.boolean_policies,
+            constraint=self.constraint,
+            etag=self.etag,
+            folder=self.folder,
+            list_policies=self.list_policies,
+            restore_policies=self.restore_policies,
+            update_time=self.update_time,
+            version=self.version,
+            id=self.id)
 
 def get_organization_policy(constraint=None,folder=None,opts=None):
     """
@@ -70,7 +77,7 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value
 
-    return GetOrganizationPolicyResult(
+    return AwaitableGetOrganizationPolicyResult(
         boolean_policies=__ret__.get('booleanPolicies'),
         constraint=__ret__.get('constraint'),
         etag=__ret__.get('etag'),

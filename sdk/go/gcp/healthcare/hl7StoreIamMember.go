@@ -89,7 +89,7 @@ func (r *Hl7StoreIamMember) Member() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_healthcare_hl7_v2_store_iam_binding` can be used per role. Note that custom roles must be of the format
+// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *Hl7StoreIamMember) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -106,7 +106,7 @@ type Hl7StoreIamMemberState struct {
 	Hl7V2StoreId interface{}
 	Member interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_hl7_v2_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -120,7 +120,7 @@ type Hl7StoreIamMemberArgs struct {
 	Hl7V2StoreId interface{}
 	Member interface{}
 	// The role that should be applied. Only one
-	// `google_healthcare_hl7_v2_store_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

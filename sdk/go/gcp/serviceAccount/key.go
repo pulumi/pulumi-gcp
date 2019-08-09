@@ -108,20 +108,20 @@ func (r *Key) PgpKey() *pulumi.StringOutput {
 
 // The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
 // service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-// `pgp_key` is provided.
+// `pgpKey` is provided.
 func (r *Key) PrivateKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // The private key material, base 64 encoded and
-// encrypted with the given `pgp_key`. This is only populated when creating a new
-// key and `pgp_key` is supplied
+// encrypted with the given `pgpKey`. This is only populated when creating a new
+// key and `pgpKey` is supplied
 func (r *Key) PrivateKeyEncrypted() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKeyEncrypted"])
 }
 
 // The MD5 public key fingerprint for the encrypted
-// private key. This is only populated when creating a new key and `pgp_key` is supplied
+// private key. This is only populated when creating a new key and `pgpKey` is supplied
 func (r *Key) PrivateKeyFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKeyFingerprint"])
 }
@@ -175,14 +175,14 @@ type KeyState struct {
 	PgpKey interface{}
 	// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
 	// service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-	// `pgp_key` is provided.
+	// `pgpKey` is provided.
 	PrivateKey interface{}
 	// The private key material, base 64 encoded and
-	// encrypted with the given `pgp_key`. This is only populated when creating a new
-	// key and `pgp_key` is supplied
+	// encrypted with the given `pgpKey`. This is only populated when creating a new
+	// key and `pgpKey` is supplied
 	PrivateKeyEncrypted interface{}
 	// The MD5 public key fingerprint for the encrypted
-	// private key. This is only populated when creating a new key and `pgp_key` is supplied
+	// private key. This is only populated when creating a new key and `pgpKey` is supplied
 	PrivateKeyFingerprint interface{}
 	// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
 	PrivateKeyType interface{}

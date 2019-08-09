@@ -23,7 +23,7 @@ class Job(pulumi.CustomResource):
     retry_config: pulumi.Output[dict]
     schedule: pulumi.Output[str]
     time_zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
         A scheduled job that can publish a pubsub message or a http request
         every X interval of time, using crontab format string.
@@ -52,46 +52,60 @@ class Job(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['app_engine_http_target'] = app_engine_http_target
-
-        __props__['description'] = description
-
-        __props__['http_target'] = http_target
-
-        __props__['name'] = name
-
-        __props__['project'] = project
-
-        __props__['pubsub_target'] = pubsub_target
-
-        __props__['region'] = region
-
-        __props__['retry_config'] = retry_config
-
-        __props__['schedule'] = schedule
-
-        __props__['time_zone'] = time_zone
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['app_engine_http_target'] = app_engine_http_target
+            __props__['description'] = description
+            __props__['http_target'] = http_target
+            __props__['name'] = name
+            __props__['project'] = project
+            __props__['pubsub_target'] = pubsub_target
+            __props__['region'] = region
+            __props__['retry_config'] = retry_config
+            __props__['schedule'] = schedule
+            __props__['time_zone'] = time_zone
         super(Job, __self__).__init__(
             'gcp:cloudscheduler/job:Job',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None):
+        """
+        Get an existing Job resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["app_engine_http_target"] = app_engine_http_target
+        __props__["description"] = description
+        __props__["http_target"] = http_target
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pubsub_target"] = pubsub_target
+        __props__["region"] = region
+        __props__["retry_config"] = retry_config
+        __props__["schedule"] = schedule
+        __props__["time_zone"] = time_zone
+        return Job(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

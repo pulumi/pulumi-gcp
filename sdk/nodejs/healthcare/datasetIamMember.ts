@@ -48,7 +48,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
     public readonly member!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -114,7 +114,7 @@ export interface DatasetIamMemberState {
     readonly member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -134,7 +134,7 @@ export interface DatasetIamMemberArgs {
     readonly member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_healthcare_dataset_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

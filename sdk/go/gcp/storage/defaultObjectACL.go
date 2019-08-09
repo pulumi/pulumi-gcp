@@ -19,7 +19,7 @@ import (
 // and 
 // [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
 // 
-// > Want fine-grained control over default object ACLs? Use `google_storage_default_object_access_control`
+// > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
 // to control individual role entity pairs.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.

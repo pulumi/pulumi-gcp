@@ -72,14 +72,23 @@ class GetSubnetworkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSubnetworkResult(GetSubnetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSubnetworkResult(
+            description=self.description,
+            gateway_address=self.gateway_address,
+            ip_cidr_range=self.ip_cidr_range,
+            name=self.name,
+            network=self.network,
+            private_ip_google_access=self.private_ip_google_access,
+            project=self.project,
+            region=self.region,
+            secondary_ip_ranges=self.secondary_ip_ranges,
+            self_link=self.self_link,
+            id=self.id)
 
 def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
@@ -99,7 +108,7 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts).value
 
-    return GetSubnetworkResult(
+    return AwaitableGetSubnetworkResult(
         description=__ret__.get('description'),
         gateway_address=__ret__.get('gatewayAddress'),
         ip_cidr_range=__ret__.get('ipCidrRange'),

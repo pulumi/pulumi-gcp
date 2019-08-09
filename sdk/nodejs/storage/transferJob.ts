@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${defaultTransferProjectServieAccount.email}`,
  *     role: "roles/storage.admin",
  * }, {dependsOn: [s3_backup_bucketBucket]});
- * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ * const s3BucketNightlyBackup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
  *     description: "Nightly backup of S3 bucket",
  *     project: var_project,
  *     schedule: {

@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  * 
- * > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
+ * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
  * default 'root'@'%' user with no password. This user will be deleted by this provider on
- * instance creation. You should use `google_sql_user` to define a custom user with
+ * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
  * 
  * ## Example Usage
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  * 
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {
  *     byteLength: 4,
  * });
  * const master = new gcp.sql.DatabaseInstance("master", {
@@ -100,7 +100,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
-     * `binary_log_enabled` set, as well as existing backups.
+     * `binaryLogEnabled` set, as well as existing backups.
      */
     public readonly masterInstanceName!: pulumi.Output<string>;
     /**
@@ -237,7 +237,7 @@ export interface DatabaseInstanceState {
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
-     * `binary_log_enabled` set, as well as existing backups.
+     * `binaryLogEnabled` set, as well as existing backups.
      */
     readonly masterInstanceName?: pulumi.Input<string>;
     /**
@@ -309,7 +309,7 @@ export interface DatabaseInstanceArgs {
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
-     * `binary_log_enabled` set, as well as existing backups.
+     * `binaryLogEnabled` set, as well as existing backups.
      */
     readonly masterInstanceName?: pulumi.Input<string>;
     /**

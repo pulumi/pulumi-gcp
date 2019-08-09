@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const production_instance = new gcp.bigtable.Instance("production-instance", {
+ * const productionInstance = new gcp.bigtable.Instance("production-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
  *         numNodes: 3,
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const development_instance = new gcp.bigtable.Instance("development-instance", {
+ * const developmentInstance = new gcp.bigtable.Instance("development-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
  *         storageType: "HDD",

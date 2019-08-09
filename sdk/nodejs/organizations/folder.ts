@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * 
  * Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
  * 
- * The service account used to run this provider when creating a `google_folder`
+ * The service account used to run this provider when creating a `gcp.organizations.Folder`
  * resource must have `roles/resourcemanager.folderCreator`. See the
  * [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  * doc for more information.
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     parent: "organizations/1234567",
  * });
  * // Folder nested under another folder.
- * const team_abc = new gcp.organizations.Folder("team-abc", {
+ * const teamAbc = new gcp.organizations.Folder("team-abc", {
  *     displayName: "Team ABC",
  *     parent: department1.name,
  * });

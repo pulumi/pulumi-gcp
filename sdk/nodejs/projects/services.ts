@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * > **Note:** This resource attempts to be the authoritative source on *all* enabled APIs, which often
  * 	leads to conflicts when certain actions enable other APIs. If you do not need to ensure that
  * 	*exclusively* a particular set of APIs are enabled, you should most likely use the
- * 	google_project_service resource, one resource per API.
+ * 	gcp.projects.Service resource, one resource per API.
  * 
  * ## Example Usage
  * 
@@ -63,7 +63,7 @@ export class Services extends pulumi.CustomResource {
 
     /**
      * Whether or not to disable APIs on project
-     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
      * true and the project is changed, this provider will force disable API services
      * managed by this provider for the previous project.
      */
@@ -121,7 +121,7 @@ export class Services extends pulumi.CustomResource {
 export interface ServicesState {
     /**
      * Whether or not to disable APIs on project
-     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
      * true and the project is changed, this provider will force disable API services
      * managed by this provider for the previous project.
      */
@@ -145,7 +145,7 @@ export interface ServicesState {
 export interface ServicesArgs {
     /**
      * Whether or not to disable APIs on project
-     * when destroyed. Defaults to true. **Note**: When `disable_on_destroy` is
+     * when destroyed. Defaults to true. **Note**: When `disableOnDestroy` is
      * true and the project is changed, this provider will force disable API services
      * managed by this provider for the previous project.
      */

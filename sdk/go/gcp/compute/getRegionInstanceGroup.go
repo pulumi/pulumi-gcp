@@ -39,17 +39,17 @@ func LookupRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroup
 
 // A collection of arguments for invoking getRegionInstanceGroup.
 type GetRegionInstanceGroupArgs struct {
-	// The name of the instance group.  One of `name` or `self_link` must be provided.
+	// The name of the instance group.  One of `name` or `selfLink` must be provided.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
-	// If `self_link` is provided, this value is ignored.  If neither `self_link`
+	// If `selfLink` is provided, this value is ignored.  If neither `selfLink`
 	// nor `project` are provided, the provider project is used.
 	Project interface{}
-	// The region in which the resource belongs.  If `self_link`
-	// is provided, this value is ignored.  If neither `self_link` nor `region` are
+	// The region in which the resource belongs.  If `selfLink`
+	// is provided, this value is ignored.  If neither `selfLink` nor `region` are
 	// provided, the provider region is used.
 	Region interface{}
-	// The link to the instance group.  One of `name` or `self_link` must be provided.
+	// The link to the instance group.  One of `name` or `selfLink` must be provided.
 	SelfLink interface{}
 }
 

@@ -32,19 +32,21 @@ class GetIAMPolicyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetIAMPolicyResult(
+            audit_configs=self.audit_configs,
+            bindings=self.bindings,
+            policy_data=self.policy_data,
+            id=self.id)
 
 def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     """
     Generates an IAM policy document that may be referenced by and applied to
-    other Google Cloud Platform resources, such as the `google_project` resource.
+    other Google Cloud Platform resources, such as the `organizations.Project` resource.
     
     
     This data source is used to define IAM policies to apply to other resources.
@@ -67,7 +69,7 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts).value
 
-    return GetIAMPolicyResult(
+    return AwaitableGetIAMPolicyResult(
         audit_configs=__ret__.get('auditConfigs'),
         bindings=__ret__.get('bindings'),
         policy_data=__ret__.get('policyData'),

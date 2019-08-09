@@ -27,10 +27,10 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
-    `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+    `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, crypto_key_id=None, members=None, role=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, crypto_key_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud KMS crypto key.
@@ -47,7 +47,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                In the second form, the provider's project setting will be used as a fallback.
         :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `google_kms_crypto_key_iam_binding` can be used per role. Note that custom roles must be of the format
+               `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_binding.html.markdown.
@@ -58,40 +58,61 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if crypto_key_id is None:
-            raise TypeError("Missing required property 'crypto_key_id'")
-        __props__['crypto_key_id'] = crypto_key_id
-
-        if members is None:
-            raise TypeError("Missing required property 'members'")
-        __props__['members'] = members
-
-        if role is None:
-            raise TypeError("Missing required property 'role'")
-        __props__['role'] = role
-
-        __props__['etag'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if crypto_key_id is None:
+                raise TypeError("Missing required property 'crypto_key_id'")
+            __props__['crypto_key_id'] = crypto_key_id
+            if members is None:
+                raise TypeError("Missing required property 'members'")
+            __props__['members'] = members
+            if role is None:
+                raise TypeError("Missing required property 'role'")
+            __props__['role'] = role
+            __props__['etag'] = None
         super(CryptoKeyIAMBinding, __self__).__init__(
             'gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, crypto_key_id=None, etag=None, members=None, role=None):
+        """
+        Get an existing CryptoKeyIAMBinding resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
+               `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+               `{location_name}/{key_ring_name}/{crypto_key_name}`.
+               In the second form, the provider's project setting will be used as a fallback.
+        :param pulumi.Input[str] etag: (Computed) The etag of the crypto key's IAM policy.
+        :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_binding.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["crypto_key_id"] = crypto_key_id
+        __props__["etag"] = etag
+        __props__["members"] = members
+        __props__["role"] = role
+        return CryptoKeyIAMBinding(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

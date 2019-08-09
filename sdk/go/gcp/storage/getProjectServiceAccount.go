@@ -10,7 +10,7 @@ import (
 // Get the email address of a project's unique Google Cloud Storage service account.
 // 
 // Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
-// special service account can be used to set up `google_storage_notification` resources.
+// special service account can be used to set up `storage.Notification` resources.
 // 
 // For more information see
 // [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).

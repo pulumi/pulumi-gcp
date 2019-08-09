@@ -38,7 +38,7 @@ class VPNTunnel(pulumi.CustomResource):
     target_vpn_gateway: pulumi.Output[str]
     vpn_gateway: pulumi.Output[str]
     vpn_gateway_interface: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None, __props__=None, __name__=None, __opts__=None):
         """
         VPN tunnel resource.
         
@@ -67,68 +67,87 @@ class VPNTunnel(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        __props__['ike_version'] = ike_version
-
-        __props__['labels'] = labels
-
-        __props__['local_traffic_selectors'] = local_traffic_selectors
-
-        __props__['name'] = name
-
-        __props__['peer_external_gateway'] = peer_external_gateway
-
-        __props__['peer_external_gateway_interface'] = peer_external_gateway_interface
-
-        __props__['peer_gcp_gateway'] = peer_gcp_gateway
-
-        __props__['peer_ip'] = peer_ip
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        __props__['remote_traffic_selectors'] = remote_traffic_selectors
-
-        __props__['router'] = router
-
-        if shared_secret is None:
-            raise TypeError("Missing required property 'shared_secret'")
-        __props__['shared_secret'] = shared_secret
-
-        __props__['target_vpn_gateway'] = target_vpn_gateway
-
-        __props__['vpn_gateway'] = vpn_gateway
-
-        __props__['vpn_gateway_interface'] = vpn_gateway_interface
-
-        __props__['creation_timestamp'] = None
-        __props__['detailed_status'] = None
-        __props__['label_fingerprint'] = None
-        __props__['self_link'] = None
-        __props__['shared_secret_hash'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            __props__['ike_version'] = ike_version
+            __props__['labels'] = labels
+            __props__['local_traffic_selectors'] = local_traffic_selectors
+            __props__['name'] = name
+            __props__['peer_external_gateway'] = peer_external_gateway
+            __props__['peer_external_gateway_interface'] = peer_external_gateway_interface
+            __props__['peer_gcp_gateway'] = peer_gcp_gateway
+            __props__['peer_ip'] = peer_ip
+            __props__['project'] = project
+            __props__['region'] = region
+            __props__['remote_traffic_selectors'] = remote_traffic_selectors
+            __props__['router'] = router
+            if shared_secret is None:
+                raise TypeError("Missing required property 'shared_secret'")
+            __props__['shared_secret'] = shared_secret
+            __props__['target_vpn_gateway'] = target_vpn_gateway
+            __props__['vpn_gateway'] = vpn_gateway
+            __props__['vpn_gateway_interface'] = vpn_gateway_interface
+            __props__['creation_timestamp'] = None
+            __props__['detailed_status'] = None
+            __props__['label_fingerprint'] = None
+            __props__['self_link'] = None
+            __props__['shared_secret_hash'] = None
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, detailed_status=None, ike_version=None, label_fingerprint=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, self_link=None, shared_secret=None, shared_secret_hash=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None):
+        """
+        Get an existing VPNTunnel resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["creation_timestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["detailed_status"] = detailed_status
+        __props__["ike_version"] = ike_version
+        __props__["label_fingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["local_traffic_selectors"] = local_traffic_selectors
+        __props__["name"] = name
+        __props__["peer_external_gateway"] = peer_external_gateway
+        __props__["peer_external_gateway_interface"] = peer_external_gateway_interface
+        __props__["peer_gcp_gateway"] = peer_gcp_gateway
+        __props__["peer_ip"] = peer_ip
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["remote_traffic_selectors"] = remote_traffic_selectors
+        __props__["router"] = router
+        __props__["self_link"] = self_link
+        __props__["shared_secret"] = shared_secret
+        __props__["shared_secret_hash"] = shared_secret_hash
+        __props__["target_vpn_gateway"] = target_vpn_gateway
+        __props__["vpn_gateway"] = vpn_gateway
+        __props__["vpn_gateway_interface"] = vpn_gateway_interface
+        return VPNTunnel(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

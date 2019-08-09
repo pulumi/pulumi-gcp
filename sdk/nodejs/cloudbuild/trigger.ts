@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
+ * const filenameTrigger = new gcp.cloudbuild.Trigger("filename-trigger", {
  *     filename: "cloudbuild.yaml",
  *     substitutions: {
  *         _BAZ: "qux",

@@ -31,14 +31,16 @@ class GetNodeTypesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNodeTypesResult(GetNodeTypesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNodeTypesResult(
+            names=self.names,
+            project=self.project,
+            zone=self.zone,
+            id=self.id)
 
 def get_node_types(project=None,zone=None,opts=None):
     """
@@ -57,7 +59,7 @@ def get_node_types(project=None,zone=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts).value
 
-    return GetNodeTypesResult(
+    return AwaitableGetNodeTypesResult(
         names=__ret__.get('names'),
         project=__ret__.get('project'),
         zone=__ret__.get('zone'),

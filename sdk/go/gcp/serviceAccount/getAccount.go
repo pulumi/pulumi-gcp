@@ -47,7 +47,7 @@ type GetAccountResult struct {
 	// The display name for the service account.
 	DisplayName interface{}
 	// The e-mail address of the service account. This value
-	// should be referenced from any `google_iam_policy` data sources
+	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email interface{}
 	// The fully-qualified name of the service account.

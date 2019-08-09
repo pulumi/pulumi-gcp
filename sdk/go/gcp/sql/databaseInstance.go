@@ -11,9 +11,9 @@ import (
 // Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 // 
-// > **NOTE on `google_sql_database_instance`:** - Second-generation instances include a
+// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
 // default 'root'@'%' user with no password. This user will be deleted by this provider on
-// instance creation. You should use `google_sql_user` to define a custom user with
+// instance creation. You should use `sql.User` to define a custom user with
 // a restricted host and strong password.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
@@ -124,7 +124,7 @@ func (r *DatabaseInstance) IpAddresses() *pulumi.ArrayOutput {
 
 // The name of the instance that will act as
 // the master in the replication setup. Note, this requires the master to have
-// `binary_log_enabled` set, as well as existing backups.
+// `binaryLogEnabled` set, as well as existing backups.
 func (r *DatabaseInstance) MasterInstanceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterInstanceName"])
 }
@@ -208,7 +208,7 @@ type DatabaseInstanceState struct {
 	IpAddresses interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
-	// `binary_log_enabled` set, as well as existing backups.
+	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName interface{}
 	// The name of the instance. If the name is left
 	// blank, this provider will randomly generate one when the instance is first
@@ -256,7 +256,7 @@ type DatabaseInstanceArgs struct {
 	DatabaseVersion interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
-	// `binary_log_enabled` set, as well as existing backups.
+	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName interface{}
 	// The name of the instance. If the name is left
 	// blank, this provider will randomly generate one when the instance is first

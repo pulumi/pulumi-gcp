@@ -25,13 +25,13 @@ class AccountIamMember(pulumi.CustomResource):
     """
     The role that should be applied.
     """
-    def __init__(__self__, resource_name, opts=None, billing_account_id=None, member=None, role=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, billing_account_id=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single member for a single binding within
         the IAM policy for an existing Google Cloud Platform Billing Account.
         
         > **Note:** This resource __must not__ be used in conjunction with
-           `google_billing_account_iam_binding` for the __same role__ or they will fight over
+           `billing.AccountIamBinding` for the __same role__ or they will fight over
            what your policy should be.
         
         :param str resource_name: The name of the resource.
@@ -48,40 +48,56 @@ class AccountIamMember(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if billing_account_id is None:
-            raise TypeError("Missing required property 'billing_account_id'")
-        __props__['billing_account_id'] = billing_account_id
-
-        if member is None:
-            raise TypeError("Missing required property 'member'")
-        __props__['member'] = member
-
-        if role is None:
-            raise TypeError("Missing required property 'role'")
-        __props__['role'] = role
-
-        __props__['etag'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if billing_account_id is None:
+                raise TypeError("Missing required property 'billing_account_id'")
+            __props__['billing_account_id'] = billing_account_id
+            if member is None:
+                raise TypeError("Missing required property 'member'")
+            __props__['member'] = member
+            if role is None:
+                raise TypeError("Missing required property 'role'")
+            __props__['role'] = role
+            __props__['etag'] = None
         super(AccountIamMember, __self__).__init__(
             'gcp:billing/accountIamMember:AccountIamMember',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, billing_account_id=None, etag=None, member=None, role=None):
+        """
+        Get an existing AccountIamMember resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
+        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param pulumi.Input[str] role: The role that should be applied.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["billing_account_id"] = billing_account_id
+        __props__["etag"] = etag
+        __props__["member"] = member
+        __props__["role"] = role
+        return AccountIamMember(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

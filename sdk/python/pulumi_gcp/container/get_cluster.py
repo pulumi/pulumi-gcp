@@ -154,14 +154,58 @@ class GetClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetClusterResult(
+            additional_zones=self.additional_zones,
+            addons_configs=self.addons_configs,
+            authenticator_groups_configs=self.authenticator_groups_configs,
+            cluster_autoscalings=self.cluster_autoscalings,
+            cluster_ipv4_cidr=self.cluster_ipv4_cidr,
+            database_encryptions=self.database_encryptions,
+            default_max_pods_per_node=self.default_max_pods_per_node,
+            description=self.description,
+            enable_binary_authorization=self.enable_binary_authorization,
+            enable_intranode_visibility=self.enable_intranode_visibility,
+            enable_kubernetes_alpha=self.enable_kubernetes_alpha,
+            enable_legacy_abac=self.enable_legacy_abac,
+            enable_tpu=self.enable_tpu,
+            endpoint=self.endpoint,
+            initial_node_count=self.initial_node_count,
+            instance_group_urls=self.instance_group_urls,
+            ip_allocation_policies=self.ip_allocation_policies,
+            location=self.location,
+            logging_service=self.logging_service,
+            maintenance_policies=self.maintenance_policies,
+            master_auths=self.master_auths,
+            master_authorized_networks_configs=self.master_authorized_networks_configs,
+            master_version=self.master_version,
+            min_master_version=self.min_master_version,
+            monitoring_service=self.monitoring_service,
+            name=self.name,
+            network=self.network,
+            network_policies=self.network_policies,
+            node_configs=self.node_configs,
+            node_locations=self.node_locations,
+            node_pools=self.node_pools,
+            node_version=self.node_version,
+            pod_security_policy_configs=self.pod_security_policy_configs,
+            private_cluster_configs=self.private_cluster_configs,
+            project=self.project,
+            region=self.region,
+            remove_default_node_pool=self.remove_default_node_pool,
+            resource_labels=self.resource_labels,
+            resource_usage_export_configs=self.resource_usage_export_configs,
+            services_ipv4_cidr=self.services_ipv4_cidr,
+            subnetwork=self.subnetwork,
+            tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
+            vertical_pod_autoscalings=self.vertical_pod_autoscalings,
+            workload_identity_configs=self.workload_identity_configs,
+            zone=self.zone,
+            id=self.id)
 
 def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
     """
@@ -182,7 +226,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts).value
 
-    return GetClusterResult(
+    return AwaitableGetClusterResult(
         additional_zones=__ret__.get('additionalZones'),
         addons_configs=__ret__.get('addonsConfigs'),
         authenticator_groups_configs=__ret__.get('authenticatorGroupsConfigs'),

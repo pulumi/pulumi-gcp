@@ -49,14 +49,22 @@ class GetObjectSignedUrlResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetObjectSignedUrlResult(
+            bucket=self.bucket,
+            content_md5=self.content_md5,
+            content_type=self.content_type,
+            credentials=self.credentials,
+            duration=self.duration,
+            extension_headers=self.extension_headers,
+            http_method=self.http_method,
+            path=self.path,
+            signed_url=self.signed_url,
+            id=self.id)
 
 def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credentials=None,duration=None,extension_headers=None,http_method=None,path=None,opts=None):
     """
@@ -82,7 +90,7 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts).value
 
-    return GetObjectSignedUrlResult(
+    return AwaitableGetObjectSignedUrlResult(
         bucket=__ret__.get('bucket'),
         content_md5=__ret__.get('contentMd5'),
         content_type=__ret__.get('contentType'),

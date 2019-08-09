@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
- * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `google_storage_object_acl` resource.
+ * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `gcp.storage.ObjectACL` resource.
  *  For more information see 
  * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
  * and 
@@ -95,12 +95,12 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly md5hash!: pulumi.Output<string>;
     /**
-     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+     * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
-     * `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+     * (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
+     * `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
      */
     public /*out*/ readonly outputName!: pulumi.Output<string>;
     /**
@@ -221,12 +221,12 @@ export interface BucketObjectState {
      */
     readonly md5hash?: pulumi.Input<string>;
     /**
-     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+     * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * (Computed) The name of the object. Use this field in interpolations with `google_storage_object_acl` to recreate
-     * `google_storage_object_acl` resources when your `google_storage_bucket_object` is recreated.
+     * (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
+     * `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
      */
     readonly outputName?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface BucketObjectArgs {
     readonly contentType?: pulumi.Input<string>;
     readonly detectMd5hash?: pulumi.Input<string>;
     /**
-     * The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+     * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     readonly name?: pulumi.Input<string>;
     /**

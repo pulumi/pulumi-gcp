@@ -28,14 +28,15 @@ class GetTransferProjectServieAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetTransferProjectServieAccountResult(
+            email=self.email,
+            project=self.project,
+            id=self.id)
 
 def get_transfer_project_servie_account(project=None,opts=None):
     """
@@ -52,7 +53,7 @@ def get_transfer_project_servie_account(project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts).value
 
-    return GetTransferProjectServieAccountResult(
+    return AwaitableGetTransferProjectServieAccountResult(
         email=__ret__.get('email'),
         project=__ret__.get('project'),
         id=__ret__.get('id'))

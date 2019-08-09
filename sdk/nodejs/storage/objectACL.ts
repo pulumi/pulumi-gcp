@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Authoritatively manages the access control list (ACL) for an object in a Google
- * Cloud Storage (GCS) bucket. Removing a `google_storage_object_acl` sets the
+ * Cloud Storage (GCS) bucket. Removing a `gcp.storage.ObjectACL` sets the
  * acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
  * 
  * For more information see
@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
  * 
- * > Want fine-grained control over object ACLs? Use `google_storage_object_access_control` to control individual
+ * > Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
  * role entity pairs.
  * 
  * ## Example Usage
@@ -25,14 +25,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const image_store = new gcp.storage.Bucket("image-store", {
+ * const imageStore = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
  * });
  * const image = new gcp.storage.BucketObject("image", {
  *     bucket: image_store.name,
  *     source: new pulumi.asset.FileArchive("image1.jpg"),
  * });
- * const image_store_acl = new gcp.storage.ObjectACL("image-store-acl", {
+ * const imageStoreAcl = new gcp.storage.ObjectACL("image-store-acl", {
  *     bucket: image_store.name,
  *     object: image.outputName,
  *     roleEntities: [
@@ -80,12 +80,12 @@ export class ObjectACL extends pulumi.CustomResource {
      */
     public readonly object!: pulumi.Output<string>;
     /**
-     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     public readonly predefinedAcl!: pulumi.Output<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      */
     public readonly roleEntities!: pulumi.Output<string[]>;
 
@@ -142,12 +142,12 @@ export interface ObjectACLState {
      */
     readonly object?: pulumi.Input<string>;
     /**
-     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     readonly predefinedAcl?: pulumi.Input<string>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -165,12 +165,12 @@ export interface ObjectACLArgs {
      */
     readonly object: pulumi.Input<string>;
     /**
-     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     readonly predefinedAcl?: pulumi.Input<string>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      */
     readonly roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

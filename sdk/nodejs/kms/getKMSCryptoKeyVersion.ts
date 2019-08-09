@@ -55,7 +55,7 @@ export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: 
  */
 export interface GetKMSCryptoKeyVersionArgs {
     /**
-     * The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
+     * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
      */
     readonly cryptoKey: string;
     readonly publicKey?: { algorithm?: string, pem?: string };
@@ -75,7 +75,7 @@ export interface GetKMSCryptoKeyVersionResult {
     readonly algorithm: string;
     readonly cryptoKey: string;
     /**
-     * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+     * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      */
     readonly protectionLevel: string;
     /**

@@ -191,10 +191,10 @@ func (r *Cluster) ID() *pulumi.IDOutput {
 // The list of zones in which the cluster's nodes
 // should be located. These must be in the same region as the cluster zone for
 // zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-// the number of nodes specified in `initial_node_count` is created in
+// the number of nodes specified in `initialNodeCount` is created in
 // all specified zones as well as the primary zone. If specified for a regional
-// cluster, nodes will only be created in these zones. `additional_zones` has been
-// deprecated in favour of `node_locations`.
+// cluster, nodes will only be created in these zones. `additionalZones` has been
+// deprecated in favour of `nodeLocations`.
 func (r *Cluster) AdditionalZones() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["additionalZones"])
 }
@@ -287,10 +287,10 @@ func (r *Cluster) Endpoint() *pulumi.StringOutput {
 }
 
 // The number of nodes to create in this
-// cluster's default node pool. Must be set if `node_pool` is not set. If
-// you're using `google_container_node_pool` objects with no default node pool,
+// cluster's default node pool. Must be set if `nodePool` is not set. If
+// you're using `container.NodePool` objects with no default node pool,
 // you'll need to set this to a value of at least `1`, alongside setting
-// `remove_default_node_pool` to `true`.
+// `removeDefaultNodePool` to `true`.
 func (r *Cluster) InitialNodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
 }
@@ -304,7 +304,7 @@ func (r *Cluster) InstanceGroupUrls() *pulumi.ArrayOutput {
 // Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 // This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 // Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-// in order to support explicit removal with `ip_allocation_policy = []`.
+// in order to support explicit removal with `ipAllocationPolicy = []`.
 func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
 	return r.s.State["ipAllocationPolicy"]
 }
@@ -343,14 +343,14 @@ func (r *Cluster) MasterAuth() *pulumi.Output {
 }
 
 // The desired configuration options
-// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
 // external access (except the cluster node IPs, which GKE automatically whitelists).
 func (r *Cluster) MasterAuthorizedNetworksConfig() *pulumi.Output {
 	return r.s.State["masterAuthorizedNetworksConfig"]
 }
 
 // The current version of the master in the cluster. This may
-// be different than the `min_master_version` set in the config if the master
+// be different than the `minMasterVersion` set in the config if the master
 // has been updated by GKE.
 func (r *Cluster) MasterVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["masterVersion"])
@@ -358,10 +358,10 @@ func (r *Cluster) MasterVersion() *pulumi.StringOutput {
 
 // The minimum version of the master. GKE
 // will auto-update the master to new versions, so this does not guarantee the
-// current master version--use the read-only `master_version` field to obtain that.
+// current master version--use the read-only `masterVersion` field to obtain that.
 // If unset, the cluster's version will be set by GKE to the version of the most recent
 // official release (which is not necessarily the latest version).  Most users will find
-// the `google_container_engine_versions` data source useful - it indicates which versions
+// the `container.getEngineVersions` data source useful - it indicates which versions
 // are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
 // [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 // describe the various acceptable formats for this field.
@@ -386,7 +386,7 @@ func (r *Cluster) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The name or self_link of the Google Compute Engine
+// The name or selfLink of the Google Compute Engine
 // network to which the cluster is connected. For Shared VPC, set this to the self link of the
 // shared network.
 func (r *Cluster) Network() *pulumi.StringOutput {
@@ -402,7 +402,7 @@ func (r *Cluster) NetworkPolicy() *pulumi.Output {
 
 // Parameters used in creating the default node pool.
 // Generally, this field should not be used at the same time as a
-// `google_container_node_pool` or a `node_pool` block; this configuration
+// `container.NodePool` or a `nodePool` block; this configuration
 // manages the default node pool, which isn't recommended to be used with
 // this provider. Structure is documented below.
 func (r *Cluster) NodeConfig() *pulumi.Output {
@@ -412,7 +412,7 @@ func (r *Cluster) NodeConfig() *pulumi.Output {
 // The list of zones in which the cluster's nodes
 // should be located. These must be in the same region as the cluster zone for
 // zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-// the number of nodes specified in `initial_node_count` is created in
+// the number of nodes specified in `initialNodeCount` is created in
 // all specified zones as well as the primary zone. If specified for a regional
 // cluster, nodes will be created in only these zones.
 func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
@@ -420,22 +420,22 @@ func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
 }
 
 // List of node pools associated with this cluster.
-// See google_container_node_pool for schema.
+// See container.NodePool for schema.
 // **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 // cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
 // to say "these are the _only_ node pools associated with this cluster", use the
-// google_container_node_pool resource instead of this property.
+// container.NodePool resource instead of this property.
 func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodePools"])
 }
 
 // The Kubernetes version on the nodes. Must either be unset
-// or set to the same value as `min_master_version` on create. Defaults to the default
+// or set to the same value as `minMasterVersion` on create. Defaults to the default
 // version set by GKE which is not necessarily the latest version. This only affects
 // nodes in the default node pool. While a fuzzy version can be specified, it's
 // recommended that you specify explicit versions as this provider will see spurious diffs
-// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-// `version_prefix` field to approximate fuzzy versions.
+// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+// `versionPrefix` field to approximate fuzzy versions.
 // To update nodes in other node pools, use the `version` attribute on the node pool.
 func (r *Cluster) NodeVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nodeVersion"])
@@ -465,9 +465,9 @@ func (r *Cluster) Region() *pulumi.StringOutput {
 }
 
 // If `true`, deletes the default node
-// pool upon cluster creation. If you're using `google_container_node_pool`
+// pool upon cluster creation. If you're using `container.NodePool`
 // resources with no default node pool, this should be set to `true`, alongside
-// setting `initial_node_count` to at least `1`.
+// setting `initialNodeCount` to at least `1`.
 func (r *Cluster) RemoveDefaultNodePool() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["removeDefaultNodePool"])
 }
@@ -492,7 +492,7 @@ func (r *Cluster) ServicesIpv4Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["servicesIpv4Cidr"])
 }
 
-// The name or self_link of the Google Compute Engine subnetwork in
+// The name or selfLink of the Google Compute Engine subnetwork in
 // which the cluster's instances are launched.
 func (r *Cluster) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
@@ -528,10 +528,10 @@ type ClusterState struct {
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
 	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initial_node_count` is created in
+	// the number of nodes specified in `initialNodeCount` is created in
 	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will only be created in these zones. `additional_zones` has been
-	// deprecated in favour of `node_locations`.
+	// cluster, nodes will only be created in these zones. `additionalZones` has been
+	// deprecated in favour of `nodeLocations`.
 	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
@@ -582,10 +582,10 @@ type ClusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint interface{}
 	// The number of nodes to create in this
-	// cluster's default node pool. Must be set if `node_pool` is not set. If
-	// you're using `google_container_node_pool` objects with no default node pool,
+	// cluster's default node pool. Must be set if `nodePool` is not set. If
+	// you're using `container.NodePool` objects with no default node pool,
 	// you'll need to set this to a value of at least `1`, alongside setting
-	// `remove_default_node_pool` to `true`.
+	// `removeDefaultNodePool` to `true`.
 	InitialNodeCount interface{}
 	// List of instance group URLs which have been assigned
 	// to the cluster.
@@ -593,7 +593,7 @@ type ClusterState struct {
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-	// in order to support explicit removal with `ip_allocation_policy = []`.
+	// in order to support explicit removal with `ipAllocationPolicy = []`.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
@@ -617,19 +617,19 @@ type ClusterState struct {
 	// Structure is documented below.
 	MasterAuth interface{}
 	// The desired configuration options
-	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
 	// external access (except the cluster node IPs, which GKE automatically whitelists).
 	MasterAuthorizedNetworksConfig interface{}
 	// The current version of the master in the cluster. This may
-	// be different than the `min_master_version` set in the config if the master
+	// be different than the `minMasterVersion` set in the config if the master
 	// has been updated by GKE.
 	MasterVersion interface{}
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
-	// current master version--use the read-only `master_version` field to obtain that.
+	// current master version--use the read-only `masterVersion` field to obtain that.
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
-	// the `google_container_engine_versions` data source useful - it indicates which versions
+	// the `container.getEngineVersions` data source useful - it indicates which versions
 	// are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
@@ -645,7 +645,7 @@ type ClusterState struct {
 	// The name of the cluster, unique within the project and
 	// location.
 	Name interface{}
-	// The name or self_link of the Google Compute Engine
+	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network interface{}
@@ -655,31 +655,31 @@ type ClusterState struct {
 	NetworkPolicy interface{}
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
-	// `google_container_node_pool` or a `node_pool` block; this configuration
+	// `container.NodePool` or a `nodePool` block; this configuration
 	// manages the default node pool, which isn't recommended to be used with
 	// this provider. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
 	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initial_node_count` is created in
+	// the number of nodes specified in `initialNodeCount` is created in
 	// all specified zones as well as the primary zone. If specified for a regional
 	// cluster, nodes will be created in only these zones.
 	NodeLocations interface{}
 	// List of node pools associated with this cluster.
-	// See google_container_node_pool for schema.
+	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
 	// to say "these are the _only_ node pools associated with this cluster", use the
-	// google_container_node_pool resource instead of this property.
+	// container.NodePool resource instead of this property.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
-	// or set to the same value as `min_master_version` on create. Defaults to the default
+	// or set to the same value as `minMasterVersion` on create. Defaults to the default
 	// version set by GKE which is not necessarily the latest version. This only affects
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as this provider will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions.
+	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion interface{}
 	// ) Configuration for the
@@ -694,9 +694,9 @@ type ClusterState struct {
 	Project interface{}
 	Region interface{}
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `google_container_node_pool`
+	// pool upon cluster creation. If you're using `container.NodePool`
 	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initial_node_count` to at least `1`.
+	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
@@ -709,7 +709,7 @@ type ClusterState struct {
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
 	// `/16` from the container CIDR.
 	ServicesIpv4Cidr interface{}
-	// The name or self_link of the Google Compute Engine subnetwork in
+	// The name or selfLink of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}
@@ -732,10 +732,10 @@ type ClusterArgs struct {
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
 	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initial_node_count` is created in
+	// the number of nodes specified in `initialNodeCount` is created in
 	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will only be created in these zones. `additional_zones` has been
-	// deprecated in favour of `node_locations`.
+	// cluster, nodes will only be created in these zones. `additionalZones` has been
+	// deprecated in favour of `nodeLocations`.
 	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
@@ -784,15 +784,15 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu interface{}
 	// The number of nodes to create in this
-	// cluster's default node pool. Must be set if `node_pool` is not set. If
-	// you're using `google_container_node_pool` objects with no default node pool,
+	// cluster's default node pool. Must be set if `nodePool` is not set. If
+	// you're using `container.NodePool` objects with no default node pool,
 	// you'll need to set this to a value of at least `1`, alongside setting
-	// `remove_default_node_pool` to `true`.
+	// `removeDefaultNodePool` to `true`.
 	InitialNodeCount interface{}
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-	// in order to support explicit removal with `ip_allocation_policy = []`.
+	// in order to support explicit removal with `ipAllocationPolicy = []`.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
@@ -816,15 +816,15 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	MasterAuth interface{}
 	// The desired configuration options
-	// for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
 	// external access (except the cluster node IPs, which GKE automatically whitelists).
 	MasterAuthorizedNetworksConfig interface{}
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
-	// current master version--use the read-only `master_version` field to obtain that.
+	// current master version--use the read-only `masterVersion` field to obtain that.
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
-	// the `google_container_engine_versions` data source useful - it indicates which versions
+	// the `container.getEngineVersions` data source useful - it indicates which versions
 	// are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
@@ -840,7 +840,7 @@ type ClusterArgs struct {
 	// The name of the cluster, unique within the project and
 	// location.
 	Name interface{}
-	// The name or self_link of the Google Compute Engine
+	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network interface{}
@@ -850,31 +850,31 @@ type ClusterArgs struct {
 	NetworkPolicy interface{}
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
-	// `google_container_node_pool` or a `node_pool` block; this configuration
+	// `container.NodePool` or a `nodePool` block; this configuration
 	// manages the default node pool, which isn't recommended to be used with
 	// this provider. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
 	// should be located. These must be in the same region as the cluster zone for
 	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initial_node_count` is created in
+	// the number of nodes specified in `initialNodeCount` is created in
 	// all specified zones as well as the primary zone. If specified for a regional
 	// cluster, nodes will be created in only these zones.
 	NodeLocations interface{}
 	// List of node pools associated with this cluster.
-	// See google_container_node_pool for schema.
+	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
 	// to say "these are the _only_ node pools associated with this cluster", use the
-	// google_container_node_pool resource instead of this property.
+	// container.NodePool resource instead of this property.
 	NodePools interface{}
 	// The Kubernetes version on the nodes. Must either be unset
-	// or set to the same value as `min_master_version` on create. Defaults to the default
+	// or set to the same value as `minMasterVersion` on create. Defaults to the default
 	// version set by GKE which is not necessarily the latest version. This only affects
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as this provider will see spurious diffs
-	// when fuzzy versions are used. See the `google_container_engine_versions` data source's
-	// `version_prefix` field to approximate fuzzy versions.
+	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion interface{}
 	// ) Configuration for the
@@ -889,9 +889,9 @@ type ClusterArgs struct {
 	Project interface{}
 	Region interface{}
 	// If `true`, deletes the default node
-	// pool upon cluster creation. If you're using `google_container_node_pool`
+	// pool upon cluster creation. If you're using `container.NodePool`
 	// resources with no default node pool, this should be set to `true`, alongside
-	// setting `initial_node_count` to at least `1`.
+	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool interface{}
 	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels interface{}
@@ -899,7 +899,7 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig interface{}
-	// The name or self_link of the Google Compute Engine subnetwork in
+	// The name or selfLink of the Google Compute Engine subnetwork in
 	// which the cluster's instances are launched.
 	Subnetwork interface{}
 	// )

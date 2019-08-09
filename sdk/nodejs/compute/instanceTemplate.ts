@@ -80,15 +80,15 @@ import * as utilities from "../utilities";
  * Cloud Platform API. In order to update an Instance Template, this provider will
  * destroy the existing resource and create a replacement. In order to effectively
  * use an Instance Template resource with an [Instance Group Manager resource][1],
- * it's recommended to specify `create_before_destroy` in a [lifecycle][2] block.
+ * it's recommended to specify `createBeforeDestroy` in a [lifecycle][2] block.
  * Either omit the Instance Template `name` attribute, or specify a partial name
- * with `name_prefix`.  Example:
+ * with `namePrefix`.  Example:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     // boot disk
  *     disks: [{}],
  *     machineType: "n1-standard-1",
@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{}],
  *     region: "us-central1",
  * });
- * const instanceGroupManager = new gcp.compute.InstanceGroupManager("instance_group_manager", {
+ * const instanceGroupManager = new gcp.compute.InstanceGroupManager("instanceGroupManager", {
  *     baseInstanceName: "instance-group-manager",
  *     instanceTemplate: instanceTemplate.selfLink,
  *     targetSize: 1,
@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  * If you're not sure, we recommend deploying the latest image available when this provider runs,
  * because this means all the instances in your group will be based on the same image, always,
  * and means that no upgrades or changes to your instances happen outside of a deployment.
- * You can achieve this by using the `google_compute_image`
+ * You can achieve this by using the `gcp.compute.Image`
  * data source, which will retrieve the latest image on every deployment, and will update
  * the template to use that specific image:
  * 
@@ -134,7 +134,7 @@ import * as utilities from "../utilities";
  *     family: "debian-9",
  *     project: "debian-cloud",
  * }));
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     // boot disk
  *     disks: [{
  *         sourceImage: google_compute_image_my_image.selfLink,
@@ -153,7 +153,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     // boot disk
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-9",
@@ -237,7 +237,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
     /**
      * An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
@@ -292,7 +292,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
     /**
@@ -428,7 +428,7 @@ export interface InstanceTemplateState {
     readonly metadataFingerprint?: pulumi.Input<string>;
     /**
      * An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
@@ -483,7 +483,7 @@ export interface InstanceTemplateState {
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**
@@ -540,7 +540,7 @@ export interface InstanceTemplateArgs {
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
@@ -591,7 +591,7 @@ export interface InstanceTemplateArgs {
     readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
     readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
     /**

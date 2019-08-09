@@ -31,14 +31,16 @@ class GetImageVersionsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetImageVersionsResult(GetImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetImageVersionsResult(
+            image_versions=self.image_versions,
+            project=self.project,
+            region=self.region,
+            id=self.id)
 
 def get_image_versions(project=None,region=None,opts=None):
     """
@@ -56,7 +58,7 @@ def get_image_versions(project=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts).value
 
-    return GetImageVersionsResult(
+    return AwaitableGetImageVersionsResult(
         image_versions=__ret__.get('imageVersions'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),

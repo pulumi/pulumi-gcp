@@ -37,14 +37,18 @@ class GetAccountKeyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAccountKeyResult(GetAccountKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAccountKeyResult(
+            key_algorithm=self.key_algorithm,
+            name=self.name,
+            project=self.project,
+            public_key=self.public_key,
+            public_key_type=self.public_key_type,
+            id=self.id)
 
 def get_account_key(name=None,project=None,public_key_type=None,opts=None):
     """
@@ -63,7 +67,7 @@ def get_account_key(name=None,project=None,public_key_type=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts).value
 
-    return GetAccountKeyResult(
+    return AwaitableGetAccountKeyResult(
         key_algorithm=__ret__.get('keyAlgorithm'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),

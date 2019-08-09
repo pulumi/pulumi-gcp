@@ -184,7 +184,7 @@ func (r *Instance) Description() *pulumi.StringOutput {
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
-// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 func (r *Instance) GuestAccelerators() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
 }
@@ -239,7 +239,7 @@ func (r *Instance) MetadataStartupScript() *pulumi.StringOutput {
 
 // Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 // `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (r *Instance) MinCpuPlatform() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["minCpuPlatform"])
 }
@@ -281,13 +281,13 @@ func (r *Instance) SelfLink() *pulumi.StringOutput {
 
 // Service account to attach to the instance.
 // Structure is documented below.
-// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (r *Instance) ServiceAccount() *pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
 // Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 func (r *Instance) ShieldedInstanceConfig() *pulumi.Output {
 	return r.s.State["shieldedInstanceConfig"]
 }
@@ -329,7 +329,7 @@ type InstanceState struct {
 	// A brief description of this resource.
 	Description interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators interface{}
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -357,7 +357,7 @@ type InstanceState struct {
 	MetadataStartupScript interface{}
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	MinCpuPlatform interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -378,10 +378,10 @@ type InstanceState struct {
 	SelfLink interface{}
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	ServiceAccount interface{}
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig interface{}
 	// A list of tags to attach to the instance.
 	Tags interface{}
@@ -411,7 +411,7 @@ type InstanceArgs struct {
 	// A brief description of this resource.
 	Description interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators interface{}
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -433,7 +433,7 @@ type InstanceArgs struct {
 	MetadataStartupScript interface{}
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	MinCpuPlatform interface{}
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -452,10 +452,10 @@ type InstanceArgs struct {
 	ScratchDisks interface{}
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	ServiceAccount interface{}
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-	// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig interface{}
 	// A list of tags to attach to the instance.
 	Tags interface{}

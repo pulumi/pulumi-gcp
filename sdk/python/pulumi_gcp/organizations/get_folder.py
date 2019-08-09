@@ -61,14 +61,21 @@ class GetFolderResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFolderResult(
+            create_time=self.create_time,
+            display_name=self.display_name,
+            folder=self.folder,
+            lifecycle_state=self.lifecycle_state,
+            lookup_organization=self.lookup_organization,
+            name=self.name,
+            organization=self.organization,
+            parent=self.parent,
+            id=self.id)
 
 def get_folder(folder=None,lookup_organization=None,opts=None):
     """
@@ -86,7 +93,7 @@ def get_folder(folder=None,lookup_organization=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__, opts=opts).value
 
-    return GetFolderResult(
+    return AwaitableGetFolderResult(
         create_time=__ret__.get('createTime'),
         display_name=__ret__.get('displayName'),
         folder=__ret__.get('folder'),

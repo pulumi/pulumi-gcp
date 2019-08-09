@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serial_port_policy", {
+ * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serialPortPolicy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         deny: {
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     project: "your-project-id",
  *     restorePolicy: {

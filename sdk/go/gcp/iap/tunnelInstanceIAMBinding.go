@@ -98,7 +98,7 @@ func (r *TunnelInstanceIAMBinding) Project() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *TunnelInstanceIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -121,7 +121,7 @@ type TunnelInstanceIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The zone of the instance. If
@@ -138,7 +138,7 @@ type TunnelInstanceIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
-	// `google_iap_tunnel_instance_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 	// The zone of the instance. If

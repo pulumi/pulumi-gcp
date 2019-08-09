@@ -115,14 +115,33 @@ class GetFunctionResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFunctionResult(
+            available_memory_mb=self.available_memory_mb,
+            description=self.description,
+            entry_point=self.entry_point,
+            environment_variables=self.environment_variables,
+            event_triggers=self.event_triggers,
+            https_trigger_url=self.https_trigger_url,
+            labels=self.labels,
+            max_instances=self.max_instances,
+            name=self.name,
+            project=self.project,
+            region=self.region,
+            runtime=self.runtime,
+            service_account_email=self.service_account_email,
+            source_archive_bucket=self.source_archive_bucket,
+            source_archive_object=self.source_archive_object,
+            source_repositories=self.source_repositories,
+            timeout=self.timeout,
+            trigger_bucket=self.trigger_bucket,
+            trigger_http=self.trigger_http,
+            trigger_topic=self.trigger_topic,
+            id=self.id)
 
 def get_function(name=None,project=None,region=None,opts=None):
     """
@@ -143,7 +162,7 @@ def get_function(name=None,project=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts).value
 
-    return GetFunctionResult(
+    return AwaitableGetFunctionResult(
         available_memory_mb=__ret__.get('availableMemoryMb'),
         description=__ret__.get('description'),
         entry_point=__ret__.get('entryPoint'),

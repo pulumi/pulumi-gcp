@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     // node pool and immediately delete it.
  *     removeDefaultNodePool: true,
  * });
- * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
  *     cluster: primary.name,
  *     location: "us-central1",
  *     nodeConfig: {
@@ -124,10 +124,10 @@ export class Cluster extends pulumi.CustomResource {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additional_zones` has been
-     * deprecated in favour of `node_locations`.
+     * cluster, nodes will only be created in these zones. `additionalZones` has been
+     * deprecated in favour of `nodeLocations`.
      */
     public readonly additionalZones!: pulumi.Output<string[]>;
     /**
@@ -206,10 +206,10 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `node_pool` is not set. If
-     * you're using `google_container_node_pool` objects with no default node pool,
+     * cluster's default node pool. Must be set if `nodePool` is not set. If
+     * you're using `gcp.container.NodePool` objects with no default node pool,
      * you'll need to set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      */
     public readonly initialNodeCount!: pulumi.Output<number | undefined>;
     /**
@@ -221,7 +221,7 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ip_allocation_policy = []`.
+     * in order to support explicit removal with `ipAllocationPolicy = []`.
      */
     public readonly ipAllocationPolicy!: pulumi.Output<{ clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork?: boolean, nodeIpv4CidrBlock: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName?: string, useIpAliases?: boolean }>;
     /**
@@ -255,23 +255,23 @@ export class Cluster extends pulumi.CustomResource {
     public readonly masterAuth!: pulumi.Output<{ clientCertificate: string, clientCertificateConfig: { issueClientCertificate: boolean }, clientKey: string, clusterCaCertificate: string, password?: string, username?: string }>;
     /**
      * The desired configuration options
-     * for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
      * external access (except the cluster node IPs, which GKE automatically whitelists).
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<{ cidrBlocks?: { cidrBlock: string, displayName?: string }[] } | undefined>;
     /**
      * The current version of the master in the cluster. This may
-     * be different than the `min_master_version` set in the config if the master
+     * be different than the `minMasterVersion` set in the config if the master
      * has been updated by GKE.
      */
     public /*out*/ readonly masterVersion!: pulumi.Output<string>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
+     * current master version--use the read-only `masterVersion` field to obtain that.
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
-     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
      * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
@@ -293,7 +293,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      */
@@ -307,7 +307,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn't recommended to be used with
      * this provider. Structure is documented below.
      */
@@ -316,28 +316,28 @@ export class Cluster extends pulumi.CustomResource {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
      * cluster, nodes will be created in only these zones.
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
     /**
      * List of node pools associated with this cluster.
-     * See google_container_node_pool for schema.
+     * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
-     * google_container_node_pool resource instead of this property.
+     * gcp.container.NodePool resource instead of this property.
      */
     public readonly nodePools!: pulumi.Output<{ autoscaling?: { maxNodeCount: number, minNodeCount: number }, initialNodeCount: number, instanceGroupUrls: string[], management: { autoRepair?: boolean, autoUpgrade?: boolean }, maxPodsPerNode: number, name: string, namePrefix: string, nodeConfig: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }, nodeCount: number, version: string }[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     public readonly nodeVersion!: pulumi.Output<string>;
@@ -360,9 +360,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * If `true`, deletes the default node
-     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initial_node_count` to at least `1`.
+     * setting `initialNodeCount` to at least `1`.
      */
     public readonly removeDefaultNodePool!: pulumi.Output<boolean | undefined>;
     /**
@@ -383,7 +383,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
     /**
-     * The name or self_link of the Google Compute Engine subnetwork in
+     * The name or selfLink of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.
      */
     public readonly subnetwork!: pulumi.Output<string>;
@@ -531,10 +531,10 @@ export interface ClusterState {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additional_zones` has been
-     * deprecated in favour of `node_locations`.
+     * cluster, nodes will only be created in these zones. `additionalZones` has been
+     * deprecated in favour of `nodeLocations`.
      */
     readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -613,10 +613,10 @@ export interface ClusterState {
     readonly endpoint?: pulumi.Input<string>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `node_pool` is not set. If
-     * you're using `google_container_node_pool` objects with no default node pool,
+     * cluster's default node pool. Must be set if `nodePool` is not set. If
+     * you're using `gcp.container.NodePool` objects with no default node pool,
      * you'll need to set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
@@ -628,7 +628,7 @@ export interface ClusterState {
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ip_allocation_policy = []`.
+     * in order to support explicit removal with `ipAllocationPolicy = []`.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
     /**
@@ -662,23 +662,23 @@ export interface ClusterState {
     readonly masterAuth?: pulumi.Input<{ clientCertificate?: pulumi.Input<string>, clientCertificateConfig?: pulumi.Input<{ issueClientCertificate: pulumi.Input<boolean> }>, clientKey?: pulumi.Input<string>, clusterCaCertificate?: pulumi.Input<string>, password?: pulumi.Input<string>, username?: pulumi.Input<string> }>;
     /**
      * The desired configuration options
-     * for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
      * external access (except the cluster node IPs, which GKE automatically whitelists).
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<{ cidrBlocks?: pulumi.Input<pulumi.Input<{ cidrBlock: pulumi.Input<string>, displayName?: pulumi.Input<string> }>[]> }>;
     /**
      * The current version of the master in the cluster. This may
-     * be different than the `min_master_version` set in the config if the master
+     * be different than the `minMasterVersion` set in the config if the master
      * has been updated by GKE.
      */
     readonly masterVersion?: pulumi.Input<string>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
+     * current master version--use the read-only `masterVersion` field to obtain that.
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
-     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
      * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
@@ -700,7 +700,7 @@ export interface ClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      */
@@ -714,7 +714,7 @@ export interface ClusterState {
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn't recommended to be used with
      * this provider. Structure is documented below.
      */
@@ -723,28 +723,28 @@ export interface ClusterState {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
      * cluster, nodes will be created in only these zones.
      */
     readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of node pools associated with this cluster.
-     * See google_container_node_pool for schema.
+     * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
-     * google_container_node_pool resource instead of this property.
+     * gcp.container.NodePool resource instead of this property.
      */
     readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
@@ -767,9 +767,9 @@ export interface ClusterState {
     readonly region?: pulumi.Input<string>;
     /**
      * If `true`, deletes the default node
-     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initial_node_count` to at least `1`.
+     * setting `initialNodeCount` to at least `1`.
      */
     readonly removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
@@ -790,7 +790,7 @@ export interface ClusterState {
      */
     readonly servicesIpv4Cidr?: pulumi.Input<string>;
     /**
-     * The name or self_link of the Google Compute Engine subnetwork in
+     * The name or selfLink of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;
@@ -823,10 +823,10 @@ export interface ClusterArgs {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additional_zones` has been
-     * deprecated in favour of `node_locations`.
+     * cluster, nodes will only be created in these zones. `additionalZones` has been
+     * deprecated in favour of `nodeLocations`.
      */
     readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -901,17 +901,17 @@ export interface ClusterArgs {
     readonly enableTpu?: pulumi.Input<boolean>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `node_pool` is not set. If
-     * you're using `google_container_node_pool` objects with no default node pool,
+     * cluster's default node pool. Must be set if `nodePool` is not set. If
+     * you're using `gcp.container.NodePool` objects with no default node pool,
      * you'll need to set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
      * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
      * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
      * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ip_allocation_policy = []`.
+     * in order to support explicit removal with `ipAllocationPolicy = []`.
      */
     readonly ipAllocationPolicy?: pulumi.Input<{ clusterIpv4CidrBlock?: pulumi.Input<string>, clusterSecondaryRangeName?: pulumi.Input<string>, createSubnetwork?: pulumi.Input<boolean>, nodeIpv4CidrBlock?: pulumi.Input<string>, servicesIpv4CidrBlock?: pulumi.Input<string>, servicesSecondaryRangeName?: pulumi.Input<string>, subnetworkName?: pulumi.Input<string>, useIpAliases?: pulumi.Input<boolean> }>;
     /**
@@ -945,17 +945,17 @@ export interface ClusterArgs {
     readonly masterAuth?: pulumi.Input<{ clientCertificate?: pulumi.Input<string>, clientCertificateConfig?: pulumi.Input<{ issueClientCertificate: pulumi.Input<boolean> }>, clientKey?: pulumi.Input<string>, clusterCaCertificate?: pulumi.Input<string>, password?: pulumi.Input<string>, username?: pulumi.Input<string> }>;
     /**
      * The desired configuration options
-     * for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
      * external access (except the cluster node IPs, which GKE automatically whitelists).
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<{ cidrBlocks?: pulumi.Input<pulumi.Input<{ cidrBlock: pulumi.Input<string>, displayName?: pulumi.Input<string> }>[]> }>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
+     * current master version--use the read-only `masterVersion` field to obtain that.
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
-     * the `google_container_engine_versions` data source useful - it indicates which versions
+     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
      * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
@@ -977,7 +977,7 @@ export interface ClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      */
@@ -991,7 +991,7 @@ export interface ClusterArgs {
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `google_container_node_pool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn't recommended to be used with
      * this provider. Structure is documented below.
      */
@@ -1000,28 +1000,28 @@ export interface ClusterArgs {
      * The list of zones in which the cluster's nodes
      * should be located. These must be in the same region as the cluster zone for
      * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initial_node_count` is created in
+     * the number of nodes specified in `initialNodeCount` is created in
      * all specified zones as well as the primary zone. If specified for a regional
      * cluster, nodes will be created in only these zones.
      */
     readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of node pools associated with this cluster.
-     * See google_container_node_pool for schema.
+     * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
      * to say "these are the _only_ node pools associated with this cluster", use the
-     * google_container_node_pool resource instead of this property.
+     * gcp.container.NodePool resource instead of this property.
      */
     readonly nodePools?: pulumi.Input<pulumi.Input<{ autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>, initialNodeCount?: pulumi.Input<number>, instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>, management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>, maxPodsPerNode?: pulumi.Input<number>, name?: pulumi.Input<string>, namePrefix?: pulumi.Input<string>, nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>, nodeCount?: pulumi.Input<number>, version?: pulumi.Input<string> }>[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as this provider will see spurious diffs
-     * when fuzzy versions are used. See the `google_container_engine_versions` data source's
-     * `version_prefix` field to approximate fuzzy versions.
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
@@ -1044,9 +1044,9 @@ export interface ClusterArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * If `true`, deletes the default node
-     * pool upon cluster creation. If you're using `google_container_node_pool`
+     * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initial_node_count` to at least `1`.
+     * setting `initialNodeCount` to at least `1`.
      */
     readonly removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
@@ -1060,7 +1060,7 @@ export interface ClusterArgs {
      */
     readonly resourceUsageExportConfig?: pulumi.Input<{ bigqueryDestination: pulumi.Input<{ datasetId: pulumi.Input<string> }>, enableNetworkEgressMetering?: pulumi.Input<boolean> }>;
     /**
-     * The name or self_link of the Google Compute Engine subnetwork in
+     * The name or selfLink of the Google Compute Engine subnetwork in
      * which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;

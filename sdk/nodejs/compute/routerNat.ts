@@ -63,8 +63,8 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly natIpAllocateOption!: pulumi.Output<string>;
     /**
-     * List of `self_link`s of external IPs. Only valid if
-     * `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+     * List of `selfLink`s of external IPs. Only valid if
+     * `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
      * new NAT to be created.
      */
     public readonly natIps!: pulumi.Output<string[] | undefined>;
@@ -93,7 +93,7 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used
-     * if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+     * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
     public readonly subnetworks!: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats: string[] }[] | undefined>;
@@ -203,8 +203,8 @@ export interface RouterNatState {
      */
     readonly natIpAllocateOption?: pulumi.Input<string>;
     /**
-     * List of `self_link`s of external IPs. Only valid if
-     * `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+     * List of `selfLink`s of external IPs. Only valid if
+     * `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
      * new NAT to be created.
      */
     readonly natIps?: pulumi.Input<pulumi.Input<string>[]>;
@@ -233,7 +233,7 @@ export interface RouterNatState {
     readonly sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used
-     * if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+     * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
     readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;
@@ -284,8 +284,8 @@ export interface RouterNatArgs {
      */
     readonly natIpAllocateOption: pulumi.Input<string>;
     /**
-     * List of `self_link`s of external IPs. Only valid if
-     * `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
+     * List of `selfLink`s of external IPs. Only valid if
+     * `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
      * new NAT to be created.
      */
     readonly natIps?: pulumi.Input<pulumi.Input<string>[]>;
@@ -314,7 +314,7 @@ export interface RouterNatArgs {
     readonly sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used
-     * if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
+     * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
     readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;

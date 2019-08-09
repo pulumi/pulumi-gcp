@@ -7,20 +7,20 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
  * 
- * * `google_project_iam_policy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
- * * `google_project_iam_binding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
- * * `google_project_iam_member`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+ * * `gcp.projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+ * * `gcp.projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+ * * `gcp.projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
  * 
- * > **Note:** `google_project_iam_policy` **cannot** be used in conjunction with `google_project_iam_binding` and `google_project_iam_member` or they will fight over what your policy should be.
+ * > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding` and `gcp.projects.IAMMember` or they will fight over what your policy should be.
  * 
- * > **Note:** `google_project_iam_binding` resources **can be** used in conjunction with `google_project_iam_member` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_project\_iam\_policy
  * 
  * > **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `google_project_iam_policy` removes access
+ *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
- *    It's not recommended to use `google_project_iam_policy` with your provider project
+ *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
  *    to avoid locking yourself out, and it should generally only be used with projects
  *    fully managed by this provider.
  * 
@@ -103,15 +103,15 @@ export class IAMBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * The project ID. If not specified for `google_project_iam_binding`
-     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
-     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * The project ID. If not specified for `gcp.projects.IAMBinding`
+     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -166,15 +166,15 @@ export interface IAMBindingState {
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project ID. If not specified for `google_project_iam_binding`
-     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
-     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * The project ID. If not specified for `gcp.projects.IAMBinding`
+     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -186,15 +186,15 @@ export interface IAMBindingState {
 export interface IAMBindingArgs {
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project ID. If not specified for `google_project_iam_binding`
-     * or `google_project_iam_member`, uses the ID of the project configured with the provider.
-     * Required for `google_project_iam_policy` - you must explicitly set the project, and it
+     * The project ID. If not specified for `gcp.projects.IAMBinding`
+     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_project_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

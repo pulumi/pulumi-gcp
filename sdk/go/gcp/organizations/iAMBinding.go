@@ -12,7 +12,7 @@ import (
 // an existing Google Cloud Platform Organization.
 // 
 // > **Note:** This resource __must not__ be used in conjunction with
-//    `google_organization_iam_member` for the __same role__ or they will fight over
+//    `organizations.IAMMember` for the __same role__ or they will fight over
 //    what your policy should be.
 // 
 // > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -98,7 +98,7 @@ func (r *IAMBinding) OrgId() *pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *IAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
@@ -113,7 +113,7 @@ type IAMBindingState struct {
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
 	// The role that should be applied. Only one
-	// `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
@@ -125,7 +125,7 @@ type IAMBindingArgs struct {
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId interface{}
 	// The role that should be applied. Only one
-	// `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

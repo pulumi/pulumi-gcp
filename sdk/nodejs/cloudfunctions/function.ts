@@ -85,11 +85,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
     public readonly eventTrigger!: pulumi.Output<{ eventType: string, failurePolicy: { retry: boolean }, resource: string }>;
     /**
-     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     public readonly httpsTriggerUrl!: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export class Function extends pulumi.CustomResource {
     public readonly sourceArchiveObject!: pulumi.Output<string | undefined>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
     public readonly sourceRepository!: pulumi.Output<{ deployedUrl: string, url: string } | undefined>;
     /**
@@ -141,7 +141,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
     /**
-     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     public readonly triggerHttp!: pulumi.Output<boolean | undefined>;
 
@@ -228,11 +228,11 @@ export interface FunctionState {
      */
     readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
     readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
     /**
-     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
     /**
@@ -276,7 +276,7 @@ export interface FunctionState {
     readonly sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
     readonly sourceRepository?: pulumi.Input<{ deployedUrl?: pulumi.Input<string>, url: pulumi.Input<string> }>;
     /**
@@ -284,7 +284,7 @@ export interface FunctionState {
      */
     readonly timeout?: pulumi.Input<number>;
     /**
-     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
 }
@@ -310,11 +310,11 @@ export interface FunctionArgs {
      */
     readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
     readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
     /**
-     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
     /**
@@ -358,7 +358,7 @@ export interface FunctionArgs {
     readonly sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
     readonly sourceRepository?: pulumi.Input<{ deployedUrl?: pulumi.Input<string>, url: pulumi.Input<string> }>;
     /**
@@ -366,7 +366,7 @@ export interface FunctionArgs {
      */
     readonly timeout?: pulumi.Input<number>;
     /**
-     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
 }

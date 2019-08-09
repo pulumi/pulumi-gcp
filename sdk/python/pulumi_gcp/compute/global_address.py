@@ -29,7 +29,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents a Global Address resource. Global addresses are used for
         HTTP(S) load balancing.
@@ -54,50 +54,67 @@ class GlobalAddress(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['address'] = address
-
-        __props__['address_type'] = address_type
-
-        __props__['description'] = description
-
-        __props__['ip_version'] = ip_version
-
-        __props__['labels'] = labels
-
-        __props__['name'] = name
-
-        __props__['network'] = network
-
-        __props__['prefix_length'] = prefix_length
-
-        __props__['project'] = project
-
-        __props__['purpose'] = purpose
-
-        __props__['creation_timestamp'] = None
-        __props__['label_fingerprint'] = None
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['address'] = address
+            __props__['address_type'] = address_type
+            __props__['description'] = description
+            __props__['ip_version'] = ip_version
+            __props__['labels'] = labels
+            __props__['name'] = name
+            __props__['network'] = network
+            __props__['prefix_length'] = prefix_length
+            __props__['project'] = project
+            __props__['purpose'] = purpose
+            __props__['creation_timestamp'] = None
+            __props__['label_fingerprint'] = None
+            __props__['self_link'] = None
         super(GlobalAddress, __self__).__init__(
             'gcp:compute/globalAddress:GlobalAddress',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, address=None, address_type=None, creation_timestamp=None, description=None, ip_version=None, label_fingerprint=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, self_link=None):
+        """
+        Get an existing GlobalAddress resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_address.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["address"] = address
+        __props__["address_type"] = address_type
+        __props__["creation_timestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["ip_version"] = ip_version
+        __props__["label_fingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["prefix_length"] = prefix_length
+        __props__["project"] = project
+        __props__["purpose"] = purpose
+        __props__["self_link"] = self_link
+        return GlobalAddress(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

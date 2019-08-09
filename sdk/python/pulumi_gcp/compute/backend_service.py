@@ -36,7 +36,7 @@ class BackendService(pulumi.CustomResource):
     """
     session_affinity: pulumi.Output[str]
     timeout_sec: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         A Backend Service defines a group of virtual machines that will serve
         traffic for load balancing. This resource is a global backend service,
@@ -65,66 +65,83 @@ class BackendService(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
-
-        __props__['backends'] = backends
-
-        __props__['cdn_policy'] = cdn_policy
-
-        __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
-
-        __props__['custom_request_headers'] = custom_request_headers
-
-        __props__['description'] = description
-
-        __props__['enable_cdn'] = enable_cdn
-
-        if health_checks is None:
-            raise TypeError("Missing required property 'health_checks'")
-        __props__['health_checks'] = health_checks
-
-        __props__['iap'] = iap
-
-        __props__['load_balancing_scheme'] = load_balancing_scheme
-
-        __props__['name'] = name
-
-        __props__['port_name'] = port_name
-
-        __props__['project'] = project
-
-        __props__['protocol'] = protocol
-
-        __props__['security_policy'] = security_policy
-
-        __props__['session_affinity'] = session_affinity
-
-        __props__['timeout_sec'] = timeout_sec
-
-        __props__['creation_timestamp'] = None
-        __props__['fingerprint'] = None
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
+            __props__['backends'] = backends
+            __props__['cdn_policy'] = cdn_policy
+            __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
+            __props__['custom_request_headers'] = custom_request_headers
+            __props__['description'] = description
+            __props__['enable_cdn'] = enable_cdn
+            if health_checks is None:
+                raise TypeError("Missing required property 'health_checks'")
+            __props__['health_checks'] = health_checks
+            __props__['iap'] = iap
+            __props__['load_balancing_scheme'] = load_balancing_scheme
+            __props__['name'] = name
+            __props__['port_name'] = port_name
+            __props__['project'] = project
+            __props__['protocol'] = protocol
+            __props__['security_policy'] = security_policy
+            __props__['session_affinity'] = session_affinity
+            __props__['timeout_sec'] = timeout_sec
+            __props__['creation_timestamp'] = None
+            __props__['fingerprint'] = None
+            __props__['self_link'] = None
         super(BackendService, __self__).__init__(
             'gcp:compute/backendService:BackendService',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
+        """
+        Get an existing BackendService resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
+        __props__["backends"] = backends
+        __props__["cdn_policy"] = cdn_policy
+        __props__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
+        __props__["creation_timestamp"] = creation_timestamp
+        __props__["custom_request_headers"] = custom_request_headers
+        __props__["description"] = description
+        __props__["enable_cdn"] = enable_cdn
+        __props__["fingerprint"] = fingerprint
+        __props__["health_checks"] = health_checks
+        __props__["iap"] = iap
+        __props__["load_balancing_scheme"] = load_balancing_scheme
+        __props__["name"] = name
+        __props__["port_name"] = port_name
+        __props__["project"] = project
+        __props__["protocol"] = protocol
+        __props__["security_policy"] = security_policy
+        __props__["self_link"] = self_link
+        __props__["session_affinity"] = session_affinity
+        __props__["timeout_sec"] = timeout_sec
+        return BackendService(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

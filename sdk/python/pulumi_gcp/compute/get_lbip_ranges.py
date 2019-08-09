@@ -31,14 +31,15 @@ class GetLBIPRangesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetLBIPRangesResult(GetLBIPRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetLBIPRangesResult(
+            http_ssl_tcp_internals=self.http_ssl_tcp_internals,
+            networks=self.networks,
+            id=self.id)
 
 def get_lbip_ranges(opts=None):
     """
@@ -56,7 +57,7 @@ def get_lbip_ranges(opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__, opts=opts).value
 
-    return GetLBIPRangesResult(
+    return AwaitableGetLBIPRangesResult(
         http_ssl_tcp_internals=__ret__.get('httpSslTcpInternals'),
         networks=__ret__.get('networks'),
         id=__ret__.get('id'))

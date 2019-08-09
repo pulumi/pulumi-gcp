@@ -12,7 +12,7 @@ import (
 // the IAM policy for an existing Google Cloud Platform Organization.
 // 
 // > **Note:** This resource __must not__ be used in conjunction with
-//    `google_organization_iam_binding` for the __same role__ or they will fight over
+//    `organizations.IAMBinding` for the __same role__ or they will fight over
 //    what your policy should be.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_member.html.markdown.

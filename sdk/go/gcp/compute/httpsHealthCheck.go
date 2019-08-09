@@ -11,8 +11,8 @@ import (
 // individual VMs should be checked for health, via HTTPS.
 // 
 // 
-// > **Note:** google_compute_https_health_check is a legacy health check.
-// The newer [google_compute_health_check](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
+// > **Note:** compute.HttpsHealthCheck is a legacy health check.
+// The newer [compute.HealthCheck](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
 // should be preferred for all uses except
 // [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
 // which still require the legacy version.

@@ -46,14 +46,18 @@ class GetDefaultServiceAccountResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDefaultServiceAccountResult(
+            display_name=self.display_name,
+            email=self.email,
+            name=self.name,
+            project=self.project,
+            unique_id=self.unique_id,
+            id=self.id)
 
 def get_default_service_account(project=None,opts=None):
     """
@@ -70,7 +74,7 @@ def get_default_service_account(project=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts).value
 
-    return GetDefaultServiceAccountResult(
+    return AwaitableGetDefaultServiceAccountResult(
         display_name=__ret__.get('displayName'),
         email=__ret__.get('email'),
         name=__ret__.get('name'),

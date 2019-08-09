@@ -17,7 +17,7 @@ class Topic(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, name=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         A named resource to which messages are sent by publishers.
         
@@ -41,34 +41,48 @@ class Topic(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['kms_key_name'] = kms_key_name
-
-        __props__['labels'] = labels
-
-        __props__['name'] = name
-
-        __props__['project'] = project
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['kms_key_name'] = kms_key_name
+            __props__['labels'] = labels
+            __props__['name'] = name
+            __props__['project'] = project
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, kms_key_name=None, labels=None, name=None, project=None):
+        """
+        Get an existing Topic resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["kms_key_name"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["project"] = project
+        return Topic(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

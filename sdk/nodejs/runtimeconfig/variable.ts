@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ * const myRuntimeConfig = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
  * const environment = new gcp.runtimeconfig.Variable("environment", {
@@ -37,10 +37,10 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ * const myRuntimeConfig = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
- * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
+ * const mySecret = new gcp.runtimeconfig.Variable("my-secret", {
  *     parent: my_runtime_config.name,
  *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", "utf-8")).toString("base64"),
  * });

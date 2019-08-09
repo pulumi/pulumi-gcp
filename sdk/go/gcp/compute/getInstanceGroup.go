@@ -40,12 +40,12 @@ func LookupInstanceGroup(ctx *pulumi.Context, args *GetInstanceGroupArgs) (*GetI
 
 // A collection of arguments for invoking getInstanceGroup.
 type GetInstanceGroupArgs struct {
-	// The name of the instance group. Either `name` or `self_link` must be provided.
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The self link of the instance group. Either `name` or `self_link` must be provided.
+	// The self link of the instance group. Either `name` or `selfLink` must be provided.
 	SelfLink interface{}
 	// The zone of the instance group. If referencing the instance group by name
 	// and `zone` is not provided, the provider zone is used.

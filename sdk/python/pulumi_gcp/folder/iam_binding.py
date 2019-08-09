@@ -30,16 +30,16 @@ class IAMBinding(pulumi.CustomResource):
     role: pulumi.Output[str]
     """
     The role that should be applied. Only one
-    `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+    `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, folder=None, members=None, role=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, folder=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud Platform folder.
         
         > **Note:** This resource _must not_ be used in conjunction with
-           `google_folder_iam_policy` or they will fight over what your policy
+           `folder.IAMPolicy` or they will fight over what your policy
            should be.
         
         > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -57,7 +57,7 @@ class IAMBinding(pulumi.CustomResource):
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `google_folder_iam_binding` can be used per role. Note that custom roles must be of the format
+               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
@@ -68,40 +68,64 @@ class IAMBinding(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if folder is None:
-            raise TypeError("Missing required property 'folder'")
-        __props__['folder'] = folder
-
-        if members is None:
-            raise TypeError("Missing required property 'members'")
-        __props__['members'] = members
-
-        if role is None:
-            raise TypeError("Missing required property 'role'")
-        __props__['role'] = role
-
-        __props__['etag'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if folder is None:
+                raise TypeError("Missing required property 'folder'")
+            __props__['folder'] = folder
+            if members is None:
+                raise TypeError("Missing required property 'members'")
+            __props__['members'] = members
+            if role is None:
+                raise TypeError("Missing required property 'role'")
+            __props__['role'] = role
+            __props__['etag'] = None
         super(IAMBinding, __self__).__init__(
             'gcp:folder/iAMBinding:IAMBinding',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, etag=None, folder=None, members=None, role=None):
+        """
+        Get an existing IAMBinding resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
+        :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+        :param pulumi.Input[list] members: An array of identites that will be granted the privilege in the `role`.
+               Each entry can have one of the following values:
+               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["etag"] = etag
+        __props__["folder"] = folder
+        __props__["members"] = members
+        __props__["role"] = role
+        return IAMBinding(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

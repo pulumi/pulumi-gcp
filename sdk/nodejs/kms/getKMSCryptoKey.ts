@@ -52,7 +52,7 @@ export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeO
  */
 export interface GetKMSCryptoKeyArgs {
     /**
-     * The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+     * The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
      */
     readonly keyRing: string;
     /**

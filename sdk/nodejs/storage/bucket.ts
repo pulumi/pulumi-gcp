@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Creates a new bucket in Google cloud storage service (GCS).
  * Once a bucket has been created, its location can't be changed.
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
- * using the [`google_storage_bucket_acl` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
+ * using the [`gcp.storage.BucketACL` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
  * 
  * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const image_store = new gcp.storage.Bucket("image-store", {
+ * const imageStore = new gcp.storage.Bucket("image-store", {
  *     location: "EU",
  *     website: {
  *         mainPageSuffix: "index.html",

@@ -64,14 +64,22 @@ class GetInstanceGroupResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetInstanceGroupResult(
+            description=self.description,
+            instances=self.instances,
+            name=self.name,
+            named_ports=self.named_ports,
+            network=self.network,
+            project=self.project,
+            self_link=self.self_link,
+            size=self.size,
+            zone=self.zone,
+            id=self.id)
 
 def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None):
     """
@@ -93,7 +101,7 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts).value
 
-    return GetInstanceGroupResult(
+    return AwaitableGetInstanceGroupResult(
         description=__ret__.get('description'),
         instances=__ret__.get('instances'),
         name=__ret__.get('name'),

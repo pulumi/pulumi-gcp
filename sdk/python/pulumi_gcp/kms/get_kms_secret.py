@@ -31,14 +31,16 @@ class GetKMSSecretResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKMSSecretResult(GetKMSSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKMSSecretResult(
+            ciphertext=self.ciphertext,
+            crypto_key=self.crypto_key,
+            plaintext=self.plaintext,
+            id=self.id)
 
 def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     """
@@ -65,7 +67,7 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts).value
 
-    return GetKMSSecretResult(
+    return AwaitableGetKMSSecretResult(
         ciphertext=__ret__.get('ciphertext'),
         crypto_key=__ret__.get('cryptoKey'),
         plaintext=__ret__.get('plaintext'),

@@ -31,14 +31,16 @@ class GetActiveFolderResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetActiveFolderResult(GetActiveFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetActiveFolderResult(
+            display_name=self.display_name,
+            name=self.name,
+            parent=self.parent,
+            id=self.id)
 
 def get_active_folder(display_name=None,parent=None,opts=None):
     """
@@ -56,7 +58,7 @@ def get_active_folder(display_name=None,parent=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts).value
 
-    return GetActiveFolderResult(
+    return AwaitableGetActiveFolderResult(
         display_name=__ret__.get('displayName'),
         name=__ret__.get('name'),
         parent=__ret__.get('parent'),

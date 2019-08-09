@@ -89,7 +89,7 @@ func (r *InstanceGroup) Description() *pulumi.StringOutput {
 }
 
 // List of instances in the group. They should be given
-// as self_link URLs. When adding instances they must all be in the same
+// as selfLink URLs. When adding instances they must all be in the same
 // network and zone as the instance group.
 func (r *InstanceGroup) Instances() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["instances"])
@@ -144,7 +144,7 @@ type InstanceGroupState struct {
 	// group.
 	Description interface{}
 	// List of instances in the group. They should be given
-	// as self_link URLs. When adding instances they must all be in the same
+	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances interface{}
 	// The name of the instance group. Must be 1-63
@@ -177,7 +177,7 @@ type InstanceGroupArgs struct {
 	// group.
 	Description interface{}
 	// List of instances in the group. They should be given
-	// as self_link URLs. When adding instances they must all be in the same
+	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances interface{}
 	// The name of the instance group. Must be 1-63

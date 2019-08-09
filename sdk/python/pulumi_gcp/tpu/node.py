@@ -25,7 +25,7 @@ class Node(pulumi.CustomResource):
     service_account: pulumi.Output[str]
     tensorflow_version: pulumi.Output[str]
     zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, accelerator_type=None, cidr_block=None, description=None, labels=None, name=None, network=None, project=None, scheduling_config=None, tensorflow_version=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, accelerator_type=None, cidr_block=None, description=None, labels=None, name=None, network=None, project=None, scheduling_config=None, tensorflow_version=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         A Cloud TPU instance.
         
@@ -49,57 +49,72 @@ class Node(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if accelerator_type is None:
-            raise TypeError("Missing required property 'accelerator_type'")
-        __props__['accelerator_type'] = accelerator_type
-
-        if cidr_block is None:
-            raise TypeError("Missing required property 'cidr_block'")
-        __props__['cidr_block'] = cidr_block
-
-        __props__['description'] = description
-
-        __props__['labels'] = labels
-
-        __props__['name'] = name
-
-        __props__['network'] = network
-
-        __props__['project'] = project
-
-        __props__['scheduling_config'] = scheduling_config
-
-        if tensorflow_version is None:
-            raise TypeError("Missing required property 'tensorflow_version'")
-        __props__['tensorflow_version'] = tensorflow_version
-
-        if zone is None:
-            raise TypeError("Missing required property 'zone'")
-        __props__['zone'] = zone
-
-        __props__['network_endpoints'] = None
-        __props__['service_account'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if accelerator_type is None:
+                raise TypeError("Missing required property 'accelerator_type'")
+            __props__['accelerator_type'] = accelerator_type
+            if cidr_block is None:
+                raise TypeError("Missing required property 'cidr_block'")
+            __props__['cidr_block'] = cidr_block
+            __props__['description'] = description
+            __props__['labels'] = labels
+            __props__['name'] = name
+            __props__['network'] = network
+            __props__['project'] = project
+            __props__['scheduling_config'] = scheduling_config
+            if tensorflow_version is None:
+                raise TypeError("Missing required property 'tensorflow_version'")
+            __props__['tensorflow_version'] = tensorflow_version
+            if zone is None:
+                raise TypeError("Missing required property 'zone'")
+            __props__['zone'] = zone
+            __props__['network_endpoints'] = None
+            __props__['service_account'] = None
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, accelerator_type=None, cidr_block=None, description=None, labels=None, name=None, network=None, network_endpoints=None, project=None, scheduling_config=None, service_account=None, tensorflow_version=None, zone=None):
+        """
+        Get an existing Node resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["accelerator_type"] = accelerator_type
+        __props__["cidr_block"] = cidr_block
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["network_endpoints"] = network_endpoints
+        __props__["project"] = project
+        __props__["scheduling_config"] = scheduling_config
+        __props__["service_account"] = service_account
+        __props__["tensorflow_version"] = tensorflow_version
+        __props__["zone"] = zone
+        return Node(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

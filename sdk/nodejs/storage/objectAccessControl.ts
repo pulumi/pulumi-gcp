@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileArchive("../static/img/header-logo.png"),
  * });
- * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
+ * const publicRule = new gcp.storage.ObjectAccessControl("publicRule", {
  *     bucket: bucket.name,
  *     entity: "allUsers",
  *     object: object.outputName,

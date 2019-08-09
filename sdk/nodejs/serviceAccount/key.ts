@@ -91,18 +91,18 @@ export class Key extends pulumi.CustomResource {
     /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
      * service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-     * `pgp_key` is provided.
+     * `pgpKey` is provided.
      */
     public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
      * The private key material, base 64 encoded and
-     * encrypted with the given `pgp_key`. This is only populated when creating a new
-     * key and `pgp_key` is supplied
+     * encrypted with the given `pgpKey`. This is only populated when creating a new
+     * key and `pgpKey` is supplied
      */
     public /*out*/ readonly privateKeyEncrypted!: pulumi.Output<string>;
     /**
      * The MD5 public key fingerprint for the encrypted
-     * private key. This is only populated when creating a new key and `pgp_key` is supplied
+     * private key. This is only populated when creating a new key and `pgpKey` is supplied
      */
     public /*out*/ readonly privateKeyFingerprint!: pulumi.Output<string>;
     /**
@@ -211,18 +211,18 @@ export interface KeyState {
     /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
      * service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-     * `pgp_key` is provided.
+     * `pgpKey` is provided.
      */
     readonly privateKey?: pulumi.Input<string>;
     /**
      * The private key material, base 64 encoded and
-     * encrypted with the given `pgp_key`. This is only populated when creating a new
-     * key and `pgp_key` is supplied
+     * encrypted with the given `pgpKey`. This is only populated when creating a new
+     * key and `pgpKey` is supplied
      */
     readonly privateKeyEncrypted?: pulumi.Input<string>;
     /**
      * The MD5 public key fingerprint for the encrypted
-     * private key. This is only populated when creating a new key and `pgp_key` is supplied
+     * private key. This is only populated when creating a new key and `pgpKey` is supplied
      */
     readonly privateKeyFingerprint?: pulumi.Input<string>;
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * an existing Google Cloud Platform Organization.
  * 
  * > **Note:** This resource __must not__ be used in conjunction with
- *    `google_organization_iam_member` for the __same role__ or they will fight over
+ *    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
  *    what your policy should be.
  * 
  * > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -72,7 +72,7 @@ export class IAMBinding extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -138,7 +138,7 @@ export interface IAMBindingState {
     readonly orgId?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -158,7 +158,7 @@ export interface IAMBindingArgs {
     readonly orgId: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `google_organization_iam_binding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

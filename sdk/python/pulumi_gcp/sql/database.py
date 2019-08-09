@@ -42,7 +42,7 @@ class Database(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, charset=None, collation=None, instance=None, name=None, project=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, charset=None, collation=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new Google SQL Database on a Google SQL Database Instance. For more information, see
         the [official documentation](https://cloud.google.com/sql/),
@@ -73,40 +73,67 @@ class Database(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['charset'] = charset
-
-        __props__['collation'] = collation
-
-        if instance is None:
-            raise TypeError("Missing required property 'instance'")
-        __props__['instance'] = instance
-
-        __props__['name'] = name
-
-        __props__['project'] = project
-
-        __props__['self_link'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['charset'] = charset
+            __props__['collation'] = collation
+            if instance is None:
+                raise TypeError("Missing required property 'instance'")
+            __props__['instance'] = instance
+            __props__['name'] = name
+            __props__['project'] = project
+            __props__['self_link'] = None
         super(Database, __self__).__init__(
             'gcp:sql/database:Database',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, charset=None, collation=None, instance=None, name=None, project=None, self_link=None):
+        """
+        Get an existing Database resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] charset: The charset value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+               for more details and supported values. Postgres databases are in beta
+               and have limited `charset` support; they only support a value of `UTF8` at creation time.
+        :param pulumi.Input[str] collation: The collation value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+               for more details and supported values. Postgres databases are in beta
+               and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] instance: The name of containing instance.
+        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["charset"] = charset
+        __props__["collation"] = collation
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["self_link"] = self_link
+        return Database(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

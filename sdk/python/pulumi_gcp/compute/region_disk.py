@@ -35,7 +35,7 @@ class RegionDisk(pulumi.CustomResource):
     source_snapshot_id: pulumi.Output[str]
     type: pulumi.Output[str]
     users: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, labels=None, name=None, physical_block_size_bytes=None, project=None, region=None, replica_zones=None, size=None, snapshot=None, source_snapshot_encryption_key=None, type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, labels=None, name=None, physical_block_size_bytes=None, project=None, region=None, replica_zones=None, size=None, snapshot=None, source_snapshot_encryption_key=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Persistent disks are durable storage devices that function similarly to
         the physical disks in a desktop or a server. Compute Engine manages the
@@ -77,60 +77,81 @@ class RegionDisk(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        __props__['disk_encryption_key'] = disk_encryption_key
-
-        __props__['labels'] = labels
-
-        __props__['name'] = name
-
-        __props__['physical_block_size_bytes'] = physical_block_size_bytes
-
-        __props__['project'] = project
-
-        __props__['region'] = region
-
-        if replica_zones is None:
-            raise TypeError("Missing required property 'replica_zones'")
-        __props__['replica_zones'] = replica_zones
-
-        __props__['size'] = size
-
-        __props__['snapshot'] = snapshot
-
-        __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
-
-        __props__['type'] = type
-
-        __props__['creation_timestamp'] = None
-        __props__['label_fingerprint'] = None
-        __props__['last_attach_timestamp'] = None
-        __props__['last_detach_timestamp'] = None
-        __props__['self_link'] = None
-        __props__['source_snapshot_id'] = None
-        __props__['users'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            __props__['disk_encryption_key'] = disk_encryption_key
+            __props__['labels'] = labels
+            __props__['name'] = name
+            __props__['physical_block_size_bytes'] = physical_block_size_bytes
+            __props__['project'] = project
+            __props__['region'] = region
+            if replica_zones is None:
+                raise TypeError("Missing required property 'replica_zones'")
+            __props__['replica_zones'] = replica_zones
+            __props__['size'] = size
+            __props__['snapshot'] = snapshot
+            __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
+            __props__['type'] = type
+            __props__['creation_timestamp'] = None
+            __props__['label_fingerprint'] = None
+            __props__['last_attach_timestamp'] = None
+            __props__['last_detach_timestamp'] = None
+            __props__['self_link'] = None
+            __props__['source_snapshot_id'] = None
+            __props__['users'] = None
         super(RegionDisk, __self__).__init__(
             'gcp:compute/regionDisk:RegionDisk',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, disk_encryption_key=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, name=None, physical_block_size_bytes=None, project=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, type=None, users=None):
+        """
+        Get an existing RegionDisk resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["creation_timestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["disk_encryption_key"] = disk_encryption_key
+        __props__["label_fingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["last_attach_timestamp"] = last_attach_timestamp
+        __props__["last_detach_timestamp"] = last_detach_timestamp
+        __props__["name"] = name
+        __props__["physical_block_size_bytes"] = physical_block_size_bytes
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["replica_zones"] = replica_zones
+        __props__["self_link"] = self_link
+        __props__["size"] = size
+        __props__["snapshot"] = snapshot
+        __props__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
+        __props__["source_snapshot_id"] = source_snapshot_id
+        __props__["type"] = type
+        __props__["users"] = users
+        return RegionDisk(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
