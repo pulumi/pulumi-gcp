@@ -97,6 +97,12 @@ func TestExamples(t *testing.T) {
 		pythonBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "minimal-py"),
 		}),
+		pythonBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "bucket-py"),
+		}),
+		pythonBase.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "datasource-py"),
+		}),
 	}
 
 	longTests := []integration.ProgramTestOptions{

@@ -1,0 +1,3 @@
+name: bucket-py
+runtime: python
+description: Basic example of a GCP Storage Bucket (in Python!)
