@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -93,12 +95,12 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === UptimeCheckConfig.__pulumiType;
     }
 
-    public readonly contentMatchers!: pulumi.Output<{ content?: string }[] | undefined>;
+    public readonly contentMatchers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
     public readonly displayName!: pulumi.Output<string>;
-    public readonly httpCheck!: pulumi.Output<{ authInfo?: { password?: string, username?: string }, headers?: {[key: string]: string}, maskHeaders?: boolean, path?: string, port: number, useSsl?: boolean } | undefined>;
-    public readonly internalCheckers!: pulumi.Output<{ displayName?: string, gcpZone?: string, name?: string, network?: string, peerProjectId?: string }[]>;
+    public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
+    public readonly internalCheckers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigInternalChecker[]>;
     public readonly isInternal!: pulumi.Output<boolean>;
-    public readonly monitoredResource!: pulumi.Output<{ labels: {[key: string]: string}, type: string } | undefined>;
+    public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<string | undefined>;
     /**
@@ -106,9 +108,9 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly resourceGroup!: pulumi.Output<{ groupId?: string, resourceType?: string } | undefined>;
+    public readonly resourceGroup!: pulumi.Output<outputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
     public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
-    public readonly tcpCheck!: pulumi.Output<{ port: number } | undefined>;
+    public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     public readonly timeout!: pulumi.Output<string>;
     public /*out*/ readonly uptimeCheckId!: pulumi.Output<string>;
 
@@ -176,12 +178,12 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UptimeCheckConfig resources.
  */
 export interface UptimeCheckConfigState {
-    readonly contentMatchers?: pulumi.Input<pulumi.Input<{ content?: pulumi.Input<string> }>[]>;
+    readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
     readonly displayName?: pulumi.Input<string>;
-    readonly httpCheck?: pulumi.Input<{ authInfo?: pulumi.Input<{ password?: pulumi.Input<string>, username?: pulumi.Input<string> }>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, maskHeaders?: pulumi.Input<boolean>, path?: pulumi.Input<string>, port?: pulumi.Input<number>, useSsl?: pulumi.Input<boolean> }>;
-    readonly internalCheckers?: pulumi.Input<pulumi.Input<{ displayName?: pulumi.Input<string>, gcpZone?: pulumi.Input<string>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, peerProjectId?: pulumi.Input<string> }>[]>;
+    readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
     readonly isInternal?: pulumi.Input<boolean>;
-    readonly monitoredResource?: pulumi.Input<{ labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>, type: pulumi.Input<string> }>;
+    readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     readonly name?: pulumi.Input<string>;
     readonly period?: pulumi.Input<string>;
     /**
@@ -189,9 +191,9 @@ export interface UptimeCheckConfigState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly resourceGroup?: pulumi.Input<{ groupId?: pulumi.Input<string>, resourceType?: pulumi.Input<string> }>;
+    readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tcpCheck?: pulumi.Input<{ port: pulumi.Input<number> }>;
+    readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     readonly timeout?: pulumi.Input<string>;
     readonly uptimeCheckId?: pulumi.Input<string>;
 }
@@ -200,20 +202,20 @@ export interface UptimeCheckConfigState {
  * The set of arguments for constructing a UptimeCheckConfig resource.
  */
 export interface UptimeCheckConfigArgs {
-    readonly contentMatchers?: pulumi.Input<pulumi.Input<{ content?: pulumi.Input<string> }>[]>;
+    readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
     readonly displayName: pulumi.Input<string>;
-    readonly httpCheck?: pulumi.Input<{ authInfo?: pulumi.Input<{ password?: pulumi.Input<string>, username?: pulumi.Input<string> }>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, maskHeaders?: pulumi.Input<boolean>, path?: pulumi.Input<string>, port?: pulumi.Input<number>, useSsl?: pulumi.Input<boolean> }>;
-    readonly internalCheckers?: pulumi.Input<pulumi.Input<{ displayName?: pulumi.Input<string>, gcpZone?: pulumi.Input<string>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, peerProjectId?: pulumi.Input<string> }>[]>;
+    readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
     readonly isInternal?: pulumi.Input<boolean>;
-    readonly monitoredResource?: pulumi.Input<{ labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>, type: pulumi.Input<string> }>;
+    readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     readonly period?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly resourceGroup?: pulumi.Input<{ groupId?: pulumi.Input<string>, resourceType?: pulumi.Input<string> }>;
+    readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tcpCheck?: pulumi.Input<{ port: pulumi.Input<number> }>;
+    readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     readonly timeout: pulumi.Input<string>;
 }

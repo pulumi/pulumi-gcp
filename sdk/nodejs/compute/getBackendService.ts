@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -49,8 +51,8 @@ export interface GetBackendServiceResult {
     /**
      * The set of backends that serve this Backend Service.
      */
-    readonly backends: { balancingMode: string, capacityScaler: number, description: string, group: string, maxConnections: number, maxConnectionsPerEndpoint: number, maxConnectionsPerInstance: number, maxRate: number, maxRatePerEndpoint: number, maxRatePerInstance: number, maxUtilization: number }[];
-    readonly cdnPolicies: { cacheKeyPolicies: { includeHost: boolean, includeProtocol: boolean, includeQueryString: boolean, queryStringBlacklists: string[], queryStringWhitelists: string[] }[], signedUrlCacheMaxAgeSec: number }[];
+    readonly backends: outputs.compute.GetBackendServiceBackend[];
+    readonly cdnPolicies: outputs.compute.GetBackendServiceCdnPolicy[];
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */
@@ -73,7 +75,7 @@ export interface GetBackendServiceResult {
      * The set of HTTP/HTTPS health checks used by the Backend Service.
      */
     readonly healthChecks: string[];
-    readonly iaps: { oauth2ClientId: string, oauth2ClientSecret: string, oauth2ClientSecretSha256: string }[];
+    readonly iaps: outputs.compute.GetBackendServiceIap[];
     readonly loadBalancingScheme: string;
     readonly name: string;
     /**

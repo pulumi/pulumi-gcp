@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -81,7 +83,7 @@ export class Disk extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     public readonly image!: pulumi.Output<string | undefined>;
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -101,9 +103,9 @@ export class Disk extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public readonly size!: pulumi.Output<number>;
     public readonly snapshot!: pulumi.Output<string | undefined>;
-    public readonly sourceImageEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceImageEncryptionKey | undefined>;
     public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
-    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<{ kmsKeySelfLink?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly users!: pulumi.Output<string[]>;
@@ -185,7 +187,7 @@ export class Disk extends pulumi.CustomResource {
 export interface DiskState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    readonly diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     readonly image?: pulumi.Input<string>;
     readonly labelFingerprint?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -205,9 +207,9 @@ export interface DiskState {
     readonly selfLink?: pulumi.Input<string>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
-    readonly sourceImageEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
     readonly sourceImageId?: pulumi.Input<string>;
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
     readonly sourceSnapshotId?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
     readonly users?: pulumi.Input<pulumi.Input<string>[]>;
@@ -219,7 +221,7 @@ export interface DiskState {
  */
 export interface DiskArgs {
     readonly description?: pulumi.Input<string>;
-    readonly diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     readonly image?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
@@ -232,8 +234,8 @@ export interface DiskArgs {
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
-    readonly sourceImageEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
     readonly type?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;
 }

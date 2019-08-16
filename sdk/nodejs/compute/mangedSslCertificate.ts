@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -64,7 +66,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
-    public readonly managed!: pulumi.Output<{ domains: string } | undefined>;
+    public readonly managed!: pulumi.Output<outputs.compute.MangedSslCertificateManaged | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -132,7 +134,7 @@ export interface MangedSslCertificateState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly expireTime?: pulumi.Input<string>;
-    readonly managed?: pulumi.Input<{ domains: pulumi.Input<string> }>;
+    readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -153,7 +155,7 @@ export interface MangedSslCertificateState {
 export interface MangedSslCertificateArgs {
     readonly certificateId?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
-    readonly managed?: pulumi.Input<{ domains: pulumi.Input<string> }>;
+    readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

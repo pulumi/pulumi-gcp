@@ -48,4 +48,5 @@ import * as spanner from "./spanner/index";
 import * as sql from "./sql/index";
 import * as storage from "./storage/index";
 import * as tpu from "./tpu/index";
-export {accesscontextmanager, appengine, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, cloudrun, cloudscheduler, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, filestore, firestore, folder, healthcare, iam, iap, kms, logging, monitoring, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, servicenetworking, sourcerepo, spanner, sql, storage, tpu};
+import * as types from "./types/index";
+export {accesscontextmanager, appengine, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, cloudrun, cloudscheduler, composer, compute, config, container, containeranalysis, dataflow, dataproc, dns, endpoints, filestore, firestore, folder, healthcare, iam, iap, kms, logging, monitoring, organizations, projects, pubsub, redis, resourcemanager, runtimeconfig, serverless, serviceAccount, servicenetworking, sourcerepo, spanner, sql, storage, tpu, types};

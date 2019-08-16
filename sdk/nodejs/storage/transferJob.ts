@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +24,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const defaultTransferProjectServieAccount = pulumi.output(gcp.storage.getTransferProjectServieAccount({
+ * const defaultTransferProjectServieAccount = gcp.storage.getTransferProjectServieAccount({
  *     project: var_project,
- * }));
+ * });
  * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucket", {
  *     project: var_project,
  *     storageClass: "NEARLINE",
  * });
  * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucket", {
  *     bucket: s3_backup_bucketBucket.name,
- *     member: pulumi.interpolate`serviceAccount:${defaultTransferProjectServieAccount.email}`,
+ *     member: `serviceAccount:${defaultTransferProjectServieAccount.email}`,
  *     role: "roles/storage.admin",
  * }, {dependsOn: [s3_backup_bucketBucket]});
  * const s3BucketNightlyBackup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
@@ -134,7 +136,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
      */
-    public readonly schedule!: pulumi.Output<{ scheduleEndDate?: { day: number, month: number, year: number }, scheduleStartDate: { day: number, month: number, year: number }, startTimeOfDay?: { hours: number, minutes: number, nanos: number, seconds: number } }>;
+    public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
@@ -142,7 +144,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * Transfer specification. Structure documented below.
      */
-    public readonly transferSpec!: pulumi.Output<{ awsS3DataSource?: { awsAccessKey: { accessKeyId: string, secretAccessKey: string }, bucketName: string }, gcsDataSink?: { bucketName: string }, gcsDataSource?: { bucketName: string }, httpDataSource?: { listUrl: string }, objectConditions?: { excludePrefixes?: string[], includePrefixes?: string[], maxTimeElapsedSinceLastModification?: string, minTimeElapsedSinceLastModification?: string }, transferOptions?: { deleteObjectsFromSourceAfterTransfer?: boolean, deleteObjectsUniqueInSink?: boolean, overwriteObjectsAlreadyExistingInSink?: boolean } }>;
+    public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec>;
 
     /**
      * Create a TransferJob resource with the given unique name, arguments, and options.
@@ -229,7 +231,7 @@ export interface TransferJobState {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
      */
-    readonly schedule?: pulumi.Input<{ scheduleEndDate?: pulumi.Input<{ day: pulumi.Input<number>, month: pulumi.Input<number>, year: pulumi.Input<number> }>, scheduleStartDate: pulumi.Input<{ day: pulumi.Input<number>, month: pulumi.Input<number>, year: pulumi.Input<number> }>, startTimeOfDay?: pulumi.Input<{ hours: pulumi.Input<number>, minutes: pulumi.Input<number>, nanos: pulumi.Input<number>, seconds: pulumi.Input<number> }> }>;
+    readonly schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
@@ -237,7 +239,7 @@ export interface TransferJobState {
     /**
      * Transfer specification. Structure documented below.
      */
-    readonly transferSpec?: pulumi.Input<{ awsS3DataSource?: pulumi.Input<{ awsAccessKey: pulumi.Input<{ accessKeyId: pulumi.Input<string>, secretAccessKey: pulumi.Input<string> }>, bucketName: pulumi.Input<string> }>, gcsDataSink?: pulumi.Input<{ bucketName: pulumi.Input<string> }>, gcsDataSource?: pulumi.Input<{ bucketName: pulumi.Input<string> }>, httpDataSource?: pulumi.Input<{ listUrl: pulumi.Input<string> }>, objectConditions?: pulumi.Input<{ excludePrefixes?: pulumi.Input<pulumi.Input<string>[]>, includePrefixes?: pulumi.Input<pulumi.Input<string>[]>, maxTimeElapsedSinceLastModification?: pulumi.Input<string>, minTimeElapsedSinceLastModification?: pulumi.Input<string> }>, transferOptions?: pulumi.Input<{ deleteObjectsFromSourceAfterTransfer?: pulumi.Input<boolean>, deleteObjectsUniqueInSink?: pulumi.Input<boolean>, overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean> }> }>;
+    readonly transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
 
 /**
@@ -256,7 +258,7 @@ export interface TransferJobArgs {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
      */
-    readonly schedule: pulumi.Input<{ scheduleEndDate?: pulumi.Input<{ day: pulumi.Input<number>, month: pulumi.Input<number>, year: pulumi.Input<number> }>, scheduleStartDate: pulumi.Input<{ day: pulumi.Input<number>, month: pulumi.Input<number>, year: pulumi.Input<number> }>, startTimeOfDay?: pulumi.Input<{ hours: pulumi.Input<number>, minutes: pulumi.Input<number>, nanos: pulumi.Input<number>, seconds: pulumi.Input<number> }> }>;
+    readonly schedule: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
@@ -264,5 +266,5 @@ export interface TransferJobArgs {
     /**
      * Transfer specification. Structure documented below.
      */
-    readonly transferSpec: pulumi.Input<{ awsS3DataSource?: pulumi.Input<{ awsAccessKey: pulumi.Input<{ accessKeyId: pulumi.Input<string>, secretAccessKey: pulumi.Input<string> }>, bucketName: pulumi.Input<string> }>, gcsDataSink?: pulumi.Input<{ bucketName: pulumi.Input<string> }>, gcsDataSource?: pulumi.Input<{ bucketName: pulumi.Input<string> }>, httpDataSource?: pulumi.Input<{ listUrl: pulumi.Input<string> }>, objectConditions?: pulumi.Input<{ excludePrefixes?: pulumi.Input<pulumi.Input<string>[]>, includePrefixes?: pulumi.Input<pulumi.Input<string>[]>, maxTimeElapsedSinceLastModification?: pulumi.Input<string>, minTimeElapsedSinceLastModification?: pulumi.Input<string> }>, transferOptions?: pulumi.Input<{ deleteObjectsFromSourceAfterTransfer?: pulumi.Input<boolean>, deleteObjectsUniqueInSink?: pulumi.Input<boolean>, overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean> }> }>;
+    readonly transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

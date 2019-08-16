@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -58,11 +60,11 @@ export class Service extends pulumi.CustomResource {
     }
 
     public readonly location!: pulumi.Output<string>;
-    public readonly metadata!: pulumi.Output<{ annotations: {[key: string]: string}, generation: number, labels: {[key: string]: string}, namespace: string, resourceVersion: string, selfLink: string, uid: string }>;
+    public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
-    public readonly spec!: pulumi.Output<{ containerConcurrency?: number, containers: { args?: string[], commands?: string[], envs?: { name?: string, value?: string }[], envFroms?: { configMapRef?: { localObjectReference?: { name?: string }, optional?: boolean }, prefix?: string, secretRef?: { localObjectReference?: { name?: string }, optional?: boolean } }[], image: string, resources?: { limits?: {[key: string]: string}, requests?: {[key: string]: string} }, workingDir?: string }[], servingState: string }>;
-    public /*out*/ readonly status!: pulumi.Output<{ conditions: { message: string, reason: string, status: string, type: string }[] }>;
+    public readonly spec!: pulumi.Output<outputs.cloudrun.ServiceSpec>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.ServiceStatus>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -116,11 +118,11 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     readonly location?: pulumi.Input<string>;
-    readonly metadata?: pulumi.Input<{ annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, generation?: pulumi.Input<number>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, namespace: pulumi.Input<string>, resourceVersion?: pulumi.Input<string>, selfLink?: pulumi.Input<string>, uid?: pulumi.Input<string> }>;
+    readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly spec?: pulumi.Input<{ containerConcurrency?: pulumi.Input<number>, containers: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, commands?: pulumi.Input<pulumi.Input<string>[]>, envs?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, envFroms?: pulumi.Input<pulumi.Input<{ configMapRef?: pulumi.Input<{ localObjectReference?: pulumi.Input<{ name?: pulumi.Input<string> }>, optional?: pulumi.Input<boolean> }>, prefix?: pulumi.Input<string>, secretRef?: pulumi.Input<{ localObjectReference?: pulumi.Input<{ name?: pulumi.Input<string> }>, optional?: pulumi.Input<boolean> }> }>[]>, image: pulumi.Input<string>, resources?: pulumi.Input<{ limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, workingDir?: pulumi.Input<string> }>[]>, servingState?: pulumi.Input<string> }>;
-    readonly status?: pulumi.Input<{ conditions?: pulumi.Input<pulumi.Input<{ message?: pulumi.Input<string>, reason?: pulumi.Input<string>, status?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]> }>;
+    readonly spec?: pulumi.Input<inputs.cloudrun.ServiceSpec>;
+    readonly status?: pulumi.Input<inputs.cloudrun.ServiceStatus>;
 }
 
 /**
@@ -128,8 +130,8 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     readonly location: pulumi.Input<string>;
-    readonly metadata: pulumi.Input<{ annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, generation?: pulumi.Input<number>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, namespace: pulumi.Input<string>, resourceVersion?: pulumi.Input<string>, selfLink?: pulumi.Input<string>, uid?: pulumi.Input<string> }>;
+    readonly metadata: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly spec: pulumi.Input<{ containerConcurrency?: pulumi.Input<number>, containers: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, commands?: pulumi.Input<pulumi.Input<string>[]>, envs?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, envFroms?: pulumi.Input<pulumi.Input<{ configMapRef?: pulumi.Input<{ localObjectReference?: pulumi.Input<{ name?: pulumi.Input<string> }>, optional?: pulumi.Input<boolean> }>, prefix?: pulumi.Input<string>, secretRef?: pulumi.Input<{ localObjectReference?: pulumi.Input<{ name?: pulumi.Input<string> }>, optional?: pulumi.Input<boolean> }> }>[]>, image: pulumi.Input<string>, resources?: pulumi.Input<{ limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, workingDir?: pulumi.Input<string> }>[]>, servingState?: pulumi.Input<string> }>;
+    readonly spec: pulumi.Input<inputs.cloudrun.ServiceSpec>;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,11 +49,11 @@ export class DomainMapping extends pulumi.CustomResource {
     }
 
     public readonly location!: pulumi.Output<string>;
-    public readonly metadata!: pulumi.Output<{ annotations: {[key: string]: string}, generation: number, labels: {[key: string]: string}, namespace: string, resourceVersion: string, selfLink: string, uid: string }>;
+    public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
-    public readonly spec!: pulumi.Output<{ certificateMode?: string, forceOverride?: boolean, routeName: string }>;
-    public /*out*/ readonly status!: pulumi.Output<{ conditions: { message: string, reason: string, status: string, type: string }[], mappedRouteName: string, observedGeneration: number, resourceRecords?: { name: string, rrdata?: string, type?: string }[] }>;
+    public readonly spec!: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.DomainMappingStatus>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.
@@ -105,11 +107,11 @@ export class DomainMapping extends pulumi.CustomResource {
  */
 export interface DomainMappingState {
     readonly location?: pulumi.Input<string>;
-    readonly metadata?: pulumi.Input<{ annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, generation?: pulumi.Input<number>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, namespace: pulumi.Input<string>, resourceVersion?: pulumi.Input<string>, selfLink?: pulumi.Input<string>, uid?: pulumi.Input<string> }>;
+    readonly metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly spec?: pulumi.Input<{ certificateMode?: pulumi.Input<string>, forceOverride?: pulumi.Input<boolean>, routeName: pulumi.Input<string> }>;
-    readonly status?: pulumi.Input<{ conditions?: pulumi.Input<pulumi.Input<{ message?: pulumi.Input<string>, reason?: pulumi.Input<string>, status?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>, mappedRouteName?: pulumi.Input<string>, observedGeneration?: pulumi.Input<number>, resourceRecords?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, rrdata?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]> }>;
+    readonly spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
+    readonly status?: pulumi.Input<inputs.cloudrun.DomainMappingStatus>;
 }
 
 /**
@@ -117,8 +119,8 @@ export interface DomainMappingState {
  */
 export interface DomainMappingArgs {
     readonly location: pulumi.Input<string>;
-    readonly metadata: pulumi.Input<{ annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, generation?: pulumi.Input<number>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, namespace: pulumi.Input<string>, resourceVersion?: pulumi.Input<string>, selfLink?: pulumi.Input<string>, uid?: pulumi.Input<string> }>;
+    readonly metadata: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
-    readonly spec: pulumi.Input<{ certificateMode?: pulumi.Input<string>, forceOverride?: pulumi.Input<boolean>, routeName: pulumi.Input<string> }>;
+    readonly spec: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
 }

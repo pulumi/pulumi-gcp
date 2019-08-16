@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,11 +23,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const available = pulumi.output(gcp.tpu.getTensorflowVersions({}));
+ * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
  *     cidrBlock: "10.2.0.0/29",
- *     tensorflowVersion: available.apply(available => available.versions[0]),
+ *     tensorflowVersion: available.versions[0],
  *     zone: "us-central1-b",
  * });
  * ```
@@ -36,7 +38,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const available = pulumi.output(gcp.tpu.getTensorflowVersions({}));
+ * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
  *     acceleratorType: "v3-8",
  *     cidrBlock: "10.3.0.0/29",
@@ -48,7 +50,7 @@ import * as utilities from "../utilities";
  *     schedulingConfig: {
  *         preemptible: true,
  *     },
- *     tensorflowVersion: available.apply(available => available.versions[0]),
+ *     tensorflowVersion: available.versions[0],
  *     zone: "us-central1-b",
  * });
  * ```
@@ -88,13 +90,13 @@ export class Node extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<string>;
-    public /*out*/ readonly networkEndpoints!: pulumi.Output<{ ipAddress: string, port: number }[]>;
+    public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.NodeNetworkEndpoint[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly schedulingConfig!: pulumi.Output<{ preemptible?: boolean } | undefined>;
+    public readonly schedulingConfig!: pulumi.Output<outputs.tpu.NodeSchedulingConfig | undefined>;
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     public readonly tensorflowVersion!: pulumi.Output<string>;
     public readonly zone!: pulumi.Output<string>;
@@ -171,13 +173,13 @@ export interface NodeState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
-    readonly networkEndpoints?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, port?: pulumi.Input<number> }>[]>;
+    readonly networkEndpoints?: pulumi.Input<pulumi.Input<inputs.tpu.NodeNetworkEndpoint>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly schedulingConfig?: pulumi.Input<{ preemptible?: pulumi.Input<boolean> }>;
+    readonly schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     readonly serviceAccount?: pulumi.Input<string>;
     readonly tensorflowVersion?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;
@@ -198,7 +200,7 @@ export interface NodeArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly schedulingConfig?: pulumi.Input<{ preemptible?: pulumi.Input<boolean> }>;
+    readonly schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     readonly tensorflowVersion: pulumi.Input<string>;
     readonly zone: pulumi.Input<string>;
 }

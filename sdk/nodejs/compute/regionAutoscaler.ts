@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,10 +27,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const debian9 = pulumi.output(gcp.compute.getImage({
+ * const debian9 = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
- * }));
+ * });
  * const foobarTargetPool = new gcp.compute.TargetPool("foobar", {});
  * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
  *     canIpForward: false,
@@ -103,7 +105,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionAutoscaler.__pulumiType;
     }
 
-    public readonly autoscalingPolicy!: pulumi.Output<{ cooldownPeriod?: number, cpuUtilization: { target: number }, loadBalancingUtilization?: { target: number }, maxReplicas: number, metrics?: { filter?: string, name: string, singleInstanceAssignment?: number, target?: number, type?: string }[], minReplicas: number }>;
+    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.RegionAutoscalerAutoscalingPolicy>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -167,7 +169,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionAutoscaler resources.
  */
 export interface RegionAutoscalerState {
-    readonly autoscalingPolicy?: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<pulumi.Input<{ filter?: pulumi.Input<string>, name: pulumi.Input<string>, singleInstanceAssignment?: pulumi.Input<number>, target?: pulumi.Input<number>, type?: pulumi.Input<string> }>[]>, minReplicas: pulumi.Input<number> }>;
+    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -184,7 +186,7 @@ export interface RegionAutoscalerState {
  * The set of arguments for constructing a RegionAutoscaler resource.
  */
 export interface RegionAutoscalerArgs {
-    readonly autoscalingPolicy: pulumi.Input<{ cooldownPeriod?: pulumi.Input<number>, cpuUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, loadBalancingUtilization?: pulumi.Input<{ target: pulumi.Input<number> }>, maxReplicas: pulumi.Input<number>, metrics?: pulumi.Input<pulumi.Input<{ filter?: pulumi.Input<string>, name: pulumi.Input<string>, singleInstanceAssignment?: pulumi.Input<number>, target?: pulumi.Input<number>, type?: pulumi.Input<string> }>[]>, minReplicas: pulumi.Input<number> }>;
+    readonly autoscalingPolicy: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myCluster = pulumi.output(gcp.container.getCluster({
+ * const myCluster = gcp.container.getCluster({
  *     location: "us-east1-a",
  *     name: "my-cluster",
- * }));
+ * });
  * 
  * export const clusterPassword = myCluster.masterAuths[0].password;
  * export const clusterUsername = myCluster.masterAuths[0].username;
@@ -83,11 +85,11 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     readonly additionalZones: string[];
-    readonly addonsConfigs: { cloudrunConfigs: { disabled: boolean }[], horizontalPodAutoscalings: { disabled: boolean }[], httpLoadBalancings: { disabled: boolean }[], istioConfigs: { auth: string, disabled: boolean }[], kubernetesDashboards: { disabled: boolean }[], networkPolicyConfigs: { disabled: boolean }[] }[];
-    readonly authenticatorGroupsConfigs: { securityGroup: string }[];
-    readonly clusterAutoscalings: { enabled: boolean, resourceLimits: { maximum: number, minimum: number, resourceType: string }[] }[];
+    readonly addonsConfigs: outputs.container.GetClusterAddonsConfig[];
+    readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
+    readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
     readonly clusterIpv4Cidr: string;
-    readonly databaseEncryptions: { keyName: string, state: string }[];
+    readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
     readonly defaultMaxPodsPerNode: number;
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
@@ -98,34 +100,34 @@ export interface GetClusterResult {
     readonly endpoint: string;
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
-    readonly ipAllocationPolicies: { clusterIpv4CidrBlock: string, clusterSecondaryRangeName: string, createSubnetwork: boolean, nodeIpv4CidrBlock: string, servicesIpv4CidrBlock: string, servicesSecondaryRangeName: string, subnetworkName: string, useIpAliases: boolean }[];
+    readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
     readonly location?: string;
     readonly loggingService: string;
-    readonly maintenancePolicies: { dailyMaintenanceWindows: { duration: string, startTime: string }[] }[];
-    readonly masterAuths: { clientCertificate: string, clientCertificateConfigs: { issueClientCertificate: boolean }[], clientKey: string, clusterCaCertificate: string, password: string, username: string }[];
-    readonly masterAuthorizedNetworksConfigs: { cidrBlocks: { cidrBlock: string, displayName: string }[] }[];
+    readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];
+    readonly masterAuths: outputs.container.GetClusterMasterAuth[];
+    readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
     readonly masterVersion: string;
     readonly minMasterVersion: string;
     readonly monitoringService: string;
     readonly name: string;
     readonly network: string;
-    readonly networkPolicies: { enabled: boolean, provider: string }[];
-    readonly nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, sandboxConfigs: { sandboxType: string }[], serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[];
+    readonly networkPolicies: outputs.container.GetClusterNetworkPolicy[];
+    readonly nodeConfigs: outputs.container.GetClusterNodeConfig[];
     readonly nodeLocations: string[];
-    readonly nodePools: { autoscalings: { maxNodeCount: number, minNodeCount: number }[], initialNodeCount: number, instanceGroupUrls: string[], managements: { autoRepair: boolean, autoUpgrade: boolean }[], maxPodsPerNode: number, name: string, namePrefix: string, nodeConfigs: { diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform: string, oauthScopes: string[], preemptible: boolean, sandboxConfigs: { sandboxType: string }[], serviceAccount: string, tags: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfigs: { nodeMetadata: string }[] }[], nodeCount: number, version: string }[];
+    readonly nodePools: outputs.container.GetClusterNodePool[];
     readonly nodeVersion: string;
-    readonly podSecurityPolicyConfigs: { enabled: boolean }[];
-    readonly privateClusterConfigs: { enablePrivateEndpoint: boolean, enablePrivateNodes: boolean, masterIpv4CidrBlock: string, privateEndpoint: string, publicEndpoint: string }[];
+    readonly podSecurityPolicyConfigs: outputs.container.GetClusterPodSecurityPolicyConfig[];
+    readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
     readonly project?: string;
     readonly region?: string;
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
-    readonly resourceUsageExportConfigs: { bigqueryDestinations: { datasetId: string }[], enableNetworkEgressMetering: boolean }[];
+    readonly resourceUsageExportConfigs: outputs.container.GetClusterResourceUsageExportConfig[];
     readonly servicesIpv4Cidr: string;
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;
-    readonly verticalPodAutoscalings: { enabled: boolean }[];
-    readonly workloadIdentityConfigs: { identityNamespace: string }[];
+    readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
+    readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
     readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

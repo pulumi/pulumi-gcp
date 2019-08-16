@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -52,12 +54,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const fooPolicy = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const fooPolicy = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["group:yourgroup@example.com"],
  *         role: "roles/your-role",
  *     }],
- * }));
+ * });
  * const member = new gcp.storage.BucketIAMPolicy("member", {
  *     bucket: "your-bucket-name",
  *     policyData: foo_policy.policyData,

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIAMPolicy({
  *     auditConfigs: [{
  *         auditLogConfigs: [
  *             {
@@ -38,7 +40,7 @@ import * as utilities from "../utilities";
  *             role: "roles/storage.objectViewer",
  *         },
  *     ],
- * }));
+ * });
  * ```
  * 
  * This data source is used to define IAM policies to apply to other resources.
@@ -74,21 +76,21 @@ export interface GetIAMPolicyArgs {
     /**
      * A nested configuration block that defines logging additional configuration for your project.
      */
-    readonly auditConfigs?: { auditLogConfigs: { exemptedMembers?: string[], logType: string }[], service: string }[];
+    readonly auditConfigs?: inputs.organizations.GetIAMPolicyAuditConfig[];
     /**
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      */
-    readonly bindings: { members: string[], role: string }[];
+    readonly bindings: inputs.organizations.GetIAMPolicyBinding[];
 }
 
 /**
  * A collection of values returned by getIAMPolicy.
  */
 export interface GetIAMPolicyResult {
-    readonly auditConfigs?: { auditLogConfigs: { exemptedMembers?: string[], logType: string }[], service: string }[];
-    readonly bindings: { members: string[], role: string }[];
+    readonly auditConfigs?: outputs.organizations.GetIAMPolicyAuditConfig[];
+    readonly bindings: outputs.organizations.GetIAMPolicyBinding[];
     /**
      * The above bindings serialized in a format suitable for
      * referencing from a resource that supports IAM.

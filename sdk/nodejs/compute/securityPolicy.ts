@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -56,7 +58,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<{ action: string, description?: string, match: { config: { srcIpRanges: string[] }, versionedExpr: string }, preview?: boolean, priority: number }[]>;
+    public readonly rules!: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
     /**
      * The URI of the created resource.
      */
@@ -126,7 +128,7 @@ export interface SecurityPolicyState {
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
      * The URI of the created resource.
      */
@@ -155,5 +157,5 @@ export interface SecurityPolicyArgs {
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<{ action: pulumi.Input<string>, description?: pulumi.Input<string>, match: pulumi.Input<{ config: pulumi.Input<{ srcIpRanges: pulumi.Input<pulumi.Input<string>[]> }>, versionedExpr: pulumi.Input<string> }>, preview?: pulumi.Input<boolean>, priority: pulumi.Input<number> }>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
 }

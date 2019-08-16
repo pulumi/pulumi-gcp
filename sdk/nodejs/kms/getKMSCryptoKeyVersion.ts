@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,14 +23,14 @@ import * as utilities from "../utilities";
  * const myCryptoKeyVersion = google_kms_key_my_key.selfLink.apply(selfLink => gcp.kms.getKMSCryptoKeyVersion({
  *     cryptoKey: selfLink,
  * }));
- * const myKeyRing = pulumi.output(gcp.kms.getKMSKeyRing({
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
  *     location: "us-central1",
  *     name: "my-key-ring",
- * }));
- * const myCryptoKey = myKeyRing.apply(myKeyRing => gcp.kms.getKMSCryptoKey({
+ * });
+ * const myCryptoKey = gcp.kms.getKMSCryptoKey({
  *     keyRing: myKeyRing.selfLink,
  *     name: "my-crypto-key",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
@@ -58,7 +60,7 @@ export interface GetKMSCryptoKeyVersionArgs {
      * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
      */
     readonly cryptoKey: string;
-    readonly publicKey?: { algorithm?: string, pem?: string };
+    readonly publicKey?: inputs.kms.GetKMSCryptoKeyVersionPublicKey;
     /**
      * The version number for this CryptoKeyVersion. Defaults to `1`.
      */
@@ -81,7 +83,7 @@ export interface GetKMSCryptoKeyVersionResult {
     /**
      * If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
      */
-    readonly publicKey?: { algorithm: string, pem: string };
+    readonly publicKey?: outputs.kms.GetKMSCryptoKeyVersionPublicKey;
     /**
      * The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
      */

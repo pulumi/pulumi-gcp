@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const project = pulumi.output(gcp.organizations.getProjectServices({
+ * const project = gcp.organizations.getProjectServices({
  *     project: "your-project-id",
- * }));
+ * });
  * 
- * export const projectServices = project.apply(project => project.services.join(","));
+ * export const projectServices = project.services.join(",");
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_services.html.markdown.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -43,12 +45,12 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
-    public readonly alternativeNameServerConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
+    public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableInboundForwarding!: pulumi.Output<boolean | undefined>;
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public readonly networks!: pulumi.Output<{ networkUrl?: string }[] | undefined>;
+    public readonly networks!: pulumi.Output<outputs.dns.PolicyNetwork[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -99,12 +101,12 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
-    readonly alternativeNameServerConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
+    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     readonly description?: pulumi.Input<string>;
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
     readonly enableLogging?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
-    readonly networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -116,12 +118,12 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
-    readonly alternativeNameServerConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
+    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     readonly description?: pulumi.Input<string>;
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
     readonly enableLogging?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
-    readonly networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -105,7 +107,7 @@ export class Subscription extends pulumi.CustomResource {
     }
 
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
-    public readonly expirationPolicy!: pulumi.Output<{ ttl?: string }>;
+    public readonly expirationPolicy!: pulumi.Output<outputs.pubsub.SubscriptionExpirationPolicy>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly messageRetentionDuration!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -115,7 +117,7 @@ export class Subscription extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly pushConfig!: pulumi.Output<{ attributes?: {[key: string]: string}, pushEndpoint: string } | undefined>;
+    public readonly pushConfig!: pulumi.Output<outputs.pubsub.SubscriptionPushConfig | undefined>;
     public readonly retainAckedMessages!: pulumi.Output<boolean | undefined>;
     public readonly topic!: pulumi.Output<string>;
 
@@ -173,7 +175,7 @@ export class Subscription extends pulumi.CustomResource {
  */
 export interface SubscriptionState {
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
-    readonly expirationPolicy?: pulumi.Input<{ ttl?: pulumi.Input<string> }>;
+    readonly expirationPolicy?: pulumi.Input<inputs.pubsub.SubscriptionExpirationPolicy>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly messageRetentionDuration?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -183,7 +185,7 @@ export interface SubscriptionState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pushConfig?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pushEndpoint: pulumi.Input<string> }>;
+    readonly pushConfig?: pulumi.Input<inputs.pubsub.SubscriptionPushConfig>;
     readonly retainAckedMessages?: pulumi.Input<boolean>;
     readonly topic?: pulumi.Input<string>;
 }
@@ -193,7 +195,7 @@ export interface SubscriptionState {
  */
 export interface SubscriptionArgs {
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
-    readonly expirationPolicy?: pulumi.Input<{ ttl?: pulumi.Input<string> }>;
+    readonly expirationPolicy?: pulumi.Input<inputs.pubsub.SubscriptionExpirationPolicy>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly messageRetentionDuration?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -202,7 +204,7 @@ export interface SubscriptionArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pushConfig?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pushEndpoint: pulumi.Input<string> }>;
+    readonly pushConfig?: pulumi.Input<inputs.pubsub.SubscriptionPushConfig>;
     readonly retainAckedMessages?: pulumi.Input<boolean>;
     readonly topic: pulumi.Input<string>;
 }

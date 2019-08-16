@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -60,10 +62,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const debianImage = pulumi.output(gcp.compute.getImage({
+ * const debianImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
- * }));
+ * });
  * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {
  *     requestPath: "/health_check",
  * });
@@ -154,7 +156,7 @@ export class InstanceGroup extends pulumi.CustomResource {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    public readonly namedPorts!: pulumi.Output<{ name: string, port: number }[] | undefined>;
+    public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupNamedPort[] | undefined>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
@@ -250,7 +252,7 @@ export interface InstanceGroupState {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
@@ -303,7 +305,7 @@ export interface InstanceGroupArgs {
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, port: pulumi.Input<number> }>[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation

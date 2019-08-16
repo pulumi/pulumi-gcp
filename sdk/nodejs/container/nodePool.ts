@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,7 +44,7 @@ export class NodePool extends pulumi.CustomResource {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    public readonly autoscaling!: pulumi.Output<{ maxNodeCount: number, minNodeCount: number } | undefined>;
+    public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
      */
@@ -62,7 +64,7 @@ export class NodePool extends pulumi.CustomResource {
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    public readonly management!: pulumi.Output<{ autoRepair?: boolean, autoUpgrade?: boolean }>;
+    public readonly management!: pulumi.Output<outputs.container.NodePoolManagement>;
     /**
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -81,7 +83,7 @@ export class NodePool extends pulumi.CustomResource {
      * The node configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
-    public readonly nodeConfig!: pulumi.Output<{ diskSizeGb: number, diskType: string, guestAccelerators: { count: number, type: string }[], imageType: string, labels: {[key: string]: string}, localSsdCount: number, machineType: string, metadata: {[key: string]: string}, minCpuPlatform?: string, oauthScopes: string[], preemptible?: boolean, sandboxConfig?: { sandboxType: string }, serviceAccount: string, tags?: string[], taints: { effect: string, key: string, value: string }[], workloadMetadataConfig?: { nodeMetadata: string } }>;
+    public readonly nodeConfig!: pulumi.Output<outputs.container.NodePoolNodeConfig>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -179,7 +181,7 @@ export interface NodePoolState {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    readonly autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>;
+    readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
      */
@@ -199,7 +201,7 @@ export interface NodePoolState {
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
+    readonly management?: pulumi.Input<inputs.container.NodePoolManagement>;
     /**
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -218,7 +220,7 @@ export interface NodePoolState {
      * The node configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
-    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    readonly nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -258,7 +260,7 @@ export interface NodePoolArgs {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    readonly autoscaling?: pulumi.Input<{ maxNodeCount: pulumi.Input<number>, minNodeCount: pulumi.Input<number> }>;
+    readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
      */
@@ -277,7 +279,7 @@ export interface NodePoolArgs {
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    readonly management?: pulumi.Input<{ autoRepair?: pulumi.Input<boolean>, autoUpgrade?: pulumi.Input<boolean> }>;
+    readonly management?: pulumi.Input<inputs.container.NodePoolManagement>;
     /**
      * ) The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -296,7 +298,7 @@ export interface NodePoolArgs {
      * The node configuration of the pool. See
      * gcp.container.Cluster for schema.
      */
-    readonly nodeConfig?: pulumi.Input<{ diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>, imageType?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, localSsdCount?: pulumi.Input<number>, machineType?: pulumi.Input<string>, metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, minCpuPlatform?: pulumi.Input<string>, oauthScopes?: pulumi.Input<pulumi.Input<string>[]>, preemptible?: pulumi.Input<boolean>, sandboxConfig?: pulumi.Input<{ sandboxType: pulumi.Input<string> }>, serviceAccount?: pulumi.Input<string>, tags?: pulumi.Input<pulumi.Input<string>[]>, taints?: pulumi.Input<pulumi.Input<{ effect: pulumi.Input<string>, key: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, workloadMetadataConfig?: pulumi.Input<{ nodeMetadata: pulumi.Input<string> }> }>;
+    readonly nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.

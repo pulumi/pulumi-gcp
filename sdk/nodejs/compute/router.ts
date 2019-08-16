@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -71,7 +73,7 @@ export class Router extends pulumi.CustomResource {
         return obj['__pulumiType'] === Router.__pulumiType;
     }
 
-    public readonly bgp!: pulumi.Output<{ advertiseMode?: string, advertisedGroups?: string[], advertisedIpRanges?: { description?: string, range?: string }[], asn: number } | undefined>;
+    public readonly bgp!: pulumi.Output<outputs.compute.RouterBgp | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -136,7 +138,7 @@ export class Router extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Router resources.
  */
 export interface RouterState {
-    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
+    readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
@@ -157,7 +159,7 @@ export interface RouterState {
  * The set of arguments for constructing a Router resource.
  */
 export interface RouterArgs {
-    readonly bgp?: pulumi.Input<{ advertiseMode?: pulumi.Input<string>, advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>, advertisedIpRanges?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, range?: pulumi.Input<string> }>[]>, asn: pulumi.Input<number> }>;
+    readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;

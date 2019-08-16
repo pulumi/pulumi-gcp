@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,7 +46,7 @@ export class RouterNat extends pulumi.CustomResource {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
-    public readonly logConfig!: pulumi.Output<{ enable: boolean, filter: string } | undefined>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.RouterNatLogConfig | undefined>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
@@ -96,7 +98,7 @@ export class RouterNat extends pulumi.CustomResource {
      * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
-    public readonly subnetworks!: pulumi.Output<{ name: string, secondaryIpRangeNames?: string[], sourceIpRangesToNats: string[] }[] | undefined>;
+    public readonly subnetworks!: pulumi.Output<outputs.compute.RouterNatSubnetwork[] | undefined>;
     /**
      * Timeout (in seconds) for TCP
      * established connections. Defaults to 1200s if not set. Changing this forces
@@ -184,7 +186,7 @@ export interface RouterNatState {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
-    readonly logConfig?: pulumi.Input<{ enable: pulumi.Input<boolean>, filter: pulumi.Input<string> }>;
+    readonly logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
@@ -236,7 +238,7 @@ export interface RouterNatState {
      * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
-    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
     /**
      * Timeout (in seconds) for TCP
      * established connections. Defaults to 1200s if not set. Changing this forces
@@ -265,7 +267,7 @@ export interface RouterNatArgs {
      * Defaults to 30s if not set. Changing this forces a new NAT to be created.
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
-    readonly logConfig?: pulumi.Input<{ enable: pulumi.Input<boolean>, filter: pulumi.Input<string> }>;
+    readonly logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
     /**
      * Minimum number of ports allocated to a VM
      * from this NAT config. If not set, a default number of ports is allocated to a VM.
@@ -317,7 +319,7 @@ export interface RouterNatArgs {
      * if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
      * the section below for details on configuration.
      */
-    readonly subnetworks?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>, sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
     /**
      * Timeout (in seconds) for TCP
      * established connections. Defaults to 1200s if not set. Changing this forces

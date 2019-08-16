@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -78,11 +80,11 @@ export class Metric extends pulumi.CustomResource {
         return obj['__pulumiType'] === Metric.__pulumiType;
     }
 
-    public readonly bucketOptions!: pulumi.Output<{ explicit?: { bounds?: string[] }, exponentialBuckets?: { growthFactor?: number, numFiniteBuckets?: number, scale?: number }, linearBuckets?: { numFiniteBuckets?: number, offset?: number, width?: number } } | undefined>;
+    public readonly bucketOptions!: pulumi.Output<outputs.logging.MetricBucketOptions | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly filter!: pulumi.Output<string>;
     public readonly labelExtractors!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly metricDescriptor!: pulumi.Output<{ labels?: { description?: string, key: string, valueType?: string }[], metricKind: string, valueType: string }>;
+    public readonly metricDescriptor!: pulumi.Output<outputs.logging.MetricMetricDescriptor>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly valueExtractor!: pulumi.Output<string | undefined>;
@@ -139,11 +141,11 @@ export class Metric extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Metric resources.
  */
 export interface MetricState {
-    readonly bucketOptions?: pulumi.Input<{ explicit?: pulumi.Input<{ bounds?: pulumi.Input<pulumi.Input<string>[]> }>, exponentialBuckets?: pulumi.Input<{ growthFactor?: pulumi.Input<number>, numFiniteBuckets?: pulumi.Input<number>, scale?: pulumi.Input<number> }>, linearBuckets?: pulumi.Input<{ numFiniteBuckets?: pulumi.Input<number>, offset?: pulumi.Input<number>, width?: pulumi.Input<number> }> }>;
+    readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     readonly description?: pulumi.Input<string>;
     readonly filter?: pulumi.Input<string>;
     readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly metricDescriptor?: pulumi.Input<{ labels?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, key: pulumi.Input<string>, valueType?: pulumi.Input<string> }>[]>, metricKind: pulumi.Input<string>, valueType: pulumi.Input<string> }>;
+    readonly metricDescriptor?: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly valueExtractor?: pulumi.Input<string>;
@@ -153,11 +155,11 @@ export interface MetricState {
  * The set of arguments for constructing a Metric resource.
  */
 export interface MetricArgs {
-    readonly bucketOptions?: pulumi.Input<{ explicit?: pulumi.Input<{ bounds?: pulumi.Input<pulumi.Input<string>[]> }>, exponentialBuckets?: pulumi.Input<{ growthFactor?: pulumi.Input<number>, numFiniteBuckets?: pulumi.Input<number>, scale?: pulumi.Input<number> }>, linearBuckets?: pulumi.Input<{ numFiniteBuckets?: pulumi.Input<number>, offset?: pulumi.Input<number>, width?: pulumi.Input<number> }> }>;
+    readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     readonly description?: pulumi.Input<string>;
     readonly filter: pulumi.Input<string>;
     readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly metricDescriptor: pulumi.Input<{ labels?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, key: pulumi.Input<string>, valueType?: pulumi.Input<string> }>[]>, metricKind: pulumi.Input<string>, valueType: pulumi.Input<string> }>;
+    readonly metricDescriptor: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly valueExtractor?: pulumi.Input<string>;

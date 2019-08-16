@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -124,7 +126,7 @@ export class Table extends pulumi.CustomResource {
      * By defining these properties, the data source can then be queried as
      * if it were a standard BigQuery table. Structure is documented below.
      */
-    public readonly externalDataConfiguration!: pulumi.Output<{ autodetect: boolean, compression?: string, csvOptions?: { allowJaggedRows?: boolean, allowQuotedNewlines?: boolean, encoding?: string, fieldDelimiter?: string, quote: string, skipLeadingRows?: number }, googleSheetsOptions?: { range?: string, skipLeadingRows?: number }, ignoreUnknownValues?: boolean, maxBadRecords?: number, sourceFormat: string, sourceUris: string[] } | undefined>;
+    public readonly externalDataConfiguration!: pulumi.Output<outputs.bigquery.TableExternalDataConfiguration | undefined>;
     /**
      * A descriptive name for the table.
      */
@@ -179,7 +181,7 @@ export class Table extends pulumi.CustomResource {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    public readonly timePartitioning!: pulumi.Output<{ expirationMs?: number, field?: string, requirePartitionFilter?: boolean, type: string } | undefined>;
+    public readonly timePartitioning!: pulumi.Output<outputs.bigquery.TableTimePartitioning | undefined>;
     /**
      * Describes the table type.
      */
@@ -188,7 +190,7 @@ export class Table extends pulumi.CustomResource {
      * If specified, configures this table as a view.
      * Structure is documented below.
      */
-    public readonly view!: pulumi.Output<{ query: string, useLegacySql?: boolean } | undefined>;
+    public readonly view!: pulumi.Output<outputs.bigquery.TableView | undefined>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -296,7 +298,7 @@ export interface TableState {
      * By defining these properties, the data source can then be queried as
      * if it were a standard BigQuery table. Structure is documented below.
      */
-    readonly externalDataConfiguration?: pulumi.Input<{ autodetect: pulumi.Input<boolean>, compression?: pulumi.Input<string>, csvOptions?: pulumi.Input<{ allowJaggedRows?: pulumi.Input<boolean>, allowQuotedNewlines?: pulumi.Input<boolean>, encoding?: pulumi.Input<string>, fieldDelimiter?: pulumi.Input<string>, quote: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, googleSheetsOptions?: pulumi.Input<{ range?: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, ignoreUnknownValues?: pulumi.Input<boolean>, maxBadRecords?: pulumi.Input<number>, sourceFormat: pulumi.Input<string>, sourceUris: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly externalDataConfiguration?: pulumi.Input<inputs.bigquery.TableExternalDataConfiguration>;
     /**
      * A descriptive name for the table.
      */
@@ -351,7 +353,7 @@ export interface TableState {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, requirePartitionFilter?: pulumi.Input<boolean>, type: pulumi.Input<string> }>;
+    readonly timePartitioning?: pulumi.Input<inputs.bigquery.TableTimePartitioning>;
     /**
      * Describes the table type.
      */
@@ -360,7 +362,7 @@ export interface TableState {
      * If specified, configures this table as a view.
      * Structure is documented below.
      */
-    readonly view?: pulumi.Input<{ query: pulumi.Input<string>, useLegacySql?: pulumi.Input<boolean> }>;
+    readonly view?: pulumi.Input<inputs.bigquery.TableView>;
 }
 
 /**
@@ -389,7 +391,7 @@ export interface TableArgs {
      * By defining these properties, the data source can then be queried as
      * if it were a standard BigQuery table. Structure is documented below.
      */
-    readonly externalDataConfiguration?: pulumi.Input<{ autodetect: pulumi.Input<boolean>, compression?: pulumi.Input<string>, csvOptions?: pulumi.Input<{ allowJaggedRows?: pulumi.Input<boolean>, allowQuotedNewlines?: pulumi.Input<boolean>, encoding?: pulumi.Input<string>, fieldDelimiter?: pulumi.Input<string>, quote: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, googleSheetsOptions?: pulumi.Input<{ range?: pulumi.Input<string>, skipLeadingRows?: pulumi.Input<number> }>, ignoreUnknownValues?: pulumi.Input<boolean>, maxBadRecords?: pulumi.Input<number>, sourceFormat: pulumi.Input<string>, sourceUris: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly externalDataConfiguration?: pulumi.Input<inputs.bigquery.TableExternalDataConfiguration>;
     /**
      * A descriptive name for the table.
      */
@@ -420,10 +422,10 @@ export interface TableArgs {
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
-    readonly timePartitioning?: pulumi.Input<{ expirationMs?: pulumi.Input<number>, field?: pulumi.Input<string>, requirePartitionFilter?: pulumi.Input<boolean>, type: pulumi.Input<string> }>;
+    readonly timePartitioning?: pulumi.Input<inputs.bigquery.TableTimePartitioning>;
     /**
      * If specified, configures this table as a view.
      * Structure is documented below.
      */
-    readonly view?: pulumi.Input<{ query: pulumi.Input<string>, useLegacySql?: pulumi.Input<boolean> }>;
+    readonly view?: pulumi.Input<inputs.bigquery.TableView>;
 }

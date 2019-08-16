@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -67,7 +69,7 @@ export class BackendBucket extends pulumi.CustomResource {
     }
 
     public readonly bucketName!: pulumi.Output<string>;
-    public readonly cdnPolicy!: pulumi.Output<{ signedUrlCacheMaxAgeSec?: number }>;
+    public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
@@ -132,7 +134,7 @@ export class BackendBucket extends pulumi.CustomResource {
  */
 export interface BackendBucketState {
     readonly bucketName?: pulumi.Input<string>;
-    readonly cdnPolicy?: pulumi.Input<{ signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
@@ -153,7 +155,7 @@ export interface BackendBucketState {
  */
 export interface BackendBucketArgs {
     readonly bucketName: pulumi.Input<string>;
-    readonly cdnPolicy?: pulumi.Input<{ signedUrlCacheMaxAgeSec?: pulumi.Input<number> }>;
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;

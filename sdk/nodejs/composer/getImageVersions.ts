@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const all = pulumi.output(gcp.composer.getImageVersions({}));
+ * const all = gcp.composer.getImageVersions({});
  * const test = new gcp.composer.Environment("test", {
  *     config: {
  *         softwareConfig: {
@@ -66,7 +68,7 @@ export interface GetImageVersionsResult {
     /**
      * A list of composer image versions available in the given project and location. Each `imageVersion` contains:
      */
-    readonly imageVersions: { imageVersionId: string, supportedPythonVersions: string[] }[];
+    readonly imageVersions: outputs.composer.GetImageVersionsImageVersion[];
     readonly project: string;
     readonly region: string;
     /**

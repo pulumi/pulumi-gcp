@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/billing.viewer",
  *     }],
- * }));
+ * });
  * const policy = new gcp.billing.AccountIamPolicy("policy", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
  *     policyData: admin.policyData,

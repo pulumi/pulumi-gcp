@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -86,7 +88,7 @@ export class Image extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly rawDisk!: pulumi.Output<{ containerType?: string, sha1?: string, source: string } | undefined>;
+    public readonly rawDisk!: pulumi.Output<outputs.compute.ImageRawDisk | undefined>;
     /**
      * The URI of the created resource.
      */
@@ -163,7 +165,7 @@ export interface ImageState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly rawDisk?: pulumi.Input<{ containerType?: pulumi.Input<string>, sha1?: pulumi.Input<string>, source: pulumi.Input<string> }>;
+    readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     /**
      * The URI of the created resource.
      */
@@ -186,6 +188,6 @@ export interface ImageArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly rawDisk?: pulumi.Input<{ containerType?: pulumi.Input<string>, sha1?: pulumi.Input<string>, source: pulumi.Input<string> }>;
+    readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     readonly sourceDisk?: pulumi.Input<string>;
 }

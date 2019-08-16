@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -58,7 +60,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public /*out*/ readonly vpnInterfaces!: pulumi.Output<{ id?: number, ipAddress?: string }[]>;
+    public /*out*/ readonly vpnInterfaces!: pulumi.Output<outputs.compute.HaVpnGatewayVpnInterface[]>;
 
     /**
      * Create a HaVpnGateway resource with the given unique name, arguments, and options.
@@ -120,7 +122,7 @@ export interface HaVpnGatewayState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly vpnInterfaces?: pulumi.Input<pulumi.Input<{ id?: pulumi.Input<number>, ipAddress?: pulumi.Input<string> }>[]>;
+    readonly vpnInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.HaVpnGatewayVpnInterface>[]>;
 }
 
 /**

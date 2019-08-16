@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -96,7 +98,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
-    public /*out*/ readonly ipAddresses!: pulumi.Output<{ ipAddress: string, timeToRetire: string, type: string }[]>;
+    public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
@@ -139,12 +141,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    public readonly replicaConfiguration!: pulumi.Output<{ caCertificate?: string, clientCertificate?: string, clientKey?: string, connectRetryInterval?: number, dumpFilePath?: string, failoverTarget?: boolean, masterHeartbeatPeriod?: number, password?: string, sslCipher?: string, username?: string, verifyServerCertificate?: boolean }>;
+    public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public /*out*/ readonly serverCaCert!: pulumi.Output<{ cert: string, commonName: string, createTime: string, expirationTime: string, sha1Fingerprint: string }>;
+    public /*out*/ readonly serverCaCert!: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert>;
     /**
      * The service account email address assigned to the
      * instance. This property is applicable only to Second Generation instances.
@@ -154,7 +156,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The settings to use for the database. The
      * configuration is detailed below.
      */
-    public readonly settings!: pulumi.Output<{ activationPolicy: string, authorizedGaeApplications?: string[], availabilityType: string, backupConfiguration: { binaryLogEnabled?: boolean, enabled?: boolean, startTime: string }, crashSafeReplication: boolean, databaseFlags?: { name?: string, value?: string }[], diskAutoresize?: boolean, diskSize: number, diskType: string, ipConfiguration: { authorizedNetworks?: { expirationTime?: string, name?: string, value?: string }[], ipv4Enabled: boolean, privateNetwork?: string, requireSsl?: boolean }, locationPreference: { followGaeApplication?: string, zone?: string }, maintenanceWindow?: { day?: number, hour?: number, updateTrack?: string }, pricingPlan?: string, replicationType?: string, tier: string, userLabels?: {[key: string]: string}, version: number }>;
+    public readonly settings!: pulumi.Output<outputs.sql.DatabaseInstanceSettings>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -233,7 +235,7 @@ export interface DatabaseInstanceState {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     readonly firstIpAddress?: pulumi.Input<string>;
-    readonly ipAddresses?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, timeToRetire?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
+    readonly ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have
@@ -276,12 +278,12 @@ export interface DatabaseInstanceState {
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    readonly replicaConfiguration?: pulumi.Input<{ caCertificate?: pulumi.Input<string>, clientCertificate?: pulumi.Input<string>, clientKey?: pulumi.Input<string>, connectRetryInterval?: pulumi.Input<number>, dumpFilePath?: pulumi.Input<string>, failoverTarget?: pulumi.Input<boolean>, masterHeartbeatPeriod?: pulumi.Input<number>, password?: pulumi.Input<string>, sslCipher?: pulumi.Input<string>, username?: pulumi.Input<string>, verifyServerCertificate?: pulumi.Input<boolean> }>;
+    readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly serverCaCert?: pulumi.Input<{ cert?: pulumi.Input<string>, commonName?: pulumi.Input<string>, createTime?: pulumi.Input<string>, expirationTime?: pulumi.Input<string>, sha1Fingerprint?: pulumi.Input<string> }>;
+    readonly serverCaCert?: pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>;
     /**
      * The service account email address assigned to the
      * instance. This property is applicable only to Second Generation instances.
@@ -291,7 +293,7 @@ export interface DatabaseInstanceState {
      * The settings to use for the database. The
      * configuration is detailed below.
      */
-    readonly settings?: pulumi.Input<{ activationPolicy?: pulumi.Input<string>, authorizedGaeApplications?: pulumi.Input<pulumi.Input<string>[]>, availabilityType?: pulumi.Input<string>, backupConfiguration?: pulumi.Input<{ binaryLogEnabled?: pulumi.Input<boolean>, enabled?: pulumi.Input<boolean>, startTime?: pulumi.Input<string> }>, crashSafeReplication?: pulumi.Input<boolean>, databaseFlags?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, diskAutoresize?: pulumi.Input<boolean>, diskSize?: pulumi.Input<number>, diskType?: pulumi.Input<string>, ipConfiguration?: pulumi.Input<{ authorizedNetworks?: pulumi.Input<pulumi.Input<{ expirationTime?: pulumi.Input<string>, name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, ipv4Enabled?: pulumi.Input<boolean>, privateNetwork?: pulumi.Input<string>, requireSsl?: pulumi.Input<boolean> }>, locationPreference?: pulumi.Input<{ followGaeApplication?: pulumi.Input<string>, zone?: pulumi.Input<string> }>, maintenanceWindow?: pulumi.Input<{ day?: pulumi.Input<number>, hour?: pulumi.Input<number>, updateTrack?: pulumi.Input<string> }>, pricingPlan?: pulumi.Input<string>, replicationType?: pulumi.Input<string>, tier: pulumi.Input<string>, userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, version?: pulumi.Input<number> }>;
+    readonly settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
 }
 
 /**
@@ -338,10 +340,10 @@ export interface DatabaseInstanceArgs {
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    readonly replicaConfiguration?: pulumi.Input<{ caCertificate?: pulumi.Input<string>, clientCertificate?: pulumi.Input<string>, clientKey?: pulumi.Input<string>, connectRetryInterval?: pulumi.Input<number>, dumpFilePath?: pulumi.Input<string>, failoverTarget?: pulumi.Input<boolean>, masterHeartbeatPeriod?: pulumi.Input<number>, password?: pulumi.Input<string>, sslCipher?: pulumi.Input<string>, username?: pulumi.Input<string>, verifyServerCertificate?: pulumi.Input<boolean> }>;
+    readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below.
      */
-    readonly settings: pulumi.Input<{ activationPolicy?: pulumi.Input<string>, authorizedGaeApplications?: pulumi.Input<pulumi.Input<string>[]>, availabilityType?: pulumi.Input<string>, backupConfiguration?: pulumi.Input<{ binaryLogEnabled?: pulumi.Input<boolean>, enabled?: pulumi.Input<boolean>, startTime?: pulumi.Input<string> }>, crashSafeReplication?: pulumi.Input<boolean>, databaseFlags?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, diskAutoresize?: pulumi.Input<boolean>, diskSize?: pulumi.Input<number>, diskType?: pulumi.Input<string>, ipConfiguration?: pulumi.Input<{ authorizedNetworks?: pulumi.Input<pulumi.Input<{ expirationTime?: pulumi.Input<string>, name?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>, ipv4Enabled?: pulumi.Input<boolean>, privateNetwork?: pulumi.Input<string>, requireSsl?: pulumi.Input<boolean> }>, locationPreference?: pulumi.Input<{ followGaeApplication?: pulumi.Input<string>, zone?: pulumi.Input<string> }>, maintenanceWindow?: pulumi.Input<{ day?: pulumi.Input<number>, hour?: pulumi.Input<number>, updateTrack?: pulumi.Input<string> }>, pricingPlan?: pulumi.Input<string>, replicationType?: pulumi.Input<string>, tier: pulumi.Input<string>, userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, version?: pulumi.Input<number> }>;
+    readonly settings: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
 }

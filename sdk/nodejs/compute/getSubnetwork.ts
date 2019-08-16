@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const mySubnetwork = pulumi.output(gcp.compute.getSubnetwork({
+ * const mySubnetwork = gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
@@ -101,7 +103,7 @@ export interface GetSubnetworkResult {
      * An array of configurations for secondary IP ranges for
      * VM instances contained in this subnetwork. Structure is documented below.
      */
-    readonly secondaryIpRanges: { ipCidrRange: string, rangeName: string }[];
+    readonly secondaryIpRanges: outputs.compute.GetSubnetworkSecondaryIpRange[];
     readonly selfLink: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

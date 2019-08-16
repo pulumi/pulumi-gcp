@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,7 +44,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityScanConfig.__pulumiType;
     }
 
-    public readonly authentication!: pulumi.Output<{ customAccount?: { loginUrl: string, password: string, username: string }, googleAccount?: { password: string, username: string } } | undefined>;
+    public readonly authentication!: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
     public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
     public readonly displayName!: pulumi.Output<string>;
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
@@ -53,7 +55,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly schedule!: pulumi.Output<{ intervalDurationDays: number, scheduleTime?: string } | undefined>;
+    public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
     public readonly startingUrls!: pulumi.Output<string[]>;
     public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
     public readonly userAgent!: pulumi.Output<string | undefined>;
@@ -116,7 +118,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityScanConfig resources.
  */
 export interface SecurityScanConfigState {
-    readonly authentication?: pulumi.Input<{ customAccount?: pulumi.Input<{ loginUrl: pulumi.Input<string>, password: pulumi.Input<string>, username: pulumi.Input<string> }>, googleAccount?: pulumi.Input<{ password: pulumi.Input<string>, username: pulumi.Input<string> }> }>;
+    readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     readonly blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     readonly displayName?: pulumi.Input<string>;
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
@@ -127,7 +129,7 @@ export interface SecurityScanConfigState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly schedule?: pulumi.Input<{ intervalDurationDays: pulumi.Input<number>, scheduleTime?: pulumi.Input<string> }>;
+    readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     readonly startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     readonly userAgent?: pulumi.Input<string>;
@@ -137,7 +139,7 @@ export interface SecurityScanConfigState {
  * The set of arguments for constructing a SecurityScanConfig resource.
  */
 export interface SecurityScanConfigArgs {
-    readonly authentication?: pulumi.Input<{ customAccount?: pulumi.Input<{ loginUrl: pulumi.Input<string>, password: pulumi.Input<string>, username: pulumi.Input<string> }>, googleAccount?: pulumi.Input<{ password: pulumi.Input<string>, username: pulumi.Input<string> }> }>;
+    readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     readonly blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     readonly displayName: pulumi.Input<string>;
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
@@ -147,7 +149,7 @@ export interface SecurityScanConfigArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly schedule?: pulumi.Input<{ intervalDurationDays: pulumi.Input<number>, scheduleTime?: pulumi.Input<string> }>;
+    readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     readonly startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     readonly userAgent?: pulumi.Input<string>;

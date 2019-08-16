@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -87,7 +89,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    public readonly eventTrigger!: pulumi.Output<{ eventType: string, failurePolicy: { retry: boolean }, resource: string }>;
+    public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
@@ -135,7 +137,7 @@ export class Function extends pulumi.CustomResource {
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
-    public readonly sourceRepository!: pulumi.Output<{ deployedUrl: string, url: string } | undefined>;
+    public readonly sourceRepository!: pulumi.Output<outputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
@@ -230,7 +232,7 @@ export interface FunctionState {
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
+    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
@@ -278,7 +280,7 @@ export interface FunctionState {
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
-    readonly sourceRepository?: pulumi.Input<{ deployedUrl?: pulumi.Input<string>, url: pulumi.Input<string> }>;
+    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
@@ -312,7 +314,7 @@ export interface FunctionArgs {
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    readonly eventTrigger?: pulumi.Input<{ eventType: pulumi.Input<string>, failurePolicy?: pulumi.Input<{ retry: pulumi.Input<boolean> }>, resource: pulumi.Input<string> }>;
+    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
@@ -360,7 +362,7 @@ export interface FunctionArgs {
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
      */
-    readonly sourceRepository?: pulumi.Input<{ deployedUrl?: pulumi.Input<string>, url: pulumi.Input<string> }>;
+    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */

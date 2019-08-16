@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -41,7 +43,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
     }
 
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly interfaces!: pulumi.Output<{ id?: number, ipAddress?: string }[] | undefined>;
+    public readonly interfaces!: pulumi.Output<outputs.compute.ExternalVpnGatewayInterface[] | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -94,7 +96,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
  */
 export interface ExternalVpnGatewayState {
     readonly description?: pulumi.Input<string>;
-    readonly interfaces?: pulumi.Input<pulumi.Input<{ id?: pulumi.Input<number>, ipAddress?: pulumi.Input<string> }>[]>;
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.ExternalVpnGatewayInterface>[]>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -110,7 +112,7 @@ export interface ExternalVpnGatewayState {
  */
 export interface ExternalVpnGatewayArgs {
     readonly description?: pulumi.Input<string>;
-    readonly interfaces?: pulumi.Input<pulumi.Input<{ id?: pulumi.Input<number>, ipAddress?: pulumi.Input<string> }>[]>;
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.ExternalVpnGatewayInterface>[]>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -92,7 +94,7 @@ export class Subnetwork extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     public readonly ipCidrRange!: pulumi.Output<string>;
-    public readonly logConfig!: pulumi.Output<{ aggregationInterval?: string, flowSampling?: number, metadata?: string }>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<string>;
     public readonly privateIpGoogleAccess!: pulumi.Output<boolean | undefined>;
@@ -102,7 +104,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
-    public readonly secondaryIpRanges!: pulumi.Output<{ ipCidrRange: string, rangeName: string }[]>;
+    public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
      * The URI of the created resource.
      */
@@ -178,7 +180,7 @@ export interface SubnetworkState {
     readonly fingerprint?: pulumi.Input<string>;
     readonly gatewayAddress?: pulumi.Input<string>;
     readonly ipCidrRange?: pulumi.Input<string>;
-    readonly logConfig?: pulumi.Input<{ aggregationInterval?: pulumi.Input<string>, flowSampling?: pulumi.Input<number>, metadata?: pulumi.Input<string> }>;
+    readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
@@ -188,7 +190,7 @@ export interface SubnetworkState {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
      * The URI of the created resource.
      */
@@ -202,7 +204,7 @@ export interface SubnetworkArgs {
     readonly description?: pulumi.Input<string>;
     readonly enableFlowLogs?: pulumi.Input<boolean>;
     readonly ipCidrRange: pulumi.Input<string>;
-    readonly logConfig?: pulumi.Input<{ aggregationInterval?: pulumi.Input<string>, flowSampling?: pulumi.Input<number>, metadata?: pulumi.Input<string> }>;
+    readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
@@ -212,5 +214,5 @@ export interface SubnetworkArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, rangeName: pulumi.Input<string> }>[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
 }

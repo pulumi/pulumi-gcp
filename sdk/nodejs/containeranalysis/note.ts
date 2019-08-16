@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,7 +44,7 @@ export class Note extends pulumi.CustomResource {
         return obj['__pulumiType'] === Note.__pulumiType;
     }
 
-    public readonly attestationAuthority!: pulumi.Output<{ hint: { humanReadableName: string } }>;
+    public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
 
@@ -85,7 +87,7 @@ export class Note extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Note resources.
  */
 export interface NoteState {
-    readonly attestationAuthority?: pulumi.Input<{ hint: pulumi.Input<{ humanReadableName: pulumi.Input<string> }> }>;
+    readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }
@@ -94,7 +96,7 @@ export interface NoteState {
  * The set of arguments for constructing a Note resource.
  */
 export interface NoteArgs {
-    readonly attestationAuthority: pulumi.Input<{ hint: pulumi.Input<{ humanReadableName: pulumi.Input<string> }> }>;
+    readonly attestationAuthority: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }

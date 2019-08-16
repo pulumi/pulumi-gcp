@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myOrgProjects = pulumi.output(gcp.projects.getProject({
+ * const myOrgProjects = gcp.projects.getProject({
  *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
- * }));
- * const deletionCandidate = my_org_projects.apply(my_org_projects => gcp.organizations.getProject({
+ * });
+ * const deletionCandidate = gcp.organizations.getProject({
  *     projectId: my_org_projects.projects[0].projectId,
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
@@ -58,7 +60,7 @@ export interface GetProjectResult {
     /**
      * A list of projects matching the provided filter. Structure is defined below.
      */
-    readonly projects: { projectId: string }[];
+    readonly projects: outputs.projects.GetProjectProject[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

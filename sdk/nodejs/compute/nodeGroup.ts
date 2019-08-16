@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,11 +28,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const central1a = pulumi.output(gcp.compute.getNodeTypes({
+ * const central1a = gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
- * }));
+ * });
  * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
- *     nodeType: central1a.apply(central1a => central1a.names[0]),
+ *     nodeType: central1a.names[0],
  *     region: "us-central1",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {

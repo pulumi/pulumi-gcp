@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -92,7 +94,7 @@ export class RegionDisk extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly diskEncryptionKey!: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskDiskEncryptionKey | undefined>;
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly lastAttachTimestamp!: pulumi.Output<string>;
@@ -112,7 +114,7 @@ export class RegionDisk extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public readonly size!: pulumi.Output<number>;
     public readonly snapshot!: pulumi.Output<string | undefined>;
-    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<{ kmsKeyName?: string, rawKey?: string, sha256: string } | undefined>;
+    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskSourceSnapshotEncryptionKey | undefined>;
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly users!: pulumi.Output<string[]>;
@@ -190,7 +192,7 @@ export class RegionDisk extends pulumi.CustomResource {
 export interface RegionDiskState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    readonly diskEncryptionKey?: pulumi.Input<{ kmsKeyName?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     readonly labelFingerprint?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly lastAttachTimestamp?: pulumi.Input<string>;
@@ -210,7 +212,7 @@ export interface RegionDiskState {
     readonly selfLink?: pulumi.Input<string>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ kmsKeyName?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceSnapshotEncryptionKey>;
     readonly sourceSnapshotId?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
     readonly users?: pulumi.Input<pulumi.Input<string>[]>;
@@ -221,7 +223,7 @@ export interface RegionDiskState {
  */
 export interface RegionDiskArgs {
     readonly description?: pulumi.Input<string>;
-    readonly diskEncryptionKey?: pulumi.Input<{ kmsKeyName?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly physicalBlockSizeBytes?: pulumi.Input<number>;
@@ -234,6 +236,6 @@ export interface RegionDiskArgs {
     readonly replicaZones: pulumi.Input<pulumi.Input<string>[]>;
     readonly size?: pulumi.Input<number>;
     readonly snapshot?: pulumi.Input<string>;
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<{ kmsKeyName?: pulumi.Input<string>, rawKey?: pulumi.Input<string>, sha256?: pulumi.Input<string> }>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceSnapshotEncryptionKey>;
     readonly type?: pulumi.Input<string>;
 }

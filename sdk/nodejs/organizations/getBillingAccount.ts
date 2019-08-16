@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const acct = pulumi.output(gcp.organizations.getBillingAccount({
+ * const acct = gcp.organizations.getBillingAccount({
  *     displayName: "My Billing Account",
  *     open: true,
- * }));
+ * });
  * const myProject = new gcp.organizations.Project("myProject", {
  *     billingAccount: acct.id,
  *     orgId: "1234567",

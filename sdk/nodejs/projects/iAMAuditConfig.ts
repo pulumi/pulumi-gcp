@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class IAMAuditConfig extends pulumi.CustomResource {
@@ -31,7 +33,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMAuditConfig.__pulumiType;
     }
 
-    public readonly auditLogConfigs!: pulumi.Output<{ exemptedMembers?: string[], logType: string }[]>;
+    public readonly auditLogConfigs!: pulumi.Output<outputs.projects.IAMAuditConfigAuditLogConfig[]>;
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly service!: pulumi.Output<string>;
@@ -80,7 +82,7 @@ export class IAMAuditConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMAuditConfig resources.
  */
 export interface IAMAuditConfigState {
-    readonly auditLogConfigs?: pulumi.Input<pulumi.Input<{ exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>, logType: pulumi.Input<string> }>[]>;
+    readonly auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
     readonly etag?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly service?: pulumi.Input<string>;
@@ -90,7 +92,7 @@ export interface IAMAuditConfigState {
  * The set of arguments for constructing a IAMAuditConfig resource.
  */
 export interface IAMAuditConfigArgs {
-    readonly auditLogConfigs: pulumi.Input<pulumi.Input<{ exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>, logType: pulumi.Input<string> }>[]>;
+    readonly auditLogConfigs: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
     readonly project?: pulumi.Input<string>;
     readonly service: pulumi.Input<string>;
 }

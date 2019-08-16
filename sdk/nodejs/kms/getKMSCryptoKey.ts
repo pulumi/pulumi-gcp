@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,14 +21,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myKeyRing = pulumi.output(gcp.kms.getKMSKeyRing({
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
  *     location: "us-central1",
  *     name: "my-key-ring",
- * }));
- * const myCryptoKey = myKeyRing.apply(myKeyRing => gcp.kms.getKMSCryptoKey({
+ * });
+ * const myCryptoKey = gcp.kms.getKMSCryptoKey({
  *     keyRing: myKeyRing.selfLink,
  *     name: "my-crypto-key",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key.html.markdown.
@@ -83,7 +85,7 @@ export interface GetKMSCryptoKeyResult {
      * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
      */
     readonly selfLink: string;
-    readonly versionTemplates: { algorithm: string, protectionLevel: string }[];
+    readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
