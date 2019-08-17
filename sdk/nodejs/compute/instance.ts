@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -86,12 +88,12 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode?: string, source: string }[] | undefined>;
+    public readonly attachedDisks!: pulumi.Output<outputs.compute.InstanceAttachedDisk[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    public readonly bootDisk!: pulumi.Output<{ autoDelete?: boolean, deviceName: string, diskEncryptionKeyRaw?: string, diskEncryptionKeySha256: string, initializeParams: { image: string, labels: {[key: string]: any}, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
+    public readonly bootDisk!: pulumi.Output<outputs.compute.InstanceBootDisk>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -115,7 +117,7 @@ export class Instance extends pulumi.CustomResource {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[]>;
+    public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceGuestAccelerator[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -171,7 +173,7 @@ export class Instance extends pulumi.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string, publicPtrDomainName?: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -181,12 +183,12 @@ export class Instance extends pulumi.CustomResource {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling!: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
+    public readonly scheduling!: pulumi.Output<outputs.compute.InstanceScheduling>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    public readonly scratchDisks!: pulumi.Output<{ interface?: string }[] | undefined>;
+    public readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceScratchDisk[] | undefined>;
     /**
      * The URI of the created resource.
      */
@@ -196,12 +198,12 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
+    public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceShieldedInstanceConfig>;
     /**
      * A list of tags to attach to the instance.
      */
@@ -318,12 +320,12 @@ export interface InstanceState {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk?: pulumi.Input<inputs.compute.InstanceBootDisk>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -347,7 +349,7 @@ export interface InstanceState {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -403,7 +405,7 @@ export interface InstanceState {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -413,12 +415,12 @@ export interface InstanceState {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
     /**
      * The URI of the created resource.
      */
@@ -428,12 +430,12 @@ export interface InstanceState {
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
      * A list of tags to attach to the instance.
      */
@@ -460,12 +462,12 @@ export interface InstanceArgs {
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    readonly bootDisk: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly bootDisk: pulumi.Input<inputs.compute.InstanceBootDisk>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
@@ -485,7 +487,7 @@ export interface InstanceArgs {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -529,7 +531,7 @@ export interface InstanceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -539,23 +541,23 @@ export interface InstanceArgs {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
      * A list of tags to attach to the instance.
      */

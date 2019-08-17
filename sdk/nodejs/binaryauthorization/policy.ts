@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -79,9 +81,9 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
-    public readonly admissionWhitelistPatterns!: pulumi.Output<{ namePattern?: string }[] | undefined>;
-    public readonly clusterAdmissionRules!: pulumi.Output<{ cluster: string, enforcementMode?: string, evaluationMode?: string, requireAttestationsBies?: string[] }[] | undefined>;
-    public readonly defaultAdmissionRule!: pulumi.Output<{ enforcementMode: string, evaluationMode: string, requireAttestationsBies?: string[] }>;
+    public readonly admissionWhitelistPatterns!: pulumi.Output<outputs.binaryauthorization.PolicyAdmissionWhitelistPattern[] | undefined>;
+    public readonly clusterAdmissionRules!: pulumi.Output<outputs.binaryauthorization.PolicyClusterAdmissionRule[] | undefined>;
+    public readonly defaultAdmissionRule!: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
 
@@ -128,9 +130,9 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
-    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<{ namePattern?: pulumi.Input<string> }>[]>;
-    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<{ cluster: pulumi.Input<string>, enforcementMode?: pulumi.Input<string>, evaluationMode?: pulumi.Input<string>, requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
-    readonly defaultAdmissionRule?: pulumi.Input<{ enforcementMode: pulumi.Input<string>, evaluationMode: pulumi.Input<string>, requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    readonly defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     readonly description?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }
@@ -139,9 +141,9 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
-    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<{ namePattern?: pulumi.Input<string> }>[]>;
-    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<{ cluster: pulumi.Input<string>, enforcementMode?: pulumi.Input<string>, evaluationMode?: pulumi.Input<string>, requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
-    readonly defaultAdmissionRule: pulumi.Input<{ enforcementMode: pulumi.Input<string>, evaluationMode: pulumi.Input<string>, requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    readonly defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     readonly description?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }

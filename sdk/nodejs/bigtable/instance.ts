@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -74,7 +76,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
-    public readonly clusters!: pulumi.Output<{ clusterId: string, numNodes?: number, storageType?: string, zone: string }[]>;
+    public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
@@ -139,7 +141,7 @@ export interface InstanceState {
     /**
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
-    readonly clusters?: pulumi.Input<pulumi.Input<{ clusterId: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone: pulumi.Input<string> }>[]>;
+    readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
@@ -166,7 +168,7 @@ export interface InstanceArgs {
     /**
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
-    readonly clusters: pulumi.Input<pulumi.Input<{ clusterId: pulumi.Input<string>, numNodes?: pulumi.Input<number>, storageType?: pulumi.Input<string>, zone: pulumi.Input<string> }>[]>;
+    readonly clusters: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */

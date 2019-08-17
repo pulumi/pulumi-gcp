@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const envDnsZone = pulumi.output(gcp.dns.getManagedZone({
+ * const envDnsZone = gcp.dns.getManagedZone({
  *     name: "qa-zone",
- * }));
+ * });
  * const dns = new gcp.dns.RecordSet("dns", {
  *     managedZone: envDnsZone.name,
  *     rrdatas: ["test"],

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -105,18 +107,18 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
-    public readonly appEngineHttpTarget!: pulumi.Output<{ appEngineRouting?: { instance?: string, service?: string, version?: string }, body?: string, headers?: {[key: string]: string}, httpMethod?: string, relativeUri: string } | undefined>;
+    public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly httpTarget!: pulumi.Output<{ body?: string, headers?: {[key: string]: string}, httpMethod?: string, uri: string } | undefined>;
+    public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly pubsubTarget!: pulumi.Output<{ attributes?: {[key: string]: string}, data?: string, topicName: string } | undefined>;
+    public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
     public readonly region!: pulumi.Output<string>;
-    public readonly retryConfig!: pulumi.Output<{ maxBackoffDuration?: string, maxDoublings?: number, maxRetryDuration?: string, minBackoffDuration?: string, retryCount?: number } | undefined>;
+    public readonly retryConfig!: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
     public readonly schedule!: pulumi.Output<string | undefined>;
     public readonly timeZone!: pulumi.Output<string | undefined>;
 
@@ -170,18 +172,18 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
-    readonly appEngineHttpTarget?: pulumi.Input<{ appEngineRouting?: pulumi.Input<{ instance?: pulumi.Input<string>, service?: pulumi.Input<string>, version?: pulumi.Input<string> }>, body?: pulumi.Input<string>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, httpMethod?: pulumi.Input<string>, relativeUri: pulumi.Input<string> }>;
+    readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     readonly description?: pulumi.Input<string>;
-    readonly httpTarget?: pulumi.Input<{ body?: pulumi.Input<string>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, httpMethod?: pulumi.Input<string>, uri: pulumi.Input<string> }>;
+    readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pubsubTarget?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, data?: pulumi.Input<string>, topicName: pulumi.Input<string> }>;
+    readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     readonly region?: pulumi.Input<string>;
-    readonly retryConfig?: pulumi.Input<{ maxBackoffDuration?: pulumi.Input<string>, maxDoublings?: pulumi.Input<number>, maxRetryDuration?: pulumi.Input<string>, minBackoffDuration?: pulumi.Input<string>, retryCount?: pulumi.Input<number> }>;
+    readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     readonly schedule?: pulumi.Input<string>;
     readonly timeZone?: pulumi.Input<string>;
 }
@@ -190,18 +192,18 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
-    readonly appEngineHttpTarget?: pulumi.Input<{ appEngineRouting?: pulumi.Input<{ instance?: pulumi.Input<string>, service?: pulumi.Input<string>, version?: pulumi.Input<string> }>, body?: pulumi.Input<string>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, httpMethod?: pulumi.Input<string>, relativeUri: pulumi.Input<string> }>;
+    readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     readonly description?: pulumi.Input<string>;
-    readonly httpTarget?: pulumi.Input<{ body?: pulumi.Input<string>, headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, httpMethod?: pulumi.Input<string>, uri: pulumi.Input<string> }>;
+    readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pubsubTarget?: pulumi.Input<{ attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, data?: pulumi.Input<string>, topicName: pulumi.Input<string> }>;
+    readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     readonly region?: pulumi.Input<string>;
-    readonly retryConfig?: pulumi.Input<{ maxBackoffDuration?: pulumi.Input<string>, maxDoublings?: pulumi.Input<number>, maxRetryDuration?: pulumi.Input<string>, minBackoffDuration?: pulumi.Input<string>, retryCount?: pulumi.Input<number> }>;
+    readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     readonly schedule?: pulumi.Input<string>;
     readonly timeZone?: pulumi.Input<string>;
 }

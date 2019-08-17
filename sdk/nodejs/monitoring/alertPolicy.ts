@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -74,10 +76,10 @@ export class AlertPolicy extends pulumi.CustomResource {
     }
 
     public readonly combiner!: pulumi.Output<string>;
-    public readonly conditions!: pulumi.Output<{ conditionAbsent?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], duration: string, filter?: string, trigger?: { count?: number, percent?: number } }, conditionThreshold?: { aggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], comparison: string, denominatorAggregations?: { alignmentPeriod?: string, crossSeriesReducer?: string, groupByFields?: string[], perSeriesAligner?: string }[], denominatorFilter?: string, duration: string, filter?: string, thresholdValue?: number, trigger?: { count?: number, percent?: number } }, displayName: string, name: string }[]>;
-    public /*out*/ readonly creationRecord!: pulumi.Output<{ mutateTime: string, mutatedBy: string }>;
+    public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
+    public /*out*/ readonly creationRecord!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord>;
     public readonly displayName!: pulumi.Output<string>;
-    public readonly documentation!: pulumi.Output<{ content?: string, mimeType?: string } | undefined>;
+    public readonly documentation!: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly labels!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -147,10 +149,10 @@ export class AlertPolicy extends pulumi.CustomResource {
  */
 export interface AlertPolicyState {
     readonly combiner?: pulumi.Input<string>;
-    readonly conditions?: pulumi.Input<pulumi.Input<{ conditionAbsent?: pulumi.Input<{ aggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, duration: pulumi.Input<string>, filter?: pulumi.Input<string>, trigger?: pulumi.Input<{ count?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>, conditionThreshold?: pulumi.Input<{ aggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, comparison: pulumi.Input<string>, denominatorAggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, denominatorFilter?: pulumi.Input<string>, duration: pulumi.Input<string>, filter?: pulumi.Input<string>, thresholdValue?: pulumi.Input<number>, trigger?: pulumi.Input<{ count?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>, displayName: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>;
-    readonly creationRecord?: pulumi.Input<{ mutateTime?: pulumi.Input<string>, mutatedBy?: pulumi.Input<string> }>;
+    readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    readonly creationRecord?: pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>;
     readonly displayName?: pulumi.Input<string>;
-    readonly documentation?: pulumi.Input<{ content?: pulumi.Input<string>, mimeType?: pulumi.Input<string> }>;
+    readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;
@@ -164,9 +166,9 @@ export interface AlertPolicyState {
  */
 export interface AlertPolicyArgs {
     readonly combiner: pulumi.Input<string>;
-    readonly conditions: pulumi.Input<pulumi.Input<{ conditionAbsent?: pulumi.Input<{ aggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, duration: pulumi.Input<string>, filter?: pulumi.Input<string>, trigger?: pulumi.Input<{ count?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>, conditionThreshold?: pulumi.Input<{ aggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, comparison: pulumi.Input<string>, denominatorAggregations?: pulumi.Input<pulumi.Input<{ alignmentPeriod?: pulumi.Input<string>, crossSeriesReducer?: pulumi.Input<string>, groupByFields?: pulumi.Input<pulumi.Input<string>[]>, perSeriesAligner?: pulumi.Input<string> }>[]>, denominatorFilter?: pulumi.Input<string>, duration: pulumi.Input<string>, filter?: pulumi.Input<string>, thresholdValue?: pulumi.Input<number>, trigger?: pulumi.Input<{ count?: pulumi.Input<number>, percent?: pulumi.Input<number> }> }>, displayName: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>;
+    readonly conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     readonly displayName: pulumi.Input<string>;
-    readonly documentation?: pulumi.Input<{ content?: pulumi.Input<string>, mimeType?: pulumi.Input<string> }>;
+    readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;

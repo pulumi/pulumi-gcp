@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -50,7 +52,7 @@ export class FhirStore extends pulumi.CustomResource {
     public readonly enableUpdateCreate!: pulumi.Output<boolean | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public readonly notificationConfig!: pulumi.Output<{ pubsubTopic: string } | undefined>;
+    public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
@@ -111,7 +113,7 @@ export interface FhirStoreState {
     readonly enableUpdateCreate?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    readonly notificationConfig?: pulumi.Input<{ pubsubTopic: pulumi.Input<string> }>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -126,5 +128,5 @@ export interface FhirStoreArgs {
     readonly enableUpdateCreate?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    readonly notificationConfig?: pulumi.Input<{ pubsubTopic: pulumi.Input<string> }>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
 }

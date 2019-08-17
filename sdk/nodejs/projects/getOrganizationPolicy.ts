@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const policy = pulumi.output(gcp.projects.getOrganizationPolicy({
+ * const policy = gcp.projects.getOrganizationPolicy({
  *     constraint: "constraints/serviceuser.services",
  *     project: "project-id",
- * }));
+ * });
  * 
  * export const version = policy.version;
  * ```
@@ -59,12 +61,12 @@ export interface GetOrganizationPolicyArgs {
  * A collection of values returned by getOrganizationPolicy.
  */
 export interface GetOrganizationPolicyResult {
-    readonly booleanPolicies: { enforced: boolean }[];
+    readonly booleanPolicies: outputs.projects.GetOrganizationPolicyBooleanPolicy[];
     readonly constraint: string;
     readonly etag: string;
-    readonly listPolicies: { allows: { all: boolean, values: string[] }[], denies: { all: boolean, values: string[] }[], inheritFromParent: boolean, suggestedValue: string }[];
+    readonly listPolicies: outputs.projects.GetOrganizationPolicyListPolicy[];
     readonly project: string;
-    readonly restorePolicies: { default: boolean }[];
+    readonly restorePolicies: outputs.projects.GetOrganizationPolicyRestorePolicy[];
     readonly updateTime: string;
     readonly version: number;
     /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -76,7 +78,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A block of optional settings to configure specific App Engine features:
      */
-    public readonly featureSettings!: pulumi.Output<{ splitHealthChecks?: boolean }>;
+    public readonly featureSettings!: pulumi.Output<outputs.appengine.ApplicationFeatureSettings>;
     /**
      * The GCR domain used for storing managed Docker images for this app.
      */
@@ -103,7 +105,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
-    public /*out*/ readonly urlDispatchRules!: pulumi.Output<{ domain: string, path: string, service: string }[]>;
+    public /*out*/ readonly urlDispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRule[]>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -179,7 +181,7 @@ export interface ApplicationState {
     /**
      * A block of optional settings to configure specific App Engine features:
      */
-    readonly featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>;
+    readonly featureSettings?: pulumi.Input<inputs.appengine.ApplicationFeatureSettings>;
     /**
      * The GCR domain used for storing managed Docker images for this app.
      */
@@ -206,7 +208,7 @@ export interface ApplicationState {
     /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
-    readonly urlDispatchRules?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, path?: pulumi.Input<string>, service?: pulumi.Input<string> }>[]>;
+    readonly urlDispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRule>[]>;
 }
 
 /**
@@ -220,7 +222,7 @@ export interface ApplicationArgs {
     /**
      * A block of optional settings to configure specific App Engine features:
      */
-    readonly featureSettings?: pulumi.Input<{ splitHealthChecks?: pulumi.Input<boolean> }>;
+    readonly featureSettings?: pulumi.Input<inputs.appengine.ApplicationFeatureSettings>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.

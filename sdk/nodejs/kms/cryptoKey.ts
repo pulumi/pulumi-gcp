@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -92,7 +94,7 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly purpose!: pulumi.Output<string | undefined>;
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly versionTemplate!: pulumi.Output<{ algorithm: string, protectionLevel?: string }>;
+    public readonly versionTemplate!: pulumi.Output<outputs.kms.CryptoKeyVersionTemplate>;
 
     /**
      * Create a CryptoKey resource with the given unique name, arguments, and options.
@@ -147,7 +149,7 @@ export interface CryptoKeyState {
     readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;
     readonly selfLink?: pulumi.Input<string>;
-    readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
+    readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }
 
 /**
@@ -159,5 +161,5 @@ export interface CryptoKeyArgs {
     readonly name?: pulumi.Input<string>;
     readonly purpose?: pulumi.Input<string>;
     readonly rotationPeriod?: pulumi.Input<string>;
-    readonly versionTemplate?: pulumi.Input<{ algorithm: pulumi.Input<string>, protectionLevel?: pulumi.Input<string> }>;
+    readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }

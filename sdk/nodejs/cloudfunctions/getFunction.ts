@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myFunction = pulumi.output(gcp.cloudfunctions.getFunction({
+ * const myFunction = gcp.cloudfunctions.getFunction({
  *     name: "function",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/cloudfunctions_function.html.markdown.
@@ -79,7 +81,7 @@ export interface GetFunctionResult {
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below.
      */
-    readonly eventTriggers: { eventType: string, failurePolicies: { retry: boolean }[], resource: string }[];
+    readonly eventTriggers: outputs.cloudfunctions.GetFunctionEventTrigger[];
     /**
      * If function is triggered by HTTP, trigger URL is set here.
      */
@@ -108,7 +110,7 @@ export interface GetFunctionResult {
      * The source archive object (file) in archive bucket.
      */
     readonly sourceArchiveObject: string;
-    readonly sourceRepositories: { deployedUrl: string, url: string }[];
+    readonly sourceRepositories: outputs.cloudfunctions.GetFunctionSourceRepository[];
     /**
      * Function execution timeout (in seconds).
      */

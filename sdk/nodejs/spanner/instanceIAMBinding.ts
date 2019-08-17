@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/editor",
  *     }],
- * }));
+ * });
  * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
  *     instance: "your-instance-name",
  *     policyData: admin.policyData,

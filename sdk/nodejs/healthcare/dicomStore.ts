@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -46,7 +48,7 @@ export class DicomStore extends pulumi.CustomResource {
     public readonly dataset!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public readonly notificationConfig!: pulumi.Output<{ pubsubTopic: string } | undefined>;
+    public readonly notificationConfig!: pulumi.Output<outputs.healthcare.DicomStoreNotificationConfig | undefined>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
@@ -95,7 +97,7 @@ export interface DicomStoreState {
     readonly dataset?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    readonly notificationConfig?: pulumi.Input<{ pubsubTopic: pulumi.Input<string> }>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
     readonly selfLink?: pulumi.Input<string>;
 }
 
@@ -106,5 +108,5 @@ export interface DicomStoreArgs {
     readonly dataset: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    readonly notificationConfig?: pulumi.Input<{ pubsubTopic: pulumi.Input<string> }>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
 }

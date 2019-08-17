@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -71,7 +73,7 @@ export class Dataset extends pulumi.CustomResource {
      * An array of objects that define dataset access for
      * one or more entities. Structure is documented below.
      */
-    public readonly accesses!: pulumi.Output<{ domain?: string, groupByEmail?: string, role?: string, specialGroup?: string, userByEmail?: string, view?: { datasetId: string, projectId: string, tableId: string } }[]>;
+    public readonly accesses!: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
     /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
@@ -198,7 +200,7 @@ export interface DatasetState {
      * An array of objects that define dataset access for
      * one or more entities. Structure is documented below.
      */
-    readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
+    readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
      * The time when this dataset was created, in milliseconds since the epoch.
      */
@@ -269,7 +271,7 @@ export interface DatasetArgs {
      * An array of objects that define dataset access for
      * one or more entities. Structure is documented below.
      */
-    readonly accesses?: pulumi.Input<pulumi.Input<{ domain?: pulumi.Input<string>, groupByEmail?: pulumi.Input<string>, role?: pulumi.Input<string>, specialGroup?: pulumi.Input<string>, userByEmail?: pulumi.Input<string>, view?: pulumi.Input<{ datasetId: pulumi.Input<string>, projectId: pulumi.Input<string>, tableId: pulumi.Input<string> }> }>[]>;
+    readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
      * The ID of the dataset containing this table.
      */

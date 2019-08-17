@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,10 +21,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const central1b = pulumi.output(gcp.container.getEngineVersions({
+ * const central1b = gcp.container.getEngineVersions({
  *     location: "us-central1-b",
  *     versionPrefix: "1.12.",
- * }));
+ * });
  * const foo = new gcp.container.Cluster("foo", {
  *     initialNodeCount: 1,
  *     location: "us-central1-b",

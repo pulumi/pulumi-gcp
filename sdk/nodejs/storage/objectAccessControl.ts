@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -81,7 +83,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     public /*out*/ readonly entityId!: pulumi.Output<string>;
     public /*out*/ readonly generation!: pulumi.Output<number>;
     public readonly object!: pulumi.Output<string>;
-    public /*out*/ readonly projectTeam!: pulumi.Output<{ projectNumber?: string, team?: string }>;
+    public /*out*/ readonly projectTeam!: pulumi.Output<outputs.storage.ObjectAccessControlProjectTeam>;
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -151,7 +153,7 @@ export interface ObjectAccessControlState {
     readonly entityId?: pulumi.Input<string>;
     readonly generation?: pulumi.Input<number>;
     readonly object?: pulumi.Input<string>;
-    readonly projectTeam?: pulumi.Input<{ projectNumber?: pulumi.Input<string>, team?: pulumi.Input<string> }>;
+    readonly projectTeam?: pulumi.Input<inputs.storage.ObjectAccessControlProjectTeam>;
     readonly role?: pulumi.Input<string>;
 }
 

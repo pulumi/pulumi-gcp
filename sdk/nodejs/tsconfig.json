@@ -328,6 +328,9 @@
         "tpu/getTensorflowVersions.ts",
         "tpu/index.ts",
         "tpu/node.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "utilities.ts",
         "utils.ts"
     ]

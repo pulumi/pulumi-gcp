@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,7 +46,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly snapshotSchedulePolicy!: pulumi.Output<{ retentionPolicy?: { maxRetentionDays: number, onSourceDiskDelete?: string }, schedule: { dailySchedule?: { daysInCycle: number, startTime: string }, hourlySchedule?: { hoursInCycle: number, startTime: string }, weeklySchedule?: { dayOfWeeks: { day: string, startTime: string }[] } }, snapshotProperties?: { guestFlush?: boolean, labels?: {[key: string]: string}, storageLocations?: string } } | undefined>;
+    public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
 
     /**
      * Create a ResourcePolicy resource with the given unique name, arguments, and options.
@@ -94,7 +96,7 @@ export interface ResourcePolicyState {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly selfLink?: pulumi.Input<string>;
-    readonly snapshotSchedulePolicy?: pulumi.Input<{ retentionPolicy?: pulumi.Input<{ maxRetentionDays: pulumi.Input<number>, onSourceDiskDelete?: pulumi.Input<string> }>, schedule: pulumi.Input<{ dailySchedule?: pulumi.Input<{ daysInCycle: pulumi.Input<number>, startTime: pulumi.Input<string> }>, hourlySchedule?: pulumi.Input<{ hoursInCycle: pulumi.Input<number>, startTime: pulumi.Input<string> }>, weeklySchedule?: pulumi.Input<{ dayOfWeeks: pulumi.Input<pulumi.Input<{ day: pulumi.Input<string>, startTime: pulumi.Input<string> }>[]> }> }>, snapshotProperties?: pulumi.Input<{ guestFlush?: pulumi.Input<boolean>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, storageLocations?: pulumi.Input<string> }> }>;
+    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }
 
 /**
@@ -108,5 +110,5 @@ export interface ResourcePolicyArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
-    readonly snapshotSchedulePolicy?: pulumi.Input<{ retentionPolicy?: pulumi.Input<{ maxRetentionDays: pulumi.Input<number>, onSourceDiskDelete?: pulumi.Input<string> }>, schedule: pulumi.Input<{ dailySchedule?: pulumi.Input<{ daysInCycle: pulumi.Input<number>, startTime: pulumi.Input<string> }>, hourlySchedule?: pulumi.Input<{ hoursInCycle: pulumi.Input<number>, startTime: pulumi.Input<string> }>, weeklySchedule?: pulumi.Input<{ dayOfWeeks: pulumi.Input<pulumi.Input<{ day: pulumi.Input<string>, startTime: pulumi.Input<string> }>[]> }> }>, snapshotProperties?: pulumi.Input<{ guestFlush?: pulumi.Input<boolean>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, storageLocations?: pulumi.Input<string> }> }>;
+    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }

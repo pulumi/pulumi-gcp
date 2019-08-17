@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -99,13 +101,13 @@ export class ManagedZone extends pulumi.CustomResource {
 
     public readonly description!: pulumi.Output<string>;
     public readonly dnsName!: pulumi.Output<string>;
-    public readonly dnssecConfig!: pulumi.Output<{ defaultKeySpecs: { algorithm?: string, keyLength?: number, keyType?: string, kind?: string }[], kind?: string, nonExistence: string, state?: string } | undefined>;
-    public readonly forwardingConfig!: pulumi.Output<{ targetNameServers?: { ipv4Address?: string }[] } | undefined>;
+    public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
+    public readonly forwardingConfig!: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
-    public readonly peeringConfig!: pulumi.Output<{ targetNetwork?: { networkUrl?: string } } | undefined>;
-    public readonly privateVisibilityConfig!: pulumi.Output<{ networks?: { networkUrl?: string }[] } | undefined>;
+    public readonly peeringConfig!: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
+    public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -170,13 +172,13 @@ export class ManagedZone extends pulumi.CustomResource {
 export interface ManagedZoneState {
     readonly description?: pulumi.Input<string>;
     readonly dnsName?: pulumi.Input<string>;
-    readonly dnssecConfig?: pulumi.Input<{ defaultKeySpecs?: pulumi.Input<pulumi.Input<{ algorithm?: pulumi.Input<string>, keyLength?: pulumi.Input<number>, keyType?: pulumi.Input<string>, kind?: pulumi.Input<string> }>[]>, kind?: pulumi.Input<string>, nonExistence?: pulumi.Input<string>, state?: pulumi.Input<string> }>;
-    readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
+    readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly peeringConfig?: pulumi.Input<{ targetNetwork?: pulumi.Input<{ networkUrl?: pulumi.Input<string> }> }>;
-    readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
+    readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -191,12 +193,12 @@ export interface ManagedZoneState {
 export interface ManagedZoneArgs {
     readonly description?: pulumi.Input<string>;
     readonly dnsName: pulumi.Input<string>;
-    readonly dnssecConfig?: pulumi.Input<{ defaultKeySpecs?: pulumi.Input<pulumi.Input<{ algorithm?: pulumi.Input<string>, keyLength?: pulumi.Input<number>, keyType?: pulumi.Input<string>, kind?: pulumi.Input<string> }>[]>, kind?: pulumi.Input<string>, nonExistence?: pulumi.Input<string>, state?: pulumi.Input<string> }>;
-    readonly forwardingConfig?: pulumi.Input<{ targetNameServers?: pulumi.Input<pulumi.Input<{ ipv4Address?: pulumi.Input<string> }>[]> }>;
+    readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly name?: pulumi.Input<string>;
-    readonly peeringConfig?: pulumi.Input<{ targetNetwork?: pulumi.Input<{ networkUrl?: pulumi.Input<string> }> }>;
-    readonly privateVisibilityConfig?: pulumi.Input<{ networks?: pulumi.Input<pulumi.Input<{ networkUrl?: pulumi.Input<string> }>[]> }>;
+    readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

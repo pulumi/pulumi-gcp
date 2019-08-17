@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -58,10 +60,10 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
-    public /*out*/ readonly apis!: pulumi.Output<{ methods: { name: string, requestType: string, responseType: string, syntax: string }[], name: string, syntax: string, version: string }[]>;
+    public /*out*/ readonly apis!: pulumi.Output<outputs.endpoints.ServiceApi[]>;
     public /*out*/ readonly configId!: pulumi.Output<string>;
     public /*out*/ readonly dnsAddress!: pulumi.Output<string>;
-    public /*out*/ readonly endpoints!: pulumi.Output<{ address: string, name: string }[]>;
+    public /*out*/ readonly endpoints!: pulumi.Output<outputs.endpoints.ServiceEndpoint[]>;
     public readonly grpcConfig!: pulumi.Output<string | undefined>;
     public readonly openapiConfig!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
@@ -119,10 +121,10 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
-    readonly apis?: pulumi.Input<pulumi.Input<{ methods?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, requestType?: pulumi.Input<string>, responseType?: pulumi.Input<string>, syntax?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, syntax?: pulumi.Input<string>, version?: pulumi.Input<string> }>[]>;
+    readonly apis?: pulumi.Input<pulumi.Input<inputs.endpoints.ServiceApi>[]>;
     readonly configId?: pulumi.Input<string>;
     readonly dnsAddress?: pulumi.Input<string>;
-    readonly endpoints?: pulumi.Input<pulumi.Input<{ address?: pulumi.Input<string>, name?: pulumi.Input<string> }>[]>;
+    readonly endpoints?: pulumi.Input<pulumi.Input<inputs.endpoints.ServiceEndpoint>[]>;
     readonly grpcConfig?: pulumi.Input<string>;
     readonly openapiConfig?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;

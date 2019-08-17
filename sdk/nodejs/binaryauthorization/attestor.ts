@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -82,7 +84,7 @@ export class Attestor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Attestor.__pulumiType;
     }
 
-    public readonly attestationAuthorityNote!: pulumi.Output<{ delegationServiceAccountEmail: string, noteReference: string, publicKeys?: { asciiArmoredPgpPublicKey?: string, comment?: string, id?: string, pkixPublicKey?: { publicKeyPem?: string, signatureAlgorithm?: string } }[] }>;
+    public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -128,7 +130,7 @@ export class Attestor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Attestor resources.
  */
 export interface AttestorState {
-    readonly attestationAuthorityNote?: pulumi.Input<{ delegationServiceAccountEmail?: pulumi.Input<string>, noteReference: pulumi.Input<string>, publicKeys?: pulumi.Input<pulumi.Input<{ asciiArmoredPgpPublicKey?: pulumi.Input<string>, comment?: pulumi.Input<string>, id?: pulumi.Input<string>, pkixPublicKey?: pulumi.Input<{ publicKeyPem?: pulumi.Input<string>, signatureAlgorithm?: pulumi.Input<string> }> }>[]> }>;
+    readonly attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
@@ -138,7 +140,7 @@ export interface AttestorState {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
-    readonly attestationAuthorityNote: pulumi.Input<{ delegationServiceAccountEmail?: pulumi.Input<string>, noteReference: pulumi.Input<string>, publicKeys?: pulumi.Input<pulumi.Input<{ asciiArmoredPgpPublicKey?: pulumi.Input<string>, comment?: pulumi.Input<string>, id?: pulumi.Input<string>, pkixPublicKey?: pulumi.Input<{ publicKeyPem?: pulumi.Input<string>, signatureAlgorithm?: pulumi.Input<string> }> }>[]> }>;
+    readonly attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;

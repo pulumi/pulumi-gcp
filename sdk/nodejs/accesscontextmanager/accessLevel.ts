@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -71,7 +73,7 @@ export class AccessLevel extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessLevel.__pulumiType;
     }
 
-    public readonly basic!: pulumi.Output<{ combiningFunction?: string, conditions: { devicePolicy?: { allowedDeviceManagementLevels?: string[], allowedEncryptionStatuses?: string[], osConstraints?: { minimumVersion?: string, osType?: string }[], requireScreenLock?: boolean }, ipSubnetworks?: string[], members?: string[], negate?: boolean, requiredAccessLevels?: string[] }[] } | undefined>;
+    public readonly basic!: pulumi.Output<outputs.accesscontextmanager.AccessLevelBasic | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly parent!: pulumi.Output<string>;
@@ -123,7 +125,7 @@ export class AccessLevel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessLevel resources.
  */
 export interface AccessLevelState {
-    readonly basic?: pulumi.Input<{ combiningFunction?: pulumi.Input<string>, conditions: pulumi.Input<pulumi.Input<{ devicePolicy?: pulumi.Input<{ allowedDeviceManagementLevels?: pulumi.Input<pulumi.Input<string>[]>, allowedEncryptionStatuses?: pulumi.Input<pulumi.Input<string>[]>, osConstraints?: pulumi.Input<pulumi.Input<{ minimumVersion?: pulumi.Input<string>, osType?: pulumi.Input<string> }>[]>, requireScreenLock?: pulumi.Input<boolean> }>, ipSubnetworks?: pulumi.Input<pulumi.Input<string>[]>, members?: pulumi.Input<pulumi.Input<string>[]>, negate?: pulumi.Input<boolean>, requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]> }>[]> }>;
+    readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly parent?: pulumi.Input<string>;
@@ -134,7 +136,7 @@ export interface AccessLevelState {
  * The set of arguments for constructing a AccessLevel resource.
  */
 export interface AccessLevelArgs {
-    readonly basic?: pulumi.Input<{ combiningFunction?: pulumi.Input<string>, conditions: pulumi.Input<pulumi.Input<{ devicePolicy?: pulumi.Input<{ allowedDeviceManagementLevels?: pulumi.Input<pulumi.Input<string>[]>, allowedEncryptionStatuses?: pulumi.Input<pulumi.Input<string>[]>, osConstraints?: pulumi.Input<pulumi.Input<{ minimumVersion?: pulumi.Input<string>, osType?: pulumi.Input<string> }>[]>, requireScreenLock?: pulumi.Input<boolean> }>, ipSubnetworks?: pulumi.Input<pulumi.Input<string>[]>, members?: pulumi.Input<pulumi.Input<string>[]>, negate?: pulumi.Input<boolean>, requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]> }>[]> }>;
+    readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly parent: pulumi.Input<string>;

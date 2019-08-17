@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * // Get folder by id
- * const myFolder1 = pulumi.output(gcp.organizations.getFolder({
+ * const myFolder1 = gcp.organizations.getFolder({
  *     folder: "folders/12345",
  *     lookupOrganization: true,
- * }));
+ * });
  * // Search by fields
- * const myFolder2 = pulumi.output(gcp.organizations.getFolder({
+ * const myFolder2 = gcp.organizations.getFolder({
  *     folder: "folders/23456",
- * }));
+ * });
  * 
  * export const myFolder1Organization = myFolder1.organization;
  * export const myFolder2Parent = myFolder2.parent;

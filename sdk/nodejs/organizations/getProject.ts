@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const project = pulumi.output(gcp.organizations.getProject({}));
+ * const project = gcp.organizations.getProject({});
  * 
  * export const projectNumber = project.number;
  * ```
@@ -52,7 +54,7 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    readonly appEngines: { authDomain: string, codeBucket: string, defaultBucket: string, defaultHostname: string, featureSettings: { splitHealthChecks: boolean }[], gcrDomain: string, locationId: string, name: string, servingStatus: string, urlDispatchRules: { domain: string, path: string, service: string }[] }[];
+    readonly appEngines: outputs.organizations.GetProjectAppEngine[];
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
     readonly folderId: string;

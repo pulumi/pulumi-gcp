@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -63,7 +65,7 @@ export class Trigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
-    public readonly build!: pulumi.Output<{ images?: string[], steps?: { args?: string[], dir?: string, entrypoint?: string, envs?: string[], id?: string, name?: string, secretEnvs?: string[], timeout?: string, timing?: string, volumes?: { name?: string, path?: string }[], waitFors?: string[] }[], tags?: string[] } | undefined>;
+    public readonly build!: pulumi.Output<outputs.cloudbuild.TriggerBuild | undefined>;
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly disabled!: pulumi.Output<boolean | undefined>;
@@ -77,7 +79,7 @@ export class Trigger extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly triggerId!: pulumi.Output<string>;
-    public readonly triggerTemplate!: pulumi.Output<{ branchName?: string, commitSha?: string, dir?: string, projectId: string, repoName?: string, tagName?: string } | undefined>;
+    public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -131,7 +133,7 @@ export class Trigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Trigger resources.
  */
 export interface TriggerState {
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, dir?: pulumi.Input<string>, entrypoint?: pulumi.Input<string>, envs?: pulumi.Input<pulumi.Input<string>[]>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, secretEnvs?: pulumi.Input<pulumi.Input<string>[]>, timeout?: pulumi.Input<string>, timing?: pulumi.Input<string>, volumes?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, path?: pulumi.Input<string> }>[]>, waitFors?: pulumi.Input<pulumi.Input<string>[]> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<inputs.cloudbuild.TriggerBuild>;
     readonly createTime?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly disabled?: pulumi.Input<boolean>;
@@ -145,14 +147,14 @@ export interface TriggerState {
     readonly project?: pulumi.Input<string>;
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly triggerId?: pulumi.Input<string>;
-    readonly triggerTemplate?: pulumi.Input<{ branchName?: pulumi.Input<string>, commitSha?: pulumi.Input<string>, dir?: pulumi.Input<string>, projectId?: pulumi.Input<string>, repoName?: pulumi.Input<string>, tagName?: pulumi.Input<string> }>;
+    readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }
 
 /**
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
-    readonly build?: pulumi.Input<{ images?: pulumi.Input<pulumi.Input<string>[]>, steps?: pulumi.Input<pulumi.Input<{ args?: pulumi.Input<pulumi.Input<string>[]>, dir?: pulumi.Input<string>, entrypoint?: pulumi.Input<string>, envs?: pulumi.Input<pulumi.Input<string>[]>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, secretEnvs?: pulumi.Input<pulumi.Input<string>[]>, timeout?: pulumi.Input<string>, timing?: pulumi.Input<string>, volumes?: pulumi.Input<pulumi.Input<{ name?: pulumi.Input<string>, path?: pulumi.Input<string> }>[]>, waitFors?: pulumi.Input<pulumi.Input<string>[]> }>[]>, tags?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly build?: pulumi.Input<inputs.cloudbuild.TriggerBuild>;
     readonly description?: pulumi.Input<string>;
     readonly disabled?: pulumi.Input<boolean>;
     readonly filename?: pulumi.Input<string>;
@@ -164,5 +166,5 @@ export interface TriggerArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly triggerTemplate?: pulumi.Input<{ branchName?: pulumi.Input<string>, commitSha?: pulumi.Input<string>, dir?: pulumi.Input<string>, projectId?: pulumi.Input<string>, repoName?: pulumi.Input<string>, tagName?: pulumi.Input<string> }>;
+    readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }

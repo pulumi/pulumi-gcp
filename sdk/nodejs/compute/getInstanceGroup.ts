@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const all = pulumi.output(gcp.compute.getInstanceGroup({
+ * const all = gcp.compute.getInstanceGroup({
  *     name: "instance-group-name",
  *     zone: "us-central1-a",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
@@ -80,7 +82,7 @@ export interface GetInstanceGroupResult {
     /**
      * List of named ports in the group.
      */
-    readonly namedPorts: { name: string, port: number }[];
+    readonly namedPorts: outputs.compute.GetInstanceGroupNamedPort[];
     /**
      * The URL of the network the instance group is in.
      */

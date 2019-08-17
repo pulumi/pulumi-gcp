@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -74,7 +76,7 @@ export class Index extends pulumi.CustomResource {
 
     public readonly collection!: pulumi.Output<string>;
     public readonly database!: pulumi.Output<string | undefined>;
-    public readonly fields!: pulumi.Output<{ arrayConfig?: string, fieldPath?: string, order?: string }[]>;
+    public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly queryScope!: pulumi.Output<string | undefined>;
@@ -129,7 +131,7 @@ export class Index extends pulumi.CustomResource {
 export interface IndexState {
     readonly collection?: pulumi.Input<string>;
     readonly database?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<pulumi.Input<{ arrayConfig?: pulumi.Input<string>, fieldPath?: pulumi.Input<string>, order?: pulumi.Input<string> }>[]>;
+    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly queryScope?: pulumi.Input<string>;
@@ -141,7 +143,7 @@ export interface IndexState {
 export interface IndexArgs {
     readonly collection: pulumi.Input<string>;
     readonly database?: pulumi.Input<string>;
-    readonly fields: pulumi.Input<pulumi.Input<{ arrayConfig?: pulumi.Input<string>, fieldPath?: pulumi.Input<string>, order?: pulumi.Input<string> }>[]>;
+    readonly fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     readonly project?: pulumi.Input<string>;
     readonly queryScope?: pulumi.Input<string>;
 }

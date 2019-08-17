@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -103,21 +105,21 @@ export class Job extends pulumi.CustomResource {
      * job is first cancelled before issuing the delete.
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
-    public readonly hadoopConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
-    public readonly hiveConfig!: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
+    public readonly hadoopConfig!: pulumi.Output<outputs.dataproc.JobHadoopConfig | undefined>;
+    public readonly hiveConfig!: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly pigConfig!: pulumi.Output<{ continueOnFailure?: boolean, jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
-    public readonly placement!: pulumi.Output<{ clusterName: string, clusterUuid: string }>;
+    public readonly pigConfig!: pulumi.Output<outputs.dataproc.JobPigConfig | undefined>;
+    public readonly placement!: pulumi.Output<outputs.dataproc.JobPlacement>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly pysparkConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainPythonFileUri: string, properties?: {[key: string]: string}, pythonFileUris?: string[] } | undefined>;
-    public readonly reference!: pulumi.Output<{ jobId: string }>;
+    public readonly pysparkConfig!: pulumi.Output<outputs.dataproc.JobPysparkConfig | undefined>;
+    public readonly reference!: pulumi.Output<outputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
@@ -126,10 +128,10 @@ export class Job extends pulumi.CustomResource {
     /**
      * Optional. Job scheduling configuration.
      */
-    public readonly scheduling!: pulumi.Output<{ maxFailuresPerHour?: number } | undefined>;
-    public readonly sparkConfig!: pulumi.Output<{ archiveUris?: string[], args?: string[], fileUris?: string[], jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, mainClass?: string, mainJarFileUri?: string, properties?: {[key: string]: string} } | undefined>;
-    public readonly sparksqlConfig!: pulumi.Output<{ jarFileUris?: string[], loggingConfig: { driverLogLevels?: {[key: string]: string} }, properties?: {[key: string]: string}, queryFileUri?: string, queryLists?: string[], scriptVariables?: {[key: string]: string} } | undefined>;
-    public /*out*/ readonly status!: pulumi.Output<{ details: string, state: string, stateStartTime: string, substate: string }>;
+    public readonly scheduling!: pulumi.Output<outputs.dataproc.JobScheduling | undefined>;
+    public readonly sparkConfig!: pulumi.Output<outputs.dataproc.JobSparkConfig | undefined>;
+    public readonly sparksqlConfig!: pulumi.Output<outputs.dataproc.JobSparksqlConfig | undefined>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.dataproc.JobStatus>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -210,21 +212,21 @@ export interface JobState {
      * job is first cancelled before issuing the delete.
      */
     readonly forceDelete?: pulumi.Input<boolean>;
-    readonly hadoopConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainClass?: pulumi.Input<string>, mainJarFileUri?: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly hiveConfig?: pulumi.Input<{ continueOnFailure?: pulumi.Input<boolean>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
+    readonly hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    readonly hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly pigConfig?: pulumi.Input<{ continueOnFailure?: pulumi.Input<boolean>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly placement?: pulumi.Input<{ clusterName: pulumi.Input<string>, clusterUuid?: pulumi.Input<string> }>;
+    readonly pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    readonly placement?: pulumi.Input<inputs.dataproc.JobPlacement>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pysparkConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainPythonFileUri: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pythonFileUris?: pulumi.Input<pulumi.Input<string>[]> }>;
-    readonly reference?: pulumi.Input<{ jobId?: pulumi.Input<string> }>;
+    readonly pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    readonly reference?: pulumi.Input<inputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
@@ -233,10 +235,10 @@ export interface JobState {
     /**
      * Optional. Job scheduling configuration.
      */
-    readonly scheduling?: pulumi.Input<{ maxFailuresPerHour?: pulumi.Input<number> }>;
-    readonly sparkConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainClass?: pulumi.Input<string>, mainJarFileUri?: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly sparksqlConfig?: pulumi.Input<{ jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly status?: pulumi.Input<{ details?: pulumi.Input<string>, state?: pulumi.Input<string>, stateStartTime?: pulumi.Input<string>, substate?: pulumi.Input<string> }>;
+    readonly scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    readonly sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    readonly sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    readonly status?: pulumi.Input<inputs.dataproc.JobStatus>;
 }
 
 /**
@@ -249,21 +251,21 @@ export interface JobArgs {
      * job is first cancelled before issuing the delete.
      */
     readonly forceDelete?: pulumi.Input<boolean>;
-    readonly hadoopConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainClass?: pulumi.Input<string>, mainJarFileUri?: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly hiveConfig?: pulumi.Input<{ continueOnFailure?: pulumi.Input<boolean>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
+    readonly hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    readonly hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly pigConfig?: pulumi.Input<{ continueOnFailure?: pulumi.Input<boolean>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly placement: pulumi.Input<{ clusterName: pulumi.Input<string>, clusterUuid?: pulumi.Input<string> }>;
+    readonly pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    readonly placement: pulumi.Input<inputs.dataproc.JobPlacement>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly pysparkConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainPythonFileUri: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, pythonFileUris?: pulumi.Input<pulumi.Input<string>[]> }>;
-    readonly reference?: pulumi.Input<{ jobId?: pulumi.Input<string> }>;
+    readonly pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    readonly reference?: pulumi.Input<inputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
@@ -272,7 +274,7 @@ export interface JobArgs {
     /**
      * Optional. Job scheduling configuration.
      */
-    readonly scheduling?: pulumi.Input<{ maxFailuresPerHour?: pulumi.Input<number> }>;
-    readonly sparkConfig?: pulumi.Input<{ archiveUris?: pulumi.Input<pulumi.Input<string>[]>, args?: pulumi.Input<pulumi.Input<string>[]>, fileUris?: pulumi.Input<pulumi.Input<string>[]>, jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, mainClass?: pulumi.Input<string>, mainJarFileUri?: pulumi.Input<string>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
-    readonly sparksqlConfig?: pulumi.Input<{ jarFileUris?: pulumi.Input<pulumi.Input<string>[]>, loggingConfig?: pulumi.Input<{ driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>, properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, queryFileUri?: pulumi.Input<string>, queryLists?: pulumi.Input<pulumi.Input<string>[]>, scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
+    readonly scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    readonly sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    readonly sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
 }

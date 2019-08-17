@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -78,13 +80,13 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     }
 
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
-    public readonly attachedDisks!: pulumi.Output<{ deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, kmsKeySelfLink: string, mode: string, source: string }[]>;
-    public readonly bootDisk!: pulumi.Output<{ autoDelete: boolean, deviceName: string, diskEncryptionKeyRaw: string, diskEncryptionKeySha256: string, initializeParams: { image: string, labels: {[key: string]: any}, size: number, type: string }, kmsKeySelfLink: string, source: string }>;
+    public readonly attachedDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateAttachedDisk[]>;
+    public readonly bootDisk!: pulumi.Output<outputs.compute.InstanceFromTemplateBootDisk>;
     public readonly canIpForward!: pulumi.Output<boolean>;
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean>;
     public readonly description!: pulumi.Output<string>;
-    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[]>;
+    public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceFromTemplateGuestAccelerator[]>;
     public readonly hostname!: pulumi.Output<string>;
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
@@ -99,13 +101,13 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Changing this forces a new resource to be created.
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs: { natIp: string, networkTier: string, publicPtrDomainName: string }[], aliasIpRanges: { ipCidrRange: string, subnetworkRangeName: string }[], name: string, network: string, networkIp: string, subnetwork: string, subnetworkProject: string }[]>;
+    public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkInterface[]>;
     public readonly project!: pulumi.Output<string>;
-    public readonly scheduling!: pulumi.Output<{ automaticRestart: boolean, nodeAffinities: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible: boolean }>;
-    public readonly scratchDisks!: pulumi.Output<{ interface: string }[]>;
+    public readonly scheduling!: pulumi.Output<outputs.compute.InstanceFromTemplateScheduling>;
+    public readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateScratchDisk[]>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] }>;
-    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring: boolean, enableSecureBoot: boolean, enableVtpm: boolean }>;
+    public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceFromTemplateServiceAccount>;
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
@@ -211,13 +213,13 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
  */
 export interface InstanceFromTemplateState {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateAttachedDisk>[]>;
+    readonly bootDisk?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDisk>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly cpuPlatform?: pulumi.Input<string>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
     readonly hostname?: pulumi.Input<string>;
     readonly instanceId?: pulumi.Input<string>;
     readonly labelFingerprint?: pulumi.Input<string>;
@@ -232,13 +234,13 @@ export interface InstanceFromTemplateState {
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
     readonly project?: pulumi.Input<string>;
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
     readonly selfLink?: pulumi.Input<string>;
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceFromTemplateServiceAccount>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
@@ -258,12 +260,12 @@ export interface InstanceFromTemplateState {
  */
 export interface InstanceFromTemplateArgs {
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
-    readonly attachedDisks?: pulumi.Input<pulumi.Input<{ deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, kmsKeySelfLink?: pulumi.Input<string>, mode?: pulumi.Input<string>, source: pulumi.Input<string> }>[]>;
-    readonly bootDisk?: pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKeyRaw?: pulumi.Input<string>, diskEncryptionKeySha256?: pulumi.Input<string>, initializeParams?: pulumi.Input<{ image?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: any}>, size?: pulumi.Input<number>, type?: pulumi.Input<string> }>, kmsKeySelfLink?: pulumi.Input<string>, source?: pulumi.Input<string> }>;
+    readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateAttachedDisk>[]>;
+    readonly bootDisk?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDisk>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
     readonly hostname?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly machineType?: pulumi.Input<string>;
@@ -275,12 +277,12 @@ export interface InstanceFromTemplateArgs {
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string>, publicPtrDomainName?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, name?: pulumi.Input<string>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
     readonly project?: pulumi.Input<string>;
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
-    readonly scratchDisks?: pulumi.Input<pulumi.Input<{ interface?: pulumi.Input<string> }>[]>;
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
+    readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceFromTemplateServiceAccount>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.

@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/iam.serviceAccountUser",
  *     }],
- * }));
+ * });
  * const sa = new gcp.serviceAccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const defaultDefaultServiceAccount = pulumi.output(gcp.compute.getDefaultServiceAccount({}));
+ * const defaultDefaultServiceAccount = gcp.compute.getDefaultServiceAccount({});
  * const sa = new gcp.serviceAccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",

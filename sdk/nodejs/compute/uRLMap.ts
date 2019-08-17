@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -107,10 +109,10 @@ export class URLMap extends pulumi.CustomResource {
     public readonly defaultService!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
-    public readonly hostRules!: pulumi.Output<{ description?: string, hosts: string[], pathMatcher: string }[] | undefined>;
+    public readonly hostRules!: pulumi.Output<outputs.compute.URLMapHostRule[] | undefined>;
     public /*out*/ readonly mapId!: pulumi.Output<number>;
     public readonly name!: pulumi.Output<string>;
-    public readonly pathMatchers!: pulumi.Output<{ defaultService: string, description?: string, name: string, pathRules?: { paths: string[], service: string }[] }[] | undefined>;
+    public readonly pathMatchers!: pulumi.Output<outputs.compute.URLMapPathMatcher[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -120,7 +122,7 @@ export class URLMap extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly tests!: pulumi.Output<{ description?: string, host: string, path: string, service: string }[] | undefined>;
+    public readonly tests!: pulumi.Output<outputs.compute.URLMapTest[] | undefined>;
 
     /**
      * Create a URLMap resource with the given unique name, arguments, and options.
@@ -181,10 +183,10 @@ export interface URLMapState {
     readonly defaultService?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly fingerprint?: pulumi.Input<string>;
-    readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
+    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
     readonly mapId?: pulumi.Input<number>;
     readonly name?: pulumi.Input<string>;
-    readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
+    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -194,7 +196,7 @@ export interface URLMapState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
+    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }
 
 /**
@@ -203,13 +205,13 @@ export interface URLMapState {
 export interface URLMapArgs {
     readonly defaultService: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
-    readonly hostRules?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, hosts: pulumi.Input<pulumi.Input<string>[]>, pathMatcher: pulumi.Input<string> }>[]>;
+    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
     readonly name?: pulumi.Input<string>;
-    readonly pathMatchers?: pulumi.Input<pulumi.Input<{ defaultService: pulumi.Input<string>, description?: pulumi.Input<string>, name: pulumi.Input<string>, pathRules?: pulumi.Input<pulumi.Input<{ paths: pulumi.Input<pulumi.Input<string>[]>, service: pulumi.Input<string> }>[]> }>[]>;
+    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly tests?: pulumi.Input<pulumi.Input<{ description?: pulumi.Input<string>, host: pulumi.Input<string>, path: pulumi.Input<string>, service: pulumi.Input<string> }>[]>;
+    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }

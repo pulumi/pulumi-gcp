@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const group = pulumi.output(gcp.compute.getRegionInstanceGroup({
+ * const group = gcp.compute.getRegionInstanceGroup({
  *     name: "instance-group-name",
- * }));
+ * });
  * ```
  * 
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -73,7 +75,7 @@ export interface GetRegionInstanceGroupResult {
     /**
      * List of instances in the group, as a list of resources, each containing:
      */
-    readonly instances: { instance: string, namedPorts: { name: string, port: number }[], status: string }[];
+    readonly instances: outputs.compute.GetRegionInstanceGroupInstance[];
     /**
      * String port name
      */

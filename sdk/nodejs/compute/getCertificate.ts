@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myCert = pulumi.output(gcp.compute.getCertificate({
+ * const myCert = gcp.compute.getCertificate({
  *     location: "us-east1-a",
  *     name: "my-cert",
- * }));
+ * });
  * 
  * export const certificate = myCert.certificate;
  * export const certificateId = myCert.certificateId;

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -111,7 +113,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    public readonly booleanPolicy!: pulumi.Output<{ enforced: boolean } | undefined>;
+    public readonly booleanPolicy!: pulumi.Output<outputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
@@ -123,7 +125,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    public readonly listPolicy!: pulumi.Output<{ allow?: { all?: boolean, values?: string[] }, deny?: { all?: boolean, values?: string[] }, inheritFromParent?: boolean, suggestedValue: string } | undefined>;
+    public readonly listPolicy!: pulumi.Output<outputs.projects.OrganizationPolicyListPolicy | undefined>;
     /**
      * The project id of the project to set the policy for.
      */
@@ -131,7 +133,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
-    public readonly restorePolicy!: pulumi.Output<{ default: boolean } | undefined>;
+    public readonly restorePolicy!: pulumi.Output<outputs.projects.OrganizationPolicyRestorePolicy | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
@@ -196,7 +198,7 @@ export interface OrganizationPolicyState {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
+    readonly booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
@@ -208,7 +210,7 @@ export interface OrganizationPolicyState {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy>;
     /**
      * The project id of the project to set the policy for.
      */
@@ -216,7 +218,7 @@ export interface OrganizationPolicyState {
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
-    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
+    readonly restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
@@ -234,7 +236,7 @@ export interface OrganizationPolicyArgs {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    readonly booleanPolicy?: pulumi.Input<{ enforced: pulumi.Input<boolean> }>;
+    readonly booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
@@ -242,7 +244,7 @@ export interface OrganizationPolicyArgs {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    readonly listPolicy?: pulumi.Input<{ allow?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, deny?: pulumi.Input<{ all?: pulumi.Input<boolean>, values?: pulumi.Input<pulumi.Input<string>[]> }>, inheritFromParent?: pulumi.Input<boolean>, suggestedValue?: pulumi.Input<string> }>;
+    readonly listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy>;
     /**
      * The project id of the project to set the policy for.
      */
@@ -250,7 +252,7 @@ export interface OrganizationPolicyArgs {
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      */
-    readonly restorePolicy?: pulumi.Input<{ default: pulumi.Input<boolean> }>;
+    readonly restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy>;
     /**
      * Version of the Policy. Default version is 0.
      */

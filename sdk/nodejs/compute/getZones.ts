@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const available = pulumi.output(gcp.compute.getZones({}));
+ * const available = gcp.compute.getZones({});
  * const foo: gcp.compute.InstanceGroupManager[] = [];
- * for (let i = 0; i < available.apply(available => available.names.length); i++) {
+ * for (let i = 0; i < available.names.length; i++) {
  *     foo.push(new gcp.compute.InstanceGroupManager(`foo-${i}`, {
  *         baseInstanceName: `foobar-${i}`,
  *         instanceTemplate: google_compute_instance_template_foobar.selfLink,
  *         targetSize: 1,
- *         zone: available.apply(available => available.names[i]),
+ *         zone: available.names[i],
  *     }));
  * }
  * ```

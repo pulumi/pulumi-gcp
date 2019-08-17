@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myImage = pulumi.output(gcp.compute.getImage({
+ * const myImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
- * }));
+ * });
  * const foobar = new gcp.compute.Disk("foobar", {
  *     image: myImage.selfLink,
  *     size: 10,
@@ -130,10 +132,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myImage = pulumi.output(gcp.compute.getImage({
+ * const myImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
- * }));
+ * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     // boot disk
  *     disks: [{
@@ -207,11 +209,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    public readonly disks!: pulumi.Output<{ autoDelete?: boolean, boot: boolean, deviceName: string, diskEncryptionKey?: { kmsKeySelfLink?: string }, diskName?: string, diskSizeGb?: number, diskType: string, interface: string, labels?: {[key: string]: string}, mode: string, source?: string, sourceImage: string, type: string }[]>;
+    public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    public readonly guestAccelerators!: pulumi.Output<{ count: number, type: string }[] | undefined>;
+    public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceTemplateGuestAccelerator[] | undefined>;
     /**
      * A brief description to use for instances
      * created from this template.
@@ -262,7 +264,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    public readonly networkInterfaces!: pulumi.Output<{ accessConfigs?: { natIp: string, networkTier: string }[], aliasIpRanges?: { ipCidrRange: string, subnetworkRangeName?: string }[], network: string, networkIp?: string, subnetwork: string, subnetworkProject: string }[] | undefined>;
+    public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceTemplateNetworkInterface[] | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -281,7 +283,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling!: pulumi.Output<{ automaticRestart?: boolean, nodeAffinities?: { key: string, operator: string, values: string[] }[], onHostMaintenance: string, preemptible?: boolean }>;
+    public readonly scheduling!: pulumi.Output<outputs.compute.InstanceTemplateScheduling>;
     /**
      * The URI of the created resource.
      */
@@ -289,12 +291,12 @@ export class InstanceTemplate extends pulumi.CustomResource {
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    public readonly serviceAccount!: pulumi.Output<{ email: string, scopes: string[] } | undefined>;
+    public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceTemplateServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<{ enableIntegrityMonitoring?: boolean, enableSecureBoot?: boolean, enableVtpm?: boolean }>;
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateShieldedInstanceConfig>;
     /**
      * Tags to attach to the instance.
      */
@@ -398,11 +400,11 @@ export interface InstanceTemplateState {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[]>;
     /**
      * A brief description to use for instances
      * created from this template.
@@ -453,7 +455,7 @@ export interface InstanceTemplateState {
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -472,7 +474,7 @@ export interface InstanceTemplateState {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling>;
     /**
      * The URI of the created resource.
      */
@@ -480,12 +482,12 @@ export interface InstanceTemplateState {
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig>;
     /**
      * Tags to attach to the instance.
      */
@@ -514,11 +516,11 @@ export interface InstanceTemplateArgs {
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    readonly disks: pulumi.Input<pulumi.Input<{ autoDelete?: pulumi.Input<boolean>, boot?: pulumi.Input<boolean>, deviceName?: pulumi.Input<string>, diskEncryptionKey?: pulumi.Input<{ kmsKeySelfLink?: pulumi.Input<string> }>, diskName?: pulumi.Input<string>, diskSizeGb?: pulumi.Input<number>, diskType?: pulumi.Input<string>, interface?: pulumi.Input<string>, labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>, mode?: pulumi.Input<string>, source?: pulumi.Input<string>, sourceImage?: pulumi.Input<string>, type?: pulumi.Input<string> }>[]>;
+    readonly disks: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<{ count: pulumi.Input<number>, type: pulumi.Input<string> }>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[]>;
     /**
      * A brief description to use for instances
      * created from this template.
@@ -565,7 +567,7 @@ export interface InstanceTemplateArgs {
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ accessConfigs?: pulumi.Input<pulumi.Input<{ natIp?: pulumi.Input<string>, networkTier?: pulumi.Input<string> }>[]>, aliasIpRanges?: pulumi.Input<pulumi.Input<{ ipCidrRange: pulumi.Input<string>, subnetworkRangeName?: pulumi.Input<string> }>[]>, network?: pulumi.Input<string>, networkIp?: pulumi.Input<string>, subnetwork?: pulumi.Input<string>, subnetworkProject?: pulumi.Input<string> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -584,16 +586,16 @@ export interface InstanceTemplateArgs {
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    readonly scheduling?: pulumi.Input<{ automaticRestart?: pulumi.Input<boolean>, nodeAffinities?: pulumi.Input<pulumi.Input<{ key: pulumi.Input<string>, operator: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>, onHostMaintenance?: pulumi.Input<string>, preemptible?: pulumi.Input<boolean> }>;
+    readonly scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    readonly serviceAccount?: pulumi.Input<{ email?: pulumi.Input<string>, scopes: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<{ enableIntegrityMonitoring?: pulumi.Input<boolean>, enableSecureBoot?: pulumi.Input<boolean>, enableVtpm?: pulumi.Input<boolean> }>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig>;
     /**
      * Tags to attach to the instance.
      */

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -90,7 +92,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly parent!: pulumi.Output<string>;
     public readonly perimeterType!: pulumi.Output<string | undefined>;
-    public readonly status!: pulumi.Output<{ accessLevels?: string[], resources?: string[], restrictedServices?: string[] } | undefined>;
+    public readonly status!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     public readonly title!: pulumi.Output<string>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -151,7 +153,7 @@ export interface ServicePerimeterState {
     readonly name?: pulumi.Input<string>;
     readonly parent?: pulumi.Input<string>;
     readonly perimeterType?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     readonly title?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
 }
@@ -164,6 +166,6 @@ export interface ServicePerimeterArgs {
     readonly name?: pulumi.Input<string>;
     readonly parent: pulumi.Input<string>;
     readonly perimeterType?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<{ accessLevels?: pulumi.Input<pulumi.Input<string>[]>, resources?: pulumi.Input<pulumi.Input<string>[]>, restrictedServices?: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     readonly title: pulumi.Input<string>;
 }
