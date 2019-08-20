@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/terraform v0.12.6
 	github.com/openzipkin/zipkin-go v0.1.6 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.0.0-beta.2
+	github.com/pulumi/pulumi v1.0.0-beta.2.0.20190820080809-cfd3b8ce09c6
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190816182908-14e049b09dcf
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190801223639-c9c945e570d2

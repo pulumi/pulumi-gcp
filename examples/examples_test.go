@@ -74,7 +74,8 @@ func TestExamples(t *testing.T) {
 	shortTests := []integration.ProgramTestOptions{
 		jsBase.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
 		jsBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "serverless"),
+			Dir:           path.Join(cwd, "serverless"),
+			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
@@ -83,13 +84,15 @@ func TestExamples(t *testing.T) {
 			}),
 		}),
 		jsBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "bucket"),
+			Dir:           path.Join(cwd, "bucket"),
+			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
 		}),
 		jsBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "topic"),
+			Dir:           path.Join(cwd, "topic"),
+			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
 			ExpectRefreshChanges: true,
@@ -98,10 +101,12 @@ func TestExamples(t *testing.T) {
 			Dir: path.Join(cwd, "minimal-py"),
 		}),
 		pythonBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "bucket-py"),
+			Dir:           path.Join(cwd, "bucket-py"),
+			RunUpdateTest: true,
 		}),
 		pythonBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "datasource-py"),
+			Dir:           path.Join(cwd, "datasource-py"),
+			RunUpdateTest: true,
 		}),
 	}
 
@@ -110,13 +115,15 @@ func TestExamples(t *testing.T) {
 			Dir: path.Join(cwd, "loadbalancer"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
-			SkipRefresh:              true,
+			SkipRefresh:   true,
+			RunUpdateTest: true,
 		}),
 		jsBase.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "webserver"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
-			SkipRefresh: true,
+			SkipRefresh:   true,
+			RunUpdateTest: true,
 		}),
 	}
 
