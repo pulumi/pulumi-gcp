@@ -2,9 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform@14e049b09d
+_(none)_
 
 ---
+
+## 1.0.0-beta.2 (2019-08-26)
+* Upgrade to pulumi-terraform@14e049b09d
+* Upgrade to pulumi-terraform@58c7473d08
+* Use 1.0-beta versions of python dependencies
 
 ## 1.0.0-beta.1 (2019-08-13)
 * No significant changes
