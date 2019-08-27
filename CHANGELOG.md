@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Retype gcp.storage.BucketObject::source as Asset [#205](https://github.com/pulumi/pulumi-gcp/pull/205)
 
 ---
 

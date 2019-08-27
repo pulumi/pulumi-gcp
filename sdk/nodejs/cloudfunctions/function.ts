@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileArchive("./path/to/zip/file/which/contains/code"),
+ *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
  * });
  * const functionFunction = new gcp.cloudfunctions.Function("function", {
  *     availableMemoryMb: 128,
