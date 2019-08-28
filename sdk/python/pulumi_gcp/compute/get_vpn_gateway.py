@@ -67,6 +67,12 @@ class AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
 def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     """
     Get a VPN gateway within GCE from its name.
+    
+    :param str name: The name of the VPN gateway.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the project region is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
     """
@@ -76,7 +82,7 @@ def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__, opts=opts).value

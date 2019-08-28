@@ -67,6 +67,10 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 def get_network(name=None,project=None,opts=None):
     """
     Get a network within GCE from its name.
+    
+    :param str name: The name of the network.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_network.html.markdown.
     """
@@ -75,7 +79,7 @@ def get_network(name=None,project=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__, opts=opts).value

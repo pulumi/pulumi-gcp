@@ -55,6 +55,11 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     resource definitions, but it does not take care of protecting that data in the
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
+    
+    :param str ciphertext: The ciphertext to be decrypted, encoded in base64
+    :param str crypto_key: The id of the CryptoKey that will be used to
+           decrypt the provided ciphertext. This is represented by the format
+           `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret.html.markdown.
     """
@@ -63,7 +68,7 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts).value

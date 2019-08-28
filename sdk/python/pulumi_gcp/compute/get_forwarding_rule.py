@@ -123,6 +123,12 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
 def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     """
     Get a forwarding rule within GCE from its name.
+    
+    :param str name: The name of the forwarding rule.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the project region is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
     """
@@ -132,7 +138,7 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts).value

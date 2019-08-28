@@ -32,6 +32,19 @@ class SecurityPolicy(pulumi.CustomResource):
     The set of rules that belong to this policy. There must always be a default
     rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
     security policy, a default rule with action "allow" will be added. Structure is documented below.
+    
+      * `action` (`str`)
+      * `description` (`str`) - An optional description of this security policy. Max size is 2048.
+      * `match` (`dict`)
+    
+        * `config` (`dict`)
+    
+          * `srcIpRanges` (`list`)
+    
+        * `versionedExpr` (`str`)
+    
+      * `preview` (`bool`)
+      * `priority` (`float`)
     """
     self_link: pulumi.Output[str]
     """
@@ -50,6 +63,21 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
+        
+        The **rules** object supports the following:
+        
+          * `action` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
+          * `match` (`pulumi.Input[dict]`)
+        
+            * `config` (`pulumi.Input[dict]`)
+        
+              * `srcIpRanges` (`pulumi.Input[list]`)
+        
+            * `versionedExpr` (`pulumi.Input[str]`)
+        
+          * `preview` (`pulumi.Input[bool]`)
+          * `priority` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
         """
@@ -100,6 +128,21 @@ class SecurityPolicy(pulumi.CustomResource):
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **rules** object supports the following:
+        
+          * `action` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
+          * `match` (`pulumi.Input[dict]`)
+        
+            * `config` (`pulumi.Input[dict]`)
+        
+              * `srcIpRanges` (`pulumi.Input[list]`)
+        
+            * `versionedExpr` (`pulumi.Input[str]`)
+        
+          * `preview` (`pulumi.Input[bool]`)
+          * `priority` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
         """

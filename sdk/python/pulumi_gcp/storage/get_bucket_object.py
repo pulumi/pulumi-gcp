@@ -128,6 +128,9 @@ def get_bucket_object(bucket=None,name=None,opts=None):
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+    
+    :param str bucket: The name of the containing bucket.
+    :param str name: The name of the object.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
     """
@@ -136,7 +139,7 @@ def get_bucket_object(bucket=None,name=None,opts=None):
     __args__['bucket'] = bucket
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucketObject:getBucketObject', __args__, opts=opts).value

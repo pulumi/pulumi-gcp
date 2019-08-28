@@ -33,6 +33,35 @@ class Metric(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **bucket_options** object supports the following:
+        
+          * `explicit` (`pulumi.Input[dict]`)
+        
+            * `bounds` (`pulumi.Input[list]`)
+        
+          * `exponentialBuckets` (`pulumi.Input[dict]`)
+        
+            * `growthFactor` (`pulumi.Input[float]`)
+            * `numFiniteBuckets` (`pulumi.Input[float]`)
+            * `scale` (`pulumi.Input[float]`)
+        
+          * `linearBuckets` (`pulumi.Input[dict]`)
+        
+            * `numFiniteBuckets` (`pulumi.Input[float]`)
+            * `offset` (`pulumi.Input[float]`)
+            * `width` (`pulumi.Input[float]`)
+        
+        The **metric_descriptor** object supports the following:
+        
+          * `labels` (`pulumi.Input[list]`)
+        
+            * `description` (`pulumi.Input[str]`)
+            * `key` (`pulumi.Input[str]`)
+            * `valueType` (`pulumi.Input[str]`)
+        
+          * `metricKind` (`pulumi.Input[str]`)
+          * `valueType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
         """
@@ -80,6 +109,35 @@ class Metric(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **bucket_options** object supports the following:
+        
+          * `explicit` (`pulumi.Input[dict]`)
+        
+            * `bounds` (`pulumi.Input[list]`)
+        
+          * `exponentialBuckets` (`pulumi.Input[dict]`)
+        
+            * `growthFactor` (`pulumi.Input[float]`)
+            * `numFiniteBuckets` (`pulumi.Input[float]`)
+            * `scale` (`pulumi.Input[float]`)
+        
+          * `linearBuckets` (`pulumi.Input[dict]`)
+        
+            * `numFiniteBuckets` (`pulumi.Input[float]`)
+            * `offset` (`pulumi.Input[float]`)
+            * `width` (`pulumi.Input[float]`)
+        
+        The **metric_descriptor** object supports the following:
+        
+          * `labels` (`pulumi.Input[list]`)
+        
+            * `description` (`pulumi.Input[str]`)
+            * `key` (`pulumi.Input[str]`)
+            * `valueType` (`pulumi.Input[str]`)
+        
+          * `metricKind` (`pulumi.Input[str]`)
+          * `valueType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
         """

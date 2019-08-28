@@ -57,6 +57,38 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **backends** object supports the following:
+        
+          * `balancingMode` (`pulumi.Input[str]`)
+          * `capacityScaler` (`pulumi.Input[float]`)
+          * `description` (`pulumi.Input[str]`)
+          * `group` (`pulumi.Input[str]`)
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
+          * `maxRate` (`pulumi.Input[float]`)
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
+          * `maxRatePerInstance` (`pulumi.Input[float]`)
+          * `maxUtilization` (`pulumi.Input[float]`)
+        
+        The **cdn_policy** object supports the following:
+        
+          * `cacheKeyPolicy` (`pulumi.Input[dict]`)
+        
+            * `includeHost` (`pulumi.Input[bool]`)
+            * `includeProtocol` (`pulumi.Input[bool]`)
+            * `includeQueryString` (`pulumi.Input[bool]`)
+            * `queryStringBlacklists` (`pulumi.Input[list]`)
+            * `queryStringWhitelists` (`pulumi.Input[list]`)
+        
+          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
+        
+        The **iap** object supports the following:
+        
+          * `oauth2ClientId` (`pulumi.Input[str]`)
+          * `oauth2ClientSecret` (`pulumi.Input[str]`)
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
         """
@@ -117,6 +149,38 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **backends** object supports the following:
+        
+          * `balancingMode` (`pulumi.Input[str]`)
+          * `capacityScaler` (`pulumi.Input[float]`)
+          * `description` (`pulumi.Input[str]`)
+          * `group` (`pulumi.Input[str]`)
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
+          * `maxRate` (`pulumi.Input[float]`)
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
+          * `maxRatePerInstance` (`pulumi.Input[float]`)
+          * `maxUtilization` (`pulumi.Input[float]`)
+        
+        The **cdn_policy** object supports the following:
+        
+          * `cacheKeyPolicy` (`pulumi.Input[dict]`)
+        
+            * `includeHost` (`pulumi.Input[bool]`)
+            * `includeProtocol` (`pulumi.Input[bool]`)
+            * `includeQueryString` (`pulumi.Input[bool]`)
+            * `queryStringBlacklists` (`pulumi.Input[list]`)
+            * `queryStringWhitelists` (`pulumi.Input[list]`)
+        
+          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
+        
+        The **iap** object supports the following:
+        
+          * `oauth2ClientId` (`pulumi.Input[str]`)
+          * `oauth2ClientSecret` (`pulumi.Input[str]`)
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
         """

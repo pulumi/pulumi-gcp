@@ -70,6 +70,10 @@ def get_account(account_id=None,project=None,opts=None):
     """
     Get the service account from a project. For more information see
     the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+    
+    :param str account_id: The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
+    :param str project: The ID of the project that the service account is present in.
+           Defaults to the provider project configuration.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
     """
@@ -78,7 +82,7 @@ def get_account(account_id=None,project=None,opts=None):
     __args__['accountId'] = account_id
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts).value

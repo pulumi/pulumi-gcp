@@ -51,6 +51,11 @@ def get_zones(project=None,region=None,status=None,opts=None):
     """
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+    
+    :param str project: Project from which to list available zones. Defaults to project declared in the provider.
+    :param str region: Region from which to list available zones. Defaults to region declared in the provider.
+    :param str status: Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
+           Defaults to no filtering (all available zones - both `UP` and `DOWN`).
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_zones.html.markdown.
     """
@@ -60,7 +65,7 @@ def get_zones(project=None,region=None,status=None,opts=None):
     __args__['region'] = region
     __args__['status'] = status
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__, opts=opts).value

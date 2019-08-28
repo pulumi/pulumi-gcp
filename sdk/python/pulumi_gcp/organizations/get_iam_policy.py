@@ -57,6 +57,34 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     **Note:** Several restrictions apply when setting IAM policies through this API.
     See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
     for a list of these restrictions.
+    
+    :param list audit_configs: A nested configuration block that defines logging additional configuration for your project.
+    :param list bindings: A nested configuration block (described below)
+           defining a binding to be included in the policy document. Multiple
+           `binding` arguments are supported.
+    
+    The **audit_configs** object supports the following:
+    
+      * `auditLogConfigs` (`list`) - A nested block that defines the operations you'd like to log.
+    
+        * `exemptedMembers` (`list`) - Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        * `logType` (`str`) - Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+    
+      * `service` (`str`) - Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+    
+    The **bindings** object supports the following:
+    
+      * `members` (`list`) - An array of identites that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `organizations.Project` resource.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. It **can't** be used with the `organizations.Project` resource.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+      * `role` (`str`) - The role/permission that will be granted to the members.
+        See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
+        Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
     """
@@ -65,7 +93,7 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     __args__['auditConfigs'] = audit_configs
     __args__['bindings'] = bindings
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts).value

@@ -47,6 +47,10 @@ def get_regions(project=None,status=None,opts=None):
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+    
+    :param str project: Project from which to list available regions. Defaults to project declared in the provider.
+    :param str status: Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
+           Defaults to no filtering (all available regions - both `UP` and `DOWN`).
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
     """
@@ -55,7 +59,7 @@ def get_regions(project=None,status=None,opts=None):
     __args__['project'] = project
     __args__['status'] = status
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__, opts=opts).value

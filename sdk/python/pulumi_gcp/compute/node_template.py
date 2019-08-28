@@ -44,6 +44,16 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **node_type_flexibility** object supports the following:
+        
+          * `cpus` (`pulumi.Input[str]`)
+          * `localSsd` (`pulumi.Input[str]`)
+          * `memory` (`pulumi.Input[str]`)
+        
+        The **server_binding** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
         """
@@ -92,6 +102,16 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **node_type_flexibility** object supports the following:
+        
+          * `cpus` (`pulumi.Input[str]`)
+          * `localSsd` (`pulumi.Input[str]`)
+          * `memory` (`pulumi.Input[str]`)
+        
+        The **server_binding** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
         """

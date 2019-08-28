@@ -29,6 +29,27 @@ class AccessLevel(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **basic** object supports the following:
+        
+          * `combiningFunction` (`pulumi.Input[str]`)
+          * `conditions` (`pulumi.Input[list]`)
+        
+            * `devicePolicy` (`pulumi.Input[dict]`)
+        
+              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
+              * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
+              * `osConstraints` (`pulumi.Input[list]`)
+        
+                * `minimumVersion` (`pulumi.Input[str]`)
+                * `osType` (`pulumi.Input[str]`)
+        
+              * `requireScreenLock` (`pulumi.Input[bool]`)
+        
+            * `ipSubnetworks` (`pulumi.Input[list]`)
+            * `members` (`pulumi.Input[list]`)
+            * `negate` (`pulumi.Input[bool]`)
+            * `requiredAccessLevels` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
         """
@@ -73,6 +94,27 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **basic** object supports the following:
+        
+          * `combiningFunction` (`pulumi.Input[str]`)
+          * `conditions` (`pulumi.Input[list]`)
+        
+            * `devicePolicy` (`pulumi.Input[dict]`)
+        
+              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
+              * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
+              * `osConstraints` (`pulumi.Input[list]`)
+        
+                * `minimumVersion` (`pulumi.Input[str]`)
+                * `osType` (`pulumi.Input[str]`)
+        
+              * `requireScreenLock` (`pulumi.Input[bool]`)
+        
+            * `ipSubnetworks` (`pulumi.Input[list]`)
+            * `members` (`pulumi.Input[list]`)
+            * `negate` (`pulumi.Input[bool]`)
+            * `requiredAccessLevels` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
         """

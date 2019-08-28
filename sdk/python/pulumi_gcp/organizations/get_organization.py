@@ -67,6 +67,9 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
 def get_organization(domain=None,organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Organization.
+    
+    :param str domain: The domain name of the Organization.
+    :param str organization: The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/organization.html.markdown.
     """
@@ -75,7 +78,7 @@ def get_organization(domain=None,organization=None,opts=None):
     __args__['domain'] = domain
     __args__['organization'] = organization
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__, opts=opts).value

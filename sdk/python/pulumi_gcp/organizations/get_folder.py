@@ -81,6 +81,9 @@ class AwaitableGetFolderResult(GetFolderResult):
 def get_folder(folder=None,lookup_organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Folder.
+    
+    :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
+    :param bool lookup_organization: `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
     """
@@ -89,7 +92,7 @@ def get_folder(folder=None,lookup_organization=None,opts=None):
     __args__['folder'] = folder
     __args__['lookupOrganization'] = lookup_organization
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__, opts=opts).value

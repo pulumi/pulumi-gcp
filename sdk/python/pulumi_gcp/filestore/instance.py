@@ -35,6 +35,18 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **file_shares** object supports the following:
+        
+          * `capacityGb` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`)
+        
+        The **networks** object supports the following:
+        
+          * `ipAddresses` (`pulumi.Input[list]`)
+          * `modes` (`pulumi.Input[list]`)
+          * `network` (`pulumi.Input[str]`)
+          * `reservedIpRange` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
         """
@@ -88,6 +100,18 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **file_shares** object supports the following:
+        
+          * `capacityGb` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`)
+        
+        The **networks** object supports the following:
+        
+          * `ipAddresses` (`pulumi.Input[list]`)
+          * `modes` (`pulumi.Input[list]`)
+          * `network` (`pulumi.Input[str]`)
+          * `reservedIpRange` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
         """

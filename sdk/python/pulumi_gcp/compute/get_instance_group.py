@@ -87,6 +87,13 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+    
+    :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str self_link: The self link of the instance group. Either `name` or `self_link` must be provided.
+    :param str zone: The zone of the instance group. If referencing the instance group by name
+           and `zone` is not provided, the provider zone is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
     """
@@ -97,7 +104,7 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts).value

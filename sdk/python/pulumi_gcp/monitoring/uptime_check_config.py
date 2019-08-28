@@ -43,6 +43,45 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **content_matchers** object supports the following:
+        
+          * `content` (`pulumi.Input[str]`)
+        
+        The **http_check** object supports the following:
+        
+          * `authInfo` (`pulumi.Input[dict]`)
+        
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+          * `headers` (`pulumi.Input[dict]`)
+          * `maskHeaders` (`pulumi.Input[bool]`)
+          * `path` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `useSsl` (`pulumi.Input[bool]`)
+        
+        The **internal_checkers** object supports the following:
+        
+          * `display_name` (`pulumi.Input[str]`)
+          * `gcpZone` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`)
+          * `network` (`pulumi.Input[str]`)
+          * `peerProjectId` (`pulumi.Input[str]`)
+        
+        The **monitored_resource** object supports the following:
+        
+          * `labels` (`pulumi.Input[dict]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **resource_group** object supports the following:
+        
+          * `groupId` (`pulumi.Input[str]`)
+          * `resourceType` (`pulumi.Input[str]`)
+        
+        The **tcp_check** object supports the following:
+        
+          * `port` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
         """
@@ -98,6 +137,45 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **content_matchers** object supports the following:
+        
+          * `content` (`pulumi.Input[str]`)
+        
+        The **http_check** object supports the following:
+        
+          * `authInfo` (`pulumi.Input[dict]`)
+        
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+          * `headers` (`pulumi.Input[dict]`)
+          * `maskHeaders` (`pulumi.Input[bool]`)
+          * `path` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `useSsl` (`pulumi.Input[bool]`)
+        
+        The **internal_checkers** object supports the following:
+        
+          * `display_name` (`pulumi.Input[str]`)
+          * `gcpZone` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`)
+          * `network` (`pulumi.Input[str]`)
+          * `peerProjectId` (`pulumi.Input[str]`)
+        
+        The **monitored_resource** object supports the following:
+        
+          * `labels` (`pulumi.Input[dict]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **resource_group** object supports the following:
+        
+          * `groupId` (`pulumi.Input[str]`)
+          * `resourceType` (`pulumi.Input[str]`)
+        
+        The **tcp_check** object supports the following:
+        
+          * `port` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
         """

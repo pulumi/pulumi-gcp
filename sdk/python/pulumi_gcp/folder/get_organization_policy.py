@@ -65,6 +65,9 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    
+    :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder_organization_policy.html.markdown.
     """
@@ -73,7 +76,7 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
     __args__['constraint'] = constraint
     __args__['folder'] = folder
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value

@@ -39,6 +39,24 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **authentication** object supports the following:
+        
+          * `customAccount` (`pulumi.Input[dict]`)
+        
+            * `loginUrl` (`pulumi.Input[str]`)
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+          * `googleAccount` (`pulumi.Input[dict]`)
+        
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+        The **schedule** object supports the following:
+        
+          * `intervalDurationDays` (`pulumi.Input[float]`)
+          * `scheduleTime` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
         """
@@ -91,6 +109,24 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **authentication** object supports the following:
+        
+          * `customAccount` (`pulumi.Input[dict]`)
+        
+            * `loginUrl` (`pulumi.Input[str]`)
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+          * `googleAccount` (`pulumi.Input[dict]`)
+        
+            * `password` (`pulumi.Input[str]`)
+            * `username` (`pulumi.Input[str]`)
+        
+        The **schedule** object supports the following:
+        
+          * `intervalDurationDays` (`pulumi.Input[float]`)
+          * `scheduleTime` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
         """

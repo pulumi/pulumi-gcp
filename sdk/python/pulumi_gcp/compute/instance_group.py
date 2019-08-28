@@ -32,6 +32,12 @@ class InstanceGroup(pulumi.CustomResource):
     """
     The named port configuration. See the section below
     for details on configuration.
+    
+      * `name` (`str`) - The name of the instance group. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
+      * `port` (`float`)
     """
     network: pulumi.Output[str]
     """
@@ -86,6 +92,14 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+        
+        The **named_ports** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the instance group. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `port` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
         """
@@ -150,6 +164,14 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[float] size: The number of instances in the group.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+        
+        The **named_ports** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the instance group. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `port` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
         """

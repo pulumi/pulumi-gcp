@@ -55,7 +55,7 @@ def get_client_open_id_user_info(opts=None):
     __args__ = dict()
 
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts).value

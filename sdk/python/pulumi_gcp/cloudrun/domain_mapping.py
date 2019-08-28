@@ -32,6 +32,22 @@ class DomainMapping(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **metadata** object supports the following:
+        
+          * `annotations` (`pulumi.Input[dict]`)
+          * `generation` (`pulumi.Input[float]`)
+          * `labels` (`pulumi.Input[dict]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `resourceVersion` (`pulumi.Input[str]`)
+          * `self_link` (`pulumi.Input[str]`)
+          * `uid` (`pulumi.Input[str]`)
+        
+        The **spec** object supports the following:
+        
+          * `certificateMode` (`pulumi.Input[str]`)
+          * `forceOverride` (`pulumi.Input[bool]`)
+          * `routeName` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
         """
@@ -79,6 +95,39 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **metadata** object supports the following:
+        
+          * `annotations` (`pulumi.Input[dict]`)
+          * `generation` (`pulumi.Input[float]`)
+          * `labels` (`pulumi.Input[dict]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `resourceVersion` (`pulumi.Input[str]`)
+          * `self_link` (`pulumi.Input[str]`)
+          * `uid` (`pulumi.Input[str]`)
+        
+        The **spec** object supports the following:
+        
+          * `certificateMode` (`pulumi.Input[str]`)
+          * `forceOverride` (`pulumi.Input[bool]`)
+          * `routeName` (`pulumi.Input[str]`)
+        
+        The **status** object supports the following:
+        
+          * `conditions` (`pulumi.Input[list]`)
+        
+            * `message` (`pulumi.Input[str]`)
+            * `reason` (`pulumi.Input[str]`)
+            * `status` (`pulumi.Input[str]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `mappedRouteName` (`pulumi.Input[str]`)
+          * `observedGeneration` (`pulumi.Input[float]`)
+          * `resourceRecords` (`pulumi.Input[list]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `rrdata` (`pulumi.Input[str]`)
+            * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
         """

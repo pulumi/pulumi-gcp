@@ -19,6 +19,11 @@ class Provider(pulumi.ProviderResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **batching** object supports the following:
+        
+          * `enableBatching` (`pulumi.Input[bool]`)
+          * `sendAfter` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
         """

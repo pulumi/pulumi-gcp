@@ -28,6 +28,23 @@ class Policy(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **admission_whitelist_patterns** object supports the following:
+        
+          * `namePattern` (`pulumi.Input[str]`)
+        
+        The **cluster_admission_rules** object supports the following:
+        
+          * `cluster` (`pulumi.Input[str]`)
+          * `enforcementMode` (`pulumi.Input[str]`)
+          * `evaluationMode` (`pulumi.Input[str]`)
+          * `requireAttestationsBies` (`pulumi.Input[list]`)
+        
+        The **default_admission_rule** object supports the following:
+        
+          * `enforcementMode` (`pulumi.Input[str]`)
+          * `evaluationMode` (`pulumi.Input[str]`)
+          * `requireAttestationsBies` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
         """
@@ -70,6 +87,23 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **admission_whitelist_patterns** object supports the following:
+        
+          * `namePattern` (`pulumi.Input[str]`)
+        
+        The **cluster_admission_rules** object supports the following:
+        
+          * `cluster` (`pulumi.Input[str]`)
+          * `enforcementMode` (`pulumi.Input[str]`)
+          * `evaluationMode` (`pulumi.Input[str]`)
+          * `requireAttestationsBies` (`pulumi.Input[list]`)
+        
+        The **default_admission_rule** object supports the following:
+        
+          * `enforcementMode` (`pulumi.Input[str]`)
+          * `evaluationMode` (`pulumi.Input[str]`)
+          * `requireAttestationsBies` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
         """
