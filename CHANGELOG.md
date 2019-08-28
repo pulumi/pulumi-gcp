@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Retype gcp.storage.BucketObject::source as Asset [#205](https://github.com/pulumi/pulumi-gcp/pull/205)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ---
 
