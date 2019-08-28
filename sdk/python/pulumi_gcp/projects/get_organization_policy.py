@@ -65,6 +65,9 @@ def get_organization_policy(constraint=None,project=None,opts=None):
     Allows management of Organization policies for a Google Project. For more information see
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    
+    :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param str project: The project ID.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_organization_policy.html.markdown.
     """
@@ -73,7 +76,7 @@ def get_organization_policy(constraint=None,project=None,opts=None):
     __args__['constraint'] = constraint
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:projects/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value

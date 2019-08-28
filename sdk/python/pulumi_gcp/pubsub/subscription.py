@@ -40,6 +40,15 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **expiration_policy** object supports the following:
+        
+          * `ttl` (`pulumi.Input[str]`)
+        
+        The **push_config** object supports the following:
+        
+          * `attributes` (`pulumi.Input[dict]`)
+          * `pushEndpoint` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
         """
@@ -89,6 +98,15 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **expiration_policy** object supports the following:
+        
+          * `ttl` (`pulumi.Input[str]`)
+        
+        The **push_config** object supports the following:
+        
+          * `attributes` (`pulumi.Input[dict]`)
+          * `pushEndpoint` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
         """

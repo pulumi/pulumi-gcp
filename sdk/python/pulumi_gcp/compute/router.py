@@ -40,6 +40,17 @@ class Router(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **bgp** object supports the following:
+        
+          * `advertiseMode` (`pulumi.Input[str]`)
+          * `advertisedGroups` (`pulumi.Input[list]`)
+          * `advertisedIpRanges` (`pulumi.Input[list]`)
+        
+            * `description` (`pulumi.Input[str]`)
+            * `range` (`pulumi.Input[str]`)
+        
+          * `asn` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
         """
@@ -88,6 +99,17 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **bgp** object supports the following:
+        
+          * `advertiseMode` (`pulumi.Input[str]`)
+          * `advertisedGroups` (`pulumi.Input[list]`)
+          * `advertisedIpRanges` (`pulumi.Input[list]`)
+        
+            * `description` (`pulumi.Input[str]`)
+            * `range` (`pulumi.Input[str]`)
+        
+          * `asn` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
         """

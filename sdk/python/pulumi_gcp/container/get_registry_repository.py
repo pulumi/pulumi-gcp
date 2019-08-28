@@ -45,6 +45,7 @@ def get_registry_repository(project=None,region=None,opts=None):
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
     
     The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_repository.html.markdown.
     """
@@ -53,7 +54,7 @@ def get_registry_repository(project=None,region=None,opts=None):
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts).value

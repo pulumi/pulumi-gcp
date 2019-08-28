@@ -56,6 +56,13 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
+    
+    :param str location: The Google Cloud Platform location for the KeyRing.
+           A full list of valid locations can be found by running `gcloud kms locations list`.
+    :param str name: The KeyRing's name.
+           A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_key_ring.html.markdown.
     """
@@ -65,7 +72,7 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts).value

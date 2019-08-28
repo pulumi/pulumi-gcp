@@ -57,6 +57,10 @@ class AwaitableGetBillingAccountResult(GetBillingAccountResult):
 def get_billing_account(billing_account=None,display_name=None,open=None,opts=None):
     """
     Use this data source to get information about a Google Billing Account.
+    
+    :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+    :param str display_name: The display name of the billing account.
+    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
     """
@@ -66,7 +70,7 @@ def get_billing_account(billing_account=None,display_name=None,open=None,opts=No
     __args__['displayName'] = display_name
     __args__['open'] = open
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts).value

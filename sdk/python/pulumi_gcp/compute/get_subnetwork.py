@@ -94,6 +94,15 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
 def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a subnetwork within GCE from its name and region.
+    
+    :param str name: The name of the subnetwork. One of `name` or `self_link`
+           must be specified.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region this subnetwork has been created in. If
+           unspecified, this defaults to the region configured in the provider.
+    :param str self_link: The self link of the subnetwork. If `self_link` is
+           specified, `name`, `project`, and `region` are ignored.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
     """
@@ -104,7 +113,7 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     __args__['region'] = region
     __args__['selfLink'] = self_link
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts).value

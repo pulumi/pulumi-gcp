@@ -13,6 +13,8 @@ class Policy(pulumi.CustomResource):
     boolean_policy: pulumi.Output[dict]
     """
     A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+    
+      * `enforced` (`bool`)
     """
     constraint: pulumi.Output[str]
     """
@@ -25,6 +27,19 @@ class Policy(pulumi.CustomResource):
     list_policy: pulumi.Output[dict]
     """
     A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+    
+      * `allow` (`dict`)
+    
+        * `all` (`bool`)
+        * `values` (`list`)
+    
+      * `deny` (`dict`)
+    
+        * `all` (`bool`)
+        * `values` (`list`)
+    
+      * `inheritFromParent` (`bool`)
+      * `suggestedValue` (`str`)
     """
     org_id: pulumi.Output[str]
     """
@@ -33,6 +48,8 @@ class Policy(pulumi.CustomResource):
     restore_policy: pulumi.Output[dict]
     """
     A restore policy is a constraint to restore the default policy. Structure is documented below.
+    
+      * `default` (`bool`)
     """
     update_time: pulumi.Output[str]
     """
@@ -57,6 +74,29 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
+        
+        The **boolean_policy** object supports the following:
+        
+          * `enforced` (`pulumi.Input[bool]`)
+        
+        The **list_policy** object supports the following:
+        
+          * `allow` (`pulumi.Input[dict]`)
+        
+            * `all` (`pulumi.Input[bool]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `deny` (`pulumi.Input[dict]`)
+        
+            * `all` (`pulumi.Input[bool]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `inheritFromParent` (`pulumi.Input[bool]`)
+          * `suggestedValue` (`pulumi.Input[str]`)
+        
+        The **restore_policy** object supports the following:
+        
+          * `default` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_policy.html.markdown.
         """
@@ -112,6 +152,29 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
+        
+        The **boolean_policy** object supports the following:
+        
+          * `enforced` (`pulumi.Input[bool]`)
+        
+        The **list_policy** object supports the following:
+        
+          * `allow` (`pulumi.Input[dict]`)
+        
+            * `all` (`pulumi.Input[bool]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `deny` (`pulumi.Input[dict]`)
+        
+            * `all` (`pulumi.Input[bool]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `inheritFromParent` (`pulumi.Input[bool]`)
+          * `suggestedValue` (`pulumi.Input[str]`)
+        
+        The **restore_policy** object supports the following:
+        
+          * `default` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_policy.html.markdown.
         """

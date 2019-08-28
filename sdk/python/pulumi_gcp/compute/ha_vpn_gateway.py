@@ -88,6 +88,11 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **vpn_interfaces** object supports the following:
+        
+          * `id` (`pulumi.Input[float]`)
+          * `ip_address` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
         """

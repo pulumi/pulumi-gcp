@@ -40,6 +40,27 @@ class Table(pulumi.CustomResource):
     location, and other properties of a table stored outside of BigQuery.
     By defining these properties, the data source can then be queried as
     if it were a standard BigQuery table. Structure is documented below.
+    
+      * `autodetect` (`bool`)
+      * `compression` (`str`)
+      * `csvOptions` (`dict`)
+    
+        * `allowJaggedRows` (`bool`)
+        * `allowQuotedNewlines` (`bool`)
+        * `encoding` (`str`)
+        * `fieldDelimiter` (`str`)
+        * `quote` (`str`)
+        * `skipLeadingRows` (`float`)
+    
+      * `googleSheetsOptions` (`dict`)
+    
+        * `range` (`str`)
+        * `skipLeadingRows` (`float`)
+    
+      * `ignoreUnknownValues` (`bool`)
+      * `maxBadRecords` (`float`)
+      * `sourceFormat` (`str`)
+      * `sourceUris` (`list`)
     """
     friendly_name: pulumi.Output[str]
     """
@@ -95,6 +116,11 @@ class Table(pulumi.CustomResource):
     """
     If specified, configures time-based
     partitioning for this table. Structure is documented below.
+    
+      * `expirationMs` (`float`)
+      * `field` (`str`)
+      * `requirePartitionFilter` (`bool`)
+      * `type` (`str`) - Describes the table type.
     """
     type: pulumi.Output[str]
     """
@@ -104,6 +130,9 @@ class Table(pulumi.CustomResource):
     """
     If specified, configures this table as a view.
     Structure is documented below.
+    
+      * `query` (`str`)
+      * `useLegacySql` (`bool`)
     """
     def __init__(__self__, resource_name, opts=None, dataset_id=None, description=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -139,6 +168,41 @@ class Table(pulumi.CustomResource):
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
+        
+        The **external_data_configuration** object supports the following:
+        
+          * `autodetect` (`pulumi.Input[bool]`)
+          * `compression` (`pulumi.Input[str]`)
+          * `csvOptions` (`pulumi.Input[dict]`)
+        
+            * `allowJaggedRows` (`pulumi.Input[bool]`)
+            * `allowQuotedNewlines` (`pulumi.Input[bool]`)
+            * `encoding` (`pulumi.Input[str]`)
+            * `fieldDelimiter` (`pulumi.Input[str]`)
+            * `quote` (`pulumi.Input[str]`)
+            * `skipLeadingRows` (`pulumi.Input[float]`)
+        
+          * `googleSheetsOptions` (`pulumi.Input[dict]`)
+        
+            * `range` (`pulumi.Input[str]`)
+            * `skipLeadingRows` (`pulumi.Input[float]`)
+        
+          * `ignoreUnknownValues` (`pulumi.Input[bool]`)
+          * `maxBadRecords` (`pulumi.Input[float]`)
+          * `sourceFormat` (`pulumi.Input[str]`)
+          * `sourceUris` (`pulumi.Input[list]`)
+        
+        The **time_partitioning** object supports the following:
+        
+          * `expirationMs` (`pulumi.Input[float]`)
+          * `field` (`pulumi.Input[str]`)
+          * `requirePartitionFilter` (`pulumi.Input[bool]`)
+          * `type` (`pulumi.Input[str]`) - Describes the table type.
+        
+        The **view** object supports the following:
+        
+          * `query` (`pulumi.Input[str]`)
+          * `useLegacySql` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
         """
@@ -233,6 +297,41 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] type: Describes the table type.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
+        
+        The **external_data_configuration** object supports the following:
+        
+          * `autodetect` (`pulumi.Input[bool]`)
+          * `compression` (`pulumi.Input[str]`)
+          * `csvOptions` (`pulumi.Input[dict]`)
+        
+            * `allowJaggedRows` (`pulumi.Input[bool]`)
+            * `allowQuotedNewlines` (`pulumi.Input[bool]`)
+            * `encoding` (`pulumi.Input[str]`)
+            * `fieldDelimiter` (`pulumi.Input[str]`)
+            * `quote` (`pulumi.Input[str]`)
+            * `skipLeadingRows` (`pulumi.Input[float]`)
+        
+          * `googleSheetsOptions` (`pulumi.Input[dict]`)
+        
+            * `range` (`pulumi.Input[str]`)
+            * `skipLeadingRows` (`pulumi.Input[float]`)
+        
+          * `ignoreUnknownValues` (`pulumi.Input[bool]`)
+          * `maxBadRecords` (`pulumi.Input[float]`)
+          * `sourceFormat` (`pulumi.Input[str]`)
+          * `sourceUris` (`pulumi.Input[list]`)
+        
+        The **time_partitioning** object supports the following:
+        
+          * `expirationMs` (`pulumi.Input[float]`)
+          * `field` (`pulumi.Input[str]`)
+          * `requirePartitionFilter` (`pulumi.Input[bool]`)
+          * `type` (`pulumi.Input[str]`) - Describes the table type.
+        
+        The **view** object supports the following:
+        
+          * `query` (`pulumi.Input[str]`)
+          * `useLegacySql` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
         """

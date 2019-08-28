@@ -14,6 +14,32 @@ class Dataset(pulumi.CustomResource):
     """
     An array of objects that define dataset access for
     one or more entities. Structure is documented below.
+    
+      * `domain` (`str`) - A domain to grant access to.
+      * `groupByEmail` (`str`) - An email address of a Google Group to grant
+        access to.
+      * `role` (`str`) - Describes the rights granted to
+        the user specified by the other member of the access object.
+        Primitive, Predefined and custom roles are supported.
+        Predefined roles that have equivalent primitive roles are swapped
+        by the API to their Primitive counterparts, and will show a diff post-create.
+        See [official docs](https://cloud.google.com/bigquery/docs/access-control).
+      * `specialGroup` (`str`) - A special group to grant access to.
+        Possible values include:
+        * `projectOwners`: Owners of the enclosing project.
+        * `projectReaders`: Readers of the enclosing project.
+        * `projectWriters`: Writers of the enclosing project.
+        * `allAuthenticatedUsers`: All authenticated BigQuery users.
+      * `userByEmail` (`str`) - An email address of a user to grant access to.
+      * `view` (`dict`) - A view from a different dataset to grant access to.
+        Queries executed against that view will have read access to tables in this
+        dataset. The role field is not required when this field is set. If that
+        view is updated by any user, access to the view needs to be granted again
+        via an update operation. Structure is documented below.
+    
+        * `dataset_id` (`str`) - The ID of the dataset containing this table.
+        * `projectId` (`str`) - The ID of the project containing this table.
+        * `table_id` (`str`) - The ID of the table.
     """
     creation_time: pulumi.Output[float]
     """
@@ -101,6 +127,34 @@ class Dataset(pulumi.CustomResource):
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        
+        The **accesses** object supports the following:
+        
+          * `domain` (`pulumi.Input[str]`) - A domain to grant access to.
+          * `groupByEmail` (`pulumi.Input[str]`) - An email address of a Google Group to grant
+            access to.
+          * `role` (`pulumi.Input[str]`) - Describes the rights granted to
+            the user specified by the other member of the access object.
+            Primitive, Predefined and custom roles are supported.
+            Predefined roles that have equivalent primitive roles are swapped
+            by the API to their Primitive counterparts, and will show a diff post-create.
+            See [official docs](https://cloud.google.com/bigquery/docs/access-control).
+          * `specialGroup` (`pulumi.Input[str]`) - A special group to grant access to.
+            Possible values include:
+            * `projectOwners`: Owners of the enclosing project.
+            * `projectReaders`: Readers of the enclosing project.
+            * `projectWriters`: Writers of the enclosing project.
+            * `allAuthenticatedUsers`: All authenticated BigQuery users.
+          * `userByEmail` (`pulumi.Input[str]`) - An email address of a user to grant access to.
+          * `view` (`pulumi.Input[dict]`) - A view from a different dataset to grant access to.
+            Queries executed against that view will have read access to tables in this
+            dataset. The role field is not required when this field is set. If that
+            view is updated by any user, access to the view needs to be granted again
+            via an update operation. Structure is documented below.
+        
+            * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
+            * `projectId` (`pulumi.Input[str]`) - The ID of the project containing this table.
+            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """
@@ -175,6 +229,34 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **accesses** object supports the following:
+        
+          * `domain` (`pulumi.Input[str]`) - A domain to grant access to.
+          * `groupByEmail` (`pulumi.Input[str]`) - An email address of a Google Group to grant
+            access to.
+          * `role` (`pulumi.Input[str]`) - Describes the rights granted to
+            the user specified by the other member of the access object.
+            Primitive, Predefined and custom roles are supported.
+            Predefined roles that have equivalent primitive roles are swapped
+            by the API to their Primitive counterparts, and will show a diff post-create.
+            See [official docs](https://cloud.google.com/bigquery/docs/access-control).
+          * `specialGroup` (`pulumi.Input[str]`) - A special group to grant access to.
+            Possible values include:
+            * `projectOwners`: Owners of the enclosing project.
+            * `projectReaders`: Readers of the enclosing project.
+            * `projectWriters`: Writers of the enclosing project.
+            * `allAuthenticatedUsers`: All authenticated BigQuery users.
+          * `userByEmail` (`pulumi.Input[str]`) - An email address of a user to grant access to.
+          * `view` (`pulumi.Input[dict]`) - A view from a different dataset to grant access to.
+            Queries executed against that view will have read access to tables in this
+            dataset. The role field is not required when this field is set. If that
+            view is updated by any user, access to the view needs to be granted again
+            via an update operation. Structure is documented below.
+        
+            * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
+            * `projectId` (`pulumi.Input[str]`) - The ID of the project containing this table.
+            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """

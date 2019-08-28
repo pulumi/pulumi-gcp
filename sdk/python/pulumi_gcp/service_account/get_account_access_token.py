@@ -57,6 +57,11 @@ def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_ser
     
     For more information see
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+    
+    :param list delegates: Deegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+    :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
+    :param list scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+    :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_access_token.html.markdown.
     """
@@ -67,7 +72,7 @@ def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_ser
     __args__['scopes'] = scopes
     __args__['targetServiceAccount'] = target_service_account
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts).value

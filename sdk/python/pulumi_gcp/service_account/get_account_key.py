@@ -54,6 +54,13 @@ class AwaitableGetAccountKeyResult(GetAccountKeyResult):
 def get_account_key(name=None,project=None,public_key_type=None,opts=None):
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
+    
+    :param str name: The name of the service account key. This must have format
+           `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+           is the email address or unique id of the service account.
+    :param str project: The ID of the project that the service account will be created in.
+           Defaults to the provider project configuration.
+    :param str public_key_type: The output format of the public key requested. X509_PEM is the default output format.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_key.html.markdown.
     """
@@ -63,7 +70,7 @@ def get_account_key(name=None,project=None,public_key_type=None,opts=None):
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts).value

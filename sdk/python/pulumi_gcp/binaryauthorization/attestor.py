@@ -27,6 +27,20 @@ class Attestor(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **attestation_authority_note** object supports the following:
+        
+          * `delegationServiceAccountEmail` (`pulumi.Input[str]`)
+          * `noteReference` (`pulumi.Input[str]`)
+          * `publicKeys` (`pulumi.Input[list]`)
+        
+            * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
+            * `comment` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`)
+            * `pkixPublicKey` (`pulumi.Input[dict]`)
+        
+              * `publicKeyPem` (`pulumi.Input[str]`)
+              * `signatureAlgorithm` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
         """
@@ -68,6 +82,20 @@ class Attestor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **attestation_authority_note** object supports the following:
+        
+          * `delegationServiceAccountEmail` (`pulumi.Input[str]`)
+          * `noteReference` (`pulumi.Input[str]`)
+          * `publicKeys` (`pulumi.Input[list]`)
+        
+            * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
+            * `comment` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`)
+            * `pkixPublicKey` (`pulumi.Input[dict]`)
+        
+              * `publicKeyPem` (`pulumi.Input[str]`)
+              * `signatureAlgorithm` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
         """

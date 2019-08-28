@@ -46,6 +46,11 @@ class AwaitableGetImageVersionsResult(GetImageVersionsResult):
 def get_image_versions(project=None,region=None,opts=None):
     """
     Provides access to available Cloud Composer versions in a region for a given project.
+    
+    :param str project: The ID of the project to list versions in.
+           If it is not provided, the provider project is used.
+    :param str region: The location to list versions in.
+           If it is not provider, the provider region is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
     """
@@ -54,7 +59,7 @@ def get_image_versions(project=None,region=None,opts=None):
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts).value

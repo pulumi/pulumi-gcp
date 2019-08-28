@@ -61,6 +61,10 @@ def get_global_address(name=None,project=None,opts=None):
     """
     Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
+    
+    :param str name: A unique name for the resource, required by GCE.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_global_address.html.markdown.
     """
@@ -69,7 +73,7 @@ def get_global_address(name=None,project=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts).value

@@ -29,6 +29,9 @@ class Application(pulumi.CustomResource):
     feature_settings: pulumi.Output[dict]
     """
     A block of optional settings to configure specific App Engine features:
+    
+      * `splitHealthChecks` (`bool`) - Set to false to use the legacy health check instead of the readiness
+        and liveness checks.
     """
     gcr_domain: pulumi.Output[str]
     """
@@ -56,6 +59,10 @@ class Application(pulumi.CustomResource):
     url_dispatch_rules: pulumi.Output[list]
     """
     A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+    
+      * `domain` (`str`)
+      * `path` (`str`)
+      * `service` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -76,6 +83,11 @@ class Application(pulumi.CustomResource):
                ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
+        
+        The **feature_settings** object supports the following:
+        
+          * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
+            and liveness checks.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """
@@ -138,6 +150,17 @@ class Application(pulumi.CustomResource):
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
         :param pulumi.Input[list] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+        
+        The **feature_settings** object supports the following:
+        
+          * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
+            and liveness checks.
+        
+        The **url_dispatch_rules** object supports the following:
+        
+          * `domain` (`pulumi.Input[str]`)
+          * `path` (`pulumi.Input[str]`)
+          * `service` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """

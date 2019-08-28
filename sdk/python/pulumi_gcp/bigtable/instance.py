@@ -13,6 +13,11 @@ class Instance(pulumi.CustomResource):
     clusters: pulumi.Output[list]
     """
     A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+    
+      * `clusterId` (`str`)
+      * `numNodes` (`float`)
+      * `storageType` (`str`)
+      * `zone` (`str`)
     """
     display_name: pulumi.Output[str]
     """
@@ -45,6 +50,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        
+        The **clusters** object supports the following:
+        
+          * `clusterId` (`pulumi.Input[str]`)
+          * `numNodes` (`pulumi.Input[float]`)
+          * `storageType` (`pulumi.Input[str]`)
+          * `zone` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
         """
@@ -93,6 +105,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        
+        The **clusters** object supports the following:
+        
+          * `clusterId` (`pulumi.Input[str]`)
+          * `numNodes` (`pulumi.Input[float]`)
+          * `storageType` (`pulumi.Input[str]`)
+          * `zone` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
         """

@@ -41,6 +41,10 @@ class Node(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **scheduling_config** object supports the following:
+        
+          * `preemptible` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
         """
@@ -98,6 +102,15 @@ class Node(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **network_endpoints** object supports the following:
+        
+          * `ip_address` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+        
+        The **scheduling_config** object supports the following:
+        
+          * `preemptible` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
         """

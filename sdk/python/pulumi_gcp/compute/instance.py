@@ -18,11 +18,32 @@ class Instance(pulumi.CustomResource):
     attached_disks: pulumi.Output[list]
     """
     Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+    
+      * `device_name` (`str`)
+      * `diskEncryptionKeyRaw` (`str`)
+      * `diskEncryptionKeySha256` (`str`)
+      * `kmsKeySelfLink` (`str`)
+      * `mode` (`str`)
+      * `source` (`str`)
     """
     boot_disk: pulumi.Output[dict]
     """
     The boot disk for the instance.
     Structure is documented below.
+    
+      * `autoDelete` (`bool`)
+      * `device_name` (`str`)
+      * `diskEncryptionKeyRaw` (`str`)
+      * `diskEncryptionKeySha256` (`str`)
+      * `initializeParams` (`dict`)
+    
+        * `image` (`str`)
+        * `labels` (`dict`) - A set of key/value label pairs to assign to the instance.
+        * `size` (`float`)
+        * `type` (`str`)
+    
+      * `kmsKeySelfLink` (`str`)
+      * `source` (`str`)
     """
     can_ip_forward: pulumi.Output[bool]
     """
@@ -47,6 +68,9 @@ class Instance(pulumi.CustomResource):
     """
     List of the type and count of accelerator cards attached to the instance. Structure documented below.
     **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+    
+      * `count` (`float`)
+      * `type` (`str`)
     """
     hostname: pulumi.Output[str]
     """
@@ -103,6 +127,24 @@ class Instance(pulumi.CustomResource):
     """
     Networks to attach to the instance. This can
     be specified multiple times. Structure is documented below.
+    
+      * `accessConfigs` (`list`)
+    
+        * `natIp` (`str`)
+        * `network_tier` (`str`)
+        * `publicPtrDomainName` (`str`)
+    
+      * `aliasIpRanges` (`list`)
+    
+        * `ip_cidr_range` (`str`)
+        * `subnetworkRangeName` (`str`)
+    
+      * `name` (`str`) - A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+      * `network` (`str`)
+      * `networkIp` (`str`)
+      * `subnetwork` (`str`)
+      * `subnetworkProject` (`str`)
     """
     project: pulumi.Output[str]
     """
@@ -113,11 +155,23 @@ class Instance(pulumi.CustomResource):
     """
     The scheduling strategy to use. More details about
     this configuration option are detailed below.
+    
+      * `automaticRestart` (`bool`)
+      * `nodeAffinities` (`list`)
+    
+        * `key` (`str`)
+        * `operator` (`str`)
+        * `values` (`list`)
+    
+      * `onHostMaintenance` (`str`)
+      * `preemptible` (`bool`)
     """
     scratch_disks: pulumi.Output[list]
     """
     Scratch disks to attach to the instance. This can be
     specified multiple times for multiple scratch disks. Structure is documented below.
+    
+      * `interface` (`str`)
     """
     self_link: pulumi.Output[str]
     """
@@ -128,11 +182,18 @@ class Instance(pulumi.CustomResource):
     Service account to attach to the instance.
     Structure is documented below.
     **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    
+      * `email` (`str`)
+      * `scopes` (`list`)
     """
     shielded_instance_config: pulumi.Output[dict]
     """
     Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
     **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+    
+      * `enableIntegrityMonitoring` (`bool`)
+      * `enableSecureBoot` (`bool`)
+      * `enableVtpm` (`bool`)
     """
     tags: pulumi.Output[list]
     """
@@ -201,6 +262,83 @@ class Instance(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
+        
+        The **attached_disks** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **boot_disk** object supports the following:
+        
+          * `autoDelete` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `initializeParams` (`pulumi.Input[dict]`)
+        
+            * `image` (`pulumi.Input[str]`)
+            * `labels` (`pulumi.Input[dict]`) - A set of key/value label pairs to assign to the instance.
+            * `size` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **guest_accelerators** object supports the following:
+        
+          * `count` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **network_interfaces** object supports the following:
+        
+          * `accessConfigs` (`pulumi.Input[list]`)
+        
+            * `natIp` (`pulumi.Input[str]`)
+            * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
+        
+          * `aliasIpRanges` (`pulumi.Input[list]`)
+        
+            * `ip_cidr_range` (`pulumi.Input[str]`)
+            * `subnetworkRangeName` (`pulumi.Input[str]`)
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
+            Changing this forces a new resource to be created.
+          * `network` (`pulumi.Input[str]`)
+          * `networkIp` (`pulumi.Input[str]`)
+          * `subnetwork` (`pulumi.Input[str]`)
+          * `subnetworkProject` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `automaticRestart` (`pulumi.Input[bool]`)
+          * `nodeAffinities` (`pulumi.Input[list]`)
+        
+            * `key` (`pulumi.Input[str]`)
+            * `operator` (`pulumi.Input[str]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `onHostMaintenance` (`pulumi.Input[str]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+        
+        The **scratch_disks** object supports the following:
+        
+          * `interface` (`pulumi.Input[str]`)
+        
+        The **service_account** object supports the following:
+        
+          * `email` (`pulumi.Input[str]`)
+          * `scopes` (`pulumi.Input[list]`)
+        
+        The **shielded_instance_config** object supports the following:
+        
+          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+          * `enableSecureBoot` (`pulumi.Input[bool]`)
+          * `enableVtpm` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance.html.markdown.
         """
@@ -322,6 +460,83 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
+        
+        The **attached_disks** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **boot_disk** object supports the following:
+        
+          * `autoDelete` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `initializeParams` (`pulumi.Input[dict]`)
+        
+            * `image` (`pulumi.Input[str]`)
+            * `labels` (`pulumi.Input[dict]`) - A set of key/value label pairs to assign to the instance.
+            * `size` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **guest_accelerators** object supports the following:
+        
+          * `count` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **network_interfaces** object supports the following:
+        
+          * `accessConfigs` (`pulumi.Input[list]`)
+        
+            * `natIp` (`pulumi.Input[str]`)
+            * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
+        
+          * `aliasIpRanges` (`pulumi.Input[list]`)
+        
+            * `ip_cidr_range` (`pulumi.Input[str]`)
+            * `subnetworkRangeName` (`pulumi.Input[str]`)
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
+            Changing this forces a new resource to be created.
+          * `network` (`pulumi.Input[str]`)
+          * `networkIp` (`pulumi.Input[str]`)
+          * `subnetwork` (`pulumi.Input[str]`)
+          * `subnetworkProject` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `automaticRestart` (`pulumi.Input[bool]`)
+          * `nodeAffinities` (`pulumi.Input[list]`)
+        
+            * `key` (`pulumi.Input[str]`)
+            * `operator` (`pulumi.Input[str]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `onHostMaintenance` (`pulumi.Input[str]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+        
+        The **scratch_disks** object supports the following:
+        
+          * `interface` (`pulumi.Input[str]`)
+        
+        The **service_account** object supports the following:
+        
+          * `email` (`pulumi.Input[str]`)
+          * `scopes` (`pulumi.Input[list]`)
+        
+        The **shielded_instance_config** object supports the following:
+        
+          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+          * `enableSecureBoot` (`pulumi.Input[bool]`)
+          * `enableVtpm` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance.html.markdown.
         """

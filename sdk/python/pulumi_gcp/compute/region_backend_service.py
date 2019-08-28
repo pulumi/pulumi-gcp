@@ -50,6 +50,18 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **backends** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `failover` (`pulumi.Input[bool]`)
+          * `group` (`pulumi.Input[str]`)
+        
+        The **failover_policy** object supports the following:
+        
+          * `disableConnectionDrainOnFailover` (`pulumi.Input[bool]`)
+          * `dropTrafficIfUnhealthy` (`pulumi.Input[bool]`)
+          * `failover_ratio` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
         """
@@ -104,6 +116,18 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **backends** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `failover` (`pulumi.Input[bool]`)
+          * `group` (`pulumi.Input[str]`)
+        
+        The **failover_policy** object supports the following:
+        
+          * `disableConnectionDrainOnFailover` (`pulumi.Input[bool]`)
+          * `dropTrafficIfUnhealthy` (`pulumi.Input[bool]`)
+          * `failover_ratio` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
         """

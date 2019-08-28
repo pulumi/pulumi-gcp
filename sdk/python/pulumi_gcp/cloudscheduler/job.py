@@ -44,6 +44,40 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **app_engine_http_target** object supports the following:
+        
+          * `appEngineRouting` (`pulumi.Input[dict]`)
+        
+            * `instance` (`pulumi.Input[str]`)
+            * `service` (`pulumi.Input[str]`)
+            * `version` (`pulumi.Input[str]`)
+        
+          * `body` (`pulumi.Input[str]`)
+          * `headers` (`pulumi.Input[dict]`)
+          * `httpMethod` (`pulumi.Input[str]`)
+          * `relativeUri` (`pulumi.Input[str]`)
+        
+        The **http_target** object supports the following:
+        
+          * `body` (`pulumi.Input[str]`)
+          * `headers` (`pulumi.Input[dict]`)
+          * `httpMethod` (`pulumi.Input[str]`)
+          * `uri` (`pulumi.Input[str]`)
+        
+        The **pubsub_target** object supports the following:
+        
+          * `attributes` (`pulumi.Input[dict]`)
+          * `data` (`pulumi.Input[str]`)
+          * `topicName` (`pulumi.Input[str]`)
+        
+        The **retry_config** object supports the following:
+        
+          * `maxBackoffDuration` (`pulumi.Input[str]`)
+          * `maxDoublings` (`pulumi.Input[float]`)
+          * `maxRetryDuration` (`pulumi.Input[str]`)
+          * `minBackoffDuration` (`pulumi.Input[str]`)
+          * `retryCount` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
         """
@@ -91,6 +125,40 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **app_engine_http_target** object supports the following:
+        
+          * `appEngineRouting` (`pulumi.Input[dict]`)
+        
+            * `instance` (`pulumi.Input[str]`)
+            * `service` (`pulumi.Input[str]`)
+            * `version` (`pulumi.Input[str]`)
+        
+          * `body` (`pulumi.Input[str]`)
+          * `headers` (`pulumi.Input[dict]`)
+          * `httpMethod` (`pulumi.Input[str]`)
+          * `relativeUri` (`pulumi.Input[str]`)
+        
+        The **http_target** object supports the following:
+        
+          * `body` (`pulumi.Input[str]`)
+          * `headers` (`pulumi.Input[dict]`)
+          * `httpMethod` (`pulumi.Input[str]`)
+          * `uri` (`pulumi.Input[str]`)
+        
+        The **pubsub_target** object supports the following:
+        
+          * `attributes` (`pulumi.Input[dict]`)
+          * `data` (`pulumi.Input[str]`)
+          * `topicName` (`pulumi.Input[str]`)
+        
+        The **retry_config** object supports the following:
+        
+          * `maxBackoffDuration` (`pulumi.Input[str]`)
+          * `maxDoublings` (`pulumi.Input[float]`)
+          * `maxRetryDuration` (`pulumi.Input[str]`)
+          * `minBackoffDuration` (`pulumi.Input[str]`)
+          * `retryCount` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
         """

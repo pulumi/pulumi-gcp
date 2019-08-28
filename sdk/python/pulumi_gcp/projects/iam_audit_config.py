@@ -20,6 +20,11 @@ class IAMAuditConfig(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **audit_log_configs** object supports the following:
+        
+          * `exemptedMembers` (`pulumi.Input[list]`)
+          * `logType` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,6 +66,11 @@ class IAMAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        
+        The **audit_log_configs** object supports the following:
+        
+          * `exemptedMembers` (`pulumi.Input[list]`)
+          * `logType` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

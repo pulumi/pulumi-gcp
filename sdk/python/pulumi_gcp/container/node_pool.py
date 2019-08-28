@@ -14,6 +14,9 @@ class NodePool(pulumi.CustomResource):
     """
     Configuration required by cluster autoscaler to adjust
     the size of the node pool to the current cluster usage. Structure is documented below.
+    
+      * `maxNodeCount` (`float`)
+      * `minNodeCount` (`float`)
     """
     cluster: pulumi.Output[str]
     """
@@ -34,6 +37,9 @@ class NodePool(pulumi.CustomResource):
     """
     Node management configuration, wherein auto-repair and
     auto-upgrade is configured. Structure is documented below.
+    
+      * `autoRepair` (`bool`)
+      * `autoUpgrade` (`bool`)
     """
     max_pods_per_node: pulumi.Output[float]
     """
@@ -53,6 +59,37 @@ class NodePool(pulumi.CustomResource):
     """
     The node configuration of the pool. See
     container.Cluster for schema.
+    
+      * `disk_size_gb` (`float`)
+      * `diskType` (`str`)
+      * `guest_accelerators` (`list`)
+    
+        * `count` (`float`)
+        * `type` (`str`)
+    
+      * `imageType` (`str`)
+      * `labels` (`dict`)
+      * `localSsdCount` (`float`)
+      * `machine_type` (`str`)
+      * `metadata` (`dict`)
+      * `min_cpu_platform` (`str`)
+      * `oauthScopes` (`list`)
+      * `preemptible` (`bool`)
+      * `sandboxConfig` (`dict`)
+    
+        * `sandboxType` (`str`)
+    
+      * `service_account` (`str`)
+      * `tags` (`list`)
+      * `taints` (`list`)
+    
+        * `effect` (`str`)
+        * `key` (`str`)
+        * `value` (`str`)
+    
+      * `workloadMetadataConfig` (`dict`)
+    
+        * `nodeMetadata` (`str`)
     """
     node_count: pulumi.Output[float]
     """
@@ -123,6 +160,49 @@ class NodePool(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
         :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
                has been deprecated in favor of `location`.
+        
+        The **autoscaling** object supports the following:
+        
+          * `maxNodeCount` (`pulumi.Input[float]`)
+          * `minNodeCount` (`pulumi.Input[float]`)
+        
+        The **management** object supports the following:
+        
+          * `autoRepair` (`pulumi.Input[bool]`)
+          * `autoUpgrade` (`pulumi.Input[bool]`)
+        
+        The **node_config** object supports the following:
+        
+          * `disk_size_gb` (`pulumi.Input[float]`)
+          * `diskType` (`pulumi.Input[str]`)
+          * `guest_accelerators` (`pulumi.Input[list]`)
+        
+            * `count` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `imageType` (`pulumi.Input[str]`)
+          * `labels` (`pulumi.Input[dict]`)
+          * `localSsdCount` (`pulumi.Input[float]`)
+          * `machine_type` (`pulumi.Input[str]`)
+          * `metadata` (`pulumi.Input[dict]`)
+          * `min_cpu_platform` (`pulumi.Input[str]`)
+          * `oauthScopes` (`pulumi.Input[list]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+          * `sandboxConfig` (`pulumi.Input[dict]`)
+        
+            * `sandboxType` (`pulumi.Input[str]`)
+        
+          * `service_account` (`pulumi.Input[str]`)
+          * `tags` (`pulumi.Input[list]`)
+          * `taints` (`pulumi.Input[list]`)
+        
+            * `effect` (`pulumi.Input[str]`)
+            * `key` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+        
+          * `workloadMetadataConfig` (`pulumi.Input[dict]`)
+        
+            * `nodeMetadata` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """
@@ -207,6 +287,49 @@ class NodePool(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
         :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
                has been deprecated in favor of `location`.
+        
+        The **autoscaling** object supports the following:
+        
+          * `maxNodeCount` (`pulumi.Input[float]`)
+          * `minNodeCount` (`pulumi.Input[float]`)
+        
+        The **management** object supports the following:
+        
+          * `autoRepair` (`pulumi.Input[bool]`)
+          * `autoUpgrade` (`pulumi.Input[bool]`)
+        
+        The **node_config** object supports the following:
+        
+          * `disk_size_gb` (`pulumi.Input[float]`)
+          * `diskType` (`pulumi.Input[str]`)
+          * `guest_accelerators` (`pulumi.Input[list]`)
+        
+            * `count` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `imageType` (`pulumi.Input[str]`)
+          * `labels` (`pulumi.Input[dict]`)
+          * `localSsdCount` (`pulumi.Input[float]`)
+          * `machine_type` (`pulumi.Input[str]`)
+          * `metadata` (`pulumi.Input[dict]`)
+          * `min_cpu_platform` (`pulumi.Input[str]`)
+          * `oauthScopes` (`pulumi.Input[list]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+          * `sandboxConfig` (`pulumi.Input[dict]`)
+        
+            * `sandboxType` (`pulumi.Input[str]`)
+        
+          * `service_account` (`pulumi.Input[str]`)
+          * `tags` (`pulumi.Input[list]`)
+          * `taints` (`pulumi.Input[list]`)
+        
+            * `effect` (`pulumi.Input[str]`)
+            * `key` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+        
+          * `workloadMetadataConfig` (`pulumi.Input[dict]`)
+        
+            * `nodeMetadata` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """

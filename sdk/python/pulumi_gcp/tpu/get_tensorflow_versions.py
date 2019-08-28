@@ -41,12 +41,16 @@ class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
             id=self.id)
 
 def get_tensorflow_versions(project=None,zone=None,opts=None):
+    """
+    Use this data source to access information about an existing resource.
+    
+    """
     __args__ = dict()
 
     __args__['project'] = project
     __args__['zone'] = zone
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts).value

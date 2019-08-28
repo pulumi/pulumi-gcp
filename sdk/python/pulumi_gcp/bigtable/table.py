@@ -13,6 +13,8 @@ class Table(pulumi.CustomResource):
     column_families: pulumi.Output[list]
     """
     A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+    
+      * `family` (`str`) - The name of the column family.
     """
     instance_name: pulumi.Output[str]
     """
@@ -45,6 +47,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
+        
+        The **column_families** object supports the following:
+        
+          * `family` (`pulumi.Input[str]`) - The name of the column family.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
         """
@@ -93,6 +99,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
+        
+        The **column_families** object supports the following:
+        
+          * `family` (`pulumi.Input[str]`) - The name of the column family.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
         """

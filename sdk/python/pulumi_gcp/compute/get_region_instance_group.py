@@ -68,6 +68,15 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     
     
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+    
+    :param str name: The name of the instance group.  One of `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs.
+           If `self_link` is provided, this value is ignored.  If neither `self_link`
+           nor `project` are provided, the provider project is used.
+    :param str region: The region in which the resource belongs.  If `self_link`
+           is provided, this value is ignored.  If neither `self_link` nor `region` are
+           provided, the provider region is used.
+    :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
     """
@@ -78,7 +87,7 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     __args__['region'] = region
     __args__['selfLink'] = self_link
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts).value

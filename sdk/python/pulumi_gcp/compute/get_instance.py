@@ -216,6 +216,15 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     [the official documentation](https://cloud.google.com/compute/docs/instances)
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+    
+    :param str name: The name of the instance. One of `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs.
+           If `self_link` is provided, this value is ignored.  If neither `self_link`
+           nor `project` are provided, the provider project is used.
+    :param str self_link: The self link of the instance. One of `name` or `self_link` must be provided.
+    :param str zone: The zone of the instance. If `self_link` is provided, this
+           value is ignored.  If neither `self_link` nor `zone` are provided, the
+           provider zone is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
     """
@@ -226,7 +235,7 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts).value

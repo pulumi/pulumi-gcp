@@ -56,6 +56,8 @@ class AwaitableGetRuleResult(GetRuleResult):
 def get_rule(name=None,opts=None):
     """
     Use this data source to get information about a Google IAM Role.
+    
+    :param str name: The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
     """
@@ -63,7 +65,7 @@ def get_rule(name=None,opts=None):
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts).value

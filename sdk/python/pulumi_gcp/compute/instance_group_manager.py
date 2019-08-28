@@ -14,6 +14,9 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     ) The autohealing policies for this managed instance
     group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+    
+      * `healthCheck` (`str`)
+      * `initialDelaySec` (`float`)
     """
     base_instance_name: pulumi.Output[str]
     """
@@ -48,6 +51,12 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     The named port configuration. See the section below
     for details on configuration.
+    
+      * `name` (`str`) - The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
+      * `port` (`float`)
     """
     project: pulumi.Output[str]
     """
@@ -74,12 +83,34 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
     - - -
+    
+      * `maxSurgeFixed` (`float`)
+      * `maxSurgePercent` (`float`)
+      * `maxUnavailableFixed` (`float`)
+      * `maxUnavailablePercent` (`float`)
+      * `minReadySec` (`float`)
+      * `minimalAction` (`str`)
+      * `type` (`str`)
     """
     versions: pulumi.Output[list]
     """
     ) Application versions managed by this instance group. Each
     version deals with a specific instance template, allowing canary release scenarios.
     Structure is documented below.
+    
+      * `instanceTemplate` (`str`) - ) The
+        full URL to an instance template from which all new instances
+        will be created. This field is only present in the `google` provider.
+      * `name` (`str`) - The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
+      * `target_size` (`dict`) - The target number of running instances for this managed
+        instance group. This value should always be explicitly set unless this resource is attached to
+        an autoscaler, in which case it should never be set. Defaults to `0`.
+    
+        * `fixed` (`float`)
+        * `percent` (`float`)
     """
     wait_for_instances: pulumi.Output[bool]
     """
@@ -137,6 +168,45 @@ class InstanceGroupManager(pulumi.CustomResource):
                continue trying until it times out.
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
+        
+        The **auto_healing_policies** object supports the following:
+        
+          * `healthCheck` (`pulumi.Input[str]`)
+          * `initialDelaySec` (`pulumi.Input[float]`)
+        
+        The **named_ports** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `port` (`pulumi.Input[float]`)
+        
+        The **update_policy** object supports the following:
+        
+          * `maxSurgeFixed` (`pulumi.Input[float]`)
+          * `maxSurgePercent` (`pulumi.Input[float]`)
+          * `maxUnavailableFixed` (`pulumi.Input[float]`)
+          * `maxUnavailablePercent` (`pulumi.Input[float]`)
+          * `minReadySec` (`pulumi.Input[float]`)
+          * `minimalAction` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **versions** object supports the following:
+        
+          * `instanceTemplate` (`pulumi.Input[str]`) - ) The
+            full URL to an instance template from which all new instances
+            will be created. This field is only present in the `google` provider.
+          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `target_size` (`pulumi.Input[dict]`) - The target number of running instances for this managed
+            instance group. This value should always be explicitly set unless this resource is attached to
+            an autoscaler, in which case it should never be set. Defaults to `0`.
+        
+            * `fixed` (`pulumi.Input[float]`)
+            * `percent` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_manager.html.markdown.
         """
@@ -228,6 +298,45 @@ class InstanceGroupManager(pulumi.CustomResource):
                continue trying until it times out.
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
+        
+        The **auto_healing_policies** object supports the following:
+        
+          * `healthCheck` (`pulumi.Input[str]`)
+          * `initialDelaySec` (`pulumi.Input[float]`)
+        
+        The **named_ports** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `port` (`pulumi.Input[float]`)
+        
+        The **update_policy** object supports the following:
+        
+          * `maxSurgeFixed` (`pulumi.Input[float]`)
+          * `maxSurgePercent` (`pulumi.Input[float]`)
+          * `maxUnavailableFixed` (`pulumi.Input[float]`)
+          * `maxUnavailablePercent` (`pulumi.Input[float]`)
+          * `minReadySec` (`pulumi.Input[float]`)
+          * `minimalAction` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **versions** object supports the following:
+        
+          * `instanceTemplate` (`pulumi.Input[str]`) - ) The
+            full URL to an instance template from which all new instances
+            will be created. This field is only present in the `google` provider.
+          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
+            characters long and comply with
+            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+            include lowercase letters, numbers, and hyphens.
+          * `target_size` (`pulumi.Input[dict]`) - The target number of running instances for this managed
+            instance group. This value should always be explicitly set unless this resource is attached to
+            an autoscaler, in which case it should never be set. Defaults to `0`.
+        
+            * `fixed` (`pulumi.Input[float]`)
+            * `percent` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_manager.html.markdown.
         """

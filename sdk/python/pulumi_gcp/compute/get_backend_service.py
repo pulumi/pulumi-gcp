@@ -146,6 +146,9 @@ def get_backend_service(name=None,project=None,opts=None):
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+    
+    :param str name: The name of the Backend Service.
+    :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
     """
@@ -154,7 +157,7 @@ def get_backend_service(name=None,project=None,opts=None):
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendService:getBackendService', __args__, opts=opts).value

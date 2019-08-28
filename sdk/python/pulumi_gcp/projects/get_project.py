@@ -44,6 +44,8 @@ def get_project(filter=None,opts=None):
     Retrieve information about a set of projects based on a filter. See the
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
+    
+    :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
     """
@@ -51,7 +53,7 @@ def get_project(filter=None,opts=None):
 
     __args__['filter'] = filter
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts).value

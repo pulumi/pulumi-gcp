@@ -65,6 +65,95 @@ class Job(pulumi.CustomResource):
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
+        
+        The **hadoop_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainClass` (`pulumi.Input[str]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+        
+        The **hive_config** object supports the following:
+        
+          * `continueOnFailure` (`pulumi.Input[bool]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+        
+        The **pig_config** object supports the following:
+        
+          * `continueOnFailure` (`pulumi.Input[bool]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+        
+        The **placement** object supports the following:
+        
+          * `clusterName` (`pulumi.Input[str]`)
+          * `clusterUuid` (`pulumi.Input[str]`)
+        
+        The **pyspark_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainPythonFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+          * `pythonFileUris` (`pulumi.Input[list]`)
+        
+        The **reference** object supports the following:
+        
+          * `job_id` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `maxFailuresPerHour` (`pulumi.Input[float]`)
+        
+        The **spark_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainClass` (`pulumi.Input[str]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+        
+        The **sparksql_config** object supports the following:
+        
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
         """
@@ -128,6 +217,102 @@ class Job(pulumi.CustomResource):
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
+        
+        The **hadoop_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainClass` (`pulumi.Input[str]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+        
+        The **hive_config** object supports the following:
+        
+          * `continueOnFailure` (`pulumi.Input[bool]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+        
+        The **pig_config** object supports the following:
+        
+          * `continueOnFailure` (`pulumi.Input[bool]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+        
+        The **placement** object supports the following:
+        
+          * `clusterName` (`pulumi.Input[str]`)
+          * `clusterUuid` (`pulumi.Input[str]`)
+        
+        The **pyspark_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainPythonFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+          * `pythonFileUris` (`pulumi.Input[list]`)
+        
+        The **reference** object supports the following:
+        
+          * `job_id` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `maxFailuresPerHour` (`pulumi.Input[float]`)
+        
+        The **spark_config** object supports the following:
+        
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `mainClass` (`pulumi.Input[str]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+        
+        The **sparksql_config** object supports the following:
+        
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+        
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+        
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+        
+        The **status** object supports the following:
+        
+          * `details` (`pulumi.Input[str]`)
+          * `state` (`pulumi.Input[str]`)
+          * `stateStartTime` (`pulumi.Input[str]`)
+          * `substate` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
         """

@@ -70,6 +70,83 @@ class InstanceFromTemplate(pulumi.CustomResource):
                template to create the instance based on.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
+        
+        The **attached_disks** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **boot_disk** object supports the following:
+        
+          * `autoDelete` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `initializeParams` (`pulumi.Input[dict]`)
+        
+            * `image` (`pulumi.Input[str]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `size` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **guest_accelerators** object supports the following:
+        
+          * `count` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **network_interfaces** object supports the following:
+        
+          * `accessConfigs` (`pulumi.Input[list]`)
+        
+            * `natIp` (`pulumi.Input[str]`)
+            * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
+        
+          * `aliasIpRanges` (`pulumi.Input[list]`)
+        
+            * `ip_cidr_range` (`pulumi.Input[str]`)
+            * `subnetworkRangeName` (`pulumi.Input[str]`)
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
+            Changing this forces a new resource to be created.
+          * `network` (`pulumi.Input[str]`)
+          * `networkIp` (`pulumi.Input[str]`)
+          * `subnetwork` (`pulumi.Input[str]`)
+          * `subnetworkProject` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `automaticRestart` (`pulumi.Input[bool]`)
+          * `nodeAffinities` (`pulumi.Input[list]`)
+        
+            * `key` (`pulumi.Input[str]`)
+            * `operator` (`pulumi.Input[str]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `onHostMaintenance` (`pulumi.Input[str]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+        
+        The **scratch_disks** object supports the following:
+        
+          * `interface` (`pulumi.Input[str]`)
+        
+        The **service_account** object supports the following:
+        
+          * `email` (`pulumi.Input[str]`)
+          * `scopes` (`pulumi.Input[list]`)
+        
+        The **shielded_instance_config** object supports the following:
+        
+          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+          * `enableSecureBoot` (`pulumi.Input[bool]`)
+          * `enableVtpm` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
         """
@@ -142,6 +219,83 @@ class InstanceFromTemplate(pulumi.CustomResource):
                template to create the instance based on.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
+        
+        The **attached_disks** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **boot_disk** object supports the following:
+        
+          * `autoDelete` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`)
+          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
+          * `initializeParams` (`pulumi.Input[dict]`)
+        
+            * `image` (`pulumi.Input[str]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `size` (`pulumi.Input[float]`)
+            * `type` (`pulumi.Input[str]`)
+        
+          * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+        
+        The **guest_accelerators** object supports the following:
+        
+          * `count` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **network_interfaces** object supports the following:
+        
+          * `accessConfigs` (`pulumi.Input[list]`)
+        
+            * `natIp` (`pulumi.Input[str]`)
+            * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
+        
+          * `aliasIpRanges` (`pulumi.Input[list]`)
+        
+            * `ip_cidr_range` (`pulumi.Input[str]`)
+            * `subnetworkRangeName` (`pulumi.Input[str]`)
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
+            Changing this forces a new resource to be created.
+          * `network` (`pulumi.Input[str]`)
+          * `networkIp` (`pulumi.Input[str]`)
+          * `subnetwork` (`pulumi.Input[str]`)
+          * `subnetworkProject` (`pulumi.Input[str]`)
+        
+        The **scheduling** object supports the following:
+        
+          * `automaticRestart` (`pulumi.Input[bool]`)
+          * `nodeAffinities` (`pulumi.Input[list]`)
+        
+            * `key` (`pulumi.Input[str]`)
+            * `operator` (`pulumi.Input[str]`)
+            * `values` (`pulumi.Input[list]`)
+        
+          * `onHostMaintenance` (`pulumi.Input[str]`)
+          * `preemptible` (`pulumi.Input[bool]`)
+        
+        The **scratch_disks** object supports the following:
+        
+          * `interface` (`pulumi.Input[str]`)
+        
+        The **service_account** object supports the following:
+        
+          * `email` (`pulumi.Input[str]`)
+          * `scopes` (`pulumi.Input[list]`)
+        
+        The **shielded_instance_config** object supports the following:
+        
+          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+          * `enableSecureBoot` (`pulumi.Input[bool]`)
+          * `enableVtpm` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
         """

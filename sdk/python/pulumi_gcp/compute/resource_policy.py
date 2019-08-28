@@ -27,6 +27,38 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **snapshot_schedule_policy** object supports the following:
+        
+          * `retentionPolicy` (`pulumi.Input[dict]`)
+        
+            * `maxRetentionDays` (`pulumi.Input[float]`)
+            * `onSourceDiskDelete` (`pulumi.Input[str]`)
+        
+          * `schedule` (`pulumi.Input[dict]`)
+        
+            * `dailySchedule` (`pulumi.Input[dict]`)
+        
+              * `daysInCycle` (`pulumi.Input[float]`)
+              * `startTime` (`pulumi.Input[str]`)
+        
+            * `hourlySchedule` (`pulumi.Input[dict]`)
+        
+              * `hoursInCycle` (`pulumi.Input[float]`)
+              * `startTime` (`pulumi.Input[str]`)
+        
+            * `weeklySchedule` (`pulumi.Input[dict]`)
+        
+              * `dayOfWeeks` (`pulumi.Input[list]`)
+        
+                * `day` (`pulumi.Input[str]`)
+                * `startTime` (`pulumi.Input[str]`)
+        
+          * `snapshotProperties` (`pulumi.Input[dict]`)
+        
+            * `guestFlush` (`pulumi.Input[bool]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `storageLocations` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
         """
@@ -69,6 +101,38 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **snapshot_schedule_policy** object supports the following:
+        
+          * `retentionPolicy` (`pulumi.Input[dict]`)
+        
+            * `maxRetentionDays` (`pulumi.Input[float]`)
+            * `onSourceDiskDelete` (`pulumi.Input[str]`)
+        
+          * `schedule` (`pulumi.Input[dict]`)
+        
+            * `dailySchedule` (`pulumi.Input[dict]`)
+        
+              * `daysInCycle` (`pulumi.Input[float]`)
+              * `startTime` (`pulumi.Input[str]`)
+        
+            * `hourlySchedule` (`pulumi.Input[dict]`)
+        
+              * `hoursInCycle` (`pulumi.Input[float]`)
+              * `startTime` (`pulumi.Input[str]`)
+        
+            * `weeklySchedule` (`pulumi.Input[dict]`)
+        
+              * `dayOfWeeks` (`pulumi.Input[list]`)
+        
+                * `day` (`pulumi.Input[str]`)
+                * `startTime` (`pulumi.Input[str]`)
+        
+          * `snapshotProperties` (`pulumi.Input[dict]`)
+        
+            * `guestFlush` (`pulumi.Input[bool]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `storageLocations` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
         """

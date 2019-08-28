@@ -48,6 +48,44 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **config** object supports the following:
+        
+          * `airflowUri` (`pulumi.Input[str]`)
+          * `dagGcsPrefix` (`pulumi.Input[str]`)
+          * `gkeCluster` (`pulumi.Input[str]`)
+          * `nodeConfig` (`pulumi.Input[dict]`)
+        
+            * `diskSizeGb` (`pulumi.Input[float]`)
+            * `ipAllocationPolicy` (`pulumi.Input[dict]`)
+        
+              * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
+              * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
+              * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
+              * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
+              * `useIpAliases` (`pulumi.Input[bool]`)
+        
+            * `machineType` (`pulumi.Input[str]`)
+            * `network` (`pulumi.Input[str]`)
+            * `oauthScopes` (`pulumi.Input[list]`)
+            * `serviceAccount` (`pulumi.Input[str]`)
+            * `subnetwork` (`pulumi.Input[str]`)
+            * `tags` (`pulumi.Input[list]`)
+            * `zone` (`pulumi.Input[str]`)
+        
+          * `nodeCount` (`pulumi.Input[float]`)
+          * `privateEnvironmentConfig` (`pulumi.Input[dict]`)
+        
+            * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
+            * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
+        
+          * `softwareConfig` (`pulumi.Input[dict]`)
+        
+            * `airflowConfigOverrides` (`pulumi.Input[dict]`)
+            * `envVariables` (`pulumi.Input[dict]`)
+            * `imageVersion` (`pulumi.Input[str]`)
+            * `pypiPackages` (`pulumi.Input[dict]`)
+            * `pythonVersion` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/composer_environment.html.markdown.
         """
@@ -90,6 +128,44 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **config** object supports the following:
+        
+          * `airflowUri` (`pulumi.Input[str]`)
+          * `dagGcsPrefix` (`pulumi.Input[str]`)
+          * `gkeCluster` (`pulumi.Input[str]`)
+          * `nodeConfig` (`pulumi.Input[dict]`)
+        
+            * `diskSizeGb` (`pulumi.Input[float]`)
+            * `ipAllocationPolicy` (`pulumi.Input[dict]`)
+        
+              * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
+              * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
+              * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
+              * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
+              * `useIpAliases` (`pulumi.Input[bool]`)
+        
+            * `machineType` (`pulumi.Input[str]`)
+            * `network` (`pulumi.Input[str]`)
+            * `oauthScopes` (`pulumi.Input[list]`)
+            * `serviceAccount` (`pulumi.Input[str]`)
+            * `subnetwork` (`pulumi.Input[str]`)
+            * `tags` (`pulumi.Input[list]`)
+            * `zone` (`pulumi.Input[str]`)
+        
+          * `nodeCount` (`pulumi.Input[float]`)
+          * `privateEnvironmentConfig` (`pulumi.Input[dict]`)
+        
+            * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
+            * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
+        
+          * `softwareConfig` (`pulumi.Input[dict]`)
+        
+            * `airflowConfigOverrides` (`pulumi.Input[dict]`)
+            * `envVariables` (`pulumi.Input[dict]`)
+            * `imageVersion` (`pulumi.Input[str]`)
+            * `pypiPackages` (`pulumi.Input[dict]`)
+            * `pythonVersion` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/composer_environment.html.markdown.
         """

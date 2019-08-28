@@ -67,6 +67,11 @@ class RouterNat(pulumi.CustomResource):
     One or more subnetwork NAT configurations. Only used
     if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
     the section below for details on configuration.
+    
+      * `name` (`str`) - A unique name for Cloud NAT, required by GCE. Changing
+        this forces a new NAT to be created.
+      * `secondaryIpRangeNames` (`list`)
+      * `sourceIpRangesToNats` (`list`)
     """
     tcp_established_idle_timeout_sec: pulumi.Output[float]
     """
@@ -129,6 +134,18 @@ class RouterNat(pulumi.CustomResource):
                new NAT to be created.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
                Defaults to 30s if not set. Changing this forces a new NAT to be created.
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `filter` (`pulumi.Input[str]`)
+        
+        The **subnetworks** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for Cloud NAT, required by GCE. Changing
+            this forces a new NAT to be created.
+          * `secondaryIpRangeNames` (`pulumi.Input[list]`)
+          * `sourceIpRangesToNats` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
         """
@@ -217,6 +234,18 @@ class RouterNat(pulumi.CustomResource):
                new NAT to be created.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
                Defaults to 30s if not set. Changing this forces a new NAT to be created.
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `filter` (`pulumi.Input[str]`)
+        
+        The **subnetworks** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - A unique name for Cloud NAT, required by GCE. Changing
+            this forces a new NAT to be created.
+          * `secondaryIpRangeNames` (`pulumi.Input[list]`)
+          * `sourceIpRangesToNats` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
         """
