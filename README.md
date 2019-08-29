@@ -3,7 +3,13 @@
 # Google Cloud Platform Resource Provider
 
 The Google Cloud Platform (GCP) resource provider for Pulumi lets you use GCP resources in your cloud programs.  To use
-this package, please [install the Pulumi CLI first](https://pulumi.io/).
+this package, please [install the Pulumi CLI first](https://pulumi.io/). For a streamlined Pulumi walkthrough, including language runtime installation and Azure configuration, click "Get Started" below.
+
+<div>
+    <a href="https://www.pulumi.com/docs/get-started/gcp" title="Get Started">
+       <img src="https://www.pulumi.com/images/get-started.svg" width="120">
+    </a>
+</div>
 
 ## Installing
 
