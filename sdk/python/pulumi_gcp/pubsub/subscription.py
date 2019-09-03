@@ -26,15 +26,7 @@ class Subscription(pulumi.CustomResource):
     topic: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
-        A named resource representing the stream of messages from a single,
-        specific topic, to be delivered to the subscribing application.
-        
-        
-        To get more information about Subscription, see:
-        
-        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
-        * How-to Guides
-            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+        Create a Subscription resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

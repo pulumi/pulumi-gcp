@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new Google SQL Database on a Google SQL Database Instance. For more information, see
-// the [official documentation](https://cloud.google.com/sql/),
-// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/databases).
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
 type Database struct {
 	s *pulumi.ResourceState
@@ -75,89 +71,51 @@ func (r *Database) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The charset value. See MySQL's
-// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-// for more details and supported values. Postgres databases are in beta
-// and have limited `charset` support; they only support a value of `UTF8` at creation time.
 func (r *Database) Charset() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["charset"])
 }
 
-// The collation value. See MySQL's
-// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-// for more details and supported values. Postgres databases are in beta
-// and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 func (r *Database) Collation() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["collation"])
 }
 
-// The name of containing instance.
 func (r *Database) Instance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instance"])
 }
 
-// The name of the database.
 func (r *Database) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Database) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The URI of the created resource.
 func (r *Database) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering Database resources.
 type DatabaseState struct {
-	// The charset value. See MySQL's
-	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-	// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-	// for more details and supported values. Postgres databases are in beta
-	// and have limited `charset` support; they only support a value of `UTF8` at creation time.
 	Charset interface{}
-	// The collation value. See MySQL's
-	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-	// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-	// for more details and supported values. Postgres databases are in beta
-	// and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 	Collation interface{}
-	// The name of containing instance.
 	Instance interface{}
-	// The name of the database.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The URI of the created resource.
 	SelfLink interface{}
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// The charset value. See MySQL's
-	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-	// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-	// for more details and supported values. Postgres databases are in beta
-	// and have limited `charset` support; they only support a value of `UTF8` at creation time.
 	Charset interface{}
-	// The collation value. See MySQL's
-	// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-	// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-	// for more details and supported values. Postgres databases are in beta
-	// and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
 	Collation interface{}
-	// The name of containing instance.
 	Instance interface{}
-	// The name of the database.
 	Name interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

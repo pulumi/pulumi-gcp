@@ -7,15 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a VPC network or legacy network resource on GCP.
-// 
-// 
-// To get more information about Network, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network.html.markdown.
 type Network struct {
 	s *pulumi.ResourceState
@@ -88,6 +79,8 @@ func (r *Network) AutoCreateSubnetworks() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateSubnetworks"])
 }
 
+// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+// immediately after network creation. Defaults to `false`.
 func (r *Network) DeleteDefaultRoutesOnCreate() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["deleteDefaultRoutesOnCreate"])
 }
@@ -126,6 +119,8 @@ func (r *Network) SelfLink() *pulumi.StringOutput {
 // Input properties used for looking up and filtering Network resources.
 type NetworkState struct {
 	AutoCreateSubnetworks interface{}
+	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate interface{}
 	Description interface{}
 	GatewayIpv4 interface{}
@@ -142,6 +137,8 @@ type NetworkState struct {
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
 	AutoCreateSubnetworks interface{}
+	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate interface{}
 	Description interface{}
 	Ipv4Range interface{}

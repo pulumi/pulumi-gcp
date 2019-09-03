@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const myCert = gcp.compute.getCertificate({
- *     location: "us-east1-a",
  *     name: "my-cert",
  * });
  * 

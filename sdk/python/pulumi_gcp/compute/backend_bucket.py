@@ -27,20 +27,7 @@ class BackendBucket(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket_name=None, cdn_policy=None, description=None, enable_cdn=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
-        load balancing.
-        
-        An HTTP(S) load balancer can direct traffic to specified URLs to a
-        backend bucket rather than a backend service. It can send requests for
-        static content to a Cloud Storage bucket and requests for dynamic content
-        a virtual machine instance.
-        
-        
-        To get more information about BackendBucket, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
-        * How-to Guides
-            * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+        Create a BackendBucket resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -30,14 +30,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     uptime_check_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, __props__=None, __name__=None, __opts__=None):
         """
-        This message configures which resources and services to monitor for availability.
-        
-        
-        To get more information about UptimeCheckConfig, see:
-        
-        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+        Create a UptimeCheckConfig resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

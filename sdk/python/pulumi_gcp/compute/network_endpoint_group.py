@@ -29,23 +29,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, default_port=None, description=None, name=None, network=None, network_endpoint_type=None, project=None, subnetwork=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Network endpoint groups (NEGs) are zonal resources that represent
-        collections of IP address and port combinations for GCP resources within a
-        single subnet. Each IP address and port combination is called a network
-        endpoint.
-        
-        Network endpoint groups can be used as backends in backend services for
-        HTTP(S), TCP proxy, and SSL proxy load balancers. You cannot use NEGs as a
-        backend with internal load balancers. Because NEG backends allow you to
-        specify IP addresses and ports, you can distribute traffic in a granular
-        fashion among applications or containers running within VM instances.
-        
-        
-        To get more information about NetworkEndpointGroup, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+        Create a NetworkEndpointGroup resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

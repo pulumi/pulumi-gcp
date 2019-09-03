@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * ```
  * 
  * 
- * To set a policy with a [list contraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

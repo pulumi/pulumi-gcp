@@ -79,11 +79,13 @@ export class Registry extends pulumi.CustomResource {
     /**
      * A PubSub topics to publish device events. Structure is documented below.
      */
-    public readonly eventNotificationConfig!: pulumi.Output<outputs.kms.RegistryEventNotificationConfig | undefined>;
+    public readonly eventNotificationConfig!: pulumi.Output<outputs.kms.RegistryEventNotificationConfig>;
+    public readonly eventNotificationConfigs!: pulumi.Output<outputs.kms.RegistryEventNotificationConfigItem[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
      */
     public readonly httpConfig!: pulumi.Output<outputs.kms.RegistryHttpConfig>;
+    public readonly logLevel!: pulumi.Output<string | undefined>;
     /**
      * Activate or deactivate MQTT. Structure is documented below.
      */
@@ -120,7 +122,9 @@ export class Registry extends pulumi.CustomResource {
             const state = argsOrState as RegistryState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["eventNotificationConfig"] = state ? state.eventNotificationConfig : undefined;
+            inputs["eventNotificationConfigs"] = state ? state.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = state ? state.httpConfig : undefined;
+            inputs["logLevel"] = state ? state.logLevel : undefined;
             inputs["mqttConfig"] = state ? state.mqttConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -130,7 +134,9 @@ export class Registry extends pulumi.CustomResource {
             const args = argsOrState as RegistryArgs | undefined;
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["eventNotificationConfig"] = args ? args.eventNotificationConfig : undefined;
+            inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
+            inputs["logLevel"] = args ? args.logLevel : undefined;
             inputs["mqttConfig"] = args ? args.mqttConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -160,10 +166,12 @@ export interface RegistryState {
      * A PubSub topics to publish device events. Structure is documented below.
      */
     readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
+    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
      */
     readonly httpConfig?: pulumi.Input<inputs.kms.RegistryHttpConfig>;
+    readonly logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT. Structure is documented below.
      */
@@ -199,10 +207,12 @@ export interface RegistryArgs {
      * A PubSub topics to publish device events. Structure is documented below.
      */
     readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
+    readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
      */
     readonly httpConfig?: pulumi.Input<inputs.kms.RegistryHttpConfig>;
+    readonly logLevel?: pulumi.Input<string>;
     /**
      * Activate or deactivate MQTT. Structure is documented below.
      */

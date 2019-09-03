@@ -56,63 +56,75 @@ export namespace appengine {
         path?: pulumi.Input<string>;
         service?: pulumi.Input<string>;
     }
+
+    export interface StandardAppVersionDeployment {
+        files?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionDeploymentFile>[]>;
+        zip?: pulumi.Input<inputs.appengine.StandardAppVersionDeploymentZip>;
+    }
+
+    export interface StandardAppVersionDeploymentFile {
+        name: pulumi.Input<string>;
+        sha1Sum?: pulumi.Input<string>;
+        sourceUrl?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionDeploymentZip {
+        filesCount?: pulumi.Input<number>;
+        sourceUrl?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionEntrypoint {
+        shell?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionHandler {
+        authFailAction?: pulumi.Input<string>;
+        login?: pulumi.Input<string>;
+        redirectHttpResponseCode?: pulumi.Input<string>;
+        script?: pulumi.Input<inputs.appengine.StandardAppVersionHandlerScript>;
+        securityLevel?: pulumi.Input<string>;
+        staticFiles?: pulumi.Input<inputs.appengine.StandardAppVersionHandlerStaticFiles>;
+        urlRegex?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionHandlerScript {
+        scriptPath?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionHandlerStaticFiles {
+        applicationReadable?: pulumi.Input<boolean>;
+        expiration?: pulumi.Input<string>;
+        httpHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        mimeType?: pulumi.Input<string>;
+        path?: pulumi.Input<string>;
+        requireMatchingFile?: pulumi.Input<boolean>;
+        uploadPathRegex?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionLibrary {
+        name?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
 }
 
 export namespace bigquery {
+    export interface AppProfileSingleClusterRouting {
+        allowTransactionalWrites?: pulumi.Input<boolean>;
+        clusterId?: pulumi.Input<string>;
+    }
+
     export interface DatasetAccess {
-        /**
-         * A domain to grant access to.
-         */
         domain?: pulumi.Input<string>;
-        /**
-         * An email address of a Google Group to grant
-         * access to.
-         */
         groupByEmail?: pulumi.Input<string>;
-        /**
-         * Describes the rights granted to
-         * the user specified by the other member of the access object.
-         * Primitive, Predefined and custom roles are supported.
-         * Predefined roles that have equivalent primitive roles are swapped
-         * by the API to their Primitive counterparts, and will show a diff post-create.
-         * See [official docs](https://cloud.google.com/bigquery/docs/access-control).
-         */
         role?: pulumi.Input<string>;
-        /**
-         * A special group to grant access to.
-         * Possible values include:
-         * * `projectOwners`: Owners of the enclosing project.
-         * * `projectReaders`: Readers of the enclosing project.
-         * * `projectWriters`: Writers of the enclosing project.
-         * * `allAuthenticatedUsers`: All authenticated BigQuery users.
-         */
         specialGroup?: pulumi.Input<string>;
-        /**
-         * An email address of a user to grant access to.
-         */
         userByEmail?: pulumi.Input<string>;
-        /**
-         * A view from a different dataset to grant access to.
-         * Queries executed against that view will have read access to tables in this
-         * dataset. The role field is not required when this field is set. If that
-         * view is updated by any user, access to the view needs to be granted again
-         * via an update operation. Structure is documented below.
-         */
         view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
     }
 
     export interface DatasetAccessView {
-        /**
-         * The ID of the dataset containing this table.
-         */
         datasetId: pulumi.Input<string>;
-        /**
-         * The ID of the project containing this table.
-         */
         projectId: pulumi.Input<string>;
-        /**
-         * The ID of the table.
-         */
         tableId: pulumi.Input<string>;
     }
 
@@ -362,6 +374,10 @@ export namespace cloudrun {
 
     export interface ServiceStatus {
         conditions?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatusCondition>[]>;
+        latestCreatedRevisionName?: pulumi.Input<string>;
+        latestReadyRevisionName?: pulumi.Input<string>;
+        observedGeneration?: pulumi.Input<number>;
+        url?: pulumi.Input<string>;
     }
 
     export interface ServiceStatusCondition {
@@ -391,7 +407,19 @@ export namespace cloudscheduler {
         body?: pulumi.Input<string>;
         headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         httpMethod?: pulumi.Input<string>;
+        oauthToken?: pulumi.Input<inputs.cloudscheduler.JobHttpTargetOauthToken>;
+        oidcToken?: pulumi.Input<inputs.cloudscheduler.JobHttpTargetOidcToken>;
         uri: pulumi.Input<string>;
+    }
+
+    export interface JobHttpTargetOauthToken {
+        scope?: pulumi.Input<string>;
+        serviceAccountEmail?: pulumi.Input<string>;
+    }
+
+    export interface JobHttpTargetOidcToken {
+        audience?: pulumi.Input<string>;
+        serviceAccountEmail?: pulumi.Input<string>;
     }
 
     export interface JobPubsubTarget {
@@ -621,7 +649,7 @@ export namespace compute {
     export interface InstanceBootDiskInitializeParams {
         image?: pulumi.Input<string>;
         /**
-         * A set of key/value label pairs to assign to the instance.
+         * A map of key/value label pairs to assign to the instance.
          */
         labels?: pulumi.Input<{[key: string]: any}>;
         size?: pulumi.Input<number>;
@@ -990,6 +1018,7 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
+        instanceRedistributionType?: pulumi.Input<string>;
         maxSurgeFixed?: pulumi.Input<number>;
         maxSurgePercent?: pulumi.Input<number>;
         maxUnavailableFixed?: pulumi.Input<number>;
@@ -1233,7 +1262,7 @@ export namespace container {
     }
 
     export interface ClusterDatabaseEncryption {
-        keyName: pulumi.Input<string>;
+        keyName?: pulumi.Input<string>;
         state: pulumi.Input<string>;
     }
 
@@ -1494,7 +1523,33 @@ export namespace containeranalysis {
 }
 
 export namespace dataproc {
+    export interface AutoscalingPolicyBasicAlgorithm {
+        cooldownPeriod?: pulumi.Input<string>;
+        yarnConfig: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfig>;
+    }
+
+    export interface AutoscalingPolicyBasicAlgorithmYarnConfig {
+        gracefulDecommissionTimeout: pulumi.Input<string>;
+        scaleDownFactor: pulumi.Input<number>;
+        scaleDownMinWorkerFraction?: pulumi.Input<number>;
+        scaleUpFactor: pulumi.Input<number>;
+        scaleUpMinWorkerFraction?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalingPolicySecondaryWorkerConfig {
+        maxInstances?: pulumi.Input<number>;
+        minInstances?: pulumi.Input<number>;
+        weight?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalingPolicyWorkerConfig {
+        maxInstances: pulumi.Input<number>;
+        minInstances?: pulumi.Input<number>;
+        weight?: pulumi.Input<number>;
+    }
+
     export interface ClusterClusterConfig {
+        autoscalingConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAutoscalingConfig>;
         bucket?: pulumi.Input<string>;
         encryptionConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigEncryptionConfig>;
         gceClusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigGceClusterConfig>;
@@ -1504,6 +1559,10 @@ export namespace dataproc {
         softwareConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigSoftwareConfig>;
         stagingBucket?: pulumi.Input<string>;
         workerConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigWorkerConfig>;
+    }
+
+    export interface ClusterClusterConfigAutoscalingConfig {
+        policyUri?: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfigEncryptionConfig {
@@ -1860,6 +1919,11 @@ export namespace kms {
         pubsubTopicName: pulumi.Input<string>;
     }
 
+    export interface RegistryEventNotificationConfigItem {
+        pubsubTopicName: pulumi.Input<string>;
+        subfolderMatches?: pulumi.Input<string>;
+    }
+
     export interface RegistryHttpConfig {
         httpEnabledState: pulumi.Input<string>;
     }
@@ -1906,6 +1970,12 @@ export namespace logging {
         description?: pulumi.Input<string>;
         key: pulumi.Input<string>;
         valueType?: pulumi.Input<string>;
+    }
+}
+
+export namespace ml {
+    export interface EngineModelDefaultVersion {
+        name?: pulumi.Input<string>;
     }
 }
 
@@ -2042,7 +2112,7 @@ export namespace organizations {
 
     export interface GetIAMPolicyBinding {
         /**
-         * An array of identites that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `gcp.organizations.Project` resource.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. It **can't** be used with the `gcp.organizations.Project` resource.
@@ -2126,6 +2196,10 @@ export namespace pubsub {
     export interface SubscriptionPushConfig {
         attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         pushEndpoint: pulumi.Input<string>;
+    }
+
+    export interface TopicMessageStoragePolicy {
+        allowedPersistenceRegions: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 

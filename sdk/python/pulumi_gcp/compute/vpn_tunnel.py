@@ -41,19 +41,7 @@ class VPNTunnel(pulumi.CustomResource):
     vpn_gateway_interface: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None, __props__=None, __name__=None, __opts__=None):
         """
-        VPN tunnel resource.
-        
-        
-        To get more information about VpnTunnel, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
-        * How-to Guides
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-            * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
-        
-        > **Warning:** All arguments including the shared secret will be stored in the raw
-        state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        Create a VPNTunnel resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

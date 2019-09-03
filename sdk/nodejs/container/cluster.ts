@@ -153,8 +153,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterAutoscaling!: pulumi.Output<outputs.container.ClusterClusterAutoscaling>;
     /**
-     * The IP address range of the kubernetes pods in
-     * this cluster. Default is an automatically assigned CIDR.
+     * The IP address range of the Kubernetes pods
+     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
      */
     public readonly clusterIpv4Cidr!: pulumi.Output<string>;
     /**
@@ -400,6 +404,7 @@ export class Cluster extends pulumi.CustomResource {
      * )
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     * Structure is documented below.
      */
     public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig | undefined>;
     /**
@@ -560,8 +565,12 @@ export interface ClusterState {
      */
     readonly clusterAutoscaling?: pulumi.Input<inputs.container.ClusterClusterAutoscaling>;
     /**
-     * The IP address range of the kubernetes pods in
-     * this cluster. Default is an automatically assigned CIDR.
+     * The IP address range of the Kubernetes pods
+     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -807,6 +816,7 @@ export interface ClusterState {
      * )
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     * Structure is documented below.
      */
     readonly workloadIdentityConfig?: pulumi.Input<inputs.container.ClusterWorkloadIdentityConfig>;
     /**
@@ -852,8 +862,12 @@ export interface ClusterArgs {
      */
     readonly clusterAutoscaling?: pulumi.Input<inputs.container.ClusterClusterAutoscaling>;
     /**
-     * The IP address range of the kubernetes pods in
-     * this cluster. Default is an automatically assigned CIDR.
+     * The IP address range of the Kubernetes pods
+     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -1076,6 +1090,7 @@ export interface ClusterArgs {
      * )
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+     * Structure is documented below.
      */
     readonly workloadIdentityConfig?: pulumi.Input<inputs.container.ClusterWorkloadIdentityConfig>;
     /**

@@ -84,7 +84,7 @@ type GetBackendServiceResult struct {
 	SecurityPolicy interface{}
 	// The URI of the Backend Service.
 	SelfLink interface{}
-	// The Backend Service session stickyness configuration.
+	// The Backend Service session stickiness configuration.
 	SessionAffinity interface{}
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
 	TimeoutSec interface{}

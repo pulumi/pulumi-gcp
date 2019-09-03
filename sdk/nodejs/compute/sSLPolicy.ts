@@ -7,40 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a SSL policy. SSL policies give you the ability to control the
- * features of SSL that your SSL proxy or HTTPS load balancer negotiates.
- * 
- * 
- * To get more information about SslPolicy, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
- * * How-to Guides
- *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
- * 
- * ## Example Usage - Ssl Policy Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const customSslPolicy = new gcp.compute.SSLPolicy("custom-ssl-policy", {
- *     customFeatures: [
- *         "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
- *         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
- *     ],
- *     minTlsVersion: "TLS_1_2",
- *     profile: "CUSTOM",
- * });
- * const nonprodSslPolicy = new gcp.compute.SSLPolicy("nonprod-ssl-policy", {
- *     minTlsVersion: "TLS_1_2",
- *     profile: "MODERN",
- * });
- * const prodSslPolicy = new gcp.compute.SSLPolicy("prod-ssl-policy", {
- *     profile: "MODERN",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_policy.html.markdown.
  */
 export class SSLPolicy extends pulumi.CustomResource {

@@ -44,6 +44,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		TriggerBucket: outputs["triggerBucket"],
 		TriggerHttp: outputs["triggerHttp"],
 		TriggerTopic: outputs["triggerTopic"],
+		VpcConnector: outputs["vpcConnector"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -82,6 +83,7 @@ type GetFunctionResult struct {
 	Region interface{}
 	// The runtime in which the function is running.
 	Runtime interface{}
+	// The service account email to be assumed by the cloud function.
 	ServiceAccountEmail interface{}
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket interface{}
@@ -94,6 +96,7 @@ type GetFunctionResult struct {
 	// If function is triggered by HTTP, this boolean is set.
 	TriggerHttp interface{}
 	TriggerTopic interface{}
+	VpcConnector interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

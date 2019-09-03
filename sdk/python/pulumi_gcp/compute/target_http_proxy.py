@@ -26,15 +26,7 @@ class TargetHttpProxy(pulumi.CustomResource):
     url_map: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, url_map=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a TargetHttpProxy resource, which is used by one or more global
-        forwarding rule to route incoming HTTP requests to a URL map.
-        
-        
-        To get more information about TargetHttpProxy, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+        Create a TargetHttpProxy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

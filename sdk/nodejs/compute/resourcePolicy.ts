@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A policy that can be attached to a resource to specify or schedule actions on that resource.
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
  */
 export class ResourcePolicy extends pulumi.CustomResource {

@@ -96,7 +96,7 @@ export class NodePool extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region in which the cluster resides (for
-     * regional clusters). `zone` has been deprecated in favor of `location`.
+     * regional clusters). `region` has been deprecated in favor of `location`.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -233,7 +233,7 @@ export interface NodePoolState {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for
-     * regional clusters). `zone` has been deprecated in favor of `location`.
+     * regional clusters). `region` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -311,7 +311,7 @@ export interface NodePoolArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster resides (for
-     * regional clusters). `zone` has been deprecated in favor of `location`.
+     * regional clusters). `region` has been deprecated in favor of `location`.
      */
     readonly region?: pulumi.Input<string>;
     /**

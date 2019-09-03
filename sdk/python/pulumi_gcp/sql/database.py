@@ -11,60 +11,23 @@ from .. import utilities, tables
 
 class Database(pulumi.CustomResource):
     charset: pulumi.Output[str]
-    """
-    The charset value. See MySQL's
-    [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-    and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-    for more details and supported values. Postgres databases are in beta
-    and have limited `charset` support; they only support a value of `UTF8` at creation time.
-    """
     collation: pulumi.Output[str]
-    """
-    The collation value. See MySQL's
-    [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-    and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-    for more details and supported values. Postgres databases are in beta
-    and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
-    """
     instance: pulumi.Output[str]
-    """
-    The name of containing instance.
-    """
     name: pulumi.Output[str]
-    """
-    The name of the database.
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
     def __init__(__self__, resource_name, opts=None, charset=None, collation=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a new Google SQL Database on a Google SQL Database Instance. For more information, see
-        the [official documentation](https://cloud.google.com/sql/),
-        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/databases).
+        Create a Database resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] charset: The charset value. See MySQL's
-               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-               for more details and supported values. Postgres databases are in beta
-               and have limited `charset` support; they only support a value of `UTF8` at creation time.
-        :param pulumi.Input[str] collation: The collation value. See MySQL's
-               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-               for more details and supported values. Postgres databases are in beta
-               and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] instance: The name of containing instance.
-        :param pulumi.Input[str] name: The name of the database.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
         """
@@ -108,21 +71,8 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] charset: The charset value. See MySQL's
-               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
-               for more details and supported values. Postgres databases are in beta
-               and have limited `charset` support; they only support a value of `UTF8` at creation time.
-        :param pulumi.Input[str] collation: The collation value. See MySQL's
-               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
-               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
-               for more details and supported values. Postgres databases are in beta
-               and have limited `collation` support; they only support a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] instance: The name of containing instance.
-        :param pulumi.Input[str] name: The name of the database.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
         """

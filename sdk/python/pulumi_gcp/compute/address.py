@@ -35,27 +35,7 @@ class Address(pulumi.CustomResource):
     users: pulumi.Output[list]
     def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, region=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents an Address resource.
-        
-        Each virtual machine instance has an ephemeral internal IP address and,
-        optionally, an external IP address. To communicate between instances on
-        the same network, you can use an instance's internal IP address. To
-        communicate with the Internet and instances outside of the same network,
-        you must specify the instance's external IP address.
-        
-        Internal IP addresses are ephemeral and only belong to an instance for
-        the lifetime of the instance; if the instance is deleted and recreated,
-        the instance is assigned a new internal IP address, either by Compute
-        Engine or by you. External IP addresses can be either ephemeral or
-        static.
-        
-        
-        To get more information about Address, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
-        * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-            * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+        Create a Address resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

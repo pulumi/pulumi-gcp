@@ -8,19 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Region Backend Service defines a regionally-scoped group of virtual
-// machines that will serve traffic for load balancing.
-// 
-// Region backend services can only be used when using internal load balancing.
-// For external load balancing, use a global backend service instead.
-// 
-// 
-// To get more information about RegionBackendService, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
-// * How-to Guides
-//     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
 type RegionBackendService struct {
 	s *pulumi.ResourceState

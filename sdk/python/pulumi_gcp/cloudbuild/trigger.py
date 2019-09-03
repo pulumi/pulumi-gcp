@@ -27,14 +27,7 @@ class Trigger(pulumi.CustomResource):
     trigger_template: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
-        Configuration for an automated build in response to source repository changes.
-        
-        
-        To get more information about Trigger, see:
-        
-        * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
-        * How-to Guides
-            * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+        Create a Trigger resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

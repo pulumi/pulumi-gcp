@@ -31,22 +31,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
     unhealthy_threshold: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, host=None, name=None, port=None, project=None, request_path=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
         """
-        An HttpsHealthCheck resource. This resource defines a template for how
-        individual VMs should be checked for health, via HTTPS.
-        
-        
-        > **Note:** compute.HttpsHealthCheck is a legacy health check.
-        The newer [compute.HealthCheck](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
-        should be preferred for all uses except
-        [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
-        which still require the legacy version.
-        
-        
-        To get more information about HttpsHealthCheck, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpsHealthChecks)
-        * How-to Guides
-            * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+        Create a HttpsHealthCheck resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

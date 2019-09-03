@@ -7,52 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a Persistent Disk Snapshot resource.
- * 
- * Use snapshots to back up data from your persistent disks. Snapshots are
- * different from public images and custom images, which are used primarily
- * to create instances or configure instance templates. Snapshots are useful
- * for periodic backup of the data on your persistent disks. You can create
- * snapshots from persistent disks even while they are attached to running
- * instances.
- * 
- * Snapshots are incremental, so you can create regular snapshots on a
- * persistent disk faster and at a much lower cost than if you regularly
- * created a full image of the disk.
- * 
- * 
- * To get more information about Snapshot, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
- * 
- * ## Example Usage - Snapshot Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const debian = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const persistent = new gcp.compute.Disk("persistent", {
- *     image: debian.selfLink,
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const snapshot = new gcp.compute.Snapshot("snapshot", {
- *     labels: {
- *         my_label: "value",
- *     },
- *     sourceDisk: persistent.name,
- *     zone: "us-central1-a",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
  */
 export class Snapshot extends pulumi.CustomResource {

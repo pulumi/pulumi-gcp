@@ -104,7 +104,7 @@ class NodePool(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region in which the cluster resides (for
-    regional clusters). `zone` has been deprecated in favor of `location`.
+    regional clusters). `region` has been deprecated in favor of `location`.
     """
     version: pulumi.Output[str]
     """
@@ -151,7 +151,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input[str] region: The region in which the cluster resides (for
-               regional clusters). `zone` has been deprecated in favor of `location`.
+               regional clusters). `region` has been deprecated in favor of `location`.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -278,7 +278,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input[str] region: The region in which the cluster resides (for
-               regional clusters). `zone` has been deprecated in favor of `location`.
+               regional clusters). `region` has been deprecated in favor of `location`.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's

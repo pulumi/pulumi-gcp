@@ -173,7 +173,7 @@ func (r *NodePool) Project() *pulumi.StringOutput {
 }
 
 // The region in which the cluster resides (for
-// regional clusters). `zone` has been deprecated in favor of `location`.
+// regional clusters). `region` has been deprecated in favor of `location`.
 func (r *NodePool) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -231,7 +231,7 @@ type NodePoolState struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for
-	// regional clusters). `zone` has been deprecated in favor of `location`.
+	// regional clusters). `region` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -281,7 +281,7 @@ type NodePoolArgs struct {
 	// the provider-configured project will be used.
 	Project interface{}
 	// The region in which the cluster resides (for
-	// regional clusters). `zone` has been deprecated in favor of `location`.
+	// regional clusters). `region` has been deprecated in favor of `location`.
 	Region interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should

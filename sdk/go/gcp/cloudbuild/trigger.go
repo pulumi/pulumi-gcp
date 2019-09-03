@@ -7,15 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Configuration for an automated build in response to source repository changes.
-// 
-// 
-// To get more information about Trigger, see:
-// 
-// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
-// * How-to Guides
-//     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
 type Trigger struct {
 	s *pulumi.ResourceState

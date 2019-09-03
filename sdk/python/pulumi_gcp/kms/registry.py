@@ -25,12 +25,14 @@ class Registry(pulumi.CustomResource):
     
       * `pubsub_topic_name` (`str`)
     """
+    event_notification_configs: pulumi.Output[list]
     http_config: pulumi.Output[dict]
     """
     Activate or deactivate HTTP. Structure is documented below.
     
       * `http_enabled_state` (`str`)
     """
+    log_level: pulumi.Output[str]
     mqtt_config: pulumi.Output[dict]
     """
     Activate or deactivate MQTT. Structure is documented below.
@@ -56,7 +58,7 @@ class Registry(pulumi.CustomResource):
     
       * `pubsub_topic_name` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_config=None, http_config=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_config=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
         """
          Creates a device registry in Google's Cloud IoT Core platform. For more information see
         [the official documentation](https://cloud.google.com/iot/docs/) and
@@ -84,6 +86,11 @@ class Registry(pulumi.CustomResource):
         The **event_notification_config** object supports the following:
         
           * `pubsub_topic_name` (`pulumi.Input[str]`)
+        
+        The **event_notification_configs** object supports the following:
+        
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
+          * `subfolderMatches` (`pulumi.Input[str]`)
         
         The **http_config** object supports the following:
         
@@ -118,7 +125,9 @@ class Registry(pulumi.CustomResource):
 
             __props__['credentials'] = credentials
             __props__['event_notification_config'] = event_notification_config
+            __props__['event_notification_configs'] = event_notification_configs
             __props__['http_config'] = http_config
+            __props__['log_level'] = log_level
             __props__['mqtt_config'] = mqtt_config
             __props__['name'] = name
             __props__['project'] = project
@@ -131,7 +140,7 @@ class Registry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, credentials=None, event_notification_config=None, http_config=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):
+    def get(resource_name, id, opts=None, credentials=None, event_notification_config=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -160,6 +169,11 @@ class Registry(pulumi.CustomResource):
         
           * `pubsub_topic_name` (`pulumi.Input[str]`)
         
+        The **event_notification_configs** object supports the following:
+        
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
+          * `subfolderMatches` (`pulumi.Input[str]`)
+        
         The **http_config** object supports the following:
         
           * `http_enabled_state` (`pulumi.Input[str]`)
@@ -179,7 +193,9 @@ class Registry(pulumi.CustomResource):
         __props__ = dict()
         __props__["credentials"] = credentials
         __props__["event_notification_config"] = event_notification_config
+        __props__["event_notification_configs"] = event_notification_configs
         __props__["http_config"] = http_config
+        __props__["log_level"] = log_level
         __props__["mqtt_config"] = mqtt_config
         __props__["name"] = name
         __props__["project"] = project

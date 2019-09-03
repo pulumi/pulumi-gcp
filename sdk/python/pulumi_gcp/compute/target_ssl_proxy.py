@@ -29,16 +29,7 @@ class TargetSSLProxy(pulumi.CustomResource):
     ssl_policy: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, ssl_certificates=None, ssl_policy=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a TargetSslProxy resource, which is used by one or more
-        global forwarding rule to route incoming SSL requests to a backend
-        service.
-        
-        
-        To get more information about TargetSslProxy, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
-        * How-to Guides
-            * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+        Create a TargetSSLProxy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

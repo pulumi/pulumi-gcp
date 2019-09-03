@@ -18,16 +18,7 @@ class Index(pulumi.CustomResource):
     query_scope: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
-        Cloud Firestore indexes enable simple and complex queries against documents in a database.
-         This resource manages composite indexes and not single
-        field indexes.
-        
-        
-        To get more information about Index, see:
-        
-        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+        Create a Index resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

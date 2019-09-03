@@ -7,27 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents an InterconnectAttachment (VLAN attachment) resource. For more
- * information, see Creating VLAN Attachments.
- * 
- * 
- * 
- * ## Example Usage - Interconnect Attachment Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const foobar = new gcp.compute.Router("foobar", {
- *     network: google_compute_network_foobar.name,
- * });
- * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
- *     interconnect: "my-interconnect-id",
- *     router: foobar.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
  */
 export class InterconnectAttachment extends pulumi.CustomResource {
@@ -57,6 +36,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === InterconnectAttachment.__pulumiType;
     }
 
+    public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly bandwidth!: pulumi.Output<string>;
     public readonly candidateSubnets!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -96,6 +77,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InterconnectAttachmentState | undefined;
+            inputs["adminEnabled"] = state ? state.adminEnabled : undefined;
+            inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             inputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -120,6 +103,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             if (!args || args.router === undefined) {
                 throw new Error("Missing required property 'router'");
             }
+            inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
+            inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
@@ -155,6 +140,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InterconnectAttachment resources.
  */
 export interface InterconnectAttachmentState {
+    readonly adminEnabled?: pulumi.Input<boolean>;
+    readonly bandwidth?: pulumi.Input<string>;
     readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly cloudRouterIpAddress?: pulumi.Input<string>;
     readonly creationTimestamp?: pulumi.Input<string>;
@@ -187,6 +174,8 @@ export interface InterconnectAttachmentState {
  * The set of arguments for constructing a InterconnectAttachment resource.
  */
 export interface InterconnectAttachmentArgs {
+    readonly adminEnabled?: pulumi.Input<boolean>;
+    readonly bandwidth?: pulumi.Input<string>;
     readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     readonly description?: pulumi.Input<string>;
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;

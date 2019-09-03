@@ -7,62 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * VPN tunnel resource.
- * 
- * 
- * To get more information about VpnTunnel, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
- * * How-to Guides
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
- *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
- * 
- * > **Warning:** All arguments including the shared secret will be stored in the raw
- * state as plain-text.
- * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- * ## Example Usage - Vpn Tunnel Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {});
- * const network1 = new gcp.compute.Network("network1", {});
- * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {
- *     network: network1.selfLink,
- * });
- * const frEsp = new gcp.compute.ForwardingRule("frEsp", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "ESP",
- *     target: targetGateway.selfLink,
- * });
- * const frUdp4500 = new gcp.compute.ForwardingRule("frUdp4500", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "UDP",
- *     portRange: "4500",
- *     target: targetGateway.selfLink,
- * });
- * const frUdp500 = new gcp.compute.ForwardingRule("frUdp500", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "UDP",
- *     portRange: "500",
- *     target: targetGateway.selfLink,
- * });
- * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
- *     peerIp: "15.0.0.120",
- *     sharedSecret: "a secret message",
- *     targetVpnGateway: targetGateway.selfLink,
- * }, {dependsOn: [frEsp, frUdp4500, frUdp500]});
- * const route1 = new gcp.compute.Route("route1", {
- *     destRange: "15.0.0.0/24",
- *     network: network1.name,
- *     nextHopVpnTunnel: tunnel1.selfLink,
- *     priority: 1000,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
  */
 export class VPNTunnel extends pulumi.CustomResource {

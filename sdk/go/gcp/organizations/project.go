@@ -110,7 +110,7 @@ func (r *Project) ID() *pulumi.IDOutput {
 
 // Create the 'default' network automatically.  Default `true`.
 // If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-// will still need to have 1 network slot available to create the project succesfully, even if
+// will still need to have 1 network slot available to create the project successfully, even if
 // you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
 func (r *Project) AutoCreateNetwork() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateNetwork"])
@@ -174,7 +174,7 @@ func (r *Project) SkipDelete() *pulumi.BoolOutput {
 type ProjectState struct {
 	// Create the 'default' network automatically.  Default `true`.
 	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project succesfully, even if
+	// will still need to have 1 network slot available to create the project successfully, even if
 	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
 	AutoCreateNetwork interface{}
 	// The alphanumeric ID of the billing account this project
@@ -213,7 +213,7 @@ type ProjectState struct {
 type ProjectArgs struct {
 	// Create the 'default' network automatically.  Default `true`.
 	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project succesfully, even if
+	// will still need to have 1 network slot available to create the project successfully, even if
 	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
 	AutoCreateNetwork interface{}
 	// The alphanumeric ID of the billing account this project

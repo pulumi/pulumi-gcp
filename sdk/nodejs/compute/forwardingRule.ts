@@ -7,67 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A ForwardingRule resource. A ForwardingRule resource specifies which pool
- * of target virtual machines to forward a packet to if it matches the given
- * [IPAddress, IPProtocol, portRange] tuple.
- * 
- * 
- * To get more information about ForwardingRule, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRule)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
- * 
- * ## Example Usage - Forwarding Rule Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultTargetPool = new gcp.compute.TargetPool("default", {});
- * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
- *     portRange: "80",
- *     target: defaultTargetPool.selfLink,
- * });
- * ```
- * ## Example Usage - Forwarding Rule Internallb
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const hc = new gcp.compute.HealthCheck("hc", {
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 80,
- *     },
- *     timeoutSec: 1,
- * });
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     autoCreateSubnetworks: false,
- * });
- * const backend = new gcp.compute.RegionBackendService("backend", {
- *     healthChecks: hc.selfLink,
- *     region: "us-central1",
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     ipCidrRange: "10.0.0.0/16",
- *     network: defaultNetwork.selfLink,
- *     region: "us-central1",
- * });
- * // Forwarding rule for Internal Load Balancing
- * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
- *     allPorts: true,
- *     backendService: backend.selfLink,
- *     loadBalancingScheme: "INTERNAL",
- *     network: defaultNetwork.name,
- *     region: "us-central1",
- *     subnetwork: defaultSubnetwork.name,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
  */
 export class ForwardingRule extends pulumi.CustomResource {

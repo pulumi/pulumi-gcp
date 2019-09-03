@@ -33,18 +33,7 @@ class RegionBackendService(pulumi.CustomResource):
     timeout_sec: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, backends=None, connection_draining_timeout_sec=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
-        A Region Backend Service defines a regionally-scoped group of virtual
-        machines that will serve traffic for load balancing.
-        
-        Region backend services can only be used when using internal load balancing.
-        For external load balancing, use a global backend service instead.
-        
-        
-        To get more information about RegionBackendService, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
-        * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+        Create a RegionBackendService resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

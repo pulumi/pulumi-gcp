@@ -14,17 +14,11 @@ class Policy(pulumi.CustomResource):
     cluster_admission_rules: pulumi.Output[list]
     default_admission_rule: pulumi.Output[dict]
     description: pulumi.Output[str]
+    global_policy_evaluation_mode: pulumi.Output[str]
     project: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, global_policy_evaluation_mode=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        A policy for container image binary authorization.
-        
-        
-        To get more information about Policy, see:
-        
-        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+        Create a Policy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -71,6 +65,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'default_admission_rule'")
             __props__['default_admission_rule'] = default_admission_rule
             __props__['description'] = description
+            __props__['global_policy_evaluation_mode'] = global_policy_evaluation_mode
             __props__['project'] = project
         super(Policy, __self__).__init__(
             'gcp:binaryauthorization/policy:Policy',
@@ -79,7 +74,7 @@ class Policy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, project=None):
+    def get(resource_name, id, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, global_policy_evaluation_mode=None, project=None):
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,6 +109,7 @@ class Policy(pulumi.CustomResource):
         __props__["cluster_admission_rules"] = cluster_admission_rules
         __props__["default_admission_rule"] = default_admission_rule
         __props__["description"] = description
+        __props__["global_policy_evaluation_mode"] = global_policy_evaluation_mode
         __props__["project"] = project
         return Policy(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

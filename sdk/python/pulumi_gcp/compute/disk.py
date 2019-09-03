@@ -41,32 +41,7 @@ class Disk(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, disk_encryption_key=None, image=None, labels=None, name=None, physical_block_size_bytes=None, project=None, resource_policies=None, size=None, snapshot=None, source_image_encryption_key=None, source_snapshot_encryption_key=None, type=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Persistent disks are durable storage devices that function similarly to
-        the physical disks in a desktop or a server. Compute Engine manages the
-        hardware behind these devices to ensure data redundancy and optimize
-        performance for you. Persistent disks are available as either standard
-        hard disk drives (HDD) or solid-state drives (SSD).
-        
-        Persistent disks are located independently from your virtual machine
-        instances, so you can detach or move persistent disks to keep your data
-        even after you delete your instances. Persistent disk performance scales
-        automatically with size, so you can resize your existing persistent disks
-        or add more persistent disks to an instance to meet your performance and
-        storage space requirements.
-        
-        Add a persistent disk to your instance when you need reliable and
-        affordable storage with consistent performance characteristics.
-        
-        
-        To get more information about Disk, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
-        * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-        
-        > **Warning:** All arguments including the disk encryption key will be stored in the raw
-        state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        Create a Disk resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

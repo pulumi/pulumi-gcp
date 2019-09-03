@@ -206,7 +206,7 @@ func (r *Instance) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-// A set of key/value label pairs to assign to the instance.
+// A map of key/value label pairs to assign to the instance.
 func (r *Instance) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
@@ -339,7 +339,7 @@ type InstanceState struct {
 	InstanceId interface{}
 	// The unique fingerprint of the labels.
 	LabelFingerprint interface{}
-	// A set of key/value label pairs to assign to the instance.
+	// A map of key/value label pairs to assign to the instance.
 	Labels interface{}
 	// The machine type to create.
 	MachineType interface{}
@@ -417,7 +417,7 @@ type InstanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname interface{}
-	// A set of key/value label pairs to assign to the instance.
+	// A map of key/value label pairs to assign to the instance.
 	Labels interface{}
 	// The machine type to create.
 	MachineType interface{}

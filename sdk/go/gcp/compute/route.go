@@ -8,35 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents a Route resource.
-// 
-// A route is a rule that specifies how certain packets should be handled by
-// the virtual network. Routes are associated with virtual machines by tag,
-// and the set of routes for a particular virtual machine is called its
-// routing table. For each packet leaving a virtual machine, the system
-// searches that virtual machine's routing table for a single best matching
-// route.
-// 
-// Routes match packets by destination IP address, preferring smaller or more
-// specific ranges over larger ones. If there is a tie, the system selects
-// the route with the smallest priority value. If there is still a tie, it
-// uses the layer three and four packet headers to select just one of the
-// remaining matching routes. The packet is then forwarded as specified by
-// the nextHop field of the winning route -- either to another virtual
-// machine destination, a virtual machine gateway or a Compute
-// Engine-operated gateway. Packets that do not match any route in the
-// sending virtual machine's routing table will be dropped.
-// 
-// A Route resource must have exactly one specification of either
-// nextHopGateway, nextHopInstance, nextHopIp, or nextHopVpnTunnel.
-// 
-// 
-// To get more information about Route, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
-// * How-to Guides
-//     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_route.html.markdown.
 type Route struct {
 	s *pulumi.ResourceState
@@ -58,6 +29,7 @@ func NewRoute(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["nextHopGateway"] = nil
+		inputs["nextHopIlb"] = nil
 		inputs["nextHopInstance"] = nil
 		inputs["nextHopInstanceZone"] = nil
 		inputs["nextHopIp"] = nil
@@ -71,6 +43,7 @@ func NewRoute(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["nextHopGateway"] = args.NextHopGateway
+		inputs["nextHopIlb"] = args.NextHopIlb
 		inputs["nextHopInstance"] = args.NextHopInstance
 		inputs["nextHopInstanceZone"] = args.NextHopInstanceZone
 		inputs["nextHopIp"] = args.NextHopIp
@@ -99,6 +72,7 @@ func GetRoute(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["nextHopGateway"] = state.NextHopGateway
+		inputs["nextHopIlb"] = state.NextHopIlb
 		inputs["nextHopInstance"] = state.NextHopInstance
 		inputs["nextHopInstanceZone"] = state.NextHopInstanceZone
 		inputs["nextHopIp"] = state.NextHopIp
@@ -144,6 +118,10 @@ func (r *Route) Network() *pulumi.StringOutput {
 
 func (r *Route) NextHopGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nextHopGateway"])
+}
+
+func (r *Route) NextHopIlb() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["nextHopIlb"])
 }
 
 func (r *Route) NextHopInstance() *pulumi.StringOutput {
@@ -196,6 +174,7 @@ type RouteState struct {
 	Name interface{}
 	Network interface{}
 	NextHopGateway interface{}
+	NextHopIlb interface{}
 	NextHopInstance interface{}
 	// (Optional when `nextHopInstance` is
 	// specified)  The zone of the instance specified in
@@ -221,6 +200,7 @@ type RouteArgs struct {
 	Name interface{}
 	Network interface{}
 	NextHopGateway interface{}
+	NextHopIlb interface{}
 	NextHopInstance interface{}
 	// (Optional when `nextHopInstance` is
 	// specified)  The zone of the instance specified in

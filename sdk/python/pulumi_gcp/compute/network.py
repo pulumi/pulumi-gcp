@@ -12,6 +12,10 @@ from .. import utilities, tables
 class Network(pulumi.CustomResource):
     auto_create_subnetworks: pulumi.Output[bool]
     delete_default_routes_on_create: pulumi.Output[bool]
+    """
+    If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+    immediately after network creation. Defaults to `false`.
+    """
     description: pulumi.Output[str]
     gateway_ipv4: pulumi.Output[str]
     ipv4_range: pulumi.Output[str]
@@ -28,17 +32,12 @@ class Network(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, ipv4_range=None, name=None, project=None, routing_mode=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a VPC network or legacy network resource on GCP.
-        
-        
-        To get more information about Network, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+        Create a Network resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+               immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
@@ -85,6 +84,8 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+               immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

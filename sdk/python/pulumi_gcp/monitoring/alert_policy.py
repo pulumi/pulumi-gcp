@@ -23,16 +23,7 @@ class AlertPolicy(pulumi.CustomResource):
     user_labels: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
         """
-        A description of the conditions under which some aspect of your system is
-        considered to be "unhealthy" and the ways to notify people or services
-        about this state.
-        
-        
-        To get more information about AlertPolicy, see:
-        
-        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+        Create a AlertPolicy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

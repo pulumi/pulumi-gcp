@@ -7,39 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A single firewall rule that is evaluated against incoming traffic
- * and provides an action to take on matched requests.
- * 
- * 
- * To get more information about FirewallRule, see:
- * 
- * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
- * 
- * ## Example Usage - App Engine Firewall Rule Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myProject = new gcp.organizations.Project("myProject", {
- *     orgId: "123456789",
- *     projectId: "test-project",
- * });
- * const app = new gcp.appengine.Application("app", {
- *     locationId: "us-central",
- *     project: myProject.projectId,
- * });
- * const rule = new gcp.appengine.FirewallRule("rule", {
- *     action: "ALLOW",
- *     priority: 1000,
- *     project: app.project,
- *     sourceRange: "*",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_firewall_rule.html.markdown.
  */
 export class FirewallRule extends pulumi.CustomResource {

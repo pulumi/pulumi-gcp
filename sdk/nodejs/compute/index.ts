@@ -25,6 +25,7 @@ export * from "./getInstanceGroup";
 export * from "./getLBIPRanges";
 export * from "./getNetblockIPRanges";
 export * from "./getNetwork";
+export * from "./getNetworkEndpointGroup";
 export * from "./getNodeTypes";
 export * from "./getRegionInstanceGroup";
 export * from "./getRegions";

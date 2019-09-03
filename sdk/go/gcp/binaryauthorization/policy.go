@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A policy for container image binary authorization.
-// 
-// 
-// To get more information about Policy, see:
-// 
-// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/binary-authorization/)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
 type Policy struct {
 	s *pulumi.ResourceState
@@ -34,12 +25,14 @@ func NewPolicy(ctx *pulumi.Context,
 		inputs["clusterAdmissionRules"] = nil
 		inputs["defaultAdmissionRule"] = nil
 		inputs["description"] = nil
+		inputs["globalPolicyEvaluationMode"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["admissionWhitelistPatterns"] = args.AdmissionWhitelistPatterns
 		inputs["clusterAdmissionRules"] = args.ClusterAdmissionRules
 		inputs["defaultAdmissionRule"] = args.DefaultAdmissionRule
 		inputs["description"] = args.Description
+		inputs["globalPolicyEvaluationMode"] = args.GlobalPolicyEvaluationMode
 		inputs["project"] = args.Project
 	}
 	s, err := ctx.RegisterResource("gcp:binaryauthorization/policy:Policy", name, true, inputs, opts...)
@@ -59,6 +52,7 @@ func GetPolicy(ctx *pulumi.Context,
 		inputs["clusterAdmissionRules"] = state.ClusterAdmissionRules
 		inputs["defaultAdmissionRule"] = state.DefaultAdmissionRule
 		inputs["description"] = state.Description
+		inputs["globalPolicyEvaluationMode"] = state.GlobalPolicyEvaluationMode
 		inputs["project"] = state.Project
 	}
 	s, err := ctx.ReadResource("gcp:binaryauthorization/policy:Policy", name, id, inputs, opts...)
@@ -94,6 +88,10 @@ func (r *Policy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+func (r *Policy) GlobalPolicyEvaluationMode() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["globalPolicyEvaluationMode"])
+}
+
 func (r *Policy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -104,6 +102,7 @@ type PolicyState struct {
 	ClusterAdmissionRules interface{}
 	DefaultAdmissionRule interface{}
 	Description interface{}
+	GlobalPolicyEvaluationMode interface{}
 	Project interface{}
 }
 
@@ -113,5 +112,6 @@ type PolicyArgs struct {
 	ClusterAdmissionRules interface{}
 	DefaultAdmissionRule interface{}
 	Description interface{}
+	GlobalPolicyEvaluationMode interface{}
 	Project interface{}
 }

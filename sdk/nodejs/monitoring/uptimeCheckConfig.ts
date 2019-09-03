@@ -7,65 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This message configures which resources and services to monitor for availability.
- * 
- * 
- * To get more information about UptimeCheckConfig, see:
- * 
- * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
- * 
- * ## Example Usage - Uptime Check Config Http
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const http = new gcp.monitoring.UptimeCheckConfig("http", {
- *     contentMatchers: [{
- *         content: "example",
- *     }],
- *     displayName: "http-uptime-check",
- *     httpCheck: {
- *         path: "/some-path",
- *         port: 8010,
- *     },
- *     monitoredResource: {
- *         labels: {
- *             host: "192.168.1.1",
- *             project_id: "example",
- *         },
- *         type: "uptimeUrl",
- *     },
- *     timeout: "60s",
- * });
- * ```
- * ## Example Usage - Uptime Check Tcp
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const check = new gcp.monitoring.Group("check", {
- *     displayName: "uptime-check-group",
- *     filter: "resource.metadata.name=has_substring(\"foo\")",
- * });
- * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
- *     displayName: "tcp-uptime-check",
- *     resourceGroup: {
- *         groupId: check.name,
- *         resourceType: "INSTANCE",
- *     },
- *     tcpCheck: {
- *         port: 888,
- *     },
- *     timeout: "60s",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
  */
 export class UptimeCheckConfig extends pulumi.CustomResource {

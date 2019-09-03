@@ -146,6 +146,10 @@ export class Function extends pulumi.CustomResource {
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     public readonly triggerHttp!: pulumi.Output<boolean | undefined>;
+    /**
+     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     */
+    public readonly vpcConnector!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -177,6 +181,7 @@ export class Function extends pulumi.CustomResource {
             inputs["sourceRepository"] = state ? state.sourceRepository : undefined;
             inputs["timeout"] = state ? state.timeout : undefined;
             inputs["triggerHttp"] = state ? state.triggerHttp : undefined;
+            inputs["vpcConnector"] = state ? state.vpcConnector : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
@@ -197,6 +202,7 @@ export class Function extends pulumi.CustomResource {
             inputs["sourceRepository"] = args ? args.sourceRepository : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["triggerHttp"] = args ? args.triggerHttp : undefined;
+            inputs["vpcConnector"] = args ? args.vpcConnector : undefined;
         }
         if (!opts) {
             opts = {}
@@ -289,6 +295,10 @@ export interface FunctionState {
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
+    /**
+     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     */
+    readonly vpcConnector?: pulumi.Input<string>;
 }
 
 /**
@@ -371,4 +381,8 @@ export interface FunctionArgs {
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
+    /**
+     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     */
+    readonly vpcConnector?: pulumi.Input<string>;
 }

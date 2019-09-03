@@ -20,7 +20,7 @@ class IAMBinding(pulumi.CustomResource):
     """
     members: pulumi.Output[list]
     """
-    An array of identites that will be granted the privilege in the `role`.
+    An array of identities that will be granted the privilege in the `role`.
     Each entry can have one of the following values:
     * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
     * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -50,7 +50,7 @@ class IAMBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[list] members: An array of identites that will be granted the privilege in the `role`.
+        :param pulumi.Input[list] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -107,7 +107,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[list] members: An array of identites that will be granted the privilege in the `role`.
+        :param pulumi.Input[list] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

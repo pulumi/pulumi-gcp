@@ -32,29 +32,7 @@ class Image(pulumi.CustomResource):
     source_disk: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents an Image resource.
-        
-        Google Compute Engine uses operating system images to create the root
-        persistent disks for your instances. You specify an image when you create
-        an instance. Images contain a boot loader, an operating system, and a
-        root file system. Linux operating system images are also capable of
-        running containers on Compute Engine.
-        
-        Images can be either public or custom.
-        
-        Public images are provided and maintained by Google, open-source
-        communities, and third-party vendors. By default, all projects have
-        access to these images and can use them to create instances.  Custom
-        images are available only to your project. You can create a custom image
-        from root persistent disks and other images. Then, use the custom image
-        to create an instance.
-        
-        
-        To get more information about Image, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/images)
+        Create a Image resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

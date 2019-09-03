@@ -20,16 +20,7 @@ class Metric(pulumi.CustomResource):
     value_extractor: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, bucket_options=None, description=None, filter=None, label_extractors=None, metric_descriptor=None, name=None, project=None, value_extractor=None, __props__=None, __name__=None, __opts__=None):
         """
-        Logs-based metric can also be used to extract values from logs and create a a distribution
-        of the values. The distribution records the statistics of the extracted values along with
-        an optional histogram of the values as specified by the bucket options.
-        
-        
-        To get more information about Metric, see:
-        
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+        Create a Metric resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

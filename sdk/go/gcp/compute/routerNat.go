@@ -27,6 +27,9 @@ func NewRouterNat(ctx *pulumi.Context,
 	if args == nil || args.Router == nil {
 		return nil, errors.New("missing required argument 'Router'")
 	}
+	if args == nil || args.SourceSubnetworkIpRangesToNat == nil {
+		return nil, errors.New("missing required argument 'SourceSubnetworkIpRangesToNat'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["icmpIdleTimeoutSec"] = nil
@@ -105,7 +108,7 @@ func (r *RouterNat) ID() *pulumi.IDOutput {
 }
 
 // Timeout (in seconds) for ICMP connections.
-// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+// Defaults to 30s if not set.
 func (r *RouterNat) IcmpIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["icmpIdleTimeoutSec"])
 }
@@ -116,7 +119,6 @@ func (r *RouterNat) LogConfig() *pulumi.Output {
 
 // Minimum number of ports allocated to a VM
 // from this NAT config. If not set, a default number of ports is allocated to a VM.
-// Changing this forces a new NAT to be created.
 func (r *RouterNat) MinPortsPerVm() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["minPortsPerVm"])
 }
@@ -135,8 +137,7 @@ func (r *RouterNat) NatIpAllocateOption() *pulumi.StringOutput {
 }
 
 // List of `selfLink`s of external IPs. Only valid if
-// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
-// new NAT to be created.
+// `natIpAllocateOption` is set to `MANUAL_ONLY`.
 func (r *RouterNat) NatIps() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["natIps"])
 }
@@ -162,8 +163,7 @@ func (r *RouterNat) Router() *pulumi.StringOutput {
 
 // How NAT should be configured
 // per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-// this forces a new NAT to be created.
+// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 func (r *RouterNat) SourceSubnetworkIpRangesToNat() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceSubnetworkIpRangesToNat"])
 }
@@ -176,21 +176,19 @@ func (r *RouterNat) Subnetworks() *pulumi.ArrayOutput {
 }
 
 // Timeout (in seconds) for TCP
-// established connections. Defaults to 1200s if not set. Changing this forces
-// a new NAT to be created.
+// established connections. Defaults to 1200s if not set.
 func (r *RouterNat) TcpEstablishedIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["tcpEstablishedIdleTimeoutSec"])
 }
 
 // Timeout (in seconds) for TCP
-// transitory connections. Defaults to 30s if not set. Changing this forces a
-// new NAT to be created.
+// transitory connections. Defaults to 30s if not set.
 func (r *RouterNat) TcpTransitoryIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["tcpTransitoryIdleTimeoutSec"])
 }
 
 // Timeout (in seconds) for UDP connections.
-// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+// Defaults to 30s if not set.
 func (r *RouterNat) UdpIdleTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["udpIdleTimeoutSec"])
 }
@@ -198,12 +196,11 @@ func (r *RouterNat) UdpIdleTimeoutSec() *pulumi.IntOutput {
 // Input properties used for looking up and filtering RouterNat resources.
 type RouterNatState struct {
 	// Timeout (in seconds) for ICMP connections.
-	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+	// Defaults to 30s if not set.
 	IcmpIdleTimeoutSec interface{}
 	LogConfig interface{}
 	// Minimum number of ports allocated to a VM
 	// from this NAT config. If not set, a default number of ports is allocated to a VM.
-	// Changing this forces a new NAT to be created.
 	MinPortsPerVm interface{}
 	// A unique name for Cloud NAT, required by GCE. Changing
 	// this forces a new NAT to be created.
@@ -213,8 +210,7 @@ type RouterNatState struct {
 	// a new NAT to be created.
 	NatIpAllocateOption interface{}
 	// List of `selfLink`s of external IPs. Only valid if
-	// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
-	// new NAT to be created.
+	// `natIpAllocateOption` is set to `MANUAL_ONLY`.
 	NatIps interface{}
 	// The ID of the project in which this NAT's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new NAT to be created.
@@ -228,35 +224,31 @@ type RouterNatState struct {
 	Router interface{}
 	// How NAT should be configured
 	// per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-	// this forces a new NAT to be created.
+	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat interface{}
 	// One or more subnetwork NAT configurations. Only used
 	// if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
 	// the section below for details on configuration.
 	Subnetworks interface{}
 	// Timeout (in seconds) for TCP
-	// established connections. Defaults to 1200s if not set. Changing this forces
-	// a new NAT to be created.
+	// established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec interface{}
 	// Timeout (in seconds) for TCP
-	// transitory connections. Defaults to 30s if not set. Changing this forces a
-	// new NAT to be created.
+	// transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec interface{}
 	// Timeout (in seconds) for UDP connections.
-	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+	// Defaults to 30s if not set.
 	UdpIdleTimeoutSec interface{}
 }
 
 // The set of arguments for constructing a RouterNat resource.
 type RouterNatArgs struct {
 	// Timeout (in seconds) for ICMP connections.
-	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+	// Defaults to 30s if not set.
 	IcmpIdleTimeoutSec interface{}
 	LogConfig interface{}
 	// Minimum number of ports allocated to a VM
 	// from this NAT config. If not set, a default number of ports is allocated to a VM.
-	// Changing this forces a new NAT to be created.
 	MinPortsPerVm interface{}
 	// A unique name for Cloud NAT, required by GCE. Changing
 	// this forces a new NAT to be created.
@@ -266,8 +258,7 @@ type RouterNatArgs struct {
 	// a new NAT to be created.
 	NatIpAllocateOption interface{}
 	// List of `selfLink`s of external IPs. Only valid if
-	// `natIpAllocateOption` is set to `MANUAL_ONLY`. Changing this forces a
-	// new NAT to be created.
+	// `natIpAllocateOption` is set to `MANUAL_ONLY`.
 	NatIps interface{}
 	// The ID of the project in which this NAT's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new NAT to be created.
@@ -281,22 +272,19 @@ type RouterNatArgs struct {
 	Router interface{}
 	// How NAT should be configured
 	// per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-	// this forces a new NAT to be created.
+	// `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat interface{}
 	// One or more subnetwork NAT configurations. Only used
 	// if `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`. See
 	// the section below for details on configuration.
 	Subnetworks interface{}
 	// Timeout (in seconds) for TCP
-	// established connections. Defaults to 1200s if not set. Changing this forces
-	// a new NAT to be created.
+	// established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec interface{}
 	// Timeout (in seconds) for TCP
-	// transitory connections. Defaults to 30s if not set. Changing this forces a
-	// new NAT to be created.
+	// transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec interface{}
 	// Timeout (in seconds) for UDP connections.
-	// Defaults to 30s if not set. Changing this forces a new NAT to be created.
+	// Defaults to 30s if not set.
 	UdpIdleTimeoutSec interface{}
 }

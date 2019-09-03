@@ -4,3 +4,4 @@
 // Export members:
 export * from "./application";
 export * from "./firewallRule";
+export * from "./standardAppVersion";

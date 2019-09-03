@@ -7,25 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Manages a VPC network or legacy network resource on GCP.
- * 
- * 
- * To get more information about Network, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
- * 
- * ## Example Usage - Network Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {});
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network.html.markdown.
  */
 export class Network extends pulumi.CustomResource {
@@ -56,6 +37,10 @@ export class Network extends pulumi.CustomResource {
     }
 
     public readonly autoCreateSubnetworks!: pulumi.Output<boolean | undefined>;
+    /**
+     * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+     * immediately after network creation. Defaults to `false`.
+     */
     public readonly deleteDefaultRoutesOnCreate!: pulumi.Output<boolean | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
@@ -121,6 +106,10 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkState {
     readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    /**
+     * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+     * immediately after network creation. Defaults to `false`.
+     */
     readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly gatewayIpv4?: pulumi.Input<string>;
@@ -143,6 +132,10 @@ export interface NetworkState {
  */
 export interface NetworkArgs {
     readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    /**
+     * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+     * immediately after network creation. Defaults to `false`.
+     */
     readonly deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly ipv4Range?: pulumi.Input<string>;

@@ -93,7 +93,7 @@ export interface GetBackendServiceResult {
      */
     readonly selfLink: string;
     /**
-     * The Backend Service session stickyness configuration.
+     * The Backend Service session stickiness configuration.
      */
     readonly sessionAffinity: string;
     /**

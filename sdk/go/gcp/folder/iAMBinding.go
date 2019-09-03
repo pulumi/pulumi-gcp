@@ -92,7 +92,7 @@ func (r *IAMBinding) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// An array of identites that will be granted the privilege in the `role`.
+// An array of identities that will be granted the privilege in the `role`.
 // Each entry can have one of the following values:
 // * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
 // * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -116,7 +116,7 @@ type IAMBindingState struct {
 	Etag interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// An array of identites that will be granted the privilege in the `role`.
+	// An array of identities that will be granted the privilege in the `role`.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -134,7 +134,7 @@ type IAMBindingState struct {
 type IAMBindingArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
-	// An array of identites that will be granted the privilege in the `role`.
+	// An array of identities that will be granted the privilege in the `role`.
 	// Each entry can have one of the following values:
 	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

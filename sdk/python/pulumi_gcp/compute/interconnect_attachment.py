@@ -10,6 +10,8 @@ from typing import Union
 from .. import utilities, tables
 
 class InterconnectAttachment(pulumi.CustomResource):
+    admin_enabled: pulumi.Output[bool]
+    bandwidth: pulumi.Output[str]
     candidate_subnets: pulumi.Output[list]
     cloud_router_ip_address: pulumi.Output[str]
     creation_timestamp: pulumi.Output[str]
@@ -36,10 +38,9 @@ class InterconnectAttachment(pulumi.CustomResource):
     state: pulumi.Output[str]
     type: pulumi.Output[str]
     vlan_tag8021q: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, candidate_subnets=None, description=None, edge_availability_domain=None, interconnect=None, name=None, project=None, region=None, router=None, type=None, vlan_tag8021q=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_enabled=None, bandwidth=None, candidate_subnets=None, description=None, edge_availability_domain=None, interconnect=None, name=None, project=None, region=None, router=None, type=None, vlan_tag8021q=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents an InterconnectAttachment (VLAN attachment) resource. For more
-        information, see Creating VLAN Attachments.
+        Create a InterconnectAttachment resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -65,6 +66,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['admin_enabled'] = admin_enabled
+            __props__['bandwidth'] = bandwidth
             __props__['candidate_subnets'] = candidate_subnets
             __props__['description'] = description
             __props__['edge_availability_domain'] = edge_availability_domain
@@ -93,7 +96,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, candidate_subnets=None, cloud_router_ip_address=None, creation_timestamp=None, customer_router_ip_address=None, description=None, edge_availability_domain=None, google_reference_id=None, interconnect=None, name=None, pairing_key=None, partner_asn=None, private_interconnect_info=None, project=None, region=None, router=None, self_link=None, state=None, type=None, vlan_tag8021q=None):
+    def get(resource_name, id, opts=None, admin_enabled=None, bandwidth=None, candidate_subnets=None, cloud_router_ip_address=None, creation_timestamp=None, customer_router_ip_address=None, description=None, edge_availability_domain=None, google_reference_id=None, interconnect=None, name=None, pairing_key=None, partner_asn=None, private_interconnect_info=None, project=None, region=None, router=None, self_link=None, state=None, type=None, vlan_tag8021q=None):
         """
         Get an existing InterconnectAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,6 +117,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["admin_enabled"] = admin_enabled
+        __props__["bandwidth"] = bandwidth
         __props__["candidate_subnets"] = candidate_subnets
         __props__["cloud_router_ip_address"] = cloud_router_ip_address
         __props__["creation_timestamp"] = creation_timestamp

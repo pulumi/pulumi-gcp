@@ -20,6 +20,9 @@
         "appengine/application.ts",
         "appengine/firewallRule.ts",
         "appengine/index.ts",
+        "appengine/standardAppVersion.ts",
+        "bigquery/appProfile.ts",
+        "bigquery/dataTransferConfig.ts",
         "bigquery/dataset.ts",
         "bigquery/index.ts",
         "bigquery/table.ts",
@@ -73,6 +76,7 @@
         "compute/getLBIPRanges.ts",
         "compute/getNetblockIPRanges.ts",
         "compute/getNetwork.ts",
+        "compute/getNetworkEndpointGroup.ts",
         "compute/getNodeTypes.ts",
         "compute/getRegionInstanceGroup.ts",
         "compute/getRegions.ts",
@@ -150,6 +154,7 @@
         "containeranalysis/note.ts",
         "dataflow/index.ts",
         "dataflow/job.ts",
+        "dataproc/autoscalingPolicy.ts",
         "dataproc/cluster.ts",
         "dataproc/clusterIAMBinding.ts",
         "dataproc/clusterIAMMember.ts",
@@ -207,6 +212,7 @@
         "kms/getKMSCryptoKeyVersion.ts",
         "kms/getKMSKeyRing.ts",
         "kms/getKMSSecret.ts",
+        "kms/getKMSSecretCiphertext.ts",
         "kms/index.ts",
         "kms/keyRing.ts",
         "kms/keyRingIAMBinding.ts",
@@ -223,6 +229,8 @@
         "logging/organizationSink.ts",
         "logging/projectExclusion.ts",
         "logging/projectSink.ts",
+        "ml/engineModel.ts",
+        "ml/index.ts",
         "monitoring/alertPolicy.ts",
         "monitoring/group.ts",
         "monitoring/index.ts",
@@ -275,6 +283,8 @@
         "runtimeconfig/config.ts",
         "runtimeconfig/index.ts",
         "runtimeconfig/variable.ts",
+        "securitycenter/index.ts",
+        "securitycenter/source.ts",
         "serverless/function.ts",
         "serverless/index.ts",
         "serviceAccount/account.ts",
@@ -332,7 +342,9 @@
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
-        "utils.ts"
+        "utils.ts",
+        "vpcaccess/connector.ts",
+        "vpcaccess/index.ts"
     ]
 }
 

@@ -7,46 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A named resource to which messages are sent by publishers.
- * 
- * 
- * To get more information about Topic, see:
- * 
- * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
- * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
- * 
- * ## Example Usage - Pubsub Topic Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const example = new gcp.pubsub.Topic("example", {
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * ```
- * ## Example Usage - Pubsub Topic Cmek
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
- *     location: "global",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
- *     keyRing: keyRing.selfLink,
- * });
- * const example = new gcp.pubsub.Topic("example", {
- *     kmsKeyName: cryptoKey.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
  */
 export class Topic extends pulumi.CustomResource {
@@ -78,6 +38,7 @@ export class Topic extends pulumi.CustomResource {
 
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -99,12 +60,14 @@ export class Topic extends pulumi.CustomResource {
             const state = argsOrState as TopicState | undefined;
             inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["messageStoragePolicy"] = state ? state.messageStoragePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
@@ -125,6 +88,7 @@ export class Topic extends pulumi.CustomResource {
 export interface TopicState {
     readonly kmsKeyName?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -139,6 +103,7 @@ export interface TopicState {
 export interface TopicArgs {
     readonly kmsKeyName?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

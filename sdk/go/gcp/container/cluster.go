@@ -222,8 +222,12 @@ func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
 	return r.s.State["clusterAutoscaling"]
 }
 
-// The IP address range of the kubernetes pods in
-// this cluster. Default is an automatically assigned CIDR.
+// The IP address range of the Kubernetes pods
+// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
 func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
 }
@@ -512,6 +516,7 @@ func (r *Cluster) VerticalPodAutoscaling() *pulumi.Output {
 // )
 // Workload Identity allows Kubernetes service accounts to act as a user-managed
 // [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+// Structure is documented below.
 func (r *Cluster) WorkloadIdentityConfig() *pulumi.Output {
 	return r.s.State["workloadIdentityConfig"]
 }
@@ -547,8 +552,12 @@ type ClusterState struct {
 	// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
 	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
-	// The IP address range of the kubernetes pods in
-	// this cluster. Default is an automatically assigned CIDR.
+	// The IP address range of the Kubernetes pods
+	// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+	// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+	// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+	// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+	// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
 	ClusterIpv4Cidr interface{}
 	// ).
 	// Structure is documented below.
@@ -720,6 +729,7 @@ type ClusterState struct {
 	// )
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+	// Structure is documented below.
 	WorkloadIdentityConfig interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
@@ -751,8 +761,12 @@ type ClusterArgs struct {
 	// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
 	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
-	// The IP address range of the kubernetes pods in
-	// this cluster. Default is an automatically assigned CIDR.
+	// The IP address range of the Kubernetes pods
+	// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+	// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+	// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
+	// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+	// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
 	ClusterIpv4Cidr interface{}
 	// ).
 	// Structure is documented below.
@@ -909,6 +923,7 @@ type ClusterArgs struct {
 	// )
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+	// Structure is documented below.
 	WorkloadIdentityConfig interface{}
 	// The zone that the cluster master and nodes
 	// should be created in. If specified, this cluster will be a zonal cluster. `zone`

@@ -7,51 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a Route resource.
- * 
- * A route is a rule that specifies how certain packets should be handled by
- * the virtual network. Routes are associated with virtual machines by tag,
- * and the set of routes for a particular virtual machine is called its
- * routing table. For each packet leaving a virtual machine, the system
- * searches that virtual machine's routing table for a single best matching
- * route.
- * 
- * Routes match packets by destination IP address, preferring smaller or more
- * specific ranges over larger ones. If there is a tie, the system selects
- * the route with the smallest priority value. If there is still a tie, it
- * uses the layer three and four packet headers to select just one of the
- * remaining matching routes. The packet is then forwarded as specified by
- * the nextHop field of the winning route -- either to another virtual
- * machine destination, a virtual machine gateway or a Compute
- * Engine-operated gateway. Packets that do not match any route in the
- * sending virtual machine's routing table will be dropped.
- * 
- * A Route resource must have exactly one specification of either
- * nextHopGateway, nextHopInstance, nextHopIp, or nextHopVpnTunnel.
- * 
- * 
- * To get more information about Route, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
- * * How-to Guides
- *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
- * 
- * ## Example Usage - Route Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultNetwork = new gcp.compute.Network("default", {});
- * const defaultRoute = new gcp.compute.Route("default", {
- *     destRange: "15.0.0.0/24",
- *     network: defaultNetwork.name,
- *     nextHopIp: "10.132.1.5",
- *     priority: 100,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_route.html.markdown.
  */
 export class Route extends pulumi.CustomResource {
@@ -86,6 +41,7 @@ export class Route extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<string>;
     public readonly nextHopGateway!: pulumi.Output<string | undefined>;
+    public readonly nextHopIlb!: pulumi.Output<string | undefined>;
     public readonly nextHopInstance!: pulumi.Output<string | undefined>;
     /**
      * (Optional when `nextHopInstance` is
@@ -94,7 +50,7 @@ export class Route extends pulumi.CustomResource {
      * a URL.
      */
     public readonly nextHopInstanceZone!: pulumi.Output<string | undefined>;
-    public readonly nextHopIp!: pulumi.Output<string | undefined>;
+    public readonly nextHopIp!: pulumi.Output<string>;
     public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
     public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
     public readonly priority!: pulumi.Output<number | undefined>;
@@ -126,6 +82,7 @@ export class Route extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["nextHopGateway"] = state ? state.nextHopGateway : undefined;
+            inputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
             inputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
             inputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
             inputs["nextHopIp"] = state ? state.nextHopIp : undefined;
@@ -148,6 +105,7 @@ export class Route extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
+            inputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
             inputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
             inputs["nextHopInstanceZone"] = args ? args.nextHopInstanceZone : undefined;
             inputs["nextHopIp"] = args ? args.nextHopIp : undefined;
@@ -178,6 +136,7 @@ export interface RouteState {
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly nextHopGateway?: pulumi.Input<string>;
+    readonly nextHopIlb?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
      * (Optional when `nextHopInstance` is
@@ -211,6 +170,7 @@ export interface RouteArgs {
     readonly name?: pulumi.Input<string>;
     readonly network: pulumi.Input<string>;
     readonly nextHopGateway?: pulumi.Input<string>;
+    readonly nextHopIlb?: pulumi.Input<string>;
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
      * (Optional when `nextHopInstance` is

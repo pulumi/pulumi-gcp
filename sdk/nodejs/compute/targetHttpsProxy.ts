@@ -7,61 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a TargetHttpsProxy resource, which is used by one or more
- * global forwarding rule to route incoming HTTPS requests to a URL map.
- * 
- * 
- * To get more information about TargetHttpsProxy, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
- * 
- * ## Example Usage - Target Https Proxy Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
- *     checkIntervalSec: 1,
- *     requestPath: "/",
- *     timeoutSec: 1,
- * });
- * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
- *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     healthChecks: defaultHttpHealthCheck.selfLink,
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- * });
- * const defaultURLMap = new gcp.compute.URLMap("default", {
- *     defaultService: defaultBackendService.selfLink,
- *     description: "a description",
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         defaultService: defaultBackendService.selfLink,
- *         name: "allpaths",
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultBackendService.selfLink,
- *         }],
- *     }],
- * });
- * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("default", {
- *     sslCertificates: [defaultSSLCertificate.selfLink],
- *     urlMap: defaultURLMap.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
  */
 export class TargetHttpsProxy extends pulumi.CustomResource {

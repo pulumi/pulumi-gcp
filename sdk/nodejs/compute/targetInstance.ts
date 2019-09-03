@@ -7,48 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a TargetInstance resource which defines an endpoint instance
- * that terminates traffic of certain protocols. In particular, they are used
- * in Protocol Forwarding, where forwarding rules can send packets to a
- * non-NAT’ed target instance. Each target instance contains a single
- * virtual machine instance that receives and handles traffic from the
- * corresponding forwarding rules.
- * 
- * 
- * To get more information about TargetInstance, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
- * * How-to Guides
- *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
- * 
- * ## Example Usage - Target Instance Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const vmimage = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const targetVm = new gcp.compute.Instance("target-vm", {
- *     bootDisk: {
- *         initializeParams: {
- *             image: vmimage.selfLink,
- *         },
- *     },
- *     machineType: "n1-standard-1",
- *     networkInterfaces: [{
- *         network: "default",
- *     }],
- *     zone: "us-central1-a",
- * });
- * const defaultTargetInstance = new gcp.compute.TargetInstance("default", {
- *     instance: target_vm.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_instance.html.markdown.
  */
 export class TargetInstance extends pulumi.CustomResource {

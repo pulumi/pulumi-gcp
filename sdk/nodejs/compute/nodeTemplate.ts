@@ -7,33 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a NodeTemplate resource. Node templates specify properties
- * for creating sole-tenant nodes, such as node type, vCPU and memory
- * requirments, node affinity labels, and region.
- * 
- * 
- * To get more information about NodeTemplate, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
- * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
- * 
- * ## Example Usage - Node Template Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const central1a = gcp.compute.getNodeTypes({
- *     zone: "us-central1-a",
- * });
- * const template = new gcp.compute.NodeTemplate("template", {
- *     nodeType: central1a.names[0],
- *     region: "us-central1",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
  */
 export class NodeTemplate extends pulumi.CustomResource {

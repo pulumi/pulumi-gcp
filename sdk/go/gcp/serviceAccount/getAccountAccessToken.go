@@ -37,7 +37,7 @@ func LookupAccountAccessToken(ctx *pulumi.Context, args *GetAccountAccessTokenAr
 
 // A collection of arguments for invoking getAccountAccessToken.
 type GetAccountAccessTokenArgs struct {
-	// Deegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+	// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
 	Delegates interface{}
 	// Lifetime of the impersonated token (defaults to its max: `3600s`).
 	Lifetime interface{}

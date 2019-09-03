@@ -93,6 +93,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     """
     ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
     
+      * `instanceRedistributionType` (`str`)
       * `maxSurgeFixed` (`float`)
       * `maxSurgePercent` (`float`)
       * `maxUnavailableFixed` (`float`)
@@ -189,6 +190,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         
         The **update_policy** object supports the following:
         
+          * `instanceRedistributionType` (`pulumi.Input[str]`)
           * `maxSurgeFixed` (`pulumi.Input[float]`)
           * `maxSurgePercent` (`pulumi.Input[float]`)
           * `maxUnavailableFixed` (`pulumi.Input[float]`)
@@ -323,6 +325,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         
         The **update_policy** object supports the following:
         
+          * `instanceRedistributionType` (`pulumi.Input[str]`)
           * `maxSurgeFixed` (`pulumi.Input[float]`)
           * `maxSurgePercent` (`pulumi.Input[float]`)
           * `maxUnavailableFixed` (`pulumi.Input[float]`)

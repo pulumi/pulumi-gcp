@@ -43,7 +43,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
             inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
-            inputs["bigqueryCustomEndpoint"] = args ? args.bigqueryCustomEndpoint : undefined;
+            inputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
+            inputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
             inputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
@@ -72,6 +73,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["iapCustomEndpoint"] = args ? args.iapCustomEndpoint : undefined;
             inputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             inputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
+            inputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
             inputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
             inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
@@ -81,6 +83,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["resourceManagerV2beta1CustomEndpoint"] = args ? args.resourceManagerV2beta1CustomEndpoint : undefined;
             inputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
+            inputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             inputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
             inputs["serviceManagementCustomEndpoint"] = args ? args.serviceManagementCustomEndpoint : undefined;
             inputs["serviceNetworkingCustomEndpoint"] = args ? args.serviceNetworkingCustomEndpoint : undefined;
@@ -91,6 +94,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
             inputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
+            inputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
+            inputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
             inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         if (!opts) {
@@ -112,7 +117,8 @@ export interface ProviderArgs {
     readonly accessToken?: pulumi.Input<string>;
     readonly appEngineCustomEndpoint?: pulumi.Input<string>;
     readonly batching?: pulumi.Input<inputs.ProviderBatching>;
-    readonly bigqueryCustomEndpoint?: pulumi.Input<string>;
+    readonly bigQueryCustomEndpoint?: pulumi.Input<string>;
+    readonly bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBillingCustomEndpoint?: pulumi.Input<string>;
@@ -141,6 +147,7 @@ export interface ProviderArgs {
     readonly iapCustomEndpoint?: pulumi.Input<string>;
     readonly kmsCustomEndpoint?: pulumi.Input<string>;
     readonly loggingCustomEndpoint?: pulumi.Input<string>;
+    readonly mlEngineCustomEndpoint?: pulumi.Input<string>;
     readonly monitoringCustomEndpoint?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly pubsubCustomEndpoint?: pulumi.Input<string>;
@@ -150,6 +157,7 @@ export interface ProviderArgs {
     readonly resourceManagerV2beta1CustomEndpoint?: pulumi.Input<string>;
     readonly runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly securityCenterCustomEndpoint?: pulumi.Input<string>;
     readonly securityScannerCustomEndpoint?: pulumi.Input<string>;
     readonly serviceManagementCustomEndpoint?: pulumi.Input<string>;
     readonly serviceNetworkingCustomEndpoint?: pulumi.Input<string>;
@@ -160,5 +168,7 @@ export interface ProviderArgs {
     readonly storageCustomEndpoint?: pulumi.Input<string>;
     readonly storageTransferCustomEndpoint?: pulumi.Input<string>;
     readonly tpuCustomEndpoint?: pulumi.Input<string>;
+    readonly userProjectOverride?: pulumi.Input<boolean>;
+    readonly vpcAccessCustomEndpoint?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;
 }

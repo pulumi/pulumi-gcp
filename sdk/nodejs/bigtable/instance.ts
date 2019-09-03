@@ -102,7 +102,7 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -114,9 +114,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.clusters === undefined) {
-                throw new Error("Missing required property 'clusters'");
-            }
             inputs["clusters"] = args ? args.clusters : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
@@ -168,7 +165,7 @@ export interface InstanceArgs {
     /**
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
-    readonly clusters: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
+    readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */

@@ -80,6 +80,7 @@ from .get_instance import *
 from .get_instance_group import *
 from .get_lbip_ranges import *
 from .get_network import *
+from .get_network_endpoint_group import *
 from .get_node_types import *
 from .get_region_instance_group import *
 from .get_regions import *

@@ -23,18 +23,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     target: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, autoscaling_policy=None, description=None, name=None, project=None, region=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents an Autoscaler resource.
-        
-        Autoscalers allow you to automatically scale virtual machine instances in
-        managed instance groups according to an autoscaling policy that you
-        define.
-        
-        
-        To get more information about RegionAutoscaler, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
-        * How-to Guides
-            * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+        Create a RegionAutoscaler resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -76,8 +76,12 @@ class Cluster(pulumi.CustomResource):
     """
     cluster_ipv4_cidr: pulumi.Output[str]
     """
-    The IP address range of the kubernetes pods in
-    this cluster. Default is an automatically assigned CIDR.
+    The IP address range of the Kubernetes pods
+    in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+    automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+    work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
+    not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+    cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
     """
     database_encryption: pulumi.Output[dict]
     """
@@ -466,6 +470,7 @@ class Cluster(pulumi.CustomResource):
     )
     Workload Identity allows Kubernetes service accounts to act as a user-managed
     [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+    Structure is documented below.
     
       * `identityNamespace` (`str`)
     """
@@ -505,8 +510,12 @@ class Cluster(pulumi.CustomResource):
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for more details. Structure is documented below.
-        :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
-               this cluster. Default is an automatically assigned CIDR.
+        :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
+               in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+               automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+               work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
+               not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+               cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
@@ -629,6 +638,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] workload_identity_config: )
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+               Structure is documented below.
         :param pulumi.Input[str] zone: The zone that the cluster master and nodes
                should be created in. If specified, this cluster will be a zonal cluster. `zone`
                has been deprecated in favour of `location`.
@@ -941,8 +951,12 @@ class Cluster(pulumi.CustomResource):
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for more details. Structure is documented below.
-        :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the kubernetes pods in
-               this cluster. Default is an automatically assigned CIDR.
+        :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
+               in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
+               automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
+               work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
+               not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
+               cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
@@ -1075,6 +1089,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] workload_identity_config: )
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+               Structure is documented below.
         :param pulumi.Input[str] zone: The zone that the cluster master and nodes
                should be created in. If specified, this cluster will be a zonal cluster. `zone`
                has been deprecated in favour of `location`.

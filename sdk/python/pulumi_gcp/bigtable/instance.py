@@ -77,8 +77,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if clusters is None:
-                raise TypeError("Missing required property 'clusters'")
             __props__['clusters'] = clusters
             __props__['display_name'] = display_name
             __props__['instance_type'] = instance_type
