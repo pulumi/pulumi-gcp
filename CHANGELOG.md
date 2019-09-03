@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 1.0.0 (2019-09-03)
+* Use 1.0 version of Pulumi dependency
+
 ## 1.0.0-rc.1 (2019-08-28)
 * Retype gcp.storage.BucketObject::source as Asset [#205](https://github.com/pulumi/pulumi-gcp/pull/205)
 * Upgrade pulumi-terraform to 3f206601e7
