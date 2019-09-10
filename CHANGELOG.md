@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to pulumi-terraform a3ddba3fb5
+* Upgrade to v2.14.0 of the Google Beta Terraform Provider.
 
 ---
 
