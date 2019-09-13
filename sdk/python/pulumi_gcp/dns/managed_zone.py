@@ -27,16 +27,7 @@ class ManagedZone(pulumi.CustomResource):
     visibility: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, visibility=None, __props__=None, __name__=None, __opts__=None):
         """
-        A zone is a subtree of the DNS namespace under one administrative
-        responsibility. A ManagedZone is a resource that represents a DNS zone
-        hosted by the Cloud DNS service.
-        
-        
-        To get more information about ManagedZone, see:
-        
-        * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
-        * How-to Guides
-            * [Managing Zones](https://cloud.google.com/dns/zones/)
+        Create a ManagedZone resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

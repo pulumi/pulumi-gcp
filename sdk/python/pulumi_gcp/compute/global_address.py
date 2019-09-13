@@ -32,15 +32,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a Global Address resource. Global addresses are used for
-        HTTP(S) load balancing.
-        
-        
-        To get more information about GlobalAddress, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
-        * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+        Create a GlobalAddress resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

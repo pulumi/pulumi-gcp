@@ -10,7 +10,7 @@ require (
 	github.com/hashicorp/terraform v0.12.6
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.0.0-beta.4.0.20190824005806-5188232afad4
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190828172748-3f206601e7a1
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190910143056-eb600bb5f0fb
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-20190801223639-c9c945e570d2
 )
@@ -22,5 +22,5 @@ replace (
 	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
 	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/terraform-providers/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20190803170938-4774546ba1f7
+	github.com/terraform-providers/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20190829111220-e597d4db6376
 )

@@ -13,11 +13,11 @@ import * as utilities from "../utilities";
  * * `gcp.bigtable.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
  * * `gcp.bigtable.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
  * 
- * > **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentaly unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
+ * > **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
  * 
  * > **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_pubsub\_subscription\_iam\_policy
+ * ## google\_bigtable\_instance\_iam\_policy
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * ## google\_pubsub\_subscription\_iam\_binding
+ * ## google\_bigtable\_instance\_iam\_binding
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * ## google\_pubsub\_subscription\_iam\_member
+ * ## google\_bigtable\_instance\_iam\_member
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

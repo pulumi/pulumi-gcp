@@ -15,3 +15,4 @@ from .get_kms_crypto_key import *
 from .get_kms_crypto_key_version import *
 from .get_kms_key_ring import *
 from .get_kms_secret import *
+from .get_kms_secret_ciphertext import *

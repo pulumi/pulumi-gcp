@@ -26,19 +26,7 @@ class Job(pulumi.CustomResource):
     time_zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        A scheduled job that can publish a pubsub message or a http request
-        every X interval of time, using crontab format string.
-        
-        To use Cloud Scheduler your project must contain an App Engine app
-        that is located in one of the supported regions. If your project
-        does not have an App Engine app, you must create one.
-        
-        
-        To get more information about Job, see:
-        
-        * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+        Create a Job resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -63,6 +51,16 @@ class Job(pulumi.CustomResource):
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
+          * `oauthToken` (`pulumi.Input[dict]`)
+        
+            * `scope` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
+          * `oidcToken` (`pulumi.Input[dict]`)
+        
+            * `audience` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
           * `uri` (`pulumi.Input[str]`)
         
         The **pubsub_target** object supports the following:
@@ -144,6 +142,16 @@ class Job(pulumi.CustomResource):
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
+          * `oauthToken` (`pulumi.Input[dict]`)
+        
+            * `scope` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
+          * `oidcToken` (`pulumi.Input[dict]`)
+        
+            * `audience` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
           * `uri` (`pulumi.Input[str]`)
         
         The **pubsub_target** object supports the following:

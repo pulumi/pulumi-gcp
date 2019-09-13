@@ -7,12 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents a VPN gateway managed outside of GCP.
-// 
-// To get more information about ExternalVpnGateway, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
 type ExternalVpnGateway struct {
 	s *pulumi.ResourceState

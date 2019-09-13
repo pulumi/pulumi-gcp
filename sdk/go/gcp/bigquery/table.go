@@ -28,6 +28,7 @@ func NewTable(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["clusterings"] = nil
 		inputs["datasetId"] = nil
 		inputs["description"] = nil
 		inputs["expirationTime"] = nil
@@ -40,6 +41,7 @@ func NewTable(ctx *pulumi.Context,
 		inputs["timePartitioning"] = nil
 		inputs["view"] = nil
 	} else {
+		inputs["clusterings"] = args.Clusterings
 		inputs["datasetId"] = args.DatasetId
 		inputs["description"] = args.Description
 		inputs["expirationTime"] = args.ExpirationTime
@@ -74,6 +76,7 @@ func GetTable(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *TableState, opts ...pulumi.ResourceOpt) (*Table, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["clusterings"] = state.Clusterings
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
 		inputs["description"] = state.Description
@@ -110,6 +113,10 @@ func (r *Table) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Table) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *Table) Clusterings() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["clusterings"])
 }
 
 // The time when this table was created, in milliseconds since the epoch.
@@ -229,6 +236,7 @@ func (r *Table) View() *pulumi.Output {
 
 // Input properties used for looking up and filtering Table resources.
 type TableState struct {
+	Clusterings interface{}
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime interface{}
 	// The dataset ID to create the table in.
@@ -288,6 +296,7 @@ type TableState struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	Clusterings interface{}
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId interface{}

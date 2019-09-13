@@ -7,41 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A key for signing Cloud CDN signed URLs for BackendBuckets.
- * 
- * 
- * To get more information about BackendBucketSignedUrlKey, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
- * * How-to Guides
- *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
- * 
- * > **Warning:** All arguments including the key's value will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * Because the API does not return the sensitive key value,
- * we cannot confirm or reverse changes to a key outside of this provider.
- * 
- * ## Example Usage - Backend Bucket Signed Url Key
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "EU",
- * });
- * const testBackend = new gcp.compute.BackendBucket("testBackend", {
- *     bucketName: bucket.name,
- *     description: "Contains beautiful images",
- *     enableCdn: true,
- * });
- * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
- *     backendBucket: testBackend.name,
- *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown.
  */
 export class BackendBucketSignedUrlKey extends pulumi.CustomResource {

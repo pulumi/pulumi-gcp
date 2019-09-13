@@ -27,15 +27,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
     repository: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, policy_data=None, project=None, repository=None, __props__=None, __name__=None, __opts__=None):
         """
-        Three different resources help you manage your IAM policy for Pubsub Topic. Each of these resources serves a different use case:
-        
-        * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-        * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-        * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
-        
-        > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
-        
-        > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+        Create a RepositoryIamPolicy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

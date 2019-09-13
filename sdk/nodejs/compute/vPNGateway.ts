@@ -7,56 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a VPN gateway running in GCP. This virtual device is managed
- * by Google, but used only by you.
- * 
- * 
- * To get more information about VpnGateway, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
- * 
- * ## Example Usage - Target Vpn Gateway Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {});
- * const network1 = new gcp.compute.Network("network1", {});
- * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {
- *     network: network1.selfLink,
- * });
- * const frEsp = new gcp.compute.ForwardingRule("frEsp", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "ESP",
- *     target: targetGateway.selfLink,
- * });
- * const frUdp4500 = new gcp.compute.ForwardingRule("frUdp4500", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "UDP",
- *     portRange: "4500",
- *     target: targetGateway.selfLink,
- * });
- * const frUdp500 = new gcp.compute.ForwardingRule("frUdp500", {
- *     ipAddress: vpnStaticIp.address,
- *     ipProtocol: "UDP",
- *     portRange: "500",
- *     target: targetGateway.selfLink,
- * });
- * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
- *     peerIp: "15.0.0.120",
- *     sharedSecret: "a secret message",
- *     targetVpnGateway: targetGateway.selfLink,
- * }, {dependsOn: [frEsp, frUdp4500, frUdp500]});
- * const route1 = new gcp.compute.Route("route1", {
- *     destRange: "15.0.0.0/24",
- *     network: network1.name,
- *     nextHopVpnTunnel: tunnel1.selfLink,
- *     priority: 1000,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_gateway.html.markdown.
  */
 export class VPNGateway extends pulumi.CustomResource {

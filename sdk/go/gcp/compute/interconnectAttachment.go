@@ -8,9 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents an InterconnectAttachment (VLAN attachment) resource. For more
-// information, see Creating VLAN Attachments.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
 type InterconnectAttachment struct {
 	s *pulumi.ResourceState
@@ -24,6 +21,8 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["adminEnabled"] = nil
+		inputs["bandwidth"] = nil
 		inputs["candidateSubnets"] = nil
 		inputs["description"] = nil
 		inputs["edgeAvailabilityDomain"] = nil
@@ -35,6 +34,8 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 		inputs["type"] = nil
 		inputs["vlanTag8021q"] = nil
 	} else {
+		inputs["adminEnabled"] = args.AdminEnabled
+		inputs["bandwidth"] = args.Bandwidth
 		inputs["candidateSubnets"] = args.CandidateSubnets
 		inputs["description"] = args.Description
 		inputs["edgeAvailabilityDomain"] = args.EdgeAvailabilityDomain
@@ -68,6 +69,8 @@ func GetInterconnectAttachment(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InterconnectAttachmentState, opts ...pulumi.ResourceOpt) (*InterconnectAttachment, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["adminEnabled"] = state.AdminEnabled
+		inputs["bandwidth"] = state.Bandwidth
 		inputs["candidateSubnets"] = state.CandidateSubnets
 		inputs["cloudRouterIpAddress"] = state.CloudRouterIpAddress
 		inputs["creationTimestamp"] = state.CreationTimestamp
@@ -103,6 +106,14 @@ func (r *InterconnectAttachment) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *InterconnectAttachment) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *InterconnectAttachment) AdminEnabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["adminEnabled"])
+}
+
+func (r *InterconnectAttachment) Bandwidth() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["bandwidth"])
 }
 
 func (r *InterconnectAttachment) CandidateSubnets() *pulumi.ArrayOutput {
@@ -186,6 +197,8 @@ func (r *InterconnectAttachment) VlanTag8021q() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering InterconnectAttachment resources.
 type InterconnectAttachmentState struct {
+	AdminEnabled interface{}
+	Bandwidth interface{}
 	CandidateSubnets interface{}
 	CloudRouterIpAddress interface{}
 	CreationTimestamp interface{}
@@ -212,6 +225,8 @@ type InterconnectAttachmentState struct {
 
 // The set of arguments for constructing a InterconnectAttachment resource.
 type InterconnectAttachmentArgs struct {
+	AdminEnabled interface{}
+	Bandwidth interface{}
 	CandidateSubnets interface{}
 	Description interface{}
 	EdgeAvailabilityDomain interface{}

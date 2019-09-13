@@ -7,13 +7,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
-// 
-// https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
+// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
-func LookupNetblockIPRanges(ctx *pulumi.Context) (*GetNetblockIPRangesResult, error) {
-	outputs, err := ctx.Invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", nil)
+func LookupNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs) (*GetNetblockIPRangesResult, error) {
+	inputs := make(map[string]interface{})
+	if args != nil {
+		inputs["rangeType"] = args.RangeType
+	}
+	outputs, err := ctx.Invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", inputs)
 	if err != nil {
 		return nil, err
 	}
@@ -21,18 +23,26 @@ func LookupNetblockIPRanges(ctx *pulumi.Context) (*GetNetblockIPRangesResult, er
 		CidrBlocks: outputs["cidrBlocks"],
 		CidrBlocksIpv4s: outputs["cidrBlocksIpv4s"],
 		CidrBlocksIpv6s: outputs["cidrBlocksIpv6s"],
+		RangeType: outputs["rangeType"],
 		Id: outputs["id"],
 	}, nil
+}
+
+// A collection of arguments for invoking getNetblockIPRanges.
+type GetNetblockIPRangesArgs struct {
+	// The type of range for which to provide results.
+	RangeType interface{}
 }
 
 // A collection of values returned by getNetblockIPRanges.
 type GetNetblockIPRangesResult struct {
 	// Retrieve list of all CIDR blocks.
 	CidrBlocks interface{}
-	// Retrieve list of the IP4 CIDR blocks
+	// Retrieve list of the IPv4 CIDR blocks
 	CidrBlocksIpv4s interface{}
-	// Retrieve list of the IP6 CIDR blocks.
+	// Retrieve list of the IPv6 CIDR blocks, if available.
 	CidrBlocksIpv6s interface{}
+	RangeType interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

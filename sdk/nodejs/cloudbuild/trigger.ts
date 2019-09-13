@@ -7,35 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Configuration for an automated build in response to source repository changes.
- * 
- * 
- * To get more information about Trigger, see:
- * 
- * * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
- * * How-to Guides
- *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
- * 
- * ## Example Usage - Cloudbuild Trigger Filename
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const filenameTrigger = new gcp.cloudbuild.Trigger("filename-trigger", {
- *     filename: "cloudbuild.yaml",
- *     substitutions: {
- *         _BAZ: "qux",
- *         _FOO: "bar",
- *     },
- *     triggerTemplate: {
- *         branchName: "master",
- *         repoName: "my-repo",
- *     },
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
  */
 export class Trigger extends pulumi.CustomResource {

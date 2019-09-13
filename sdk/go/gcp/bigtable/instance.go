@@ -4,7 +4,6 @@
 package bigtable
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
@@ -20,9 +19,6 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOpt) (*Instance, error) {
-	if args == nil || args.Clusters == nil {
-		return nil, errors.New("missing required argument 'Clusters'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["clusters"] = nil

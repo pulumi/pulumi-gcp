@@ -82,7 +82,7 @@ class Environment(pulumi.CustomResource):
           * `softwareConfig` (`pulumi.Input[dict]`)
         
             * `airflowConfigOverrides` (`pulumi.Input[dict]`)
-            * `envVariables` (`pulumi.Input[dict]`)
+            * `env_variables` (`pulumi.Input[dict]`)
             * `imageVersion` (`pulumi.Input[str]`)
             * `pypiPackages` (`pulumi.Input[dict]`)
             * `pythonVersion` (`pulumi.Input[str]`)
@@ -162,7 +162,7 @@ class Environment(pulumi.CustomResource):
           * `softwareConfig` (`pulumi.Input[dict]`)
         
             * `airflowConfigOverrides` (`pulumi.Input[dict]`)
-            * `envVariables` (`pulumi.Input[dict]`)
+            * `env_variables` (`pulumi.Input[dict]`)
             * `imageVersion` (`pulumi.Input[str]`)
             * `pypiPackages` (`pulumi.Input[dict]`)
             * `pythonVersion` (`pulumi.Input[str]`)

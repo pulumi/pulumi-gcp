@@ -7,28 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents an Address resource.
-// 
-// Each virtual machine instance has an ephemeral internal IP address and,
-// optionally, an external IP address. To communicate between instances on
-// the same network, you can use an instance's internal IP address. To
-// communicate with the Internet and instances outside of the same network,
-// you must specify the instance's external IP address.
-// 
-// Internal IP addresses are ephemeral and only belong to an instance for
-// the lifetime of the instance; if the instance is deleted and recreated,
-// the instance is assigned a new internal IP address, either by Compute
-// Engine or by you. External IP addresses can be either ephemeral or
-// static.
-// 
-// 
-// To get more information about Address, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
-// * How-to Guides
-//     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-//     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
 type Address struct {
 	s *pulumi.ResourceState

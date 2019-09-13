@@ -133,7 +133,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * A set of key/value label pairs to assign to the instance.
+     * A map of key/value label pairs to assign to the instance.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -365,7 +365,7 @@ export interface InstanceState {
      */
     readonly labelFingerprint?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the instance.
+     * A map of key/value label pairs to assign to the instance.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -495,7 +495,7 @@ export interface InstanceArgs {
      */
     readonly hostname?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the instance.
+     * A map of key/value label pairs to assign to the instance.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

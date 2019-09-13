@@ -7,43 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a Router resource.
- * 
- * 
- * To get more information about Router, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
- * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
- * 
- * ## Example Usage - Router Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const foobarNetwork = new gcp.compute.Network("foobar", {
- *     autoCreateSubnetworks: false,
- * });
- * const foobarRouter = new gcp.compute.Router("foobar", {
- *     bgp: {
- *         advertiseMode: "CUSTOM",
- *         advertisedGroups: ["ALL_SUBNETS"],
- *         advertisedIpRanges: [
- *             {
- *                 range: "1.2.3.4",
- *             },
- *             {
- *                 range: "6.7.0.0/16",
- *             },
- *         ],
- *         asn: 64514,
- *     },
- *     network: foobarNetwork.name,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
  */
 export class Router extends pulumi.CustomResource {

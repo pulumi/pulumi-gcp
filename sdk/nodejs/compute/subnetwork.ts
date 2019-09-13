@@ -7,58 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A VPC network is a virtual version of the traditional physical networks
- * that exist within and between physical data centers. A VPC network
- * provides connectivity for your Compute Engine virtual machine (VM)
- * instances, Container Engine containers, App Engine Flex services, and
- * other network-related resources.
- * 
- * Each GCP project contains one or more VPC networks. Each VPC network is a
- * global entity spanning all GCP regions. This global VPC network allows VM
- * instances and other resources to communicate with each other via internal,
- * private IP addresses.
- * 
- * Each VPC network is subdivided into subnets, and each subnet is contained
- * within a single region. You can have more than one subnet in a region for
- * a given VPC network. Each subnet has a contiguous private RFC1918 IP
- * space. You create instances, containers, and the like in these subnets.
- * When you create an instance, you must create it in a subnet, and the
- * instance draws its internal IP address from that subnet.
- * 
- * Virtual machine (VM) instances in a VPC network can communicate with
- * instances in all other subnets of the same VPC network, regardless of
- * region, using their RFC1918 private IP addresses. You can isolate portions
- * of the network, even entire subnets, using firewall rules.
- * 
- * 
- * To get more information about Subnetwork, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks)
- * * How-to Guides
- *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
- *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
- * 
- * ## Example Usage - Subnetwork Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const customTest = new gcp.compute.Network("custom-test", {
- *     autoCreateSubnetworks: false,
- * });
- * const networkWithPrivateSecondaryIpRanges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
- *     ipCidrRange: "10.2.0.0/16",
- *     network: custom_test.selfLink,
- *     region: "us-central1",
- *     secondaryIpRanges: [{
- *         ipCidrRange: "192.168.10.0/24",
- *         rangeName: "tf-test-secondary-range-update1",
- *     }],
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
  */
 export class Subnetwork extends pulumi.CustomResource {

@@ -8,17 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Logs-based metric can also be used to extract values from logs and create a a distribution
-// of the values. The distribution records the statistics of the extracted values along with
-// an optional histogram of the values as specified by the bucket options.
-// 
-// 
-// To get more information about Metric, see:
-// 
-// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
 type Metric struct {
 	s *pulumi.ResourceState

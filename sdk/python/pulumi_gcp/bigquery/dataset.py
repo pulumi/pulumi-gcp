@@ -11,91 +11,26 @@ from .. import utilities, tables
 
 class Dataset(pulumi.CustomResource):
     accesses: pulumi.Output[list]
-    """
-    An array of objects that define dataset access for
-    one or more entities. Structure is documented below.
-    
-      * `domain` (`str`) - A domain to grant access to.
-      * `groupByEmail` (`str`) - An email address of a Google Group to grant
-        access to.
-      * `role` (`str`) - Describes the rights granted to
-        the user specified by the other member of the access object.
-        Primitive, Predefined and custom roles are supported.
-        Predefined roles that have equivalent primitive roles are swapped
-        by the API to their Primitive counterparts, and will show a diff post-create.
-        See [official docs](https://cloud.google.com/bigquery/docs/access-control).
-      * `specialGroup` (`str`) - A special group to grant access to.
-        Possible values include:
-        * `projectOwners`: Owners of the enclosing project.
-        * `projectReaders`: Readers of the enclosing project.
-        * `projectWriters`: Writers of the enclosing project.
-        * `allAuthenticatedUsers`: All authenticated BigQuery users.
-      * `userByEmail` (`str`) - An email address of a user to grant access to.
-      * `view` (`dict`) - A view from a different dataset to grant access to.
-        Queries executed against that view will have read access to tables in this
-        dataset. The role field is not required when this field is set. If that
-        view is updated by any user, access to the view needs to be granted again
-        via an update operation. Structure is documented below.
-    
-        * `dataset_id` (`str`) - The ID of the dataset containing this table.
-        * `projectId` (`str`) - The ID of the project containing this table.
-        * `table_id` (`str`) - The ID of the table.
-    """
     creation_time: pulumi.Output[float]
-    """
-    The time when this dataset was created, in milliseconds since the epoch.
-    """
     dataset_id: pulumi.Output[str]
-    """
-    The ID of the dataset containing this table.
-    """
     default_partition_expiration_ms: pulumi.Output[float]
-    """
-    The default partition expiration
-    for all partitioned tables in the dataset, in milliseconds.
-    """
     default_table_expiration_ms: pulumi.Output[float]
-    """
-    The default lifetime of all
-    tables in the dataset, in milliseconds. The minimum value is 3600000
-    milliseconds (one hour).
-    """
     delete_contents_on_destroy: pulumi.Output[bool]
     """
-    If set to `true`, delete all the
-    tables in the dataset when destroying the resource; otherwise, destroying
-    the resource will fail if tables are present.
+    If set to `true`, delete all the tables in the
+    dataset when destroying the resource; otherwise,
+    destroying the resource will fail if tables are present.
     """
     description: pulumi.Output[str]
-    """
-    A user-friendly description of the dataset.
-    """
     etag: pulumi.Output[str]
-    """
-    A hash of the resource.
-    """
     friendly_name: pulumi.Output[str]
-    """
-    A descriptive name for the dataset.
-    """
     labels: pulumi.Output[dict]
-    """
-    A mapping of labels to assign to the resource.
-    """
     last_modified_time: pulumi.Output[float]
-    """
-    The date when this dataset or any of its tables was last modified,
-    in milliseconds since the epoch.
-    """
     location: pulumi.Output[str]
-    """
-    The geographic location where the dataset should reside.
-    See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-    """
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
     """
     self_link: pulumi.Output[str]
     """
@@ -103,58 +38,28 @@ class Dataset(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, friendly_name=None, labels=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a dataset resource for Google BigQuery. For more information see
-        [the official documentation](https://cloud.google.com/bigquery/docs/) and
-        [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+        Create a Dataset resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] accesses: An array of objects that define dataset access for
-               one or more entities. Structure is documented below.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
-        :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration
-               for all partitioned tables in the dataset, in milliseconds.
-        :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all
-               tables in the dataset, in milliseconds. The minimum value is 3600000
-               milliseconds (one hour).
-        :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the
-               tables in the dataset when destroying the resource; otherwise, destroying
-               the resource will fail if tables are present.
-        :param pulumi.Input[str] description: A user-friendly description of the dataset.
-        :param pulumi.Input[str] friendly_name: A descriptive name for the dataset.
-        :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
+               dataset when destroying the resource; otherwise,
+               destroying the resource will fail if tables are present.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         
         The **accesses** object supports the following:
         
-          * `domain` (`pulumi.Input[str]`) - A domain to grant access to.
-          * `groupByEmail` (`pulumi.Input[str]`) - An email address of a Google Group to grant
-            access to.
-          * `role` (`pulumi.Input[str]`) - Describes the rights granted to
-            the user specified by the other member of the access object.
-            Primitive, Predefined and custom roles are supported.
-            Predefined roles that have equivalent primitive roles are swapped
-            by the API to their Primitive counterparts, and will show a diff post-create.
-            See [official docs](https://cloud.google.com/bigquery/docs/access-control).
-          * `specialGroup` (`pulumi.Input[str]`) - A special group to grant access to.
-            Possible values include:
-            * `projectOwners`: Owners of the enclosing project.
-            * `projectReaders`: Readers of the enclosing project.
-            * `projectWriters`: Writers of the enclosing project.
-            * `allAuthenticatedUsers`: All authenticated BigQuery users.
-          * `userByEmail` (`pulumi.Input[str]`) - An email address of a user to grant access to.
-          * `view` (`pulumi.Input[dict]`) - A view from a different dataset to grant access to.
-            Queries executed against that view will have read access to tables in this
-            dataset. The role field is not required when this field is set. If that
-            view is updated by any user, access to the view needs to be granted again
-            via an update operation. Structure is documented below.
+          * `domain` (`pulumi.Input[str]`)
+          * `groupByEmail` (`pulumi.Input[str]`)
+          * `role` (`pulumi.Input[str]`)
+          * `specialGroup` (`pulumi.Input[str]`)
+          * `userByEmail` (`pulumi.Input[str]`)
+          * `view` (`pulumi.Input[dict]`)
         
-            * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
-            * `projectId` (`pulumi.Input[str]`) - The ID of the project containing this table.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `dataset_id` (`pulumi.Input[str]`)
+            * `projectId` (`pulumi.Input[str]`)
+            * `table_id` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """
@@ -206,57 +111,25 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] accesses: An array of objects that define dataset access for
-               one or more entities. Structure is documented below.
-        :param pulumi.Input[float] creation_time: The time when this dataset was created, in milliseconds since the epoch.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
-        :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration
-               for all partitioned tables in the dataset, in milliseconds.
-        :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all
-               tables in the dataset, in milliseconds. The minimum value is 3600000
-               milliseconds (one hour).
-        :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the
-               tables in the dataset when destroying the resource; otherwise, destroying
-               the resource will fail if tables are present.
-        :param pulumi.Input[str] description: A user-friendly description of the dataset.
-        :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[str] friendly_name: A descriptive name for the dataset.
-        :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
-        :param pulumi.Input[float] last_modified_time: The date when this dataset or any of its tables was last modified,
-               in milliseconds since the epoch.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
+               dataset when destroying the resource; otherwise,
+               destroying the resource will fail if tables are present.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         
         The **accesses** object supports the following:
         
-          * `domain` (`pulumi.Input[str]`) - A domain to grant access to.
-          * `groupByEmail` (`pulumi.Input[str]`) - An email address of a Google Group to grant
-            access to.
-          * `role` (`pulumi.Input[str]`) - Describes the rights granted to
-            the user specified by the other member of the access object.
-            Primitive, Predefined and custom roles are supported.
-            Predefined roles that have equivalent primitive roles are swapped
-            by the API to their Primitive counterparts, and will show a diff post-create.
-            See [official docs](https://cloud.google.com/bigquery/docs/access-control).
-          * `specialGroup` (`pulumi.Input[str]`) - A special group to grant access to.
-            Possible values include:
-            * `projectOwners`: Owners of the enclosing project.
-            * `projectReaders`: Readers of the enclosing project.
-            * `projectWriters`: Writers of the enclosing project.
-            * `allAuthenticatedUsers`: All authenticated BigQuery users.
-          * `userByEmail` (`pulumi.Input[str]`) - An email address of a user to grant access to.
-          * `view` (`pulumi.Input[dict]`) - A view from a different dataset to grant access to.
-            Queries executed against that view will have read access to tables in this
-            dataset. The role field is not required when this field is set. If that
-            view is updated by any user, access to the view needs to be granted again
-            via an update operation. Structure is documented below.
+          * `domain` (`pulumi.Input[str]`)
+          * `groupByEmail` (`pulumi.Input[str]`)
+          * `role` (`pulumi.Input[str]`)
+          * `specialGroup` (`pulumi.Input[str]`)
+          * `userByEmail` (`pulumi.Input[str]`)
+          * `view` (`pulumi.Input[dict]`)
         
-            * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
-            * `projectId` (`pulumi.Input[str]`) - The ID of the project containing this table.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `dataset_id` (`pulumi.Input[str]`)
+            * `projectId` (`pulumi.Input[str]`)
+            * `table_id` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """

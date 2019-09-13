@@ -8,14 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents a VPN gateway running in GCP. This virtual device is managed
-// by Google, but used only by you.
-// 
-// 
-// To get more information about VpnGateway, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_gateway.html.markdown.
 type VPNGateway struct {
 	s *pulumi.ResourceState

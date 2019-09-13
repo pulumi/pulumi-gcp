@@ -24,8 +24,12 @@ func GetBatching(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:batching")
 }
 
-func GetBigqueryCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:bigqueryCustomEndpoint")
+func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigQueryCustomEndpoint")
+}
+
+func GetBigqueryDataTransferCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryDataTransferCustomEndpoint")
 }
 
 func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
@@ -147,6 +151,10 @@ func GetLoggingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:loggingCustomEndpoint")
 }
 
+func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
+}
+
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
 }
@@ -197,6 +205,10 @@ func GetScopes(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:scopes")
 }
 
+func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:securityCenterCustomEndpoint")
+}
+
 func GetSecurityScannerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityScannerCustomEndpoint")
 }
@@ -235,6 +247,14 @@ func GetStorageTransferCustomEndpoint(ctx *pulumi.Context) string {
 
 func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuCustomEndpoint")
+}
+
+func GetUserProjectOverride(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "gcp:userProjectOverride")
+}
+
+func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:vpcAccessCustomEndpoint")
 }
 
 func GetZone(ctx *pulumi.Context) string {

@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A Cloud TPU instance.
-// 
-// 
-// To get more information about Node, see:
-// 
-// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/tpu/docs/)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
 type Node struct {
 	s *pulumi.ResourceState

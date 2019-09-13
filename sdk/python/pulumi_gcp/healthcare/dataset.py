@@ -21,13 +21,7 @@ class Dataset(pulumi.CustomResource):
     time_zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, location=None, name=None, project=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        A Healthcare `Dataset` is a toplevel logical grouping of `dicomStores`, `fhirStores` and `hl7V2Stores`.
-        
-        To get more information about Dataset, see:
-        
-        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
-        * How-to Guides
-            * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+        Create a Dataset resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

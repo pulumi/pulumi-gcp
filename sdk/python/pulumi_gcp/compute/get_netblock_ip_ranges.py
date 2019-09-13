@@ -13,7 +13,7 @@ class GetNetblockIPRangesResult:
     """
     A collection of values returned by getNetblockIPRanges.
     """
-    def __init__(__self__, cidr_blocks=None, cidr_blocks_ipv4s=None, cidr_blocks_ipv6s=None, id=None):
+    def __init__(__self__, cidr_blocks=None, cidr_blocks_ipv4s=None, cidr_blocks_ipv6s=None, range_type=None, id=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError("Expected argument 'cidr_blocks' to be a list")
         __self__.cidr_blocks = cidr_blocks
@@ -24,14 +24,17 @@ class GetNetblockIPRangesResult:
             raise TypeError("Expected argument 'cidr_blocks_ipv4s' to be a list")
         __self__.cidr_blocks_ipv4s = cidr_blocks_ipv4s
         """
-        Retrieve list of the IP4 CIDR blocks
+        Retrieve list of the IPv4 CIDR blocks
         """
         if cidr_blocks_ipv6s and not isinstance(cidr_blocks_ipv6s, list):
             raise TypeError("Expected argument 'cidr_blocks_ipv6s' to be a list")
         __self__.cidr_blocks_ipv6s = cidr_blocks_ipv6s
         """
-        Retrieve list of the IP6 CIDR blocks.
+        Retrieve list of the IPv6 CIDR blocks, if available.
         """
+        if range_type and not isinstance(range_type, str):
+            raise TypeError("Expected argument 'range_type' to be a str")
+        __self__.range_type = range_type
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -47,18 +50,20 @@ class AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
             cidr_blocks=self.cidr_blocks,
             cidr_blocks_ipv4s=self.cidr_blocks_ipv4s,
             cidr_blocks_ipv6s=self.cidr_blocks_ipv6s,
+            range_type=self.range_type,
             id=self.id)
 
-def get_netblock_ip_ranges(opts=None):
+def get_netblock_ip_ranges(range_type=None,opts=None):
     """
-    Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
+    Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
     
-    https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
+    :param str range_type: The type of range for which to provide results.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
     """
     __args__ = dict()
 
+    __args__['rangeType'] = range_type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -69,4 +74,5 @@ def get_netblock_ip_ranges(opts=None):
         cidr_blocks=__ret__.get('cidrBlocks'),
         cidr_blocks_ipv4s=__ret__.get('cidrBlocksIpv4s'),
         cidr_blocks_ipv6s=__ret__.get('cidrBlocksIpv6s'),
+        range_type=__ret__.get('rangeType'),
         id=__ret__.get('id'))

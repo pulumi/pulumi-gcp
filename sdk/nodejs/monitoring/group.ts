@@ -7,48 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The description of a dynamic collection of monitored resources. Each group
- * has a filter that is matched against monitored resources and their
- * associated metadata. If a group's filter matches an available monitored
- * resource, then that resource is a member of that group.
- * 
- * 
- * To get more information about Group, see:
- * 
- * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
- * 
- * ## Example Usage - Monitoring Group Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const basic = new gcp.monitoring.Group("basic", {
- *     displayName: "New Test Group",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- * });
- * ```
- * ## Example Usage - Monitoring Group Subgroup
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const parent = new gcp.monitoring.Group("parent", {
- *     displayName: "New Test SubGroup",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- * });
- * const subgroup = new gcp.monitoring.Group("subgroup", {
- *     displayName: "New Test SubGroup",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- *     parentName: parent.name,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {

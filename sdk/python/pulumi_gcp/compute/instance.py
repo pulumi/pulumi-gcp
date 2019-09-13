@@ -38,7 +38,7 @@ class Instance(pulumi.CustomResource):
       * `initializeParams` (`dict`)
     
         * `image` (`str`)
-        * `labels` (`dict`) - A set of key/value label pairs to assign to the instance.
+        * `labels` (`dict`) - A map of key/value label pairs to assign to the instance.
         * `size` (`float`)
         * `type` (`str`)
     
@@ -88,7 +88,7 @@ class Instance(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    A set of key/value label pairs to assign to the instance.
+    A map of key/value label pairs to assign to the instance.
     """
     machine_type: pulumi.Output[str]
     """
@@ -232,7 +232,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the instance.
+        :param pulumi.Input[dict] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -281,7 +281,7 @@ class Instance(pulumi.CustomResource):
           * `initializeParams` (`pulumi.Input[dict]`)
         
             * `image` (`pulumi.Input[str]`)
-            * `labels` (`pulumi.Input[dict]`) - A set of key/value label pairs to assign to the instance.
+            * `labels` (`pulumi.Input[dict]`) - A map of key/value label pairs to assign to the instance.
             * `size` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
         
@@ -427,7 +427,7 @@ class Instance(pulumi.CustomResource):
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the instance.
+        :param pulumi.Input[dict] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -479,7 +479,7 @@ class Instance(pulumi.CustomResource):
           * `initializeParams` (`pulumi.Input[dict]`)
         
             * `image` (`pulumi.Input[str]`)
-            * `labels` (`pulumi.Input[dict]`) - A set of key/value label pairs to assign to the instance.
+            * `labels` (`pulumi.Input[dict]`) - A map of key/value label pairs to assign to the instance.
             * `size` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
         

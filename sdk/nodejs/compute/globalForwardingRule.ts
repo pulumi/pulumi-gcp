@@ -7,60 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a GlobalForwardingRule resource. Global forwarding rules are
- * used to forward traffic to the correct load balancer for HTTP load
- * balancing. Global forwarding rules can only be used for HTTP load
- * balancing.
- * 
- * For more information, see
- * https://cloud.google.com/compute/docs/load-balancing/http/
- * 
- * 
- * 
- * ## Example Usage - Global Forwarding Rule Http
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
- *     checkIntervalSec: 1,
- *     requestPath: "/",
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     healthChecks: defaultHttpHealthCheck.selfLink,
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- * });
- * const defaultURLMap = new gcp.compute.URLMap("default", {
- *     defaultService: defaultBackendService.selfLink,
- *     description: "a description",
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         defaultService: defaultBackendService.selfLink,
- *         name: "allpaths",
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultBackendService.selfLink,
- *         }],
- *     }],
- * });
- * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
- *     description: "a description",
- *     urlMap: defaultURLMap.selfLink,
- * });
- * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
- *     portRange: "80",
- *     target: defaultTargetHttpProxy.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
  */
 export class GlobalForwardingRule extends pulumi.CustomResource {

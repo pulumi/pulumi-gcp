@@ -29,15 +29,7 @@ class SSLPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_features=None, description=None, min_tls_version=None, name=None, profile=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a SSL policy. SSL policies give you the ability to control the
-        features of SSL that your SSL proxy or HTTPS load balancer negotiates.
-        
-        
-        To get more information about SslPolicy, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
-        * How-to Guides
-            * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+        Create a SSLPolicy resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

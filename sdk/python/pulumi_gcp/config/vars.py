@@ -19,7 +19,9 @@ app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 
 batching = __config__.get('batching')
 
-bigquery_custom_endpoint = __config__.get('bigqueryCustomEndpoint')
+big_query_custom_endpoint = __config__.get('bigQueryCustomEndpoint')
+
+bigquery_data_transfer_custom_endpoint = __config__.get('bigqueryDataTransferCustomEndpoint')
 
 bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
 
@@ -77,6 +79,8 @@ kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
 
 logging_custom_endpoint = __config__.get('loggingCustomEndpoint')
 
+ml_engine_custom_endpoint = __config__.get('mlEngineCustomEndpoint')
+
 monitoring_custom_endpoint = __config__.get('monitoringCustomEndpoint')
 
 project = __config__.get('project') or utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
@@ -94,6 +98,8 @@ resource_manager_v2beta1_custom_endpoint = __config__.get('resourceManagerV2beta
 runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
 
 scopes = __config__.get('scopes')
+
+security_center_custom_endpoint = __config__.get('securityCenterCustomEndpoint')
 
 security_scanner_custom_endpoint = __config__.get('securityScannerCustomEndpoint')
 
@@ -114,6 +120,10 @@ storage_custom_endpoint = __config__.get('storageCustomEndpoint')
 storage_transfer_custom_endpoint = __config__.get('storageTransferCustomEndpoint')
 
 tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
+
+user_project_override = __config__.get('userProjectOverride')
+
+vpc_access_custom_endpoint = __config__.get('vpcAccessCustomEndpoint')
 
 zone = __config__.get('zone') or utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

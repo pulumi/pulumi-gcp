@@ -18,28 +18,7 @@ class Service(pulumi.CustomResource):
     status: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __props__=None, __name__=None, __opts__=None):
         """
-        **Note:** Cloud Run as a product is in beta, however the REST API is currently still an alpha.
-        Please use this with caution as it may change when the API moves to beta.
-        
-        Service acts as a top-level container that manages a set of Routes and
-        Configurations which implement a network service. Service exists to provide a
-        singular abstraction which can be access controlled, reasoned about, and
-        which encapsulates software lifecycle decisions such as rollout policy and
-        team resource ownership. Service acts only as an orchestrator of the
-        underlying Routes and Configurations (much as a kubernetes Deployment
-        orchestrates ReplicaSets).
-        
-        The Service's controller will track the statuses of its owned Configuration
-        and Route, reflecting their statuses and conditions as its own.
-        
-        See also:
-        https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
-        
-        To get more information about Service, see:
-        
-        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.services)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/run/docs/)
+        Create a Service resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,6 +180,11 @@ class Service(pulumi.CustomResource):
             * `reason` (`pulumi.Input[str]`)
             * `status` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
+        
+          * `latestCreatedRevisionName` (`pulumi.Input[str]`)
+          * `latestReadyRevisionName` (`pulumi.Input[str]`)
+          * `observedGeneration` (`pulumi.Input[float]`)
+          * `url` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
         """

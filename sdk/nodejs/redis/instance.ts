@@ -5,50 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Google Cloud Redis instance.
- * 
- * 
- * To get more information about Instance, see:
- * 
- * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
- * 
- * ## Example Usage - Redis Instance Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const cache = new gcp.redis.Instance("cache", {
- *     memorySizeGb: 1,
- * });
- * ```
- * ## Example Usage - Redis Instance Full
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const autoNetwork = new gcp.compute.Network("auto-network", {});
- * const cache = new gcp.redis.Instance("cache", {
- *     alternativeLocationId: "us-central1-f",
- *     authorizedNetwork: auto_network.selfLink,
- *     displayName: "Test Instance",
- *     labels: {
- *         my_key: "myVal",
- *         other_key: "otherVal",
- *     },
- *     locationId: "us-central1-a",
- *     memorySizeGb: 1,
- *     redisVersion: "REDIS_3_2",
- *     reservedIpRange: "192.168.0.0/29",
- *     tier: "STANDARD_HA",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {

@@ -8,20 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
-// 
-// 
-// > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
-// Destroying a KeyRing will remove it from state but
-// *will not delete the resource on the server.*
-// 
-// 
-// To get more information about KeyRing, see:
-// 
-// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
-// * How-to Guides
-//     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring.html.markdown.
 type KeyRing struct {
 	s *pulumi.ResourceState

@@ -23,7 +23,9 @@ func NewRegistry(ctx *pulumi.Context,
 	if args == nil {
 		inputs["credentials"] = nil
 		inputs["eventNotificationConfig"] = nil
+		inputs["eventNotificationConfigs"] = nil
 		inputs["httpConfig"] = nil
+		inputs["logLevel"] = nil
 		inputs["mqttConfig"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
@@ -32,7 +34,9 @@ func NewRegistry(ctx *pulumi.Context,
 	} else {
 		inputs["credentials"] = args.Credentials
 		inputs["eventNotificationConfig"] = args.EventNotificationConfig
+		inputs["eventNotificationConfigs"] = args.EventNotificationConfigs
 		inputs["httpConfig"] = args.HttpConfig
+		inputs["logLevel"] = args.LogLevel
 		inputs["mqttConfig"] = args.MqttConfig
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
@@ -54,7 +58,9 @@ func GetRegistry(ctx *pulumi.Context,
 	if state != nil {
 		inputs["credentials"] = state.Credentials
 		inputs["eventNotificationConfig"] = state.EventNotificationConfig
+		inputs["eventNotificationConfigs"] = state.EventNotificationConfigs
 		inputs["httpConfig"] = state.HttpConfig
+		inputs["logLevel"] = state.LogLevel
 		inputs["mqttConfig"] = state.MqttConfig
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
@@ -88,9 +94,17 @@ func (r *Registry) EventNotificationConfig() *pulumi.Output {
 	return r.s.State["eventNotificationConfig"]
 }
 
+func (r *Registry) EventNotificationConfigs() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["eventNotificationConfigs"])
+}
+
 // Activate or deactivate HTTP. Structure is documented below.
 func (r *Registry) HttpConfig() *pulumi.Output {
 	return r.s.State["httpConfig"]
+}
+
+func (r *Registry) LogLevel() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["logLevel"])
 }
 
 // Activate or deactivate MQTT. Structure is documented below.
@@ -125,8 +139,10 @@ type RegistryState struct {
 	Credentials interface{}
 	// A PubSub topics to publish device events. Structure is documented below.
 	EventNotificationConfig interface{}
+	EventNotificationConfigs interface{}
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig interface{}
+	LogLevel interface{}
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig interface{}
 	// A unique name for the resource, required by device registry.
@@ -146,8 +162,10 @@ type RegistryArgs struct {
 	Credentials interface{}
 	// A PubSub topics to publish device events. Structure is documented below.
 	EventNotificationConfig interface{}
+	EventNotificationConfigs interface{}
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig interface{}
+	LogLevel interface{}
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig interface{}
 	// A unique name for the resource, required by device registry.

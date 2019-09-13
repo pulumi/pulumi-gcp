@@ -14,7 +14,7 @@ class Project(pulumi.CustomResource):
     """
     Create the 'default' network automatically.  Default `true`.
     If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-    will still need to have 1 network slot available to create the project succesfully, even if
+    will still need to have 1 network slot available to create the project successfully, even if
     you set `auto_create_network` to `false`, since the network will exist momentarily.
     """
     billing_account: pulumi.Output[str]
@@ -97,7 +97,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default `true`.
                If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-               will still need to have 1 network slot available to create the project succesfully, even if
+               will still need to have 1 network slot available to create the project successfully, even if
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with this provider
@@ -168,7 +168,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default `true`.
                If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-               will still need to have 1 network slot available to create the project succesfully, even if
+               will still need to have 1 network slot available to create the project successfully, even if
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with this provider

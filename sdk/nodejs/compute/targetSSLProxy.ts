@@ -7,46 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a TargetSslProxy resource, which is used by one or more
- * global forwarding rule to route incoming SSL requests to a backend
- * service.
- * 
- * 
- * To get more information about TargetSslProxy, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
- * * How-to Guides
- *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
- * 
- * ## Example Usage - Target Ssl Proxy Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 443,
- *     },
- *     timeoutSec: 1,
- * });
- * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf-8"),
- *     privateKey: fs.readFileSync("path/to/private.key", "utf-8"),
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     healthChecks: defaultHealthCheck.selfLink,
- *     protocol: "SSL",
- * });
- * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("default", {
- *     backendService: defaultBackendService.selfLink,
- *     sslCertificates: defaultSSLCertificate.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_ssl_proxy.html.markdown.
  */
 export class TargetSSLProxy extends pulumi.CustomResource {

@@ -96,7 +96,11 @@ class Function(pulumi.CustomResource):
     """
     Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
     """
-    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, __props__=None, __name__=None, __opts__=None):
+    vpc_connector: pulumi.Output[str]
+    """
+    The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+    """
+    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new Cloud Function. For more information see
         [the official documentation](https://cloud.google.com/functions/docs/)
@@ -127,6 +131,7 @@ class Function(pulumi.CustomResource):
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+        :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
         
         The **event_trigger** object supports the following:
         
@@ -179,6 +184,7 @@ class Function(pulumi.CustomResource):
             __props__['source_repository'] = source_repository
             __props__['timeout'] = timeout
             __props__['trigger_http'] = trigger_http
+            __props__['vpc_connector'] = vpc_connector
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,
@@ -186,7 +192,7 @@ class Function(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None):
+    def get(resource_name, id, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None):
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -216,6 +222,7 @@ class Function(pulumi.CustomResource):
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+        :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
         
         The **event_trigger** object supports the following:
         
@@ -254,6 +261,7 @@ class Function(pulumi.CustomResource):
         __props__["source_repository"] = source_repository
         __props__["timeout"] = timeout
         __props__["trigger_http"] = trigger_http
+        __props__["vpc_connector"] = vpc_connector
         return Function(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

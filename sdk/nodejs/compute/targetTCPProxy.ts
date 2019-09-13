@@ -7,41 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a TargetTcpProxy resource, which is used by one or more
- * global forwarding rule to route incoming TCP requests to a Backend
- * service.
- * 
- * 
- * To get more information about TargetTcpProxy, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
- * * How-to Guides
- *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
- * 
- * ## Example Usage - Target Tcp Proxy Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 443,
- *     },
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     healthChecks: defaultHealthCheck.selfLink,
- *     protocol: "TCP",
- *     timeoutSec: 10,
- * });
- * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("default", {
- *     backendService: defaultBackendService.selfLink,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
  */
 export class TargetTCPProxy extends pulumi.CustomResource {

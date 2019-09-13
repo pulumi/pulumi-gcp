@@ -26,13 +26,7 @@ class VPNGateway(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a VPN gateway running in GCP. This virtual device is managed
-        by Google, but used only by you.
-        
-        
-        To get more information about VpnGateway, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
+        Create a VPNGateway resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

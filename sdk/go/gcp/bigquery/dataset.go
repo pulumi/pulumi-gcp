@@ -8,10 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a dataset resource for Google BigQuery. For more information see
-// [the official documentation](https://cloud.google.com/bigquery/docs/) and
-// [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
 type Dataset struct {
 	s *pulumi.ResourceState
@@ -96,76 +92,59 @@ func (r *Dataset) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// An array of objects that define dataset access for
-// one or more entities. Structure is documented below.
 func (r *Dataset) Accesses() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["accesses"])
 }
 
-// The time when this dataset was created, in milliseconds since the epoch.
 func (r *Dataset) CreationTime() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["creationTime"])
 }
 
-// The ID of the dataset containing this table.
 func (r *Dataset) DatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
-// The default partition expiration
-// for all partitioned tables in the dataset, in milliseconds.
 func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["defaultPartitionExpirationMs"])
 }
 
-// The default lifetime of all
-// tables in the dataset, in milliseconds. The minimum value is 3600000
-// milliseconds (one hour).
 func (r *Dataset) DefaultTableExpirationMs() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["defaultTableExpirationMs"])
 }
 
-// If set to `true`, delete all the
-// tables in the dataset when destroying the resource; otherwise, destroying
-// the resource will fail if tables are present.
+// If set to `true`, delete all the tables in the
+// dataset when destroying the resource; otherwise,
+// destroying the resource will fail if tables are present.
 func (r *Dataset) DeleteContentsOnDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["deleteContentsOnDestroy"])
 }
 
-// A user-friendly description of the dataset.
 func (r *Dataset) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A hash of the resource.
 func (r *Dataset) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// A descriptive name for the dataset.
 func (r *Dataset) FriendlyName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["friendlyName"])
 }
 
-// A mapping of labels to assign to the resource.
 func (r *Dataset) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
-// The date when this dataset or any of its tables was last modified,
-// in milliseconds since the epoch.
 func (r *Dataset) LastModifiedTime() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["lastModifiedTime"])
 }
 
-// The geographic location where the dataset should reside.
-// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 func (r *Dataset) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (r *Dataset) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -177,40 +156,23 @@ func (r *Dataset) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Dataset resources.
 type DatasetState struct {
-	// An array of objects that define dataset access for
-	// one or more entities. Structure is documented below.
 	Accesses interface{}
-	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime interface{}
-	// The ID of the dataset containing this table.
 	DatasetId interface{}
-	// The default partition expiration
-	// for all partitioned tables in the dataset, in milliseconds.
 	DefaultPartitionExpirationMs interface{}
-	// The default lifetime of all
-	// tables in the dataset, in milliseconds. The minimum value is 3600000
-	// milliseconds (one hour).
 	DefaultTableExpirationMs interface{}
-	// If set to `true`, delete all the
-	// tables in the dataset when destroying the resource; otherwise, destroying
-	// the resource will fail if tables are present.
+	// If set to `true`, delete all the tables in the
+	// dataset when destroying the resource; otherwise,
+	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy interface{}
-	// A user-friendly description of the dataset.
 	Description interface{}
-	// A hash of the resource.
 	Etag interface{}
-	// A descriptive name for the dataset.
 	FriendlyName interface{}
-	// A mapping of labels to assign to the resource.
 	Labels interface{}
-	// The date when this dataset or any of its tables was last modified,
-	// in milliseconds since the epoch.
 	LastModifiedTime interface{}
-	// The geographic location where the dataset should reside.
-	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -218,32 +180,19 @@ type DatasetState struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
-	// An array of objects that define dataset access for
-	// one or more entities. Structure is documented below.
 	Accesses interface{}
-	// The ID of the dataset containing this table.
 	DatasetId interface{}
-	// The default partition expiration
-	// for all partitioned tables in the dataset, in milliseconds.
 	DefaultPartitionExpirationMs interface{}
-	// The default lifetime of all
-	// tables in the dataset, in milliseconds. The minimum value is 3600000
-	// milliseconds (one hour).
 	DefaultTableExpirationMs interface{}
-	// If set to `true`, delete all the
-	// tables in the dataset when destroying the resource; otherwise, destroying
-	// the resource will fail if tables are present.
+	// If set to `true`, delete all the tables in the
+	// dataset when destroying the resource; otherwise,
+	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy interface{}
-	// A user-friendly description of the dataset.
 	Description interface{}
-	// A descriptive name for the dataset.
 	FriendlyName interface{}
-	// A mapping of labels to assign to the resource.
 	Labels interface{}
-	// The geographic location where the dataset should reside.
-	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project interface{}
 }

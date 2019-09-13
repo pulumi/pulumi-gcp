@@ -7,50 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Logs-based metric can also be used to extract values from logs and create a a distribution
- * of the values. The distribution records the statistics of the extracted values along with
- * an optional histogram of the values as specified by the bucket options.
- * 
- * 
- * To get more information about Metric, see:
- * 
- * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
- * 
- * ## Example Usage - Logging Metric Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
- *     bucketOptions: {
- *         linearBuckets: {
- *             numFiniteBuckets: 3,
- *             offset: 1,
- *             width: 1,
- *         },
- *     },
- *     filter: "resource.type=gae_app AND severity>=ERROR",
- *     labelExtractors: {
- *         "EXTRACT(jsonPayload.request)": [{}],
- *         mass: [{}],
- *     },
- *     metricDescriptor: {
- *         labels: [{
- *             description: "amount of matter",
- *             key: "mass",
- *             valueType: "STRING",
- *         }],
- *         metricKind: "DELTA",
- *         valueType: "DISTRIBUTION",
- *     },
- *     valueExtractor: "EXTRACT(jsonPayload.request)",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
  */
 export class Metric extends pulumi.CustomResource {

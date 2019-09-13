@@ -27,19 +27,7 @@ class TargetInstance(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, instance=None, name=None, nat_policy=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Represents a TargetInstance resource which defines an endpoint instance
-        that terminates traffic of certain protocols. In particular, they are used
-        in Protocol Forwarding, where forwarding rules can send packets to a
-        non-NAT’ed target instance. Each target instance contains a single
-        virtual machine instance that receives and handles traffic from the
-        corresponding forwarding rules.
-        
-        
-        To get more information about TargetInstance, see:
-        
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
-        * How-to Guides
-            * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+        Create a TargetInstance resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

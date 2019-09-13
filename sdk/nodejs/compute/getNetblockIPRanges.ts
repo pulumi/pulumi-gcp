@@ -7,11 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get the IP ranges from the sender policy framework (SPF) record of \_cloud-netblocks.googleusercontent
+ * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
  * 
- * https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges
- * 
- * ## Example Usage
+ * ## Example Usage - Cloud Ranges
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,10 +21,31 @@ import * as utilities from "../utilities";
  * export const cidrBlocksIpv4 = netblock.cidrBlocksIpv4s;
  * export const cidrBlocksIpv6 = netblock.cidrBlocksIpv6s;
  * ```
+ * 
+ * ## Example Usage - Allow Health Checks
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const legacyHcs = gcp.compute.getNetblockIPRanges({
+ *     rangeType: "legacy-health-checkers",
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {});
+ * const allowHcs = new gcp.compute.Firewall("allow-hcs", {
+ *     allows: [{
+ *         ports: ["80"],
+ *         protocol: "tcp",
+ *     }],
+ *     network: defaultNetwork.name,
+ *     sourceRanges: legacy_hcs.cidrBlocksIpv4s,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
  */
-export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> & GetNetblockIPRangesResult {
+export function getNetblockIPRanges(args?: GetNetblockIPRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> & GetNetblockIPRangesResult {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -35,9 +54,20 @@ export function getNetblockIPRanges(opts?: pulumi.InvokeOptions): Promise<GetNet
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetNetblockIPRangesResult> = pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
+        "rangeType": args.rangeType,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
+}
+
+/**
+ * A collection of arguments for invoking getNetblockIPRanges.
+ */
+export interface GetNetblockIPRangesArgs {
+    /**
+     * The type of range for which to provide results.
+     */
+    readonly rangeType?: string;
 }
 
 /**
@@ -49,13 +79,14 @@ export interface GetNetblockIPRangesResult {
      */
     readonly cidrBlocks: string[];
     /**
-     * Retrieve list of the IP4 CIDR blocks
+     * Retrieve list of the IPv4 CIDR blocks
      */
     readonly cidrBlocksIpv4s: string[];
     /**
-     * Retrieve list of the IP6 CIDR blocks.
+     * Retrieve list of the IPv6 CIDR blocks, if available.
      */
     readonly cidrBlocksIpv6s: string[];
+    readonly rangeType?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

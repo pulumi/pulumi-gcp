@@ -5,62 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for Pubsub Topic. Each of these resources serves a different use case:
- * 
- * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
- * * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
- * * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
- * 
- * > **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
- * 
- * > **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * 
- * 
- * ## google\_pubsub\_topic\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * });
- * const editor = new gcp.pubsub.TopicIAMPolicy("editor", {
- *     policyData: admin.policyData,
- *     topic: "projects/{{project}}/topics/{{topic}}",
- * });
- * ```
- * 
- * ## google\_pubsub\_topic\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const editor = new gcp.pubsub.TopicIAMBinding("editor", {
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- *     topic: "projects/{{project}}/topics/{{topic}}",
- * });
- * ```
- * 
- * ## google\_pubsub\_topic\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const editor = new gcp.pubsub.TopicIAMMember("editor", {
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- *     topic: "projects/{{project}}/topics/{{topic}}",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository_iam_policy.html.markdown.
  */
 export class RepositoryIamPolicy extends pulumi.CustomResource {

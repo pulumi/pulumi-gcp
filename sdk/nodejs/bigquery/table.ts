@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *         sourceFormat: "GOOGLE_SHEETS",
  *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
  *     },
- *     tableId: "scheet",
+ *     tableId: "sheet",
  * });
  * ```
  *
@@ -96,6 +96,7 @@ export class Table extends pulumi.CustomResource {
         return obj['__pulumiType'] === Table.__pulumiType;
     }
 
+    public readonly clusterings!: pulumi.Output<string[] | undefined>;
     /**
      * The time when this table was created, in milliseconds since the epoch.
      */
@@ -204,6 +205,7 @@ export class Table extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TableState | undefined;
+            inputs["clusterings"] = state ? state.clusterings : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -232,6 +234,7 @@ export class Table extends pulumi.CustomResource {
             if (!args || args.tableId === undefined) {
                 throw new Error("Missing required property 'tableId'");
             }
+            inputs["clusterings"] = args ? args.clusterings : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["expirationTime"] = args ? args.expirationTime : undefined;
@@ -268,6 +271,7 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    readonly clusterings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time when this table was created, in milliseconds since the epoch.
      */
@@ -369,6 +373,7 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    readonly clusterings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The dataset ID to create the table in.
      * Changing this forces a new resource to be created.

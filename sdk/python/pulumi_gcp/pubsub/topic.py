@@ -12,27 +12,25 @@ from .. import utilities, tables
 class Topic(pulumi.CustomResource):
     kms_key_name: pulumi.Output[str]
     labels: pulumi.Output[dict]
+    message_storage_policy: pulumi.Output[dict]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, message_storage_policy=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        A named resource to which messages are sent by publishers.
-        
-        
-        To get more information about Topic, see:
-        
-        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
-        * How-to Guides
-            * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+        Create a Topic resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **message_storage_policy** object supports the following:
+        
+          * `allowedPersistenceRegions` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
         """
@@ -55,6 +53,7 @@ class Topic(pulumi.CustomResource):
 
             __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
+            __props__['message_storage_policy'] = message_storage_policy
             __props__['name'] = name
             __props__['project'] = project
         super(Topic, __self__).__init__(
@@ -64,7 +63,7 @@ class Topic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, kms_key_name=None, labels=None, name=None, project=None):
+    def get(resource_name, id, opts=None, kms_key_name=None, labels=None, message_storage_policy=None, name=None, project=None):
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -74,6 +73,10 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **message_storage_policy** object supports the following:
+        
+          * `allowedPersistenceRegions` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
         """
@@ -82,6 +85,7 @@ class Topic(pulumi.CustomResource):
         __props__ = dict()
         __props__["kms_key_name"] = kms_key_name
         __props__["labels"] = labels
+        __props__["message_storage_policy"] = message_storage_policy
         __props__["name"] = name
         __props__["project"] = project
         return Topic(resource_name, opts=opts, __props__=__props__)

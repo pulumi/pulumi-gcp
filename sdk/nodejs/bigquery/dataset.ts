@@ -7,39 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Creates a dataset resource for Google BigQuery. For more information see
- * [the official documentation](https://cloud.google.com/bigquery/docs/) and
- * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultDataset = new gcp.bigquery.Dataset("default", {
- *     accesses: [
- *         {
- *             domain: "example.com",
- *             role: "READER",
- *         },
- *         {
- *             groupByEmail: "writers@example.com",
- *             role: "WRITER",
- *         },
- *     ],
- *     datasetId: "foo",
- *     defaultTableExpirationMs: 3600000,
- *     description: "This is a test description",
- *     friendlyName: "test",
- *     labels: {
- *         env: "default",
- *     },
- *     location: "EU",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
  */
 export class Dataset extends pulumi.CustomResource {
@@ -69,65 +36,26 @@ export class Dataset extends pulumi.CustomResource {
         return obj['__pulumiType'] === Dataset.__pulumiType;
     }
 
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     public readonly accesses!: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
-    /**
-     * The time when this dataset was created, in milliseconds since the epoch.
-     */
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     public readonly datasetId!: pulumi.Output<string>;
-    /**
-     * The default partition expiration
-     * for all partitioned tables in the dataset, in milliseconds.
-     */
     public readonly defaultPartitionExpirationMs!: pulumi.Output<number | undefined>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     public readonly defaultTableExpirationMs!: pulumi.Output<number | undefined>;
     /**
-     * If set to `true`, delete all the
-     * tables in the dataset when destroying the resource; otherwise, destroying
-     * the resource will fail if tables are present.
+     * If set to `true`, delete all the tables in the
+     * dataset when destroying the resource; otherwise,
+     * destroying the resource will fail if tables are present.
      */
     public readonly deleteContentsOnDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * A hash of the resource.
-     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     public readonly friendlyName!: pulumi.Output<string | undefined>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The date when this dataset or any of its tables was last modified,
-     * in milliseconds since the epoch.
-     */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -196,65 +124,26 @@ export class Dataset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dataset resources.
  */
 export interface DatasetState {
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
-    /**
-     * The time when this dataset was created, in milliseconds since the epoch.
-     */
     readonly creationTime?: pulumi.Input<number>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     readonly datasetId?: pulumi.Input<string>;
-    /**
-     * The default partition expiration
-     * for all partitioned tables in the dataset, in milliseconds.
-     */
     readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
     /**
-     * If set to `true`, delete all the
-     * tables in the dataset when destroying the resource; otherwise, destroying
-     * the resource will fail if tables are present.
+     * If set to `true`, delete all the tables in the
+     * dataset when destroying the resource; otherwise,
+     * destroying the resource will fail if tables are present.
      */
     readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A hash of the resource.
-     */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     readonly friendlyName?: pulumi.Input<string>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The date when this dataset or any of its tables was last modified,
-     * in milliseconds since the epoch.
-     */
     readonly lastModifiedTime?: pulumi.Input<number>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     readonly location?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -267,52 +156,23 @@ export interface DatasetState {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
-    /**
-     * An array of objects that define dataset access for
-     * one or more entities. Structure is documented below.
-     */
     readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
-    /**
-     * The ID of the dataset containing this table.
-     */
     readonly datasetId: pulumi.Input<string>;
-    /**
-     * The default partition expiration
-     * for all partitioned tables in the dataset, in milliseconds.
-     */
     readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
-    /**
-     * The default lifetime of all
-     * tables in the dataset, in milliseconds. The minimum value is 3600000
-     * milliseconds (one hour).
-     */
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
     /**
-     * If set to `true`, delete all the
-     * tables in the dataset when destroying the resource; otherwise, destroying
-     * the resource will fail if tables are present.
+     * If set to `true`, delete all the tables in the
+     * dataset when destroying the resource; otherwise,
+     * destroying the resource will fail if tables are present.
      */
     readonly deleteContentsOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * A user-friendly description of the dataset.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * A descriptive name for the dataset.
-     */
     readonly friendlyName?: pulumi.Input<string>;
-    /**
-     * A mapping of labels to assign to the resource.
-     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The geographic location where the dataset should reside.
-     * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     */
     readonly location?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
 }

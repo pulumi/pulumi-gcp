@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Represents an Image resource.
-// 
-// Google Compute Engine uses operating system images to create the root
-// persistent disks for your instances. You specify an image when you create
-// an instance. Images contain a boot loader, an operating system, and a
-// root file system. Linux operating system images are also capable of
-// running containers on Compute Engine.
-// 
-// Images can be either public or custom.
-// 
-// Public images are provided and maintained by Google, open-source
-// communities, and third-party vendors. By default, all projects have
-// access to these images and can use them to create instances.  Custom
-// images are available only to your project. You can create a custom image
-// from root persistent disks and other images. Then, use the custom image
-// to create an instance.
-// 
-// 
-// To get more information about Image, see:
-// 
-// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/images)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_image.html.markdown.
 type Image struct {
 	s *pulumi.ResourceState

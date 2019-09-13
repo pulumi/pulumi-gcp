@@ -52,63 +52,75 @@ export namespace appengine {
         path: string;
         service: string;
     }
+
+    export interface StandardAppVersionDeployment {
+        files?: outputs.appengine.StandardAppVersionDeploymentFile[];
+        zip?: outputs.appengine.StandardAppVersionDeploymentZip;
+    }
+
+    export interface StandardAppVersionDeploymentFile {
+        name: string;
+        sha1Sum?: string;
+        sourceUrl?: string;
+    }
+
+    export interface StandardAppVersionDeploymentZip {
+        filesCount?: number;
+        sourceUrl?: string;
+    }
+
+    export interface StandardAppVersionEntrypoint {
+        shell?: string;
+    }
+
+    export interface StandardAppVersionHandler {
+        authFailAction?: string;
+        login?: string;
+        redirectHttpResponseCode?: string;
+        script?: outputs.appengine.StandardAppVersionHandlerScript;
+        securityLevel?: string;
+        staticFiles?: outputs.appengine.StandardAppVersionHandlerStaticFiles;
+        urlRegex?: string;
+    }
+
+    export interface StandardAppVersionHandlerScript {
+        scriptPath?: string;
+    }
+
+    export interface StandardAppVersionHandlerStaticFiles {
+        applicationReadable?: boolean;
+        expiration?: string;
+        httpHeaders?: {[key: string]: string};
+        mimeType?: string;
+        path?: string;
+        requireMatchingFile?: boolean;
+        uploadPathRegex?: string;
+    }
+
+    export interface StandardAppVersionLibrary {
+        name?: string;
+        version?: string;
+    }
 }
 
 export namespace bigquery {
+    export interface AppProfileSingleClusterRouting {
+        allowTransactionalWrites?: boolean;
+        clusterId?: string;
+    }
+
     export interface DatasetAccess {
-        /**
-         * A domain to grant access to.
-         */
         domain?: string;
-        /**
-         * An email address of a Google Group to grant
-         * access to.
-         */
         groupByEmail?: string;
-        /**
-         * Describes the rights granted to
-         * the user specified by the other member of the access object.
-         * Primitive, Predefined and custom roles are supported.
-         * Predefined roles that have equivalent primitive roles are swapped
-         * by the API to their Primitive counterparts, and will show a diff post-create.
-         * See [official docs](https://cloud.google.com/bigquery/docs/access-control).
-         */
         role?: string;
-        /**
-         * A special group to grant access to.
-         * Possible values include:
-         * * `projectOwners`: Owners of the enclosing project.
-         * * `projectReaders`: Readers of the enclosing project.
-         * * `projectWriters`: Writers of the enclosing project.
-         * * `allAuthenticatedUsers`: All authenticated BigQuery users.
-         */
         specialGroup?: string;
-        /**
-         * An email address of a user to grant access to.
-         */
         userByEmail?: string;
-        /**
-         * A view from a different dataset to grant access to.
-         * Queries executed against that view will have read access to tables in this
-         * dataset. The role field is not required when this field is set. If that
-         * view is updated by any user, access to the view needs to be granted again
-         * via an update operation. Structure is documented below.
-         */
         view?: outputs.bigquery.DatasetAccessView;
     }
 
     export interface DatasetAccessView {
-        /**
-         * The ID of the dataset containing this table.
-         */
         datasetId: string;
-        /**
-         * The ID of the project containing this table.
-         */
         projectId: string;
-        /**
-         * The ID of the table.
-         */
         tableId: string;
     }
 
@@ -179,7 +191,7 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKey {
         asciiArmoredPgpPublicKey?: string;
         comment?: string;
-        id?: string;
+        id: string;
         pkixPublicKey?: outputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey;
     }
 
@@ -387,6 +399,10 @@ export namespace cloudrun {
 
     export interface ServiceStatus {
         conditions: outputs.cloudrun.ServiceStatusCondition[];
+        latestCreatedRevisionName: string;
+        latestReadyRevisionName: string;
+        observedGeneration: number;
+        url: string;
     }
 
     export interface ServiceStatusCondition {
@@ -416,7 +432,19 @@ export namespace cloudscheduler {
         body?: string;
         headers?: {[key: string]: string};
         httpMethod?: string;
+        oauthToken?: outputs.cloudscheduler.JobHttpTargetOauthToken;
+        oidcToken?: outputs.cloudscheduler.JobHttpTargetOidcToken;
         uri: string;
+    }
+
+    export interface JobHttpTargetOauthToken {
+        scope?: string;
+        serviceAccountEmail?: string;
+    }
+
+    export interface JobHttpTargetOidcToken {
+        audience?: string;
+        serviceAccountEmail?: string;
     }
 
     export interface JobPubsubTarget {
@@ -953,7 +981,7 @@ export namespace compute {
     export interface InstanceBootDiskInitializeParams {
         image: string;
         /**
-         * A set of key/value label pairs to assign to the instance.
+         * A map of key/value label pairs to assign to the instance.
          */
         labels: {[key: string]: any};
         size: number;
@@ -1322,6 +1350,7 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
+        instanceRedistributionType?: string;
         maxSurgeFixed: number;
         maxSurgePercent?: number;
         maxUnavailableFixed: number;
@@ -1565,7 +1594,7 @@ export namespace container {
     }
 
     export interface ClusterDatabaseEncryption {
-        keyName: string;
+        keyName?: string;
         state: string;
     }
 
@@ -2058,7 +2087,33 @@ export namespace containeranalysis {
 }
 
 export namespace dataproc {
+    export interface AutoscalingPolicyBasicAlgorithm {
+        cooldownPeriod?: string;
+        yarnConfig: outputs.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfig;
+    }
+
+    export interface AutoscalingPolicyBasicAlgorithmYarnConfig {
+        gracefulDecommissionTimeout: string;
+        scaleDownFactor: number;
+        scaleDownMinWorkerFraction?: number;
+        scaleUpFactor: number;
+        scaleUpMinWorkerFraction?: number;
+    }
+
+    export interface AutoscalingPolicySecondaryWorkerConfig {
+        maxInstances?: number;
+        minInstances?: number;
+        weight?: number;
+    }
+
+    export interface AutoscalingPolicyWorkerConfig {
+        maxInstances: number;
+        minInstances?: number;
+        weight?: number;
+    }
+
     export interface ClusterClusterConfig {
+        autoscalingConfig?: outputs.dataproc.ClusterClusterConfigAutoscalingConfig;
         bucket: string;
         encryptionConfig?: outputs.dataproc.ClusterClusterConfigEncryptionConfig;
         gceClusterConfig: outputs.dataproc.ClusterClusterConfigGceClusterConfig;
@@ -2068,6 +2123,10 @@ export namespace dataproc {
         softwareConfig: outputs.dataproc.ClusterClusterConfigSoftwareConfig;
         stagingBucket?: string;
         workerConfig: outputs.dataproc.ClusterClusterConfigWorkerConfig;
+    }
+
+    export interface ClusterClusterConfigAutoscalingConfig {
+        policyUri?: string;
     }
 
     export interface ClusterClusterConfigEncryptionConfig {
@@ -2454,6 +2513,11 @@ export namespace kms {
         pubsubTopicName: string;
     }
 
+    export interface RegistryEventNotificationConfigItem {
+        pubsubTopicName: string;
+        subfolderMatches?: string;
+    }
+
     export interface RegistryHttpConfig {
         httpEnabledState: string;
     }
@@ -2500,6 +2564,12 @@ export namespace logging {
         description?: string;
         key: string;
         valueType?: string;
+    }
+}
+
+export namespace ml {
+    export interface EngineModelDefaultVersion {
+        name?: string;
     }
 }
 
@@ -2636,7 +2706,7 @@ export namespace organizations {
 
     export interface GetIAMPolicyBinding {
         /**
-         * An array of identites that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `gcp.organizations.Project` resource.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. It **can't** be used with the `gcp.organizations.Project` resource.
@@ -2775,6 +2845,10 @@ export namespace pubsub {
     export interface SubscriptionPushConfig {
         attributes?: {[key: string]: string};
         pushEndpoint: string;
+    }
+
+    export interface TopicMessageStoragePolicy {
+        allowedPersistenceRegions: string[];
     }
 }
 

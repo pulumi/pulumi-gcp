@@ -30,8 +30,7 @@ class URLMap(pulumi.CustomResource):
     tests: pulumi.Output[list]
     def __init__(__self__, resource_name, opts=None, default_service=None, description=None, host_rules=None, name=None, path_matchers=None, project=None, tests=None, __props__=None, __name__=None, __opts__=None):
         """
-        UrlMaps are used to route requests to a backend service based on rules
-        that you define for the host and path of an incoming URL.
+        Create a URLMap resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -15,6 +15,10 @@ class Cluster(pulumi.CustomResource):
     Allows you to configure various aspects of the cluster.
     Structure defined below.
     
+      * `autoscalingConfig` (`dict`)
+    
+        * `policyUri` (`str`)
+    
       * `bucket` (`str`)
       * `encryptionConfig` (`dict`)
     
@@ -74,7 +78,7 @@ class Cluster(pulumi.CustomResource):
         * `properties` (`dict`)
     
       * `stagingBucket` (`str`)
-      * `workerConfig` (`dict`)
+      * `worker_config` (`dict`)
     
         * `accelerators` (`list`)
     
@@ -121,7 +125,7 @@ class Cluster(pulumi.CustomResource):
         
         
         !> **Warning:** Due to limitations of the API, all arguments except
-        `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updateable. Changing others will cause recreation of the
+        `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
         whole cluster!
         
         :param str resource_name: The name of the resource.
@@ -139,6 +143,10 @@ class Cluster(pulumi.CustomResource):
                Defaults to `global`.
         
         The **cluster_config** object supports the following:
+        
+          * `autoscalingConfig` (`pulumi.Input[dict]`)
+        
+            * `policyUri` (`pulumi.Input[str]`)
         
           * `bucket` (`pulumi.Input[str]`)
           * `encryptionConfig` (`pulumi.Input[dict]`)
@@ -199,7 +207,7 @@ class Cluster(pulumi.CustomResource):
             * `properties` (`pulumi.Input[dict]`)
         
           * `stagingBucket` (`pulumi.Input[str]`)
-          * `workerConfig` (`pulumi.Input[dict]`)
+          * `worker_config` (`pulumi.Input[dict]`)
         
             * `accelerators` (`pulumi.Input[list]`)
         
@@ -271,6 +279,10 @@ class Cluster(pulumi.CustomResource):
         
         The **cluster_config** object supports the following:
         
+          * `autoscalingConfig` (`pulumi.Input[dict]`)
+        
+            * `policyUri` (`pulumi.Input[str]`)
+        
           * `bucket` (`pulumi.Input[str]`)
           * `encryptionConfig` (`pulumi.Input[dict]`)
         
@@ -330,7 +342,7 @@ class Cluster(pulumi.CustomResource):
             * `properties` (`pulumi.Input[dict]`)
         
           * `stagingBucket` (`pulumi.Input[str]`)
-          * `workerConfig` (`pulumi.Input[dict]`)
+          * `worker_config` (`pulumi.Input[dict]`)
         
             * `accelerators` (`pulumi.Input[list]`)
         

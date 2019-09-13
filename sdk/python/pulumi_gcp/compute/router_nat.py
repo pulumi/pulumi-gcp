@@ -13,14 +13,13 @@ class RouterNat(pulumi.CustomResource):
     icmp_idle_timeout_sec: pulumi.Output[float]
     """
     Timeout (in seconds) for ICMP connections.
-    Defaults to 30s if not set. Changing this forces a new NAT to be created.
+    Defaults to 30s if not set.
     """
     log_config: pulumi.Output[dict]
     min_ports_per_vm: pulumi.Output[float]
     """
     Minimum number of ports allocated to a VM
     from this NAT config. If not set, a default number of ports is allocated to a VM.
-    Changing this forces a new NAT to be created.
     """
     name: pulumi.Output[str]
     """
@@ -36,8 +35,7 @@ class RouterNat(pulumi.CustomResource):
     nat_ips: pulumi.Output[list]
     """
     List of `self_link`s of external IPs. Only valid if
-    `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
-    new NAT to be created.
+    `nat_ip_allocate_option` is set to `MANUAL_ONLY`.
     """
     project: pulumi.Output[str]
     """
@@ -59,8 +57,7 @@ class RouterNat(pulumi.CustomResource):
     """
     How NAT should be configured
     per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-    `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-    this forces a new NAT to be created.
+    `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
     """
     subnetworks: pulumi.Output[list]
     """
@@ -76,19 +73,17 @@ class RouterNat(pulumi.CustomResource):
     tcp_established_idle_timeout_sec: pulumi.Output[float]
     """
     Timeout (in seconds) for TCP
-    established connections. Defaults to 1200s if not set. Changing this forces
-    a new NAT to be created.
+    established connections. Defaults to 1200s if not set.
     """
     tcp_transitory_idle_timeout_sec: pulumi.Output[float]
     """
     Timeout (in seconds) for TCP
-    transitory connections. Defaults to 30s if not set. Changing this forces a
-    new NAT to be created.
+    transitory connections. Defaults to 30s if not set.
     """
     udp_idle_timeout_sec: pulumi.Output[float]
     """
     Timeout (in seconds) for UDP connections.
-    Defaults to 30s if not set. Changing this forces a new NAT to be created.
+    Defaults to 30s if not set.
     """
     def __init__(__self__, resource_name, opts=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -100,18 +95,16 @@ class RouterNat(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections.
-               Defaults to 30s if not set. Changing this forces a new NAT to be created.
+               Defaults to 30s if not set.
         :param pulumi.Input[float] min_ports_per_vm: Minimum number of ports allocated to a VM
                from this NAT config. If not set, a default number of ports is allocated to a VM.
-               Changing this forces a new NAT to be created.
         :param pulumi.Input[str] name: A unique name for Cloud NAT, required by GCE. Changing
                this forces a new NAT to be created.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for
                this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
                a new NAT to be created.
         :param pulumi.Input[list] nat_ips: List of `self_link`s of external IPs. Only valid if
-               `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
-               new NAT to be created.
+               `nat_ip_allocate_option` is set to `MANUAL_ONLY`.
         :param pulumi.Input[str] project: The ID of the project in which this NAT's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new NAT to be created.
         :param pulumi.Input[str] region: The region this NAT's router sits in. If not specified,
@@ -121,19 +114,16 @@ class RouterNat(pulumi.CustomResource):
                Changing this forces a new NAT to be created.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured
                per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-               `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-               this forces a new NAT to be created.
+               `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[list] subnetworks: One or more subnetwork NAT configurations. Only used
                if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
                the section below for details on configuration.
         :param pulumi.Input[float] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP
-               established connections. Defaults to 1200s if not set. Changing this forces
-               a new NAT to be created.
+               established connections. Defaults to 1200s if not set.
         :param pulumi.Input[float] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP
-               transitory connections. Defaults to 30s if not set. Changing this forces a
-               new NAT to be created.
+               transitory connections. Defaults to 30s if not set.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
-               Defaults to 30s if not set. Changing this forces a new NAT to be created.
+               Defaults to 30s if not set.
         
         The **log_config** object supports the following:
         
@@ -179,6 +169,8 @@ class RouterNat(pulumi.CustomResource):
             if router is None:
                 raise TypeError("Missing required property 'router'")
             __props__['router'] = router
+            if source_subnetwork_ip_ranges_to_nat is None:
+                raise TypeError("Missing required property 'source_subnetwork_ip_ranges_to_nat'")
             __props__['source_subnetwork_ip_ranges_to_nat'] = source_subnetwork_ip_ranges_to_nat
             __props__['subnetworks'] = subnetworks
             __props__['tcp_established_idle_timeout_sec'] = tcp_established_idle_timeout_sec
@@ -200,18 +192,16 @@ class RouterNat(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections.
-               Defaults to 30s if not set. Changing this forces a new NAT to be created.
+               Defaults to 30s if not set.
         :param pulumi.Input[float] min_ports_per_vm: Minimum number of ports allocated to a VM
                from this NAT config. If not set, a default number of ports is allocated to a VM.
-               Changing this forces a new NAT to be created.
         :param pulumi.Input[str] name: A unique name for Cloud NAT, required by GCE. Changing
                this forces a new NAT to be created.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for
                this NAT. Valid values are `AUTO_ONLY` or `MANUAL_ONLY`. Changing this forces
                a new NAT to be created.
         :param pulumi.Input[list] nat_ips: List of `self_link`s of external IPs. Only valid if
-               `nat_ip_allocate_option` is set to `MANUAL_ONLY`. Changing this forces a
-               new NAT to be created.
+               `nat_ip_allocate_option` is set to `MANUAL_ONLY`.
         :param pulumi.Input[str] project: The ID of the project in which this NAT's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new NAT to be created.
         :param pulumi.Input[str] region: The region this NAT's router sits in. If not specified,
@@ -221,19 +211,16 @@ class RouterNat(pulumi.CustomResource):
                Changing this forces a new NAT to be created.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured
                per Subnetwork. Valid values include: `ALL_SUBNETWORKS_ALL_IP_RANGES`,
-               `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`. Changing
-               this forces a new NAT to be created.
+               `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[list] subnetworks: One or more subnetwork NAT configurations. Only used
                if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`. See
                the section below for details on configuration.
         :param pulumi.Input[float] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP
-               established connections. Defaults to 1200s if not set. Changing this forces
-               a new NAT to be created.
+               established connections. Defaults to 1200s if not set.
         :param pulumi.Input[float] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP
-               transitory connections. Defaults to 30s if not set. Changing this forces a
-               new NAT to be created.
+               transitory connections. Defaults to 30s if not set.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections.
-               Defaults to 30s if not set. Changing this forces a new NAT to be created.
+               Defaults to 30s if not set.
         
         The **log_config** object supports the following:
         

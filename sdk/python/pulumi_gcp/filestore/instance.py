@@ -22,16 +22,7 @@ class Instance(pulumi.CustomResource):
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        A Google Cloud Filestore instance.
-        
-        
-        To get more information about Instance, see:
-        
-        * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
-            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+        Create a Instance resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

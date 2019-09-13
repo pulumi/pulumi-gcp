@@ -45,6 +45,7 @@ const (
 	gcpKMS                  = "kms"                  // KMS resources
 	gcpKubernetes           = "container"            // Kubernetes Engine resources
 	gcpLogging              = "logging"              // Logging resources
+	gcpMachingLearning      = "ml"                   // Machine Learning
 	gcpMonitoring           = "monitoring"           // Monitoring resources
 	gcpOrganization         = "organizations"        // Organization resources
 	gcpProject              = "projects"             // Project resources
@@ -53,12 +54,14 @@ const (
 	gcpResourceManager      = "resourcemanager"      // Resource Manager resources
 	gcpRuntimeConfig        = "runtimeconfig"        // Runtime Config resources
 	gcpServiceNetworking    = "servicenetworking"    // Service Networking resources
+	gcpSecurityCenter       = "securitycenter"       // Security Center
 	gcpSQL                  = "sql"                  // SQL resources
 	gcpServiceAccount       = "serviceAccount"       // Service Account resources
 	gcpSourceRepo           = "sourcerepo"           // Source Repo resources
 	gcpSpanner              = "spanner"              // Spanner Resources
-	gcpStorage              = "storage"              // Storage resources
+	gcpStorage              = "storage"              // Storage rfesources
 	gcpTPU                  = "tpu"                  // Tensor Processing Units
+	gcpVpcAccess            = "vpcaccess"            // VPC Access
 )
 
 // gcpMember manufactures a type token for the GCP package and the given module and type.
@@ -153,10 +156,13 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "appengine_firewall_rule.html.markdown",
 				},
 			},
+			"google_app_engine_standard_app_version": {Tok: gcpResource(gcpAppEngine, "StandardAppVersion")},
 
 			// BigQuery
-			"google_bigquery_dataset": {Tok: gcpResource(gcpBigQuery, "Dataset")},
-			"google_bigquery_table":   {Tok: gcpResource(gcpBigQuery, "Table")},
+			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
+			"google_bigquery_table":                {Tok: gcpResource(gcpBigQuery, "Table")},
+			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
+			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -467,13 +473,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_instance_iam.html.markdown",
 				},
 			},
-			"google_compute_instance_template":             {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
-			"google_compute_interconnect_attachment":       {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
-			"google_compute_managed_ssl_certificate":       {Tok: gcpResource(gcpCompute, "MangedSslCertificate")},
-			"google_compute_node_group":                    {Tok: gcpResource(gcpCompute, "NodeGroup")},
-			"google_compute_node_template":                 {Tok: gcpResource(gcpCompute, "NodeTemplate")},
-			"google_compute_network_endpoint":              {Tok: gcpResource(gcpCompute, "NetworkEndpoint")},
-			"google_compute_network_endpoint_group":        {Tok: gcpResource(gcpCompute, "NetworkEndpointGroup")},
+			"google_compute_instance_template":       {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
+			"google_compute_interconnect_attachment": {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
+			"google_compute_managed_ssl_certificate": {Tok: gcpResource(gcpCompute, "MangedSslCertificate")},
+			"google_compute_node_group":              {Tok: gcpResource(gcpCompute, "NodeGroup")},
+			"google_compute_node_template":           {Tok: gcpResource(gcpCompute, "NodeTemplate")},
+			"google_compute_network_endpoint":        {Tok: gcpResource(gcpCompute, "NetworkEndpoint")},
+			"google_compute_network_endpoint_group": {
+				Tok: gcpResource(gcpCompute, "NetworkEndpointGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_network_endpoint_group.html.markdown",
+				},
+			},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
 			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
 			"google_compute_project_default_network_tier":  {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
@@ -579,6 +590,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "dataproc_job_iam.html.markdown",
 				},
 			},
+			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
 
 			// DNS resources
 			"google_dns_managed_zone": {
@@ -843,7 +855,21 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Cloud IoT Core resources
-			"google_cloudiot_registry": {Tok: gcpResource(gcpKMS, "Registry")},
+			"google_cloudiot_registry": {
+				Tok: gcpResource(gcpKMS, "Registry"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// This property's nested type name conflicts with the nested type of the existing (now deprecated)
+					// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
+					// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
+					// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
+					// suffix.
+					"event_notification_configs": {
+						Elem: &tfbridge.SchemaInfo{
+							NestedType: "RegistryEventNotificationConfigItem",
+						},
+					},
+				},
+			},
 
 			// Cloud IAP Resources
 			"google_iap_tunnel_instance_iam_binding": {
@@ -966,6 +992,15 @@ func Provider() tfbridge.ProviderInfo {
 			//CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
+
+			// Machine Learning
+			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
+
+			// Security Center
+			"google_scc_source": {Tok: gcpResource(gcpSecurityCenter, "Source")},
+
+			// VPC Access
+			"google_vpc_access_connector": {Tok: gcpResource(gcpVpcAccess, "Connector")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1039,6 +1074,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_network.html.markdown",
 				},
+			},
+			"google_compute_network_endpoint_group": {
+				Tok: gcpDataSource(gcpCompute, "getNetworkEndpointGroup"),
 			},
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
@@ -1127,6 +1165,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_lb_ip_ranges.html.markdown",
 				},
 			},
+
 			"google_container_cluster": {
 				Tok: gcpDataSource(gcpKubernetes, "getCluster"),
 				Docs: &tfbridge.DocInfo{
@@ -1200,6 +1239,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_kms_crypto_key_version": {Tok: gcpDataSource(gcpKMS, "getKMSCryptoKeyVersion")},
+			"google_kms_secret_ciphertext":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretCiphertext")},
 			"google_organization": {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),
 				Docs: &tfbridge.DocInfo{

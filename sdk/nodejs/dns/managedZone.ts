@@ -7,69 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A zone is a subtree of the DNS namespace under one administrative
- * responsibility. A ManagedZone is a resource that represents a DNS zone
- * hosted by the Cloud DNS service.
- * 
- * 
- * To get more information about ManagedZone, see:
- * 
- * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
- * * How-to Guides
- *     * [Managing Zones](https://cloud.google.com/dns/zones/)
- * 
- * ## Example Usage - Dns Managed Zone Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- * 
- * const rnd = new random.RandomId("rnd", {
- *     byteLength: 4,
- * });
- * const exampleZone = new gcp.dns.ManagedZone("example-zone", {
- *     description: "Example DNS zone",
- *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * ```
- * ## Example Usage - Dns Managed Zone Private
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const network1 = new gcp.compute.Network("network-1", {
- *     autoCreateSubnetworks: false,
- * });
- * const network2 = new gcp.compute.Network("network-2", {
- *     autoCreateSubnetworks: false,
- * });
- * const privateZone = new gcp.dns.ManagedZone("private-zone", {
- *     description: "Example private DNS zone",
- *     dnsName: "private.example.com.",
- *     labels: {
- *         foo: "bar",
- *     },
- *     privateVisibilityConfig: {
- *         networks: [
- *             {
- *                 networkUrl: network_1.selfLink,
- *             },
- *             {
- *                 networkUrl: network_2.selfLink,
- *             },
- *         ],
- *     },
- *     visibility: "private",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
  */
 export class ManagedZone extends pulumi.CustomResource {

@@ -13,7 +13,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, id=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_bucket=None, trigger_http=None, trigger_topic=None, vpc_connector=None, id=None):
         if available_memory_mb and not isinstance(available_memory_mb, float):
             raise TypeError("Expected argument 'available_memory_mb' to be a float")
         __self__.available_memory_mb = available_memory_mb
@@ -77,6 +77,9 @@ class GetFunctionResult:
         if service_account_email and not isinstance(service_account_email, str):
             raise TypeError("Expected argument 'service_account_email' to be a str")
         __self__.service_account_email = service_account_email
+        """
+        The service account email to be assumed by the cloud function.
+        """
         if source_archive_bucket and not isinstance(source_archive_bucket, str):
             raise TypeError("Expected argument 'source_archive_bucket' to be a str")
         __self__.source_archive_bucket = source_archive_bucket
@@ -110,6 +113,9 @@ class GetFunctionResult:
         if trigger_topic and not isinstance(trigger_topic, str):
             raise TypeError("Expected argument 'trigger_topic' to be a str")
         __self__.trigger_topic = trigger_topic
+        if vpc_connector and not isinstance(vpc_connector, str):
+            raise TypeError("Expected argument 'vpc_connector' to be a str")
+        __self__.vpc_connector = vpc_connector
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -142,6 +148,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             trigger_bucket=self.trigger_bucket,
             trigger_http=self.trigger_http,
             trigger_topic=self.trigger_topic,
+            vpc_connector=self.vpc_connector,
             id=self.id)
 
 def get_function(name=None,project=None,region=None,opts=None):
@@ -190,4 +197,5 @@ def get_function(name=None,project=None,region=None,opts=None):
         trigger_bucket=__ret__.get('triggerBucket'),
         trigger_http=__ret__.get('triggerHttp'),
         trigger_topic=__ret__.get('triggerTopic'),
+        vpc_connector=__ret__.get('vpcConnector'),
         id=__ret__.get('id'))

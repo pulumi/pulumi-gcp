@@ -8,16 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// An isolated set of Cloud Spanner resources on which databases can be
-// hosted.
-// 
-// 
-// To get more information about Instance, see:
-// 
-// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/spanner/)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState

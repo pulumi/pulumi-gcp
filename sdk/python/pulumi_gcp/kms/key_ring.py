@@ -20,19 +20,7 @@ class KeyRing(pulumi.CustomResource):
     self_link: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, location=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
-        
-        
-        > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
-        Destroying a KeyRing will remove it from state but
-        *will not delete the resource on the server.*
-        
-        
-        To get more information about KeyRing, see:
-        
-        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
-        * How-to Guides
-            * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+        Create a KeyRing resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

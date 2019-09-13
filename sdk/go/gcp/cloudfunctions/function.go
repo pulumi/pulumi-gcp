@@ -40,6 +40,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["sourceRepository"] = nil
 		inputs["timeout"] = nil
 		inputs["triggerHttp"] = nil
+		inputs["vpcConnector"] = nil
 	} else {
 		inputs["availableMemoryMb"] = args.AvailableMemoryMb
 		inputs["description"] = args.Description
@@ -59,6 +60,7 @@ func NewFunction(ctx *pulumi.Context,
 		inputs["sourceRepository"] = args.SourceRepository
 		inputs["timeout"] = args.Timeout
 		inputs["triggerHttp"] = args.TriggerHttp
+		inputs["vpcConnector"] = args.VpcConnector
 	}
 	s, err := ctx.RegisterResource("gcp:cloudfunctions/function:Function", name, true, inputs, opts...)
 	if err != nil {
@@ -91,6 +93,7 @@ func GetFunction(ctx *pulumi.Context,
 		inputs["sourceRepository"] = state.SourceRepository
 		inputs["timeout"] = state.Timeout
 		inputs["triggerHttp"] = state.TriggerHttp
+		inputs["vpcConnector"] = state.VpcConnector
 	}
 	s, err := ctx.ReadResource("gcp:cloudfunctions/function:Function", name, id, inputs, opts...)
 	if err != nil {
@@ -203,6 +206,11 @@ func (r *Function) TriggerHttp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["triggerHttp"])
 }
 
+// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+func (r *Function) VpcConnector() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["vpcConnector"])
+}
+
 // Input properties used for looking up and filtering Function resources.
 type FunctionState struct {
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
@@ -245,6 +253,8 @@ type FunctionState struct {
 	Timeout interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
 	TriggerHttp interface{}
+	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+	VpcConnector interface{}
 }
 
 // The set of arguments for constructing a Function resource.
@@ -289,4 +299,6 @@ type FunctionArgs struct {
 	Timeout interface{}
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
 	TriggerHttp interface{}
+	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+	VpcConnector interface{}
 }

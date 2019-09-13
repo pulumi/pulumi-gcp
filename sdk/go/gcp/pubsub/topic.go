@@ -7,15 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A named resource to which messages are sent by publishers.
-// 
-// 
-// To get more information about Topic, see:
-// 
-// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
-// * How-to Guides
-//     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
 type Topic struct {
 	s *pulumi.ResourceState
@@ -28,11 +19,13 @@ func NewTopic(ctx *pulumi.Context,
 	if args == nil {
 		inputs["kmsKeyName"] = nil
 		inputs["labels"] = nil
+		inputs["messageStoragePolicy"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["kmsKeyName"] = args.KmsKeyName
 		inputs["labels"] = args.Labels
+		inputs["messageStoragePolicy"] = args.MessageStoragePolicy
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 	}
@@ -51,6 +44,7 @@ func GetTopic(ctx *pulumi.Context,
 	if state != nil {
 		inputs["kmsKeyName"] = state.KmsKeyName
 		inputs["labels"] = state.Labels
+		inputs["messageStoragePolicy"] = state.MessageStoragePolicy
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 	}
@@ -79,6 +73,10 @@ func (r *Topic) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+func (r *Topic) MessageStoragePolicy() *pulumi.Output {
+	return r.s.State["messageStoragePolicy"]
+}
+
 func (r *Topic) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -93,6 +91,7 @@ func (r *Topic) Project() *pulumi.StringOutput {
 type TopicState struct {
 	KmsKeyName interface{}
 	Labels interface{}
+	MessageStoragePolicy interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -103,6 +102,7 @@ type TopicState struct {
 type TopicArgs struct {
 	KmsKeyName interface{}
 	Labels interface{}
+	MessageStoragePolicy interface{}
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

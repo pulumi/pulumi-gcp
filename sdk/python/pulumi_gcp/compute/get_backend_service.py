@@ -99,7 +99,7 @@ class GetBackendServiceResult:
             raise TypeError("Expected argument 'session_affinity' to be a str")
         __self__.session_affinity = session_affinity
         """
-        The Backend Service session stickyness configuration.
+        The Backend Service session stickiness configuration.
         """
         if timeout_sec and not isinstance(timeout_sec, float):
             raise TypeError("Expected argument 'timeout_sec' to be a float")

@@ -101,6 +101,9 @@ export interface GetFunctionResult {
      * The runtime in which the function is running.
      */
     readonly runtime: string;
+    /**
+     * The service account email to be assumed by the cloud function.
+     */
     readonly serviceAccountEmail: string;
     /**
      * The GCS bucket containing the zip archive which contains the function.
@@ -121,6 +124,7 @@ export interface GetFunctionResult {
      */
     readonly triggerHttp: boolean;
     readonly triggerTopic: string;
+    readonly vpcConnector: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

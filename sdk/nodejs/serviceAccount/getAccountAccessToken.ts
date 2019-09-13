@@ -35,7 +35,7 @@ export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pu
  */
 export interface GetAccountAccessTokenArgs {
     /**
-     * Deegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+     * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
      */
     readonly delegates?: string[];
     /**
