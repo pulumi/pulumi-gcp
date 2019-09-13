@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform a3ddba3fb5
-* Upgrade to v2.14.0 of the Google Beta Terraform Provider.
+_(none)_
 
 ---
+
+## 1.1.0 (2019-09-13)
+* Upgrade to pulumi-terraform a3ddba3fb5
+* Upgrade to v2.14.0 of the Google Beta Terraform Provider.
 
 ## 1.0.0 (2019-09-03)
 * Use 1.0 version of Pulumi dependency
