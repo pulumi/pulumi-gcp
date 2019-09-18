@@ -5,8 +5,8 @@ services using infrastructure as code, which Pulumi then uses to drive the GCP A
 
 If this is your first time using this package, these two resources may be helpful:
 
-* [GCP Getting Started Guide](https://pulumi.com/docs/quickstart/gcp): Get up and running quickly.
-* [GCP Pulumi Setup Documentation](https://www.pulumi.com/docs/quickstart/gcp/configure/): How to configure Pulumi
+* [GCP Getting Started Guide](https://www.pulumi.com/docs/get-started/gcp/): Get up and running quickly.
+* [GCP Pulumi Setup Documentation](https://www.pulumi.com/docs/get-started/gcp/configure/): How to configure Pulumi
     for use with your GCP account.
 
 Use the navigation below to see detailed documentation, including sample code, for each of the supported GCP services.
