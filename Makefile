@@ -13,6 +13,9 @@ PYPI_VERSION    := $(shell scripts/get-py-version)
 
 TESTPARALLELISM := 10
 
+# Set NOPROXY to true to skip GOPROXY on 'ensure'
+NOPROXY := false
+
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
