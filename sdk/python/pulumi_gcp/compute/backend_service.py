@@ -13,7 +13,9 @@ class BackendService(pulumi.CustomResource):
     affinity_cookie_ttl_sec: pulumi.Output[float]
     backends: pulumi.Output[list]
     cdn_policy: pulumi.Output[dict]
+    circuit_breakers: pulumi.Output[dict]
     connection_draining_timeout_sec: pulumi.Output[float]
+    consistent_hash: pulumi.Output[dict]
     creation_timestamp: pulumi.Output[str]
     custom_request_headers: pulumi.Output[list]
     description: pulumi.Output[str]
@@ -22,7 +24,10 @@ class BackendService(pulumi.CustomResource):
     health_checks: pulumi.Output[str]
     iap: pulumi.Output[dict]
     load_balancing_scheme: pulumi.Output[str]
+    locality_lb_policy: pulumi.Output[str]
+    log_config: pulumi.Output[dict]
     name: pulumi.Output[str]
+    outlier_detection: pulumi.Output[dict]
     port_name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
@@ -37,7 +42,7 @@ class BackendService(pulumi.CustomResource):
     """
     session_affinity: pulumi.Output[str]
     timeout_sec: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a BackendService resource with the given unique name, props, and options.
         
@@ -72,11 +77,65 @@ class BackendService(pulumi.CustomResource):
         
           * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
         
+        The **circuit_breakers** object supports the following:
+        
+          * `connectTimeout` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxPendingRequests` (`pulumi.Input[float]`)
+          * `maxRequests` (`pulumi.Input[float]`)
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
+          * `maxRetries` (`pulumi.Input[float]`)
+        
+        The **consistent_hash** object supports the following:
+        
+          * `httpCookie` (`pulumi.Input[dict]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `path` (`pulumi.Input[str]`)
+            * `ttl` (`pulumi.Input[dict]`)
+        
+              * `nanos` (`pulumi.Input[float]`)
+              * `seconds` (`pulumi.Input[float]`)
+        
+          * `httpHeaderName` (`pulumi.Input[str]`)
+          * `minimumRingSize` (`pulumi.Input[float]`)
+        
         The **iap** object supports the following:
         
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `sampleRate` (`pulumi.Input[float]`)
+        
+        The **outlier_detection** object supports the following:
+        
+          * `baseEjectionTime` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `consecutiveErrors` (`pulumi.Input[float]`)
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingSuccessRate` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxEjectionPercent` (`pulumi.Input[float]`)
+          * `successRateMinimumHosts` (`pulumi.Input[float]`)
+          * `successRateRequestVolume` (`pulumi.Input[float]`)
+          * `successRateStdevFactor` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
         """
@@ -100,7 +159,9 @@ class BackendService(pulumi.CustomResource):
             __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
             __props__['backends'] = backends
             __props__['cdn_policy'] = cdn_policy
+            __props__['circuit_breakers'] = circuit_breakers
             __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
+            __props__['consistent_hash'] = consistent_hash
             __props__['custom_request_headers'] = custom_request_headers
             __props__['description'] = description
             __props__['enable_cdn'] = enable_cdn
@@ -109,7 +170,10 @@ class BackendService(pulumi.CustomResource):
             __props__['health_checks'] = health_checks
             __props__['iap'] = iap
             __props__['load_balancing_scheme'] = load_balancing_scheme
+            __props__['locality_lb_policy'] = locality_lb_policy
+            __props__['log_config'] = log_config
             __props__['name'] = name
+            __props__['outlier_detection'] = outlier_detection
             __props__['port_name'] = port_name
             __props__['project'] = project
             __props__['protocol'] = protocol
@@ -126,7 +190,7 @@ class BackendService(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, connection_draining_timeout_sec=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iap=None, load_balancing_scheme=None, name=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iap=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
         """
         Get an existing BackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -164,11 +228,65 @@ class BackendService(pulumi.CustomResource):
         
           * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
         
+        The **circuit_breakers** object supports the following:
+        
+          * `connectTimeout` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxPendingRequests` (`pulumi.Input[float]`)
+          * `maxRequests` (`pulumi.Input[float]`)
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
+          * `maxRetries` (`pulumi.Input[float]`)
+        
+        The **consistent_hash** object supports the following:
+        
+          * `httpCookie` (`pulumi.Input[dict]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `path` (`pulumi.Input[str]`)
+            * `ttl` (`pulumi.Input[dict]`)
+        
+              * `nanos` (`pulumi.Input[float]`)
+              * `seconds` (`pulumi.Input[float]`)
+        
+          * `httpHeaderName` (`pulumi.Input[str]`)
+          * `minimumRingSize` (`pulumi.Input[float]`)
+        
         The **iap** object supports the following:
         
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `sampleRate` (`pulumi.Input[float]`)
+        
+        The **outlier_detection** object supports the following:
+        
+          * `baseEjectionTime` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `consecutiveErrors` (`pulumi.Input[float]`)
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingSuccessRate` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxEjectionPercent` (`pulumi.Input[float]`)
+          * `successRateMinimumHosts` (`pulumi.Input[float]`)
+          * `successRateRequestVolume` (`pulumi.Input[float]`)
+          * `successRateStdevFactor` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
         """
@@ -178,7 +296,9 @@ class BackendService(pulumi.CustomResource):
         __props__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
         __props__["backends"] = backends
         __props__["cdn_policy"] = cdn_policy
+        __props__["circuit_breakers"] = circuit_breakers
         __props__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
+        __props__["consistent_hash"] = consistent_hash
         __props__["creation_timestamp"] = creation_timestamp
         __props__["custom_request_headers"] = custom_request_headers
         __props__["description"] = description
@@ -187,7 +307,10 @@ class BackendService(pulumi.CustomResource):
         __props__["health_checks"] = health_checks
         __props__["iap"] = iap
         __props__["load_balancing_scheme"] = load_balancing_scheme
+        __props__["locality_lb_policy"] = locality_lb_policy
+        __props__["log_config"] = log_config
         __props__["name"] = name
+        __props__["outlier_detection"] = outlier_detection
         __props__["port_name"] = port_name
         __props__["project"] = project
         __props__["protocol"] = protocol

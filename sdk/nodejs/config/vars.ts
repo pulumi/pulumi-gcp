@@ -48,6 +48,7 @@ export let redisCustomEndpoint: string | undefined = __config.get("redisCustomEn
 export let region: string | undefined = __config.get("region") || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
 export let resourceManagerCustomEndpoint: string | undefined = __config.get("resourceManagerCustomEndpoint");
 export let resourceManagerV2beta1CustomEndpoint: string | undefined = __config.get("resourceManagerV2beta1CustomEndpoint");
+export let runtimeConfigCustomEndpoint: string | undefined = __config.get("runtimeConfigCustomEndpoint");
 export let runtimeconfigCustomEndpoint: string | undefined = __config.get("runtimeconfigCustomEndpoint");
 export let scopes: string[] | undefined = __config.getObject<string[]>("scopes");
 export let securityCenterCustomEndpoint: string | undefined = __config.get("securityCenterCustomEndpoint");

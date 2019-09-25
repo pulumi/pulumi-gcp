@@ -26,6 +26,7 @@ class Address(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    purpose: pulumi.Output[str]
     region: pulumi.Output[str]
     self_link: pulumi.Output[str]
     """
@@ -33,7 +34,7 @@ class Address(pulumi.CustomResource):
     """
     subnetwork: pulumi.Output[str]
     users: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, region=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, purpose=None, region=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Address resource with the given unique name, props, and options.
         
@@ -69,6 +70,7 @@ class Address(pulumi.CustomResource):
             __props__['name'] = name
             __props__['network_tier'] = network_tier
             __props__['project'] = project
+            __props__['purpose'] = purpose
             __props__['region'] = region
             __props__['subnetwork'] = subnetwork
             __props__['creation_timestamp'] = None
@@ -82,7 +84,7 @@ class Address(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, address_type=None, creation_timestamp=None, description=None, label_fingerprint=None, labels=None, name=None, network_tier=None, project=None, region=None, self_link=None, subnetwork=None, users=None):
+    def get(resource_name, id, opts=None, address=None, address_type=None, creation_timestamp=None, description=None, label_fingerprint=None, labels=None, name=None, network_tier=None, project=None, purpose=None, region=None, self_link=None, subnetwork=None, users=None):
         """
         Get an existing Address resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -109,6 +111,7 @@ class Address(pulumi.CustomResource):
         __props__["name"] = name
         __props__["network_tier"] = network_tier
         __props__["project"] = project
+        __props__["purpose"] = purpose
         __props__["region"] = region
         __props__["self_link"] = self_link
         __props__["subnetwork"] = subnetwork

@@ -24,14 +24,19 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["affinityCookieTtlSec"] = nil
 		inputs["backends"] = nil
 		inputs["cdnPolicy"] = nil
+		inputs["circuitBreakers"] = nil
 		inputs["connectionDrainingTimeoutSec"] = nil
+		inputs["consistentHash"] = nil
 		inputs["customRequestHeaders"] = nil
 		inputs["description"] = nil
 		inputs["enableCdn"] = nil
 		inputs["healthChecks"] = nil
 		inputs["iap"] = nil
 		inputs["loadBalancingScheme"] = nil
+		inputs["localityLbPolicy"] = nil
+		inputs["logConfig"] = nil
 		inputs["name"] = nil
+		inputs["outlierDetection"] = nil
 		inputs["portName"] = nil
 		inputs["project"] = nil
 		inputs["protocol"] = nil
@@ -42,14 +47,19 @@ func NewBackendService(ctx *pulumi.Context,
 		inputs["affinityCookieTtlSec"] = args.AffinityCookieTtlSec
 		inputs["backends"] = args.Backends
 		inputs["cdnPolicy"] = args.CdnPolicy
+		inputs["circuitBreakers"] = args.CircuitBreakers
 		inputs["connectionDrainingTimeoutSec"] = args.ConnectionDrainingTimeoutSec
+		inputs["consistentHash"] = args.ConsistentHash
 		inputs["customRequestHeaders"] = args.CustomRequestHeaders
 		inputs["description"] = args.Description
 		inputs["enableCdn"] = args.EnableCdn
 		inputs["healthChecks"] = args.HealthChecks
 		inputs["iap"] = args.Iap
 		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
+		inputs["localityLbPolicy"] = args.LocalityLbPolicy
+		inputs["logConfig"] = args.LogConfig
 		inputs["name"] = args.Name
+		inputs["outlierDetection"] = args.OutlierDetection
 		inputs["portName"] = args.PortName
 		inputs["project"] = args.Project
 		inputs["protocol"] = args.Protocol
@@ -76,7 +86,9 @@ func GetBackendService(ctx *pulumi.Context,
 		inputs["affinityCookieTtlSec"] = state.AffinityCookieTtlSec
 		inputs["backends"] = state.Backends
 		inputs["cdnPolicy"] = state.CdnPolicy
+		inputs["circuitBreakers"] = state.CircuitBreakers
 		inputs["connectionDrainingTimeoutSec"] = state.ConnectionDrainingTimeoutSec
+		inputs["consistentHash"] = state.ConsistentHash
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["customRequestHeaders"] = state.CustomRequestHeaders
 		inputs["description"] = state.Description
@@ -85,7 +97,10 @@ func GetBackendService(ctx *pulumi.Context,
 		inputs["healthChecks"] = state.HealthChecks
 		inputs["iap"] = state.Iap
 		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
+		inputs["localityLbPolicy"] = state.LocalityLbPolicy
+		inputs["logConfig"] = state.LogConfig
 		inputs["name"] = state.Name
+		inputs["outlierDetection"] = state.OutlierDetection
 		inputs["portName"] = state.PortName
 		inputs["project"] = state.Project
 		inputs["protocol"] = state.Protocol
@@ -123,8 +138,16 @@ func (r *BackendService) CdnPolicy() *pulumi.Output {
 	return r.s.State["cdnPolicy"]
 }
 
+func (r *BackendService) CircuitBreakers() *pulumi.Output {
+	return r.s.State["circuitBreakers"]
+}
+
 func (r *BackendService) ConnectionDrainingTimeoutSec() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionDrainingTimeoutSec"])
+}
+
+func (r *BackendService) ConsistentHash() *pulumi.Output {
+	return r.s.State["consistentHash"]
 }
 
 func (r *BackendService) CreationTimestamp() *pulumi.StringOutput {
@@ -159,8 +182,20 @@ func (r *BackendService) LoadBalancingScheme() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
 }
 
+func (r *BackendService) LocalityLbPolicy() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["localityLbPolicy"])
+}
+
+func (r *BackendService) LogConfig() *pulumi.Output {
+	return r.s.State["logConfig"]
+}
+
 func (r *BackendService) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
+}
+
+func (r *BackendService) OutlierDetection() *pulumi.Output {
+	return r.s.State["outlierDetection"]
 }
 
 func (r *BackendService) PortName() *pulumi.StringOutput {
@@ -199,7 +234,9 @@ type BackendServiceState struct {
 	AffinityCookieTtlSec interface{}
 	Backends interface{}
 	CdnPolicy interface{}
+	CircuitBreakers interface{}
 	ConnectionDrainingTimeoutSec interface{}
+	ConsistentHash interface{}
 	CreationTimestamp interface{}
 	CustomRequestHeaders interface{}
 	Description interface{}
@@ -208,7 +245,10 @@ type BackendServiceState struct {
 	HealthChecks interface{}
 	Iap interface{}
 	LoadBalancingScheme interface{}
+	LocalityLbPolicy interface{}
+	LogConfig interface{}
 	Name interface{}
+	OutlierDetection interface{}
 	PortName interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -226,14 +266,19 @@ type BackendServiceArgs struct {
 	AffinityCookieTtlSec interface{}
 	Backends interface{}
 	CdnPolicy interface{}
+	CircuitBreakers interface{}
 	ConnectionDrainingTimeoutSec interface{}
+	ConsistentHash interface{}
 	CustomRequestHeaders interface{}
 	Description interface{}
 	EnableCdn interface{}
 	HealthChecks interface{}
 	Iap interface{}
 	LoadBalancingScheme interface{}
+	LocalityLbPolicy interface{}
+	LogConfig interface{}
 	Name interface{}
+	OutlierDetection interface{}
 	PortName interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

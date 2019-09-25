@@ -36,9 +36,9 @@ class Router(pulumi.CustomResource):
         
         The **bgp** object supports the following:
         
-          * `advertiseMode` (`pulumi.Input[str]`)
-          * `advertisedGroups` (`pulumi.Input[list]`)
-          * `advertisedIpRanges` (`pulumi.Input[list]`)
+          * `advertise_mode` (`pulumi.Input[str]`)
+          * `advertised_groups` (`pulumi.Input[list]`)
+          * `advertised_ip_ranges` (`pulumi.Input[list]`)
         
             * `description` (`pulumi.Input[str]`)
             * `range` (`pulumi.Input[str]`)
@@ -95,9 +95,9 @@ class Router(pulumi.CustomResource):
         
         The **bgp** object supports the following:
         
-          * `advertiseMode` (`pulumi.Input[str]`)
-          * `advertisedGroups` (`pulumi.Input[list]`)
-          * `advertisedIpRanges` (`pulumi.Input[list]`)
+          * `advertise_mode` (`pulumi.Input[str]`)
+          * `advertised_groups` (`pulumi.Input[list]`)
+          * `advertised_ip_ranges` (`pulumi.Input[list]`)
         
             * `description` (`pulumi.Input[str]`)
             * `range` (`pulumi.Input[str]`)

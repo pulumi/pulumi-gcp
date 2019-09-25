@@ -291,9 +291,10 @@ func (r *Cluster) Endpoint() *pulumi.StringOutput {
 }
 
 // The number of nodes to create in this
-// cluster's default node pool. Must be set if `nodePool` is not set. If
-// you're using `container.NodePool` objects with no default node pool,
-// you'll need to set this to a value of at least `1`, alongside setting
+// cluster's default node pool. In regional or multi-zonal clusters, this is the
+// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+// `container.NodePool` objects with no default node pool, you'll need to
+// set this to a value of at least `1`, alongside setting
 // `removeDefaultNodePool` to `true`.
 func (r *Cluster) InitialNodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
@@ -414,11 +415,9 @@ func (r *Cluster) NodeConfig() *pulumi.Output {
 }
 
 // The list of zones in which the cluster's nodes
-// should be located. These must be in the same region as the cluster zone for
-// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-// the number of nodes specified in `initialNodeCount` is created in
-// all specified zones as well as the primary zone. If specified for a regional
-// cluster, nodes will be created in only these zones.
+// are located. Nodes must be in the region of their regional cluster or in the
+// same region as their cluster's zone for zonal clusters. If this is specified for
+// a zonal cluster, omit the cluster's zone.
 func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nodeLocations"])
 }
@@ -591,9 +590,10 @@ type ClusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint interface{}
 	// The number of nodes to create in this
-	// cluster's default node pool. Must be set if `nodePool` is not set. If
-	// you're using `container.NodePool` objects with no default node pool,
-	// you'll need to set this to a value of at least `1`, alongside setting
+	// cluster's default node pool. In regional or multi-zonal clusters, this is the
+	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// `container.NodePool` objects with no default node pool, you'll need to
+	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
 	InitialNodeCount interface{}
 	// List of instance group URLs which have been assigned
@@ -669,11 +669,9 @@ type ClusterState struct {
 	// this provider. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
-	// should be located. These must be in the same region as the cluster zone for
-	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initialNodeCount` is created in
-	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will be created in only these zones.
+	// are located. Nodes must be in the region of their regional cluster or in the
+	// same region as their cluster's zone for zonal clusters. If this is specified for
+	// a zonal cluster, omit the cluster's zone.
 	NodeLocations interface{}
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -798,9 +796,10 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu interface{}
 	// The number of nodes to create in this
-	// cluster's default node pool. Must be set if `nodePool` is not set. If
-	// you're using `container.NodePool` objects with no default node pool,
-	// you'll need to set this to a value of at least `1`, alongside setting
+	// cluster's default node pool. In regional or multi-zonal clusters, this is the
+	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+	// `container.NodePool` objects with no default node pool, you'll need to
+	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
 	InitialNodeCount interface{}
 	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
@@ -869,11 +868,9 @@ type ClusterArgs struct {
 	// this provider. Structure is documented below.
 	NodeConfig interface{}
 	// The list of zones in which the cluster's nodes
-	// should be located. These must be in the same region as the cluster zone for
-	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initialNodeCount` is created in
-	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will be created in only these zones.
+	// are located. Nodes must be in the region of their regional cluster or in the
+	// same region as their cluster's zone for zonal clusters. If this is specified for
+	// a zonal cluster, omit the cluster's zone.
 	NodeLocations interface{}
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.

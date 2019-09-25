@@ -46,18 +46,18 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
-     * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The initial node count for the pool. Changing this will force
-     * recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
-     * The location (region or zone) in which the cluster
-     * resides.
+     * The location (region or zone) of the cluster.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -89,6 +89,14 @@ export class NodePool extends pulumi.CustomResource {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
     public readonly nodeCount!: pulumi.Output<number>;
+    /**
+     * )
+     * The list of zones in which the node pool's nodes should be located. Nodes must
+     * be in the region of their regional cluster or in the same region as their
+     * cluster's zone for zonal clusters. If unspecified, the cluster-level
+     * `nodeLocations` will be used.
+     */
+    public readonly nodeLocations!: pulumi.Output<string[]>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
@@ -137,6 +145,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
+            inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -156,6 +165,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
+            inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -183,18 +193,18 @@ export interface NodePoolState {
      */
     readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
      */
     readonly cluster?: pulumi.Input<string>;
     /**
-     * The initial node count for the pool. Changing this will force
-     * recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The location (region or zone) in which the cluster
-     * resides.
+     * The location (region or zone) of the cluster.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -226,6 +236,14 @@ export interface NodePoolState {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
     readonly nodeCount?: pulumi.Input<number>;
+    /**
+     * )
+     * The list of zones in which the node pool's nodes should be located. Nodes must
+     * be in the region of their regional cluster or in the same region as their
+     * cluster's zone for zonal clusters. If unspecified, the cluster-level
+     * `nodeLocations` will be used.
+     */
+    readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
@@ -262,17 +280,17 @@ export interface NodePoolArgs {
      */
     readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
      */
     readonly cluster: pulumi.Input<string>;
     /**
-     * The initial node count for the pool. Changing this will force
-     * recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
-     * The location (region or zone) in which the cluster
-     * resides.
+     * The location (region or zone) of the cluster.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -304,6 +322,14 @@ export interface NodePoolArgs {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
     readonly nodeCount?: pulumi.Input<number>;
+    /**
+     * )
+     * The list of zones in which the node pool's nodes should be located. Nodes must
+     * be in the region of their regional cluster or in the same region as their
+     * cluster's zone for zonal clusters. If unspecified, the cluster-level
+     * `nodeLocations` will be used.
+     */
+    readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.

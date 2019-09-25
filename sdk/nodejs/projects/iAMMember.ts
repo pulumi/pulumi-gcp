@@ -7,13 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+ * Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
  * 
  * * `gcp.projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
  * * `gcp.projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
  * * `gcp.projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+ * * `gcp.projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  * 
- * > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding` and `gcp.projects.IAMMember` or they will fight over what your policy should be.
+ * 
+ * > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
  * 
  * > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
@@ -69,6 +71,22 @@ import * as utilities from "../utilities";
  *     role: "roles/editor",
  * });
  * ```
+ * 
+ * ## google\_project\_iam\_audit\_config
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const project = new gcp.projects.IAMAuditConfig("project", {
+ *     auditLogConfigs: [{
+ *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *         logType: "DATA_READ",
+ *     }],
+ *     project: "your-project-id",
+ *     service: "allServices",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_member.html.markdown.
  */
@@ -105,8 +123,7 @@ export class IAMMember extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`
-     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
@@ -168,8 +185,7 @@ export interface IAMMemberState {
     readonly etag?: pulumi.Input<string>;
     readonly member?: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`
-     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */
@@ -188,8 +204,7 @@ export interface IAMMemberState {
 export interface IAMMemberArgs {
     readonly member: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`
-     * or `gcp.projects.IAMMember`, uses the ID of the project configured with the provider.
+     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
      * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
      * will not be inferred from the provider.
      */

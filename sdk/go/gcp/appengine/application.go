@@ -40,6 +40,7 @@ func NewApplication(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["servingStatus"] = args.ServingStatus
 	}
+	inputs["appId"] = nil
 	inputs["codeBucket"] = nil
 	inputs["defaultBucket"] = nil
 	inputs["defaultHostname"] = nil
@@ -59,6 +60,7 @@ func GetApplication(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ApplicationState, opts ...pulumi.ResourceOpt) (*Application, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["appId"] = state.AppId
 		inputs["authDomain"] = state.AuthDomain
 		inputs["codeBucket"] = state.CodeBucket
 		inputs["defaultBucket"] = state.DefaultBucket
@@ -86,6 +88,11 @@ func (r *Application) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Application) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Identifier of the app, usually `{PROJECT_ID}`
+func (r *Application) AppId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["appId"])
 }
 
 // The domain to authenticate users with when using App Engine's User API.
@@ -148,6 +155,8 @@ func (r *Application) UrlDispatchRules() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Application resources.
 type ApplicationState struct {
+	// Identifier of the app, usually `{PROJECT_ID}`
+	AppId interface{}
 	// The domain to authenticate users with when using App Engine's User API.
 	AuthDomain interface{}
 	// The GCS bucket code is being stored in for this app.

@@ -17,8 +17,7 @@ class IAMMember(pulumi.CustomResource):
     member: pulumi.Output[str]
     project: pulumi.Output[str]
     """
-    The project ID. If not specified for `projects.IAMBinding`
-    or `projects.IAMMember`, uses the ID of the project configured with the provider.
+    The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
     Required for `projects.IAMPolicy` - you must explicitly set the project, and it
     will not be inferred from the provider.
     """
@@ -30,20 +29,21 @@ class IAMMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Three different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+        Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
         
         * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
         * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
         * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+        * `projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
         
-        > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding` and `projects.IAMMember` or they will fight over what your policy should be.
+        
+        > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
         
         > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`
-               or `projects.IAMMember`, uses the ID of the project configured with the provider.
+        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
                Required for `projects.IAMPolicy` - you must explicitly set the project, and it
                will not be inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -93,8 +93,7 @@ class IAMMember(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`
-               or `projects.IAMMember`, uses the ID of the project configured with the provider.
+        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
                Required for `projects.IAMPolicy` - you must explicitly set the project, and it
                will not be inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one

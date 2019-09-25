@@ -40,6 +40,7 @@ export class HealthCheck extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
+    public readonly http2HealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttp2HealthCheck | undefined>;
     public readonly httpHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpHealthCheck | undefined>;
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -74,6 +75,7 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
+            inputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
             inputs["httpsHealthCheck"] = state ? state.httpsHealthCheck : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -89,6 +91,7 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
             inputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -120,6 +123,7 @@ export interface HealthCheckState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly healthyThreshold?: pulumi.Input<number>;
+    readonly http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     readonly name?: pulumi.Input<string>;
@@ -146,6 +150,7 @@ export interface HealthCheckArgs {
     readonly checkIntervalSec?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
     readonly healthyThreshold?: pulumi.Input<number>;
+    readonly http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     readonly name?: pulumi.Input<string>;

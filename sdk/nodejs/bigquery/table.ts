@@ -96,6 +96,11 @@ export class Table extends pulumi.CustomResource {
         return obj['__pulumiType'] === Table.__pulumiType;
     }
 
+    /**
+     * Specifies column names to use for data clustering.
+     * Up to four top-level columns are allowed, and should be specified in
+     * descending priority order.
+     */
     public readonly clusterings!: pulumi.Output<string[] | undefined>;
     /**
      * The time when this table was created, in milliseconds since the epoch.
@@ -271,6 +276,11 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * Specifies column names to use for data clustering.
+     * Up to four top-level columns are allowed, and should be specified in
+     * descending priority order.
+     */
     readonly clusterings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time when this table was created, in milliseconds since the epoch.
@@ -373,6 +383,11 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * Specifies column names to use for data clustering.
+     * Up to four top-level columns are allowed, and should be specified in
+     * descending priority order.
+     */
     readonly clusterings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The dataset ID to create the table in.

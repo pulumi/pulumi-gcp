@@ -3,4 +3,7 @@
 
 // Export members:
 export * from "./config";
+export * from "./configIamBinding";
+export * from "./configIamMember";
+export * from "./configIamPolicy";
 export * from "./variable";

@@ -11,6 +11,11 @@ from .. import utilities, tables
 
 class Table(pulumi.CustomResource):
     clusterings: pulumi.Output[list]
+    """
+    Specifies column names to use for data clustering.
+    Up to four top-level columns are allowed, and should be specified in
+    descending priority order.
+    """
     creation_time: pulumi.Output[float]
     """
     The time when this table was created, in milliseconds since the epoch.
@@ -143,6 +148,9 @@ class Table(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] clusterings: Specifies column names to use for data clustering.
+               Up to four top-level columns are allowed, and should be specified in
+               descending priority order.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The field description.
@@ -264,6 +272,9 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] clusterings: Specifies column names to use for data clustering.
+               Up to four top-level columns are allowed, and should be specified in
+               descending priority order.
         :param pulumi.Input[float] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.

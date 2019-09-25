@@ -20,6 +20,7 @@ func NewHealthCheck(ctx *pulumi.Context,
 		inputs["checkIntervalSec"] = nil
 		inputs["description"] = nil
 		inputs["healthyThreshold"] = nil
+		inputs["http2HealthCheck"] = nil
 		inputs["httpHealthCheck"] = nil
 		inputs["httpsHealthCheck"] = nil
 		inputs["name"] = nil
@@ -32,6 +33,7 @@ func NewHealthCheck(ctx *pulumi.Context,
 		inputs["checkIntervalSec"] = args.CheckIntervalSec
 		inputs["description"] = args.Description
 		inputs["healthyThreshold"] = args.HealthyThreshold
+		inputs["http2HealthCheck"] = args.Http2HealthCheck
 		inputs["httpHealthCheck"] = args.HttpHealthCheck
 		inputs["httpsHealthCheck"] = args.HttpsHealthCheck
 		inputs["name"] = args.Name
@@ -61,6 +63,7 @@ func GetHealthCheck(ctx *pulumi.Context,
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
 		inputs["healthyThreshold"] = state.HealthyThreshold
+		inputs["http2HealthCheck"] = state.Http2HealthCheck
 		inputs["httpHealthCheck"] = state.HttpHealthCheck
 		inputs["httpsHealthCheck"] = state.HttpsHealthCheck
 		inputs["name"] = state.Name
@@ -103,6 +106,10 @@ func (r *HealthCheck) Description() *pulumi.StringOutput {
 
 func (r *HealthCheck) HealthyThreshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["healthyThreshold"])
+}
+
+func (r *HealthCheck) Http2HealthCheck() *pulumi.Output {
+	return r.s.State["http2HealthCheck"]
 }
 
 func (r *HealthCheck) HttpHealthCheck() *pulumi.Output {
@@ -154,6 +161,7 @@ type HealthCheckState struct {
 	CreationTimestamp interface{}
 	Description interface{}
 	HealthyThreshold interface{}
+	Http2HealthCheck interface{}
 	HttpHealthCheck interface{}
 	HttpsHealthCheck interface{}
 	Name interface{}
@@ -174,6 +182,7 @@ type HealthCheckArgs struct {
 	CheckIntervalSec interface{}
 	Description interface{}
 	HealthyThreshold interface{}
+	Http2HealthCheck interface{}
 	HttpHealthCheck interface{}
 	HttpsHealthCheck interface{}
 	Name interface{}

@@ -20,6 +20,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["diskSizeGb"] = nil
 		inputs["family"] = nil
+		inputs["guestOsFeatures"] = nil
 		inputs["labels"] = nil
 		inputs["licenses"] = nil
 		inputs["name"] = nil
@@ -30,6 +31,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["diskSizeGb"] = args.DiskSizeGb
 		inputs["family"] = args.Family
+		inputs["guestOsFeatures"] = args.GuestOsFeatures
 		inputs["labels"] = args.Labels
 		inputs["licenses"] = args.Licenses
 		inputs["name"] = args.Name
@@ -59,6 +61,7 @@ func GetImage(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["diskSizeGb"] = state.DiskSizeGb
 		inputs["family"] = state.Family
+		inputs["guestOsFeatures"] = state.GuestOsFeatures
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
 		inputs["licenses"] = state.Licenses
@@ -105,6 +108,10 @@ func (r *Image) Family() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["family"])
 }
 
+func (r *Image) GuestOsFeatures() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["guestOsFeatures"])
+}
+
 func (r *Image) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
@@ -147,6 +154,7 @@ type ImageState struct {
 	Description interface{}
 	DiskSizeGb interface{}
 	Family interface{}
+	GuestOsFeatures interface{}
 	LabelFingerprint interface{}
 	Labels interface{}
 	Licenses interface{}
@@ -165,6 +173,7 @@ type ImageArgs struct {
 	Description interface{}
 	DiskSizeGb interface{}
 	Family interface{}
+	GuestOsFeatures interface{}
 	Labels interface{}
 	Licenses interface{}
 	Name interface{}

@@ -74,7 +74,7 @@ func (r *RepositoryIamMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// (Computed) The etag of the topic's IAM policy.
+// (Computed) The etag of the IAM policy.
 func (r *RepositoryIamMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -83,8 +83,8 @@ func (r *RepositoryIamMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
-// The project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (r *RepositoryIamMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -102,11 +102,11 @@ func (r *RepositoryIamMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering RepositoryIamMember resources.
 type RepositoryIamMemberState struct {
-	// (Computed) The etag of the topic's IAM policy.
+	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Member interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	Repository interface{}
 	// The role that should be applied. Only one
@@ -118,8 +118,8 @@ type RepositoryIamMemberState struct {
 // The set of arguments for constructing a RepositoryIamMember resource.
 type RepositoryIamMemberArgs struct {
 	Member interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	Repository interface{}
 	// The role that should be applied. Only one

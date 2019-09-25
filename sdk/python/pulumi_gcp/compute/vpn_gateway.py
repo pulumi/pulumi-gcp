@@ -12,6 +12,7 @@ from .. import utilities, tables
 class VPNGateway(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
+    gateway_id: pulumi.Output[float]
     name: pulumi.Output[str]
     network: pulumi.Output[str]
     project: pulumi.Output[str]
@@ -60,6 +61,7 @@ class VPNGateway(pulumi.CustomResource):
             __props__['project'] = project
             __props__['region'] = region
             __props__['creation_timestamp'] = None
+            __props__['gateway_id'] = None
             __props__['self_link'] = None
         super(VPNGateway, __self__).__init__(
             'gcp:compute/vPNGateway:VPNGateway',
@@ -68,7 +70,7 @@ class VPNGateway(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, name=None, network=None, project=None, region=None, self_link=None):
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, gateway_id=None, name=None, network=None, project=None, region=None, self_link=None):
         """
         Get an existing VPNGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,6 +89,7 @@ class VPNGateway(pulumi.CustomResource):
         __props__ = dict()
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
+        __props__["gateway_id"] = gateway_id
         __props__["name"] = name
         __props__["network"] = network
         __props__["project"] = project

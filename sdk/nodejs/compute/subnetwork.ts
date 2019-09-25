@@ -51,7 +51,9 @@ export class Subnetwork extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    public readonly purpose!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string | undefined>;
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
      * The URI of the created resource.
@@ -81,7 +83,9 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["network"] = state ? state.network : undefined;
             inputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["purpose"] = state ? state.purpose : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["role"] = state ? state.role : undefined;
             inputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
@@ -100,7 +104,9 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
@@ -137,7 +143,9 @@ export interface SubnetworkState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly purpose?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    readonly role?: pulumi.Input<string>;
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
      * The URI of the created resource.
@@ -161,6 +169,8 @@ export interface SubnetworkArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly purpose?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    readonly role?: pulumi.Input<string>;
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
 }

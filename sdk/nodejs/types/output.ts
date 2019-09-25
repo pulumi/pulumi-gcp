@@ -53,6 +53,18 @@ export namespace appengine {
         service: string;
     }
 
+    export interface DomainMappingResourceRecord {
+        name?: string;
+        rrdata?: string;
+        type?: string;
+    }
+
+    export interface DomainMappingSslSettings {
+        certificateId?: string;
+        pendingManagedCertificateId: string;
+        sslManagementType?: string;
+    }
+
     export interface StandardAppVersionDeployment {
         files?: outputs.appengine.StandardAppVersionDeploymentFile[];
         zip?: outputs.appengine.StandardAppVersionDeploymentZip;
@@ -575,10 +587,70 @@ export namespace compute {
         queryStringWhitelists?: string[];
     }
 
+    export interface BackendServiceCircuitBreakers {
+        connectTimeout?: outputs.compute.BackendServiceCircuitBreakersConnectTimeout;
+        maxConnections?: number;
+        maxPendingRequests?: number;
+        maxRequests?: number;
+        maxRequestsPerConnection?: number;
+        maxRetries?: number;
+    }
+
+    export interface BackendServiceCircuitBreakersConnectTimeout {
+        nanos?: number;
+        seconds: number;
+    }
+
+    export interface BackendServiceConsistentHash {
+        httpCookie?: outputs.compute.BackendServiceConsistentHashHttpCookie;
+        httpHeaderName?: string;
+        minimumRingSize?: number;
+    }
+
+    export interface BackendServiceConsistentHashHttpCookie {
+        name?: string;
+        path?: string;
+        ttl?: outputs.compute.BackendServiceConsistentHashHttpCookieTtl;
+    }
+
+    export interface BackendServiceConsistentHashHttpCookieTtl {
+        nanos?: number;
+        seconds: number;
+    }
+
     export interface BackendServiceIap {
         oauth2ClientId: string;
         oauth2ClientSecret: string;
         oauth2ClientSecretSha256: string;
+    }
+
+    export interface BackendServiceLogConfig {
+        enable?: boolean;
+        sampleRate?: number;
+    }
+
+    export interface BackendServiceOutlierDetection {
+        baseEjectionTime?: outputs.compute.BackendServiceOutlierDetectionBaseEjectionTime;
+        consecutiveErrors?: number;
+        consecutiveGatewayFailure?: number;
+        enforcingConsecutiveErrors?: number;
+        enforcingConsecutiveGatewayFailure?: number;
+        enforcingSuccessRate?: number;
+        interval?: outputs.compute.BackendServiceOutlierDetectionInterval;
+        maxEjectionPercent?: number;
+        successRateMinimumHosts?: number;
+        successRateRequestVolume?: number;
+        successRateStdevFactor?: number;
+    }
+
+    export interface BackendServiceOutlierDetectionBaseEjectionTime {
+        nanos?: number;
+        seconds: number;
+    }
+
+    export interface BackendServiceOutlierDetectionInterval {
+        nanos?: number;
+        seconds: number;
     }
 
     export interface DiskDiskEncryptionKey {
@@ -644,10 +716,73 @@ export namespace compute {
         queryStringWhitelists: string[];
     }
 
+    export interface GetBackendServiceCircuitBreaker {
+        connectTimeouts: outputs.compute.GetBackendServiceCircuitBreakerConnectTimeout[];
+        maxConnections: number;
+        maxPendingRequests: number;
+        maxRequests: number;
+        maxRequestsPerConnection: number;
+        maxRetries: number;
+    }
+
+    export interface GetBackendServiceCircuitBreakerConnectTimeout {
+        nanos: number;
+        seconds: number;
+    }
+
+    export interface GetBackendServiceConsistentHash {
+        httpCookies: outputs.compute.GetBackendServiceConsistentHashHttpCooky[];
+        httpHeaderName: string;
+        minimumRingSize: number;
+    }
+
+    export interface GetBackendServiceConsistentHashHttpCooky {
+        /**
+         * The name of the Backend Service.
+         */
+        name: string;
+        path: string;
+        ttls: outputs.compute.GetBackendServiceConsistentHashHttpCookyTtl[];
+    }
+
+    export interface GetBackendServiceConsistentHashHttpCookyTtl {
+        nanos: number;
+        seconds: number;
+    }
+
     export interface GetBackendServiceIap {
         oauth2ClientId: string;
         oauth2ClientSecret: string;
         oauth2ClientSecretSha256: string;
+    }
+
+    export interface GetBackendServiceLogConfig {
+        enable: boolean;
+        sampleRate: number;
+    }
+
+    export interface GetBackendServiceOutlierDetection {
+        baseEjectionTimes: outputs.compute.GetBackendServiceOutlierDetectionBaseEjectionTime[];
+        consecutiveErrors: number;
+        consecutiveGatewayFailure: number;
+        enforcingConsecutiveErrors: number;
+        enforcingConsecutiveGatewayFailure: number;
+        enforcingSuccessRate: number;
+        intervals: outputs.compute.GetBackendServiceOutlierDetectionInterval[];
+        maxEjectionPercent: number;
+        successRateMinimumHosts: number;
+        successRateRequestVolume: number;
+        successRateStdevFactor: number;
+    }
+
+    export interface GetBackendServiceOutlierDetectionBaseEjectionTime {
+        nanos: number;
+        seconds: number;
+    }
+
+    export interface GetBackendServiceOutlierDetectionInterval {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetInstanceAttachedDisk {
@@ -687,6 +822,10 @@ export namespace compute {
          */
         initializeParams: outputs.compute.GetInstanceBootDiskInitializeParam[];
         kmsKeySelfLink: string;
+        /**
+         * Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+         */
+        mode: string;
         /**
          * The name or selfLink of the disk attached to this instance.
          */
@@ -910,9 +1049,29 @@ export namespace compute {
         rangeName: string;
     }
 
+    export interface GlobalForwardingRuleMetadataFilter {
+        filterLabels: outputs.compute.GlobalForwardingRuleMetadataFilterFilterLabel[];
+        filterMatchCriteria: string;
+    }
+
+    export interface GlobalForwardingRuleMetadataFilterFilterLabel {
+        name: string;
+        value: string;
+    }
+
     export interface HaVpnGatewayVpnInterface {
         id?: number;
         ipAddress?: string;
+    }
+
+    export interface HealthCheckHttp2HealthCheck {
+        host?: string;
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        requestPath?: string;
+        response?: string;
     }
 
     export interface HealthCheckHttpHealthCheck {
@@ -953,6 +1112,10 @@ export namespace compute {
         response?: string;
     }
 
+    export interface ImageGuestOsFeature {
+        type?: string;
+    }
+
     export interface ImageRawDisk {
         containerType?: string;
         sha1?: string;
@@ -975,6 +1138,7 @@ export namespace compute {
         diskEncryptionKeySha256: string;
         initializeParams: outputs.compute.InstanceBootDiskInitializeParams;
         kmsKeySelfLink: string;
+        mode?: string;
         source: string;
     }
 
@@ -1004,6 +1168,7 @@ export namespace compute {
         diskEncryptionKeySha256: string;
         initializeParams: outputs.compute.InstanceFromTemplateBootDiskInitializeParams;
         kmsKeySelfLink: string;
+        mode: string;
         source: string;
     }
 
@@ -1333,6 +1498,54 @@ export namespace compute {
         sha256: string;
     }
 
+    export interface RegionHealthCheckHttp2HealthCheck {
+        host?: string;
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        requestPath?: string;
+        response?: string;
+    }
+
+    export interface RegionHealthCheckHttpHealthCheck {
+        host?: string;
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        requestPath?: string;
+        response?: string;
+    }
+
+    export interface RegionHealthCheckHttpsHealthCheck {
+        host?: string;
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        requestPath?: string;
+        response?: string;
+    }
+
+    export interface RegionHealthCheckSslHealthCheck {
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        request?: string;
+        response?: string;
+    }
+
+    export interface RegionHealthCheckTcpHealthCheck {
+        port?: number;
+        portName?: string;
+        portSpecification?: string;
+        proxyHeader?: string;
+        request?: string;
+        response?: string;
+    }
+
     export interface RegionInstanceGroupManagerAutoHealingPolicies {
         healthCheck: string;
         initialDelaySec: number;
@@ -1385,6 +1598,54 @@ export namespace compute {
     export interface RegionInstanceGroupManagerVersionTargetSize {
         fixed?: number;
         percent?: number;
+    }
+
+    export interface RegionUrlMapHostRule {
+        description?: string;
+        hosts: string[];
+        pathMatcher: string;
+    }
+
+    export interface RegionUrlMapPathMatcher {
+        defaultService: string;
+        description?: string;
+        name: string;
+        pathRules?: outputs.compute.RegionUrlMapPathMatcherPathRule[];
+    }
+
+    export interface RegionUrlMapPathMatcherPathRule {
+        paths: string[];
+        service: string;
+    }
+
+    export interface RegionUrlMapTest {
+        description?: string;
+        host: string;
+        path: string;
+        service: string;
+    }
+
+    export interface ReservationSpecificReservation {
+        count: number;
+        inUseCount: number;
+        instanceProperties: outputs.compute.ReservationSpecificReservationInstanceProperties;
+    }
+
+    export interface ReservationSpecificReservationInstanceProperties {
+        guestAccelerators?: outputs.compute.ReservationSpecificReservationInstancePropertiesGuestAccelerator[];
+        localSsds?: outputs.compute.ReservationSpecificReservationInstancePropertiesLocalSsd[];
+        machineType: string;
+        minCpuPlatform: string;
+    }
+
+    export interface ReservationSpecificReservationInstancePropertiesGuestAccelerator {
+        acceleratorCount: number;
+        acceleratorType: string;
+    }
+
+    export interface ReservationSpecificReservationInstancePropertiesLocalSsd {
+        diskSizeGb: number;
+        interface?: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicy {
@@ -1447,13 +1708,14 @@ export namespace compute {
     }
 
     export interface RouterNatSubnetwork {
-        /**
-         * A unique name for Cloud NAT, required by GCE. Changing
-         * this forces a new NAT to be created.
-         */
         name: string;
         secondaryIpRangeNames?: string[];
         sourceIpRangesToNats: string[];
+    }
+
+    export interface RouterPeerAdvertisedIpRange {
+        description?: string;
+        range?: string;
     }
 
     export interface SecurityPolicyRule {
@@ -1687,9 +1949,10 @@ export namespace container {
         autoscaling?: outputs.container.ClusterNodePoolAutoscaling;
         /**
          * The number of nodes to create in this
-         * cluster's default node pool. Must be set if `nodePool` is not set. If
-         * you're using `gcp.container.NodePool` objects with no default node pool,
-         * you'll need to set this to a value of at least `1`, alongside setting
+         * cluster's default node pool. In regional or multi-zonal clusters, this is the
+         * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+         * `gcp.container.NodePool` objects with no default node pool, you'll need to
+         * set this to a value of at least `1`, alongside setting
          * `removeDefaultNodePool` to `true`.
          */
         initialNodeCount: number;
@@ -1715,6 +1978,13 @@ export namespace container {
          */
         nodeConfig: outputs.container.ClusterNodePoolNodeConfig;
         nodeCount: number;
+        /**
+         * The list of zones in which the cluster's nodes
+         * are located. Nodes must be in the region of their regional cluster or in the
+         * same region as their cluster's zone for zonal clusters. If this is specified for
+         * a zonal cluster, omit the cluster's zone.
+         */
+        nodeLocations: string[];
         version: string;
     }
 
@@ -1947,6 +2217,7 @@ export namespace container {
         namePrefix: string;
         nodeConfigs: outputs.container.GetClusterNodePoolNodeConfig[];
         nodeCount: number;
+        nodeLocations: string[];
         version: string;
     }
 
@@ -2533,13 +2804,13 @@ export namespace kms {
 
 export namespace logging {
     export interface MetricBucketOptions {
-        explicit?: outputs.logging.MetricBucketOptionsExplicit;
+        explicitBuckets?: outputs.logging.MetricBucketOptionsExplicitBuckets;
         exponentialBuckets?: outputs.logging.MetricBucketOptionsExponentialBuckets;
         linearBuckets?: outputs.logging.MetricBucketOptionsLinearBuckets;
     }
 
-    export interface MetricBucketOptionsExplicit {
-        bounds?: string[];
+    export interface MetricBucketOptionsExplicitBuckets {
+        bounds?: number[];
     }
 
     export interface MetricBucketOptionsExponentialBuckets {
@@ -2557,6 +2828,7 @@ export namespace logging {
     export interface MetricMetricDescriptor {
         labels?: outputs.logging.MetricMetricDescriptorLabel[];
         metricKind: string;
+        unit?: string;
         valueType: string;
     }
 

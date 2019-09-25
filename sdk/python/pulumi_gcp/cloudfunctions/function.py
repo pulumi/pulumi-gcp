@@ -107,6 +107,12 @@ class Function(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/functions/docs/apis).
         
+        > **Warning:** As of November 1, 2019, newly created Functions are
+        private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
+        to be invoked. See below examples for how to set up the appropriate permissions,
+        or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/r/cloudfunctions_cloud_function_iam.html)
+        for Cloud Functions.
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.

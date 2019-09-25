@@ -138,9 +138,10 @@ class Cluster(pulumi.CustomResource):
     initial_node_count: pulumi.Output[float]
     """
     The number of nodes to create in this
-    cluster's default node pool. Must be set if `node_pool` is not set. If
-    you're using `container.NodePool` objects with no default node pool,
-    you'll need to set this to a value of at least `1`, alongside setting
+    cluster's default node pool. In regional or multi-zonal clusters, this is the
+    number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+    `container.NodePool` objects with no default node pool, you'll need to
+    set this to a value of at least `1`, alongside setting
     `remove_default_node_pool` to `true`.
     """
     instance_group_urls: pulumi.Output[list]
@@ -309,11 +310,9 @@ class Cluster(pulumi.CustomResource):
     node_locations: pulumi.Output[list]
     """
     The list of zones in which the cluster's nodes
-    should be located. These must be in the same region as the cluster zone for
-    zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-    the number of nodes specified in `initial_node_count` is created in
-    all specified zones as well as the primary zone. If specified for a regional
-    cluster, nodes will be created in only these zones.
+    are located. Nodes must be in the region of their regional cluster or in the
+    same region as their cluster's zone for zonal clusters. If this is specified for
+    a zonal cluster, omit the cluster's zone.
     """
     node_pools: pulumi.Output[list]
     """
@@ -330,9 +329,10 @@ class Cluster(pulumi.CustomResource):
         * `minNodeCount` (`float`)
     
       * `initial_node_count` (`float`) - The number of nodes to create in this
-        cluster's default node pool. Must be set if `node_pool` is not set. If
-        you're using `container.NodePool` objects with no default node pool,
-        you'll need to set this to a value of at least `1`, alongside setting
+        cluster's default node pool. In regional or multi-zonal clusters, this is the
+        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        `container.NodePool` objects with no default node pool, you'll need to
+        set this to a value of at least `1`, alongside setting
         `remove_default_node_pool` to `true`.
       * `instance_group_urls` (`list`) - List of instance group URLs which have been assigned
         to the cluster.
@@ -383,6 +383,10 @@ class Cluster(pulumi.CustomResource):
           * `nodeMetadata` (`str`)
     
       * `node_count` (`float`)
+      * `node_locations` (`list`) - The list of zones in which the cluster's nodes
+        are located. Nodes must be in the region of their regional cluster or in the
+        same region as their cluster's zone for zonal clusters. If this is specified for
+        a zonal cluster, omit the cluster's zone.
       * `version` (`str`)
     """
     node_version: pulumi.Output[str]
@@ -538,9 +542,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
-               cluster's default node pool. Must be set if `node_pool` is not set. If
-               you're using `container.NodePool` objects with no default node pool,
-               you'll need to set this to a value of at least `1`, alongside setting
+               cluster's default node pool. In regional or multi-zonal clusters, this is the
+               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               `container.NodePool` objects with no default node pool, you'll need to
+               set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
                This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
@@ -596,11 +601,9 @@ class Cluster(pulumi.CustomResource):
                manages the default node pool, which isn't recommended to be used with
                this provider. Structure is documented below.
         :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
-               should be located. These must be in the same region as the cluster zone for
-               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-               the number of nodes specified in `initial_node_count` is created in
-               all specified zones as well as the primary zone. If specified for a regional
-               cluster, nodes will be created in only these zones.
+               are located. Nodes must be in the region of their regional cluster or in the
+               same region as their cluster's zone for zonal clusters. If this is specified for
+               a zonal cluster, omit the cluster's zone.
         :param pulumi.Input[list] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -771,9 +774,10 @@ class Cluster(pulumi.CustomResource):
             * `minNodeCount` (`pulumi.Input[float]`)
         
           * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
-            cluster's default node pool. Must be set if `node_pool` is not set. If
-            you're using `container.NodePool` objects with no default node pool,
-            you'll need to set this to a value of at least `1`, alongside setting
+            cluster's default node pool. In regional or multi-zonal clusters, this is the
+            number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+            `container.NodePool` objects with no default node pool, you'll need to
+            set this to a value of at least `1`, alongside setting
             `remove_default_node_pool` to `true`.
           * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
             to the cluster.
@@ -824,6 +828,10 @@ class Cluster(pulumi.CustomResource):
               * `nodeMetadata` (`pulumi.Input[str]`)
         
           * `node_count` (`pulumi.Input[float]`)
+          * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
+            are located. Nodes must be in the region of their regional cluster or in the
+            same region as their cluster's zone for zonal clusters. If this is specified for
+            a zonal cluster, omit the cluster's zone.
           * `version` (`pulumi.Input[str]`)
         
         The **pod_security_policy_config** object supports the following:
@@ -980,9 +988,10 @@ class Cluster(pulumi.CustomResource):
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
-               cluster's default node pool. Must be set if `node_pool` is not set. If
-               you're using `container.NodePool` objects with no default node pool,
-               you'll need to set this to a value of at least `1`, alongside setting
+               cluster's default node pool. In regional or multi-zonal clusters, this is the
+               number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+               `container.NodePool` objects with no default node pool, you'll need to
+               set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[list] instance_group_urls: List of instance group URLs which have been assigned
                to the cluster.
@@ -1043,11 +1052,9 @@ class Cluster(pulumi.CustomResource):
                manages the default node pool, which isn't recommended to be used with
                this provider. Structure is documented below.
         :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
-               should be located. These must be in the same region as the cluster zone for
-               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-               the number of nodes specified in `initial_node_count` is created in
-               all specified zones as well as the primary zone. If specified for a regional
-               cluster, nodes will be created in only these zones.
+               are located. Nodes must be in the region of their regional cluster or in the
+               same region as their cluster's zone for zonal clusters. If this is specified for
+               a zonal cluster, omit the cluster's zone.
         :param pulumi.Input[list] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1222,9 +1229,10 @@ class Cluster(pulumi.CustomResource):
             * `minNodeCount` (`pulumi.Input[float]`)
         
           * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
-            cluster's default node pool. Must be set if `node_pool` is not set. If
-            you're using `container.NodePool` objects with no default node pool,
-            you'll need to set this to a value of at least `1`, alongside setting
+            cluster's default node pool. In regional or multi-zonal clusters, this is the
+            number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+            `container.NodePool` objects with no default node pool, you'll need to
+            set this to a value of at least `1`, alongside setting
             `remove_default_node_pool` to `true`.
           * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
             to the cluster.
@@ -1275,6 +1283,10 @@ class Cluster(pulumi.CustomResource):
               * `nodeMetadata` (`pulumi.Input[str]`)
         
           * `node_count` (`pulumi.Input[float]`)
+          * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
+            are located. Nodes must be in the region of their regional cluster or in the
+            same region as their cluster's zone for zonal clusters. If this is specified for
+            a zonal cluster, omit the cluster's zone.
           * `version` (`pulumi.Input[str]`)
         
         The **pod_security_policy_config** object supports the following:

@@ -17,6 +17,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
     load_balancing_scheme: pulumi.Output[str]
+    metadata_filters: pulumi.Output[list]
     name: pulumi.Output[str]
     network: pulumi.Output[str]
     port_range: pulumi.Output[str]
@@ -30,7 +31,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     The URI of the created resource.
     """
     target: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, name=None, network=None, port_range=None, project=None, target=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a GlobalForwardingRule resource with the given unique name, props, and options.
         
@@ -38,6 +39,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **metadata_filters** object supports the following:
+        
+          * `filterLabels` (`pulumi.Input[list]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+        
+          * `filterMatchCriteria` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
         """
@@ -64,6 +74,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__['ip_version'] = ip_version
             __props__['labels'] = labels
             __props__['load_balancing_scheme'] = load_balancing_scheme
+            __props__['metadata_filters'] = metadata_filters
             __props__['name'] = name
             __props__['network'] = network
             __props__['port_range'] = port_range
@@ -80,7 +91,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, port_range=None, project=None, self_link=None, target=None):
+    def get(resource_name, id, opts=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, self_link=None, target=None):
         """
         Get an existing GlobalForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,6 +102,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **metadata_filters** object supports the following:
+        
+          * `filterLabels` (`pulumi.Input[list]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+        
+          * `filterMatchCriteria` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
         """
@@ -104,6 +124,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__["label_fingerprint"] = label_fingerprint
         __props__["labels"] = labels
         __props__["load_balancing_scheme"] = load_balancing_scheme
+        __props__["metadata_filters"] = metadata_filters
         __props__["name"] = name
         __props__["network"] = network
         __props__["port_range"] = port_range

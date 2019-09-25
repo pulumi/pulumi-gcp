@@ -32,6 +32,9 @@ func NewRouterPeer(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["advertiseMode"] = nil
+		inputs["advertisedGroups"] = nil
+		inputs["advertisedIpRanges"] = nil
 		inputs["advertisedRoutePriority"] = nil
 		inputs["interface"] = nil
 		inputs["name"] = nil
@@ -41,6 +44,9 @@ func NewRouterPeer(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["router"] = nil
 	} else {
+		inputs["advertiseMode"] = args.AdvertiseMode
+		inputs["advertisedGroups"] = args.AdvertisedGroups
+		inputs["advertisedIpRanges"] = args.AdvertisedIpRanges
 		inputs["advertisedRoutePriority"] = args.AdvertisedRoutePriority
 		inputs["interface"] = args.Interface
 		inputs["name"] = args.Name
@@ -64,6 +70,9 @@ func GetRouterPeer(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *RouterPeerState, opts ...pulumi.ResourceOpt) (*RouterPeer, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["advertiseMode"] = state.AdvertiseMode
+		inputs["advertisedGroups"] = state.AdvertisedGroups
+		inputs["advertisedIpRanges"] = state.AdvertisedIpRanges
 		inputs["advertisedRoutePriority"] = state.AdvertisedRoutePriority
 		inputs["interface"] = state.Interface
 		inputs["ipAddress"] = state.IpAddress
@@ -89,6 +98,18 @@ func (r *RouterPeer) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *RouterPeer) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *RouterPeer) AdvertiseMode() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["advertiseMode"])
+}
+
+func (r *RouterPeer) AdvertisedGroups() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["advertisedGroups"])
+}
+
+func (r *RouterPeer) AdvertisedIpRanges() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["advertisedIpRanges"])
 }
 
 // The priority of routes advertised to this BGP peer.
@@ -147,6 +168,9 @@ func (r *RouterPeer) Router() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering RouterPeer resources.
 type RouterPeerState struct {
+	AdvertiseMode interface{}
+	AdvertisedGroups interface{}
+	AdvertisedIpRanges interface{}
 	// The priority of routes advertised to this BGP peer.
 	// Changing this forces a new peer to be created.
 	AdvertisedRoutePriority interface{}
@@ -178,6 +202,9 @@ type RouterPeerState struct {
 
 // The set of arguments for constructing a RouterPeer resource.
 type RouterPeerArgs struct {
+	AdvertiseMode interface{}
+	AdvertisedGroups interface{}
+	AdvertisedIpRanges interface{}
 	// The priority of routes advertised to this BGP peer.
 	// Changing this forces a new peer to be created.
 	AdvertisedRoutePriority interface{}

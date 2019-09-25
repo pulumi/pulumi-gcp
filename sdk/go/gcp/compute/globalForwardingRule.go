@@ -27,6 +27,7 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["ipVersion"] = nil
 		inputs["labels"] = nil
 		inputs["loadBalancingScheme"] = nil
+		inputs["metadataFilters"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["portRange"] = nil
@@ -39,6 +40,7 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["ipVersion"] = args.IpVersion
 		inputs["labels"] = args.Labels
 		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
+		inputs["metadataFilters"] = args.MetadataFilters
 		inputs["name"] = args.Name
 		inputs["network"] = args.Network
 		inputs["portRange"] = args.PortRange
@@ -67,6 +69,7 @@ func GetGlobalForwardingRule(ctx *pulumi.Context,
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
 		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
+		inputs["metadataFilters"] = state.MetadataFilters
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["portRange"] = state.PortRange
@@ -119,6 +122,10 @@ func (r *GlobalForwardingRule) LoadBalancingScheme() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
 }
 
+func (r *GlobalForwardingRule) MetadataFilters() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["metadataFilters"])
+}
+
 func (r *GlobalForwardingRule) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -155,6 +162,7 @@ type GlobalForwardingRuleState struct {
 	LabelFingerprint interface{}
 	Labels interface{}
 	LoadBalancingScheme interface{}
+	MetadataFilters interface{}
 	Name interface{}
 	Network interface{}
 	PortRange interface{}
@@ -174,6 +182,7 @@ type GlobalForwardingRuleArgs struct {
 	IpVersion interface{}
 	Labels interface{}
 	LoadBalancingScheme interface{}
+	MetadataFilters interface{}
 	Name interface{}
 	Network interface{}
 	PortRange interface{}

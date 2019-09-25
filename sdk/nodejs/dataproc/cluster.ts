@@ -35,6 +35,18 @@ import * as utilities from "../utilities";
  * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
+ *             serviceAccountScopes: [
+ *                 //	User supplied scopes
+ *                 "https://www.googleapis.com/auth/monitoring",
+ *                 //	The following scopes necessary for the cluster to function properly are
+ *                 //	always added, even if not explicitly specified:
+ *                 //		useraccounts-ro: https://www.googleapis.com/auth/cloud.useraccounts.readonly
+ *                 //		storage-rw:      https://www.googleapis.com/auth/devstorage.read_write
+ *                 //		logging-write:   https://www.googleapis.com/auth/logging.write
+ *                 "useraccounts-ro",
+ *                 "storage-rw",
+ *                 "logging-write",
+ *             ],
  *             //network = "${google_compute_network.dataproc_network.name}"
  *             tags: [
  *                 "foo",

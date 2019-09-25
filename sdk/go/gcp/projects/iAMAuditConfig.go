@@ -8,6 +8,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
+// 
+// * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+// * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+// * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+// * `projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+// 
+// 
+// > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
+// 
+// > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_audit_config.html.markdown.
 type IAMAuditConfig struct {
 	s *pulumi.ResourceState
 }
@@ -67,33 +80,50 @@ func (r *IAMAuditConfig) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 func (r *IAMAuditConfig) AuditLogConfigs() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["auditLogConfigs"])
 }
 
+// (Computed) The etag of the project's IAM policy.
 func (r *IAMAuditConfig) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
+// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
+// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
+// will not be inferred from the provider.
 func (r *IAMAuditConfig) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 func (r *IAMAuditConfig) Service() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Input properties used for looking up and filtering IAMAuditConfig resources.
 type IAMAuditConfigState struct {
+	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs interface{}
+	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
+	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
+	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
+	// will not be inferred from the provider.
 	Project interface{}
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service interface{}
 }
 
 // The set of arguments for constructing a IAMAuditConfig resource.
 type IAMAuditConfigArgs struct {
+	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs interface{}
+	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
+	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
+	// will not be inferred from the provider.
 	Project interface{}
+	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service interface{}
 }

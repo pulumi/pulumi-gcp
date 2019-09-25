@@ -113,7 +113,7 @@ class DomainMapping(pulumi.CustomResource):
         
           * `mappedRouteName` (`pulumi.Input[str]`)
           * `observedGeneration` (`pulumi.Input[float]`)
-          * `resourceRecords` (`pulumi.Input[list]`)
+          * `resource_records` (`pulumi.Input[list]`)
         
             * `name` (`pulumi.Input[str]`)
             * `rrdata` (`pulumi.Input[str]`)

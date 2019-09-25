@@ -157,6 +157,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_app_engine_standard_app_version": {Tok: gcpResource(gcpAppEngine, "StandardAppVersion")},
+			"google_app_engine_domain_mapping":       {Tok: gcpResource(gcpAppEngine, "DomainMapping")},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -231,11 +232,28 @@ func Provider() tfbridge.ProviderInfo {
 			// Cloud Functions
 			"google_cloudfunctions_function": {
 				Tok: gcpResource(gcpCloudFunctions, "Function"),
-
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Name must start with a letter followed by up to 62 letters, numbers, or
 					// hyphens, and cannot end with a hyphen
 					"name": tfbridge.AutoName("name", 63),
+				},
+			},
+			"google_cloudfunctions_function_iam_binding": {
+				Tok: gcpResource(gcpCloudFunctions, "FunctionIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions_cloud_function_iam.html.markdown",
+				},
+			},
+			"google_cloudfunctions_function_iam_member": {
+				Tok: gcpResource(gcpCloudFunctions, "FunctionIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions_cloud_function_iam.html.markdown",
+				},
+			},
+			"google_cloudfunctions_function_iam_policy": {
+				Tok: gcpResource(gcpCloudFunctions, "FunctionIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions_cloud_function_iam.html.markdown",
 				},
 			},
 
@@ -315,7 +333,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_project_iam_audit_config": {
 				Tok: gcpResource(gcpProject, "IAMAuditConfig"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_project_iam_audit_config.html.markdown",
+					Source: "google_project_iam.html.markdown",
 				},
 			},
 			"google_project_iam_binding": {
@@ -526,15 +544,21 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_subnetwork_iam.html.markdown",
 				},
 			},
-			"google_compute_target_http_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
-			"google_compute_target_https_proxy": {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
-			"google_compute_target_instance":    {Tok: gcpResource(gcpCompute, "TargetInstance")},
-			"google_compute_target_ssl_proxy":   {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
-			"google_compute_target_tcp_proxy":   {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
-			"google_compute_target_pool":        {Tok: gcpResource(gcpCompute, "TargetPool")},
-			"google_compute_url_map":            {Tok: gcpResource(gcpCompute, "URLMap")},
-			"google_compute_vpn_gateway":        {Tok: gcpResource(gcpCompute, "VPNGateway")},
-			"google_compute_vpn_tunnel":         {Tok: gcpResource(gcpCompute, "VPNTunnel")},
+			"google_compute_target_http_proxy":   {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
+			"google_compute_target_https_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
+			"google_compute_target_instance":     {Tok: gcpResource(gcpCompute, "TargetInstance")},
+			"google_compute_target_ssl_proxy":    {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
+			"google_compute_target_tcp_proxy":    {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
+			"google_compute_target_pool":         {Tok: gcpResource(gcpCompute, "TargetPool")},
+			"google_compute_url_map":             {Tok: gcpResource(gcpCompute, "URLMap")},
+			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
+			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
+			"google_compute_reservation":         {Tok: gcpResource(gcpCompute, "Reservation")},
+			"google_compute_region_health_check": {Tok: gcpResource(gcpCompute, "RegionHealthCheck")},
+			"google_compute_region_url_map":      {Tok: gcpResource(gcpCompute, "RegionUrlMap")},
+			"google_compute_disk_resource_policy_attachment": {
+				Tok: gcpResource(gcpCompute, "DiskResourcePolicyAttachment"),
+			},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -672,6 +696,24 @@ func Provider() tfbridge.ProviderInfo {
 			// Runtime Config resources
 			"google_runtimeconfig_config":   {Tok: gcpResource(gcpRuntimeConfig, "Config")},
 			"google_runtimeconfig_variable": {Tok: gcpResource(gcpRuntimeConfig, "Variable")},
+			"google_runtimeconfig_config_iam_binding": {
+				Tok: gcpResource(gcpRuntimeConfig, "ConfigIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "runtimeconfig_config_iam.html.markdown",
+				},
+			},
+			"google_runtimeconfig_config_iam_member": {
+				Tok: gcpResource(gcpRuntimeConfig, "ConfigIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "runtimeconfig_config_iam.html.markdown",
+				},
+			},
+			"google_runtimeconfig_config_iam_policy": {
+				Tok: gcpResource(gcpRuntimeConfig, "ConfigIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "runtimeconfig_config_iam.html.markdown",
+				},
+			},
 
 			// Service Networking resources
 			"google_service_networking_connection": {Tok: gcpResource(gcpServiceNetworking, "Connection")},
@@ -890,6 +932,78 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_iap_tunnel_instance_iam.markdown",
 				},
 			},
+			"google_iap_web_backend_service_iam_binding": {
+				Tok: gcpResource(gcpIAP, "WebBackendServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_backend_service_iam.html.markdown",
+				},
+			},
+			"google_iap_web_backend_service_iam_member": {
+				Tok: gcpResource(gcpIAP, "WebBackendServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_backend_service_iam.html.markdown",
+				},
+			},
+			"google_iap_web_backend_service_iam_policy": {
+				Tok: gcpResource(gcpIAP, "WebBackendServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_backend_service_iam.html.markdown",
+				},
+			},
+			"google_iap_web_iam_binding": {
+				Tok: gcpResource(gcpIAP, "WebIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_iam.html.markdown",
+				},
+			},
+			"google_iap_web_iam_member": {
+				Tok: gcpResource(gcpIAP, "WebIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_iam.html.markdown",
+				},
+			},
+			"google_iap_web_iam_policy": {
+				Tok: gcpResource(gcpIAP, "WebIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_app_engine_iam_binding": {
+				Tok: gcpResource(gcpIAP, "WebTypeAppEngingIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_app_engine_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_app_engine_iam_member": {
+				Tok: gcpResource(gcpIAP, "WebTypeAppEngingIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_app_engine_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_app_engine_iam_policy": {
+				Tok: gcpResource(gcpIAP, "WebTypeAppEngingIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_app_engine_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_compute_iam_binding": {
+				Tok: gcpResource(gcpIAP, "WebTypeComputeIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_compute_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_compute_iam_member": {
+				Tok: gcpResource(gcpIAP, "WebTypeComputeIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_compute_iam.html.markdown",
+				},
+			},
+			"google_iap_web_type_compute_iam_policy": {
+				Tok: gcpResource(gcpIAP, "WebTypeComputeIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_type_compute_iam.html.markdown",
+				},
+			},
 
 			// Healthcare resources
 			"google_healthcare_dataset": {
@@ -1041,6 +1155,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_backend_service": {
 				Tok: gcpDataSource(gcpCompute, "getBackendService"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"consistent_hash": {
+						Name: "consistentHash",
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"http_cookie": {
+									Name: "httpCookies",
+								},
+							},
+						},
+					},
+				},
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_compute_backend_service.html.markdown",
 				},

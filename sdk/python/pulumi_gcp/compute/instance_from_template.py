@@ -94,6 +94,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             * `type` (`pulumi.Input[str]`)
         
           * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
         
         The **guest_accelerators** object supports the following:
@@ -243,6 +244,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             * `type` (`pulumi.Input[str]`)
         
           * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
         
         The **guest_accelerators** object supports the following:

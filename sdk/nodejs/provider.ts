@@ -81,6 +81,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             inputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
             inputs["resourceManagerV2beta1CustomEndpoint"] = args ? args.resourceManagerV2beta1CustomEndpoint : undefined;
+            inputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             inputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             inputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
@@ -155,6 +156,7 @@ export interface ProviderArgs {
     readonly region?: pulumi.Input<string>;
     readonly resourceManagerCustomEndpoint?: pulumi.Input<string>;
     readonly resourceManagerV2beta1CustomEndpoint?: pulumi.Input<string>;
+    readonly runtimeConfigCustomEndpoint?: pulumi.Input<string>;
     readonly runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly securityCenterCustomEndpoint?: pulumi.Input<string>;

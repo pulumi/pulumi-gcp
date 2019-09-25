@@ -35,6 +35,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["namePrefix"] = nil
 		inputs["nodeConfig"] = nil
 		inputs["nodeCount"] = nil
+		inputs["nodeLocations"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["version"] = nil
@@ -50,6 +51,7 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["namePrefix"] = args.NamePrefix
 		inputs["nodeConfig"] = args.NodeConfig
 		inputs["nodeCount"] = args.NodeCount
+		inputs["nodeLocations"] = args.NodeLocations
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["version"] = args.Version
@@ -80,6 +82,7 @@ func GetNodePool(ctx *pulumi.Context,
 		inputs["namePrefix"] = state.NamePrefix
 		inputs["nodeConfig"] = state.NodeConfig
 		inputs["nodeCount"] = state.NodeCount
+		inputs["nodeLocations"] = state.NodeLocations
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["version"] = state.Version
@@ -108,13 +111,14 @@ func (r *NodePool) Autoscaling() *pulumi.Output {
 	return r.s.State["autoscaling"]
 }
 
-// The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
 func (r *NodePool) Cluster() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cluster"])
 }
 
-// The initial node count for the pool. Changing this will force
-// recreation of the resource.
+// The initial number of nodes for the pool. In
+// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+// this will force recreation of the resource.
 func (r *NodePool) InitialNodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
 }
@@ -123,8 +127,7 @@ func (r *NodePool) InstanceGroupUrls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
 }
 
-// The location (region or zone) in which the cluster
-// resides.
+// The location (region or zone) of the cluster.
 func (r *NodePool) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
@@ -166,6 +169,15 @@ func (r *NodePool) NodeCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["nodeCount"])
 }
 
+// )
+// The list of zones in which the node pool's nodes should be located. Nodes must
+// be in the region of their regional cluster or in the same region as their
+// cluster's zone for zonal clusters. If unspecified, the cluster-level
+// `nodeLocations` will be used.
+func (r *NodePool) NodeLocations() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["nodeLocations"])
+}
+
 // The ID of the project in which to create the node pool. If blank,
 // the provider-configured project will be used.
 func (r *NodePool) Project() *pulumi.StringOutput {
@@ -199,14 +211,14 @@ type NodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling interface{}
-	// The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
 	Cluster interface{}
-	// The initial node count for the pool. Changing this will force
-	// recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource.
 	InitialNodeCount interface{}
 	InstanceGroupUrls interface{}
-	// The location (region or zone) in which the cluster
-	// resides.
+	// The location (region or zone) of the cluster.
 	Location interface{}
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -227,6 +239,12 @@ type NodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount interface{}
+	// )
+	// The list of zones in which the node pool's nodes should be located. Nodes must
+	// be in the region of their regional cluster or in the same region as their
+	// cluster's zone for zonal clusters. If unspecified, the cluster-level
+	// `nodeLocations` will be used.
+	NodeLocations interface{}
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}
@@ -250,13 +268,13 @@ type NodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling interface{}
-	// The cluster to create the node pool for.  Cluster must be present in `zone` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
 	Cluster interface{}
-	// The initial node count for the pool. Changing this will force
-	// recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource.
 	InitialNodeCount interface{}
-	// The location (region or zone) in which the cluster
-	// resides.
+	// The location (region or zone) of the cluster.
 	Location interface{}
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -277,6 +295,12 @@ type NodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount interface{}
+	// )
+	// The list of zones in which the node pool's nodes should be located. Nodes must
+	// be in the region of their regional cluster or in the same region as their
+	// cluster's zone for zonal clusters. If unspecified, the cluster-level
+	// `nodeLocations` will be used.
+	NodeLocations interface{}
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}

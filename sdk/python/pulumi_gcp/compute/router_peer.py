@@ -10,6 +10,9 @@ from typing import Union
 from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
+    advertise_mode: pulumi.Output[str]
+    advertised_groups: pulumi.Output[list]
+    advertised_ip_ranges: pulumi.Output[list]
     advertised_route_priority: pulumi.Output[float]
     """
     The priority of routes advertised to this BGP peer.
@@ -55,7 +58,7 @@ class RouterPeer(pulumi.CustomResource):
     The name of the router in which this BGP peer will be configured.
     Changing this forces a new peer to be created.
     """
-    def __init__(__self__, resource_name, opts=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Cloud Router BGP peer. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
@@ -81,6 +84,11 @@ class RouterPeer(pulumi.CustomResource):
                created.
         :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
                Changing this forces a new peer to be created.
+        
+        The **advertised_ip_ranges** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
         """
@@ -101,6 +109,9 @@ class RouterPeer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['advertise_mode'] = advertise_mode
+            __props__['advertised_groups'] = advertised_groups
+            __props__['advertised_ip_ranges'] = advertised_ip_ranges
             __props__['advertised_route_priority'] = advertised_route_priority
             if interface is None:
                 raise TypeError("Missing required property 'interface'")
@@ -123,7 +134,7 @@ class RouterPeer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, advertised_route_priority=None, interface=None, ip_address=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
+    def get(resource_name, id, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, ip_address=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
         """
         Get an existing RouterPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -149,12 +160,20 @@ class RouterPeer(pulumi.CustomResource):
                created.
         :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
                Changing this forces a new peer to be created.
+        
+        The **advertised_ip_ranges** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["advertise_mode"] = advertise_mode
+        __props__["advertised_groups"] = advertised_groups
+        __props__["advertised_ip_ranges"] = advertised_ip_ranges
         __props__["advertised_route_priority"] = advertised_route_priority
         __props__["interface"] = interface
         __props__["ip_address"] = ip_address

@@ -25,13 +25,15 @@ class Subnetwork(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    purpose: pulumi.Output[str]
     region: pulumi.Output[str]
+    role: pulumi.Output[str]
     secondary_ip_ranges: pulumi.Output[list]
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Subnetwork resource with the given unique name, props, and options.
         
@@ -82,7 +84,9 @@ class Subnetwork(pulumi.CustomResource):
             __props__['network'] = network
             __props__['private_ip_google_access'] = private_ip_google_access
             __props__['project'] = project
+            __props__['purpose'] = purpose
             __props__['region'] = region
+            __props__['role'] = role
             __props__['secondary_ip_ranges'] = secondary_ip_ranges
             __props__['creation_timestamp'] = None
             __props__['fingerprint'] = None
@@ -95,7 +99,7 @@ class Subnetwork(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, enable_flow_logs=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, enable_flow_logs=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None):
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,7 +138,9 @@ class Subnetwork(pulumi.CustomResource):
         __props__["network"] = network
         __props__["private_ip_google_access"] = private_ip_google_access
         __props__["project"] = project
+        __props__["purpose"] = purpose
         __props__["region"] = region
+        __props__["role"] = role
         __props__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__["self_link"] = self_link
         return Subnetwork(resource_name, opts=opts, __props__=__props__)

@@ -41,6 +41,7 @@ export class Image extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly diskSizeGb!: pulumi.Output<number>;
     public readonly family!: pulumi.Output<string | undefined>;
+    public readonly guestOsFeatures!: pulumi.Output<outputs.compute.ImageGuestOsFeature[]>;
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly licenses!: pulumi.Output<string[]>;
@@ -74,6 +75,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
             inputs["family"] = state ? state.family : undefined;
+            inputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["licenses"] = state ? state.licenses : undefined;
@@ -87,6 +89,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["family"] = args ? args.family : undefined;
+            inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -118,6 +121,7 @@ export interface ImageState {
     readonly description?: pulumi.Input<string>;
     readonly diskSizeGb?: pulumi.Input<number>;
     readonly family?: pulumi.Input<string>;
+    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     readonly labelFingerprint?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
@@ -142,6 +146,7 @@ export interface ImageArgs {
     readonly description?: pulumi.Input<string>;
     readonly diskSizeGb?: pulumi.Input<number>;
     readonly family?: pulumi.Input<string>;
+    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly name?: pulumi.Input<string>;

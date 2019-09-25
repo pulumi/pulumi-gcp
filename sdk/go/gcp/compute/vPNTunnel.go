@@ -62,6 +62,7 @@ func NewVPNTunnel(ctx *pulumi.Context,
 	inputs["labelFingerprint"] = nil
 	inputs["selfLink"] = nil
 	inputs["sharedSecretHash"] = nil
+	inputs["tunnelId"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/vPNTunnel:VPNTunnel", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -95,6 +96,7 @@ func GetVPNTunnel(ctx *pulumi.Context,
 		inputs["sharedSecret"] = state.SharedSecret
 		inputs["sharedSecretHash"] = state.SharedSecretHash
 		inputs["targetVpnGateway"] = state.TargetVpnGateway
+		inputs["tunnelId"] = state.TunnelId
 		inputs["vpnGateway"] = state.VpnGateway
 		inputs["vpnGatewayInterface"] = state.VpnGatewayInterface
 	}
@@ -198,6 +200,10 @@ func (r *VPNTunnel) TargetVpnGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["targetVpnGateway"])
 }
 
+func (r *VPNTunnel) TunnelId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["tunnelId"])
+}
+
 func (r *VPNTunnel) VpnGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vpnGateway"])
 }
@@ -231,6 +237,7 @@ type VPNTunnelState struct {
 	SharedSecret interface{}
 	SharedSecretHash interface{}
 	TargetVpnGateway interface{}
+	TunnelId interface{}
 	VpnGateway interface{}
 	VpnGatewayInterface interface{}
 }
