@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to support go1.13
-* Upgrade to v2.16.0 of the Google Beta Terraform Provider.
+_(none)_
 
 ---
+
+## 1.2.0 (2019-09-25)
+* Upgrade to support go1.13
+* Upgrade to v2.16.0 of the Google Beta Terraform Provider.
 
 ## 1.1.0 (2019-09-13)
 * Upgrade to pulumi-terraform a3ddba3fb5
