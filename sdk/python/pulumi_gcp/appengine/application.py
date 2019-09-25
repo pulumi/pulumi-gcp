@@ -10,6 +10,10 @@ from typing import Union
 from .. import utilities, tables
 
 class Application(pulumi.CustomResource):
+    app_id: pulumi.Output[str]
+    """
+    Identifier of the app, usually `{PROJECT_ID}`
+    """
     auth_domain: pulumi.Output[str]
     """
     The domain to authenticate users with when using App Engine's User API.
@@ -115,6 +119,7 @@ class Application(pulumi.CustomResource):
             __props__['location_id'] = location_id
             __props__['project'] = project
             __props__['serving_status'] = serving_status
+            __props__['app_id'] = None
             __props__['code_bucket'] = None
             __props__['default_bucket'] = None
             __props__['default_hostname'] = None
@@ -128,7 +133,7 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auth_domain=None, code_bucket=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
+    def get(resource_name, id, opts=None, app_id=None, auth_domain=None, code_bucket=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -136,6 +141,7 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] app_id: Identifier of the app, usually `{PROJECT_ID}`
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] code_bucket: The GCS bucket code is being stored in for this app.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
@@ -167,6 +173,7 @@ class Application(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["app_id"] = app_id
         __props__["auth_domain"] = auth_domain
         __props__["code_bucket"] = code_bucket
         __props__["default_bucket"] = default_bucket

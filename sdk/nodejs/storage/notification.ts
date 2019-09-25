@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *         "OBJECT_METADATA_UPDATE",
  *     ],
  *     payloadFormat: "JSON_API_V1",
- *     topic: topic.id,
+ *     topic: topic.name,
  * }, {dependsOn: [binding]});
  * ```
  *

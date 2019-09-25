@@ -24,6 +24,7 @@ func NewAddress(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["networkTier"] = nil
 		inputs["project"] = nil
+		inputs["purpose"] = nil
 		inputs["region"] = nil
 		inputs["subnetwork"] = nil
 	} else {
@@ -34,6 +35,7 @@ func NewAddress(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["networkTier"] = args.NetworkTier
 		inputs["project"] = args.Project
+		inputs["purpose"] = args.Purpose
 		inputs["region"] = args.Region
 		inputs["subnetwork"] = args.Subnetwork
 	}
@@ -63,6 +65,7 @@ func GetAddress(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["networkTier"] = state.NetworkTier
 		inputs["project"] = state.Project
+		inputs["purpose"] = state.Purpose
 		inputs["region"] = state.Region
 		inputs["selfLink"] = state.SelfLink
 		inputs["subnetwork"] = state.Subnetwork
@@ -124,6 +127,10 @@ func (r *Address) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Address) Purpose() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["purpose"])
+}
+
 func (r *Address) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -155,6 +162,7 @@ type AddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -174,6 +182,7 @@ type AddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 	Region interface{}
 	Subnetwork interface{}
 }

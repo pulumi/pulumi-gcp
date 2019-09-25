@@ -14,6 +14,7 @@ class HealthCheck(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     healthy_threshold: pulumi.Output[float]
+    http2_health_check: pulumi.Output[dict]
     http_health_check: pulumi.Output[dict]
     https_health_check: pulumi.Output[dict]
     name: pulumi.Output[str]
@@ -31,7 +32,7 @@ class HealthCheck(pulumi.CustomResource):
     timeout_sec: pulumi.Output[float]
     type: pulumi.Output[str]
     unhealthy_threshold: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a HealthCheck resource with the given unique name, props, and options.
         
@@ -39,6 +40,16 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **http2_health_check** object supports the following:
+        
+          * `host` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `port_name` (`pulumi.Input[str]`)
+          * `portSpecification` (`pulumi.Input[str]`)
+          * `proxy_header` (`pulumi.Input[str]`)
+          * `request_path` (`pulumi.Input[str]`)
+          * `response` (`pulumi.Input[str]`)
         
         The **http_health_check** object supports the following:
         
@@ -100,6 +111,7 @@ class HealthCheck(pulumi.CustomResource):
             __props__['check_interval_sec'] = check_interval_sec
             __props__['description'] = description
             __props__['healthy_threshold'] = healthy_threshold
+            __props__['http2_health_check'] = http2_health_check
             __props__['http_health_check'] = http_health_check
             __props__['https_health_check'] = https_health_check
             __props__['name'] = name
@@ -118,7 +130,7 @@ class HealthCheck(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, http_health_check=None, https_health_check=None, name=None, project=None, self_link=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
+    def get(resource_name, id, opts=None, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, name=None, project=None, self_link=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
         """
         Get an existing HealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,6 +141,16 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **http2_health_check** object supports the following:
+        
+          * `host` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `port_name` (`pulumi.Input[str]`)
+          * `portSpecification` (`pulumi.Input[str]`)
+          * `proxy_header` (`pulumi.Input[str]`)
+          * `request_path` (`pulumi.Input[str]`)
+          * `response` (`pulumi.Input[str]`)
         
         The **http_health_check** object supports the following:
         
@@ -177,6 +199,7 @@ class HealthCheck(pulumi.CustomResource):
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["healthy_threshold"] = healthy_threshold
+        __props__["http2_health_check"] = http2_health_check
         __props__["http_health_check"] = http_health_check
         __props__["https_health_check"] = https_health_check
         __props__["name"] = name

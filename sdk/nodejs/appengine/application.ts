@@ -60,6 +60,10 @@ export class Application extends pulumi.CustomResource {
     }
 
     /**
+     * Identifier of the app, usually `{PROJECT_ID}`
+     */
+    public /*out*/ readonly appId!: pulumi.Output<string>;
+    /**
      * The domain to authenticate users with when using App Engine's User API.
      */
     public readonly authDomain!: pulumi.Output<string>;
@@ -119,6 +123,7 @@ export class Application extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ApplicationState | undefined;
+            inputs["appId"] = state ? state.appId : undefined;
             inputs["authDomain"] = state ? state.authDomain : undefined;
             inputs["codeBucket"] = state ? state.codeBucket : undefined;
             inputs["defaultBucket"] = state ? state.defaultBucket : undefined;
@@ -140,6 +145,7 @@ export class Application extends pulumi.CustomResource {
             inputs["locationId"] = args ? args.locationId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
+            inputs["appId"] = undefined /*out*/;
             inputs["codeBucket"] = undefined /*out*/;
             inputs["defaultBucket"] = undefined /*out*/;
             inputs["defaultHostname"] = undefined /*out*/;
@@ -162,6 +168,10 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
+    /**
+     * Identifier of the app, usually `{PROJECT_ID}`
+     */
+    readonly appId?: pulumi.Input<string>;
     /**
      * The domain to authenticate users with when using App Engine's User API.
      */

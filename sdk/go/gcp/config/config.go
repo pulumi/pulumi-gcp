@@ -197,6 +197,10 @@ func GetResourceManagerV2beta1CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:resourceManagerV2beta1CustomEndpoint")
 }
 
+func GetRuntimeConfigCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:runtimeConfigCustomEndpoint")
+}
+
 func GetRuntimeconfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:runtimeconfigCustomEndpoint")
 }

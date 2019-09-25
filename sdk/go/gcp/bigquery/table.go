@@ -115,6 +115,9 @@ func (r *Table) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Specifies column names to use for data clustering.
+// Up to four top-level columns are allowed, and should be specified in
+// descending priority order.
 func (r *Table) Clusterings() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["clusterings"])
 }
@@ -236,6 +239,9 @@ func (r *Table) View() *pulumi.Output {
 
 // Input properties used for looking up and filtering Table resources.
 type TableState struct {
+	// Specifies column names to use for data clustering.
+	// Up to four top-level columns are allowed, and should be specified in
+	// descending priority order.
 	Clusterings interface{}
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime interface{}
@@ -296,6 +302,9 @@ type TableState struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// Specifies column names to use for data clustering.
+	// Up to four top-level columns are allowed, and should be specified in
+	// descending priority order.
 	Clusterings interface{}
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.

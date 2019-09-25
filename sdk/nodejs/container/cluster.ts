@@ -212,9 +212,10 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `nodePool` is not set. If
-     * you're using `gcp.container.NodePool` objects with no default node pool,
-     * you'll need to set this to a value of at least `1`, alongside setting
+     * cluster's default node pool. In regional or multi-zonal clusters, this is the
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+     * `gcp.container.NodePool` objects with no default node pool, you'll need to
+     * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
      */
     public readonly initialNodeCount!: pulumi.Output<number | undefined>;
@@ -320,11 +321,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly nodeConfig!: pulumi.Output<outputs.container.ClusterNodeConfig>;
     /**
      * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will be created in only these zones.
+     * are located. Nodes must be in the region of their regional cluster or in the
+     * same region as their cluster's zone for zonal clusters. If this is specified for
+     * a zonal cluster, omit the cluster's zone.
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
     /**
@@ -624,9 +623,10 @@ export interface ClusterState {
     readonly endpoint?: pulumi.Input<string>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `nodePool` is not set. If
-     * you're using `gcp.container.NodePool` objects with no default node pool,
-     * you'll need to set this to a value of at least `1`, alongside setting
+     * cluster's default node pool. In regional or multi-zonal clusters, this is the
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+     * `gcp.container.NodePool` objects with no default node pool, you'll need to
+     * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
@@ -732,11 +732,9 @@ export interface ClusterState {
     readonly nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
      * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will be created in only these zones.
+     * are located. Nodes must be in the region of their regional cluster or in the
+     * same region as their cluster's zone for zonal clusters. If this is specified for
+     * a zonal cluster, omit the cluster's zone.
      */
     readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -917,9 +915,10 @@ export interface ClusterArgs {
     readonly enableTpu?: pulumi.Input<boolean>;
     /**
      * The number of nodes to create in this
-     * cluster's default node pool. Must be set if `nodePool` is not set. If
-     * you're using `gcp.container.NodePool` objects with no default node pool,
-     * you'll need to set this to a value of at least `1`, alongside setting
+     * cluster's default node pool. In regional or multi-zonal clusters, this is the
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+     * `gcp.container.NodePool` objects with no default node pool, you'll need to
+     * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
@@ -1014,11 +1013,9 @@ export interface ClusterArgs {
     readonly nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
      * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will be created in only these zones.
+     * are located. Nodes must be in the region of their regional cluster or in the
+     * same region as their cluster's zone for zonal clusters. If this is specified for
+     * a zonal cluster, omit the cluster's zone.
      */
     readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**

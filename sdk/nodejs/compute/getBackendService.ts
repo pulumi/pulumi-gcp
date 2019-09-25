@@ -53,10 +53,12 @@ export interface GetBackendServiceResult {
      */
     readonly backends: outputs.compute.GetBackendServiceBackend[];
     readonly cdnPolicies: outputs.compute.GetBackendServiceCdnPolicy[];
+    readonly circuitBreakers: outputs.compute.GetBackendServiceCircuitBreaker[];
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */
     readonly connectionDrainingTimeoutSec: number;
+    readonly consistentHash: outputs.compute.GetBackendServiceConsistentHash[];
     readonly creationTimestamp: string;
     readonly customRequestHeaders: string[];
     /**
@@ -77,7 +79,10 @@ export interface GetBackendServiceResult {
     readonly healthChecks: string[];
     readonly iaps: outputs.compute.GetBackendServiceIap[];
     readonly loadBalancingScheme: string;
+    readonly localityLbPolicy: string;
+    readonly logConfigs: outputs.compute.GetBackendServiceLogConfig[];
     readonly name: string;
+    readonly outlierDetections: outputs.compute.GetBackendServiceOutlierDetection[];
     /**
      * The name of a service that has been added to an instance group in this backend.
      */

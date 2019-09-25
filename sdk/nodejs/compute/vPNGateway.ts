@@ -38,6 +38,7 @@ export class VPNGateway extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly gatewayId!: pulumi.Output<number>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<string>;
     /**
@@ -65,6 +66,7 @@ export class VPNGateway extends pulumi.CustomResource {
             const state = argsOrState as VPNGatewayState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["gatewayId"] = state ? state.gatewayId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -81,6 +83,7 @@ export class VPNGateway extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["gatewayId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts) {
@@ -100,6 +103,7 @@ export class VPNGateway extends pulumi.CustomResource {
 export interface VPNGatewayState {
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly gatewayId?: pulumi.Input<number>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     /**

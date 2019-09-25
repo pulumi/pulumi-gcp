@@ -11,6 +11,7 @@ from .backend_bucket_signed_url_key import *
 from .backend_service import *
 from .backend_service_signed_url_key import *
 from .disk import *
+from .disk_resource_policy_attachment import *
 from .external_vpn_gateway import *
 from .firewall import *
 from .forwarding_rule import *
@@ -43,7 +44,10 @@ from .project_metadata_item import *
 from .region_autoscaler import *
 from .region_backend_service import *
 from .region_disk import *
+from .region_health_check import *
 from .region_instance_group_manager import *
+from .region_url_map import *
+from .reservation import *
 from .resource_policy import *
 from .route import *
 from .router import *

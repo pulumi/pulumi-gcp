@@ -57,6 +57,9 @@ export class RouterPeer extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouterPeer.__pulumiType;
     }
 
+    public readonly advertiseMode!: pulumi.Output<string | undefined>;
+    public readonly advertisedGroups!: pulumi.Output<string[] | undefined>;
+    public readonly advertisedIpRanges!: pulumi.Output<outputs.compute.RouterPeerAdvertisedIpRange[] | undefined>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Changing this forces a new peer to be created.
@@ -115,6 +118,9 @@ export class RouterPeer extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as RouterPeerState | undefined;
+            inputs["advertiseMode"] = state ? state.advertiseMode : undefined;
+            inputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
+            inputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
             inputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             inputs["interface"] = state ? state.interface : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -135,6 +141,9 @@ export class RouterPeer extends pulumi.CustomResource {
             if (!args || args.router === undefined) {
                 throw new Error("Missing required property 'router'");
             }
+            inputs["advertiseMode"] = args ? args.advertiseMode : undefined;
+            inputs["advertisedGroups"] = args ? args.advertisedGroups : undefined;
+            inputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
             inputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
             inputs["interface"] = args ? args.interface : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -160,6 +169,9 @@ export class RouterPeer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterPeer resources.
  */
 export interface RouterPeerState {
+    readonly advertiseMode?: pulumi.Input<string>;
+    readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Changing this forces a new peer to be created.
@@ -211,6 +223,9 @@ export interface RouterPeerState {
  * The set of arguments for constructing a RouterPeer resource.
  */
 export interface RouterPeerArgs {
+    readonly advertiseMode?: pulumi.Input<string>;
+    readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Changing this forces a new peer to be created.

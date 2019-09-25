@@ -26,7 +26,9 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		AffinityCookieTtlSec: outputs["affinityCookieTtlSec"],
 		Backends: outputs["backends"],
 		CdnPolicies: outputs["cdnPolicies"],
+		CircuitBreakers: outputs["circuitBreakers"],
 		ConnectionDrainingTimeoutSec: outputs["connectionDrainingTimeoutSec"],
+		ConsistentHash: outputs["consistentHash"],
 		CreationTimestamp: outputs["creationTimestamp"],
 		CustomRequestHeaders: outputs["customRequestHeaders"],
 		Description: outputs["description"],
@@ -35,7 +37,10 @@ func LookupBackendService(ctx *pulumi.Context, args *GetBackendServiceArgs) (*Ge
 		HealthChecks: outputs["healthChecks"],
 		Iaps: outputs["iaps"],
 		LoadBalancingScheme: outputs["loadBalancingScheme"],
+		LocalityLbPolicy: outputs["localityLbPolicy"],
+		LogConfigs: outputs["logConfigs"],
 		Name: outputs["name"],
+		OutlierDetections: outputs["outlierDetections"],
 		PortName: outputs["portName"],
 		Project: outputs["project"],
 		Protocol: outputs["protocol"],
@@ -61,8 +66,10 @@ type GetBackendServiceResult struct {
 	// The set of backends that serve this Backend Service.
 	Backends interface{}
 	CdnPolicies interface{}
+	CircuitBreakers interface{}
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
 	ConnectionDrainingTimeoutSec interface{}
+	ConsistentHash interface{}
 	CreationTimestamp interface{}
 	CustomRequestHeaders interface{}
 	// Textual description for the Backend Service.
@@ -75,7 +82,10 @@ type GetBackendServiceResult struct {
 	HealthChecks interface{}
 	Iaps interface{}
 	LoadBalancingScheme interface{}
+	LocalityLbPolicy interface{}
+	LogConfigs interface{}
 	Name interface{}
+	OutlierDetections interface{}
 	// The name of a service that has been added to an instance group in this backend.
 	PortName interface{}
 	Project interface{}

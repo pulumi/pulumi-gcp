@@ -37,7 +37,7 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * (Computed) The etag of the topic's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -46,12 +46,12 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
      */
     public readonly policyData!: pulumi.Output<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The topic name or id to bind to attach IAM policy to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -100,7 +100,7 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
  */
 export interface TopicIAMPolicyState {
     /**
-     * (Computed) The etag of the topic's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     readonly etag?: pulumi.Input<string>;
     /**
@@ -109,12 +109,12 @@ export interface TopicIAMPolicyState {
      */
     readonly policyData?: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The topic name or id to bind to attach IAM policy to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly topic?: pulumi.Input<string>;
 }
@@ -129,12 +129,12 @@ export interface TopicIAMPolicyArgs {
      */
     readonly policyData: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The topic name or id to bind to attach IAM policy to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly topic: pulumi.Input<string>;
 }

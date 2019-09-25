@@ -27,7 +27,7 @@ class Metric(pulumi.CustomResource):
         
         The **bucket_options** object supports the following:
         
-          * `explicit` (`pulumi.Input[dict]`)
+          * `explicitBuckets` (`pulumi.Input[dict]`)
         
             * `bounds` (`pulumi.Input[list]`)
         
@@ -52,6 +52,7 @@ class Metric(pulumi.CustomResource):
             * `valueType` (`pulumi.Input[str]`)
         
           * `metricKind` (`pulumi.Input[str]`)
+          * `unit` (`pulumi.Input[str]`)
           * `valueType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
@@ -103,7 +104,7 @@ class Metric(pulumi.CustomResource):
         
         The **bucket_options** object supports the following:
         
-          * `explicit` (`pulumi.Input[dict]`)
+          * `explicitBuckets` (`pulumi.Input[dict]`)
         
             * `bounds` (`pulumi.Input[list]`)
         
@@ -128,6 +129,7 @@ class Metric(pulumi.CustomResource):
             * `valueType` (`pulumi.Input[str]`)
         
           * `metricKind` (`pulumi.Input[str]`)
+          * `unit` (`pulumi.Input[str]`)
           * `valueType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.

@@ -74,7 +74,7 @@ func (r *TopicIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// (Computed) The etag of the topic's IAM policy.
+// (Computed) The etag of the IAM policy.
 func (r *TopicIAMBinding) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -83,8 +83,8 @@ func (r *TopicIAMBinding) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
 
-// The project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (r *TopicIAMBinding) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -96,37 +96,37 @@ func (r *TopicIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
-// The topic name or id to bind to attach IAM policy to.
+// Used to find the parent resource to bind the IAM policy to
 func (r *TopicIAMBinding) Topic() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Input properties used for looking up and filtering TopicIAMBinding resources.
 type TopicIAMBindingState struct {
-	// (Computed) The etag of the topic's IAM policy.
+	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The topic name or id to bind to attach IAM policy to.
+	// Used to find the parent resource to bind the IAM policy to
 	Topic interface{}
 }
 
 // The set of arguments for constructing a TopicIAMBinding resource.
 type TopicIAMBindingArgs struct {
 	Members interface{}
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The topic name or id to bind to attach IAM policy to.
+	// Used to find the parent resource to bind the IAM policy to
 	Topic interface{}
 }

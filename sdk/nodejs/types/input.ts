@@ -57,6 +57,18 @@ export namespace appengine {
         service?: pulumi.Input<string>;
     }
 
+    export interface DomainMappingResourceRecord {
+        name?: pulumi.Input<string>;
+        rrdata?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface DomainMappingSslSettings {
+        certificateId?: pulumi.Input<string>;
+        pendingManagedCertificateId?: pulumi.Input<string>;
+        sslManagementType?: pulumi.Input<string>;
+    }
+
     export interface StandardAppVersionDeployment {
         files?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionDeploymentFile>[]>;
         zip?: pulumi.Input<inputs.appengine.StandardAppVersionDeploymentZip>;
@@ -539,10 +551,70 @@ export namespace compute {
         queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface BackendServiceCircuitBreakers {
+        connectTimeout?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakersConnectTimeout>;
+        maxConnections?: pulumi.Input<number>;
+        maxPendingRequests?: pulumi.Input<number>;
+        maxRequests?: pulumi.Input<number>;
+        maxRequestsPerConnection?: pulumi.Input<number>;
+        maxRetries?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceCircuitBreakersConnectTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceConsistentHash {
+        httpCookie?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookie>;
+        httpHeaderName?: pulumi.Input<string>;
+        minimumRingSize?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceConsistentHashHttpCookie {
+        name?: pulumi.Input<string>;
+        path?: pulumi.Input<string>;
+        ttl?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookieTtl>;
+    }
+
+    export interface BackendServiceConsistentHashHttpCookieTtl {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
+    }
+
     export interface BackendServiceIap {
         oauth2ClientId: pulumi.Input<string>;
         oauth2ClientSecret: pulumi.Input<string>;
         oauth2ClientSecretSha256?: pulumi.Input<string>;
+    }
+
+    export interface BackendServiceLogConfig {
+        enable?: pulumi.Input<boolean>;
+        sampleRate?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceOutlierDetection {
+        baseEjectionTime?: pulumi.Input<inputs.compute.BackendServiceOutlierDetectionBaseEjectionTime>;
+        consecutiveErrors?: pulumi.Input<number>;
+        consecutiveGatewayFailure?: pulumi.Input<number>;
+        enforcingConsecutiveErrors?: pulumi.Input<number>;
+        enforcingConsecutiveGatewayFailure?: pulumi.Input<number>;
+        enforcingSuccessRate?: pulumi.Input<number>;
+        interval?: pulumi.Input<inputs.compute.BackendServiceOutlierDetectionInterval>;
+        maxEjectionPercent?: pulumi.Input<number>;
+        successRateMinimumHosts?: pulumi.Input<number>;
+        successRateRequestVolume?: pulumi.Input<number>;
+        successRateStdevFactor?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceOutlierDetectionBaseEjectionTime {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceOutlierDetectionInterval {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
     }
 
     export interface DiskDiskEncryptionKey {
@@ -578,9 +650,29 @@ export namespace compute {
         protocol: pulumi.Input<string>;
     }
 
+    export interface GlobalForwardingRuleMetadataFilter {
+        filterLabels: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilterFilterLabel>[]>;
+        filterMatchCriteria: pulumi.Input<string>;
+    }
+
+    export interface GlobalForwardingRuleMetadataFilterFilterLabel {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
     export interface HaVpnGatewayVpnInterface {
         id?: pulumi.Input<number>;
         ipAddress?: pulumi.Input<string>;
+    }
+
+    export interface HealthCheckHttp2HealthCheck {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        requestPath?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
     }
 
     export interface HealthCheckHttpHealthCheck {
@@ -621,6 +713,10 @@ export namespace compute {
         response?: pulumi.Input<string>;
     }
 
+    export interface ImageGuestOsFeature {
+        type?: pulumi.Input<string>;
+    }
+
     export interface ImageRawDisk {
         containerType?: pulumi.Input<string>;
         sha1?: pulumi.Input<string>;
@@ -643,6 +739,7 @@ export namespace compute {
         diskEncryptionKeySha256?: pulumi.Input<string>;
         initializeParams?: pulumi.Input<inputs.compute.InstanceBootDiskInitializeParams>;
         kmsKeySelfLink?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
         source?: pulumi.Input<string>;
     }
 
@@ -672,6 +769,7 @@ export namespace compute {
         diskEncryptionKeySha256?: pulumi.Input<string>;
         initializeParams?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDiskInitializeParams>;
         kmsKeySelfLink?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
         source?: pulumi.Input<string>;
     }
 
@@ -1001,6 +1099,54 @@ export namespace compute {
         sha256?: pulumi.Input<string>;
     }
 
+    export interface RegionHealthCheckHttp2HealthCheck {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        requestPath?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckHttpHealthCheck {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        requestPath?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckHttpsHealthCheck {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        requestPath?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckSslHealthCheck {
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        request?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckTcpHealthCheck {
+        port?: pulumi.Input<number>;
+        portName?: pulumi.Input<string>;
+        portSpecification?: pulumi.Input<string>;
+        proxyHeader?: pulumi.Input<string>;
+        request?: pulumi.Input<string>;
+        response?: pulumi.Input<string>;
+    }
+
     export interface RegionInstanceGroupManagerAutoHealingPolicies {
         healthCheck: pulumi.Input<string>;
         initialDelaySec: pulumi.Input<number>;
@@ -1053,6 +1199,54 @@ export namespace compute {
     export interface RegionInstanceGroupManagerVersionTargetSize {
         fixed?: pulumi.Input<number>;
         percent?: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapHostRule {
+        description?: pulumi.Input<string>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
+        pathMatcher: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcher {
+        defaultService: pulumi.Input<string>;
+        description?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        pathRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRule>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRule {
+        paths: pulumi.Input<pulumi.Input<string>[]>;
+        service: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapTest {
+        description?: pulumi.Input<string>;
+        host: pulumi.Input<string>;
+        path: pulumi.Input<string>;
+        service: pulumi.Input<string>;
+    }
+
+    export interface ReservationSpecificReservation {
+        count: pulumi.Input<number>;
+        inUseCount?: pulumi.Input<number>;
+        instanceProperties: pulumi.Input<inputs.compute.ReservationSpecificReservationInstanceProperties>;
+    }
+
+    export interface ReservationSpecificReservationInstanceProperties {
+        guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.ReservationSpecificReservationInstancePropertiesGuestAccelerator>[]>;
+        localSsds?: pulumi.Input<pulumi.Input<inputs.compute.ReservationSpecificReservationInstancePropertiesLocalSsd>[]>;
+        machineType: pulumi.Input<string>;
+        minCpuPlatform?: pulumi.Input<string>;
+    }
+
+    export interface ReservationSpecificReservationInstancePropertiesGuestAccelerator {
+        acceleratorCount: pulumi.Input<number>;
+        acceleratorType: pulumi.Input<string>;
+    }
+
+    export interface ReservationSpecificReservationInstancePropertiesLocalSsd {
+        diskSizeGb: pulumi.Input<number>;
+        interface?: pulumi.Input<string>;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicy {
@@ -1115,13 +1309,14 @@ export namespace compute {
     }
 
     export interface RouterNatSubnetwork {
-        /**
-         * A unique name for Cloud NAT, required by GCE. Changing
-         * this forces a new NAT to be created.
-         */
         name: pulumi.Input<string>;
         secondaryIpRangeNames?: pulumi.Input<pulumi.Input<string>[]>;
         sourceIpRangesToNats: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RouterPeerAdvertisedIpRange {
+        description?: pulumi.Input<string>;
+        range?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRule {
@@ -1355,9 +1550,10 @@ export namespace container {
         autoscaling?: pulumi.Input<inputs.container.ClusterNodePoolAutoscaling>;
         /**
          * The number of nodes to create in this
-         * cluster's default node pool. Must be set if `nodePool` is not set. If
-         * you're using `gcp.container.NodePool` objects with no default node pool,
-         * you'll need to set this to a value of at least `1`, alongside setting
+         * cluster's default node pool. In regional or multi-zonal clusters, this is the
+         * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
+         * `gcp.container.NodePool` objects with no default node pool, you'll need to
+         * set this to a value of at least `1`, alongside setting
          * `removeDefaultNodePool` to `true`.
          */
         initialNodeCount?: pulumi.Input<number>;
@@ -1383,6 +1579,13 @@ export namespace container {
          */
         nodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfig>;
         nodeCount?: pulumi.Input<number>;
+        /**
+         * The list of zones in which the cluster's nodes
+         * are located. Nodes must be in the region of their regional cluster or in the
+         * same region as their cluster's zone for zonal clusters. If this is specified for
+         * a zonal cluster, omit the cluster's zone.
+         */
+        nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
         version?: pulumi.Input<string>;
     }
 
@@ -1939,13 +2142,13 @@ export namespace kms {
 
 export namespace logging {
     export interface MetricBucketOptions {
-        explicit?: pulumi.Input<inputs.logging.MetricBucketOptionsExplicit>;
+        explicitBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExplicitBuckets>;
         exponentialBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExponentialBuckets>;
         linearBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsLinearBuckets>;
     }
 
-    export interface MetricBucketOptionsExplicit {
-        bounds?: pulumi.Input<pulumi.Input<string>[]>;
+    export interface MetricBucketOptionsExplicitBuckets {
+        bounds?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface MetricBucketOptionsExponentialBuckets {
@@ -1963,6 +2166,7 @@ export namespace logging {
     export interface MetricMetricDescriptor {
         labels?: pulumi.Input<pulumi.Input<inputs.logging.MetricMetricDescriptorLabel>[]>;
         metricKind: pulumi.Input<string>;
+        unit?: pulumi.Input<string>;
         valueType: pulumi.Input<string>;
     }
 

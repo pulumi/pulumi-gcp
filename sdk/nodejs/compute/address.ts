@@ -50,6 +50,7 @@ export class Address extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    public readonly purpose!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
@@ -79,6 +80,7 @@ export class Address extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networkTier"] = state ? state.networkTier : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["purpose"] = state ? state.purpose : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
@@ -92,6 +94,7 @@ export class Address extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkTier"] = args ? args.networkTier : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -130,6 +133,7 @@ export interface AddressState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly purpose?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -157,6 +161,7 @@ export interface AddressArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    readonly purpose?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     readonly subnetwork?: pulumi.Input<string>;
 }

@@ -28,9 +28,9 @@ import * as utilities from "../utilities";
  *             format: "X509_CERTIFICATE_PEM",
  *         },
  *     }],
- *     eventNotificationConfig: {
- *         pubsub_topic_name: default_telemetry.id,
- *     },
+ *     eventNotificationConfigs: [{
+ *         pubsubTopicName: default_telemetry.id,
+ *     }],
  *     httpConfig: {
  *         http_enabled_state: "HTTP_ENABLED",
  *     },

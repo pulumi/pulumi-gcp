@@ -3,5 +3,8 @@
 
 // Export members:
 export * from "./function";
+export * from "./functionIamBinding";
+export * from "./functionIamMember";
+export * from "./functionIamPolicy";
 export * from "./getFunction";
 export * from "./zMixins";

@@ -35,7 +35,7 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * (Computed) The etag of the topic's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -44,8 +44,8 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
      */
     public readonly policyData!: pulumi.Output<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     public readonly repository!: pulumi.Output<string>;
@@ -95,7 +95,7 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
  */
 export interface RepositoryIamPolicyState {
     /**
-     * (Computed) The etag of the topic's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     readonly etag?: pulumi.Input<string>;
     /**
@@ -104,8 +104,8 @@ export interface RepositoryIamPolicyState {
      */
     readonly policyData?: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     readonly repository?: pulumi.Input<string>;
@@ -121,8 +121,8 @@ export interface RepositoryIamPolicyArgs {
      */
     readonly policyData: pulumi.Input<string>;
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     readonly repository: pulumi.Input<string>;

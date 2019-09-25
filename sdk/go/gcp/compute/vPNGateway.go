@@ -34,6 +34,7 @@ func NewVPNGateway(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 	}
 	inputs["creationTimestamp"] = nil
+	inputs["gatewayId"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/vPNGateway:VPNGateway", name, true, inputs, opts...)
 	if err != nil {
@@ -50,6 +51,7 @@ func GetVPNGateway(ctx *pulumi.Context,
 	if state != nil {
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
+		inputs["gatewayId"] = state.GatewayId
 		inputs["name"] = state.Name
 		inputs["network"] = state.Network
 		inputs["project"] = state.Project
@@ -81,6 +83,10 @@ func (r *VPNGateway) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+func (r *VPNGateway) GatewayId() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["gatewayId"])
+}
+
 func (r *VPNGateway) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -108,6 +114,7 @@ func (r *VPNGateway) SelfLink() *pulumi.StringOutput {
 type VPNGatewayState struct {
 	CreationTimestamp interface{}
 	Description interface{}
+	GatewayId interface{}
 	Name interface{}
 	Network interface{}
 	// The ID of the project in which the resource belongs.

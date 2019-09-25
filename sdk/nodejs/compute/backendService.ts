@@ -39,7 +39,9 @@ export class BackendService extends pulumi.CustomResource {
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
     public readonly backends!: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
+    public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    public readonly consistentHash!: pulumi.Output<outputs.compute.BackendServiceConsistentHash | undefined>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -48,7 +50,10 @@ export class BackendService extends pulumi.CustomResource {
     public readonly healthChecks!: pulumi.Output<string>;
     public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap | undefined>;
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
     public readonly name!: pulumi.Output<string>;
+    public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     public readonly portName!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -79,7 +84,9 @@ export class BackendService extends pulumi.CustomResource {
             inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
+            inputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
+            inputs["consistentHash"] = state ? state.consistentHash : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -88,7 +95,10 @@ export class BackendService extends pulumi.CustomResource {
             inputs["healthChecks"] = state ? state.healthChecks : undefined;
             inputs["iap"] = state ? state.iap : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            inputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
+            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["outlierDetection"] = state ? state.outlierDetection : undefined;
             inputs["portName"] = state ? state.portName : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
@@ -104,14 +114,19 @@ export class BackendService extends pulumi.CustomResource {
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
+            inputs["consistentHash"] = args ? args.consistentHash : undefined;
             inputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["iap"] = args ? args.iap : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
+            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
             inputs["portName"] = args ? args.portName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
@@ -140,7 +155,9 @@ export interface BackendServiceState {
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
+    readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     readonly description?: pulumi.Input<string>;
@@ -149,7 +166,10 @@ export interface BackendServiceState {
     readonly healthChecks?: pulumi.Input<string>;
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    readonly localityLbPolicy?: pulumi.Input<string>;
+    readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     readonly name?: pulumi.Input<string>;
+    readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -173,14 +193,19 @@ export interface BackendServiceArgs {
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
+    readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     readonly description?: pulumi.Input<string>;
     readonly enableCdn?: pulumi.Input<boolean>;
     readonly healthChecks: pulumi.Input<string>;
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    readonly localityLbPolicy?: pulumi.Input<string>;
+    readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     readonly name?: pulumi.Input<string>;
+    readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

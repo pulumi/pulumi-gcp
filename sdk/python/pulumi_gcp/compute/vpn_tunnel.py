@@ -37,6 +37,7 @@ class VPNTunnel(pulumi.CustomResource):
     shared_secret: pulumi.Output[str]
     shared_secret_hash: pulumi.Output[str]
     target_vpn_gateway: pulumi.Output[str]
+    tunnel_id: pulumi.Output[str]
     vpn_gateway: pulumi.Output[str]
     vpn_gateway_interface: pulumi.Output[float]
     def __init__(__self__, resource_name, opts=None, description=None, ike_version=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, shared_secret=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None, __props__=None, __name__=None, __opts__=None):
@@ -91,6 +92,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__['label_fingerprint'] = None
             __props__['self_link'] = None
             __props__['shared_secret_hash'] = None
+            __props__['tunnel_id'] = None
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
             resource_name,
@@ -98,7 +100,7 @@ class VPNTunnel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, detailed_status=None, ike_version=None, label_fingerprint=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, self_link=None, shared_secret=None, shared_secret_hash=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None):
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, detailed_status=None, ike_version=None, label_fingerprint=None, labels=None, local_traffic_selectors=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, project=None, region=None, remote_traffic_selectors=None, router=None, self_link=None, shared_secret=None, shared_secret_hash=None, target_vpn_gateway=None, tunnel_id=None, vpn_gateway=None, vpn_gateway_interface=None):
         """
         Get an existing VPNTunnel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,6 +137,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__["shared_secret"] = shared_secret
         __props__["shared_secret_hash"] = shared_secret_hash
         __props__["target_vpn_gateway"] = target_vpn_gateway
+        __props__["tunnel_id"] = tunnel_id
         __props__["vpn_gateway"] = vpn_gateway
         __props__["vpn_gateway_interface"] = vpn_gateway_interface
         return VPNTunnel(resource_name, opts=opts, __props__=__props__)

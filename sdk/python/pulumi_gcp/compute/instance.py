@@ -43,6 +43,7 @@ class Instance(pulumi.CustomResource):
         * `type` (`str`)
     
       * `kmsKeySelfLink` (`str`)
+      * `mode` (`str`)
       * `source` (`str`)
     """
     can_ip_forward: pulumi.Output[bool]
@@ -286,6 +287,7 @@ class Instance(pulumi.CustomResource):
             * `type` (`pulumi.Input[str]`)
         
           * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
         
         The **guest_accelerators** object supports the following:
@@ -484,6 +486,7 @@ class Instance(pulumi.CustomResource):
             * `type` (`pulumi.Input[str]`)
         
           * `kmsKeySelfLink` (`pulumi.Input[str]`)
+          * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
         
         The **guest_accelerators** object supports the following:

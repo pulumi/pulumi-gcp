@@ -43,6 +43,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    public readonly metadataFilters!: pulumi.Output<outputs.compute.GlobalForwardingRuleMetadataFilter[] | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<string>;
     public readonly portRange!: pulumi.Output<string | undefined>;
@@ -76,6 +77,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            inputs["metadataFilters"] = state ? state.metadataFilters : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["portRange"] = state ? state.portRange : undefined;
@@ -93,6 +95,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            inputs["metadataFilters"] = args ? args.metadataFilters : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["portRange"] = args ? args.portRange : undefined;
@@ -123,6 +126,7 @@ export interface GlobalForwardingRuleState {
     readonly labelFingerprint?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;
@@ -148,6 +152,7 @@ export interface GlobalForwardingRuleArgs {
     readonly ipVersion?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     readonly name?: pulumi.Input<string>;
     readonly network?: pulumi.Input<string>;
     readonly portRange?: pulumi.Input<string>;

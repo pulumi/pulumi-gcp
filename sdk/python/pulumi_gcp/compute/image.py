@@ -15,6 +15,7 @@ class Image(pulumi.CustomResource):
     description: pulumi.Output[str]
     disk_size_gb: pulumi.Output[float]
     family: pulumi.Output[str]
+    guest_os_features: pulumi.Output[list]
     label_fingerprint: pulumi.Output[str]
     labels: pulumi.Output[dict]
     licenses: pulumi.Output[list]
@@ -30,7 +31,7 @@ class Image(pulumi.CustomResource):
     The URI of the created resource.
     """
     source_disk: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Image resource with the given unique name, props, and options.
         
@@ -38,6 +39,10 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **guest_os_features** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
         
         The **raw_disk** object supports the following:
         
@@ -67,6 +72,7 @@ class Image(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disk_size_gb'] = disk_size_gb
             __props__['family'] = family
+            __props__['guest_os_features'] = guest_os_features
             __props__['labels'] = labels
             __props__['licenses'] = licenses
             __props__['name'] = name
@@ -84,7 +90,7 @@ class Image(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, self_link=None, source_disk=None):
+    def get(resource_name, id, opts=None, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, self_link=None, source_disk=None):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -95,6 +101,10 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        
+        The **guest_os_features** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
         
         The **raw_disk** object supports the following:
         
@@ -112,6 +122,7 @@ class Image(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disk_size_gb"] = disk_size_gb
         __props__["family"] = family
+        __props__["guest_os_features"] = guest_os_features
         __props__["label_fingerprint"] = label_fingerprint
         __props__["labels"] = labels
         __props__["licenses"] = licenses

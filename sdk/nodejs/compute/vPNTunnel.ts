@@ -63,6 +63,7 @@ export class VPNTunnel extends pulumi.CustomResource {
     public readonly sharedSecret!: pulumi.Output<string>;
     public /*out*/ readonly sharedSecretHash!: pulumi.Output<string>;
     public readonly targetVpnGateway!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly tunnelId!: pulumi.Output<string>;
     public readonly vpnGateway!: pulumi.Output<string | undefined>;
     public readonly vpnGatewayInterface!: pulumi.Output<number | undefined>;
 
@@ -98,6 +99,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["sharedSecret"] = state ? state.sharedSecret : undefined;
             inputs["sharedSecretHash"] = state ? state.sharedSecretHash : undefined;
             inputs["targetVpnGateway"] = state ? state.targetVpnGateway : undefined;
+            inputs["tunnelId"] = state ? state.tunnelId : undefined;
             inputs["vpnGateway"] = state ? state.vpnGateway : undefined;
             inputs["vpnGatewayInterface"] = state ? state.vpnGatewayInterface : undefined;
         } else {
@@ -127,6 +129,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["sharedSecretHash"] = undefined /*out*/;
+            inputs["tunnelId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -170,6 +173,7 @@ export interface VPNTunnelState {
     readonly sharedSecret?: pulumi.Input<string>;
     readonly sharedSecretHash?: pulumi.Input<string>;
     readonly targetVpnGateway?: pulumi.Input<string>;
+    readonly tunnelId?: pulumi.Input<string>;
     readonly vpnGateway?: pulumi.Input<string>;
     readonly vpnGatewayInterface?: pulumi.Input<number>;
 }

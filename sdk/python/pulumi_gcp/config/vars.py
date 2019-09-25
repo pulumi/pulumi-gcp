@@ -95,6 +95,8 @@ resource_manager_custom_endpoint = __config__.get('resourceManagerCustomEndpoint
 
 resource_manager_v2beta1_custom_endpoint = __config__.get('resourceManagerV2beta1CustomEndpoint')
 
+runtime_config_custom_endpoint = __config__.get('runtimeConfigCustomEndpoint')
+
 runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
 
 scopes = __config__.get('scopes')

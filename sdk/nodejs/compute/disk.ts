@@ -51,7 +51,7 @@ export class Disk extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly resourcePolicies!: pulumi.Output<string[] | undefined>;
+    public readonly resourcePolicies!: pulumi.Output<string[]>;
     /**
      * The URI of the created resource.
      */

@@ -32,7 +32,9 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["network"] = nil
 		inputs["privateIpGoogleAccess"] = nil
 		inputs["project"] = nil
+		inputs["purpose"] = nil
 		inputs["region"] = nil
+		inputs["role"] = nil
 		inputs["secondaryIpRanges"] = nil
 	} else {
 		inputs["description"] = args.Description
@@ -43,7 +45,9 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["network"] = args.Network
 		inputs["privateIpGoogleAccess"] = args.PrivateIpGoogleAccess
 		inputs["project"] = args.Project
+		inputs["purpose"] = args.Purpose
 		inputs["region"] = args.Region
+		inputs["role"] = args.Role
 		inputs["secondaryIpRanges"] = args.SecondaryIpRanges
 	}
 	inputs["creationTimestamp"] = nil
@@ -74,7 +78,9 @@ func GetSubnetwork(ctx *pulumi.Context,
 		inputs["network"] = state.Network
 		inputs["privateIpGoogleAccess"] = state.PrivateIpGoogleAccess
 		inputs["project"] = state.Project
+		inputs["purpose"] = state.Purpose
 		inputs["region"] = state.Region
+		inputs["role"] = state.Role
 		inputs["secondaryIpRanges"] = state.SecondaryIpRanges
 		inputs["selfLink"] = state.SelfLink
 	}
@@ -141,8 +147,16 @@ func (r *Subnetwork) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+func (r *Subnetwork) Purpose() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["purpose"])
+}
+
 func (r *Subnetwork) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
+}
+
+func (r *Subnetwork) Role() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
 func (r *Subnetwork) SecondaryIpRanges() *pulumi.ArrayOutput {
@@ -169,7 +183,9 @@ type SubnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 	Region interface{}
+	Role interface{}
 	SecondaryIpRanges interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -187,6 +203,8 @@ type SubnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	Purpose interface{}
 	Region interface{}
+	Role interface{}
 	SecondaryIpRanges interface{}
 }
