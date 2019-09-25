@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to support go1.13
+* Upgrade to v2.16.0 of the Google Beta Terraform Provider.
 
 ---
 
