@@ -21,20 +21,6 @@ import * as utilities from "../utilities";
  * const mycluster = new gcp.dataproc.Cluster("mycluster", {
  *     region: "us-central1",
  * });
- * // Submit an example pyspark job to a dataproc cluster
- * const pyspark = new gcp.dataproc.Job("pyspark", {
- *     forceDelete: true,
- *     placement: {
- *         clusterName: mycluster.name,
- *     },
- *     pysparkConfig: {
- *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
- *         properties: {
- *             "spark.logConf": "true",
- *         },
- *     },
- *     region: mycluster.region,
- * });
  * // Submit an example spark job to a dataproc cluster
  * const spark = new gcp.dataproc.Job("spark", {
  *     forceDelete: true,
@@ -56,10 +42,24 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * // Submit an example pyspark job to a dataproc cluster
+ * const pyspark = new gcp.dataproc.Job("pyspark", {
+ *     forceDelete: true,
+ *     placement: {
+ *         clusterName: mycluster.name,
+ *     },
+ *     pysparkConfig: {
+ *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+ *         properties: {
+ *             "spark.logConf": "true",
+ *         },
+ *     },
+ *     region: mycluster.region,
+ * });
  * 
- * export const pysparkStatus = pyspark.status.state;
  * // Check out current state of the jobs
  * export const sparkStatus = spark.status.state;
+ * export const pysparkStatus = pyspark.status.state;
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.

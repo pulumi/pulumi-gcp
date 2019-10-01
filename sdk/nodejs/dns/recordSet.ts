@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * const frontendRecordSet = new gcp.dns.RecordSet("frontend", {
  *     managedZone: prod.name,
- *     rrdatas: [frontendInstance.networkInterfaces[0].accessConfig.0.natIp],
+ *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs![0].natIp!)],
  *     ttl: 300,
  *     type: "A",
  * });

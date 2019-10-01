@@ -66,9 +66,6 @@ import * as utilities from "../utilities";
  *     family: "debian-9",
  *     project: "debian-cloud",
  * });
- * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {
- *     requestPath: "/health_check",
- * });
  * const stagingVm = new gcp.compute.Instance("stagingVm", {
  *     bootDisk: {
  *         initializeParams: {
@@ -94,6 +91,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     zone: "us-central1-c",
+ * });
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {
+ *     requestPath: "/health_check",
  * });
  * const stagingService = new gcp.compute.BackendService("stagingService", {
  *     backends: [{

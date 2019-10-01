@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const foo = gcp.container.getRegistryRepository({});
+ * const foo = gcp.container.getRegistryRepository();
  * 
  * export const gcrLocation = foo.repositoryUrl;
  * ```

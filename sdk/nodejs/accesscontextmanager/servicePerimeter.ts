@@ -31,6 +31,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     title: "restrictAll",
+ * });
  * const accessLevel = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     basic: {
  *         conditions: [{
@@ -48,13 +55,6 @@ import * as utilities from "../utilities";
  * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
- * });
- * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
- *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,
- *     status: {
- *         restrictedServices: ["storage.googleapis.com"],
- *     },
- *     title: "restrictAll",
  * });
  * ```
  *

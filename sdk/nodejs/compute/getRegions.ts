@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const available = gcp.compute.getRegions({});
+ * const available = gcp.compute.getRegions();
  * const cluster: gcp.compute.Subnetwork[] = [];
  * for (let i = 0; i < available.names.length; i++) {
  *     cluster.push(new gcp.compute.Subnetwork(`cluster-${i}`, {
