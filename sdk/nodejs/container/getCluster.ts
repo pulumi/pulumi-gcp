@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  *     name: "my-cluster",
  * });
  * 
- * export const clusterPassword = myCluster.masterAuths[0].password;
  * export const clusterUsername = myCluster.masterAuths[0].username;
+ * export const clusterPassword = myCluster.masterAuths[0].password;
  * export const endpoint = myCluster.endpoint;
  * export const instanceGroupUrls = myCluster.instanceGroupUrls;
  * export const nodeConfig = myCluster.nodeConfigs;

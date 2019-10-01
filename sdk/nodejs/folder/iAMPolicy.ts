@@ -14,15 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         members: ["user:jane@example.com"],
  *         role: "roles/editor",
  *     }],
- * });
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
  * });
  * const folderAdminPolicy = new gcp.folder.IAMPolicy("folderAdminPolicy", {
  *     folder: department1.name,

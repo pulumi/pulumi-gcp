@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const netblock = gcp.compute.getNetblockIPRanges({});
+ * const netblock = gcp.compute.getNetblockIPRanges();
  * 
  * export const cidrBlocks = netblock.cidrBlocks;
  * export const cidrBlocksIpv4 = netblock.cidrBlocksIpv4s;

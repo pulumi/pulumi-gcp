@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const available = gcp.compute.getZones({});
+ * const available = gcp.compute.getZones();
  * const foo: gcp.compute.InstanceGroupManager[] = [];
  * for (let i = 0; i < available.names.length; i++) {
  *     foo.push(new gcp.compute.InstanceGroupManager(`foo-${i}`, {

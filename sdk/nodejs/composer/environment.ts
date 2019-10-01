@@ -55,14 +55,14 @@ import * as utilities from "../utilities";
  * const testNetwork = new gcp.compute.Network("test", {
  *     autoCreateSubnetworks: false,
  * });
- * const testAccount = new gcp.serviceAccount.Account("test", {
- *     accountId: "composer-env-account",
- *     displayName: "Test Service Account for Composer Environment",
- * });
  * const testSubnetwork = new gcp.compute.Subnetwork("test", {
  *     ipCidrRange: "10.2.0.0/16",
  *     network: testNetwork.selfLink,
  *     region: "us-central1",
+ * });
+ * const testAccount = new gcp.serviceAccount.Account("test", {
+ *     accountId: "composer-env-account",
+ *     displayName: "Test Service Account for Composer Environment",
  * });
  * const composerWorker = new gcp.projects.IAMMember("composer-worker", {
  *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,

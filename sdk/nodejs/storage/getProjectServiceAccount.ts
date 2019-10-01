@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * const gcsAccount = gcp.storage.getProjectServiceAccount();
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
  *     members: [`serviceAccount:${gcsAccount.emailAddress}`],
  *     role: "roles/pubsub.publisher",

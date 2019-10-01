@@ -25,14 +25,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * const gcsAccount = gcp.storage.getProjectServiceAccount();
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const bucket = new gcp.storage.Bucket("bucket", {});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
  *     members: [`serviceAccount:${gcsAccount.emailAddress}`],
  *     role: "roles/pubsub.publisher",
  *     topic: topic.name,
  * });
+ * const bucket = new gcp.storage.Bucket("bucket", {});
  * const notification = new gcp.storage.Notification("notification", {
  *     bucket: bucket.name,
  *     customAttributes: {
