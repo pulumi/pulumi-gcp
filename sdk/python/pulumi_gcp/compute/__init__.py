@@ -31,6 +31,7 @@ from .instance_iam_member import *
 from .instance_iam_policy import *
 from .instance_template import *
 from .interconnect_attachment import *
+from .managed_ssl_certificate import *
 from .manged_ssl_certificate import *
 from .network import *
 from .network_endpoint import *

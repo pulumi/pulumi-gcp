@@ -1435,6 +1435,10 @@ export namespace compute {
         tag8021q: number;
     }
 
+    export interface ManagedSslCertificateManaged {
+        domains: string;
+    }
+
     export interface MangedSslCertificateManaged {
         domains: string;
     }
