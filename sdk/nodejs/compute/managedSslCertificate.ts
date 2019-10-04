@@ -6,56 +6,66 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export class MangedSslCertificate extends pulumi.CustomResource {
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
+ */
+export class ManagedSslCertificate extends pulumi.CustomResource {
     /**
-     * Get an existing MangedSslCertificate resource's state with the given name, ID, and optional extra
+     * Get an existing ManagedSslCertificate resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MangedSslCertificateState, opts?: pulumi.CustomResourceOptions): MangedSslCertificate {
-        return new MangedSslCertificate(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedSslCertificateState, opts?: pulumi.CustomResourceOptions): ManagedSslCertificate {
+        return new ManagedSslCertificate(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:compute/mangedSslCertificate:MangedSslCertificate';
+    public static readonly __pulumiType = 'gcp:compute/managedSslCertificate:ManagedSslCertificate';
 
     /**
-     * Returns true if the given object is an instance of MangedSslCertificate.  This is designed to work even
+     * Returns true if the given object is an instance of ManagedSslCertificate.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is MangedSslCertificate {
+    public static isInstance(obj: any): obj is ManagedSslCertificate {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === MangedSslCertificate.__pulumiType;
+        return obj['__pulumiType'] === ManagedSslCertificate.__pulumiType;
     }
 
     public readonly certificateId!: pulumi.Output<number>;
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
-    public readonly managed!: pulumi.Output<outputs.compute.MangedSslCertificateManaged | undefined>;
+    public readonly managed!: pulumi.Output<outputs.compute.ManagedSslCertificateManaged | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
     public readonly type!: pulumi.Output<string | undefined>;
 
     /**
-     * Create a MangedSslCertificate resource with the given unique name, arguments, and options.
+     * Create a ManagedSslCertificate resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: MangedSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: MangedSslCertificateArgs | MangedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ManagedSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ManagedSslCertificateArgs | ManagedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as MangedSslCertificateState | undefined;
+            const state = argsOrState as ManagedSslCertificateState | undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -67,7 +77,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
             inputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
-            const args = argsOrState as MangedSslCertificateArgs | undefined;
+            const args = argsOrState as ManagedSslCertificateArgs | undefined;
             inputs["certificateId"] = args ? args.certificateId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["managed"] = args ? args.managed : undefined;
@@ -86,34 +96,47 @@ export class MangedSslCertificate extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        super(MangedSslCertificate.__pulumiType, name, inputs, opts);
+        const aliasOpts = { aliases: [{ type: "gcp:compute/mangedSslCertificate:MangedSslCertificate" }] };
+        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        super(ManagedSslCertificate.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering MangedSslCertificate resources.
+ * Input properties used for looking up and filtering ManagedSslCertificate resources.
  */
-export interface MangedSslCertificateState {
+export interface ManagedSslCertificateState {
     readonly certificateId?: pulumi.Input<number>;
     readonly creationTimestamp?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly expireTime?: pulumi.Input<string>;
-    readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
+    readonly managed?: pulumi.Input<inputs.compute.ManagedSslCertificateManaged>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     readonly subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
     readonly type?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a MangedSslCertificate resource.
+ * The set of arguments for constructing a ManagedSslCertificate resource.
  */
-export interface MangedSslCertificateArgs {
+export interface ManagedSslCertificateArgs {
     readonly certificateId?: pulumi.Input<number>;
     readonly description?: pulumi.Input<string>;
-    readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
+    readonly managed?: pulumi.Input<inputs.compute.ManagedSslCertificateManaged>;
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     readonly type?: pulumi.Input<string>;
 }

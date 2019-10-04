@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-class MangedSslCertificate(pulumi.CustomResource):
+class ManagedSslCertificate(pulumi.CustomResource):
     certificate_id: pulumi.Output[float]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
@@ -17,19 +17,30 @@ class MangedSslCertificate(pulumi.CustomResource):
     managed: pulumi.Output[dict]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     subject_alternative_names: pulumi.Output[list]
     type: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a MangedSslCertificate resource with the given unique name, props, and options.
+        Create a ManagedSslCertificate resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         
         The **managed** object supports the following:
         
           * `domains` (`pulumi.Input[str]`)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,8 +69,10 @@ class MangedSslCertificate(pulumi.CustomResource):
             __props__['expire_time'] = None
             __props__['self_link'] = None
             __props__['subject_alternative_names'] = None
-        super(MangedSslCertificate, __self__).__init__(
-            'gcp:compute/mangedSslCertificate:MangedSslCertificate',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:compute/mangedSslCertificate:MangedSslCertificate")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(ManagedSslCertificate, __self__).__init__(
+            'gcp:compute/managedSslCertificate:ManagedSslCertificate',
             resource_name,
             __props__,
             opts)
@@ -67,16 +80,21 @@ class MangedSslCertificate(pulumi.CustomResource):
     @staticmethod
     def get(resource_name, id, opts=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, managed=None, name=None, project=None, self_link=None, subject_alternative_names=None, type=None):
         """
-        Get an existing MangedSslCertificate resource's state with the given name, id, and optional extra
+        Get an existing ManagedSslCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
         
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
         
         The **managed** object supports the following:
         
           * `domains` (`pulumi.Input[str]`)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -91,7 +109,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["subject_alternative_names"] = subject_alternative_names
         __props__["type"] = type
-        return MangedSslCertificate(resource_name, opts=opts, __props__=__props__)
+        return ManagedSslCertificate(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
