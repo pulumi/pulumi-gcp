@@ -1036,7 +1036,7 @@ export namespace compute {
         tag8021q?: pulumi.Input<number>;
     }
 
-    export interface MangedSslCertificateManaged {
+    export interface ManagedSslCertificateManaged {
         domains: pulumi.Input<string>;
     }
 

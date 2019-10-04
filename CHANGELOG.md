@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Regenerate SDK against tf2pulumi 0.6.0
+* Fix typo in resource name ManagedSslCertificate
 
 ---
 

@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-class MangedSslCertificate(pulumi.CustomResource):
+class ManagedSslCertificate(pulumi.CustomResource):
     certificate_id: pulumi.Output[float]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
@@ -29,7 +29,7 @@ class MangedSslCertificate(pulumi.CustomResource):
     type: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a MangedSslCertificate resource with the given unique name, props, and options.
+        Create a ManagedSslCertificate resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -69,8 +69,8 @@ class MangedSslCertificate(pulumi.CustomResource):
             __props__['expire_time'] = None
             __props__['self_link'] = None
             __props__['subject_alternative_names'] = None
-        super(MangedSslCertificate, __self__).__init__(
-            'gcp:compute/mangedSslCertificate:MangedSslCertificate',
+        super(ManagedSslCertificate, __self__).__init__(
+            'gcp:compute/managedSslCertificate:ManagedSslCertificate',
             resource_name,
             __props__,
             opts)
@@ -78,7 +78,7 @@ class MangedSslCertificate(pulumi.CustomResource):
     @staticmethod
     def get(resource_name, id, opts=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, managed=None, name=None, project=None, self_link=None, subject_alternative_names=None, type=None):
         """
-        Get an existing MangedSslCertificate resource's state with the given name, id, and optional extra
+        Get an existing ManagedSslCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
         
         :param str resource_name: The unique name of the resulting resource.
@@ -107,7 +107,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["subject_alternative_names"] = subject_alternative_names
         __props__["type"] = type
-        return MangedSslCertificate(resource_name, opts=opts, __props__=__props__)
+        return ManagedSslCertificate(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

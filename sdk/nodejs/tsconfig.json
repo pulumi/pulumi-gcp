@@ -106,7 +106,7 @@
         "compute/instanceIAMPolicy.ts",
         "compute/instanceTemplate.ts",
         "compute/interconnectAttachment.ts",
-        "compute/mangedSslCertificate.ts",
+        "compute/managedSslCertificate.ts",
         "compute/network.ts",
         "compute/networkEndpoint.ts",
         "compute/networkEndpointGroup.ts",

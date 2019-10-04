@@ -493,7 +493,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_instance_template":       {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
 			"google_compute_interconnect_attachment": {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
-			"google_compute_managed_ssl_certificate": {Tok: gcpResource(gcpCompute, "MangedSslCertificate")},
+			"google_compute_managed_ssl_certificate": {Tok: gcpResource(gcpCompute, "ManagedSslCertificate")},
 			"google_compute_node_group":              {Tok: gcpResource(gcpCompute, "NodeGroup")},
 			"google_compute_node_template":           {Tok: gcpResource(gcpCompute, "NodeTemplate")},
 			"google_compute_network_endpoint":        {Tok: gcpResource(gcpCompute, "NetworkEndpoint")},

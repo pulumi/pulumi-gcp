@@ -8,13 +8,13 @@ import (
 )
 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
-type MangedSslCertificate struct {
+type ManagedSslCertificate struct {
 	s *pulumi.ResourceState
 }
 
-// NewMangedSslCertificate registers a new resource with the given unique name, arguments, and options.
-func NewMangedSslCertificate(ctx *pulumi.Context,
-	name string, args *MangedSslCertificateArgs, opts ...pulumi.ResourceOpt) (*MangedSslCertificate, error) {
+// NewManagedSslCertificate registers a new resource with the given unique name, arguments, and options.
+func NewManagedSslCertificate(ctx *pulumi.Context,
+	name string, args *ManagedSslCertificateArgs, opts ...pulumi.ResourceOpt) (*ManagedSslCertificate, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["certificateId"] = nil
@@ -35,17 +35,17 @@ func NewMangedSslCertificate(ctx *pulumi.Context,
 	inputs["expireTime"] = nil
 	inputs["selfLink"] = nil
 	inputs["subjectAlternativeNames"] = nil
-	s, err := ctx.RegisterResource("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, true, inputs, opts...)
+	s, err := ctx.RegisterResource("gcp:compute/managedSslCertificate:ManagedSslCertificate", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &MangedSslCertificate{s: s}, nil
+	return &ManagedSslCertificate{s: s}, nil
 }
 
-// GetMangedSslCertificate gets an existing MangedSslCertificate resource's state with the given name, ID, and optional
+// GetManagedSslCertificate gets an existing ManagedSslCertificate resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetMangedSslCertificate(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *MangedSslCertificateState, opts ...pulumi.ResourceOpt) (*MangedSslCertificate, error) {
+func GetManagedSslCertificate(ctx *pulumi.Context,
+	name string, id pulumi.ID, state *ManagedSslCertificateState, opts ...pulumi.ResourceOpt) (*ManagedSslCertificate, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["certificateId"] = state.CertificateId
@@ -59,68 +59,68 @@ func GetMangedSslCertificate(ctx *pulumi.Context,
 		inputs["subjectAlternativeNames"] = state.SubjectAlternativeNames
 		inputs["type"] = state.Type
 	}
-	s, err := ctx.ReadResource("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, id, inputs, opts...)
+	s, err := ctx.ReadResource("gcp:compute/managedSslCertificate:ManagedSslCertificate", name, id, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &MangedSslCertificate{s: s}, nil
+	return &ManagedSslCertificate{s: s}, nil
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MangedSslCertificate) URN() *pulumi.URNOutput {
+func (r *ManagedSslCertificate) URN() *pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MangedSslCertificate) ID() *pulumi.IDOutput {
+func (r *ManagedSslCertificate) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *MangedSslCertificate) CertificateId() *pulumi.IntOutput {
+func (r *ManagedSslCertificate) CertificateId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
-func (r *MangedSslCertificate) CreationTimestamp() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
-func (r *MangedSslCertificate) Description() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *MangedSslCertificate) ExpireTime() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) ExpireTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expireTime"])
 }
 
-func (r *MangedSslCertificate) Managed() *pulumi.Output {
+func (r *ManagedSslCertificate) Managed() *pulumi.Output {
 	return r.s.State["managed"]
 }
 
-func (r *MangedSslCertificate) Name() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *MangedSslCertificate) Project() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *MangedSslCertificate) SelfLink() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-func (r *MangedSslCertificate) SubjectAlternativeNames() *pulumi.ArrayOutput {
+func (r *ManagedSslCertificate) SubjectAlternativeNames() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["subjectAlternativeNames"])
 }
 
-func (r *MangedSslCertificate) Type() *pulumi.StringOutput {
+func (r *ManagedSslCertificate) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
 
-// Input properties used for looking up and filtering MangedSslCertificate resources.
-type MangedSslCertificateState struct {
+// Input properties used for looking up and filtering ManagedSslCertificate resources.
+type ManagedSslCertificateState struct {
 	CertificateId interface{}
 	CreationTimestamp interface{}
 	Description interface{}
@@ -136,8 +136,8 @@ type MangedSslCertificateState struct {
 	Type interface{}
 }
 
-// The set of arguments for constructing a MangedSslCertificate resource.
-type MangedSslCertificateArgs struct {
+// The set of arguments for constructing a ManagedSslCertificate resource.
+type ManagedSslCertificateArgs struct {
 	CertificateId interface{}
 	Description interface{}
 	Managed interface{}

@@ -50,7 +50,7 @@ export * from "./instanceIAMMember";
 export * from "./instanceIAMPolicy";
 export * from "./instanceTemplate";
 export * from "./interconnectAttachment";
-export * from "./mangedSslCertificate";
+export * from "./managedSslCertificate";
 export * from "./network";
 export * from "./networkEndpoint";
 export * from "./networkEndpointGroup";
