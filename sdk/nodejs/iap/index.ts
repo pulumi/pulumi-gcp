@@ -2,6 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./appEngineServiceIamBinding";
+export * from "./appEngineServiceIamMember";
+export * from "./appEngineServiceIamPolicy";
+export * from "./appEngineVersionIamBinding";
+export * from "./appEngineVersionIamMember";
+export * from "./appEngineVersionIamPolicy";
 export * from "./tunnelInstanceIAMBinding";
 export * from "./tunnelInstanceIAMMember";
 export * from "./tunnelInstanceIAMPolicy";

@@ -57,8 +57,22 @@ export class RouterPeer extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouterPeer.__pulumiType;
     }
 
+    /**
+     * User-specified flag to indicate which mode to use for advertisement.
+     * Options include `DEFAULT` or `CUSTOM`.
+     */
     public readonly advertiseMode!: pulumi.Output<string | undefined>;
+    /**
+     * User-specified list of prefix groups to advertise in custom mode,
+     * which can take one of the following options:
+     */
     public readonly advertisedGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * User-specified list of individual IP ranges to advertise in
+     * custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+     * the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+     * addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+     */
     public readonly advertisedIpRanges!: pulumi.Output<outputs.compute.RouterPeerAdvertisedIpRange[] | undefined>;
     /**
      * The priority of routes advertised to this BGP peer.
@@ -169,8 +183,22 @@ export class RouterPeer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterPeer resources.
  */
 export interface RouterPeerState {
+    /**
+     * User-specified flag to indicate which mode to use for advertisement.
+     * Options include `DEFAULT` or `CUSTOM`.
+     */
     readonly advertiseMode?: pulumi.Input<string>;
+    /**
+     * User-specified list of prefix groups to advertise in custom mode,
+     * which can take one of the following options:
+     */
     readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User-specified list of individual IP ranges to advertise in
+     * custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+     * the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+     * addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+     */
     readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.
@@ -223,8 +251,22 @@ export interface RouterPeerState {
  * The set of arguments for constructing a RouterPeer resource.
  */
 export interface RouterPeerArgs {
+    /**
+     * User-specified flag to indicate which mode to use for advertisement.
+     * Options include `DEFAULT` or `CUSTOM`.
+     */
     readonly advertiseMode?: pulumi.Input<string>;
+    /**
+     * User-specified list of prefix groups to advertise in custom mode,
+     * which can take one of the following options:
+     */
     readonly advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User-specified list of individual IP ranges to advertise in
+     * custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+     * the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+     * addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+     */
     readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
      * The priority of routes advertised to this BGP peer.

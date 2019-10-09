@@ -89,11 +89,13 @@ func (r *Registry) Credentials() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["credentials"])
 }
 
-// A PubSub topics to publish device events. Structure is documented below.
+// Use `eventNotificationConfigs` instead.
 func (r *Registry) EventNotificationConfig() *pulumi.Output {
 	return r.s.State["eventNotificationConfig"]
 }
 
+// List of configurations for event notification, such as
+// PubSub topics to publish device events to. Structure is documented below.
 func (r *Registry) EventNotificationConfigs() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["eventNotificationConfigs"])
 }
@@ -137,8 +139,10 @@ func (r *Registry) StateNotificationConfig() *pulumi.Output {
 type RegistryState struct {
 	// List of public key certificates to authenticate devices. Structure is documented below. 
 	Credentials interface{}
-	// A PubSub topics to publish device events. Structure is documented below.
+	// Use `eventNotificationConfigs` instead.
 	EventNotificationConfig interface{}
+	// List of configurations for event notification, such as
+	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs interface{}
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig interface{}
@@ -160,8 +164,10 @@ type RegistryState struct {
 type RegistryArgs struct {
 	// List of public key certificates to authenticate devices. Structure is documented below. 
 	Credentials interface{}
-	// A PubSub topics to publish device events. Structure is documented below.
+	// Use `eventNotificationConfigs` instead.
 	EventNotificationConfig interface{}
+	// List of configurations for event notification, such as
+	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs interface{}
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig interface{}

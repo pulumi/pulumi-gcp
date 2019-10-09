@@ -39,6 +39,7 @@ export class Dataset extends pulumi.CustomResource {
     public readonly accesses!: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
     public readonly datasetId!: pulumi.Output<string>;
+    public readonly defaultEncryptionConfiguration!: pulumi.Output<outputs.bigquery.DatasetDefaultEncryptionConfiguration | undefined>;
     public readonly defaultPartitionExpirationMs!: pulumi.Output<number | undefined>;
     public readonly defaultTableExpirationMs!: pulumi.Output<number | undefined>;
     /**
@@ -78,6 +79,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["accesses"] = state ? state.accesses : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
+            inputs["defaultEncryptionConfiguration"] = state ? state.defaultEncryptionConfiguration : undefined;
             inputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
             inputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
             inputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
@@ -96,6 +98,7 @@ export class Dataset extends pulumi.CustomResource {
             }
             inputs["accesses"] = args ? args.accesses : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
+            inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
             inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
             inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             inputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
@@ -127,6 +130,7 @@ export interface DatasetState {
     readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     readonly creationTime?: pulumi.Input<number>;
     readonly datasetId?: pulumi.Input<string>;
+    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
     readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
     /**
@@ -158,6 +162,7 @@ export interface DatasetState {
 export interface DatasetArgs {
     readonly accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     readonly datasetId: pulumi.Input<string>;
+    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
     readonly defaultPartitionExpirationMs?: pulumi.Input<number>;
     readonly defaultTableExpirationMs?: pulumi.Input<number>;
     /**

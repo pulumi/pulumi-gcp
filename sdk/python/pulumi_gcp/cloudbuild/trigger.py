@@ -15,6 +15,7 @@ class Trigger(pulumi.CustomResource):
     description: pulumi.Output[str]
     disabled: pulumi.Output[bool]
     filename: pulumi.Output[str]
+    github: pulumi.Output[dict]
     ignored_files: pulumi.Output[list]
     included_files: pulumi.Output[list]
     project: pulumi.Output[str]
@@ -25,7 +26,7 @@ class Trigger(pulumi.CustomResource):
     substitutions: pulumi.Output[dict]
     trigger_id: pulumi.Output[str]
     trigger_template: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Trigger resource with the given unique name, props, and options.
         
@@ -56,6 +57,20 @@ class Trigger(pulumi.CustomResource):
             * `waitFors` (`pulumi.Input[list]`)
         
           * `tags` (`pulumi.Input[list]`)
+        
+        The **github** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`)
+          * `owner` (`pulumi.Input[str]`)
+          * `pullRequest` (`pulumi.Input[dict]`)
+        
+            * `branch` (`pulumi.Input[str]`)
+            * `commentControl` (`pulumi.Input[str]`)
+        
+          * `push` (`pulumi.Input[dict]`)
+        
+            * `branch` (`pulumi.Input[str]`)
+            * `tag` (`pulumi.Input[str]`)
         
         The **trigger_template** object supports the following:
         
@@ -89,6 +104,7 @@ class Trigger(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disabled'] = disabled
             __props__['filename'] = filename
+            __props__['github'] = github
             __props__['ignored_files'] = ignored_files
             __props__['included_files'] = included_files
             __props__['project'] = project
@@ -103,7 +119,7 @@ class Trigger(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
+    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -137,6 +153,20 @@ class Trigger(pulumi.CustomResource):
         
           * `tags` (`pulumi.Input[list]`)
         
+        The **github** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`)
+          * `owner` (`pulumi.Input[str]`)
+          * `pullRequest` (`pulumi.Input[dict]`)
+        
+            * `branch` (`pulumi.Input[str]`)
+            * `commentControl` (`pulumi.Input[str]`)
+        
+          * `push` (`pulumi.Input[dict]`)
+        
+            * `branch` (`pulumi.Input[str]`)
+            * `tag` (`pulumi.Input[str]`)
+        
         The **trigger_template** object supports the following:
         
           * `branchName` (`pulumi.Input[str]`)
@@ -156,6 +186,7 @@ class Trigger(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disabled"] = disabled
         __props__["filename"] = filename
+        __props__["github"] = github
         __props__["ignored_files"] = ignored_files
         __props__["included_files"] = included_files
         __props__["project"] = project

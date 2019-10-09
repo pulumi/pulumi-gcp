@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .bucket import *
+from .bucket_access_control import *
 from .bucket_acl import *
 from .bucket_iam_binding import *
 from .bucket_iam_member import *

@@ -21,11 +21,18 @@ class Registry(pulumi.CustomResource):
     """
     event_notification_config: pulumi.Output[dict]
     """
-    A PubSub topics to publish device events. Structure is documented below.
+    Use `event_notification_configs` instead.
     
       * `pubsub_topic_name` (`str`)
     """
     event_notification_configs: pulumi.Output[list]
+    """
+    List of configurations for event notification, such as
+    PubSub topics to publish device events to. Structure is documented below.
+    
+      * `pubsub_topic_name` (`str`)
+      * `subfolderMatches` (`str`)
+    """
     http_config: pulumi.Output[dict]
     """
     Activate or deactivate HTTP. Structure is documented below.
@@ -67,7 +74,9 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[dict] event_notification_config: A PubSub topics to publish device events. Structure is documented below.
+        :param pulumi.Input[dict] event_notification_config: Use `event_notification_configs` instead.
+        :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
+               PubSub topics to publish device events to. Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
         :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT. Structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -149,7 +158,9 @@ class Registry(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[dict] event_notification_config: A PubSub topics to publish device events. Structure is documented below.
+        :param pulumi.Input[dict] event_notification_config: Use `event_notification_configs` instead.
+        :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
+               PubSub topics to publish device events to. Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
         :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT. Structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.

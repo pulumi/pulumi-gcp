@@ -4,4 +4,7 @@
 
 # Export this package's modules as members:
 from .attestor import *
+from .attestor_iam_binding import *
+from .attestor_iam_member import *
+from .attestor_iam_policy import *
 from .policy import *

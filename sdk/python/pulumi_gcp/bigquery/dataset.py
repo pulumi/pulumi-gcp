@@ -13,6 +13,7 @@ class Dataset(pulumi.CustomResource):
     accesses: pulumi.Output[list]
     creation_time: pulumi.Output[float]
     dataset_id: pulumi.Output[str]
+    default_encryption_configuration: pulumi.Output[dict]
     default_partition_expiration_ms: pulumi.Output[float]
     default_table_expiration_ms: pulumi.Output[float]
     delete_contents_on_destroy: pulumi.Output[bool]
@@ -36,7 +37,7 @@ class Dataset(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, friendly_name=None, labels=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, friendly_name=None, labels=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Dataset resource with the given unique name, props, and options.
         
@@ -60,6 +61,10 @@ class Dataset(pulumi.CustomResource):
             * `dataset_id` (`pulumi.Input[str]`)
             * `projectId` (`pulumi.Input[str]`)
             * `table_id` (`pulumi.Input[str]`)
+        
+        The **default_encryption_configuration** object supports the following:
+        
+          * `kmsKeyName` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """
@@ -84,6 +89,7 @@ class Dataset(pulumi.CustomResource):
             if dataset_id is None:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__['dataset_id'] = dataset_id
+            __props__['default_encryption_configuration'] = default_encryption_configuration
             __props__['default_partition_expiration_ms'] = default_partition_expiration_ms
             __props__['default_table_expiration_ms'] = default_table_expiration_ms
             __props__['delete_contents_on_destroy'] = delete_contents_on_destroy
@@ -103,7 +109,7 @@ class Dataset(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, accesses=None, creation_time=None, dataset_id=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, etag=None, friendly_name=None, labels=None, last_modified_time=None, location=None, project=None, self_link=None):
+    def get(resource_name, id, opts=None, accesses=None, creation_time=None, dataset_id=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, etag=None, friendly_name=None, labels=None, last_modified_time=None, location=None, project=None, self_link=None):
         """
         Get an existing Dataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -130,6 +136,10 @@ class Dataset(pulumi.CustomResource):
             * `dataset_id` (`pulumi.Input[str]`)
             * `projectId` (`pulumi.Input[str]`)
             * `table_id` (`pulumi.Input[str]`)
+        
+        The **default_encryption_configuration** object supports the following:
+        
+          * `kmsKeyName` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
         """
@@ -139,6 +149,7 @@ class Dataset(pulumi.CustomResource):
         __props__["accesses"] = accesses
         __props__["creation_time"] = creation_time
         __props__["dataset_id"] = dataset_id
+        __props__["default_encryption_configuration"] = default_encryption_configuration
         __props__["default_partition_expiration_ms"] = default_partition_expiration_ms
         __props__["default_table_expiration_ms"] = default_table_expiration_ms
         __props__["delete_contents_on_destroy"] = delete_contents_on_destroy

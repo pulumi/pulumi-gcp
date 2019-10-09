@@ -21,6 +21,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["disabled"] = nil
 		inputs["filename"] = nil
+		inputs["github"] = nil
 		inputs["ignoredFiles"] = nil
 		inputs["includedFiles"] = nil
 		inputs["project"] = nil
@@ -31,6 +32,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["disabled"] = args.Disabled
 		inputs["filename"] = args.Filename
+		inputs["github"] = args.Github
 		inputs["ignoredFiles"] = args.IgnoredFiles
 		inputs["includedFiles"] = args.IncludedFiles
 		inputs["project"] = args.Project
@@ -57,6 +59,7 @@ func GetTrigger(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["disabled"] = state.Disabled
 		inputs["filename"] = state.Filename
+		inputs["github"] = state.Github
 		inputs["ignoredFiles"] = state.IgnoredFiles
 		inputs["includedFiles"] = state.IncludedFiles
 		inputs["project"] = state.Project
@@ -101,6 +104,10 @@ func (r *Trigger) Filename() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filename"])
 }
 
+func (r *Trigger) Github() *pulumi.Output {
+	return r.s.State["github"]
+}
+
 func (r *Trigger) IgnoredFiles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["ignoredFiles"])
 }
@@ -134,6 +141,7 @@ type TriggerState struct {
 	Description interface{}
 	Disabled interface{}
 	Filename interface{}
+	Github interface{}
 	IgnoredFiles interface{}
 	IncludedFiles interface{}
 	// The ID of the project in which the resource belongs.
@@ -150,6 +158,7 @@ type TriggerArgs struct {
 	Description interface{}
 	Disabled interface{}
 	Filename interface{}
+	Github interface{}
 	IgnoredFiles interface{}
 	IncludedFiles interface{}
 	// The ID of the project in which the resource belongs.

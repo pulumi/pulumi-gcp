@@ -4,6 +4,7 @@
 // Export members:
 export * from "./bucket";
 export * from "./bucketACL";
+export * from "./bucketAccessControl";
 export * from "./bucketIAMBinding";
 export * from "./bucketIAMMember";
 export * from "./bucketIAMPolicy";

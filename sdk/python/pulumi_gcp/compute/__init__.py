@@ -47,6 +47,9 @@ from .region_backend_service import *
 from .region_disk import *
 from .region_health_check import *
 from .region_instance_group_manager import *
+from .region_ssl_certificate import *
+from .region_target_http_proxy import *
+from .region_target_https_proxy import *
 from .region_url_map import *
 from .reservation import *
 from .resource_policy import *

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .gc_policy import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

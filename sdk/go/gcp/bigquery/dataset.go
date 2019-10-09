@@ -23,6 +23,7 @@ func NewDataset(ctx *pulumi.Context,
 	if args == nil {
 		inputs["accesses"] = nil
 		inputs["datasetId"] = nil
+		inputs["defaultEncryptionConfiguration"] = nil
 		inputs["defaultPartitionExpirationMs"] = nil
 		inputs["defaultTableExpirationMs"] = nil
 		inputs["deleteContentsOnDestroy"] = nil
@@ -34,6 +35,7 @@ func NewDataset(ctx *pulumi.Context,
 	} else {
 		inputs["accesses"] = args.Accesses
 		inputs["datasetId"] = args.DatasetId
+		inputs["defaultEncryptionConfiguration"] = args.DefaultEncryptionConfiguration
 		inputs["defaultPartitionExpirationMs"] = args.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = args.DefaultTableExpirationMs
 		inputs["deleteContentsOnDestroy"] = args.DeleteContentsOnDestroy
@@ -63,6 +65,7 @@ func GetDataset(ctx *pulumi.Context,
 		inputs["accesses"] = state.Accesses
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
+		inputs["defaultEncryptionConfiguration"] = state.DefaultEncryptionConfiguration
 		inputs["defaultPartitionExpirationMs"] = state.DefaultPartitionExpirationMs
 		inputs["defaultTableExpirationMs"] = state.DefaultTableExpirationMs
 		inputs["deleteContentsOnDestroy"] = state.DeleteContentsOnDestroy
@@ -102,6 +105,10 @@ func (r *Dataset) CreationTime() *pulumi.IntOutput {
 
 func (r *Dataset) DatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+}
+
+func (r *Dataset) DefaultEncryptionConfiguration() *pulumi.Output {
+	return r.s.State["defaultEncryptionConfiguration"]
 }
 
 func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
@@ -159,6 +166,7 @@ type DatasetState struct {
 	Accesses interface{}
 	CreationTime interface{}
 	DatasetId interface{}
+	DefaultEncryptionConfiguration interface{}
 	DefaultPartitionExpirationMs interface{}
 	DefaultTableExpirationMs interface{}
 	// If set to `true`, delete all the tables in the
@@ -182,6 +190,7 @@ type DatasetState struct {
 type DatasetArgs struct {
 	Accesses interface{}
 	DatasetId interface{}
+	DefaultEncryptionConfiguration interface{}
 	DefaultPartitionExpirationMs interface{}
 	DefaultTableExpirationMs interface{}
 	// If set to `true`, delete all the tables in the

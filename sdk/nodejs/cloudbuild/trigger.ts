@@ -41,6 +41,7 @@ export class Trigger extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     public readonly filename!: pulumi.Output<string | undefined>;
+    public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     public readonly ignoredFiles!: pulumi.Output<string[] | undefined>;
     public readonly includedFiles!: pulumi.Output<string[] | undefined>;
     /**
@@ -69,6 +70,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["filename"] = state ? state.filename : undefined;
+            inputs["github"] = state ? state.github : undefined;
             inputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
             inputs["includedFiles"] = state ? state.includedFiles : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -81,6 +83,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["filename"] = args ? args.filename : undefined;
+            inputs["github"] = args ? args.github : undefined;
             inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             inputs["includedFiles"] = args ? args.includedFiles : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -109,6 +112,7 @@ export interface TriggerState {
     readonly description?: pulumi.Input<string>;
     readonly disabled?: pulumi.Input<boolean>;
     readonly filename?: pulumi.Input<string>;
+    readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -129,6 +133,7 @@ export interface TriggerArgs {
     readonly description?: pulumi.Input<string>;
     readonly disabled?: pulumi.Input<boolean>;
     readonly filename?: pulumi.Input<string>;
+    readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

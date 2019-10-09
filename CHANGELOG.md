@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Regenerate SDK against tf2pulumi 0.6.0
 * Renamed Compute `MangedSslCertificate` to `ManagedSslCertificate`
+* Upgrade to v2.17.0 of the Google Beta Terraform Provider.
 
 ---
 
