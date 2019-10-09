@@ -180,7 +180,7 @@ func (r *Bucket) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 func (r *Bucket) StorageClass() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["storageClass"])
 }
@@ -231,7 +231,7 @@ type BucketState struct {
 	RetentionPolicy interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass interface{}
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url interface{}
@@ -270,7 +270,7 @@ type BucketArgs struct {
 	RequesterPays interface{}
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy interface{}
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass interface{}
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning interface{}

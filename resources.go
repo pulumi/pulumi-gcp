@@ -5,10 +5,10 @@ package gcp
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 )
@@ -186,6 +186,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigtable_instance_iam.html.markdown",
 				},
 			},
+			"google_bigtable_gc_policy": {
+				Tok: gcpResource(gcpBigTable, "GCPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_gc_policy.html.markdown",
+				},
+			},
 
 			// Billing
 			"google_billing_account_iam_binding": {
@@ -218,6 +224,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpBinaryAuthorization, "Policy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "binaryauthorization_policy.html.markdown",
+				},
+			},
+			"google_binary_authorization_attestor_iam_binding": {
+				Tok: gcpResource(gcpBinaryAuthorization, "AttestorIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "binary_authorization_attestor_iam.html.markdown",
+				},
+			},
+			"google_binary_authorization_attestor_iam_member": {
+				Tok: gcpResource(gcpBinaryAuthorization, "AttestorIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "binary_authorization_attestor_iam.html.markdown",
+				},
+			},
+			"google_binary_authorization_attestor_iam_policy": {
+				Tok: gcpResource(gcpBinaryAuthorization, "AttestorIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "binary_authorization_attestor_iam.html.markdown",
 				},
 			},
 
@@ -511,6 +535,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_region_backend_service":        {Tok: gcpResource(gcpCompute, "RegionBackendService")},
 			"google_compute_region_disk":                   {Tok: gcpResource(gcpCompute, "RegionDisk")},
 			"google_compute_region_instance_group_manager": {Tok: gcpResource(gcpCompute, "RegionInstanceGroupManager")},
+			"google_compute_region_ssl_certificate":        {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
+			"google_compute_region_target_http_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
+			"google_compute_region_target_https_proxy":     {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
 			"google_compute_resource_policy":               {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
@@ -847,6 +874,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_object_access_control":         {Tok: gcpResource(gcpStorage, "ObjectAccessControl")},
 			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
 			"google_storage_transfer_job":                  {Tok: gcpResource(gcpStorage, "TransferJob")},
+			"google_storage_bucket_access_control":         {Tok: gcpResource(gcpStorage, "BucketAccessControl")},
 
 			// TPU resources
 			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
@@ -1001,6 +1029,42 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpIAP, "WebTypeComputeIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "iap_web_type_compute_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_service_iam_binding": {
+				Tok: gcpResource(gcpIAP, "AppEngineServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_service_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_service_iam_member": {
+				Tok: gcpResource(gcpIAP, "AppEngineServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_service_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_service_iam_policy": {
+				Tok: gcpResource(gcpIAP, "AppEngineServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_service_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_version_iam_binding": {
+				Tok: gcpResource(gcpIAP, "AppEngineVersionIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_version_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_version_iam_member": {
+				Tok: gcpResource(gcpIAP, "AppEngineVersionIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_version_iam.html.markdown",
+				},
+			},
+			"google_iap_app_engine_version_iam_policy": {
+				Tok: gcpResource(gcpIAP, "AppEngineVersionIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_app_engine_version_iam.html.markdown",
 				},
 			},
 

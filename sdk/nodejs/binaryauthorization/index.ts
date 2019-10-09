@@ -3,4 +3,7 @@
 
 // Export members:
 export * from "./attestor";
+export * from "./attestorIamBinding";
+export * from "./attestorIamMember";
+export * from "./attestorIamPolicy";
 export * from "./policy";

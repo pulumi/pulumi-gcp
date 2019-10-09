@@ -11,8 +11,25 @@ from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
     advertise_mode: pulumi.Output[str]
+    """
+    User-specified flag to indicate which mode to use for advertisement.
+    Options include `DEFAULT` or `CUSTOM`.
+    """
     advertised_groups: pulumi.Output[list]
+    """
+    User-specified list of prefix groups to advertise in custom mode,
+    which can take one of the following options:
+    """
     advertised_ip_ranges: pulumi.Output[list]
+    """
+    User-specified list of individual IP ranges to advertise in
+    custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
+    the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+    addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+    
+      * `description` (`str`)
+      * `range` (`str`)
+    """
     advertised_route_priority: pulumi.Output[float]
     """
     The priority of routes advertised to this BGP peer.
@@ -67,6 +84,14 @@ class RouterPeer(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
+               Options include `DEFAULT` or `CUSTOM`.
+        :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom mode,
+               which can take one of the following options:
+        :param pulumi.Input[list] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+               custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
+               the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+               addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
@@ -142,6 +167,14 @@ class RouterPeer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
+               Options include `DEFAULT` or `CUSTOM`.
+        :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom mode,
+               which can take one of the following options:
+        :param pulumi.Input[list] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+               custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
+               the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+               addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Changing this forces a new peer to be created.
         :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.

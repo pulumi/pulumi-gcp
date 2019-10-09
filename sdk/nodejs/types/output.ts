@@ -136,6 +136,10 @@ export namespace bigquery {
         tableId: string;
     }
 
+    export interface DatasetDefaultEncryptionConfiguration {
+        kmsKeyName: string;
+    }
+
     export interface TableExternalDataConfiguration {
         autodetect: boolean;
         compression?: string;
@@ -178,6 +182,20 @@ export namespace bigquery {
 }
 
 export namespace bigtable {
+    export interface GCPolicyMaxAge {
+        /**
+         * Number of days before applying GC policy.
+         */
+        days: number;
+    }
+
+    export interface GCPolicyMaxVersion {
+        /**
+         * Number of version before applying the GC policy.
+         */
+        number: number;
+    }
+
     export interface InstanceCluster {
         clusterId: string;
         numNodes?: number;
@@ -254,6 +272,23 @@ export namespace cloudbuild {
     export interface TriggerBuildStepVolume {
         name?: string;
         path?: string;
+    }
+
+    export interface TriggerGithub {
+        name?: string;
+        owner?: string;
+        pullRequest?: outputs.cloudbuild.TriggerGithubPullRequest;
+        push?: outputs.cloudbuild.TriggerGithubPush;
+    }
+
+    export interface TriggerGithubPullRequest {
+        branch?: string;
+        commentControl?: string;
+    }
+
+    export interface TriggerGithubPush {
+        branch?: string;
+        tag?: string;
     }
 
     export interface TriggerTriggerTemplate {
@@ -3244,7 +3279,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleAction {
         /**
-         * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+         * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
          */
         storageClass?: string;
         type: string;

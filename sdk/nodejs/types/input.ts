@@ -140,6 +140,10 @@ export namespace bigquery {
         tableId: pulumi.Input<string>;
     }
 
+    export interface DatasetDefaultEncryptionConfiguration {
+        kmsKeyName: pulumi.Input<string>;
+    }
+
     export interface TableExternalDataConfiguration {
         autodetect: pulumi.Input<boolean>;
         compression?: pulumi.Input<string>;
@@ -182,6 +186,20 @@ export namespace bigquery {
 }
 
 export namespace bigtable {
+    export interface GCPolicyMaxAge {
+        /**
+         * Number of days before applying GC policy.
+         */
+        days: pulumi.Input<number>;
+    }
+
+    export interface GCPolicyMaxVersion {
+        /**
+         * Number of version before applying the GC policy.
+         */
+        number: pulumi.Input<number>;
+    }
+
     export interface InstanceCluster {
         clusterId: pulumi.Input<string>;
         numNodes?: pulumi.Input<number>;
@@ -258,6 +276,23 @@ export namespace cloudbuild {
     export interface TriggerBuildStepVolume {
         name?: pulumi.Input<string>;
         path?: pulumi.Input<string>;
+    }
+
+    export interface TriggerGithub {
+        name?: pulumi.Input<string>;
+        owner?: pulumi.Input<string>;
+        pullRequest?: pulumi.Input<inputs.cloudbuild.TriggerGithubPullRequest>;
+        push?: pulumi.Input<inputs.cloudbuild.TriggerGithubPush>;
+    }
+
+    export interface TriggerGithubPullRequest {
+        branch?: pulumi.Input<string>;
+        commentControl?: pulumi.Input<string>;
+    }
+
+    export interface TriggerGithubPush {
+        branch?: pulumi.Input<string>;
+        tag?: pulumi.Input<string>;
     }
 
     export interface TriggerTriggerTemplate {
@@ -2527,7 +2562,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleAction {
         /**
-         * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+         * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
          */
         storageClass?: pulumi.Input<string>;
         type: pulumi.Input<string>;

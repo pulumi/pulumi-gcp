@@ -100,14 +100,22 @@ func (r *RouterPeer) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// User-specified flag to indicate which mode to use for advertisement.
+// Options include `DEFAULT` or `CUSTOM`.
 func (r *RouterPeer) AdvertiseMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["advertiseMode"])
 }
 
+// User-specified list of prefix groups to advertise in custom mode,
+// which can take one of the following options:
 func (r *RouterPeer) AdvertisedGroups() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["advertisedGroups"])
 }
 
+// User-specified list of individual IP ranges to advertise in
+// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 func (r *RouterPeer) AdvertisedIpRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["advertisedIpRanges"])
 }
@@ -168,8 +176,16 @@ func (r *RouterPeer) Router() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering RouterPeer resources.
 type RouterPeerState struct {
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Options include `DEFAULT` or `CUSTOM`.
 	AdvertiseMode interface{}
+	// User-specified list of prefix groups to advertise in custom mode,
+	// which can take one of the following options:
 	AdvertisedGroups interface{}
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+	// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+	// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges interface{}
 	// The priority of routes advertised to this BGP peer.
 	// Changing this forces a new peer to be created.
@@ -202,8 +218,16 @@ type RouterPeerState struct {
 
 // The set of arguments for constructing a RouterPeer resource.
 type RouterPeerArgs struct {
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Options include `DEFAULT` or `CUSTOM`.
 	AdvertiseMode interface{}
+	// User-specified list of prefix groups to advertise in custom mode,
+	// which can take one of the following options:
 	AdvertisedGroups interface{}
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
+	// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
+	// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges interface{}
 	// The priority of routes advertised to this BGP peer.
 	// Changing this forces a new peer to be created.

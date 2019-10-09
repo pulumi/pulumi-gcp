@@ -77,9 +77,13 @@ export class Registry extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.kms.RegistryCredential[] | undefined>;
     /**
-     * A PubSub topics to publish device events. Structure is documented below.
+     * Use `eventNotificationConfigs` instead.
      */
     public readonly eventNotificationConfig!: pulumi.Output<outputs.kms.RegistryEventNotificationConfig>;
+    /**
+     * List of configurations for event notification, such as
+     * PubSub topics to publish device events to. Structure is documented below.
+     */
     public readonly eventNotificationConfigs!: pulumi.Output<outputs.kms.RegistryEventNotificationConfigItem[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
@@ -163,9 +167,13 @@ export interface RegistryState {
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
     /**
-     * A PubSub topics to publish device events. Structure is documented below.
+     * Use `eventNotificationConfigs` instead.
      */
     readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
+    /**
+     * List of configurations for event notification, such as
+     * PubSub topics to publish device events to. Structure is documented below.
+     */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
@@ -204,9 +212,13 @@ export interface RegistryArgs {
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
     /**
-     * A PubSub topics to publish device events. Structure is documented below.
+     * Use `eventNotificationConfigs` instead.
      */
     readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
+    /**
+     * List of configurations for event notification, such as
+     * PubSub topics to publish device events to. Structure is documented below.
+     */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
     /**
      * Activate or deactivate HTTP. Structure is documented below.
