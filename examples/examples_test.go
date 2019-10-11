@@ -28,53 +28,19 @@ import (
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
-	// Set the configurations.
-	project := os.Getenv("GOOGLE_PROJECT")
-	if project == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_PROJECT variable")
-	}
-	region := os.Getenv("GOOGLE_REGION")
-	if region == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_REGION variable")
-	}
-	zone := os.Getenv("GOOGLE_ZONE")
-	if zone == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_ZONE variable")
-	}
-	cwd, err := os.Getwd()
-	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-		return
-	}
+func TestAccMinimal(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "minimal"),
+		})
 
-	// base options shared amongst all tests.
-	base := integration.ProgramTestOptions{
-		Config: map[string]string{
-			"gcp:config:project": project,
-			"gcp:config:zone":    zone,
-			"gcp:config:region":  region,
-		},
-		Dependencies: []string{
-			"@pulumi/gcp",
-		},
-	}
+	integration.ProgramTest(t, &test)
+}
 
-	jsBase := base.With(integration.ProgramTestOptions{
-		Dependencies: []string{
-			"@pulumi/gcp",
-		},
-	})
-
-	pythonBase := base.With(integration.ProgramTestOptions{
-		Dependencies: []string{
-			filepath.Join("..", "sdk", "python", "bin"),
-		},
-	})
-
-	shortTests := []integration.ProgramTestOptions{
-		jsBase.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
-		jsBase.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "serverless"),
+func TestAccServerless(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "serverless"),
 			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
@@ -82,66 +48,169 @@ func TestExamples(t *testing.T) {
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, "Hello World!", body)
 			}),
-		}),
-		jsBase.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "bucket"),
-			RunUpdateTest: true,
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
-		}),
-		jsBase.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "topic"),
-			RunUpdateTest: true,
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
-		}),
-		pythonBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "minimal-py"),
-		}),
-		pythonBase.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "bucket-py"),
-			RunUpdateTest: true,
-		}),
-		pythonBase.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "datasource-py"),
-			RunUpdateTest: true,
-		}),
-	}
-
-	longTests := []integration.ProgramTestOptions{
-		jsBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "loadbalancer"),
-			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
-			// running the refresh step for now.
-			SkipRefresh:   true,
-			RunUpdateTest: true,
-		}),
-		jsBase.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "webserver"),
-			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
-			// running the refresh step for now.
-			SkipRefresh:   true,
-			RunUpdateTest: true,
-		}),
-	}
-
-	tests := shortTests
-	if !testing.Short() {
-		tests = append(tests, longTests...)
-	}
-
-	for _, ex := range tests {
-		example := ex
-		t.Run(filepath.Base(example.Dir), func(t *testing.T) {
-			integration.ProgramTest(t, &example)
 		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccBucket(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "bucket"),
+			RunUpdateTest: true,
+			// One change is known to occur during refresh of the resources in this example:
+			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
+			ExpectRefreshChanges: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccTopic(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "topic"),
+			RunUpdateTest: true,
+			// One change is known to occur during refresh of the resources in this example:
+			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
+			ExpectRefreshChanges: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccLoadbalancer(t *testing.T) {
+	skipIfShort(t)
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "loadbalancer"),
+			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
+			// running the refresh step for now.
+			SkipRefresh:   true,
+			RunUpdateTest: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccWebserver(t *testing.T) {
+	skipIfShort(t)
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "webserver"),
+			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
+			// running the refresh step for now.
+			SkipRefresh:   true,
+			RunUpdateTest: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccMinimalPy(t *testing.T) {
+	test := getPythonBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "minimal-py"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccBucketPy(t *testing.T) {
+	test := getPythonBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "bucket-py"),
+			RunUpdateTest: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccDatasourcePy(t *testing.T) {
+	test := getPythonBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "datasource-py"),
+			RunUpdateTest: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func skipIfShort(t *testing.T) {
+	if testing.Short() {
+		t.Skip("skipping long-running test in short mode")
 	}
 }
 
-func createEditDir(dir string) integration.EditDir {
-	return integration.EditDir{Dir: dir, ExtraRuntimeValidation: nil}
+func getProject(t *testing.T) string {
+	project := os.Getenv("GOOGLE_PROJECT")
+	if project == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_PROJECT environment variable")
+	}
+
+	return project
+}
+
+func getZone(t *testing.T) string {
+	zone := os.Getenv("GOOGLE_ZONE")
+	if zone == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_ZONE environment variable")
+	}
+
+	return zone
+}
+
+func getRegion(t *testing.T) string {
+	region := os.Getenv("GOOGLE_REGION")
+	if region == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_REGION environment variable")
+	}
+
+	return region
+}
+
+func getCwd(t *testing.T) string {
+	cwd, err := os.Getwd()
+	if err != nil {
+		t.Error("expected a valid working directory", err)
+	}
+
+	return cwd
+}
+
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	project := getProject(t)
+	zone := getZone(t)
+	region := getRegion(t)
+	return integration.ProgramTestOptions{
+		Config: map[string]string{
+			"gcp:config:project": project,
+			"gcp:config:zone":    zone,
+			"gcp:config:region":  region,
+		},
+	}
+}
+
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions(t)
+	baseJS := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"@pulumi/gcp",
+		},
+	})
+
+	return baseJS
+}
+
+func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions(t)
+	pythonBase := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			filepath.Join("..", "sdk", "python", "bin"),
+		},
+	})
+
+	return pythonBase
 }
 
 func validateAPITest(isValid func(body string)) func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
