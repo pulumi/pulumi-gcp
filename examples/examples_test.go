@@ -172,7 +172,7 @@ func getRegion(t *testing.T) string {
 func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
 	if err != nil {
-		t.Error("expected a valid working directory", err)
+		t.FailNow()
 	}
 
 	return cwd
