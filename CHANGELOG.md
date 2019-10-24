@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.18.0 of the Google Beta Terraform Provider.
+_(none)_
 
 ---
+
+## 1.4.0 (2019-10-24)
+* Upgrade to v2.18.0 of the Google Beta Terraform Provider.
 
 ## 1.3.0 (2019-10-09)
 * Regenerate SDK against tf2pulumi 0.6.0
