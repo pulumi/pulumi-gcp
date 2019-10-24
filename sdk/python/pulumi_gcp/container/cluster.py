@@ -93,10 +93,9 @@ class Cluster(pulumi.CustomResource):
     """
     default_max_pods_per_node: pulumi.Output[float]
     """
-    ) The default maximum number of pods per node in this cluster.
-    Note that this does not work on node pools which are "route-based" - that is, node
-    pools belonging to clusters that do not have IP Aliasing enabled.
-    See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+    The default maximum number of pods
+    per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+    that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
     for more information.
     """
     description: pulumi.Output[str]
@@ -125,6 +124,10 @@ class Cluster(pulumi.CustomResource):
     When enabled, identities in the system, including service accounts, nodes, and controllers,
     will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
     Defaults to `false`
+    """
+    enable_shielded_nodes: pulumi.Output[bool]
+    """
+    ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
     """
     enable_tpu: pulumi.Output[bool]
     """
@@ -296,6 +299,11 @@ class Cluster(pulumi.CustomResource):
         * `sandboxType` (`str`)
     
       * `service_account` (`str`)
+      * `shielded_instance_config` (`dict`)
+    
+        * `enableIntegrityMonitoring` (`bool`)
+        * `enableSecureBoot` (`bool`)
+    
       * `tags` (`list`)
       * `taints` (`list`)
     
@@ -371,6 +379,11 @@ class Cluster(pulumi.CustomResource):
           * `sandboxType` (`str`)
     
         * `service_account` (`str`)
+        * `shielded_instance_config` (`dict`)
+    
+          * `enableIntegrityMonitoring` (`bool`)
+          * `enableSecureBoot` (`bool`)
+    
         * `tags` (`list`)
         * `taints` (`list`)
     
@@ -425,6 +438,14 @@ class Cluster(pulumi.CustomResource):
     is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    release_channel: pulumi.Output[dict]
+    """
+    ) Configuration options for the
+    [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+    feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+    
+      * `channel` (`str`)
+    """
     remove_default_node_pool: pulumi.Output[bool]
     """
     If `true`, deletes the default node
@@ -484,7 +505,7 @@ class Cluster(pulumi.CustomResource):
     should be created in. If specified, this cluster will be a zonal cluster. `zone`
     has been deprecated in favour of `location`.
     """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -522,10 +543,9 @@ class Cluster(pulumi.CustomResource):
                cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
-        :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
-               Note that this does not work on node pools which are "route-based" - that is, node
-               pools belonging to clusters that do not have IP Aliasing enabled.
-               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+        :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
+               per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+               that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
@@ -539,6 +559,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_shielded_nodes: ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
@@ -625,6 +646,9 @@ class Cluster(pulumi.CustomResource):
                a private cluster. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] release_channel: ) Configuration options for the
+               [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+               feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
@@ -755,6 +779,11 @@ class Cluster(pulumi.CustomResource):
             * `sandboxType` (`pulumi.Input[str]`)
         
           * `service_account` (`pulumi.Input[str]`)
+          * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+            * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
         
@@ -816,6 +845,11 @@ class Cluster(pulumi.CustomResource):
               * `sandboxType` (`pulumi.Input[str]`)
         
             * `service_account` (`pulumi.Input[str]`)
+            * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+              * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+              * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
             * `tags` (`pulumi.Input[list]`)
             * `taints` (`pulumi.Input[list]`)
         
@@ -845,6 +879,10 @@ class Cluster(pulumi.CustomResource):
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
+        
+        The **release_channel** object supports the following:
+        
+          * `channel` (`pulumi.Input[str]`)
         
         The **resource_usage_export_config** object supports the following:
         
@@ -893,6 +931,7 @@ class Cluster(pulumi.CustomResource):
             __props__['enable_intranode_visibility'] = enable_intranode_visibility
             __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
             __props__['enable_legacy_abac'] = enable_legacy_abac
+            __props__['enable_shielded_nodes'] = enable_shielded_nodes
             __props__['enable_tpu'] = enable_tpu
             __props__['initial_node_count'] = initial_node_count
             __props__['ip_allocation_policy'] = ip_allocation_policy
@@ -914,6 +953,7 @@ class Cluster(pulumi.CustomResource):
             __props__['private_cluster_config'] = private_cluster_config
             __props__['project'] = project
             __props__['region'] = region
+            __props__['release_channel'] = release_channel
             __props__['remove_default_node_pool'] = remove_default_node_pool
             __props__['resource_labels'] = resource_labels
             __props__['resource_usage_export_config'] = resource_usage_export_config
@@ -933,7 +973,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None):
+    def get(resource_name, id, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -967,10 +1007,9 @@ class Cluster(pulumi.CustomResource):
                cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
-        :param pulumi.Input[float] default_max_pods_per_node: ) The default maximum number of pods per node in this cluster.
-               Note that this does not work on node pools which are "route-based" - that is, node
-               pools belonging to clusters that do not have IP Aliasing enabled.
-               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+        :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
+               per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+               that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
@@ -984,6 +1023,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_shielded_nodes: ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
@@ -1076,6 +1116,9 @@ class Cluster(pulumi.CustomResource):
                a private cluster. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] release_channel: ) Configuration options for the
+               [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+               feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
@@ -1210,6 +1253,11 @@ class Cluster(pulumi.CustomResource):
             * `sandboxType` (`pulumi.Input[str]`)
         
           * `service_account` (`pulumi.Input[str]`)
+          * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+            * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
         
@@ -1271,6 +1319,11 @@ class Cluster(pulumi.CustomResource):
               * `sandboxType` (`pulumi.Input[str]`)
         
             * `service_account` (`pulumi.Input[str]`)
+            * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+              * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+              * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
             * `tags` (`pulumi.Input[list]`)
             * `taints` (`pulumi.Input[list]`)
         
@@ -1300,6 +1353,10 @@ class Cluster(pulumi.CustomResource):
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
+        
+        The **release_channel** object supports the following:
+        
+          * `channel` (`pulumi.Input[str]`)
         
         The **resource_usage_export_config** object supports the following:
         
@@ -1334,6 +1391,7 @@ class Cluster(pulumi.CustomResource):
         __props__["enable_intranode_visibility"] = enable_intranode_visibility
         __props__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
         __props__["enable_legacy_abac"] = enable_legacy_abac
+        __props__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__["enable_tpu"] = enable_tpu
         __props__["endpoint"] = endpoint
         __props__["initial_node_count"] = initial_node_count
@@ -1358,6 +1416,7 @@ class Cluster(pulumi.CustomResource):
         __props__["private_cluster_config"] = private_cluster_config
         __props__["project"] = project
         __props__["region"] = region
+        __props__["release_channel"] = release_channel
         __props__["remove_default_node_pool"] = remove_default_node_pool
         __props__["resource_labels"] = resource_labels
         __props__["resource_usage_export_config"] = resource_usage_export_config

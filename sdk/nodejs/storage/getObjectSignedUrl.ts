@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  * 
  * For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
  * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const artifact = gcp.storage.getObjectSignedUrl({
+ *     bucket: "installBinaries",
+ *     path: "path/to/install_file.bin",
+ * });
+ * const vm = new gcp.compute.Instance("vm", {});
+ * ```
+ * 
  * ## Full Example
  * 
  * ```typescript

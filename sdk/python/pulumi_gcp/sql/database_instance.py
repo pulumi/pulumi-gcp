@@ -102,6 +102,7 @@ class DatabaseInstance(pulumi.CustomResource):
     
         * `binaryLogEnabled` (`bool`)
         * `enabled` (`bool`)
+        * `location` (`str`)
         * `startTime` (`str`)
     
       * `crashSafeReplication` (`bool`)
@@ -116,7 +117,7 @@ class DatabaseInstance(pulumi.CustomResource):
       * `diskAutoresize` (`bool`)
       * `diskSize` (`float`)
       * `diskType` (`str`)
-      * `ipConfiguration` (`dict`)
+      * `ip_configuration` (`dict`)
     
         * `authorizedNetworks` (`list`)
     
@@ -209,6 +210,7 @@ class DatabaseInstance(pulumi.CustomResource):
         
             * `binaryLogEnabled` (`pulumi.Input[bool]`)
             * `enabled` (`pulumi.Input[bool]`)
+            * `location` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
         
           * `crashSafeReplication` (`pulumi.Input[bool]`)
@@ -223,7 +225,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `diskAutoresize` (`pulumi.Input[bool]`)
           * `diskSize` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
-          * `ipConfiguration` (`pulumi.Input[dict]`)
+          * `ip_configuration` (`pulumi.Input[dict]`)
         
             * `authorizedNetworks` (`pulumi.Input[list]`)
         
@@ -378,6 +380,7 @@ class DatabaseInstance(pulumi.CustomResource):
         
             * `binaryLogEnabled` (`pulumi.Input[bool]`)
             * `enabled` (`pulumi.Input[bool]`)
+            * `location` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
         
           * `crashSafeReplication` (`pulumi.Input[bool]`)
@@ -392,7 +395,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `diskAutoresize` (`pulumi.Input[bool]`)
           * `diskSize` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
-          * `ipConfiguration` (`pulumi.Input[dict]`)
+          * `ip_configuration` (`pulumi.Input[dict]`)
         
             * `authorizedNetworks` (`pulumi.Input[list]`)
         

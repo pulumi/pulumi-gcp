@@ -53,6 +53,12 @@ export namespace appengine {
         service: string;
     }
 
+    export interface ApplicationUrlDispatchRulesDispatchRule {
+        domain?: string;
+        path: string;
+        service: string;
+    }
+
     export interface DomainMappingResourceRecord {
         name?: string;
         rrdata?: string;
@@ -1960,6 +1966,7 @@ export namespace container {
         preemptible?: boolean;
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         serviceAccount: string;
+        shieldedInstanceConfig: outputs.container.ClusterNodeConfigShieldedInstanceConfig;
         tags?: string[];
         taints: outputs.container.ClusterNodeConfigTaint[];
         workloadMetadataConfig?: outputs.container.ClusterNodeConfigWorkloadMetadataConfig;
@@ -1972,6 +1979,11 @@ export namespace container {
 
     export interface ClusterNodeConfigSandboxConfig {
         sandboxType: string;
+    }
+
+    export interface ClusterNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: boolean;
+        enableSecureBoot?: boolean;
     }
 
     export interface ClusterNodeConfigTaint {
@@ -2051,6 +2063,7 @@ export namespace container {
         preemptible?: boolean;
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         serviceAccount: string;
+        shieldedInstanceConfig: outputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig;
         tags?: string[];
         taints: outputs.container.ClusterNodePoolNodeConfigTaint[];
         workloadMetadataConfig?: outputs.container.ClusterNodePoolNodeConfigWorkloadMetadataConfig;
@@ -2063,6 +2076,11 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigSandboxConfig {
         sandboxType: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: boolean;
+        enableSecureBoot?: boolean;
     }
 
     export interface ClusterNodePoolNodeConfigTaint {
@@ -2085,6 +2103,10 @@ export namespace container {
         masterIpv4CidrBlock?: string;
         privateEndpoint: string;
         publicEndpoint: string;
+    }
+
+    export interface ClusterReleaseChannel {
+        channel?: string;
     }
 
     export interface ClusterResourceUsageExportConfig {
@@ -2219,6 +2241,7 @@ export namespace container {
         preemptible: boolean;
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
         serviceAccount: string;
+        shieldedInstanceConfigs: outputs.container.GetClusterNodeConfigShieldedInstanceConfig[];
         tags: string[];
         taints: outputs.container.GetClusterNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodeConfigWorkloadMetadataConfig[];
@@ -2231,6 +2254,11 @@ export namespace container {
 
     export interface GetClusterNodeConfigSandboxConfig {
         sandboxType: string;
+    }
+
+    export interface GetClusterNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring: boolean;
+        enableSecureBoot: boolean;
     }
 
     export interface GetClusterNodeConfigTaint {
@@ -2284,6 +2312,7 @@ export namespace container {
         preemptible: boolean;
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
         serviceAccount: string;
+        shieldedInstanceConfigs: outputs.container.GetClusterNodePoolNodeConfigShieldedInstanceConfig[];
         tags: string[];
         taints: outputs.container.GetClusterNodePoolNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodePoolNodeConfigWorkloadMetadataConfig[];
@@ -2296,6 +2325,11 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigSandboxConfig {
         sandboxType: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring: boolean;
+        enableSecureBoot: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigTaint {
@@ -2318,6 +2352,10 @@ export namespace container {
         masterIpv4CidrBlock: string;
         privateEndpoint: string;
         publicEndpoint: string;
+    }
+
+    export interface GetClusterReleaseChannel {
+        channel: string;
     }
 
     export interface GetClusterResourceUsageExportConfig {
@@ -2361,6 +2399,7 @@ export namespace container {
         preemptible?: boolean;
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
         serviceAccount: string;
+        shieldedInstanceConfig: outputs.container.NodePoolNodeConfigShieldedInstanceConfig;
         tags?: string[];
         taints: outputs.container.NodePoolNodeConfigTaint[];
         workloadMetadataConfig?: outputs.container.NodePoolNodeConfigWorkloadMetadataConfig;
@@ -2373,6 +2412,11 @@ export namespace container {
 
     export interface NodePoolNodeConfigSandboxConfig {
         sandboxType: string;
+    }
+
+    export interface NodePoolNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: boolean;
+        enableSecureBoot?: boolean;
     }
 
     export interface NodePoolNodeConfigTaint {
@@ -3215,6 +3259,7 @@ export namespace sql {
     export interface DatabaseInstanceSettingsBackupConfiguration {
         binaryLogEnabled?: boolean;
         enabled?: boolean;
+        location?: string;
         startTime: string;
     }
 

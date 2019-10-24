@@ -96,6 +96,7 @@ export interface GetClusterResult {
     readonly enableIntranodeVisibility: boolean;
     readonly enableKubernetesAlpha: boolean;
     readonly enableLegacyAbac: boolean;
+    readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
     readonly endpoint: string;
     readonly initialNodeCount: number;
@@ -120,6 +121,7 @@ export interface GetClusterResult {
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
     readonly project?: string;
     readonly region?: string;
+    readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly resourceUsageExportConfigs: outputs.container.GetClusterResourceUsageExportConfig[];

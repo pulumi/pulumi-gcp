@@ -38,7 +38,7 @@ export class Topic extends pulumi.CustomResource {
 
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy | undefined>;
+    public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.

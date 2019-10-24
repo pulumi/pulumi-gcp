@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -50,6 +50,9 @@ class GetClusterResult:
         if enable_legacy_abac and not isinstance(enable_legacy_abac, bool):
             raise TypeError("Expected argument 'enable_legacy_abac' to be a bool")
         __self__.enable_legacy_abac = enable_legacy_abac
+        if enable_shielded_nodes and not isinstance(enable_shielded_nodes, bool):
+            raise TypeError("Expected argument 'enable_shielded_nodes' to be a bool")
+        __self__.enable_shielded_nodes = enable_shielded_nodes
         if enable_tpu and not isinstance(enable_tpu, bool):
             raise TypeError("Expected argument 'enable_tpu' to be a bool")
         __self__.enable_tpu = enable_tpu
@@ -122,6 +125,9 @@ class GetClusterResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+        if release_channels and not isinstance(release_channels, list):
+            raise TypeError("Expected argument 'release_channels' to be a list")
+        __self__.release_channels = release_channels
         if remove_default_node_pool and not isinstance(remove_default_node_pool, bool):
             raise TypeError("Expected argument 'remove_default_node_pool' to be a bool")
         __self__.remove_default_node_pool = remove_default_node_pool
@@ -173,6 +179,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_intranode_visibility=self.enable_intranode_visibility,
             enable_kubernetes_alpha=self.enable_kubernetes_alpha,
             enable_legacy_abac=self.enable_legacy_abac,
+            enable_shielded_nodes=self.enable_shielded_nodes,
             enable_tpu=self.enable_tpu,
             endpoint=self.endpoint,
             initial_node_count=self.initial_node_count,
@@ -197,6 +204,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             private_cluster_configs=self.private_cluster_configs,
             project=self.project,
             region=self.region,
+            release_channels=self.release_channels,
             remove_default_node_pool=self.remove_default_node_pool,
             resource_labels=self.resource_labels,
             resource_usage_export_configs=self.resource_usage_export_configs,
@@ -251,6 +259,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         enable_intranode_visibility=__ret__.get('enableIntranodeVisibility'),
         enable_kubernetes_alpha=__ret__.get('enableKubernetesAlpha'),
         enable_legacy_abac=__ret__.get('enableLegacyAbac'),
+        enable_shielded_nodes=__ret__.get('enableShieldedNodes'),
         enable_tpu=__ret__.get('enableTpu'),
         endpoint=__ret__.get('endpoint'),
         initial_node_count=__ret__.get('initialNodeCount'),
@@ -275,6 +284,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         private_cluster_configs=__ret__.get('privateClusterConfigs'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
+        release_channels=__ret__.get('releaseChannels'),
         remove_default_node_pool=__ret__.get('removeDefaultNodePool'),
         resource_labels=__ret__.get('resourceLabels'),
         resource_usage_export_configs=__ret__.get('resourceUsageExportConfigs'),

@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./application";
+export * from "./applicationUrlDispatchRules";
 export * from "./domainMapping";
 export * from "./firewallRule";
 export * from "./standardAppVersion";

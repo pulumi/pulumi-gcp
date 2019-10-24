@@ -37,6 +37,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["enableIntranodeVisibility"] = nil
 		inputs["enableKubernetesAlpha"] = nil
 		inputs["enableLegacyAbac"] = nil
+		inputs["enableShieldedNodes"] = nil
 		inputs["enableTpu"] = nil
 		inputs["initialNodeCount"] = nil
 		inputs["ipAllocationPolicy"] = nil
@@ -58,6 +59,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["privateClusterConfig"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
+		inputs["releaseChannel"] = nil
 		inputs["removeDefaultNodePool"] = nil
 		inputs["resourceLabels"] = nil
 		inputs["resourceUsageExportConfig"] = nil
@@ -78,6 +80,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["enableIntranodeVisibility"] = args.EnableIntranodeVisibility
 		inputs["enableKubernetesAlpha"] = args.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = args.EnableLegacyAbac
+		inputs["enableShieldedNodes"] = args.EnableShieldedNodes
 		inputs["enableTpu"] = args.EnableTpu
 		inputs["initialNodeCount"] = args.InitialNodeCount
 		inputs["ipAllocationPolicy"] = args.IpAllocationPolicy
@@ -99,6 +102,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["privateClusterConfig"] = args.PrivateClusterConfig
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
+		inputs["releaseChannel"] = args.ReleaseChannel
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
 		inputs["resourceLabels"] = args.ResourceLabels
 		inputs["resourceUsageExportConfig"] = args.ResourceUsageExportConfig
@@ -137,6 +141,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["enableIntranodeVisibility"] = state.EnableIntranodeVisibility
 		inputs["enableKubernetesAlpha"] = state.EnableKubernetesAlpha
 		inputs["enableLegacyAbac"] = state.EnableLegacyAbac
+		inputs["enableShieldedNodes"] = state.EnableShieldedNodes
 		inputs["enableTpu"] = state.EnableTpu
 		inputs["endpoint"] = state.Endpoint
 		inputs["initialNodeCount"] = state.InitialNodeCount
@@ -161,6 +166,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["privateClusterConfig"] = state.PrivateClusterConfig
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
+		inputs["releaseChannel"] = state.ReleaseChannel
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
 		inputs["resourceLabels"] = state.ResourceLabels
 		inputs["resourceUsageExportConfig"] = state.ResourceUsageExportConfig
@@ -238,10 +244,9 @@ func (r *Cluster) DatabaseEncryption() *pulumi.Output {
 	return r.s.State["databaseEncryption"]
 }
 
-// ) The default maximum number of pods per node in this cluster.
-// Note that this does not work on node pools which are "route-based" - that is, node
-// pools belonging to clusters that do not have IP Aliasing enabled.
-// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+// The default maximum number of pods
+// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 // for more information.
 func (r *Cluster) DefaultMaxPodsPerNode() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["defaultMaxPodsPerNode"])
@@ -277,6 +282,11 @@ func (r *Cluster) EnableKubernetesAlpha() *pulumi.BoolOutput {
 // Defaults to `false`
 func (r *Cluster) EnableLegacyAbac() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableLegacyAbac"])
+}
+
+// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+func (r *Cluster) EnableShieldedNodes() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableShieldedNodes"])
 }
 
 // ) Whether to enable Cloud TPU resources in this cluster.
@@ -467,6 +477,13 @@ func (r *Cluster) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// ) Configuration options for the
+// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+func (r *Cluster) ReleaseChannel() *pulumi.Output {
+	return r.s.State["releaseChannel"]
+}
+
 // If `true`, deletes the default node
 // pool upon cluster creation. If you're using `container.NodePool`
 // resources with no default node pool, this should be set to `true`, alongside
@@ -561,10 +578,9 @@ type ClusterState struct {
 	// ).
 	// Structure is documented below.
 	DatabaseEncryption interface{}
-	// ) The default maximum number of pods per node in this cluster.
-	// Note that this does not work on node pools which are "route-based" - that is, node
-	// pools belonging to clusters that do not have IP Aliasing enabled.
-	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// The default maximum number of pods
+	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
@@ -584,6 +600,8 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac interface{}
+	// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+	EnableShieldedNodes interface{}
 	// ) Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu interface{}
@@ -700,6 +718,10 @@ type ClusterState struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
+	// ) Configuration options for the
+	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	ReleaseChannel interface{}
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
 	// resources with no default node pool, this should be set to `true`, alongside
@@ -769,10 +791,9 @@ type ClusterArgs struct {
 	// ).
 	// Structure is documented below.
 	DatabaseEncryption interface{}
-	// ) The default maximum number of pods per node in this cluster.
-	// Note that this does not work on node pools which are "route-based" - that is, node
-	// pools belonging to clusters that do not have IP Aliasing enabled.
-	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+	// The default maximum number of pods
+	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode interface{}
 	// Description of the cluster.
@@ -792,6 +813,8 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac interface{}
+	// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+	EnableShieldedNodes interface{}
 	// ) Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu interface{}
@@ -899,6 +922,10 @@ type ClusterArgs struct {
 	// is not provided, the provider project is used.
 	Project interface{}
 	Region interface{}
+	// ) Configuration options for the
+	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	ReleaseChannel interface{}
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
 	// resources with no default node pool, this should be set to `true`, alongside
