@@ -57,6 +57,12 @@ export namespace appengine {
         service?: pulumi.Input<string>;
     }
 
+    export interface ApplicationUrlDispatchRulesDispatchRule {
+        domain?: pulumi.Input<string>;
+        path: pulumi.Input<string>;
+        service: pulumi.Input<string>;
+    }
+
     export interface DomainMappingResourceRecord {
         name?: pulumi.Input<string>;
         rrdata?: pulumi.Input<string>;
@@ -1561,6 +1567,7 @@ export namespace container {
         preemptible?: pulumi.Input<boolean>;
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         serviceAccount?: pulumi.Input<string>;
+        shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodeConfigShieldedInstanceConfig>;
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigTaint>[]>;
         workloadMetadataConfig?: pulumi.Input<inputs.container.ClusterNodeConfigWorkloadMetadataConfig>;
@@ -1573,6 +1580,11 @@ export namespace container {
 
     export interface ClusterNodeConfigSandboxConfig {
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodeConfigTaint {
@@ -1652,6 +1664,7 @@ export namespace container {
         preemptible?: pulumi.Input<boolean>;
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         serviceAccount?: pulumi.Input<string>;
+        shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig>;
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigTaint>[]>;
         workloadMetadataConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigWorkloadMetadataConfig>;
@@ -1664,6 +1677,11 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigSandboxConfig {
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodePoolNodeConfigTaint {
@@ -1686,6 +1704,10 @@ export namespace container {
         masterIpv4CidrBlock?: pulumi.Input<string>;
         privateEndpoint?: pulumi.Input<string>;
         publicEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface ClusterReleaseChannel {
+        channel?: pulumi.Input<string>;
     }
 
     export interface ClusterResourceUsageExportConfig {
@@ -1729,6 +1751,7 @@ export namespace container {
         preemptible?: pulumi.Input<boolean>;
         sandboxConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigSandboxConfig>;
         serviceAccount?: pulumi.Input<string>;
+        shieldedInstanceConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigShieldedInstanceConfig>;
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         taints?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigTaint>[]>;
         workloadMetadataConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigWorkloadMetadataConfig>;
@@ -1741,6 +1764,11 @@ export namespace container {
 
     export interface NodePoolNodeConfigSandboxConfig {
         sandboxType: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNodeConfigShieldedInstanceConfig {
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean>;
     }
 
     export interface NodePoolNodeConfigTaint {
@@ -2498,6 +2526,7 @@ export namespace sql {
     export interface DatabaseInstanceSettingsBackupConfiguration {
         binaryLogEnabled?: pulumi.Input<boolean>;
         enabled?: pulumi.Input<boolean>;
+        location?: pulumi.Input<string>;
         startTime?: pulumi.Input<string>;
     }
 

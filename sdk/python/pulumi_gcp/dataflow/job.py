@@ -10,6 +10,10 @@ from typing import Union
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
+    ip_configuration: pulumi.Output[str]
+    """
+    The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+    """
     labels: pulumi.Output[dict]
     """
     User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -67,7 +71,7 @@ class Job(pulumi.CustomResource):
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, ip_configuration=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
@@ -84,6 +88,7 @@ class Job(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
         :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -117,6 +122,7 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['ip_configuration'] = ip_configuration
             __props__['labels'] = labels
             __props__['machine_type'] = machine_type
             __props__['max_workers'] = max_workers
@@ -143,7 +149,7 @@ class Job(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+    def get(resource_name, id, opts=None, ip_configuration=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -151,6 +157,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
         :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
@@ -171,6 +178,7 @@ class Job(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["ip_configuration"] = ip_configuration
         __props__["labels"] = labels
         __props__["machine_type"] = machine_type
         __props__["max_workers"] = max_workers

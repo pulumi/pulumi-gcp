@@ -166,10 +166,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
     /**
-     * ) The default maximum number of pods per node in this cluster.
-     * Note that this does not work on node pools which are "route-based" - that is, node
-     * pools belonging to clusters that do not have IP Aliasing enabled.
-     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * The default maximum number of pods
+     * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+     * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
     public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
@@ -200,6 +199,10 @@ export class Cluster extends pulumi.CustomResource {
      * Defaults to `false`
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
+    /**
+     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     */
+    public readonly enableShieldedNodes!: pulumi.Output<boolean | undefined>;
     /**
      * ) Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -363,6 +366,12 @@ export class Cluster extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
+     * ) Configuration options for the
+     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     */
+    public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
+    /**
      * If `true`, deletes the default node
      * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
@@ -436,6 +445,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
+            inputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             inputs["enableTpu"] = state ? state.enableTpu : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
@@ -460,6 +470,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = state ? state.resourceLabels : undefined;
             inputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
@@ -483,6 +494,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
+            inputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             inputs["enableTpu"] = args ? args.enableTpu : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
@@ -504,6 +516,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             inputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
@@ -577,10 +590,9 @@ export interface ClusterState {
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
     /**
-     * ) The default maximum number of pods per node in this cluster.
-     * Note that this does not work on node pools which are "route-based" - that is, node
-     * pools belonging to clusters that do not have IP Aliasing enabled.
-     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * The default maximum number of pods
+     * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+     * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
@@ -611,6 +623,10 @@ export interface ClusterState {
      * Defaults to `false`
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     */
+    readonly enableShieldedNodes?: pulumi.Input<boolean>;
     /**
      * ) Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -774,6 +790,12 @@ export interface ClusterState {
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
     /**
+     * ) Configuration options for the
+     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     */
+    readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
+    /**
      * If `true`, deletes the default node
      * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
@@ -873,10 +895,9 @@ export interface ClusterArgs {
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
     /**
-     * ) The default maximum number of pods per node in this cluster.
-     * Note that this does not work on node pools which are "route-based" - that is, node
-     * pools belonging to clusters that do not have IP Aliasing enabled.
-     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+     * The default maximum number of pods
+     * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+     * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
@@ -907,6 +928,10 @@ export interface ClusterArgs {
      * Defaults to `false`
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     */
+    readonly enableShieldedNodes?: pulumi.Input<boolean>;
     /**
      * ) Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -1054,6 +1079,12 @@ export interface ClusterArgs {
      */
     readonly project?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    /**
+     * ) Configuration options for the
+     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     */
+    readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
     /**
      * If `true`, deletes the default node
      * pool upon cluster creation. If you're using `gcp.container.NodePool`

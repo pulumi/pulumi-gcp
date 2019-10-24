@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .application import *
+from .application_url_dispatch_rules import *
 from .domain_mapping import *
 from .firewall_rule import *
 from .standard_app_version import *

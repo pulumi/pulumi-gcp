@@ -158,6 +158,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_app_engine_standard_app_version": {Tok: gcpResource(gcpAppEngine, "StandardAppVersion")},
 			"google_app_engine_domain_mapping":       {Tok: gcpResource(gcpAppEngine, "DomainMapping")},
+			"google_app_engine_application_url_dispatch_rules": {
+				Tok: gcpResource(gcpAppEngine, "ApplicationUrlDispatchRules"),
+			},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -1353,6 +1356,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_lb_ip_ranges.html.markdown",
 				},
+			},
+			"google_compute_resource_policy": {
+				Tok: gcpDataSource(gcpCompute, "getResourcePolicy"),
 			},
 
 			"google_container_cluster": {

@@ -36,6 +36,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		EnableIntranodeVisibility: outputs["enableIntranodeVisibility"],
 		EnableKubernetesAlpha: outputs["enableKubernetesAlpha"],
 		EnableLegacyAbac: outputs["enableLegacyAbac"],
+		EnableShieldedNodes: outputs["enableShieldedNodes"],
 		EnableTpu: outputs["enableTpu"],
 		Endpoint: outputs["endpoint"],
 		InitialNodeCount: outputs["initialNodeCount"],
@@ -60,6 +61,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		PrivateClusterConfigs: outputs["privateClusterConfigs"],
 		Project: outputs["project"],
 		Region: outputs["region"],
+		ReleaseChannels: outputs["releaseChannels"],
 		RemoveDefaultNodePool: outputs["removeDefaultNodePool"],
 		ResourceLabels: outputs["resourceLabels"],
 		ResourceUsageExportConfigs: outputs["resourceUsageExportConfigs"],
@@ -106,6 +108,7 @@ type GetClusterResult struct {
 	EnableIntranodeVisibility interface{}
 	EnableKubernetesAlpha interface{}
 	EnableLegacyAbac interface{}
+	EnableShieldedNodes interface{}
 	EnableTpu interface{}
 	Endpoint interface{}
 	InitialNodeCount interface{}
@@ -130,6 +133,7 @@ type GetClusterResult struct {
 	PrivateClusterConfigs interface{}
 	Project interface{}
 	Region interface{}
+	ReleaseChannels interface{}
 	RemoveDefaultNodePool interface{}
 	ResourceLabels interface{}
 	ResourceUsageExportConfigs interface{}

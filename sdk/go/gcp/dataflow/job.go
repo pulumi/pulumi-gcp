@@ -37,6 +37,7 @@ func NewJob(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["ipConfiguration"] = nil
 		inputs["labels"] = nil
 		inputs["machineType"] = nil
 		inputs["maxWorkers"] = nil
@@ -52,6 +53,7 @@ func NewJob(ctx *pulumi.Context,
 		inputs["templateGcsPath"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["ipConfiguration"] = args.IpConfiguration
 		inputs["labels"] = args.Labels
 		inputs["machineType"] = args.MachineType
 		inputs["maxWorkers"] = args.MaxWorkers
@@ -81,6 +83,7 @@ func GetJob(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *JobState, opts ...pulumi.ResourceOpt) (*Job, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["ipConfiguration"] = state.IpConfiguration
 		inputs["labels"] = state.Labels
 		inputs["machineType"] = state.MachineType
 		inputs["maxWorkers"] = state.MaxWorkers
@@ -112,6 +115,11 @@ func (r *Job) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Job) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+func (r *Job) IpConfiguration() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["ipConfiguration"])
 }
 
 // User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -190,6 +198,8 @@ func (r *Job) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Job resources.
 type JobState struct {
+	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+	IpConfiguration interface{}
 	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	Labels interface{}
 	// The machine type to use for the job.
@@ -223,6 +233,8 @@ type JobState struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+	IpConfiguration interface{}
 	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	Labels interface{}
 	// The machine type to use for the job.

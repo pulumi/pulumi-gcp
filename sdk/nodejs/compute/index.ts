@@ -30,6 +30,7 @@ export * from "./getNetworkEndpointGroup";
 export * from "./getNodeTypes";
 export * from "./getRegionInstanceGroup";
 export * from "./getRegions";
+export * from "./getResourcePolicy";
 export * from "./getSSLPolicy";
 export * from "./getSubnetwork";
 export * from "./getVPNGateway";

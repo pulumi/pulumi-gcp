@@ -80,6 +80,11 @@ class NodePool(pulumi.CustomResource):
         * `sandboxType` (`str`)
     
       * `service_account` (`str`)
+      * `shielded_instance_config` (`dict`)
+    
+        * `enableIntegrityMonitoring` (`bool`)
+        * `enableSecureBoot` (`bool`)
+    
       * `tags` (`list`)
       * `taints` (`list`)
     
@@ -206,6 +211,11 @@ class NodePool(pulumi.CustomResource):
             * `sandboxType` (`pulumi.Input[str]`)
         
           * `service_account` (`pulumi.Input[str]`)
+          * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+            * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
         
@@ -339,6 +349,11 @@ class NodePool(pulumi.CustomResource):
             * `sandboxType` (`pulumi.Input[str]`)
         
           * `service_account` (`pulumi.Input[str]`)
+          * `shielded_instance_config` (`pulumi.Input[dict]`)
+        
+            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
+            * `enableSecureBoot` (`pulumi.Input[bool]`)
+        
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
         

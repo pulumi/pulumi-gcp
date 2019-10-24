@@ -36,10 +36,15 @@ export class StandardAppVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === StandardAppVersion.__pulumiType;
     }
 
+    /**
+     * If set to `true`, the service will be deleted if it is the last version.    
+     */
+    public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
     public readonly deployment!: pulumi.Output<outputs.appengine.StandardAppVersionDeployment | undefined>;
     public readonly entrypoint!: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint | undefined>;
     public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[] | undefined>;
+    public readonly instanceClass!: pulumi.Output<string | undefined>;
     public readonly libraries!: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -69,10 +74,12 @@ export class StandardAppVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
+            inputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
             inputs["deployment"] = state ? state.deployment : undefined;
             inputs["entrypoint"] = state ? state.entrypoint : undefined;
             inputs["envVariables"] = state ? state.envVariables : undefined;
             inputs["handlers"] = state ? state.handlers : undefined;
+            inputs["instanceClass"] = state ? state.instanceClass : undefined;
             inputs["libraries"] = state ? state.libraries : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
@@ -87,10 +94,12 @@ export class StandardAppVersion extends pulumi.CustomResource {
             if (!args || args.runtime === undefined) {
                 throw new Error("Missing required property 'runtime'");
             }
+            inputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["entrypoint"] = args ? args.entrypoint : undefined;
             inputs["envVariables"] = args ? args.envVariables : undefined;
             inputs["handlers"] = args ? args.handlers : undefined;
+            inputs["instanceClass"] = args ? args.instanceClass : undefined;
             inputs["libraries"] = args ? args.libraries : undefined;
             inputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -116,10 +125,15 @@ export class StandardAppVersion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StandardAppVersion resources.
  */
 export interface StandardAppVersionState {
+    /**
+     * If set to `true`, the service will be deleted if it is the last version.    
+     */
+    readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     readonly deployment?: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
     readonly entrypoint?: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
+    readonly instanceClass?: pulumi.Input<string>;
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     readonly name?: pulumi.Input<string>;
     /**
@@ -142,10 +156,15 @@ export interface StandardAppVersionState {
  * The set of arguments for constructing a StandardAppVersion resource.
  */
 export interface StandardAppVersionArgs {
+    /**
+     * If set to `true`, the service will be deleted if it is the last version.    
+     */
+    readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     readonly deployment?: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
     readonly entrypoint?: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
+    readonly instanceClass?: pulumi.Input<string>;
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     /**
      * If set to `true`, the application version will not be deleted.

@@ -92,6 +92,7 @@ from .get_network_endpoint_group import *
 from .get_node_types import *
 from .get_region_instance_group import *
 from .get_regions import *
+from .get_resource_policy import *
 from .get_certificate import *
 from .get_ssl_policy import *
 from .get_subnetwork import *

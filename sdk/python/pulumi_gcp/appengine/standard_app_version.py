@@ -10,10 +10,15 @@ from typing import Union
 from .. import utilities, tables
 
 class StandardAppVersion(pulumi.CustomResource):
+    delete_service_on_destroy: pulumi.Output[bool]
+    """
+    If set to `true`, the service will be deleted if it is the last version.    
+    """
     deployment: pulumi.Output[dict]
     entrypoint: pulumi.Output[dict]
     env_variables: pulumi.Output[dict]
     handlers: pulumi.Output[list]
+    instance_class: pulumi.Output[str]
     libraries: pulumi.Output[list]
     name: pulumi.Output[str]
     noop_on_destroy: pulumi.Output[bool]
@@ -30,12 +35,13 @@ class StandardAppVersion(pulumi.CustomResource):
     service: pulumi.Output[str]
     threadsafe: pulumi.Output[bool]
     version_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, libraries=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a StandardAppVersion resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -103,10 +109,12 @@ class StandardAppVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['delete_service_on_destroy'] = delete_service_on_destroy
             __props__['deployment'] = deployment
             __props__['entrypoint'] = entrypoint
             __props__['env_variables'] = env_variables
             __props__['handlers'] = handlers
+            __props__['instance_class'] = instance_class
             __props__['libraries'] = libraries
             __props__['noop_on_destroy'] = noop_on_destroy
             __props__['project'] = project
@@ -125,7 +133,7 @@ class StandardAppVersion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, libraries=None, name=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None):
+    def get(resource_name, id, opts=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, name=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None):
         """
         Get an existing StandardAppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,6 +141,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -186,10 +195,12 @@ class StandardAppVersion(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["delete_service_on_destroy"] = delete_service_on_destroy
         __props__["deployment"] = deployment
         __props__["entrypoint"] = entrypoint
         __props__["env_variables"] = env_variables
         __props__["handlers"] = handlers
+        __props__["instance_class"] = instance_class
         __props__["libraries"] = libraries
         __props__["name"] = name
         __props__["noop_on_destroy"] = noop_on_destroy

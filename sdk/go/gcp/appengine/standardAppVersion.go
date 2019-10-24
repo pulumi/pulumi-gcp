@@ -21,10 +21,12 @@ func NewStandardAppVersion(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["deleteServiceOnDestroy"] = nil
 		inputs["deployment"] = nil
 		inputs["entrypoint"] = nil
 		inputs["envVariables"] = nil
 		inputs["handlers"] = nil
+		inputs["instanceClass"] = nil
 		inputs["libraries"] = nil
 		inputs["noopOnDestroy"] = nil
 		inputs["project"] = nil
@@ -34,10 +36,12 @@ func NewStandardAppVersion(ctx *pulumi.Context,
 		inputs["threadsafe"] = nil
 		inputs["versionId"] = nil
 	} else {
+		inputs["deleteServiceOnDestroy"] = args.DeleteServiceOnDestroy
 		inputs["deployment"] = args.Deployment
 		inputs["entrypoint"] = args.Entrypoint
 		inputs["envVariables"] = args.EnvVariables
 		inputs["handlers"] = args.Handlers
+		inputs["instanceClass"] = args.InstanceClass
 		inputs["libraries"] = args.Libraries
 		inputs["noopOnDestroy"] = args.NoopOnDestroy
 		inputs["project"] = args.Project
@@ -61,10 +65,12 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *StandardAppVersionState, opts ...pulumi.ResourceOpt) (*StandardAppVersion, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["deleteServiceOnDestroy"] = state.DeleteServiceOnDestroy
 		inputs["deployment"] = state.Deployment
 		inputs["entrypoint"] = state.Entrypoint
 		inputs["envVariables"] = state.EnvVariables
 		inputs["handlers"] = state.Handlers
+		inputs["instanceClass"] = state.InstanceClass
 		inputs["libraries"] = state.Libraries
 		inputs["name"] = state.Name
 		inputs["noopOnDestroy"] = state.NoopOnDestroy
@@ -92,6 +98,11 @@ func (r *StandardAppVersion) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// If set to `true`, the service will be deleted if it is the last version.    
+func (r *StandardAppVersion) DeleteServiceOnDestroy() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["deleteServiceOnDestroy"])
+}
+
 func (r *StandardAppVersion) Deployment() *pulumi.Output {
 	return r.s.State["deployment"]
 }
@@ -106,6 +117,10 @@ func (r *StandardAppVersion) EnvVariables() *pulumi.MapOutput {
 
 func (r *StandardAppVersion) Handlers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["handlers"])
+}
+
+func (r *StandardAppVersion) InstanceClass() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["instanceClass"])
 }
 
 func (r *StandardAppVersion) Libraries() *pulumi.ArrayOutput {
@@ -149,10 +164,13 @@ func (r *StandardAppVersion) VersionId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type StandardAppVersionState struct {
+	// If set to `true`, the service will be deleted if it is the last version.    
+	DeleteServiceOnDestroy interface{}
 	Deployment interface{}
 	Entrypoint interface{}
 	EnvVariables interface{}
 	Handlers interface{}
+	InstanceClass interface{}
 	Libraries interface{}
 	Name interface{}
 	// If set to `true`, the application version will not be deleted.
@@ -169,10 +187,13 @@ type StandardAppVersionState struct {
 
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
+	// If set to `true`, the service will be deleted if it is the last version.    
+	DeleteServiceOnDestroy interface{}
 	Deployment interface{}
 	Entrypoint interface{}
 	EnvVariables interface{}
 	Handlers interface{}
+	InstanceClass interface{}
 	Libraries interface{}
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy interface{}
