@@ -13,4 +13,4 @@ require (
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
 )
 
-replace github.com/terraform-providers/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20191024092752-92b196bbc9b6
+replace github.com/terraform-providers/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20191028113718-22e407c6dcc0
