@@ -1,6 +1,7 @@
 /pack/
 /vendor/
-/bin/
+**/bin/
+**/obj/
 /node_modules/
 .pulumi
 Pulumi.*.yaml

@@ -398,11 +398,21 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_service.html.markdown",
 				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"service": {
+						CSharpName: "ServiceName",
+					},
+				},
 			},
 			"google_project_services": {
 				Tok: gcpResource(gcpProject, "Services"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_services.html.markdown",
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"services": {
+						CSharpName: "ServiceNames",
+					},
 				},
 			},
 			"google_project_usage_export_bucket": {
@@ -447,6 +457,11 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpCompute, "Address"),
 				Docs: &tfbridge.DocInfo{
 					Source: "compute_address.html.markdown",
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"address": {
+						CSharpName: "IPAddress",
+					},
 				},
 			},
 			"google_compute_attached_disk": {
@@ -1545,6 +1560,12 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
 				"pulumi": ">=1.0.0,<2.0.0",
+			},
+		},
+		CSharp: &tfbridge.CSharpInfo{
+			PackageReferences: map[string]string{
+				"Pulumi":                       "1.5.0-*",
+				"System.Collections.Immutable": "1.6.0",
 			},
 		},
 	}
