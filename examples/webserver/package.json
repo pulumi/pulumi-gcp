@@ -13,8 +13,7 @@
     "devDependencies": {
         "@types/node": "^8.0.0",
         "fs": "*",
-        "path": "*",
-        "typescript": "^3.0.0"
+        "path": "*"
     },
     "license": "MIT"
 }

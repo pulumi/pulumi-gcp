@@ -10,7 +10,6 @@
         "@pulumi/pulumi": "dev"
     },
     "devDependencies": {
-        "typescript": "^3.0.0"
     },
     "peerDependencies": {
         "@pulumi/gcp": "latest"
