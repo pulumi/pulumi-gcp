@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Add a **preview** .NET SDK.
+_(none)_
 
 ---
+
+## 1.5.0 (2019-11-07)
+* Add a **preview** .NET SDK.
 
 ## 1.4.1 (2019-10-28)
 * Upgrade to v2.18.1 of the Google Beta Terraform Provider.
