@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -59,6 +61,7 @@ export class IAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.folder.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the folder's IAM policy.
      */
@@ -94,6 +97,7 @@ export class IAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as IAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -109,6 +113,7 @@ export class IAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["folder"] = args ? args.folder : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -129,6 +134,7 @@ export class IAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMMember resources.
  */
 export interface IAMMemberState {
+    readonly condition?: pulumi.Input<inputs.folder.IAMMemberCondition>;
     /**
      * (Computed) The etag of the folder's IAM policy.
      */
@@ -157,6 +163,7 @@ export interface IAMMemberState {
  * The set of arguments for constructing a IAMMember resource.
  */
 export interface IAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.folder.IAMMemberCondition>;
     /**
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      */

@@ -212,6 +212,9 @@ namespace Pulumi.Gcp.Pubsub
             set => _attributes = value;
         }
 
+        [Input("oidcToken")]
+        public Input<SubscriptionPushConfigOidcTokenArgs>? OidcToken { get; set; }
+
         [Input("pushEndpoint", required: true)]
         public Input<string> PushEndpoint { get; set; } = null!;
 
@@ -230,10 +233,39 @@ namespace Pulumi.Gcp.Pubsub
             set => _attributes = value;
         }
 
+        [Input("oidcToken")]
+        public Input<SubscriptionPushConfigOidcTokenGetArgs>? OidcToken { get; set; }
+
         [Input("pushEndpoint", required: true)]
         public Input<string> PushEndpoint { get; set; } = null!;
 
         public SubscriptionPushConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class SubscriptionPushConfigOidcTokenArgs : Pulumi.ResourceArgs
+    {
+        [Input("audience")]
+        public Input<string>? Audience { get; set; }
+
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
+
+        public SubscriptionPushConfigOidcTokenArgs()
+        {
+        }
+    }
+
+    public sealed class SubscriptionPushConfigOidcTokenGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("audience")]
+        public Input<string>? Audience { get; set; }
+
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
+
+        public SubscriptionPushConfigOidcTokenGetArgs()
         {
         }
     }
@@ -258,15 +290,34 @@ namespace Pulumi.Gcp.Pubsub
     public sealed class SubscriptionPushConfig
     {
         public readonly ImmutableDictionary<string, string>? Attributes;
+        public readonly SubscriptionPushConfigOidcToken? OidcToken;
         public readonly string PushEndpoint;
 
         [OutputConstructor]
         private SubscriptionPushConfig(
             ImmutableDictionary<string, string>? attributes,
+            SubscriptionPushConfigOidcToken? oidcToken,
             string pushEndpoint)
         {
             Attributes = attributes;
+            OidcToken = oidcToken;
             PushEndpoint = pushEndpoint;
+        }
+    }
+
+    [OutputType]
+    public sealed class SubscriptionPushConfigOidcToken
+    {
+        public readonly string? Audience;
+        public readonly string ServiceAccountEmail;
+
+        [OutputConstructor]
+        private SubscriptionPushConfigOidcToken(
+            string? audience,
+            string serviceAccountEmail)
+        {
+            Audience = audience;
+            ServiceAccountEmail = serviceAccountEmail;
         }
     }
     }

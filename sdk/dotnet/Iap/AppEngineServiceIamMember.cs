@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Iap
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.AppEngineServiceIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -100,6 +103,9 @@ namespace Pulumi.Gcp.Iap
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.AppEngineServiceIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -137,6 +143,9 @@ namespace Pulumi.Gcp.Iap
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.AppEngineServiceIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -170,5 +179,64 @@ namespace Pulumi.Gcp.Iap
         public AppEngineServiceIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class AppEngineServiceIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AppEngineServiceIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class AppEngineServiceIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AppEngineServiceIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class AppEngineServiceIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private AppEngineServiceIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

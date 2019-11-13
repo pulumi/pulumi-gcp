@@ -37,11 +37,13 @@ func NewInstanceIamMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["instance"] = nil
 		inputs["member"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["instance"] = args.Instance
 		inputs["member"] = args.Member
 		inputs["project"] = args.Project
@@ -61,6 +63,7 @@ func GetInstanceIamMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InstanceIamMemberState, opts ...pulumi.ResourceOpt) (*InstanceIamMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["instance"] = state.Instance
 		inputs["member"] = state.Member
@@ -82,6 +85,10 @@ func (r *InstanceIamMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *InstanceIamMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *InstanceIamMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the instances's IAM policy.
@@ -113,6 +120,7 @@ func (r *InstanceIamMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering InstanceIamMember resources.
 type InstanceIamMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the instances's IAM policy.
 	Etag interface{}
 	// The name or relative resource id of the instance to manage IAM policies for.
@@ -129,6 +137,7 @@ type InstanceIamMemberState struct {
 
 // The set of arguments for constructing a InstanceIamMember resource.
 type InstanceIamMemberArgs struct {
+	Condition interface{}
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance interface{}
 	Member interface{}

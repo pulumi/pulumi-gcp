@@ -38,6 +38,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["canIpForward"] = nil
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
+		inputs["enableDisplay"] = nil
 		inputs["guestAccelerators"] = nil
 		inputs["hostname"] = nil
 		inputs["labels"] = nil
@@ -61,6 +62,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["canIpForward"] = args.CanIpForward
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
+		inputs["enableDisplay"] = args.EnableDisplay
 		inputs["guestAccelerators"] = args.GuestAccelerators
 		inputs["hostname"] = args.Hostname
 		inputs["labels"] = args.Labels
@@ -104,6 +106,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["cpuPlatform"] = state.CpuPlatform
 		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
+		inputs["enableDisplay"] = state.EnableDisplay
 		inputs["guestAccelerators"] = state.GuestAccelerators
 		inputs["hostname"] = state.Hostname
 		inputs["instanceId"] = state.InstanceId
@@ -181,6 +184,12 @@ func (r *Instance) DeletionProtection() *pulumi.BoolOutput {
 // A brief description of this resource.
 func (r *Instance) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+func (r *Instance) EnableDisplay() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -328,6 +337,9 @@ type InstanceState struct {
 	DeletionProtection interface{}
 	// A brief description of this resource.
 	Description interface{}
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	EnableDisplay interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators interface{}
@@ -410,6 +422,9 @@ type InstanceArgs struct {
 	DeletionProtection interface{}
 	// A brief description of this resource.
 	Description interface{}
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	EnableDisplay interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators interface{}

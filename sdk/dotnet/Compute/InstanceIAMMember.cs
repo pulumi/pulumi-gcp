@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class InstanceIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.InstanceIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -105,6 +108,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIAMMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the instance.
         /// </summary>
@@ -143,6 +149,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -183,5 +192,64 @@ namespace Pulumi.Gcp.Compute
         public InstanceIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class InstanceIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class InstanceIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class InstanceIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private InstanceIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

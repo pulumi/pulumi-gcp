@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Dataproc
     /// </summary>
     public partial class JobIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.JobIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the jobs's IAM policy.
         /// </summary>
@@ -102,6 +105,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.JobIAMBindingConditionArgs>? Condition { get; set; }
+
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
 
@@ -142,6 +148,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.JobIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the jobs's IAM policy.
         /// </summary>
@@ -184,5 +193,64 @@ namespace Pulumi.Gcp.Dataproc
         public JobIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class JobIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public JobIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class JobIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public JobIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class JobIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private JobIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

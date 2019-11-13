@@ -27,11 +27,13 @@ func NewConfigIamBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["config"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["config"] = args.Config
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
@@ -51,6 +53,7 @@ func GetConfigIamBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ConfigIamBindingState, opts ...pulumi.ResourceOpt) (*ConfigIamBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["config"] = state.Config
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
@@ -72,6 +75,10 @@ func (r *ConfigIamBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ConfigIamBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *ConfigIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -103,6 +110,7 @@ func (r *ConfigIamBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ConfigIamBinding resources.
 type ConfigIamBindingState struct {
+	Condition interface{}
 	// Used to find the parent resource to bind the IAM policy to
 	Config interface{}
 	// (Computed) The etag of the IAM policy.
@@ -119,6 +127,7 @@ type ConfigIamBindingState struct {
 
 // The set of arguments for constructing a ConfigIamBinding resource.
 type ConfigIamBindingArgs struct {
+	Condition interface{}
 	// Used to find the parent resource to bind the IAM policy to
 	Config interface{}
 	Members interface{}

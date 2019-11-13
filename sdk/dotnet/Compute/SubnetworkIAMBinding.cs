@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class SubnetworkIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.SubnetworkIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the subnetwork's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SubnetworkIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubnetworkIAMBindingConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -138,6 +144,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SubnetworkIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubnetworkIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the subnetwork's IAM policy.
         /// </summary>
@@ -183,5 +192,64 @@ namespace Pulumi.Gcp.Compute
         public SubnetworkIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class SubnetworkIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubnetworkIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class SubnetworkIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubnetworkIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class SubnetworkIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private SubnetworkIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

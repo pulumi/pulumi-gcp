@@ -14,6 +14,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
     """
     Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the IAM policy.
@@ -34,7 +35,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
     """
     Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
     """
-    def __init__(__self__, resource_name, opts=None, app_id=None, members=None, project=None, role=None, service=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_id=None, condition=None, members=None, project=None, role=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AppEngineServiceIamBinding resource with the given unique name, props, and options.
         
@@ -47,6 +48,12 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
                `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam_binding.html.markdown.
         """
@@ -70,6 +77,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
             if app_id is None:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
+            __props__['condition'] = condition
             if members is None:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
@@ -88,7 +96,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, etag=None, members=None, project=None, role=None, service=None):
+    def get(resource_name, id, opts=None, app_id=None, condition=None, etag=None, members=None, project=None, role=None, service=None):
         """
         Get an existing AppEngineServiceIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -104,6 +112,12 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
                `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam_binding.html.markdown.
         """
@@ -111,6 +125,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["app_id"] = app_id
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["members"] = members
         __props__["project"] = project

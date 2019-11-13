@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Folder
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.IAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
         /// </summary>
@@ -96,6 +99,9 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.IAMMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         /// </summary>
@@ -127,6 +133,9 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.IAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
         /// </summary>
@@ -160,5 +169,64 @@ namespace Pulumi.Gcp.Folder
         public IAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class IAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public IAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class IAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public IAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class IAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private IAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

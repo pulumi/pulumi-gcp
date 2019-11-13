@@ -36,6 +36,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === TopicIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.pubsub.TopicIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -69,6 +70,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TopicIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -85,6 +87,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
             if (!args || args.topic === undefined) {
                 throw new Error("Missing required property 'topic'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -106,6 +109,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TopicIAMMember resources.
  */
 export interface TopicIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.pubsub.TopicIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -132,6 +136,7 @@ export interface TopicIAMMemberState {
  * The set of arguments for constructing a TopicIAMMember resource.
  */
 export interface TopicIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.pubsub.TopicIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

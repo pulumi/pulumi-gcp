@@ -99,6 +99,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
      * The name of the bucket it applies to.
      */
     public readonly bucket!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.storage.BucketIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
@@ -123,6 +124,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as BucketIAMMemberState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["role"] = state ? state.role : undefined;
@@ -138,6 +140,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
@@ -161,6 +164,7 @@ export interface BucketIAMMemberState {
      * The name of the bucket it applies to.
      */
     readonly bucket?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
@@ -181,6 +185,7 @@ export interface BucketIAMMemberArgs {
      * The name of the bucket it applies to.
      */
     readonly bucket: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The role that should be applied. Note that custom roles must be of the format

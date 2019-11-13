@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Binaryauthorization
         [Output("attestor")]
         public Output<string> Attestor { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.AttestorIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -94,6 +97,9 @@ namespace Pulumi.Gcp.Binaryauthorization
         [Input("attestor", required: true)]
         public Input<string> Attestor { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.AttestorIamBindingConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -130,6 +136,9 @@ namespace Pulumi.Gcp.Binaryauthorization
         [Input("attestor")]
         public Input<string>? Attestor { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.AttestorIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -162,5 +171,64 @@ namespace Pulumi.Gcp.Binaryauthorization
         public AttestorIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class AttestorIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AttestorIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class AttestorIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AttestorIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class AttestorIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private AttestorIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

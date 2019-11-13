@@ -92,6 +92,7 @@ export class JobIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.dataproc.JobIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the jobs's IAM policy.
      */
@@ -127,6 +128,7 @@ export class JobIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as JobIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["jobId"] = state ? state.jobId : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -144,6 +146,7 @@ export class JobIAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -166,6 +169,7 @@ export class JobIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering JobIAMMember resources.
  */
 export interface JobIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.dataproc.JobIAMMemberCondition>;
     /**
      * (Computed) The etag of the jobs's IAM policy.
      */
@@ -194,6 +198,7 @@ export interface JobIAMMemberState {
  * The set of arguments for constructing a JobIAMMember resource.
  */
 export interface JobIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.dataproc.JobIAMMemberCondition>;
     readonly jobId: pulumi.Input<string>;
     readonly member: pulumi.Input<string>;
     /**

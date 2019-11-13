@@ -14,6 +14,7 @@ class BucketIAMBinding(pulumi.CustomResource):
     """
     The name of the bucket it applies to.
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the storage bucket's IAM policy.
@@ -24,7 +25,7 @@ class BucketIAMBinding(pulumi.CustomResource):
     The role that should be applied. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, bucket=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket=None, condition=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
         
@@ -40,6 +41,12 @@ class BucketIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_binding.html.markdown.
         """
@@ -63,6 +70,7 @@ class BucketIAMBinding(pulumi.CustomResource):
             if bucket is None:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
+            __props__['condition'] = condition
             if members is None:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
@@ -77,7 +85,7 @@ class BucketIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket=None, etag=None, members=None, role=None):
+    def get(resource_name, id, opts=None, bucket=None, condition=None, etag=None, members=None, role=None):
         """
         Get an existing BucketIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -89,6 +97,12 @@ class BucketIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the storage bucket's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_binding.html.markdown.
         """
@@ -96,6 +110,7 @@ class BucketIAMBinding(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["bucket"] = bucket
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["members"] = members
         __props__["role"] = role

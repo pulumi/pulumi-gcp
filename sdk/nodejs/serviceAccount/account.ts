@@ -63,6 +63,10 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * A text description of the service account.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
@@ -100,6 +104,7 @@ export class Account extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AccountState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -111,6 +116,7 @@ export class Account extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["email"] = undefined /*out*/;
@@ -139,6 +145,10 @@ export interface AccountState {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     readonly accountId?: pulumi.Input<string>;
+    /**
+     * A text description of the service account.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
@@ -176,6 +186,10 @@ export interface AccountArgs {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     readonly accountId: pulumi.Input<string>;
+    /**
+     * A text description of the service account.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.

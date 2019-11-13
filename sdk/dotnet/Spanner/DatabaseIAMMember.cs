@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Spanner
     /// </summary>
     public partial class DatabaseIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.DatabaseIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -107,6 +110,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatabaseIAMMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -144,6 +150,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatabaseIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -183,5 +192,64 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class DatabaseIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatabaseIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class DatabaseIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatabaseIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class DatabaseIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private DatabaseIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

@@ -13,7 +13,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, disks=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, disks=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -56,6 +56,9 @@ class GetInstanceResult:
         if disks and not isinstance(disks, list):
             raise TypeError("Expected argument 'disks' to be a list")
         __self__.disks = disks
+        if enable_display and not isinstance(enable_display, bool):
+            raise TypeError("Expected argument 'enable_display' to be a bool")
+        __self__.enable_display = enable_display
         if guest_accelerators and not isinstance(guest_accelerators, list):
             raise TypeError("Expected argument 'guest_accelerators' to be a list")
         __self__.guest_accelerators = guest_accelerators
@@ -187,6 +190,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             deletion_protection=self.deletion_protection,
             description=self.description,
             disks=self.disks,
+            enable_display=self.enable_display,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
             instance_id=self.instance_id,
@@ -249,6 +253,7 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         deletion_protection=__ret__.get('deletionProtection'),
         description=__ret__.get('description'),
         disks=__ret__.get('disks'),
+        enable_display=__ret__.get('enableDisplay'),
         guest_accelerators=__ret__.get('guestAccelerators'),
         hostname=__ret__.get('hostname'),
         instance_id=__ret__.get('instanceId'),

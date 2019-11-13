@@ -37,11 +37,13 @@ func NewSubscriptionIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 		inputs["subscription"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -61,6 +63,7 @@ func GetSubscriptionIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SubscriptionIAMBindingState, opts ...pulumi.ResourceOpt) (*SubscriptionIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -82,6 +85,10 @@ func (r *SubscriptionIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *SubscriptionIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *SubscriptionIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the subscription's IAM policy.
@@ -113,6 +120,7 @@ func (r *SubscriptionIAMBinding) Subscription() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SubscriptionIAMBinding resources.
 type SubscriptionIAMBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -129,6 +137,7 @@ type SubscriptionIAMBindingState struct {
 
 // The set of arguments for constructing a SubscriptionIAMBinding resource.
 type SubscriptionIAMBindingArgs struct {
+	Condition interface{}
 	Members interface{}
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

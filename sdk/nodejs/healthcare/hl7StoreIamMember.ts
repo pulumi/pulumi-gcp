@@ -36,6 +36,7 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === Hl7StoreIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.Hl7StoreIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the HL7v2 store's IAM policy.
      */
@@ -67,6 +68,7 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as Hl7StoreIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["hl7V2StoreId"] = state ? state.hl7V2StoreId : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -82,6 +84,7 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -102,6 +105,7 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Hl7StoreIamMember resources.
  */
 export interface Hl7StoreIamMemberState {
+    readonly condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition>;
     /**
      * (Computed) The etag of the HL7v2 store's IAM policy.
      */
@@ -126,6 +130,7 @@ export interface Hl7StoreIamMemberState {
  * The set of arguments for constructing a Hl7StoreIamMember resource.
  */
 export interface Hl7StoreIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition>;
     /**
      * The HL7v2 store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or

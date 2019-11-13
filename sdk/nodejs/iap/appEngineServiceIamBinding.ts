@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,6 +40,7 @@ export class AppEngineServiceIamBinding extends pulumi.CustomResource {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     public readonly appId!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.iap.AppEngineServiceIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -72,6 +75,7 @@ export class AppEngineServiceIamBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AppEngineServiceIamBindingState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -92,6 +96,7 @@ export class AppEngineServiceIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             inputs["appId"] = args ? args.appId : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -117,6 +122,7 @@ export interface AppEngineServiceIamBindingState {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.iap.AppEngineServiceIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -147,6 +153,7 @@ export interface AppEngineServiceIamBindingArgs {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.iap.AppEngineServiceIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.

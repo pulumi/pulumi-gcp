@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Iap
     /// </summary>
     public partial class WebTypeComputeIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.WebTypeComputeIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -82,6 +85,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebTypeComputeIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebTypeComputeIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -107,6 +113,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebTypeComputeIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebTypeComputeIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -134,5 +143,64 @@ namespace Pulumi.Gcp.Iap
         public WebTypeComputeIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class WebTypeComputeIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebTypeComputeIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class WebTypeComputeIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebTypeComputeIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class WebTypeComputeIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private WebTypeComputeIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

@@ -37,10 +37,12 @@ func NewKeyRingIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["keyRingId"] = nil
 		inputs["members"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["keyRingId"] = args.KeyRingId
 		inputs["members"] = args.Members
 		inputs["role"] = args.Role
@@ -59,6 +61,7 @@ func GetKeyRingIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *KeyRingIAMBindingState, opts ...pulumi.ResourceOpt) (*KeyRingIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["keyRingId"] = state.KeyRingId
 		inputs["members"] = state.Members
@@ -79,6 +82,10 @@ func (r *KeyRingIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *KeyRingIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *KeyRingIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the key ring's IAM policy.
@@ -107,6 +114,7 @@ func (r *KeyRingIAMBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering KeyRingIAMBinding resources.
 type KeyRingIAMBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag interface{}
 	// The key ring ID, in the form
@@ -123,6 +131,7 @@ type KeyRingIAMBindingState struct {
 
 // The set of arguments for constructing a KeyRingIAMBinding resource.
 type KeyRingIAMBindingArgs struct {
+	Condition interface{}
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's

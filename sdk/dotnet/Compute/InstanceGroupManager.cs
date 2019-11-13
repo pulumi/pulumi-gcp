@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
-        /// ) The autohealing policies for this managed instance
+        /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
         [Output("autoHealingPolicies")]
@@ -102,16 +102,18 @@ namespace Pulumi.Gcp.Compute
         public Output<int> TargetSize { get; private set; } = null!;
 
         /// <summary>
-        /// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
         /// - - -
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.InstanceGroupManagerUpdatePolicy> UpdatePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// ) Application versions managed by this instance group. Each
+        /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
+        /// Until `instance_template` is removed this field will be Optional to allow for a
+        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         [Output("versions")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerVersions>> Versions { get; private set; } = null!;
@@ -178,7 +180,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) The autohealing policies for this managed instance
+        /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
         [Input("autoHealingPolicies")]
@@ -254,7 +256,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
         /// - - -
         /// </summary>
         [Input("updatePolicy")]
@@ -264,9 +266,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerVersionsArgs>? _versions;
 
         /// <summary>
-        /// ) Application versions managed by this instance group. Each
+        /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
+        /// Until `instance_template` is removed this field will be Optional to allow for a
+        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerVersionsArgs> Versions
         {
@@ -297,7 +301,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) The autohealing policies for this managed instance
+        /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
         [Input("autoHealingPolicies")]
@@ -391,7 +395,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
         /// - - -
         /// </summary>
         [Input("updatePolicy")]
@@ -401,9 +405,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerVersionsGetArgs>? _versions;
 
         /// <summary>
-        /// ) Application versions managed by this instance group. Each
+        /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
+        /// Until `instance_template` is removed this field will be Optional to allow for a
+        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerVersionsGetArgs> Versions
         {
@@ -557,9 +563,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerVersionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) The
+        /// The
         /// full URL to an instance template from which all new instances
-        /// will be created. This field is only present in the `google` provider.
+        /// will be created. This field is replaced by `version.instance_template`. You must
+        /// specify at least one `version` block with an `instance_template`.
         /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
@@ -570,8 +577,8 @@ namespace Pulumi.Gcp.Compute
         /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
         /// include lowercase letters, numbers, and hyphens.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The target number of running instances for this managed
@@ -589,9 +596,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerVersionsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) The
+        /// The
         /// full URL to an instance template from which all new instances
-        /// will be created. This field is only present in the `google` provider.
+        /// will be created. This field is replaced by `version.instance_template`. You must
+        /// specify at least one `version` block with an `instance_template`.
         /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
@@ -602,8 +610,8 @@ namespace Pulumi.Gcp.Compute
         /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
         /// include lowercase letters, numbers, and hyphens.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The target number of running instances for this managed
@@ -721,9 +729,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerVersions
     {
         /// <summary>
-        /// ) The
+        /// The
         /// full URL to an instance template from which all new instances
-        /// will be created. This field is only present in the `google` provider.
+        /// will be created. This field is replaced by `version.instance_template`. You must
+        /// specify at least one `version` block with an `instance_template`.
         /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
@@ -732,7 +741,7 @@ namespace Pulumi.Gcp.Compute
         /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
         /// include lowercase letters, numbers, and hyphens.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// The target number of running instances for this managed
         /// instance group. This value should always be explicitly set unless this resource is attached to
@@ -743,7 +752,7 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private InstanceGroupManagerVersions(
             string instanceTemplate,
-            string name,
+            string? name,
             InstanceGroupManagerVersionsTargetSize? targetSize)
         {
             InstanceTemplate = instanceTemplate;

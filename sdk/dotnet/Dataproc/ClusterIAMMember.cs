@@ -28,6 +28,9 @@ namespace Pulumi.Gcp.Dataproc
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.ClusterIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the clusters's IAM policy.
         /// </summary>
@@ -111,6 +114,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.ClusterIAMMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -149,6 +155,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.ClusterIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the clusters's IAM policy.
         /// </summary>
@@ -183,5 +192,64 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ClusterIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public ClusterIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public ClusterIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ClusterIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private ClusterIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

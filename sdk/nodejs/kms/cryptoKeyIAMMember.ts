@@ -57,6 +57,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === CryptoKeyIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIAMMemberCondition | undefined>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -90,6 +91,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as CryptoKeyIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -105,6 +107,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -125,6 +128,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKeyIAMMember resources.
  */
 export interface CryptoKeyIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -151,6 +155,7 @@ export interface CryptoKeyIAMMemberState {
  * The set of arguments for constructing a CryptoKeyIAMMember resource.
  */
 export interface CryptoKeyIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

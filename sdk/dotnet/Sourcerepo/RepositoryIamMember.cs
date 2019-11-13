@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Sourcerepo
     /// </summary>
     public partial class RepositoryIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.RepositoryIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -85,6 +88,9 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.RepositoryIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -113,6 +119,9 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.RepositoryIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -143,5 +152,64 @@ namespace Pulumi.Gcp.Sourcerepo
         public RepositoryIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class RepositoryIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public RepositoryIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class RepositoryIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public RepositoryIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class RepositoryIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private RepositoryIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

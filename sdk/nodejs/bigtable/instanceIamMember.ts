@@ -91,6 +91,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.bigtable.InstanceIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
@@ -124,6 +125,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -140,6 +142,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -161,6 +164,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamMember resources.
  */
 export interface InstanceIamMemberState {
+    readonly condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition>;
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
@@ -187,6 +191,7 @@ export interface InstanceIamMemberState {
  * The set of arguments for constructing a InstanceIamMember resource.
  */
 export interface InstanceIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      */

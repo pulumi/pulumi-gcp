@@ -34,10 +34,12 @@ func NewCryptoKeyIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["cryptoKeyId"] = nil
 		inputs["members"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["cryptoKeyId"] = args.CryptoKeyId
 		inputs["members"] = args.Members
 		inputs["role"] = args.Role
@@ -56,6 +58,7 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *CryptoKeyIAMBindingState, opts ...pulumi.ResourceOpt) (*CryptoKeyIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["cryptoKeyId"] = state.CryptoKeyId
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
@@ -76,6 +79,10 @@ func (r *CryptoKeyIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *CryptoKeyIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *CryptoKeyIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // The crypto key ID, in the form
@@ -105,6 +112,7 @@ func (r *CryptoKeyIAMBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 type CryptoKeyIAMBindingState struct {
+	Condition interface{}
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
@@ -122,6 +130,7 @@ type CryptoKeyIAMBindingState struct {
 
 // The set of arguments for constructing a CryptoKeyIAMBinding resource.
 type CryptoKeyIAMBindingArgs struct {
+	Condition interface{}
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`.

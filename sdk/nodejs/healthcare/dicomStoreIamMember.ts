@@ -36,6 +36,7 @@ export class DicomStoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === DicomStoreIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.DicomStoreIamMemberCondition | undefined>;
     /**
      * The DICOM store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -67,6 +68,7 @@ export class DicomStoreIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DicomStoreIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["dicomStoreId"] = state ? state.dicomStoreId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -82,6 +84,7 @@ export class DicomStoreIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -102,6 +105,7 @@ export class DicomStoreIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DicomStoreIamMember resources.
  */
 export interface DicomStoreIamMemberState {
+    readonly condition?: pulumi.Input<inputs.healthcare.DicomStoreIamMemberCondition>;
     /**
      * The DICOM store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -126,6 +130,7 @@ export interface DicomStoreIamMemberState {
  * The set of arguments for constructing a DicomStoreIamMember resource.
  */
 export interface DicomStoreIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.DicomStoreIamMemberCondition>;
     /**
      * The DICOM store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or

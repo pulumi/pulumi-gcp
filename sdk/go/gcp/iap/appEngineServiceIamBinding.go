@@ -31,12 +31,14 @@ func NewAppEngineServiceIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["appId"] = nil
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 		inputs["service"] = nil
 	} else {
 		inputs["appId"] = args.AppId
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -57,6 +59,7 @@ func GetAppEngineServiceIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["appId"] = state.AppId
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -83,6 +86,10 @@ func (r *AppEngineServiceIamBinding) ID() *pulumi.IDOutput {
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 func (r *AppEngineServiceIamBinding) AppId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["appId"])
+}
+
+func (r *AppEngineServiceIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -116,6 +123,7 @@ func (r *AppEngineServiceIamBinding) Service() *pulumi.StringOutput {
 type AppEngineServiceIamBindingState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId interface{}
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -134,6 +142,7 @@ type AppEngineServiceIamBindingState struct {
 type AppEngineServiceIamBindingArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId interface{}
+	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

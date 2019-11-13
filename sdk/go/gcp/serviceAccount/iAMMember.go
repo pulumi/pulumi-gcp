@@ -39,10 +39,12 @@ func NewIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 		inputs["serviceAccountId"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
 		inputs["serviceAccountId"] = args.ServiceAccountId
@@ -61,6 +63,7 @@ func GetIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *IAMMemberState, opts ...pulumi.ResourceOpt) (*IAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
 		inputs["role"] = state.Role
@@ -81,6 +84,12 @@ func (r *IAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
+func (r *IAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the service account IAM policy.
@@ -106,6 +115,9 @@ func (r *IAMMember) ServiceAccountId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMMember resources.
 type IAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition interface{}
 	// (Computed) The etag of the service account IAM policy.
 	Etag interface{}
 	Member interface{}
@@ -119,6 +131,9 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition interface{}
 	Member interface{}
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format

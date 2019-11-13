@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class DatasetIamBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.DatasetIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DatasetIamBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatasetIamBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -116,6 +122,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DatasetIamBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatasetIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -150,5 +159,64 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class DatasetIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatasetIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class DatasetIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatasetIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class DatasetIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private DatasetIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

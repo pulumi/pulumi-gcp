@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Bigtable
     /// </summary>
     public partial class InstanceIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.InstanceIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the instances's IAM policy.
         /// </summary>
@@ -98,6 +101,9 @@ namespace Pulumi.Gcp.Bigtable
 
     public sealed class InstanceIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// </summary>
@@ -129,6 +135,9 @@ namespace Pulumi.Gcp.Bigtable
 
     public sealed class InstanceIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the instances's IAM policy.
         /// </summary>
@@ -162,5 +171,64 @@ namespace Pulumi.Gcp.Bigtable
         public InstanceIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class InstanceIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class InstanceIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class InstanceIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private InstanceIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

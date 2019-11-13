@@ -34,6 +34,7 @@ func LookupInstance(ctx *pulumi.Context, args *GetInstanceArgs) (*GetInstanceRes
 		DeletionProtection: outputs["deletionProtection"],
 		Description: outputs["description"],
 		Disks: outputs["disks"],
+		EnableDisplay: outputs["enableDisplay"],
 		GuestAccelerators: outputs["guestAccelerators"],
 		Hostname: outputs["hostname"],
 		InstanceId: outputs["instanceId"],
@@ -91,6 +92,7 @@ type GetInstanceResult struct {
 	// A brief description of the resource.
 	Description interface{}
 	Disks interface{}
+	EnableDisplay interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators interface{}
 	Hostname interface{}

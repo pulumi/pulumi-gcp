@@ -36,6 +36,7 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === FhirStoreIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.FhirStoreIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
@@ -67,6 +68,7 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as FhirStoreIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["fhirStoreId"] = state ? state.fhirStoreId : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -82,6 +84,7 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -102,6 +105,7 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FhirStoreIamMember resources.
  */
 export interface FhirStoreIamMemberState {
+    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamMemberCondition>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
@@ -126,6 +130,7 @@ export interface FhirStoreIamMemberState {
  * The set of arguments for constructing a FhirStoreIamMember resource.
  */
 export interface FhirStoreIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamMemberCondition>;
     /**
      * The FHIR store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or

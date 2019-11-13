@@ -145,6 +145,9 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class GetIAMPolicyBindingsArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<GetIAMPolicyBindingsConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
 
@@ -173,6 +176,22 @@ namespace Pulumi.Gcp.Organizations
         public Input<string> Role { get; set; } = null!;
 
         public GetIAMPolicyBindingsArgs()
+        {
+        }
+    }
+
+    public sealed class GetIAMPolicyBindingsConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public GetIAMPolicyBindingsConditionArgs()
         {
         }
     }
@@ -226,8 +245,28 @@ namespace Pulumi.Gcp.Organizations
     }
 
     [OutputType]
+    public sealed class GetIAMPolicyBindingsConditionResult
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private GetIAMPolicyBindingsConditionResult(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
+
+    [OutputType]
     public sealed class GetIAMPolicyBindingsResult
     {
+        public readonly GetIAMPolicyBindingsConditionResult? Condition;
         /// <summary>
         /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// Each entry can have one of the following values:
@@ -248,9 +287,11 @@ namespace Pulumi.Gcp.Organizations
 
         [OutputConstructor]
         private GetIAMPolicyBindingsResult(
+            GetIAMPolicyBindingsConditionResult? condition,
             ImmutableArray<string> members,
             string role)
         {
+            Condition = condition;
             Members = members;
             Role = role;
         }

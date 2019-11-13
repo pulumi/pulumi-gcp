@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class DatasetIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetIamBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
@@ -65,6 +68,7 @@ export class DatasetIamBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatasetIamBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -80,6 +84,7 @@ export class DatasetIamBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -100,6 +105,7 @@ export class DatasetIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetIamBinding resources.
  */
 export interface DatasetIamBindingState {
+    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
@@ -124,6 +130,7 @@ export interface DatasetIamBindingState {
  * The set of arguments for constructing a DatasetIamBinding resource.
  */
 export interface DatasetIamBindingArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or

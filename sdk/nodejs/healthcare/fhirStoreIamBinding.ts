@@ -36,6 +36,7 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === FhirStoreIamBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.FhirStoreIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
@@ -67,6 +68,7 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as FhirStoreIamBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["fhirStoreId"] = state ? state.fhirStoreId : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -82,6 +84,7 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -102,6 +105,7 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FhirStoreIamBinding resources.
  */
 export interface FhirStoreIamBindingState {
+    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
@@ -126,6 +130,7 @@ export interface FhirStoreIamBindingState {
  * The set of arguments for constructing a FhirStoreIamBinding resource.
  */
 export interface FhirStoreIamBindingArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.FhirStoreIamBindingCondition>;
     /**
      * The FHIR store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or

@@ -438,14 +438,37 @@ namespace Pulumi.Gcp.Container
     }
 
     [OutputType]
+    public sealed class GetClusterMaintenancePoliciesRecurringWindowsResult
+    {
+        public readonly string EndTime;
+        public readonly string Recurrence;
+        public readonly string StartTime;
+
+        [OutputConstructor]
+        private GetClusterMaintenancePoliciesRecurringWindowsResult(
+            string endTime,
+            string recurrence,
+            string startTime)
+        {
+            EndTime = endTime;
+            Recurrence = recurrence;
+            StartTime = startTime;
+        }
+    }
+
+    [OutputType]
     public sealed class GetClusterMaintenancePoliciesResult
     {
         public readonly ImmutableArray<GetClusterMaintenancePoliciesDailyMaintenanceWindowsResult> DailyMaintenanceWindows;
+        public readonly ImmutableArray<GetClusterMaintenancePoliciesRecurringWindowsResult> RecurringWindows;
 
         [OutputConstructor]
-        private GetClusterMaintenancePoliciesResult(ImmutableArray<GetClusterMaintenancePoliciesDailyMaintenanceWindowsResult> dailyMaintenanceWindows)
+        private GetClusterMaintenancePoliciesResult(
+            ImmutableArray<GetClusterMaintenancePoliciesDailyMaintenanceWindowsResult> dailyMaintenanceWindows,
+            ImmutableArray<GetClusterMaintenancePoliciesRecurringWindowsResult> recurringWindows)
         {
             DailyMaintenanceWindows = dailyMaintenanceWindows;
+            RecurringWindows = recurringWindows;
         }
     }
 

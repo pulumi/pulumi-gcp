@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class SubnetworkIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.SubnetworkIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the subnetwork's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SubnetworkIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubnetworkIAMMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -133,6 +139,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SubnetworkIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubnetworkIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the subnetwork's IAM policy.
         /// </summary>
@@ -173,5 +182,64 @@ namespace Pulumi.Gcp.Compute
         public SubnetworkIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class SubnetworkIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubnetworkIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class SubnetworkIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubnetworkIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class SubnetworkIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private SubnetworkIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

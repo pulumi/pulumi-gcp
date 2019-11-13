@@ -99,6 +99,7 @@ export class BucketIAMBinding extends pulumi.CustomResource {
      * The name of the bucket it applies to.
      */
     public readonly bucket!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.storage.BucketIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
@@ -123,6 +124,7 @@ export class BucketIAMBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as BucketIAMBindingState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["role"] = state ? state.role : undefined;
@@ -138,6 +140,7 @@ export class BucketIAMBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
@@ -161,6 +164,7 @@ export interface BucketIAMBindingState {
      * The name of the bucket it applies to.
      */
     readonly bucket?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.storage.BucketIAMBindingCondition>;
     /**
      * (Computed) The etag of the storage bucket's IAM policy.
      */
@@ -181,6 +185,7 @@ export interface BucketIAMBindingArgs {
      * The name of the bucket it applies to.
      */
     readonly bucket: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.storage.BucketIAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Note that custom roles must be of the format

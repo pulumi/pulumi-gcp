@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class ConfigIamBinding(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     config: pulumi.Output[str]
     """
     Used to find the parent resource to bind the IAM policy to
@@ -30,7 +31,7 @@ class ConfigIamBinding(pulumi.CustomResource):
     `runtimeconfig.ConfigIamBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, config=None, members=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, config=None, members=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ConfigIamBinding resource with the given unique name, props, and options.
         
@@ -42,6 +43,12 @@ class ConfigIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `runtimeconfig.ConfigIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam_binding.html.markdown.
         """
@@ -62,6 +69,7 @@ class ConfigIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if config is None:
                 raise TypeError("Missing required property 'config'")
             __props__['config'] = config
@@ -80,7 +88,7 @@ class ConfigIamBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config=None, etag=None, members=None, project=None, role=None):
+    def get(resource_name, id, opts=None, condition=None, config=None, etag=None, members=None, project=None, role=None):
         """
         Get an existing ConfigIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -95,12 +103,19 @@ class ConfigIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `runtimeconfig.ConfigIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["config"] = config
         __props__["etag"] = etag
         __props__["members"] = members

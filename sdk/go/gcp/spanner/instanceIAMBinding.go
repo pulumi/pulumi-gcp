@@ -40,11 +40,13 @@ func NewInstanceIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["instance"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["instance"] = args.Instance
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
@@ -64,6 +66,7 @@ func GetInstanceIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InstanceIAMBindingState, opts ...pulumi.ResourceOpt) (*InstanceIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["instance"] = state.Instance
 		inputs["members"] = state.Members
@@ -85,6 +88,10 @@ func (r *InstanceIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *InstanceIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *InstanceIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the instance's IAM policy.
@@ -116,6 +123,7 @@ func (r *InstanceIAMBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering InstanceIAMBinding resources.
 type InstanceIAMBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the instance's IAM policy.
 	Etag interface{}
 	// The name of the instance.
@@ -132,6 +140,7 @@ type InstanceIAMBindingState struct {
 
 // The set of arguments for constructing a InstanceIAMBinding resource.
 type InstanceIAMBindingArgs struct {
+	Condition interface{}
 	// The name of the instance.
 	Instance interface{}
 	Members interface{}

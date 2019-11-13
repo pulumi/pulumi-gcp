@@ -27,6 +27,9 @@ namespace Pulumi.Gcp.Storage
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.BucketIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the storage bucket's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.BucketIAMMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -118,6 +124,9 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.BucketIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the storage bucket's IAM policy.
         /// </summary>
@@ -137,5 +146,64 @@ namespace Pulumi.Gcp.Storage
         public BucketIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class BucketIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public BucketIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class BucketIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public BucketIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class BucketIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private BucketIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

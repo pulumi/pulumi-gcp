@@ -114,6 +114,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
+    /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
@@ -236,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -274,6 +280,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["hostname"] = args ? args.hostname : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -345,6 +352,11 @@ export interface InstanceState {
      * A brief description of this resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    readonly enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
@@ -483,6 +495,11 @@ export interface InstanceArgs {
      * A brief description of this resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    readonly enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.

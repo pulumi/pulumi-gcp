@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Pubsub
     /// </summary>
     public partial class SubscriptionIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.SubscriptionIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
         /// </summary>
@@ -98,6 +101,9 @@ namespace Pulumi.Gcp.Pubsub
 
     public sealed class SubscriptionIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubscriptionIAMMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -129,6 +135,9 @@ namespace Pulumi.Gcp.Pubsub
 
     public sealed class SubscriptionIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.SubscriptionIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
         /// </summary>
@@ -162,5 +171,64 @@ namespace Pulumi.Gcp.Pubsub
         public SubscriptionIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class SubscriptionIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubscriptionIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class SubscriptionIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public SubscriptionIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class SubscriptionIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private SubscriptionIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

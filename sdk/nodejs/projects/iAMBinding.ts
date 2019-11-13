@@ -117,6 +117,7 @@ export class IAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.projects.IAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -147,6 +148,7 @@ export class IAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as IAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -159,6 +161,7 @@ export class IAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -179,6 +182,7 @@ export class IAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMBinding resources.
  */
 export interface IAMBindingState {
+    readonly condition?: pulumi.Input<inputs.projects.IAMBindingCondition>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -202,6 +206,7 @@ export interface IAMBindingState {
  * The set of arguments for constructing a IAMBinding resource.
  */
 export interface IAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.projects.IAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.

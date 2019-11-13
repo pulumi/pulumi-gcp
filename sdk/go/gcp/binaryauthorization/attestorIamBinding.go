@@ -28,11 +28,13 @@ func NewAttestorIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["attestor"] = nil
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
 		inputs["attestor"] = args.Attestor
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -52,6 +54,7 @@ func GetAttestorIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["attestor"] = state.Attestor
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -77,6 +80,10 @@ func (r *AttestorIamBinding) ID() *pulumi.IDOutput {
 // Used to find the parent resource to bind the IAM policy to
 func (r *AttestorIamBinding) Attestor() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["attestor"])
+}
+
+func (r *AttestorIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -105,6 +112,7 @@ func (r *AttestorIamBinding) Role() *pulumi.StringOutput {
 type AttestorIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Attestor interface{}
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -121,6 +129,7 @@ type AttestorIamBindingState struct {
 type AttestorIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Attestor interface{}
+	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

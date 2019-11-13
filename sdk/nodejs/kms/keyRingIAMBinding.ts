@@ -90,6 +90,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.kms.KeyRingIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -121,6 +122,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KeyRingIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["keyRingId"] = state ? state.keyRingId : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -136,6 +138,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -156,6 +159,7 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyRingIAMBinding resources.
  */
 export interface KeyRingIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMBindingCondition>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -180,6 +184,7 @@ export interface KeyRingIAMBindingState {
  * The set of arguments for constructing a KeyRingIAMBinding resource.
  */
 export interface KeyRingIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMBindingCondition>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}` or

@@ -35,10 +35,12 @@ func NewAccountIamMember(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["billingAccountId"] = nil
+		inputs["condition"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
 		inputs["billingAccountId"] = args.BillingAccountId
+		inputs["condition"] = args.Condition
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
 	}
@@ -57,6 +59,7 @@ func GetAccountIamMember(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["billingAccountId"] = state.BillingAccountId
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
 		inputs["role"] = state.Role
@@ -83,6 +86,10 @@ func (r *AccountIamMember) BillingAccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["billingAccountId"])
 }
 
+func (r *AccountIamMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
+}
+
 // (Computed) The etag of the billing account's IAM policy.
 func (r *AccountIamMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
@@ -102,6 +109,7 @@ func (r *AccountIamMember) Role() *pulumi.StringOutput {
 type AccountIamMemberState struct {
 	// The billing account id.
 	BillingAccountId interface{}
+	Condition interface{}
 	// (Computed) The etag of the billing account's IAM policy.
 	Etag interface{}
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -114,6 +122,7 @@ type AccountIamMemberState struct {
 type AccountIamMemberArgs struct {
 	// The billing account id.
 	BillingAccountId interface{}
+	Condition interface{}
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The role that should be applied.

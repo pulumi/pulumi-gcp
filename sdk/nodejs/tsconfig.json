@@ -91,6 +91,7 @@
         "compute/getRegionInstanceGroup.ts",
         "compute/getRegions.ts",
         "compute/getResourcePolicy.ts",
+        "compute/getRouter.ts",
         "compute/getSSLPolicy.ts",
         "compute/getSubnetwork.ts",
         "compute/getVPNGateway.ts",

@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     crypto_key_id: pulumi.Output[str]
     """
     The crypto key ID, in the form
@@ -31,7 +32,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, crypto_key_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, crypto_key_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud KMS crypto key.
@@ -50,6 +51,12 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_binding.html.markdown.
         """
@@ -70,6 +77,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if crypto_key_id is None:
                 raise TypeError("Missing required property 'crypto_key_id'")
             __props__['crypto_key_id'] = crypto_key_id
@@ -87,7 +95,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, crypto_key_id=None, etag=None, members=None, role=None):
+    def get(resource_name, id, opts=None, condition=None, crypto_key_id=None, etag=None, members=None, role=None):
         """
         Get an existing CryptoKeyIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -104,12 +112,19 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["crypto_key_id"] = crypto_key_id
         __props__["etag"] = etag
         __props__["members"] = members

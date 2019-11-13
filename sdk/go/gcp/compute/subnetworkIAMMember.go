@@ -27,12 +27,14 @@ func NewSubnetworkIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["member"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["role"] = nil
 		inputs["subnetwork"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["member"] = args.Member
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -53,6 +55,7 @@ func GetSubnetworkIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SubnetworkIAMMemberState, opts ...pulumi.ResourceOpt) (*SubnetworkIAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
 		inputs["project"] = state.Project
@@ -75,6 +78,10 @@ func (r *SubnetworkIAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *SubnetworkIAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *SubnetworkIAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the subnetwork's IAM policy.
@@ -112,6 +119,7 @@ func (r *SubnetworkIAMMember) Subnetwork() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SubnetworkIAMMember resources.
 type SubnetworkIAMMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the subnetwork's IAM policy.
 	Etag interface{}
 	Member interface{}
@@ -131,6 +139,7 @@ type SubnetworkIAMMemberState struct {
 
 // The set of arguments for constructing a SubnetworkIAMMember resource.
 type SubnetworkIAMMemberArgs struct {
+	Condition interface{}
 	Member interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

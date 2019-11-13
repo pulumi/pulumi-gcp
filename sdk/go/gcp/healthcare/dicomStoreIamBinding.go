@@ -27,10 +27,12 @@ func NewDicomStoreIamBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["dicomStoreId"] = nil
 		inputs["members"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["dicomStoreId"] = args.DicomStoreId
 		inputs["members"] = args.Members
 		inputs["role"] = args.Role
@@ -49,6 +51,7 @@ func GetDicomStoreIamBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DicomStoreIamBindingState, opts ...pulumi.ResourceOpt) (*DicomStoreIamBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["dicomStoreId"] = state.DicomStoreId
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
@@ -69,6 +72,10 @@ func (r *DicomStoreIamBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *DicomStoreIamBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *DicomStoreIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // The DICOM store ID, in the form
@@ -97,6 +104,7 @@ func (r *DicomStoreIamBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering DicomStoreIamBinding resources.
 type DicomStoreIamBindingState struct {
+	Condition interface{}
 	// The DICOM store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
 	// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
@@ -113,6 +121,7 @@ type DicomStoreIamBindingState struct {
 
 // The set of arguments for constructing a DicomStoreIamBinding resource.
 type DicomStoreIamBindingArgs struct {
+	Condition interface{}
 	// The DICOM store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
 	// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's

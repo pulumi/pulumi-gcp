@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class FhirStoreIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.FhirStoreIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
         /// </summary>
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class FhirStoreIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.FhirStoreIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The FHIR store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -111,6 +117,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class FhirStoreIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.FhirStoreIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
         /// </summary>
@@ -140,5 +149,64 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class FhirStoreIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FhirStoreIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class FhirStoreIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FhirStoreIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class FhirStoreIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private FhirStoreIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

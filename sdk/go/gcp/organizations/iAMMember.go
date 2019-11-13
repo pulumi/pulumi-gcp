@@ -34,10 +34,12 @@ func NewIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["member"] = nil
 		inputs["orgId"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["member"] = args.Member
 		inputs["orgId"] = args.OrgId
 		inputs["role"] = args.Role
@@ -56,6 +58,7 @@ func GetIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *IAMMemberState, opts ...pulumi.ResourceOpt) (*IAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
 		inputs["orgId"] = state.OrgId
@@ -76,6 +79,10 @@ func (r *IAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *IAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the organization's IAM policy.
@@ -101,6 +108,7 @@ func (r *IAMMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMMember resources.
 type IAMMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the organization's IAM policy.
 	Etag interface{}
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -114,6 +122,7 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
+	Condition interface{}
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
 	// The numeric ID of the organization in which you want to create a custom role.

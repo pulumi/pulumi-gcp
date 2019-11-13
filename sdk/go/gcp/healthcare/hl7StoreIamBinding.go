@@ -27,10 +27,12 @@ func NewHl7StoreIamBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["hl7V2StoreId"] = nil
 		inputs["members"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["hl7V2StoreId"] = args.Hl7V2StoreId
 		inputs["members"] = args.Members
 		inputs["role"] = args.Role
@@ -49,6 +51,7 @@ func GetHl7StoreIamBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *Hl7StoreIamBindingState, opts ...pulumi.ResourceOpt) (*Hl7StoreIamBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["hl7V2StoreId"] = state.Hl7V2StoreId
 		inputs["members"] = state.Members
@@ -69,6 +72,10 @@ func (r *Hl7StoreIamBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Hl7StoreIamBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *Hl7StoreIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the HL7v2 store's IAM policy.
@@ -97,6 +104,7 @@ func (r *Hl7StoreIamBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Hl7StoreIamBinding resources.
 type Hl7StoreIamBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the HL7v2 store's IAM policy.
 	Etag interface{}
 	// The HL7v2 store ID, in the form
@@ -113,6 +121,7 @@ type Hl7StoreIamBindingState struct {
 
 // The set of arguments for constructing a Hl7StoreIamBinding resource.
 type Hl7StoreIamBindingArgs struct {
+	Condition interface{}
 	// The HL7v2 store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's

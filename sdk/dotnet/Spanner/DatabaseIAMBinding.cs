@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Spanner
     /// </summary>
     public partial class DatabaseIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.DatabaseIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -107,6 +110,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatabaseIAMBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -149,6 +155,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatabaseIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the Spanner database.
         /// </summary>
@@ -193,5 +202,64 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class DatabaseIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatabaseIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class DatabaseIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatabaseIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class DatabaseIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private DatabaseIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

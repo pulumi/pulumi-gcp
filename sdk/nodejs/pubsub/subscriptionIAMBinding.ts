@@ -90,6 +90,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubscriptionIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.pubsub.SubscriptionIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -123,6 +124,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SubscriptionIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -139,6 +141,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
             if (!args || args.subscription === undefined) {
                 throw new Error("Missing required property 'subscription'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -160,6 +163,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubscriptionIAMBinding resources.
  */
 export interface SubscriptionIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -186,6 +190,7 @@ export interface SubscriptionIAMBindingState {
  * The set of arguments for constructing a SubscriptionIAMBinding resource.
  */
 export interface SubscriptionIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the resource belongs. If it

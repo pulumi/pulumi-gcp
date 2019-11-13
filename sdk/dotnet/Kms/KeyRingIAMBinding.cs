@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Kms
     /// </summary>
     public partial class KeyRingIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.KeyRingIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
         /// </summary>
@@ -94,6 +97,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.KeyRingIAMBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The key ring ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}` or
@@ -126,6 +132,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.KeyRingIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
         /// </summary>
@@ -160,5 +169,64 @@ namespace Pulumi.Gcp.Kms
         public KeyRingIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class KeyRingIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public KeyRingIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class KeyRingIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public KeyRingIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class KeyRingIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private KeyRingIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

@@ -36,10 +36,12 @@ func NewIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -58,6 +60,7 @@ func GetIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *IAMBindingState, opts ...pulumi.ResourceOpt) (*IAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -78,6 +81,10 @@ func (r *IAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *IAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the project's IAM policy.
@@ -105,6 +112,7 @@ func (r *IAMBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMBinding resources.
 type IAMBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -120,6 +128,7 @@ type IAMBindingState struct {
 
 // The set of arguments for constructing a IAMBinding resource.
 type IAMBindingArgs struct {
+	Condition interface{}
 	Members interface{}
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it

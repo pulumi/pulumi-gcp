@@ -36,6 +36,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["canIpForward"] = nil
 		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
+		inputs["enableDisplay"] = nil
 		inputs["guestAccelerators"] = nil
 		inputs["hostname"] = nil
 		inputs["labels"] = nil
@@ -60,6 +61,7 @@ func NewInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["canIpForward"] = args.CanIpForward
 		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
+		inputs["enableDisplay"] = args.EnableDisplay
 		inputs["guestAccelerators"] = args.GuestAccelerators
 		inputs["hostname"] = args.Hostname
 		inputs["labels"] = args.Labels
@@ -104,6 +106,7 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 		inputs["cpuPlatform"] = state.CpuPlatform
 		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
+		inputs["enableDisplay"] = state.EnableDisplay
 		inputs["guestAccelerators"] = state.GuestAccelerators
 		inputs["hostname"] = state.Hostname
 		inputs["instanceId"] = state.InstanceId
@@ -170,6 +173,10 @@ func (r *InstanceFromTemplate) DeletionProtection() *pulumi.BoolOutput {
 
 func (r *InstanceFromTemplate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+func (r *InstanceFromTemplate) EnableDisplay() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
 func (r *InstanceFromTemplate) GuestAccelerators() *pulumi.ArrayOutput {
@@ -275,6 +282,7 @@ type InstanceFromTemplateState struct {
 	CpuPlatform interface{}
 	DeletionProtection interface{}
 	Description interface{}
+	EnableDisplay interface{}
 	GuestAccelerators interface{}
 	Hostname interface{}
 	InstanceId interface{}
@@ -313,6 +321,7 @@ type InstanceFromTemplateArgs struct {
 	CanIpForward interface{}
 	DeletionProtection interface{}
 	Description interface{}
+	EnableDisplay interface{}
 	GuestAccelerators interface{}
 	Hostname interface{}
 	Labels interface{}

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === TunnelInstanceIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.iap.TunnelInstanceIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -72,6 +75,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TunnelInstanceIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -89,6 +93,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -111,6 +116,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TunnelInstanceIAMBinding resources.
  */
 export interface TunnelInstanceIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.iap.TunnelInstanceIAMBindingCondition>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -142,6 +148,7 @@ export interface TunnelInstanceIAMBindingState {
  * The set of arguments for constructing a TunnelInstanceIAMBinding resource.
  */
 export interface TunnelInstanceIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.iap.TunnelInstanceIAMBindingCondition>;
     /**
      * The name of the instance.
      */

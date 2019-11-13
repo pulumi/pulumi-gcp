@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -62,6 +64,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
      * The billing account id.
      */
     public readonly billingAccountId!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.billing.AccountIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the billing account's IAM policy.
      */
@@ -88,6 +91,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AccountIamBindingState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["role"] = state ? state.role : undefined;
@@ -103,6 +107,7 @@ export class AccountIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
@@ -126,6 +131,7 @@ export interface AccountIamBindingState {
      * The billing account id.
      */
     readonly billingAccountId?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
     /**
      * (Computed) The etag of the billing account's IAM policy.
      */
@@ -148,6 +154,7 @@ export interface AccountIamBindingArgs {
      * The billing account id.
      */
     readonly billingAccountId: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */

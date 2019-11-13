@@ -14,6 +14,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
     """
     Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the IAM policy.
@@ -30,7 +31,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
     `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, app_id=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_id=None, condition=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a WebTypeAppEngingIamMember resource with the given unique name, props, and options.
         
@@ -42,6 +43,12 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_app_engine_iam_member.html.markdown.
         """
@@ -65,6 +72,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
             if app_id is None:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
+            __props__['condition'] = condition
             if member is None:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
@@ -80,7 +88,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, etag=None, member=None, project=None, role=None):
+    def get(resource_name, id, opts=None, app_id=None, condition=None, etag=None, member=None, project=None, role=None):
         """
         Get an existing WebTypeAppEngingIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -95,6 +103,12 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_app_engine_iam_member.html.markdown.
         """
@@ -102,6 +116,7 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["app_id"] = app_id
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member
         __props__["project"] = project

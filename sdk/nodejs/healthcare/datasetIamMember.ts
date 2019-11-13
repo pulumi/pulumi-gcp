@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.healthcare.DatasetIamMemberCondition | undefined>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
@@ -65,6 +68,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatasetIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -80,6 +84,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -100,6 +105,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetIamMember resources.
  */
 export interface DatasetIamMemberState {
+    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
@@ -124,6 +130,7 @@ export interface DatasetIamMemberState {
  * The set of arguments for constructing a DatasetIamMember resource.
  */
 export interface DatasetIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.healthcare.DatasetIamMemberCondition>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or

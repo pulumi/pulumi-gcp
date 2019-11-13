@@ -35,10 +35,12 @@ func NewCryptoKeyIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["cryptoKeyId"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["cryptoKeyId"] = args.CryptoKeyId
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
@@ -57,6 +59,7 @@ func GetCryptoKeyIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *CryptoKeyIAMMemberState, opts ...pulumi.ResourceOpt) (*CryptoKeyIAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["cryptoKeyId"] = state.CryptoKeyId
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
@@ -77,6 +80,10 @@ func (r *CryptoKeyIAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *CryptoKeyIAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *CryptoKeyIAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // The key ring ID, in the form
@@ -105,6 +112,7 @@ func (r *CryptoKeyIAMMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering CryptoKeyIAMMember resources.
 type CryptoKeyIAMMemberState struct {
+	Condition interface{}
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -121,6 +129,7 @@ type CryptoKeyIAMMemberState struct {
 
 // The set of arguments for constructing a CryptoKeyIAMMember resource.
 type CryptoKeyIAMMemberArgs struct {
+	Condition interface{}
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,

@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Runtimeconfig
     /// </summary>
     public partial class ConfigIamBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.ConfigIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
@@ -88,6 +91,9 @@ namespace Pulumi.Gcp.Runtimeconfig
 
     public sealed class ConfigIamBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.ConfigIamBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
@@ -124,6 +130,9 @@ namespace Pulumi.Gcp.Runtimeconfig
 
     public sealed class ConfigIamBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.ConfigIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
@@ -162,5 +171,64 @@ namespace Pulumi.Gcp.Runtimeconfig
         public ConfigIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ConfigIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public ConfigIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class ConfigIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public ConfigIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ConfigIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private ConfigIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

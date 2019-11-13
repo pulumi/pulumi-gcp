@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class RepositoryIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === RepositoryIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.sourcerepo.RepositoryIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -64,6 +67,7 @@ export class RepositoryIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as RepositoryIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -80,6 +84,7 @@ export class RepositoryIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["repository"] = args ? args.repository : undefined;
@@ -101,6 +106,7 @@ export class RepositoryIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamMember resources.
  */
 export interface RepositoryIamMemberState {
+    readonly condition?: pulumi.Input<inputs.sourcerepo.RepositoryIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -124,6 +130,7 @@ export interface RepositoryIamMemberState {
  * The set of arguments for constructing a RepositoryIamMember resource.
  */
 export interface RepositoryIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.sourcerepo.RepositoryIamMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

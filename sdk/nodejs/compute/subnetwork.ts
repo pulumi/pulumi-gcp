@@ -38,7 +38,7 @@ export class Subnetwork extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly enableFlowLogs!: pulumi.Output<boolean | undefined>;
+    public readonly enableFlowLogs!: pulumi.Output<boolean>;
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     public readonly ipCidrRange!: pulumi.Output<string>;

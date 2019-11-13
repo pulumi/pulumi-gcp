@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("enableFlowLogs")]
-        public Output<bool?> EnableFlowLogs { get; private set; } = null!;
+        public Output<bool> EnableFlowLogs { get; private set; } = null!;
 
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;

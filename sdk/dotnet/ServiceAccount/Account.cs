@@ -28,6 +28,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// A text description of the service account.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The display name for the service account.
         /// Can be updated without creating a new resource.
         /// </summary>
@@ -117,6 +123,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// A text description of the service account.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The display name for the service account.
         /// Can be updated without creating a new resource.
         /// </summary>
@@ -145,6 +157,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// A text description of the service account.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The display name for the service account.

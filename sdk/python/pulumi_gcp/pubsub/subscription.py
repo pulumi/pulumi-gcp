@@ -40,6 +40,11 @@ class Subscription(pulumi.CustomResource):
         The **push_config** object supports the following:
         
           * `attributes` (`pulumi.Input[dict]`)
+          * `oidcToken` (`pulumi.Input[dict]`)
+        
+            * `audience` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
           * `pushEndpoint` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
@@ -98,6 +103,11 @@ class Subscription(pulumi.CustomResource):
         The **push_config** object supports the following:
         
           * `attributes` (`pulumi.Input[dict]`)
+          * `oidcToken` (`pulumi.Input[dict]`)
+        
+            * `audience` (`pulumi.Input[str]`)
+            * `service_account_email` (`pulumi.Input[str]`)
+        
           * `pushEndpoint` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.

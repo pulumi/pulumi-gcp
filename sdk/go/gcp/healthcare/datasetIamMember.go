@@ -27,10 +27,12 @@ func NewDatasetIamMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["datasetId"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["datasetId"] = args.DatasetId
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
@@ -49,6 +51,7 @@ func GetDatasetIamMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DatasetIamMemberState, opts ...pulumi.ResourceOpt) (*DatasetIamMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["datasetId"] = state.DatasetId
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
@@ -69,6 +72,10 @@ func (r *DatasetIamMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *DatasetIamMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *DatasetIamMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // The dataset ID, in the form
@@ -97,6 +104,7 @@ func (r *DatasetIamMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering DatasetIamMember resources.
 type DatasetIamMemberState struct {
+	Condition interface{}
 	// The dataset ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}` or
 	// `{location_name}/{dataset_name}`. In the second form, the provider's
@@ -113,6 +121,7 @@ type DatasetIamMemberState struct {
 
 // The set of arguments for constructing a DatasetIamMember resource.
 type DatasetIamMemberArgs struct {
+	Condition interface{}
 	// The dataset ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}` or
 	// `{location_name}/{dataset_name}`. In the second form, the provider's
