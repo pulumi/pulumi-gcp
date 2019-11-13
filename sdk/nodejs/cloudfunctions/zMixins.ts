@@ -167,7 +167,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
 
         this.function = new cloudfunctions.Function(functionName, {
             ...argsCopy,
-            runtime: utils.ifUndefined((<any>args).runtime, "nodejs8"),
+            runtime: utils.ifUndefined(args.runtime, "nodejs8"),
             entryPoint: handlerName,
             sourceArchiveBucket: this.bucket.name,
             sourceArchiveObject: this.bucketObject.name,
@@ -347,6 +347,11 @@ export interface CallbackFunctionArgs {
      * code.
      */
     bucket?: storage.Bucket;
+
+    /**
+     * The specific runtime for the function. If not specified, a default will be applied
+     */
+    runtime?: pulumi.Input<string>;
 }
 
 /**
