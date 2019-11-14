@@ -1513,6 +1513,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_tpu_tensorflow_versions": {
 				Tok: gcpDataSource(gcpTPU, "getTensorflowVersions"),
 			},
+			"google_compute_router": {
+				Tok: gcpDataSource(gcpCompute, "getRouter"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

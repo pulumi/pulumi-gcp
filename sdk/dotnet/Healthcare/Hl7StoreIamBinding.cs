@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class Hl7StoreIamBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.Hl7StoreIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the HL7v2 store's IAM policy.
         /// </summary>
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class Hl7StoreIamBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.Hl7StoreIamBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The HL7v2 store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
@@ -116,6 +122,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class Hl7StoreIamBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.Hl7StoreIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the HL7v2 store's IAM policy.
         /// </summary>
@@ -150,5 +159,64 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class Hl7StoreIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public Hl7StoreIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class Hl7StoreIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public Hl7StoreIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class Hl7StoreIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private Hl7StoreIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

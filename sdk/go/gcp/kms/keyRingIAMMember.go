@@ -37,10 +37,12 @@ func NewKeyRingIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["keyRingId"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["keyRingId"] = args.KeyRingId
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
@@ -59,6 +61,7 @@ func GetKeyRingIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *KeyRingIAMMemberState, opts ...pulumi.ResourceOpt) (*KeyRingIAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["keyRingId"] = state.KeyRingId
 		inputs["member"] = state.Member
@@ -79,6 +82,10 @@ func (r *KeyRingIAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *KeyRingIAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *KeyRingIAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the key ring's IAM policy.
@@ -107,6 +114,7 @@ func (r *KeyRingIAMMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.
 type KeyRingIAMMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag interface{}
 	// The key ring ID, in the form
@@ -123,6 +131,7 @@ type KeyRingIAMMemberState struct {
 
 // The set of arguments for constructing a KeyRingIAMMember resource.
 type KeyRingIAMMemberArgs struct {
+	Condition interface{}
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's

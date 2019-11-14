@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebBackendServiceIamBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.iap.WebBackendServiceIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -67,6 +70,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as WebBackendServiceIamBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -83,6 +87,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
             if (!args || args.webBackendService === undefined) {
                 throw new Error("Missing required property 'webBackendService'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -104,6 +109,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebBackendServiceIamBinding resources.
  */
 export interface WebBackendServiceIamBindingState {
+    readonly condition?: pulumi.Input<inputs.iap.WebBackendServiceIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -130,6 +136,7 @@ export interface WebBackendServiceIamBindingState {
  * The set of arguments for constructing a WebBackendServiceIamBinding resource.
  */
 export interface WebBackendServiceIamBindingArgs {
+    readonly condition?: pulumi.Input<inputs.iap.WebBackendServiceIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.

@@ -36,6 +36,9 @@ namespace Pulumi.Gcp.Cloudbuild
         [Output("includedFiles")]
         public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
 
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -129,6 +132,9 @@ namespace Pulumi.Gcp.Cloudbuild
             set => _includedFiles = value;
         }
 
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -187,6 +193,9 @@ namespace Pulumi.Gcp.Cloudbuild
             get => _includedFiles ?? (_includedFiles = new InputList<string>());
             set => _includedFiles = value;
         }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

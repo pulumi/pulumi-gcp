@@ -27,10 +27,12 @@ func NewFhirStoreIamMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["fhirStoreId"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["fhirStoreId"] = args.FhirStoreId
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
@@ -49,6 +51,7 @@ func GetFhirStoreIamMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *FhirStoreIamMemberState, opts ...pulumi.ResourceOpt) (*FhirStoreIamMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["fhirStoreId"] = state.FhirStoreId
 		inputs["member"] = state.Member
@@ -69,6 +72,10 @@ func (r *FhirStoreIamMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *FhirStoreIamMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *FhirStoreIamMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the FHIR store's IAM policy.
@@ -97,6 +104,7 @@ func (r *FhirStoreIamMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering FhirStoreIamMember resources.
 type FhirStoreIamMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the FHIR store's IAM policy.
 	Etag interface{}
 	// The FHIR store ID, in the form
@@ -113,6 +121,7 @@ type FhirStoreIamMemberState struct {
 
 // The set of arguments for constructing a FhirStoreIamMember resource.
 type FhirStoreIamMemberArgs struct {
+	Condition interface{}
 	// The FHIR store ID, in the form
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's

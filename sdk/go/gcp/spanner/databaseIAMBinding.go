@@ -43,12 +43,14 @@ func NewDatabaseIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["database"] = nil
 		inputs["instance"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["database"] = args.Database
 		inputs["instance"] = args.Instance
 		inputs["members"] = args.Members
@@ -69,6 +71,7 @@ func GetDatabaseIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DatabaseIAMBindingState, opts ...pulumi.ResourceOpt) (*DatabaseIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["database"] = state.Database
 		inputs["etag"] = state.Etag
 		inputs["instance"] = state.Instance
@@ -91,6 +94,10 @@ func (r *DatabaseIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *DatabaseIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *DatabaseIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // The name of the Spanner database.
@@ -127,6 +134,7 @@ func (r *DatabaseIAMBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering DatabaseIAMBinding resources.
 type DatabaseIAMBindingState struct {
+	Condition interface{}
 	// The name of the Spanner database.
 	Database interface{}
 	// (Computed) The etag of the database's IAM policy.
@@ -145,6 +153,7 @@ type DatabaseIAMBindingState struct {
 
 // The set of arguments for constructing a DatabaseIAMBinding resource.
 type DatabaseIAMBindingArgs struct {
+	Condition interface{}
 	// The name of the Spanner database.
 	Database interface{}
 	// The name of the Spanner instance the database belongs to.

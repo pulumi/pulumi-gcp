@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -91,6 +93,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.spanner.InstanceIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -124,6 +127,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -140,6 +144,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -161,6 +166,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMBinding resources.
  */
 export interface InstanceIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -187,6 +193,7 @@ export interface InstanceIAMBindingState {
  * The set of arguments for constructing a InstanceIAMBinding resource.
  */
 export interface InstanceIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.spanner.InstanceIAMBindingCondition>;
     /**
      * The name of the instance.
      */

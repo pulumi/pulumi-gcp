@@ -117,6 +117,7 @@ export class IAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.projects.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -147,6 +148,7 @@ export class IAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as IAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -159,6 +161,7 @@ export class IAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -179,6 +182,7 @@ export class IAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMMember resources.
  */
 export interface IAMMemberState {
+    readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -202,6 +206,7 @@ export interface IAMMemberState {
  * The set of arguments for constructing a IAMMember resource.
  */
 export interface IAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.

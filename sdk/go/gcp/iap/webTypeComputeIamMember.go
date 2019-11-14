@@ -24,10 +24,12 @@ func NewWebTypeComputeIamMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["member"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["member"] = args.Member
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -46,6 +48,7 @@ func GetWebTypeComputeIamMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *WebTypeComputeIamMemberState, opts ...pulumi.ResourceOpt) (*WebTypeComputeIamMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["member"] = state.Member
 		inputs["project"] = state.Project
@@ -66,6 +69,10 @@ func (r *WebTypeComputeIamMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *WebTypeComputeIamMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *WebTypeComputeIamMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -92,6 +99,7 @@ func (r *WebTypeComputeIamMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering WebTypeComputeIamMember resources.
 type WebTypeComputeIamMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Member interface{}
@@ -106,6 +114,7 @@ type WebTypeComputeIamMemberState struct {
 
 // The set of arguments for constructing a WebTypeComputeIamMember resource.
 type WebTypeComputeIamMemberArgs struct {
+	Condition interface{}
 	Member interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -54,6 +56,7 @@ export class IAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.organizations.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
@@ -84,6 +87,7 @@ export class IAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as IAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
@@ -99,6 +103,7 @@ export class IAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -119,6 +124,7 @@ export class IAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMMember resources.
  */
 export interface IAMMemberState {
+    readonly condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
@@ -142,6 +148,7 @@ export interface IAMMemberState {
  * The set of arguments for constructing a IAMMember resource.
  */
 export interface IAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
     /**
      * The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */

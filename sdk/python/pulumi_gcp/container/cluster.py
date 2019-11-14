@@ -192,6 +192,12 @@ class Cluster(pulumi.CustomResource):
     
         * `duration` (`str`)
         * `startTime` (`str`)
+    
+      * `recurringWindow` (`dict`)
+    
+        * `endTime` (`str`)
+        * `recurrence` (`str`)
+        * `startTime` (`str`)
     """
     master_auth: pulumi.Output[dict]
     """
@@ -733,6 +739,12 @@ class Cluster(pulumi.CustomResource):
             * `duration` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
         
+          * `recurringWindow` (`pulumi.Input[dict]`)
+        
+            * `endTime` (`pulumi.Input[str]`)
+            * `recurrence` (`pulumi.Input[str]`)
+            * `startTime` (`pulumi.Input[str]`)
+        
         The **master_auth** object supports the following:
         
           * `clientCertificate` (`pulumi.Input[str]`)
@@ -1205,6 +1217,12 @@ class Cluster(pulumi.CustomResource):
           * `dailyMaintenanceWindow` (`pulumi.Input[dict]`)
         
             * `duration` (`pulumi.Input[str]`)
+            * `startTime` (`pulumi.Input[str]`)
+        
+          * `recurringWindow` (`pulumi.Input[dict]`)
+        
+            * `endTime` (`pulumi.Input[str]`)
+            * `recurrence` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
         
         The **master_auth** object supports the following:

@@ -12,7 +12,7 @@ from .. import utilities, tables
 class InstanceGroupManager(pulumi.CustomResource):
     auto_healing_policies: pulumi.Output[dict]
     """
-    ) The autohealing policies for this managed instance
+    The autohealing policies for this managed instance
     group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
     
       * `healthCheck` (`str`)
@@ -81,7 +81,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     update_policy: pulumi.Output[dict]
     """
-    ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+    The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
     - - -
     
       * `maxSurgeFixed` (`float`)
@@ -94,13 +94,16 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     versions: pulumi.Output[list]
     """
-    ) Application versions managed by this instance group. Each
+    Application versions managed by this instance group. Each
     version deals with a specific instance template, allowing canary release scenarios.
     Structure is documented below.
+    Until `instance_template` is removed this field will be Optional to allow for a
+    graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
     
-      * `instanceTemplate` (`str`) - ) The
+      * `instanceTemplate` (`str`) - The
         full URL to an instance template from which all new instances
-        will be created. This field is only present in the `google` provider.
+        will be created. This field is replaced by `version.instance_template`. You must
+        specify at least one `version` block with an `instance_template`.
       * `name` (`str`) - The name of the instance group manager. Must be 1-63
         characters long and comply with
         [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
@@ -134,7 +137,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] auto_healing_policies: ) The autohealing policies for this managed instance
+        :param pulumi.Input[dict] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] base_instance_name: The base instance name to use for
                instances in this group. The value must be a valid
@@ -158,11 +161,13 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[float] target_size: The target number of running instances for this managed
                instance group. This value should always be explicitly set unless this resource is attached to
                an autoscaler, in which case it should never be set. Defaults to `0`.
-        :param pulumi.Input[dict] update_policy: ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
                - - -
-        :param pulumi.Input[list] versions: ) Application versions managed by this instance group. Each
+        :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
+               Until `instance_template` is removed this field will be Optional to allow for a
+               graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -194,9 +199,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         
         The **versions** object supports the following:
         
-          * `instanceTemplate` (`pulumi.Input[str]`) - ) The
+          * `instanceTemplate` (`pulumi.Input[str]`) - The
             full URL to an instance template from which all new instances
-            will be created. This field is only present in the `google` provider.
+            will be created. This field is replaced by `version.instance_template`. You must
+            specify at least one `version` block with an `instance_template`.
           * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
@@ -261,7 +267,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] auto_healing_policies: ) The autohealing policies for this managed instance
+        :param pulumi.Input[dict] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] base_instance_name: The base instance name to use for
                instances in this group. The value must be a valid
@@ -288,11 +294,13 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[float] target_size: The target number of running instances for this managed
                instance group. This value should always be explicitly set unless this resource is attached to
                an autoscaler, in which case it should never be set. Defaults to `0`.
-        :param pulumi.Input[dict] update_policy: ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
                - - -
-        :param pulumi.Input[list] versions: ) Application versions managed by this instance group. Each
+        :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
+               Until `instance_template` is removed this field will be Optional to allow for a
+               graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -324,9 +332,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         
         The **versions** object supports the following:
         
-          * `instanceTemplate` (`pulumi.Input[str]`) - ) The
+          * `instanceTemplate` (`pulumi.Input[str]`) - The
             full URL to an instance template from which all new instances
-            will be created. This field is only present in the `google` provider.
+            will be created. This field is replaced by `version.instance_template`. You must
+            specify at least one `version` block with an `instance_template`.
           * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters

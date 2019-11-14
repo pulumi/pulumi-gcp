@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class DatasetIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.DatasetIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DatasetIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatasetIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -111,6 +117,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DatasetIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DatasetIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The dataset ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}` or
@@ -140,5 +149,64 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class DatasetIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatasetIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class DatasetIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DatasetIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class DatasetIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private DatasetIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

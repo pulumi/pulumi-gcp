@@ -44,6 +44,7 @@ export class Trigger extends pulumi.CustomResource {
     public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     public readonly ignoredFiles!: pulumi.Output<string[] | undefined>;
     public readonly includedFiles!: pulumi.Output<string[] | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -73,6 +74,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["github"] = state ? state.github : undefined;
             inputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
             inputs["includedFiles"] = state ? state.includedFiles : undefined;
+            inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["substitutions"] = state ? state.substitutions : undefined;
             inputs["triggerId"] = state ? state.triggerId : undefined;
@@ -86,6 +88,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["github"] = args ? args.github : undefined;
             inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             inputs["includedFiles"] = args ? args.includedFiles : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
@@ -115,6 +118,7 @@ export interface TriggerState {
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -136,6 +140,7 @@ export interface TriggerArgs {
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

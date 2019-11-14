@@ -27,11 +27,13 @@ func NewRepositoryIamBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["repository"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["repository"] = args.Repository
@@ -51,6 +53,7 @@ func GetRepositoryIamBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *RepositoryIamBindingState, opts ...pulumi.ResourceOpt) (*RepositoryIamBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -72,6 +75,10 @@ func (r *RepositoryIamBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *RepositoryIamBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *RepositoryIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -102,6 +109,7 @@ func (r *RepositoryIamBinding) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering RepositoryIamBinding resources.
 type RepositoryIamBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -117,6 +125,7 @@ type RepositoryIamBindingState struct {
 
 // The set of arguments for constructing a RepositoryIamBinding resource.
 type RepositoryIamBindingArgs struct {
+	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

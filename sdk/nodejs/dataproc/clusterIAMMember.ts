@@ -96,6 +96,7 @@ export class ClusterIAMMember extends pulumi.CustomResource {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     public readonly cluster!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -131,6 +132,7 @@ export class ClusterIAMMember extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterIAMMemberState | undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -148,6 +150,7 @@ export class ClusterIAMMember extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -173,6 +176,7 @@ export interface ClusterIAMMemberState {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     readonly cluster?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -204,6 +208,7 @@ export interface ClusterIAMMemberArgs {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     readonly cluster: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it

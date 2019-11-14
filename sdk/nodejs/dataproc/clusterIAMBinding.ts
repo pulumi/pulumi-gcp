@@ -96,6 +96,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     public readonly cluster!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -131,6 +132,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterIAMBindingState | undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -148,6 +150,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -173,6 +176,7 @@ export interface ClusterIAMBindingState {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     readonly cluster?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -204,6 +208,7 @@ export interface ClusterIAMBindingArgs {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     readonly cluster: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the cluster belongs. If it

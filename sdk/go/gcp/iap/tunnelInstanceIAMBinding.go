@@ -27,12 +27,14 @@ func NewTunnelInstanceIAMBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["instance"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 		inputs["zone"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["instance"] = args.Instance
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
@@ -53,6 +55,7 @@ func GetTunnelInstanceIAMBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *TunnelInstanceIAMBindingState, opts ...pulumi.ResourceOpt) (*TunnelInstanceIAMBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["instance"] = state.Instance
 		inputs["members"] = state.Members
@@ -75,6 +78,10 @@ func (r *TunnelInstanceIAMBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *TunnelInstanceIAMBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *TunnelInstanceIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the instance's IAM policy.
@@ -112,6 +119,7 @@ func (r *TunnelInstanceIAMBinding) Zone() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering TunnelInstanceIAMBinding resources.
 type TunnelInstanceIAMBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the instance's IAM policy.
 	Etag interface{}
 	// The name of the instance.
@@ -131,6 +139,7 @@ type TunnelInstanceIAMBindingState struct {
 
 // The set of arguments for constructing a TunnelInstanceIAMBinding resource.
 type TunnelInstanceIAMBindingArgs struct {
+	Condition interface{}
 	// The name of the instance.
 	Instance interface{}
 	Members interface{}

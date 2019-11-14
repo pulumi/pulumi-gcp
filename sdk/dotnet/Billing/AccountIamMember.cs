@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Billing
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.AccountIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the billing account's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Billing
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.AccountIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// </summary>
@@ -120,6 +126,9 @@ namespace Pulumi.Gcp.Billing
         [Input("billingAccountId")]
         public Input<string>? BillingAccountId { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.AccountIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the billing account's IAM policy.
         /// </summary>
@@ -141,5 +150,64 @@ namespace Pulumi.Gcp.Billing
         public AccountIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class AccountIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AccountIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class AccountIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public AccountIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class AccountIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private AccountIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

@@ -27,11 +27,13 @@ func NewWebBackendServiceIamBinding(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["role"] = nil
 		inputs["webBackendService"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["role"] = args.Role
@@ -51,6 +53,7 @@ func GetWebBackendServiceIamBinding(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *WebBackendServiceIamBindingState, opts ...pulumi.ResourceOpt) (*WebBackendServiceIamBinding, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -72,6 +75,10 @@ func (r *WebBackendServiceIamBinding) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *WebBackendServiceIamBinding) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *WebBackendServiceIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -103,6 +110,7 @@ func (r *WebBackendServiceIamBinding) WebBackendService() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering WebBackendServiceIamBinding resources.
 type WebBackendServiceIamBindingState struct {
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -119,6 +127,7 @@ type WebBackendServiceIamBindingState struct {
 
 // The set of arguments for constructing a WebBackendServiceIamBinding resource.
 type WebBackendServiceIamBindingArgs struct {
+	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

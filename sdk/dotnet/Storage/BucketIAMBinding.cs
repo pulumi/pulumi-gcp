@@ -27,6 +27,9 @@ namespace Pulumi.Gcp.Storage
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.BucketIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the storage bucket's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.BucketIAMBindingConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -123,6 +129,9 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.BucketIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the storage bucket's IAM policy.
         /// </summary>
@@ -147,5 +156,64 @@ namespace Pulumi.Gcp.Storage
         public BucketIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class BucketIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public BucketIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class BucketIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public BucketIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class BucketIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private BucketIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

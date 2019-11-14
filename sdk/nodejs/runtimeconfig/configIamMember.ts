@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class ConfigIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.runtimeconfig.ConfigIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
@@ -67,6 +70,7 @@ export class ConfigIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ConfigIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -83,6 +87,7 @@ export class ConfigIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -104,6 +109,7 @@ export class ConfigIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigIamMember resources.
  */
 export interface ConfigIamMemberState {
+    readonly condition?: pulumi.Input<inputs.runtimeconfig.ConfigIamMemberCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
@@ -130,6 +136,7 @@ export interface ConfigIamMemberState {
  * The set of arguments for constructing a ConfigIamMember resource.
  */
 export interface ConfigIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.runtimeconfig.ConfigIamMemberCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */

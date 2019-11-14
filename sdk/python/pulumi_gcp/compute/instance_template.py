@@ -43,6 +43,11 @@ class InstanceTemplate(pulumi.CustomResource):
       * `sourceImage` (`str`)
       * `type` (`str`)
     """
+    enable_display: pulumi.Output[bool]
+    """
+    Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    """
     guest_accelerators: pulumi.Output[list]
     """
     List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -173,7 +178,7 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     The unique fingerprint of the tags.
     """
-    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, shielded_instance_config=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, shielded_instance_config=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -188,6 +193,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -313,6 +320,7 @@ class InstanceTemplate(pulumi.CustomResource):
             if disks is None:
                 raise TypeError("Missing required property 'disks'")
             __props__['disks'] = disks
+            __props__['enable_display'] = enable_display
             __props__['guest_accelerators'] = guest_accelerators
             __props__['instance_description'] = instance_description
             __props__['labels'] = labels
@@ -341,7 +349,7 @@ class InstanceTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, can_ip_forward=None, description=None, disks=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None):
+    def get(resource_name, id, opts=None, can_ip_forward=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None):
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -355,6 +363,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -467,6 +477,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__["can_ip_forward"] = can_ip_forward
         __props__["description"] = description
         __props__["disks"] = disks
+        __props__["enable_display"] = enable_display
         __props__["guest_accelerators"] = guest_accelerators
         __props__["instance_description"] = instance_description
         __props__["labels"] = labels

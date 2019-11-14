@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class InstanceIAMBinding(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the instance's IAM policy.
@@ -35,7 +36,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
     The zone of the instance. If
     unspecified, this defaults to the zone configured in the provider.
     """
-    def __init__(__self__, resource_name, opts=None, instance_name=None, members=None, project=None, role=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, instance_name=None, members=None, project=None, role=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for GCE instance. Each of these resources serves a different use case:
         
@@ -57,6 +58,12 @@ class InstanceIAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_binding.html.markdown.
         """
@@ -77,6 +84,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if instance_name is None:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
@@ -96,7 +104,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, instance_name=None, members=None, project=None, role=None, zone=None):
+    def get(resource_name, id, opts=None, condition=None, etag=None, instance_name=None, members=None, project=None, role=None, zone=None):
         """
         Get an existing InstanceIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,12 +121,19 @@ class InstanceIAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["instance_name"] = instance_name
         __props__["members"] = members

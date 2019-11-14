@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class SubscriptionIAMBinding(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the subscription's IAM policy.
@@ -30,7 +31,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
     """
     The subscription name or id to bind to attach IAM policy to.
     """
-    def __init__(__self__, resource_name, opts=None, members=None, project=None, role=None, subscription=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, members=None, project=None, role=None, subscription=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
         
@@ -50,6 +51,12 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
                `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam_binding.html.markdown.
         """
@@ -70,6 +77,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if members is None:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
@@ -88,7 +96,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, members=None, project=None, role=None, subscription=None):
+    def get(resource_name, id, opts=None, condition=None, etag=None, members=None, project=None, role=None, subscription=None):
         """
         Get an existing SubscriptionIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,12 +111,19 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
                `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["members"] = members
         __props__["project"] = project

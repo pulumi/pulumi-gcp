@@ -40,6 +40,7 @@ export class FunctionIamBinding extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly cloudFunction!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.cloudfunctions.FunctionIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -74,6 +75,7 @@ export class FunctionIamBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as FunctionIamBindingState | undefined;
             inputs["cloudFunction"] = state ? state.cloudFunction : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -91,6 +93,7 @@ export class FunctionIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -116,6 +119,7 @@ export interface FunctionIamBindingState {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly cloudFunction?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -146,6 +150,7 @@ export interface FunctionIamBindingArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly cloudFunction: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.cloudfunctions.FunctionIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.

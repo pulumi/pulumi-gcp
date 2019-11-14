@@ -56,6 +56,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === CryptoKeyIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIAMBindingCondition | undefined>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -90,6 +91,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as CryptoKeyIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -105,6 +107,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -125,6 +128,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
  */
 export interface CryptoKeyIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -152,6 +156,7 @@ export interface CryptoKeyIAMBindingState {
  * The set of arguments for constructing a CryptoKeyIAMBinding resource.
  */
 export interface CryptoKeyIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

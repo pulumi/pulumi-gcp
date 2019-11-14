@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Iap
     /// </summary>
     public partial class WebIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.WebIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -82,6 +85,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -107,6 +113,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -134,5 +143,64 @@ namespace Pulumi.Gcp.Iap
         public WebIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class WebIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class WebIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class WebIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private WebIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

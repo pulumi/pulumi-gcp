@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Allow passing `runtime` arg to HttpCallbackFunction
+* Upgrade to v2.19.0 of the Google Beta Terraform Provider.
 
 ---
 

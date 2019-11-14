@@ -14,6 +14,7 @@ class FunctionIamMember(pulumi.CustomResource):
     """
     Used to find the parent resource to bind the IAM policy to
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the IAM policy.
@@ -34,7 +35,7 @@ class FunctionIamMember(pulumi.CustomResource):
     `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, cloud_function=None, member=None, project=None, region=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cloud_function=None, condition=None, member=None, project=None, region=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a FunctionIamMember resource with the given unique name, props, and options.
         
@@ -47,6 +48,12 @@ class FunctionIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_member.html.markdown.
         """
@@ -70,6 +77,7 @@ class FunctionIamMember(pulumi.CustomResource):
             if cloud_function is None:
                 raise TypeError("Missing required property 'cloud_function'")
             __props__['cloud_function'] = cloud_function
+            __props__['condition'] = condition
             if member is None:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
@@ -86,7 +94,7 @@ class FunctionIamMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cloud_function=None, etag=None, member=None, project=None, region=None, role=None):
+    def get(resource_name, id, opts=None, cloud_function=None, condition=None, etag=None, member=None, project=None, region=None, role=None):
         """
         Get an existing FunctionIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -102,6 +110,12 @@ class FunctionIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_member.html.markdown.
         """
@@ -109,6 +123,7 @@ class FunctionIamMember(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["cloud_function"] = cloud_function
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member
         __props__["project"] = project

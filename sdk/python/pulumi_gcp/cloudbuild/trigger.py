@@ -18,6 +18,7 @@ class Trigger(pulumi.CustomResource):
     github: pulumi.Output[dict]
     ignored_files: pulumi.Output[list]
     included_files: pulumi.Output[list]
+    name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -26,7 +27,7 @@ class Trigger(pulumi.CustomResource):
     substitutions: pulumi.Output[dict]
     trigger_id: pulumi.Output[str]
     trigger_template: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Trigger resource with the given unique name, props, and options.
         
@@ -107,6 +108,7 @@ class Trigger(pulumi.CustomResource):
             __props__['github'] = github
             __props__['ignored_files'] = ignored_files
             __props__['included_files'] = included_files
+            __props__['name'] = name
             __props__['project'] = project
             __props__['substitutions'] = substitutions
             __props__['trigger_template'] = trigger_template
@@ -119,7 +121,7 @@ class Trigger(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
+    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -189,6 +191,7 @@ class Trigger(pulumi.CustomResource):
         __props__["github"] = github
         __props__["ignored_files"] = ignored_files
         __props__["included_files"] = included_files
+        __props__["name"] = name
         __props__["project"] = project
         __props__["substitutions"] = substitutions
         __props__["trigger_id"] = trigger_id

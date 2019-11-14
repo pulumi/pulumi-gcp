@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Spanner
     /// </summary>
     public partial class InstanceIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.InstanceIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -101,6 +104,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIAMBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the instance.
         /// </summary>
@@ -137,6 +143,9 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.InstanceIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -175,5 +184,64 @@ namespace Pulumi.Gcp.Spanner
         public InstanceIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class InstanceIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class InstanceIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public InstanceIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class InstanceIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private InstanceIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

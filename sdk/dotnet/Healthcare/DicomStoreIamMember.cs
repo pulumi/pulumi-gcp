@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class DicomStoreIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.DicomStoreIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The DICOM store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DicomStoreIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DicomStoreIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The DICOM store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -111,6 +117,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DicomStoreIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.DicomStoreIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The DICOM store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -140,5 +149,64 @@ namespace Pulumi.Gcp.Healthcare
         public DicomStoreIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class DicomStoreIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DicomStoreIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class DicomStoreIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public DicomStoreIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class DicomStoreIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private DicomStoreIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

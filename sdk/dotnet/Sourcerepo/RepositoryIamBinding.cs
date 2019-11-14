@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Sourcerepo
     /// </summary>
     public partial class RepositoryIamBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.RepositoryIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -85,6 +88,9 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryIamBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.RepositoryIamBindingConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -118,6 +124,9 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryIamBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.RepositoryIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -153,5 +162,64 @@ namespace Pulumi.Gcp.Sourcerepo
         public RepositoryIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class RepositoryIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public RepositoryIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class RepositoryIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public RepositoryIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class RepositoryIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private RepositoryIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

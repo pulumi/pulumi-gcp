@@ -65,6 +65,11 @@ class Instance(pulumi.CustomResource):
     """
     A brief description of this resource.
     """
+    enable_display: pulumi.Output[bool]
+    """
+    Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    """
     guest_accelerators: pulumi.Output[list]
     """
     List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -208,7 +213,7 @@ class Instance(pulumi.CustomResource):
     """
     The zone that the machine should be created in.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -228,6 +233,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -369,6 +376,7 @@ class Instance(pulumi.CustomResource):
             __props__['can_ip_forward'] = can_ip_forward
             __props__['deletion_protection'] = deletion_protection
             __props__['description'] = description
+            __props__['enable_display'] = enable_display
             __props__['guest_accelerators'] = guest_accelerators
             __props__['hostname'] = hostname
             __props__['labels'] = labels
@@ -402,7 +410,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -422,6 +430,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -553,6 +563,7 @@ class Instance(pulumi.CustomResource):
         __props__["cpu_platform"] = cpu_platform
         __props__["deletion_protection"] = deletion_protection
         __props__["description"] = description
+        __props__["enable_display"] = enable_display
         __props__["guest_accelerators"] = guest_accelerators
         __props__["hostname"] = hostname
         __props__["instance_id"] = instance_id

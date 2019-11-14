@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class InstanceIamMember(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the instances's IAM policy.
@@ -30,7 +31,7 @@ class InstanceIamMember(pulumi.CustomResource):
     `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, instance=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, instance=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
         
@@ -50,6 +51,12 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance_iam_member.html.markdown.
         """
@@ -70,6 +77,7 @@ class InstanceIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if instance is None:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
@@ -88,7 +96,7 @@ class InstanceIamMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, instance=None, member=None, project=None, role=None):
+    def get(resource_name, id, opts=None, condition=None, etag=None, instance=None, member=None, project=None, role=None):
         """
         Get an existing InstanceIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,12 +111,19 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["instance"] = instance
         __props__["member"] = member

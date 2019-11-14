@@ -66,7 +66,7 @@ export namespace appengine {
     }
 
     export interface DomainMappingSslSettings {
-        certificateId?: string;
+        certificateId: string;
         pendingManagedCertificateId: string;
         sslManagementType?: string;
     }
@@ -209,11 +209,37 @@ export namespace bigtable {
         zone: string;
     }
 
+    export interface InstanceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface TableColumnFamily {
         /**
          * The name of the column family.
          */
         family: string;
+    }
+}
+
+export namespace billing {
+    export interface AccountIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AccountIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
@@ -234,6 +260,18 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
         publicKeyPem?: string;
         signatureAlgorithm?: string;
+    }
+
+    export interface AttestorIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AttestorIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface PolicyAdmissionWhitelistPattern {
@@ -316,6 +354,18 @@ export namespace cloudfunctions {
 
     export interface FunctionEventTriggerFailurePolicy {
         retry: boolean;
+    }
+
+    export interface FunctionIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface FunctionIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface FunctionSourceRepository {
@@ -1077,6 +1127,18 @@ export namespace compute {
         port: number;
     }
 
+    export interface GetRouterBgp {
+        advertiseMode: string;
+        advertisedGroups: string[];
+        advertisedIpRanges: outputs.compute.GetRouterBgpAdvertisedIpRange[];
+        asn: number;
+    }
+
+    export interface GetRouterBgpAdvertisedIpRange {
+        description: string;
+        range: string;
+    }
+
     export interface GetSubnetworkSecondaryIpRange {
         /**
          * The range of IP addresses belonging to this subnetwork
@@ -1306,9 +1368,10 @@ export namespace compute {
 
     export interface InstanceGroupManagerVersion {
         /**
-         * ) The
+         * The
          * full URL to an instance template from which all new instances
-         * will be created. This field is only present in the `google` provider.
+         * will be created. This field is replaced by `version.instance_template`. You must
+         * specify at least one `version` block with an `instanceTemplate`.
          */
         instanceTemplate: string;
         /**
@@ -1317,7 +1380,7 @@ export namespace compute {
          * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
          * include lowercase letters, numbers, and hyphens.
          */
-        name: string;
+        name?: string;
         /**
          * The target number of running instances for this managed
          * instance group. This value should always be explicitly set unless this resource is attached to
@@ -1345,6 +1408,18 @@ export namespace compute {
     export interface InstanceGuestAccelerator {
         count: number;
         type: string;
+    }
+
+    export interface InstanceIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface InstanceNetworkInterface {
@@ -1620,9 +1695,10 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerVersion {
         /**
-         * ) The full URL to an instance template from
-         * which all new instances will be created. This field is only present in the
-         * `google` provider.
+         * The
+         * full URL to an instance template from which all new instances
+         * will be created. This field is replaced by `version.instance_template`. You must
+         * specify at least one `version` block with an `instanceTemplate`.
          */
         instanceTemplate: string;
         /**
@@ -1631,7 +1707,7 @@ export namespace compute {
          * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
          * include lowercase letters, numbers, and hyphens.
          */
-        name: string;
+        name?: string;
         /**
          * The target number of running instances for this managed
          * instance group. This value should always be explicitly set unless this resource is attached to
@@ -1813,6 +1889,18 @@ export namespace compute {
         rawKey?: string;
     }
 
+    export interface SubnetworkIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SubnetworkIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface SubnetworkLogConfig {
         aggregationInterval?: string;
         flowSampling?: number;
@@ -1908,20 +1996,27 @@ export namespace container {
     export interface ClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
-        createSubnetwork?: boolean;
+        createSubnetwork: boolean;
         nodeIpv4CidrBlock: string;
         servicesIpv4CidrBlock: string;
         servicesSecondaryRangeName: string;
-        subnetworkName?: string;
+        subnetworkName: string;
         useIpAliases?: boolean;
     }
 
     export interface ClusterMaintenancePolicy {
-        dailyMaintenanceWindow: outputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow;
+        dailyMaintenanceWindow?: outputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow;
+        recurringWindow?: outputs.container.ClusterMaintenancePolicyRecurringWindow;
     }
 
     export interface ClusterMaintenancePolicyDailyMaintenanceWindow {
         duration: string;
+        startTime: string;
+    }
+
+    export interface ClusterMaintenancePolicyRecurringWindow {
+        endTime: string;
+        recurrence: string;
         startTime: string;
     }
 
@@ -2193,10 +2288,17 @@ export namespace container {
 
     export interface GetClusterMaintenancePolicy {
         dailyMaintenanceWindows: outputs.container.GetClusterMaintenancePolicyDailyMaintenanceWindow[];
+        recurringWindows: outputs.container.GetClusterMaintenancePolicyRecurringWindow[];
     }
 
     export interface GetClusterMaintenancePolicyDailyMaintenanceWindow {
         duration: string;
+        startTime: string;
+    }
+
+    export interface GetClusterMaintenancePolicyRecurringWindow {
+        endTime: string;
+        recurrence: string;
         startTime: string;
     }
 
@@ -2564,6 +2666,18 @@ export namespace dataproc {
         numLocalSsds: number;
     }
 
+    export interface ClusterIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ClusterIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface JobHadoopConfig {
         archiveUris?: string[];
         args?: string[];
@@ -2586,6 +2700,18 @@ export namespace dataproc {
         queryFileUri?: string;
         queryLists?: string[];
         scriptVariables?: {[key: string]: string};
+    }
+
+    export interface JobIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface JobIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface JobPigConfig {
@@ -2787,6 +2913,18 @@ export namespace folder {
         default: boolean;
     }
 
+    export interface IAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface OrganizationPolicyBooleanPolicy {
         enforced: boolean;
     }
@@ -2814,12 +2952,60 @@ export namespace folder {
 }
 
 export namespace healthcare {
+    export interface DatasetIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DatasetIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DicomStoreIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DicomStoreIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface DicomStoreNotificationConfig {
         pubsubTopic: string;
     }
 
+    export interface FhirStoreIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface FhirStoreIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface FhirStoreNotificationConfig {
         pubsubTopic: string;
+    }
+
+    export interface Hl7StoreIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface Hl7StoreIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface Hl7StoreNotificationConfig {
@@ -2832,7 +3018,105 @@ export namespace healthcare {
     }
 }
 
+export namespace iap {
+    export interface AppEngineServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AppEngineServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AppEngineVersionIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AppEngineVersionIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TunnelInstanceIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TunnelInstanceIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebBackendServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebBackendServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebTypeAppEngingIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebTypeAppEngingIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebTypeComputeIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WebTypeComputeIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+}
+
 export namespace kms {
+    export interface CryptoKeyIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface CryptoKeyIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface CryptoKeyVersionTemplate {
         algorithm: string;
         protectionLevel?: string;
@@ -2852,6 +3136,18 @@ export namespace kms {
     export interface GetKMSCryptoKeyVersionTemplate {
         algorithm: string;
         protectionLevel: string;
+    }
+
+    export interface KeyRingIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface KeyRingIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface RegistryCredential {
@@ -3060,6 +3356,7 @@ export namespace organizations {
     }
 
     export interface GetIAMPolicyBinding {
+        condition?: outputs.organizations.GetIAMPolicyBindingCondition;
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
@@ -3077,6 +3374,12 @@ export namespace organizations {
          * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
          */
         role: string;
+    }
+
+    export interface GetIAMPolicyBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface GetProjectAppEngine {
@@ -3100,6 +3403,18 @@ export namespace organizations {
         domain: string;
         path: string;
         service: string;
+    }
+
+    export interface IAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface PolicyBooleanPolicy {
@@ -3166,6 +3481,18 @@ export namespace projects {
         logType: string;
     }
 
+    export interface IAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface OrganizationPolicyBooleanPolicy {
         enforced: boolean;
     }
@@ -3197,13 +3524,111 @@ export namespace pubsub {
         ttl?: string;
     }
 
+    export interface SubscriptionIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SubscriptionIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface SubscriptionPushConfig {
         attributes?: {[key: string]: string};
+        oidcToken?: outputs.pubsub.SubscriptionPushConfigOidcToken;
         pushEndpoint: string;
+    }
+
+    export interface SubscriptionPushConfigOidcToken {
+        audience?: string;
+        serviceAccountEmail: string;
+    }
+
+    export interface TopicIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TopicIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface TopicMessageStoragePolicy {
         allowedPersistenceRegions: string[];
+    }
+}
+
+export namespace runtimeconfig {
+    export interface ConfigIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ConfigIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+}
+
+export namespace serviceAccount {
+    export interface IAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+}
+
+export namespace sourcerepo {
+    export interface RepositoryIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RepositoryIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+}
+
+export namespace spanner {
+    export interface DatabaseIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DatabaseIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
@@ -3315,6 +3740,18 @@ export namespace storage {
 
     export interface BucketEncryption {
         defaultKmsKeyName: string;
+    }
+
+    export interface BucketIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface BucketIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface BucketLifecycleRule {

@@ -24,6 +24,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["github"] = nil
 		inputs["ignoredFiles"] = nil
 		inputs["includedFiles"] = nil
+		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["substitutions"] = nil
 		inputs["triggerTemplate"] = nil
@@ -35,6 +36,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["github"] = args.Github
 		inputs["ignoredFiles"] = args.IgnoredFiles
 		inputs["includedFiles"] = args.IncludedFiles
+		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["substitutions"] = args.Substitutions
 		inputs["triggerTemplate"] = args.TriggerTemplate
@@ -62,6 +64,7 @@ func GetTrigger(ctx *pulumi.Context,
 		inputs["github"] = state.Github
 		inputs["ignoredFiles"] = state.IgnoredFiles
 		inputs["includedFiles"] = state.IncludedFiles
+		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["substitutions"] = state.Substitutions
 		inputs["triggerId"] = state.TriggerId
@@ -116,6 +119,10 @@ func (r *Trigger) IncludedFiles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["includedFiles"])
 }
 
+func (r *Trigger) Name() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["name"])
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (r *Trigger) Project() *pulumi.StringOutput {
@@ -144,6 +151,7 @@ type TriggerState struct {
 	Github interface{}
 	IgnoredFiles interface{}
 	IncludedFiles interface{}
+	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
@@ -161,6 +169,7 @@ type TriggerArgs struct {
 	Github interface{}
 	IgnoredFiles interface{}
 	IncludedFiles interface{}
+	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}

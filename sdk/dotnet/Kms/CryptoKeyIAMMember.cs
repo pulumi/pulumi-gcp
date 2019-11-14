@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Kms
     /// </summary>
     public partial class CryptoKeyIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.CryptoKeyIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// The key ring ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -94,6 +97,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.CryptoKeyIAMMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The key ring ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -123,6 +129,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.CryptoKeyIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// The key ring ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -154,5 +163,64 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class CryptoKeyIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public CryptoKeyIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class CryptoKeyIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public CryptoKeyIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class CryptoKeyIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private CryptoKeyIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

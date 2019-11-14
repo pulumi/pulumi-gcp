@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Iap
     /// </summary>
     public partial class TunnelInstanceIAMBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.TunnelInstanceIAMBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelInstanceIAMBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.TunnelInstanceIAMBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The name of the instance.
         /// </summary>
@@ -138,6 +144,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelInstanceIAMBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.TunnelInstanceIAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
         /// </summary>
@@ -183,5 +192,64 @@ namespace Pulumi.Gcp.Iap
         public TunnelInstanceIAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class TunnelInstanceIAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public TunnelInstanceIAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class TunnelInstanceIAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public TunnelInstanceIAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class TunnelInstanceIAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private TunnelInstanceIAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

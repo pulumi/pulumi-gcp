@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,7 @@ export class WebIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebIamMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.iap.WebIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -63,6 +66,7 @@ export class WebIamMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as WebIamMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -75,6 +79,7 @@ export class WebIamMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -95,6 +100,7 @@ export class WebIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebIamMember resources.
  */
 export interface WebIamMemberState {
+    readonly condition?: pulumi.Input<inputs.iap.WebIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -117,6 +123,7 @@ export interface WebIamMemberState {
  * The set of arguments for constructing a WebIamMember resource.
  */
 export interface WebIamMemberArgs {
+    readonly condition?: pulumi.Input<inputs.iap.WebIamMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

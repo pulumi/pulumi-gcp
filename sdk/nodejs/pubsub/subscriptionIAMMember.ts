@@ -90,6 +90,7 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubscriptionIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.pubsub.SubscriptionIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -123,6 +124,7 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SubscriptionIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -139,6 +141,7 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
             if (!args || args.subscription === undefined) {
                 throw new Error("Missing required property 'subscription'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -160,6 +163,7 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubscriptionIAMMember resources.
  */
 export interface SubscriptionIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMMemberCondition>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -186,6 +190,7 @@ export interface SubscriptionIAMMemberState {
  * The set of arguments for constructing a SubscriptionIAMMember resource.
  */
 export interface SubscriptionIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The project in which the resource belongs. If it

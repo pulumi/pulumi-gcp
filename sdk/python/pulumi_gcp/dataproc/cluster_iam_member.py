@@ -14,6 +14,7 @@ class ClusterIAMMember(pulumi.CustomResource):
     """
     The name or relative resource id of the cluster to manage IAM policies for.
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the clusters's IAM policy.
@@ -35,7 +36,7 @@ class ClusterIAMMember(pulumi.CustomResource):
     `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, cluster=None, member=None, project=None, region=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster=None, condition=None, member=None, project=None, region=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
         
@@ -57,6 +58,12 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_member.html.markdown.
         """
@@ -80,6 +87,7 @@ class ClusterIAMMember(pulumi.CustomResource):
             if cluster is None:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
+            __props__['condition'] = condition
             if member is None:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
@@ -96,7 +104,7 @@ class ClusterIAMMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster=None, etag=None, member=None, project=None, region=None, role=None):
+    def get(resource_name, id, opts=None, cluster=None, condition=None, etag=None, member=None, project=None, region=None, role=None):
         """
         Get an existing ClusterIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,6 +121,12 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_member.html.markdown.
         """
@@ -120,6 +134,7 @@ class ClusterIAMMember(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["cluster"] = cluster
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member
         __props__["project"] = project

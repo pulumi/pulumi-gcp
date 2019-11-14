@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class Hl7StoreIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.Hl7StoreIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the HL7v2 store's IAM policy.
         /// </summary>
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class Hl7StoreIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.Hl7StoreIamMemberConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The HL7v2 store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
@@ -111,6 +117,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class Hl7StoreIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.Hl7StoreIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the HL7v2 store's IAM policy.
         /// </summary>
@@ -140,5 +149,64 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class Hl7StoreIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public Hl7StoreIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class Hl7StoreIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public Hl7StoreIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class Hl7StoreIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private Hl7StoreIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Healthcare
     /// </summary>
     public partial class FhirStoreIamBinding : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.FhirStoreIamBindingCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
         /// </summary>
@@ -84,6 +87,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class FhirStoreIamBindingArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.FhirStoreIamBindingConditionArgs>? Condition { get; set; }
+
         /// <summary>
         /// The FHIR store ID, in the form
         /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -116,6 +122,9 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class FhirStoreIamBindingState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.FhirStoreIamBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
         /// </summary>
@@ -150,5 +159,64 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreIamBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class FhirStoreIamBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FhirStoreIamBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class FhirStoreIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FhirStoreIamBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class FhirStoreIamBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private FhirStoreIamBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

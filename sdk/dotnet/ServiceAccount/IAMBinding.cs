@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.ServiceAccount
     public partial class IAMBinding : Pulumi.CustomResource
     {
         /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("condition")]
+        public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The etag of the service account IAM policy.
         /// </summary>
         [Output("etag")]
@@ -93,6 +100,13 @@ namespace Pulumi.Gcp.ServiceAccount
 
     public sealed class IAMBindingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -122,6 +136,13 @@ namespace Pulumi.Gcp.ServiceAccount
 
     public sealed class IAMBindingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the service account IAM policy.
         /// </summary>
@@ -153,5 +174,64 @@ namespace Pulumi.Gcp.ServiceAccount
         public IAMBindingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class IAMBindingConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public IAMBindingConditionArgs()
+        {
+        }
+    }
+
+    public sealed class IAMBindingConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public IAMBindingConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class IAMBindingCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private IAMBindingCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

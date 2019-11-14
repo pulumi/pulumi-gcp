@@ -39,6 +39,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceTemplateDisks>> Disks { get; private set; } = null!;
 
         /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Output("enableDisplay")]
+        public Output<bool?> EnableDisplay { get; private set; } = null!;
+
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// </summary>
         [Output("guestAccelerators")]
@@ -244,6 +251,13 @@ namespace Pulumi.Gcp.Compute
             set => _disks = value;
         }
 
+        /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceTemplateGuestAcceleratorsArgs>? _guestAccelerators;
 
@@ -422,6 +436,13 @@ namespace Pulumi.Gcp.Compute
             get => _disks ?? (_disks = new InputList<Inputs.InstanceTemplateDisksGetArgs>());
             set => _disks = value;
         }
+
+        /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceTemplateGuestAcceleratorsGetArgs>? _guestAccelerators;

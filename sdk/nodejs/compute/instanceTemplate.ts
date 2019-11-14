@@ -211,6 +211,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
+    /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceTemplateGuestAccelerator[] | undefined>;
@@ -321,6 +326,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disks"] = state ? state.disks : undefined;
+            inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             inputs["instanceDescription"] = state ? state.instanceDescription : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -351,6 +357,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disks"] = args ? args.disks : undefined;
+            inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["instanceDescription"] = args ? args.instanceDescription : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -401,6 +408,11 @@ export interface InstanceTemplateState {
      * documented below.
      */
     readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
+    /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    readonly enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
@@ -517,6 +529,11 @@ export interface InstanceTemplateArgs {
      * documented below.
      */
     readonly disks: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
+    /**
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     */
+    readonly enableDisplay?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */

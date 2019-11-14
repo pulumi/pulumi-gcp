@@ -14,6 +14,7 @@ class AccountIamMember(pulumi.CustomResource):
     """
     The billing account id.
     """
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the billing account's IAM policy.
@@ -26,7 +27,7 @@ class AccountIamMember(pulumi.CustomResource):
     """
     The role that should be applied.
     """
-    def __init__(__self__, resource_name, opts=None, billing_account_id=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, billing_account_id=None, condition=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a single member for a single binding within
         the IAM policy for an existing Google Cloud Platform Billing Account.
@@ -40,6 +41,12 @@ class AccountIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
         """
@@ -63,6 +70,7 @@ class AccountIamMember(pulumi.CustomResource):
             if billing_account_id is None:
                 raise TypeError("Missing required property 'billing_account_id'")
             __props__['billing_account_id'] = billing_account_id
+            __props__['condition'] = condition
             if member is None:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
@@ -77,7 +85,7 @@ class AccountIamMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, billing_account_id=None, etag=None, member=None, role=None):
+    def get(resource_name, id, opts=None, billing_account_id=None, condition=None, etag=None, member=None, role=None):
         """
         Get an existing AccountIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -89,6 +97,12 @@ class AccountIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
         :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
         """
@@ -96,6 +110,7 @@ class AccountIamMember(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["billing_account_id"] = billing_account_id
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member
         __props__["role"] = role

@@ -36,6 +36,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubnetworkIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -74,6 +75,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SubnetworkIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -91,6 +93,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
             if (!args || args.subnetwork === undefined) {
                 throw new Error("Missing required property 'subnetwork'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -113,6 +116,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetworkIAMMember resources.
  */
 export interface SubnetworkIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -144,6 +148,7 @@ export interface SubnetworkIAMMemberState {
  * The set of arguments for constructing a SubnetworkIAMMember resource.
  */
 export interface SubnetworkIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it

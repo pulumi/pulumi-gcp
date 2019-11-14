@@ -90,6 +90,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingIAMMember.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.kms.KeyRingIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -121,6 +122,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KeyRingIAMMemberState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["keyRingId"] = state ? state.keyRingId : undefined;
             inputs["member"] = state ? state.member : undefined;
@@ -136,6 +138,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -156,6 +159,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyRingIAMMember resources.
  */
 export interface KeyRingIAMMemberState {
+    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
@@ -180,6 +184,7 @@ export interface KeyRingIAMMemberState {
  * The set of arguments for constructing a KeyRingIAMMember resource.
  */
 export interface KeyRingIAMMemberArgs {
+    readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}` or

@@ -1635,8 +1635,11 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterMaintenancePolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("dailyMaintenanceWindow", required: true)]
-        public Input<ClusterMaintenancePolicyDailyMaintenanceWindowArgs> DailyMaintenanceWindow { get; set; } = null!;
+        [Input("dailyMaintenanceWindow")]
+        public Input<ClusterMaintenancePolicyDailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
+
+        [Input("recurringWindow")]
+        public Input<ClusterMaintenancePolicyRecurringWindowArgs>? RecurringWindow { get; set; }
 
         public ClusterMaintenancePolicyArgs()
         {
@@ -1671,10 +1674,45 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterMaintenancePolicyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("dailyMaintenanceWindow", required: true)]
-        public Input<ClusterMaintenancePolicyDailyMaintenanceWindowGetArgs> DailyMaintenanceWindow { get; set; } = null!;
+        [Input("dailyMaintenanceWindow")]
+        public Input<ClusterMaintenancePolicyDailyMaintenanceWindowGetArgs>? DailyMaintenanceWindow { get; set; }
+
+        [Input("recurringWindow")]
+        public Input<ClusterMaintenancePolicyRecurringWindowGetArgs>? RecurringWindow { get; set; }
 
         public ClusterMaintenancePolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterMaintenancePolicyRecurringWindowArgs : Pulumi.ResourceArgs
+    {
+        [Input("endTime", required: true)]
+        public Input<string> EndTime { get; set; } = null!;
+
+        [Input("recurrence", required: true)]
+        public Input<string> Recurrence { get; set; } = null!;
+
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
+
+        public ClusterMaintenancePolicyRecurringWindowArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterMaintenancePolicyRecurringWindowGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("endTime", required: true)]
+        public Input<string> EndTime { get; set; } = null!;
+
+        [Input("recurrence", required: true)]
+        public Input<string> Recurrence { get; set; } = null!;
+
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
+
+        public ClusterMaintenancePolicyRecurringWindowGetArgs()
         {
         }
     }
@@ -2991,22 +3029,22 @@ namespace Pulumi.Gcp.Container
     {
         public readonly string ClusterIpv4CidrBlock;
         public readonly string ClusterSecondaryRangeName;
-        public readonly bool? CreateSubnetwork;
+        public readonly bool CreateSubnetwork;
         public readonly string NodeIpv4CidrBlock;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
-        public readonly string? SubnetworkName;
+        public readonly string SubnetworkName;
         public readonly bool? UseIpAliases;
 
         [OutputConstructor]
         private ClusterIpAllocationPolicy(
             string clusterIpv4CidrBlock,
             string clusterSecondaryRangeName,
-            bool? createSubnetwork,
+            bool createSubnetwork,
             string nodeIpv4CidrBlock,
             string servicesIpv4CidrBlock,
             string servicesSecondaryRangeName,
-            string? subnetworkName,
+            string subnetworkName,
             bool? useIpAliases)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
@@ -3023,12 +3061,16 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterMaintenancePolicy
     {
-        public readonly ClusterMaintenancePolicyDailyMaintenanceWindow DailyMaintenanceWindow;
+        public readonly ClusterMaintenancePolicyDailyMaintenanceWindow? DailyMaintenanceWindow;
+        public readonly ClusterMaintenancePolicyRecurringWindow? RecurringWindow;
 
         [OutputConstructor]
-        private ClusterMaintenancePolicy(ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow)
+        private ClusterMaintenancePolicy(
+            ClusterMaintenancePolicyDailyMaintenanceWindow? dailyMaintenanceWindow,
+            ClusterMaintenancePolicyRecurringWindow? recurringWindow)
         {
             DailyMaintenanceWindow = dailyMaintenanceWindow;
+            RecurringWindow = recurringWindow;
         }
     }
 
@@ -3044,6 +3086,25 @@ namespace Pulumi.Gcp.Container
             string startTime)
         {
             Duration = duration;
+            StartTime = startTime;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterMaintenancePolicyRecurringWindow
+    {
+        public readonly string EndTime;
+        public readonly string Recurrence;
+        public readonly string StartTime;
+
+        [OutputConstructor]
+        private ClusterMaintenancePolicyRecurringWindow(
+            string endTime,
+            string recurrence,
+            string startTime)
+        {
+            EndTime = endTime;
+            Recurrence = recurrence;
             StartTime = startTime;
         }
     }

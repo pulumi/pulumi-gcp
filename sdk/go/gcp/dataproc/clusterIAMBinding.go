@@ -38,12 +38,14 @@ func NewClusterIAMBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["cluster"] = nil
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["role"] = nil
 	} else {
 		inputs["cluster"] = args.Cluster
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -64,6 +66,7 @@ func GetClusterIAMBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["cluster"] = state.Cluster
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -90,6 +93,10 @@ func (r *ClusterIAMBinding) ID() *pulumi.IDOutput {
 // The name or relative resource id of the cluster to manage IAM policies for.
 func (r *ClusterIAMBinding) Cluster() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cluster"])
+}
+
+func (r *ClusterIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the clusters's IAM policy.
@@ -124,6 +131,7 @@ func (r *ClusterIAMBinding) Role() *pulumi.StringOutput {
 type ClusterIAMBindingState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster interface{}
+	Condition interface{}
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -143,6 +151,7 @@ type ClusterIAMBindingState struct {
 type ClusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster interface{}
+	Condition interface{}
 	Members interface{}
 	// The project in which the cluster belongs. If it
 	// is not provided, this provider will use the provider default.

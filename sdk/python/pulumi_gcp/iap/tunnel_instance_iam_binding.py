@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class TunnelInstanceIAMBinding(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the instance's IAM policy.
@@ -35,7 +36,7 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
     The zone of the instance. If
     unspecified, this defaults to the zone configured in the provider.
     """
-    def __init__(__self__, resource_name, opts=None, instance=None, members=None, project=None, role=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, instance=None, members=None, project=None, role=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a TunnelInstanceIAMBinding resource with the given unique name, props, and options.
         
@@ -49,6 +50,12 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_binding.html.markdown.
         """
@@ -69,6 +76,7 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if instance is None:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
@@ -88,7 +96,7 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, instance=None, members=None, project=None, role=None, zone=None):
+    def get(resource_name, id, opts=None, condition=None, etag=None, instance=None, members=None, project=None, role=None, zone=None):
         """
         Get an existing TunnelInstanceIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,12 +113,19 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] zone: The zone of the instance. If
                unspecified, this defaults to the zone configured in the provider.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["instance"] = instance
         __props__["members"] = members

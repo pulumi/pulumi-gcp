@@ -40,6 +40,7 @@ export class AttestorIamMember extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly attestor!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.binaryauthorization.AttestorIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -70,6 +71,7 @@ export class AttestorIamMember extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AttestorIamMemberState | undefined;
             inputs["attestor"] = state ? state.attestor : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["member"] = state ? state.member : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -86,6 +88,7 @@ export class AttestorIamMember extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["attestor"] = args ? args.attestor : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["member"] = args ? args.member : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -110,6 +113,7 @@ export interface AttestorIamMemberState {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly attestor?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.binaryauthorization.AttestorIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -136,6 +140,7 @@ export interface AttestorIamMemberArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly attestor: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.binaryauthorization.AttestorIamMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

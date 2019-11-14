@@ -35,10 +35,12 @@ func NewIAMMember(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["condition"] = nil
 		inputs["folder"] = nil
 		inputs["member"] = nil
 		inputs["role"] = nil
 	} else {
+		inputs["condition"] = args.Condition
 		inputs["folder"] = args.Folder
 		inputs["member"] = args.Member
 		inputs["role"] = args.Role
@@ -57,6 +59,7 @@ func GetIAMMember(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *IAMMemberState, opts ...pulumi.ResourceOpt) (*IAMMember, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["folder"] = state.Folder
 		inputs["member"] = state.Member
@@ -77,6 +80,10 @@ func (r *IAMMember) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IAMMember) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *IAMMember) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the folder's IAM policy.
@@ -107,6 +114,7 @@ func (r *IAMMember) Role() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMMember resources.
 type IAMMemberState struct {
+	Condition interface{}
 	// (Computed) The etag of the folder's IAM policy.
 	Etag interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -125,6 +133,7 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
+	Condition interface{}
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder interface{}
 	// The identity that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,6 +40,7 @@ export class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     public readonly appId!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.iap.WebTypeAppEngingIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -68,6 +71,7 @@ export class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as WebTypeAppEngingIamBindingState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -84,6 +88,7 @@ export class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             inputs["appId"] = args ? args.appId : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
@@ -108,6 +113,7 @@ export interface WebTypeAppEngingIamBindingState {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId?: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -134,6 +140,7 @@ export interface WebTypeAppEngingIamBindingArgs {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId: pulumi.Input<string>;
+    readonly condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.

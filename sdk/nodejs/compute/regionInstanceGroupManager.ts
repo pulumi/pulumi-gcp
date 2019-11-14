@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  *         "us-central1-a",
  *         "us-central1-f",
  *     ],
- *     instanceTemplate: google_compute_instance_template_appserver.selfLink,
  *     namedPorts: [{
  *         name: "custom",
  *         port: 8888,
@@ -48,10 +47,13 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     targetPools: [google_compute_target_pool_appserver.selfLink],
  *     targetSize: 2,
+ *     versions: [{
+ *         instanceTemplate: google_compute_instance_template_appserver.selfLink,
+ *     }],
  * });
  * ```
  * 
- * ## Example Usage with multiple versions (`google-beta` provider)
+ * ## Example Usage with multiple versions
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +63,6 @@ import * as utilities from "../utilities";
  *     baseInstanceName: "app",
  *     region: "us-central1",
  *     targetSize: 5,
- *     updateStrategy: "NONE",
  *     versions: [
  *         {
  *             instanceTemplate: google_compute_instance_template_appserver.selfLink,
@@ -106,7 +107,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
     public readonly autoHealingPolicies!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerAutoHealingPolicies | undefined>;
@@ -176,13 +177,15 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetSize!: pulumi.Output<number>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
     /**
-     * ) Application versions managed by this instance group. Each
+     * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
+     * Until `instanceTemplate` is removed this field will be Optional to allow for a
+     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     public readonly versions!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerVersion[]>;
     /**
@@ -264,7 +267,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  */
 export interface RegionInstanceGroupManagerState {
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
     readonly autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
@@ -334,13 +337,15 @@ export interface RegionInstanceGroupManagerState {
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
     readonly updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
     /**
-     * ) Application versions managed by this instance group. Each
+     * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
+     * Until `instanceTemplate` is removed this field will be Optional to allow for a
+     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
@@ -356,7 +361,7 @@ export interface RegionInstanceGroupManagerState {
  */
 export interface RegionInstanceGroupManagerArgs {
     /**
-     * ) The autohealing policies for this managed instance
+     * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
     readonly autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
@@ -414,13 +419,15 @@ export interface RegionInstanceGroupManagerArgs {
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
-     * ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
     readonly updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
     /**
-     * ) Application versions managed by this instance group. Each
+     * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
+     * Until `instanceTemplate` is removed this field will be Optional to allow for a
+     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**

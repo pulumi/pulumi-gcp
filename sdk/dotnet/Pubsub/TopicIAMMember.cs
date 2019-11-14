@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Pubsub
     /// </summary>
     public partial class TopicIAMMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.TopicIAMMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -88,6 +91,9 @@ namespace Pulumi.Gcp.Pubsub
 
     public sealed class TopicIAMMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.TopicIAMMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -119,6 +125,9 @@ namespace Pulumi.Gcp.Pubsub
 
     public sealed class TopicIAMMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.TopicIAMMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -152,5 +161,64 @@ namespace Pulumi.Gcp.Pubsub
         public TopicIAMMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class TopicIAMMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public TopicIAMMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class TopicIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public TopicIAMMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class TopicIAMMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private TopicIAMMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

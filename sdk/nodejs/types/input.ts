@@ -213,11 +213,37 @@ export namespace bigtable {
         zone: pulumi.Input<string>;
     }
 
+    export interface InstanceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface TableColumnFamily {
         /**
          * The name of the column family.
          */
         family: pulumi.Input<string>;
+    }
+}
+
+export namespace billing {
+    export interface AccountIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AccountIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -238,6 +264,18 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
         publicKeyPem?: pulumi.Input<string>;
         signatureAlgorithm?: pulumi.Input<string>;
+    }
+
+    export interface AttestorIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AttestorIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface PolicyAdmissionWhitelistPattern {
@@ -320,6 +358,18 @@ export namespace cloudfunctions {
 
     export interface FunctionEventTriggerFailurePolicy {
         retry: pulumi.Input<boolean>;
+    }
+
+    export interface FunctionIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface FunctionIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface FunctionSourceRepository {
@@ -907,9 +957,10 @@ export namespace compute {
 
     export interface InstanceGroupManagerVersion {
         /**
-         * ) The
+         * The
          * full URL to an instance template from which all new instances
-         * will be created. This field is only present in the `google` provider.
+         * will be created. This field is replaced by `version.instance_template`. You must
+         * specify at least one `version` block with an `instanceTemplate`.
          */
         instanceTemplate: pulumi.Input<string>;
         /**
@@ -918,7 +969,7 @@ export namespace compute {
          * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
          * include lowercase letters, numbers, and hyphens.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
          * The target number of running instances for this managed
          * instance group. This value should always be explicitly set unless this resource is attached to
@@ -946,6 +997,18 @@ export namespace compute {
     export interface InstanceGuestAccelerator {
         count: pulumi.Input<number>;
         type: pulumi.Input<string>;
+    }
+
+    export interface InstanceIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface InstanceNetworkInterface {
@@ -1221,9 +1284,10 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerVersion {
         /**
-         * ) The full URL to an instance template from
-         * which all new instances will be created. This field is only present in the
-         * `google` provider.
+         * The
+         * full URL to an instance template from which all new instances
+         * will be created. This field is replaced by `version.instance_template`. You must
+         * specify at least one `version` block with an `instanceTemplate`.
          */
         instanceTemplate: pulumi.Input<string>;
         /**
@@ -1232,7 +1296,7 @@ export namespace compute {
          * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
          * include lowercase letters, numbers, and hyphens.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
          * The target number of running instances for this managed
          * instance group. This value should always be explicitly set unless this resource is attached to
@@ -1414,6 +1478,18 @@ export namespace compute {
         rawKey?: pulumi.Input<string>;
     }
 
+    export interface SubnetworkIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SubnetworkIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface SubnetworkLogConfig {
         aggregationInterval?: pulumi.Input<string>;
         flowSampling?: pulumi.Input<number>;
@@ -1518,11 +1594,18 @@ export namespace container {
     }
 
     export interface ClusterMaintenancePolicy {
-        dailyMaintenanceWindow: pulumi.Input<inputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow>;
+        dailyMaintenanceWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow>;
+        recurringWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyRecurringWindow>;
     }
 
     export interface ClusterMaintenancePolicyDailyMaintenanceWindow {
         duration?: pulumi.Input<string>;
+        startTime: pulumi.Input<string>;
+    }
+
+    export interface ClusterMaintenancePolicyRecurringWindow {
+        endTime: pulumi.Input<string>;
+        recurrence: pulumi.Input<string>;
         startTime: pulumi.Input<string>;
     }
 
@@ -1916,6 +1999,18 @@ export namespace dataproc {
         numLocalSsds?: pulumi.Input<number>;
     }
 
+    export interface ClusterIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ClusterIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface JobHadoopConfig {
         archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
         args?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1938,6 +2033,18 @@ export namespace dataproc {
         queryFileUri?: pulumi.Input<string>;
         queryLists?: pulumi.Input<pulumi.Input<string>[]>;
         scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface JobIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface JobIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface JobPigConfig {
@@ -2114,6 +2221,18 @@ export namespace firestore {
 }
 
 export namespace folder {
+    export interface IAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface OrganizationPolicyBooleanPolicy {
         enforced: pulumi.Input<boolean>;
     }
@@ -2141,12 +2260,60 @@ export namespace folder {
 }
 
 export namespace healthcare {
+    export interface DatasetIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DatasetIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DicomStoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DicomStoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface DicomStoreNotificationConfig {
         pubsubTopic: pulumi.Input<string>;
     }
 
+    export interface FhirStoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface FhirStoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface FhirStoreNotificationConfig {
         pubsubTopic: pulumi.Input<string>;
+    }
+
+    export interface Hl7StoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface Hl7StoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface Hl7StoreNotificationConfig {
@@ -2159,7 +2326,105 @@ export namespace healthcare {
     }
 }
 
+export namespace iap {
+    export interface AppEngineServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AppEngineServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AppEngineVersionIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AppEngineVersionIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface TunnelInstanceIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface TunnelInstanceIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebBackendServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebBackendServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebTypeAppEngingIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebTypeAppEngingIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebTypeComputeIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebTypeComputeIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
 export namespace kms {
+    export interface CryptoKeyIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface CryptoKeyIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface CryptoKeyVersionTemplate {
         algorithm: pulumi.Input<string>;
         protectionLevel?: pulumi.Input<string>;
@@ -2174,6 +2439,18 @@ export namespace kms {
          * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
          */
         pem?: string;
+    }
+
+    export interface KeyRingIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface KeyRingIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface RegistryCredential {
@@ -2382,6 +2659,7 @@ export namespace organizations {
     }
 
     export interface GetIAMPolicyBinding {
+        condition?: inputs.organizations.GetIAMPolicyBindingCondition;
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
@@ -2399,6 +2677,24 @@ export namespace organizations {
          * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
          */
         role: string;
+    }
+
+    export interface GetIAMPolicyBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface PolicyBooleanPolicy {
@@ -2433,6 +2729,18 @@ export namespace projects {
         logType: pulumi.Input<string>;
     }
 
+    export interface IAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface OrganizationPolicyBooleanPolicy {
         enforced: pulumi.Input<boolean>;
     }
@@ -2464,13 +2772,111 @@ export namespace pubsub {
         ttl?: pulumi.Input<string>;
     }
 
+    export interface SubscriptionIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SubscriptionIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface SubscriptionPushConfig {
         attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        oidcToken?: pulumi.Input<inputs.pubsub.SubscriptionPushConfigOidcToken>;
         pushEndpoint: pulumi.Input<string>;
+    }
+
+    export interface SubscriptionPushConfigOidcToken {
+        audience?: pulumi.Input<string>;
+        serviceAccountEmail: pulumi.Input<string>;
+    }
+
+    export interface TopicIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface TopicIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface TopicMessageStoragePolicy {
         allowedPersistenceRegions: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
+export namespace runtimeconfig {
+    export interface ConfigIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ConfigIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
+export namespace serviceAccount {
+    export interface IAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
+export namespace sourcerepo {
+    export interface RepositoryIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RepositoryIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
+export namespace spanner {
+    export interface DatabaseIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DatabaseIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -2582,6 +2988,18 @@ export namespace storage {
 
     export interface BucketEncryption {
         defaultKmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface BucketIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface BucketIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface BucketLifecycleRule {

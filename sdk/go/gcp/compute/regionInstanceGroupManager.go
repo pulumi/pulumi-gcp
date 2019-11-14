@@ -112,7 +112,7 @@ func (r *RegionInstanceGroupManager) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// ) The autohealing policies for this managed instance
+// The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 func (r *RegionInstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
 	return r.s.State["autoHealingPolicies"]
@@ -195,14 +195,16 @@ func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["targetSize"])
 }
 
-// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 func (r *RegionInstanceGroupManager) UpdatePolicy() *pulumi.Output {
 	return r.s.State["updatePolicy"]
 }
 
-// ) Application versions managed by this instance group. Each
+// Application versions managed by this instance group. Each
 // version deals with a specific instance template, allowing canary release scenarios.
 // Structure is documented below.
+// Until `instanceTemplate` is removed this field will be Optional to allow for a
+// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 func (r *RegionInstanceGroupManager) Versions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["versions"])
 }
@@ -216,7 +218,7 @@ func (r *RegionInstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 type RegionInstanceGroupManagerState struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
@@ -260,11 +262,13 @@ type RegionInstanceGroupManagerState struct {
 	// instance group. This value should always be explicitly set unless this resource is attached to
 	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy interface{}
-	// ) Application versions managed by this instance group. Each
+	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
+	// Until `instanceTemplate` is removed this field will be Optional to allow for a
+	// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
@@ -274,7 +278,7 @@ type RegionInstanceGroupManagerState struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
-	// ) The autohealing policies for this managed instance
+	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies interface{}
 	// The base instance name to use for
@@ -312,11 +316,13 @@ type RegionInstanceGroupManagerArgs struct {
 	// instance group. This value should always be explicitly set unless this resource is attached to
 	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize interface{}
-	// ) The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy interface{}
-	// ) Application versions managed by this instance group. Each
+	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
+	// Until `instanceTemplate` is removed this field will be Optional to allow for a
+	// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will

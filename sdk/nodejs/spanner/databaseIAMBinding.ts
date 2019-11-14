@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -94,6 +96,7 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.spanner.DatabaseIAMBindingCondition | undefined>;
     /**
      * The name of the Spanner database.
      */
@@ -131,6 +134,7 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatabaseIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
@@ -151,6 +155,7 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["database"] = args ? args.database : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["members"] = args ? args.members : undefined;
@@ -173,6 +178,7 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseIAMBinding resources.
  */
 export interface DatabaseIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.spanner.DatabaseIAMBindingCondition>;
     /**
      * The name of the Spanner database.
      */
@@ -203,6 +209,7 @@ export interface DatabaseIAMBindingState {
  * The set of arguments for constructing a DatabaseIAMBinding resource.
  */
 export interface DatabaseIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.spanner.DatabaseIAMBindingCondition>;
     /**
      * The name of the Spanner database.
      */

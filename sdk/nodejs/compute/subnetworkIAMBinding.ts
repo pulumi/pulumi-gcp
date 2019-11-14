@@ -36,6 +36,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubnetworkIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -74,6 +75,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SubnetworkIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -91,6 +93,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             if (!args || args.subnetwork === undefined) {
                 throw new Error("Missing required property 'subnetwork'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -113,6 +116,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetworkIAMBinding resources.
  */
 export interface SubnetworkIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
     /**
      * (Computed) The etag of the subnetwork's IAM policy.
      */
@@ -144,6 +148,7 @@ export interface SubnetworkIAMBindingState {
  * The set of arguments for constructing a SubnetworkIAMBinding resource.
  */
 export interface SubnetworkIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs. If it

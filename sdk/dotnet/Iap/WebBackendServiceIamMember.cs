@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Iap
     /// </summary>
     public partial class WebBackendServiceIamMember : Pulumi.CustomResource
     {
+        [Output("condition")]
+        public Output<Outputs.WebBackendServiceIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -88,6 +91,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebBackendServiceIamMemberArgs : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebBackendServiceIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -119,6 +125,9 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebBackendServiceIamMemberState : Pulumi.ResourceArgs
     {
+        [Input("condition")]
+        public Input<Inputs.WebBackendServiceIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -152,5 +161,64 @@ namespace Pulumi.Gcp.Iap
         public WebBackendServiceIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class WebBackendServiceIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebBackendServiceIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class WebBackendServiceIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public WebBackendServiceIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class WebBackendServiceIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private WebBackendServiceIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

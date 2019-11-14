@@ -37,10 +37,12 @@ func NewBucketIAMBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["bucket"] = nil
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["role"] = nil
 	} else {
 		inputs["bucket"] = args.Bucket
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["role"] = args.Role
 	}
@@ -59,6 +61,7 @@ func GetBucketIAMBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["bucket"] = state.Bucket
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["role"] = state.Role
@@ -85,6 +88,10 @@ func (r *BucketIAMBinding) Bucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucket"])
 }
 
+func (r *BucketIAMBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
+}
+
 // (Computed) The etag of the storage bucket's IAM policy.
 func (r *BucketIAMBinding) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
@@ -104,6 +111,7 @@ func (r *BucketIAMBinding) Role() *pulumi.StringOutput {
 type BucketIAMBindingState struct {
 	// The name of the bucket it applies to.
 	Bucket interface{}
+	Condition interface{}
 	// (Computed) The etag of the storage bucket's IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -116,6 +124,7 @@ type BucketIAMBindingState struct {
 type BucketIAMBindingArgs struct {
 	// The name of the bucket it applies to.
 	Bucket interface{}
+	Condition interface{}
 	Members interface{}
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.

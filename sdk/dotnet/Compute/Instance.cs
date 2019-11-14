@@ -65,6 +65,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Output("enableDisplay")]
+        public Output<bool?> EnableDisplay { get; private set; } = null!;
+
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         /// </summary>
@@ -302,6 +309,13 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsArgs>? _guestAccelerators;
 
@@ -512,6 +526,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// </summary>
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsGetArgs>? _guestAccelerators;

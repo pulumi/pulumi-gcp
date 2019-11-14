@@ -32,6 +32,7 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 		inputs["canIpForward"] = nil
 		inputs["description"] = nil
 		inputs["disks"] = nil
+		inputs["enableDisplay"] = nil
 		inputs["guestAccelerators"] = nil
 		inputs["instanceDescription"] = nil
 		inputs["labels"] = nil
@@ -52,6 +53,7 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 		inputs["canIpForward"] = args.CanIpForward
 		inputs["description"] = args.Description
 		inputs["disks"] = args.Disks
+		inputs["enableDisplay"] = args.EnableDisplay
 		inputs["guestAccelerators"] = args.GuestAccelerators
 		inputs["instanceDescription"] = args.InstanceDescription
 		inputs["labels"] = args.Labels
@@ -88,6 +90,7 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 		inputs["canIpForward"] = state.CanIpForward
 		inputs["description"] = state.Description
 		inputs["disks"] = state.Disks
+		inputs["enableDisplay"] = state.EnableDisplay
 		inputs["guestAccelerators"] = state.GuestAccelerators
 		inputs["instanceDescription"] = state.InstanceDescription
 		inputs["labels"] = state.Labels
@@ -141,6 +144,12 @@ func (r *InstanceTemplate) Description() *pulumi.StringOutput {
 // documented below.
 func (r *InstanceTemplate) Disks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+}
+
+// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+func (r *InstanceTemplate) EnableDisplay() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -268,6 +277,9 @@ type InstanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks interface{}
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	EnableDisplay interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators interface{}
 	// A brief description to use for instances
@@ -338,6 +350,9 @@ type InstanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks interface{}
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	EnableDisplay interface{}
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators interface{}
 	// A brief description to use for instances

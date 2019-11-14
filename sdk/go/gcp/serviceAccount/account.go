@@ -28,10 +28,12 @@ func NewAccount(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["accountId"] = nil
+		inputs["description"] = nil
 		inputs["displayName"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["accountId"] = args.AccountId
+		inputs["description"] = args.Description
 		inputs["displayName"] = args.DisplayName
 		inputs["project"] = args.Project
 	}
@@ -52,6 +54,7 @@ func GetAccount(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["accountId"] = state.AccountId
+		inputs["description"] = state.Description
 		inputs["displayName"] = state.DisplayName
 		inputs["email"] = state.Email
 		inputs["name"] = state.Name
@@ -81,6 +84,11 @@ func (r *Account) ID() *pulumi.IDOutput {
 // to comply with RFC1035. Changing this forces a new service account to be created.
 func (r *Account) AccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accountId"])
+}
+
+// A text description of the service account.
+func (r *Account) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The display name for the service account.
@@ -119,6 +127,8 @@ type AccountState struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
+	// A text description of the service account.
+	Description interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName interface{}
@@ -142,6 +152,8 @@ type AccountArgs struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
+	// A text description of the service account.
+	Description interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName interface{}

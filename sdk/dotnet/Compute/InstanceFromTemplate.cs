@@ -42,6 +42,9 @@ namespace Pulumi.Gcp.Compute
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("enableDisplay")]
+        public Output<bool> EnableDisplay { get; private set; } = null!;
+
         [Output("guestAccelerators")]
         public Output<ImmutableArray<Outputs.InstanceFromTemplateGuestAccelerators>> GuestAccelerators { get; private set; } = null!;
 
@@ -189,6 +192,9 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceFromTemplateGuestAcceleratorsArgs>? _guestAccelerators;
         public InputList<Inputs.InstanceFromTemplateGuestAcceleratorsArgs> GuestAccelerators
@@ -314,6 +320,9 @@ namespace Pulumi.Gcp.Compute
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enableDisplay")]
+        public Input<bool>? EnableDisplay { get; set; }
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceFromTemplateGuestAcceleratorsGetArgs>? _guestAccelerators;

@@ -90,6 +90,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIAMBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.compute.InstanceIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -128,6 +129,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceIAMBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -145,6 +147,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -167,6 +170,7 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMBinding resources.
  */
 export interface InstanceIAMBindingState {
+    readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -198,6 +202,7 @@ export interface InstanceIAMBindingState {
  * The set of arguments for constructing a InstanceIAMBinding resource.
  */
 export interface InstanceIAMBindingArgs {
+    readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
      * The name of the instance.
      */

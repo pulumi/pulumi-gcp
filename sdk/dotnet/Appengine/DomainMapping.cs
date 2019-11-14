@@ -212,13 +212,13 @@ namespace Pulumi.Gcp.Appengine
     [OutputType]
     public sealed class DomainMappingSslSettings
     {
-        public readonly string? CertificateId;
+        public readonly string CertificateId;
         public readonly string PendingManagedCertificateId;
         public readonly string? SslManagementType;
 
         [OutputConstructor]
         private DomainMappingSslSettings(
-            string? certificateId,
+            string certificateId,
             string pendingManagedCertificateId,
             string? sslManagementType)
         {

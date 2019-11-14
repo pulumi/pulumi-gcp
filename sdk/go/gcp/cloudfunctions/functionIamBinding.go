@@ -28,12 +28,14 @@ func NewFunctionIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["cloudFunction"] = nil
+		inputs["condition"] = nil
 		inputs["members"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["role"] = nil
 	} else {
 		inputs["cloudFunction"] = args.CloudFunction
+		inputs["condition"] = args.Condition
 		inputs["members"] = args.Members
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
@@ -54,6 +56,7 @@ func GetFunctionIamBinding(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["cloudFunction"] = state.CloudFunction
+		inputs["condition"] = state.Condition
 		inputs["etag"] = state.Etag
 		inputs["members"] = state.Members
 		inputs["project"] = state.Project
@@ -80,6 +83,10 @@ func (r *FunctionIamBinding) ID() *pulumi.IDOutput {
 // Used to find the parent resource to bind the IAM policy to
 func (r *FunctionIamBinding) CloudFunction() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cloudFunction"])
+}
+
+func (r *FunctionIamBinding) Condition() *pulumi.Output {
+	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
@@ -113,6 +120,7 @@ func (r *FunctionIamBinding) Role() *pulumi.StringOutput {
 type FunctionIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction interface{}
+	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
@@ -131,6 +139,7 @@ type FunctionIamBindingState struct {
 type FunctionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction interface{}
+	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.

@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Cloudfunctions
         [Output("cloudFunction")]
         public Output<string> CloudFunction { get; private set; } = null!;
 
+        [Output("condition")]
+        public Output<Outputs.FunctionIamMemberCondition?> Condition { get; private set; } = null!;
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -100,6 +103,9 @@ namespace Pulumi.Gcp.Cloudfunctions
         [Input("cloudFunction", required: true)]
         public Input<string> CloudFunction { get; set; } = null!;
 
+        [Input("condition")]
+        public Input<Inputs.FunctionIamMemberConditionArgs>? Condition { get; set; }
+
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -137,6 +143,9 @@ namespace Pulumi.Gcp.Cloudfunctions
         [Input("cloudFunction")]
         public Input<string>? CloudFunction { get; set; }
 
+        [Input("condition")]
+        public Input<Inputs.FunctionIamMemberConditionGetArgs>? Condition { get; set; }
+
         /// <summary>
         /// (Computed) The etag of the IAM policy.
         /// </summary>
@@ -170,5 +179,64 @@ namespace Pulumi.Gcp.Cloudfunctions
         public FunctionIamMemberState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class FunctionIamMemberConditionArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FunctionIamMemberConditionArgs()
+        {
+        }
+    }
+
+    public sealed class FunctionIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
+
+        public FunctionIamMemberConditionGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class FunctionIamMemberCondition
+    {
+        public readonly string? Description;
+        public readonly string Expression;
+        public readonly string Title;
+
+        [OutputConstructor]
+        private FunctionIamMemberCondition(
+            string? description,
+            string expression,
+            string title)
+        {
+            Description = description;
+            Expression = expression;
+            Title = title;
+        }
+    }
     }
 }

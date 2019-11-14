@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class DatabaseIAMMember(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     database: pulumi.Output[str]
     """
     The name of the Spanner database.
@@ -34,7 +35,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
     `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
-    def __init__(__self__, resource_name, opts=None, database=None, instance=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, database=None, instance=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
         
@@ -58,6 +59,12 @@ class DatabaseIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam_member.html.markdown.
         """
@@ -78,6 +85,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if database is None:
                 raise TypeError("Missing required property 'database'")
             __props__['database'] = database
@@ -99,7 +107,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, etag=None, instance=None, member=None, project=None, role=None):
+    def get(resource_name, id, opts=None, condition=None, database=None, etag=None, instance=None, member=None, project=None, role=None):
         """
         Get an existing DatabaseIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,12 +123,19 @@ class DatabaseIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["database"] = database
         __props__["etag"] = etag
         __props__["instance"] = instance

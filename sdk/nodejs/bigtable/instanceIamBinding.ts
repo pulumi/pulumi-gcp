@@ -91,6 +91,7 @@ export class InstanceIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamBinding.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.bigtable.InstanceIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
@@ -124,6 +125,7 @@ export class InstanceIamBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as InstanceIamBindingState | undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["members"] = state ? state.members : undefined;
@@ -140,6 +142,7 @@ export class InstanceIamBinding extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -161,6 +164,7 @@ export class InstanceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamBinding resources.
  */
 export interface InstanceIamBindingState {
+    readonly condition?: pulumi.Input<inputs.bigtable.InstanceIamBindingCondition>;
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
@@ -187,6 +191,7 @@ export interface InstanceIamBindingState {
  * The set of arguments for constructing a InstanceIamBinding resource.
  */
 export interface InstanceIamBindingArgs {
+    readonly condition?: pulumi.Input<inputs.bigtable.InstanceIamBindingCondition>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      */

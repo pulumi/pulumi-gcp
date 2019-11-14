@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class SubnetworkIAMMember(pulumi.CustomResource):
+    condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the subnetwork's IAM policy.
@@ -35,7 +36,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
     """
     The name of the subnetwork.
     """
-    def __init__(__self__, resource_name, opts=None, member=None, project=None, region=None, role=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, condition=None, member=None, project=None, region=None, role=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SubnetworkIAMMember resource with the given unique name, props, and options.
         
@@ -49,6 +50,12 @@ class SubnetworkIAMMember(pulumi.CustomResource):
                `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subnetwork: The name of the subnetwork.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_member.html.markdown.
         """
@@ -69,6 +76,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['condition'] = condition
             if member is None:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
@@ -88,7 +96,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, member=None, project=None, region=None, role=None, subnetwork=None):
+    def get(resource_name, id, opts=None, condition=None, etag=None, member=None, project=None, region=None, role=None, subnetwork=None):
         """
         Get an existing SubnetworkIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,12 +113,19 @@ class SubnetworkIAMMember(pulumi.CustomResource):
                `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subnetwork: The name of the subnetwork.
+        
+        The **condition** object supports the following:
+        
+          * `description` (`pulumi.Input[str]`)
+          * `expression` (`pulumi.Input[str]`)
+          * `title` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member
         __props__["project"] = project
