@@ -322,8 +322,8 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterPodSecurityPolicyConfig?> PodSecurityPolicyConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A set of options for creating
-        /// a private cluster. Structure is documented below.
+        /// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        /// clusters with private nodes. Structure is documented below.
         /// </summary>
         [Output("privateClusterConfig")]
         public Output<Outputs.ClusterPrivateClusterConfig> PrivateClusterConfig { get; private set; } = null!;
@@ -758,8 +758,8 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterPodSecurityPolicyConfigArgs>? PodSecurityPolicyConfig { get; set; }
 
         /// <summary>
-        /// A set of options for creating
-        /// a private cluster. Structure is documented below.
+        /// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        /// clusters with private nodes. Structure is documented below.
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.ClusterPrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
@@ -1176,8 +1176,8 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterPodSecurityPolicyConfigGetArgs>? PodSecurityPolicyConfig { get; set; }
 
         /// <summary>
-        /// A set of options for creating
-        /// a private cluster. Structure is documented below.
+        /// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        /// clusters with private nodes. Structure is documented below.
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.ClusterPrivateClusterConfigGetArgs>? PrivateClusterConfig { get; set; }

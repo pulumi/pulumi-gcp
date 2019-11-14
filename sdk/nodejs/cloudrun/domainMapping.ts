@@ -36,11 +36,26 @@ export class DomainMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === DomainMapping.__pulumiType;
     }
 
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Metadata associated with this DomainMapping.
+     */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
+    /**
+     * Name should be a verified domain
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The spec for this DomainMapping.
+     */
     public readonly spec!: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
+    /**
+     * The current status of the DomainMapping.
+     */
     public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.DomainMappingStatus>;
 
     /**
@@ -94,11 +109,26 @@ export class DomainMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainMapping resources.
  */
 export interface DomainMappingState {
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     readonly location?: pulumi.Input<string>;
+    /**
+     * Metadata associated with this DomainMapping.
+     */
     readonly metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
+    /**
+     * Name should be a verified domain
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * The spec for this DomainMapping.
+     */
     readonly spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
+    /**
+     * The current status of the DomainMapping.
+     */
     readonly status?: pulumi.Input<inputs.cloudrun.DomainMappingStatus>;
 }
 
@@ -106,9 +136,21 @@ export interface DomainMappingState {
  * The set of arguments for constructing a DomainMapping resource.
  */
 export interface DomainMappingArgs {
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     readonly location: pulumi.Input<string>;
+    /**
+     * Metadata associated with this DomainMapping.
+     */
     readonly metadata: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
+    /**
+     * Name should be a verified domain
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * The spec for this DomainMapping.
+     */
     readonly spec: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
 }

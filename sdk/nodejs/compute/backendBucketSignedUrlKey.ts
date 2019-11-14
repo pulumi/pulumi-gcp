@@ -36,8 +36,18 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackendBucketSignedUrlKey.__pulumiType;
     }
 
+    /**
+     * The backend bucket this signed URL key belongs.
+     */
     public readonly backendBucket!: pulumi.Output<string>;
+    /**
+     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
+     * string.
+     */
     public readonly keyValue!: pulumi.Output<string>;
+    /**
+     * Name of the signed URL key.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -89,8 +99,18 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendBucketSignedUrlKey resources.
  */
 export interface BackendBucketSignedUrlKeyState {
+    /**
+     * The backend bucket this signed URL key belongs.
+     */
     readonly backendBucket?: pulumi.Input<string>;
+    /**
+     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
+     * string.
+     */
     readonly keyValue?: pulumi.Input<string>;
+    /**
+     * Name of the signed URL key.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -103,8 +123,18 @@ export interface BackendBucketSignedUrlKeyState {
  * The set of arguments for constructing a BackendBucketSignedUrlKey resource.
  */
 export interface BackendBucketSignedUrlKeyArgs {
+    /**
+     * The backend bucket this signed URL key belongs.
+     */
     readonly backendBucket: pulumi.Input<string>;
+    /**
+     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
+     * string.
+     */
     readonly keyValue: pulumi.Input<string>;
+    /**
+     * Name of the signed URL key.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

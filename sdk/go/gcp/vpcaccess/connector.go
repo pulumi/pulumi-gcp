@@ -82,22 +82,27 @@ func (r *Connector) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
 func (r *Connector) IpCidrRange() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipCidrRange"])
 }
 
+// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
 func (r *Connector) MaxThroughput() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxThroughput"])
 }
 
+// Minimum throughput of the connector in Mbps. Default and min is 200.
 func (r *Connector) MinThroughput() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["minThroughput"])
 }
 
+// The name of the resource (Max 25 characters).
 func (r *Connector) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// Name of a VPC network.
 func (r *Connector) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
@@ -108,42 +113,59 @@ func (r *Connector) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Region where the VPC Access connector resides
 func (r *Connector) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// The fully qualified name of this VPC connector
 func (r *Connector) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// State of the VPC access connector.
 func (r *Connector) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Connector resources.
 type ConnectorState struct {
+	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
 	IpCidrRange interface{}
+	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
 	MaxThroughput interface{}
+	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput interface{}
+	// The name of the resource (Max 25 characters).
 	Name interface{}
+	// Name of a VPC network.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where the VPC Access connector resides
 	Region interface{}
+	// The fully qualified name of this VPC connector
 	SelfLink interface{}
+	// State of the VPC access connector.
 	State interface{}
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
+	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
 	IpCidrRange interface{}
+	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
 	MaxThroughput interface{}
+	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput interface{}
+	// The name of the resource (Max 25 characters).
 	Name interface{}
+	// Name of a VPC network.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where the VPC Access connector resides
 	Region interface{}
 }

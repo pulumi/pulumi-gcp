@@ -36,16 +36,38 @@ export class Autoscalar extends pulumi.CustomResource {
         return obj['__pulumiType'] === Autoscalar.__pulumiType;
     }
 
+    /**
+     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
+     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.AutoscalarAutoscalingPolicy>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the resource. The name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * URL of the managed instance group that this autoscaler will scale.
+     */
     public readonly target!: pulumi.Output<string>;
+    /**
+     * URL of the zone where the instance group resides.
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -100,16 +122,38 @@ export class Autoscalar extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Autoscalar resources.
  */
 export interface AutoscalarState {
+    /**
+     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
+     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     */
     readonly autoscalingPolicy?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicy>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource. The name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * URL of the managed instance group that this autoscaler will scale.
+     */
     readonly target?: pulumi.Input<string>;
+    /**
+     * URL of the zone where the instance group resides.
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -117,10 +161,29 @@ export interface AutoscalarState {
  * The set of arguments for constructing a Autoscalar resource.
  */
 export interface AutoscalarArgs {
+    /**
+     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
+     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     */
     readonly autoscalingPolicy: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicy>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource. The name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * URL of the managed instance group that this autoscaler will scale.
+     */
     readonly target: pulumi.Input<string>;
+    /**
+     * URL of the zone where the instance group resides.
+     */
     readonly zone?: pulumi.Input<string>;
 }

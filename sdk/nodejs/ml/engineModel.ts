@@ -36,17 +36,39 @@ export class EngineModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === EngineModel.__pulumiType;
     }
 
+    /**
+     * The default version of the model. This version will be used to handle prediction requests that do not specify a
+     * version.
+     */
     public readonly defaultVersion!: pulumi.Output<outputs.ml.EngineModelDefaultVersion | undefined>;
+    /**
+     * The description specified for the model when it was created.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * One or more labels that you can add, to organize your models.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The name specified for the model.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+     */
     public readonly onlinePredictionConsoleLogging!: pulumi.Output<boolean | undefined>;
+    /**
+     * If true, online prediction access logs are sent to StackDriver Logging.
+     */
     public readonly onlinePredictionLogging!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     */
     public readonly regions!: pulumi.Output<string | undefined>;
 
     /**
@@ -95,17 +117,39 @@ export class EngineModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EngineModel resources.
  */
 export interface EngineModelState {
+    /**
+     * The default version of the model. This version will be used to handle prediction requests that do not specify a
+     * version.
+     */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
+    /**
+     * The description specified for the model when it was created.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * One or more labels that you can add, to organize your models.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name specified for the model.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+     */
     readonly onlinePredictionConsoleLogging?: pulumi.Input<boolean>;
+    /**
+     * If true, online prediction access logs are sent to StackDriver Logging.
+     */
     readonly onlinePredictionLogging?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     */
     readonly regions?: pulumi.Input<string>;
 }
 
@@ -113,16 +157,38 @@ export interface EngineModelState {
  * The set of arguments for constructing a EngineModel resource.
  */
 export interface EngineModelArgs {
+    /**
+     * The default version of the model. This version will be used to handle prediction requests that do not specify a
+     * version.
+     */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
+    /**
+     * The description specified for the model when it was created.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * One or more labels that you can add, to organize your models.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name specified for the model.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+     */
     readonly onlinePredictionConsoleLogging?: pulumi.Input<boolean>;
+    /**
+     * If true, online prediction access logs are sent to StackDriver Logging.
+     */
     readonly onlinePredictionLogging?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     */
     readonly regions?: pulumi.Input<string>;
 }

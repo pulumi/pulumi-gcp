@@ -12,30 +12,59 @@ namespace Pulumi.Gcp.Dns
     /// </summary>
     public partial class ManagedZone : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The DNS name of this managed zone, for instance "example.com.".
+        /// </summary>
         [Output("dnsName")]
         public Output<string> DnsName { get; private set; } = null!;
 
+        /// <summary>
+        /// DNSSEC configuration
+        /// </summary>
         [Output("dnssecConfig")]
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
+        /// field contains the set of destinations to forward to.
+        /// </summary>
         [Output("forwardingConfig")]
         public Output<Outputs.ManagedZoneForwardingConfig?> ForwardingConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// A set of key/value label pairs to assign to this ManagedZone.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// User assigned name for this resource. Must be unique within the project.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Delegate your managed_zone to these virtual name servers; defined by the server
+        /// </summary>
         [Output("nameServers")]
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
+        /// <summary>
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
+        /// contains the network to peer with.
+        /// </summary>
         [Output("peeringConfig")]
         public Output<Outputs.ManagedZonePeeringConfig?> PeeringConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// </summary>
         [Output("privateVisibilityConfig")]
         public Output<Outputs.ManagedZonePrivateVisibilityConfig?> PrivateVisibilityConfig { get; private set; } = null!;
 
@@ -46,6 +75,10 @@ namespace Pulumi.Gcp.Dns
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
+        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
 
@@ -95,32 +128,59 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The DNS name of this managed zone, for instance "example.com.".
+        /// </summary>
         [Input("dnsName", required: true)]
         public Input<string> DnsName { get; set; } = null!;
 
+        /// <summary>
+        /// DNSSEC configuration
+        /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
 
+        /// <summary>
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
+        /// field contains the set of destinations to forward to.
+        /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigArgs>? ForwardingConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to this ManagedZone.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// User assigned name for this resource. Must be unique within the project.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
+        /// contains the network to peer with.
+        /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigArgs>? PeeringConfig { get; set; }
 
+        /// <summary>
+        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigArgs>? PrivateVisibilityConfig { get; set; }
 
@@ -131,6 +191,10 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
+        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
 
@@ -142,40 +206,71 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The DNS name of this managed zone, for instance "example.com.".
+        /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
 
+        /// <summary>
+        /// DNSSEC configuration
+        /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
 
+        /// <summary>
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
+        /// field contains the set of destinations to forward to.
+        /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigGetArgs>? ForwardingConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to this ManagedZone.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// User assigned name for this resource. Must be unique within the project.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nameServers")]
         private InputList<string>? _nameServers;
+
+        /// <summary>
+        /// Delegate your managed_zone to these virtual name servers; defined by the server
+        /// </summary>
         public InputList<string> NameServers
         {
             get => _nameServers ?? (_nameServers = new InputList<string>());
             set => _nameServers = value;
         }
 
+        /// <summary>
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
+        /// contains the network to peer with.
+        /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigGetArgs>? PeeringConfig { get; set; }
 
+        /// <summary>
+        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigGetArgs>? PrivateVisibilityConfig { get; set; }
 
@@ -186,6 +281,10 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
+        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
 

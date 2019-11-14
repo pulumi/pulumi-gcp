@@ -79,18 +79,22 @@ func (r *NodeGroup) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *NodeGroup) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional textual description of the resource.
 func (r *NodeGroup) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource.
 func (r *NodeGroup) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The URL of the node template to which this node group belongs.
 func (r *NodeGroup) NodeTemplate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nodeTemplate"])
 }
@@ -106,37 +110,50 @@ func (r *NodeGroup) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// The total number of nodes in the node group.
 func (r *NodeGroup) Size() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["size"])
 }
 
+// Zone where this node group is located
 func (r *NodeGroup) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering NodeGroup resources.
 type NodeGroupState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional textual description of the resource.
 	Description interface{}
+	// Name of the resource.
 	Name interface{}
+	// The URL of the node template to which this node group belongs.
 	NodeTemplate interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// The total number of nodes in the node group.
 	Size interface{}
+	// Zone where this node group is located
 	Zone interface{}
 }
 
 // The set of arguments for constructing a NodeGroup resource.
 type NodeGroupArgs struct {
+	// An optional textual description of the resource.
 	Description interface{}
+	// Name of the resource.
 	Name interface{}
+	// The URL of the node template to which this node group belongs.
 	NodeTemplate interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The total number of nodes in the node group.
 	Size interface{}
+	// Zone where this node group is located
 	Zone interface{}
 }

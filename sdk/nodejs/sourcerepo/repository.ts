@@ -34,13 +34,22 @@ export class Repository extends pulumi.CustomResource {
         return obj['__pulumiType'] === Repository.__pulumiType;
     }
 
+    /**
+     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The disk usage of the repo, in bytes.
+     */
     public /*out*/ readonly size!: pulumi.Output<number>;
+    /**
+     * URL to clone the repository from Google Cloud Source Repositories.
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
@@ -81,13 +90,22 @@ export class Repository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Repository resources.
  */
 export interface RepositoryState {
+    /**
+     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The disk usage of the repo, in bytes.
+     */
     readonly size?: pulumi.Input<number>;
+    /**
+     * URL to clone the repository from Google Cloud Source Repositories.
+     */
     readonly url?: pulumi.Input<string>;
 }
 
@@ -95,6 +113,9 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
+    /**
+     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

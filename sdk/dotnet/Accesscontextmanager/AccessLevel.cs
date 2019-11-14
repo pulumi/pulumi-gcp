@@ -22,18 +22,34 @@ namespace Pulumi.Gcp.Accesscontextmanager
     /// </summary>
     public partial class AccessLevel : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A set of predefined conditions for the access level and a combining function.
+        /// </summary>
         [Output("basic")]
         public Output<Outputs.AccessLevelBasic?> Basic { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource name for the Access Level. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
@@ -83,18 +99,34 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class AccessLevelArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A set of predefined conditions for the access level and a combining function.
+        /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicArgs>? Basic { get; set; }
 
+        /// <summary>
+        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Resource name for the Access Level. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -105,18 +137,34 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class AccessLevelState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A set of predefined conditions for the access level and a combining function.
+        /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicGetArgs>? Basic { get; set; }
 
+        /// <summary>
+        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Resource name for the Access Level. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

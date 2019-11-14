@@ -73,14 +73,20 @@ func (r *HaVpnGateway) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// An optional description of this resource.
 func (r *HaVpnGateway) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *HaVpnGateway) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The network this VPN gateway is accepting traffic for.
 func (r *HaVpnGateway) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
@@ -91,6 +97,7 @@ func (r *HaVpnGateway) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The region this gateway should sit in.
 func (r *HaVpnGateway) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -100,31 +107,47 @@ func (r *HaVpnGateway) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// A list of interfaces on this VPN gateway.
 func (r *HaVpnGateway) VpnInterfaces() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["vpnInterfaces"])
 }
 
 // Input properties used for looking up and filtering HaVpnGateway resources.
 type HaVpnGatewayState struct {
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The network this VPN gateway is accepting traffic for.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The region this gateway should sit in.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// A list of interfaces on this VPN gateway.
 	VpnInterfaces interface{}
 }
 
 // The set of arguments for constructing a HaVpnGateway resource.
 type HaVpnGatewayArgs struct {
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The network this VPN gateway is accepting traffic for.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The region this gateway should sit in.
 	Region interface{}
 }

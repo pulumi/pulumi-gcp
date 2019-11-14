@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Binaryauthorization
     /// </summary>
     public partial class Attestor : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// </summary>
         [Output("attestationAuthorityNote")]
         public Output<Outputs.AttestorAttestationAuthorityNote> AttestationAuthorityNote { get; private set; } = null!;
 
+        /// <summary>
+        /// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -70,12 +79,21 @@ namespace Pulumi.Gcp.Binaryauthorization
 
     public sealed class AttestorArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// </summary>
         [Input("attestationAuthorityNote", required: true)]
         public Input<Inputs.AttestorAttestationAuthorityNoteArgs> AttestationAuthorityNote { get; set; } = null!;
 
+        /// <summary>
+        /// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The resource name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -89,12 +107,21 @@ namespace Pulumi.Gcp.Binaryauthorization
 
     public sealed class AttestorState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// </summary>
         [Input("attestationAuthorityNote")]
         public Input<Inputs.AttestorAttestationAuthorityNoteGetArgs>? AttestationAuthorityNote { get; set; }
 
+        /// <summary>
+        /// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The resource name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

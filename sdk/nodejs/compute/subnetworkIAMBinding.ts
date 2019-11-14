@@ -38,18 +38,20 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
 
     public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMBindingCondition | undefined>;
     /**
-     * (Computed) The etag of the subnetwork's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region of the subnetwork. If
-     * unspecified, this defaults to the region configured in the provider.
+     * URL of the GCP region for this subnetwork.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -59,7 +61,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The name of the subnetwork.
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly subnetwork!: pulumi.Output<string>;
 
@@ -118,18 +120,20 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
 export interface SubnetworkIAMBindingState {
     readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
     /**
-     * (Computed) The etag of the subnetwork's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     readonly etag?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region of the subnetwork. If
-     * unspecified, this defaults to the region configured in the provider.
+     * URL of the GCP region for this subnetwork.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -139,7 +143,7 @@ export interface SubnetworkIAMBindingState {
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The name of the subnetwork.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly subnetwork?: pulumi.Input<string>;
 }
@@ -151,13 +155,15 @@ export interface SubnetworkIAMBindingArgs {
     readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region of the subnetwork. If
-     * unspecified, this defaults to the region configured in the provider.
+     * URL of the GCP region for this subnetwork.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -167,7 +173,7 @@ export interface SubnetworkIAMBindingArgs {
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The name of the subnetwork.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly subnetwork: pulumi.Input<string>;
 }

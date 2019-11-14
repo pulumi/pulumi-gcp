@@ -60,6 +60,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["containerBetaCustomEndpoint"] = args ? args.containerBetaCustomEndpoint : undefined;
             inputs["containerCustomEndpoint"] = args ? args.containerCustomEndpoint : undefined;
             inputs["credentials"] = (args ? args.credentials : undefined) || utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
+            inputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             inputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
             inputs["dataprocBetaCustomEndpoint"] = args ? args.dataprocBetaCustomEndpoint : undefined;
             inputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
@@ -135,6 +136,7 @@ export interface ProviderArgs {
     readonly containerBetaCustomEndpoint?: pulumi.Input<string>;
     readonly containerCustomEndpoint?: pulumi.Input<string>;
     readonly credentials?: pulumi.Input<string>;
+    readonly dataFusionCustomEndpoint?: pulumi.Input<string>;
     readonly dataflowCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocCustomEndpoint?: pulumi.Input<string>;

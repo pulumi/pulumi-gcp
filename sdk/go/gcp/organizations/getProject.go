@@ -8,7 +8,7 @@ import (
 )
 
 // Use this data source to get project details.
-// For more information see 
+// For more information see
 // [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.

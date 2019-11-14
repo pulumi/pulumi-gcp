@@ -12,24 +12,47 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class RouterNat : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
+        /// assigned to the NAT.
+        /// </summary>
         [Output("drainNatIps")]
         public Output<ImmutableArray<string>> DrainNatIps { get; private set; } = null!;
 
+        /// <summary>
+        /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        /// </summary>
         [Output("icmpIdleTimeoutSec")]
         public Output<int?> IcmpIdleTimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for logging on NAT
+        /// </summary>
         [Output("logConfig")]
         public Output<Outputs.RouterNatLogConfig?> LogConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Minimum number of ports allocated to a VM from this NAT.
+        /// </summary>
         [Output("minPortsPerVm")]
         public Output<int?> MinPortsPerVm { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
+        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// </summary>
         [Output("natIpAllocateOption")]
         public Output<string> NatIpAllocateOption { get; private set; } = null!;
 
+        /// <summary>
+        /// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
         [Output("natIps")]
         public Output<ImmutableArray<string>> NatIps { get; private set; } = null!;
 
@@ -40,24 +63,51 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Region where the router and NAT reside.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Cloud Router in which this NAT will be configured.
+        /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
 
+        /// <summary>
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
+        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
+        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
+        /// Nat (specified in the field subnetwork below). Note that if this field contains
+        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        /// RouterNat section in any Router for this network in this region.
+        /// </summary>
         [Output("sourceSubnetworkIpRangesToNat")]
         public Output<string> SourceSubnetworkIpRangesToNat { get; private set; } = null!;
 
+        /// <summary>
+        /// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
+        /// 'LIST_OF_SUBNETWORKS'
+        /// </summary>
         [Output("subnetworks")]
         public Output<ImmutableArray<Outputs.RouterNatSubnetworks>> Subnetworks { get; private set; } = null!;
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+        /// </summary>
         [Output("tcpEstablishedIdleTimeoutSec")]
         public Output<int?> TcpEstablishedIdleTimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+        /// </summary>
         [Output("tcpTransitoryIdleTimeoutSec")]
         public Output<int?> TcpTransitoryIdleTimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        /// </summary>
         [Output("udpIdleTimeoutSec")]
         public Output<int?> UdpIdleTimeoutSec { get; private set; } = null!;
 
@@ -109,29 +159,54 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
+
+        /// <summary>
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
+        /// assigned to the NAT.
+        /// </summary>
         public InputList<string> DrainNatIps
         {
             get => _drainNatIps ?? (_drainNatIps = new InputList<string>());
             set => _drainNatIps = value;
         }
 
+        /// <summary>
+        /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("icmpIdleTimeoutSec")]
         public Input<int>? IcmpIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Configuration for logging on NAT
+        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RouterNatLogConfigArgs>? LogConfig { get; set; }
 
+        /// <summary>
+        /// Minimum number of ports allocated to a VM from this NAT.
+        /// </summary>
         [Input("minPortsPerVm")]
         public Input<int>? MinPortsPerVm { get; set; }
 
+        /// <summary>
+        /// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
+        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// </summary>
         [Input("natIpAllocateOption", required: true)]
         public Input<string> NatIpAllocateOption { get; set; } = null!;
 
         [Input("natIps")]
         private InputList<string>? _natIps;
+
+        /// <summary>
+        /// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
         public InputList<string> NatIps
         {
             get => _natIps ?? (_natIps = new InputList<string>());
@@ -145,29 +220,57 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Region where the router and NAT reside.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The name of the Cloud Router in which this NAT will be configured.
+        /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
 
+        /// <summary>
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
+        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
+        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
+        /// Nat (specified in the field subnetwork below). Note that if this field contains
+        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        /// RouterNat section in any Router for this network in this region.
+        /// </summary>
         [Input("sourceSubnetworkIpRangesToNat", required: true)]
         public Input<string> SourceSubnetworkIpRangesToNat { get; set; } = null!;
 
         [Input("subnetworks")]
         private InputList<Inputs.RouterNatSubnetworksArgs>? _subnetworks;
+
+        /// <summary>
+        /// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
+        /// 'LIST_OF_SUBNETWORKS'
+        /// </summary>
         public InputList<Inputs.RouterNatSubnetworksArgs> Subnetworks
         {
             get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworksArgs>());
             set => _subnetworks = value;
         }
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+        /// </summary>
         [Input("tcpEstablishedIdleTimeoutSec")]
         public Input<int>? TcpEstablishedIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("tcpTransitoryIdleTimeoutSec")]
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("udpIdleTimeoutSec")]
         public Input<int>? UdpIdleTimeoutSec { get; set; }
 
@@ -180,29 +283,54 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
+
+        /// <summary>
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
+        /// assigned to the NAT.
+        /// </summary>
         public InputList<string> DrainNatIps
         {
             get => _drainNatIps ?? (_drainNatIps = new InputList<string>());
             set => _drainNatIps = value;
         }
 
+        /// <summary>
+        /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("icmpIdleTimeoutSec")]
         public Input<int>? IcmpIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Configuration for logging on NAT
+        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RouterNatLogConfigGetArgs>? LogConfig { get; set; }
 
+        /// <summary>
+        /// Minimum number of ports allocated to a VM from this NAT.
+        /// </summary>
         [Input("minPortsPerVm")]
         public Input<int>? MinPortsPerVm { get; set; }
 
+        /// <summary>
+        /// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
+        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// </summary>
         [Input("natIpAllocateOption")]
         public Input<string>? NatIpAllocateOption { get; set; }
 
         [Input("natIps")]
         private InputList<string>? _natIps;
+
+        /// <summary>
+        /// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
         public InputList<string> NatIps
         {
             get => _natIps ?? (_natIps = new InputList<string>());
@@ -216,29 +344,57 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Region where the router and NAT reside.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The name of the Cloud Router in which this NAT will be configured.
+        /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }
 
+        /// <summary>
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
+        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
+        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
+        /// Nat (specified in the field subnetwork below). Note that if this field contains
+        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        /// RouterNat section in any Router for this network in this region.
+        /// </summary>
         [Input("sourceSubnetworkIpRangesToNat")]
         public Input<string>? SourceSubnetworkIpRangesToNat { get; set; }
 
         [Input("subnetworks")]
         private InputList<Inputs.RouterNatSubnetworksGetArgs>? _subnetworks;
+
+        /// <summary>
+        /// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
+        /// 'LIST_OF_SUBNETWORKS'
+        /// </summary>
         public InputList<Inputs.RouterNatSubnetworksGetArgs> Subnetworks
         {
             get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworksGetArgs>());
             set => _subnetworks = value;
         }
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+        /// </summary>
         [Input("tcpEstablishedIdleTimeoutSec")]
         public Input<int>? TcpEstablishedIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("tcpTransitoryIdleTimeoutSec")]
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
+        /// <summary>
+        /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        /// </summary>
         [Input("udpIdleTimeoutSec")]
         public Input<int>? UdpIdleTimeoutSec { get; set; }
 

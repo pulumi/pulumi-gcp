@@ -12,12 +12,25 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class HaVpnGateway : Pulumi.CustomResource
     {
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The network this VPN gateway is accepting traffic for.
+        /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
@@ -28,6 +41,9 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The region this gateway should sit in.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -37,6 +53,9 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of interfaces on this VPN gateway.
+        /// </summary>
         [Output("vpnInterfaces")]
         public Output<ImmutableArray<Outputs.HaVpnGatewayVpnInterfaces>> VpnInterfaces { get; private set; } = null!;
 
@@ -86,12 +105,25 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class HaVpnGatewayArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network this VPN gateway is accepting traffic for.
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
@@ -102,6 +134,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region this gateway should sit in.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -112,12 +147,25 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class HaVpnGatewayState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network this VPN gateway is accepting traffic for.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
@@ -128,6 +176,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region this gateway should sit in.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -139,6 +190,10 @@ namespace Pulumi.Gcp.Compute
 
         [Input("vpnInterfaces")]
         private InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs>? _vpnInterfaces;
+
+        /// <summary>
+        /// A list of interfaces on this VPN gateway.
+        /// </summary>
         public InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs> VpnInterfaces
         {
             get => _vpnInterfaces ?? (_vpnInterfaces = new InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs>());

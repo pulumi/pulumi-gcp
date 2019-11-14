@@ -34,6 +34,7 @@ const (
 	gcpContainerAnalysis    = "containeranalysis"    // Container Analysis resources
 	gcpDNS                  = "dns"                  // DNS resources
 	gcpDataFolow            = "dataflow"             // DataFlow resources
+	gcpDataFusion           = "datafusion"           // DataFusion resources
 	gcpDataProc             = "dataproc"             // DataProc resources
 	gcpEndPoints            = "endpoints"            // End Point resources
 	gcpFilestore            = "filestore"            // Filestore resources
@@ -1196,6 +1197,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// VPC Access
 			"google_vpc_access_connector": {Tok: gcpResource(gcpVpcAccess, "Connector")},
+
+			// DataFusion
+			"google_data_fusion_instance": {Tok: gcpResource(gcpDataFusion, "Instance")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

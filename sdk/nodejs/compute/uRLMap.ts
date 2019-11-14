@@ -36,13 +36,40 @@ export class URLMap extends pulumi.CustomResource {
         return obj['__pulumiType'] === URLMap.__pulumiType;
     }
 
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     public readonly defaultService!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * The list of HostRules to use against the URL.
+     */
     public readonly hostRules!: pulumi.Output<outputs.compute.URLMapHostRule[] | undefined>;
+    /**
+     * The unique identifier for the resource.
+     */
     public /*out*/ readonly mapId!: pulumi.Output<number>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The list of named PathMatchers to use against the URL.
+     */
     public readonly pathMatchers!: pulumi.Output<outputs.compute.URLMapPathMatcher[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
@@ -53,6 +80,9 @@ export class URLMap extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     */
     public readonly tests!: pulumi.Output<outputs.compute.URLMapTest[] | undefined>;
 
     /**
@@ -110,13 +140,40 @@ export class URLMap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering URLMap resources.
  */
 export interface URLMapState {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     readonly defaultService?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     */
     readonly fingerprint?: pulumi.Input<string>;
+    /**
+     * The list of HostRules to use against the URL.
+     */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
+    /**
+     * The unique identifier for the resource.
+     */
     readonly mapId?: pulumi.Input<number>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The list of named PathMatchers to use against the URL.
+     */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
@@ -127,6 +184,9 @@ export interface URLMapState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }
 
@@ -134,15 +194,36 @@ export interface URLMapState {
  * The set of arguments for constructing a URLMap resource.
  */
 export interface URLMapArgs {
+    /**
+     * The backend service or backend bucket to use when none of the given rules match.
+     */
     readonly defaultService: pulumi.Input<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The list of HostRules to use against the URL.
+     */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The list of named PathMatchers to use against the URL.
+     */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }

@@ -30,24 +30,47 @@ namespace Pulumi.Gcp.Kms
     /// </summary>
     public partial class CryptoKey : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The KeyRing that this key belongs to. Format:
+        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// </summary>
         [Output("keyRing")]
         public Output<string> KeyRing { get; private set; } = null!;
 
+        /// <summary>
+        /// Labels with user-defined metadata to apply to this resource.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource name for the CryptoKey.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The immutable purpose of this CryptoKey. See the [purpose
+        /// reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        /// for possible inputs.
+        /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
 
+        /// <summary>
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
+        /// will take place after the specified period. The rotation period has the format of a decimal number with up
+        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// </summary>
         [Output("rotationPeriod")]
         public Output<string?> RotationPeriod { get; private set; } = null!;
 
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// A template describing settings for new crypto key versions.
+        /// </summary>
         [Output("versionTemplate")]
         public Output<Outputs.CryptoKeyVersionTemplate> VersionTemplate { get; private set; } = null!;
 
@@ -97,26 +120,50 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The KeyRing that this key belongs to. Format:
+        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// </summary>
         [Input("keyRing", required: true)]
         public Input<string> KeyRing { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels with user-defined metadata to apply to this resource.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The resource name for the CryptoKey.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The immutable purpose of this CryptoKey. See the [purpose
+        /// reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        /// for possible inputs.
+        /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
+        /// <summary>
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
+        /// will take place after the specified period. The rotation period has the format of a decimal number with up
+        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
 
+        /// <summary>
+        /// A template describing settings for new crypto key versions.
+        /// </summary>
         [Input("versionTemplate")]
         public Input<Inputs.CryptoKeyVersionTemplateArgs>? VersionTemplate { get; set; }
 
@@ -127,29 +174,53 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The KeyRing that this key belongs to. Format:
+        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// </summary>
         [Input("keyRing")]
         public Input<string>? KeyRing { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels with user-defined metadata to apply to this resource.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The resource name for the CryptoKey.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The immutable purpose of this CryptoKey. See the [purpose
+        /// reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        /// for possible inputs.
+        /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
+        /// <summary>
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
+        /// will take place after the specified period. The rotation period has the format of a decimal number with up
+        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
 
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// A template describing settings for new crypto key versions.
+        /// </summary>
         [Input("versionTemplate")]
         public Input<Inputs.CryptoKeyVersionTemplateGetArgs>? VersionTemplate { get; set; }
 

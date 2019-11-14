@@ -71,26 +71,34 @@ func (r *Policy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+// server that you choose. Names such as .internal are not available when an alternative name server is specified.
 func (r *Policy) AlternativeNameServerConfig() *pulumi.Output {
 	return r.s.State["alternativeNameServerConfig"]
 }
 
+// A textual description field. Defaults to 'Managed by Terraform'.
 func (r *Policy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
 func (r *Policy) EnableInboundForwarding() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableInboundForwarding"])
 }
 
+// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 func (r *Policy) EnableLogging() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableLogging"])
 }
 
+// User assigned name for this policy.
 func (r *Policy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// List of network names specifying networks to which this policy is applied.
 func (r *Policy) Networks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["networks"])
 }
@@ -103,11 +111,19 @@ func (r *Policy) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Policy resources.
 type PolicyState struct {
+	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig interface{}
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
+	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
 	EnableInboundForwarding interface{}
+	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 	EnableLogging interface{}
+	// User assigned name for this policy.
 	Name interface{}
+	// List of network names specifying networks to which this policy is applied.
 	Networks interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -116,11 +132,19 @@ type PolicyState struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
+	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig interface{}
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
+	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
 	EnableInboundForwarding interface{}
+	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 	EnableLogging interface{}
+	// User assigned name for this policy.
 	Name interface{}
+	// List of network names specifying networks to which this policy is applied.
 	Networks interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

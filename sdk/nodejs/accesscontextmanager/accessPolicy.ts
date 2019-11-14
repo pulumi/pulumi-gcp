@@ -62,10 +62,25 @@ export class AccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicy.__pulumiType;
     }
 
+    /**
+     * Time the AccessPolicy was created in UTC.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Resource name of the AccessPolicy. Format: {policy_id}
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+     */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * Human readable title. Does not affect behavior.
+     */
     public readonly title!: pulumi.Output<string>;
+    /**
+     * Time the AccessPolicy was updated in UTC.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
@@ -114,10 +129,25 @@ export class AccessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessPolicy resources.
  */
 export interface AccessPolicyState {
+    /**
+     * Time the AccessPolicy was created in UTC.
+     */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * Resource name of the AccessPolicy. Format: {policy_id}
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+     */
     readonly parent?: pulumi.Input<string>;
+    /**
+     * Human readable title. Does not affect behavior.
+     */
     readonly title?: pulumi.Input<string>;
+    /**
+     * Time the AccessPolicy was updated in UTC.
+     */
     readonly updateTime?: pulumi.Input<string>;
 }
 
@@ -125,6 +155,12 @@ export interface AccessPolicyState {
  * The set of arguments for constructing a AccessPolicy resource.
  */
 export interface AccessPolicyArgs {
+    /**
+     * The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+     */
     readonly parent: pulumi.Input<string>;
+    /**
+     * Human readable title. Does not affect behavior.
+     */
     readonly title: pulumi.Input<string>;
 }

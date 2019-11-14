@@ -8,7 +8,7 @@ require (
 	github.com/pulumi/pulumi v1.2.0
 	github.com/pulumi/pulumi-terraform-bridge v1.2.1-0.20191106001426-e727be072e34
 	github.com/stretchr/testify v1.4.0
-	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-00010101000000-000000000000 // indirect
+	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-00010101000000-000000000000
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
 )
 

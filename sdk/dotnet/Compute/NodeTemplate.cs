@@ -12,21 +12,41 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// </summary>
         [Output("nodeAffinityLabels")]
         public Output<ImmutableDictionary<string, string>?> NodeAffinityLabels { get; private set; } = null!;
 
+        /// <summary>
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
+        /// nodeType can be specified.
+        /// </summary>
         [Output("nodeType")]
         public Output<string?> NodeType { get; private set; } = null!;
 
+        /// <summary>
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
+        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibility?> NodeTypeFlexibility { get; private set; } = null!;
 
@@ -37,6 +57,10 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
+        /// used.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -46,6 +70,10 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
+        /// a maintenance event.
+        /// </summary>
         [Output("serverBinding")]
         public Output<Outputs.NodeTemplateServerBinding> ServerBinding { get; private set; } = null!;
 
@@ -95,23 +123,41 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nodeAffinityLabels")]
         private InputMap<string>? _nodeAffinityLabels;
+
+        /// <summary>
+        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// </summary>
         public InputMap<string> NodeAffinityLabels
         {
             get => _nodeAffinityLabels ?? (_nodeAffinityLabels = new InputMap<string>());
             set => _nodeAffinityLabels = value;
         }
 
+        /// <summary>
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
+        /// nodeType can be specified.
+        /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
+        /// <summary>
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
+        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
 
@@ -122,9 +168,17 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
+        /// used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
+        /// a maintenance event.
+        /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingArgs>? ServerBinding { get; set; }
 
@@ -135,26 +189,47 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nodeAffinityLabels")]
         private InputMap<string>? _nodeAffinityLabels;
+
+        /// <summary>
+        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// </summary>
         public InputMap<string> NodeAffinityLabels
         {
             get => _nodeAffinityLabels ?? (_nodeAffinityLabels = new InputMap<string>());
             set => _nodeAffinityLabels = value;
         }
 
+        /// <summary>
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
+        /// nodeType can be specified.
+        /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
+        /// <summary>
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
+        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityGetArgs>? NodeTypeFlexibility { get; set; }
 
@@ -165,6 +240,10 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
+        /// used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -174,6 +253,10 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
+        /// a maintenance event.
+        /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingGetArgs>? ServerBinding { get; set; }
 

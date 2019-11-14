@@ -36,15 +36,32 @@ export class NetworkEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkEndpoint.__pulumiType;
     }
 
+    /**
+     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     */
     public readonly instance!: pulumi.Output<string>;
+    /**
+     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+     * aliased IP range).
+     */
     public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * The network endpoint group this endpoint is part of.
+     */
     public readonly networkEndpointGroup!: pulumi.Output<string>;
+    /**
+     * Port number of network endpoint.
+     */
     public readonly port!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Zone where the containing network endpoint group is located.
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -101,15 +118,32 @@ export class NetworkEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkEndpoint resources.
  */
 export interface NetworkEndpointState {
+    /**
+     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     */
     readonly instance?: pulumi.Input<string>;
+    /**
+     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+     * aliased IP range).
+     */
     readonly ipAddress?: pulumi.Input<string>;
+    /**
+     * The network endpoint group this endpoint is part of.
+     */
     readonly networkEndpointGroup?: pulumi.Input<string>;
+    /**
+     * Port number of network endpoint.
+     */
     readonly port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Zone where the containing network endpoint group is located.
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -117,14 +151,31 @@ export interface NetworkEndpointState {
  * The set of arguments for constructing a NetworkEndpoint resource.
  */
 export interface NetworkEndpointArgs {
+    /**
+     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     */
     readonly instance: pulumi.Input<string>;
+    /**
+     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+     * aliased IP range).
+     */
     readonly ipAddress: pulumi.Input<string>;
+    /**
+     * The network endpoint group this endpoint is part of.
+     */
     readonly networkEndpointGroup: pulumi.Input<string>;
+    /**
+     * Port number of network endpoint.
+     */
     readonly port: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Zone where the containing network endpoint group is located.
+     */
     readonly zone?: pulumi.Input<string>;
 }

@@ -92,34 +92,47 @@ func (r *DataTransferConfig) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+// the data source supports the feature. Set the value to 0 to use the default value.
 func (r *DataTransferConfig) DataRefreshWindowDays() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["dataRefreshWindowDays"])
 }
 
+// The data source id. Cannot be changed once the transfer config is created.
 func (r *DataTransferConfig) DataSourceId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dataSourceId"])
 }
 
+// The BigQuery target dataset id.
 func (r *DataTransferConfig) DestinationDatasetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destinationDatasetId"])
 }
 
+// When set to true, no runs are scheduled for a given transfer.
 func (r *DataTransferConfig) Disabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
+// The user specified display name for the transfer config.
 func (r *DataTransferConfig) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
+// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
+// US.
 func (r *DataTransferConfig) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
+// The resource name of the transfer config. Transfer config names have the form
+// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+// required. The name is ignored when creating a transfer config.
 func (r *DataTransferConfig) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// These parameters are specific to each data source.
 func (r *DataTransferConfig) Params() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["params"])
 }
@@ -130,37 +143,77 @@ func (r *DataTransferConfig) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
+// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
+// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
+// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+// NOTE: the granularity should be at least 8 hours, or less frequent.
 func (r *DataTransferConfig) Schedule() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["schedule"])
 }
 
 // Input properties used for looking up and filtering DataTransferConfig resources.
 type DataTransferConfigState struct {
+	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+	// the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays interface{}
+	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId interface{}
+	// The BigQuery target dataset id.
 	DestinationDatasetId interface{}
+	// When set to true, no runs are scheduled for a given transfer.
 	Disabled interface{}
+	// The user specified display name for the transfer config.
 	DisplayName interface{}
+	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value
+	// is US.
 	Location interface{}
+	// The resource name of the transfer config. Transfer config names have the form
+	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+	// required. The name is ignored when creating a transfer config.
 	Name interface{}
+	// These parameters are specific to each data source.
 	Params interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
+	// the default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd
+	// monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about
+	// the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
+	// granularity should be at least 8 hours, or less frequent.
 	Schedule interface{}
 }
 
 // The set of arguments for constructing a DataTransferConfig resource.
 type DataTransferConfigArgs struct {
+	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+	// the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays interface{}
+	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId interface{}
+	// The BigQuery target dataset id.
 	DestinationDatasetId interface{}
+	// When set to true, no runs are scheduled for a given transfer.
 	Disabled interface{}
+	// The user specified display name for the transfer config.
 	DisplayName interface{}
+	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value
+	// is US.
 	Location interface{}
+	// These parameters are specific to each data source.
 	Params interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
+	// the default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd
+	// monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about
+	// the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
+	// granularity should be at least 8 hours, or less frequent.
 	Schedule interface{}
 }

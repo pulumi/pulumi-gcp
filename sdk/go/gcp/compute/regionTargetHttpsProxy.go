@@ -81,14 +81,20 @@ func (r *RegionTargetHttpsProxy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *RegionTargetHttpsProxy) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *RegionTargetHttpsProxy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *RegionTargetHttpsProxy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -99,10 +105,12 @@ func (r *RegionTargetHttpsProxy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The unique identifier for the resource.
 func (r *RegionTargetHttpsProxy) ProxyId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["proxyId"])
 }
 
+// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
 func (r *RegionTargetHttpsProxy) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -112,38 +120,61 @@ func (r *RegionTargetHttpsProxy) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// A list of RegionSslCertificate resources that are used to authenticate connections between users and the load balancer.
+// Currently, exactly one SSL certificate must be specified.
 func (r *RegionTargetHttpsProxy) SslCertificates() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sslCertificates"])
 }
 
+// A reference to the RegionUrlMap resource that defines the mapping from URL to the RegionBackendService.
 func (r *RegionTargetHttpsProxy) UrlMap() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["urlMap"])
 }
 
 // Input properties used for looking up and filtering RegionTargetHttpsProxy resources.
 type RegionTargetHttpsProxyState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The unique identifier for the resource.
 	ProxyId interface{}
+	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// A list of RegionSslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, exactly one SSL certificate must be specified.
 	SslCertificates interface{}
+	// A reference to the RegionUrlMap resource that defines the mapping from URL to the RegionBackendService.
 	UrlMap interface{}
 }
 
 // The set of arguments for constructing a RegionTargetHttpsProxy resource.
 type RegionTargetHttpsProxyArgs struct {
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
 	Region interface{}
+	// A list of RegionSslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, exactly one SSL certificate must be specified.
 	SslCertificates interface{}
+	// A reference to the RegionUrlMap resource that defines the mapping from URL to the RegionBackendService.
 	UrlMap interface{}
 }

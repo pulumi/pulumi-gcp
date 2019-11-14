@@ -81,26 +81,38 @@ func (r *Metric) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket
+// boundaries used to create a histogram of the extracted values.
 func (r *Metric) BucketOptions() *pulumi.Output {
 	return r.s.State["bucketOptions"]
 }
 
+// A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
 func (r *Metric) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+// entries.
 func (r *Metric) Filter() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filter"])
 }
 
+// A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign
+// as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this
+// map. The syntax of the extractor expression is the same as for the valueExtractor field.
 func (r *Metric) LabelExtractors() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labelExtractors"])
 }
 
+// The metric descriptor associated with the logs-based metric.
 func (r *Metric) MetricDescriptor() *pulumi.Output {
 	return r.s.State["metricDescriptor"]
 }
 
+// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
+// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The
+// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
 func (r *Metric) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -109,30 +121,72 @@ func (r *Metric) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+// are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+// using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from
+// the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error
+// to specify a regex that does not include exactly one capture group.
 func (r *Metric) ValueExtractor() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["valueExtractor"])
 }
 
 // Input properties used for looking up and filtering Metric resources.
 type MetricState struct {
+	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the
+	// bucket boundaries used to create a histogram of the extracted values.
 	BucketOptions interface{}
+	// A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
 	Description interface{}
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+	// entries.
 	Filter interface{}
+	// A map from a label key string to an extractor expression which is used to extract data from a log entry field and
+	// assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression
+	// in this map. The syntax of the extractor expression is the same as for the valueExtractor field.
 	LabelExtractors interface{}
+	// The metric descriptor associated with the logs-based metric.
 	MetricDescriptor interface{}
+	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to
+	// 100 characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING).
+	// The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
 	Name interface{}
 	Project interface{}
+	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+	// are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+	// using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data
+	// from the specified log entry field. The value of the field is converted to a string before applying the regex. It is an
+	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor interface{}
 }
 
 // The set of arguments for constructing a Metric resource.
 type MetricArgs struct {
+	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the
+	// bucket boundaries used to create a histogram of the extracted values.
 	BucketOptions interface{}
+	// A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
 	Description interface{}
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+	// entries.
 	Filter interface{}
+	// A map from a label key string to an extractor expression which is used to extract data from a log entry field and
+	// assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression
+	// in this map. The syntax of the extractor expression is the same as for the valueExtractor field.
 	LabelExtractors interface{}
+	// The metric descriptor associated with the logs-based metric.
 	MetricDescriptor interface{}
+	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to
+	// 100 characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING).
+	// The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
 	Name interface{}
 	Project interface{}
+	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+	// are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+	// using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data
+	// from the specified log entry field. The value of the field is converted to a string before applying the regex. It is an
+	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor interface{}
 }

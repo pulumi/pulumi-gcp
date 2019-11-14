@@ -78,26 +78,34 @@ func (r *NodeTemplate) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *NodeTemplate) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional textual description of the resource.
 func (r *NodeTemplate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource.
 func (r *NodeTemplate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// Labels to use for node affinity, which will be used in instance scheduling.
 func (r *NodeTemplate) NodeAffinityLabels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["nodeAffinityLabels"])
 }
 
+// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+// be specified.
 func (r *NodeTemplate) NodeType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["nodeType"])
 }
 
+// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
 func (r *NodeTemplate) NodeTypeFlexibility() *pulumi.Output {
 	return r.s.State["nodeTypeFlexibility"]
 }
@@ -108,6 +116,7 @@ func (r *NodeTemplate) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
 func (r *NodeTemplate) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -117,37 +126,60 @@ func (r *NodeTemplate) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+// maintenance event.
 func (r *NodeTemplate) ServerBinding() *pulumi.Output {
 	return r.s.State["serverBinding"]
 }
 
 // Input properties used for looking up and filtering NodeTemplate resources.
 type NodeTemplateState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional textual description of the resource.
 	Description interface{}
+	// Name of the resource.
 	Name interface{}
+	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels interface{}
+	// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+	// be specified.
 	NodeType interface{}
+	// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+	// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
 	NodeTypeFlexibility interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+	// maintenance event.
 	ServerBinding interface{}
 }
 
 // The set of arguments for constructing a NodeTemplate resource.
 type NodeTemplateArgs struct {
+	// An optional textual description of the resource.
 	Description interface{}
+	// Name of the resource.
 	Name interface{}
+	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels interface{}
+	// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+	// be specified.
 	NodeType interface{}
+	// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+	// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
 	NodeTypeFlexibility interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
 	Region interface{}
+	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+	// maintenance event.
 	ServerBinding interface{}
 }

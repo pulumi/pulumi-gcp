@@ -76,26 +76,37 @@ func (r *ManagedSslCertificate) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The unique identifier for the resource.
 func (r *ManagedSslCertificate) CertificateId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *ManagedSslCertificate) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *ManagedSslCertificate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Expire time of the certificate.
 func (r *ManagedSslCertificate) ExpireTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expireTime"])
 }
 
+// Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+// of 'MANAGED' in 'type').
 func (r *ManagedSslCertificate) Managed() *pulumi.Output {
 	return r.s.State["managed"]
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+// namespace as the managed SSL certificates.
 func (r *ManagedSslCertificate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -111,39 +122,64 @@ func (r *ManagedSslCertificate) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// Domains associated with the certificate via Subject Alternative Name.
 func (r *ManagedSslCertificate) SubjectAlternativeNames() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["subjectAlternativeNames"])
 }
 
+// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
 func (r *ManagedSslCertificate) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering ManagedSslCertificate resources.
 type ManagedSslCertificateState struct {
+	// The unique identifier for the resource.
 	CertificateId interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Expire time of the certificate.
 	ExpireTime interface{}
+	// Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+	// of 'MANAGED' in 'type').
 	Managed interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+	// namespace as the managed SSL certificates.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames interface{}
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
 	Type interface{}
 }
 
 // The set of arguments for constructing a ManagedSslCertificate resource.
 type ManagedSslCertificateArgs struct {
+	// The unique identifier for the resource.
 	CertificateId interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+	// of 'MANAGED' in 'type').
 	Managed interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+	// namespace as the managed SSL certificates.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
 	Type interface{}
 }

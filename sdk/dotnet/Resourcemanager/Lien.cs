@@ -14,21 +14,45 @@ namespace Pulumi.Gcp.Resourcemanager
     /// </summary>
     public partial class Lien : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Time of creation
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// A system-generated unique identifier for this Lien.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected
+        /// programmatically. Maximum length of 200 characters.
+        /// </summary>
         [Output("origin")]
         public Output<string> Origin { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to the resource this Lien is attached to. The server will validate the parent against those for
+        /// which Liens are supported. Since a variety of objects can have Liens against them, you must provide the type
+        /// prefix (e.g. "projects/my-project-name").
+        /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of
+        /// 200 characters.
+        /// </summary>
         [Output("reason")]
         public Output<string> Reason { get; private set; } = null!;
 
+        /// <summary>
+        /// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an
+        /// IAM permission. The server will validate the permissions against those for which Liens are supported. An
+        /// empty list is meaningless and will be rejected. e.g. ['resourcemanager.projects.delete']
+        /// </summary>
         [Output("restrictions")]
         public Output<ImmutableArray<string>> Restrictions { get; private set; } = null!;
 
@@ -78,17 +102,36 @@ namespace Pulumi.Gcp.Resourcemanager
 
     public sealed class LienArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected
+        /// programmatically. Maximum length of 200 characters.
+        /// </summary>
         [Input("origin", required: true)]
         public Input<string> Origin { get; set; } = null!;
 
+        /// <summary>
+        /// A reference to the resource this Lien is attached to. The server will validate the parent against those for
+        /// which Liens are supported. Since a variety of objects can have Liens against them, you must provide the type
+        /// prefix (e.g. "projects/my-project-name").
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of
+        /// 200 characters.
+        /// </summary>
         [Input("reason", required: true)]
         public Input<string> Reason { get; set; } = null!;
 
         [Input("restrictions", required: true)]
         private InputList<string>? _restrictions;
+
+        /// <summary>
+        /// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an
+        /// IAM permission. The server will validate the permissions against those for which Liens are supported. An
+        /// empty list is meaningless and will be rejected. e.g. ['resourcemanager.projects.delete']
+        /// </summary>
         public InputList<string> Restrictions
         {
             get => _restrictions ?? (_restrictions = new InputList<string>());
@@ -102,23 +145,48 @@ namespace Pulumi.Gcp.Resourcemanager
 
     public sealed class LienState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time of creation
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// A system-generated unique identifier for this Lien.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected
+        /// programmatically. Maximum length of 200 characters.
+        /// </summary>
         [Input("origin")]
         public Input<string>? Origin { get; set; }
 
+        /// <summary>
+        /// A reference to the resource this Lien is attached to. The server will validate the parent against those for
+        /// which Liens are supported. Since a variety of objects can have Liens against them, you must provide the type
+        /// prefix (e.g. "projects/my-project-name").
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of
+        /// 200 characters.
+        /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
         [Input("restrictions")]
         private InputList<string>? _restrictions;
+
+        /// <summary>
+        /// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an
+        /// IAM permission. The server will validate the permissions against those for which Liens are supported. An
+        /// empty list is meaningless and will be rejected. e.g. ['resourcemanager.projects.delete']
+        /// </summary>
         public InputList<string> Restrictions
         {
             get => _restrictions ?? (_restrictions = new InputList<string>());

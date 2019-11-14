@@ -60,6 +60,7 @@ func (r *Repository) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
 func (r *Repository) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -70,26 +71,32 @@ func (r *Repository) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The disk usage of the repo, in bytes.
 func (r *Repository) Size() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["size"])
 }
 
+// URL to clone the repository from Google Cloud Source Repositories.
 func (r *Repository) Url() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering Repository resources.
 type RepositoryState struct {
+	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The disk usage of the repo, in bytes.
 	Size interface{}
+	// URL to clone the repository from Google Cloud Source Repositories.
 	Url interface{}
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

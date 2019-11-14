@@ -461,8 +461,8 @@ func (r *Cluster) PodSecurityPolicyConfig() *pulumi.Output {
 	return r.s.State["podSecurityPolicyConfig"]
 }
 
-// A set of options for creating
-// a private cluster. Structure is documented below.
+// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+// clusters with private nodes. Structure is documented below.
 func (r *Cluster) PrivateClusterConfig() *pulumi.Output {
 	return r.s.State["privateClusterConfig"]
 }
@@ -711,8 +711,8 @@ type ClusterState struct {
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig interface{}
-	// A set of options for creating
-	// a private cluster. Structure is documented below.
+	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -915,8 +915,8 @@ type ClusterArgs struct {
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig interface{}
-	// A set of options for creating
-	// a private cluster. Structure is documented below.
+	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig interface{}
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

@@ -34,19 +34,56 @@ export class DataTransferConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataTransferConfig.__pulumiType;
     }
 
+    /**
+     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
+     * if the data source supports the feature. Set the value to 0 to use the default value.
+     */
     public readonly dataRefreshWindowDays!: pulumi.Output<number | undefined>;
+    /**
+     * The data source id. Cannot be changed once the transfer config is created.
+     */
     public readonly dataSourceId!: pulumi.Output<string>;
+    /**
+     * The BigQuery target dataset id.
+     */
     public readonly destinationDatasetId!: pulumi.Output<string>;
+    /**
+     * When set to true, no runs are scheduled for a given transfer.
+     */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The user specified display name for the transfer config.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
+     * value is US.
+     */
     public readonly location!: pulumi.Output<string | undefined>;
+    /**
+     * The resource name of the transfer config. Transfer config names have the form
+     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is
+     * not required. The name is ignored when creating a transfer config.
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * These parameters are specific to each data source.
+     */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
+     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
+     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
+     * explanation about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
+     * granularity should be at least 8 hours, or less frequent.
+     */
     public readonly schedule!: pulumi.Output<string | undefined>;
 
     /**
@@ -111,19 +148,56 @@ export class DataTransferConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DataTransferConfig resources.
  */
 export interface DataTransferConfigState {
+    /**
+     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
+     * if the data source supports the feature. Set the value to 0 to use the default value.
+     */
     readonly dataRefreshWindowDays?: pulumi.Input<number>;
+    /**
+     * The data source id. Cannot be changed once the transfer config is created.
+     */
     readonly dataSourceId?: pulumi.Input<string>;
+    /**
+     * The BigQuery target dataset id.
+     */
     readonly destinationDatasetId?: pulumi.Input<string>;
+    /**
+     * When set to true, no runs are scheduled for a given transfer.
+     */
     readonly disabled?: pulumi.Input<boolean>;
+    /**
+     * The user specified display name for the transfer config.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
+     * value is US.
+     */
     readonly location?: pulumi.Input<string>;
+    /**
+     * The resource name of the transfer config. Transfer config names have the form
+     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is
+     * not required. The name is ignored when creating a transfer config.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * These parameters are specific to each data source.
+     */
     readonly params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
+     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
+     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
+     * explanation about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
+     * granularity should be at least 8 hours, or less frequent.
+     */
     readonly schedule?: pulumi.Input<string>;
 }
 
@@ -131,17 +205,49 @@ export interface DataTransferConfigState {
  * The set of arguments for constructing a DataTransferConfig resource.
  */
 export interface DataTransferConfigArgs {
+    /**
+     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
+     * if the data source supports the feature. Set the value to 0 to use the default value.
+     */
     readonly dataRefreshWindowDays?: pulumi.Input<number>;
+    /**
+     * The data source id. Cannot be changed once the transfer config is created.
+     */
     readonly dataSourceId: pulumi.Input<string>;
+    /**
+     * The BigQuery target dataset id.
+     */
     readonly destinationDatasetId: pulumi.Input<string>;
+    /**
+     * When set to true, no runs are scheduled for a given transfer.
+     */
     readonly disabled?: pulumi.Input<boolean>;
+    /**
+     * The user specified display name for the transfer config.
+     */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
+     * value is US.
+     */
     readonly location?: pulumi.Input<string>;
+    /**
+     * These parameters are specific to each data source.
+     */
     readonly params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
+     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
+     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
+     * explanation about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
+     * granularity should be at least 8 hours, or less frequent.
+     */
     readonly schedule?: pulumi.Input<string>;
 }

@@ -66,10 +66,12 @@ func (r *DiskResourcePolicyAttachment) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The name of the disk in which the resource policies are attached to.
 func (r *DiskResourcePolicyAttachment) Disk() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["disk"])
 }
 
+// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
 func (r *DiskResourcePolicyAttachment) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -80,26 +82,33 @@ func (r *DiskResourcePolicyAttachment) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// A reference to the zone where the disk resides.
 func (r *DiskResourcePolicyAttachment) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.
 type DiskResourcePolicyAttachmentState struct {
+	// The name of the disk in which the resource policies are attached to.
 	Disk interface{}
+	// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// A reference to the zone where the disk resides.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a DiskResourcePolicyAttachment resource.
 type DiskResourcePolicyAttachmentArgs struct {
+	// The name of the disk in which the resource policies are attached to.
 	Disk interface{}
+	// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// A reference to the zone where the disk resides.
 	Zone interface{}
 }

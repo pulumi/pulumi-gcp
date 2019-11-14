@@ -36,18 +36,46 @@ export class Reservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Reservation.__pulumiType;
     }
 
+    /**
+     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     */
     public /*out*/ readonly commitment!: pulumi.Output<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Reservation for instances with specific machine shapes.
+     */
     public readonly specificReservation!: pulumi.Output<outputs.compute.ReservationSpecificReservation>;
+    /**
+     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+     * consumed by VMs with affinity for any reservation. Defaults to false.
+     */
     public readonly specificReservationRequired!: pulumi.Output<boolean | undefined>;
+    /**
+     * The status of the reservation.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The zone where the reservation is made.
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -106,18 +134,46 @@ export class Reservation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Reservation resources.
  */
 export interface ReservationState {
+    /**
+     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     */
     readonly commitment?: pulumi.Input<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * Reservation for instances with specific machine shapes.
+     */
     readonly specificReservation?: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
+    /**
+     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+     * consumed by VMs with affinity for any reservation. Defaults to false.
+     */
     readonly specificReservationRequired?: pulumi.Input<boolean>;
+    /**
+     * The status of the reservation.
+     */
     readonly status?: pulumi.Input<string>;
+    /**
+     * The zone where the reservation is made.
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -125,10 +181,29 @@ export interface ReservationState {
  * The set of arguments for constructing a Reservation resource.
  */
 export interface ReservationArgs {
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * Reservation for instances with specific machine shapes.
+     */
     readonly specificReservation: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
+    /**
+     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+     * consumed by VMs with affinity for any reservation. Defaults to false.
+     */
     readonly specificReservationRequired?: pulumi.Input<boolean>;
+    /**
+     * The zone where the reservation is made.
+     */
     readonly zone: pulumi.Input<string>;
 }

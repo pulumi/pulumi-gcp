@@ -36,28 +36,74 @@ export class RegionHealthCheck extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionHealthCheck.__pulumiType;
     }
 
+    /**
+     * How often (in seconds) to send a health check. The default value is 5 seconds.
+     */
     public readonly checkIntervalSec!: pulumi.Output<number | undefined>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+     */
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * A nested object resource
+     */
     public readonly http2HealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttp2HealthCheck | undefined>;
+    /**
+     * A nested object resource
+     */
     public readonly httpHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttpHealthCheck | undefined>;
+    /**
+     * A nested object resource
+     */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttpsHealthCheck | undefined>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The Region in which the created health check should reside. If it is not provided, the provider region is used.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * A nested object resource
+     */
     public readonly sslHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckSslHealthCheck | undefined>;
+    /**
+     * A nested object resource
+     */
     public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckTcpHealthCheck | undefined>;
+    /**
+     * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec
+     * to have greater value than checkIntervalSec.
+     */
     public readonly timeoutSec!: pulumi.Output<number | undefined>;
+    /**
+     * The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+     */
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
 
     /**
@@ -122,28 +168,74 @@ export class RegionHealthCheck extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionHealthCheck resources.
  */
 export interface RegionHealthCheckState {
+    /**
+     * How often (in seconds) to send a health check. The default value is 5 seconds.
+     */
     readonly checkIntervalSec?: pulumi.Input<number>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+     */
     readonly healthyThreshold?: pulumi.Input<number>;
+    /**
+     * A nested object resource
+     */
     readonly http2HealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttp2HealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpHealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The Region in which the created health check should reside. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * A nested object resource
+     */
     readonly sslHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckSslHealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly tcpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckTcpHealthCheck>;
+    /**
+     * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec
+     * to have greater value than checkIntervalSec.
+     */
     readonly timeoutSec?: pulumi.Input<number>;
+    /**
+     * The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
+     */
     readonly type?: pulumi.Input<string>;
+    /**
+     * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+     */
     readonly unhealthyThreshold?: pulumi.Input<number>;
 }
 
@@ -151,21 +243,61 @@ export interface RegionHealthCheckState {
  * The set of arguments for constructing a RegionHealthCheck resource.
  */
 export interface RegionHealthCheckArgs {
+    /**
+     * How often (in seconds) to send a health check. The default value is 5 seconds.
+     */
     readonly checkIntervalSec?: pulumi.Input<number>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+     */
     readonly healthyThreshold?: pulumi.Input<number>;
+    /**
+     * A nested object resource
+     */
     readonly http2HealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttp2HealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpHealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The Region in which the created health check should reside. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A nested object resource
+     */
     readonly sslHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckSslHealthCheck>;
+    /**
+     * A nested object resource
+     */
     readonly tcpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckTcpHealthCheck>;
+    /**
+     * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec
+     * to have greater value than checkIntervalSec.
+     */
     readonly timeoutSec?: pulumi.Input<number>;
+    /**
+     * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+     */
     readonly unhealthyThreshold?: pulumi.Input<number>;
 }

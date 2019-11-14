@@ -36,19 +36,49 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
+    /**
+     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+     * instance
+     */
     public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
+    /**
+     * A human-readable description for the job. This string must not contain more than 500 characters.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     */
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
+    /**
+     * The name of the job.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     */
     public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
+    /**
+     * Region where the scheduler job resides
+     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
+     * handler, then it will be retried with exponential backoff according to the settings
+     */
     public readonly retryConfig!: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
+    /**
+     * Describes the schedule on which the job will be executed.
+     */
     public readonly schedule!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
+     * the tz database.
+     */
     public readonly timeZone!: pulumi.Output<string | undefined>;
 
     /**
@@ -101,19 +131,49 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
+    /**
+     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+     * instance
+     */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
+    /**
+     * A human-readable description for the job. This string must not contain more than 500 characters.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
+    /**
+     * The name of the job.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
+    /**
+     * Region where the scheduler job resides
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
+     * handler, then it will be retried with exponential backoff according to the settings
+     */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
+    /**
+     * Describes the schedule on which the job will be executed.
+     */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
+     * the tz database.
+     */
     readonly timeZone?: pulumi.Input<string>;
 }
 
@@ -121,18 +181,48 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+     * instance
+     */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
+    /**
+     * A human-readable description for the job. This string must not contain more than 500 characters.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
+    /**
+     * The name of the job.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
+    /**
+     * Region where the scheduler job resides
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
+     * handler, then it will be retried with exponential backoff according to the settings
+     */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
+    /**
+     * Describes the schedule on which the job will be executed.
+     */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
+     * the tz database.
+     */
     readonly timeZone?: pulumi.Input<string>;
 }

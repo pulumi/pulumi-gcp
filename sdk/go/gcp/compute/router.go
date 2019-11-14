@@ -76,22 +76,30 @@ func (r *Router) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// BGP information specific to this router.
 func (r *Router) Bgp() *pulumi.Output {
 	return r.s.State["bgp"]
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *Router) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *Router) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (r *Router) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// A reference to the network to which this router belongs.
 func (r *Router) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
@@ -102,6 +110,7 @@ func (r *Router) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Region where the router resides.
 func (r *Router) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -113,14 +122,23 @@ func (r *Router) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Router resources.
 type RouterState struct {
+	// BGP information specific to this router.
 	Bgp interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
+	// A reference to the network to which this router belongs.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where the router resides.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -128,12 +146,20 @@ type RouterState struct {
 
 // The set of arguments for constructing a Router resource.
 type RouterArgs struct {
+	// BGP information specific to this router.
 	Bgp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
+	// A reference to the network to which this router belongs.
 	Network interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Region where the router resides.
 	Region interface{}
 }

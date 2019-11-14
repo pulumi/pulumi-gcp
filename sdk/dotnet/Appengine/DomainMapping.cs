@@ -12,12 +12,22 @@ namespace Pulumi.Gcp.Appengine
     /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
+        /// <summary>
+        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+        /// rejected.
+        /// </summary>
         [Output("overrideStrategy")]
         public Output<string?> OverrideStrategy { get; private set; } = null!;
 
@@ -28,9 +38,16 @@ namespace Pulumi.Gcp.Appengine
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's
+        /// DNS configuration in order to serve the application via this domain mapping.
+        /// </summary>
         [Output("resourceRecords")]
         public Output<ImmutableArray<Outputs.DomainMappingResourceRecords>> ResourceRecords { get; private set; } = null!;
 
+        /// <summary>
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// </summary>
         [Output("sslSettings")]
         public Output<Outputs.DomainMappingSslSettings?> SslSettings { get; private set; } = null!;
 
@@ -80,9 +97,16 @@ namespace Pulumi.Gcp.Appengine
 
     public sealed class DomainMappingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+        /// rejected.
+        /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
 
@@ -93,6 +117,9 @@ namespace Pulumi.Gcp.Appengine
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// </summary>
         [Input("sslSettings")]
         public Input<Inputs.DomainMappingSslSettingsArgs>? SslSettings { get; set; }
 
@@ -103,12 +130,22 @@ namespace Pulumi.Gcp.Appengine
 
     public sealed class DomainMappingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
+        /// <summary>
+        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+        /// rejected.
+        /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
 
@@ -121,12 +158,20 @@ namespace Pulumi.Gcp.Appengine
 
         [Input("resourceRecords")]
         private InputList<Inputs.DomainMappingResourceRecordsGetArgs>? _resourceRecords;
+
+        /// <summary>
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's
+        /// DNS configuration in order to serve the application via this domain mapping.
+        /// </summary>
         public InputList<Inputs.DomainMappingResourceRecordsGetArgs> ResourceRecords
         {
             get => _resourceRecords ?? (_resourceRecords = new InputList<Inputs.DomainMappingResourceRecordsGetArgs>());
             set => _resourceRecords = value;
         }
 
+        /// <summary>
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// </summary>
         [Input("sslSettings")]
         public Input<Inputs.DomainMappingSslSettingsGetArgs>? SslSettings { get; set; }
 

@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Sourcerepo
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
+        /// 'name/with/slash'
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -22,9 +26,15 @@ namespace Pulumi.Gcp.Sourcerepo
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The disk usage of the repo, in bytes.
+        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
+        /// <summary>
+        /// URL to clone the repository from Google Cloud Source Repositories.
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -74,6 +84,10 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
+        /// 'name/with/slash'
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -91,6 +105,10 @@ namespace Pulumi.Gcp.Sourcerepo
 
     public sealed class RepositoryState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
+        /// 'name/with/slash'
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -101,9 +119,15 @@ namespace Pulumi.Gcp.Sourcerepo
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The disk usage of the repo, in bytes.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
+        /// <summary>
+        /// URL to clone the repository from Google Cloud Source Repositories.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

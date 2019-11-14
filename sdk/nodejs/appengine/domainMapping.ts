@@ -36,15 +36,32 @@ export class DomainMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === DomainMapping.__pulumiType;
     }
 
+    /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
     public readonly domainName!: pulumi.Output<string>;
+    /**
+     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+     * rejected.
+     */
     public readonly overrideStrategy!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+     * configuration in order to serve the application via this domain mapping.
+     */
     public /*out*/ readonly resourceRecords!: pulumi.Output<outputs.appengine.DomainMappingResourceRecord[]>;
+    /**
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     */
     public readonly sslSettings!: pulumi.Output<outputs.appengine.DomainMappingSslSettings | undefined>;
 
     /**
@@ -92,15 +109,32 @@ export class DomainMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainMapping resources.
  */
 export interface DomainMappingState {
+    /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
     readonly domainName?: pulumi.Input<string>;
+    /**
+     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+     * rejected.
+     */
     readonly overrideStrategy?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+     * configuration in order to serve the application via this domain mapping.
+     */
     readonly resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.DomainMappingResourceRecord>[]>;
+    /**
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     */
     readonly sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
 }
 
@@ -108,12 +142,22 @@ export interface DomainMappingState {
  * The set of arguments for constructing a DomainMapping resource.
  */
 export interface DomainMappingArgs {
+    /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
     readonly domainName: pulumi.Input<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are
+     * rejected.
+     */
     readonly overrideStrategy?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     */
     readonly sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
 }

@@ -7,60 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for GCE instance. Each of these resources serves a different use case:
- * 
- * * `gcp.compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
- * * `gcp.compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
- * * `gcp.compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
- * 
- * > **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
- * 
- * > **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * ## google\_compute\_instance\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/compute.osLogin",
- *     }],
- * });
- * const instance = new gcp.compute.InstanceIAMPolicy("instance", {
- *     instanceName: "your-instance-name",
- *     policyData: admin.policyData,
- * });
- * ```
- * 
- * ## google\_compute\_instance\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instance = new gcp.compute.InstanceIAMBinding("instance", {
- *     instanceName: "your-instance-name",
- *     members: ["user:jane@example.com"],
- *     role: "roles/compute.osLogin",
- * });
- * ```
- * 
- * ## google\_compute\_instance\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instance = new gcp.compute.InstanceIAMMember("instance", {
- *     instanceName: "your-instance-name",
- *     member: "user:jane@example.com",
- *     role: "roles/compute.osLogin",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_binding.html.markdown.
  */
 export class InstanceIAMBinding extends pulumi.CustomResource {
@@ -92,17 +38,17 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
 
     public readonly condition!: pulumi.Output<outputs.compute.InstanceIAMBindingCondition | undefined>;
     /**
-     * (Computed) The etag of the instance's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The name of the instance.
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly instanceName!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -112,8 +58,9 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The zone of the instance. If
-     * unspecified, this defaults to the zone configured in the provider.
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -172,17 +119,17 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
 export interface InstanceIAMBindingState {
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
-     * (Computed) The etag of the instance's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * The name of the instance.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly instanceName?: pulumi.Input<string>;
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -192,8 +139,9 @@ export interface InstanceIAMBindingState {
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The zone of the instance. If
-     * unspecified, this defaults to the zone configured in the provider.
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
      */
     readonly zone?: pulumi.Input<string>;
 }
@@ -204,13 +152,13 @@ export interface InstanceIAMBindingState {
 export interface InstanceIAMBindingArgs {
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
-     * The name of the instance.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly instanceName: pulumi.Input<string>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -220,8 +168,9 @@ export interface InstanceIAMBindingArgs {
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The zone of the instance. If
-     * unspecified, this defaults to the zone configured in the provider.
+     * A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+     * zone is specified, it is taken from the provider configuration.
      */
     readonly zone?: pulumi.Input<string>;
 }

@@ -84,38 +84,60 @@ func (r *BucketAccessControl) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The name of the bucket.
 func (r *BucketAccessControl) Bucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucket"])
 }
 
+// The domain associated with the entity.
 func (r *BucketAccessControl) Domain() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["domain"])
 }
 
+// The email address associated with the entity.
 func (r *BucketAccessControl) Email() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["email"])
 }
 
+// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
 func (r *BucketAccessControl) Entity() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["entity"])
 }
 
+// The access permission for the entity.
 func (r *BucketAccessControl) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering BucketAccessControl resources.
 type BucketAccessControlState struct {
+	// The name of the bucket.
 	Bucket interface{}
+	// The domain associated with the entity.
 	Domain interface{}
+	// The email address associated with the entity.
 	Email interface{}
+	// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+	// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+	// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+	// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
 	Entity interface{}
+	// The access permission for the entity.
 	Role interface{}
 }
 
 // The set of arguments for constructing a BucketAccessControl resource.
 type BucketAccessControlArgs struct {
+	// The name of the bucket.
 	Bucket interface{}
+	// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+	// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+	// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+	// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
 	Entity interface{}
+	// The access permission for the entity.
 	Role interface{}
 }

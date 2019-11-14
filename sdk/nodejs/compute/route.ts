@@ -36,12 +36,47 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+     */
     public readonly destRange!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The network that this route applies to.
+     */
     public readonly network!: pulumi.Output<string>;
+    /**
+     * URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a
+     * full or partial valid URL: *
+     * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
+     * 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The
+     * string 'default-internet-gateway'.
+     */
     public readonly nextHopGateway!: pulumi.Output<string | undefined>;
+    /**
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
+     * specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
+     * (non-RFC 1918) IP CIDR range.
+     */
     public readonly nextHopIlb!: pulumi.Output<string | undefined>;
+    /**
+     * URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
+     * 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with
+     * the zone in 'next_hop_instance_zone'.
+     */
     public readonly nextHopInstance!: pulumi.Output<string | undefined>;
     /**
      * (Optional when `nextHopInstance` is
@@ -50,9 +85,23 @@ export class Route extends pulumi.CustomResource {
      * a URL.
      */
     public readonly nextHopInstanceZone!: pulumi.Output<string | undefined>;
+    /**
+     * Network IP address of an instance that should handle matching packets.
+     */
     public readonly nextHopIp!: pulumi.Output<string>;
+    /**
+     * URL to a Network that should handle matching packets.
+     */
     public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
+    /**
+     * URL to a VpnTunnel that should handle matching packets.
+     */
     public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
+    /**
+     * The priority of this route. Priority is used to break ties in cases where there is more than one matching route of
+     * equal prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority
+     * value wins. Default value is 1000. Valid range is 0 through 65535.
+     */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
@@ -63,6 +112,9 @@ export class Route extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * A list of instance tags to which this route applies.
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -131,12 +183,47 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+     */
     readonly destRange?: pulumi.Input<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The network that this route applies to.
+     */
     readonly network?: pulumi.Input<string>;
+    /**
+     * URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a
+     * full or partial valid URL: *
+     * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
+     * 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The
+     * string 'default-internet-gateway'.
+     */
     readonly nextHopGateway?: pulumi.Input<string>;
+    /**
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
+     * specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
+     * (non-RFC 1918) IP CIDR range.
+     */
     readonly nextHopIlb?: pulumi.Input<string>;
+    /**
+     * URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
+     * 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with
+     * the zone in 'next_hop_instance_zone'.
+     */
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
      * (Optional when `nextHopInstance` is
@@ -145,9 +232,23 @@ export interface RouteState {
      * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
+    /**
+     * Network IP address of an instance that should handle matching packets.
+     */
     readonly nextHopIp?: pulumi.Input<string>;
+    /**
+     * URL to a Network that should handle matching packets.
+     */
     readonly nextHopNetwork?: pulumi.Input<string>;
+    /**
+     * URL to a VpnTunnel that should handle matching packets.
+     */
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
+    /**
+     * The priority of this route. Priority is used to break ties in cases where there is more than one matching route of
+     * equal prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority
+     * value wins. Default value is 1000. Valid range is 0 through 65535.
+     */
     readonly priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
@@ -158,6 +259,9 @@ export interface RouteState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * A list of instance tags to which this route applies.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -165,12 +269,47 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+     */
     readonly destRange: pulumi.Input<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The network that this route applies to.
+     */
     readonly network: pulumi.Input<string>;
+    /**
+     * URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a
+     * full or partial valid URL: *
+     * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
+     * 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The
+     * string 'default-internet-gateway'.
+     */
     readonly nextHopGateway?: pulumi.Input<string>;
+    /**
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
+     * specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
+     * (non-RFC 1918) IP CIDR range.
+     */
     readonly nextHopIlb?: pulumi.Input<string>;
+    /**
+     * URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
+     * 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with
+     * the zone in 'next_hop_instance_zone'.
+     */
     readonly nextHopInstance?: pulumi.Input<string>;
     /**
      * (Optional when `nextHopInstance` is
@@ -179,13 +318,27 @@ export interface RouteArgs {
      * a URL.
      */
     readonly nextHopInstanceZone?: pulumi.Input<string>;
+    /**
+     * Network IP address of an instance that should handle matching packets.
+     */
     readonly nextHopIp?: pulumi.Input<string>;
+    /**
+     * URL to a VpnTunnel that should handle matching packets.
+     */
     readonly nextHopVpnTunnel?: pulumi.Input<string>;
+    /**
+     * The priority of this route. Priority is used to break ties in cases where there is more than one matching route of
+     * equal prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority
+     * value wins. Default value is 1000. Valid range is 0 through 65535.
+     */
     readonly priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of instance tags to which this route applies.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -75,6 +75,9 @@ func (r *Network) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
+// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
+// mode" so the user can explicitly connect subnetwork resources.
 func (r *Network) AutoCreateSubnetworks() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoCreateSubnetworks"])
 }
@@ -85,18 +88,28 @@ func (r *Network) DeleteDefaultRoutesOnCreate() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["deleteDefaultRoutesOnCreate"])
 }
 
+// An optional description of this resource. The resource must be recreated to modify this field.
 func (r *Network) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// The gateway address for default routing out of the network. This value is selected by GCP.
 func (r *Network) GatewayIpv4() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["gatewayIpv4"])
 }
 
+// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
+// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
+// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
+// '192.168.0.0/16'. The resource must be recreated to modify this field.
 func (r *Network) Ipv4Range() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipv4Range"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *Network) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -107,6 +120,9 @@ func (r *Network) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes with
+// subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers will
+// advertise routes with all subnetworks of this network, across regions.
 func (r *Network) RoutingMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["routingMode"])
 }
@@ -118,17 +134,33 @@ func (r *Network) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Network resources.
 type NetworkState struct {
+	// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
+	// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
+	// mode" so the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks interface{}
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate interface{}
+	// An optional description of this resource. The resource must be recreated to modify this field.
 	Description interface{}
+	// The gateway address for default routing out of the network. This value is selected by GCP.
 	GatewayIpv4 interface{}
+	// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
+	// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
+	// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
+	// '192.168.0.0/16'. The resource must be recreated to modify this field.
 	Ipv4Range interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes
+	// with subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers
+	// will advertise routes with all subnetworks of this network, across regions.
 	RoutingMode interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -136,15 +168,30 @@ type NetworkState struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
+	// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
+	// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
+	// mode" so the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks interface{}
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate interface{}
+	// An optional description of this resource. The resource must be recreated to modify this field.
 	Description interface{}
+	// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
+	// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
+	// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
+	// '192.168.0.0/16'. The resource must be recreated to modify this field.
 	Ipv4Range interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes
+	// with subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers
+	// will advertise routes with all subnetworks of this network, across regions.
 	RoutingMode interface{}
 }

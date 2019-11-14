@@ -26,18 +26,37 @@ namespace Pulumi.Gcp.Storage
     /// </summary>
     public partial class BucketAccessControl : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain associated with the entity.
+        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
+        /// <summary>
+        /// The email address associated with the entity.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
+        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
+        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
+        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
+        /// the entity would be domain-example.com.
+        /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
@@ -87,12 +106,25 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketAccessControlArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
+        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
+        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
+        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
+        /// the entity would be domain-example.com.
+        /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
@@ -103,18 +135,37 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketAccessControlState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        /// <summary>
+        /// The domain associated with the entity.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// The email address associated with the entity.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
+        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
+        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
+        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
+        /// the entity would be domain-example.com.
+        /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

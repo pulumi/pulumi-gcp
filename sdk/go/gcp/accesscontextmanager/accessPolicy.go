@@ -82,37 +82,49 @@ func (r *AccessPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Time the AccessPolicy was created in UTC.
 func (r *AccessPolicy) CreateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["createTime"])
 }
 
+// Resource name of the AccessPolicy. Format: {policy_id}
 func (r *AccessPolicy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
 func (r *AccessPolicy) Parent() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["parent"])
 }
 
+// Human readable title. Does not affect behavior.
 func (r *AccessPolicy) Title() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["title"])
 }
 
+// Time the AccessPolicy was updated in UTC.
 func (r *AccessPolicy) UpdateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type AccessPolicyState struct {
+	// Time the AccessPolicy was created in UTC.
 	CreateTime interface{}
+	// Resource name of the AccessPolicy. Format: {policy_id}
 	Name interface{}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
 	Parent interface{}
+	// Human readable title. Does not affect behavior.
 	Title interface{}
+	// Time the AccessPolicy was updated in UTC.
 	UpdateTime interface{}
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
 	Parent interface{}
+	// Human readable title. Does not affect behavior.
 	Title interface{}
 }

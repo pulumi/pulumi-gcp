@@ -15,6 +15,13 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
     Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
     """
     condition: pulumi.Output[dict]
+    """
+    <elided>
+    
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the IAM policy.

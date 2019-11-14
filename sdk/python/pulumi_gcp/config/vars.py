@@ -53,6 +53,8 @@ container_custom_endpoint = __config__.get('containerCustomEndpoint')
 
 credentials = __config__.get('credentials') or utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
 
+data_fusion_custom_endpoint = __config__.get('dataFusionCustomEndpoint')
+
 dataflow_custom_endpoint = __config__.get('dataflowCustomEndpoint')
 
 dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')

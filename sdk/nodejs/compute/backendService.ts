@@ -36,37 +36,137 @@ export class BackendService extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackendService.__pulumiType;
     }
 
+    /**
+     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
+     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * When the load balancing scheme is INTERNAL, this field is not used.
+     */
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
+    /**
+     * The set of backends that serve this BackendService.
+     */
     public readonly backends!: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
+    /**
+     * Cloud CDN configuration for this BackendService.
+     */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
+    /**
+     * Settings controlling the volume of connections to a backend service. This field is applicable only when the
+     * load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
+    /**
+     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
+     * Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+     * other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+     * destination host will be lost when one or more hosts are added/removed from the destination service. This field
+     * specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
+     * INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+     */
     public readonly consistentHash!: pulumi.Output<outputs.compute.BackendServiceConsistentHash | undefined>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied requests.
+     */
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
+    /**
+     * An optional description of this resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * If true, enable Cloud CDN for this BackendService.
+     */
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
+     * locking.
+     */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
+     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
+     * URL to a HealthCheck resource must be specified instead.
+     */
     public readonly healthChecks!: pulumi.Output<string>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
     public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap | undefined>;
+    /**
+     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
+     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
+     * for a global backend service. Defaults to 'EXTERNAL'.
+     */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    /**
+     * The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is
+     * a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm
+     * which selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The
+     * ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the
+     * addition/removal of a host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer
+     * selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected based on the client connection
+     * metadata, i.e., connections are opened to the same address as the destination address of the incoming connection
+     * before the connection was redirected to the load balancer. MAGLEV - used as a drop in replacement for the ring hash
+     * load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection
+     * times. For more information about Maglev, refer to https://ai.google/research/pubs/pub44824 This field is applicable
+     * only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
+    /**
+     * This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+     * enabled, logs will be exported to Stackdriver.
+     */
     public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
+     * the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
+    /**
+     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
+     * the load balancing scheme is EXTERNAL.
+     */
     public readonly portName!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
+     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
+     * if used with the GA API.
+     */
     public readonly protocol!: pulumi.Output<string>;
+    /**
+     * The security policy associated with this backend service.
+     */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     */
     public readonly sessionAffinity!: pulumi.Output<string>;
+    /**
+     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
+     * is [1, 86400].
+     */
     public readonly timeoutSec!: pulumi.Output<number>;
 
     /**
@@ -152,37 +252,137 @@ export class BackendService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendService resources.
  */
 export interface BackendServiceState {
+    /**
+     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
+     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * When the load balancing scheme is INTERNAL, this field is not used.
+     */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
+    /**
+     * The set of backends that serve this BackendService.
+     */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
+    /**
+     * Cloud CDN configuration for this BackendService.
+     */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
+    /**
+     * Settings controlling the volume of connections to a backend service. This field is applicable only when the
+     * load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
+    /**
+     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+     * other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+     * destination host will be lost when one or more hosts are added/removed from the destination service. This field
+     * specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
+     * INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+     */
     readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied requests.
+     */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this BackendService.
+     */
     readonly enableCdn?: pulumi.Input<boolean>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
+     * locking.
+     */
     readonly fingerprint?: pulumi.Input<string>;
+    /**
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
+     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
+     * URL to a HealthCheck resource must be specified instead.
+     */
     readonly healthChecks?: pulumi.Input<string>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
+    /**
+     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
+     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
+     * for a global backend service. Defaults to 'EXTERNAL'.
+     */
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    /**
+     * The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is
+     * a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm
+     * which selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The
+     * ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the
+     * addition/removal of a host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer
+     * selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected based on the client connection
+     * metadata, i.e., connections are opened to the same address as the destination address of the incoming connection
+     * before the connection was redirected to the load balancer. MAGLEV - used as a drop in replacement for the ring hash
+     * load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection
+     * times. For more information about Maglev, refer to https://ai.google/research/pubs/pub44824 This field is applicable
+     * only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly localityLbPolicy?: pulumi.Input<string>;
+    /**
+     * This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+     * enabled, logs will be exported to Stackdriver.
+     */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
+     * the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
+    /**
+     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
+     * the load balancing scheme is EXTERNAL.
+     */
     readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
+     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
+     * if used with the GA API.
+     */
     readonly protocol?: pulumi.Input<string>;
+    /**
+     * The security policy associated with this backend service.
+     */
     readonly securityPolicy?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     */
     readonly sessionAffinity?: pulumi.Input<string>;
+    /**
+     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
+     * is [1, 86400].
+     */
     readonly timeoutSec?: pulumi.Input<number>;
 }
 
@@ -190,30 +390,123 @@ export interface BackendServiceState {
  * The set of arguments for constructing a BackendService resource.
  */
 export interface BackendServiceArgs {
+    /**
+     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
+     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * When the load balancing scheme is INTERNAL, this field is not used.
+     */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
+    /**
+     * The set of backends that serve this BackendService.
+     */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
+    /**
+     * Cloud CDN configuration for this BackendService.
+     */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
+    /**
+     * Settings controlling the volume of connections to a backend service. This field is applicable only when the
+     * load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
+    /**
+     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+     * other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+     * destination host will be lost when one or more hosts are added/removed from the destination service. This field
+     * specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
+     * INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+     */
     readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied requests.
+     */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this BackendService.
+     */
     readonly enableCdn?: pulumi.Input<boolean>;
+    /**
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
+     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
+     * URL to a HealthCheck resource must be specified instead.
+     */
     readonly healthChecks: pulumi.Input<string>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
+    /**
+     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
+     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
+     * for a global backend service. Defaults to 'EXTERNAL'.
+     */
     readonly loadBalancingScheme?: pulumi.Input<string>;
+    /**
+     * The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is
+     * a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm
+     * which selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The
+     * ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the
+     * addition/removal of a host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer
+     * selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected based on the client connection
+     * metadata, i.e., connections are opened to the same address as the destination address of the incoming connection
+     * before the connection was redirected to the load balancer. MAGLEV - used as a drop in replacement for the ring hash
+     * load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection
+     * times. For more information about Maglev, refer to https://ai.google/research/pubs/pub44824 This field is applicable
+     * only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly localityLbPolicy?: pulumi.Input<string>;
+    /**
+     * This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+     * enabled, logs will be exported to Stackdriver.
+     */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
+     * the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
+    /**
+     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
+     * the load balancing scheme is EXTERNAL.
+     */
     readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
+     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
+     * if used with the GA API.
+     */
     readonly protocol?: pulumi.Input<string>;
+    /**
+     * The security policy associated with this backend service.
+     */
     readonly securityPolicy?: pulumi.Input<string>;
+    /**
+     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     */
     readonly sessionAffinity?: pulumi.Input<string>;
+    /**
+     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
+     * is [1, 86400].
+     */
     readonly timeoutSec?: pulumi.Input<number>;
 }

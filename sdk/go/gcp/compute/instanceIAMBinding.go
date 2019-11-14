@@ -8,16 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for GCE instance. Each of these resources serves a different use case:
-// 
-// * `compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-// * `compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-// * `compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-// 
-// > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
-// 
-// > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_binding.html.markdown.
 type InstanceIAMBinding struct {
 	s *pulumi.ResourceState
@@ -94,12 +84,12 @@ func (r *InstanceIAMBinding) Condition() *pulumi.Output {
 	return r.s.State["condition"]
 }
 
-// (Computed) The etag of the instance's IAM policy.
+// (Computed) The etag of the IAM policy.
 func (r *InstanceIAMBinding) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The name of the instance.
+// Used to find the parent resource to bind the IAM policy to
 func (r *InstanceIAMBinding) InstanceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceName"])
 }
@@ -108,8 +98,8 @@ func (r *InstanceIAMBinding) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (r *InstanceIAMBinding) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
@@ -121,8 +111,9 @@ func (r *InstanceIAMBinding) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
-// The zone of the instance. If
-// unspecified, this defaults to the zone configured in the provider.
+// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+// zone is specified, it is taken from the provider configuration.
 func (r *InstanceIAMBinding) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -130,37 +121,39 @@ func (r *InstanceIAMBinding) Zone() *pulumi.StringOutput {
 // Input properties used for looking up and filtering InstanceIAMBinding resources.
 type InstanceIAMBindingState struct {
 	Condition interface{}
-	// (Computed) The etag of the instance's IAM policy.
+	// (Computed) The etag of the IAM policy.
 	Etag interface{}
-	// The name of the instance.
+	// Used to find the parent resource to bind the IAM policy to
 	InstanceName interface{}
 	Members interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a InstanceIAMBinding resource.
 type InstanceIAMBindingArgs struct {
 	Condition interface{}
-	// The name of the instance.
+	// Used to find the parent resource to bind the IAM policy to
 	InstanceName interface{}
 	Members interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
 	// The role that should be applied. Only one
 	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
+	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+	// zone is specified, it is taken from the provider configuration.
 	Zone interface{}
 }

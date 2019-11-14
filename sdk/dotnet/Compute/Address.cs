@@ -18,24 +18,49 @@ namespace Pulumi.Gcp.Compute
         [Output("address")]
         public Output<string> IPAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
 
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
+        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
+        /// or digit, except the last character, which cannot be a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
 
@@ -46,9 +71,17 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that
+        /// are used by VM instances, alias IP ranges, internal load balancers, and similar resources. This should only
+        /// be set when using an Internal address.
+        /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
 
+        /// <summary>
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -58,9 +91,17 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within
+        /// the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
+        /// purposes.
+        /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// The URLs of the resources that are using this address.
+        /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
 
@@ -116,23 +157,43 @@ namespace Pulumi.Gcp.Compute
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
 
+        /// <summary>
+        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
+        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
+        /// or digit, except the last character, which cannot be a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
@@ -143,12 +204,25 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that
+        /// are used by VM instances, alias IP ranges, internal load balancers, and similar resources. This should only
+        /// be set when using an Internal address.
+        /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
+        /// <summary>
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within
+        /// the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
+        /// purposes.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
@@ -165,29 +239,55 @@ namespace Pulumi.Gcp.Compute
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
 
+        /// <summary>
+        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
+        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
+        /// or digit, except the last character, which cannot be a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
@@ -198,9 +298,17 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that
+        /// are used by VM instances, alias IP ranges, internal load balancers, and similar resources. This should only
+        /// be set when using an Internal address.
+        /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
+        /// <summary>
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -210,11 +318,20 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within
+        /// the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
+        /// purposes.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The URLs of the resources that are using this address.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());

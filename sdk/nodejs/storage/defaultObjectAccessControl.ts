@@ -72,14 +72,43 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
         return obj['__pulumiType'] === DefaultObjectAccessControl.__pulumiType;
     }
 
+    /**
+     * The name of the bucket.
+     */
     public readonly bucket!: pulumi.Output<string>;
+    /**
+     * The domain associated with the entity.
+     */
     public /*out*/ readonly domain!: pulumi.Output<string>;
+    /**
+     * The email address associated with the entity.
+     */
     public /*out*/ readonly email!: pulumi.Output<string>;
+    /**
+     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     */
     public readonly entity!: pulumi.Output<string>;
+    /**
+     * The ID for the entity
+     */
     public /*out*/ readonly entityId!: pulumi.Output<string>;
+    /**
+     * The content generation of the object, if applied to an object.
+     */
     public /*out*/ readonly generation!: pulumi.Output<number>;
+    /**
+     * The name of the object, if applied to an object.
+     */
     public readonly object!: pulumi.Output<string | undefined>;
+    /**
+     * The project team associated with the entity
+     */
     public /*out*/ readonly projectTeam!: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam>;
+    /**
+     * The access permission for the entity.
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -139,14 +168,43 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DefaultObjectAccessControl resources.
  */
 export interface DefaultObjectAccessControlState {
+    /**
+     * The name of the bucket.
+     */
     readonly bucket?: pulumi.Input<string>;
+    /**
+     * The domain associated with the entity.
+     */
     readonly domain?: pulumi.Input<string>;
+    /**
+     * The email address associated with the entity.
+     */
     readonly email?: pulumi.Input<string>;
+    /**
+     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     */
     readonly entity?: pulumi.Input<string>;
+    /**
+     * The ID for the entity
+     */
     readonly entityId?: pulumi.Input<string>;
+    /**
+     * The content generation of the object, if applied to an object.
+     */
     readonly generation?: pulumi.Input<number>;
+    /**
+     * The name of the object, if applied to an object.
+     */
     readonly object?: pulumi.Input<string>;
+    /**
+     * The project team associated with the entity
+     */
     readonly projectTeam?: pulumi.Input<inputs.storage.DefaultObjectAccessControlProjectTeam>;
+    /**
+     * The access permission for the entity.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -154,8 +212,22 @@ export interface DefaultObjectAccessControlState {
  * The set of arguments for constructing a DefaultObjectAccessControl resource.
  */
 export interface DefaultObjectAccessControlArgs {
+    /**
+     * The name of the bucket.
+     */
     readonly bucket: pulumi.Input<string>;
+    /**
+     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     */
     readonly entity: pulumi.Input<string>;
+    /**
+     * The name of the object, if applied to an object.
+     */
     readonly object?: pulumi.Input<string>;
+    /**
+     * The access permission for the entity.
+     */
     readonly role: pulumi.Input<string>;
 }

@@ -66,14 +66,17 @@ func (r *Attestor) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 func (r *Attestor) AttestationAuthorityNote() *pulumi.Output {
 	return r.s.State["attestationAuthorityNote"]
 }
 
+// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 func (r *Attestor) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// The resource name.
 func (r *Attestor) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -84,16 +87,22 @@ func (r *Attestor) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Attestor resources.
 type AttestorState struct {
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	AttestationAuthorityNote interface{}
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description interface{}
+	// The resource name.
 	Name interface{}
 	Project interface{}
 }
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	AttestationAuthorityNote interface{}
+	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description interface{}
+	// The resource name.
 	Name interface{}
 	Project interface{}
 }

@@ -68,10 +68,12 @@ func (r *Dataset) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The location for the Dataset.
 func (r *Dataset) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
+// The resource name for the Dataset.
 func (r *Dataset) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -82,31 +84,46 @@ func (r *Dataset) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The fully qualified name of this dataset
 func (r *Dataset) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+// timezone is specified.
 func (r *Dataset) TimeZone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["timeZone"])
 }
 
 // Input properties used for looking up and filtering Dataset resources.
 type DatasetState struct {
+	// The location for the Dataset.
 	Location interface{}
+	// The resource name for the Dataset.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The fully qualified name of this dataset
 	SelfLink interface{}
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+	// timezone is specified.
 	TimeZone interface{}
 }
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
+	// The location for the Dataset.
 	Location interface{}
+	// The resource name for the Dataset.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+	// timezone is specified.
 	TimeZone interface{}
 }

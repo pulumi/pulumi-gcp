@@ -36,9 +36,21 @@ export class NodeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeGroup.__pulumiType;
     }
 
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional textual description of the resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the resource.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The URL of the node template to which this node group belongs.
+     */
     public readonly nodeTemplate!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -49,7 +61,13 @@ export class NodeGroup extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The total number of nodes in the node group.
+     */
     public readonly size!: pulumi.Output<number>;
+    /**
+     * Zone where this node group is located
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -104,9 +122,21 @@ export class NodeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeGroup resources.
  */
 export interface NodeGroupState {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional textual description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the node template to which this node group belongs.
+     */
     readonly nodeTemplate?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -117,7 +147,13 @@ export interface NodeGroupState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The total number of nodes in the node group.
+     */
     readonly size?: pulumi.Input<number>;
+    /**
+     * Zone where this node group is located
+     */
     readonly zone?: pulumi.Input<string>;
 }
 
@@ -125,14 +161,29 @@ export interface NodeGroupState {
  * The set of arguments for constructing a NodeGroup resource.
  */
 export interface NodeGroupArgs {
+    /**
+     * An optional textual description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the node template to which this node group belongs.
+     */
     readonly nodeTemplate: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The total number of nodes in the node group.
+     */
     readonly size: pulumi.Input<number>;
+    /**
+     * Zone where this node group is located
+     */
     readonly zone?: pulumi.Input<string>;
 }

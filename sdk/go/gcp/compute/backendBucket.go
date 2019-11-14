@@ -76,26 +76,35 @@ func (r *BackendBucket) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Cloud Storage bucket name.
 func (r *BackendBucket) BucketName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucketName"])
 }
 
+// Cloud CDN configuration for this Backend Bucket.
 func (r *BackendBucket) CdnPolicy() *pulumi.Output {
 	return r.s.State["cdnPolicy"]
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *BackendBucket) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional textual description of the resource; provided by the client when the resource is created.
 func (r *BackendBucket) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// If true, enable Cloud CDN for this BackendBucket.
 func (r *BackendBucket) EnableCdn() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableCdn"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *BackendBucket) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -113,11 +122,20 @@ func (r *BackendBucket) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering BackendBucket resources.
 type BackendBucketState struct {
+	// Cloud Storage bucket name.
 	BucketName interface{}
+	// Cloud CDN configuration for this Backend Bucket.
 	CdnPolicy interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description interface{}
+	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -128,10 +146,18 @@ type BackendBucketState struct {
 
 // The set of arguments for constructing a BackendBucket resource.
 type BackendBucketArgs struct {
+	// Cloud Storage bucket name.
 	BucketName interface{}
+	// Cloud CDN configuration for this Backend Bucket.
 	CdnPolicy interface{}
+	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description interface{}
+	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

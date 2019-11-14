@@ -12,15 +12,33 @@ namespace Pulumi.Gcp.Sql
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The charset value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
+        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// </summary>
         [Output("charset")]
         public Output<string> Charset { get; private set; } = null!;
 
+        /// <summary>
+        /// The collation value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
+        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// </summary>
         [Output("collation")]
         public Output<string> Collation { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Cloud SQL instance. This does not include the project ID.
+        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -80,15 +98,33 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The charset value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
+        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
 
+        /// <summary>
+        /// The collation value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
+        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
+        /// <summary>
+        /// The name of the Cloud SQL instance. This does not include the project ID.
+        /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -106,15 +142,33 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The charset value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
+        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
 
+        /// <summary>
+        /// The collation value. See MySQL's [Supported Character Sets and
+        /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
+        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
+        /// <summary>
+        /// The name of the Cloud SQL instance. This does not include the project ID.
+        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
+        /// <summary>
+        /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

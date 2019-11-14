@@ -12,21 +12,41 @@ namespace Pulumi.Gcp.Firestore
     /// </summary>
     public partial class Index : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The collection being indexed.
+        /// </summary>
         [Output("collection")]
         public Output<string> Collection { get; private set; } = null!;
 
+        /// <summary>
+        /// The Firestore database id. Defaults to '"(default)"'.
+        /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
 
+        /// <summary>
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
+        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
+        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.IndexFields>> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// A server defined name for this index. Format:
+        /// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
+        /// '"COLLECTION"'.
+        /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
 
@@ -76,14 +96,27 @@ namespace Pulumi.Gcp.Firestore
 
     public sealed class IndexArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The collection being indexed.
+        /// </summary>
         [Input("collection", required: true)]
         public Input<string> Collection { get; set; } = null!;
 
+        /// <summary>
+        /// The Firestore database id. Defaults to '"(default)"'.
+        /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         [Input("fields", required: true)]
         private InputList<Inputs.IndexFieldsArgs>? _fields;
+
+        /// <summary>
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
+        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
+        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// </summary>
         public InputList<Inputs.IndexFieldsArgs> Fields
         {
             get => _fields ?? (_fields = new InputList<Inputs.IndexFieldsArgs>());
@@ -93,6 +126,10 @@ namespace Pulumi.Gcp.Firestore
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
+        /// '"COLLECTION"'.
+        /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
 
@@ -103,26 +140,47 @@ namespace Pulumi.Gcp.Firestore
 
     public sealed class IndexState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The collection being indexed.
+        /// </summary>
         [Input("collection")]
         public Input<string>? Collection { get; set; }
 
+        /// <summary>
+        /// The Firestore database id. Defaults to '"(default)"'.
+        /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         [Input("fields")]
         private InputList<Inputs.IndexFieldsGetArgs>? _fields;
+
+        /// <summary>
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
+        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
+        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// </summary>
         public InputList<Inputs.IndexFieldsGetArgs> Fields
         {
             get => _fields ?? (_fields = new InputList<Inputs.IndexFieldsGetArgs>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// A server defined name for this index. Format:
+        /// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
+        /// '"COLLECTION"'.
+        /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
 

@@ -1595,15 +1595,84 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceBackend {
+        balancingMode?: string;
+        capacityScaler: number;
         description?: string;
         failover?: boolean;
-        group?: string;
+        group: string;
+        maxConnections?: number;
+        maxConnectionsPerEndpoint?: number;
+        maxConnectionsPerInstance?: number;
+        maxRate?: number;
+        maxRatePerEndpoint?: number;
+        maxRatePerInstance?: number;
+        maxUtilization?: number;
+    }
+
+    export interface RegionBackendServiceCircuitBreakers {
+        connectTimeout?: outputs.compute.RegionBackendServiceCircuitBreakersConnectTimeout;
+        maxConnections?: number;
+        maxPendingRequests?: number;
+        maxRequests?: number;
+        maxRequestsPerConnection?: number;
+        maxRetries?: number;
+    }
+
+    export interface RegionBackendServiceCircuitBreakersConnectTimeout {
+        nanos?: number;
+        seconds: number;
+    }
+
+    export interface RegionBackendServiceConsistentHash {
+        httpCookie?: outputs.compute.RegionBackendServiceConsistentHashHttpCookie;
+        httpHeaderName?: string;
+        minimumRingSize?: number;
+    }
+
+    export interface RegionBackendServiceConsistentHashHttpCookie {
+        name?: string;
+        path?: string;
+        ttl?: outputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl;
+    }
+
+    export interface RegionBackendServiceConsistentHashHttpCookieTtl {
+        nanos?: number;
+        seconds: number;
     }
 
     export interface RegionBackendServiceFailoverPolicy {
         disableConnectionDrainOnFailover?: boolean;
         dropTrafficIfUnhealthy?: boolean;
         failoverRatio?: number;
+    }
+
+    export interface RegionBackendServiceLogConfig {
+        enable?: boolean;
+        sampleRate?: number;
+    }
+
+    export interface RegionBackendServiceOutlierDetection {
+        baseEjectionTime?: outputs.compute.RegionBackendServiceOutlierDetectionBaseEjectionTime;
+        consecutiveErrors?: number;
+        consecutiveGatewayFailure?: number;
+        enforcingConsecutiveErrors?: number;
+        enforcingConsecutiveGatewayFailure?: number;
+        enforcingSuccessRate?: number;
+        interval?: outputs.compute.RegionBackendServiceOutlierDetectionInterval;
+        maxEjectionPercent?: number;
+        successRateMinimumHosts?: number;
+        successRateRequestVolume?: number;
+        successRateStdevFactor?: number;
+    }
+
+    export interface RegionBackendServiceOutlierDetectionBaseEjectionTime {
+        nanos?: number;
+        seconds: number;
+    }
+
+    export interface RegionBackendServiceOutlierDetectionInterval {
+        nanos?: number;
+        seconds: number;
     }
 
     export interface RegionDiskDiskEncryptionKey {
@@ -3205,6 +3274,7 @@ export namespace logging {
     }
 
     export interface MetricMetricDescriptor {
+        displayName?: string;
         labels?: outputs.logging.MetricMetricDescriptorLabel[];
         metricKind: string;
         unit?: string;
@@ -3302,6 +3372,7 @@ export namespace monitoring {
         path?: string;
         port: number;
         useSsl?: boolean;
+        validateSsl?: boolean;
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {

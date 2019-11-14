@@ -12,15 +12,28 @@ namespace Pulumi.Gcp.Dataproc
     /// </summary>
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Basic algorithm for autoscaling.
+        /// </summary>
         [Output("basicAlgorithm")]
         public Output<Outputs.AutoscalingPolicyBasicAlgorithm?> BasicAlgorithm { get; private set; } = null!;
 
+        /// <summary>
+        /// The location where the autoscaling poicy should reside. The default value is 'global'.
+        /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// The "resource name" of the autoscaling policy.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
+        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
@@ -31,9 +44,15 @@ namespace Pulumi.Gcp.Dataproc
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// </summary>
         [Output("secondaryWorkerConfig")]
         public Output<Outputs.AutoscalingPolicySecondaryWorkerConfig?> SecondaryWorkerConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for primary workers.
+        /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.AutoscalingPolicyWorkerConfig?> WorkerConfig { get; private set; } = null!;
 
@@ -83,12 +102,22 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Basic algorithm for autoscaling.
+        /// </summary>
         [Input("basicAlgorithm")]
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmArgs>? BasicAlgorithm { get; set; }
 
+        /// <summary>
+        /// The location where the autoscaling poicy should reside. The default value is 'global'.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
+        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
 
@@ -99,9 +128,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.AutoscalingPolicySecondaryWorkerConfigArgs>? SecondaryWorkerConfig { get; set; }
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for primary workers.
+        /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.AutoscalingPolicyWorkerConfigArgs>? WorkerConfig { get; set; }
 
@@ -112,15 +147,28 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class AutoscalingPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Basic algorithm for autoscaling.
+        /// </summary>
         [Input("basicAlgorithm")]
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmGetArgs>? BasicAlgorithm { get; set; }
 
+        /// <summary>
+        /// The location where the autoscaling poicy should reside. The default value is 'global'.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The "resource name" of the autoscaling policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
+        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
@@ -131,9 +179,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.AutoscalingPolicySecondaryWorkerConfigGetArgs>? SecondaryWorkerConfig { get; set; }
 
+        /// <summary>
+        /// Describes how the autoscaler will operate for primary workers.
+        /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.AutoscalingPolicyWorkerConfigGetArgs>? WorkerConfig { get; set; }
 

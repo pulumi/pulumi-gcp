@@ -173,6 +173,8 @@
         "containeranalysis/note.ts",
         "dataflow/index.ts",
         "dataflow/job.ts",
+        "datafusion/index.ts",
+        "datafusion/instance.ts",
         "dataproc/autoscalingPolicy.ts",
         "dataproc/cluster.ts",
         "dataproc/clusterIAMBinding.ts",

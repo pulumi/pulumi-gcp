@@ -12,33 +12,60 @@ namespace Pulumi.Gcp.Filestore
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// A description of the instance.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// </summary>
         [Output("fileShares")]
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource labels to represent user-provided metadata.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource name of the instance.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetworks>> Networks { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The service tier of the instance.
+        /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Filestore zone of the instance.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -88,25 +115,42 @@ namespace Pulumi.Gcp.Filestore
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A description of the instance.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// </summary>
         [Input("fileShares", required: true)]
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Resource labels to represent user-provided metadata.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The resource name of the instance.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks", required: true)]
         private InputList<Inputs.InstanceNetworksArgs>? _networks;
+
+        /// <summary>
+        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// </summary>
         public InputList<Inputs.InstanceNetworksArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworksArgs>());
@@ -116,9 +160,15 @@ namespace Pulumi.Gcp.Filestore
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The service tier of the instance.
+        /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Filestore zone of the instance.
+        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 
@@ -129,31 +179,54 @@ namespace Pulumi.Gcp.Filestore
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// A description of the instance.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// </summary>
         [Input("fileShares")]
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Resource labels to represent user-provided metadata.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The resource name of the instance.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.InstanceNetworksGetArgs>? _networks;
+
+        /// <summary>
+        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// </summary>
         public InputList<Inputs.InstanceNetworksGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworksGetArgs>());
@@ -163,9 +236,15 @@ namespace Pulumi.Gcp.Filestore
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The service tier of the instance.
+        /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
+        /// <summary>
+        /// The name of the Filestore zone of the instance.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

@@ -1184,15 +1184,84 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceBackend {
+        balancingMode?: pulumi.Input<string>;
+        capacityScaler?: pulumi.Input<number>;
         description?: pulumi.Input<string>;
         failover?: pulumi.Input<boolean>;
-        group?: pulumi.Input<string>;
+        group: pulumi.Input<string>;
+        maxConnections?: pulumi.Input<number>;
+        maxConnectionsPerEndpoint?: pulumi.Input<number>;
+        maxConnectionsPerInstance?: pulumi.Input<number>;
+        maxRate?: pulumi.Input<number>;
+        maxRatePerEndpoint?: pulumi.Input<number>;
+        maxRatePerInstance?: pulumi.Input<number>;
+        maxUtilization?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceCircuitBreakers {
+        connectTimeout?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakersConnectTimeout>;
+        maxConnections?: pulumi.Input<number>;
+        maxPendingRequests?: pulumi.Input<number>;
+        maxRequests?: pulumi.Input<number>;
+        maxRequestsPerConnection?: pulumi.Input<number>;
+        maxRetries?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceCircuitBreakersConnectTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceConsistentHash {
+        httpCookie?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookie>;
+        httpHeaderName?: pulumi.Input<string>;
+        minimumRingSize?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceConsistentHashHttpCookie {
+        name?: pulumi.Input<string>;
+        path?: pulumi.Input<string>;
+        ttl?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl>;
+    }
+
+    export interface RegionBackendServiceConsistentHashHttpCookieTtl {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
     }
 
     export interface RegionBackendServiceFailoverPolicy {
         disableConnectionDrainOnFailover?: pulumi.Input<boolean>;
         dropTrafficIfUnhealthy?: pulumi.Input<boolean>;
         failoverRatio?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceLogConfig {
+        enable?: pulumi.Input<boolean>;
+        sampleRate?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceOutlierDetection {
+        baseEjectionTime?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetectionBaseEjectionTime>;
+        consecutiveErrors?: pulumi.Input<number>;
+        consecutiveGatewayFailure?: pulumi.Input<number>;
+        enforcingConsecutiveErrors?: pulumi.Input<number>;
+        enforcingConsecutiveGatewayFailure?: pulumi.Input<number>;
+        enforcingSuccessRate?: pulumi.Input<number>;
+        interval?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetectionInterval>;
+        maxEjectionPercent?: pulumi.Input<number>;
+        successRateMinimumHosts?: pulumi.Input<number>;
+        successRateRequestVolume?: pulumi.Input<number>;
+        successRateStdevFactor?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceOutlierDetectionBaseEjectionTime {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceOutlierDetectionInterval {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
     }
 
     export interface RegionDiskDiskEncryptionKey {
@@ -2508,6 +2577,7 @@ export namespace logging {
     }
 
     export interface MetricMetricDescriptor {
+        displayName?: pulumi.Input<string>;
         labels?: pulumi.Input<pulumi.Input<inputs.logging.MetricMetricDescriptorLabel>[]>;
         metricKind: pulumi.Input<string>;
         unit?: pulumi.Input<string>;
@@ -2605,6 +2675,7 @@ export namespace monitoring {
         path?: pulumi.Input<string>;
         port?: pulumi.Input<number>;
         useSsl?: pulumi.Input<boolean>;
+        validateSsl?: pulumi.Input<boolean>;
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {

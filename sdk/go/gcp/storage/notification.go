@@ -53,6 +53,7 @@ func NewNotification(ctx *pulumi.Context,
 		inputs["payloadFormat"] = args.PayloadFormat
 		inputs["topic"] = args.Topic
 	}
+	inputs["notificationId"] = nil
 	inputs["selfLink"] = nil
 	s, err := ctx.RegisterResource("gcp:storage/notification:Notification", name, true, inputs, opts...)
 	if err != nil {
@@ -70,6 +71,7 @@ func GetNotification(ctx *pulumi.Context,
 		inputs["bucket"] = state.Bucket
 		inputs["customAttributes"] = state.CustomAttributes
 		inputs["eventTypes"] = state.EventTypes
+		inputs["notificationId"] = state.NotificationId
 		inputs["objectNamePrefix"] = state.ObjectNamePrefix
 		inputs["payloadFormat"] = state.PayloadFormat
 		inputs["selfLink"] = state.SelfLink
@@ -107,6 +109,11 @@ func (r *Notification) EventTypes() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["eventTypes"])
 }
 
+// The ID of the created notification.
+func (r *Notification) NotificationId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["notificationId"])
+}
+
 // Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
 func (r *Notification) ObjectNamePrefix() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["objectNamePrefix"])
@@ -137,6 +144,8 @@ type NotificationState struct {
 	CustomAttributes interface{}
 	// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
 	EventTypes interface{}
+	// The ID of the created notification.
+	NotificationId interface{}
 	// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
 	ObjectNamePrefix interface{}
 	// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.

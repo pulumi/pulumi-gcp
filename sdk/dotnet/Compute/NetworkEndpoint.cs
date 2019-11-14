@@ -12,15 +12,29 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class NetworkEndpoint : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints
+        /// of type GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
+        /// <summary>
+        /// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as
+        /// part of an aliased IP range).
+        /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// The network endpoint group this endpoint is part of.
+        /// </summary>
         [Output("networkEndpointGroup")]
         public Output<string> NetworkEndpointGroup { get; private set; } = null!;
 
+        /// <summary>
+        /// Port number of network endpoint.
+        /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
 
@@ -31,6 +45,9 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Zone where the containing network endpoint group is located.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -80,15 +97,29 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NetworkEndpointArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints
+        /// of type GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+        /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
+        /// <summary>
+        /// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as
+        /// part of an aliased IP range).
+        /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
 
+        /// <summary>
+        /// The network endpoint group this endpoint is part of.
+        /// </summary>
         [Input("networkEndpointGroup", required: true)]
         public Input<string> NetworkEndpointGroup { get; set; } = null!;
 
+        /// <summary>
+        /// Port number of network endpoint.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
@@ -99,6 +130,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Zone where the containing network endpoint group is located.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -109,15 +143,29 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NetworkEndpointState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints
+        /// of type GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
+        /// <summary>
+        /// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as
+        /// part of an aliased IP range).
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// The network endpoint group this endpoint is part of.
+        /// </summary>
         [Input("networkEndpointGroup")]
         public Input<string>? NetworkEndpointGroup { get; set; }
 
+        /// <summary>
+        /// Port number of network endpoint.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
@@ -128,6 +176,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Zone where the containing network endpoint group is located.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

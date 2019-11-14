@@ -107,6 +107,9 @@ namespace Pulumi.Gcp
         [Input("credentials")]
         public Input<string>? Credentials { get; set; }
 
+        [Input("dataFusionCustomEndpoint")]
+        public Input<string>? DataFusionCustomEndpoint { get; set; }
+
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }
 

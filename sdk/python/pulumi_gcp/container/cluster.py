@@ -429,8 +429,8 @@ class Cluster(pulumi.CustomResource):
     """
     private_cluster_config: pulumi.Output[dict]
     """
-    A set of options for creating
-    a private cluster. Structure is documented below.
+    Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+    clusters with private nodes. Structure is documented below.
     
       * `enablePrivateEndpoint` (`bool`)
       * `enablePrivateNodes` (`bool`)
@@ -648,8 +648,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] private_cluster_config: A set of options for creating
-               a private cluster. Structure is documented below.
+        :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+               clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[dict] release_channel: ) Configuration options for the
@@ -1124,8 +1124,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] private_cluster_config: A set of options for creating
-               a private cluster. Structure is documented below.
+        :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+               clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[dict] release_channel: ) Configuration options for the

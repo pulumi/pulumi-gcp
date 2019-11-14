@@ -74,22 +74,29 @@ func (r *Group) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A user-assigned name for this group, used only for display purposes.
 func (r *Group) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
+// The filter used to determine which monitored resources belong to this group.
 func (r *Group) Filter() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filter"])
 }
 
+// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+// that are clusters.
 func (r *Group) IsCluster() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["isCluster"])
 }
 
+// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
 func (r *Group) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+// groups with no parent, parentName is the empty string, "".
 func (r *Group) ParentName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["parentName"])
 }
@@ -102,10 +109,17 @@ func (r *Group) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Group resources.
 type GroupState struct {
+	// A user-assigned name for this group, used only for display purposes.
 	DisplayName interface{}
+	// The filter used to determine which monitored resources belong to this group.
 	Filter interface{}
+	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+	// that are clusters.
 	IsCluster interface{}
+	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
 	Name interface{}
+	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// groups with no parent, parentName is the empty string, "".
 	ParentName interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -114,9 +128,15 @@ type GroupState struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// A user-assigned name for this group, used only for display purposes.
 	DisplayName interface{}
+	// The filter used to determine which monitored resources belong to this group.
 	Filter interface{}
+	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+	// that are clusters.
 	IsCluster interface{}
+	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// groups with no parent, parentName is the empty string, "".
 	ParentName interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -12,27 +12,56 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class HealthCheck : Pulumi.CustomResource
     {
+        /// <summary>
+        /// How often (in seconds) to send a health check. The default value is 5 seconds.
+        /// </summary>
         [Output("checkIntervalSec")]
         public Output<int?> CheckIntervalSec { get; private set; } = null!;
 
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
+        /// is 2.
+        /// </summary>
         [Output("healthyThreshold")]
         public Output<int?> HealthyThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Output("http2HealthCheck")]
         public Output<Outputs.HealthCheckHttp2HealthCheck?> Http2HealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Output("httpHealthCheck")]
         public Output<Outputs.HealthCheckHttpHealthCheck?> HttpHealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Output("httpsHealthCheck")]
         public Output<Outputs.HealthCheckHttpsHealthCheck?> HttpsHealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -49,18 +78,35 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Output("sslHealthCheck")]
         public Output<Outputs.HealthCheckSslHealthCheck?> SslHealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Output("tcpHealthCheck")]
         public Output<Outputs.HealthCheckTcpHealthCheck?> TcpHealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
+        /// timeoutSec to have greater value than checkIntervalSec.
+        /// </summary>
         [Output("timeoutSec")]
         public Output<int?> TimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
+        /// is 2.
+        /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
@@ -110,24 +156,50 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class HealthCheckArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How often (in seconds) to send a health check. The default value is 5 seconds.
+        /// </summary>
         [Input("checkIntervalSec")]
         public Input<int>? CheckIntervalSec { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
+        /// is 2.
+        /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("http2HealthCheck")]
         public Input<Inputs.HealthCheckHttp2HealthCheckArgs>? Http2HealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("httpHealthCheck")]
         public Input<Inputs.HealthCheckHttpHealthCheckArgs>? HttpHealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("httpsHealthCheck")]
         public Input<Inputs.HealthCheckHttpsHealthCheckArgs>? HttpsHealthCheck { get; set; }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -138,15 +210,29 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("sslHealthCheck")]
         public Input<Inputs.HealthCheckSslHealthCheckArgs>? SslHealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("tcpHealthCheck")]
         public Input<Inputs.HealthCheckTcpHealthCheckArgs>? TcpHealthCheck { get; set; }
 
+        /// <summary>
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
+        /// timeoutSec to have greater value than checkIntervalSec.
+        /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
+        /// <summary>
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
+        /// is 2.
+        /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
@@ -157,27 +243,56 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class HealthCheckState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How often (in seconds) to send a health check. The default value is 5 seconds.
+        /// </summary>
         [Input("checkIntervalSec")]
         public Input<int>? CheckIntervalSec { get; set; }
 
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
+        /// is 2.
+        /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("http2HealthCheck")]
         public Input<Inputs.HealthCheckHttp2HealthCheckGetArgs>? Http2HealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("httpHealthCheck")]
         public Input<Inputs.HealthCheckHttpHealthCheckGetArgs>? HttpHealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("httpsHealthCheck")]
         public Input<Inputs.HealthCheckHttpsHealthCheckGetArgs>? HttpsHealthCheck { get; set; }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -194,18 +309,35 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("sslHealthCheck")]
         public Input<Inputs.HealthCheckSslHealthCheckGetArgs>? SslHealthCheck { get; set; }
 
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
         [Input("tcpHealthCheck")]
         public Input<Inputs.HealthCheckTcpHealthCheckGetArgs>? TcpHealthCheck { get; set; }
 
+        /// <summary>
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
+        /// timeoutSec to have greater value than checkIntervalSec.
+        /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
+        /// <summary>
+        /// The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
+        /// is 2.
+        /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 

@@ -80,18 +80,23 @@ func (r *Job) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+// instance
 func (r *Job) AppEngineHttpTarget() *pulumi.Output {
 	return r.s.State["appEngineHttpTarget"]
 }
 
+// A human-readable description for the job. This string must not contain more than 500 characters.
 func (r *Job) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
 func (r *Job) HttpTarget() *pulumi.Output {
 	return r.s.State["httpTarget"]
 }
 
+// The name of the job.
 func (r *Job) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -102,54 +107,85 @@ func (r *Job) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
 func (r *Job) PubsubTarget() *pulumi.Output {
 	return r.s.State["pubsubTarget"]
 }
 
+// Region where the scheduler job resides
 func (r *Job) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+// then it will be retried with exponential backoff according to the settings
 func (r *Job) RetryConfig() *pulumi.Output {
 	return r.s.State["retryConfig"]
 }
 
+// Describes the schedule on which the job will be executed.
 func (r *Job) Schedule() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["schedule"])
 }
 
+// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+// tz database.
 func (r *Job) TimeZone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["timeZone"])
 }
 
 // Input properties used for looking up and filtering Job resources.
 type JobState struct {
+	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+	// instance
 	AppEngineHttpTarget interface{}
+	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description interface{}
+	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
 	HttpTarget interface{}
+	// The name of the job.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
 	PubsubTarget interface{}
+	// Region where the scheduler job resides
 	Region interface{}
+	// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+	// then it will be retried with exponential backoff according to the settings
 	RetryConfig interface{}
+	// Describes the schedule on which the job will be executed.
 	Schedule interface{}
+	// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+	// tz database.
 	TimeZone interface{}
 }
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+	// instance
 	AppEngineHttpTarget interface{}
+	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description interface{}
+	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
 	HttpTarget interface{}
+	// The name of the job.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
 	PubsubTarget interface{}
+	// Region where the scheduler job resides
 	Region interface{}
+	// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+	// then it will be retried with exponential backoff according to the settings
 	RetryConfig interface{}
+	// Describes the schedule on which the job will be executed.
 	Schedule interface{}
+	// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+	// tz database.
 	TimeZone interface{}
 }
