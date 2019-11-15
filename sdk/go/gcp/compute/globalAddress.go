@@ -86,42 +86,59 @@ func (r *GlobalAddress) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+// reserve a specific address or omitted to allow GCP to choose a valid one for you.
 func (r *GlobalAddress) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
 }
 
+// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+// INTERNAL indicates internal IP ranges belonging to some network.
 func (r *GlobalAddress) AddressType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["addressType"])
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *GlobalAddress) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *GlobalAddress) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
 func (r *GlobalAddress) IpVersion() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
+// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 func (r *GlobalAddress) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
+// Labels to apply to this address. A list of key->value pairs.
 func (r *GlobalAddress) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *GlobalAddress) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
+// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
 func (r *GlobalAddress) Network() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["network"])
 }
 
+// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
+// applicable to addresses with addressType=EXTERNAL.
 func (r *GlobalAddress) PrefixLength() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["prefixLength"])
 }
@@ -132,6 +149,8 @@ func (r *GlobalAddress) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
+// be set when using an Internal address.
 func (r *GlobalAddress) Purpose() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["purpose"])
 }
@@ -143,19 +162,38 @@ func (r *GlobalAddress) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering GlobalAddress resources.
 type GlobalAddressState struct {
+	// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+	// reserve a specific address or omitted to allow GCP to choose a valid one for you.
 	Address interface{}
+	// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+	// INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
 	IpVersion interface{}
+	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint interface{}
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
+	// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
 	Network interface{}
+	// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
+	// applicable to addresses with addressType=EXTERNAL.
 	PrefixLength interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
+	// be set when using an Internal address.
 	Purpose interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -163,16 +201,33 @@ type GlobalAddressState struct {
 
 // The set of arguments for constructing a GlobalAddress resource.
 type GlobalAddressArgs struct {
+	// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+	// reserve a specific address or omitted to allow GCP to choose a valid one for you.
 	Address interface{}
+	// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+	// INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
 	IpVersion interface{}
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
+	// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
 	Network interface{}
+	// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
+	// applicable to addresses with addressType=EXTERNAL.
 	PrefixLength interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
+	// be set when using an Internal address.
 	Purpose interface{}
 }

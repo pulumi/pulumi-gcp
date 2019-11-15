@@ -22,6 +22,10 @@ class Notification(pulumi.CustomResource):
     """
     List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
     """
+    notification_id: pulumi.Output[str]
+    """
+    The ID of the created notification.
+    """
     object_name_prefix: pulumi.Output[str]
     """
     Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
@@ -96,6 +100,7 @@ class Notification(pulumi.CustomResource):
             if topic is None:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
+            __props__['notification_id'] = None
             __props__['self_link'] = None
         super(Notification, __self__).__init__(
             'gcp:storage/notification:Notification',
@@ -104,7 +109,7 @@ class Notification(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, self_link=None, topic=None):
+    def get(resource_name, id, opts=None, bucket=None, custom_attributes=None, event_types=None, notification_id=None, object_name_prefix=None, payload_format=None, self_link=None, topic=None):
         """
         Get an existing Notification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,6 +120,7 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the bucket.
         :param pulumi.Input[dict] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         :param pulumi.Input[list] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+        :param pulumi.Input[str] notification_id: The ID of the created notification.
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -130,6 +136,7 @@ class Notification(pulumi.CustomResource):
         __props__["bucket"] = bucket
         __props__["custom_attributes"] = custom_attributes
         __props__["event_types"] = event_types
+        __props__["notification_id"] = notification_id
         __props__["object_name_prefix"] = object_name_prefix
         __props__["payload_format"] = payload_format
         __props__["self_link"] = self_link

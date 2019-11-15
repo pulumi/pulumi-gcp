@@ -12,21 +12,38 @@ namespace Pulumi.Gcp.Cloudrun
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations.
+        /// </summary>
         [Output("metadata")]
         public Output<Outputs.ServiceMetadata> Metadata { get; private set; } = null!;
 
+        /// <summary>
+        /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name
+        /// is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+        /// http://kubernetes.io/docs/user-guide/identifiers#names
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// RevisionSpec holds the desired state of the Revision (from the client).
+        /// </summary>
         [Output("spec")]
         public Output<Outputs.ServiceSpec> Spec { get; private set; } = null!;
 
+        /// <summary>
+        /// The current status of the Service.
+        /// </summary>
         [Output("status")]
         public Output<Outputs.ServiceStatus> Status { get; private set; } = null!;
 
@@ -76,18 +93,32 @@ namespace Pulumi.Gcp.Cloudrun
 
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations.
+        /// </summary>
         [Input("metadata", required: true)]
         public Input<Inputs.ServiceMetadataArgs> Metadata { get; set; } = null!;
 
+        /// <summary>
+        /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name
+        /// is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+        /// http://kubernetes.io/docs/user-guide/identifiers#names
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// RevisionSpec holds the desired state of the Revision (from the client).
+        /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.ServiceSpecArgs> Spec { get; set; } = null!;
 
@@ -98,21 +129,38 @@ namespace Pulumi.Gcp.Cloudrun
 
     public sealed class ServiceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations.
+        /// </summary>
         [Input("metadata")]
         public Input<Inputs.ServiceMetadataGetArgs>? Metadata { get; set; }
 
+        /// <summary>
+        /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name
+        /// is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+        /// http://kubernetes.io/docs/user-guide/identifiers#names
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// RevisionSpec holds the desired state of the Revision (from the client).
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.ServiceSpecGetArgs>? Spec { get; set; }
 
+        /// <summary>
+        /// The current status of the Service.
+        /// </summary>
         [Input("status")]
         public Input<Inputs.ServiceStatusGetArgs>? Status { get; set; }
 

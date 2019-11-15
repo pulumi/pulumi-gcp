@@ -34,9 +34,27 @@ export class Database extends pulumi.CustomResource {
         return obj['__pulumiType'] === Database.__pulumiType;
     }
 
+    /**
+     * The charset value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+     * Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+     * databases only support a value of 'UTF8' at creation time.
+     */
     public readonly charset!: pulumi.Output<string>;
+    /**
+     * The collation value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+     * Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+     * databases only support a value of 'en_US.UTF8' at creation time.
+     */
     public readonly collation!: pulumi.Output<string>;
+    /**
+     * The name of the Cloud SQL instance. This does not include the project ID.
+     */
     public readonly instance!: pulumi.Output<string>;
+    /**
+     * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -90,9 +108,27 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
+    /**
+     * The charset value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+     * Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+     * databases only support a value of 'UTF8' at creation time.
+     */
     readonly charset?: pulumi.Input<string>;
+    /**
+     * The collation value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+     * Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+     * databases only support a value of 'en_US.UTF8' at creation time.
+     */
     readonly collation?: pulumi.Input<string>;
+    /**
+     * The name of the Cloud SQL instance. This does not include the project ID.
+     */
     readonly instance?: pulumi.Input<string>;
+    /**
+     * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -106,9 +142,27 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
+    /**
+     * The charset value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
+     * Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+     * databases only support a value of 'UTF8' at creation time.
+     */
     readonly charset?: pulumi.Input<string>;
+    /**
+     * The collation value. See MySQL's [Supported Character Sets and
+     * Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
+     * Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+     * databases only support a value of 'en_US.UTF8' at creation time.
+     */
     readonly collation?: pulumi.Input<string>;
+    /**
+     * The name of the Cloud SQL instance. This does not include the project ID.
+     */
     readonly instance: pulumi.Input<string>;
+    /**
+     * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

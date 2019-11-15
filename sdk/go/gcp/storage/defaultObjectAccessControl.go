@@ -103,59 +103,87 @@ func (r *DefaultObjectAccessControl) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The name of the bucket.
 func (r *DefaultObjectAccessControl) Bucket() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["bucket"])
 }
 
+// The domain associated with the entity.
 func (r *DefaultObjectAccessControl) Domain() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["domain"])
 }
 
+// The email address associated with the entity.
 func (r *DefaultObjectAccessControl) Email() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["email"])
 }
 
+// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
 func (r *DefaultObjectAccessControl) Entity() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["entity"])
 }
 
+// The ID for the entity
 func (r *DefaultObjectAccessControl) EntityId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["entityId"])
 }
 
+// The content generation of the object, if applied to an object.
 func (r *DefaultObjectAccessControl) Generation() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["generation"])
 }
 
+// The name of the object, if applied to an object.
 func (r *DefaultObjectAccessControl) Object() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["object"])
 }
 
+// The project team associated with the entity
 func (r *DefaultObjectAccessControl) ProjectTeam() *pulumi.Output {
 	return r.s.State["projectTeam"]
 }
 
+// The access permission for the entity.
 func (r *DefaultObjectAccessControl) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DefaultObjectAccessControl resources.
 type DefaultObjectAccessControlState struct {
+	// The name of the bucket.
 	Bucket interface{}
+	// The domain associated with the entity.
 	Domain interface{}
+	// The email address associated with the entity.
 	Email interface{}
+	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
 	Entity interface{}
+	// The ID for the entity
 	EntityId interface{}
+	// The content generation of the object, if applied to an object.
 	Generation interface{}
+	// The name of the object, if applied to an object.
 	Object interface{}
+	// The project team associated with the entity
 	ProjectTeam interface{}
+	// The access permission for the entity.
 	Role interface{}
 }
 
 // The set of arguments for constructing a DefaultObjectAccessControl resource.
 type DefaultObjectAccessControlArgs struct {
+	// The name of the bucket.
 	Bucket interface{}
+	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
 	Entity interface{}
+	// The name of the object, if applied to an object.
 	Object interface{}
+	// The access permission for the entity.
 	Role interface{}
 }

@@ -91,30 +91,37 @@ func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *Instance) CreateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["createTime"])
 }
 
+// A description of the instance.
 func (r *Instance) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 func (r *Instance) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
 
+// File system shares on the instance. For this version, only a single file share is supported.
 func (r *Instance) FileShares() *pulumi.Output {
 	return r.s.State["fileShares"]
 }
 
+// Resource labels to represent user-provided metadata.
 func (r *Instance) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// The resource name of the instance.
 func (r *Instance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// VPC networks to which the instance is connected. For this version, only a single network is supported.
 func (r *Instance) Networks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["networks"])
 }
@@ -123,36 +130,54 @@ func (r *Instance) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The service tier of the instance.
 func (r *Instance) Tier() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tier"])
 }
 
+// The name of the Filestore zone of the instance.
 func (r *Instance) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreateTime interface{}
+	// A description of the instance.
 	Description interface{}
+	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag interface{}
+	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares interface{}
+	// Resource labels to represent user-provided metadata.
 	Labels interface{}
+	// The resource name of the instance.
 	Name interface{}
+	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks interface{}
 	Project interface{}
+	// The service tier of the instance.
 	Tier interface{}
+	// The name of the Filestore zone of the instance.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// A description of the instance.
 	Description interface{}
+	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares interface{}
+	// Resource labels to represent user-provided metadata.
 	Labels interface{}
+	// The resource name of the instance.
 	Name interface{}
+	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks interface{}
 	Project interface{}
+	// The service tier of the instance.
 	Tier interface{}
+	// The name of the Filestore zone of the instance.
 	Zone interface{}
 }

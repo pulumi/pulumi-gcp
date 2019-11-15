@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class DiskResourcePolicyAttachment : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the disk in which the resource policies are attached to.
+        /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
+        /// link.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -25,6 +32,9 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to the zone where the disk resides.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -74,9 +84,16 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class DiskResourcePolicyAttachmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the disk in which the resource policies are attached to.
+        /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
 
+        /// <summary>
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
+        /// link.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -87,6 +104,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A reference to the zone where the disk resides.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -97,9 +117,16 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class DiskResourcePolicyAttachmentState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the disk in which the resource policies are attached to.
+        /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }
 
+        /// <summary>
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
+        /// link.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -110,6 +137,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A reference to the zone where the disk resides.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

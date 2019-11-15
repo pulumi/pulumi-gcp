@@ -36,7 +36,13 @@ export class KeyRing extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRing.__pulumiType;
     }
 
+    /**
+     * The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+     */
     public readonly location!: pulumi.Output<string>;
+    /**
+     * The resource name for the KeyRing.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -86,7 +92,13 @@ export class KeyRing extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyRing resources.
  */
 export interface KeyRingState {
+    /**
+     * The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+     */
     readonly location?: pulumi.Input<string>;
+    /**
+     * The resource name for the KeyRing.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -100,7 +112,13 @@ export interface KeyRingState {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
+    /**
+     * The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+     */
     readonly location: pulumi.Input<string>;
+    /**
+     * The resource name for the KeyRing.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

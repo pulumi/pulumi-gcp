@@ -87,13 +87,46 @@ export class ServicePerimeter extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServicePerimeter.__pulumiType;
     }
 
+    /**
+     * Time the AccessPolicy was created in UTC.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
+     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
+     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
+     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
+     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
+     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
+     * should not be able to share data among themselves.
+     */
     public readonly perimeterType!: pulumi.Output<string | undefined>;
+    /**
+     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
+     * perimeter content and boundaries.
+     */
     public readonly status!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
+    /**
+     * Human readable title. Must be unique within the Policy.
+     */
     public readonly title!: pulumi.Output<string>;
+    /**
+     * Time the AccessPolicy was updated in UTC.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
@@ -148,13 +181,46 @@ export class ServicePerimeter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePerimeter resources.
  */
 export interface ServicePerimeterState {
+    /**
+     * Time the AccessPolicy was created in UTC.
+     */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     */
     readonly parent?: pulumi.Input<string>;
+    /**
+     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
+     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
+     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
+     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
+     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
+     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
+     * should not be able to share data among themselves.
+     */
     readonly perimeterType?: pulumi.Input<string>;
+    /**
+     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
+     * perimeter content and boundaries.
+     */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
+    /**
+     * Human readable title. Must be unique within the Policy.
+     */
     readonly title?: pulumi.Input<string>;
+    /**
+     * Time the AccessPolicy was updated in UTC.
+     */
     readonly updateTime?: pulumi.Input<string>;
 }
 
@@ -162,10 +228,37 @@ export interface ServicePerimeterState {
  * The set of arguments for constructing a ServicePerimeter resource.
  */
 export interface ServicePerimeterArgs {
+    /**
+     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     */
     readonly parent: pulumi.Input<string>;
+    /**
+     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
+     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
+     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
+     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
+     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
+     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
+     * should not be able to share data among themselves.
+     */
     readonly perimeterType?: pulumi.Input<string>;
+    /**
+     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
+     * perimeter content and boundaries.
+     */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
+    /**
+     * Human readable title. Must be unique within the Policy.
+     */
     readonly title: pulumi.Input<string>;
 }

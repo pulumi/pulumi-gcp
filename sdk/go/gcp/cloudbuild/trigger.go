@@ -87,38 +87,55 @@ func (r *Trigger) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Contents of the build template. Either a filename or build template must be provided.
 func (r *Trigger) Build() *pulumi.Output {
 	return r.s.State["build"]
 }
 
+// Time when the trigger was created.
 func (r *Trigger) CreateTime() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["createTime"])
 }
 
+// Human-readable description of the trigger.
 func (r *Trigger) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 func (r *Trigger) Disabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
+// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+// be provided.
 func (r *Trigger) Filename() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["filename"])
 }
 
+// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 func (r *Trigger) Github() *pulumi.Output {
 	return r.s.State["github"]
 }
 
+// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
+// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
+// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 func (r *Trigger) IgnoredFiles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["ignoredFiles"])
 }
 
+// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
+// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+// includedFiles glob. If not, then we do not trigger a build.
 func (r *Trigger) IncludedFiles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["includedFiles"])
 }
 
+// Name of the trigger. Must be unique within the project.
 func (r *Trigger) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -129,50 +146,97 @@ func (r *Trigger) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Substitutions data for Build resource.
 func (r *Trigger) Substitutions() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["substitutions"])
 }
 
+// The unique identifier for the trigger.
 func (r *Trigger) TriggerId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["triggerId"])
 }
 
+// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+// This field is required, and will be validated as such in 3.0.0.
 func (r *Trigger) TriggerTemplate() *pulumi.Output {
 	return r.s.State["triggerTemplate"]
 }
 
 // Input properties used for looking up and filtering Trigger resources.
 type TriggerState struct {
+	// Contents of the build template. Either a filename or build template must be provided.
 	Build interface{}
+	// Time when the trigger was created.
 	CreateTime interface{}
+	// Human-readable description of the trigger.
 	Description interface{}
+	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled interface{}
+	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+	// be provided.
 	Filename interface{}
+	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 	Github interface{}
+	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
+	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles interface{}
+	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as
+	// far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles interface{}
+	// Name of the trigger. Must be unique within the project.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Substitutions data for Build resource.
 	Substitutions interface{}
+	// The unique identifier for the trigger.
 	TriggerId interface{}
+	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+	// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+	// This field is required, and will be validated as such in 3.0.0.
 	TriggerTemplate interface{}
 }
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
+	// Contents of the build template. Either a filename or build template must be provided.
 	Build interface{}
+	// Human-readable description of the trigger.
 	Description interface{}
+	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled interface{}
+	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+	// be provided.
 	Filename interface{}
+	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 	Github interface{}
+	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
+	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles interface{}
+	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as
+	// far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles interface{}
+	// Name of the trigger. Must be unique within the project.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Substitutions data for Build resource.
 	Substitutions interface{}
+	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+	// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+	// This field is required, and will be validated as such in 3.0.0.
 	TriggerTemplate interface{}
 }

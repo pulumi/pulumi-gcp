@@ -10,14 +10,21 @@ from typing import Union
 from .. import utilities, tables
 
 class RegionBackendService(pulumi.CustomResource):
+    affinity_cookie_ttl_sec: pulumi.Output[float]
     backends: pulumi.Output[list]
+    circuit_breakers: pulumi.Output[dict]
     connection_draining_timeout_sec: pulumi.Output[float]
+    consistent_hash: pulumi.Output[dict]
+    creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
     failover_policy: pulumi.Output[dict]
     fingerprint: pulumi.Output[str]
     health_checks: pulumi.Output[str]
     load_balancing_scheme: pulumi.Output[str]
+    locality_lb_policy: pulumi.Output[str]
+    log_config: pulumi.Output[dict]
     name: pulumi.Output[str]
+    outlier_detection: pulumi.Output[dict]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -31,7 +38,7 @@ class RegionBackendService(pulumi.CustomResource):
     """
     session_affinity: pulumi.Output[str]
     timeout_sec: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, backends=None, connection_draining_timeout_sec=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RegionBackendService resource with the given unique name, props, and options.
         
@@ -42,15 +49,78 @@ class RegionBackendService(pulumi.CustomResource):
         
         The **backends** object supports the following:
         
+          * `balancingMode` (`pulumi.Input[str]`)
+          * `capacityScaler` (`pulumi.Input[float]`)
           * `description` (`pulumi.Input[str]`)
           * `failover` (`pulumi.Input[bool]`)
           * `group` (`pulumi.Input[str]`)
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
+          * `maxRate` (`pulumi.Input[float]`)
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
+          * `maxRatePerInstance` (`pulumi.Input[float]`)
+          * `maxUtilization` (`pulumi.Input[float]`)
+        
+        The **circuit_breakers** object supports the following:
+        
+          * `connectTimeout` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxPendingRequests` (`pulumi.Input[float]`)
+          * `maxRequests` (`pulumi.Input[float]`)
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
+          * `maxRetries` (`pulumi.Input[float]`)
+        
+        The **consistent_hash** object supports the following:
+        
+          * `httpCookie` (`pulumi.Input[dict]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `path` (`pulumi.Input[str]`)
+            * `ttl` (`pulumi.Input[dict]`)
+        
+              * `nanos` (`pulumi.Input[float]`)
+              * `seconds` (`pulumi.Input[float]`)
+        
+          * `httpHeaderName` (`pulumi.Input[str]`)
+          * `minimumRingSize` (`pulumi.Input[float]`)
         
         The **failover_policy** object supports the following:
         
           * `disableConnectionDrainOnFailover` (`pulumi.Input[bool]`)
           * `dropTrafficIfUnhealthy` (`pulumi.Input[bool]`)
           * `failover_ratio` (`pulumi.Input[float]`)
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `sampleRate` (`pulumi.Input[float]`)
+        
+        The **outlier_detection** object supports the following:
+        
+          * `baseEjectionTime` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `consecutiveErrors` (`pulumi.Input[float]`)
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingSuccessRate` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxEjectionPercent` (`pulumi.Input[float]`)
+          * `successRateMinimumHosts` (`pulumi.Input[float]`)
+          * `successRateRequestVolume` (`pulumi.Input[float]`)
+          * `successRateStdevFactor` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
         """
@@ -71,20 +141,27 @@ class RegionBackendService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
             __props__['backends'] = backends
+            __props__['circuit_breakers'] = circuit_breakers
             __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
+            __props__['consistent_hash'] = consistent_hash
             __props__['description'] = description
             __props__['failover_policy'] = failover_policy
             if health_checks is None:
                 raise TypeError("Missing required property 'health_checks'")
             __props__['health_checks'] = health_checks
             __props__['load_balancing_scheme'] = load_balancing_scheme
+            __props__['locality_lb_policy'] = locality_lb_policy
+            __props__['log_config'] = log_config
             __props__['name'] = name
+            __props__['outlier_detection'] = outlier_detection
             __props__['project'] = project
             __props__['protocol'] = protocol
             __props__['region'] = region
             __props__['session_affinity'] = session_affinity
             __props__['timeout_sec'] = timeout_sec
+            __props__['creation_timestamp'] = None
             __props__['fingerprint'] = None
             __props__['self_link'] = None
         super(RegionBackendService, __self__).__init__(
@@ -94,7 +171,7 @@ class RegionBackendService(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backends=None, connection_draining_timeout_sec=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, name=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -108,29 +185,99 @@ class RegionBackendService(pulumi.CustomResource):
         
         The **backends** object supports the following:
         
+          * `balancingMode` (`pulumi.Input[str]`)
+          * `capacityScaler` (`pulumi.Input[float]`)
           * `description` (`pulumi.Input[str]`)
           * `failover` (`pulumi.Input[bool]`)
           * `group` (`pulumi.Input[str]`)
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
+          * `maxRate` (`pulumi.Input[float]`)
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
+          * `maxRatePerInstance` (`pulumi.Input[float]`)
+          * `maxUtilization` (`pulumi.Input[float]`)
+        
+        The **circuit_breakers** object supports the following:
+        
+          * `connectTimeout` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxConnections` (`pulumi.Input[float]`)
+          * `maxPendingRequests` (`pulumi.Input[float]`)
+          * `maxRequests` (`pulumi.Input[float]`)
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
+          * `maxRetries` (`pulumi.Input[float]`)
+        
+        The **consistent_hash** object supports the following:
+        
+          * `httpCookie` (`pulumi.Input[dict]`)
+        
+            * `name` (`pulumi.Input[str]`)
+            * `path` (`pulumi.Input[str]`)
+            * `ttl` (`pulumi.Input[dict]`)
+        
+              * `nanos` (`pulumi.Input[float]`)
+              * `seconds` (`pulumi.Input[float]`)
+        
+          * `httpHeaderName` (`pulumi.Input[str]`)
+          * `minimumRingSize` (`pulumi.Input[float]`)
         
         The **failover_policy** object supports the following:
         
           * `disableConnectionDrainOnFailover` (`pulumi.Input[bool]`)
           * `dropTrafficIfUnhealthy` (`pulumi.Input[bool]`)
           * `failover_ratio` (`pulumi.Input[float]`)
+        
+        The **log_config** object supports the following:
+        
+          * `enable` (`pulumi.Input[bool]`)
+          * `sampleRate` (`pulumi.Input[float]`)
+        
+        The **outlier_detection** object supports the following:
+        
+          * `baseEjectionTime` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `consecutiveErrors` (`pulumi.Input[float]`)
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
+          * `enforcingSuccessRate` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[dict]`)
+        
+            * `nanos` (`pulumi.Input[float]`)
+            * `seconds` (`pulumi.Input[float]`)
+        
+          * `maxEjectionPercent` (`pulumi.Input[float]`)
+          * `successRateMinimumHosts` (`pulumi.Input[float]`)
+          * `successRateRequestVolume` (`pulumi.Input[float]`)
+          * `successRateStdevFactor` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
         __props__["backends"] = backends
+        __props__["circuit_breakers"] = circuit_breakers
         __props__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
+        __props__["consistent_hash"] = consistent_hash
+        __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["failover_policy"] = failover_policy
         __props__["fingerprint"] = fingerprint
         __props__["health_checks"] = health_checks
         __props__["load_balancing_scheme"] = load_balancing_scheme
+        __props__["locality_lb_policy"] = locality_lb_policy
+        __props__["log_config"] = log_config
         __props__["name"] = name
+        __props__["outlier_detection"] = outlier_detection
         __props__["project"] = project
         __props__["protocol"] = protocol
         __props__["region"] = region

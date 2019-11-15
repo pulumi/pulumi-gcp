@@ -81,22 +81,32 @@ func (r *SSLCertificate) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
+// least one intermediate cert.
 func (r *SSLCertificate) Certificate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["certificate"])
 }
 
+// The unique identifier for the resource.
 func (r *SSLCertificate) CertificateId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *SSLCertificate) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *SSLCertificate) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+// namespace as the managed SSL certificates.
 func (r *SSLCertificate) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -107,6 +117,7 @@ func (r *SSLCertificate) NamePrefix() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
+// The write-only private key in PEM format.
 func (r *SSLCertificate) PrivateKey() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["privateKey"])
 }
@@ -124,14 +135,25 @@ func (r *SSLCertificate) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SSLCertificate resources.
 type SSLCertificateState struct {
+	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
+	// least one intermediate cert.
 	Certificate interface{}
+	// The unique identifier for the resource.
 	CertificateId interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+	// namespace as the managed SSL certificates.
 	Name interface{}
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
+	// The write-only private key in PEM format.
 	PrivateKey interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -142,12 +164,21 @@ type SSLCertificateState struct {
 
 // The set of arguments for constructing a SSLCertificate resource.
 type SSLCertificateArgs struct {
+	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
+	// least one intermediate cert.
 	Certificate interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+	// namespace as the managed SSL certificates.
 	Name interface{}
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix interface{}
+	// The write-only private key in PEM format.
 	PrivateKey interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

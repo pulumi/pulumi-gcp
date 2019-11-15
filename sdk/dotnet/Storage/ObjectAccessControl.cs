@@ -32,30 +32,60 @@ namespace Pulumi.Gcp.Storage
     /// </summary>
     public partial class ObjectAccessControl : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain associated with the entity.
+        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
+        /// <summary>
+        /// The email address associated with the entity.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
+        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
+        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
+        /// allAuthenticatedUsers
+        /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID for the entity
+        /// </summary>
         [Output("entityId")]
         public Output<string> EntityId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content generation of the object, if applied to an object.
+        /// </summary>
         [Output("generation")]
         public Output<int> Generation { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the object to apply the access control to.
+        /// </summary>
         [Output("object")]
         public Output<string> Object { get; private set; } = null!;
 
+        /// <summary>
+        /// The project team associated with the entity
+        /// </summary>
         [Output("projectTeam")]
         public Output<Outputs.ObjectAccessControlProjectTeam> ProjectTeam { get; private set; } = null!;
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -105,15 +135,30 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class ObjectAccessControlArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
+        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
+        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
+        /// allAuthenticatedUsers
+        /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the object to apply the access control to.
+        /// </summary>
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -124,30 +169,60 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class ObjectAccessControlState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        /// <summary>
+        /// The domain associated with the entity.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// The email address associated with the entity.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
+        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
+        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
+        /// allAuthenticatedUsers
+        /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }
 
+        /// <summary>
+        /// The ID for the entity
+        /// </summary>
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }
 
+        /// <summary>
+        /// The content generation of the object, if applied to an object.
+        /// </summary>
         [Input("generation")]
         public Input<int>? Generation { get; set; }
 
+        /// <summary>
+        /// The name of the object to apply the access control to.
+        /// </summary>
         [Input("object")]
         public Input<string>? Object { get; set; }
 
+        /// <summary>
+        /// The project team associated with the entity
+        /// </summary>
         [Input("projectTeam")]
         public Input<Inputs.ObjectAccessControlProjectTeamGetArgs>? ProjectTeam { get; set; }
 
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

@@ -43,6 +43,12 @@ namespace Pulumi.Gcp.Storage
         public Output<ImmutableArray<string>> EventTypes { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the created notification.
+        /// </summary>
+        [Output("notificationId")]
+        public Output<string> NotificationId { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         /// </summary>
         [Output("objectNamePrefix")]
@@ -200,6 +206,12 @@ namespace Pulumi.Gcp.Storage
             get => _eventTypes ?? (_eventTypes = new InputList<string>());
             set => _eventTypes = value;
         }
+
+        /// <summary>
+        /// The ID of the created notification.
+        /// </summary>
+        [Input("notificationId")]
+        public Input<string>? NotificationId { get; set; }
 
         /// <summary>
         /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.

@@ -79,7 +79,7 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(project_id=None,opts=None):
     """
     Use this data source to get project details.
-    For more information see 
+    For more information see
     [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
     
     :param str project_id: The project ID. If it is not provided, the provider project is used.

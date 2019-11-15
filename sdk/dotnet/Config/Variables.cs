@@ -51,6 +51,8 @@ namespace Pulumi.Gcp.Config
 
         public static string? Credentials { get; set; } = __config.Get("credentials") ?? Utilities.GetEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
 
+        public static string? DataFusionCustomEndpoint { get; set; } = __config.Get("dataFusionCustomEndpoint");
+
         public static string? DataflowCustomEndpoint { get; set; } = __config.Get("dataflowCustomEndpoint");
 
         public static string? DataprocBetaCustomEndpoint { get; set; } = __config.Get("dataprocBetaCustomEndpoint");

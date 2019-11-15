@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Kms
     /// </summary>
     public partial class KeyRing : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
+        /// list'.
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource name for the KeyRing.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -74,9 +81,16 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
+        /// list'.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The resource name for the KeyRing.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -94,9 +108,16 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
+        /// list'.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The resource name for the KeyRing.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

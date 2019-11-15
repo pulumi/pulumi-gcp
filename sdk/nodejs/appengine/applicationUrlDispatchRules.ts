@@ -36,6 +36,9 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationUrlDispatchRules.__pulumiType;
     }
 
+    /**
+     * Rules to match an HTTP request and dispatch that request to a service.
+     */
     public readonly dispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRulesDispatchRule[]>;
     public readonly project!: pulumi.Output<string>;
 
@@ -76,6 +79,9 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
  */
 export interface ApplicationUrlDispatchRulesState {
+    /**
+     * Rules to match an HTTP request and dispatch that request to a service.
+     */
     readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
     readonly project?: pulumi.Input<string>;
 }
@@ -84,6 +90,9 @@ export interface ApplicationUrlDispatchRulesState {
  * The set of arguments for constructing a ApplicationUrlDispatchRules resource.
  */
 export interface ApplicationUrlDispatchRulesArgs {
+    /**
+     * Rules to match an HTTP request and dispatch that request to a service.
+     */
     readonly dispatchRules: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
     readonly project?: pulumi.Input<string>;
 }

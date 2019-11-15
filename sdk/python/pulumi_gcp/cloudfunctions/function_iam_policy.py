@@ -30,7 +30,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+    The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+    the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+    region is specified, it is taken from the provider configuration.
     """
     def __init__(__self__, resource_name, opts=None, cloud_function=None, policy_data=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -43,7 +45,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
                a `organizations.getIAMPolicy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_policy.html.markdown.
         """
@@ -94,7 +98,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
                a `organizations.getIAMPolicy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_policy.html.markdown.
         """

@@ -65,18 +65,26 @@ func (r *Topic) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
+// 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
 func (r *Topic) KmsKeyName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["kmsKeyName"])
 }
 
+// A set of key/value label pairs to assign to this Topic.
 func (r *Topic) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not
+// present, then no constraints are in effect.
 func (r *Topic) MessageStoragePolicy() *pulumi.Output {
 	return r.s.State["messageStoragePolicy"]
 }
 
+// Name of the topic.
 func (r *Topic) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -89,9 +97,17 @@ func (r *Topic) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Topic resources.
 type TopicState struct {
+	// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+	// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
+	// 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
 	KmsKeyName interface{}
+	// A set of key/value label pairs to assign to this Topic.
 	Labels interface{}
+	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If
+	// not present, then no constraints are in effect.
 	MessageStoragePolicy interface{}
+	// Name of the topic.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -100,9 +116,17 @@ type TopicState struct {
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
+	// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+	// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
+	// 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
 	KmsKeyName interface{}
+	// A set of key/value label pairs to assign to this Topic.
 	Labels interface{}
+	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If
+	// not present, then no constraints are in effect.
 	MessageStoragePolicy interface{}
+	// Name of the topic.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -12,18 +12,38 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class NetworkEndpointGroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The default port used if the port number is not specified in the network endpoint.
+        /// </summary>
         [Output("defaultPort")]
         public Output<int?> DefaultPort { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
+        /// <summary>
+        /// Type of network endpoints in this network endpoint group. Currently the only supported value is
+        /// GCE_VM_IP_PORT.
+        /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
 
@@ -40,12 +60,21 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of network endpoints in the network endpoint group.
+        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
         [Output("subnetwork")]
         public Output<string?> Subnetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// Zone where the network endpoint group is located.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -95,18 +124,38 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NetworkEndpointGroupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default port used if the port number is not specified in the network endpoint.
+        /// </summary>
         [Input("defaultPort")]
         public Input<int>? DefaultPort { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
+        /// <summary>
+        /// Type of network endpoints in this network endpoint group. Currently the only supported value is
+        /// GCE_VM_IP_PORT.
+        /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
 
@@ -117,9 +166,15 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
+        /// <summary>
+        /// Zone where the network endpoint group is located.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -130,18 +185,38 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NetworkEndpointGroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default port used if the port number is not specified in the network endpoint.
+        /// </summary>
         [Input("defaultPort")]
         public Input<int>? DefaultPort { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// Type of network endpoints in this network endpoint group. Currently the only supported value is
+        /// GCE_VM_IP_PORT.
+        /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
 
@@ -158,12 +233,21 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// Number of network endpoints in the network endpoint group.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
+        /// <summary>
+        /// Optional subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
+        /// <summary>
+        /// Zone where the network endpoint group is located.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

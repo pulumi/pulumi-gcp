@@ -77,14 +77,19 @@ func (r *Service) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The location of the cloud run instance. eg us-central1
 func (r *Service) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
+// Metadata associated with this Service, including name, namespace, labels, and annotations.
 func (r *Service) Metadata() *pulumi.Output {
 	return r.s.State["metadata"]
 }
 
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+// http://kubernetes.io/docs/user-guide/identifiers#names
 func (r *Service) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -93,29 +98,44 @@ func (r *Service) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// RevisionSpec holds the desired state of the Revision (from the client).
 func (r *Service) Spec() *pulumi.Output {
 	return r.s.State["spec"]
 }
 
+// The current status of the Service.
 func (r *Service) Status() *pulumi.Output {
 	return r.s.State["status"]
 }
 
 // Input properties used for looking up and filtering Service resources.
 type ServiceState struct {
+	// The location of the cloud run instance. eg us-central1
 	Location interface{}
+	// Metadata associated with this Service, including name, namespace, labels, and annotations.
 	Metadata interface{}
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name interface{}
 	Project interface{}
+	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec interface{}
+	// The current status of the Service.
 	Status interface{}
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// The location of the cloud run instance. eg us-central1
 	Location interface{}
+	// Metadata associated with this Service, including name, namespace, labels, and annotations.
 	Metadata interface{}
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name interface{}
 	Project interface{}
+	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec interface{}
 }

@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL of the node template to which this node group belongs.
+        /// </summary>
         [Output("nodeTemplate")]
         public Output<string> NodeTemplate { get; private set; } = null!;
 
@@ -37,9 +49,15 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The total number of nodes in the node group.
+        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
+        /// <summary>
+        /// Zone where this node group is located
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -89,12 +107,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeGroupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The URL of the node template to which this node group belongs.
+        /// </summary>
         [Input("nodeTemplate", required: true)]
         public Input<string> NodeTemplate { get; set; } = null!;
 
@@ -105,9 +132,15 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The total number of nodes in the node group.
+        /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
+        /// <summary>
+        /// Zone where this node group is located
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -118,15 +151,27 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeGroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// An optional textual description of the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The URL of the node template to which this node group belongs.
+        /// </summary>
         [Input("nodeTemplate")]
         public Input<string>? NodeTemplate { get; set; }
 
@@ -143,9 +188,15 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The total number of nodes in the node group.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
+        /// <summary>
+        /// Zone where this node group is located
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

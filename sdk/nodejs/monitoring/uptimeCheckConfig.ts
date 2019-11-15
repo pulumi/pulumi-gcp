@@ -36,23 +36,66 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === UptimeCheckConfig.__pulumiType;
     }
 
+    /**
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported,
+     * and other entries will be ignored. The server will look for an exact match of the string in the page response's
+     * content. This field is optional and should only be specified if a content match is required.
+     */
     public readonly contentMatchers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
+    /**
+     * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver
+     * Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Contains information needed to make an HTTP or HTTPS check.
+     */
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     public readonly internalCheckers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigInternalChecker[]>;
     public readonly isInternal!: pulumi.Output<boolean>;
+    /**
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
+     * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
+     * aws_elb_load_balancer
+     */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
+    /**
+     * A unique resource name for this UptimeCheckConfig. The format is
+     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s
+     * (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
+     */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The group resource associated with the configuration.
+     */
     public readonly resourceGroup!: pulumi.Output<outputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
+    /**
+     * The list of regions from which the check will be run. Some regions contain one location, and others contain more
+     * than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an
+     * error message is returned. Not specifying this field will result in uptime checks running from all regions.
+     */
     public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
+    /**
+     * Contains information needed to make a TCP check.
+     */
     public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
+    /**
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats
+     * https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     */
     public readonly timeout!: pulumi.Output<string>;
+    /**
+     * The id of the uptime check
+     */
     public /*out*/ readonly uptimeCheckId!: pulumi.Output<string>;
 
     /**
@@ -119,23 +162,66 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UptimeCheckConfig resources.
  */
 export interface UptimeCheckConfigState {
+    /**
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported,
+     * and other entries will be ignored. The server will look for an exact match of the string in the page response's
+     * content. This field is optional and should only be specified if a content match is required.
+     */
     readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
+    /**
+     * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver
+     * Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Contains information needed to make an HTTP or HTTPS check.
+     */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
     readonly isInternal?: pulumi.Input<boolean>;
+    /**
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
+     * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
+     * aws_elb_load_balancer
+     */
     readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
+    /**
+     * A unique resource name for this UptimeCheckConfig. The format is
+     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s
+     * (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
+     */
     readonly period?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The group resource associated with the configuration.
+     */
     readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
+    /**
+     * The list of regions from which the check will be run. Some regions contain one location, and others contain more
+     * than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an
+     * error message is returned. Not specifying this field will result in uptime checks running from all regions.
+     */
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Contains information needed to make a TCP check.
+     */
     readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
+    /**
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats
+     * https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     */
     readonly timeout?: pulumi.Input<string>;
+    /**
+     * The id of the uptime check
+     */
     readonly uptimeCheckId?: pulumi.Input<string>;
 }
 
@@ -143,20 +229,56 @@ export interface UptimeCheckConfigState {
  * The set of arguments for constructing a UptimeCheckConfig resource.
  */
 export interface UptimeCheckConfigArgs {
+    /**
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported,
+     * and other entries will be ignored. The server will look for an exact match of the string in the page response's
+     * content. This field is optional and should only be specified if a content match is required.
+     */
     readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
+    /**
+     * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver
+     * Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+     */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * Contains information needed to make an HTTP or HTTPS check.
+     */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
     readonly isInternal?: pulumi.Input<boolean>;
+    /**
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
+     * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
+     * aws_elb_load_balancer
+     */
     readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
+    /**
+     * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s
+     * (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
+     */
     readonly period?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The group resource associated with the configuration.
+     */
     readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
+    /**
+     * The list of regions from which the check will be run. Some regions contain one location, and others contain more
+     * than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an
+     * error message is returned. Not specifying this field will result in uptime checks running from all regions.
+     */
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Contains information needed to make a TCP check.
+     */
     readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
+    /**
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats
+     * https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     */
     readonly timeout: pulumi.Input<string>;
 }

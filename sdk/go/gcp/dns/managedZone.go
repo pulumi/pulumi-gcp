@@ -86,38 +86,49 @@ func (r *ManagedZone) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A textual description field. Defaults to 'Managed by Terraform'.
 func (r *ManagedZone) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// The DNS name of this managed zone, for instance "example.com.".
 func (r *ManagedZone) DnsName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
+// DNSSEC configuration
 func (r *ManagedZone) DnssecConfig() *pulumi.Output {
 	return r.s.State["dnssecConfig"]
 }
 
+// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+// contains the set of destinations to forward to.
 func (r *ManagedZone) ForwardingConfig() *pulumi.Output {
 	return r.s.State["forwardingConfig"]
 }
 
+// A set of key/value label pairs to assign to this ManagedZone.
 func (r *ManagedZone) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// User assigned name for this resource. Must be unique within the project.
 func (r *ManagedZone) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// Delegate your managed_zone to these virtual name servers; defined by the server
 func (r *ManagedZone) NameServers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["nameServers"])
 }
 
+// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+// network to peer with.
 func (r *ManagedZone) PeeringConfig() *pulumi.Output {
 	return r.s.State["peeringConfig"]
 }
 
+// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 func (r *ManagedZone) PrivateVisibilityConfig() *pulumi.Output {
 	return r.s.State["privateVisibilityConfig"]
 }
@@ -128,39 +139,66 @@ func (r *ManagedZone) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+// Cloud resources. Must be one of: 'public', 'private'.
 func (r *ManagedZone) Visibility() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["visibility"])
 }
 
 // Input properties used for looking up and filtering ManagedZone resources.
 type ManagedZoneState struct {
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
+	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName interface{}
+	// DNSSEC configuration
 	DnssecConfig interface{}
+	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+	// contains the set of destinations to forward to.
 	ForwardingConfig interface{}
+	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels interface{}
+	// User assigned name for this resource. Must be unique within the project.
 	Name interface{}
+	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers interface{}
+	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+	// network to peer with.
 	PeeringConfig interface{}
+	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
+	// Private Cloud resources. Must be one of: 'public', 'private'.
 	Visibility interface{}
 }
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description interface{}
+	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName interface{}
+	// DNSSEC configuration
 	DnssecConfig interface{}
+	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+	// contains the set of destinations to forward to.
 	ForwardingConfig interface{}
+	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels interface{}
+	// User assigned name for this resource. Must be unique within the project.
 	Name interface{}
+	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+	// network to peer with.
 	PeeringConfig interface{}
+	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
+	// Private Cloud resources. Must be one of: 'public', 'private'.
 	Visibility interface{}
 }

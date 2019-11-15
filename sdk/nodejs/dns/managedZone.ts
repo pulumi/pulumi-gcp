@@ -36,20 +36,53 @@ export class ManagedZone extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZone.__pulumiType;
     }
 
+    /**
+     * A textual description field. Defaults to 'Managed by Terraform'.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The DNS name of this managed zone, for instance "example.com.".
+     */
     public readonly dnsName!: pulumi.Output<string>;
+    /**
+     * DNSSEC configuration
+     */
     public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
+    /**
+     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+     * contains the set of destinations to forward to.
+     */
     public readonly forwardingConfig!: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
+    /**
+     * A set of key/value label pairs to assign to this ManagedZone.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * User assigned name for this resource. Must be unique within the project.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Delegate your managed_zone to these virtual name servers; defined by the server
+     */
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
+    /**
+     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+     * network to peer with.
+     */
     public readonly peeringConfig!: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
+    /**
+     * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+     */
     public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
+     * Private Cloud resources. Must be one of: 'public', 'private'.
+     */
     public readonly visibility!: pulumi.Output<string | undefined>;
 
     /**
@@ -107,20 +140,53 @@ export class ManagedZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ManagedZone resources.
  */
 export interface ManagedZoneState {
+    /**
+     * A textual description field. Defaults to 'Managed by Terraform'.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The DNS name of this managed zone, for instance "example.com.".
+     */
     readonly dnsName?: pulumi.Input<string>;
+    /**
+     * DNSSEC configuration
+     */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    /**
+     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+     * contains the set of destinations to forward to.
+     */
     readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
+    /**
+     * A set of key/value label pairs to assign to this ManagedZone.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * User assigned name for this resource. Must be unique within the project.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Delegate your managed_zone to these virtual name servers; defined by the server
+     */
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+     * network to peer with.
+     */
     readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    /**
+     * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+     */
     readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
+     * Private Cloud resources. Must be one of: 'public', 'private'.
+     */
     readonly visibility?: pulumi.Input<string>;
 }
 
@@ -128,18 +194,48 @@ export interface ManagedZoneState {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
+    /**
+     * A textual description field. Defaults to 'Managed by Terraform'.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The DNS name of this managed zone, for instance "example.com.".
+     */
     readonly dnsName: pulumi.Input<string>;
+    /**
+     * DNSSEC configuration
+     */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    /**
+     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+     * contains the set of destinations to forward to.
+     */
     readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
+    /**
+     * A set of key/value label pairs to assign to this ManagedZone.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * User assigned name for this resource. Must be unique within the project.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+     * network to peer with.
+     */
     readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    /**
+     * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+     */
     readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
+     * Private Cloud resources. Must be one of: 'public', 'private'.
+     */
     readonly visibility?: pulumi.Input<string>;
 }

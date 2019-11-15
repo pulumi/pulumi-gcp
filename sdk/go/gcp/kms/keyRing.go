@@ -65,10 +65,12 @@ func (r *KeyRing) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
 func (r *KeyRing) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
+// The resource name for the KeyRing.
 func (r *KeyRing) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -85,7 +87,9 @@ func (r *KeyRing) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering KeyRing resources.
 type KeyRingState struct {
+	// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
 	Location interface{}
+	// The resource name for the KeyRing.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -95,7 +99,9 @@ type KeyRingState struct {
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
+	// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
 	Location interface{}
+	// The resource name for the KeyRing.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

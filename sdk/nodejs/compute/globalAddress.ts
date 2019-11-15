@@ -36,21 +36,63 @@ export class GlobalAddress extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalAddress.__pulumiType;
     }
 
+    /**
+     * The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+     * reserve a specific address or omitted to allow GCP to choose a valid one for you.
+     */
     public readonly address!: pulumi.Output<string>;
+    /**
+     * The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+     * INTERNAL indicates internal IP ranges belonging to some network.
+     */
     public readonly addressType!: pulumi.Output<string | undefined>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+     */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot
+     * be deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal
+     * address.
+     */
     public readonly network!: pulumi.Output<string | undefined>;
+    /**
+     * The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is
+     * not applicable to addresses with addressType=EXTERNAL.
+     */
     public readonly prefixLength!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should
+     * only be set when using an Internal address.
+     */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
@@ -113,21 +155,63 @@ export class GlobalAddress extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalAddress resources.
  */
 export interface GlobalAddressState {
+    /**
+     * The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+     * reserve a specific address or omitted to allow GCP to choose a valid one for you.
+     */
     readonly address?: pulumi.Input<string>;
+    /**
+     * The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+     * INTERNAL indicates internal IP ranges belonging to some network.
+     */
     readonly addressType?: pulumi.Input<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+     */
     readonly ipVersion?: pulumi.Input<string>;
+    /**
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     */
     readonly labelFingerprint?: pulumi.Input<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot
+     * be deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal
+     * address.
+     */
     readonly network?: pulumi.Input<string>;
+    /**
+     * The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is
+     * not applicable to addresses with addressType=EXTERNAL.
+     */
     readonly prefixLength?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should
+     * only be set when using an Internal address.
+     */
     readonly purpose?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -139,18 +223,54 @@ export interface GlobalAddressState {
  * The set of arguments for constructing a GlobalAddress resource.
  */
 export interface GlobalAddressArgs {
+    /**
+     * The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
+     * reserve a specific address or omitted to allow GCP to choose a valid one for you.
+     */
     readonly address?: pulumi.Input<string>;
+    /**
+     * The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
+     * INTERNAL indicates internal IP ranges belonging to some network.
+     */
     readonly addressType?: pulumi.Input<string>;
+    /**
+     * An optional description of this resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+     */
     readonly ipVersion?: pulumi.Input<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot
+     * be deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal
+     * address.
+     */
     readonly network?: pulumi.Input<string>;
+    /**
+     * The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is
+     * not applicable to addresses with addressType=EXTERNAL.
+     */
     readonly prefixLength?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should
+     * only be set when using an Internal address.
+     */
     readonly purpose?: pulumi.Input<string>;
 }

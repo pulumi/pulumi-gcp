@@ -86,34 +86,45 @@ func (r *RegionUrlMap) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *RegionUrlMap) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// A reference to RegionBackendService resource if none of the hostRules match.
 func (r *RegionUrlMap) DefaultService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultService"])
 }
 
+// An optional description of this resource. Provide this property when you create the resource.
 func (r *RegionUrlMap) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Fingerprint of this resource. This field is used internally during updates of this resource.
 func (r *RegionUrlMap) Fingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
+// The list of HostRules to use against the URL.
 func (r *RegionUrlMap) HostRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["hostRules"])
 }
 
+// The unique identifier for the resource.
 func (r *RegionUrlMap) MapId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["mapId"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *RegionUrlMap) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The list of named PathMatchers to use against the URL.
 func (r *RegionUrlMap) PathMatchers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["pathMatchers"])
 }
@@ -124,6 +135,7 @@ func (r *RegionUrlMap) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The Region in which the url map should reside. If it is not provided, the provider region is used.
 func (r *RegionUrlMap) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -133,39 +145,63 @@ func (r *RegionUrlMap) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
 func (r *RegionUrlMap) Tests() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tests"])
 }
 
 // Input properties used for looking up and filtering RegionUrlMap resources.
 type RegionUrlMapState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// A reference to RegionBackendService resource if none of the hostRules match.
 	DefaultService interface{}
+	// An optional description of this resource. Provide this property when you create the resource.
 	Description interface{}
+	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	Fingerprint interface{}
+	// The list of HostRules to use against the URL.
 	HostRules interface{}
+	// The unique identifier for the resource.
 	MapId interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The list of named PathMatchers to use against the URL.
 	PathMatchers interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The Region in which the url map should reside. If it is not provided, the provider region is used.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
 	Tests interface{}
 }
 
 // The set of arguments for constructing a RegionUrlMap resource.
 type RegionUrlMapArgs struct {
+	// A reference to RegionBackendService resource if none of the hostRules match.
 	DefaultService interface{}
+	// An optional description of this resource. Provide this property when you create the resource.
 	Description interface{}
+	// The list of HostRules to use against the URL.
 	HostRules interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The list of named PathMatchers to use against the URL.
 	PathMatchers interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The Region in which the url map should reside. If it is not provided, the provider region is used.
 	Region interface{}
+	// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
 	Tests interface{}
 }

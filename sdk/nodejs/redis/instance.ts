@@ -34,26 +34,86 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two
+     * zones. If provided, it must be a different zone from the one provided in [locationId].
+     */
     public readonly alternativeLocationId!: pulumi.Output<string>;
+    /**
+     * The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the
+     * default network will be used.
+     */
     public readonly authorizedNetwork!: pulumi.Output<string>;
+    /**
+     * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
+     * [alternativeLocationId] and can change after a failover event.
+     */
     public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
+    /**
+     * An arbitrary and optional user-provided name for the instance.
+     */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     */
     public /*out*/ readonly host!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance.
+     * For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If
+     * [alternativeLocationId] is also provided, it must be different from [locationId].
+     */
     public readonly locationId!: pulumi.Output<string>;
+    /**
+     * Redis memory size in GiB.
+     */
     public readonly memorySizeGb!: pulumi.Output<number>;
+    /**
+     * The ID of the instance or a fully qualified identifier for the instance.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The port number of the exposed Redis endpoint.
+     */
     public /*out*/ readonly port!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Redis configuration parameters, according to http://redis.io/topics/config. Please check Memorystore documentation
+     * for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     */
     public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The version of Redis software. If not provided, latest supported version will be used. Currently, the supported
+     * values are: - REDIS_4_0 for Redis 4.0 compatibility - REDIS_3_2 for Redis 3.2 compatibility
+     */
     public readonly redisVersion!: pulumi.Output<string>;
+    /**
+     * The name of the Redis region of the instance.
+     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose
+     * an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with
+     * existing subnets in an authorized network.
+     */
     public readonly reservedIpRange!: pulumi.Output<string>;
+    /**
+     * The service tier of the instance. Must be one of these values: - BASIC: standalone instance - STANDARD_HA: highly
+     * available primary/replica instances
+     */
     public readonly tier!: pulumi.Output<string | undefined>;
 
     /**
@@ -123,26 +183,86 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two
+     * zones. If provided, it must be a different zone from the one provided in [locationId].
+     */
     readonly alternativeLocationId?: pulumi.Input<string>;
+    /**
+     * The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the
+     * default network will be used.
+     */
     readonly authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+     */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
+     * [alternativeLocationId] and can change after a failover event.
+     */
     readonly currentLocationId?: pulumi.Input<string>;
+    /**
+     * An arbitrary and optional user-provided name for the instance.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     */
     readonly host?: pulumi.Input<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance.
+     * For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If
+     * [alternativeLocationId] is also provided, it must be different from [locationId].
+     */
     readonly locationId?: pulumi.Input<string>;
+    /**
+     * Redis memory size in GiB.
+     */
     readonly memorySizeGb?: pulumi.Input<number>;
+    /**
+     * The ID of the instance or a fully qualified identifier for the instance.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The port number of the exposed Redis endpoint.
+     */
     readonly port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Redis configuration parameters, according to http://redis.io/topics/config. Please check Memorystore documentation
+     * for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     */
     readonly redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The version of Redis software. If not provided, latest supported version will be used. Currently, the supported
+     * values are: - REDIS_4_0 for Redis 4.0 compatibility - REDIS_3_2 for Redis 3.2 compatibility
+     */
     readonly redisVersion?: pulumi.Input<string>;
+    /**
+     * The name of the Redis region of the instance.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose
+     * an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with
+     * existing subnets in an authorized network.
+     */
     readonly reservedIpRange?: pulumi.Input<string>;
+    /**
+     * The service tier of the instance. Must be one of these values: - BASIC: standalone instance - STANDARD_HA: highly
+     * available primary/replica instances
+     */
     readonly tier?: pulumi.Input<string>;
 }
 
@@ -150,21 +270,67 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two
+     * zones. If provided, it must be a different zone from the one provided in [locationId].
+     */
     readonly alternativeLocationId?: pulumi.Input<string>;
+    /**
+     * The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the
+     * default network will be used.
+     */
     readonly authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * An arbitrary and optional user-provided name for the instance.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance.
+     * For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If
+     * [alternativeLocationId] is also provided, it must be different from [locationId].
+     */
     readonly locationId?: pulumi.Input<string>;
+    /**
+     * Redis memory size in GiB.
+     */
     readonly memorySizeGb: pulumi.Input<number>;
+    /**
+     * The ID of the instance or a fully qualified identifier for the instance.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Redis configuration parameters, according to http://redis.io/topics/config. Please check Memorystore documentation
+     * for the list of supported parameters:
+     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     */
     readonly redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The version of Redis software. If not provided, latest supported version will be used. Currently, the supported
+     * values are: - REDIS_4_0 for Redis 4.0 compatibility - REDIS_3_2 for Redis 3.2 compatibility
+     */
     readonly redisVersion?: pulumi.Input<string>;
+    /**
+     * The name of the Redis region of the instance.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose
+     * an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with
+     * existing subnets in an authorized network.
+     */
     readonly reservedIpRange?: pulumi.Input<string>;
+    /**
+     * The service tier of the instance. Must be one of these values: - BASIC: standalone instance - STANDARD_HA: highly
+     * available primary/replica instances
+     */
     readonly tier?: pulumi.Input<string>;
 }

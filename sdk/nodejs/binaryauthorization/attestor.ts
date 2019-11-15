@@ -36,8 +36,17 @@ export class Attestor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Attestor.__pulumiType;
     }
 
+    /**
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     */
     public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    /**
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The resource name.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
 
@@ -82,8 +91,17 @@ export class Attestor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Attestor resources.
  */
 export interface AttestorState {
+    /**
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     */
     readonly attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    /**
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The resource name.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }
@@ -92,8 +110,17 @@ export interface AttestorState {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
+    /**
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     */
     readonly attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    /**
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The resource name.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }

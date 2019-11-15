@@ -53,6 +53,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
           * `path` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `useSsl` (`pulumi.Input[bool]`)
+          * `validateSsl` (`pulumi.Input[bool]`)
         
         The **internal_checkers** object supports the following:
         
@@ -147,6 +148,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
           * `path` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `useSsl` (`pulumi.Input[bool]`)
+          * `validateSsl` (`pulumi.Input[bool]`)
         
         The **internal_checkers** object supports the following:
         

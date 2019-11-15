@@ -4,7 +4,7 @@
 
 import importlib
 # Make subpackages available:
-__all__ = ['accesscontextmanager', 'appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'cloudrun', 'cloudscheduler', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'dataproc', 'dns', 'endpoints', 'filestore', 'firestore', 'folder', 'healthcare', 'iam', 'iap', 'kms', 'logging', 'ml', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'securitycenter', 'service_account', 'servicenetworking', 'sourcerepo', 'spanner', 'sql', 'storage', 'tpu', 'vpcaccess']
+__all__ = ['accesscontextmanager', 'appengine', 'bigquery', 'bigtable', 'billing', 'binaryauthorization', 'cloudbuild', 'cloudfunctions', 'cloudrun', 'cloudscheduler', 'composer', 'compute', 'config', 'container', 'containeranalysis', 'dataflow', 'datafusion', 'dataproc', 'dns', 'endpoints', 'filestore', 'firestore', 'folder', 'healthcare', 'iam', 'iap', 'kms', 'logging', 'ml', 'monitoring', 'organizations', 'projects', 'pubsub', 'redis', 'resourcemanager', 'runtimeconfig', 'securitycenter', 'service_account', 'servicenetworking', 'sourcerepo', 'spanner', 'sql', 'storage', 'tpu', 'vpcaccess']
 for pkg in __all__:
     if pkg != 'config':
         importlib.import_module(f'{__name__}.{pkg}')

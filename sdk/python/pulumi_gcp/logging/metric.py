@@ -45,6 +45,7 @@ class Metric(pulumi.CustomResource):
         
         The **metric_descriptor** object supports the following:
         
+          * `display_name` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[list]`)
         
             * `description` (`pulumi.Input[str]`)
@@ -122,6 +123,7 @@ class Metric(pulumi.CustomResource):
         
         The **metric_descriptor** object supports the following:
         
+          * `display_name` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[list]`)
         
             * `description` (`pulumi.Input[str]`)

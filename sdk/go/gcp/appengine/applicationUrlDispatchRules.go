@@ -60,6 +60,7 @@ func (r *ApplicationUrlDispatchRules) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Rules to match an HTTP request and dispatch that request to a service.
 func (r *ApplicationUrlDispatchRules) DispatchRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["dispatchRules"])
 }
@@ -70,12 +71,14 @@ func (r *ApplicationUrlDispatchRules) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
 type ApplicationUrlDispatchRulesState struct {
+	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules interface{}
 	Project interface{}
 }
 
 // The set of arguments for constructing a ApplicationUrlDispatchRules resource.
 type ApplicationUrlDispatchRulesArgs struct {
+	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules interface{}
 	Project interface{}
 }

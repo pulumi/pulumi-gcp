@@ -36,11 +36,28 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Metadata associated with this Service, including name, namespace, labels, and annotations.
+     */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
+    /**
+     * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+     * primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+     * http://kubernetes.io/docs/user-guide/identifiers#names
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * RevisionSpec holds the desired state of the Revision (from the client).
+     */
     public readonly spec!: pulumi.Output<outputs.cloudrun.ServiceSpec>;
+    /**
+     * The current status of the Service.
+     */
     public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.ServiceStatus>;
 
     /**
@@ -94,11 +111,28 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     readonly location?: pulumi.Input<string>;
+    /**
+     * Metadata associated with this Service, including name, namespace, labels, and annotations.
+     */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    /**
+     * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+     * primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+     * http://kubernetes.io/docs/user-guide/identifiers#names
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * RevisionSpec holds the desired state of the Revision (from the client).
+     */
     readonly spec?: pulumi.Input<inputs.cloudrun.ServiceSpec>;
+    /**
+     * The current status of the Service.
+     */
     readonly status?: pulumi.Input<inputs.cloudrun.ServiceStatus>;
 }
 
@@ -106,9 +140,23 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
     readonly location: pulumi.Input<string>;
+    /**
+     * Metadata associated with this Service, including name, namespace, labels, and annotations.
+     */
     readonly metadata: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    /**
+     * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+     * primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+     * http://kubernetes.io/docs/user-guide/identifiers#names
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * RevisionSpec holds the desired state of the Revision (from the client).
+     */
     readonly spec: pulumi.Input<inputs.cloudrun.ServiceSpec>;
 }

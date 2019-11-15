@@ -8,28 +8,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for GCE instance. Each of these resources serves a different use case:
-    /// 
-    /// * `gcp.compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-    /// * `gcp.compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-    /// * `gcp.compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-    /// 
-    /// &gt; **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
-    /// 
-    /// &gt; **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_policy.html.markdown.
     /// </summary>
     public partial class InstanceIAMPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// (Computed) The etag of the instance's IAM policy.
+        /// (Computed) The etag of the IAM policy.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
@@ -42,15 +32,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PolicyData { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The zone of the instance. If
-        /// unspecified, this defaults to the zone configured in the provider.
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -102,7 +93,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceIAMPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
@@ -115,15 +106,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string> PolicyData { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If
-        /// unspecified, this defaults to the zone configured in the provider.
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -136,13 +128,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceIAMPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Computed) The etag of the instance's IAM policy.
+        /// (Computed) The etag of the IAM policy.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The name of the instance.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -155,15 +147,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PolicyData { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If
-        /// unspecified, this defaults to the zone configured in the provider.
+        /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
+        /// zone is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

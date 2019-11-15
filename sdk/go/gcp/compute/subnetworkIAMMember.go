@@ -84,7 +84,7 @@ func (r *SubnetworkIAMMember) Condition() *pulumi.Output {
 	return r.s.State["condition"]
 }
 
-// (Computed) The etag of the subnetwork's IAM policy.
+// (Computed) The etag of the IAM policy.
 func (r *SubnetworkIAMMember) Etag() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -93,14 +93,16 @@ func (r *SubnetworkIAMMember) Member() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["member"])
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (r *SubnetworkIAMMember) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region of the subnetwork. If
-// unspecified, this defaults to the region configured in the provider.
+// URL of the GCP region for this subnetwork.
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (r *SubnetworkIAMMember) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -112,7 +114,7 @@ func (r *SubnetworkIAMMember) Role() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["role"])
 }
 
-// The name of the subnetwork.
+// Used to find the parent resource to bind the IAM policy to
 func (r *SubnetworkIAMMember) Subnetwork() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
 }
@@ -120,20 +122,22 @@ func (r *SubnetworkIAMMember) Subnetwork() *pulumi.StringOutput {
 // Input properties used for looking up and filtering SubnetworkIAMMember resources.
 type SubnetworkIAMMemberState struct {
 	Condition interface{}
-	// (Computed) The etag of the subnetwork's IAM policy.
+	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Member interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
-	// The region of the subnetwork. If
-	// unspecified, this defaults to the region configured in the provider.
+	// URL of the GCP region for this subnetwork.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The name of the subnetwork.
+	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork interface{}
 }
 
@@ -141,16 +145,18 @@ type SubnetworkIAMMemberState struct {
 type SubnetworkIAMMemberArgs struct {
 	Condition interface{}
 	Member interface{}
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project interface{}
-	// The region of the subnetwork. If
-	// unspecified, this defaults to the region configured in the provider.
+	// URL of the GCP region for this subnetwork.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region interface{}
 	// The role that should be applied. Only one
 	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
-	// The name of the subnetwork.
+	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork interface{}
 }

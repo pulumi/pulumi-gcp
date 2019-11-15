@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *         "OBJECT_FINALIZE",
  *         "OBJECT_METADATA_UPDATE",
  *     ],
+ *     notificationId: "1",
  *     payloadFormat: "JSON_API_V1",
  *     topic: topic.name,
  * }, {dependsOn: [binding]});
@@ -89,6 +90,10 @@ export class Notification extends pulumi.CustomResource {
      */
     public readonly eventTypes!: pulumi.Output<string[] | undefined>;
     /**
+     * The ID of the created notification.
+     */
+    public /*out*/ readonly notificationId!: pulumi.Output<string>;
+    /**
      * Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
      */
     public readonly objectNamePrefix!: pulumi.Output<string | undefined>;
@@ -122,6 +127,7 @@ export class Notification extends pulumi.CustomResource {
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["eventTypes"] = state ? state.eventTypes : undefined;
+            inputs["notificationId"] = state ? state.notificationId : undefined;
             inputs["objectNamePrefix"] = state ? state.objectNamePrefix : undefined;
             inputs["payloadFormat"] = state ? state.payloadFormat : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -143,6 +149,7 @@ export class Notification extends pulumi.CustomResource {
             inputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
             inputs["payloadFormat"] = args ? args.payloadFormat : undefined;
             inputs["topic"] = args ? args.topic : undefined;
+            inputs["notificationId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts) {
@@ -172,6 +179,10 @@ export interface NotificationState {
      * List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
      */
     readonly eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the created notification.
+     */
+    readonly notificationId?: pulumi.Input<string>;
     /**
      * Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
      */

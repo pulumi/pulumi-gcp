@@ -12,21 +12,36 @@ namespace Pulumi.Gcp.Cloudrun
     /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// Metadata associated with this DomainMapping.
+        /// </summary>
         [Output("metadata")]
         public Output<Outputs.DomainMappingMetadata> Metadata { get; private set; } = null!;
 
+        /// <summary>
+        /// Name should be a verified domain
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The spec for this DomainMapping.
+        /// </summary>
         [Output("spec")]
         public Output<Outputs.DomainMappingSpec> Spec { get; private set; } = null!;
 
+        /// <summary>
+        /// The current status of the DomainMapping.
+        /// </summary>
         [Output("status")]
         public Output<Outputs.DomainMappingStatus> Status { get; private set; } = null!;
 
@@ -76,18 +91,30 @@ namespace Pulumi.Gcp.Cloudrun
 
     public sealed class DomainMappingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// Metadata associated with this DomainMapping.
+        /// </summary>
         [Input("metadata", required: true)]
         public Input<Inputs.DomainMappingMetadataArgs> Metadata { get; set; } = null!;
 
+        /// <summary>
+        /// Name should be a verified domain
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The spec for this DomainMapping.
+        /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.DomainMappingSpecArgs> Spec { get; set; } = null!;
 
@@ -98,21 +125,36 @@ namespace Pulumi.Gcp.Cloudrun
 
     public sealed class DomainMappingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Metadata associated with this DomainMapping.
+        /// </summary>
         [Input("metadata")]
         public Input<Inputs.DomainMappingMetadataGetArgs>? Metadata { get; set; }
 
+        /// <summary>
+        /// Name should be a verified domain
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The spec for this DomainMapping.
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.DomainMappingSpecGetArgs>? Spec { get; set; }
 
+        /// <summary>
+        /// The current status of the DomainMapping.
+        /// </summary>
         [Input("status")]
         public Input<Inputs.DomainMappingStatusGetArgs>? Status { get; set; }
 

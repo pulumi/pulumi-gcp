@@ -12,15 +12,28 @@ namespace Pulumi.Gcp.Cloudscheduler
     /// </summary>
     public partial class Job : Pulumi.CustomResource
     {
+        /// <summary>
+        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the
+        /// service instance
+        /// </summary>
         [Output("appEngineHttpTarget")]
         public Output<Outputs.JobAppEngineHttpTarget?> AppEngineHttpTarget { get; private set; } = null!;
 
+        /// <summary>
+        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// </summary>
         [Output("httpTarget")]
         public Output<Outputs.JobHttpTarget?> HttpTarget { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the job.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -31,18 +44,35 @@ namespace Pulumi.Gcp.Cloudscheduler
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// </summary>
         [Output("pubsubTarget")]
         public Output<Outputs.JobPubsubTarget?> PubsubTarget { get; private set; } = null!;
 
+        /// <summary>
+        /// Region where the scheduler job resides
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from
+        /// the handler, then it will be retried with exponential backoff according to the settings
+        /// </summary>
         [Output("retryConfig")]
         public Output<Outputs.JobRetryConfig?> RetryConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the schedule on which the job will be executed.
+        /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone
+        /// name from the tz database.
+        /// </summary>
         [Output("timeZone")]
         public Output<string?> TimeZone { get; private set; } = null!;
 
@@ -92,15 +122,28 @@ namespace Pulumi.Gcp.Cloudscheduler
 
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the
+        /// service instance
+        /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
 
+        /// <summary>
+        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetArgs>? HttpTarget { get; set; }
 
+        /// <summary>
+        /// The name of the job.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -111,18 +154,35 @@ namespace Pulumi.Gcp.Cloudscheduler
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetArgs>? PubsubTarget { get; set; }
 
+        /// <summary>
+        /// Region where the scheduler job resides
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from
+        /// the handler, then it will be retried with exponential backoff according to the settings
+        /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigArgs>? RetryConfig { get; set; }
 
+        /// <summary>
+        /// Describes the schedule on which the job will be executed.
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        /// <summary>
+        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone
+        /// name from the tz database.
+        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
@@ -133,15 +193,28 @@ namespace Pulumi.Gcp.Cloudscheduler
 
     public sealed class JobState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the
+        /// service instance
+        /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetGetArgs>? AppEngineHttpTarget { get; set; }
 
+        /// <summary>
+        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetGetArgs>? HttpTarget { get; set; }
 
+        /// <summary>
+        /// The name of the job.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -152,18 +225,35 @@ namespace Pulumi.Gcp.Cloudscheduler
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetGetArgs>? PubsubTarget { get; set; }
 
+        /// <summary>
+        /// Region where the scheduler job resides
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from
+        /// the handler, then it will be retried with exponential backoff according to the settings
+        /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigGetArgs>? RetryConfig { get; set; }
 
+        /// <summary>
+        /// Describes the schedule on which the job will be executed.
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        /// <summary>
+        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone
+        /// name from the tz database.
+        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 

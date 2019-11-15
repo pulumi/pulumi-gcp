@@ -36,20 +36,50 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityScanConfig.__pulumiType;
     }
 
+    /**
+     * The authentication configuration. If specified, service will use the authentication configuration during scanning.
+     */
     public readonly authentication!: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
+    /**
+     * The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+     */
     public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
+    /**
+     * The user provider display name of the ScanConfig.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Controls export of scan configurations and results to Cloud Security Command Center.
+     */
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+     */
     public readonly maxQps!: pulumi.Output<number | undefined>;
+    /**
+     * A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The schedule of the ScanConfig
+     */
     public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
+    /**
+     * The starting URLs from which the scanner finds site pages.
+     */
     public readonly startingUrls!: pulumi.Output<string[]>;
+    /**
+     * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     */
     public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
+    /**
+     * Type of the user agents used for scanning
+     */
     public readonly userAgent!: pulumi.Output<string | undefined>;
 
     /**
@@ -110,20 +140,50 @@ export class SecurityScanConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityScanConfig resources.
  */
 export interface SecurityScanConfigState {
+    /**
+     * The authentication configuration. If specified, service will use the authentication configuration during scanning.
+     */
     readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
+    /**
+     * The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+     */
     readonly blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The user provider display name of the ScanConfig.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Controls export of scan configurations and results to Cloud Security Command Center.
+     */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
+    /**
+     * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+     */
     readonly maxQps?: pulumi.Input<number>;
+    /**
+     * A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The schedule of the ScanConfig
+     */
     readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
+    /**
+     * The starting URLs from which the scanner finds site pages.
+     */
     readonly startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     */
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the user agents used for scanning
+     */
     readonly userAgent?: pulumi.Input<string>;
 }
 
@@ -131,18 +191,45 @@ export interface SecurityScanConfigState {
  * The set of arguments for constructing a SecurityScanConfig resource.
  */
 export interface SecurityScanConfigArgs {
+    /**
+     * The authentication configuration. If specified, service will use the authentication configuration during scanning.
+     */
     readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
+    /**
+     * The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+     */
     readonly blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The user provider display name of the ScanConfig.
+     */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * Controls export of scan configurations and results to Cloud Security Command Center.
+     */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
+    /**
+     * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+     */
     readonly maxQps?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The schedule of the ScanConfig
+     */
     readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
+    /**
+     * The starting URLs from which the scanner finds site pages.
+     */
     readonly startingUrls: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     */
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the user agents used for scanning
+     */
     readonly userAgent?: pulumi.Input<string>;
 }

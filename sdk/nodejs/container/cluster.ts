@@ -355,8 +355,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly podSecurityPolicyConfig!: pulumi.Output<outputs.container.ClusterPodSecurityPolicyConfig | undefined>;
     /**
-     * A set of options for creating
-     * a private cluster. Structure is documented below.
+     * Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+     * clusters with private nodes. Structure is documented below.
      */
     public readonly privateClusterConfig!: pulumi.Output<outputs.container.ClusterPrivateClusterConfig>;
     /**
@@ -779,8 +779,8 @@ export interface ClusterState {
      */
     readonly podSecurityPolicyConfig?: pulumi.Input<inputs.container.ClusterPodSecurityPolicyConfig>;
     /**
-     * A set of options for creating
-     * a private cluster. Structure is documented below.
+     * Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+     * clusters with private nodes. Structure is documented below.
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfig>;
     /**
@@ -1069,8 +1069,8 @@ export interface ClusterArgs {
      */
     readonly podSecurityPolicyConfig?: pulumi.Input<inputs.container.ClusterPodSecurityPolicyConfig>;
     /**
-     * A set of options for creating
-     * a private cluster. Structure is documented below.
+     * Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+     * clusters with private nodes. Structure is documented below.
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfig>;
     /**

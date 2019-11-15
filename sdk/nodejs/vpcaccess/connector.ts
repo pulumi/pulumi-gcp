@@ -34,18 +34,42 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    /**
+     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     */
     public readonly ipCidrRange!: pulumi.Output<string>;
+    /**
+     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     */
     public readonly maxThroughput!: pulumi.Output<number | undefined>;
+    /**
+     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     */
     public readonly minThroughput!: pulumi.Output<number | undefined>;
+    /**
+     * The name of the resource (Max 25 characters).
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Name of a VPC network.
+     */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Region where the VPC Access connector resides
+     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The fully qualified name of this VPC connector
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * State of the VPC access connector.
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
@@ -102,18 +126,42 @@ export class Connector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connector resources.
  */
 export interface ConnectorState {
+    /**
+     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     */
     readonly ipCidrRange?: pulumi.Input<string>;
+    /**
+     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     */
     readonly maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     */
     readonly minThroughput?: pulumi.Input<number>;
+    /**
+     * The name of the resource (Max 25 characters).
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Name of a VPC network.
+     */
     readonly network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region where the VPC Access connector resides
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The fully qualified name of this VPC connector
+     */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * State of the VPC access connector.
+     */
     readonly state?: pulumi.Input<string>;
 }
 
@@ -121,15 +169,33 @@ export interface ConnectorState {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
+    /**
+     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     */
     readonly ipCidrRange: pulumi.Input<string>;
+    /**
+     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     */
     readonly maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     */
     readonly minThroughput?: pulumi.Input<number>;
+    /**
+     * The name of the resource (Max 25 characters).
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Name of a VPC network.
+     */
     readonly network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region where the VPC Access connector resides
+     */
     readonly region: pulumi.Input<string>;
 }

@@ -72,22 +72,32 @@ func (r *Policy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+// image's admission requests will always be permitted regardless of your admission rules.
 func (r *Policy) AdmissionWhitelistPatterns() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["admissionWhitelistPatterns"])
 }
 
+// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+// must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+// denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+// location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
 func (r *Policy) ClusterAdmissionRules() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["clusterAdmissionRules"])
 }
 
+// Default admission rule for a cluster without a per-cluster admission rule.
 func (r *Policy) DefaultAdmissionRule() *pulumi.Output {
 	return r.s.State["defaultAdmissionRule"]
 }
 
+// A descriptive comment.
 func (r *Policy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+// covered by the global policy will be subject to the project admission policy.
 func (r *Policy) GlobalPolicyEvaluationMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["globalPolicyEvaluationMode"])
 }
@@ -98,20 +108,42 @@ func (r *Policy) Project() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Policy resources.
 type PolicyState struct {
+	// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+	// image's admission requests will always be permitted regardless of your admission rules.
 	AdmissionWhitelistPatterns interface{}
+	// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation
+	// request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations
+	// will be denied. There can be at most one admission rule per cluster spec. Identifier format:
+	// '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region (e.g.
+	// 'us-central1').
 	ClusterAdmissionRules interface{}
+	// Default admission rule for a cluster without a per-cluster admission rule.
 	DefaultAdmissionRule interface{}
+	// A descriptive comment.
 	Description interface{}
+	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode interface{}
 	Project interface{}
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
+	// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+	// image's admission requests will always be permitted regardless of your admission rules.
 	AdmissionWhitelistPatterns interface{}
+	// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation
+	// request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations
+	// will be denied. There can be at most one admission rule per cluster spec. Identifier format:
+	// '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region (e.g.
+	// 'us-central1').
 	ClusterAdmissionRules interface{}
+	// Default admission rule for a cluster without a per-cluster admission rule.
 	DefaultAdmissionRule interface{}
+	// A descriptive comment.
 	Description interface{}
+	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode interface{}
 	Project interface{}
 }

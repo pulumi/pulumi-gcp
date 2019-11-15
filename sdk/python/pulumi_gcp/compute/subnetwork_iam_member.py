@@ -13,18 +13,20 @@ class SubnetworkIAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
     """
-    (Computed) The etag of the subnetwork's IAM policy.
+    (Computed) The etag of the IAM policy.
     """
     member: pulumi.Output[str]
     project: pulumi.Output[str]
     """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
+    The ID of the project in which the resource belongs.
+    If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
     region: pulumi.Output[str]
     """
-    The region of the subnetwork. If
-    unspecified, this defaults to the region configured in the provider.
+    URL of the GCP region for this subnetwork.
+    Used to find the parent resource to bind the IAM policy to. If not specified,
+    the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+    region is specified, it is taken from the provider configuration.
     """
     role: pulumi.Output[str]
     """
@@ -34,7 +36,7 @@ class SubnetworkIAMMember(pulumi.CustomResource):
     """
     subnetwork: pulumi.Output[str]
     """
-    The name of the subnetwork.
+    Used to find the parent resource to bind the IAM policy to
     """
     def __init__(__self__, resource_name, opts=None, condition=None, member=None, project=None, region=None, role=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -42,14 +44,16 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region of the subnetwork. If
-               unspecified, this defaults to the region configured in the provider.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] subnetwork: The name of the subnetwork.
+        :param pulumi.Input[str] subnetwork: Used to find the parent resource to bind the IAM policy to
         
         The **condition** object supports the following:
         
@@ -104,15 +108,17 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] etag: (Computed) The etag of the subnetwork's IAM policy.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region of the subnetwork. If
-               unspecified, this defaults to the region configured in the provider.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] subnetwork: The name of the subnetwork.
+        :param pulumi.Input[str] subnetwork: Used to find the parent resource to bind the IAM policy to
         
         The **condition** object supports the following:
         

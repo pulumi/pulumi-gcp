@@ -82,40 +82,58 @@ func (r *AccessLevel) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A set of predefined conditions for the access level and a combining function.
 func (r *AccessLevel) Basic() *pulumi.Output {
 	return r.s.State["basic"]
 }
 
+// Description of the AccessLevel and its use. Does not affect behavior.
 func (r *AccessLevel) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 func (r *AccessLevel) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
 func (r *AccessLevel) Parent() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["parent"])
 }
 
+// Human readable title. Must be unique within the Policy.
 func (r *AccessLevel) Title() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Input properties used for looking up and filtering AccessLevel resources.
 type AccessLevelState struct {
+	// A set of predefined conditions for the access level and a combining function.
 	Basic interface{}
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description interface{}
+	// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+	// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	Name interface{}
+	// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
 	Parent interface{}
+	// Human readable title. Must be unique within the Policy.
 	Title interface{}
 }
 
 // The set of arguments for constructing a AccessLevel resource.
 type AccessLevelArgs struct {
+	// A set of predefined conditions for the access level and a combining function.
 	Basic interface{}
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description interface{}
+	// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+	// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	Name interface{}
+	// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
 	Parent interface{}
+	// Human readable title. Must be unique within the Policy.
 	Title interface{}
 }

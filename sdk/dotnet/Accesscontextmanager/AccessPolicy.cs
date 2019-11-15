@@ -25,18 +25,33 @@ namespace Pulumi.Gcp.Accesscontextmanager
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Time the AccessPolicy was created in UTC.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource name of the AccessPolicy. Format: {policy_id}
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+        /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Does not affect behavior.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// Time the AccessPolicy was updated in UTC.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -86,9 +101,15 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Does not affect behavior.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -99,18 +120,33 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class AccessPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time the AccessPolicy was created in UTC.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Resource name of the AccessPolicy. Format: {policy_id}
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Human readable title. Does not affect behavior.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// Time the AccessPolicy was updated in UTC.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

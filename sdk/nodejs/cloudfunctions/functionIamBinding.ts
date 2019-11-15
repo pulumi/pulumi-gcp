@@ -52,7 +52,9 @@ export class FunctionIamBinding extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -131,7 +133,9 @@ export interface FunctionIamBindingState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -158,7 +162,9 @@ export interface FunctionIamBindingArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+     * The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      */
     readonly region?: pulumi.Input<string>;
     /**

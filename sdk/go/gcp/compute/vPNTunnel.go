@@ -117,50 +117,69 @@ func (r *VPNTunnel) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *VPNTunnel) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *VPNTunnel) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Detailed status message for the VPN tunnel.
 func (r *VPNTunnel) DetailedStatus() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["detailedStatus"])
 }
 
+// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+// Default version is 2.
 func (r *VPNTunnel) IkeVersion() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ikeVersion"])
 }
 
+// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 func (r *VPNTunnel) LabelFingerprint() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
+// Labels to apply to this VpnTunnel.
 func (r *VPNTunnel) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 func (r *VPNTunnel) LocalTrafficSelectors() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["localTrafficSelectors"])
 }
 
+// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (r *VPNTunnel) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 func (r *VPNTunnel) PeerExternalGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerExternalGateway"])
 }
 
+// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 func (r *VPNTunnel) PeerExternalGatewayInterface() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["peerExternalGatewayInterface"])
 }
 
+// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+// 'google_compute_ha_vpn_gateway' resource.
 func (r *VPNTunnel) PeerGcpGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerGcpGateway"])
 }
 
+// IP address of the peer VPN gateway. Only IPv4 is supported.
 func (r *VPNTunnel) PeerIp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerIp"])
 }
@@ -171,14 +190,18 @@ func (r *VPNTunnel) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
 func (r *VPNTunnel) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 func (r *VPNTunnel) RemoteTrafficSelectors() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["remoteTrafficSelectors"])
 }
 
+// URL of router resource to be used for dynamic routing.
 func (r *VPNTunnel) Router() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["router"])
 }
@@ -188,79 +211,141 @@ func (r *VPNTunnel) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
 func (r *VPNTunnel) SharedSecret() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sharedSecret"])
 }
 
+// Hash of the shared secret.
 func (r *VPNTunnel) SharedSecretHash() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sharedSecretHash"])
 }
 
+// URL of the Target VPN gateway with which this VPN tunnel is associated.
 func (r *VPNTunnel) TargetVpnGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["targetVpnGateway"])
 }
 
+// The unique identifier for the resource. This identifier is defined by the server.
 func (r *VPNTunnel) TunnelId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tunnelId"])
 }
 
+// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
 func (r *VPNTunnel) VpnGateway() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vpnGateway"])
 }
 
+// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 func (r *VPNTunnel) VpnGatewayInterface() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["vpnGatewayInterface"])
 }
 
 // Input properties used for looking up and filtering VPNTunnel resources.
 type VPNTunnelState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Detailed status message for the VPN tunnel.
 	DetailedStatus interface{}
+	// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+	// Default version is 2.
 	IkeVersion interface{}
+	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint interface{}
+	// Labels to apply to this VpnTunnel.
 	Labels interface{}
+	// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+	// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 	LocalTrafficSelectors interface{}
+	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
+	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway interface{}
+	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface interface{}
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+	// 'google_compute_ha_vpn_gateway' resource.
 	PeerGcpGateway interface{}
+	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
 	Region interface{}
+	// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+	// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelectors interface{}
+	// URL of router resource to be used for dynamic routing.
 	Router interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
 	SharedSecret interface{}
+	// Hash of the shared secret.
 	SharedSecretHash interface{}
+	// URL of the Target VPN gateway with which this VPN tunnel is associated.
 	TargetVpnGateway interface{}
+	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId interface{}
+	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
 	VpnGateway interface{}
+	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface interface{}
 }
 
 // The set of arguments for constructing a VPNTunnel resource.
 type VPNTunnelArgs struct {
+	// An optional description of this resource.
 	Description interface{}
+	// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+	// Default version is 2.
 	IkeVersion interface{}
+	// Labels to apply to this VpnTunnel.
 	Labels interface{}
+	// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+	// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 	LocalTrafficSelectors interface{}
+	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
+	// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGateway interface{}
+	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface interface{}
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+	// 'google_compute_ha_vpn_gateway' resource.
 	PeerGcpGateway interface{}
+	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
 	Region interface{}
+	// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+	// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelectors interface{}
+	// URL of router resource to be used for dynamic routing.
 	Router interface{}
+	// Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
 	SharedSecret interface{}
+	// URL of the Target VPN gateway with which this VPN tunnel is associated.
 	TargetVpnGateway interface{}
+	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
 	VpnGateway interface{}
+	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface interface{}
 }

@@ -12,12 +12,22 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class BackendBucketSignedUrlKey : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The backend bucket this signed URL key belongs.
+        /// </summary>
         [Output("backendBucket")]
         public Output<string> BackendBucket { get; private set; } = null!;
 
+        /// <summary>
+        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url
+        /// encoded string.
+        /// </summary>
         [Output("keyValue")]
         public Output<string> KeyValue { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the signed URL key.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -74,12 +84,22 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class BackendBucketSignedUrlKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The backend bucket this signed URL key belongs.
+        /// </summary>
         [Input("backendBucket", required: true)]
         public Input<string> BackendBucket { get; set; } = null!;
 
+        /// <summary>
+        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url
+        /// encoded string.
+        /// </summary>
         [Input("keyValue", required: true)]
         public Input<string> KeyValue { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the signed URL key.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -97,12 +117,22 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class BackendBucketSignedUrlKeyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The backend bucket this signed URL key belongs.
+        /// </summary>
         [Input("backendBucket")]
         public Input<string>? BackendBucket { get; set; }
 
+        /// <summary>
+        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url
+        /// encoded string.
+        /// </summary>
         [Input("keyValue")]
         public Input<string>? KeyValue { get; set; }
 
+        /// <summary>
+        /// Name of the signed URL key.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

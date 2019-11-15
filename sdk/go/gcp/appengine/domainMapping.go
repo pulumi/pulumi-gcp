@@ -70,14 +70,17 @@ func (r *DomainMapping) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Relative name of the domain serving the application. Example: example.com.
 func (r *DomainMapping) DomainName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["domainName"])
 }
 
+// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 func (r *DomainMapping) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 func (r *DomainMapping) OverrideStrategy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["overrideStrategy"])
 }
@@ -88,32 +91,44 @@ func (r *DomainMapping) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+// configuration in order to serve the application via this domain mapping.
 func (r *DomainMapping) ResourceRecords() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["resourceRecords"])
 }
 
+// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 func (r *DomainMapping) SslSettings() *pulumi.Output {
 	return r.s.State["sslSettings"]
 }
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type DomainMappingState struct {
+	// Relative name of the domain serving the application. Example: example.com.
 	DomainName interface{}
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name interface{}
+	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+	// configuration in order to serve the application via this domain mapping.
 	ResourceRecords interface{}
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings interface{}
 }
 
 // The set of arguments for constructing a DomainMapping resource.
 type DomainMappingArgs struct {
+	// Relative name of the domain serving the application. Example: example.com.
 	DomainName interface{}
+	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings interface{}
 }

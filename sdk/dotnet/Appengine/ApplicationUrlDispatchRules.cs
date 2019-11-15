@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Appengine
     /// </summary>
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Rules to match an HTTP request and dispatch that request to a service.
+        /// </summary>
         [Output("dispatchRules")]
         public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRulesDispatchRules>> DispatchRules { get; private set; } = null!;
 
@@ -66,6 +69,10 @@ namespace Pulumi.Gcp.Appengine
     {
         [Input("dispatchRules", required: true)]
         private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs>? _dispatchRules;
+
+        /// <summary>
+        /// Rules to match an HTTP request and dispatch that request to a service.
+        /// </summary>
         public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs> DispatchRules
         {
             get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs>());
@@ -84,6 +91,10 @@ namespace Pulumi.Gcp.Appengine
     {
         [Input("dispatchRules")]
         private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs>? _dispatchRules;
+
+        /// <summary>
+        /// Rules to match an HTTP request and dispatch that request to a service.
+        /// </summary>
         public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs> DispatchRules
         {
             get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs>());

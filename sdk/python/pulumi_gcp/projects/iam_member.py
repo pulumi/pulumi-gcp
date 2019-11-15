@@ -11,6 +11,13 @@ from .. import utilities, tables
 
 class IAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
+    """
+    <elided>
+    
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the project's IAM policy.

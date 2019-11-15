@@ -84,14 +84,20 @@ func (r *TargetHttpsProxy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *TargetHttpsProxy) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *TargetHttpsProxy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *TargetHttpsProxy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -102,10 +108,15 @@ func (r *TargetHttpsProxy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The unique identifier for the resource.
 func (r *TargetHttpsProxy) ProxyId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["proxyId"])
 }
 
+// Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+// negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+// policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+// NONE.
 func (r *TargetHttpsProxy) QuicOverride() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["quicOverride"])
 }
@@ -115,44 +126,79 @@ func (r *TargetHttpsProxy) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+// Currently, exactly one SSL certificate must be specified.
 func (r *TargetHttpsProxy) SslCertificates() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["sslCertificates"])
 }
 
+// A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+// TargetHttpsProxy resource will not have any SSL policy configured.
 func (r *TargetHttpsProxy) SslPolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sslPolicy"])
 }
 
+// A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
 func (r *TargetHttpsProxy) UrlMap() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["urlMap"])
 }
 
 // Input properties used for looking up and filtering TargetHttpsProxy resources.
 type TargetHttpsProxyState struct {
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// The unique identifier for the resource.
 	ProxyId interface{}
+	// Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+	// negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+	// policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+	// NONE.
 	QuicOverride interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, exactly one SSL certificate must be specified.
 	SslCertificates interface{}
+	// A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+	// TargetHttpsProxy resource will not have any SSL policy configured.
 	SslPolicy interface{}
+	// A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
 	UrlMap interface{}
 }
 
 // The set of arguments for constructing a TargetHttpsProxy resource.
 type TargetHttpsProxyArgs struct {
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+	// negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+	// policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+	// NONE.
 	QuicOverride interface{}
+	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, exactly one SSL certificate must be specified.
 	SslCertificates interface{}
+	// A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+	// TargetHttpsProxy resource will not have any SSL policy configured.
 	SslPolicy interface{}
+	// A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
 	UrlMap interface{}
 }

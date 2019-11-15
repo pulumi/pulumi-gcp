@@ -29,27 +29,61 @@ namespace Pulumi.Gcp.Accesscontextmanager
     /// </summary>
     public partial class ServicePerimeter : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Time the AccessPolicy was created in UTC.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the ServicePerimeter and its use. Does not affect behavior.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter
+        /// contains resources, access levels, and restricted services. Every resource can be in at most ONE regular
+        /// Service Perimeter. In addition to being in a regular service perimeter, a resource can also be in zero or
+        /// more perimeter bridges. A perimeter bridge only contains resources. Cross project operations are permitted
+        /// if all effected resources share some perimeter (whether bridge or regular). Perimeter Bridge does not
+        /// contain access levels or services: those are governed entirely by the regular perimeter that resource is in.
+        /// Perimeter Bridges are typically useful when building more complex topologies with many independent
+        /// perimeters that need to share some data with a common perimeter, but should not be able to share data among
+        /// themselves.
+        /// </summary>
         [Output("perimeterType")]
         public Output<string?> PerimeterType { get; private set; } = null!;
 
+        /// <summary>
+        /// ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that
+        /// determine perimeter content and boundaries.
+        /// </summary>
         [Output("status")]
         public Output<Outputs.ServicePerimeterStatus?> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// Time the AccessPolicy was updated in UTC.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -99,21 +133,49 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class ServicePerimeterArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description of the ServicePerimeter and its use. Does not affect behavior.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter
+        /// contains resources, access levels, and restricted services. Every resource can be in at most ONE regular
+        /// Service Perimeter. In addition to being in a regular service perimeter, a resource can also be in zero or
+        /// more perimeter bridges. A perimeter bridge only contains resources. Cross project operations are permitted
+        /// if all effected resources share some perimeter (whether bridge or regular). Perimeter Bridge does not
+        /// contain access levels or services: those are governed entirely by the regular perimeter that resource is in.
+        /// Perimeter Bridges are typically useful when building more complex topologies with many independent
+        /// perimeters that need to share some data with a common perimeter, but should not be able to share data among
+        /// themselves.
+        /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
+        /// <summary>
+        /// ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that
+        /// determine perimeter content and boundaries.
+        /// </summary>
         [Input("status")]
         public Input<Inputs.ServicePerimeterStatusArgs>? Status { get; set; }
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -124,27 +186,61 @@ namespace Pulumi.Gcp.Accesscontextmanager
 
     public sealed class ServicePerimeterState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time the AccessPolicy was created in UTC.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Description of the ServicePerimeter and its use. Does not affect behavior.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
+        /// alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter
+        /// contains resources, access levels, and restricted services. Every resource can be in at most ONE regular
+        /// Service Perimeter. In addition to being in a regular service perimeter, a resource can also be in zero or
+        /// more perimeter bridges. A perimeter bridge only contains resources. Cross project operations are permitted
+        /// if all effected resources share some perimeter (whether bridge or regular). Perimeter Bridge does not
+        /// contain access levels or services: those are governed entirely by the regular perimeter that resource is in.
+        /// Perimeter Bridges are typically useful when building more complex topologies with many independent
+        /// perimeters that need to share some data with a common perimeter, but should not be able to share data among
+        /// themselves.
+        /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
+        /// <summary>
+        /// ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that
+        /// determine perimeter content and boundaries.
+        /// </summary>
         [Input("status")]
         public Input<Inputs.ServicePerimeterStatusGetArgs>? Status { get; set; }
 
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// Time the AccessPolicy was updated in UTC.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

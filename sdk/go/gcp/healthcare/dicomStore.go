@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
-// (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
-// 
-// To get more information about DicomStore, see:
-// 
-// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.dicomStores)
-// * How-to Guides
-//     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store.html.markdown.
 type DicomStore struct {
 	s *pulumi.ResourceState
@@ -77,39 +68,71 @@ func (r *DicomStore) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Identifies the dataset addressed by this request. Must be in the format
+// 'projects/{project}/locations/{location}/datasets/{dataset}'
 func (r *DicomStore) Dataset() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dataset"])
 }
 
+// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
+// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (r *DicomStore) Labels() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["labels"])
 }
 
+// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
 func (r *DicomStore) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// A nested object resource
 func (r *DicomStore) NotificationConfig() *pulumi.Output {
 	return r.s.State["notificationConfig"]
 }
 
+// The fully qualified name of this dataset
 func (r *DicomStore) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering DicomStore resources.
 type DicomStoreState struct {
+	// Identifies the dataset addressed by this request. Must be in the format
+	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset interface{}
+	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have
+	// a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels interface{}
+	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
 	Name interface{}
+	// A nested object resource
 	NotificationConfig interface{}
+	// The fully qualified name of this dataset
 	SelfLink interface{}
 }
 
 // The set of arguments for constructing a DicomStore resource.
 type DicomStoreArgs struct {
+	// Identifies the dataset addressed by this request. Must be in the format
+	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset interface{}
+	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have
+	// a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels interface{}
+	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
 	Name interface{}
+	// A nested object resource
 	NotificationConfig interface{}
 }

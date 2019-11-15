@@ -12,21 +12,44 @@ namespace Pulumi.Gcp.Dns
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded
+        /// to a name server that you choose. Names such as .internal are not available when an alternative name server
+        /// is specified.
+        /// </summary>
         [Output("alternativeNameServerConfig")]
         public Output<Outputs.PolicyAlternativeNameServerConfig?> AlternativeNameServerConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
+        /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
+        /// bound to this policy.
+        /// </summary>
         [Output("enableInboundForwarding")]
         public Output<bool?> EnableInboundForwarding { get; private set; } = null!;
 
+        /// <summary>
+        /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not
+        /// set.
+        /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
 
+        /// <summary>
+        /// User assigned name for this policy.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// List of network names specifying networks to which this policy is applied.
+        /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.PolicyNetworks>> Networks { get; private set; } = null!;
 
@@ -83,23 +106,47 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded
+        /// to a name server that you choose. Names such as .internal are not available when an alternative name server
+        /// is specified.
+        /// </summary>
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
 
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
+        /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
+        /// bound to this policy.
+        /// </summary>
         [Input("enableInboundForwarding")]
         public Input<bool>? EnableInboundForwarding { get; set; }
 
+        /// <summary>
+        /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not
+        /// set.
+        /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
+        /// <summary>
+        /// User assigned name for this policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.PolicyNetworksArgs>? _networks;
+
+        /// <summary>
+        /// List of network names specifying networks to which this policy is applied.
+        /// </summary>
         public InputList<Inputs.PolicyNetworksArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.PolicyNetworksArgs>());
@@ -120,23 +167,47 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded
+        /// to a name server that you choose. Names such as .internal are not available when an alternative name server
+        /// is specified.
+        /// </summary>
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigGetArgs>? AlternativeNameServerConfig { get; set; }
 
+        /// <summary>
+        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
+        /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
+        /// bound to this policy.
+        /// </summary>
         [Input("enableInboundForwarding")]
         public Input<bool>? EnableInboundForwarding { get; set; }
 
+        /// <summary>
+        /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not
+        /// set.
+        /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
+        /// <summary>
+        /// User assigned name for this policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.PolicyNetworksGetArgs>? _networks;
+
+        /// <summary>
+        /// List of network names specifying networks to which this policy is applied.
+        /// </summary>
         public InputList<Inputs.PolicyNetworksGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.PolicyNetworksGetArgs>());

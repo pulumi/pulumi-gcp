@@ -27,7 +27,9 @@ class FunctionIamBinding(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+    The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+    the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+    region is specified, it is taken from the provider configuration.
     """
     role: pulumi.Output[str]
     """
@@ -44,7 +46,9 @@ class FunctionIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -106,7 +110,9 @@ class FunctionIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+               region is specified, it is taken from the provider configuration.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

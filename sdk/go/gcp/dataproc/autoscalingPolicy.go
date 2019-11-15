@@ -74,18 +74,23 @@ func (r *AutoscalingPolicy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Basic algorithm for autoscaling.
 func (r *AutoscalingPolicy) BasicAlgorithm() *pulumi.Output {
 	return r.s.State["basicAlgorithm"]
 }
 
+// The location where the autoscaling poicy should reside. The default value is 'global'.
 func (r *AutoscalingPolicy) Location() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["location"])
 }
 
+// The "resource name" of the autoscaling policy.
 func (r *AutoscalingPolicy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 func (r *AutoscalingPolicy) PolicyId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["policyId"])
 }
@@ -96,35 +101,50 @@ func (r *AutoscalingPolicy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Describes how the autoscaler will operate for secondary workers.
 func (r *AutoscalingPolicy) SecondaryWorkerConfig() *pulumi.Output {
 	return r.s.State["secondaryWorkerConfig"]
 }
 
+// Describes how the autoscaler will operate for primary workers.
 func (r *AutoscalingPolicy) WorkerConfig() *pulumi.Output {
 	return r.s.State["workerConfig"]
 }
 
 // Input properties used for looking up and filtering AutoscalingPolicy resources.
 type AutoscalingPolicyState struct {
+	// Basic algorithm for autoscaling.
 	BasicAlgorithm interface{}
+	// The location where the autoscaling poicy should reside. The default value is 'global'.
 	Location interface{}
+	// The "resource name" of the autoscaling policy.
 	Name interface{}
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	PolicyId interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig interface{}
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig interface{}
 }
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
+	// Basic algorithm for autoscaling.
 	BasicAlgorithm interface{}
+	// The location where the autoscaling poicy should reside. The default value is 'global'.
 	Location interface{}
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	PolicyId interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig interface{}
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig interface{}
 }

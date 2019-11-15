@@ -36,7 +36,17 @@ export class Note extends pulumi.CustomResource {
         return obj['__pulumiType'] === Note.__pulumiType;
     }
 
+    /**
+     * Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+     * AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for
+     * the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs
+     * gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup
+     * to find all attached Attestation Occurrences, even if they don't all live in the same project.
+     */
     public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
+    /**
+     * The name of the note.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
 
@@ -79,7 +89,17 @@ export class Note extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Note resources.
  */
 export interface NoteState {
+    /**
+     * Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+     * AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for
+     * the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs
+     * gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup
+     * to find all attached Attestation Occurrences, even if they don't all live in the same project.
+     */
     readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
+    /**
+     * The name of the note.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }
@@ -88,7 +108,17 @@ export interface NoteState {
  * The set of arguments for constructing a Note resource.
  */
 export interface NoteArgs {
+    /**
+     * Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+     * AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for
+     * the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs
+     * gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup
+     * to find all attached Attestation Occurrences, even if they don't all live in the same project.
+     */
     readonly attestationAuthority: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
+    /**
+     * The name of the note.
+     */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }

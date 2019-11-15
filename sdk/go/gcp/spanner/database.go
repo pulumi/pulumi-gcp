@@ -68,14 +68,20 @@ func (r *Database) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
+// These statements execute atomically with the creation of the database: if there is an error in any statement, the
+// database is not created.
 func (r *Database) Ddls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["ddls"])
 }
 
+// The instance to create the database on.
 func (r *Database) Instance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instance"])
 }
 
+// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+// [a-z][-a-z0-9]*[a-z0-9].
 func (r *Database) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -86,25 +92,39 @@ func (r *Database) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// An explanation of the status of the database.
 func (r *Database) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Database resources.
 type DatabaseState struct {
+	// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes,
+	// etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the
+	// database is not created.
 	Ddls interface{}
+	// The instance to create the database on.
 	Instance interface{}
+	// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+	// [a-z][-a-z0-9]*[a-z0-9].
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// An explanation of the status of the database.
 	State interface{}
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
+	// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes,
+	// etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the
+	// database is not created.
 	Ddls interface{}
+	// The instance to create the database on.
 	Instance interface{}
+	// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+	// [a-z][-a-z0-9]*[a-z0-9].
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -12,27 +12,55 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class RegionUrlMap : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to RegionBackendService resource if none of the hostRules match.
+        /// </summary>
         [Output("defaultService")]
         public Output<string> DefaultService { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of HostRules to use against the URL.
+        /// </summary>
         [Output("hostRules")]
         public Output<ImmutableArray<Outputs.RegionUrlMapHostRules>> HostRules { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource.
+        /// </summary>
         [Output("mapId")]
         public Output<int> MapId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of named PathMatchers to use against the URL.
+        /// </summary>
         [Output("pathMatchers")]
         public Output<ImmutableArray<Outputs.RegionUrlMapPathMatchers>> PathMatchers { get; private set; } = null!;
 
@@ -43,6 +71,9 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The Region in which the url map should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -52,6 +83,10 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases
+        /// pass.
+        /// </summary>
         [Output("tests")]
         public Output<ImmutableArray<Outputs.RegionUrlMapTests>> Tests { get; private set; } = null!;
 
@@ -101,25 +136,46 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionUrlMapArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A reference to RegionBackendService resource if none of the hostRules match.
+        /// </summary>
         [Input("defaultService", required: true)]
         public Input<string> DefaultService { get; set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("hostRules")]
         private InputList<Inputs.RegionUrlMapHostRulesArgs>? _hostRules;
+
+        /// <summary>
+        /// The list of HostRules to use against the URL.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapHostRulesArgs> HostRules
         {
             get => _hostRules ?? (_hostRules = new InputList<Inputs.RegionUrlMapHostRulesArgs>());
             set => _hostRules = value;
         }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("pathMatchers")]
         private InputList<Inputs.RegionUrlMapPathMatchersArgs>? _pathMatchers;
+
+        /// <summary>
+        /// The list of named PathMatchers to use against the URL.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatchersArgs> PathMatchers
         {
             get => _pathMatchers ?? (_pathMatchers = new InputList<Inputs.RegionUrlMapPathMatchersArgs>());
@@ -133,11 +189,19 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The Region in which the url map should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("tests")]
         private InputList<Inputs.RegionUrlMapTestsArgs>? _tests;
+
+        /// <summary>
+        /// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases
+        /// pass.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapTestsArgs> Tests
         {
             get => _tests ?? (_tests = new InputList<Inputs.RegionUrlMapTestsArgs>());
@@ -151,34 +215,64 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionUrlMapState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// A reference to RegionBackendService resource if none of the hostRules match.
+        /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
         [Input("hostRules")]
         private InputList<Inputs.RegionUrlMapHostRulesGetArgs>? _hostRules;
+
+        /// <summary>
+        /// The list of HostRules to use against the URL.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapHostRulesGetArgs> HostRules
         {
             get => _hostRules ?? (_hostRules = new InputList<Inputs.RegionUrlMapHostRulesGetArgs>());
             set => _hostRules = value;
         }
 
+        /// <summary>
+        /// The unique identifier for the resource.
+        /// </summary>
         [Input("mapId")]
         public Input<int>? MapId { get; set; }
 
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("pathMatchers")]
         private InputList<Inputs.RegionUrlMapPathMatchersGetArgs>? _pathMatchers;
+
+        /// <summary>
+        /// The list of named PathMatchers to use against the URL.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatchersGetArgs> PathMatchers
         {
             get => _pathMatchers ?? (_pathMatchers = new InputList<Inputs.RegionUrlMapPathMatchersGetArgs>());
@@ -192,6 +286,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The Region in which the url map should reside. If it is not provided, the provider region is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -203,6 +300,11 @@ namespace Pulumi.Gcp.Compute
 
         [Input("tests")]
         private InputList<Inputs.RegionUrlMapTestsGetArgs>? _tests;
+
+        /// <summary>
+        /// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases
+        /// pass.
+        /// </summary>
         public InputList<Inputs.RegionUrlMapTestsGetArgs> Tests
         {
             get => _tests ?? (_tests = new InputList<Inputs.RegionUrlMapTestsGetArgs>());

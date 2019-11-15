@@ -99,6 +99,10 @@ func GetCredentials(ctx *pulumi.Context) string {
 	return v
 }
 
+func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataFusionCustomEndpoint")
+}
+
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
 }

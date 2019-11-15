@@ -36,14 +36,28 @@ export class FirewallRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === FirewallRule.__pulumiType;
     }
 
+    /**
+     * The action to take if this rule matches.
+     */
     public readonly action!: pulumi.Output<string>;
+    /**
+     * An optional string description of this rule.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
+     * action of this rule can be modified by the user.
+     */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * IP address or range, defined using CIDR notation, of requests that this rule applies to.
+     */
     public readonly sourceRange!: pulumi.Output<string>;
 
     /**
@@ -92,14 +106,28 @@ export class FirewallRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FirewallRule resources.
  */
 export interface FirewallRuleState {
+    /**
+     * The action to take if this rule matches.
+     */
     readonly action?: pulumi.Input<string>;
+    /**
+     * An optional string description of this rule.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
+     * action of this rule can be modified by the user.
+     */
     readonly priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * IP address or range, defined using CIDR notation, of requests that this rule applies to.
+     */
     readonly sourceRange?: pulumi.Input<string>;
 }
 
@@ -107,13 +135,27 @@ export interface FirewallRuleState {
  * The set of arguments for constructing a FirewallRule resource.
  */
 export interface FirewallRuleArgs {
+    /**
+     * The action to take if this rule matches.
+     */
     readonly action: pulumi.Input<string>;
+    /**
+     * An optional string description of this rule.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
+     * action of this rule can be modified by the user.
+     */
     readonly priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * IP address or range, defined using CIDR notation, of requests that this rule applies to.
+     */
     readonly sourceRange: pulumi.Input<string>;
 }

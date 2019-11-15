@@ -75,18 +75,25 @@ func (r *TargetTCPProxy) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// A reference to the BackendService resource.
 func (r *TargetTCPProxy) BackendService() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["backendService"])
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *TargetTCPProxy) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *TargetTCPProxy) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *TargetTCPProxy) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -97,10 +104,13 @@ func (r *TargetTCPProxy) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+// NONE.
 func (r *TargetTCPProxy) ProxyHeader() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["proxyHeader"])
 }
 
+// The unique identifier for the resource.
 func (r *TargetTCPProxy) ProxyId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["proxyId"])
 }
@@ -112,14 +122,24 @@ func (r *TargetTCPProxy) SelfLink() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering TargetTCPProxy resources.
 type TargetTCPProxyState struct {
+	// A reference to the BackendService resource.
 	BackendService interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default
+	// is NONE.
 	ProxyHeader interface{}
+	// The unique identifier for the resource.
 	ProxyId interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -127,11 +147,19 @@ type TargetTCPProxyState struct {
 
 // The set of arguments for constructing a TargetTCPProxy resource.
 type TargetTCPProxyArgs struct {
+	// A reference to the BackendService resource.
 	BackendService interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default
+	// is NONE.
 	ProxyHeader interface{}
 }

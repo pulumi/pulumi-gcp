@@ -36,22 +36,49 @@ export class NodeTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeTemplate.__pulumiType;
     }
 
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional textual description of the resource.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the resource.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Labels to use for node affinity, which will be used in instance scheduling.
+     */
     public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
+     * can be specified.
+     */
     public readonly nodeType!: pulumi.Output<string | undefined>;
+    /**
+     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
+     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     */
     public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The server binding policy for nodes using this template. Determines where the nodes should restart following a
+     * maintenance event.
+     */
     public readonly serverBinding!: pulumi.Output<outputs.compute.NodeTemplateServerBinding>;
 
     /**
@@ -104,22 +131,49 @@ export class NodeTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeTemplate resources.
  */
 export interface NodeTemplateState {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional textual description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Labels to use for node affinity, which will be used in instance scheduling.
+     */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
+     * can be specified.
+     */
     readonly nodeType?: pulumi.Input<string>;
+    /**
+     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
+     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The server binding policy for nodes using this template. Determines where the nodes should restart following a
+     * maintenance event.
+     */
     readonly serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
 }
 
@@ -127,16 +181,40 @@ export interface NodeTemplateState {
  * The set of arguments for constructing a NodeTemplate resource.
  */
 export interface NodeTemplateArgs {
+    /**
+     * An optional textual description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Name of the resource.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Labels to use for node affinity, which will be used in instance scheduling.
+     */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
+     * can be specified.
+     */
     readonly nodeType?: pulumi.Input<string>;
+    /**
+     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
+     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The server binding policy for nodes using this template. Determines where the nodes should restart following a
+     * maintenance event.
+     */
     readonly serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
 }

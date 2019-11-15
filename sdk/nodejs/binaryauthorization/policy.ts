@@ -36,10 +36,31 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
+    /**
+     * A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+     * image's admission requests will always be permitted regardless of your admission rules.
+     */
     public readonly admissionWhitelistPatterns!: pulumi.Output<outputs.binaryauthorization.PolicyAdmissionWhitelistPattern[] | undefined>;
+    /**
+     * Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation
+     * request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod
+     * creations will be denied. There can be at most one admission rule per cluster spec. Identifier format:
+     * '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region (e.g.
+     * 'us-central1').
+     */
     public readonly clusterAdmissionRules!: pulumi.Output<outputs.binaryauthorization.PolicyClusterAdmissionRule[] | undefined>;
+    /**
+     * Default admission rule for a cluster without a per-cluster admission rule.
+     */
     public readonly defaultAdmissionRule!: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    /**
+     * A descriptive comment.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+     * covered by the global policy will be subject to the project admission policy.
+     */
     public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
 
@@ -88,10 +109,31 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
+    /**
+     * A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+     * image's admission requests will always be permitted regardless of your admission rules.
+     */
     readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    /**
+     * Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation
+     * request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod
+     * creations will be denied. There can be at most one admission rule per cluster spec. Identifier format:
+     * '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region (e.g.
+     * 'us-central1').
+     */
     readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    /**
+     * Default admission rule for a cluster without a per-cluster admission rule.
+     */
     readonly defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    /**
+     * A descriptive comment.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+     * covered by the global policy will be subject to the project admission policy.
+     */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }
@@ -100,10 +142,31 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
+    /**
+     * A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+     * image's admission requests will always be permitted regardless of your admission rules.
+     */
     readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    /**
+     * Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation
+     * request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod
+     * creations will be denied. There can be at most one admission rule per cluster spec. Identifier format:
+     * '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region (e.g.
+     * 'us-central1').
+     */
     readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    /**
+     * Default admission rule for a cluster without a per-cluster admission rule.
+     */
     readonly defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    /**
+     * A descriptive comment.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+     * covered by the global policy will be subject to the project admission policy.
+     */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
 }

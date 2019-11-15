@@ -83,18 +83,25 @@ func (r *Reservation) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 func (r *Reservation) Commitment() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["commitment"])
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *Reservation) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *Reservation) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *Reservation) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -108,43 +115,69 @@ func (r *Reservation) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// Reservation for instances with specific machine shapes.
 func (r *Reservation) SpecificReservation() *pulumi.Output {
 	return r.s.State["specificReservation"]
 }
 
+// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+// consumed by VMs with affinity for any reservation. Defaults to false.
 func (r *Reservation) SpecificReservationRequired() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["specificReservationRequired"])
 }
 
+// The status of the reservation.
 func (r *Reservation) Status() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["status"])
 }
 
+// The zone where the reservation is made.
 func (r *Reservation) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Reservation resources.
 type ReservationState struct {
+	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// Reservation for instances with specific machine shapes.
 	SpecificReservation interface{}
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired interface{}
+	// The status of the reservation.
 	Status interface{}
+	// The zone where the reservation is made.
 	Zone interface{}
 }
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	Project interface{}
+	// Reservation for instances with specific machine shapes.
 	SpecificReservation interface{}
+	// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+	// consumed by VMs with affinity for any reservation. Defaults to false.
 	SpecificReservationRequired interface{}
+	// The zone where the reservation is made.
 	Zone interface{}
 }

@@ -36,16 +36,54 @@ export class AlertPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AlertPolicy.__pulumiType;
     }
 
+    /**
+     * How to combine the results of multiple conditions to determine if an incident should be opened.
+     */
     public readonly combiner!: pulumi.Output<string>;
+    /**
+     * A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If
+     * the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+     */
     public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
+    /**
+     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field
+     * will be ignored.
+     */
     public /*out*/ readonly creationRecord!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     public readonly documentation!: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
+    /**
+     * Whether or not the policy is enabled. The default is true.
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly labels!: pulumi.Output<string[] | undefined>;
+    /**
+     * The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+     */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or
+     * when new violations occur on an already opened incident. Each element of this array corresponds to the name field in
+     * each of the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of
+     * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+     */
     public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
+     * 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and
+     * values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
     public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -109,16 +147,54 @@ export class AlertPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertPolicy resources.
  */
 export interface AlertPolicyState {
+    /**
+     * How to combine the results of multiple conditions to determine if an incident should be opened.
+     */
     readonly combiner?: pulumi.Input<string>;
+    /**
+     * A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If
+     * the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+     */
     readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    /**
+     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field
+     * will be ignored.
+     */
     readonly creationRecord?: pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    /**
+     * Whether or not the policy is enabled. The default is true.
+     */
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or
+     * when new violations occur on an already opened incident. Each element of this array corresponds to the name field in
+     * each of the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of
+     * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+     */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
+     * 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and
+     * values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
     readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -126,13 +202,44 @@ export interface AlertPolicyState {
  * The set of arguments for constructing a AlertPolicy resource.
  */
 export interface AlertPolicyArgs {
+    /**
+     * How to combine the results of multiple conditions to determine if an incident should be opened.
+     */
     readonly combiner: pulumi.Input<string>;
+    /**
+     * A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If
+     * the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+     */
     readonly conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
+     * don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
+     * characters.
+     */
     readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    /**
+     * Whether or not the policy is enabled. The default is true.
+     */
     readonly enabled?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or
+     * when new violations occur on an already opened incident. Each element of this array corresponds to the name field in
+     * each of the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of
+     * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+     */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
+     * 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and
+     * values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
     readonly userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

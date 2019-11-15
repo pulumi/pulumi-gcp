@@ -36,11 +36,32 @@ export class BackendBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackendBucket.__pulumiType;
     }
 
+    /**
+     * Cloud Storage bucket name.
+     */
     public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * Cloud CDN configuration for this Backend Bucket.
+     */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * If true, enable Cloud CDN for this BackendBucket.
+     */
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -101,11 +122,32 @@ export class BackendBucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendBucket resources.
  */
 export interface BackendBucketState {
+    /**
+     * Cloud Storage bucket name.
+     */
     readonly bucketName?: pulumi.Input<string>;
+    /**
+     * Cloud CDN configuration for this Backend Bucket.
+     */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this BackendBucket.
+     */
     readonly enableCdn?: pulumi.Input<boolean>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -122,10 +164,28 @@ export interface BackendBucketState {
  * The set of arguments for constructing a BackendBucket resource.
  */
 export interface BackendBucketArgs {
+    /**
+     * Cloud Storage bucket name.
+     */
     readonly bucketName: pulumi.Input<string>;
+    /**
+     * Cloud CDN configuration for this Backend Bucket.
+     */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this BackendBucket.
+     */
     readonly enableCdn?: pulumi.Input<boolean>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
+     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

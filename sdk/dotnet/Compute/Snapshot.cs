@@ -12,24 +12,51 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Size of the snapshot, specified in GB.
+        /// </summary>
         [Output("diskSizeGb")]
         public Output<int> DiskSizeGb { get; private set; } = null!;
 
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// Labels to apply to this Snapshot.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had
+        /// licenses attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using
+        /// a customer-supplied encryption key.
+        /// </summary>
         [Output("licenses")]
         public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -46,24 +73,45 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
+        /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.SnapshotSnapshotEncryptionKey?> SnapshotEncryptionKey { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource.
+        /// </summary>
         [Output("snapshotId")]
         public Output<int> SnapshotId { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to the disk used to create this snapshot.
+        /// </summary>
         [Output("sourceDisk")]
         public Output<string> SourceDisk { get; private set; } = null!;
 
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
+        /// a customer-supplied encryption key.
+        /// </summary>
         [Output("sourceDiskEncryptionKey")]
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
 
         [Output("sourceDiskLink")]
         public Output<string> SourceDiskLink { get; private set; } = null!;
 
+        /// <summary>
+        /// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to
+        /// change with snapshot creation/deletion.
+        /// </summary>
         [Output("storageBytes")]
         public Output<int> StorageBytes { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to the zone where the disk is hosted.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -113,17 +161,31 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SnapshotArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this Snapshot.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -134,15 +196,29 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
+        /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
 
+        /// <summary>
+        /// A reference to the disk used to create this snapshot.
+        /// </summary>
         [Input("sourceDisk", required: true)]
         public Input<string> SourceDisk { get; set; } = null!;
 
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
+        /// a customer-supplied encryption key.
+        /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
 
+        /// <summary>
+        /// A reference to the zone where the disk is hosted.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -153,20 +229,36 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SnapshotState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
 
+        /// <summary>
+        /// An optional description of this resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Size of the snapshot, specified in GB.
+        /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this Snapshot.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
@@ -175,12 +267,25 @@ namespace Pulumi.Gcp.Compute
 
         [Input("licenses")]
         private InputList<string>? _licenses;
+
+        /// <summary>
+        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had
+        /// licenses attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using
+        /// a customer-supplied encryption key.
+        /// </summary>
         public InputList<string> Licenses
         {
             get => _licenses ?? (_licenses = new InputList<string>());
             set => _licenses = value;
         }
 
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -197,24 +302,45 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
+        /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyGetArgs>? SnapshotEncryptionKey { get; set; }
 
+        /// <summary>
+        /// The unique identifier for the resource.
+        /// </summary>
         [Input("snapshotId")]
         public Input<int>? SnapshotId { get; set; }
 
+        /// <summary>
+        /// A reference to the disk used to create this snapshot.
+        /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }
 
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
+        /// a customer-supplied encryption key.
+        /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }
 
         [Input("sourceDiskLink")]
         public Input<string>? SourceDiskLink { get; set; }
 
+        /// <summary>
+        /// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to
+        /// change with snapshot creation/deletion.
+        /// </summary>
         [Input("storageBytes")]
         public Input<int>? StorageBytes { get; set; }
 
+        /// <summary>
+        /// A reference to the zone where the disk is hosted.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

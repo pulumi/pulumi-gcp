@@ -77,26 +77,35 @@ func (r *AppProfile) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 func (r *AppProfile) AppProfileId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["appProfileId"])
 }
 
+// Long form description of the use case for this app profile.
 func (r *AppProfile) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// If true, ignore safety checks when deleting/updating the app profile.
 func (r *AppProfile) IgnoreWarnings() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["ignoreWarnings"])
 }
 
+// The name of the instance to create the app profile within.
 func (r *AppProfile) Instance() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instance"])
 }
 
+// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+// Choosing this option sacrifices read-your-writes consistency to improve availability.
 func (r *AppProfile) MultiClusterRoutingUseAny() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["multiClusterRoutingUseAny"])
 }
 
+// The unique name of the requested app profile. Values are of the form
+// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
 func (r *AppProfile) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -107,33 +116,52 @@ func (r *AppProfile) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// Use a single-cluster routing policy.
 func (r *AppProfile) SingleClusterRouting() *pulumi.Output {
 	return r.s.State["singleClusterRouting"]
 }
 
 // Input properties used for looking up and filtering AppProfile resources.
 type AppProfileState struct {
+	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 	AppProfileId interface{}
+	// Long form description of the use case for this app profile.
 	Description interface{}
+	// If true, ignore safety checks when deleting/updating the app profile.
 	IgnoreWarnings interface{}
+	// The name of the instance to create the app profile within.
 	Instance interface{}
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+	// Choosing this option sacrifices read-your-writes consistency to improve availability.
 	MultiClusterRoutingUseAny interface{}
+	// The unique name of the requested app profile. Values are of the form
+	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
 	Name interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Use a single-cluster routing policy.
 	SingleClusterRouting interface{}
 }
 
 // The set of arguments for constructing a AppProfile resource.
 type AppProfileArgs struct {
+	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 	AppProfileId interface{}
+	// Long form description of the use case for this app profile.
 	Description interface{}
+	// If true, ignore safety checks when deleting/updating the app profile.
 	IgnoreWarnings interface{}
+	// The name of the instance to create the app profile within.
 	Instance interface{}
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+	// Choosing this option sacrifices read-your-writes consistency to improve availability.
 	MultiClusterRoutingUseAny interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// Use a single-cluster routing policy.
 	SingleClusterRouting interface{}
 }

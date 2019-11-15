@@ -79,18 +79,26 @@ func (r *RegionAutoscaler) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+// default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
 func (r *RegionAutoscaler) AutoscalingPolicy() *pulumi.Output {
 	return r.s.State["autoscalingPolicy"]
 }
 
+// Creation timestamp in RFC3339 text format.
 func (r *RegionAutoscaler) CreationTimestamp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
+// An optional description of this resource.
 func (r *RegionAutoscaler) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// Name of the resource. The name must be 1-63 characters long and match the regular expression
+// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (r *RegionAutoscaler) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -99,6 +107,7 @@ func (r *RegionAutoscaler) Project() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["project"])
 }
 
+// URL of the region where the instance group resides.
 func (r *RegionAutoscaler) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -108,29 +117,49 @@ func (r *RegionAutoscaler) SelfLink() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
+// URL of the managed instance group that this autoscaler will scale.
 func (r *RegionAutoscaler) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
 // Input properties used for looking up and filtering RegionAutoscaler resources.
 type RegionAutoscalerState struct {
+	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+	// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+	// default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
 	AutoscalingPolicy interface{}
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. The name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	Project interface{}
+	// URL of the region where the instance group resides.
 	Region interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
+	// URL of the managed instance group that this autoscaler will scale.
 	Target interface{}
 }
 
 // The set of arguments for constructing a RegionAutoscaler resource.
 type RegionAutoscalerArgs struct {
+	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+	// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+	// default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
 	AutoscalingPolicy interface{}
+	// An optional description of this resource.
 	Description interface{}
+	// Name of the resource. The name must be 1-63 characters long and match the regular expression
+	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
 	Project interface{}
+	// URL of the region where the instance group resides.
 	Region interface{}
+	// URL of the managed instance group that this autoscaler will scale.
 	Target interface{}
 }
