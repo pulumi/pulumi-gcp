@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Allow passing `runtime` arg to HttpCallbackFunction
-* Upgrade to v2.20.0 of the Google Beta Terraform Provider.
+_(none)_
 
 ---
+
+## 1.6.0 (2019-11-16)
+* Allow passing `runtime` arg to HttpCallbackFunction
+* Upgrade to v2.20.0 of the Google Beta Terraform Provider.
 
 ## 1.5.0 (2019-11-07)
 * Add a **preview** .NET SDK.
