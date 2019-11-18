@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Job(string name, JobArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataflow/job:Job", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:dataflow/job:Job", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Registry(string name, RegistryArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:kms/registry:Registry", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:kms/registry:Registry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendServiceSignedUrlKey(string name, BackendServiceSignedUrlKeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

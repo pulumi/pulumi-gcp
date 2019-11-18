@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Notification(string name, NotificationArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/notification:Notification", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:storage/notification:Notification", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

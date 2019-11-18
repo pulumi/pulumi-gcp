@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceIAMBinding(string name, InstanceIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

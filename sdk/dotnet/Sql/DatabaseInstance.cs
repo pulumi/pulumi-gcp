@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseInstance(string name, DatabaseInstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sql/databaseInstance:DatabaseInstance", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:sql/databaseInstance:DatabaseInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

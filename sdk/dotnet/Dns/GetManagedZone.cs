@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dns
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
         /// </summary>
         public static Task<GetManagedZoneResult> GetManagedZone(GetManagedZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetManagedZoneArgs : Pulumi.ResourceArgs

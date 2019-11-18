@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Organizations
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_openid_userinfo.html.markdown.
         /// </summary>
         public static Task<GetClientOpenIdUserInfoResult> GetClientOpenIdUserInfo(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

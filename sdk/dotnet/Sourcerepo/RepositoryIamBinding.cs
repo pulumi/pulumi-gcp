@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Sourcerepo
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryIamBinding(string name, RepositoryIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

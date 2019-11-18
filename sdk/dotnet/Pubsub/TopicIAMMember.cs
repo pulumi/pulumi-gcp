@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Pubsub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TopicIAMMember(string name, TopicIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/topicIAMMember:TopicIAMMember", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/topicIAMMember:TopicIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

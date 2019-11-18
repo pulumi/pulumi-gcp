@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Pubsub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubscriptionIAMPolicy(string name, SubscriptionIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

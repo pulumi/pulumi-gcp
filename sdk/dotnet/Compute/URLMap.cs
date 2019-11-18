@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public URLMap(string name, URLMapArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/uRLMap:URLMap", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/uRLMap:URLMap", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

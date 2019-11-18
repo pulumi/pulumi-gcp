@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SSLCertificate(string name, SSLCertificateArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/sSLCertificate:SSLCertificate", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/sSLCertificate:SSLCertificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

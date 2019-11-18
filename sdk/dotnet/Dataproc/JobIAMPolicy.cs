@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public JobIAMPolicy(string name, JobIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

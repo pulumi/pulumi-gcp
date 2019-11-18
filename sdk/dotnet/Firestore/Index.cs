@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Firestore
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Index(string name, IndexArgs args, CustomResourceOptions? options = null)
-            : base("gcp:firestore/index:Index", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:firestore/index:Index", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

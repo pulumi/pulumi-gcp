@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Resourcemanager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Lien(string name, LienArgs args, CustomResourceOptions? options = null)
-            : base("gcp:resourcemanager/lien:Lien", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:resourcemanager/lien:Lien", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

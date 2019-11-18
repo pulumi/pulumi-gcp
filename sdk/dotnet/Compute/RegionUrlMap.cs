@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionUrlMap(string name, RegionUrlMapArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionUrlMap:RegionUrlMap", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionUrlMap:RegionUrlMap", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
