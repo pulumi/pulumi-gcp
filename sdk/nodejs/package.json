@@ -18,8 +18,7 @@
         "read-package-json": "^2.0.13"
     },
     "devDependencies": {
-        "@types/node": "^8.0.0",
-        "typescript": "^3.4.1"
+        "@types/node": "^8.0.0"
     },
     "pulumi": {
         "resource": true

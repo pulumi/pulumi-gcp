@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Composer
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
         /// </summary>
         public static Task<GetImageVersionsResult> GetImageVersions(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetImageVersionsArgs : Pulumi.ResourceArgs

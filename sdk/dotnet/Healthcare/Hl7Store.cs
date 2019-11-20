@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hl7Store(string name, Hl7StoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/hl7Store:Hl7Store", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/hl7Store:Hl7Store", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

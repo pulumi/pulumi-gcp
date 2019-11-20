@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RecordSet(string name, RecordSetArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dns/recordSet:RecordSet", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:dns/recordSet:RecordSet", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

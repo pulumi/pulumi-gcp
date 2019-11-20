@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
         /// </summary>
         public static Task<GetBackendServiceResult> GetBackendService(GetBackendServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetBackendServiceArgs : Pulumi.ResourceArgs

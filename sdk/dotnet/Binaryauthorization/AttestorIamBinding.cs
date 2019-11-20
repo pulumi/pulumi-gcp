@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Binaryauthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AttestorIamBinding(string name, AttestorIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

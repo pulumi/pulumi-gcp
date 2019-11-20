@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationPolicy(string name, OrganizationPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/organizationPolicy:OrganizationPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:projects/organizationPolicy:OrganizationPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

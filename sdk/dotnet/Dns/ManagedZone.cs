@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ManagedZone(string name, ManagedZoneArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dns/managedZone:ManagedZone", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:dns/managedZone:ManagedZone", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

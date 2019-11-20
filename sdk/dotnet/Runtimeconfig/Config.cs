@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Runtimeconfig
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Config(string name, ConfigArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:runtimeconfig/config:Config", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:runtimeconfig/config:Config", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

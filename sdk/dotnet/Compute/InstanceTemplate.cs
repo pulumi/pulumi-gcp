@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceTemplate(string name, InstanceTemplateArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceTemplate:InstanceTemplate", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceTemplate:InstanceTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

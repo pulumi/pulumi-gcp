@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_node_types.html.markdown.
         /// </summary>
         public static Task<GetNodeTypesResult> GetNodeTypes(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNodeTypesArgs : Pulumi.ResourceArgs

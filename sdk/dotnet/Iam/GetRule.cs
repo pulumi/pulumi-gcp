@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
         /// </summary>
         public static Task<GetRuleResult> GetRule(GetRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRuleArgs : Pulumi.ResourceArgs

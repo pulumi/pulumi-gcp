@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Disk(string name, DiskArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/disk:Disk", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/disk:Disk", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

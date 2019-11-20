@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
         /// </summary>
         public static Task<GetRegionInstanceGroupResult> GetRegionInstanceGroup(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRegionInstanceGroupArgs : Pulumi.ResourceArgs

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
         /// </summary>
         public static Task<GetInstanceResult> GetInstance(GetInstanceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetInstanceArgs : Pulumi.ResourceArgs

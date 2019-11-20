@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Securitycenter
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Source(string name, SourceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:securitycenter/source:Source", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:securitycenter/source:Source", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

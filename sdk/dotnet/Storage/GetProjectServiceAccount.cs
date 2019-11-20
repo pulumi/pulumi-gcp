@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_project_service_account.html.markdown.
         /// </summary>
         public static Task<GetProjectServiceAccountResult> GetProjectServiceAccount(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetProjectServiceAccountArgs : Pulumi.ResourceArgs

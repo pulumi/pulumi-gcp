@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Kms
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
         /// </summary>
         public static Task<GetKMSCryptoKeyVersionResult> GetKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKMSCryptoKeyVersionArgs : Pulumi.ResourceArgs

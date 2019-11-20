@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebTypeComputeIamBinding(string name, WebTypeComputeIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

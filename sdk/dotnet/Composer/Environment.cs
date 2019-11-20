@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Composer
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Environment(string name, EnvironmentArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:composer/environment:Environment", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:composer/environment:Environment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

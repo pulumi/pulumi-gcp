@@ -10,7 +10,7 @@ namespace Pulumi.Gcp.Compute
     public static partial class Invokes
     {
         public static Task<GetNetworkEndpointGroupResult> GetNetworkEndpointGroup(GetNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNetworkEndpointGroupArgs : Pulumi.ResourceArgs

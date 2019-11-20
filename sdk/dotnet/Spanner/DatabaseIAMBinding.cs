@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Spanner
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseIAMBinding(string name, DatabaseIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

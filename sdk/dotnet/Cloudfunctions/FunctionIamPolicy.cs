@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Cloudfunctions
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FunctionIamPolicy(string name, FunctionIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

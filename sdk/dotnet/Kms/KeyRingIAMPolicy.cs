@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRingIAMPolicy(string name, KeyRingIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

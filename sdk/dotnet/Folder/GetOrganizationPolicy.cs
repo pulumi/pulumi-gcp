@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Folder
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder_organization_policy.html.markdown.
         /// </summary>
         public static Task<GetOrganizationPolicyResult> GetOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetOrganizationPolicyArgs : Pulumi.ResourceArgs

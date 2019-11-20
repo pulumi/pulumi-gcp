@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectDefaultNetworkTier(string name, ProjectDefaultNetworkTierArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

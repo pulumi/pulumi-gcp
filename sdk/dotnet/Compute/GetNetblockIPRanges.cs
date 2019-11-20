@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
         /// </summary>
         public static Task<GetNetblockIPRangesResult> GetNetblockIPRanges(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNetblockIPRangesArgs : Pulumi.ResourceArgs

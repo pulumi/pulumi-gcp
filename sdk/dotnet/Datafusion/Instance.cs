@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Datafusion
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:datafusion/instance:Instance", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:datafusion/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

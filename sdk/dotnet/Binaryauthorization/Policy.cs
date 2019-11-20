@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Binaryauthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/policy:Policy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/policy:Policy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
