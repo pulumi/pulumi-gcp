@@ -65,49 +65,49 @@ func GetOrganizationSink(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OrganizationSink) URN() *pulumi.URNOutput {
+func (r *OrganizationSink) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OrganizationSink) ID() *pulumi.IDOutput {
+func (r *OrganizationSink) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 // The writer associated with the sink must have access to write to the above resource.
-func (r *OrganizationSink) Destination() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destination"])
+func (r *OrganizationSink) Destination() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destination"])
 }
 
 // The filter to apply when exporting logs. Only log entries that match the filter are exported.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
-func (r *OrganizationSink) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *OrganizationSink) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // Whether or not to include children organizations in the sink export. If true, logs
 // associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-func (r *OrganizationSink) IncludeChildren() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["includeChildren"])
+func (r *OrganizationSink) IncludeChildren() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["includeChildren"])
 }
 
 // The name of the logging sink.
-func (r *OrganizationSink) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *OrganizationSink) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The numeric ID of the organization to be exported to the sink.
-func (r *OrganizationSink) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *OrganizationSink) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // The identity associated with this sink. This identity must be granted write access to the
 // configured `destination`.
-func (r *OrganizationSink) WriterIdentity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["writerIdentity"])
+func (r *OrganizationSink) WriterIdentity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["writerIdentity"])
 }
 
 // Input properties used for looking up and filtering OrganizationSink resources.

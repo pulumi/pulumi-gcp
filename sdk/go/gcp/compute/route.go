@@ -91,36 +91,36 @@ func GetRoute(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Route) URN() *pulumi.URNOutput {
+func (r *Route) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Route) ID() *pulumi.IDOutput {
+func (r *Route) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *Route) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Route) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
-func (r *Route) DestRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destRange"])
+func (r *Route) DestRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destRange"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Route) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Route) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The network that this route applies to.
-func (r *Route) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Route) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a full
@@ -128,8 +128,8 @@ func (r *Route) Network() *pulumi.StringOutput {
 // 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
 // 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The string
 // 'default-internet-gateway'.
-func (r *Route) NextHopGateway() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopGateway"])
+func (r *Route) NextHopGateway() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopGateway"])
 }
 
 // The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
@@ -137,62 +137,62 @@ func (r *Route) NextHopGateway() *pulumi.StringOutput {
 // https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
 // regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
 // (non-RFC 1918) IP CIDR range.
-func (r *Route) NextHopIlb() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopIlb"])
+func (r *Route) NextHopIlb() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopIlb"])
 }
 
 // URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: *
 // 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
 // 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with the
 // zone in 'next_hop_instance_zone'.
-func (r *Route) NextHopInstance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopInstance"])
+func (r *Route) NextHopInstance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopInstance"])
 }
 
 // (Optional when `nextHopInstance` is
 // specified)  The zone of the instance specified in
 // `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 // a URL.
-func (r *Route) NextHopInstanceZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopInstanceZone"])
+func (r *Route) NextHopInstanceZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopInstanceZone"])
 }
 
 // Network IP address of an instance that should handle matching packets.
-func (r *Route) NextHopIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopIp"])
+func (r *Route) NextHopIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopIp"])
 }
 
 // URL to a Network that should handle matching packets.
-func (r *Route) NextHopNetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopNetwork"])
+func (r *Route) NextHopNetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopNetwork"])
 }
 
 // URL to a VpnTunnel that should handle matching packets.
-func (r *Route) NextHopVpnTunnel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHopVpnTunnel"])
+func (r *Route) NextHopVpnTunnel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHopVpnTunnel"])
 }
 
 // The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal
 // prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority value wins.
 // Default value is 1000. Valid range is 0 through 65535.
-func (r *Route) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *Route) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Route) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Route) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *Route) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Route) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A list of instance tags to which this route applies.
-func (r *Route) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Route) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Route resources.

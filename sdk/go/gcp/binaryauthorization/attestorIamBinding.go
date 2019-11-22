@@ -68,44 +68,44 @@ func GetAttestorIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AttestorIamBinding) URN() *pulumi.URNOutput {
+func (r *AttestorIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AttestorIamBinding) ID() *pulumi.IDOutput {
+func (r *AttestorIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (r *AttestorIamBinding) Attestor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["attestor"])
+func (r *AttestorIamBinding) Attestor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["attestor"])
 }
 
-func (r *AttestorIamBinding) Condition() *pulumi.Output {
+func (r *AttestorIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *AttestorIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *AttestorIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *AttestorIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *AttestorIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *AttestorIamBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *AttestorIamBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `binaryauthorization.AttestorIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *AttestorIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *AttestorIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering AttestorIamBinding resources.

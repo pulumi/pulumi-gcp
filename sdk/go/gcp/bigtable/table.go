@@ -64,39 +64,39 @@ func GetTable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Table) URN() *pulumi.URNOutput {
+func (r *Table) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Table) ID() *pulumi.IDOutput {
+func (r *Table) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-func (r *Table) ColumnFamilies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["columnFamilies"])
+func (r *Table) ColumnFamilies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["columnFamilies"])
 }
 
 // The name of the Bigtable instance.
-func (r *Table) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *Table) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // The name of the table.
-func (r *Table) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Table) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Table) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Table) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // A list of predefined keys to split the table on.
-func (r *Table) SplitKeys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["splitKeys"])
+func (r *Table) SplitKeys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["splitKeys"])
 }
 
 // Input properties used for looking up and filtering Table resources.

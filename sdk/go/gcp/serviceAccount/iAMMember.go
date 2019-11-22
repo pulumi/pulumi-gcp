@@ -77,38 +77,38 @@ func GetIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMMember) URN() *pulumi.URNOutput {
+func (r *IAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMMember) ID() *pulumi.IDOutput {
+func (r *IAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMMember) Condition() *pulumi.Output {
+func (r *IAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the service account IAM policy.
-func (r *IAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *IAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *IAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Only one
 // `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *IAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *IAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The fully-qualified name of the service account to apply policy to.
-func (r *IAMMember) ServiceAccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccountId"])
+func (r *IAMMember) ServiceAccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccountId"])
 }
 
 // Input properties used for looking up and filtering IAMMember resources.

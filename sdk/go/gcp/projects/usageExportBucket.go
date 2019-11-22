@@ -82,25 +82,25 @@ func GetUsageExportBucket(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *UsageExportBucket) URN() *pulumi.URNOutput {
+func (r *UsageExportBucket) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *UsageExportBucket) ID() *pulumi.IDOutput {
+func (r *UsageExportBucket) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *UsageExportBucket) BucketName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucketName"])
+func (r *UsageExportBucket) BucketName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucketName"])
 }
 
-func (r *UsageExportBucket) Prefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["prefix"])
+func (r *UsageExportBucket) Prefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["prefix"])
 }
 
-func (r *UsageExportBucket) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *UsageExportBucket) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering UsageExportBucket resources.

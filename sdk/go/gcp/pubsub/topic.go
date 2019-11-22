@@ -56,12 +56,12 @@ func GetTopic(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Topic) URN() *pulumi.URNOutput {
+func (r *Topic) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Topic) ID() *pulumi.IDOutput {
+func (r *Topic) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -69,30 +69,30 @@ func (r *Topic) ID() *pulumi.IDOutput {
 // project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
 // 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
 // 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
-func (r *Topic) KmsKeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["kmsKeyName"])
+func (r *Topic) KmsKeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsKeyName"])
 }
 
 // A set of key/value label pairs to assign to this Topic.
-func (r *Topic) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Topic) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not
 // present, then no constraints are in effect.
-func (r *Topic) MessageStoragePolicy() *pulumi.Output {
+func (r *Topic) MessageStoragePolicy() pulumi.Output {
 	return r.s.State["messageStoragePolicy"]
 }
 
 // Name of the topic.
-func (r *Topic) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Topic) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Topic) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Topic) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Topic resources.

@@ -67,46 +67,46 @@ func GetVariable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Variable) URN() *pulumi.URNOutput {
+func (r *Variable) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Variable) ID() *pulumi.IDOutput {
+func (r *Variable) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the variable to manage. Note that variable
 // names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-func (r *Variable) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Variable) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the RuntimeConfig resource containing this
 // variable.
-func (r *Variable) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *Variable) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Variable) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Variable) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Variable) Text() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["text"])
+func (r *Variable) Text() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["text"])
 }
 
 // (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 // accurate to nanoseconds, representing when the variable was last updated.
 // Example: "2016-10-09T12:33:37.578138407Z".
-func (r *Variable) UpdateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateTime"])
+func (r *Variable) UpdateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
-func (r *Variable) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *Variable) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // Input properties used for looking up and filtering Variable resources.

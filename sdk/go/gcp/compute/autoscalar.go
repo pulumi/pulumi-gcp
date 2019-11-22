@@ -70,56 +70,56 @@ func GetAutoscalar(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Autoscalar) URN() *pulumi.URNOutput {
+func (r *Autoscalar) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Autoscalar) ID() *pulumi.IDOutput {
+func (r *Autoscalar) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
 // autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
 // default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
-func (r *Autoscalar) AutoscalingPolicy() *pulumi.Output {
+func (r *Autoscalar) AutoscalingPolicy() pulumi.Output {
 	return r.s.State["autoscalingPolicy"]
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Autoscalar) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Autoscalar) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *Autoscalar) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Autoscalar) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource. The name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Autoscalar) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Autoscalar) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Autoscalar) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Autoscalar) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *Autoscalar) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Autoscalar) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // URL of the managed instance group that this autoscaler will scale.
-func (r *Autoscalar) Target() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["target"])
+func (r *Autoscalar) Target() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["target"])
 }
 
 // URL of the zone where the instance group resides.
-func (r *Autoscalar) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Autoscalar) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Autoscalar resources.

@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePolicy(string name, ResourcePolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/resourcePolicy:ResourcePolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/resourcePolicy:ResourcePolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

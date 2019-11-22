@@ -65,33 +65,33 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
+func (r *Service) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
+func (r *Service) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
 // If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
-func (r *Service) DisableDependentServices() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableDependentServices"])
+func (r *Service) DisableDependentServices() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableDependentServices"])
 }
 
-func (r *Service) DisableOnDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableOnDestroy"])
+func (r *Service) DisableOnDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableOnDestroy"])
 }
 
 // The project ID. If not provided, the provider project is used.
-func (r *Service) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Service) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The service to enable.
-func (r *Service) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *Service) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Input properties used for looking up and filtering Service resources.

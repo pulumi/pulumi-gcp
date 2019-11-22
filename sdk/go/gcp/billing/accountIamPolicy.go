@@ -68,29 +68,29 @@ func GetAccountIamPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccountIamPolicy) URN() *pulumi.URNOutput {
+func (r *AccountIamPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccountIamPolicy) ID() *pulumi.IDOutput {
+func (r *AccountIamPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The billing account id.
-func (r *AccountIamPolicy) BillingAccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAccountId"])
+func (r *AccountIamPolicy) BillingAccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAccountId"])
 }
 
-func (r *AccountIamPolicy) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *AccountIamPolicy) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the billing account. This policy overrides any existing
 // policy applied to the billing account.
-func (r *AccountIamPolicy) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
+func (r *AccountIamPolicy) PolicyData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyData"])
 }
 
 // Input properties used for looking up and filtering AccountIamPolicy resources.

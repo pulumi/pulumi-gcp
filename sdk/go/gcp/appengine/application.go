@@ -81,76 +81,76 @@ func GetApplication(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Application) URN() *pulumi.URNOutput {
+func (r *Application) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Application) ID() *pulumi.IDOutput {
+func (r *Application) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Identifier of the app, usually `{PROJECT_ID}`
-func (r *Application) AppId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["appId"])
+func (r *Application) AppId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["appId"])
 }
 
 // The domain to authenticate users with when using App Engine's User API.
-func (r *Application) AuthDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authDomain"])
+func (r *Application) AuthDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authDomain"])
 }
 
 // The GCS bucket code is being stored in for this app.
-func (r *Application) CodeBucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["codeBucket"])
+func (r *Application) CodeBucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["codeBucket"])
 }
 
 // The GCS bucket content is being stored in for this app.
-func (r *Application) DefaultBucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultBucket"])
+func (r *Application) DefaultBucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultBucket"])
 }
 
 // The default hostname for this app.
-func (r *Application) DefaultHostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultHostname"])
+func (r *Application) DefaultHostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultHostname"])
 }
 
 // A block of optional settings to configure specific App Engine features:
-func (r *Application) FeatureSettings() *pulumi.Output {
+func (r *Application) FeatureSettings() pulumi.Output {
 	return r.s.State["featureSettings"]
 }
 
 // The GCR domain used for storing managed Docker images for this app.
-func (r *Application) GcrDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["gcrDomain"])
+func (r *Application) GcrDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["gcrDomain"])
 }
 
 // The [location](https://cloud.google.com/appengine/docs/locations)
 // to serve the app from.
-func (r *Application) LocationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["locationId"])
+func (r *Application) LocationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["locationId"])
 }
 
 // Unique name of the app, usually `apps/{PROJECT_ID}`
-func (r *Application) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Application) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project ID to create the application under.
 // ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
 // you may get a "Permission denied" error.
-func (r *Application) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Application) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The serving status of the app.
-func (r *Application) ServingStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["servingStatus"])
+func (r *Application) ServingStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["servingStatus"])
 }
 
 // A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-func (r *Application) UrlDispatchRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["urlDispatchRules"])
+func (r *Application) UrlDispatchRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["urlDispatchRules"])
 }
 
 // Input properties used for looking up and filtering Application resources.

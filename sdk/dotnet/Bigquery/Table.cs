@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Bigquery
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Table(string name, TableArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigquery/table:Table", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:bigquery/table:Table", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

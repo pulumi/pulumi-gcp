@@ -185,12 +185,12 @@ func GetCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Cluster) URN() *pulumi.URNOutput {
+func (r *Cluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Cluster) ID() *pulumi.IDOutput {
+func (r *Cluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -201,20 +201,20 @@ func (r *Cluster) ID() *pulumi.IDOutput {
 // all specified zones as well as the primary zone. If specified for a regional
 // cluster, nodes will only be created in these zones. `additionalZones` has been
 // deprecated in favour of `nodeLocations`.
-func (r *Cluster) AdditionalZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["additionalZones"])
+func (r *Cluster) AdditionalZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["additionalZones"])
 }
 
 // The configuration for addons supported by GKE.
 // Structure is documented below.
-func (r *Cluster) AddonsConfig() *pulumi.Output {
+func (r *Cluster) AddonsConfig() pulumi.Output {
 	return r.s.State["addonsConfig"]
 }
 
 // ) Configuration for the
 // [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 // Structure is documented below.
-func (r *Cluster) AuthenticatorGroupsConfig() *pulumi.Output {
+func (r *Cluster) AuthenticatorGroupsConfig() pulumi.Output {
 	return r.s.State["authenticatorGroupsConfig"]
 }
 
@@ -224,7 +224,7 @@ func (r *Cluster) AuthenticatorGroupsConfig() *pulumi.Output {
 // on the current needs of the cluster's workload. See the
 // [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
 // for more details. Structure is documented below.
-func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
+func (r *Cluster) ClusterAutoscaling() pulumi.Output {
 	return r.s.State["clusterAutoscaling"]
 }
 
@@ -234,13 +234,13 @@ func (r *Cluster) ClusterAutoscaling() *pulumi.Output {
 // work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
 // not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
 // cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
-func (r *Cluster) ClusterIpv4Cidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
+func (r *Cluster) ClusterIpv4Cidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
 }
 
 // ).
 // Structure is documented below.
-func (r *Cluster) DatabaseEncryption() *pulumi.Output {
+func (r *Cluster) DatabaseEncryption() pulumi.Output {
 	return r.s.State["databaseEncryption"]
 }
 
@@ -248,56 +248,56 @@ func (r *Cluster) DatabaseEncryption() *pulumi.Output {
 // per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 // that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 // for more information.
-func (r *Cluster) DefaultMaxPodsPerNode() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["defaultMaxPodsPerNode"])
+func (r *Cluster) DefaultMaxPodsPerNode() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["defaultMaxPodsPerNode"])
 }
 
 // Description of the cluster.
-func (r *Cluster) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Cluster) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // ) Enable Binary Authorization for this cluster.
 // If enabled, all container images will be validated by Google Binary Authorization.
-func (r *Cluster) EnableBinaryAuthorization() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableBinaryAuthorization"])
+func (r *Cluster) EnableBinaryAuthorization() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableBinaryAuthorization"])
 }
 
 // )
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-func (r *Cluster) EnableIntranodeVisibility() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableIntranodeVisibility"])
+func (r *Cluster) EnableIntranodeVisibility() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableIntranodeVisibility"])
 }
 
 // Whether to enable Kubernetes Alpha features for
 // this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 // and will be automatically deleted after 30 days.
-func (r *Cluster) EnableKubernetesAlpha() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableKubernetesAlpha"])
+func (r *Cluster) EnableKubernetesAlpha() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableKubernetesAlpha"])
 }
 
 // Whether the ABAC authorizer is enabled for this cluster.
 // When enabled, identities in the system, including service accounts, nodes, and controllers,
 // will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 // Defaults to `false`
-func (r *Cluster) EnableLegacyAbac() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableLegacyAbac"])
+func (r *Cluster) EnableLegacyAbac() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableLegacyAbac"])
 }
 
 // ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
-func (r *Cluster) EnableShieldedNodes() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableShieldedNodes"])
+func (r *Cluster) EnableShieldedNodes() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableShieldedNodes"])
 }
 
 // ) Whether to enable Cloud TPU resources in this cluster.
 // See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-func (r *Cluster) EnableTpu() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableTpu"])
+func (r *Cluster) EnableTpu() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableTpu"])
 }
 
 // The IP address of this cluster's Kubernetes master.
-func (r *Cluster) Endpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpoint"])
+func (r *Cluster) Endpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpoint"])
 }
 
 // The number of nodes to create in this
@@ -306,21 +306,21 @@ func (r *Cluster) Endpoint() *pulumi.StringOutput {
 // `container.NodePool` objects with no default node pool, you'll need to
 // set this to a value of at least `1`, alongside setting
 // `removeDefaultNodePool` to `true`.
-func (r *Cluster) InitialNodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
+func (r *Cluster) InitialNodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["initialNodeCount"])
 }
 
 // List of instance group URLs which have been assigned
 // to the cluster.
-func (r *Cluster) InstanceGroupUrls() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
+func (r *Cluster) InstanceGroupUrls() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
 }
 
 // Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
 // This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
 // Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
 // in order to support explicit removal with `ipAllocationPolicy = []`.
-func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
+func (r *Cluster) IpAllocationPolicy() pulumi.Output {
 	return r.s.State["ipAllocationPolicy"]
 }
 
@@ -330,20 +330,20 @@ func (r *Cluster) IpAllocationPolicy() *pulumi.Output {
 // single cluster master. If you specify a region (such as `us-west1`), the
 // cluster will be a regional cluster with multiple masters spread across zones in
 // the region, and with default node locations in those zones as well.
-func (r *Cluster) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *Cluster) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The logging service that the cluster should
 // write logs to. Available options include `logging.googleapis.com`,
 // `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
-func (r *Cluster) LoggingService() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loggingService"])
+func (r *Cluster) LoggingService() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loggingService"])
 }
 
 // The maintenance policy to use for the cluster. Structure is
 // documented below.
-func (r *Cluster) MaintenancePolicy() *pulumi.Output {
+func (r *Cluster) MaintenancePolicy() pulumi.Output {
 	return r.s.State["maintenancePolicy"]
 }
 
@@ -353,22 +353,22 @@ func (r *Cluster) MaintenancePolicy() *pulumi.Output {
 // you see an unexpected diff removing a username/password or unsetting your client
 // cert, ensure you have the `container.clusters.getCredentials` permission.
 // Structure is documented below.
-func (r *Cluster) MasterAuth() *pulumi.Output {
+func (r *Cluster) MasterAuth() pulumi.Output {
 	return r.s.State["masterAuth"]
 }
 
 // The desired configuration options
 // for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
 // external access (except the cluster node IPs, which GKE automatically whitelists).
-func (r *Cluster) MasterAuthorizedNetworksConfig() *pulumi.Output {
+func (r *Cluster) MasterAuthorizedNetworksConfig() pulumi.Output {
 	return r.s.State["masterAuthorizedNetworksConfig"]
 }
 
 // The current version of the master in the cluster. This may
 // be different than the `minMasterVersion` set in the config if the master
 // has been updated by GKE.
-func (r *Cluster) MasterVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterVersion"])
+func (r *Cluster) MasterVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterVersion"])
 }
 
 // The minimum version of the master. GKE
@@ -380,8 +380,8 @@ func (r *Cluster) MasterVersion() *pulumi.StringOutput {
 // are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
 // [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 // describe the various acceptable formats for this field.
-func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["minMasterVersion"])
+func (r *Cluster) MinMasterVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["minMasterVersion"])
 }
 
 // The monitoring service that the cluster
@@ -391,27 +391,27 @@ func (r *Cluster) MinMasterVersion() *pulumi.StringOutput {
 // Available options include
 // `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
 // Defaults to `monitoring.googleapis.com`
-func (r *Cluster) MonitoringService() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["monitoringService"])
+func (r *Cluster) MonitoringService() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["monitoringService"])
 }
 
 // The name of the cluster, unique within the project and
 // location.
-func (r *Cluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Cluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name or selfLink of the Google Compute Engine
 // network to which the cluster is connected. For Shared VPC, set this to the self link of the
 // shared network.
-func (r *Cluster) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Cluster) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // Configuration options for the
 // [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 // feature. Structure is documented below.
-func (r *Cluster) NetworkPolicy() *pulumi.Output {
+func (r *Cluster) NetworkPolicy() pulumi.Output {
 	return r.s.State["networkPolicy"]
 }
 
@@ -420,7 +420,7 @@ func (r *Cluster) NetworkPolicy() *pulumi.Output {
 // `container.NodePool` or a `nodePool` block; this configuration
 // manages the default node pool, which isn't recommended to be used with
 // this provider. Structure is documented below.
-func (r *Cluster) NodeConfig() *pulumi.Output {
+func (r *Cluster) NodeConfig() pulumi.Output {
 	return r.s.State["nodeConfig"]
 }
 
@@ -428,8 +428,8 @@ func (r *Cluster) NodeConfig() *pulumi.Output {
 // are located. Nodes must be in the region of their regional cluster or in the
 // same region as their cluster's zone for zonal clusters. If this is specified for
 // a zonal cluster, omit the cluster's zone.
-func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodeLocations"])
+func (r *Cluster) NodeLocations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodeLocations"])
 }
 
 // List of node pools associated with this cluster.
@@ -438,8 +438,8 @@ func (r *Cluster) NodeLocations() *pulumi.ArrayOutput {
 // cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
 // to say "these are the _only_ node pools associated with this cluster", use the
 // container.NodePool resource instead of this property.
-func (r *Cluster) NodePools() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodePools"])
+func (r *Cluster) NodePools() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodePools"])
 }
 
 // The Kubernetes version on the nodes. Must either be unset
@@ -450,37 +450,37 @@ func (r *Cluster) NodePools() *pulumi.ArrayOutput {
 // when fuzzy versions are used. See the `container.getEngineVersions` data source's
 // `versionPrefix` field to approximate fuzzy versions.
 // To update nodes in other node pools, use the `version` attribute on the node pool.
-func (r *Cluster) NodeVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodeVersion"])
+func (r *Cluster) NodeVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodeVersion"])
 }
 
 // ) Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
-func (r *Cluster) PodSecurityPolicyConfig() *pulumi.Output {
+func (r *Cluster) PodSecurityPolicyConfig() pulumi.Output {
 	return r.s.State["podSecurityPolicyConfig"]
 }
 
 // Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 // clusters with private nodes. Structure is documented below.
-func (r *Cluster) PrivateClusterConfig() *pulumi.Output {
+func (r *Cluster) PrivateClusterConfig() pulumi.Output {
 	return r.s.State["privateClusterConfig"]
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Cluster) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Cluster) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Cluster) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Cluster) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // ) Configuration options for the
 // [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 // feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
-func (r *Cluster) ReleaseChannel() *pulumi.Output {
+func (r *Cluster) ReleaseChannel() pulumi.Output {
 	return r.s.State["releaseChannel"]
 }
 
@@ -488,19 +488,19 @@ func (r *Cluster) ReleaseChannel() *pulumi.Output {
 // pool upon cluster creation. If you're using `container.NodePool`
 // resources with no default node pool, this should be set to `true`, alongside
 // setting `initialNodeCount` to at least `1`.
-func (r *Cluster) RemoveDefaultNodePool() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["removeDefaultNodePool"])
+func (r *Cluster) RemoveDefaultNodePool() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["removeDefaultNodePool"])
 }
 
 // The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-func (r *Cluster) ResourceLabels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["resourceLabels"])
+func (r *Cluster) ResourceLabels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["resourceLabels"])
 }
 
 // ) Configuration for the
 // [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 // Structure is documented below.
-func (r *Cluster) ResourceUsageExportConfig() *pulumi.Output {
+func (r *Cluster) ResourceUsageExportConfig() pulumi.Output {
 	return r.s.State["resourceUsageExportConfig"]
 }
 
@@ -508,24 +508,24 @@ func (r *Cluster) ResourceUsageExportConfig() *pulumi.Output {
 // cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 // notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
 // `/16` from the container CIDR.
-func (r *Cluster) ServicesIpv4Cidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["servicesIpv4Cidr"])
+func (r *Cluster) ServicesIpv4Cidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["servicesIpv4Cidr"])
 }
 
 // The name or selfLink of the Google Compute Engine subnetwork in
 // which the cluster's instances are launched.
-func (r *Cluster) Subnetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
+func (r *Cluster) Subnetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
-func (r *Cluster) TpuIpv4CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
+func (r *Cluster) TpuIpv4CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tpuIpv4CidrBlock"])
 }
 
 // )
 // Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 // Structure is documented below.
-func (r *Cluster) VerticalPodAutoscaling() *pulumi.Output {
+func (r *Cluster) VerticalPodAutoscaling() pulumi.Output {
 	return r.s.State["verticalPodAutoscaling"]
 }
 
@@ -533,15 +533,15 @@ func (r *Cluster) VerticalPodAutoscaling() *pulumi.Output {
 // Workload Identity allows Kubernetes service accounts to act as a user-managed
 // [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 // Structure is documented below.
-func (r *Cluster) WorkloadIdentityConfig() *pulumi.Output {
+func (r *Cluster) WorkloadIdentityConfig() pulumi.Output {
 	return r.s.State["workloadIdentityConfig"]
 }
 
 // The zone that the cluster master and nodes
 // should be created in. If specified, this cluster will be a zonal cluster. `zone`
 // has been deprecated in favour of `location`.
-func (r *Cluster) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Cluster) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Cluster resources.

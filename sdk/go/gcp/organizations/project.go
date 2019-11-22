@@ -99,12 +99,12 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
+func (r *Project) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
+func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -112,8 +112,8 @@ func (r *Project) ID() *pulumi.IDOutput {
 // If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
 // will still need to have 1 network slot available to create the project successfully, even if
 // you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
-func (r *Project) AutoCreateNetwork() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["autoCreateNetwork"])
+func (r *Project) AutoCreateNetwork() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoCreateNetwork"])
 }
 
 // The alphanumeric ID of the billing account this project
@@ -121,8 +121,8 @@ func (r *Project) AutoCreateNetwork() *pulumi.BoolOutput {
 // must have Billing Account Administrator privileges (`roles/billing.admin`) in
 // the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
 // for more details.
-func (r *Project) BillingAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAccount"])
+func (r *Project) BillingAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAccount"])
 }
 
 // The numeric ID of the folder this project should be
@@ -130,23 +130,23 @@ func (r *Project) BillingAccount() *pulumi.StringOutput {
 // specified. If the `folderId` is specified, then the project is
 // created under the specified folder. Changing this forces the
 // project to be migrated to the newly specified folder.
-func (r *Project) FolderId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folderId"])
+func (r *Project) FolderId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folderId"])
 }
 
 // A set of key/value label pairs to assign to the project.
-func (r *Project) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Project) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The display name of the project.
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The numeric identifier of the project.
-func (r *Project) Number() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["number"])
+func (r *Project) Number() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["number"])
 }
 
 // The numeric ID of the organization this project belongs to.
@@ -155,19 +155,19 @@ func (r *Project) Number() *pulumi.StringOutput {
 // specified then the project is created at the top level. Changing
 // this forces the project to be migrated to the newly specified
 // organization.
-func (r *Project) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *Project) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // The project ID. Changing this forces a new project to be created.
-func (r *Project) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *Project) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // If true, the resource can be deleted
 // without deleting the Project via the Google API.
-func (r *Project) SkipDelete() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["skipDelete"])
+func (r *Project) SkipDelete() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["skipDelete"])
 }
 
 // Input properties used for looking up and filtering Project resources.

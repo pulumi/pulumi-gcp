@@ -67,57 +67,57 @@ func GetBackendBucket(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BackendBucket) URN() *pulumi.URNOutput {
+func (r *BackendBucket) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BackendBucket) ID() *pulumi.IDOutput {
+func (r *BackendBucket) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Cloud Storage bucket name.
-func (r *BackendBucket) BucketName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucketName"])
+func (r *BackendBucket) BucketName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucketName"])
 }
 
 // Cloud CDN configuration for this Backend Bucket.
-func (r *BackendBucket) CdnPolicy() *pulumi.Output {
+func (r *BackendBucket) CdnPolicy() pulumi.Output {
 	return r.s.State["cdnPolicy"]
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *BackendBucket) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *BackendBucket) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional textual description of the resource; provided by the client when the resource is created.
-func (r *BackendBucket) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *BackendBucket) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If true, enable Cloud CDN for this BackendBucket.
-func (r *BackendBucket) EnableCdn() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableCdn"])
+func (r *BackendBucket) EnableCdn() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableCdn"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *BackendBucket) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BackendBucket) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *BackendBucket) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *BackendBucket) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *BackendBucket) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *BackendBucket) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering BackendBucket resources.

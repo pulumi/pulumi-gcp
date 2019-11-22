@@ -65,16 +65,16 @@ func GetDicomStoreIamMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DicomStoreIamMember) URN() *pulumi.URNOutput {
+func (r *DicomStoreIamMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DicomStoreIamMember) ID() *pulumi.IDOutput {
+func (r *DicomStoreIamMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *DicomStoreIamMember) Condition() *pulumi.Output {
+func (r *DicomStoreIamMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
@@ -82,24 +82,24 @@ func (r *DicomStoreIamMember) Condition() *pulumi.Output {
 // `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
 // `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *DicomStoreIamMember) DicomStoreId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dicomStoreId"])
+func (r *DicomStoreIamMember) DicomStoreId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dicomStoreId"])
 }
 
 // (Computed) The etag of the DICOM store's IAM policy.
-func (r *DicomStoreIamMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *DicomStoreIamMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *DicomStoreIamMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *DicomStoreIamMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Only one
 // `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *DicomStoreIamMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DicomStoreIamMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DicomStoreIamMember resources.

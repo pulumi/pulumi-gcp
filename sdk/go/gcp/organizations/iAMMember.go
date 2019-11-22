@@ -72,38 +72,38 @@ func GetIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMMember) URN() *pulumi.URNOutput {
+func (r *IAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMMember) ID() *pulumi.IDOutput {
+func (r *IAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMMember) Condition() *pulumi.Output {
+func (r *IAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the organization's IAM policy.
-func (r *IAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (r *IAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *IAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The numeric ID of the organization in which you want to create a custom role.
-func (r *IAMMember) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *IAMMember) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // The role that should be applied. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *IAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *IAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering IAMMember resources.

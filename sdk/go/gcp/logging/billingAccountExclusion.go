@@ -70,41 +70,41 @@ func GetBillingAccountExclusion(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BillingAccountExclusion) URN() *pulumi.URNOutput {
+func (r *BillingAccountExclusion) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BillingAccountExclusion) ID() *pulumi.IDOutput {
+func (r *BillingAccountExclusion) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The billing account to create the exclusion for.
-func (r *BillingAccountExclusion) BillingAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAccount"])
+func (r *BillingAccountExclusion) BillingAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAccount"])
 }
 
 // A human-readable description.
-func (r *BillingAccountExclusion) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *BillingAccountExclusion) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether this exclusion rule should be disabled or not. This defaults to
 // false.
-func (r *BillingAccountExclusion) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *BillingAccountExclusion) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // The filter to apply when excluding logs. Only log entries that match the filter are excluded.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
 // write a filter.
-func (r *BillingAccountExclusion) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *BillingAccountExclusion) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The name of the logging exclusion.
-func (r *BillingAccountExclusion) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BillingAccountExclusion) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering BillingAccountExclusion resources.

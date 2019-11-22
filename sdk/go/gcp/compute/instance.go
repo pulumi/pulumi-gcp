@@ -137,104 +137,104 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If true, allows this provider to stop the instance to update its properties.
 // If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-func (r *Instance) AllowStoppingForUpdate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
+func (r *Instance) AllowStoppingForUpdate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
 }
 
 // Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-func (r *Instance) AttachedDisks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["attachedDisks"])
+func (r *Instance) AttachedDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["attachedDisks"])
 }
 
 // The boot disk for the instance.
 // Structure is documented below.
-func (r *Instance) BootDisk() *pulumi.Output {
+func (r *Instance) BootDisk() pulumi.Output {
 	return r.s.State["bootDisk"]
 }
 
 // Whether to allow sending and receiving of
 // packets with non-matching source or destination IPs.
 // This defaults to false.
-func (r *Instance) CanIpForward() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canIpForward"])
+func (r *Instance) CanIpForward() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canIpForward"])
 }
 
 // The CPU platform used by this instance.
-func (r *Instance) CpuPlatform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuPlatform"])
+func (r *Instance) CpuPlatform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuPlatform"])
 }
 
 // Enable deletion protection on this instance. Defaults to false.
 // **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
-func (r *Instance) DeletionProtection() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deletionProtection"])
+func (r *Instance) DeletionProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deletionProtection"])
 }
 
 // A brief description of this resource.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-func (r *Instance) EnableDisplay() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
+func (r *Instance) EnableDisplay() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
 // **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-func (r *Instance) GuestAccelerators() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
+func (r *Instance) GuestAccelerators() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
 }
 
 // A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 // Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 // The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-func (r *Instance) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *Instance) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // The server-assigned unique identifier of this instance.
-func (r *Instance) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *Instance) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The unique fingerprint of the labels.
-func (r *Instance) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *Instance) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // A map of key/value label pairs to assign to the instance.
-func (r *Instance) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Instance) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The machine type to create.
-func (r *Instance) MachineType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["machineType"])
+func (r *Instance) MachineType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["machineType"])
 }
 
 // Metadata key/value pairs to make available from
 // within the instance. Ssh keys attached in the Cloud Console will be removed.
 // Add them to your config in order to keep them attached to your instance.
-func (r *Instance) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Instance) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // The unique fingerprint of the metadata.
-func (r *Instance) MetadataFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataFingerprint"])
+func (r *Instance) MetadataFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataFingerprint"])
 }
 
 // An alternative to using the
@@ -242,78 +242,78 @@ func (r *Instance) MetadataFingerprint() *pulumi.StringOutput {
 // recreated (thus re-running the script) if it is changed. This replaces the
 // startup-script metadata key on the created instance and thus the two
 // mechanisms are not allowed to be used simultaneously.
-func (r *Instance) MetadataStartupScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataStartupScript"])
+func (r *Instance) MetadataStartupScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataStartupScript"])
 }
 
 // Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 // `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-func (r *Instance) MinCpuPlatform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["minCpuPlatform"])
+func (r *Instance) MinCpuPlatform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["minCpuPlatform"])
 }
 
 // A unique name for the resource, required by GCE.
 // Changing this forces a new resource to be created.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Networks to attach to the instance. This can
 // be specified multiple times. Structure is documented below.
-func (r *Instance) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *Instance) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Instance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Instance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The scheduling strategy to use. More details about
 // this configuration option are detailed below.
-func (r *Instance) Scheduling() *pulumi.Output {
+func (r *Instance) Scheduling() pulumi.Output {
 	return r.s.State["scheduling"]
 }
 
 // Scratch disks to attach to the instance. This can be
 // specified multiple times for multiple scratch disks. Structure is documented below.
-func (r *Instance) ScratchDisks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scratchDisks"])
+func (r *Instance) ScratchDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scratchDisks"])
 }
 
 // The URI of the created resource.
-func (r *Instance) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Instance) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Service account to attach to the instance.
 // Structure is documented below.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-func (r *Instance) ServiceAccount() *pulumi.Output {
+func (r *Instance) ServiceAccount() pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
 // Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 // **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-func (r *Instance) ShieldedInstanceConfig() *pulumi.Output {
+func (r *Instance) ShieldedInstanceConfig() pulumi.Output {
 	return r.s.State["shieldedInstanceConfig"]
 }
 
 // A list of tags to attach to the instance.
-func (r *Instance) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Instance) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The unique fingerprint of the tags.
-func (r *Instance) TagsFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tagsFingerprint"])
+func (r *Instance) TagsFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tagsFingerprint"])
 }
 
 // The zone that the machine should be created in.
-func (r *Instance) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Instance) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

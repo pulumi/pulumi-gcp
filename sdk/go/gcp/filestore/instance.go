@@ -82,62 +82,62 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Instance) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Instance) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // A description of the instance.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
-func (r *Instance) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *Instance) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // File system shares on the instance. For this version, only a single file share is supported.
-func (r *Instance) FileShares() *pulumi.Output {
+func (r *Instance) FileShares() pulumi.Output {
 	return r.s.State["fileShares"]
 }
 
 // Resource labels to represent user-provided metadata.
-func (r *Instance) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Instance) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The resource name of the instance.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // VPC networks to which the instance is connected. For this version, only a single network is supported.
-func (r *Instance) Networks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networks"])
+func (r *Instance) Networks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networks"])
 }
 
-func (r *Instance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Instance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The service tier of the instance.
-func (r *Instance) Tier() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tier"])
+func (r *Instance) Tier() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tier"])
 }
 
 // The name of the Filestore zone of the instance.
-func (r *Instance) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Instance) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

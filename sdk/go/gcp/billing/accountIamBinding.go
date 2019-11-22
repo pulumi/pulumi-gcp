@@ -76,37 +76,37 @@ func GetAccountIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccountIamBinding) URN() *pulumi.URNOutput {
+func (r *AccountIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccountIamBinding) ID() *pulumi.IDOutput {
+func (r *AccountIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The billing account id.
-func (r *AccountIamBinding) BillingAccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAccountId"])
+func (r *AccountIamBinding) BillingAccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAccountId"])
 }
 
-func (r *AccountIamBinding) Condition() *pulumi.Output {
+func (r *AccountIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the billing account's IAM policy.
-func (r *AccountIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *AccountIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (r *AccountIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *AccountIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied.
-func (r *AccountIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *AccountIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering AccountIamBinding resources.

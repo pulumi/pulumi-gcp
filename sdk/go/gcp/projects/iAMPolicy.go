@@ -68,32 +68,32 @@ func GetIAMPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMPolicy) URN() *pulumi.URNOutput {
+func (r *IAMPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMPolicy) ID() *pulumi.IDOutput {
+func (r *IAMPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (r *IAMPolicy) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMPolicy) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the project. The policy will be
 // merged with any existing policy applied to the project.
-func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
+func (r *IAMPolicy) PolicyData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyData"])
 }
 
 // The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 // Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 // will not be inferred from the provider.
-func (r *IAMPolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *IAMPolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering IAMPolicy resources.

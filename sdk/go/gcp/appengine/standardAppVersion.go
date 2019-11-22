@@ -89,93 +89,93 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *StandardAppVersion) URN() *pulumi.URNOutput {
+func (r *StandardAppVersion) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *StandardAppVersion) ID() *pulumi.IDOutput {
+func (r *StandardAppVersion) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If set to `true`, the service will be deleted if it is the last version.    
-func (r *StandardAppVersion) DeleteServiceOnDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deleteServiceOnDestroy"])
+func (r *StandardAppVersion) DeleteServiceOnDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteServiceOnDestroy"])
 }
 
 // Code and application artifacts that make up this version.
-func (r *StandardAppVersion) Deployment() *pulumi.Output {
+func (r *StandardAppVersion) Deployment() pulumi.Output {
 	return r.s.State["deployment"]
 }
 
 // The entrypoint for the application.
-func (r *StandardAppVersion) Entrypoint() *pulumi.Output {
+func (r *StandardAppVersion) Entrypoint() pulumi.Output {
 	return r.s.State["entrypoint"]
 }
 
 // Environment variables available to the application.
-func (r *StandardAppVersion) EnvVariables() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["envVariables"])
+func (r *StandardAppVersion) EnvVariables() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["envVariables"])
 }
 
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
 // request and other request handlers are not attempted.
-func (r *StandardAppVersion) Handlers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["handlers"])
+func (r *StandardAppVersion) Handlers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["handlers"])
 }
 
 // Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
 // AutomaticScaling is supported at the moment)
-func (r *StandardAppVersion) InstanceClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceClass"])
+func (r *StandardAppVersion) InstanceClass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceClass"])
 }
 
 // Configuration for third-party Python runtime libraries that are required by the application.
-func (r *StandardAppVersion) Libraries() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["libraries"])
+func (r *StandardAppVersion) Libraries() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["libraries"])
 }
 
 // Full path to the Version resource in the API. Example, "v1".
-func (r *StandardAppVersion) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *StandardAppVersion) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // If set to `true`, the application version will not be deleted.
-func (r *StandardAppVersion) NoopOnDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["noopOnDestroy"])
+func (r *StandardAppVersion) NoopOnDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["noopOnDestroy"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *StandardAppVersion) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *StandardAppVersion) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Desired runtime. Example python27.
-func (r *StandardAppVersion) Runtime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["runtime"])
+func (r *StandardAppVersion) Runtime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["runtime"])
 }
 
 // The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
 // https://cloud.google.com/appengine/docs/standard//config/appref
-func (r *StandardAppVersion) RuntimeApiVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["runtimeApiVersion"])
+func (r *StandardAppVersion) RuntimeApiVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["runtimeApiVersion"])
 }
 
 // AppEngine service resource
-func (r *StandardAppVersion) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *StandardAppVersion) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Whether multiple requests can be dispatched to this version at once.
-func (r *StandardAppVersion) Threadsafe() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["threadsafe"])
+func (r *StandardAppVersion) Threadsafe() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["threadsafe"])
 }
 
 // Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
 // numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
-func (r *StandardAppVersion) VersionId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["versionId"])
+func (r *StandardAppVersion) VersionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["versionId"])
 }
 
 // Input properties used for looking up and filtering StandardAppVersion resources.

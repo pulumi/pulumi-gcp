@@ -69,66 +69,66 @@ func GetNodeTemplate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NodeTemplate) URN() *pulumi.URNOutput {
+func (r *NodeTemplate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NodeTemplate) ID() *pulumi.IDOutput {
+func (r *NodeTemplate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *NodeTemplate) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *NodeTemplate) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional textual description of the resource.
-func (r *NodeTemplate) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *NodeTemplate) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource.
-func (r *NodeTemplate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NodeTemplate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Labels to use for node affinity, which will be used in instance scheduling.
-func (r *NodeTemplate) NodeAffinityLabels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["nodeAffinityLabels"])
+func (r *NodeTemplate) NodeAffinityLabels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["nodeAffinityLabels"])
 }
 
 // Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
 // be specified.
-func (r *NodeTemplate) NodeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodeType"])
+func (r *NodeTemplate) NodeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodeType"])
 }
 
 // Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
 // matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
-func (r *NodeTemplate) NodeTypeFlexibility() *pulumi.Output {
+func (r *NodeTemplate) NodeTypeFlexibility() pulumi.Output {
 	return r.s.State["nodeTypeFlexibility"]
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *NodeTemplate) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *NodeTemplate) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region where nodes using the node template will be created. If it is not provided, the provider region is used.
-func (r *NodeTemplate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *NodeTemplate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URI of the created resource.
-func (r *NodeTemplate) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *NodeTemplate) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The server binding policy for nodes using this template. Determines where the nodes should restart following a
 // maintenance event.
-func (r *NodeTemplate) ServerBinding() *pulumi.Output {
+func (r *NodeTemplate) ServerBinding() pulumi.Output {
 	return r.s.State["serverBinding"]
 }
 

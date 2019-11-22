@@ -86,47 +86,47 @@ func GetRegionHealthCheck(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RegionHealthCheck) URN() *pulumi.URNOutput {
+func (r *RegionHealthCheck) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RegionHealthCheck) ID() *pulumi.IDOutput {
+func (r *RegionHealthCheck) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // How often (in seconds) to send a health check. The default value is 5 seconds.
-func (r *RegionHealthCheck) CheckIntervalSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["checkIntervalSec"])
+func (r *RegionHealthCheck) CheckIntervalSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["checkIntervalSec"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *RegionHealthCheck) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *RegionHealthCheck) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *RegionHealthCheck) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RegionHealthCheck) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-func (r *RegionHealthCheck) HealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthyThreshold"])
+func (r *RegionHealthCheck) HealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthyThreshold"])
 }
 
 // A nested object resource
-func (r *RegionHealthCheck) Http2HealthCheck() *pulumi.Output {
+func (r *RegionHealthCheck) Http2HealthCheck() pulumi.Output {
 	return r.s.State["http2HealthCheck"]
 }
 
 // A nested object resource
-func (r *RegionHealthCheck) HttpHealthCheck() *pulumi.Output {
+func (r *RegionHealthCheck) HttpHealthCheck() pulumi.Output {
 	return r.s.State["httpHealthCheck"]
 }
 
 // A nested object resource
-func (r *RegionHealthCheck) HttpsHealthCheck() *pulumi.Output {
+func (r *RegionHealthCheck) HttpsHealthCheck() pulumi.Output {
 	return r.s.State["httpsHealthCheck"]
 }
 
@@ -134,50 +134,50 @@ func (r *RegionHealthCheck) HttpsHealthCheck() *pulumi.Output {
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *RegionHealthCheck) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RegionHealthCheck) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *RegionHealthCheck) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RegionHealthCheck) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The Region in which the created health check should reside. If it is not provided, the provider region is used.
-func (r *RegionHealthCheck) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RegionHealthCheck) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URI of the created resource.
-func (r *RegionHealthCheck) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *RegionHealthCheck) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A nested object resource
-func (r *RegionHealthCheck) SslHealthCheck() *pulumi.Output {
+func (r *RegionHealthCheck) SslHealthCheck() pulumi.Output {
 	return r.s.State["sslHealthCheck"]
 }
 
 // A nested object resource
-func (r *RegionHealthCheck) TcpHealthCheck() *pulumi.Output {
+func (r *RegionHealthCheck) TcpHealthCheck() pulumi.Output {
 	return r.s.State["tcpHealthCheck"]
 }
 
 // How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
 // have greater value than checkIntervalSec.
-func (r *RegionHealthCheck) TimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutSec"])
+func (r *RegionHealthCheck) TimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutSec"])
 }
 
 // The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
-func (r *RegionHealthCheck) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *RegionHealthCheck) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-func (r *RegionHealthCheck) UnhealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
+func (r *RegionHealthCheck) UnhealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
 }
 
 // Input properties used for looking up and filtering RegionHealthCheck resources.

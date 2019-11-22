@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebBackendServiceIamPolicy(string name, WebBackendServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -72,49 +72,49 @@ func GetLien(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Lien) URN() *pulumi.URNOutput {
+func (r *Lien) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Lien) ID() *pulumi.IDOutput {
+func (r *Lien) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Time of creation
-func (r *Lien) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Lien) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // A system-generated unique identifier for this Lien.
-func (r *Lien) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Lien) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically.
 // Maximum length of 200 characters.
-func (r *Lien) Origin() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["origin"])
+func (r *Lien) Origin() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["origin"])
 }
 
 // A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens
 // are supported. Since a variety of objects can have Liens against them, you must provide the type prefix (e.g.
 // "projects/my-project-name").
-func (r *Lien) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *Lien) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200
 // characters.
-func (r *Lien) Reason() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["reason"])
+func (r *Lien) Reason() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["reason"])
 }
 
 // The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM
 // permission. The server will validate the permissions against those for which Liens are supported. An empty list is
 // meaningless and will be rejected. e.g. ['resourcemanager.projects.delete']
-func (r *Lien) Restrictions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["restrictions"])
+func (r *Lien) Restrictions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["restrictions"])
 }
 
 // Input properties used for looking up and filtering Lien resources.

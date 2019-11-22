@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Logging
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderExclusion(string name, FolderExclusionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:logging/folderExclusion:FolderExclusion", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:logging/folderExclusion:FolderExclusion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

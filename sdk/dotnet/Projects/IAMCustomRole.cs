@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMCustomRole(string name, IAMCustomRoleArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

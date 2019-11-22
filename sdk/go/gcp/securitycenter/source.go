@@ -71,35 +71,35 @@ func GetSource(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Source) URN() *pulumi.URNOutput {
+func (r *Source) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Source) ID() *pulumi.IDOutput {
+func (r *Source) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The description of the source (max of 1024 characters).
-func (r *Source) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Source) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
 // with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
 // contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
-func (r *Source) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *Source) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
-func (r *Source) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Source) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The organization whose Cloud Security Command Center the Source lives in.
-func (r *Source) Organization() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["organization"])
+func (r *Source) Organization() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["organization"])
 }
 
 // Input properties used for looking up and filtering Source resources.

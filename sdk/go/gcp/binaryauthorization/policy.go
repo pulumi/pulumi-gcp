@@ -63,47 +63,47 @@ func GetPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Policy) URN() *pulumi.URNOutput {
+func (r *Policy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Policy) ID() *pulumi.IDOutput {
+func (r *Policy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
 // image's admission requests will always be permitted regardless of your admission rules.
-func (r *Policy) AdmissionWhitelistPatterns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["admissionWhitelistPatterns"])
+func (r *Policy) AdmissionWhitelistPatterns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["admissionWhitelistPatterns"])
 }
 
 // Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
 // must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
 // denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
 // location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
-func (r *Policy) ClusterAdmissionRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["clusterAdmissionRules"])
+func (r *Policy) ClusterAdmissionRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["clusterAdmissionRules"])
 }
 
 // Default admission rule for a cluster without a per-cluster admission rule.
-func (r *Policy) DefaultAdmissionRule() *pulumi.Output {
+func (r *Policy) DefaultAdmissionRule() pulumi.Output {
 	return r.s.State["defaultAdmissionRule"]
 }
 
 // A descriptive comment.
-func (r *Policy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Policy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 // covered by the global policy will be subject to the project admission policy.
-func (r *Policy) GlobalPolicyEvaluationMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["globalPolicyEvaluationMode"])
+func (r *Policy) GlobalPolicyEvaluationMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["globalPolicyEvaluationMode"])
 }
 
-func (r *Policy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Policy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Policy resources.

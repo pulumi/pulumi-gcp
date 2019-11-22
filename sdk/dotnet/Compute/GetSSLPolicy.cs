@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_policy.html.markdown.
         /// </summary>
         public static Task<GetSSLPolicyResult> GetSSLPolicy(GetSSLPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSSLPolicyArgs : Pulumi.ResourceArgs

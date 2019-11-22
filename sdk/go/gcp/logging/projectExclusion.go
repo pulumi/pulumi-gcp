@@ -67,42 +67,42 @@ func GetProjectExclusion(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectExclusion) URN() *pulumi.URNOutput {
+func (r *ProjectExclusion) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectExclusion) ID() *pulumi.IDOutput {
+func (r *ProjectExclusion) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A human-readable description.
-func (r *ProjectExclusion) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *ProjectExclusion) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether this exclusion rule should be disabled or not. This defaults to
 // false.
-func (r *ProjectExclusion) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *ProjectExclusion) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // The filter to apply when excluding logs. Only log entries that match the filter are excluded.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
 // write a filter.
-func (r *ProjectExclusion) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *ProjectExclusion) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The name of the logging exclusion.
-func (r *ProjectExclusion) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ProjectExclusion) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project to create the exclusion in. If omitted, the project associated with the provider is
 // used.
-func (r *ProjectExclusion) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectExclusion) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering ProjectExclusion resources.

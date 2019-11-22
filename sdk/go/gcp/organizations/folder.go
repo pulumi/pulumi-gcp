@@ -74,41 +74,41 @@ func GetFolder(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Folder) URN() *pulumi.URNOutput {
+func (r *Folder) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Folder) ID() *pulumi.IDOutput {
+func (r *Folder) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Timestamp when the Folder was created. Assigned by the server.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-func (r *Folder) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Folder) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // The folder’s display name.
 // A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
-func (r *Folder) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *Folder) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
-func (r *Folder) LifecycleState() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lifecycleState"])
+func (r *Folder) LifecycleState() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lifecycleState"])
 }
 
 // The resource name of the Folder. Its format is folders/{folder_id}.
-func (r *Folder) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Folder) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The resource name of the parent Folder or Organization.
 // Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-func (r *Folder) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *Folder) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // Input properties used for looking up and filtering Folder resources.

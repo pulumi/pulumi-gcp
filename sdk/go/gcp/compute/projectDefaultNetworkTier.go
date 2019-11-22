@@ -58,25 +58,25 @@ func GetProjectDefaultNetworkTier(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectDefaultNetworkTier) URN() *pulumi.URNOutput {
+func (r *ProjectDefaultNetworkTier) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectDefaultNetworkTier) ID() *pulumi.IDOutput {
+func (r *ProjectDefaultNetworkTier) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The default network tier to be configured for the project.
 // This field can take the following values: `PREMIUM` or `STANDARD`.
-func (r *ProjectDefaultNetworkTier) NetworkTier() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkTier"])
+func (r *ProjectDefaultNetworkTier) NetworkTier() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkTier"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *ProjectDefaultNetworkTier) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectDefaultNetworkTier) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering ProjectDefaultNetworkTier resources.

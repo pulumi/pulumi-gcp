@@ -57,46 +57,46 @@ func GetSecurityPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecurityPolicy) URN() *pulumi.URNOutput {
+func (r *SecurityPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecurityPolicy) ID() *pulumi.IDOutput {
+func (r *SecurityPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An optional description of this security policy. Max size is 2048.
-func (r *SecurityPolicy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecurityPolicy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Fingerprint of this resource.
-func (r *SecurityPolicy) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *SecurityPolicy) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The name of the security policy.
-func (r *SecurityPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecurityPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *SecurityPolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SecurityPolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The set of rules that belong to this policy. There must always be a default
 // rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 // security policy, a default rule with action "allow" will be added. Structure is documented below.
-func (r *SecurityPolicy) Rules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["rules"])
+func (r *SecurityPolicy) Rules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["rules"])
 }
 
 // The URI of the created resource.
-func (r *SecurityPolicy) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *SecurityPolicy) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering SecurityPolicy resources.

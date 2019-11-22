@@ -87,34 +87,34 @@ func GetServicePerimeter(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServicePerimeter) URN() *pulumi.URNOutput {
+func (r *ServicePerimeter) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServicePerimeter) ID() *pulumi.IDOutput {
+func (r *ServicePerimeter) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Time the AccessPolicy was created in UTC.
-func (r *ServicePerimeter) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *ServicePerimeter) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // Description of the ServicePerimeter and its use. Does not affect behavior.
-func (r *ServicePerimeter) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *ServicePerimeter) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include alphanumeric
 // and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-func (r *ServicePerimeter) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ServicePerimeter) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
-func (r *ServicePerimeter) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *ServicePerimeter) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
@@ -125,24 +125,24 @@ func (r *ServicePerimeter) Parent() *pulumi.StringOutput {
 // the regular perimeter that resource is in. Perimeter Bridges are typically useful when building more complex topologies
 // with many independent perimeters that need to share some data with a common perimeter, but should not be able to share
 // data among themselves.
-func (r *ServicePerimeter) PerimeterType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["perimeterType"])
+func (r *ServicePerimeter) PerimeterType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["perimeterType"])
 }
 
 // ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
 // perimeter content and boundaries.
-func (r *ServicePerimeter) Status() *pulumi.Output {
+func (r *ServicePerimeter) Status() pulumi.Output {
 	return r.s.State["status"]
 }
 
 // Human readable title. Must be unique within the Policy.
-func (r *ServicePerimeter) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *ServicePerimeter) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Time the AccessPolicy was updated in UTC.
-func (r *ServicePerimeter) UpdateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateTime"])
+func (r *ServicePerimeter) UpdateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
 // Input properties used for looking up and filtering ServicePerimeter resources.

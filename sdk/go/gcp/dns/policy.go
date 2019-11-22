@@ -62,51 +62,51 @@ func GetPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Policy) URN() *pulumi.URNOutput {
+func (r *Policy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Policy) ID() *pulumi.IDOutput {
+func (r *Policy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
 // server that you choose. Names such as .internal are not available when an alternative name server is specified.
-func (r *Policy) AlternativeNameServerConfig() *pulumi.Output {
+func (r *Policy) AlternativeNameServerConfig() pulumi.Output {
 	return r.s.State["alternativeNameServerConfig"]
 }
 
 // A textual description field. Defaults to 'Managed by Terraform'.
-func (r *Policy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Policy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
 // enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
-func (r *Policy) EnableInboundForwarding() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableInboundForwarding"])
+func (r *Policy) EnableInboundForwarding() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableInboundForwarding"])
 }
 
 // Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-func (r *Policy) EnableLogging() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableLogging"])
+func (r *Policy) EnableLogging() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableLogging"])
 }
 
 // User assigned name for this policy.
-func (r *Policy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Policy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // List of network names specifying networks to which this policy is applied.
-func (r *Policy) Networks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networks"])
+func (r *Policy) Networks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networks"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Policy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Policy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Policy resources.

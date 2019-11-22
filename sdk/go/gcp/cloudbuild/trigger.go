@@ -78,43 +78,43 @@ func GetTrigger(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Trigger) URN() *pulumi.URNOutput {
+func (r *Trigger) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Trigger) ID() *pulumi.IDOutput {
+func (r *Trigger) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Contents of the build template. Either a filename or build template must be provided.
-func (r *Trigger) Build() *pulumi.Output {
+func (r *Trigger) Build() pulumi.Output {
 	return r.s.State["build"]
 }
 
 // Time when the trigger was created.
-func (r *Trigger) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Trigger) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // Human-readable description of the trigger.
-func (r *Trigger) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Trigger) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether the trigger is disabled or not. If true, the trigger will never result in a build.
-func (r *Trigger) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *Trigger) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
 // be provided.
-func (r *Trigger) Filename() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filename"])
+func (r *Trigger) Filename() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filename"])
 }
 
 // Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-func (r *Trigger) Github() *pulumi.Output {
+func (r *Trigger) Github() pulumi.Output {
 	return r.s.State["github"]
 }
 
@@ -122,8 +122,8 @@ func (r *Trigger) Github() *pulumi.Output {
 // for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
 // trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
 // change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
-func (r *Trigger) IgnoredFiles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ignoredFiles"])
+func (r *Trigger) IgnoredFiles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ignoredFiles"])
 }
 
 // ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
@@ -131,35 +131,35 @@ func (r *Trigger) IgnoredFiles() *pulumi.ArrayOutput {
 // as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 // ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 // includedFiles glob. If not, then we do not trigger a build.
-func (r *Trigger) IncludedFiles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["includedFiles"])
+func (r *Trigger) IncludedFiles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["includedFiles"])
 }
 
 // Name of the trigger. Must be unique within the project.
-func (r *Trigger) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Trigger) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Trigger) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Trigger) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Substitutions data for Build resource.
-func (r *Trigger) Substitutions() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["substitutions"])
+func (r *Trigger) Substitutions() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["substitutions"])
 }
 
 // The unique identifier for the trigger.
-func (r *Trigger) TriggerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["triggerId"])
+func (r *Trigger) TriggerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["triggerId"])
 }
 
 // Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
 // interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
 // This field is required, and will be validated as such in 3.0.0.
-func (r *Trigger) TriggerTemplate() *pulumi.Output {
+func (r *Trigger) TriggerTemplate() pulumi.Output {
 	return r.s.State["triggerTemplate"]
 }
 

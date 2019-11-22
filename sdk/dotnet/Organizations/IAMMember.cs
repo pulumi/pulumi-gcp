@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMMember(string name, IAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iAMMember:IAMMember", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:organizations/iAMMember:IAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

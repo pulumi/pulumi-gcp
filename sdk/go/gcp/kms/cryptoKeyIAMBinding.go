@@ -72,16 +72,16 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CryptoKeyIAMBinding) URN() *pulumi.URNOutput {
+func (r *CryptoKeyIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CryptoKeyIAMBinding) ID() *pulumi.IDOutput {
+func (r *CryptoKeyIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *CryptoKeyIAMBinding) Condition() *pulumi.Output {
+func (r *CryptoKeyIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
@@ -89,25 +89,25 @@ func (r *CryptoKeyIAMBinding) Condition() *pulumi.Output {
 // `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 // `{location_name}/{key_ring_name}/{crypto_key_name}`.
 // In the second form, the provider's project setting will be used as a fallback.
-func (r *CryptoKeyIAMBinding) CryptoKeyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cryptoKeyId"])
+func (r *CryptoKeyIAMBinding) CryptoKeyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cryptoKeyId"])
 }
 
 // (Computed) The etag of the crypto key's IAM policy.
-func (r *CryptoKeyIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *CryptoKeyIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (r *CryptoKeyIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *CryptoKeyIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied. Only one
 // `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *CryptoKeyIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *CryptoKeyIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.

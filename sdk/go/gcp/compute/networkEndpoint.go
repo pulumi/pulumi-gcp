@@ -72,46 +72,46 @@ func GetNetworkEndpoint(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NetworkEndpoint) URN() *pulumi.URNOutput {
+func (r *NetworkEndpoint) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NetworkEndpoint) ID() *pulumi.IDOutput {
+func (r *NetworkEndpoint) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
 // GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
-func (r *NetworkEndpoint) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *NetworkEndpoint) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
 // IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
 // aliased IP range).
-func (r *NetworkEndpoint) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *NetworkEndpoint) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // The network endpoint group this endpoint is part of.
-func (r *NetworkEndpoint) NetworkEndpointGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkEndpointGroup"])
+func (r *NetworkEndpoint) NetworkEndpointGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkEndpointGroup"])
 }
 
 // Port number of network endpoint.
-func (r *NetworkEndpoint) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *NetworkEndpoint) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *NetworkEndpoint) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *NetworkEndpoint) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Zone where the containing network endpoint group is located.
-func (r *NetworkEndpoint) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *NetworkEndpoint) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering NetworkEndpoint resources.

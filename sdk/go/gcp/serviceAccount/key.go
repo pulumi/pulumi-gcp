@@ -76,12 +76,12 @@ func GetKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Key) URN() *pulumi.URNOutput {
+func (r *Key) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Key) ID() *pulumi.IDOutput {
+func (r *Key) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -89,74 +89,74 @@ func (r *Key) ID() *pulumi.IDOutput {
 // Valid values are listed at
 // [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
 // (only used on create)
-func (r *Key) KeyAlgorithm() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyAlgorithm"])
+func (r *Key) KeyAlgorithm() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyAlgorithm"])
 }
 
 // The name used for this key pair
-func (r *Key) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Key) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // An optional PGP key to encrypt the resulting private
 // key material. Only used when creating or importing a new key pair. May either be
 // a base64-encoded public key or a `keybase:keybaseusername` string for looking up
 // in Vault.
-func (r *Key) PgpKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pgpKey"])
+func (r *Key) PgpKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pgpKey"])
 }
 
 // The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
 // service account keys through the CLI or web console. This is only populated when creating a new key, and when no
 // `pgpKey` is provided.
-func (r *Key) PrivateKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+func (r *Key) PrivateKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // The private key material, base 64 encoded and
 // encrypted with the given `pgpKey`. This is only populated when creating a new
 // key and `pgpKey` is supplied
-func (r *Key) PrivateKeyEncrypted() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKeyEncrypted"])
+func (r *Key) PrivateKeyEncrypted() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKeyEncrypted"])
 }
 
 // The MD5 public key fingerprint for the encrypted
 // private key. This is only populated when creating a new key and `pgpKey` is supplied
-func (r *Key) PrivateKeyFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKeyFingerprint"])
+func (r *Key) PrivateKeyFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKeyFingerprint"])
 }
 
 // The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
-func (r *Key) PrivateKeyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKeyType"])
+func (r *Key) PrivateKeyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKeyType"])
 }
 
 // The public key, base64 encoded
-func (r *Key) PublicKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicKey"])
+func (r *Key) PublicKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicKey"])
 }
 
 // The output format of the public key requested. X509_PEM is the default output format.
-func (r *Key) PublicKeyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicKeyType"])
+func (r *Key) PublicKeyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicKeyType"])
 }
 
 // The Service account id of the Key Pair. This can be a string in the format
 // `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
 // unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
-func (r *Key) ServiceAccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccountId"])
+func (r *Key) ServiceAccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccountId"])
 }
 
 // The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-func (r *Key) ValidAfter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["validAfter"])
+func (r *Key) ValidAfter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["validAfter"])
 }
 
 // The key can be used before this timestamp.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-func (r *Key) ValidBefore() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["validBefore"])
+func (r *Key) ValidBefore() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["validBefore"])
 }
 
 // Input properties used for looking up and filtering Key resources.

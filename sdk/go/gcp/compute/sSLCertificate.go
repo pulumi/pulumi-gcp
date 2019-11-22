@@ -72,34 +72,34 @@ func GetSSLCertificate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SSLCertificate) URN() *pulumi.URNOutput {
+func (r *SSLCertificate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SSLCertificate) ID() *pulumi.IDOutput {
+func (r *SSLCertificate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
 // least one intermediate cert.
-func (r *SSLCertificate) Certificate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["certificate"])
+func (r *SSLCertificate) Certificate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["certificate"])
 }
 
 // The unique identifier for the resource.
-func (r *SSLCertificate) CertificateId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["certificateId"])
+func (r *SSLCertificate) CertificateId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *SSLCertificate) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *SSLCertificate) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *SSLCertificate) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SSLCertificate) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
@@ -107,30 +107,30 @@ func (r *SSLCertificate) Description() *pulumi.StringOutput {
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 // namespace as the managed SSL certificates.
-func (r *SSLCertificate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SSLCertificate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Creates a unique name beginning with the
 // specified prefix. Conflicts with `name`.
-func (r *SSLCertificate) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *SSLCertificate) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // The write-only private key in PEM format.
-func (r *SSLCertificate) PrivateKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+func (r *SSLCertificate) PrivateKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *SSLCertificate) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SSLCertificate) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *SSLCertificate) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *SSLCertificate) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering SSLCertificate resources.

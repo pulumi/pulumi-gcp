@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_address.html.markdown.
         /// </summary>
         public static Task<GetAddressResult> GetAddress(GetAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAddressArgs : Pulumi.ResourceArgs

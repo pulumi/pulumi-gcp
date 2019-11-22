@@ -62,33 +62,33 @@ func GetBucketACL(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BucketACL) URN() *pulumi.URNOutput {
+func (r *BucketACL) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BucketACL) ID() *pulumi.IDOutput {
+func (r *BucketACL) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the bucket it applies to.
-func (r *BucketACL) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *BucketACL) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // Configure this ACL to be the default ACL.
-func (r *BucketACL) DefaultAcl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultAcl"])
+func (r *BucketACL) DefaultAcl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultAcl"])
 }
 
 // The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
-func (r *BucketACL) PredefinedAcl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["predefinedAcl"])
+func (r *BucketACL) PredefinedAcl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["predefinedAcl"])
 }
 
 // List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
-func (r *BucketACL) RoleEntities() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["roleEntities"])
+func (r *BucketACL) RoleEntities() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["roleEntities"])
 }
 
 // Input properties used for looking up and filtering BucketACL resources.

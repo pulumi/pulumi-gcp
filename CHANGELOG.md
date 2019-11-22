@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to support go 1.13.x
+* Upgrade to pulumi-terraform-bridge v1.4.2
 
 ---
 

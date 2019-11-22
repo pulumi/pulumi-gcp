@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_object_signed_url.html.markdown.
         /// </summary>
         public static Task<GetObjectSignedUrlResult> GetObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetObjectSignedUrlArgs : Pulumi.ResourceArgs

@@ -109,112 +109,112 @@ func GetFunction(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Function) URN() *pulumi.URNOutput {
+func (r *Function) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Function) ID() *pulumi.IDOutput {
+func (r *Function) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
-func (r *Function) AvailableMemoryMb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["availableMemoryMb"])
+func (r *Function) AvailableMemoryMb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["availableMemoryMb"])
 }
 
 // Description of the function.
-func (r *Function) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Function) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the function that will be executed when the Google Cloud Function is triggered.
-func (r *Function) EntryPoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["entryPoint"])
+func (r *Function) EntryPoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["entryPoint"])
 }
 
 // A set of key/value environment variable pairs to assign to the function.
-func (r *Function) EnvironmentVariables() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["environmentVariables"])
+func (r *Function) EnvironmentVariables() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["environmentVariables"])
 }
 
 // A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
-func (r *Function) EventTrigger() *pulumi.Output {
+func (r *Function) EventTrigger() pulumi.Output {
 	return r.s.State["eventTrigger"]
 }
 
 // URL which triggers function execution. Returned only if `triggerHttp` is used.
-func (r *Function) HttpsTriggerUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpsTriggerUrl"])
+func (r *Function) HttpsTriggerUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpsTriggerUrl"])
 }
 
 // A set of key/value label pairs to assign to the function.
-func (r *Function) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Function) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The limit on the maximum number of function instances that may coexist at a given time.
-func (r *Function) MaxInstances() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxInstances"])
+func (r *Function) MaxInstances() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxInstances"])
 }
 
 // A user-defined name of the function. Function names must be unique globally.
-func (r *Function) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Function) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Project of the function. If it is not provided, the provider project is used.
-func (r *Function) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Function) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
-func (r *Function) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Function) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The runtime in which the function is going to run. One
 // of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
 // defaults to `"nodejs6"`. It's recommended that you override the default, as
 // `"nodejs6"` is deprecated.
-func (r *Function) Runtime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["runtime"])
+func (r *Function) Runtime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["runtime"])
 }
 
 // If provided, the self-provided service account to run the function with.
-func (r *Function) ServiceAccountEmail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
+func (r *Function) ServiceAccountEmail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
 }
 
 // The GCS bucket containing the zip archive which contains the function.
-func (r *Function) SourceArchiveBucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceArchiveBucket"])
+func (r *Function) SourceArchiveBucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceArchiveBucket"])
 }
 
 // The source archive object (file) in archive bucket.
-func (r *Function) SourceArchiveObject() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceArchiveObject"])
+func (r *Function) SourceArchiveObject() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceArchiveObject"])
 }
 
 // Represents parameters related to source repository where a function is hosted.
 // Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
-func (r *Function) SourceRepository() *pulumi.Output {
+func (r *Function) SourceRepository() pulumi.Output {
 	return r.s.State["sourceRepository"]
 }
 
 // Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
-func (r *Function) Timeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeout"])
+func (r *Function) Timeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeout"])
 }
 
 // Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `triggerBucket` and `triggerTopic`.
-func (r *Function) TriggerHttp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["triggerHttp"])
+func (r *Function) TriggerHttp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["triggerHttp"])
 }
 
 // The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
-func (r *Function) VpcConnector() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcConnector"])
+func (r *Function) VpcConnector() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcConnector"])
 }
 
 // Input properties used for looking up and filtering Function resources.

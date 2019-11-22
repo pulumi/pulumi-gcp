@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Appengine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StandardAppVersion(string name, StandardAppVersionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/standardAppVersion:StandardAppVersion", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/standardAppVersion:StandardAppVersion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

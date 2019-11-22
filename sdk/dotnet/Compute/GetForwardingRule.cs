@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
         /// </summary>
         public static Task<GetForwardingRuleResult> GetForwardingRule(GetForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetForwardingRuleArgs : Pulumi.ResourceArgs

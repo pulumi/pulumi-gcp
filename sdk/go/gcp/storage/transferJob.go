@@ -83,58 +83,58 @@ func GetTransferJob(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TransferJob) URN() *pulumi.URNOutput {
+func (r *TransferJob) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TransferJob) ID() *pulumi.IDOutput {
+func (r *TransferJob) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // When the Transfer Job was created.
-func (r *TransferJob) CreationTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTime"])
+func (r *TransferJob) CreationTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTime"])
 }
 
 // When the Transfer Job was deleted.
-func (r *TransferJob) DeletionTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["deletionTime"])
+func (r *TransferJob) DeletionTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deletionTime"])
 }
 
 // Unique description to identify the Transfer Job.
-func (r *TransferJob) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TransferJob) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // When the Transfer Job was last modified.
-func (r *TransferJob) LastModificationTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastModificationTime"])
+func (r *TransferJob) LastModificationTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastModificationTime"])
 }
 
 // The name of the Transfer Job.
-func (r *TransferJob) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TransferJob) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *TransferJob) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *TransferJob) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
-func (r *TransferJob) Schedule() *pulumi.Output {
+func (r *TransferJob) Schedule() pulumi.Output {
 	return r.s.State["schedule"]
 }
 
 // Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-func (r *TransferJob) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *TransferJob) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Transfer specification. Structure documented below.
-func (r *TransferJob) TransferSpec() *pulumi.Output {
+func (r *TransferJob) TransferSpec() pulumi.Output {
 	return r.s.State["transferSpec"]
 }
 

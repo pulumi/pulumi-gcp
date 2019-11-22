@@ -55,12 +55,12 @@ func GetResourcePolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ResourcePolicy) URN() *pulumi.URNOutput {
+func (r *ResourcePolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ResourcePolicy) ID() *pulumi.IDOutput {
+func (r *ResourcePolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -68,27 +68,27 @@ func (r *ResourcePolicy) ID() *pulumi.IDOutput {
 // characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
 // expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *ResourcePolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ResourcePolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *ResourcePolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ResourcePolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region where resource policy resides.
-func (r *ResourcePolicy) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ResourcePolicy) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *ResourcePolicy) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *ResourcePolicy) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Policy for creating snapshots of persistent disks.
-func (r *ResourcePolicy) SnapshotSchedulePolicy() *pulumi.Output {
+func (r *ResourcePolicy) SnapshotSchedulePolicy() pulumi.Output {
 	return r.s.State["snapshotSchedulePolicy"]
 }
 

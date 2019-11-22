@@ -59,30 +59,30 @@ func GetIAMPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMPolicy) URN() *pulumi.URNOutput {
+func (r *IAMPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMPolicy) ID() *pulumi.IDOutput {
+func (r *IAMPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-func (r *IAMPolicy) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMPolicy) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-func (r *IAMPolicy) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *IAMPolicy) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the folder. This policy overrides any existing
 // policy applied to the folder.
-func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
+func (r *IAMPolicy) PolicyData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyData"])
 }
 
 // Input properties used for looking up and filtering IAMPolicy resources.

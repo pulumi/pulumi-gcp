@@ -76,68 +76,68 @@ func GetSslCert(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SslCert) URN() *pulumi.URNOutput {
+func (r *SslCert) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SslCert) ID() *pulumi.IDOutput {
+func (r *SslCert) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The actual certificate data for this client certificate.
-func (r *SslCert) Cert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cert"])
+func (r *SslCert) Cert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cert"])
 }
 
 // The serial number extracted from the certificate data.
-func (r *SslCert) CertSerialNumber() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["certSerialNumber"])
+func (r *SslCert) CertSerialNumber() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["certSerialNumber"])
 }
 
 // The common name to be used in the certificate to identify the
 // client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
-func (r *SslCert) CommonName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["commonName"])
+func (r *SslCert) CommonName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["commonName"])
 }
 
 // The time when the certificate was created in RFC 3339 format,
 // for example 2012-11-15T16:19:00.094Z.
-func (r *SslCert) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *SslCert) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // The time when the certificate expires in RFC 3339 format,
 // for example 2012-11-15T16:19:00.094Z.
-func (r *SslCert) ExpirationTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expirationTime"])
+func (r *SslCert) ExpirationTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expirationTime"])
 }
 
 // The name of the Cloud SQL instance. Changing this
 // forces a new resource to be created.
-func (r *SslCert) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *SslCert) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
 // The private key associated with the client certificate.
-func (r *SslCert) PrivateKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+func (r *SslCert) PrivateKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *SslCert) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SslCert) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The CA cert of the server this client cert was generated from.
-func (r *SslCert) ServerCaCert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverCaCert"])
+func (r *SslCert) ServerCaCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverCaCert"])
 }
 
 // The SHA1 Fingerprint of the certificate.
-func (r *SslCert) Sha1Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sha1Fingerprint"])
+func (r *SslCert) Sha1Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sha1Fingerprint"])
 }
 
 // Input properties used for looking up and filtering SslCert resources.

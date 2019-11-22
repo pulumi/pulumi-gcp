@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
         /// </summary>
         public static Task<GetVPNGatewayResult> GetVPNGateway(GetVPNGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVPNGatewayArgs : Pulumi.ResourceArgs

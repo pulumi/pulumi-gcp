@@ -65,50 +65,50 @@ func GetFolderSink(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FolderSink) URN() *pulumi.URNOutput {
+func (r *FolderSink) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FolderSink) ID() *pulumi.IDOutput {
+func (r *FolderSink) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 // The writer associated with the sink must have access to write to the above resource.
-func (r *FolderSink) Destination() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destination"])
+func (r *FolderSink) Destination() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destination"])
 }
 
 // The filter to apply when exporting logs. Only log entries that match the filter are exported.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
-func (r *FolderSink) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *FolderSink) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
 // accepted.
-func (r *FolderSink) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *FolderSink) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // Whether or not to include children folders in the sink export. If true, logs
 // associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
-func (r *FolderSink) IncludeChildren() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["includeChildren"])
+func (r *FolderSink) IncludeChildren() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["includeChildren"])
 }
 
 // The name of the logging sink.
-func (r *FolderSink) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *FolderSink) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The identity associated with this sink. This identity must be granted write access to the
 // configured `destination`.
-func (r *FolderSink) WriterIdentity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["writerIdentity"])
+func (r *FolderSink) WriterIdentity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["writerIdentity"])
 }
 
 // Input properties used for looking up and filtering FolderSink resources.

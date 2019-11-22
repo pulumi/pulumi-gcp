@@ -68,12 +68,12 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -81,41 +81,41 @@ func (r *Instance) ID() *pulumi.IDOutput {
 // geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
 // are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
 // [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-func (r *Instance) Config() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["config"])
+func (r *Instance) Config() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["config"])
 }
 
 // The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
 // in length.
-func (r *Instance) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *Instance) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (r *Instance) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Instance) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
 // and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The number of nodes allocated to this instance.
-func (r *Instance) NumNodes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numNodes"])
+func (r *Instance) NumNodes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numNodes"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Instance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Instance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Instance status: 'CREATING' or 'READY'.
-func (r *Instance) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Instance) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

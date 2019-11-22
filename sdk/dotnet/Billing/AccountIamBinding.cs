@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Billing
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountIamBinding(string name, AccountIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:billing/accountIamBinding:AccountIamBinding", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:billing/accountIamBinding:AccountIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

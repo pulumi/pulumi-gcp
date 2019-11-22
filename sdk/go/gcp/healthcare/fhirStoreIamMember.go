@@ -65,41 +65,41 @@ func GetFhirStoreIamMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FhirStoreIamMember) URN() *pulumi.URNOutput {
+func (r *FhirStoreIamMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FhirStoreIamMember) ID() *pulumi.IDOutput {
+func (r *FhirStoreIamMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *FhirStoreIamMember) Condition() *pulumi.Output {
+func (r *FhirStoreIamMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the FHIR store's IAM policy.
-func (r *FhirStoreIamMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *FhirStoreIamMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The FHIR store ID, in the form
 // `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 // `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *FhirStoreIamMember) FhirStoreId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fhirStoreId"])
+func (r *FhirStoreIamMember) FhirStoreId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fhirStoreId"])
 }
 
-func (r *FhirStoreIamMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *FhirStoreIamMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Only one
 // `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *FhirStoreIamMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *FhirStoreIamMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering FhirStoreIamMember resources.

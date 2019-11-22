@@ -1577,7 +1577,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	renameLegacyModules(&prov)
+	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
+		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
@@ -1599,85 +1600,4 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	return prov
-}
-
-func renameLegacyModules(prov *tfbridge.ProviderInfo) {
-
-	renameResourceWithAlias := func(
-		tfName string,
-		tokName string,
-		newTokName string,
-		legacyModule string,
-		currentModule string,
-		info *tfbridge.ResourceInfo) {
-
-		legacyTFName := tfName + "_legacy"
-
-		if info == nil {
-			info = &tfbridge.ResourceInfo{}
-		}
-		legacyInfo := *info
-		currentInfo := *info
-
-		legacyInfo.Tok = gcpResource(legacyModule, tokName)
-		legacyType := legacyInfo.Tok.String()
-
-		if newTokName != "" {
-			tokName = newTokName
-		}
-
-		currentInfo.Tok = gcpResource(currentModule, tokName)
-		currentInfo.Aliases = []tfbridge.AliasInfo{
-			{Type: &legacyType},
-		}
-
-		if legacyInfo.Docs == nil {
-			legacyInfo.Docs = &tfbridge.DocInfo{
-				Source: tfName[len("azurerm_"):] + ".html.markdown",
-			}
-		}
-
-		prov.Resources[tfName] = &currentInfo
-		prov.Resources[legacyTFName] = &legacyInfo
-		prov.P.ResourcesMap[legacyTFName] = prov.P.ResourcesMap[tfName]
-	}
-
-	//renameDataSourceWithAlias := func(
-	//	tfName string,
-	//	tokName string,
-	//	newTokName string,
-	//	legacyModule string,
-	//	currentModule string,
-	//	info *tfbridge.DataSourceInfo) {
-	//
-	//	legacyTFName := tfName + "_legacy"
-	//
-	//	if info == nil {
-	//		info = &tfbridge.DataSourceInfo{}
-	//	}
-	//	legacyInfo := *info
-	//	currentInfo := *info
-	//
-	//	legacyInfo.Tok = gcpDataSource(legacyModule, tokName)
-	//
-	//	if newTokName != "" {
-	//		tokName = newTokName
-	//	}
-	//
-	//	currentInfo.Tok = gcpDataSource(currentModule, tokName)
-	//
-	//	if legacyInfo.Docs == nil {
-	//		legacyInfo.Docs = &tfbridge.DocInfo{
-	//			Source: tfName[len("azurerm_"):] + ".html.markdown",
-	//		}
-	//	}
-	//
-	//	prov.DataSources[tfName] = &currentInfo
-	//	prov.DataSources[legacyTFName] = &legacyInfo
-	//	prov.P.DataSourcesMap[legacyTFName] = prov.P.DataSourcesMap[tfName]
-	//}
-
-	// Fix the spelling on the KeyVault Certificate
-	renameResourceWithAlias("google_compute_managed_ssl_certificate", "MangedSslCertificate",
-		"ManagedSslCertificate", gcpCompute, gcpCompute, nil)
 }

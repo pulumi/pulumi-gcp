@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Appengine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FirewallRule(string name, FirewallRuleArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/firewallRule:FirewallRule", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/firewallRule:FirewallRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

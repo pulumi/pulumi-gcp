@@ -81,49 +81,49 @@ func GetJobIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *JobIAMMember) URN() *pulumi.URNOutput {
+func (r *JobIAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *JobIAMMember) ID() *pulumi.IDOutput {
+func (r *JobIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *JobIAMMember) Condition() *pulumi.Output {
+func (r *JobIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the jobs's IAM policy.
-func (r *JobIAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *JobIAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *JobIAMMember) JobId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["jobId"])
+func (r *JobIAMMember) JobId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["jobId"])
 }
 
-func (r *JobIAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *JobIAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The project in which the job belongs. If it
 // is not provided, this provider will use the provider default.
-func (r *JobIAMMember) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *JobIAMMember) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region in which the job belongs. If it
 // is not provided, this provider will use the provider default.
-func (r *JobIAMMember) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *JobIAMMember) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role that should be applied. Only one
 // `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *JobIAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *JobIAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering JobIAMMember resources.

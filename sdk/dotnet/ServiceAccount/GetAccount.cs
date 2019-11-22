@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
         /// </summary>
         public static Task<GetAccountResult> GetAccount(GetAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAccountArgs : Pulumi.ResourceArgs

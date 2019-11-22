@@ -79,90 +79,90 @@ func GetImage(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Image) URN() *pulumi.URNOutput {
+func (r *Image) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Image) ID() *pulumi.IDOutput {
+func (r *Image) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
-func (r *Image) ArchiveSizeBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["archiveSizeBytes"])
+func (r *Image) ArchiveSizeBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["archiveSizeBytes"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Image) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Image) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *Image) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Image) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Size of the image when restored onto a persistent disk (in GB).
-func (r *Image) DiskSizeGb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["diskSizeGb"])
+func (r *Image) DiskSizeGb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["diskSizeGb"])
 }
 
 // The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
 // a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
 // family must comply with RFC1035.
-func (r *Image) Family() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["family"])
+func (r *Image) Family() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["family"])
 }
 
 // A list of features to enable on the guest operating system. Applicable only for bootable images.
-func (r *Image) GuestOsFeatures() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["guestOsFeatures"])
+func (r *Image) GuestOsFeatures() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["guestOsFeatures"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *Image) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *Image) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this Image.
-func (r *Image) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Image) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Any applicable license URI.
-func (r *Image) Licenses() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["licenses"])
+func (r *Image) Licenses() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["licenses"])
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Image) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Image) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Image) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Image) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The parameters of the raw disk image.
-func (r *Image) RawDisk() *pulumi.Output {
+func (r *Image) RawDisk() pulumi.Output {
 	return r.s.State["rawDisk"]
 }
 
 // The URI of the created resource.
-func (r *Image) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Image) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
 // not both to create an image.
-func (r *Image) SourceDisk() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDisk"])
+func (r *Image) SourceDisk() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceDisk"])
 }
 
 // Input properties used for looking up and filtering Image resources.

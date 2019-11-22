@@ -86,35 +86,35 @@ func GetDataset(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Dataset) URN() *pulumi.URNOutput {
+func (r *Dataset) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Dataset) ID() *pulumi.IDOutput {
+func (r *Dataset) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An array of objects that define dataset access for one or more entities.
-func (r *Dataset) Accesses() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["accesses"])
+func (r *Dataset) Accesses() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["accesses"])
 }
 
 // The time when this dataset was created, in milliseconds since the epoch.
-func (r *Dataset) CreationTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["creationTime"])
+func (r *Dataset) CreationTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["creationTime"])
 }
 
 // A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
 // underscores (_). The maximum length is 1,024 characters.
-func (r *Dataset) DatasetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+func (r *Dataset) DatasetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
 // The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned
 // tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the
 // key.
-func (r *Dataset) DefaultEncryptionConfiguration() *pulumi.Output {
+func (r *Dataset) DefaultEncryptionConfiguration() pulumi.Output {
 	return r.s.State["defaultEncryptionConfiguration"]
 }
 
@@ -126,8 +126,8 @@ func (r *Dataset) DefaultEncryptionConfiguration() *pulumi.Output {
 // 'defaultPartitionExpirationMs' will be used for any new partitioned table. If you provide an explicit
 // 'timePartitioning.expirationMs' when creating or updating a partitioned table, that value takes precedence over the
 // default partition expiration time indicated by this property.
-func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["defaultPartitionExpirationMs"])
+func (r *Dataset) DefaultPartitionExpirationMs() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["defaultPartitionExpirationMs"])
 }
 
 // The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one
@@ -136,40 +136,40 @@ func (r *Dataset) DefaultPartitionExpirationMs() *pulumi.IntOutput {
 // ones. When the 'expirationTime' for a given table is reached, that table will be deleted automatically. If a table's
 // 'expirationTime' is modified or removed before the table expires, or if you provide an explicit 'expirationTime' when
 // creating a table, that value takes precedence over the default expiration time indicated by this property.
-func (r *Dataset) DefaultTableExpirationMs() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["defaultTableExpirationMs"])
+func (r *Dataset) DefaultTableExpirationMs() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["defaultTableExpirationMs"])
 }
 
 // If set to `true`, delete all the tables in the
 // dataset when destroying the resource; otherwise,
 // destroying the resource will fail if tables are present.
-func (r *Dataset) DeleteContentsOnDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deleteContentsOnDestroy"])
+func (r *Dataset) DeleteContentsOnDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteContentsOnDestroy"])
 }
 
 // A user-friendly description of the dataset
-func (r *Dataset) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Dataset) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A hash of the resource.
-func (r *Dataset) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *Dataset) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // A descriptive name for the dataset
-func (r *Dataset) FriendlyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["friendlyName"])
+func (r *Dataset) FriendlyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["friendlyName"])
 }
 
 // The labels associated with this dataset. You can use these to organize and group your datasets
-func (r *Dataset) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Dataset) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-func (r *Dataset) LastModifiedTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["lastModifiedTime"])
+func (r *Dataset) LastModifiedTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["lastModifiedTime"])
 }
 
 // The geographic location where the dataset should reside. See [official
@@ -179,19 +179,19 @@ func (r *Dataset) LastModifiedTime() *pulumi.IntOutput {
 // include: 'asia-east1', 'asia-northeast1', 'asia-southeast1', 'australia-southeast1', 'europe-north1', 'europe-west2' and
 // 'us-east4'. Possible multi-regional values: 'EU' and 'US'. The default value is multi-regional location 'US'. Changing
 // this forces a new resource to be created.
-func (r *Dataset) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *Dataset) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Dataset) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Dataset) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *Dataset) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Dataset) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering Dataset resources.

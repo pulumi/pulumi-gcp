@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Container
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodePool(string name, NodePoolArgs args, CustomResourceOptions? options = null)
-            : base("gcp:container/nodePool:NodePool", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:container/nodePool:NodePool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

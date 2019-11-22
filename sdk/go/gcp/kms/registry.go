@@ -75,63 +75,63 @@ func GetRegistry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Registry) URN() *pulumi.URNOutput {
+func (r *Registry) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Registry) ID() *pulumi.IDOutput {
+func (r *Registry) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // List of public key certificates to authenticate devices. Structure is documented below. 
-func (r *Registry) Credentials() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["credentials"])
+func (r *Registry) Credentials() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["credentials"])
 }
 
 // Use `eventNotificationConfigs` instead.
-func (r *Registry) EventNotificationConfig() *pulumi.Output {
+func (r *Registry) EventNotificationConfig() pulumi.Output {
 	return r.s.State["eventNotificationConfig"]
 }
 
 // List of configurations for event notification, such as
 // PubSub topics to publish device events to. Structure is documented below.
-func (r *Registry) EventNotificationConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["eventNotificationConfigs"])
+func (r *Registry) EventNotificationConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["eventNotificationConfigs"])
 }
 
 // Activate or deactivate HTTP. Structure is documented below.
-func (r *Registry) HttpConfig() *pulumi.Output {
+func (r *Registry) HttpConfig() pulumi.Output {
 	return r.s.State["httpConfig"]
 }
 
-func (r *Registry) LogLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["logLevel"])
+func (r *Registry) LogLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["logLevel"])
 }
 
 // Activate or deactivate MQTT. Structure is documented below.
-func (r *Registry) MqttConfig() *pulumi.Output {
+func (r *Registry) MqttConfig() pulumi.Output {
 	return r.s.State["mqttConfig"]
 }
 
 // A unique name for the resource, required by device registry.
 // Changing this forces a new resource to be created.
-func (r *Registry) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Registry) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project in which the resource belongs. If it is not provided, the provider project is used.
-func (r *Registry) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Registry) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The Region in which the created address should reside. If it is not provided, the provider region is used.
-func (r *Registry) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Registry) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A PubSub topic to publish device state updates. Structure is documented below.
-func (r *Registry) StateNotificationConfig() *pulumi.Output {
+func (r *Registry) StateNotificationConfig() pulumi.Output {
 	return r.s.State["stateNotificationConfig"]
 }
 

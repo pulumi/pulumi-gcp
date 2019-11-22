@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public UptimeCheckConfig(string name, UptimeCheckConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -84,76 +84,76 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-func (r *Instance) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Instance) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // An optional description of the instance.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Option to enable Stackdriver Logging.
-func (r *Instance) EnableStackdriverLogging() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableStackdriverLogging"])
+func (r *Instance) EnableStackdriverLogging() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableStackdriverLogging"])
 }
 
 // Option to enable Stackdriver Monitoring.
-func (r *Instance) EnableStackdriverMonitoring() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableStackdriverMonitoring"])
+func (r *Instance) EnableStackdriverMonitoring() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableStackdriverMonitoring"])
 }
 
 // The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
-func (r *Instance) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Instance) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The ID of the instance or a fully qualified identifier for the instance.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Map of additional options used to configure the behavior of Data Fusion instance.
-func (r *Instance) Options() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["options"])
+func (r *Instance) Options() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["options"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Instance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Instance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region of the Data Fusion instance.
-func (r *Instance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Instance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Endpoint on which the Data Fusion UI and REST APIs are accessible.
-func (r *Instance) ServiceEndpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceEndpoint"])
+func (r *Instance) ServiceEndpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceEndpoint"])
 }
 
 // The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
 // ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
 // being upgraded - RESTARTING: Instance is being restarted
-func (r *Instance) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Instance) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Additional information about the current state of this Data Fusion instance if available.
-func (r *Instance) StateMessage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stateMessage"])
+func (r *Instance) StateMessage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stateMessage"])
 }
 
 // Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
@@ -161,18 +161,18 @@ func (r *Instance) StateMessage() *pulumi.StringOutput {
 // and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
 // streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
 // features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-func (r *Instance) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Instance) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-func (r *Instance) UpdateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateTime"])
+func (r *Instance) UpdateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
 // Current version of the Data Fusion.
-func (r *Instance) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+func (r *Instance) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

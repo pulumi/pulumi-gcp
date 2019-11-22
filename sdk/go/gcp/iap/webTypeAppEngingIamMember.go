@@ -68,44 +68,44 @@ func GetWebTypeAppEngingIamMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WebTypeAppEngingIamMember) URN() *pulumi.URNOutput {
+func (r *WebTypeAppEngingIamMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WebTypeAppEngingIamMember) ID() *pulumi.IDOutput {
+func (r *WebTypeAppEngingIamMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-func (r *WebTypeAppEngingIamMember) AppId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["appId"])
+func (r *WebTypeAppEngingIamMember) AppId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["appId"])
 }
 
-func (r *WebTypeAppEngingIamMember) Condition() *pulumi.Output {
+func (r *WebTypeAppEngingIamMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *WebTypeAppEngingIamMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *WebTypeAppEngingIamMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *WebTypeAppEngingIamMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *WebTypeAppEngingIamMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *WebTypeAppEngingIamMember) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *WebTypeAppEngingIamMember) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `iap.WebTypeAppEngingIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *WebTypeAppEngingIamMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *WebTypeAppEngingIamMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering WebTypeAppEngingIamMember resources.

@@ -80,69 +80,69 @@ func GetSecurityScanConfig(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecurityScanConfig) URN() *pulumi.URNOutput {
+func (r *SecurityScanConfig) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecurityScanConfig) ID() *pulumi.IDOutput {
+func (r *SecurityScanConfig) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The authentication configuration. If specified, service will use the authentication configuration during scanning.
-func (r *SecurityScanConfig) Authentication() *pulumi.Output {
+func (r *SecurityScanConfig) Authentication() pulumi.Output {
 	return r.s.State["authentication"]
 }
 
 // The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
-func (r *SecurityScanConfig) BlacklistPatterns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["blacklistPatterns"])
+func (r *SecurityScanConfig) BlacklistPatterns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["blacklistPatterns"])
 }
 
 // The user provider display name of the ScanConfig.
-func (r *SecurityScanConfig) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *SecurityScanConfig) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // Controls export of scan configurations and results to Cloud Security Command Center.
-func (r *SecurityScanConfig) ExportToSecurityCommandCenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["exportToSecurityCommandCenter"])
+func (r *SecurityScanConfig) ExportToSecurityCommandCenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["exportToSecurityCommandCenter"])
 }
 
 // The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
-func (r *SecurityScanConfig) MaxQps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxQps"])
+func (r *SecurityScanConfig) MaxQps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxQps"])
 }
 
 // A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
-func (r *SecurityScanConfig) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecurityScanConfig) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *SecurityScanConfig) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SecurityScanConfig) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The schedule of the ScanConfig
-func (r *SecurityScanConfig) Schedule() *pulumi.Output {
+func (r *SecurityScanConfig) Schedule() pulumi.Output {
 	return r.s.State["schedule"]
 }
 
 // The starting URLs from which the scanner finds site pages.
-func (r *SecurityScanConfig) StartingUrls() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["startingUrls"])
+func (r *SecurityScanConfig) StartingUrls() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["startingUrls"])
 }
 
 // Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-func (r *SecurityScanConfig) TargetPlatforms() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["targetPlatforms"])
+func (r *SecurityScanConfig) TargetPlatforms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["targetPlatforms"])
 }
 
 // Type of the user agents used for scanning
-func (r *SecurityScanConfig) UserAgent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userAgent"])
+func (r *SecurityScanConfig) UserAgent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userAgent"])
 }
 
 // Input properties used for looking up and filtering SecurityScanConfig resources.

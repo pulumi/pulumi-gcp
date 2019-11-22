@@ -138,139 +138,139 @@ func GetInstanceFromTemplate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceFromTemplate) URN() *pulumi.URNOutput {
+func (r *InstanceFromTemplate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceFromTemplate) ID() *pulumi.IDOutput {
+func (r *InstanceFromTemplate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *InstanceFromTemplate) AllowStoppingForUpdate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
+func (r *InstanceFromTemplate) AllowStoppingForUpdate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allowStoppingForUpdate"])
 }
 
-func (r *InstanceFromTemplate) AttachedDisks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["attachedDisks"])
+func (r *InstanceFromTemplate) AttachedDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["attachedDisks"])
 }
 
-func (r *InstanceFromTemplate) BootDisk() *pulumi.Output {
+func (r *InstanceFromTemplate) BootDisk() pulumi.Output {
 	return r.s.State["bootDisk"]
 }
 
-func (r *InstanceFromTemplate) CanIpForward() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canIpForward"])
+func (r *InstanceFromTemplate) CanIpForward() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canIpForward"])
 }
 
-func (r *InstanceFromTemplate) CpuPlatform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuPlatform"])
+func (r *InstanceFromTemplate) CpuPlatform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuPlatform"])
 }
 
-func (r *InstanceFromTemplate) DeletionProtection() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deletionProtection"])
+func (r *InstanceFromTemplate) DeletionProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deletionProtection"])
 }
 
-func (r *InstanceFromTemplate) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *InstanceFromTemplate) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *InstanceFromTemplate) EnableDisplay() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
+func (r *InstanceFromTemplate) EnableDisplay() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
-func (r *InstanceFromTemplate) GuestAccelerators() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
+func (r *InstanceFromTemplate) GuestAccelerators() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
 }
 
-func (r *InstanceFromTemplate) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *InstanceFromTemplate) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
-func (r *InstanceFromTemplate) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *InstanceFromTemplate) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-func (r *InstanceFromTemplate) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *InstanceFromTemplate) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
-func (r *InstanceFromTemplate) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *InstanceFromTemplate) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
-func (r *InstanceFromTemplate) MachineType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["machineType"])
+func (r *InstanceFromTemplate) MachineType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["machineType"])
 }
 
-func (r *InstanceFromTemplate) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *InstanceFromTemplate) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
-func (r *InstanceFromTemplate) MetadataFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataFingerprint"])
+func (r *InstanceFromTemplate) MetadataFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataFingerprint"])
 }
 
-func (r *InstanceFromTemplate) MetadataStartupScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataStartupScript"])
+func (r *InstanceFromTemplate) MetadataStartupScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataStartupScript"])
 }
 
-func (r *InstanceFromTemplate) MinCpuPlatform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["minCpuPlatform"])
+func (r *InstanceFromTemplate) MinCpuPlatform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["minCpuPlatform"])
 }
 
 // A unique name for the resource, required by GCE.
 // Changing this forces a new resource to be created.
-func (r *InstanceFromTemplate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *InstanceFromTemplate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *InstanceFromTemplate) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *InstanceFromTemplate) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
-func (r *InstanceFromTemplate) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *InstanceFromTemplate) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *InstanceFromTemplate) Scheduling() *pulumi.Output {
+func (r *InstanceFromTemplate) Scheduling() pulumi.Output {
 	return r.s.State["scheduling"]
 }
 
-func (r *InstanceFromTemplate) ScratchDisks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scratchDisks"])
+func (r *InstanceFromTemplate) ScratchDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scratchDisks"])
 }
 
-func (r *InstanceFromTemplate) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *InstanceFromTemplate) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-func (r *InstanceFromTemplate) ServiceAccount() *pulumi.Output {
+func (r *InstanceFromTemplate) ServiceAccount() pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
-func (r *InstanceFromTemplate) ShieldedInstanceConfig() *pulumi.Output {
+func (r *InstanceFromTemplate) ShieldedInstanceConfig() pulumi.Output {
 	return r.s.State["shieldedInstanceConfig"]
 }
 
 // Name or self link of an instance
 // template to create the instance based on.
-func (r *InstanceFromTemplate) SourceInstanceTemplate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceInstanceTemplate"])
+func (r *InstanceFromTemplate) SourceInstanceTemplate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceInstanceTemplate"])
 }
 
-func (r *InstanceFromTemplate) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *InstanceFromTemplate) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *InstanceFromTemplate) TagsFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tagsFingerprint"])
+func (r *InstanceFromTemplate) TagsFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tagsFingerprint"])
 }
 
 // The zone that the machine should be created in. If not
 // set, the provider zone is used.
-func (r *InstanceFromTemplate) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *InstanceFromTemplate) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering InstanceFromTemplate resources.

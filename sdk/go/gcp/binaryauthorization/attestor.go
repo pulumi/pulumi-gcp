@@ -57,32 +57,32 @@ func GetAttestor(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Attestor) URN() *pulumi.URNOutput {
+func (r *Attestor) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Attestor) ID() *pulumi.IDOutput {
+func (r *Attestor) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
-func (r *Attestor) AttestationAuthorityNote() *pulumi.Output {
+func (r *Attestor) AttestationAuthorityNote() pulumi.Output {
 	return r.s.State["attestationAuthorityNote"]
 }
 
 // A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-func (r *Attestor) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Attestor) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The resource name.
-func (r *Attestor) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Attestor) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Attestor) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Attestor) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Attestor resources.

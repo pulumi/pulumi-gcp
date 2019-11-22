@@ -76,27 +76,27 @@ func GetIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMBinding) URN() *pulumi.URNOutput {
+func (r *IAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMBinding) ID() *pulumi.IDOutput {
+func (r *IAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMBinding) Condition() *pulumi.Output {
+func (r *IAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the folder's IAM policy.
-func (r *IAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-func (r *IAMBinding) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *IAMBinding) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // An array of identities that will be granted the privilege in the `role`.
@@ -106,15 +106,15 @@ func (r *IAMBinding) Folder() *pulumi.StringOutput {
 // * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 // * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 // * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (r *IAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *IAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied. Only one
 // `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *IAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *IAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering IAMBinding resources.

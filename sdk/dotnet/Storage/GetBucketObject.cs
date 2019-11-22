@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
         /// </summary>
         public static Task<GetBucketObjectResult> GetBucketObject(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetBucketObjectArgs : Pulumi.ResourceArgs

@@ -71,29 +71,29 @@ func GetIAMPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMPolicy) URN() *pulumi.URNOutput {
+func (r *IAMPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMPolicy) ID() *pulumi.IDOutput {
+func (r *IAMPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMPolicy) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMPolicy) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The numeric ID of the organization in which you want to create a custom role.
-func (r *IAMPolicy) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *IAMPolicy) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the organization. This policy overrides any existing
 // policy applied to the organization.
-func (r *IAMPolicy) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
+func (r *IAMPolicy) PolicyData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyData"])
 }
 
 // Input properties used for looking up and filtering IAMPolicy resources.

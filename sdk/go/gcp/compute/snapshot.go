@@ -85,101 +85,101 @@ func GetSnapshot(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Snapshot) URN() *pulumi.URNOutput {
+func (r *Snapshot) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Snapshot) ID() *pulumi.IDOutput {
+func (r *Snapshot) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Snapshot) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Snapshot) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *Snapshot) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Snapshot) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Size of the snapshot, specified in GB.
-func (r *Snapshot) DiskSizeGb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["diskSizeGb"])
+func (r *Snapshot) DiskSizeGb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["diskSizeGb"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *Snapshot) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *Snapshot) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this Snapshot.
-func (r *Snapshot) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Snapshot) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
 // attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
 // encryption key.
-func (r *Snapshot) Licenses() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["licenses"])
+func (r *Snapshot) Licenses() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["licenses"])
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Snapshot) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Snapshot) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Snapshot) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Snapshot) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *Snapshot) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Snapshot) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
 // customer-supplied encryption key.
-func (r *Snapshot) SnapshotEncryptionKey() *pulumi.Output {
+func (r *Snapshot) SnapshotEncryptionKey() pulumi.Output {
 	return r.s.State["snapshotEncryptionKey"]
 }
 
 // The unique identifier for the resource.
-func (r *Snapshot) SnapshotId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["snapshotId"])
+func (r *Snapshot) SnapshotId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["snapshotId"])
 }
 
 // A reference to the disk used to create this snapshot.
-func (r *Snapshot) SourceDisk() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDisk"])
+func (r *Snapshot) SourceDisk() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceDisk"])
 }
 
 // The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
 // customer-supplied encryption key.
-func (r *Snapshot) SourceDiskEncryptionKey() *pulumi.Output {
+func (r *Snapshot) SourceDiskEncryptionKey() pulumi.Output {
 	return r.s.State["sourceDiskEncryptionKey"]
 }
 
-func (r *Snapshot) SourceDiskLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDiskLink"])
+func (r *Snapshot) SourceDiskLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceDiskLink"])
 }
 
 // A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
 // snapshot creation/deletion.
-func (r *Snapshot) StorageBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["storageBytes"])
+func (r *Snapshot) StorageBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["storageBytes"])
 }
 
 // A reference to the zone where the disk is hosted.
-func (r *Snapshot) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Snapshot) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Snapshot resources.

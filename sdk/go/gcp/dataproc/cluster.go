@@ -64,44 +64,44 @@ func GetCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Cluster) URN() *pulumi.URNOutput {
+func (r *Cluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Cluster) ID() *pulumi.IDOutput {
+func (r *Cluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Allows you to configure various aspects of the cluster.
 // Structure defined below.
-func (r *Cluster) ClusterConfig() *pulumi.Output {
+func (r *Cluster) ClusterConfig() pulumi.Output {
 	return r.s.State["clusterConfig"]
 }
 
 // The list of labels (key/value pairs) to be applied to
 // instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 // which is the name of the cluster.
-func (r *Cluster) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Cluster) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The name of the cluster, unique within the project and
 // zone.
-func (r *Cluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Cluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the `cluster` will exist. If it
 // is not provided, the provider project is used.
-func (r *Cluster) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Cluster) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region in which the cluster and associated nodes will be created in.
 // Defaults to `global`.
-func (r *Cluster) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Cluster) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Cluster resources.

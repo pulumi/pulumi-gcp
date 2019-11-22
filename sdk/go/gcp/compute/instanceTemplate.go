@@ -119,109 +119,109 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceTemplate) URN() *pulumi.URNOutput {
+func (r *InstanceTemplate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceTemplate) ID() *pulumi.IDOutput {
+func (r *InstanceTemplate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether to allow sending and receiving of
 // packets with non-matching source or destination IPs. This defaults to false.
-func (r *InstanceTemplate) CanIpForward() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canIpForward"])
+func (r *InstanceTemplate) CanIpForward() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canIpForward"])
 }
 
 // A brief description of this resource.
-func (r *InstanceTemplate) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *InstanceTemplate) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Disks to attach to instances created from this template.
 // This can be specified multiple times for multiple disks. Structure is
 // documented below.
-func (r *InstanceTemplate) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *InstanceTemplate) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
 // Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-func (r *InstanceTemplate) EnableDisplay() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableDisplay"])
+func (r *InstanceTemplate) EnableDisplay() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableDisplay"])
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.
-func (r *InstanceTemplate) GuestAccelerators() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
+func (r *InstanceTemplate) GuestAccelerators() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["guestAccelerators"])
 }
 
 // A brief description to use for instances
 // created from this template.
-func (r *InstanceTemplate) InstanceDescription() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceDescription"])
+func (r *InstanceTemplate) InstanceDescription() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceDescription"])
 }
 
 // A set of key/value label pairs to assign to instances
 // created from this template,
-func (r *InstanceTemplate) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *InstanceTemplate) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The machine type to create.
-func (r *InstanceTemplate) MachineType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["machineType"])
+func (r *InstanceTemplate) MachineType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["machineType"])
 }
 
 // Metadata key/value pairs to make available from
 // within instances created from this template.
-func (r *InstanceTemplate) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *InstanceTemplate) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // The unique fingerprint of the metadata.
-func (r *InstanceTemplate) MetadataFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataFingerprint"])
+func (r *InstanceTemplate) MetadataFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataFingerprint"])
 }
 
 // An alternative to using the
 // startup-script metadata key, mostly to match the computeInstance resource.
 // This replaces the startup-script metadata key on the created instance and
 // thus the two mechanisms are not allowed to be used simultaneously.
-func (r *InstanceTemplate) MetadataStartupScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metadataStartupScript"])
+func (r *InstanceTemplate) MetadataStartupScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metadataStartupScript"])
 }
 
 // Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 // `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-func (r *InstanceTemplate) MinCpuPlatform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["minCpuPlatform"])
+func (r *InstanceTemplate) MinCpuPlatform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["minCpuPlatform"])
 }
 
 // The name of the instance template. If you leave
 // this blank, this provider will auto-generate a unique name.
-func (r *InstanceTemplate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *InstanceTemplate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Creates a unique name beginning with the specified
 // prefix. Conflicts with `name`.
-func (r *InstanceTemplate) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *InstanceTemplate) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // Networks to attach to instances created from
 // this template. This can be specified multiple times for multiple networks.
 // Structure is documented below.
-func (r *InstanceTemplate) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *InstanceTemplate) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *InstanceTemplate) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *InstanceTemplate) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // An instance template is a global resource that is not
@@ -230,40 +230,40 @@ func (r *InstanceTemplate) Project() *pulumi.StringOutput {
 // region where that resource resides. For example, a custom `subnetwork`
 // resource is tied to a specific region. Defaults to the region of the
 // Provider if no value is given.
-func (r *InstanceTemplate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *InstanceTemplate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The scheduling strategy to use. More details about
 // this configuration option are detailed below.
-func (r *InstanceTemplate) Scheduling() *pulumi.Output {
+func (r *InstanceTemplate) Scheduling() pulumi.Output {
 	return r.s.State["scheduling"]
 }
 
 // The URI of the created resource.
-func (r *InstanceTemplate) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *InstanceTemplate) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Service account to attach to the instance. Structure is documented below.
-func (r *InstanceTemplate) ServiceAccount() *pulumi.Output {
+func (r *InstanceTemplate) ServiceAccount() pulumi.Output {
 	return r.s.State["serviceAccount"]
 }
 
 // Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 // **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-func (r *InstanceTemplate) ShieldedInstanceConfig() *pulumi.Output {
+func (r *InstanceTemplate) ShieldedInstanceConfig() pulumi.Output {
 	return r.s.State["shieldedInstanceConfig"]
 }
 
 // Tags to attach to the instance.
-func (r *InstanceTemplate) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *InstanceTemplate) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The unique fingerprint of the tags.
-func (r *InstanceTemplate) TagsFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tagsFingerprint"])
+func (r *InstanceTemplate) TagsFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tagsFingerprint"])
 }
 
 // Input properties used for looking up and filtering InstanceTemplate resources.

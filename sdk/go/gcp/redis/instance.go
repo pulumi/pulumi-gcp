@@ -92,111 +92,111 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two
 // zones. If provided, it must be a different zone from the one provided in [locationId].
-func (r *Instance) AlternativeLocationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["alternativeLocationId"])
+func (r *Instance) AlternativeLocationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["alternativeLocationId"])
 }
 
 // The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 // network will be used.
-func (r *Instance) AuthorizedNetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authorizedNetwork"])
+func (r *Instance) AuthorizedNetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authorizedNetwork"])
 }
 
 // The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-func (r *Instance) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Instance) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
 // [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
 // [alternativeLocationId] and can change after a failover event.
-func (r *Instance) CurrentLocationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["currentLocationId"])
+func (r *Instance) CurrentLocationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["currentLocationId"])
 }
 
 // An arbitrary and optional user-provided name for the instance.
-func (r *Instance) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *Instance) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
-func (r *Instance) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *Instance) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // Resource labels to represent user provided metadata.
-func (r *Instance) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Instance) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For
 // STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If
 // [alternativeLocationId] is also provided, it must be different from [locationId].
-func (r *Instance) LocationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["locationId"])
+func (r *Instance) LocationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["locationId"])
 }
 
 // Redis memory size in GiB.
-func (r *Instance) MemorySizeGb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memorySizeGb"])
+func (r *Instance) MemorySizeGb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memorySizeGb"])
 }
 
 // The ID of the instance or a fully qualified identifier for the instance.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port number of the exposed Redis endpoint.
-func (r *Instance) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *Instance) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Instance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Instance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Redis configuration parameters, according to http://redis.io/topics/config. Please check Memorystore documentation for
 // the list of supported parameters:
 // https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
-func (r *Instance) RedisConfigs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["redisConfigs"])
+func (r *Instance) RedisConfigs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["redisConfigs"])
 }
 
 // The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values
 // are: - REDIS_4_0 for Redis 4.0 compatibility - REDIS_3_2 for Redis 3.2 compatibility
-func (r *Instance) RedisVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["redisVersion"])
+func (r *Instance) RedisVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["redisVersion"])
 }
 
 // The name of the Redis region of the instance.
-func (r *Instance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Instance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose an
 // unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with existing
 // subnets in an authorized network.
-func (r *Instance) ReservedIpRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["reservedIpRange"])
+func (r *Instance) ReservedIpRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["reservedIpRange"])
 }
 
 // The service tier of the instance. Must be one of these values: - BASIC: standalone instance - STANDARD_HA: highly
 // available primary/replica instances
-func (r *Instance) Tier() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tier"])
+func (r *Instance) Tier() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tier"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

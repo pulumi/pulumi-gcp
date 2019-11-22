@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Accesscontextmanager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServicePerimeter(string name, ServicePerimeterArgs args, CustomResourceOptions? options = null)
-            : base("gcp:accesscontextmanager/servicePerimeter:ServicePerimeter", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:accesscontextmanager/servicePerimeter:ServicePerimeter", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

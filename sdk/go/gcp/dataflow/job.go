@@ -108,92 +108,92 @@ func GetJob(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Job) URN() *pulumi.URNOutput {
+func (r *Job) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Job) ID() *pulumi.IDOutput {
+func (r *Job) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
-func (r *Job) IpConfiguration() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipConfiguration"])
+func (r *Job) IpConfiguration() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipConfiguration"])
 }
 
 // User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-func (r *Job) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Job) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The machine type to use for the job.
-func (r *Job) MachineType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["machineType"])
+func (r *Job) MachineType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["machineType"])
 }
 
 // The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
-func (r *Job) MaxWorkers() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxWorkers"])
+func (r *Job) MaxWorkers() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxWorkers"])
 }
 
 // A unique name for the resource, required by Dataflow.
-func (r *Job) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Job) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The network to which VMs will be assigned. If it is not provided, "default" will be used.
-func (r *Job) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Job) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
-func (r *Job) OnDelete() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["onDelete"])
+func (r *Job) OnDelete() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["onDelete"])
 }
 
 // Key/Value pairs to be passed to the Dataflow job (as used in the template).
-func (r *Job) Parameters() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["parameters"])
+func (r *Job) Parameters() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["parameters"])
 }
 
 // The project in which the resource belongs. If it is not provided, the provider project is used.
-func (r *Job) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Job) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Job) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Job) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The Service Account email used to create the job.
-func (r *Job) ServiceAccountEmail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
+func (r *Job) ServiceAccountEmail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccountEmail"])
 }
 
 // The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-func (r *Job) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Job) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
-func (r *Job) Subnetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
+func (r *Job) Subnetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
 // A writeable location on GCS for the Dataflow job to dump its temporary data.
-func (r *Job) TempGcsLocation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tempGcsLocation"])
+func (r *Job) TempGcsLocation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tempGcsLocation"])
 }
 
 // The GCS path to the Dataflow job template.
-func (r *Job) TemplateGcsPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["templateGcsPath"])
+func (r *Job) TemplateGcsPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["templateGcsPath"])
 }
 
 // The zone in which the created job should run. If it is not provided, the provider zone is used.
-func (r *Job) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Job) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Job resources.

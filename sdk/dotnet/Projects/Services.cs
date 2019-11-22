@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Services(string name, ServicesArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/services:Services", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:projects/services:Services", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

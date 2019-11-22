@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_lb_ip_ranges.html.markdown.
         /// </summary>
         public static Task<GetLBIPRangesResult> GetLBIPRanges(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

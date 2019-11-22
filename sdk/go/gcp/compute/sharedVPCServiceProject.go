@@ -63,23 +63,23 @@ func GetSharedVPCServiceProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SharedVPCServiceProject) URN() *pulumi.URNOutput {
+func (r *SharedVPCServiceProject) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SharedVPCServiceProject) ID() *pulumi.IDOutput {
+func (r *SharedVPCServiceProject) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of a host project to associate.
-func (r *SharedVPCServiceProject) HostProject() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostProject"])
+func (r *SharedVPCServiceProject) HostProject() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostProject"])
 }
 
 // The ID of the project that will serve as a Shared VPC service project.
-func (r *SharedVPCServiceProject) ServiceProject() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceProject"])
+func (r *SharedVPCServiceProject) ServiceProject() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceProject"])
 }
 
 // Input properties used for looking up and filtering SharedVPCServiceProject resources.

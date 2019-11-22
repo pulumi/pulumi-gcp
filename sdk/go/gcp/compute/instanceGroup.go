@@ -73,69 +73,69 @@ func GetInstanceGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceGroup) URN() *pulumi.URNOutput {
+func (r *InstanceGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceGroup) ID() *pulumi.IDOutput {
+func (r *InstanceGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An optional textual description of the instance
 // group.
-func (r *InstanceGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *InstanceGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // List of instances in the group. They should be given
 // as selfLink URLs. When adding instances they must all be in the same
 // network and zone as the instance group.
-func (r *InstanceGroup) Instances() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instances"])
+func (r *InstanceGroup) Instances() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instances"])
 }
 
 // The name of the instance group. Must be 1-63
 // characters long and comply with
 // [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
 // include lowercase letters, numbers, and hyphens.
-func (r *InstanceGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *InstanceGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The named port configuration. See the section below
 // for details on configuration.
-func (r *InstanceGroup) NamedPorts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["namedPorts"])
+func (r *InstanceGroup) NamedPorts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["namedPorts"])
 }
 
 // The URL of the network the instance group is in. If
 // this is different from the network where the instances are in, the creation
 // fails. Defaults to the network where the instances are in (if neither
 // `network` nor `instances` is specified, this field will be blank).
-func (r *InstanceGroup) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *InstanceGroup) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *InstanceGroup) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *InstanceGroup) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *InstanceGroup) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *InstanceGroup) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The number of instances in the group.
-func (r *InstanceGroup) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *InstanceGroup) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The zone that this instance group should be created in.
-func (r *InstanceGroup) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *InstanceGroup) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering InstanceGroup resources.

@@ -62,52 +62,52 @@ func GetProjectSink(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectSink) URN() *pulumi.URNOutput {
+func (r *ProjectSink) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectSink) ID() *pulumi.IDOutput {
+func (r *ProjectSink) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 // The writer associated with the sink must have access to write to the above resource.
-func (r *ProjectSink) Destination() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destination"])
+func (r *ProjectSink) Destination() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destination"])
 }
 
 // The filter to apply when exporting logs. Only log entries that match the filter are exported.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
-func (r *ProjectSink) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *ProjectSink) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The name of the logging sink.
-func (r *ProjectSink) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ProjectSink) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project to create the sink in. If omitted, the project associated with the provider is
 // used.
-func (r *ProjectSink) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectSink) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Whether or not to create a unique identity associated with this sink. If `false`
 // (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
 // then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
 // must set `uniqueWriterIdentity` to true.
-func (r *ProjectSink) UniqueWriterIdentity() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["uniqueWriterIdentity"])
+func (r *ProjectSink) UniqueWriterIdentity() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["uniqueWriterIdentity"])
 }
 
 // The identity associated with this sink. This identity must be granted write access to the
 // configured `destination`.
-func (r *ProjectSink) WriterIdentity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["writerIdentity"])
+func (r *ProjectSink) WriterIdentity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["writerIdentity"])
 }
 
 // Input properties used for looking up and filtering ProjectSink resources.

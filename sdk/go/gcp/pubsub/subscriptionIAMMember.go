@@ -78,44 +78,44 @@ func GetSubscriptionIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SubscriptionIAMMember) URN() *pulumi.URNOutput {
+func (r *SubscriptionIAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SubscriptionIAMMember) ID() *pulumi.IDOutput {
+func (r *SubscriptionIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *SubscriptionIAMMember) Condition() *pulumi.Output {
+func (r *SubscriptionIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the subscription's IAM policy.
-func (r *SubscriptionIAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *SubscriptionIAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *SubscriptionIAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *SubscriptionIAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *SubscriptionIAMMember) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SubscriptionIAMMember) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *SubscriptionIAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *SubscriptionIAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The subscription name or id to bind to attach IAM policy to.
-func (r *SubscriptionIAMMember) Subscription() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subscription"])
+func (r *SubscriptionIAMMember) Subscription() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subscription"])
 }
 
 // Input properties used for looking up and filtering SubscriptionIAMMember resources.

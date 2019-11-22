@@ -68,41 +68,41 @@ func GetDomainMapping(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DomainMapping) URN() *pulumi.URNOutput {
+func (r *DomainMapping) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DomainMapping) ID() *pulumi.IDOutput {
+func (r *DomainMapping) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The location of the cloud run instance. eg us-central1
-func (r *DomainMapping) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *DomainMapping) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // Metadata associated with this DomainMapping.
-func (r *DomainMapping) Metadata() *pulumi.Output {
+func (r *DomainMapping) Metadata() pulumi.Output {
 	return r.s.State["metadata"]
 }
 
 // Name should be a verified domain
-func (r *DomainMapping) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DomainMapping) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *DomainMapping) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DomainMapping) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The spec for this DomainMapping.
-func (r *DomainMapping) Spec() *pulumi.Output {
+func (r *DomainMapping) Spec() pulumi.Output {
 	return r.s.State["spec"]
 }
 
 // The current status of the DomainMapping.
-func (r *DomainMapping) Status() *pulumi.Output {
+func (r *DomainMapping) Status() pulumi.Output {
 	return r.s.State["status"]
 }
 

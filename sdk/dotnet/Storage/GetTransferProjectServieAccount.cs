@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_transfer_project_service_account.html.markdown.
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> GetTransferProjectServieAccount(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetTransferProjectServieAccountArgs : Pulumi.ResourceArgs

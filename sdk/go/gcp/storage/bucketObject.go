@@ -93,92 +93,92 @@ func GetBucketObject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BucketObject) URN() *pulumi.URNOutput {
+func (r *BucketObject) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BucketObject) ID() *pulumi.IDOutput {
+func (r *BucketObject) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the containing bucket.
-func (r *BucketObject) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *BucketObject) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 // directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-func (r *BucketObject) CacheControl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cacheControl"])
+func (r *BucketObject) CacheControl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cacheControl"])
 }
 
 // Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
-func (r *BucketObject) Content() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["content"])
+func (r *BucketObject) Content() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["content"])
 }
 
 // [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
-func (r *BucketObject) ContentDisposition() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentDisposition"])
+func (r *BucketObject) ContentDisposition() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentDisposition"])
 }
 
 // [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
-func (r *BucketObject) ContentEncoding() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentEncoding"])
+func (r *BucketObject) ContentEncoding() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentEncoding"])
 }
 
 // [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
-func (r *BucketObject) ContentLanguage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentLanguage"])
+func (r *BucketObject) ContentLanguage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentLanguage"])
 }
 
 // [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-func (r *BucketObject) ContentType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentType"])
+func (r *BucketObject) ContentType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentType"])
 }
 
 // (Computed) Base 64 CRC32 hash of the uploaded data.
-func (r *BucketObject) Crc32c() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["crc32c"])
+func (r *BucketObject) Crc32c() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["crc32c"])
 }
 
-func (r *BucketObject) DetectMd5hash() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["detectMd5hash"])
+func (r *BucketObject) DetectMd5hash() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["detectMd5hash"])
 }
 
 // (Computed) Base 64 MD5 hash of the uploaded data.
-func (r *BucketObject) Md5hash() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["md5hash"])
+func (r *BucketObject) Md5hash() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["md5hash"])
 }
 
 // The name of the object. If you're interpolating the name of this object, see `outputName` instead.
-func (r *BucketObject) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BucketObject) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
 // `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
-func (r *BucketObject) OutputName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["outputName"])
+func (r *BucketObject) OutputName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["outputName"])
 }
 
 // (Computed) A url reference to this object.
-func (r *BucketObject) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *BucketObject) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A path to the data you want to upload. Must be defined
 // if `content` is not.
-func (r *BucketObject) Source() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["source"])
+func (r *BucketObject) Source() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["source"])
 }
 
 // The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 // Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
 // storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-func (r *BucketObject) StorageClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["storageClass"])
+func (r *BucketObject) StorageClass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["storageClass"])
 }
 
 // Input properties used for looking up and filtering BucketObject resources.

@@ -60,34 +60,34 @@ func GetBackendServiceSignedUrlKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BackendServiceSignedUrlKey) URN() *pulumi.URNOutput {
+func (r *BackendServiceSignedUrlKey) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BackendServiceSignedUrlKey) ID() *pulumi.IDOutput {
+func (r *BackendServiceSignedUrlKey) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The backend service this signed URL key belongs.
-func (r *BackendServiceSignedUrlKey) BackendService() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backendService"])
+func (r *BackendServiceSignedUrlKey) BackendService() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backendService"])
 }
 
 // 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
-func (r *BackendServiceSignedUrlKey) KeyValue() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyValue"])
+func (r *BackendServiceSignedUrlKey) KeyValue() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyValue"])
 }
 
 // Name of the signed URL key.
-func (r *BackendServiceSignedUrlKey) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BackendServiceSignedUrlKey) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *BackendServiceSignedUrlKey) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *BackendServiceSignedUrlKey) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering BackendServiceSignedUrlKey resources.

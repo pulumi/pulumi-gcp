@@ -10,7 +10,7 @@ namespace Pulumi.Gcp.Compute
     public static partial class Invokes
     {
         public static Task<GetRouterResult> GetRouter(GetRouterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRouterArgs : Pulumi.ResourceArgs

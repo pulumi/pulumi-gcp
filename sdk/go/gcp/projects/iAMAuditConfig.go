@@ -71,35 +71,35 @@ func GetIAMAuditConfig(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMAuditConfig) URN() *pulumi.URNOutput {
+func (r *IAMAuditConfig) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMAuditConfig) ID() *pulumi.IDOutput {
+func (r *IAMAuditConfig) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-func (r *IAMAuditConfig) AuditLogConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["auditLogConfigs"])
+func (r *IAMAuditConfig) AuditLogConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["auditLogConfigs"])
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (r *IAMAuditConfig) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMAuditConfig) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 // Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 // will not be inferred from the provider.
-func (r *IAMAuditConfig) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *IAMAuditConfig) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
-func (r *IAMAuditConfig) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *IAMAuditConfig) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Input properties used for looking up and filtering IAMAuditConfig resources.

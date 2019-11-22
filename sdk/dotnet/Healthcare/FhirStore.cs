@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FhirStore(string name, FhirStoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/fhirStore:FhirStore", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/fhirStore:FhirStore", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
