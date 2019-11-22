@@ -108,138 +108,138 @@ func GetVPNTunnel(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VPNTunnel) URN() *pulumi.URNOutput {
+func (r *VPNTunnel) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VPNTunnel) ID() *pulumi.IDOutput {
+func (r *VPNTunnel) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *VPNTunnel) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *VPNTunnel) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *VPNTunnel) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *VPNTunnel) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Detailed status message for the VPN tunnel.
-func (r *VPNTunnel) DetailedStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["detailedStatus"])
+func (r *VPNTunnel) DetailedStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["detailedStatus"])
 }
 
 // IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
 // Default version is 2.
-func (r *VPNTunnel) IkeVersion() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ikeVersion"])
+func (r *VPNTunnel) IkeVersion() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ikeVersion"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *VPNTunnel) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *VPNTunnel) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this VpnTunnel.
-func (r *VPNTunnel) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *VPNTunnel) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
 // formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
-func (r *VPNTunnel) LocalTrafficSelectors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["localTrafficSelectors"])
+func (r *VPNTunnel) LocalTrafficSelectors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["localTrafficSelectors"])
 }
 
 // Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
 // 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
 // be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-func (r *VPNTunnel) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VPNTunnel) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // URL of the peer side external VPN gateway to which this VPN tunnel is connected.
-func (r *VPNTunnel) PeerExternalGateway() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerExternalGateway"])
+func (r *VPNTunnel) PeerExternalGateway() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerExternalGateway"])
 }
 
 // The interface ID of the external VPN gateway to which this VPN tunnel is connected.
-func (r *VPNTunnel) PeerExternalGatewayInterface() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["peerExternalGatewayInterface"])
+func (r *VPNTunnel) PeerExternalGatewayInterface() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["peerExternalGatewayInterface"])
 }
 
 // URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
 // automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
 // 'google_compute_ha_vpn_gateway' resource.
-func (r *VPNTunnel) PeerGcpGateway() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerGcpGateway"])
+func (r *VPNTunnel) PeerGcpGateway() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerGcpGateway"])
 }
 
 // IP address of the peer VPN gateway. Only IPv4 is supported.
-func (r *VPNTunnel) PeerIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerIp"])
+func (r *VPNTunnel) PeerIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerIp"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *VPNTunnel) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *VPNTunnel) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
-func (r *VPNTunnel) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *VPNTunnel) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
 // formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
-func (r *VPNTunnel) RemoteTrafficSelectors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["remoteTrafficSelectors"])
+func (r *VPNTunnel) RemoteTrafficSelectors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["remoteTrafficSelectors"])
 }
 
 // URL of router resource to be used for dynamic routing.
-func (r *VPNTunnel) Router() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["router"])
+func (r *VPNTunnel) Router() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["router"])
 }
 
 // The URI of the created resource.
-func (r *VPNTunnel) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *VPNTunnel) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
-func (r *VPNTunnel) SharedSecret() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sharedSecret"])
+func (r *VPNTunnel) SharedSecret() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sharedSecret"])
 }
 
 // Hash of the shared secret.
-func (r *VPNTunnel) SharedSecretHash() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sharedSecretHash"])
+func (r *VPNTunnel) SharedSecretHash() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sharedSecretHash"])
 }
 
 // URL of the Target VPN gateway with which this VPN tunnel is associated.
-func (r *VPNTunnel) TargetVpnGateway() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["targetVpnGateway"])
+func (r *VPNTunnel) TargetVpnGateway() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["targetVpnGateway"])
 }
 
 // The unique identifier for the resource. This identifier is defined by the server.
-func (r *VPNTunnel) TunnelId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tunnelId"])
+func (r *VPNTunnel) TunnelId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tunnelId"])
 }
 
 // URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
 // resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
-func (r *VPNTunnel) VpnGateway() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpnGateway"])
+func (r *VPNTunnel) VpnGateway() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpnGateway"])
 }
 
 // The interface ID of the VPN gateway with which this VPN tunnel is associated.
-func (r *VPNTunnel) VpnGatewayInterface() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["vpnGatewayInterface"])
+func (r *VPNTunnel) VpnGatewayInterface() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["vpnGatewayInterface"])
 }
 
 // Input properties used for looking up and filtering VPNTunnel resources.

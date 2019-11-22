@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_image.html.markdown.
         /// </summary>
         public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetImageArgs : Pulumi.ResourceArgs

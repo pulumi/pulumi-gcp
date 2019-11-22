@@ -65,41 +65,41 @@ func GetHl7StoreIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Hl7StoreIamBinding) URN() *pulumi.URNOutput {
+func (r *Hl7StoreIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Hl7StoreIamBinding) ID() *pulumi.IDOutput {
+func (r *Hl7StoreIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Hl7StoreIamBinding) Condition() *pulumi.Output {
+func (r *Hl7StoreIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the HL7v2 store's IAM policy.
-func (r *Hl7StoreIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *Hl7StoreIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The HL7v2 store ID, in the form
 // `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
 // `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *Hl7StoreIamBinding) Hl7V2StoreId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hl7V2StoreId"])
+func (r *Hl7StoreIamBinding) Hl7V2StoreId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hl7V2StoreId"])
 }
 
-func (r *Hl7StoreIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *Hl7StoreIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied. Only one
 // `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *Hl7StoreIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Hl7StoreIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering Hl7StoreIamBinding resources.

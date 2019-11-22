@@ -62,19 +62,19 @@ func GetHl7Store(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Hl7Store) URN() *pulumi.URNOutput {
+func (r *Hl7Store) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Hl7Store) ID() *pulumi.IDOutput {
+func (r *Hl7Store) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-func (r *Hl7Store) Dataset() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dataset"])
+func (r *Hl7Store) Dataset() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dataset"])
 }
 
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a
@@ -83,28 +83,28 @@ func (r *Hl7Store) Dataset() *pulumi.StringOutput {
 // UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
 // [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
 // "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (r *Hl7Store) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Hl7Store) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
-func (r *Hl7Store) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Hl7Store) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A nested object resource
-func (r *Hl7Store) NotificationConfig() *pulumi.Output {
+func (r *Hl7Store) NotificationConfig() pulumi.Output {
 	return r.s.State["notificationConfig"]
 }
 
 // A nested object resource
-func (r *Hl7Store) ParserConfig() *pulumi.Output {
+func (r *Hl7Store) ParserConfig() pulumi.Output {
 	return r.s.State["parserConfig"]
 }
 
 // The fully qualified name of this dataset
-func (r *Hl7Store) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Hl7Store) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering Hl7Store resources.

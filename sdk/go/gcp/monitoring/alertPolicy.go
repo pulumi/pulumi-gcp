@@ -82,77 +82,77 @@ func GetAlertPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AlertPolicy) URN() *pulumi.URNOutput {
+func (r *AlertPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AlertPolicy) ID() *pulumi.IDOutput {
+func (r *AlertPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // How to combine the results of multiple conditions to determine if an incident should be opened.
-func (r *AlertPolicy) Combiner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["combiner"])
+func (r *AlertPolicy) Combiner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["combiner"])
 }
 
 // A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
 // combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
-func (r *AlertPolicy) Conditions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["conditions"])
+func (r *AlertPolicy) Conditions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["conditions"])
 }
 
 // A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 // ignored.
-func (r *AlertPolicy) CreationRecord() *pulumi.Output {
+func (r *AlertPolicy) CreationRecord() pulumi.Output {
 	return r.s.State["creationRecord"]
 }
 
 // A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
 // don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
 // characters.
-func (r *AlertPolicy) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *AlertPolicy) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
 // don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
 // characters.
-func (r *AlertPolicy) Documentation() *pulumi.Output {
+func (r *AlertPolicy) Documentation() pulumi.Output {
 	return r.s.State["documentation"]
 }
 
 // Whether or not the policy is enabled. The default is true.
-func (r *AlertPolicy) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *AlertPolicy) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
-func (r *AlertPolicy) Labels() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["labels"])
+func (r *AlertPolicy) Labels() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["labels"])
 }
 
 // The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
-func (r *AlertPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AlertPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
 // new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
 // the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 // in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
-func (r *AlertPolicy) NotificationChannels() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationChannels"])
+func (r *AlertPolicy) NotificationChannels() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationChannels"])
 }
 
-func (r *AlertPolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *AlertPolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 // entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 // can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-func (r *AlertPolicy) UserLabels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["userLabels"])
+func (r *AlertPolicy) UserLabels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["userLabels"])
 }
 
 // Input properties used for looking up and filtering AlertPolicy resources.

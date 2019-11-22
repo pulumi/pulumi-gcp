@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MangedSslCertificate(string name, MangedSslCertificateArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

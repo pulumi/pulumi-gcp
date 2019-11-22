@@ -85,18 +85,18 @@ func GetGlobalForwardingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GlobalForwardingRule) URN() *pulumi.URNOutput {
+func (r *GlobalForwardingRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GlobalForwardingRule) ID() *pulumi.IDOutput {
+func (r *GlobalForwardingRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *GlobalForwardingRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *GlobalForwardingRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The IP address that this forwarding rule is serving on behalf of. Addresses are restricted based on the forwarding
@@ -112,37 +112,37 @@ func (r *GlobalForwardingRule) Description() *pulumi.StringOutput {
 // address or a URL reference to an existing Address resource. The following examples are all valid but only the first will
 // prevent a permadiff. If you are using 'google_compute_address' or similar, interpolate using '.address' instead of
 // '.self_link' or similar to prevent a diff on re-apply.
-func (r *GlobalForwardingRule) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *GlobalForwardingRule) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 // scheme is INTERNAL_SELF_MANAGED, only TCP is valid.
-func (r *GlobalForwardingRule) IpProtocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipProtocol"])
+func (r *GlobalForwardingRule) IpProtocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipProtocol"])
 }
 
 // The IP Version that will be used by this global forwarding rule. Valid options are IPV4 or IPV6.
-func (r *GlobalForwardingRule) IpVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
+func (r *GlobalForwardingRule) IpVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *GlobalForwardingRule) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *GlobalForwardingRule) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this forwarding rule. A list of key->value pairs.
-func (r *GlobalForwardingRule) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *GlobalForwardingRule) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
 // be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
 // Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy) NOTE: Currently global forwarding rules cannot be used for
 // INTERNAL load balancing.
-func (r *GlobalForwardingRule) LoadBalancingScheme() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
+func (r *GlobalForwardingRule) LoadBalancingScheme() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadBalancingScheme"])
 }
 
 // Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set xDS compliant clients. In
@@ -153,23 +153,23 @@ func (r *GlobalForwardingRule) LoadBalancingScheme() *pulumi.StringOutput {
 // provided metadata. metadataFilters specified here can be overridden by those specified in the UrlMap that this
 // ForwardingRule references. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to
 // INTERNAL_SELF_MANAGED.
-func (r *GlobalForwardingRule) MetadataFilters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["metadataFilters"])
+func (r *GlobalForwardingRule) MetadataFilters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["metadataFilters"])
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *GlobalForwardingRule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *GlobalForwardingRule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // This field is not used for external load balancing. For INTERNAL_SELF_MANAGED load balancing, this field identifies the
 // network that the load balanced IP should belong to for this global forwarding rule. If this field is not specified, the
 // default network will be used.
-func (r *GlobalForwardingRule) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *GlobalForwardingRule) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy,
@@ -179,25 +179,25 @@ func (r *GlobalForwardingRule) Network() *pulumi.StringOutput {
 // ports: * TargetHttpProxy: 80, 8080 * TargetHttpsProxy: 443 * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700,
 // 993, 995, 1883, 5222 * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 *
 // TargetVpnGateway: 500, 4500
-func (r *GlobalForwardingRule) PortRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portRange"])
+func (r *GlobalForwardingRule) PortRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portRange"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *GlobalForwardingRule) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *GlobalForwardingRule) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *GlobalForwardingRule) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *GlobalForwardingRule) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
 // the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
-func (r *GlobalForwardingRule) Target() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["target"])
+func (r *GlobalForwardingRule) Target() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["target"])
 }
 
 // Input properties used for looking up and filtering GlobalForwardingRule resources.

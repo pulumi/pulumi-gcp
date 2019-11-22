@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebIamMember(string name, WebIamMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webIamMember:WebIamMember", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webIamMember:WebIamMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

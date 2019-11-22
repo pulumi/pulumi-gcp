@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Organizations
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
         /// </summary>
         public static Task<GetBillingAccountResult> GetBillingAccount(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetBillingAccountArgs : Pulumi.ResourceArgs

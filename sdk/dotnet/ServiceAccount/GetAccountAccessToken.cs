@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_access_token.html.markdown.
         /// </summary>
         public static Task<GetAccountAccessTokenResult> GetAccountAccessToken(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAccountAccessTokenArgs : Pulumi.ResourceArgs

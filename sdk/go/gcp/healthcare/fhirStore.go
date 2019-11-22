@@ -71,19 +71,19 @@ func GetFhirStore(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FhirStore) URN() *pulumi.URNOutput {
+func (r *FhirStore) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FhirStore) ID() *pulumi.IDOutput {
+func (r *FhirStore) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-func (r *FhirStore) Dataset() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dataset"])
+func (r *FhirStore) Dataset() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dataset"])
 }
 
 // Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The
@@ -91,8 +91,8 @@ func (r *FhirStore) Dataset() *pulumi.StringOutput {
 // in inconsistent state in the FHIR store. When this field is set to true, the API will skip referential integrity check.
 // Consequently, operations that rely on references, such as Patient.get$everything, will not return all the results if
 // broken references exist. ** Changing this property may recreate the FHIR store (removing all data) **
-func (r *FhirStore) DisableReferentialIntegrity() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableReferentialIntegrity"])
+func (r *FhirStore) DisableReferentialIntegrity() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableReferentialIntegrity"])
 }
 
 // Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR
@@ -100,8 +100,8 @@ func (r *FhirStore) DisableReferentialIntegrity() *pulumi.BoolOutput {
 // recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set
 // to true, no historical versions will be kept. The server will send back errors for attempts to read the historical
 // versions. ** Changing this property may recreate the FHIR store (removing all data) **
-func (r *FhirStore) DisableResourceVersioning() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableResourceVersioning"])
+func (r *FhirStore) DisableResourceVersioning() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableResourceVersioning"])
 }
 
 // Whether to allow the bulk import API to accept history bundles and directly insert historical resource versions into the
@@ -109,8 +109,8 @@ func (r *FhirStore) DisableResourceVersioning() *pulumi.BoolOutput {
 // clients may not want to allow. If set to false, history bundles within an import will fail with an error. ** Changing
 // this property may recreate the FHIR store (removing all data) ** ** This property can be changed manually in the Google
 // Cloud Healthcare admin console without recreating the FHIR store **
-func (r *FhirStore) EnableHistoryImport() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableHistoryImport"])
+func (r *FhirStore) EnableHistoryImport() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableHistoryImport"])
 }
 
 // Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update operation to
@@ -118,8 +118,8 @@ func (r *FhirStore) EnableHistoryImport() *pulumi.BoolOutput {
 // attempts to Update a non-existent resource will return errors. Please treat the audit logs with appropriate levels of
 // care if client-specified resource IDs contain sensitive data such as patient identifiers, those IDs will be part of the
 // FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
-func (r *FhirStore) EnableUpdateCreate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableUpdateCreate"])
+func (r *FhirStore) EnableUpdateCreate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableUpdateCreate"])
 }
 
 // User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a
@@ -128,23 +128,23 @@ func (r *FhirStore) EnableUpdateCreate() *pulumi.BoolOutput {
 // UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
 // [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
 // "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (r *FhirStore) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *FhirStore) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The resource name for the FhirStore. ** Changing this property may recreate the FHIR store (removing all data) **
-func (r *FhirStore) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *FhirStore) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A nested object resource
-func (r *FhirStore) NotificationConfig() *pulumi.Output {
+func (r *FhirStore) NotificationConfig() pulumi.Output {
 	return r.s.State["notificationConfig"]
 }
 
 // The fully qualified name of this dataset
-func (r *FhirStore) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *FhirStore) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering FhirStore resources.

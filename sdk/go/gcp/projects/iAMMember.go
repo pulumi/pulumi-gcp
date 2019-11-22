@@ -74,40 +74,40 @@ func GetIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMMember) URN() *pulumi.URNOutput {
+func (r *IAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMMember) ID() *pulumi.IDOutput {
+func (r *IAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMMember) Condition() *pulumi.Output {
+func (r *IAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (r *IAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *IAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *IAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 // Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 // will not be inferred from the provider.
-func (r *IAMMember) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *IAMMember) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *IAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *IAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering IAMMember resources.

@@ -51,22 +51,22 @@ func GetApplicationUrlDispatchRules(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ApplicationUrlDispatchRules) URN() *pulumi.URNOutput {
+func (r *ApplicationUrlDispatchRules) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ApplicationUrlDispatchRules) ID() *pulumi.IDOutput {
+func (r *ApplicationUrlDispatchRules) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Rules to match an HTTP request and dispatch that request to a service.
-func (r *ApplicationUrlDispatchRules) DispatchRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dispatchRules"])
+func (r *ApplicationUrlDispatchRules) DispatchRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dispatchRules"])
 }
 
-func (r *ApplicationUrlDispatchRules) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ApplicationUrlDispatchRules) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.

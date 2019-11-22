@@ -62,29 +62,29 @@ func GetProjectMetadataItem(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectMetadataItem) URN() *pulumi.URNOutput {
+func (r *ProjectMetadataItem) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectMetadataItem) ID() *pulumi.IDOutput {
+func (r *ProjectMetadataItem) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The metadata key to set.
-func (r *ProjectMetadataItem) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *ProjectMetadataItem) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *ProjectMetadataItem) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectMetadataItem) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The value to set for the given metadata key.
-func (r *ProjectMetadataItem) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *ProjectMetadataItem) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // Input properties used for looking up and filtering ProjectMetadataItem resources.

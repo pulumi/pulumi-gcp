@@ -77,87 +77,87 @@ func GetGlobalAddress(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GlobalAddress) URN() *pulumi.URNOutput {
+func (r *GlobalAddress) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GlobalAddress) ID() *pulumi.IDOutput {
+func (r *GlobalAddress) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
 // reserve a specific address or omitted to allow GCP to choose a valid one for you.
-func (r *GlobalAddress) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *GlobalAddress) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
 // INTERNAL indicates internal IP ranges belonging to some network.
-func (r *GlobalAddress) AddressType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["addressType"])
+func (r *GlobalAddress) AddressType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["addressType"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *GlobalAddress) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *GlobalAddress) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *GlobalAddress) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *GlobalAddress) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
-func (r *GlobalAddress) IpVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
+func (r *GlobalAddress) IpVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *GlobalAddress) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *GlobalAddress) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this address. A list of key->value pairs.
-func (r *GlobalAddress) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *GlobalAddress) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *GlobalAddress) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *GlobalAddress) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
 // deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
-func (r *GlobalAddress) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *GlobalAddress) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
 // applicable to addresses with addressType=EXTERNAL.
-func (r *GlobalAddress) PrefixLength() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["prefixLength"])
+func (r *GlobalAddress) PrefixLength() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["prefixLength"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *GlobalAddress) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *GlobalAddress) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
 // be set when using an Internal address.
-func (r *GlobalAddress) Purpose() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["purpose"])
+func (r *GlobalAddress) Purpose() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // The URI of the created resource.
-func (r *GlobalAddress) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *GlobalAddress) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering GlobalAddress resources.

@@ -65,16 +65,16 @@ func GetDatasetIamMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatasetIamMember) URN() *pulumi.URNOutput {
+func (r *DatasetIamMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatasetIamMember) ID() *pulumi.IDOutput {
+func (r *DatasetIamMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *DatasetIamMember) Condition() *pulumi.Output {
+func (r *DatasetIamMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
@@ -82,24 +82,24 @@ func (r *DatasetIamMember) Condition() *pulumi.Output {
 // `{project_id}/{location_name}/{dataset_name}` or
 // `{location_name}/{dataset_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *DatasetIamMember) DatasetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+func (r *DatasetIamMember) DatasetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
 // (Computed) The etag of the dataset's IAM policy.
-func (r *DatasetIamMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *DatasetIamMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *DatasetIamMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *DatasetIamMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Only one
 // `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *DatasetIamMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DatasetIamMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DatasetIamMember resources.

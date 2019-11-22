@@ -61,44 +61,44 @@ func GetDomainMapping(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DomainMapping) URN() *pulumi.URNOutput {
+func (r *DomainMapping) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DomainMapping) ID() *pulumi.IDOutput {
+func (r *DomainMapping) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Relative name of the domain serving the application. Example: example.com.
-func (r *DomainMapping) DomainName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainName"])
+func (r *DomainMapping) DomainName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainName"])
 }
 
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
-func (r *DomainMapping) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DomainMapping) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-func (r *DomainMapping) OverrideStrategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["overrideStrategy"])
+func (r *DomainMapping) OverrideStrategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["overrideStrategy"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *DomainMapping) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DomainMapping) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 // configuration in order to serve the application via this domain mapping.
-func (r *DomainMapping) ResourceRecords() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["resourceRecords"])
+func (r *DomainMapping) ResourceRecords() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["resourceRecords"])
 }
 
 // SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-func (r *DomainMapping) SslSettings() *pulumi.Output {
+func (r *DomainMapping) SslSettings() pulumi.Output {
 	return r.s.State["sslSettings"]
 }
 

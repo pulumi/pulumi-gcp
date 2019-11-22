@@ -90,19 +90,19 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatabaseInstance) URN() *pulumi.URNOutput {
+func (r *DatabaseInstance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatabaseInstance) ID() *pulumi.IDOutput {
+func (r *DatabaseInstance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The connection name of the instance to be used in
 // connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
-func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionName"])
+func (r *DatabaseInstance) ConnectionName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionName"])
 }
 
 // The MySQL or PostgreSQL version to
@@ -110,49 +110,49 @@ func (r *DatabaseInstance) ConnectionName() *pulumi.StringOutput {
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
 // for more information.
-func (r *DatabaseInstance) DatabaseVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["databaseVersion"])
+func (r *DatabaseInstance) DatabaseVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
 
-func (r *DatabaseInstance) FirstIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["firstIpAddress"])
+func (r *DatabaseInstance) FirstIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["firstIpAddress"])
 }
 
-func (r *DatabaseInstance) IpAddresses() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ipAddresses"])
+func (r *DatabaseInstance) IpAddresses() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ipAddresses"])
 }
 
 // The name of the instance that will act as
 // the master in the replication setup. Note, this requires the master to have
 // `binaryLogEnabled` set, as well as existing backups.
-func (r *DatabaseInstance) MasterInstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterInstanceName"])
+func (r *DatabaseInstance) MasterInstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterInstanceName"])
 }
 
 // The name of the instance. If the name is left
 // blank, this provider will randomly generate one when the instance is first
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-func (r *DatabaseInstance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DatabaseInstance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
 // performing filtering.
-func (r *DatabaseInstance) PrivateIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateIpAddress"])
+func (r *DatabaseInstance) PrivateIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateIpAddress"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *DatabaseInstance) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DatabaseInstance) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
 // performing filtering.
-func (r *DatabaseInstance) PublicIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicIpAddress"])
+func (r *DatabaseInstance) PublicIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicIpAddress"])
 }
 
 // The region the instance will sit in. Note, first-generation Cloud SQL instance
@@ -162,34 +162,34 @@ func (r *DatabaseInstance) PublicIpAddress() *pulumi.StringOutput {
 // the provider region will be used instead, but this will be an apply-time error for all first-generation
 // instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
 // If you choose not to provide the `region` argument for this resource, make sure you understand this.
-func (r *DatabaseInstance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *DatabaseInstance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The configuration for replication. The
 // configuration is detailed below.
-func (r *DatabaseInstance) ReplicaConfiguration() *pulumi.Output {
+func (r *DatabaseInstance) ReplicaConfiguration() pulumi.Output {
 	return r.s.State["replicaConfiguration"]
 }
 
 // The URI of the created resource.
-func (r *DatabaseInstance) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *DatabaseInstance) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-func (r *DatabaseInstance) ServerCaCert() *pulumi.Output {
+func (r *DatabaseInstance) ServerCaCert() pulumi.Output {
 	return r.s.State["serverCaCert"]
 }
 
 // The service account email address assigned to the
 // instance. This property is applicable only to Second Generation instances.
-func (r *DatabaseInstance) ServiceAccountEmailAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccountEmailAddress"])
+func (r *DatabaseInstance) ServiceAccountEmailAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccountEmailAddress"])
 }
 
 // The settings to use for the database. The
 // configuration is detailed below.
-func (r *DatabaseInstance) Settings() *pulumi.Output {
+func (r *DatabaseInstance) Settings() pulumi.Output {
 	return r.s.State["settings"]
 }
 

@@ -59,42 +59,42 @@ func GetDatabase(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() *pulumi.URNOutput {
+func (r *Database) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() *pulumi.IDOutput {
+func (r *Database) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
 // These statements execute atomically with the creation of the database: if there is an error in any statement, the
 // database is not created.
-func (r *Database) Ddls() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ddls"])
+func (r *Database) Ddls() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ddls"])
 }
 
 // The instance to create the database on.
-func (r *Database) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *Database) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
 // A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
 // [a-z][-a-z0-9]*[a-z0-9].
-func (r *Database) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Database) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Database) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Database) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // An explanation of the status of the database.
-func (r *Database) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Database) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Database resources.

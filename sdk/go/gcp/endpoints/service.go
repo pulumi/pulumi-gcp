@@ -70,49 +70,49 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
+func (r *Service) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
+func (r *Service) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Service) Apis() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["apis"])
+func (r *Service) Apis() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["apis"])
 }
 
-func (r *Service) ConfigId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["configId"])
+func (r *Service) ConfigId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["configId"])
 }
 
-func (r *Service) DnsAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dnsAddress"])
+func (r *Service) DnsAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dnsAddress"])
 }
 
-func (r *Service) Endpoints() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["endpoints"])
+func (r *Service) Endpoints() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["endpoints"])
 }
 
-func (r *Service) GrpcConfig() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["grpcConfig"])
+func (r *Service) GrpcConfig() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["grpcConfig"])
 }
 
-func (r *Service) OpenapiConfig() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["openapiConfig"])
+func (r *Service) OpenapiConfig() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["openapiConfig"])
 }
 
-func (r *Service) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Service) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Service) ProtocOutputBase64() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocOutputBase64"])
+func (r *Service) ProtocOutputBase64() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocOutputBase64"])
 }
 
-func (r *Service) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *Service) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // Input properties used for looking up and filtering Service resources.

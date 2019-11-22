@@ -96,66 +96,66 @@ func GetRouterNat(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterNat) URN() *pulumi.URNOutput {
+func (r *RouterNat) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterNat) ID() *pulumi.IDOutput {
+func (r *RouterNat) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
 // the NAT.
-func (r *RouterNat) DrainNatIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["drainNatIps"])
+func (r *RouterNat) DrainNatIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["drainNatIps"])
 }
 
 // Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-func (r *RouterNat) IcmpIdleTimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["icmpIdleTimeoutSec"])
+func (r *RouterNat) IcmpIdleTimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["icmpIdleTimeoutSec"])
 }
 
 // Configuration for logging on NAT
-func (r *RouterNat) LogConfig() *pulumi.Output {
+func (r *RouterNat) LogConfig() pulumi.Output {
 	return r.s.State["logConfig"]
 }
 
 // Minimum number of ports allocated to a VM from this NAT.
-func (r *RouterNat) MinPortsPerVm() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minPortsPerVm"])
+func (r *RouterNat) MinPortsPerVm() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minPortsPerVm"])
 }
 
 // Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
-func (r *RouterNat) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RouterNat) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
 // Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
-func (r *RouterNat) NatIpAllocateOption() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["natIpAllocateOption"])
+func (r *RouterNat) NatIpAllocateOption() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["natIpAllocateOption"])
 }
 
 // Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
-func (r *RouterNat) NatIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["natIps"])
+func (r *RouterNat) NatIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["natIps"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *RouterNat) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RouterNat) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region where the router and NAT reside.
-func (r *RouterNat) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RouterNat) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The name of the Cloud Router in which this NAT will be configured.
-func (r *RouterNat) Router() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["router"])
+func (r *RouterNat) Router() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["router"])
 }
 
 // How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
@@ -164,29 +164,29 @@ func (r *RouterNat) Router() *pulumi.StringOutput {
 // subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 // ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
 // network in this region.
-func (r *RouterNat) SourceSubnetworkIpRangesToNat() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceSubnetworkIpRangesToNat"])
+func (r *RouterNat) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceSubnetworkIpRangesToNat"])
 }
 
 // One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
 // 'LIST_OF_SUBNETWORKS'
-func (r *RouterNat) Subnetworks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subnetworks"])
+func (r *RouterNat) Subnetworks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subnetworks"])
 }
 
 // Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
-func (r *RouterNat) TcpEstablishedIdleTimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["tcpEstablishedIdleTimeoutSec"])
+func (r *RouterNat) TcpEstablishedIdleTimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["tcpEstablishedIdleTimeoutSec"])
 }
 
 // Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
-func (r *RouterNat) TcpTransitoryIdleTimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["tcpTransitoryIdleTimeoutSec"])
+func (r *RouterNat) TcpTransitoryIdleTimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["tcpTransitoryIdleTimeoutSec"])
 }
 
 // Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-func (r *RouterNat) UdpIdleTimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["udpIdleTimeoutSec"])
+func (r *RouterNat) UdpIdleTimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["udpIdleTimeoutSec"])
 }
 
 // Input properties used for looking up and filtering RouterNat resources.

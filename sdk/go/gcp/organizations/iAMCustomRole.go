@@ -86,50 +86,50 @@ func GetIAMCustomRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMCustomRole) URN() *pulumi.URNOutput {
+func (r *IAMCustomRole) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMCustomRole) ID() *pulumi.IDOutput {
+func (r *IAMCustomRole) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // (Optional) The current deleted state of the role.
-func (r *IAMCustomRole) Deleted() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deleted"])
+func (r *IAMCustomRole) Deleted() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleted"])
 }
 
 // A human-readable description for the role.
-func (r *IAMCustomRole) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *IAMCustomRole) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The numeric ID of the organization in which you want to create a custom role.
-func (r *IAMCustomRole) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *IAMCustomRole) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
-func (r *IAMCustomRole) Permissions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["permissions"])
+func (r *IAMCustomRole) Permissions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["permissions"])
 }
 
 // The role id to use for this role.
-func (r *IAMCustomRole) RoleId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleId"])
+func (r *IAMCustomRole) RoleId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleId"])
 }
 
 // The current launch stage of the role.
 // Defaults to `GA`.
 // List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-func (r *IAMCustomRole) Stage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stage"])
+func (r *IAMCustomRole) Stage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stage"])
 }
 
 // A human-readable title for the role.
-func (r *IAMCustomRole) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *IAMCustomRole) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Input properties used for looking up and filtering IAMCustomRole resources.

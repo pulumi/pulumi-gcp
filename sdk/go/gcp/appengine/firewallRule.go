@@ -63,41 +63,41 @@ func GetFirewallRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FirewallRule) URN() *pulumi.URNOutput {
+func (r *FirewallRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FirewallRule) ID() *pulumi.IDOutput {
+func (r *FirewallRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The action to take if this rule matches.
-func (r *FirewallRule) Action() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["action"])
+func (r *FirewallRule) Action() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["action"])
 }
 
 // An optional string description of this rule.
-func (r *FirewallRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *FirewallRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
 // default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
 // of this rule can be modified by the user.
-func (r *FirewallRule) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *FirewallRule) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *FirewallRule) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *FirewallRule) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // IP address or range, defined using CIDR notation, of requests that this rule applies to.
-func (r *FirewallRule) SourceRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceRange"])
+func (r *FirewallRule) SourceRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceRange"])
 }
 
 // Input properties used for looking up and filtering FirewallRule resources.

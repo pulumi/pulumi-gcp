@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_global_address.html.markdown.
         /// </summary>
         public static Task<GetGlobalAddressResult> GetGlobalAddress(GetGlobalAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetGlobalAddressArgs : Pulumi.ResourceArgs

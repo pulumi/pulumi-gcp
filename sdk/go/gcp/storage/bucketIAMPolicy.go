@@ -65,27 +65,27 @@ func GetBucketIAMPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BucketIAMPolicy) URN() *pulumi.URNOutput {
+func (r *BucketIAMPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BucketIAMPolicy) ID() *pulumi.IDOutput {
+func (r *BucketIAMPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the bucket it applies to.
-func (r *BucketIAMPolicy) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *BucketIAMPolicy) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // (Computed) The etag of the storage bucket's IAM policy.
-func (r *BucketIAMPolicy) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *BucketIAMPolicy) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *BucketIAMPolicy) PolicyData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyData"])
+func (r *BucketIAMPolicy) PolicyData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyData"])
 }
 
 // Input properties used for looking up and filtering BucketIAMPolicy resources.

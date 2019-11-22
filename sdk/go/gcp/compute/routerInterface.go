@@ -71,12 +71,12 @@ func GetRouterInterface(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterInterface) URN() *pulumi.URNOutput {
+func (r *RouterInterface) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterInterface) ID() *pulumi.IDOutput {
+func (r *RouterInterface) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -84,46 +84,46 @@ func (r *RouterInterface) ID() *pulumi.IDOutput {
 // VLAN interconnect for this interface. Changing this forces a new interface to
 // be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
 // specified.
-func (r *RouterInterface) InterconnectAttachment() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["interconnectAttachment"])
+func (r *RouterInterface) InterconnectAttachment() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["interconnectAttachment"])
 }
 
 // IP address and range of the interface. The IP range must be
 // in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
-func (r *RouterInterface) IpRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipRange"])
+func (r *RouterInterface) IpRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipRange"])
 }
 
 // A unique name for the interface, required by GCE. Changing
 // this forces a new interface to be created.
-func (r *RouterInterface) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RouterInterface) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which this interface's router belongs. If it
 // is not provided, the provider project is used. Changing this forces a new interface to be created.
-func (r *RouterInterface) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RouterInterface) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region this interface's router sits in. If not specified,
 // the project region will be used. Changing this forces a new interface to be
 // created.
-func (r *RouterInterface) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RouterInterface) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The name of the router this interface will be attached to.
 // Changing this forces a new interface to be created.
-func (r *RouterInterface) Router() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["router"])
+func (r *RouterInterface) Router() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["router"])
 }
 
 // The name or resource link to the VPN tunnel this
 // interface will be linked to. Changing this forces a new interface to be created. Only
 // one of `vpnTunnel` and `interconnectAttachment` can be specified.
-func (r *RouterInterface) VpnTunnel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpnTunnel"])
+func (r *RouterInterface) VpnTunnel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpnTunnel"])
 }
 
 // Input properties used for looking up and filtering RouterInterface resources.

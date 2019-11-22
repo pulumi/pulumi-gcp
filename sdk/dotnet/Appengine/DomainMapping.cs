@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Appengine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainMapping(string name, DomainMappingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/domainMapping:DomainMapping", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/domainMapping:DomainMapping", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

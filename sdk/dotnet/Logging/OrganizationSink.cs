@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Logging
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSink(string name, OrganizationSinkArgs args, CustomResourceOptions? options = null)
-            : base("gcp:logging/organizationSink:OrganizationSink", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:logging/organizationSink:OrganizationSink", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

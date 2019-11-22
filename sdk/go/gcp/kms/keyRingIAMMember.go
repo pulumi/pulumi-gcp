@@ -75,41 +75,41 @@ func GetKeyRingIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyRingIAMMember) URN() *pulumi.URNOutput {
+func (r *KeyRingIAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyRingIAMMember) ID() *pulumi.IDOutput {
+func (r *KeyRingIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *KeyRingIAMMember) Condition() *pulumi.Output {
+func (r *KeyRingIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the key ring's IAM policy.
-func (r *KeyRingIAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *KeyRingIAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The key ring ID, in the form
 // `{project_id}/{location_name}/{key_ring_name}` or
 // `{location_name}/{key_ring_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *KeyRingIAMMember) KeyRingId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyRingId"])
+func (r *KeyRingIAMMember) KeyRingId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyRingId"])
 }
 
-func (r *KeyRingIAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *KeyRingIAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Only one
 // `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *KeyRingIAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *KeyRingIAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.

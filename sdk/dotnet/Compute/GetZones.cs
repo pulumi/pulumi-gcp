@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_zones.html.markdown.
         /// </summary>
         public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetZonesArgs : Pulumi.ResourceArgs

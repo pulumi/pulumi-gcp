@@ -57,34 +57,34 @@ func GetDiskResourcePolicyAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DiskResourcePolicyAttachment) URN() *pulumi.URNOutput {
+func (r *DiskResourcePolicyAttachment) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DiskResourcePolicyAttachment) ID() *pulumi.IDOutput {
+func (r *DiskResourcePolicyAttachment) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the disk in which the resource policies are attached to.
-func (r *DiskResourcePolicyAttachment) Disk() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["disk"])
+func (r *DiskResourcePolicyAttachment) Disk() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["disk"])
 }
 
 // The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
-func (r *DiskResourcePolicyAttachment) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DiskResourcePolicyAttachment) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *DiskResourcePolicyAttachment) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DiskResourcePolicyAttachment) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // A reference to the zone where the disk resides.
-func (r *DiskResourcePolicyAttachment) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *DiskResourcePolicyAttachment) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.

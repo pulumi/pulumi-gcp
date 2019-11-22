@@ -97,18 +97,18 @@ func GetInstanceGroupManager(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceGroupManager) URN() *pulumi.URNOutput {
+func (r *InstanceGroupManager) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceGroupManager) ID() *pulumi.IDOutput {
+func (r *InstanceGroupManager) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-func (r *InstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
+func (r *InstanceGroupManager) AutoHealingPolicies() pulumi.Output {
 	return r.s.State["autoHealingPolicies"]
 }
 
@@ -118,68 +118,68 @@ func (r *InstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
 // are lowercase letters, numbers, and hyphens (-). Instances are named by
 // appending a hyphen and a random four-character string to the base instance
 // name.
-func (r *InstanceGroupManager) BaseInstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["baseInstanceName"])
+func (r *InstanceGroupManager) BaseInstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["baseInstanceName"])
 }
 
 // An optional textual description of the instance
 // group manager.
-func (r *InstanceGroupManager) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *InstanceGroupManager) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The fingerprint of the instance group manager.
-func (r *InstanceGroupManager) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *InstanceGroupManager) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The full URL of the instance group created by the manager.
-func (r *InstanceGroupManager) InstanceGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceGroup"])
+func (r *InstanceGroupManager) InstanceGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceGroup"])
 }
 
 // The name of the instance group manager. Must be 1-63
 // characters long and comply with
 // [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
 // include lowercase letters, numbers, and hyphens.
-func (r *InstanceGroupManager) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *InstanceGroupManager) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The named port configuration. See the section below
 // for details on configuration.
-func (r *InstanceGroupManager) NamedPorts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["namedPorts"])
+func (r *InstanceGroupManager) NamedPorts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["namedPorts"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *InstanceGroupManager) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *InstanceGroupManager) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URL of the created resource.
-func (r *InstanceGroupManager) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *InstanceGroupManager) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The full URL of all target pools to which new
 // instances in the group are added. Updating the target pools attribute does
 // not affect existing instances.
-func (r *InstanceGroupManager) TargetPools() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["targetPools"])
+func (r *InstanceGroupManager) TargetPools() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["targetPools"])
 }
 
 // The target number of running instances for this managed
 // instance group. This value should always be explicitly set unless this resource is attached to
 // an autoscaler, in which case it should never be set. Defaults to `0`.
-func (r *InstanceGroupManager) TargetSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["targetSize"])
+func (r *InstanceGroupManager) TargetSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["targetSize"])
 }
 
 // The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
 // - - -
-func (r *InstanceGroupManager) UpdatePolicy() *pulumi.Output {
+func (r *InstanceGroupManager) UpdatePolicy() pulumi.Output {
 	return r.s.State["updatePolicy"]
 }
 
@@ -188,21 +188,21 @@ func (r *InstanceGroupManager) UpdatePolicy() *pulumi.Output {
 // Structure is documented below.
 // Until `instanceTemplate` is removed this field will be Optional to allow for a
 // graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
-func (r *InstanceGroupManager) Versions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["versions"])
+func (r *InstanceGroupManager) Versions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["versions"])
 }
 
 // Whether to wait for all instances to be created/updated before
 // returning. Note that if this is set to true and the operation does not succeed, this provider will
 // continue trying until it times out.
-func (r *InstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitForInstances"])
+func (r *InstanceGroupManager) WaitForInstances() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["waitForInstances"])
 }
 
 // The zone that instances in this group should be created
 // in.
-func (r *InstanceGroupManager) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *InstanceGroupManager) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering InstanceGroupManager resources.

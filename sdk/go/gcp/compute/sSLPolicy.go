@@ -67,18 +67,18 @@ func GetSSLPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SSLPolicy) URN() *pulumi.URNOutput {
+func (r *SSLPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SSLPolicy) ID() *pulumi.IDOutput {
+func (r *SSLPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *SSLPolicy) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *SSLPolicy) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
@@ -87,37 +87,37 @@ func (r *SSLPolicy) CreationTimestamp() *pulumi.StringOutput {
 // documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for which
 // ciphers are available to use. **Note**: this argument *must* be present when using the 'CUSTOM' profile. This argument
 // *must not* be present when using any other profile.
-func (r *SSLPolicy) CustomFeatures() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["customFeatures"])
+func (r *SSLPolicy) CustomFeatures() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["customFeatures"])
 }
 
 // An optional description of this resource.
-func (r *SSLPolicy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SSLPolicy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The list of features enabled in the SSL policy.
-func (r *SSLPolicy) EnabledFeatures() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["enabledFeatures"])
+func (r *SSLPolicy) EnabledFeatures() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["enabledFeatures"])
 }
 
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-func (r *SSLPolicy) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *SSLPolicy) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer.
 // This can be one of 'TLS_1_0', 'TLS_1_1', 'TLS_1_2'. Default is 'TLS_1_0'.
-func (r *SSLPolicy) MinTlsVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["minTlsVersion"])
+func (r *SSLPolicy) MinTlsVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["minTlsVersion"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *SSLPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SSLPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
@@ -126,19 +126,19 @@ func (r *SSLPolicy) Name() *pulumi.StringOutput {
 // documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for information
 // on what cipher suites each profile provides. If 'CUSTOM' is used, the 'custom_features' attribute **must be set**.
 // Default is 'COMPATIBLE'.
-func (r *SSLPolicy) Profile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["profile"])
+func (r *SSLPolicy) Profile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["profile"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *SSLPolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SSLPolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *SSLPolicy) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *SSLPolicy) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering SSLPolicy resources.

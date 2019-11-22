@@ -65,16 +65,16 @@ func GetDatasetIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatasetIamBinding) URN() *pulumi.URNOutput {
+func (r *DatasetIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatasetIamBinding) ID() *pulumi.IDOutput {
+func (r *DatasetIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *DatasetIamBinding) Condition() *pulumi.Output {
+func (r *DatasetIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
@@ -82,24 +82,24 @@ func (r *DatasetIamBinding) Condition() *pulumi.Output {
 // `{project_id}/{location_name}/{dataset_name}` or
 // `{location_name}/{dataset_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *DatasetIamBinding) DatasetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+func (r *DatasetIamBinding) DatasetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
 // (Computed) The etag of the dataset's IAM policy.
-func (r *DatasetIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *DatasetIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *DatasetIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *DatasetIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied. Only one
 // `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *DatasetIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DatasetIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DatasetIamBinding resources.

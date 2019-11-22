@@ -83,64 +83,64 @@ func GetDataTransferConfig(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DataTransferConfig) URN() *pulumi.URNOutput {
+func (r *DataTransferConfig) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DataTransferConfig) ID() *pulumi.IDOutput {
+func (r *DataTransferConfig) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
 // every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
 // the data source supports the feature. Set the value to 0 to use the default value.
-func (r *DataTransferConfig) DataRefreshWindowDays() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dataRefreshWindowDays"])
+func (r *DataTransferConfig) DataRefreshWindowDays() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dataRefreshWindowDays"])
 }
 
 // The data source id. Cannot be changed once the transfer config is created.
-func (r *DataTransferConfig) DataSourceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dataSourceId"])
+func (r *DataTransferConfig) DataSourceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dataSourceId"])
 }
 
 // The BigQuery target dataset id.
-func (r *DataTransferConfig) DestinationDatasetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationDatasetId"])
+func (r *DataTransferConfig) DestinationDatasetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationDatasetId"])
 }
 
 // When set to true, no runs are scheduled for a given transfer.
-func (r *DataTransferConfig) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *DataTransferConfig) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // The user specified display name for the transfer config.
-func (r *DataTransferConfig) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *DataTransferConfig) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
 // US.
-func (r *DataTransferConfig) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *DataTransferConfig) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The resource name of the transfer config. Transfer config names have the form
 // projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
 // required. The name is ignored when creating a transfer config.
-func (r *DataTransferConfig) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DataTransferConfig) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // These parameters are specific to each data source.
-func (r *DataTransferConfig) Params() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["params"])
+func (r *DataTransferConfig) Params() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["params"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *DataTransferConfig) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DataTransferConfig) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
@@ -148,8 +148,8 @@ func (r *DataTransferConfig) Project() *pulumi.StringOutput {
 // of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
 // format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 // NOTE: the granularity should be at least 8 hours, or less frequent.
-func (r *DataTransferConfig) Schedule() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schedule"])
+func (r *DataTransferConfig) Schedule() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schedule"])
 }
 
 // Input properties used for looking up and filtering DataTransferConfig resources.

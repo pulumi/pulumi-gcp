@@ -74,40 +74,40 @@ func GetIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IAMBinding) URN() *pulumi.URNOutput {
+func (r *IAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IAMBinding) ID() *pulumi.IDOutput {
+func (r *IAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *IAMBinding) Condition() *pulumi.Output {
+func (r *IAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (r *IAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *IAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *IAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *IAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 // Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 // will not be inferred from the provider.
-func (r *IAMBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *IAMBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *IAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *IAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering IAMBinding resources.

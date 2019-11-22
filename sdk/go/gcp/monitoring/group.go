@@ -65,46 +65,46 @@ func GetGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Group) URN() *pulumi.URNOutput {
+func (r *Group) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Group) ID() *pulumi.IDOutput {
+func (r *Group) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A user-assigned name for this group, used only for display purposes.
-func (r *Group) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *Group) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // The filter used to determine which monitored resources belong to this group.
-func (r *Group) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *Group) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
 // that are clusters.
-func (r *Group) IsCluster() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isCluster"])
+func (r *Group) IsCluster() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isCluster"])
 }
 
 // A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
-func (r *Group) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Group) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
 // groups with no parent, parentName is the empty string, "".
-func (r *Group) ParentName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parentName"])
+func (r *Group) ParentName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parentName"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Group) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Group) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Group resources.

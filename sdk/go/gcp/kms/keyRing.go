@@ -56,33 +56,33 @@ func GetKeyRing(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyRing) URN() *pulumi.URNOutput {
+func (r *KeyRing) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyRing) ID() *pulumi.IDOutput {
+func (r *KeyRing) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
-func (r *KeyRing) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *KeyRing) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The resource name for the KeyRing.
-func (r *KeyRing) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *KeyRing) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *KeyRing) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *KeyRing) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *KeyRing) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *KeyRing) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering KeyRing resources.

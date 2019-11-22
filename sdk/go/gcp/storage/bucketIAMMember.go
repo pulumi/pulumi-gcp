@@ -74,37 +74,37 @@ func GetBucketIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BucketIAMMember) URN() *pulumi.URNOutput {
+func (r *BucketIAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BucketIAMMember) ID() *pulumi.IDOutput {
+func (r *BucketIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the bucket it applies to.
-func (r *BucketIAMMember) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *BucketIAMMember) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
-func (r *BucketIAMMember) Condition() *pulumi.Output {
+func (r *BucketIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the storage bucket's IAM policy.
-func (r *BucketIAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *BucketIAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *BucketIAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *BucketIAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The role that should be applied. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *BucketIAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *BucketIAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering BucketIAMMember resources.

@@ -85,55 +85,55 @@ func GetNotification(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Notification) URN() *pulumi.URNOutput {
+func (r *Notification) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Notification) ID() *pulumi.IDOutput {
+func (r *Notification) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the bucket.
-func (r *Notification) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *Notification) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
-func (r *Notification) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *Notification) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
-func (r *Notification) EventTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["eventTypes"])
+func (r *Notification) EventTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["eventTypes"])
 }
 
 // The ID of the created notification.
-func (r *Notification) NotificationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notificationId"])
+func (r *Notification) NotificationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notificationId"])
 }
 
 // Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
-func (r *Notification) ObjectNamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectNamePrefix"])
+func (r *Notification) ObjectNamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectNamePrefix"])
 }
 
 // The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
-func (r *Notification) PayloadFormat() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["payloadFormat"])
+func (r *Notification) PayloadFormat() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["payloadFormat"])
 }
 
 // The URI of the created resource.
-func (r *Notification) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Notification) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The Cloud PubSub topic to which this subscription publishes. Expects either the 
 // topic name, assumed to belong to the default GCP provider project, or the project-level name,
 // i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
-func (r *Notification) Topic() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topic"])
+func (r *Notification) Topic() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Input properties used for looking up and filtering Notification resources.

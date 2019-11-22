@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/reservation:Reservation", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/reservation:Reservation", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

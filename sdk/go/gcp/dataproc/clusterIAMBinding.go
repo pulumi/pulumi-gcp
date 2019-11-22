@@ -81,50 +81,50 @@ func GetClusterIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ClusterIAMBinding) URN() *pulumi.URNOutput {
+func (r *ClusterIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ClusterIAMBinding) ID() *pulumi.IDOutput {
+func (r *ClusterIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
-func (r *ClusterIAMBinding) Cluster() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cluster"])
+func (r *ClusterIAMBinding) Cluster() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cluster"])
 }
 
-func (r *ClusterIAMBinding) Condition() *pulumi.Output {
+func (r *ClusterIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the clusters's IAM policy.
-func (r *ClusterIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *ClusterIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *ClusterIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *ClusterIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The project in which the cluster belongs. If it
 // is not provided, this provider will use the provider default.
-func (r *ClusterIAMBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ClusterIAMBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region in which the cluster belongs. If it
 // is not provided, this provider will use the provider default.
-func (r *ClusterIAMBinding) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ClusterIAMBinding) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role that should be applied. Only one
 // `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *ClusterIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *ClusterIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering ClusterIAMBinding resources.

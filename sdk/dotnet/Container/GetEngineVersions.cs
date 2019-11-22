@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
         /// </summary>
         public static Task<GetEngineVersionsResult> GetEngineVersions(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetEngineVersionsArgs : Pulumi.ResourceArgs

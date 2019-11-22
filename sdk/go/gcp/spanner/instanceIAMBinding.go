@@ -81,44 +81,44 @@ func GetInstanceIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceIAMBinding) URN() *pulumi.URNOutput {
+func (r *InstanceIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceIAMBinding) ID() *pulumi.IDOutput {
+func (r *InstanceIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *InstanceIAMBinding) Condition() *pulumi.Output {
+func (r *InstanceIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the instance's IAM policy.
-func (r *InstanceIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *InstanceIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The name of the instance.
-func (r *InstanceIAMBinding) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *InstanceIAMBinding) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
-func (r *InstanceIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *InstanceIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *InstanceIAMBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *InstanceIAMBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *InstanceIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *InstanceIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering InstanceIAMBinding resources.

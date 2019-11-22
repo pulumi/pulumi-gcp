@@ -62,39 +62,39 @@ func GetWebTypeComputeIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WebTypeComputeIamBinding) URN() *pulumi.URNOutput {
+func (r *WebTypeComputeIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WebTypeComputeIamBinding) ID() *pulumi.IDOutput {
+func (r *WebTypeComputeIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *WebTypeComputeIamBinding) Condition() *pulumi.Output {
+func (r *WebTypeComputeIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *WebTypeComputeIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *WebTypeComputeIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *WebTypeComputeIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *WebTypeComputeIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *WebTypeComputeIamBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *WebTypeComputeIamBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `iap.WebTypeComputeIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *WebTypeComputeIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *WebTypeComputeIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering WebTypeComputeIamBinding resources.

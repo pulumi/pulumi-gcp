@@ -66,37 +66,37 @@ func GetAttachedDisk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AttachedDisk) URN() *pulumi.URNOutput {
+func (r *AttachedDisk) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AttachedDisk) ID() *pulumi.IDOutput {
+func (r *AttachedDisk) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *AttachedDisk) DeviceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["deviceName"])
+func (r *AttachedDisk) DeviceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deviceName"])
 }
 
-func (r *AttachedDisk) Disk() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["disk"])
+func (r *AttachedDisk) Disk() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["disk"])
 }
 
-func (r *AttachedDisk) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *AttachedDisk) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
-func (r *AttachedDisk) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *AttachedDisk) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
-func (r *AttachedDisk) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *AttachedDisk) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *AttachedDisk) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *AttachedDisk) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering AttachedDisk resources.

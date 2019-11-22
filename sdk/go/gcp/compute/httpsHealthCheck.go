@@ -75,79 +75,79 @@ func GetHttpsHealthCheck(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *HttpsHealthCheck) URN() *pulumi.URNOutput {
+func (r *HttpsHealthCheck) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *HttpsHealthCheck) ID() *pulumi.IDOutput {
+func (r *HttpsHealthCheck) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // How often (in seconds) to send a health check. The default value is 5 seconds.
-func (r *HttpsHealthCheck) CheckIntervalSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["checkIntervalSec"])
+func (r *HttpsHealthCheck) CheckIntervalSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["checkIntervalSec"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *HttpsHealthCheck) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *HttpsHealthCheck) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *HttpsHealthCheck) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *HttpsHealthCheck) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-func (r *HttpsHealthCheck) HealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthyThreshold"])
+func (r *HttpsHealthCheck) HealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthyThreshold"])
 }
 
 // The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf
 // of which this health check is performed will be used.
-func (r *HttpsHealthCheck) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *HttpsHealthCheck) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *HttpsHealthCheck) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *HttpsHealthCheck) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The TCP port number for the HTTPS health check request. The default value is 80.
-func (r *HttpsHealthCheck) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *HttpsHealthCheck) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *HttpsHealthCheck) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *HttpsHealthCheck) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The request path of the HTTPS health check request. The default value is /.
-func (r *HttpsHealthCheck) RequestPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["requestPath"])
+func (r *HttpsHealthCheck) RequestPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["requestPath"])
 }
 
 // The URI of the created resource.
-func (r *HttpsHealthCheck) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *HttpsHealthCheck) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
 // have greater value than checkIntervalSec.
-func (r *HttpsHealthCheck) TimeoutSec() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutSec"])
+func (r *HttpsHealthCheck) TimeoutSec() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutSec"])
 }
 
 // A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-func (r *HttpsHealthCheck) UnhealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
+func (r *HttpsHealthCheck) UnhealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
 }
 
 // Input properties used for looking up and filtering HttpsHealthCheck resources.

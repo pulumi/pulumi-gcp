@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Containeranalysis
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Note(string name, NoteArgs args, CustomResourceOptions? options = null)
-            : base("gcp:containeranalysis/note:Note", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:containeranalysis/note:Note", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

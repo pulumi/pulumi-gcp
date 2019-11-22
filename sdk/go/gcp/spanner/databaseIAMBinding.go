@@ -87,49 +87,49 @@ func GetDatabaseIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DatabaseIAMBinding) URN() *pulumi.URNOutput {
+func (r *DatabaseIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DatabaseIAMBinding) ID() *pulumi.IDOutput {
+func (r *DatabaseIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *DatabaseIAMBinding) Condition() *pulumi.Output {
+func (r *DatabaseIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // The name of the Spanner database.
-func (r *DatabaseIAMBinding) Database() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["database"])
+func (r *DatabaseIAMBinding) Database() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["database"])
 }
 
 // (Computed) The etag of the database's IAM policy.
-func (r *DatabaseIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *DatabaseIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The name of the Spanner instance the database belongs to.
-func (r *DatabaseIAMBinding) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *DatabaseIAMBinding) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
-func (r *DatabaseIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *DatabaseIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *DatabaseIAMBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DatabaseIAMBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *DatabaseIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DatabaseIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering DatabaseIAMBinding resources.

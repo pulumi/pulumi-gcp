@@ -75,41 +75,41 @@ func GetKeyRingIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyRingIAMBinding) URN() *pulumi.URNOutput {
+func (r *KeyRingIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyRingIAMBinding) ID() *pulumi.IDOutput {
+func (r *KeyRingIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *KeyRingIAMBinding) Condition() *pulumi.Output {
+func (r *KeyRingIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the key ring's IAM policy.
-func (r *KeyRingIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *KeyRingIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The key ring ID, in the form
 // `{project_id}/{location_name}/{key_ring_name}` or
 // `{location_name}/{key_ring_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-func (r *KeyRingIAMBinding) KeyRingId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyRingId"])
+func (r *KeyRingIAMBinding) KeyRingId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyRingId"])
 }
 
-func (r *KeyRingIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *KeyRingIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The role that should be applied. Only one
 // `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *KeyRingIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *KeyRingIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering KeyRingIAMBinding resources.

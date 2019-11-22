@@ -71,51 +71,51 @@ func GetFunctionIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FunctionIamBinding) URN() *pulumi.URNOutput {
+func (r *FunctionIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FunctionIamBinding) ID() *pulumi.IDOutput {
+func (r *FunctionIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (r *FunctionIamBinding) CloudFunction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cloudFunction"])
+func (r *FunctionIamBinding) CloudFunction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cloudFunction"])
 }
 
-func (r *FunctionIamBinding) Condition() *pulumi.Output {
+func (r *FunctionIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *FunctionIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *FunctionIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *FunctionIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *FunctionIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *FunctionIamBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *FunctionIamBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
 // the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
 // region is specified, it is taken from the provider configuration.
-func (r *FunctionIamBinding) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FunctionIamBinding) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role that should be applied. Only one
 // `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *FunctionIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *FunctionIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering FunctionIamBinding resources.

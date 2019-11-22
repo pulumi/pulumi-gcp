@@ -10,7 +10,7 @@ namespace Pulumi.Gcp.Tpu
     public static partial class Invokes
     {
         public static Task<GetTensorflowVersionsResult> GetTensorflowVersions(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetTensorflowVersionsArgs : Pulumi.ResourceArgs

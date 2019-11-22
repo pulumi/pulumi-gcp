@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Kms
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret.html.markdown.
         /// </summary>
         public static Task<GetKMSSecretResult> GetKMSSecret(GetKMSSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKMSSecretArgs : Pulumi.ResourceArgs

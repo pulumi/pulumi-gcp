@@ -59,19 +59,19 @@ func GetDicomStore(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DicomStore) URN() *pulumi.URNOutput {
+func (r *DicomStore) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DicomStore) ID() *pulumi.IDOutput {
+func (r *DicomStore) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-func (r *DicomStore) Dataset() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dataset"])
+func (r *DicomStore) Dataset() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dataset"])
 }
 
 // User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
@@ -80,23 +80,23 @@ func (r *DicomStore) Dataset() *pulumi.StringOutput {
 // UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
 // [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
 // "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (r *DicomStore) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *DicomStore) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
-func (r *DicomStore) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DicomStore) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A nested object resource
-func (r *DicomStore) NotificationConfig() *pulumi.Output {
+func (r *DicomStore) NotificationConfig() pulumi.Output {
 	return r.s.State["notificationConfig"]
 }
 
 // The fully qualified name of this dataset
-func (r *DicomStore) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *DicomStore) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering DicomStore resources.

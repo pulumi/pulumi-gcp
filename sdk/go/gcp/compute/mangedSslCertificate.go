@@ -66,38 +66,38 @@ func GetMangedSslCertificate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MangedSslCertificate) URN() *pulumi.URNOutput {
+func (r *MangedSslCertificate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MangedSslCertificate) ID() *pulumi.IDOutput {
+func (r *MangedSslCertificate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The unique identifier for the resource.
-func (r *MangedSslCertificate) CertificateId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["certificateId"])
+func (r *MangedSslCertificate) CertificateId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["certificateId"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *MangedSslCertificate) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *MangedSslCertificate) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *MangedSslCertificate) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *MangedSslCertificate) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Expire time of the certificate.
-func (r *MangedSslCertificate) ExpireTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expireTime"])
+func (r *MangedSslCertificate) ExpireTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expireTime"])
 }
 
 // Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
 // of 'MANAGED' in 'type').
-func (r *MangedSslCertificate) Managed() *pulumi.Output {
+func (r *MangedSslCertificate) Managed() pulumi.Output {
 	return r.s.State["managed"]
 }
 
@@ -106,26 +106,26 @@ func (r *MangedSslCertificate) Managed() *pulumi.Output {
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 // namespace as the managed SSL certificates.
-func (r *MangedSslCertificate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *MangedSslCertificate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *MangedSslCertificate) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *MangedSslCertificate) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *MangedSslCertificate) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *MangedSslCertificate) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Domains associated with the certificate via Subject Alternative Name.
-func (r *MangedSslCertificate) SubjectAlternativeNames() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subjectAlternativeNames"])
+func (r *MangedSslCertificate) SubjectAlternativeNames() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subjectAlternativeNames"])
 }
 
 // Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
-func (r *MangedSslCertificate) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *MangedSslCertificate) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering MangedSslCertificate resources.

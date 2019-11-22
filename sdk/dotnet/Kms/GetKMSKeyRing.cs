@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Kms
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_key_ring.html.markdown.
         /// </summary>
         public static Task<GetKMSKeyRingResult> GetKMSKeyRing(GetKMSKeyRingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKMSKeyRingArgs : Pulumi.ResourceArgs

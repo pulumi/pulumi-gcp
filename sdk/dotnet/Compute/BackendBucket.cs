@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendBucket(string name, BackendBucketArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/backendBucket:BackendBucket", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:compute/backendBucket:BackendBucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

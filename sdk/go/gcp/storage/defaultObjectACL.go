@@ -65,25 +65,25 @@ func GetDefaultObjectACL(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DefaultObjectACL) URN() *pulumi.URNOutput {
+func (r *DefaultObjectACL) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DefaultObjectACL) ID() *pulumi.IDOutput {
+func (r *DefaultObjectACL) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the bucket it applies to.
-func (r *DefaultObjectACL) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *DefaultObjectACL) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // List of role/entity pairs in the form `ROLE:entity`.
 // See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 // Omitting the field is the same as providing an empty list.
-func (r *DefaultObjectACL) RoleEntities() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["roleEntities"])
+func (r *DefaultObjectACL) RoleEntities() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["roleEntities"])
 }
 
 // Input properties used for looking up and filtering DefaultObjectACL resources.

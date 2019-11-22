@@ -71,50 +71,50 @@ func GetTunnelInstanceIAMMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TunnelInstanceIAMMember) URN() *pulumi.URNOutput {
+func (r *TunnelInstanceIAMMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TunnelInstanceIAMMember) ID() *pulumi.IDOutput {
+func (r *TunnelInstanceIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *TunnelInstanceIAMMember) Condition() *pulumi.Output {
+func (r *TunnelInstanceIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the instance's IAM policy.
-func (r *TunnelInstanceIAMMember) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *TunnelInstanceIAMMember) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The name of the instance.
-func (r *TunnelInstanceIAMMember) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *TunnelInstanceIAMMember) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
-func (r *TunnelInstanceIAMMember) Member() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["member"])
+func (r *TunnelInstanceIAMMember) Member() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *TunnelInstanceIAMMember) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *TunnelInstanceIAMMember) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *TunnelInstanceIAMMember) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *TunnelInstanceIAMMember) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The zone of the instance. If
 // unspecified, this defaults to the zone configured in the provider.
-func (r *TunnelInstanceIAMMember) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *TunnelInstanceIAMMember) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering TunnelInstanceIAMMember resources.

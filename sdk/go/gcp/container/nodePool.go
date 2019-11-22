@@ -96,45 +96,45 @@ func GetNodePool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NodePool) URN() *pulumi.URNOutput {
+func (r *NodePool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NodePool) ID() *pulumi.IDOutput {
+func (r *NodePool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Configuration required by cluster autoscaler to adjust
 // the size of the node pool to the current cluster usage. Structure is documented below.
-func (r *NodePool) Autoscaling() *pulumi.Output {
+func (r *NodePool) Autoscaling() pulumi.Output {
 	return r.s.State["autoscaling"]
 }
 
 // The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
-func (r *NodePool) Cluster() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cluster"])
+func (r *NodePool) Cluster() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cluster"])
 }
 
 // The initial number of nodes for the pool. In
 // regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 // this will force recreation of the resource.
-func (r *NodePool) InitialNodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["initialNodeCount"])
+func (r *NodePool) InitialNodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["initialNodeCount"])
 }
 
-func (r *NodePool) InstanceGroupUrls() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
+func (r *NodePool) InstanceGroupUrls() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
 }
 
 // The location (region or zone) of the cluster.
-func (r *NodePool) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *NodePool) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // Node management configuration, wherein auto-repair and
 // auto-upgrade is configured. Structure is documented below.
-func (r *NodePool) Management() *pulumi.Output {
+func (r *NodePool) Management() pulumi.Output {
 	return r.s.State["management"]
 }
 
@@ -143,30 +143,30 @@ func (r *NodePool) Management() *pulumi.Output {
 // pools belonging to clusters that do not have IP Aliasing enabled.
 // See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 // for more information.
-func (r *NodePool) MaxPodsPerNode() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
+func (r *NodePool) MaxPodsPerNode() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxPodsPerNode"])
 }
 
 // The name of the node pool. If left blank, this provider will
 // auto-generate a unique name.
-func (r *NodePool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NodePool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *NodePool) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *NodePool) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // The node configuration of the pool. See
 // container.Cluster for schema.
-func (r *NodePool) NodeConfig() *pulumi.Output {
+func (r *NodePool) NodeConfig() pulumi.Output {
 	return r.s.State["nodeConfig"]
 }
 
 // The number of nodes per instance group. This field can be used to
 // update the number of nodes per instance group but should not be used alongside `autoscaling`.
-func (r *NodePool) NodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeCount"])
+func (r *NodePool) NodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeCount"])
 }
 
 // )
@@ -174,20 +174,20 @@ func (r *NodePool) NodeCount() *pulumi.IntOutput {
 // be in the region of their regional cluster or in the same region as their
 // cluster's zone for zonal clusters. If unspecified, the cluster-level
 // `nodeLocations` will be used.
-func (r *NodePool) NodeLocations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodeLocations"])
+func (r *NodePool) NodeLocations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodeLocations"])
 }
 
 // The ID of the project in which to create the node pool. If blank,
 // the provider-configured project will be used.
-func (r *NodePool) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *NodePool) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region in which the cluster resides (for
 // regional clusters). `region` has been deprecated in favor of `location`.
-func (r *NodePool) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *NodePool) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The Kubernetes version for the nodes in this pool. Note that if this field
@@ -196,14 +196,14 @@ func (r *NodePool) Region() *pulumi.StringOutput {
 // recommended that you specify explicit versions as this provider will see spurious diffs
 // when fuzzy versions are used. See the `container.getEngineVersions` data source's
 // `versionPrefix` field to approximate fuzzy versions.
-func (r *NodePool) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+func (r *NodePool) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // The zone in which the cluster resides. `zone`
 // has been deprecated in favor of `location`.
-func (r *NodePool) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *NodePool) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering NodePool resources.

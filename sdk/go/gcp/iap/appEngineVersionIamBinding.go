@@ -80,54 +80,54 @@ func GetAppEngineVersionIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AppEngineVersionIamBinding) URN() *pulumi.URNOutput {
+func (r *AppEngineVersionIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AppEngineVersionIamBinding) ID() *pulumi.IDOutput {
+func (r *AppEngineVersionIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-func (r *AppEngineVersionIamBinding) AppId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["appId"])
+func (r *AppEngineVersionIamBinding) AppId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["appId"])
 }
 
-func (r *AppEngineVersionIamBinding) Condition() *pulumi.Output {
+func (r *AppEngineVersionIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *AppEngineVersionIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *AppEngineVersionIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *AppEngineVersionIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *AppEngineVersionIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *AppEngineVersionIamBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *AppEngineVersionIamBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The role that should be applied. Only one
 // `iap.AppEngineVersionIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *AppEngineVersionIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *AppEngineVersionIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
-func (r *AppEngineVersionIamBinding) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *AppEngineVersionIamBinding) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
-func (r *AppEngineVersionIamBinding) VersionId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["versionId"])
+func (r *AppEngineVersionIamBinding) VersionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["versionId"])
 }
 
 // Input properties used for looking up and filtering AppEngineVersionIamBinding resources.

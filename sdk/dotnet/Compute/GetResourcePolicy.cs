@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_resource_policy.html.markdown.
         /// </summary>
         public static Task<GetResourcePolicyResult> GetResourcePolicy(GetResourcePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("gcp:compute/getResourcePolicy:getResourcePolicy", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("gcp:compute/getResourcePolicy:getResourcePolicy", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetResourcePolicyArgs : Pulumi.ResourceArgs

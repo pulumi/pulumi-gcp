@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CryptoKeyIAMMember(string name, CryptoKeyIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

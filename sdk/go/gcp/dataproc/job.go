@@ -95,87 +95,87 @@ func GetJob(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Job) URN() *pulumi.URNOutput {
+func (r *Job) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Job) ID() *pulumi.IDOutput {
+func (r *Job) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
-func (r *Job) DriverControlsFilesUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["driverControlsFilesUri"])
+func (r *Job) DriverControlsFilesUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["driverControlsFilesUri"])
 }
 
 // A URI pointing to the location of the stdout of the job's driver program.
-func (r *Job) DriverOutputResourceUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["driverOutputResourceUri"])
+func (r *Job) DriverOutputResourceUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["driverOutputResourceUri"])
 }
 
 // By default, you can only delete inactive jobs within
 // Dataproc. Setting this to true, and calling destroy, will ensure that the
 // job is first cancelled before issuing the delete.
-func (r *Job) ForceDelete() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDelete"])
+func (r *Job) ForceDelete() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDelete"])
 }
 
-func (r *Job) HadoopConfig() *pulumi.Output {
+func (r *Job) HadoopConfig() pulumi.Output {
 	return r.s.State["hadoopConfig"]
 }
 
-func (r *Job) HiveConfig() *pulumi.Output {
+func (r *Job) HiveConfig() pulumi.Output {
 	return r.s.State["hiveConfig"]
 }
 
 // The list of labels (key/value pairs) to add to the job.
-func (r *Job) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Job) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
-func (r *Job) PigConfig() *pulumi.Output {
+func (r *Job) PigConfig() pulumi.Output {
 	return r.s.State["pigConfig"]
 }
 
-func (r *Job) Placement() *pulumi.Output {
+func (r *Job) Placement() pulumi.Output {
 	return r.s.State["placement"]
 }
 
 // The project in which the `cluster` can be found and jobs
 // subsequently run against. If it is not provided, the provider project is used.
-func (r *Job) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Job) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Job) PysparkConfig() *pulumi.Output {
+func (r *Job) PysparkConfig() pulumi.Output {
 	return r.s.State["pysparkConfig"]
 }
 
-func (r *Job) Reference() *pulumi.Output {
+func (r *Job) Reference() pulumi.Output {
 	return r.s.State["reference"]
 }
 
 // The Cloud Dataproc region. This essentially determines which clusters are available
 // for this job to be submitted to. If not specified, defaults to `global`.
-func (r *Job) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Job) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Optional. Job scheduling configuration.
-func (r *Job) Scheduling() *pulumi.Output {
+func (r *Job) Scheduling() pulumi.Output {
 	return r.s.State["scheduling"]
 }
 
-func (r *Job) SparkConfig() *pulumi.Output {
+func (r *Job) SparkConfig() pulumi.Output {
 	return r.s.State["sparkConfig"]
 }
 
-func (r *Job) SparksqlConfig() *pulumi.Output {
+func (r *Job) SparksqlConfig() pulumi.Output {
 	return r.s.State["sparksqlConfig"]
 }
 
-func (r *Job) Status() *pulumi.Output {
+func (r *Job) Status() pulumi.Output {
 	return r.s.State["status"]
 }
 

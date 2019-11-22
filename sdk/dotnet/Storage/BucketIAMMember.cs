@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketIAMMember(string name, BucketIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/bucketIAMMember:BucketIAMMember", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:storage/bucketIAMMember:BucketIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

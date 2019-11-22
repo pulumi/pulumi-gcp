@@ -91,87 +91,87 @@ func GetRouterPeer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterPeer) URN() *pulumi.URNOutput {
+func (r *RouterPeer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterPeer) ID() *pulumi.IDOutput {
+func (r *RouterPeer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
 // Options include `DEFAULT` or `CUSTOM`.
-func (r *RouterPeer) AdvertiseMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["advertiseMode"])
+func (r *RouterPeer) AdvertiseMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["advertiseMode"])
 }
 
 // User-specified list of prefix groups to advertise in custom mode,
 // which can take one of the following options:
-func (r *RouterPeer) AdvertisedGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["advertisedGroups"])
+func (r *RouterPeer) AdvertisedGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["advertisedGroups"])
 }
 
 // User-specified list of individual IP ranges to advertise in
 // custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
 // the list defined for the router (in the "bgp" message). These IP ranges are advertised in
 // addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
-func (r *RouterPeer) AdvertisedIpRanges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["advertisedIpRanges"])
+func (r *RouterPeer) AdvertisedIpRanges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["advertisedIpRanges"])
 }
 
 // The priority of routes advertised to this BGP peer.
 // Changing this forces a new peer to be created.
-func (r *RouterPeer) AdvertisedRoutePriority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["advertisedRoutePriority"])
+func (r *RouterPeer) AdvertisedRoutePriority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["advertisedRoutePriority"])
 }
 
 // The name of the interface the BGP peer is associated with.
 // Changing this forces a new peer to be created.
-func (r *RouterPeer) Interface() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["interface"])
+func (r *RouterPeer) Interface() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["interface"])
 }
 
 // IP address of the interface inside Google Cloud Platform.
-func (r *RouterPeer) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *RouterPeer) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // A unique name for BGP peer, required by GCE. Changing
 // this forces a new peer to be created.
-func (r *RouterPeer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RouterPeer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Peer BGP Autonomous System Number (ASN).
 // Changing this forces a new peer to be created.
-func (r *RouterPeer) PeerAsn() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["peerAsn"])
+func (r *RouterPeer) PeerAsn() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["peerAsn"])
 }
 
 // IP address of the BGP interface outside Google Cloud.
 // Changing this forces a new peer to be created.
-func (r *RouterPeer) PeerIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerIpAddress"])
+func (r *RouterPeer) PeerIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerIpAddress"])
 }
 
 // The ID of the project in which this peer's router belongs. If it
 // is not provided, the provider project is used. Changing this forces a new peer to be created.
-func (r *RouterPeer) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RouterPeer) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region this peer's router sits in. If not specified,
 // the project region will be used. Changing this forces a new peer to be
 // created.
-func (r *RouterPeer) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RouterPeer) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The name of the router in which this BGP peer will be configured.
 // Changing this forces a new peer to be created.
-func (r *RouterPeer) Router() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["router"])
+func (r *RouterPeer) Router() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["router"])
 }
 
 // Input properties used for looking up and filtering RouterPeer resources.

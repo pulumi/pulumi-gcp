@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Cloudbuild
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Trigger(string name, TriggerArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:cloudbuild/trigger:Trigger", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:cloudbuild/trigger:Trigger", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

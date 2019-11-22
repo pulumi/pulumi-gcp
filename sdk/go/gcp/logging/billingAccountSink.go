@@ -71,43 +71,43 @@ func GetBillingAccountSink(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BillingAccountSink) URN() *pulumi.URNOutput {
+func (r *BillingAccountSink) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BillingAccountSink) ID() *pulumi.IDOutput {
+func (r *BillingAccountSink) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The billing account exported to the sink.
-func (r *BillingAccountSink) BillingAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["billingAccount"])
+func (r *BillingAccountSink) BillingAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["billingAccount"])
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 // The writer associated with the sink must have access to write to the above resource.
-func (r *BillingAccountSink) Destination() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destination"])
+func (r *BillingAccountSink) Destination() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destination"])
 }
 
 // The filter to apply when exporting logs. Only log entries that match the filter are exported.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
-func (r *BillingAccountSink) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *BillingAccountSink) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The name of the logging sink.
-func (r *BillingAccountSink) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BillingAccountSink) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The identity associated with this sink. This identity must be granted write access to the
 // configured `destination`.
-func (r *BillingAccountSink) WriterIdentity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["writerIdentity"])
+func (r *BillingAccountSink) WriterIdentity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["writerIdentity"])
 }
 
 // Input properties used for looking up and filtering BillingAccountSink resources.

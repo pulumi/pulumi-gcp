@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_repository.html.markdown.
         /// </summary>
         public static Task<GetRegistryRepositoryResult> GetRegistryRepository(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRegistryRepositoryArgs : Pulumi.ResourceArgs

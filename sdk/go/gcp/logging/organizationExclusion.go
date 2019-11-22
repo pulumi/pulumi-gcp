@@ -70,41 +70,41 @@ func GetOrganizationExclusion(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OrganizationExclusion) URN() *pulumi.URNOutput {
+func (r *OrganizationExclusion) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OrganizationExclusion) ID() *pulumi.IDOutput {
+func (r *OrganizationExclusion) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A human-readable description.
-func (r *OrganizationExclusion) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *OrganizationExclusion) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether this exclusion rule should be disabled or not. This defaults to
 // false.
-func (r *OrganizationExclusion) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *OrganizationExclusion) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // The filter to apply when excluding logs. Only log entries that match the filter are excluded.
 // See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
 // write a filter.
-func (r *OrganizationExclusion) Filter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filter"])
+func (r *OrganizationExclusion) Filter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filter"])
 }
 
 // The name of the logging exclusion.
-func (r *OrganizationExclusion) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *OrganizationExclusion) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The organization to create the exclusion in.
-func (r *OrganizationExclusion) OrgId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orgId"])
+func (r *OrganizationExclusion) OrgId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orgId"])
 }
 
 // Input properties used for looking up and filtering OrganizationExclusion resources.

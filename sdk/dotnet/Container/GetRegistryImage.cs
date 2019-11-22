@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_image.html.markdown.
         /// </summary>
         public static Task<GetRegistryImageResult> GetRegistryImage(GetRegistryImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRegistryImageArgs : Pulumi.ResourceArgs

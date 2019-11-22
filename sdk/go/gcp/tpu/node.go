@@ -88,18 +88,18 @@ func GetNode(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Node) URN() *pulumi.URNOutput {
+func (r *Node) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Node) ID() *pulumi.IDOutput {
+func (r *Node) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The type of hardware accelerators associated with this node.
-func (r *Node) AcceleratorType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["acceleratorType"])
+func (r *Node) AcceleratorType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["acceleratorType"])
 }
 
 // The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
@@ -107,62 +107,62 @@ func (r *Node) AcceleratorType() *pulumi.StringOutput {
 // address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
 // conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
 // that is using that CIDR block.
-func (r *Node) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Node) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
 // The user-supplied description of the TPU. Maximum of 512 characters.
-func (r *Node) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Node) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Resource labels to represent user provided metadata.
-func (r *Node) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Node) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The immutable name of the TPU.
-func (r *Node) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Node) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
 // which this API has been activated. If none is provided, "default" will be used.
-func (r *Node) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Node) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
 // node first reach out to the first (index 0) entry.
-func (r *Node) NetworkEndpoints() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkEndpoints"])
+func (r *Node) NetworkEndpoints() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkEndpoints"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Node) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Node) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Sets the scheduling options for this TPU instance.
-func (r *Node) SchedulingConfig() *pulumi.Output {
+func (r *Node) SchedulingConfig() pulumi.Output {
 	return r.s.State["schedulingConfig"]
 }
 
 // The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 // Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
-func (r *Node) ServiceAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccount"])
+func (r *Node) ServiceAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccount"])
 }
 
 // The version of Tensorflow running in the Node.
-func (r *Node) TensorflowVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tensorflowVersion"])
+func (r *Node) TensorflowVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tensorflowVersion"])
 }
 
 // The GCP location for the TPU.
-func (r *Node) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Node) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Node resources.

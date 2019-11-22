@@ -106,98 +106,98 @@ func GetTable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Table) URN() *pulumi.URNOutput {
+func (r *Table) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Table) ID() *pulumi.IDOutput {
+func (r *Table) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Specifies column names to use for data clustering.
 // Up to four top-level columns are allowed, and should be specified in
 // descending priority order.
-func (r *Table) Clusterings() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["clusterings"])
+func (r *Table) Clusterings() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["clusterings"])
 }
 
 // The time when this table was created, in milliseconds since the epoch.
-func (r *Table) CreationTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["creationTime"])
+func (r *Table) CreationTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["creationTime"])
 }
 
 // The dataset ID to create the table in.
 // Changing this forces a new resource to be created.
-func (r *Table) DatasetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datasetId"])
+func (r *Table) DatasetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datasetId"])
 }
 
 // The field description.
-func (r *Table) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Table) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A hash of the resource.
-func (r *Table) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *Table) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // The time when this table expires, in
 // milliseconds since the epoch. If not present, the table will persist
 // indefinitely. Expired tables will be deleted and their storage
 // reclaimed.
-func (r *Table) ExpirationTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["expirationTime"])
+func (r *Table) ExpirationTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["expirationTime"])
 }
 
 // Describes the data format,
 // location, and other properties of a table stored outside of BigQuery.
 // By defining these properties, the data source can then be queried as
 // if it were a standard BigQuery table. Structure is documented below.
-func (r *Table) ExternalDataConfiguration() *pulumi.Output {
+func (r *Table) ExternalDataConfiguration() pulumi.Output {
 	return r.s.State["externalDataConfiguration"]
 }
 
 // A descriptive name for the table.
-func (r *Table) FriendlyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["friendlyName"])
+func (r *Table) FriendlyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["friendlyName"])
 }
 
 // A mapping of labels to assign to the resource.
-func (r *Table) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Table) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The time when this table was last modified, in milliseconds since the epoch.
-func (r *Table) LastModifiedTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["lastModifiedTime"])
+func (r *Table) LastModifiedTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["lastModifiedTime"])
 }
 
 // The geographic location where the table resides. This value is inherited from the dataset.
-func (r *Table) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *Table) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The size of this table in bytes, excluding any data in the streaming buffer.
-func (r *Table) NumBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numBytes"])
+func (r *Table) NumBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numBytes"])
 }
 
 // The number of bytes in the table that are considered "long-term storage".
-func (r *Table) NumLongTermBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numLongTermBytes"])
+func (r *Table) NumLongTermBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numLongTermBytes"])
 }
 
 // The number of rows of data in this table, excluding any data in the streaming buffer.
-func (r *Table) NumRows() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numRows"])
+func (r *Table) NumRows() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numRows"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Table) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Table) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // A JSON schema for the table. Schema is required
@@ -205,35 +205,35 @@ func (r *Table) Project() *pulumi.StringOutput {
 // Bigtable, Cloud Datastore backups, and Avro formats when using
 // external tables. For more information see the
 // [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
-func (r *Table) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *Table) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // The URI of the created resource.
-func (r *Table) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Table) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A unique ID for the resource.
 // Changing this forces a new resource to be created.
-func (r *Table) TableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tableId"])
+func (r *Table) TableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tableId"])
 }
 
 // If specified, configures time-based
 // partitioning for this table. Structure is documented below.
-func (r *Table) TimePartitioning() *pulumi.Output {
+func (r *Table) TimePartitioning() pulumi.Output {
 	return r.s.State["timePartitioning"]
 }
 
 // Describes the table type.
-func (r *Table) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Table) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // If specified, configures this table as a view.
 // Structure is documented below.
-func (r *Table) View() *pulumi.Output {
+func (r *Table) View() pulumi.Output {
 	return r.s.State["view"]
 }
 

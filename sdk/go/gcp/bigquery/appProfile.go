@@ -68,56 +68,56 @@ func GetAppProfile(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AppProfile) URN() *pulumi.URNOutput {
+func (r *AppProfile) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AppProfile) ID() *pulumi.IDOutput {
+func (r *AppProfile) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
-func (r *AppProfile) AppProfileId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["appProfileId"])
+func (r *AppProfile) AppProfileId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["appProfileId"])
 }
 
 // Long form description of the use case for this app profile.
-func (r *AppProfile) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AppProfile) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If true, ignore safety checks when deleting/updating the app profile.
-func (r *AppProfile) IgnoreWarnings() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ignoreWarnings"])
+func (r *AppProfile) IgnoreWarnings() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ignoreWarnings"])
 }
 
 // The name of the instance to create the app profile within.
-func (r *AppProfile) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *AppProfile) Instance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instance"])
 }
 
 // If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
 // cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
 // Choosing this option sacrifices read-your-writes consistency to improve availability.
-func (r *AppProfile) MultiClusterRoutingUseAny() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multiClusterRoutingUseAny"])
+func (r *AppProfile) MultiClusterRoutingUseAny() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multiClusterRoutingUseAny"])
 }
 
 // The unique name of the requested app profile. Values are of the form
 // 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
-func (r *AppProfile) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AppProfile) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *AppProfile) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *AppProfile) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Use a single-cluster routing policy.
-func (r *AppProfile) SingleClusterRouting() *pulumi.Output {
+func (r *AppProfile) SingleClusterRouting() pulumi.Output {
 	return r.s.State["singleClusterRouting"]
 }
 

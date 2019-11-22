@@ -75,70 +75,70 @@ func GetTargetSSLProxy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TargetSSLProxy) URN() *pulumi.URNOutput {
+func (r *TargetSSLProxy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TargetSSLProxy) ID() *pulumi.IDOutput {
+func (r *TargetSSLProxy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A reference to the BackendService resource.
-func (r *TargetSSLProxy) BackendService() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backendService"])
+func (r *TargetSSLProxy) BackendService() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backendService"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *TargetSSLProxy) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *TargetSSLProxy) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *TargetSSLProxy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TargetSSLProxy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *TargetSSLProxy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TargetSSLProxy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *TargetSSLProxy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *TargetSSLProxy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
 // NONE.
-func (r *TargetSSLProxy) ProxyHeader() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["proxyHeader"])
+func (r *TargetSSLProxy) ProxyHeader() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proxyHeader"])
 }
 
 // The unique identifier for the resource.
-func (r *TargetSSLProxy) ProxyId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["proxyId"])
+func (r *TargetSSLProxy) ProxyId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["proxyId"])
 }
 
 // The URI of the created resource.
-func (r *TargetSSLProxy) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *TargetSSLProxy) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
 // Currently, exactly one SSL certificate must be specified.
-func (r *TargetSSLProxy) SslCertificates() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sslCertificates"])
+func (r *TargetSSLProxy) SslCertificates() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sslCertificates"])
 }
 
 // A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the
 // TargetSslProxy resource will not have any SSL policy configured.
-func (r *TargetSSLProxy) SslPolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sslPolicy"])
+func (r *TargetSSLProxy) SslPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sslPolicy"])
 }
 
 // Input properties used for looking up and filtering TargetSSLProxy resources.

@@ -67,36 +67,36 @@ func GetConnection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Connection) URN() *pulumi.URNOutput {
+func (r *Connection) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Connection) ID() *pulumi.IDOutput {
+func (r *Connection) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Name of VPC network connected with service producers using VPC peering.
-func (r *Connection) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Connection) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
-func (r *Connection) Peering() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peering"])
+func (r *Connection) Peering() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peering"])
 }
 
 // Named IP address range(s) of PEERING type reserved for
 // this service provider. Note that invoking this method with a different range when connection
 // is already established will not reallocate already provisioned service producer subnetworks.
-func (r *Connection) ReservedPeeringRanges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["reservedPeeringRanges"])
+func (r *Connection) ReservedPeeringRanges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["reservedPeeringRanges"])
 }
 
 // Provider peering service that is managing peering connectivity for a
 // service provider organization. For Google services that support this functionality it is
 // 'servicenetworking.googleapis.com'.
-func (r *Connection) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *Connection) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Input properties used for looking up and filtering Connection resources.

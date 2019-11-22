@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Projects
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
         /// </summary>
         public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetProjectArgs : Pulumi.ResourceArgs

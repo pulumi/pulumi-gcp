@@ -74,72 +74,72 @@ func GetURLMap(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *URLMap) URN() *pulumi.URNOutput {
+func (r *URLMap) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *URLMap) ID() *pulumi.IDOutput {
+func (r *URLMap) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *URLMap) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *URLMap) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // The backend service or backend bucket to use when none of the given rules match.
-func (r *URLMap) DefaultService() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultService"])
+func (r *URLMap) DefaultService() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultService"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *URLMap) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *URLMap) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Fingerprint of this resource. This field is used internally during updates of this resource.
-func (r *URLMap) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *URLMap) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The list of HostRules to use against the URL.
-func (r *URLMap) HostRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["hostRules"])
+func (r *URLMap) HostRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["hostRules"])
 }
 
 // The unique identifier for the resource.
-func (r *URLMap) MapId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["mapId"])
+func (r *URLMap) MapId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["mapId"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *URLMap) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *URLMap) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The list of named PathMatchers to use against the URL.
-func (r *URLMap) PathMatchers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["pathMatchers"])
+func (r *URLMap) PathMatchers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["pathMatchers"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *URLMap) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *URLMap) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *URLMap) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *URLMap) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
-func (r *URLMap) Tests() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tests"])
+func (r *URLMap) Tests() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tests"])
 }
 
 // Input properties used for looking up and filtering URLMap resources.

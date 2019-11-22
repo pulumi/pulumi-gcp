@@ -73,38 +73,38 @@ func GetAccessPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessPolicy) URN() *pulumi.URNOutput {
+func (r *AccessPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessPolicy) ID() *pulumi.IDOutput {
+func (r *AccessPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Time the AccessPolicy was created in UTC.
-func (r *AccessPolicy) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *AccessPolicy) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // Resource name of the AccessPolicy. Format: {policy_id}
-func (r *AccessPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AccessPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
-func (r *AccessPolicy) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *AccessPolicy) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // Human readable title. Does not affect behavior.
-func (r *AccessPolicy) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *AccessPolicy) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Time the AccessPolicy was updated in UTC.
-func (r *AccessPolicy) UpdateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateTime"])
+func (r *AccessPolicy) UpdateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
 // Input properties used for looking up and filtering AccessPolicy resources.

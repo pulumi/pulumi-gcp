@@ -103,18 +103,18 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RegionInstanceGroupManager) URN() *pulumi.URNOutput {
+func (r *RegionInstanceGroupManager) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RegionInstanceGroupManager) ID() *pulumi.IDOutput {
+func (r *RegionInstanceGroupManager) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-func (r *RegionInstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
+func (r *RegionInstanceGroupManager) AutoHealingPolicies() pulumi.Output {
 	return r.s.State["autoHealingPolicies"]
 }
 
@@ -124,79 +124,79 @@ func (r *RegionInstanceGroupManager) AutoHealingPolicies() *pulumi.Output {
 // are lowercase letters, numbers, and hyphens (-). Instances are named by
 // appending a hyphen and a random four-character string to the base instance
 // name.
-func (r *RegionInstanceGroupManager) BaseInstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["baseInstanceName"])
+func (r *RegionInstanceGroupManager) BaseInstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["baseInstanceName"])
 }
 
 // An optional textual description of the instance
 // group manager.
-func (r *RegionInstanceGroupManager) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RegionInstanceGroupManager) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The distribution policy for this managed instance
 // group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 // - - -
-func (r *RegionInstanceGroupManager) DistributionPolicyZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["distributionPolicyZones"])
+func (r *RegionInstanceGroupManager) DistributionPolicyZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["distributionPolicyZones"])
 }
 
 // The fingerprint of the instance group manager.
-func (r *RegionInstanceGroupManager) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *RegionInstanceGroupManager) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The full URL of the instance group created by the manager.
-func (r *RegionInstanceGroupManager) InstanceGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceGroup"])
+func (r *RegionInstanceGroupManager) InstanceGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceGroup"])
 }
 
 // The name of the instance group manager. Must be 1-63
 // characters long and comply with
 // [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
 // include lowercase letters, numbers, and hyphens.
-func (r *RegionInstanceGroupManager) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RegionInstanceGroupManager) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The named port configuration. See the section below
 // for details on configuration.
-func (r *RegionInstanceGroupManager) NamedPorts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["namedPorts"])
+func (r *RegionInstanceGroupManager) NamedPorts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["namedPorts"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *RegionInstanceGroupManager) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RegionInstanceGroupManager) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The region where the managed instance group resides.
-func (r *RegionInstanceGroupManager) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RegionInstanceGroupManager) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URL of the created resource.
-func (r *RegionInstanceGroupManager) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *RegionInstanceGroupManager) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The full URL of all target pools to which new
 // instances in the group are added. Updating the target pools attribute does
 // not affect existing instances.
-func (r *RegionInstanceGroupManager) TargetPools() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["targetPools"])
+func (r *RegionInstanceGroupManager) TargetPools() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["targetPools"])
 }
 
 // The target number of running instances for this managed
 // instance group. This value should always be explicitly set unless this resource is attached to
 // an autoscaler, in which case it should never be set. Defaults to `0`.
-func (r *RegionInstanceGroupManager) TargetSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["targetSize"])
+func (r *RegionInstanceGroupManager) TargetSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["targetSize"])
 }
 
 // The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-func (r *RegionInstanceGroupManager) UpdatePolicy() *pulumi.Output {
+func (r *RegionInstanceGroupManager) UpdatePolicy() pulumi.Output {
 	return r.s.State["updatePolicy"]
 }
 
@@ -205,15 +205,15 @@ func (r *RegionInstanceGroupManager) UpdatePolicy() *pulumi.Output {
 // Structure is documented below.
 // Until `instanceTemplate` is removed this field will be Optional to allow for a
 // graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
-func (r *RegionInstanceGroupManager) Versions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["versions"])
+func (r *RegionInstanceGroupManager) Versions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["versions"])
 }
 
 // Whether to wait for all instances to be created/updated before
 // returning. Note that if this is set to true and the operation does not succeed, this provider will
 // continue trying until it times out.
-func (r *RegionInstanceGroupManager) WaitForInstances() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitForInstances"])
+func (r *RegionInstanceGroupManager) WaitForInstances() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["waitForInstances"])
 }
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.

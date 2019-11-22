@@ -67,57 +67,57 @@ func GetRouter(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Router) URN() *pulumi.URNOutput {
+func (r *Router) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Router) ID() *pulumi.IDOutput {
+func (r *Router) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // BGP information specific to this router.
-func (r *Router) Bgp() *pulumi.Output {
+func (r *Router) Bgp() pulumi.Output {
 	return r.s.State["bgp"]
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Router) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Router) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *Router) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Router) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
 // 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
 // be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-func (r *Router) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Router) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A reference to the network to which this router belongs.
-func (r *Router) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Router) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Router) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Router) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region where the router resides.
-func (r *Router) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Router) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URI of the created resource.
-func (r *Router) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Router) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering Router resources.

@@ -83,50 +83,50 @@ func GetCryptoKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CryptoKey) URN() *pulumi.URNOutput {
+func (r *CryptoKey) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CryptoKey) ID() *pulumi.IDOutput {
+func (r *CryptoKey) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
-func (r *CryptoKey) KeyRing() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyRing"])
+func (r *CryptoKey) KeyRing() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyRing"])
 }
 
 // Labels with user-defined metadata to apply to this resource.
-func (r *CryptoKey) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *CryptoKey) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The resource name for the CryptoKey.
-func (r *CryptoKey) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *CryptoKey) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The immutable purpose of this CryptoKey. See the [purpose
 // reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 // for possible inputs.
-func (r *CryptoKey) Purpose() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["purpose"])
+func (r *CryptoKey) Purpose() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
 // place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
 // followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
-func (r *CryptoKey) RotationPeriod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["rotationPeriod"])
+func (r *CryptoKey) RotationPeriod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rotationPeriod"])
 }
 
-func (r *CryptoKey) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *CryptoKey) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // A template describing settings for new crypto key versions.
-func (r *CryptoKey) VersionTemplate() *pulumi.Output {
+func (r *CryptoKey) VersionTemplate() pulumi.Output {
 	return r.s.State["versionTemplate"]
 }
 

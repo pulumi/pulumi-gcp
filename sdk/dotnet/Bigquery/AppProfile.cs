@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Bigquery
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppProfile(string name, AppProfileArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigquery/appProfile:AppProfile", name, args, MakeResourceOptions(options, ""))
+            : base("gcp:bigquery/appProfile:AppProfile", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

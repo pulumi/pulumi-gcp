@@ -79,52 +79,52 @@ func GetNetworkPeering(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NetworkPeering) URN() *pulumi.URNOutput {
+func (r *NetworkPeering) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NetworkPeering) ID() *pulumi.IDOutput {
+func (r *NetworkPeering) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If set to `true`, the routes between the two networks will
 // be created and managed automatically. Defaults to `true`.
-func (r *NetworkPeering) AutoCreateRoutes() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["autoCreateRoutes"])
+func (r *NetworkPeering) AutoCreateRoutes() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoCreateRoutes"])
 }
 
-func (r *NetworkPeering) ExportCustomRoutes() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["exportCustomRoutes"])
+func (r *NetworkPeering) ExportCustomRoutes() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["exportCustomRoutes"])
 }
 
-func (r *NetworkPeering) ImportCustomRoutes() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["importCustomRoutes"])
+func (r *NetworkPeering) ImportCustomRoutes() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["importCustomRoutes"])
 }
 
 // Name of the peering.
-func (r *NetworkPeering) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NetworkPeering) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Resource link of the network to add a peering to.
-func (r *NetworkPeering) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *NetworkPeering) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // Resource link of the peer network.
-func (r *NetworkPeering) PeerNetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["peerNetwork"])
+func (r *NetworkPeering) PeerNetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["peerNetwork"])
 }
 
 // State for the peering.
-func (r *NetworkPeering) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *NetworkPeering) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Details about the current state of the peering.
-func (r *NetworkPeering) StateDetails() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stateDetails"])
+func (r *NetworkPeering) StateDetails() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stateDetails"])
 }
 
 // Input properties used for looking up and filtering NetworkPeering resources.

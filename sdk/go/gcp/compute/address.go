@@ -79,91 +79,91 @@ func GetAddress(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Address) URN() *pulumi.URNOutput {
+func (r *Address) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Address) ID() *pulumi.IDOutput {
+func (r *Address) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The IP of the created resource.
-func (r *Address) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Address) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
-func (r *Address) AddressType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["addressType"])
+func (r *Address) AddressType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["addressType"])
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Address) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Address) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource.
-func (r *Address) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Address) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *Address) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *Address) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this address. A list of key->value pairs.
-func (r *Address) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Address) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
 // 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
 // be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-func (r *Address) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Address) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
 // this field is not specified, it is assumed to be PREMIUM.
-func (r *Address) NetworkTier() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkTier"])
+func (r *Address) NetworkTier() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkTier"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Address) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Address) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
 // instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
 // Internal address.
-func (r *Address) Purpose() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["purpose"])
+func (r *Address) Purpose() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // The Region in which the created address should reside. If it is not provided, the provider region is used.
-func (r *Address) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Address) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URI of the created resource.
-func (r *Address) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Address) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
 // subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
-func (r *Address) Subnetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
+func (r *Address) Subnetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
 // The URLs of the resources that are using this address.
-func (r *Address) Users() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["users"])
+func (r *Address) Users() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["users"])
 }
 
 // Input properties used for looking up and filtering Address resources.

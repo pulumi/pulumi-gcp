@@ -77,46 +77,46 @@ func GetRecordSet(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RecordSet) URN() *pulumi.URNOutput {
+func (r *RecordSet) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RecordSet) ID() *pulumi.IDOutput {
+func (r *RecordSet) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the zone in which this record set will
 // reside.
-func (r *RecordSet) ManagedZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["managedZone"])
+func (r *RecordSet) ManagedZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["managedZone"])
 }
 
 // The DNS name this record set will apply to.
-func (r *RecordSet) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RecordSet) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *RecordSet) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RecordSet) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The string data for the records in this record set
 // whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
-func (r *RecordSet) Rrdatas() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["rrdatas"])
+func (r *RecordSet) Rrdatas() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["rrdatas"])
 }
 
 // The time-to-live of this record set (seconds).
-func (r *RecordSet) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *RecordSet) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The DNS record set type.
-func (r *RecordSet) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *RecordSet) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering RecordSet resources.

@@ -76,46 +76,46 @@ func GetGCPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GCPolicy) URN() *pulumi.URNOutput {
+func (r *GCPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GCPolicy) ID() *pulumi.IDOutput {
+func (r *GCPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *GCPolicy) ColumnFamily() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["columnFamily"])
+func (r *GCPolicy) ColumnFamily() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["columnFamily"])
 }
 
 // The name of the Bigtable instance.
-func (r *GCPolicy) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *GCPolicy) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // GC policy that applies to all cells older than the given age.
-func (r *GCPolicy) MaxAges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["maxAges"])
+func (r *GCPolicy) MaxAges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["maxAges"])
 }
 
 // GC policy that applies to all versions of a cell except for the most recent.
-func (r *GCPolicy) MaxVersions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["maxVersions"])
+func (r *GCPolicy) MaxVersions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["maxVersions"])
 }
 
 // If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
-func (r *GCPolicy) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *GCPolicy) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-func (r *GCPolicy) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *GCPolicy) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *GCPolicy) Table() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["table"])
+func (r *GCPolicy) Table() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["table"])
 }
 
 // Input properties used for looking up and filtering GCPolicy resources.

@@ -70,54 +70,54 @@ func GetNodeGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NodeGroup) URN() *pulumi.URNOutput {
+func (r *NodeGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NodeGroup) ID() *pulumi.IDOutput {
+func (r *NodeGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *NodeGroup) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *NodeGroup) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional textual description of the resource.
-func (r *NodeGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *NodeGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the resource.
-func (r *NodeGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NodeGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The URL of the node template to which this node group belongs.
-func (r *NodeGroup) NodeTemplate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodeTemplate"])
+func (r *NodeGroup) NodeTemplate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodeTemplate"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *NodeGroup) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *NodeGroup) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The URI of the created resource.
-func (r *NodeGroup) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *NodeGroup) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The total number of nodes in the node group.
-func (r *NodeGroup) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *NodeGroup) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // Zone where this node group is located
-func (r *NodeGroup) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *NodeGroup) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering NodeGroup resources.

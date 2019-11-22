@@ -68,43 +68,43 @@ func GetRepositoryIamBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RepositoryIamBinding) URN() *pulumi.URNOutput {
+func (r *RepositoryIamBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RepositoryIamBinding) ID() *pulumi.IDOutput {
+func (r *RepositoryIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *RepositoryIamBinding) Condition() *pulumi.Output {
+func (r *RepositoryIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *RepositoryIamBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *RepositoryIamBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *RepositoryIamBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *RepositoryIamBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *RepositoryIamBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *RepositoryIamBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *RepositoryIamBinding) Repository() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["repository"])
+func (r *RepositoryIamBinding) Repository() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["repository"])
 }
 
 // The role that should be applied. Only one
 // `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *RepositoryIamBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *RepositoryIamBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Input properties used for looking up and filtering RepositoryIamBinding resources.

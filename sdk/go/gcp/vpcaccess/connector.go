@@ -73,59 +73,59 @@ func GetConnector(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Connector) URN() *pulumi.URNOutput {
+func (r *Connector) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Connector) ID() *pulumi.IDOutput {
+func (r *Connector) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
-func (r *Connector) IpCidrRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipCidrRange"])
+func (r *Connector) IpCidrRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipCidrRange"])
 }
 
 // Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
-func (r *Connector) MaxThroughput() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxThroughput"])
+func (r *Connector) MaxThroughput() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxThroughput"])
 }
 
 // Minimum throughput of the connector in Mbps. Default and min is 200.
-func (r *Connector) MinThroughput() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minThroughput"])
+func (r *Connector) MinThroughput() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minThroughput"])
 }
 
 // The name of the resource (Max 25 characters).
-func (r *Connector) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Connector) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Name of a VPC network.
-func (r *Connector) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Connector) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Connector) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Connector) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Region where the VPC Access connector resides
-func (r *Connector) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Connector) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The fully qualified name of this VPC connector
-func (r *Connector) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Connector) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // State of the VPC access connector.
-func (r *Connector) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Connector) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // Input properties used for looking up and filtering Connector resources.

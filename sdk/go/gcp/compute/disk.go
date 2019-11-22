@@ -99,23 +99,23 @@ func GetDisk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Disk) URN() *pulumi.URNOutput {
+func (r *Disk) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Disk) ID() *pulumi.IDOutput {
+func (r *Disk) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Disk) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Disk) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
-func (r *Disk) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Disk) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
@@ -123,7 +123,7 @@ func (r *Disk) Description() *pulumi.StringOutput {
 // to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
 // provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
 // and you do not need to provide a key to use the disk later.
-func (r *Disk) DiskEncryptionKey() *pulumi.Output {
+func (r *Disk) DiskEncryptionKey() pulumi.Output {
 	return r.s.State["diskEncryptionKey"]
 }
 
@@ -133,115 +133,115 @@ func (r *Disk) DiskEncryptionKey() *pulumi.Output {
 // If referred by family, the images names must include the family name. If they don't, use the [google_compute_image data
 // source](/docs/providers/google/d/datasource_compute_image.html). For instance, the image 'centos-6-v20180104' includes
 // its family name 'centos-6'. These images can be referred by family name here.
-func (r *Disk) Image() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["image"])
+func (r *Disk) Image() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["image"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
-func (r *Disk) LabelFingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["labelFingerprint"])
+func (r *Disk) LabelFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["labelFingerprint"])
 }
 
 // Labels to apply to this disk. A list of key->value pairs.
-func (r *Disk) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Disk) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // Last attach timestamp in RFC3339 text format.
-func (r *Disk) LastAttachTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastAttachTimestamp"])
+func (r *Disk) LastAttachTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastAttachTimestamp"])
 }
 
 // Last detach timestamp in RFC3339 text format.
-func (r *Disk) LastDetachTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastDetachTimestamp"])
+func (r *Disk) LastDetachTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastDetachTimestamp"])
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Disk) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Disk) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
 // supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
 // error message will list the supported values for the caller's project.
-func (r *Disk) PhysicalBlockSizeBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["physicalBlockSizeBytes"])
+func (r *Disk) PhysicalBlockSizeBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["physicalBlockSizeBytes"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Disk) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Disk) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Resource policies applied to this disk for automatic snapshot creations.
-func (r *Disk) ResourcePolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["resourcePolicies"])
+func (r *Disk) ResourcePolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["resourcePolicies"])
 }
 
 // The URI of the created resource.
-func (r *Disk) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Disk) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
 // 'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
 // with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-func (r *Disk) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Disk) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
 // snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
 // * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
 // 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
-func (r *Disk) Snapshot() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshot"])
+func (r *Disk) Snapshot() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshot"])
 }
 
 // The customer-supplied encryption key of the source image. Required if the source image is protected by a
 // customer-supplied encryption key.
-func (r *Disk) SourceImageEncryptionKey() *pulumi.Output {
+func (r *Disk) SourceImageEncryptionKey() pulumi.Output {
 	return r.s.State["sourceImageEncryptionKey"]
 }
 
 // The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
 // persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
 // under the same name, the source image ID would identify the exact version of the image that was used.
-func (r *Disk) SourceImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceImageId"])
+func (r *Disk) SourceImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceImageId"])
 }
 
 // The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
 // customer-supplied encryption key.
-func (r *Disk) SourceSnapshotEncryptionKey() *pulumi.Output {
+func (r *Disk) SourceSnapshotEncryptionKey() pulumi.Output {
 	return r.s.State["sourceSnapshotEncryptionKey"]
 }
 
 // The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 // this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
 // recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
-func (r *Disk) SourceSnapshotId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceSnapshotId"])
+func (r *Disk) SourceSnapshotId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceSnapshotId"])
 }
 
 // URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
-func (r *Disk) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Disk) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
-func (r *Disk) Users() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["users"])
+func (r *Disk) Users() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["users"])
 }
 
 // A reference to the zone where the disk resides.
-func (r *Disk) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
+func (r *Disk) Zone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zone"])
 }
 
 // Input properties used for looking up and filtering Disk resources.

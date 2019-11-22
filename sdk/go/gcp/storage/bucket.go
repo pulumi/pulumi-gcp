@@ -103,100 +103,100 @@ func GetBucket(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Bucket) URN() *pulumi.URNOutput {
+func (r *Bucket) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Bucket) ID() *pulumi.IDOutput {
+func (r *Bucket) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
-func (r *Bucket) BucketPolicyOnly() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["bucketPolicyOnly"])
+func (r *Bucket) BucketPolicyOnly() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["bucketPolicyOnly"])
 }
 
 // The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-func (r *Bucket) Cors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["cors"])
+func (r *Bucket) Cors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["cors"])
 }
 
 // The bucket's encryption configuration.
-func (r *Bucket) Encryption() *pulumi.Output {
+func (r *Bucket) Encryption() pulumi.Output {
 	return r.s.State["encryption"]
 }
 
 // When deleting a bucket, this
 // boolean option will delete all contained objects. If you try to delete a
 // bucket that contains objects, this provider will fail that run.
-func (r *Bucket) ForceDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
+func (r *Bucket) ForceDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
 
 // A set of key/value label pairs to assign to the bucket.
-func (r *Bucket) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Bucket) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-func (r *Bucket) LifecycleRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["lifecycleRules"])
+func (r *Bucket) LifecycleRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["lifecycleRules"])
 }
 
 // The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-func (r *Bucket) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *Bucket) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
-func (r *Bucket) Logging() *pulumi.Output {
+func (r *Bucket) Logging() pulumi.Output {
 	return r.s.State["logging"]
 }
 
 // The name of the bucket.
-func (r *Bucket) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Bucket) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *Bucket) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Bucket) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
-func (r *Bucket) RequesterPays() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["requesterPays"])
+func (r *Bucket) RequesterPays() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["requesterPays"])
 }
 
 // Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
-func (r *Bucket) RetentionPolicy() *pulumi.Output {
+func (r *Bucket) RetentionPolicy() pulumi.Output {
 	return r.s.State["retentionPolicy"]
 }
 
 // The URI of the created resource.
-func (r *Bucket) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Bucket) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
-func (r *Bucket) StorageClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["storageClass"])
+func (r *Bucket) StorageClass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["storageClass"])
 }
 
 // The base URL of the bucket, in the format `gs://<bucket-name>`.
-func (r *Bucket) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *Bucket) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
-func (r *Bucket) Versioning() *pulumi.Output {
+func (r *Bucket) Versioning() pulumi.Output {
 	return r.s.State["versioning"]
 }
 
 // Configuration if the bucket acts as a website. Structure is documented below.
-func (r *Bucket) Website() *pulumi.Output {
+func (r *Bucket) Website() pulumi.Output {
 	return r.s.State["website"]
 }
 

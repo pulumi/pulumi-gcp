@@ -54,12 +54,12 @@ func GetNote(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Note) URN() *pulumi.URNOutput {
+func (r *Note) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Note) ID() *pulumi.IDOutput {
+func (r *Note) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -68,17 +68,17 @@ func (r *Note) ID() *pulumi.IDOutput {
 // attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
 // ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
 // attached Attestation Occurrences, even if they don't all live in the same project.
-func (r *Note) AttestationAuthority() *pulumi.Output {
+func (r *Note) AttestationAuthority() pulumi.Output {
 	return r.s.State["attestationAuthority"]
 }
 
 // The name of the note.
-func (r *Note) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Note) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Note) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Note) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering Note resources.

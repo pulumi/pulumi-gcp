@@ -76,36 +76,36 @@ func GetTargetPool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TargetPool) URN() *pulumi.URNOutput {
+func (r *TargetPool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TargetPool) ID() *pulumi.IDOutput {
+func (r *TargetPool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // URL to the backup target pool. Must also set
 // failover\_ratio.
-func (r *TargetPool) BackupPool() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backupPool"])
+func (r *TargetPool) BackupPool() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backupPool"])
 }
 
 // Textual description field.
-func (r *TargetPool) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TargetPool) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Ratio (0 to 1) of failed nodes before using the
 // backup pool (which must also be set).
-func (r *TargetPool) FailoverRatio() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["failoverRatio"])
+func (r *TargetPool) FailoverRatio() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["failoverRatio"])
 }
 
 // List of zero or one health check name or self_link. Only
 // legacy `compute.HttpHealthCheck` is supported.
-func (r *TargetPool) HealthChecks() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthChecks"])
+func (r *TargetPool) HealthChecks() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthChecks"])
 }
 
 // List of instances in the pool. They can be given as
@@ -113,38 +113,38 @@ func (r *TargetPool) HealthChecks() *pulumi.StringOutput {
 // at the time of target pool creation, so there is no need to use
 // interpolators to create a dependency on the instances from the
 // target pool.
-func (r *TargetPool) Instances() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instances"])
+func (r *TargetPool) Instances() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instances"])
 }
 
 // A unique name for the resource, required by GCE. Changing
 // this forces a new resource to be created.
-func (r *TargetPool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TargetPool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (r *TargetPool) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *TargetPool) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Where the target pool resides. Defaults to project
 // region.
-func (r *TargetPool) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *TargetPool) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The URI of the created resource.
-func (r *TargetPool) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *TargetPool) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // How to distribute load. Options are "NONE" (no
 // affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
 // "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
-func (r *TargetPool) SessionAffinity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sessionAffinity"])
+func (r *TargetPool) SessionAffinity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sessionAffinity"])
 }
 
 // Input properties used for looking up and filtering TargetPool resources.

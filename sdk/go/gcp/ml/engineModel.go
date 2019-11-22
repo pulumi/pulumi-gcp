@@ -65,54 +65,54 @@ func GetEngineModel(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *EngineModel) URN() *pulumi.URNOutput {
+func (r *EngineModel) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *EngineModel) ID() *pulumi.IDOutput {
+func (r *EngineModel) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The default version of the model. This version will be used to handle prediction requests that do not specify a version.
-func (r *EngineModel) DefaultVersion() *pulumi.Output {
+func (r *EngineModel) DefaultVersion() pulumi.Output {
 	return r.s.State["defaultVersion"]
 }
 
 // The description specified for the model when it was created.
-func (r *EngineModel) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *EngineModel) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // One or more labels that you can add, to organize your models.
-func (r *EngineModel) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *EngineModel) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The name specified for the model.
-func (r *EngineModel) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *EngineModel) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
-func (r *EngineModel) OnlinePredictionConsoleLogging() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["onlinePredictionConsoleLogging"])
+func (r *EngineModel) OnlinePredictionConsoleLogging() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["onlinePredictionConsoleLogging"])
 }
 
 // If true, online prediction access logs are sent to StackDriver Logging.
-func (r *EngineModel) OnlinePredictionLogging() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["onlinePredictionLogging"])
+func (r *EngineModel) OnlinePredictionLogging() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["onlinePredictionLogging"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *EngineModel) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *EngineModel) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The list of regions where the model is going to be deployed. Currently only one region per model is supported
-func (r *EngineModel) Regions() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["regions"])
+func (r *EngineModel) Regions() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["regions"])
 }
 
 // Input properties used for looking up and filtering EngineModel resources.

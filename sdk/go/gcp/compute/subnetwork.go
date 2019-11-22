@@ -92,50 +92,50 @@ func GetSubnetwork(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Subnetwork) URN() *pulumi.URNOutput {
+func (r *Subnetwork) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Subnetwork) ID() *pulumi.IDOutput {
+func (r *Subnetwork) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Creation timestamp in RFC3339 text format.
-func (r *Subnetwork) CreationTimestamp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTimestamp"])
+func (r *Subnetwork) CreationTimestamp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTimestamp"])
 }
 
 // An optional description of this resource. Provide this property when you create the resource. This field can be set only
 // at resource creation time.
-func (r *Subnetwork) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Subnetwork) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether to enable flow logging for this subnetwork.
-func (r *Subnetwork) EnableFlowLogs() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableFlowLogs"])
+func (r *Subnetwork) EnableFlowLogs() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableFlowLogs"])
 }
 
 // Fingerprint of this resource. This field is used internally during updates of this resource.
-func (r *Subnetwork) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *Subnetwork) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // The gateway address for default routes to reach destination addresses outside this subnetwork.
-func (r *Subnetwork) GatewayAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["gatewayAddress"])
+func (r *Subnetwork) GatewayAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["gatewayAddress"])
 }
 
 // The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
 // For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
 // supported.
-func (r *Subnetwork) IpCidrRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipCidrRange"])
+func (r *Subnetwork) IpCidrRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipCidrRange"])
 }
 
 // Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
-func (r *Subnetwork) LogConfig() *pulumi.Output {
+func (r *Subnetwork) LogConfig() pulumi.Output {
 	return r.s.State["logConfig"]
 }
 
@@ -143,57 +143,57 @@ func (r *Subnetwork) LogConfig() *pulumi.Output {
 // long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 // must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (r *Subnetwork) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Subnetwork) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
-func (r *Subnetwork) Network() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["network"])
+func (r *Subnetwork) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
 // When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
 // Google Access.
-func (r *Subnetwork) PrivateIpGoogleAccess() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["privateIpGoogleAccess"])
+func (r *Subnetwork) PrivateIpGoogleAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["privateIpGoogleAccess"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Subnetwork) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Subnetwork) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
 // set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
 // If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-func (r *Subnetwork) Purpose() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["purpose"])
+func (r *Subnetwork) Purpose() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["purpose"])
 }
 
 // URL of the GCP region for this subnetwork.
-func (r *Subnetwork) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Subnetwork) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
 // set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
 // BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
-func (r *Subnetwork) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Subnetwork) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
 // VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
 // ranges. This field uses attr-as-block mode to avoid breaking users during the 0.12 upgrade. See [the Attr-as-Block
 // page](https://www.terraform.io/docs/configuration/attr-as-blocks.html) for more details.
-func (r *Subnetwork) SecondaryIpRanges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["secondaryIpRanges"])
+func (r *Subnetwork) SecondaryIpRanges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["secondaryIpRanges"])
 }
 
 // The URI of the created resource.
-func (r *Subnetwork) SelfLink() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selfLink"])
+func (r *Subnetwork) SelfLink() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
 // Input properties used for looking up and filtering Subnetwork resources.

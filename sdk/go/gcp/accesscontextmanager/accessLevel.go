@@ -73,39 +73,39 @@ func GetAccessLevel(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessLevel) URN() *pulumi.URNOutput {
+func (r *AccessLevel) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessLevel) ID() *pulumi.IDOutput {
+func (r *AccessLevel) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A set of predefined conditions for the access level and a combining function.
-func (r *AccessLevel) Basic() *pulumi.Output {
+func (r *AccessLevel) Basic() pulumi.Output {
 	return r.s.State["basic"]
 }
 
 // Description of the AccessLevel and its use. Does not affect behavior.
-func (r *AccessLevel) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AccessLevel) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
 // '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-func (r *AccessLevel) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AccessLevel) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
-func (r *AccessLevel) Parent() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parent"])
+func (r *AccessLevel) Parent() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parent"])
 }
 
 // Human readable title. Must be unique within the Policy.
-func (r *AccessLevel) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *AccessLevel) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Input properties used for looking up and filtering AccessLevel resources.

@@ -74,12 +74,12 @@ func GetSubscription(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Subscription) URN() *pulumi.URNOutput {
+func (r *Subscription) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Subscription) ID() *pulumi.IDOutput {
+func (r *Subscription) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -92,21 +92,21 @@ func (r *Subscription) ID() *pulumi.IDOutput {
 // default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
 // to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 // message.
-func (r *Subscription) AckDeadlineSeconds() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ackDeadlineSeconds"])
+func (r *Subscription) AckDeadlineSeconds() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ackDeadlineSeconds"])
 }
 
 // A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 // as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 // subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but left
 // empty, the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
-func (r *Subscription) ExpirationPolicy() *pulumi.Output {
+func (r *Subscription) ExpirationPolicy() pulumi.Output {
 	return r.s.State["expirationPolicy"]
 }
 
 // A set of key/value label pairs to assign to this Subscription.
-func (r *Subscription) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Subscription) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
@@ -114,40 +114,40 @@ func (r *Subscription) Labels() *pulumi.MapOutput {
 // far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
 // than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
 // '"600.5s"'.
-func (r *Subscription) MessageRetentionDuration() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["messageRetentionDuration"])
+func (r *Subscription) MessageRetentionDuration() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["messageRetentionDuration"])
 }
 
 // Name of the subscription.
-func (r *Subscription) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Subscription) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Subscription) Path() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["path"])
+func (r *Subscription) Path() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["path"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (r *Subscription) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Subscription) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
 // the subscriber will pull and ack messages using API methods.
-func (r *Subscription) PushConfig() *pulumi.Output {
+func (r *Subscription) PushConfig() pulumi.Output {
 	return r.s.State["pushConfig"]
 }
 
 // Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
 // backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
-func (r *Subscription) RetainAckedMessages() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["retainAckedMessages"])
+func (r *Subscription) RetainAckedMessages() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["retainAckedMessages"])
 }
 
 // A reference to a Topic resource.
-func (r *Subscription) Topic() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topic"])
+func (r *Subscription) Topic() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Input properties used for looking up and filtering Subscription resources.

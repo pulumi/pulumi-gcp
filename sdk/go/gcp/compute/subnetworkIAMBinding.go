@@ -71,52 +71,52 @@ func GetSubnetworkIAMBinding(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SubnetworkIAMBinding) URN() *pulumi.URNOutput {
+func (r *SubnetworkIAMBinding) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SubnetworkIAMBinding) ID() *pulumi.IDOutput {
+func (r *SubnetworkIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *SubnetworkIAMBinding) Condition() *pulumi.Output {
+func (r *SubnetworkIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
 // (Computed) The etag of the IAM policy.
-func (r *SubnetworkIAMBinding) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *SubnetworkIAMBinding) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-func (r *SubnetworkIAMBinding) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *SubnetworkIAMBinding) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-func (r *SubnetworkIAMBinding) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *SubnetworkIAMBinding) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // URL of the GCP region for this subnetwork.
 // Used to find the parent resource to bind the IAM policy to. If not specified,
 // the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
 // region is specified, it is taken from the provider configuration.
-func (r *SubnetworkIAMBinding) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SubnetworkIAMBinding) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role that should be applied. Only one
 // `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (r *SubnetworkIAMBinding) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *SubnetworkIAMBinding) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (r *SubnetworkIAMBinding) Subnetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetwork"])
+func (r *SubnetworkIAMBinding) Subnetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
 // Input properties used for looking up and filtering SubnetworkIAMBinding resources.
