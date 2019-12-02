@@ -140,6 +140,9 @@ func TestAccAppServiceCs(t *testing.T) {
 	test := getCSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "serverless-cs"),
+			// One change is known to occur during refresh of the resources in this example:
+			// BucketObject has a source change
+			ExpectRefreshChanges: true,
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, body, "Hello World!")
 			}),
