@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to support go 1.13.x
-* Upgrade to pulumi-terraform-bridge v1.4.3
+_(none)_
 
 ---
+
+## 1.7.0 (2019-12-02)
+* Upgrade to support go 1.13.x
+* Upgrade to pulumi-terraform-bridge v1.4.3
 
 ## 1.6.0 (2019-11-16)
 * Allow passing `runtime` arg to HttpCallbackFunction
