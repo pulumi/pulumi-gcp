@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Pubsub
+namespace Pulumi.Gcp.PubSub
 {
     /// <summary>
     /// Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:

@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Cloudfunctions
+namespace Pulumi.Gcp.CloudFunctions
 {
     public static partial class Invokes
     {

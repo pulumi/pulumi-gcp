@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Accesscontextmanager
+namespace Pulumi.Gcp.AccessContextManager
 {
     /// <summary>
     /// AccessPolicy is a container for AccessLevels (which define the necessary

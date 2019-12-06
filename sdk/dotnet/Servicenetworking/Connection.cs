@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Servicenetworking
+namespace Pulumi.Gcp.ServiceNetworking
 {
     /// <summary>
     /// Manages a private VPC connection with a GCP service provider. For more information see

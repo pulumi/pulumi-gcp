@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using Pulumi;
-using Pulumi.Gcp.Cloudfunctions;
+using Pulumi.Gcp.CloudFunctions;
 using Pulumi.Gcp.Storage;
 
 class Program
