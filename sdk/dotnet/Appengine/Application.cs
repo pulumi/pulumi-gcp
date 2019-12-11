@@ -276,8 +276,8 @@ namespace Pulumi.Gcp.AppEngine
         /// Set to false to use the legacy health check instead of the readiness
         /// and liveness checks.
         /// </summary>
-        [Input("splitHealthChecks")]
-        public Input<bool>? SplitHealthChecks { get; set; }
+        [Input("splitHealthChecks", required: true)]
+        public Input<bool> SplitHealthChecks { get; set; } = null!;
 
         public ApplicationFeatureSettingsArgs()
         {
@@ -290,8 +290,8 @@ namespace Pulumi.Gcp.AppEngine
         /// Set to false to use the legacy health check instead of the readiness
         /// and liveness checks.
         /// </summary>
-        [Input("splitHealthChecks")]
-        public Input<bool>? SplitHealthChecks { get; set; }
+        [Input("splitHealthChecks", required: true)]
+        public Input<bool> SplitHealthChecks { get; set; } = null!;
 
         public ApplicationFeatureSettingsGetArgs()
         {
@@ -325,10 +325,10 @@ namespace Pulumi.Gcp.AppEngine
         /// Set to false to use the legacy health check instead of the readiness
         /// and liveness checks.
         /// </summary>
-        public readonly bool? SplitHealthChecks;
+        public readonly bool SplitHealthChecks;
 
         [OutputConstructor]
-        private ApplicationFeatureSettings(bool? splitHealthChecks)
+        private ApplicationFeatureSettings(bool splitHealthChecks)
         {
             SplitHealthChecks = splitHealthChecks;
         }

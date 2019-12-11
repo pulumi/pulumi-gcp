@@ -12,7 +12,6 @@ from .. import utilities, tables
 class Subnetwork(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
-    enable_flow_logs: pulumi.Output[bool]
     fingerprint: pulumi.Output[str]
     gateway_address: pulumi.Output[str]
     ip_cidr_range: pulumi.Output[str]
@@ -33,7 +32,7 @@ class Subnetwork(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, enable_flow_logs=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Subnetwork resource with the given unique name, props, and options.
         
@@ -73,7 +72,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['enable_flow_logs'] = enable_flow_logs
             if ip_cidr_range is None:
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__['ip_cidr_range'] = ip_cidr_range
@@ -99,7 +97,7 @@ class Subnetwork(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, enable_flow_logs=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None):
+    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None):
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,7 +127,6 @@ class Subnetwork(pulumi.CustomResource):
         __props__ = dict()
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
-        __props__["enable_flow_logs"] = enable_flow_logs
         __props__["fingerprint"] = fingerprint
         __props__["gateway_address"] = gateway_address
         __props__["ip_cidr_range"] = ip_cidr_range

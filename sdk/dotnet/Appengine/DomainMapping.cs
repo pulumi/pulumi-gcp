@@ -208,8 +208,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("pendingManagedCertificateId")]
         public Input<string>? PendingManagedCertificateId { get; set; }
 
-        [Input("sslManagementType")]
-        public Input<string>? SslManagementType { get; set; }
+        [Input("sslManagementType", required: true)]
+        public Input<string> SslManagementType { get; set; } = null!;
 
         public DomainMappingSslSettingsArgs()
         {
@@ -224,8 +224,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("pendingManagedCertificateId")]
         public Input<string>? PendingManagedCertificateId { get; set; }
 
-        [Input("sslManagementType")]
-        public Input<string>? SslManagementType { get; set; }
+        [Input("sslManagementType", required: true)]
+        public Input<string> SslManagementType { get; set; } = null!;
 
         public DomainMappingSslSettingsGetArgs()
         {
@@ -260,13 +260,13 @@ namespace Pulumi.Gcp.AppEngine
     {
         public readonly string CertificateId;
         public readonly string PendingManagedCertificateId;
-        public readonly string? SslManagementType;
+        public readonly string SslManagementType;
 
         [OutputConstructor]
         private DomainMappingSslSettings(
             string certificateId,
             string pendingManagedCertificateId,
-            string? sslManagementType)
+            string sslManagementType)
         {
             CertificateId = certificateId;
             PendingManagedCertificateId = pendingManagedCertificateId;

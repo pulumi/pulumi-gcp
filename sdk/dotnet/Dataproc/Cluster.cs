@@ -246,8 +246,8 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigAutoscalingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("policyUri")]
-        public Input<string>? PolicyUri { get; set; }
+        [Input("policyUri", required: true)]
+        public Input<string> PolicyUri { get; set; } = null!;
 
         public ClusterClusterConfigAutoscalingConfigArgs()
         {
@@ -256,8 +256,8 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigAutoscalingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("policyUri")]
-        public Input<string>? PolicyUri { get; set; }
+        [Input("policyUri", required: true)]
+        public Input<string> PolicyUri { get; set; } = null!;
 
         public ClusterClusterConfigAutoscalingConfigGetArgs()
         {
@@ -901,10 +901,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigAutoscalingConfig
     {
-        public readonly string? PolicyUri;
+        public readonly string PolicyUri;
 
         [OutputConstructor]
-        private ClusterClusterConfigAutoscalingConfig(string? policyUri)
+        private ClusterClusterConfigAutoscalingConfig(string policyUri)
         {
             PolicyUri = policyUri;
         }

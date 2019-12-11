@@ -16,9 +16,10 @@ class Repository(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    pubsub_configs: pulumi.Output[list]
     size: pulumi.Output[float]
     url: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, project=None, pubsub_configs=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Repository resource with the given unique name, props, and options.
         
@@ -26,6 +27,12 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **pubsub_configs** object supports the following:
+        
+          * `messageFormat` (`pulumi.Input[str]`)
+          * `service_account_email` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
         """
@@ -48,6 +55,7 @@ class Repository(pulumi.CustomResource):
 
             __props__['name'] = name
             __props__['project'] = project
+            __props__['pubsub_configs'] = pubsub_configs
             __props__['size'] = None
             __props__['url'] = None
         super(Repository, __self__).__init__(
@@ -57,7 +65,7 @@ class Repository(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, project=None, size=None, url=None):
+    def get(resource_name, id, opts=None, name=None, project=None, pubsub_configs=None, size=None, url=None):
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -67,6 +75,12 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **pubsub_configs** object supports the following:
+        
+          * `messageFormat` (`pulumi.Input[str]`)
+          * `service_account_email` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
         """
@@ -75,6 +89,7 @@ class Repository(pulumi.CustomResource):
         __props__ = dict()
         __props__["name"] = name
         __props__["project"] = project
+        __props__["pubsub_configs"] = pubsub_configs
         __props__["size"] = size
         __props__["url"] = url
         return Repository(resource_name, opts=opts, __props__=__props__)

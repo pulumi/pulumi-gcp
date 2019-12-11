@@ -36,6 +36,10 @@ func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigtableCustomEndpoint")
 }
 
+func GetBillingCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:billingCustomEndpoint")
+}
+
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
@@ -62,6 +66,10 @@ func GetCloudRunCustomEndpoint(ctx *pulumi.Context) string {
 
 func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudSchedulerCustomEndpoint")
+}
+
+func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudTasksCustomEndpoint")
 }
 
 func GetComposerCustomEndpoint(ctx *pulumi.Context) string {
@@ -191,6 +199,10 @@ func GetRegion(ctx *pulumi.Context) string {
 		return dv
 	}
 	return v
+}
+
+func GetRequestTimeout(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:requestTimeout")
 }
 
 func GetResourceManagerCustomEndpoint(ctx *pulumi.Context) string {

@@ -19,12 +19,6 @@ class Registry(pulumi.CustomResource):
         * `certificate` (`str`)
         * `format` (`str`)
     """
-    event_notification_config: pulumi.Output[dict]
-    """
-    Use `event_notification_configs` instead.
-    
-      * `pubsub_topic_name` (`str`)
-    """
     event_notification_configs: pulumi.Output[list]
     """
     List of configurations for event notification, such as
@@ -65,7 +59,7 @@ class Registry(pulumi.CustomResource):
     
       * `pubsub_topic_name` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_config=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
         """
          Creates a device registry in Google's Cloud IoT Core platform. For more information see
         [the official documentation](https://cloud.google.com/iot/docs/) and
@@ -74,7 +68,6 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[dict] event_notification_config: Use `event_notification_configs` instead.
         :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
                PubSub topics to publish device events to. Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
@@ -91,10 +84,6 @@ class Registry(pulumi.CustomResource):
         
             * `certificate` (`pulumi.Input[str]`)
             * `format` (`pulumi.Input[str]`)
-        
-        The **event_notification_config** object supports the following:
-        
-          * `pubsub_topic_name` (`pulumi.Input[str]`)
         
         The **event_notification_configs** object supports the following:
         
@@ -133,7 +122,6 @@ class Registry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['credentials'] = credentials
-            __props__['event_notification_config'] = event_notification_config
             __props__['event_notification_configs'] = event_notification_configs
             __props__['http_config'] = http_config
             __props__['log_level'] = log_level
@@ -149,7 +137,7 @@ class Registry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, credentials=None, event_notification_config=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):
+    def get(resource_name, id, opts=None, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None):
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -158,7 +146,6 @@ class Registry(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[dict] event_notification_config: Use `event_notification_configs` instead.
         :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
                PubSub topics to publish device events to. Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
@@ -175,10 +162,6 @@ class Registry(pulumi.CustomResource):
         
             * `certificate` (`pulumi.Input[str]`)
             * `format` (`pulumi.Input[str]`)
-        
-        The **event_notification_config** object supports the following:
-        
-          * `pubsub_topic_name` (`pulumi.Input[str]`)
         
         The **event_notification_configs** object supports the following:
         
@@ -203,7 +186,6 @@ class Registry(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["credentials"] = credentials
-        __props__["event_notification_config"] = event_notification_config
         __props__["event_notification_configs"] = event_notification_configs
         __props__["http_config"] = http_config
         __props__["log_level"] = log_level

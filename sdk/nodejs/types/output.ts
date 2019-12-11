@@ -23,12 +23,14 @@ export namespace accesscontextmanager {
         allowedDeviceManagementLevels?: string[];
         allowedEncryptionStatuses?: string[];
         osConstraints?: outputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraint[];
+        requireAdminApproval?: boolean;
+        requireCorpOwned?: boolean;
         requireScreenLock?: boolean;
     }
 
     export interface AccessLevelBasicConditionDevicePolicyOsConstraint {
         minimumVersion?: string;
-        osType?: string;
+        osType: string;
     }
 
     export interface ServicePerimeterStatus {
@@ -44,7 +46,7 @@ export namespace appengine {
          * Set to false to use the legacy health check instead of the readiness
          * and liveness checks.
          */
-        splitHealthChecks?: boolean;
+        splitHealthChecks: boolean;
     }
 
     export interface ApplicationUrlDispatchRule {
@@ -68,7 +70,7 @@ export namespace appengine {
     export interface DomainMappingSslSettings {
         certificateId: string;
         pendingManagedCertificateId: string;
-        sslManagementType?: string;
+        sslManagementType: string;
     }
 
     export interface StandardAppVersionDeployment {
@@ -79,16 +81,16 @@ export namespace appengine {
     export interface StandardAppVersionDeploymentFile {
         name: string;
         sha1Sum?: string;
-        sourceUrl?: string;
+        sourceUrl: string;
     }
 
     export interface StandardAppVersionDeploymentZip {
         filesCount?: number;
-        sourceUrl?: string;
+        sourceUrl: string;
     }
 
     export interface StandardAppVersionEntrypoint {
-        shell?: string;
+        shell: string;
     }
 
     export interface StandardAppVersionHandler {
@@ -102,7 +104,7 @@ export namespace appengine {
     }
 
     export interface StandardAppVersionHandlerScript {
-        scriptPath?: string;
+        scriptPath: string;
     }
 
     export interface StandardAppVersionHandlerStaticFiles {
@@ -124,7 +126,7 @@ export namespace appengine {
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
         allowTransactionalWrites?: boolean;
-        clusterId?: string;
+        clusterId: string;
     }
 
     export interface DatasetAccess {
@@ -143,6 +145,10 @@ export namespace bigquery {
     }
 
     export interface DatasetDefaultEncryptionConfiguration {
+        kmsKeyName: string;
+    }
+
+    export interface TableEncryptionConfiguration {
         kmsKeyName: string;
     }
 
@@ -241,6 +247,32 @@ export namespace billing {
         expression: string;
         title: string;
     }
+
+    export interface BudgetAllUpdatesRule {
+        pubsubTopic: string;
+        schemaVersion?: string;
+    }
+
+    export interface BudgetAmount {
+        specifiedAmount: outputs.billing.BudgetAmountSpecifiedAmount;
+    }
+
+    export interface BudgetAmountSpecifiedAmount {
+        currencyCode?: string;
+        nanos?: number;
+        units?: string;
+    }
+
+    export interface BudgetBudgetFilter {
+        creditTypesTreatment?: string;
+        projects?: string[];
+        services?: string[];
+    }
+
+    export interface BudgetThresholdRule {
+        spendBasis?: string;
+        thresholdPercent: number;
+    }
 }
 
 export namespace binaryauthorization {
@@ -275,13 +307,13 @@ export namespace binaryauthorization {
     }
 
     export interface PolicyAdmissionWhitelistPattern {
-        namePattern?: string;
+        namePattern: string;
     }
 
     export interface PolicyClusterAdmissionRule {
         cluster: string;
-        enforcementMode?: string;
-        evaluationMode?: string;
+        enforcementMode: string;
+        evaluationMode: string;
         requireAttestationsBies?: string[];
     }
 
@@ -295,8 +327,9 @@ export namespace binaryauthorization {
 export namespace cloudbuild {
     export interface TriggerBuild {
         images?: string[];
-        steps?: outputs.cloudbuild.TriggerBuildStep[];
+        steps: outputs.cloudbuild.TriggerBuildStep[];
         tags?: string[];
+        timeout?: string;
     }
 
     export interface TriggerBuildStep {
@@ -305,7 +338,7 @@ export namespace cloudbuild {
         entrypoint?: string;
         envs?: string[];
         id?: string;
-        name?: string;
+        name: string;
         secretEnvs?: string[];
         timeout?: string;
         timing?: string;
@@ -314,8 +347,8 @@ export namespace cloudbuild {
     }
 
     export interface TriggerBuildStepVolume {
-        name?: string;
-        path?: string;
+        name: string;
+        path: string;
     }
 
     export interface TriggerGithub {
@@ -326,7 +359,7 @@ export namespace cloudbuild {
     }
 
     export interface TriggerGithubPullRequest {
-        branch?: string;
+        branch: string;
         commentControl?: string;
     }
 
@@ -436,8 +469,20 @@ export namespace cloudrun {
 
     export interface DomainMappingStatusResourceRecord {
         name: string;
-        rrdata?: string;
+        rrdata: string;
         type?: string;
+    }
+
+    export interface IamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface IamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface ServiceMetadata {
@@ -448,56 +493,6 @@ export namespace cloudrun {
         resourceVersion: string;
         selfLink: string;
         uid: string;
-    }
-
-    export interface ServiceSpec {
-        containerConcurrency?: number;
-        containers: outputs.cloudrun.ServiceSpecContainer[];
-        servingState: string;
-    }
-
-    export interface ServiceSpecContainer {
-        args?: string[];
-        commands?: string[];
-        envs?: outputs.cloudrun.ServiceSpecContainerEnv[];
-        envFroms?: outputs.cloudrun.ServiceSpecContainerEnvFrom[];
-        image: string;
-        resources?: outputs.cloudrun.ServiceSpecContainerResources;
-        workingDir?: string;
-    }
-
-    export interface ServiceSpecContainerEnv {
-        name?: string;
-        value?: string;
-    }
-
-    export interface ServiceSpecContainerEnvFrom {
-        configMapRef?: outputs.cloudrun.ServiceSpecContainerEnvFromConfigMapRef;
-        prefix?: string;
-        secretRef?: outputs.cloudrun.ServiceSpecContainerEnvFromSecretRef;
-    }
-
-    export interface ServiceSpecContainerEnvFromConfigMapRef {
-        localObjectReference?: outputs.cloudrun.ServiceSpecContainerEnvFromConfigMapRefLocalObjectReference;
-        optional?: boolean;
-    }
-
-    export interface ServiceSpecContainerEnvFromConfigMapRefLocalObjectReference {
-        name?: string;
-    }
-
-    export interface ServiceSpecContainerEnvFromSecretRef {
-        localObjectReference?: outputs.cloudrun.ServiceSpecContainerEnvFromSecretRefLocalObjectReference;
-        optional?: boolean;
-    }
-
-    export interface ServiceSpecContainerEnvFromSecretRefLocalObjectReference {
-        name?: string;
-    }
-
-    export interface ServiceSpecContainerResources {
-        limits?: {[key: string]: string};
-        requests?: {[key: string]: string};
     }
 
     export interface ServiceStatus {
@@ -513,6 +508,79 @@ export namespace cloudrun {
         reason: string;
         status: string;
         type: string;
+    }
+
+    export interface ServiceTemplate {
+        metadata?: outputs.cloudrun.ServiceTemplateMetadata;
+        spec: outputs.cloudrun.ServiceTemplateSpec;
+    }
+
+    export interface ServiceTemplateMetadata {
+        annotations?: {[key: string]: string};
+        generation: number;
+        labels?: {[key: string]: string};
+        name: string;
+        namespace: string;
+        resourceVersion: string;
+        selfLink: string;
+        uid: string;
+    }
+
+    export interface ServiceTemplateSpec {
+        containerConcurrency?: number;
+        containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
+        serviceAccountName?: string;
+        servingState: string;
+    }
+
+    export interface ServiceTemplateSpecContainer {
+        args?: string[];
+        commands?: string[];
+        envs?: outputs.cloudrun.ServiceTemplateSpecContainerEnv[];
+        envFroms?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFrom[];
+        image: string;
+        resources?: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        workingDir?: string;
+    }
+
+    export interface ServiceTemplateSpecContainerEnv {
+        name?: string;
+        value?: string;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFrom {
+        configMapRef?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRef;
+        prefix?: string;
+        secretRef?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRef;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromConfigMapRef {
+        localObjectReference?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference;
+        optional?: boolean;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+        name: string;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromSecretRef {
+        localObjectReference?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference;
+        optional?: boolean;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+        name: string;
+    }
+
+    export interface ServiceTemplateSpecContainerResources {
+        limits?: {[key: string]: string};
+        requests?: {[key: string]: string};
+    }
+
+    export interface ServiceTraffic {
+        latestRevision?: boolean;
+        percent: number;
+        revisionName?: string;
     }
 }
 
@@ -542,12 +610,12 @@ export namespace cloudscheduler {
 
     export interface JobHttpTargetOauthToken {
         scope?: string;
-        serviceAccountEmail?: string;
+        serviceAccountEmail: string;
     }
 
     export interface JobHttpTargetOidcToken {
         audience?: string;
-        serviceAccountEmail?: string;
+        serviceAccountEmail: string;
     }
 
     export interface JobPubsubTarget {
@@ -562,6 +630,29 @@ export namespace cloudscheduler {
         maxRetryDuration?: string;
         minBackoffDuration?: string;
         retryCount?: number;
+    }
+}
+
+export namespace cloudtasks {
+    export interface QueueAppEngineRoutingOverride {
+        host: string;
+        instance?: string;
+        service?: string;
+        version?: string;
+    }
+
+    export interface QueueRateLimits {
+        maxBurstSize: number;
+        maxConcurrentDispatches: number;
+        maxDispatchesPerSecond: number;
+    }
+
+    export interface QueueRetryConfig {
+        maxAttempts: number;
+        maxBackoff: string;
+        maxDoublings: number;
+        maxRetryDuration: string;
+        minBackoff: string;
     }
 }
 
@@ -593,7 +684,7 @@ export namespace composer {
         clusterSecondaryRangeName?: string;
         servicesIpv4CidrBlock?: string;
         servicesSecondaryRangeName?: string;
-        useIpAliases?: boolean;
+        useIpAliases: boolean;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
@@ -648,14 +739,14 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
-        signedUrlCacheMaxAgeSec?: number;
+        signedUrlCacheMaxAgeSec: number;
     }
 
     export interface BackendServiceBackend {
         balancingMode?: string;
         capacityScaler?: number;
         description?: string;
-        group?: string;
+        group: string;
         maxConnections?: number;
         maxConnectionsPerEndpoint?: number;
         maxConnectionsPerInstance?: number;
@@ -942,34 +1033,6 @@ export namespace compute {
         type: string;
     }
 
-    export interface GetInstanceDisk {
-        /**
-         * Whether the disk will be auto-deleted when the instance is deleted.
-         */
-        autoDelete: boolean;
-        /**
-         * Name with which the attached disk is accessible
-         * under `/dev/disk/by-id/`
-         */
-        deviceName: string;
-        disk: string;
-        diskEncryptionKeyRaw: string;
-        diskEncryptionKeySha256: string;
-        /**
-         * The image from which this disk was initialised.
-         */
-        image: string;
-        scratch: boolean;
-        /**
-         * The size of the image in gigabytes.
-         */
-        size: number;
-        /**
-         * The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
-         */
-        type: string;
-    }
-
     export interface GetInstanceGroupNamedPort {
         /**
          * The name of the instance group. Either `name` or `selfLink` must be provided.
@@ -995,7 +1058,6 @@ export namespace compute {
          * instance can be accessed via the Internet. Structure documented below.
          */
         accessConfigs: outputs.compute.GetInstanceNetworkInterfaceAccessConfig[];
-        address: string;
         /**
          * An array of alias IP ranges for this network interface. Structure documented below.
          */
@@ -1023,7 +1085,6 @@ export namespace compute {
     }
 
     export interface GetInstanceNetworkInterfaceAccessConfig {
-        assignedNatIp: string;
         /**
          * The IP address that is be 1:1 mapped to the instance's
          * network ip.
@@ -1216,7 +1277,7 @@ export namespace compute {
     }
 
     export interface ImageGuestOsFeature {
-        type?: string;
+        type: string;
     }
 
     export interface ImageRawDisk {
@@ -1367,12 +1428,6 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerVersion {
-        /**
-         * The
-         * full URL to an instance template from which all new instances
-         * will be created. This field is replaced by `version.instance_template`. You must
-         * specify at least one `version` block with an `instanceTemplate`.
-         */
         instanceTemplate: string;
         /**
          * The name of the instance group manager. Must be 1-63
@@ -1461,7 +1516,7 @@ export namespace compute {
     }
 
     export interface InstanceScratchDisk {
-        interface?: string;
+        interface: string;
     }
 
     export interface InstanceServiceAccount {
@@ -1496,7 +1551,7 @@ export namespace compute {
     }
 
     export interface InstanceTemplateDiskDiskEncryptionKey {
-        kmsKeySelfLink?: string;
+        kmsKeySelfLink: string;
     }
 
     export interface InstanceTemplateGuestAccelerator {
@@ -1763,12 +1818,6 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerVersion {
-        /**
-         * The
-         * full URL to an instance template from which all new instances
-         * will be created. This field is replaced by `version.instance_template`. You must
-         * specify at least one `version` block with an `instanceTemplate`.
-         */
         instanceTemplate: string;
         /**
          * The name of the instance group manager. Must be 1-63
@@ -1801,11 +1850,285 @@ export namespace compute {
         description?: string;
         name: string;
         pathRules?: outputs.compute.RegionUrlMapPathMatcherPathRule[];
+        routeRules?: outputs.compute.RegionUrlMapPathMatcherRouteRule[];
     }
 
     export interface RegionUrlMapPathMatcherPathRule {
         paths: string[];
-        service: string;
+        routeAction?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteAction;
+        service?: string;
+        urlRedirect?: outputs.compute.RegionUrlMapPathMatcherPathRuleUrlRedirect;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteAction {
+        corsPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy;
+        faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
+        requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy;
+        retryPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy;
+        timeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeout;
+        urlRewrite?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite;
+        weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService[];
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
+        allowCredentials?: boolean;
+        allowHeaders?: string[];
+        allowMethods?: string[];
+        allowOriginRegexes?: string[];
+        allowOrigins?: string[];
+        disabled: boolean;
+        exposeHeaders?: string[];
+        maxAge?: number;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        abort?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort;
+        delay?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus: number;
+        percentage: number;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        percentage: number;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        backendService: string;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
+        numRetries?: number;
+        perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
+        retryConditions?: string[];
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
+        hostRewrite?: string;
+        pathPrefixRewrite?: string;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        backendService: string;
+        headerAction?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
+        weight: number;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleUrlRedirect {
+        hostRedirect?: string;
+        httpsRedirect?: boolean;
+        pathRedirect?: string;
+        prefixRedirect?: string;
+        redirectResponseCode?: string;
+        stripQuery: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRule {
+        headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderAction;
+        matchRules?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRule[];
+        priority: number;
+        routeAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteAction;
+        service?: string;
+        urlRedirect?: outputs.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirect;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderAction {
+        requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRule {
+        fullPathMatch?: string;
+        headerMatches?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch[];
+        ignoreCase?: boolean;
+        metadataFilters?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter[];
+        prefixMatch?: string;
+        queryParameterMatches?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch[];
+        regexMatch?: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        exactMatch?: string;
+        headerName: string;
+        invertMatch?: boolean;
+        prefixMatch?: string;
+        presentMatch?: boolean;
+        rangeMatch?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch;
+        regexMatch?: string;
+        suffixMatch?: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        rangeEnd: number;
+        rangeStart: number;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        filterLabels: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel[];
+        filterMatchCriteria: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        name: string;
+        value: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        exactMatch?: string;
+        name: string;
+        presentMatch?: boolean;
+        regexMatch?: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteAction {
+        corsPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy;
+        faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+        requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
+        retryPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy;
+        timeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout;
+        urlRewrite?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite;
+        weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService[];
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        allowCredentials?: boolean;
+        allowHeaders?: string[];
+        allowMethods?: string[];
+        allowOriginRegexes?: string[];
+        allowOrigins?: string[];
+        disabled?: boolean;
+        exposeHeaders?: string[];
+        maxAge?: number;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        abort?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort;
+        delay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus?: number;
+        percentage?: number;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        percentage?: number;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        backendService: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        numRetries: number;
+        perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
+        retryConditions?: string[];
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        hostRewrite?: string;
+        pathPrefixRewrite?: string;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        backendService: string;
+        headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction;
+        weight: number;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleUrlRedirect {
+        hostRedirect?: string;
+        httpsRedirect?: boolean;
+        pathRedirect?: string;
+        prefixRedirect?: string;
+        redirectResponseCode?: string;
+        stripQuery?: boolean;
     }
 
     export interface RegionUrlMapTest {
@@ -1889,7 +2212,7 @@ export namespace compute {
 
     export interface RouterBgpAdvertisedIpRange {
         description?: string;
-        range?: string;
+        range: string;
     }
 
     export interface RouterNatLogConfig {
@@ -1905,7 +2228,7 @@ export namespace compute {
 
     export interface RouterPeerAdvertisedIpRange {
         description?: string;
-        range?: string;
+        range: string;
     }
 
     export interface SecurityPolicyRule {
@@ -1920,12 +2243,17 @@ export namespace compute {
     }
 
     export interface SecurityPolicyRuleMatch {
-        config: outputs.compute.SecurityPolicyRuleMatchConfig;
-        versionedExpr: string;
+        config?: outputs.compute.SecurityPolicyRuleMatchConfig;
+        expr?: outputs.compute.SecurityPolicyRuleMatchExpr;
+        versionedExpr?: string;
     }
 
     export interface SecurityPolicyRuleMatchConfig {
         srcIpRanges: string[];
+    }
+
+    export interface SecurityPolicyRuleMatchExpr {
+        expression: string;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -1950,7 +2278,7 @@ export namespace compute {
     }
 
     export interface SnapshotSnapshotEncryptionKey {
-        rawKey?: string;
+        rawKey: string;
         sha256: string;
     }
 
@@ -1981,6 +2309,25 @@ export namespace compute {
         rangeName: string;
     }
 
+    export interface URLMapHeaderAction {
+        requestHeadersToAdds?: outputs.compute.URLMapHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.URLMapHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface URLMapHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
     export interface URLMapHostRule {
         description?: string;
         hosts: string[];
@@ -1988,15 +2335,309 @@ export namespace compute {
     }
 
     export interface URLMapPathMatcher {
-        defaultService: string;
+        defaultService?: string;
         description?: string;
+        headerAction?: outputs.compute.URLMapPathMatcherHeaderAction;
         name: string;
         pathRules?: outputs.compute.URLMapPathMatcherPathRule[];
+        routeRules?: outputs.compute.URLMapPathMatcherRouteRule[];
+    }
+
+    export interface URLMapPathMatcherHeaderAction {
+        requestHeadersToAdds?: outputs.compute.URLMapPathMatcherHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.URLMapPathMatcherHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface URLMapPathMatcherHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
     }
 
     export interface URLMapPathMatcherPathRule {
         paths: string[];
-        service: string;
+        routeAction?: outputs.compute.URLMapPathMatcherPathRuleRouteAction;
+        service?: string;
+        urlRedirect?: outputs.compute.URLMapPathMatcherPathRuleUrlRedirect;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteAction {
+        corsPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy;
+        faultInjectionPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
+        requestMirrorPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy;
+        retryPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicy;
+        timeout?: outputs.compute.URLMapPathMatcherPathRuleRouteActionTimeout;
+        urlRewrite?: outputs.compute.URLMapPathMatcherPathRuleRouteActionUrlRewrite;
+        weightedBackendServices?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendService[];
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+        allowCredentials?: boolean;
+        allowHeaders?: string[];
+        allowMethods?: string[];
+        allowOriginRegexes?: string[];
+        allowOrigins?: string[];
+        disabled: boolean;
+        exposeHeaders?: string[];
+        maxAge?: number;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        abort?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort;
+        delay?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus: number;
+        percentage: number;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        percentage: number;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        backendService: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+        numRetries?: number;
+        perTryTimeout?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
+        retryConditions?: string[];
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+        hostRewrite?: string;
+        pathPrefixRewrite?: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        backendService: string;
+        headerAction?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
+        weight: number;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherPathRuleUrlRedirect {
+        hostRedirect?: string;
+        httpsRedirect?: boolean;
+        pathRedirect?: string;
+        prefixRedirect?: string;
+        redirectResponseCode?: string;
+        stripQuery: boolean;
+    }
+
+    export interface URLMapPathMatcherRouteRule {
+        headerAction?: outputs.compute.URLMapPathMatcherRouteRuleHeaderAction;
+        matchRules?: outputs.compute.URLMapPathMatcherRouteRuleMatchRule[];
+        priority: number;
+        routeAction?: outputs.compute.URLMapPathMatcherRouteRuleRouteAction;
+        service?: string;
+        urlRedirect?: outputs.compute.URLMapPathMatcherRouteRuleUrlRedirect;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderAction {
+        requestHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRule {
+        fullPathMatch?: string;
+        headerMatches?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatch[];
+        ignoreCase?: boolean;
+        metadataFilters?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter[];
+        prefixMatch?: string;
+        queryParameterMatches?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch[];
+        regexMatch?: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        exactMatch?: string;
+        headerName: string;
+        invertMatch?: boolean;
+        prefixMatch?: string;
+        presentMatch?: boolean;
+        rangeMatch?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch;
+        regexMatch?: string;
+        suffixMatch?: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        rangeEnd: number;
+        rangeStart: number;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        filterLabels: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel[];
+        filterMatchCriteria: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        name: string;
+        value: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        exactMatch?: string;
+        name: string;
+        presentMatch?: boolean;
+        regexMatch?: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteAction {
+        corsPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy;
+        faultInjectionPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+        requestMirrorPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
+        retryPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicy;
+        timeout?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionTimeout;
+        urlRewrite?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite;
+        weightedBackendServices?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService[];
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        allowCredentials?: boolean;
+        allowHeaders?: string[];
+        allowMethods?: string[];
+        allowOriginRegexes?: string[];
+        allowOrigins?: string[];
+        disabled?: boolean;
+        exposeHeaders?: string[];
+        maxAge?: number;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        abort?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort;
+        delay?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus?: number;
+        percentage?: number;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        percentage?: number;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        backendService: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        numRetries: number;
+        perTryTimeout?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
+        retryConditions?: string[];
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionTimeout {
+        nanos?: number;
+        seconds: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        hostRewrite?: string;
+        pathPrefixRewrite?: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        backendService: string;
+        headerAction?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction;
+        weight: number;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        requestHeadersToRemoves?: string[];
+        responseHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: string;
+        headerValue: string;
+        replace: boolean;
+    }
+
+    export interface URLMapPathMatcherRouteRuleUrlRedirect {
+        hostRedirect?: string;
+        httpsRedirect?: boolean;
+        pathRedirect?: string;
+        prefixRedirect?: string;
+        redirectResponseCode?: string;
+        stripQuery?: boolean;
     }
 
     export interface URLMapTest {
@@ -2013,33 +2654,28 @@ export namespace container {
         horizontalPodAutoscaling: outputs.container.ClusterAddonsConfigHorizontalPodAutoscaling;
         httpLoadBalancing: outputs.container.ClusterAddonsConfigHttpLoadBalancing;
         istioConfig: outputs.container.ClusterAddonsConfigIstioConfig;
-        kubernetesDashboard: outputs.container.ClusterAddonsConfigKubernetesDashboard;
         networkPolicyConfig: outputs.container.ClusterAddonsConfigNetworkPolicyConfig;
     }
 
     export interface ClusterAddonsConfigCloudrunConfig {
-        disabled?: boolean;
+        disabled: boolean;
     }
 
     export interface ClusterAddonsConfigHorizontalPodAutoscaling {
-        disabled?: boolean;
+        disabled: boolean;
     }
 
     export interface ClusterAddonsConfigHttpLoadBalancing {
-        disabled?: boolean;
+        disabled: boolean;
     }
 
     export interface ClusterAddonsConfigIstioConfig {
         auth?: string;
-        disabled?: boolean;
-    }
-
-    export interface ClusterAddonsConfigKubernetesDashboard {
-        disabled?: boolean;
+        disabled: boolean;
     }
 
     export interface ClusterAddonsConfigNetworkPolicyConfig {
-        disabled?: boolean;
+        disabled: boolean;
     }
 
     export interface ClusterAuthenticatorGroupsConfig {
@@ -2047,8 +2683,14 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscaling {
+        autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
         enabled: boolean;
         resourceLimits?: outputs.container.ClusterClusterAutoscalingResourceLimit[];
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        oauthScopes?: string[];
+        serviceAccount?: string;
     }
 
     export interface ClusterClusterAutoscalingResourceLimit {
@@ -2065,12 +2707,8 @@ export namespace container {
     export interface ClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
-        createSubnetwork: boolean;
-        nodeIpv4CidrBlock: string;
         servicesIpv4CidrBlock: string;
         servicesSecondaryRangeName: string;
-        subnetworkName: string;
-        useIpAliases?: boolean;
     }
 
     export interface ClusterMaintenancePolicy {
@@ -2112,7 +2750,7 @@ export namespace container {
     }
 
     export interface ClusterNetworkPolicy {
-        enabled?: boolean;
+        enabled: boolean;
         provider?: string;
     }
 
@@ -2200,6 +2838,7 @@ export namespace container {
          * a zonal cluster, omit the cluster's zone.
          */
         nodeLocations: string[];
+        upgradeSettings?: outputs.container.ClusterNodePoolUpgradeSettings;
         version: string;
     }
 
@@ -2257,20 +2896,26 @@ export namespace container {
         nodeMetadata: string;
     }
 
+    export interface ClusterNodePoolUpgradeSettings {
+        maxSurge: number;
+        maxUnavailable: number;
+    }
+
     export interface ClusterPodSecurityPolicyConfig {
         enabled: boolean;
     }
 
     export interface ClusterPrivateClusterConfig {
-        enablePrivateEndpoint?: boolean;
+        enablePrivateEndpoint: boolean;
         enablePrivateNodes?: boolean;
         masterIpv4CidrBlock?: string;
+        peeringName: string;
         privateEndpoint: string;
         publicEndpoint: string;
     }
 
     export interface ClusterReleaseChannel {
-        channel?: string;
+        channel: string;
     }
 
     export interface ClusterResourceUsageExportConfig {
@@ -2283,7 +2928,7 @@ export namespace container {
     }
 
     export interface ClusterVerticalPodAutoscaling {
-        enabled?: boolean;
+        enabled: boolean;
     }
 
     export interface ClusterWorkloadIdentityConfig {
@@ -2329,8 +2974,14 @@ export namespace container {
     }
 
     export interface GetClusterClusterAutoscaling {
+        autoProvisioningDefaults: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefault[];
         enabled: boolean;
         resourceLimits: outputs.container.GetClusterClusterAutoscalingResourceLimit[];
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        oauthScopes: string[];
+        serviceAccount: string;
     }
 
     export interface GetClusterClusterAutoscalingResourceLimit {
@@ -2456,6 +3107,7 @@ export namespace container {
         nodeConfigs: outputs.container.GetClusterNodePoolNodeConfig[];
         nodeCount: number;
         nodeLocations: string[];
+        upgradeSettings: outputs.container.GetClusterNodePoolUpgradeSetting[];
         version: string;
     }
 
@@ -2513,6 +3165,11 @@ export namespace container {
         nodeMetadata: string;
     }
 
+    export interface GetClusterNodePoolUpgradeSetting {
+        maxSurge: number;
+        maxUnavailable: number;
+    }
+
     export interface GetClusterPodSecurityPolicyConfig {
         enabled: boolean;
     }
@@ -2521,6 +3178,7 @@ export namespace container {
         enablePrivateEndpoint: boolean;
         enablePrivateNodes: boolean;
         masterIpv4CidrBlock: string;
+        peeringName: string;
         privateEndpoint: string;
         publicEndpoint: string;
     }
@@ -2599,6 +3257,11 @@ export namespace container {
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
         nodeMetadata: string;
     }
+
+    export interface NodePoolUpgradeSettings {
+        maxSurge: number;
+        maxUnavailable: number;
+    }
 }
 
 export namespace containeranalysis {
@@ -2608,6 +3271,13 @@ export namespace containeranalysis {
 
     export interface NoteAttestationAuthorityHint {
         humanReadableName: string;
+    }
+}
+
+export namespace datafusion {
+    export interface InstanceNetworkConfig {
+        ipAllocation: string;
+        network: string;
     }
 }
 
@@ -2651,7 +3321,7 @@ export namespace dataproc {
     }
 
     export interface ClusterClusterConfigAutoscalingConfig {
-        policyUri?: string;
+        policyUri: string;
     }
 
     export interface ClusterClusterConfigEncryptionConfig {
@@ -2759,7 +3429,7 @@ export namespace dataproc {
     }
 
     export interface JobHadoopConfigLoggingConfig {
-        driverLogLevels?: {[key: string]: string};
+        driverLogLevels: {[key: string]: string};
     }
 
     export interface JobHiveConfig {
@@ -2794,7 +3464,7 @@ export namespace dataproc {
     }
 
     export interface JobPigConfigLoggingConfig {
-        driverLogLevels?: {[key: string]: string};
+        driverLogLevels: {[key: string]: string};
     }
 
     export interface JobPlacement {
@@ -2814,7 +3484,7 @@ export namespace dataproc {
     }
 
     export interface JobPysparkConfigLoggingConfig {
-        driverLogLevels?: {[key: string]: string};
+        driverLogLevels: {[key: string]: string};
     }
 
     export interface JobReference {
@@ -2822,7 +3492,7 @@ export namespace dataproc {
     }
 
     export interface JobScheduling {
-        maxFailuresPerHour?: number;
+        maxFailuresPerHour: number;
     }
 
     export interface JobSparkConfig {
@@ -2837,7 +3507,7 @@ export namespace dataproc {
     }
 
     export interface JobSparkConfigLoggingConfig {
-        driverLogLevels?: {[key: string]: string};
+        driverLogLevels: {[key: string]: string};
     }
 
     export interface JobSparksqlConfig {
@@ -2850,7 +3520,7 @@ export namespace dataproc {
     }
 
     export interface JobSparksqlConfigLoggingConfig {
-        driverLogLevels?: {[key: string]: string};
+        driverLogLevels: {[key: string]: string};
     }
 
     export interface JobStatus {
@@ -2877,39 +3547,39 @@ export namespace dns {
     }
 
     export interface ManagedZoneForwardingConfig {
-        targetNameServers?: outputs.dns.ManagedZoneForwardingConfigTargetNameServer[];
+        targetNameServers: outputs.dns.ManagedZoneForwardingConfigTargetNameServer[];
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
-        ipv4Address?: string;
+        ipv4Address: string;
     }
 
     export interface ManagedZonePeeringConfig {
-        targetNetwork?: outputs.dns.ManagedZonePeeringConfigTargetNetwork;
+        targetNetwork: outputs.dns.ManagedZonePeeringConfigTargetNetwork;
     }
 
     export interface ManagedZonePeeringConfigTargetNetwork {
-        networkUrl?: string;
+        networkUrl: string;
     }
 
     export interface ManagedZonePrivateVisibilityConfig {
-        networks?: outputs.dns.ManagedZonePrivateVisibilityConfigNetwork[];
+        networks: outputs.dns.ManagedZonePrivateVisibilityConfigNetwork[];
     }
 
     export interface ManagedZonePrivateVisibilityConfigNetwork {
-        networkUrl?: string;
+        networkUrl: string;
     }
 
     export interface PolicyAlternativeNameServerConfig {
-        targetNameServers?: outputs.dns.PolicyAlternativeNameServerConfigTargetNameServer[];
+        targetNameServers: outputs.dns.PolicyAlternativeNameServerConfigTargetNameServer[];
     }
 
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
-        ipv4Address?: string;
+        ipv4Address: string;
     }
 
     export interface PolicyNetwork {
-        networkUrl?: string;
+        networkUrl: string;
     }
 }
 
@@ -3220,16 +3890,12 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
-        publicKeyCertificate?: outputs.kms.RegistryCredentialPublicKeyCertificate;
+        publicKeyCertificate: outputs.kms.RegistryCredentialPublicKeyCertificate;
     }
 
     export interface RegistryCredentialPublicKeyCertificate {
         certificate: string;
         format: string;
-    }
-
-    export interface RegistryEventNotificationConfig {
-        pubsubTopicName: string;
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -3258,7 +3924,7 @@ export namespace logging {
     }
 
     export interface MetricBucketOptionsExplicitBuckets {
-        bounds?: number[];
+        bounds: number[];
     }
 
     export interface MetricBucketOptionsExponentialBuckets {
@@ -3290,7 +3956,7 @@ export namespace logging {
 
 export namespace ml {
     export interface EngineModelDefaultVersion {
-        name?: string;
+        name: string;
     }
 }
 
@@ -3362,7 +4028,7 @@ export namespace monitoring {
     }
 
     export interface UptimeCheckConfigContentMatcher {
-        content?: string;
+        content: string;
     }
 
     export interface UptimeCheckConfigHttpCheck {
@@ -3376,16 +4042,8 @@ export namespace monitoring {
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
-        password?: string;
-        username?: string;
-    }
-
-    export interface UptimeCheckConfigInternalChecker {
-        displayName?: string;
-        gcpZone?: string;
-        name?: string;
-        network?: string;
-        peerProjectId?: string;
+        password: string;
+        username: string;
     }
 
     export interface UptimeCheckConfigMonitoredResource {
@@ -3453,29 +4111,6 @@ export namespace organizations {
         title: string;
     }
 
-    export interface GetProjectAppEngine {
-        authDomain: string;
-        codeBucket: string;
-        defaultBucket: string;
-        defaultHostname: string;
-        featureSettings: outputs.organizations.GetProjectAppEngineFeatureSetting[];
-        gcrDomain: string;
-        locationId: string;
-        name: string;
-        servingStatus: string;
-        urlDispatchRules: outputs.organizations.GetProjectAppEngineUrlDispatchRule[];
-    }
-
-    export interface GetProjectAppEngineFeatureSetting {
-        splitHealthChecks: boolean;
-    }
-
-    export interface GetProjectAppEngineUrlDispatchRule {
-        domain: string;
-        path: string;
-        service: string;
-    }
-
     export interface IAMBindingCondition {
         description?: string;
         expression: string;
@@ -3486,6 +4121,11 @@ export namespace organizations {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface IamAuditConfigAuditLogConfig {
+        exemptedMembers?: string[];
+        logType: string;
     }
 
     export interface PolicyBooleanPolicy {
@@ -3592,7 +4232,7 @@ export namespace projects {
 
 export namespace pubsub {
     export interface SubscriptionExpirationPolicy {
-        ttl?: string;
+        ttl: string;
     }
 
     export interface SubscriptionIAMBindingCondition {
@@ -3674,6 +4314,12 @@ export namespace sourcerepo {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface RepositoryPubsubConfig {
+        messageFormat: string;
+        serviceAccountEmail: string;
+        topic: string;
     }
 }
 
@@ -3766,8 +4412,8 @@ export namespace sql {
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
-        name?: string;
-        value?: string;
+        name: string;
+        value: string;
     }
 
     export interface DatabaseInstanceSettingsIpConfiguration {
@@ -3786,7 +4432,7 @@ export namespace sql {
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
         name?: string;
-        value?: string;
+        value: string;
     }
 
     export interface DatabaseInstanceSettingsLocationPreference {
@@ -3841,7 +4487,6 @@ export namespace storage {
     export interface BucketLifecycleRuleCondition {
         age?: number;
         createdBefore?: string;
-        isLive: boolean;
         matchesStorageClasses?: string[];
         numNewerVersions?: number;
         withState: string;
@@ -3858,7 +4503,7 @@ export namespace storage {
     }
 
     export interface BucketVersioning {
-        enabled?: boolean;
+        enabled: boolean;
     }
 
     export interface BucketWebsite {
@@ -3953,6 +4598,6 @@ export namespace tpu {
     }
 
     export interface NodeSchedulingConfig {
-        preemptible?: boolean;
+        preemptible: boolean;
     }
 }

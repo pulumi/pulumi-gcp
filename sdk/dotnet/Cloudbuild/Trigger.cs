@@ -45,7 +45,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string?> Filename { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+        /// 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Output("github")]
         public Output<Outputs.TriggerGithub?> Github { get; private set; } = null!;
@@ -98,7 +99,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
         /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. This field is required, and will be validated as such in 3.0.0.
+        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Output("triggerTemplate")]
         public Output<Outputs.TriggerTriggerTemplate?> TriggerTemplate { get; private set; } = null!;
@@ -175,7 +176,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Filename { get; set; }
 
         /// <summary>
-        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+        /// 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("github")]
         public Input<Inputs.TriggerGithubArgs>? Github { get; set; }
@@ -240,7 +242,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
         /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. This field is required, and will be validated as such in 3.0.0.
+        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateArgs>? TriggerTemplate { get; set; }
@@ -284,7 +286,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Filename { get; set; }
 
         /// <summary>
-        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+        /// 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("github")]
         public Input<Inputs.TriggerGithubGetArgs>? Github { get; set; }
@@ -355,7 +358,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
         /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. This field is required, and will be validated as such in 3.0.0.
+        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateGetArgs>? TriggerTemplate { get; set; }
@@ -378,7 +381,7 @@ namespace Pulumi.Gcp.CloudBuild
             set => _images = value;
         }
 
-        [Input("steps")]
+        [Input("steps", required: true)]
         private InputList<TriggerBuildStepsArgs>? _steps;
         public InputList<TriggerBuildStepsArgs> Steps
         {
@@ -393,6 +396,9 @@ namespace Pulumi.Gcp.CloudBuild
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
 
         public TriggerBuildArgs()
         {
@@ -409,7 +415,7 @@ namespace Pulumi.Gcp.CloudBuild
             set => _images = value;
         }
 
-        [Input("steps")]
+        [Input("steps", required: true)]
         private InputList<TriggerBuildStepsGetArgs>? _steps;
         public InputList<TriggerBuildStepsGetArgs> Steps
         {
@@ -424,6 +430,9 @@ namespace Pulumi.Gcp.CloudBuild
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
 
         public TriggerBuildGetArgs()
         {
@@ -457,8 +466,8 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("secretEnvs")]
         private InputList<string>? _secretEnvs;
@@ -522,8 +531,8 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("secretEnvs")]
         private InputList<string>? _secretEnvs;
@@ -562,11 +571,11 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class TriggerBuildStepsVolumesArgs : Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         public TriggerBuildStepsVolumesArgs()
         {
@@ -575,11 +584,11 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class TriggerBuildStepsVolumesGetArgs : Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         public TriggerBuildStepsVolumesGetArgs()
         {
@@ -626,8 +635,8 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class TriggerGithubPullRequestArgs : Pulumi.ResourceArgs
     {
-        [Input("branch")]
-        public Input<string>? Branch { get; set; }
+        [Input("branch", required: true)]
+        public Input<string> Branch { get; set; } = null!;
 
         [Input("commentControl")]
         public Input<string>? CommentControl { get; set; }
@@ -639,8 +648,8 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class TriggerGithubPullRequestGetArgs : Pulumi.ResourceArgs
     {
-        [Input("branch")]
-        public Input<string>? Branch { get; set; }
+        [Input("branch", required: true)]
+        public Input<string> Branch { get; set; } = null!;
 
         [Input("commentControl")]
         public Input<string>? CommentControl { get; set; }
@@ -736,16 +745,19 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly ImmutableArray<string> Images;
         public readonly ImmutableArray<TriggerBuildSteps> Steps;
         public readonly ImmutableArray<string> Tags;
+        public readonly string? Timeout;
 
         [OutputConstructor]
         private TriggerBuild(
             ImmutableArray<string> images,
             ImmutableArray<TriggerBuildSteps> steps,
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+            string? timeout)
         {
             Images = images;
             Steps = steps;
             Tags = tags;
+            Timeout = timeout;
         }
     }
 
@@ -757,7 +769,7 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly string? Entrypoint;
         public readonly ImmutableArray<string> Envs;
         public readonly string? Id;
-        public readonly string? Name;
+        public readonly string Name;
         public readonly ImmutableArray<string> SecretEnvs;
         public readonly string? Timeout;
         public readonly string? Timing;
@@ -771,7 +783,7 @@ namespace Pulumi.Gcp.CloudBuild
             string? entrypoint,
             ImmutableArray<string> envs,
             string? id,
-            string? name,
+            string name,
             ImmutableArray<string> secretEnvs,
             string? timeout,
             string? timing,
@@ -795,13 +807,13 @@ namespace Pulumi.Gcp.CloudBuild
     [OutputType]
     public sealed class TriggerBuildStepsVolumes
     {
-        public readonly string? Name;
-        public readonly string? Path;
+        public readonly string Name;
+        public readonly string Path;
 
         [OutputConstructor]
         private TriggerBuildStepsVolumes(
-            string? name,
-            string? path)
+            string name,
+            string path)
         {
             Name = name;
             Path = path;
@@ -833,12 +845,12 @@ namespace Pulumi.Gcp.CloudBuild
     [OutputType]
     public sealed class TriggerGithubPullRequest
     {
-        public readonly string? Branch;
+        public readonly string Branch;
         public readonly string? CommentControl;
 
         [OutputConstructor]
         private TriggerGithubPullRequest(
-            string? branch,
+            string branch,
             string? commentControl)
         {
             Branch = branch;

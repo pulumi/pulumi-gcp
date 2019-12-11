@@ -12,9 +12,6 @@ import (
 // 
 // For a list of services available, visit the
 // [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
-// 
-// > **Note:** This resource _must not_ be used in conjunction with
-//    `projects.Services` or they will fight over which services should be enabled.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_service.html.markdown.
 type Service struct {

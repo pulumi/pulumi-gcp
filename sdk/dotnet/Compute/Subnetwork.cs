@@ -27,12 +27,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable flow logging for this subnetwork.
-        /// </summary>
-        [Output("enableFlowLogs")]
-        public Output<bool> EnableFlowLogs { get; private set; } = null!;
-
-        /// <summary>
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Output("fingerprint")]
@@ -54,10 +48,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-        /// Stackdriver.
+        /// Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
         /// </summary>
         [Output("logConfig")]
-        public Output<Outputs.SubnetworkLogConfig> LogConfig { get; private set; } = null!;
+        public Output<Outputs.SubnetworkLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63
@@ -183,12 +177,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable flow logging for this subnetwork.
-        /// </summary>
-        [Input("enableFlowLogs")]
-        public Input<bool>? EnableFlowLogs { get; set; }
-
-        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the
         /// subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a
         /// network. Only IPv4 is supported.
@@ -198,7 +186,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-        /// Stackdriver.
+        /// Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigArgs>? LogConfig { get; set; }
@@ -294,12 +282,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable flow logging for this subnetwork.
-        /// </summary>
-        [Input("enableFlowLogs")]
-        public Input<bool>? EnableFlowLogs { get; set; }
-
-        /// <summary>
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Input("fingerprint")]
@@ -321,7 +303,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-        /// Stackdriver.
+        /// Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigGetArgs>? LogConfig { get; set; }

@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// balancer. At least one SSL certificate must be specified.
         /// </summary>
         [Output("sslCertificates")]
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// balancer. At least one SSL certificate must be specified.
         /// </summary>
         public InputList<string> SslCertificates
         {
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// balancer. At least one SSL certificate must be specified.
         /// </summary>
         public InputList<string> SslCertificates
         {

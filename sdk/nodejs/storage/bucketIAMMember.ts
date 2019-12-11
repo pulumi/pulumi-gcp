@@ -41,30 +41,6 @@ import * as utilities from "../utilities";
  *     role: "roles/storage.objectViewer",
  * });
  * ```
- * 
- * ## google\_storage\_bucket\_iam\_policy
- * 
- * When applying a policy that does not include the roles listed below, you lose the default permissions which google adds to your bucket:
- * * `roles/storage.legacyBucketOwner`
- * * `roles/storage.legacyBucketReader`
- * 
- * If this happens only an entity with `roles/storage.admin` privileges can repair this bucket's policies. It is recommended to include the above roles in policies to get the same behaviour as with the other two options.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const fooPolicy = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["group:yourgroup@example.com"],
- *         role: "roles/your-role",
- *     }],
- * });
- * const member = new gcp.storage.BucketIAMPolicy("member", {
- *     bucket: "your-bucket-name",
- *     policyData: foo_policy.policyData,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_member.html.markdown.
  */

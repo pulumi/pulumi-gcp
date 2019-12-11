@@ -126,6 +126,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
+        /// balancing scheme is set to INTERNAL.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only
         /// when the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or
         /// HTTP2.
@@ -327,6 +334,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
+        /// balancing scheme is set to INTERNAL.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only
         /// when the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or
         /// HTTP2.
@@ -494,6 +508,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
+        /// balancing scheme is set to INTERNAL.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only

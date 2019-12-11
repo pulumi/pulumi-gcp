@@ -13,7 +13,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, name=None, output_name=None, predefined_acl=None, self_link=None, source=None, storage_class=None, id=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, id=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         __self__.bucket = bucket
@@ -72,9 +72,6 @@ class GetBucketObjectResult:
         if output_name and not isinstance(output_name, str):
             raise TypeError("Expected argument 'output_name' to be a str")
         __self__.output_name = output_name
-        if predefined_acl and not isinstance(predefined_acl, str):
-            raise TypeError("Expected argument 'predefined_acl' to be a str")
-        __self__.predefined_acl = predefined_acl
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
@@ -116,7 +113,6 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             md5hash=self.md5hash,
             name=self.name,
             output_name=self.output_name,
-            predefined_acl=self.predefined_acl,
             self_link=self.self_link,
             source=self.source,
             storage_class=self.storage_class,
@@ -157,7 +153,6 @@ def get_bucket_object(bucket=None,name=None,opts=None):
         md5hash=__ret__.get('md5hash'),
         name=__ret__.get('name'),
         output_name=__ret__.get('outputName'),
-        predefined_acl=__ret__.get('predefinedAcl'),
         self_link=__ret__.get('selfLink'),
         source=__ret__.get('source'),
         storage_class=__ret__.get('storageClass'),

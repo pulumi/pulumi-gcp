@@ -11,6 +11,9 @@ from .. import utilities, tables
 
 class GCPolicy(pulumi.CustomResource):
     column_family: pulumi.Output[str]
+    """
+    The name of the column family.
+    """
     instance_name: pulumi.Output[str]
     """
     The name of the Bigtable instance.
@@ -36,6 +39,9 @@ class GCPolicy(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     """
     table: pulumi.Output[str]
+    """
+    The name of the table.
+    """
     def __init__(__self__, resource_name, opts=None, column_family=None, instance_name=None, max_ages=None, max_versions=None, mode=None, project=None, table=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
@@ -44,11 +50,13 @@ class GCPolicy(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[list] max_ages: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[list] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] table: The name of the table.
         
         The **max_ages** object supports the following:
         
@@ -105,11 +113,13 @@ class GCPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[list] max_ages: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[list] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] table: The name of the table.
         
         The **max_ages** object supports the following:
         

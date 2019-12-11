@@ -10,38 +10,6 @@ import * as utilities from "../utilities";
  *  Creates a device registry in Google's Cloud IoT Core platform. For more information see
  * [the official documentation](https://cloud.google.com/iot/docs/) and
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultDevicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
- * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
- * const defaultRegistry = new gcp.kms.Registry("default-registry", {
- *     credentials: [{
- *         publicKeyCertificate: {
- *             certificate: fs.readFileSync("rsa_cert.pem", "utf-8"),
- *             format: "X509_CERTIFICATE_PEM",
- *         },
- *     }],
- *     eventNotificationConfigs: [{
- *         pubsubTopicName: default_telemetry.id,
- *     }],
- *     httpConfig: {
- *         http_enabled_state: "HTTP_ENABLED",
- *     },
- *     mqttConfig: {
- *         mqtt_enabled_state: "MQTT_ENABLED",
- *     },
- *     stateNotificationConfig: {
- *         pubsub_topic_name: default_devicestatus.id,
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
  */
@@ -76,10 +44,6 @@ export class Registry extends pulumi.CustomResource {
      * List of public key certificates to authenticate devices. Structure is documented below. 
      */
     public readonly credentials!: pulumi.Output<outputs.kms.RegistryCredential[] | undefined>;
-    /**
-     * Use `eventNotificationConfigs` instead.
-     */
-    public readonly eventNotificationConfig!: pulumi.Output<outputs.kms.RegistryEventNotificationConfig>;
     /**
      * List of configurations for event notification, such as
      * PubSub topics to publish device events to. Structure is documented below.
@@ -125,7 +89,6 @@ export class Registry extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as RegistryState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
-            inputs["eventNotificationConfig"] = state ? state.eventNotificationConfig : undefined;
             inputs["eventNotificationConfigs"] = state ? state.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = state ? state.httpConfig : undefined;
             inputs["logLevel"] = state ? state.logLevel : undefined;
@@ -137,7 +100,6 @@ export class Registry extends pulumi.CustomResource {
         } else {
             const args = argsOrState as RegistryArgs | undefined;
             inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["eventNotificationConfig"] = args ? args.eventNotificationConfig : undefined;
             inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
             inputs["logLevel"] = args ? args.logLevel : undefined;
@@ -166,10 +128,6 @@ export interface RegistryState {
      * List of public key certificates to authenticate devices. Structure is documented below. 
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
-    /**
-     * Use `eventNotificationConfigs` instead.
-     */
-    readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
     /**
      * List of configurations for event notification, such as
      * PubSub topics to publish device events to. Structure is documented below.
@@ -211,10 +169,6 @@ export interface RegistryArgs {
      * List of public key certificates to authenticate devices. Structure is documented below. 
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
-    /**
-     * Use `eventNotificationConfigs` instead.
-     */
-    readonly eventNotificationConfig?: pulumi.Input<inputs.kms.RegistryEventNotificationConfig>;
     /**
      * List of configurations for event notification, such as
      * PubSub topics to publish device events to. Structure is documented below.

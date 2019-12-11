@@ -118,12 +118,10 @@ export interface GetFunctionResult {
      * Function execution timeout (in seconds).
      */
     readonly timeout: number;
-    readonly triggerBucket: string;
     /**
      * If function is triggered by HTTP, this boolean is set.
      */
     readonly triggerHttp: boolean;
-    readonly triggerTopic: string;
     readonly vpcConnector: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

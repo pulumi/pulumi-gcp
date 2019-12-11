@@ -90,9 +90,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionName!: pulumi.Output<string>;
     /**
-     * The MySQL or PostgreSQL version to
+     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
      */
@@ -143,6 +144,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
+     * ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     */
+    public readonly rootPassword!: pulumi.Output<string | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -181,6 +186,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
+            inputs["rootPassword"] = state ? state.rootPassword : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serverCaCert"] = state ? state.serverCaCert : undefined;
             inputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
@@ -196,6 +202,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
+            inputs["rootPassword"] = args ? args.rootPassword : undefined;
             inputs["settings"] = args ? args.settings : undefined;
             inputs["connectionName"] = undefined /*out*/;
             inputs["firstIpAddress"] = undefined /*out*/;
@@ -227,9 +234,10 @@ export interface DatabaseInstanceState {
      */
     readonly connectionName?: pulumi.Input<string>;
     /**
-     * The MySQL or PostgreSQL version to
+     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
      */
@@ -280,6 +288,10 @@ export interface DatabaseInstanceState {
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
+     * ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     */
+    readonly rootPassword?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -301,9 +313,10 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The MySQL or PostgreSQL version to
+     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
      * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
      * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
      * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
      * for more information.
      */
@@ -341,6 +354,10 @@ export interface DatabaseInstanceArgs {
      * configuration is detailed below.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     */
+    readonly rootPassword?: pulumi.Input<string>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below.

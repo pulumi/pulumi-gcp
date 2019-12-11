@@ -98,7 +98,6 @@ export interface GetBucketObjectResult {
     readonly md5hash: string;
     readonly name?: string;
     readonly outputName: string;
-    readonly predefinedAcl: string;
     /**
      * (Computed) A url reference to this object.
      */

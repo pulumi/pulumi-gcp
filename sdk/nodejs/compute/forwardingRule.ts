@@ -63,11 +63,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      * forwarding rule supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC
      * 1918 IP address belonging to the network/subnet configured for the forwarding rule. By default, if this field is
      * empty, an ephemeral internal IP address will be automatically allocated from the IP range of the subnet or network
-     * configured for this forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g.
-     * '100.1.2.3' to avoid a permanent diff, as the server returns the IP address regardless of the input value. The
-     * server accepts a literal IP address or a URL reference to an existing Address resource. The following examples are
-     * all valid but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-     * interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+     * configured for this forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the
+     * API allows you to specify various resource paths for an address resource instead, Terraform requires this to
+     * specifically be an IP address to avoid needing to fetching the IP address from resource paths on refresh or
+     * unnecessary diffs.
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
@@ -75,10 +74,6 @@ export class ForwardingRule extends pulumi.CustomResource {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
-    /**
-     * ipVersion is not a valid field for regional forwarding rules.
-     */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -188,7 +183,6 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
@@ -211,7 +205,6 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -271,11 +264,10 @@ export interface ForwardingRuleState {
      * forwarding rule supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC
      * 1918 IP address belonging to the network/subnet configured for the forwarding rule. By default, if this field is
      * empty, an ephemeral internal IP address will be automatically allocated from the IP range of the subnet or network
-     * configured for this forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g.
-     * '100.1.2.3' to avoid a permanent diff, as the server returns the IP address regardless of the input value. The
-     * server accepts a literal IP address or a URL reference to an existing Address resource. The following examples are
-     * all valid but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-     * interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+     * configured for this forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the
+     * API allows you to specify various resource paths for an address resource instead, Terraform requires this to
+     * specifically be an IP address to avoid needing to fetching the IP address from resource paths on refresh or
+     * unnecessary diffs.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
@@ -283,10 +275,6 @@ export interface ForwardingRuleState {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * ipVersion is not a valid field for regional forwarding rules.
-     */
-    readonly ipVersion?: pulumi.Input<string>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -406,11 +394,10 @@ export interface ForwardingRuleArgs {
      * forwarding rule supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC
      * 1918 IP address belonging to the network/subnet configured for the forwarding rule. By default, if this field is
      * empty, an ephemeral internal IP address will be automatically allocated from the IP range of the subnet or network
-     * configured for this forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g.
-     * '100.1.2.3' to avoid a permanent diff, as the server returns the IP address regardless of the input value. The
-     * server accepts a literal IP address or a URL reference to an existing Address resource. The following examples are
-     * all valid but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-     * interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+     * configured for this forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the
+     * API allows you to specify various resource paths for an address resource instead, Terraform requires this to
+     * specifically be an IP address to avoid needing to fetching the IP address from resource paths on refresh or
+     * unnecessary diffs.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
@@ -418,10 +405,6 @@ export interface ForwardingRuleArgs {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
-    /**
-     * ipVersion is not a valid field for regional forwarding rules.
-     */
-    readonly ipVersion?: pulumi.Input<string>;
     /**
      * Labels to apply to this forwarding rule. A list of key->value pairs.
      */

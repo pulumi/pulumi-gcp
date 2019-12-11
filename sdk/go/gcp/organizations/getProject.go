@@ -22,7 +22,6 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		return nil, err
 	}
 	return &GetProjectResult{
-		AppEngines: outputs["appEngines"],
 		AutoCreateNetwork: outputs["autoCreateNetwork"],
 		BillingAccount: outputs["billingAccount"],
 		FolderId: outputs["folderId"],
@@ -30,8 +29,6 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		Name: outputs["name"],
 		Number: outputs["number"],
 		OrgId: outputs["orgId"],
-		PolicyData: outputs["policyData"],
-		PolicyEtag: outputs["policyEtag"],
 		ProjectId: outputs["projectId"],
 		SkipDelete: outputs["skipDelete"],
 		Id: outputs["id"],
@@ -46,7 +43,6 @@ type GetProjectArgs struct {
 
 // A collection of values returned by getProject.
 type GetProjectResult struct {
-	AppEngines interface{}
 	AutoCreateNetwork interface{}
 	BillingAccount interface{}
 	FolderId interface{}
@@ -54,8 +50,6 @@ type GetProjectResult struct {
 	Name interface{}
 	Number interface{}
 	OrgId interface{}
-	PolicyData interface{}
-	PolicyEtag interface{}
 	ProjectId interface{}
 	SkipDelete interface{}
 	// id is the provider-assigned unique ID for this managed resource.

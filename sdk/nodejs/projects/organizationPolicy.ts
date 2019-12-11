@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *         deny: {
  *             values: ["cloudresourcemanager.googleapis.com"],
  *         },
- *         suggestedValues: "compute.googleapis.com",
+ *         suggestedValue: "compute.googleapis.com",
  *     },
  *     project: "your-project-id",
  * });

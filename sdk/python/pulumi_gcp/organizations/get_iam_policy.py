@@ -65,7 +65,7 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     
     The **audit_configs** object supports the following:
     
-      * `auditLogConfigs` (`list`) - A nested block that defines the operations you'd like to log.
+      * `audit_log_configs` (`list`) - A nested block that defines the operations you'd like to log.
     
         * `exemptedMembers` (`list`) - Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         * `logType` (`str`) - Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.

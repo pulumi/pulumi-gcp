@@ -12,21 +12,6 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/dns/zones/)
  * and
  * [API](https://cloud.google.com/dns/api/v1/managedZones).
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const envDnsZone = gcp.dns.getManagedZone({
- *     name: "qa-zone",
- * });
- * const dns = new gcp.dns.RecordSet("dns", {
- *     managedZone: envDnsZone.name,
- *     rrdatas: ["test"],
- *     ttl: 300,
- *     type: "TXT",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
  */
@@ -80,6 +65,11 @@ export interface GetManagedZoneResult {
      */
     readonly nameServers: string[];
     readonly project?: string;
+    /**
+     * The zone's visibility: public zones are exposed to the Internet,
+     * while private zones are visible only to Virtual Private Cloud resources.
+     */
+    readonly visibility: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

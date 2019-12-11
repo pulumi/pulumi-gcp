@@ -11,111 +11,29 @@ from .. import utilities, tables
 
 class RouterPeer(pulumi.CustomResource):
     advertise_mode: pulumi.Output[str]
-    """
-    User-specified flag to indicate which mode to use for advertisement.
-    Options include `DEFAULT` or `CUSTOM`.
-    """
     advertised_groups: pulumi.Output[list]
-    """
-    User-specified list of prefix groups to advertise in custom mode,
-    which can take one of the following options:
-    """
     advertised_ip_ranges: pulumi.Output[list]
-    """
-    User-specified list of individual IP ranges to advertise in
-    custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
-    the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-    addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
-    
-      * `description` (`str`)
-      * `range` (`str`)
-    """
     advertised_route_priority: pulumi.Output[float]
-    """
-    The priority of routes advertised to this BGP peer.
-    Changing this forces a new peer to be created.
-    """
     interface: pulumi.Output[str]
-    """
-    The name of the interface the BGP peer is associated with.
-    Changing this forces a new peer to be created.
-    """
     ip_address: pulumi.Output[str]
-    """
-    IP address of the interface inside Google Cloud Platform.
-    """
+    management_type: pulumi.Output[str]
     name: pulumi.Output[str]
-    """
-    A unique name for BGP peer, required by GCE. Changing
-    this forces a new peer to be created.
-    """
     peer_asn: pulumi.Output[float]
-    """
-    Peer BGP Autonomous System Number (ASN).
-    Changing this forces a new peer to be created.
-    """
     peer_ip_address: pulumi.Output[str]
-    """
-    IP address of the BGP interface outside Google Cloud.
-    Changing this forces a new peer to be created.
-    """
     project: pulumi.Output[str]
-    """
-    The ID of the project in which this peer's router belongs. If it
-    is not provided, the provider project is used. Changing this forces a new peer to be created.
-    """
     region: pulumi.Output[str]
-    """
-    The region this peer's router sits in. If not specified,
-    the project region will be used. Changing this forces a new peer to be
-    created.
-    """
     router: pulumi.Output[str]
-    """
-    The name of the router in which this BGP peer will be configured.
-    Changing this forces a new peer to be created.
-    """
     def __init__(__self__, resource_name, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a Cloud Router BGP peer. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+        Create a RouterPeer resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
-               Options include `DEFAULT` or `CUSTOM`.
-        :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom mode,
-               which can take one of the following options:
-        :param pulumi.Input[list] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
-               custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
-               the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-               addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
-        :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] name: A unique name for BGP peer, required by GCE. Changing
-               this forces a new peer to be created.
-        :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN).
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this peer's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new peer to be created.
-        :param pulumi.Input[str] region: The region this peer's router sits in. If not specified,
-               the project region will be used. Changing this forces a new peer to be
-               created.
-        :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
-               Changing this forces a new peer to be created.
         
         The **advertised_ip_ranges** object supports the following:
         
           * `description` (`pulumi.Input[str]`)
           * `range` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -145,6 +63,8 @@ class RouterPeer(pulumi.CustomResource):
             if peer_asn is None:
                 raise TypeError("Missing required property 'peer_asn'")
             __props__['peer_asn'] = peer_asn
+            if peer_ip_address is None:
+                raise TypeError("Missing required property 'peer_ip_address'")
             __props__['peer_ip_address'] = peer_ip_address
             __props__['project'] = project
             __props__['region'] = region
@@ -152,6 +72,7 @@ class RouterPeer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'router'")
             __props__['router'] = router
             __props__['ip_address'] = None
+            __props__['management_type'] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
             resource_name,
@@ -159,7 +80,7 @@ class RouterPeer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, ip_address=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
+    def get(resource_name, id, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, ip_address=None, management_type=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None):
         """
         Get an existing RouterPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -167,39 +88,11 @@ class RouterPeer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
-               Options include `DEFAULT` or `CUSTOM`.
-        :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom mode,
-               which can take one of the following options:
-        :param pulumi.Input[list] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
-               custom mode. This field can only be populated if `advertise_mode` is `CUSTOM` and overrides
-               the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-               addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
-        :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] interface: The name of the interface the BGP peer is associated with.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
-        :param pulumi.Input[str] name: A unique name for BGP peer, required by GCE. Changing
-               this forces a new peer to be created.
-        :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN).
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud.
-               Changing this forces a new peer to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this peer's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new peer to be created.
-        :param pulumi.Input[str] region: The region this peer's router sits in. If not specified,
-               the project region will be used. Changing this forces a new peer to be
-               created.
-        :param pulumi.Input[str] router: The name of the router in which this BGP peer will be configured.
-               Changing this forces a new peer to be created.
         
         The **advertised_ip_ranges** object supports the following:
         
           * `description` (`pulumi.Input[str]`)
           * `range` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -210,6 +103,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__["advertised_route_priority"] = advertised_route_priority
         __props__["interface"] = interface
         __props__["ip_address"] = ip_address
+        __props__["management_type"] = management_type
         __props__["name"] = name
         __props__["peer_asn"] = peer_asn
         __props__["peer_ip_address"] = peer_ip_address

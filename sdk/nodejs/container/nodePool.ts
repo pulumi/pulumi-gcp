@@ -46,7 +46,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -102,11 +102,7 @@ export class NodePool extends pulumi.CustomResource {
      * the provider-configured project will be used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the cluster resides (for
-     * regional clusters). `region` has been deprecated in favor of `location`.
-     */
-    public readonly region!: pulumi.Output<string>;
+    public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings | undefined>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -116,11 +112,6 @@ export class NodePool extends pulumi.CustomResource {
      * `versionPrefix` field to approximate fuzzy versions.
      */
     public readonly version!: pulumi.Output<string>;
-    /**
-     * The zone in which the cluster resides. `zone`
-     * has been deprecated in favor of `location`.
-     */
-    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -147,9 +138,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            inputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
             inputs["version"] = state ? state.version : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
             if (!args || args.cluster === undefined) {
@@ -167,9 +157,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
         }
         if (!opts) {
@@ -193,7 +182,7 @@ export interface NodePoolState {
      */
     readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
      */
     readonly cluster?: pulumi.Input<string>;
     /**
@@ -249,11 +238,7 @@ export interface NodePoolState {
      * the provider-configured project will be used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster resides (for
-     * regional clusters). `region` has been deprecated in favor of `location`.
-     */
-    readonly region?: pulumi.Input<string>;
+    readonly upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -263,11 +248,6 @@ export interface NodePoolState {
      * `versionPrefix` field to approximate fuzzy versions.
      */
     readonly version?: pulumi.Input<string>;
-    /**
-     * The zone in which the cluster resides. `zone`
-     * has been deprecated in favor of `location`.
-     */
-    readonly zone?: pulumi.Input<string>;
 }
 
 /**
@@ -280,7 +260,7 @@ export interface NodePoolArgs {
      */
     readonly autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
      */
     readonly cluster: pulumi.Input<string>;
     /**
@@ -335,11 +315,7 @@ export interface NodePoolArgs {
      * the provider-configured project will be used.
      */
     readonly project?: pulumi.Input<string>;
-    /**
-     * The region in which the cluster resides (for
-     * regional clusters). `region` has been deprecated in favor of `location`.
-     */
-    readonly region?: pulumi.Input<string>;
+    readonly upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -349,9 +325,4 @@ export interface NodePoolArgs {
      * `versionPrefix` field to approximate fuzzy versions.
      */
     readonly version?: pulumi.Input<string>;
-    /**
-     * The zone in which the cluster resides. `zone`
-     * has been deprecated in favor of `location`.
-     */
-    readonly zone?: pulumi.Input<string>;
 }

@@ -14,24 +14,26 @@ namespace Pulumi.Gcp.Compute
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
     /// 
-    /// &gt; **Note:** Both network must create a peering with each other for the peering to be functional.
+    /// &gt; Both network must create a peering with each other for the peering
+    /// to be functional.
     /// 
-    /// &gt; **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+    /// &gt; Subnets IP ranges across peered VPC networks cannot overlap.
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
     /// </summary>
     public partial class NetworkPeering : Pulumi.CustomResource
     {
         /// <summary>
-        /// If set to `true`, the routes between the two networks will
-        /// be created and managed automatically. Defaults to `true`.
+        /// )
+        /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
-        [Output("autoCreateRoutes")]
-        public Output<bool?> AutoCreateRoutes { get; private set; } = null!;
-
         [Output("exportCustomRoutes")]
         public Output<bool?> ExportCustomRoutes { get; private set; } = null!;
 
+        /// <summary>
+        /// )
+        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// </summary>
         [Output("importCustomRoutes")]
         public Output<bool?> ImportCustomRoutes { get; private set; } = null!;
 
@@ -42,19 +44,21 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Resource link of the network to add a peering to.
+        /// The primary network of the peering.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Resource link of the peer network.
+        /// The peer network in the peering. The peer network
+        /// may belong to a different project.
         /// </summary>
         [Output("peerNetwork")]
         public Output<string> PeerNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// State for the peering.
+        /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+        /// `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -112,15 +116,16 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkPeeringArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, the routes between the two networks will
-        /// be created and managed automatically. Defaults to `true`.
+        /// )
+        /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
-        [Input("autoCreateRoutes")]
-        public Input<bool>? AutoCreateRoutes { get; set; }
-
         [Input("exportCustomRoutes")]
         public Input<bool>? ExportCustomRoutes { get; set; }
 
+        /// <summary>
+        /// )
+        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// </summary>
         [Input("importCustomRoutes")]
         public Input<bool>? ImportCustomRoutes { get; set; }
 
@@ -131,13 +136,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Resource link of the network to add a peering to.
+        /// The primary network of the peering.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// Resource link of the peer network.
+        /// The peer network in the peering. The peer network
+        /// may belong to a different project.
         /// </summary>
         [Input("peerNetwork", required: true)]
         public Input<string> PeerNetwork { get; set; } = null!;
@@ -150,15 +156,16 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkPeeringState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, the routes between the two networks will
-        /// be created and managed automatically. Defaults to `true`.
+        /// )
+        /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
-        [Input("autoCreateRoutes")]
-        public Input<bool>? AutoCreateRoutes { get; set; }
-
         [Input("exportCustomRoutes")]
         public Input<bool>? ExportCustomRoutes { get; set; }
 
+        /// <summary>
+        /// )
+        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// </summary>
         [Input("importCustomRoutes")]
         public Input<bool>? ImportCustomRoutes { get; set; }
 
@@ -169,19 +176,21 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Resource link of the network to add a peering to.
+        /// The primary network of the peering.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Resource link of the peer network.
+        /// The peer network in the peering. The peer network
+        /// may belong to a different project.
         /// </summary>
         [Input("peerNetwork")]
         public Input<string>? PeerNetwork { get; set; }
 
         /// <summary>
-        /// State for the peering.
+        /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+        /// `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyAlternativeNameServerConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNameServers")]
+        [Input("targetNameServers", required: true)]
         private InputList<PolicyAlternativeNameServerConfigTargetNameServersArgs>? _targetNameServers;
         public InputList<PolicyAlternativeNameServerConfigTargetNameServersArgs> TargetNameServers
         {
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyAlternativeNameServerConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNameServers")]
+        [Input("targetNameServers", required: true)]
         private InputList<PolicyAlternativeNameServerConfigTargetNameServersGetArgs>? _targetNameServers;
         public InputList<PolicyAlternativeNameServerConfigTargetNameServersGetArgs> TargetNameServers
         {
@@ -262,8 +262,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyAlternativeNameServerConfigTargetNameServersArgs : Pulumi.ResourceArgs
     {
-        [Input("ipv4Address")]
-        public Input<string>? Ipv4Address { get; set; }
+        [Input("ipv4Address", required: true)]
+        public Input<string> Ipv4Address { get; set; } = null!;
 
         public PolicyAlternativeNameServerConfigTargetNameServersArgs()
         {
@@ -272,8 +272,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyAlternativeNameServerConfigTargetNameServersGetArgs : Pulumi.ResourceArgs
     {
-        [Input("ipv4Address")]
-        public Input<string>? Ipv4Address { get; set; }
+        [Input("ipv4Address", required: true)]
+        public Input<string> Ipv4Address { get; set; } = null!;
 
         public PolicyAlternativeNameServerConfigTargetNameServersGetArgs()
         {
@@ -282,8 +282,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyNetworksArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public PolicyNetworksArgs()
         {
@@ -292,8 +292,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class PolicyNetworksGetArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public PolicyNetworksGetArgs()
         {
@@ -319,10 +319,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class PolicyAlternativeNameServerConfigTargetNameServers
     {
-        public readonly string? Ipv4Address;
+        public readonly string Ipv4Address;
 
         [OutputConstructor]
-        private PolicyAlternativeNameServerConfigTargetNameServers(string? ipv4Address)
+        private PolicyAlternativeNameServerConfigTargetNameServers(string ipv4Address)
         {
             Ipv4Address = ipv4Address;
         }
@@ -331,10 +331,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class PolicyNetworks
     {
-        public readonly string? NetworkUrl;
+        public readonly string NetworkUrl;
 
         [OutputConstructor]
-        private PolicyNetworks(string? networkUrl)
+        private PolicyNetworks(string networkUrl)
         {
             NetworkUrl = networkUrl;
         }

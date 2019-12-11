@@ -27,8 +27,6 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 		inputs["contentMatchers"] = nil
 		inputs["displayName"] = nil
 		inputs["httpCheck"] = nil
-		inputs["internalCheckers"] = nil
-		inputs["isInternal"] = nil
 		inputs["monitoredResource"] = nil
 		inputs["period"] = nil
 		inputs["project"] = nil
@@ -40,8 +38,6 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 		inputs["contentMatchers"] = args.ContentMatchers
 		inputs["displayName"] = args.DisplayName
 		inputs["httpCheck"] = args.HttpCheck
-		inputs["internalCheckers"] = args.InternalCheckers
-		inputs["isInternal"] = args.IsInternal
 		inputs["monitoredResource"] = args.MonitoredResource
 		inputs["period"] = args.Period
 		inputs["project"] = args.Project
@@ -68,8 +64,6 @@ func GetUptimeCheckConfig(ctx *pulumi.Context,
 		inputs["contentMatchers"] = state.ContentMatchers
 		inputs["displayName"] = state.DisplayName
 		inputs["httpCheck"] = state.HttpCheck
-		inputs["internalCheckers"] = state.InternalCheckers
-		inputs["isInternal"] = state.IsInternal
 		inputs["monitoredResource"] = state.MonitoredResource
 		inputs["name"] = state.Name
 		inputs["period"] = state.Period
@@ -113,14 +107,6 @@ func (r *UptimeCheckConfig) DisplayName() pulumi.StringOutput {
 // Contains information needed to make an HTTP or HTTPS check.
 func (r *UptimeCheckConfig) HttpCheck() pulumi.Output {
 	return r.s.State["httpCheck"]
-}
-
-func (r *UptimeCheckConfig) InternalCheckers() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["internalCheckers"])
-}
-
-func (r *UptimeCheckConfig) IsInternal() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["isInternal"])
 }
 
 // The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
@@ -187,8 +173,6 @@ type UptimeCheckConfigState struct {
 	DisplayName interface{}
 	// Contains information needed to make an HTTP or HTTPS check.
 	HttpCheck interface{}
-	InternalCheckers interface{}
-	IsInternal interface{}
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
 	// following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
 	// aws_elb_load_balancer
@@ -228,8 +212,6 @@ type UptimeCheckConfigArgs struct {
 	DisplayName interface{}
 	// Contains information needed to make an HTTP or HTTPS check.
 	HttpCheck interface{}
-	InternalCheckers interface{}
-	IsInternal interface{}
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
 	// following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
 	// aws_elb_load_balancer

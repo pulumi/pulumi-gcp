@@ -41,9 +41,7 @@ func LookupFunction(ctx *pulumi.Context, args *GetFunctionArgs) (*GetFunctionRes
 		SourceArchiveObject: outputs["sourceArchiveObject"],
 		SourceRepositories: outputs["sourceRepositories"],
 		Timeout: outputs["timeout"],
-		TriggerBucket: outputs["triggerBucket"],
 		TriggerHttp: outputs["triggerHttp"],
-		TriggerTopic: outputs["triggerTopic"],
 		VpcConnector: outputs["vpcConnector"],
 		Id: outputs["id"],
 	}, nil
@@ -92,10 +90,8 @@ type GetFunctionResult struct {
 	SourceRepositories interface{}
 	// Function execution timeout (in seconds).
 	Timeout interface{}
-	TriggerBucket interface{}
 	// If function is triggered by HTTP, this boolean is set.
 	TriggerHttp interface{}
-	TriggerTopic interface{}
 	VpcConnector interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

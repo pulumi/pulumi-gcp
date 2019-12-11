@@ -62,6 +62,11 @@ namespace Pulumi.Gcp.Dns
         public readonly ImmutableArray<string> NameServers;
         public readonly string? Project;
         /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet,
+        /// while private zones are visible only to Virtual Private Cloud resources.
+        /// </summary>
+        public readonly string Visibility;
+        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -73,6 +78,7 @@ namespace Pulumi.Gcp.Dns
             string name,
             ImmutableArray<string> nameServers,
             string? project,
+            string visibility,
             string id)
         {
             Description = description;
@@ -80,6 +86,7 @@ namespace Pulumi.Gcp.Dns
             Name = name;
             NameServers = nameServers;
             Project = project;
+            Visibility = visibility;
             Id = id;
         }
     }

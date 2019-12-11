@@ -104,12 +104,10 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Function execution timeout (in seconds).
         /// </summary>
         public readonly int Timeout;
-        public readonly string TriggerBucket;
         /// <summary>
         /// If function is triggered by HTTP, this boolean is set.
         /// </summary>
         public readonly bool TriggerHttp;
-        public readonly string TriggerTopic;
         public readonly string VpcConnector;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -135,9 +133,7 @@ namespace Pulumi.Gcp.CloudFunctions
             string sourceArchiveObject,
             ImmutableArray<Outputs.GetFunctionSourceRepositoriesResult> sourceRepositories,
             int timeout,
-            string triggerBucket,
             bool triggerHttp,
-            string triggerTopic,
             string vpcConnector,
             string id)
         {
@@ -158,9 +154,7 @@ namespace Pulumi.Gcp.CloudFunctions
             SourceArchiveObject = sourceArchiveObject;
             SourceRepositories = sourceRepositories;
             Timeout = timeout;
-            TriggerBucket = triggerBucket;
             TriggerHttp = triggerHttp;
-            TriggerTopic = triggerTopic;
             VpcConnector = vpcConnector;
             Id = id;
         }

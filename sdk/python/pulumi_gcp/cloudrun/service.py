@@ -14,9 +14,10 @@ class Service(pulumi.CustomResource):
     metadata: pulumi.Output[dict]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
-    spec: pulumi.Output[dict]
     status: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __props__=None, __name__=None, __opts__=None):
+    template: pulumi.Output[dict]
+    traffics: pulumi.Output[list]
+    def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, template=None, traffics=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Service resource with the given unique name, props, and options.
         
@@ -33,46 +34,66 @@ class Service(pulumi.CustomResource):
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
         
-        The **spec** object supports the following:
+        The **template** object supports the following:
         
-          * `containerConcurrency` (`pulumi.Input[float]`)
-          * `containers` (`pulumi.Input[list]`)
+          * `metadata` (`pulumi.Input[dict]`)
         
-            * `args` (`pulumi.Input[list]`)
-            * `commands` (`pulumi.Input[list]`)
-            * `envs` (`pulumi.Input[list]`)
+            * `annotations` (`pulumi.Input[dict]`)
+            * `generation` (`pulumi.Input[float]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `name` (`pulumi.Input[str]`)
+            * `namespace` (`pulumi.Input[str]`)
+            * `resourceVersion` (`pulumi.Input[str]`)
+            * `self_link` (`pulumi.Input[str]`)
+            * `uid` (`pulumi.Input[str]`)
         
-              * `name` (`pulumi.Input[str]`)
-              * `value` (`pulumi.Input[str]`)
+          * `spec` (`pulumi.Input[dict]`)
         
-            * `envFroms` (`pulumi.Input[list]`)
+            * `containerConcurrency` (`pulumi.Input[float]`)
+            * `containers` (`pulumi.Input[list]`)
         
-              * `configMapRef` (`pulumi.Input[dict]`)
+              * `args` (`pulumi.Input[list]`)
+              * `commands` (`pulumi.Input[list]`)
+              * `envs` (`pulumi.Input[list]`)
         
-                * `localObjectReference` (`pulumi.Input[dict]`)
+                * `name` (`pulumi.Input[str]`)
+                * `value` (`pulumi.Input[str]`)
         
-                  * `name` (`pulumi.Input[str]`)
+              * `envFroms` (`pulumi.Input[list]`)
         
-                * `optional` (`pulumi.Input[bool]`)
+                * `configMapRef` (`pulumi.Input[dict]`)
         
-              * `prefix` (`pulumi.Input[str]`)
-              * `secretRef` (`pulumi.Input[dict]`)
+                  * `localObjectReference` (`pulumi.Input[dict]`)
         
-                * `localObjectReference` (`pulumi.Input[dict]`)
+                    * `name` (`pulumi.Input[str]`)
         
-                  * `name` (`pulumi.Input[str]`)
+                  * `optional` (`pulumi.Input[bool]`)
         
-                * `optional` (`pulumi.Input[bool]`)
+                * `prefix` (`pulumi.Input[str]`)
+                * `secretRef` (`pulumi.Input[dict]`)
         
-            * `image` (`pulumi.Input[str]`)
-            * `resources` (`pulumi.Input[dict]`)
+                  * `localObjectReference` (`pulumi.Input[dict]`)
         
-              * `limits` (`pulumi.Input[dict]`)
-              * `requests` (`pulumi.Input[dict]`)
+                    * `name` (`pulumi.Input[str]`)
         
-            * `workingDir` (`pulumi.Input[str]`)
+                  * `optional` (`pulumi.Input[bool]`)
         
-          * `servingState` (`pulumi.Input[str]`)
+              * `image` (`pulumi.Input[str]`)
+              * `resources` (`pulumi.Input[dict]`)
+        
+                * `limits` (`pulumi.Input[dict]`)
+                * `requests` (`pulumi.Input[dict]`)
+        
+              * `workingDir` (`pulumi.Input[str]`)
+        
+            * `serviceAccountName` (`pulumi.Input[str]`)
+            * `servingState` (`pulumi.Input[str]`)
+        
+        The **traffics** object supports the following:
+        
+          * `latestRevision` (`pulumi.Input[bool]`)
+          * `percent` (`pulumi.Input[float]`)
+          * `revisionName` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
         """
@@ -96,14 +117,11 @@ class Service(pulumi.CustomResource):
             if location is None:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
-            if metadata is None:
-                raise TypeError("Missing required property 'metadata'")
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['project'] = project
-            if spec is None:
-                raise TypeError("Missing required property 'spec'")
-            __props__['spec'] = spec
+            __props__['template'] = template
+            __props__['traffics'] = traffics
             __props__['status'] = None
         super(Service, __self__).__init__(
             'gcp:cloudrun/service:Service',
@@ -112,7 +130,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, location=None, metadata=None, name=None, project=None, spec=None, status=None):
+    def get(resource_name, id, opts=None, location=None, metadata=None, name=None, project=None, status=None, template=None, traffics=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,47 +149,6 @@ class Service(pulumi.CustomResource):
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
         
-        The **spec** object supports the following:
-        
-          * `containerConcurrency` (`pulumi.Input[float]`)
-          * `containers` (`pulumi.Input[list]`)
-        
-            * `args` (`pulumi.Input[list]`)
-            * `commands` (`pulumi.Input[list]`)
-            * `envs` (`pulumi.Input[list]`)
-        
-              * `name` (`pulumi.Input[str]`)
-              * `value` (`pulumi.Input[str]`)
-        
-            * `envFroms` (`pulumi.Input[list]`)
-        
-              * `configMapRef` (`pulumi.Input[dict]`)
-        
-                * `localObjectReference` (`pulumi.Input[dict]`)
-        
-                  * `name` (`pulumi.Input[str]`)
-        
-                * `optional` (`pulumi.Input[bool]`)
-        
-              * `prefix` (`pulumi.Input[str]`)
-              * `secretRef` (`pulumi.Input[dict]`)
-        
-                * `localObjectReference` (`pulumi.Input[dict]`)
-        
-                  * `name` (`pulumi.Input[str]`)
-        
-                * `optional` (`pulumi.Input[bool]`)
-        
-            * `image` (`pulumi.Input[str]`)
-            * `resources` (`pulumi.Input[dict]`)
-        
-              * `limits` (`pulumi.Input[dict]`)
-              * `requests` (`pulumi.Input[dict]`)
-        
-            * `workingDir` (`pulumi.Input[str]`)
-        
-          * `servingState` (`pulumi.Input[str]`)
-        
         The **status** object supports the following:
         
           * `conditions` (`pulumi.Input[list]`)
@@ -185,6 +162,67 @@ class Service(pulumi.CustomResource):
           * `latestReadyRevisionName` (`pulumi.Input[str]`)
           * `observedGeneration` (`pulumi.Input[float]`)
           * `url` (`pulumi.Input[str]`)
+        
+        The **template** object supports the following:
+        
+          * `metadata` (`pulumi.Input[dict]`)
+        
+            * `annotations` (`pulumi.Input[dict]`)
+            * `generation` (`pulumi.Input[float]`)
+            * `labels` (`pulumi.Input[dict]`)
+            * `name` (`pulumi.Input[str]`)
+            * `namespace` (`pulumi.Input[str]`)
+            * `resourceVersion` (`pulumi.Input[str]`)
+            * `self_link` (`pulumi.Input[str]`)
+            * `uid` (`pulumi.Input[str]`)
+        
+          * `spec` (`pulumi.Input[dict]`)
+        
+            * `containerConcurrency` (`pulumi.Input[float]`)
+            * `containers` (`pulumi.Input[list]`)
+        
+              * `args` (`pulumi.Input[list]`)
+              * `commands` (`pulumi.Input[list]`)
+              * `envs` (`pulumi.Input[list]`)
+        
+                * `name` (`pulumi.Input[str]`)
+                * `value` (`pulumi.Input[str]`)
+        
+              * `envFroms` (`pulumi.Input[list]`)
+        
+                * `configMapRef` (`pulumi.Input[dict]`)
+        
+                  * `localObjectReference` (`pulumi.Input[dict]`)
+        
+                    * `name` (`pulumi.Input[str]`)
+        
+                  * `optional` (`pulumi.Input[bool]`)
+        
+                * `prefix` (`pulumi.Input[str]`)
+                * `secretRef` (`pulumi.Input[dict]`)
+        
+                  * `localObjectReference` (`pulumi.Input[dict]`)
+        
+                    * `name` (`pulumi.Input[str]`)
+        
+                  * `optional` (`pulumi.Input[bool]`)
+        
+              * `image` (`pulumi.Input[str]`)
+              * `resources` (`pulumi.Input[dict]`)
+        
+                * `limits` (`pulumi.Input[dict]`)
+                * `requests` (`pulumi.Input[dict]`)
+        
+              * `workingDir` (`pulumi.Input[str]`)
+        
+            * `serviceAccountName` (`pulumi.Input[str]`)
+            * `servingState` (`pulumi.Input[str]`)
+        
+        The **traffics** object supports the following:
+        
+          * `latestRevision` (`pulumi.Input[bool]`)
+          * `percent` (`pulumi.Input[float]`)
+          * `revisionName` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
         """
@@ -195,8 +233,9 @@ class Service(pulumi.CustomResource):
         __props__["metadata"] = metadata
         __props__["name"] = name
         __props__["project"] = project
-        __props__["spec"] = spec
         __props__["status"] = status
+        __props__["template"] = template
+        __props__["traffics"] = traffics
         return Service(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

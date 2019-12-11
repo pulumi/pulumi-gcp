@@ -417,8 +417,8 @@ namespace Pulumi.Gcp.CloudScheduler
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
 
         public JobHttpTargetOauthTokenArgs()
         {
@@ -430,8 +430,8 @@ namespace Pulumi.Gcp.CloudScheduler
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
 
         public JobHttpTargetOauthTokenGetArgs()
         {
@@ -443,8 +443,8 @@ namespace Pulumi.Gcp.CloudScheduler
         [Input("audience")]
         public Input<string>? Audience { get; set; }
 
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
 
         public JobHttpTargetOidcTokenArgs()
         {
@@ -456,8 +456,8 @@ namespace Pulumi.Gcp.CloudScheduler
         [Input("audience")]
         public Input<string>? Audience { get; set; }
 
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
+        [Input("serviceAccountEmail", required: true)]
+        public Input<string> ServiceAccountEmail { get; set; } = null!;
 
         public JobHttpTargetOidcTokenGetArgs()
         {
@@ -630,12 +630,12 @@ namespace Pulumi.Gcp.CloudScheduler
     public sealed class JobHttpTargetOauthToken
     {
         public readonly string? Scope;
-        public readonly string? ServiceAccountEmail;
+        public readonly string ServiceAccountEmail;
 
         [OutputConstructor]
         private JobHttpTargetOauthToken(
             string? scope,
-            string? serviceAccountEmail)
+            string serviceAccountEmail)
         {
             Scope = scope;
             ServiceAccountEmail = serviceAccountEmail;
@@ -646,12 +646,12 @@ namespace Pulumi.Gcp.CloudScheduler
     public sealed class JobHttpTargetOidcToken
     {
         public readonly string? Audience;
-        public readonly string? ServiceAccountEmail;
+        public readonly string ServiceAccountEmail;
 
         [OutputConstructor]
         private JobHttpTargetOidcToken(
             string? audience,
-            string? serviceAccountEmail)
+            string serviceAccountEmail)
         {
             Audience = audience;
             ServiceAccountEmail = serviceAccountEmail;

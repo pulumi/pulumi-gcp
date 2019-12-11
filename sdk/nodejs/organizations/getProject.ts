@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * Use this data source to get project details.
  * For more information see
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const project = gcp.organizations.getProject();
- * 
- * export const projectNumber = project.number;
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.
  */
@@ -54,7 +43,6 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    readonly appEngines: outputs.organizations.GetProjectAppEngine[];
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
     readonly folderId: string;
@@ -62,8 +50,6 @@ export interface GetProjectResult {
     readonly name: string;
     readonly number: string;
     readonly orgId: string;
-    readonly policyData: string;
-    readonly policyEtag: string;
     readonly projectId?: string;
     readonly skipDelete: boolean;
     /**

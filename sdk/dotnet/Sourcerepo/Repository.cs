@@ -28,6 +28,12 @@ namespace Pulumi.Gcp.SourceRepo
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        /// </summary>
+        [Output("pubsubConfigs")]
+        public Output<ImmutableArray<Outputs.RepositoryPubsubConfigs>> PubsubConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The disk usage of the repo, in bytes.
         /// </summary>
         [Output("size")]
@@ -99,6 +105,18 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pubsubConfigs")]
+        private InputList<Inputs.RepositoryPubsubConfigsArgs>? _pubsubConfigs;
+
+        /// <summary>
+        /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        /// </summary>
+        public InputList<Inputs.RepositoryPubsubConfigsArgs> PubsubConfigs
+        {
+            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigsArgs>());
+            set => _pubsubConfigs = value;
+        }
+
         public RepositoryArgs()
         {
         }
@@ -120,6 +138,18 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pubsubConfigs")]
+        private InputList<Inputs.RepositoryPubsubConfigsGetArgs>? _pubsubConfigs;
+
+        /// <summary>
+        /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        /// </summary>
+        public InputList<Inputs.RepositoryPubsubConfigsGetArgs> PubsubConfigs
+        {
+            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigsGetArgs>());
+            set => _pubsubConfigs = value;
+        }
+
         /// <summary>
         /// The disk usage of the repo, in bytes.
         /// </summary>
@@ -135,5 +165,64 @@ namespace Pulumi.Gcp.SourceRepo
         public RepositoryState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class RepositoryPubsubConfigsArgs : Pulumi.ResourceArgs
+    {
+        [Input("messageFormat", required: true)]
+        public Input<string> MessageFormat { get; set; } = null!;
+
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        [Input("topic", required: true)]
+        public Input<string> Topic { get; set; } = null!;
+
+        public RepositoryPubsubConfigsArgs()
+        {
+        }
+    }
+
+    public sealed class RepositoryPubsubConfigsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("messageFormat", required: true)]
+        public Input<string> MessageFormat { get; set; } = null!;
+
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        [Input("topic", required: true)]
+        public Input<string> Topic { get; set; } = null!;
+
+        public RepositoryPubsubConfigsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class RepositoryPubsubConfigs
+    {
+        public readonly string MessageFormat;
+        public readonly string ServiceAccountEmail;
+        public readonly string Topic;
+
+        [OutputConstructor]
+        private RepositoryPubsubConfigs(
+            string messageFormat,
+            string serviceAccountEmail,
+            string topic)
+        {
+            MessageFormat = messageFormat;
+            ServiceAccountEmail = serviceAccountEmail;
+            Topic = topic;
+        }
+    }
     }
 }

@@ -13,7 +13,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None, organization=None, id=None):
+    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None, org_id=None, organization=None, id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
@@ -41,6 +41,12 @@ class GetOrganizationResult:
         """
         The resource name of the Organization in the form `organizations/{organization_id}`.
         """
+        if org_id and not isinstance(org_id, str):
+            raise TypeError("Expected argument 'org_id' to be a str")
+        __self__.org_id = org_id
+        """
+        The Organization ID.
+        """
         if organization and not isinstance(organization, str):
             raise TypeError("Expected argument 'organization' to be a str")
         __self__.organization = organization
@@ -61,6 +67,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             domain=self.domain,
             lifecycle_state=self.lifecycle_state,
             name=self.name,
+            org_id=self.org_id,
             organization=self.organization,
             id=self.id)
 
@@ -89,5 +96,6 @@ def get_organization(domain=None,organization=None,opts=None):
         domain=__ret__.get('domain'),
         lifecycle_state=__ret__.get('lifecycleState'),
         name=__ret__.get('name'),
+        org_id=__ret__.get('orgId'),
         organization=__ret__.get('organization'),
         id=__ret__.get('id'))

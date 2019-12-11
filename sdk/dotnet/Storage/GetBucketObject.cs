@@ -78,7 +78,6 @@ namespace Pulumi.Gcp.Storage
         public readonly string Md5hash;
         public readonly string? Name;
         public readonly string OutputName;
-        public readonly string PredefinedAcl;
         /// <summary>
         /// (Computed) A url reference to this object.
         /// </summary>
@@ -109,7 +108,6 @@ namespace Pulumi.Gcp.Storage
             string md5hash,
             string? name,
             string outputName,
-            string predefinedAcl,
             string selfLink,
             string source,
             string storageClass,
@@ -127,7 +125,6 @@ namespace Pulumi.Gcp.Storage
             Md5hash = md5hash;
             Name = name;
             OutputName = outputName;
-            PredefinedAcl = predefinedAcl;
             SelfLink = selfLink;
             Source = source;
             StorageClass = storageClass;

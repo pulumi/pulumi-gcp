@@ -8,21 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get info about a Google Compute SSL Certificate from its name.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myCert = gcp.compute.getCertificate({
- *     name: "my-cert",
- * });
- * 
- * export const certificate = myCert.certificate;
- * export const certificateId = myCert.certificateId;
- * export const selfLink = myCert.selfLink;
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_certificate.html.markdown.
  */

@@ -36,7 +36,6 @@ func LookupBucketObject(ctx *pulumi.Context, args *GetBucketObjectArgs) (*GetBuc
 		Md5hash: outputs["md5hash"],
 		Name: outputs["name"],
 		OutputName: outputs["outputName"],
-		PredefinedAcl: outputs["predefinedAcl"],
 		SelfLink: outputs["selfLink"],
 		Source: outputs["source"],
 		StorageClass: outputs["storageClass"],
@@ -74,7 +73,6 @@ type GetBucketObjectResult struct {
 	Md5hash interface{}
 	Name interface{}
 	OutputName interface{}
-	PredefinedAcl interface{}
 	// (Computed) A url reference to this object.
 	SelfLink interface{}
 	Source interface{}

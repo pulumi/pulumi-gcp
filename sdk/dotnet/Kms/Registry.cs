@@ -24,12 +24,6 @@ namespace Pulumi.Gcp.Kms
         public Output<ImmutableArray<Outputs.RegistryCredentials>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// Use `event_notification_configs` instead.
-        /// </summary>
-        [Output("eventNotificationConfig")]
-        public Output<Outputs.RegistryEventNotificationConfig> EventNotificationConfig { get; private set; } = null!;
-
-        /// <summary>
         /// List of configurations for event notification, such as
         /// PubSub topics to publish device events to. Structure is documented below.
         /// </summary>
@@ -134,12 +128,6 @@ namespace Pulumi.Gcp.Kms
             set => _credentials = value;
         }
 
-        /// <summary>
-        /// Use `event_notification_configs` instead.
-        /// </summary>
-        [Input("eventNotificationConfig")]
-        public Input<Inputs.RegistryEventNotificationConfigArgs>? EventNotificationConfig { get; set; }
-
         [Input("eventNotificationConfigs")]
         private InputList<Inputs.RegistryEventNotificationConfigItemArgs>? _eventNotificationConfigs;
 
@@ -212,12 +200,6 @@ namespace Pulumi.Gcp.Kms
             set => _credentials = value;
         }
 
-        /// <summary>
-        /// Use `event_notification_configs` instead.
-        /// </summary>
-        [Input("eventNotificationConfig")]
-        public Input<Inputs.RegistryEventNotificationConfigGetArgs>? EventNotificationConfig { get; set; }
-
         [Input("eventNotificationConfigs")]
         private InputList<Inputs.RegistryEventNotificationConfigItemGetArgs>? _eventNotificationConfigs;
 
@@ -281,8 +263,8 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsArgs : Pulumi.ResourceArgs
     {
-        [Input("publicKeyCertificate")]
-        public Input<RegistryCredentialsPublicKeyCertificateArgs>? PublicKeyCertificate { get; set; }
+        [Input("publicKeyCertificate", required: true)]
+        public Input<RegistryCredentialsPublicKeyCertificateArgs> PublicKeyCertificate { get; set; } = null!;
 
         public RegistryCredentialsArgs()
         {
@@ -291,8 +273,8 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsGetArgs : Pulumi.ResourceArgs
     {
-        [Input("publicKeyCertificate")]
-        public Input<RegistryCredentialsPublicKeyCertificateGetArgs>? PublicKeyCertificate { get; set; }
+        [Input("publicKeyCertificate", required: true)]
+        public Input<RegistryCredentialsPublicKeyCertificateGetArgs> PublicKeyCertificate { get; set; } = null!;
 
         public RegistryCredentialsGetArgs()
         {
@@ -321,26 +303,6 @@ namespace Pulumi.Gcp.Kms
         public Input<string> Format { get; set; } = null!;
 
         public RegistryCredentialsPublicKeyCertificateGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryEventNotificationConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        public RegistryEventNotificationConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryEventNotificationConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        public RegistryEventNotificationConfigGetArgs()
         {
         }
     }
@@ -438,10 +400,10 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryCredentials
     {
-        public readonly RegistryCredentialsPublicKeyCertificate? PublicKeyCertificate;
+        public readonly RegistryCredentialsPublicKeyCertificate PublicKeyCertificate;
 
         [OutputConstructor]
-        private RegistryCredentials(RegistryCredentialsPublicKeyCertificate? publicKeyCertificate)
+        private RegistryCredentials(RegistryCredentialsPublicKeyCertificate publicKeyCertificate)
         {
             PublicKeyCertificate = publicKeyCertificate;
         }
@@ -460,18 +422,6 @@ namespace Pulumi.Gcp.Kms
         {
             Certificate = certificate;
             Format = format;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryEventNotificationConfig
-    {
-        public readonly string PubsubTopicName;
-
-        [OutputConstructor]
-        private RegistryEventNotificationConfig(string pubsubTopicName)
-        {
-            PubsubTopicName = pubsubTopicName;
         }
     }
 

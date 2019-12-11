@@ -52,13 +52,23 @@ export class Service extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * RevisionSpec holds the desired state of the Revision (from the client).
-     */
-    public readonly spec!: pulumi.Output<outputs.cloudrun.ServiceSpec>;
-    /**
      * The current status of the Service.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.ServiceStatus>;
+    /**
+     * template holds the latest specification for the Revision to be stamped out. The template references the container
+     * image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision,
+     * and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in
+     * the template metadata. For more details, see:
+     * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+     * Cloud Run does not currently support referencing a build that is responsible for materializing the container image
+     * from source.
+     */
+    public readonly template!: pulumi.Output<outputs.cloudrun.ServiceTemplate | undefined>;
+    /**
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     */
+    public readonly traffics!: pulumi.Output<outputs.cloudrun.ServiceTraffic[]>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -76,24 +86,20 @@ export class Service extends pulumi.CustomResource {
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
             inputs["status"] = state ? state.status : undefined;
+            inputs["template"] = state ? state.template : undefined;
+            inputs["traffics"] = state ? state.traffics : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if (!args || args.location === undefined) {
                 throw new Error("Missing required property 'location'");
             }
-            if (!args || args.metadata === undefined) {
-                throw new Error("Missing required property 'metadata'");
-            }
-            if (!args || args.spec === undefined) {
-                throw new Error("Missing required property 'spec'");
-            }
             inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
+            inputs["template"] = args ? args.template : undefined;
+            inputs["traffics"] = args ? args.traffics : undefined;
             inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
@@ -127,13 +133,23 @@ export interface ServiceState {
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     /**
-     * RevisionSpec holds the desired state of the Revision (from the client).
-     */
-    readonly spec?: pulumi.Input<inputs.cloudrun.ServiceSpec>;
-    /**
      * The current status of the Service.
      */
     readonly status?: pulumi.Input<inputs.cloudrun.ServiceStatus>;
+    /**
+     * template holds the latest specification for the Revision to be stamped out. The template references the container
+     * image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision,
+     * and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in
+     * the template metadata. For more details, see:
+     * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+     * Cloud Run does not currently support referencing a build that is responsible for materializing the container image
+     * from source.
+     */
+    readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    /**
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     */
+    readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }
 
 /**
@@ -147,7 +163,7 @@ export interface ServiceArgs {
     /**
      * Metadata associated with this Service, including name, namespace, labels, and annotations.
      */
-    readonly metadata: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
      * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
      * primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
@@ -156,7 +172,17 @@ export interface ServiceArgs {
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     /**
-     * RevisionSpec holds the desired state of the Revision (from the client).
+     * template holds the latest specification for the Revision to be stamped out. The template references the container
+     * image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision,
+     * and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in
+     * the template metadata. For more details, see:
+     * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+     * Cloud Run does not currently support referencing a build that is responsible for materializing the container image
+     * from source.
      */
-    readonly spec: pulumi.Input<inputs.cloudrun.ServiceSpec>;
+    readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    /**
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     */
+    readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }

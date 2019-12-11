@@ -22,7 +22,6 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["ipAddress"] = nil
 		inputs["ipProtocol"] = nil
-		inputs["ipVersion"] = nil
 		inputs["labels"] = nil
 		inputs["loadBalancingScheme"] = nil
 		inputs["name"] = nil
@@ -41,7 +40,6 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["ipAddress"] = args.IpAddress
 		inputs["ipProtocol"] = args.IpProtocol
-		inputs["ipVersion"] = args.IpVersion
 		inputs["labels"] = args.Labels
 		inputs["loadBalancingScheme"] = args.LoadBalancingScheme
 		inputs["name"] = args.Name
@@ -78,7 +76,6 @@ func GetForwardingRule(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["ipAddress"] = state.IpAddress
 		inputs["ipProtocol"] = state.IpProtocol
-		inputs["ipVersion"] = state.IpVersion
 		inputs["labelFingerprint"] = state.LabelFingerprint
 		inputs["labels"] = state.Labels
 		inputs["loadBalancingScheme"] = state.LoadBalancingScheme
@@ -142,11 +139,9 @@ func (r *ForwardingRule) Description() pulumi.StringOutput {
 // supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
 // belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
 // internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-// forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a literal IP
-// address or a URL reference to an existing Address resource. The following examples are all valid but only the first will
-// prevent a permadiff. If you are using 'google_compute_address' or similar, interpolate using '.address' instead of
-// '.self_link' or similar to prevent a diff on re-apply.
+// forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
+// various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
+// avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
 func (r *ForwardingRule) IpAddress() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
@@ -155,11 +150,6 @@ func (r *ForwardingRule) IpAddress() pulumi.StringOutput {
 // scheme is INTERNAL, only TCP and UDP are valid.
 func (r *ForwardingRule) IpProtocol() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["ipProtocol"])
-}
-
-// ipVersion is not a valid field for regional forwarding rules.
-func (r *ForwardingRule) IpVersion() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -284,17 +274,13 @@ type ForwardingRuleState struct {
 	// supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
 	// belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-	// forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-	// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a literal IP
-	// address or a URL reference to an existing Address resource. The following examples are all valid but only the first
-	// will prevent a permadiff. If you are using 'google_compute_address' or similar, interpolate using '.address' instead of
-	// '.self_link' or similar to prevent a diff on re-apply.
+	// forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
+	// various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
+	// avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
 	IpAddress interface{}
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol interface{}
-	// ipVersion is not a valid field for regional forwarding rules.
-	IpVersion interface{}
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint interface{}
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
@@ -373,17 +359,13 @@ type ForwardingRuleArgs struct {
 	// supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
 	// belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-	// forwarding rule. ~> **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-	// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a literal IP
-	// address or a URL reference to an existing Address resource. The following examples are all valid but only the first
-	// will prevent a permadiff. If you are using 'google_compute_address' or similar, interpolate using '.address' instead of
-	// '.self_link' or similar to prevent a diff on re-apply.
+	// forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
+	// various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
+	// avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
 	IpAddress interface{}
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol interface{}
-	// ipVersion is not a valid field for regional forwarding rules.
-	IpVersion interface{}
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
 	Labels interface{}
 	// This signifies what the ForwardingRule will be used for and can be EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is

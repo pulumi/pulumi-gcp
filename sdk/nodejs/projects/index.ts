@@ -11,5 +11,4 @@ export * from "./iAMMember";
 export * from "./iAMPolicy";
 export * from "./organizationPolicy";
 export * from "./service";
-export * from "./services";
 export * from "./usageExportBucket";

@@ -322,8 +322,8 @@ namespace Pulumi.Gcp.Composer
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
 
-        [Input("useIpAliases")]
-        public Input<bool>? UseIpAliases { get; set; }
+        [Input("useIpAliases", required: true)]
+        public Input<bool> UseIpAliases { get; set; } = null!;
 
         public EnvironmentConfigNodeConfigIpAllocationPolicyArgs()
         {
@@ -344,8 +344,8 @@ namespace Pulumi.Gcp.Composer
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
 
-        [Input("useIpAliases")]
-        public Input<bool>? UseIpAliases { get; set; }
+        [Input("useIpAliases", required: true)]
+        public Input<bool> UseIpAliases { get; set; } = null!;
 
         public EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs()
         {
@@ -531,7 +531,7 @@ namespace Pulumi.Gcp.Composer
         public readonly string? ClusterSecondaryRangeName;
         public readonly string? ServicesIpv4CidrBlock;
         public readonly string? ServicesSecondaryRangeName;
-        public readonly bool? UseIpAliases;
+        public readonly bool UseIpAliases;
 
         [OutputConstructor]
         private EnvironmentConfigNodeConfigIpAllocationPolicy(
@@ -539,7 +539,7 @@ namespace Pulumi.Gcp.Composer
             string? clusterSecondaryRangeName,
             string? servicesIpv4CidrBlock,
             string? servicesSecondaryRangeName,
-            bool? useIpAliases)
+            bool useIpAliases)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;

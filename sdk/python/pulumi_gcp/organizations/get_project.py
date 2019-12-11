@@ -13,10 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, app_engines=None, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, policy_data=None, policy_etag=None, project_id=None, skip_delete=None, id=None):
-        if app_engines and not isinstance(app_engines, list):
-            raise TypeError("Expected argument 'app_engines' to be a list")
-        __self__.app_engines = app_engines
+    def __init__(__self__, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, project_id=None, skip_delete=None, id=None):
         if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError("Expected argument 'auto_create_network' to be a bool")
         __self__.auto_create_network = auto_create_network
@@ -38,12 +35,6 @@ class GetProjectResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         __self__.org_id = org_id
-        if policy_data and not isinstance(policy_data, str):
-            raise TypeError("Expected argument 'policy_data' to be a str")
-        __self__.policy_data = policy_data
-        if policy_etag and not isinstance(policy_etag, str):
-            raise TypeError("Expected argument 'policy_etag' to be a str")
-        __self__.policy_etag = policy_etag
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         __self__.project_id = project_id
@@ -62,7 +53,6 @@ class AwaitableGetProjectResult(GetProjectResult):
         if False:
             yield self
         return GetProjectResult(
-            app_engines=self.app_engines,
             auto_create_network=self.auto_create_network,
             billing_account=self.billing_account,
             folder_id=self.folder_id,
@@ -70,8 +60,6 @@ class AwaitableGetProjectResult(GetProjectResult):
             name=self.name,
             number=self.number,
             org_id=self.org_id,
-            policy_data=self.policy_data,
-            policy_etag=self.policy_etag,
             project_id=self.project_id,
             skip_delete=self.skip_delete,
             id=self.id)
@@ -96,7 +84,6 @@ def get_project(project_id=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(
-        app_engines=__ret__.get('appEngines'),
         auto_create_network=__ret__.get('autoCreateNetwork'),
         billing_account=__ret__.get('billingAccount'),
         folder_id=__ret__.get('folderId'),
@@ -104,8 +91,6 @@ def get_project(project_id=None,opts=None):
         name=__ret__.get('name'),
         number=__ret__.get('number'),
         org_id=__ret__.get('orgId'),
-        policy_data=__ret__.get('policyData'),
-        policy_etag=__ret__.get('policyEtag'),
         project_id=__ret__.get('projectId'),
         skip_delete=__ret__.get('skipDelete'),
         id=__ret__.get('id'))

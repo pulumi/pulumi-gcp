@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.Organizations
     [OutputType]
     public sealed class GetProjectResult
     {
-        public readonly ImmutableArray<Outputs.GetProjectAppEnginesResult> AppEngines;
         public readonly bool AutoCreateNetwork;
         public readonly string BillingAccount;
         public readonly string FolderId;
@@ -45,8 +44,6 @@ namespace Pulumi.Gcp.Organizations
         public readonly string Name;
         public readonly string Number;
         public readonly string OrgId;
-        public readonly string PolicyData;
-        public readonly string PolicyEtag;
         public readonly string? ProjectId;
         public readonly bool SkipDelete;
         /// <summary>
@@ -56,7 +53,6 @@ namespace Pulumi.Gcp.Organizations
 
         [OutputConstructor]
         private GetProjectResult(
-            ImmutableArray<Outputs.GetProjectAppEnginesResult> appEngines,
             bool autoCreateNetwork,
             string billingAccount,
             string folderId,
@@ -64,13 +60,10 @@ namespace Pulumi.Gcp.Organizations
             string name,
             string number,
             string orgId,
-            string policyData,
-            string policyEtag,
             string? projectId,
             bool skipDelete,
             string id)
         {
-            AppEngines = appEngines;
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
             FolderId = folderId;
@@ -78,86 +71,9 @@ namespace Pulumi.Gcp.Organizations
             Name = name;
             Number = number;
             OrgId = orgId;
-            PolicyData = policyData;
-            PolicyEtag = policyEtag;
             ProjectId = projectId;
             SkipDelete = skipDelete;
             Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectAppEnginesFeatureSettingsResult
-    {
-        public readonly bool SplitHealthChecks;
-
-        [OutputConstructor]
-        private GetProjectAppEnginesFeatureSettingsResult(bool splitHealthChecks)
-        {
-            SplitHealthChecks = splitHealthChecks;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectAppEnginesResult
-    {
-        public readonly string AuthDomain;
-        public readonly string CodeBucket;
-        public readonly string DefaultBucket;
-        public readonly string DefaultHostname;
-        public readonly ImmutableArray<GetProjectAppEnginesFeatureSettingsResult> FeatureSettings;
-        public readonly string GcrDomain;
-        public readonly string LocationId;
-        public readonly string Name;
-        public readonly string ServingStatus;
-        public readonly ImmutableArray<GetProjectAppEnginesUrlDispatchRulesResult> UrlDispatchRules;
-
-        [OutputConstructor]
-        private GetProjectAppEnginesResult(
-            string authDomain,
-            string codeBucket,
-            string defaultBucket,
-            string defaultHostname,
-            ImmutableArray<GetProjectAppEnginesFeatureSettingsResult> featureSettings,
-            string gcrDomain,
-            string locationId,
-            string name,
-            string servingStatus,
-            ImmutableArray<GetProjectAppEnginesUrlDispatchRulesResult> urlDispatchRules)
-        {
-            AuthDomain = authDomain;
-            CodeBucket = codeBucket;
-            DefaultBucket = defaultBucket;
-            DefaultHostname = defaultHostname;
-            FeatureSettings = featureSettings;
-            GcrDomain = gcrDomain;
-            LocationId = locationId;
-            Name = name;
-            ServingStatus = servingStatus;
-            UrlDispatchRules = urlDispatchRules;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectAppEnginesUrlDispatchRulesResult
-    {
-        public readonly string Domain;
-        public readonly string Path;
-        public readonly string Service;
-
-        [OutputConstructor]
-        private GetProjectAppEnginesUrlDispatchRulesResult(
-            string domain,
-            string path,
-            string service)
-        {
-            Domain = domain;
-            Path = path;
-            Service = service;
-        }
-    }
     }
 }

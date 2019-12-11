@@ -91,13 +91,11 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime in which the function is going to run. One
-        /// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-        /// defaults to `"nodejs6"`. It's recommended that you override the default, as
-        /// `"nodejs6"` is deprecated.
+        /// The runtime in which the function is going to run.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
         /// </summary>
         [Output("runtime")]
-        public Output<string?> Runtime { get; private set; } = null!;
+        public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
         /// If provided, the self-provided service account to run the function with.
@@ -150,7 +148,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Function(string name, FunctionArgs? args = null, CustomResourceOptions? options = null)
+        public Function(string name, FunctionArgs args, CustomResourceOptions? options = null)
             : base("gcp:cloudfunctions/function:Function", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
@@ -267,13 +265,11 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The runtime in which the function is going to run. One
-        /// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-        /// defaults to `"nodejs6"`. It's recommended that you override the default, as
-        /// `"nodejs6"` is deprecated.
+        /// The runtime in which the function is going to run.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
         /// </summary>
-        [Input("runtime")]
-        public Input<string>? Runtime { get; set; }
+        [Input("runtime", required: true)]
+        public Input<string> Runtime { get; set; } = null!;
 
         /// <summary>
         /// If provided, the self-provided service account to run the function with.
@@ -404,10 +400,8 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The runtime in which the function is going to run. One
-        /// of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-        /// defaults to `"nodejs6"`. It's recommended that you override the default, as
-        /// `"nodejs6"` is deprecated.
+        /// The runtime in which the function is going to run.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

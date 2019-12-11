@@ -25,7 +25,6 @@ func NewSubnetwork(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["description"] = nil
-		inputs["enableFlowLogs"] = nil
 		inputs["ipCidrRange"] = nil
 		inputs["logConfig"] = nil
 		inputs["name"] = nil
@@ -38,7 +37,6 @@ func NewSubnetwork(ctx *pulumi.Context,
 		inputs["secondaryIpRanges"] = nil
 	} else {
 		inputs["description"] = args.Description
-		inputs["enableFlowLogs"] = args.EnableFlowLogs
 		inputs["ipCidrRange"] = args.IpCidrRange
 		inputs["logConfig"] = args.LogConfig
 		inputs["name"] = args.Name
@@ -69,7 +67,6 @@ func GetSubnetwork(ctx *pulumi.Context,
 	if state != nil {
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
-		inputs["enableFlowLogs"] = state.EnableFlowLogs
 		inputs["fingerprint"] = state.Fingerprint
 		inputs["gatewayAddress"] = state.GatewayAddress
 		inputs["ipCidrRange"] = state.IpCidrRange
@@ -112,11 +109,6 @@ func (r *Subnetwork) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Whether to enable flow logging for this subnetwork.
-func (r *Subnetwork) EnableFlowLogs() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["enableFlowLogs"])
-}
-
 // Fingerprint of this resource. This field is used internally during updates of this resource.
 func (r *Subnetwork) Fingerprint() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["fingerprint"])
@@ -135,6 +127,7 @@ func (r *Subnetwork) IpCidrRange() pulumi.StringOutput {
 }
 
 // Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
 func (r *Subnetwork) LogConfig() pulumi.Output {
 	return r.s.State["logConfig"]
 }
@@ -203,8 +196,6 @@ type SubnetworkState struct {
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set
 	// only at resource creation time.
 	Description interface{}
-	// Whether to enable flow logging for this subnetwork.
-	EnableFlowLogs interface{}
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	Fingerprint interface{}
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
@@ -214,6 +205,7 @@ type SubnetworkState struct {
 	// IPv4 is supported.
 	IpCidrRange interface{}
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+	// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
 	LogConfig interface{}
 	// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
 	// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
@@ -253,13 +245,12 @@ type SubnetworkArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set
 	// only at resource creation time.
 	Description interface{}
-	// Whether to enable flow logging for this subnetwork.
-	EnableFlowLogs interface{}
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the
 	// subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
 	// IPv4 is supported.
 	IpCidrRange interface{}
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+	// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
 	LogConfig interface{}
 	// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
 	// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression

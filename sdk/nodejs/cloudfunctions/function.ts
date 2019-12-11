@@ -17,73 +17,6 @@ import * as utilities from "../utilities";
  * to be invoked. See below examples for how to set up the appropriate permissions,
  * or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
  * for Cloud Functions.
- * 
- * ## Example Usage - Public Function
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const bucket = new gcp.storage.Bucket("bucket", {});
- * const archive = new gcp.storage.BucketObject("archive", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
- * });
- * const functionFunction = new gcp.cloudfunctions.Function("function", {
- *     availableMemoryMb: 128,
- *     description: "My function",
- *     entryPoint: "helloGET",
- *     runtime: "nodejs10",
- *     sourceArchiveBucket: bucket.name,
- *     sourceArchiveObject: archive.name,
- *     triggerHttp: true,
- * });
- * // IAM entry for all users to invoke the function
- * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
- *     cloudFunction: functionFunction.name,
- *     member: "allUsers",
- *     project: functionFunction.project,
- *     region: functionFunction.region,
- *     role: "roles/cloudfunctions.invoker",
- * });
- * ```
- * 
- * ## Example Usage - Single User
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const bucket = new gcp.storage.Bucket("bucket", {});
- * const archive = new gcp.storage.BucketObject("archive", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
- * });
- * const functionFunction = new gcp.cloudfunctions.Function("function", {
- *     availableMemoryMb: 128,
- *     description: "My function",
- *     entryPoint: "helloGET",
- *     environmentVariables: {
- *         MY_ENV_VAR: "my-env-var-value",
- *     },
- *     labels: {
- *         "my-label": "my-label-value",
- *     },
- *     runtime: "nodejs10",
- *     sourceArchiveBucket: bucket.name,
- *     sourceArchiveObject: archive.name,
- *     timeout: 60,
- *     triggerHttp: true,
- * });
- * // IAM entry for a single user to invoke the function
- * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
- *     cloudFunction: functionFunction.name,
- *     member: "user:myFunctionInvoker@example.com",
- *     project: functionFunction.project,
- *     region: functionFunction.region,
- *     role: "roles/cloudfunctions.invoker",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
  */
@@ -159,12 +92,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The runtime in which the function is going to run. One
-     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-     * defaults to `"nodejs6"`. It's recommended that you override the default, as
-     * `"nodejs6"` is deprecated.
+     * The runtime in which the function is going to run.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
      */
-    public readonly runtime!: pulumi.Output<string | undefined>;
+    public readonly runtime!: pulumi.Output<string>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
@@ -202,7 +133,7 @@ export class Function extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FunctionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -228,6 +159,9 @@ export class Function extends pulumi.CustomResource {
             inputs["vpcConnector"] = state ? state.vpcConnector : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
+            if (!args || args.runtime === undefined) {
+                throw new Error("Missing required property 'runtime'");
+            }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
@@ -308,10 +242,8 @@ export interface FunctionState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The runtime in which the function is going to run. One
-     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-     * defaults to `"nodejs6"`. It's recommended that you override the default, as
-     * `"nodejs6"` is deprecated.
+     * The runtime in which the function is going to run.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
      */
     readonly runtime?: pulumi.Input<string>;
     /**
@@ -394,12 +326,10 @@ export interface FunctionArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The runtime in which the function is going to run. One
-     * of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-     * defaults to `"nodejs6"`. It's recommended that you override the default, as
-     * `"nodejs6"` is deprecated.
+     * The runtime in which the function is going to run.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
      */
-    readonly runtime?: pulumi.Input<string>;
+    readonly runtime: pulumi.Input<string>;
     /**
      * If provided, the self-provided service account to run the function with.
      */

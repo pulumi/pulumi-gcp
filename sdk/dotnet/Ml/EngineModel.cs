@@ -241,8 +241,8 @@ namespace Pulumi.Gcp.ML
 
     public sealed class EngineModelDefaultVersionArgs : Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public EngineModelDefaultVersionArgs()
         {
@@ -251,8 +251,8 @@ namespace Pulumi.Gcp.ML
 
     public sealed class EngineModelDefaultVersionGetArgs : Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public EngineModelDefaultVersionGetArgs()
         {
@@ -266,10 +266,10 @@ namespace Pulumi.Gcp.ML
     [OutputType]
     public sealed class EngineModelDefaultVersion
     {
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
-        private EngineModelDefaultVersion(string? name)
+        private EngineModelDefaultVersion(string name)
         {
             Name = name;
         }

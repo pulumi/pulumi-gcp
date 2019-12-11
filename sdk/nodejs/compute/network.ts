@@ -56,13 +56,6 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
     /**
-     * If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-     * network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details.
-     * The range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for
-     * example: '192.168.0.0/16'. The resource must be recreated to modify this field.
-     */
-    public readonly ipv4Range!: pulumi.Output<string | undefined>;
-    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
      * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
@@ -101,7 +94,6 @@ export class Network extends pulumi.CustomResource {
             inputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
-            inputs["ipv4Range"] = state ? state.ipv4Range : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["routingMode"] = state ? state.routingMode : undefined;
@@ -111,7 +103,6 @@ export class Network extends pulumi.CustomResource {
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             inputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["ipv4Range"] = args ? args.ipv4Range : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["routingMode"] = args ? args.routingMode : undefined;
@@ -152,13 +143,6 @@ export interface NetworkState {
      * The gateway address for default routing out of the network. This value is selected by GCP.
      */
     readonly gatewayIpv4?: pulumi.Input<string>;
-    /**
-     * If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-     * network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details.
-     * The range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for
-     * example: '192.168.0.0/16'. The resource must be recreated to modify this field.
-     */
-    readonly ipv4Range?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
@@ -202,13 +186,6 @@ export interface NetworkArgs {
      * An optional description of this resource. The resource must be recreated to modify this field.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-     * network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details.
-     * The range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for
-     * example: '192.168.0.0/16'. The resource must be recreated to modify this field.
-     */
-    readonly ipv4Range?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression

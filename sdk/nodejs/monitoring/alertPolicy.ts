@@ -66,7 +66,6 @@ export class AlertPolicy extends pulumi.CustomResource {
      * Whether or not the policy is enabled. The default is true.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly labels!: pulumi.Output<string[] | undefined>;
     /**
      * The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
@@ -104,7 +103,6 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["documentation"] = state ? state.documentation : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationChannels"] = state ? state.notificationChannels : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -125,7 +123,6 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["documentation"] = args ? args.documentation : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
             inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
@@ -177,7 +174,6 @@ export interface AlertPolicyState {
      * Whether or not the policy is enabled. The default is true.
      */
     readonly enabled?: pulumi.Input<boolean>;
-    readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
@@ -227,7 +223,6 @@ export interface AlertPolicyArgs {
      * Whether or not the policy is enabled. The default is true.
      */
     readonly enabled?: pulumi.Input<boolean>;
-    readonly labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or
      * when new violations occur on an already opened incident. Each element of this array corresponds to the name field in

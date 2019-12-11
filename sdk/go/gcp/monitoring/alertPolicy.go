@@ -32,7 +32,6 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		inputs["displayName"] = nil
 		inputs["documentation"] = nil
 		inputs["enabled"] = nil
-		inputs["labels"] = nil
 		inputs["notificationChannels"] = nil
 		inputs["project"] = nil
 		inputs["userLabels"] = nil
@@ -42,7 +41,6 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		inputs["displayName"] = args.DisplayName
 		inputs["documentation"] = args.Documentation
 		inputs["enabled"] = args.Enabled
-		inputs["labels"] = args.Labels
 		inputs["notificationChannels"] = args.NotificationChannels
 		inputs["project"] = args.Project
 		inputs["userLabels"] = args.UserLabels
@@ -68,7 +66,6 @@ func GetAlertPolicy(ctx *pulumi.Context,
 		inputs["displayName"] = state.DisplayName
 		inputs["documentation"] = state.Documentation
 		inputs["enabled"] = state.Enabled
-		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
 		inputs["notificationChannels"] = state.NotificationChannels
 		inputs["project"] = state.Project
@@ -127,10 +124,6 @@ func (r *AlertPolicy) Enabled() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
-func (r *AlertPolicy) Labels() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["labels"])
-}
-
 // The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
 func (r *AlertPolicy) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
@@ -175,7 +168,6 @@ type AlertPolicyState struct {
 	Documentation interface{}
 	// Whether or not the policy is enabled. The default is true.
 	Enabled interface{}
-	Labels interface{}
 	// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
 	Name interface{}
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
@@ -207,7 +199,6 @@ type AlertPolicyArgs struct {
 	Documentation interface{}
 	// Whether or not the policy is enabled. The default is true.
 	Enabled interface{}
-	Labels interface{}
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
 	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries

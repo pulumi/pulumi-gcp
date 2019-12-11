@@ -22,18 +22,6 @@ namespace Pulumi.Gcp.Container
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of zones in which the cluster's nodes
-        /// should be located. These must be in the same region as the cluster zone for
-        /// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-        /// the number of nodes specified in `initial_node_count` is created in
-        /// all specified zones as well as the primary zone. If specified for a regional
-        /// cluster, nodes will only be created in these zones. `additional_zones` has been
-        /// deprecated in favour of `node_locations`.
-        /// </summary>
-        [Output("additionalZones")]
-        public Output<ImmutableArray<string>> AdditionalZones { get; private set; } = null!;
-
-        /// <summary>
         /// The configuration for addons supported by GKE.
         /// Structure is documented below.
         /// </summary>
@@ -41,7 +29,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAddonsConfig> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
         /// </summary>
@@ -61,11 +49,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The IP address range of the Kubernetes pods
-        /// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-        /// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-        /// work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-        /// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-        /// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+        /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+        /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Output("clusterIpv4Cidr")]
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
@@ -161,13 +147,13 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableArray<string>> InstanceGroupUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-        /// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-        /// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// in order to support explicit removal with `ip_allocation_policy = []`.
+        /// Configuration of cluster IP allocation for
+        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+        /// making the cluster VPC-native instead of routes-based. Structure is documented
+        /// below.
         /// </summary>
         [Output("ipAllocationPolicy")]
-        public Output<Outputs.ClusterIpAllocationPolicy> IpAllocationPolicy { get; private set; } = null!;
+        public Output<Outputs.ClusterIpAllocationPolicy?> IpAllocationPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The location (region or zone) in which the cluster
@@ -175,7 +161,7 @@ namespace Pulumi.Gcp.Container
         /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
         /// single cluster master. If you specify a region (such as `us-west1`), the
         /// cluster will be a regional cluster with multiple masters spread across zones in
-        /// the region, and with default node locations in those zones as well.
+        /// the region, and with default node locations in those zones as well
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -183,10 +169,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Output("loggingService")]
-        public Output<string> LoggingService { get; private set; } = null!;
+        public Output<string?> LoggingService { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance policy to use for the cluster. Structure is
@@ -243,10 +229,10 @@ namespace Pulumi.Gcp.Container
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
         /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-        /// Defaults to `monitoring.googleapis.com`
+        /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Output("monitoringService")]
-        public Output<string> MonitoringService { get; private set; } = null!;
+        public Output<string?> MonitoringService { get; private set; } = null!;
 
         /// <summary>
         /// The name of the cluster, unique within the project and
@@ -336,9 +322,6 @@ namespace Pulumi.Gcp.Container
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
-
         /// <summary>
         /// ) Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -380,8 +363,8 @@ namespace Pulumi.Gcp.Container
         public Output<string> ServicesIpv4Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine subnetwork in
-        /// which the cluster's instances are launched.
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
@@ -405,14 +388,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("workloadIdentityConfig")]
         public Output<Outputs.ClusterWorkloadIdentityConfig?> WorkloadIdentityConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// The zone that the cluster master and nodes
-        /// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-        /// has been deprecated in favour of `location`.
-        /// </summary>
-        [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -460,24 +435,6 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
-        [Input("additionalZones")]
-        private InputList<string>? _additionalZones;
-
-        /// <summary>
-        /// The list of zones in which the cluster's nodes
-        /// should be located. These must be in the same region as the cluster zone for
-        /// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-        /// the number of nodes specified in `initial_node_count` is created in
-        /// all specified zones as well as the primary zone. If specified for a regional
-        /// cluster, nodes will only be created in these zones. `additional_zones` has been
-        /// deprecated in favour of `node_locations`.
-        /// </summary>
-        public InputList<string> AdditionalZones
-        {
-            get => _additionalZones ?? (_additionalZones = new InputList<string>());
-            set => _additionalZones = value;
-        }
-
         /// <summary>
         /// The configuration for addons supported by GKE.
         /// Structure is documented below.
@@ -486,7 +443,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAddonsConfigArgs>? AddonsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
         /// </summary>
@@ -506,11 +463,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The IP address range of the Kubernetes pods
-        /// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-        /// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-        /// work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-        /// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-        /// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+        /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+        /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -593,10 +548,10 @@ namespace Pulumi.Gcp.Container
         public Input<int>? InitialNodeCount { get; set; }
 
         /// <summary>
-        /// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-        /// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-        /// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// in order to support explicit removal with `ip_allocation_policy = []`.
+        /// Configuration of cluster IP allocation for
+        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+        /// making the cluster VPC-native instead of routes-based. Structure is documented
+        /// below.
         /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.ClusterIpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
@@ -607,7 +562,7 @@ namespace Pulumi.Gcp.Container
         /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
         /// single cluster master. If you specify a region (such as `us-west1`), the
         /// cluster will be a regional cluster with multiple masters spread across zones in
-        /// the region, and with default node locations in those zones as well.
+        /// the region, and with default node locations in those zones as well
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -615,7 +570,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -667,7 +622,7 @@ namespace Pulumi.Gcp.Container
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
         /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-        /// Defaults to `monitoring.googleapis.com`
+        /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]
         public Input<string>? MonitoringService { get; set; }
@@ -772,9 +727,6 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         /// <summary>
         /// ) Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -813,8 +765,8 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine subnetwork in
-        /// which the cluster's instances are launched.
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -836,14 +788,6 @@ namespace Pulumi.Gcp.Container
         [Input("workloadIdentityConfig")]
         public Input<Inputs.ClusterWorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
 
-        /// <summary>
-        /// The zone that the cluster master and nodes
-        /// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-        /// has been deprecated in favour of `location`.
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
-
         public ClusterArgs()
         {
         }
@@ -851,24 +795,6 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
-        [Input("additionalZones")]
-        private InputList<string>? _additionalZones;
-
-        /// <summary>
-        /// The list of zones in which the cluster's nodes
-        /// should be located. These must be in the same region as the cluster zone for
-        /// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-        /// the number of nodes specified in `initial_node_count` is created in
-        /// all specified zones as well as the primary zone. If specified for a regional
-        /// cluster, nodes will only be created in these zones. `additional_zones` has been
-        /// deprecated in favour of `node_locations`.
-        /// </summary>
-        public InputList<string> AdditionalZones
-        {
-            get => _additionalZones ?? (_additionalZones = new InputList<string>());
-            set => _additionalZones = value;
-        }
-
         /// <summary>
         /// The configuration for addons supported by GKE.
         /// Structure is documented below.
@@ -877,7 +803,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAddonsConfigGetArgs>? AddonsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
         /// </summary>
@@ -897,11 +823,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The IP address range of the Kubernetes pods
-        /// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-        /// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-        /// work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-        /// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-        /// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+        /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+        /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+        /// only work for routes-based clusters, where `ip_allocation_policy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -1003,10 +927,10 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-        /// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-        /// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// in order to support explicit removal with `ip_allocation_policy = []`.
+        /// Configuration of cluster IP allocation for
+        /// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+        /// making the cluster VPC-native instead of routes-based. Structure is documented
+        /// below.
         /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.ClusterIpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
@@ -1017,7 +941,7 @@ namespace Pulumi.Gcp.Container
         /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
         /// single cluster master. If you specify a region (such as `us-west1`), the
         /// cluster will be a regional cluster with multiple masters spread across zones in
-        /// the region, and with default node locations in those zones as well.
+        /// the region, and with default node locations in those zones as well
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1025,7 +949,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -1085,7 +1009,7 @@ namespace Pulumi.Gcp.Container
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
         /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-        /// Defaults to `monitoring.googleapis.com`
+        /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]
         public Input<string>? MonitoringService { get; set; }
@@ -1190,9 +1114,6 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         /// <summary>
         /// ) Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1240,8 +1161,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ServicesIpv4Cidr { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine subnetwork in
-        /// which the cluster's instances are launched.
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -1266,14 +1187,6 @@ namespace Pulumi.Gcp.Container
         [Input("workloadIdentityConfig")]
         public Input<Inputs.ClusterWorkloadIdentityConfigGetArgs>? WorkloadIdentityConfig { get; set; }
 
-        /// <summary>
-        /// The zone that the cluster master and nodes
-        /// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-        /// has been deprecated in favour of `location`.
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
-
         public ClusterState()
         {
         }
@@ -1296,9 +1209,6 @@ namespace Pulumi.Gcp.Container
         [Input("istioConfig")]
         public Input<ClusterAddonsConfigIstioConfigArgs>? IstioConfig { get; set; }
 
-        [Input("kubernetesDashboard")]
-        public Input<ClusterAddonsConfigKubernetesDashboardArgs>? KubernetesDashboard { get; set; }
-
         [Input("networkPolicyConfig")]
         public Input<ClusterAddonsConfigNetworkPolicyConfigArgs>? NetworkPolicyConfig { get; set; }
 
@@ -1309,8 +1219,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigCloudrunConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigCloudrunConfigArgs()
         {
@@ -1319,8 +1229,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigCloudrunConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigCloudrunConfigGetArgs()
         {
@@ -1341,9 +1251,6 @@ namespace Pulumi.Gcp.Container
         [Input("istioConfig")]
         public Input<ClusterAddonsConfigIstioConfigGetArgs>? IstioConfig { get; set; }
 
-        [Input("kubernetesDashboard")]
-        public Input<ClusterAddonsConfigKubernetesDashboardGetArgs>? KubernetesDashboard { get; set; }
-
         [Input("networkPolicyConfig")]
         public Input<ClusterAddonsConfigNetworkPolicyConfigGetArgs>? NetworkPolicyConfig { get; set; }
 
@@ -1354,8 +1261,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigHorizontalPodAutoscalingArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigHorizontalPodAutoscalingArgs()
         {
@@ -1364,8 +1271,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigHorizontalPodAutoscalingGetArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigHorizontalPodAutoscalingGetArgs()
         {
@@ -1374,8 +1281,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigHttpLoadBalancingArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigHttpLoadBalancingArgs()
         {
@@ -1384,8 +1291,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigHttpLoadBalancingGetArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigHttpLoadBalancingGetArgs()
         {
@@ -1397,8 +1304,8 @@ namespace Pulumi.Gcp.Container
         [Input("auth")]
         public Input<string>? Auth { get; set; }
 
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigIstioConfigArgs()
         {
@@ -1410,38 +1317,18 @@ namespace Pulumi.Gcp.Container
         [Input("auth")]
         public Input<string>? Auth { get; set; }
 
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigIstioConfigGetArgs()
         {
         }
     }
 
-    public sealed class ClusterAddonsConfigKubernetesDashboardArgs : Pulumi.ResourceArgs
-    {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        public ClusterAddonsConfigKubernetesDashboardArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterAddonsConfigKubernetesDashboardGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        public ClusterAddonsConfigKubernetesDashboardGetArgs()
-        {
-        }
-    }
-
     public sealed class ClusterAddonsConfigNetworkPolicyConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigNetworkPolicyConfigArgs()
         {
@@ -1450,8 +1337,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterAddonsConfigNetworkPolicyConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
 
         public ClusterAddonsConfigNetworkPolicyConfigGetArgs()
         {
@@ -1480,6 +1367,9 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterClusterAutoscalingArgs : Pulumi.ResourceArgs
     {
+        [Input("autoProvisioningDefaults")]
+        public Input<ClusterClusterAutoscalingAutoProvisioningDefaultsArgs>? AutoProvisioningDefaults { get; set; }
+
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
@@ -1496,8 +1386,47 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+    public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs : Pulumi.ResourceArgs
+    {
+        [Input("oauthScopes")]
+        private InputList<string>? _oauthScopes;
+        public InputList<string> OauthScopes
+        {
+            get => _oauthScopes ?? (_oauthScopes = new InputList<string>());
+            set => _oauthScopes = value;
+        }
+
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        public ClusterClusterAutoscalingAutoProvisioningDefaultsArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("oauthScopes")]
+        private InputList<string>? _oauthScopes;
+        public InputList<string> OauthScopes
+        {
+            get => _oauthScopes ?? (_oauthScopes = new InputList<string>());
+            set => _oauthScopes = value;
+        }
+
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        public ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterClusterAutoscalingGetArgs : Pulumi.ResourceArgs
     {
+        [Input("autoProvisioningDefaults")]
+        public Input<ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs>? AutoProvisioningDefaults { get; set; }
+
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
@@ -1580,23 +1509,11 @@ namespace Pulumi.Gcp.Container
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
-        [Input("createSubnetwork")]
-        public Input<bool>? CreateSubnetwork { get; set; }
-
-        [Input("nodeIpv4CidrBlock")]
-        public Input<string>? NodeIpv4CidrBlock { get; set; }
-
         [Input("servicesIpv4CidrBlock")]
         public Input<string>? ServicesIpv4CidrBlock { get; set; }
 
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
-
-        [Input("subnetworkName")]
-        public Input<string>? SubnetworkName { get; set; }
-
-        [Input("useIpAliases")]
-        public Input<bool>? UseIpAliases { get; set; }
 
         public ClusterIpAllocationPolicyArgs()
         {
@@ -1611,23 +1528,11 @@ namespace Pulumi.Gcp.Container
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
-        [Input("createSubnetwork")]
-        public Input<bool>? CreateSubnetwork { get; set; }
-
-        [Input("nodeIpv4CidrBlock")]
-        public Input<string>? NodeIpv4CidrBlock { get; set; }
-
         [Input("servicesIpv4CidrBlock")]
         public Input<string>? ServicesIpv4CidrBlock { get; set; }
 
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
-
-        [Input("subnetworkName")]
-        public Input<string>? SubnetworkName { get; set; }
-
-        [Input("useIpAliases")]
-        public Input<bool>? UseIpAliases { get; set; }
 
         public ClusterIpAllocationPolicyGetArgs()
         {
@@ -1846,8 +1751,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterNetworkPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -1859,8 +1764,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterNetworkPolicyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -2243,6 +2148,9 @@ namespace Pulumi.Gcp.Container
             set => _nodeLocations = value;
         }
 
+        [Input("upgradeSettings")]
+        public Input<ClusterNodePoolsUpgradeSettingsArgs>? UpgradeSettings { get; set; }
+
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -2349,6 +2257,9 @@ namespace Pulumi.Gcp.Container
             get => _nodeLocations ?? (_nodeLocations = new InputList<string>());
             set => _nodeLocations = value;
         }
+
+        [Input("upgradeSettings")]
+        public Input<ClusterNodePoolsUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
 
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -2684,6 +2595,32 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+    public sealed class ClusterNodePoolsUpgradeSettingsArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxSurge", required: true)]
+        public Input<int> MaxSurge { get; set; } = null!;
+
+        [Input("maxUnavailable", required: true)]
+        public Input<int> MaxUnavailable { get; set; } = null!;
+
+        public ClusterNodePoolsUpgradeSettingsArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterNodePoolsUpgradeSettingsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxSurge", required: true)]
+        public Input<int> MaxSurge { get; set; } = null!;
+
+        [Input("maxUnavailable", required: true)]
+        public Input<int> MaxUnavailable { get; set; } = null!;
+
+        public ClusterNodePoolsUpgradeSettingsGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterPodSecurityPolicyConfigArgs : Pulumi.ResourceArgs
     {
         [Input("enabled", required: true)]
@@ -2706,14 +2643,17 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterPrivateClusterConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("enablePrivateEndpoint")]
-        public Input<bool>? EnablePrivateEndpoint { get; set; }
+        [Input("enablePrivateEndpoint", required: true)]
+        public Input<bool> EnablePrivateEndpoint { get; set; } = null!;
 
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
+
+        [Input("peeringName")]
+        public Input<string>? PeeringName { get; set; }
 
         [Input("privateEndpoint")]
         public Input<string>? PrivateEndpoint { get; set; }
@@ -2728,14 +2668,17 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterPrivateClusterConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("enablePrivateEndpoint")]
-        public Input<bool>? EnablePrivateEndpoint { get; set; }
+        [Input("enablePrivateEndpoint", required: true)]
+        public Input<bool> EnablePrivateEndpoint { get; set; } = null!;
 
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
+
+        [Input("peeringName")]
+        public Input<string>? PeeringName { get; set; }
 
         [Input("privateEndpoint")]
         public Input<string>? PrivateEndpoint { get; set; }
@@ -2750,8 +2693,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterReleaseChannelArgs : Pulumi.ResourceArgs
     {
-        [Input("channel")]
-        public Input<string>? Channel { get; set; }
+        [Input("channel", required: true)]
+        public Input<string> Channel { get; set; } = null!;
 
         public ClusterReleaseChannelArgs()
         {
@@ -2760,8 +2703,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterReleaseChannelGetArgs : Pulumi.ResourceArgs
     {
-        [Input("channel")]
-        public Input<string>? Channel { get; set; }
+        [Input("channel", required: true)]
+        public Input<string> Channel { get; set; } = null!;
 
         public ClusterReleaseChannelGetArgs()
         {
@@ -2816,8 +2759,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterVerticalPodAutoscalingArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public ClusterVerticalPodAutoscalingArgs()
         {
@@ -2826,8 +2769,8 @@ namespace Pulumi.Gcp.Container
 
     public sealed class ClusterVerticalPodAutoscalingGetArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public ClusterVerticalPodAutoscalingGetArgs()
         {
@@ -2865,7 +2808,6 @@ namespace Pulumi.Gcp.Container
         public readonly ClusterAddonsConfigHorizontalPodAutoscaling HorizontalPodAutoscaling;
         public readonly ClusterAddonsConfigHttpLoadBalancing HttpLoadBalancing;
         public readonly ClusterAddonsConfigIstioConfig IstioConfig;
-        public readonly ClusterAddonsConfigKubernetesDashboard KubernetesDashboard;
         public readonly ClusterAddonsConfigNetworkPolicyConfig NetworkPolicyConfig;
 
         [OutputConstructor]
@@ -2874,14 +2816,12 @@ namespace Pulumi.Gcp.Container
             ClusterAddonsConfigHorizontalPodAutoscaling horizontalPodAutoscaling,
             ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing,
             ClusterAddonsConfigIstioConfig istioConfig,
-            ClusterAddonsConfigKubernetesDashboard kubernetesDashboard,
             ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig)
         {
             CloudrunConfig = cloudrunConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;
-            KubernetesDashboard = kubernetesDashboard;
             NetworkPolicyConfig = networkPolicyConfig;
         }
     }
@@ -2889,10 +2829,10 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterAddonsConfigCloudrunConfig
     {
-        public readonly bool? Disabled;
+        public readonly bool Disabled;
 
         [OutputConstructor]
-        private ClusterAddonsConfigCloudrunConfig(bool? disabled)
+        private ClusterAddonsConfigCloudrunConfig(bool disabled)
         {
             Disabled = disabled;
         }
@@ -2901,10 +2841,10 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterAddonsConfigHorizontalPodAutoscaling
     {
-        public readonly bool? Disabled;
+        public readonly bool Disabled;
 
         [OutputConstructor]
-        private ClusterAddonsConfigHorizontalPodAutoscaling(bool? disabled)
+        private ClusterAddonsConfigHorizontalPodAutoscaling(bool disabled)
         {
             Disabled = disabled;
         }
@@ -2913,10 +2853,10 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterAddonsConfigHttpLoadBalancing
     {
-        public readonly bool? Disabled;
+        public readonly bool Disabled;
 
         [OutputConstructor]
-        private ClusterAddonsConfigHttpLoadBalancing(bool? disabled)
+        private ClusterAddonsConfigHttpLoadBalancing(bool disabled)
         {
             Disabled = disabled;
         }
@@ -2926,12 +2866,12 @@ namespace Pulumi.Gcp.Container
     public sealed class ClusterAddonsConfigIstioConfig
     {
         public readonly string? Auth;
-        public readonly bool? Disabled;
+        public readonly bool Disabled;
 
         [OutputConstructor]
         private ClusterAddonsConfigIstioConfig(
             string? auth,
-            bool? disabled)
+            bool disabled)
         {
             Auth = auth;
             Disabled = disabled;
@@ -2939,24 +2879,12 @@ namespace Pulumi.Gcp.Container
     }
 
     [OutputType]
-    public sealed class ClusterAddonsConfigKubernetesDashboard
-    {
-        public readonly bool? Disabled;
-
-        [OutputConstructor]
-        private ClusterAddonsConfigKubernetesDashboard(bool? disabled)
-        {
-            Disabled = disabled;
-        }
-    }
-
-    [OutputType]
     public sealed class ClusterAddonsConfigNetworkPolicyConfig
     {
-        public readonly bool? Disabled;
+        public readonly bool Disabled;
 
         [OutputConstructor]
-        private ClusterAddonsConfigNetworkPolicyConfig(bool? disabled)
+        private ClusterAddonsConfigNetworkPolicyConfig(bool disabled)
         {
             Disabled = disabled;
         }
@@ -2977,16 +2905,35 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterClusterAutoscaling
     {
+        public readonly ClusterClusterAutoscalingAutoProvisioningDefaults AutoProvisioningDefaults;
         public readonly bool Enabled;
         public readonly ImmutableArray<ClusterClusterAutoscalingResourceLimits> ResourceLimits;
 
         [OutputConstructor]
         private ClusterClusterAutoscaling(
+            ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults,
             bool enabled,
             ImmutableArray<ClusterClusterAutoscalingResourceLimits> resourceLimits)
         {
+            AutoProvisioningDefaults = autoProvisioningDefaults;
             Enabled = enabled;
             ResourceLimits = resourceLimits;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterClusterAutoscalingAutoProvisioningDefaults
+    {
+        public readonly ImmutableArray<string> OauthScopes;
+        public readonly string? ServiceAccount;
+
+        [OutputConstructor]
+        private ClusterClusterAutoscalingAutoProvisioningDefaults(
+            ImmutableArray<string> oauthScopes,
+            string? serviceAccount)
+        {
+            OauthScopes = oauthScopes;
+            ServiceAccount = serviceAccount;
         }
     }
 
@@ -3030,32 +2977,20 @@ namespace Pulumi.Gcp.Container
     {
         public readonly string ClusterIpv4CidrBlock;
         public readonly string ClusterSecondaryRangeName;
-        public readonly bool CreateSubnetwork;
-        public readonly string NodeIpv4CidrBlock;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
-        public readonly string SubnetworkName;
-        public readonly bool? UseIpAliases;
 
         [OutputConstructor]
         private ClusterIpAllocationPolicy(
             string clusterIpv4CidrBlock,
             string clusterSecondaryRangeName,
-            bool createSubnetwork,
-            string nodeIpv4CidrBlock,
             string servicesIpv4CidrBlock,
-            string servicesSecondaryRangeName,
-            string subnetworkName,
-            bool? useIpAliases)
+            string servicesSecondaryRangeName)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
-            CreateSubnetwork = createSubnetwork;
-            NodeIpv4CidrBlock = nodeIpv4CidrBlock;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
-            SubnetworkName = subnetworkName;
-            UseIpAliases = useIpAliases;
         }
     }
 
@@ -3181,12 +3116,12 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterNetworkPolicy
     {
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         public readonly string? Provider;
 
         [OutputConstructor]
         private ClusterNetworkPolicy(
-            bool? enabled,
+            bool enabled,
             string? provider)
         {
             Enabled = enabled;
@@ -3372,6 +3307,7 @@ namespace Pulumi.Gcp.Container
         /// a zonal cluster, omit the cluster's zone.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
+        public readonly ClusterNodePoolsUpgradeSettings? UpgradeSettings;
         public readonly string Version;
 
         [OutputConstructor]
@@ -3386,6 +3322,7 @@ namespace Pulumi.Gcp.Container
             ClusterNodePoolsNodeConfig nodeConfig,
             int nodeCount,
             ImmutableArray<string> nodeLocations,
+            ClusterNodePoolsUpgradeSettings? upgradeSettings,
             string version)
         {
             Autoscaling = autoscaling;
@@ -3398,6 +3335,7 @@ namespace Pulumi.Gcp.Container
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;
+            UpgradeSettings = upgradeSettings;
             Version = version;
         }
     }
@@ -3571,6 +3509,22 @@ namespace Pulumi.Gcp.Container
     }
 
     [OutputType]
+    public sealed class ClusterNodePoolsUpgradeSettings
+    {
+        public readonly int MaxSurge;
+        public readonly int MaxUnavailable;
+
+        [OutputConstructor]
+        private ClusterNodePoolsUpgradeSettings(
+            int maxSurge,
+            int maxUnavailable)
+        {
+            MaxSurge = maxSurge;
+            MaxUnavailable = maxUnavailable;
+        }
+    }
+
+    [OutputType]
     public sealed class ClusterPodSecurityPolicyConfig
     {
         public readonly bool Enabled;
@@ -3585,23 +3539,26 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterPrivateClusterConfig
     {
-        public readonly bool? EnablePrivateEndpoint;
+        public readonly bool EnablePrivateEndpoint;
         public readonly bool? EnablePrivateNodes;
         public readonly string? MasterIpv4CidrBlock;
+        public readonly string PeeringName;
         public readonly string PrivateEndpoint;
         public readonly string PublicEndpoint;
 
         [OutputConstructor]
         private ClusterPrivateClusterConfig(
-            bool? enablePrivateEndpoint,
+            bool enablePrivateEndpoint,
             bool? enablePrivateNodes,
             string? masterIpv4CidrBlock,
+            string peeringName,
             string privateEndpoint,
             string publicEndpoint)
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
             EnablePrivateNodes = enablePrivateNodes;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
+            PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;
             PublicEndpoint = publicEndpoint;
         }
@@ -3610,10 +3567,10 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterReleaseChannel
     {
-        public readonly string? Channel;
+        public readonly string Channel;
 
         [OutputConstructor]
-        private ClusterReleaseChannel(string? channel)
+        private ClusterReleaseChannel(string channel)
         {
             Channel = channel;
         }
@@ -3650,10 +3607,10 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class ClusterVerticalPodAutoscaling
     {
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
 
         [OutputConstructor]
-        private ClusterVerticalPodAutoscaling(bool? enabled)
+        private ClusterVerticalPodAutoscaling(bool enabled)
         {
             Enabled = enabled;
         }

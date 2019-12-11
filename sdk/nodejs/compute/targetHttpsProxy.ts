@@ -72,8 +72,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-     * Currently, exactly one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+     * least one SSL certificate must be specified.
      */
     public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
@@ -178,8 +178,8 @@ export interface TargetHttpsProxyState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-     * Currently, exactly one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+     * least one SSL certificate must be specified.
      */
     readonly sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -221,8 +221,8 @@ export interface TargetHttpsProxyArgs {
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-     * Currently, exactly one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+     * least one SSL certificate must be specified.
      */
     readonly sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
     /**

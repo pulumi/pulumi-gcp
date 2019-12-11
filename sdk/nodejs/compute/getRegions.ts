@@ -9,21 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Compute regions for a given project.
  * See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const available = gcp.compute.getRegions();
- * const cluster: gcp.compute.Subnetwork[] = [];
- * for (let i = 0; i < available.names.length; i++) {
- *     cluster.push(new gcp.compute.Subnetwork(`cluster-${i}`, {
- *         ipCidrRange: `10.36.${i}.0/24`,
- *         network: "my-network",
- *         region: available.names[i],
- *     }));
- * }
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
  */

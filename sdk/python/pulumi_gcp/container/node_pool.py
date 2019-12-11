@@ -20,7 +20,7 @@ class NodePool(pulumi.CustomResource):
     """
     cluster: pulumi.Output[str]
     """
-    The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+    The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
     """
     initial_node_count: pulumi.Output[float]
     """
@@ -114,11 +114,7 @@ class NodePool(pulumi.CustomResource):
     The ID of the project in which to create the node pool. If blank,
     the provider-configured project will be used.
     """
-    region: pulumi.Output[str]
-    """
-    The region in which the cluster resides (for
-    regional clusters). `region` has been deprecated in favor of `location`.
-    """
+    upgrade_settings: pulumi.Output[dict]
     version: pulumi.Output[str]
     """
     The Kubernetes version for the nodes in this pool. Note that if this field
@@ -128,12 +124,7 @@ class NodePool(pulumi.CustomResource):
     when fuzzy versions are used. See the `container.getEngineVersions` data source's
     `version_prefix` field to approximate fuzzy versions.
     """
-    zone: pulumi.Output[str]
-    """
-    The zone in which the cluster resides. `zone`
-    has been deprecated in favor of `location`.
-    """
-    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, region=None, version=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, upgrade_settings=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
@@ -143,7 +134,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource.
@@ -168,16 +159,12 @@ class NodePool(pulumi.CustomResource):
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[str] region: The region in which the cluster resides (for
-               regional clusters). `region` has been deprecated in favor of `location`.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as this provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
-        :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
-               has been deprecated in favor of `location`.
         
         The **autoscaling** object supports the following:
         
@@ -226,6 +213,11 @@ class NodePool(pulumi.CustomResource):
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
         
             * `nodeMetadata` (`pulumi.Input[str]`)
+        
+        The **upgrade_settings** object supports the following:
+        
+          * `maxSurge` (`pulumi.Input[float]`)
+          * `maxUnavailable` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """
@@ -260,9 +252,8 @@ class NodePool(pulumi.CustomResource):
             __props__['node_count'] = node_count
             __props__['node_locations'] = node_locations
             __props__['project'] = project
-            __props__['region'] = region
+            __props__['upgrade_settings'] = upgrade_settings
             __props__['version'] = version
-            __props__['zone'] = zone
             __props__['instance_group_urls'] = None
         super(NodePool, __self__).__init__(
             'gcp:container/nodePool:NodePool',
@@ -271,7 +262,7 @@ class NodePool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscaling=None, cluster=None, initial_node_count=None, instance_group_urls=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, region=None, version=None, zone=None):
+    def get(resource_name, id, opts=None, autoscaling=None, cluster=None, initial_node_count=None, instance_group_urls=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, upgrade_settings=None, version=None):
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -281,7 +272,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource.
@@ -306,16 +297,12 @@ class NodePool(pulumi.CustomResource):
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[str] region: The region in which the cluster resides (for
-               regional clusters). `region` has been deprecated in favor of `location`.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as this provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
-        :param pulumi.Input[str] zone: The zone in which the cluster resides. `zone`
-               has been deprecated in favor of `location`.
         
         The **autoscaling** object supports the following:
         
@@ -364,6 +351,11 @@ class NodePool(pulumi.CustomResource):
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
         
             * `nodeMetadata` (`pulumi.Input[str]`)
+        
+        The **upgrade_settings** object supports the following:
+        
+          * `maxSurge` (`pulumi.Input[float]`)
+          * `maxUnavailable` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """
@@ -383,9 +375,8 @@ class NodePool(pulumi.CustomResource):
         __props__["node_count"] = node_count
         __props__["node_locations"] = node_locations
         __props__["project"] = project
-        __props__["region"] = region
+        __props__["upgrade_settings"] = upgrade_settings
         __props__["version"] = version
-        __props__["zone"] = zone
         return NodePool(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

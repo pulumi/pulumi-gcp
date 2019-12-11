@@ -42,47 +42,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * ### With GKE and Compute Resource Dependencies
- * 
- * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
- * (i.e. at a project level). This will probably require an explicit dependency
- * on the IAM policy binding (see `gcp.projects.IAMMember` below).
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const testNetwork = new gcp.compute.Network("test", {
- *     autoCreateSubnetworks: false,
- * });
- * const testSubnetwork = new gcp.compute.Subnetwork("test", {
- *     ipCidrRange: "10.2.0.0/16",
- *     network: testNetwork.selfLink,
- *     region: "us-central1",
- * });
- * const testAccount = new gcp.serviceAccount.Account("test", {
- *     accountId: "composer-env-account",
- *     displayName: "Test Service Account for Composer Environment",
- * });
- * const composerWorker = new gcp.projects.IAMMember("composer-worker", {
- *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
- *     role: "roles/composer.worker",
- * });
- * const testEnvironment = new gcp.composer.Environment("test", {
- *     config: {
- *         nodeConfig: {
- *             machineType: "n1-standard-1",
- *             network: testNetwork.selfLink,
- *             serviceAccount: testAccount.name,
- *             subnetwork: testSubnetwork.selfLink,
- *             zone: "us-central1-a",
- *         },
- *         nodeCount: 4,
- *     },
- *     region: "us-central1",
- * }, {dependsOn: [composerWorker]});
- * ```
- * 
  * ### With Software (Airflow) Config
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

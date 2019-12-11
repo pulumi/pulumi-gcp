@@ -18,35 +18,6 @@ import * as utilities from "../utilities";
  * account's email address, use the `gcp.storage.getProjectServiceAccount` datasource's `emailAddress` value, and see below
  * for an example of enabling notifications by granting the correct IAM permission. See
  * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const gcsAccount = gcp.storage.getProjectServiceAccount();
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     members: [`serviceAccount:${gcsAccount.emailAddress}`],
- *     role: "roles/pubsub.publisher",
- *     topic: topic.name,
- * });
- * const bucket = new gcp.storage.Bucket("bucket", {});
- * const notification = new gcp.storage.Notification("notification", {
- *     bucket: bucket.name,
- *     customAttributes: {
- *         "new-attribute": "new-attribute-value",
- *     },
- *     eventTypes: [
- *         "OBJECT_FINALIZE",
- *         "OBJECT_METADATA_UPDATE",
- *     ],
- *     notificationId: "1",
- *     payloadFormat: "JSON_API_V1",
- *     topic: topic.name,
- * }, {dependsOn: [binding]});
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
  */

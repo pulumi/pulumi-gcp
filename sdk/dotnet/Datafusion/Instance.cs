@@ -51,10 +51,23 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Network configuration options. These are required when a private Data Fusion instance is to be created.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.InstanceNetworkConfig?> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Map of additional options used to configure the behavior of Data Fusion instance.
         /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will
+        /// have private IP addresses and will not be able to access the public internet.
+        /// </summary>
+        [Output("privateInstance")]
+        public Output<bool?> PrivateInstance { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -195,6 +208,12 @@ namespace Pulumi.Gcp.DataFusion
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Network configuration options. These are required when a private Data Fusion instance is to be created.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
+
         [Input("options")]
         private InputMap<string>? _options;
 
@@ -206,6 +225,13 @@ namespace Pulumi.Gcp.DataFusion
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
+
+        /// <summary>
+        /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will
+        /// have private IP addresses and will not be able to access the public internet.
+        /// </summary>
+        [Input("privateInstance")]
+        public Input<bool>? PrivateInstance { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -281,6 +307,12 @@ namespace Pulumi.Gcp.DataFusion
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Network configuration options. These are required when a private Data Fusion instance is to be created.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.InstanceNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
         [Input("options")]
         private InputMap<string>? _options;
 
@@ -292,6 +324,13 @@ namespace Pulumi.Gcp.DataFusion
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
+
+        /// <summary>
+        /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will
+        /// have private IP addresses and will not be able to access the public internet.
+        /// </summary>
+        [Input("privateInstance")]
+        public Input<bool>? PrivateInstance { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -352,5 +391,55 @@ namespace Pulumi.Gcp.DataFusion
         public InstanceState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class InstanceNetworkConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipAllocation", required: true)]
+        public Input<string> IpAllocation { get; set; } = null!;
+
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
+
+        public InstanceNetworkConfigArgs()
+        {
+        }
+    }
+
+    public sealed class InstanceNetworkConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("ipAllocation", required: true)]
+        public Input<string> IpAllocation { get; set; } = null!;
+
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
+
+        public InstanceNetworkConfigGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class InstanceNetworkConfig
+    {
+        public readonly string IpAllocation;
+        public readonly string Network;
+
+        [OutputConstructor]
+        private InstanceNetworkConfig(
+            string ipAllocation,
+            string network)
+        {
+            IpAllocation = ipAllocation;
+            Network = network;
+        }
+    }
     }
 }

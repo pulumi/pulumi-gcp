@@ -46,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
             inputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
+            inputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
             inputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
             inputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
@@ -53,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
             inputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             inputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
+            inputs["cloudTasksCustomEndpoint"] = args ? args.cloudTasksCustomEndpoint : undefined;
             inputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             inputs["computeBetaCustomEndpoint"] = args ? args.computeBetaCustomEndpoint : undefined;
             inputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
@@ -80,6 +82,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             inputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            inputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             inputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
             inputs["resourceManagerV2beta1CustomEndpoint"] = args ? args.resourceManagerV2beta1CustomEndpoint : undefined;
             inputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
@@ -122,6 +125,7 @@ export interface ProviderArgs {
     readonly bigQueryCustomEndpoint?: pulumi.Input<string>;
     readonly bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;
+    readonly billingCustomEndpoint?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBillingCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBuildCustomEndpoint?: pulumi.Input<string>;
@@ -129,6 +133,7 @@ export interface ProviderArgs {
     readonly cloudIotCustomEndpoint?: pulumi.Input<string>;
     readonly cloudRunCustomEndpoint?: pulumi.Input<string>;
     readonly cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
+    readonly cloudTasksCustomEndpoint?: pulumi.Input<string>;
     readonly composerCustomEndpoint?: pulumi.Input<string>;
     readonly computeBetaCustomEndpoint?: pulumi.Input<string>;
     readonly computeCustomEndpoint?: pulumi.Input<string>;
@@ -156,6 +161,7 @@ export interface ProviderArgs {
     readonly pubsubCustomEndpoint?: pulumi.Input<string>;
     readonly redisCustomEndpoint?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;
+    readonly requestTimeout?: pulumi.Input<string>;
     readonly resourceManagerCustomEndpoint?: pulumi.Input<string>;
     readonly resourceManagerV2beta1CustomEndpoint?: pulumi.Input<string>;
     readonly runtimeConfigCustomEndpoint?: pulumi.Input<string>;

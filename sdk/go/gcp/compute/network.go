@@ -20,7 +20,6 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["autoCreateSubnetworks"] = nil
 		inputs["deleteDefaultRoutesOnCreate"] = nil
 		inputs["description"] = nil
-		inputs["ipv4Range"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["routingMode"] = nil
@@ -28,7 +27,6 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["autoCreateSubnetworks"] = args.AutoCreateSubnetworks
 		inputs["deleteDefaultRoutesOnCreate"] = args.DeleteDefaultRoutesOnCreate
 		inputs["description"] = args.Description
-		inputs["ipv4Range"] = args.Ipv4Range
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["routingMode"] = args.RoutingMode
@@ -52,7 +50,6 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["deleteDefaultRoutesOnCreate"] = state.DeleteDefaultRoutesOnCreate
 		inputs["description"] = state.Description
 		inputs["gatewayIpv4"] = state.GatewayIpv4
-		inputs["ipv4Range"] = state.Ipv4Range
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["routingMode"] = state.RoutingMode
@@ -98,14 +95,6 @@ func (r *Network) GatewayIpv4() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["gatewayIpv4"])
 }
 
-// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
-// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
-// '192.168.0.0/16'. The resource must be recreated to modify this field.
-func (r *Network) Ipv4Range() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["ipv4Range"])
-}
-
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 // comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 // '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -145,11 +134,6 @@ type NetworkState struct {
 	Description interface{}
 	// The gateway address for default routing out of the network. This value is selected by GCP.
 	GatewayIpv4 interface{}
-	// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-	// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
-	// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
-	// '192.168.0.0/16'. The resource must be recreated to modify this field.
-	Ipv4Range interface{}
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -177,11 +161,6 @@ type NetworkArgs struct {
 	DeleteDefaultRoutesOnCreate interface{}
 	// An optional description of this resource. The resource must be recreated to modify this field.
 	Description interface{}
-	// If this field is specified, a deprecated legacy network is created. You will no longer be able to create a legacy
-	// network on Feb 1, 2020. See the [legacy network docs](https://cloud.google.com/vpc/docs/legacy) for more details. The
-	// range of internal addresses that are legal on this legacy network. This range is a CIDR specification, for example:
-	// '192.168.0.0/16'. The resource must be recreated to modify this field.
-	Ipv4Range interface{}
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters

@@ -113,7 +113,8 @@ func (r *Trigger) Filename() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["filename"])
 }
 
-// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+// 'trigger_template' or 'github' must be provided.
 func (r *Trigger) Github() pulumi.Output {
 	return r.s.State["github"]
 }
@@ -158,7 +159,7 @@ func (r *Trigger) TriggerId() pulumi.StringOutput {
 
 // Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
 // interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
-// This field is required, and will be validated as such in 3.0.0.
+// One of 'trigger_template' or 'github' must be provided.
 func (r *Trigger) TriggerTemplate() pulumi.Output {
 	return r.s.State["triggerTemplate"]
 }
@@ -176,7 +177,8 @@ type TriggerState struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
 	// be provided.
 	Filename interface{}
-	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+	// 'trigger_template' or 'github' must be provided.
 	Github interface{}
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
@@ -200,7 +202,7 @@ type TriggerState struct {
 	TriggerId interface{}
 	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
 	// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
-	// This field is required, and will be validated as such in 3.0.0.
+	// One of 'trigger_template' or 'github' must be provided.
 	TriggerTemplate interface{}
 }
 
@@ -215,7 +217,8 @@ type TriggerArgs struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
 	// be provided.
 	Filename interface{}
-	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+	// 'trigger_template' or 'github' must be provided.
 	Github interface{}
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
@@ -237,6 +240,6 @@ type TriggerArgs struct {
 	Substitutions interface{}
 	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
 	// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
-	// This field is required, and will be validated as such in 3.0.0.
+	// One of 'trigger_template' or 'github' must be provided.
 	TriggerTemplate interface{}
 }

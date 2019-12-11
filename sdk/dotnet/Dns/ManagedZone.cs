@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNameServers")]
+        [Input("targetNameServers", required: true)]
         private InputList<ManagedZoneForwardingConfigTargetNameServersArgs>? _targetNameServers;
         public InputList<ManagedZoneForwardingConfigTargetNameServersArgs> TargetNameServers
         {
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNameServers")]
+        [Input("targetNameServers", required: true)]
         private InputList<ManagedZoneForwardingConfigTargetNameServersGetArgs>? _targetNameServers;
         public InputList<ManagedZoneForwardingConfigTargetNameServersGetArgs> TargetNameServers
         {
@@ -416,8 +416,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigTargetNameServersArgs : Pulumi.ResourceArgs
     {
-        [Input("ipv4Address")]
-        public Input<string>? Ipv4Address { get; set; }
+        [Input("ipv4Address", required: true)]
+        public Input<string> Ipv4Address { get; set; } = null!;
 
         public ManagedZoneForwardingConfigTargetNameServersArgs()
         {
@@ -426,8 +426,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigTargetNameServersGetArgs : Pulumi.ResourceArgs
     {
-        [Input("ipv4Address")]
-        public Input<string>? Ipv4Address { get; set; }
+        [Input("ipv4Address", required: true)]
+        public Input<string> Ipv4Address { get; set; } = null!;
 
         public ManagedZoneForwardingConfigTargetNameServersGetArgs()
         {
@@ -436,8 +436,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNetwork")]
-        public Input<ManagedZonePeeringConfigTargetNetworkArgs>? TargetNetwork { get; set; }
+        [Input("targetNetwork", required: true)]
+        public Input<ManagedZonePeeringConfigTargetNetworkArgs> TargetNetwork { get; set; } = null!;
 
         public ManagedZonePeeringConfigArgs()
         {
@@ -446,8 +446,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePeeringConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("targetNetwork")]
-        public Input<ManagedZonePeeringConfigTargetNetworkGetArgs>? TargetNetwork { get; set; }
+        [Input("targetNetwork", required: true)]
+        public Input<ManagedZonePeeringConfigTargetNetworkGetArgs> TargetNetwork { get; set; } = null!;
 
         public ManagedZonePeeringConfigGetArgs()
         {
@@ -456,8 +456,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePeeringConfigTargetNetworkArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public ManagedZonePeeringConfigTargetNetworkArgs()
         {
@@ -466,8 +466,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePeeringConfigTargetNetworkGetArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public ManagedZonePeeringConfigTargetNetworkGetArgs()
         {
@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePrivateVisibilityConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("networks")]
+        [Input("networks", required: true)]
         private InputList<ManagedZonePrivateVisibilityConfigNetworksArgs>? _networks;
         public InputList<ManagedZonePrivateVisibilityConfigNetworksArgs> Networks
         {
@@ -491,7 +491,7 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePrivateVisibilityConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("networks")]
+        [Input("networks", required: true)]
         private InputList<ManagedZonePrivateVisibilityConfigNetworksGetArgs>? _networks;
         public InputList<ManagedZonePrivateVisibilityConfigNetworksGetArgs> Networks
         {
@@ -506,8 +506,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePrivateVisibilityConfigNetworksArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public ManagedZonePrivateVisibilityConfigNetworksArgs()
         {
@@ -516,8 +516,8 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZonePrivateVisibilityConfigNetworksGetArgs : Pulumi.ResourceArgs
     {
-        [Input("networkUrl")]
-        public Input<string>? NetworkUrl { get; set; }
+        [Input("networkUrl", required: true)]
+        public Input<string> NetworkUrl { get; set; } = null!;
 
         public ManagedZonePrivateVisibilityConfigNetworksGetArgs()
         {
@@ -587,10 +587,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class ManagedZoneForwardingConfigTargetNameServers
     {
-        public readonly string? Ipv4Address;
+        public readonly string Ipv4Address;
 
         [OutputConstructor]
-        private ManagedZoneForwardingConfigTargetNameServers(string? ipv4Address)
+        private ManagedZoneForwardingConfigTargetNameServers(string ipv4Address)
         {
             Ipv4Address = ipv4Address;
         }
@@ -599,10 +599,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class ManagedZonePeeringConfig
     {
-        public readonly ManagedZonePeeringConfigTargetNetwork? TargetNetwork;
+        public readonly ManagedZonePeeringConfigTargetNetwork TargetNetwork;
 
         [OutputConstructor]
-        private ManagedZonePeeringConfig(ManagedZonePeeringConfigTargetNetwork? targetNetwork)
+        private ManagedZonePeeringConfig(ManagedZonePeeringConfigTargetNetwork targetNetwork)
         {
             TargetNetwork = targetNetwork;
         }
@@ -611,10 +611,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class ManagedZonePeeringConfigTargetNetwork
     {
-        public readonly string? NetworkUrl;
+        public readonly string NetworkUrl;
 
         [OutputConstructor]
-        private ManagedZonePeeringConfigTargetNetwork(string? networkUrl)
+        private ManagedZonePeeringConfigTargetNetwork(string networkUrl)
         {
             NetworkUrl = networkUrl;
         }
@@ -635,10 +635,10 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class ManagedZonePrivateVisibilityConfigNetworks
     {
-        public readonly string? NetworkUrl;
+        public readonly string NetworkUrl;
 
         [OutputConstructor]
-        private ManagedZonePrivateVisibilityConfigNetworks(string? networkUrl)
+        private ManagedZonePrivateVisibilityConfigNetworks(string networkUrl)
         {
             NetworkUrl = networkUrl;
         }

@@ -217,8 +217,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
     public sealed class PolicyAdmissionWhitelistPatternsArgs : Pulumi.ResourceArgs
     {
-        [Input("namePattern")]
-        public Input<string>? NamePattern { get; set; }
+        [Input("namePattern", required: true)]
+        public Input<string> NamePattern { get; set; } = null!;
 
         public PolicyAdmissionWhitelistPatternsArgs()
         {
@@ -227,8 +227,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
     public sealed class PolicyAdmissionWhitelistPatternsGetArgs : Pulumi.ResourceArgs
     {
-        [Input("namePattern")]
-        public Input<string>? NamePattern { get; set; }
+        [Input("namePattern", required: true)]
+        public Input<string> NamePattern { get; set; } = null!;
 
         public PolicyAdmissionWhitelistPatternsGetArgs()
         {
@@ -240,11 +240,11 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
-        [Input("enforcementMode")]
-        public Input<string>? EnforcementMode { get; set; }
+        [Input("enforcementMode", required: true)]
+        public Input<string> EnforcementMode { get; set; } = null!;
 
-        [Input("evaluationMode")]
-        public Input<string>? EvaluationMode { get; set; }
+        [Input("evaluationMode", required: true)]
+        public Input<string> EvaluationMode { get; set; } = null!;
 
         [Input("requireAttestationsBies")]
         private InputList<string>? _requireAttestationsBies;
@@ -264,11 +264,11 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
-        [Input("enforcementMode")]
-        public Input<string>? EnforcementMode { get; set; }
+        [Input("enforcementMode", required: true)]
+        public Input<string> EnforcementMode { get; set; } = null!;
 
-        [Input("evaluationMode")]
-        public Input<string>? EvaluationMode { get; set; }
+        [Input("evaluationMode", required: true)]
+        public Input<string> EvaluationMode { get; set; } = null!;
 
         [Input("requireAttestationsBies")]
         private InputList<string>? _requireAttestationsBies;
@@ -332,10 +332,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
     [OutputType]
     public sealed class PolicyAdmissionWhitelistPatterns
     {
-        public readonly string? NamePattern;
+        public readonly string NamePattern;
 
         [OutputConstructor]
-        private PolicyAdmissionWhitelistPatterns(string? namePattern)
+        private PolicyAdmissionWhitelistPatterns(string namePattern)
         {
             NamePattern = namePattern;
         }
@@ -345,15 +345,15 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public sealed class PolicyClusterAdmissionRules
     {
         public readonly string Cluster;
-        public readonly string? EnforcementMode;
-        public readonly string? EvaluationMode;
+        public readonly string EnforcementMode;
+        public readonly string EvaluationMode;
         public readonly ImmutableArray<string> RequireAttestationsBies;
 
         [OutputConstructor]
         private PolicyClusterAdmissionRules(
             string cluster,
-            string? enforcementMode,
-            string? evaluationMode,
+            string enforcementMode,
+            string evaluationMode,
             ImmutableArray<string> requireAttestationsBies)
         {
             Cluster = cluster;

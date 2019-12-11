@@ -223,8 +223,8 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("range")]
-        public Input<string>? Range { get; set; }
+        [Input("range", required: true)]
+        public Input<string> Range { get; set; } = null!;
 
         public RouterBgpAdvertisedIpRangesArgs()
         {
@@ -236,8 +236,8 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("range")]
-        public Input<string>? Range { get; set; }
+        [Input("range", required: true)]
+        public Input<string> Range { get; set; } = null!;
 
         public RouterBgpAdvertisedIpRangesGetArgs()
         {
@@ -332,12 +332,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterBgpAdvertisedIpRanges
     {
         public readonly string? Description;
-        public readonly string? Range;
+        public readonly string Range;
 
         [OutputConstructor]
         private RouterBgpAdvertisedIpRanges(
             string? description,
-            string? range)
+            string range)
         {
             Description = description;
             Range = range;

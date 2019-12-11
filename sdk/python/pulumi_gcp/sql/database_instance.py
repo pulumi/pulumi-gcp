@@ -17,9 +17,10 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     database_version: pulumi.Output[str]
     """
-    The MySQL or PostgreSQL version to
+    The MySQL, PostgreSQL or MS SQL Server (beta) version to
     use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
     instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+    MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
     See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
     for more information.
     """
@@ -79,6 +80,10 @@ class DatabaseInstance(pulumi.CustomResource):
       * `sslCipher` (`str`)
       * `username` (`str`)
       * `verifyServerCertificate` (`bool`)
+    """
+    root_password: pulumi.Output[str]
+    """
+    ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
     """
     self_link: pulumi.Output[str]
     """
@@ -149,7 +154,7 @@ class DatabaseInstance(pulumi.CustomResource):
       * `user_labels` (`dict`)
       * `version` (`float`)
     """
-    def __init__(__self__, resource_name, opts=None, database_version=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, settings=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database_version=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
         or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
@@ -161,9 +166,10 @@ class DatabaseInstance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_version: The MySQL or PostgreSQL version to
+        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or MS SQL Server (beta) version to
                use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
                instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+               MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
                See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
                for more information.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
@@ -184,6 +190,7 @@ class DatabaseInstance(pulumi.CustomResource):
                If you choose not to provide the `region` argument for this resource, make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
+        :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[dict] settings: The settings to use for the database. The
                configuration is detailed below.
         
@@ -282,6 +289,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__['project'] = project
             __props__['region'] = region
             __props__['replica_configuration'] = replica_configuration
+            __props__['root_password'] = root_password
             if settings is None:
                 raise TypeError("Missing required property 'settings'")
             __props__['settings'] = settings
@@ -300,7 +308,7 @@ class DatabaseInstance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connection_name=None, database_version=None, first_ip_address=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configuration=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None):
+    def get(resource_name, id, opts=None, connection_name=None, database_version=None, first_ip_address=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configuration=None, root_password=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None):
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -310,9 +318,10 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
-        :param pulumi.Input[str] database_version: The MySQL or PostgreSQL version to
+        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or MS SQL Server (beta) version to
                use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
                instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+               MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
                See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
                for more information.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
@@ -337,6 +346,7 @@ class DatabaseInstance(pulumi.CustomResource):
                If you choose not to provide the `region` argument for this resource, make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
+        :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance. This property is applicable only to Second Generation instances.
@@ -443,6 +453,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__["public_ip_address"] = public_ip_address
         __props__["region"] = region
         __props__["replica_configuration"] = replica_configuration
+        __props__["root_password"] = root_password
         __props__["self_link"] = self_link
         __props__["server_ca_cert"] = server_ca_cert
         __props__["service_account_email_address"] = service_account_email_address

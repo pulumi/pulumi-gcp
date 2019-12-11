@@ -24,21 +24,17 @@ func NewKey(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["keyAlgorithm"] = nil
-		inputs["pgpKey"] = nil
 		inputs["privateKeyType"] = nil
 		inputs["publicKeyType"] = nil
 		inputs["serviceAccountId"] = nil
 	} else {
 		inputs["keyAlgorithm"] = args.KeyAlgorithm
-		inputs["pgpKey"] = args.PgpKey
 		inputs["privateKeyType"] = args.PrivateKeyType
 		inputs["publicKeyType"] = args.PublicKeyType
 		inputs["serviceAccountId"] = args.ServiceAccountId
 	}
 	inputs["name"] = nil
 	inputs["privateKey"] = nil
-	inputs["privateKeyEncrypted"] = nil
-	inputs["privateKeyFingerprint"] = nil
 	inputs["publicKey"] = nil
 	inputs["validAfter"] = nil
 	inputs["validBefore"] = nil
@@ -57,10 +53,7 @@ func GetKey(ctx *pulumi.Context,
 	if state != nil {
 		inputs["keyAlgorithm"] = state.KeyAlgorithm
 		inputs["name"] = state.Name
-		inputs["pgpKey"] = state.PgpKey
 		inputs["privateKey"] = state.PrivateKey
-		inputs["privateKeyEncrypted"] = state.PrivateKeyEncrypted
-		inputs["privateKeyFingerprint"] = state.PrivateKeyFingerprint
 		inputs["privateKeyType"] = state.PrivateKeyType
 		inputs["publicKey"] = state.PublicKey
 		inputs["publicKeyType"] = state.PublicKeyType
@@ -98,32 +91,10 @@ func (r *Key) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// An optional PGP key to encrypt the resulting private
-// key material. Only used when creating or importing a new key pair. May either be
-// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-// in Vault.
-func (r *Key) PgpKey() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["pgpKey"])
-}
-
 // The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-// service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-// `pgpKey` is provided.
+// service account keys through the CLI or web console. This is only populated when creating a new key.
 func (r *Key) PrivateKey() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["privateKey"])
-}
-
-// The private key material, base 64 encoded and
-// encrypted with the given `pgpKey`. This is only populated when creating a new
-// key and `pgpKey` is supplied
-func (r *Key) PrivateKeyEncrypted() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["privateKeyEncrypted"])
-}
-
-// The MD5 public key fingerprint for the encrypted
-// private key. This is only populated when creating a new key and `pgpKey` is supplied
-func (r *Key) PrivateKeyFingerprint() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["privateKeyFingerprint"])
 }
 
 // The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
@@ -168,22 +139,9 @@ type KeyState struct {
 	KeyAlgorithm interface{}
 	// The name used for this key pair
 	Name interface{}
-	// An optional PGP key to encrypt the resulting private
-	// key material. Only used when creating or importing a new key pair. May either be
-	// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-	// in Vault.
-	PgpKey interface{}
 	// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-	// service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-	// `pgpKey` is provided.
+	// service account keys through the CLI or web console. This is only populated when creating a new key.
 	PrivateKey interface{}
-	// The private key material, base 64 encoded and
-	// encrypted with the given `pgpKey`. This is only populated when creating a new
-	// key and `pgpKey` is supplied
-	PrivateKeyEncrypted interface{}
-	// The MD5 public key fingerprint for the encrypted
-	// private key. This is only populated when creating a new key and `pgpKey` is supplied
-	PrivateKeyFingerprint interface{}
 	// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
 	PrivateKeyType interface{}
 	// The public key, base64 encoded
@@ -208,11 +166,6 @@ type KeyArgs struct {
 	// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
 	// (only used on create)
 	KeyAlgorithm interface{}
-	// An optional PGP key to encrypt the resulting private
-	// key material. Only used when creating or importing a new key pair. May either be
-	// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-	// in Vault.
-	PgpKey interface{}
 	// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
 	PrivateKeyType interface{}
 	// The output format of the public key requested. X509_PEM is the default output format.

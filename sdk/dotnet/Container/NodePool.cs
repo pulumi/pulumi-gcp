@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -105,12 +105,8 @@ namespace Pulumi.Gcp.Container
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        /// <summary>
-        /// The region in which the cluster resides (for
-        /// regional clusters). `region` has been deprecated in favor of `location`.
-        /// </summary>
-        [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
+        [Output("upgradeSettings")]
+        public Output<Outputs.NodePoolUpgradeSettings?> UpgradeSettings { get; private set; } = null!;
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -122,13 +118,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
-
-        /// <summary>
-        /// The zone in which the cluster resides. `zone`
-        /// has been deprecated in favor of `location`.
-        /// </summary>
-        [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -184,7 +173,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -267,12 +256,8 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// The region in which the cluster resides (for
-        /// regional clusters). `region` has been deprecated in favor of `location`.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("upgradeSettings")]
+        public Input<Inputs.NodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -284,13 +269,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
-
-        /// <summary>
-        /// The zone in which the cluster resides. `zone`
-        /// has been deprecated in favor of `location`.
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
 
         public NodePoolArgs()
         {
@@ -307,7 +285,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -398,12 +376,8 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// The region in which the cluster resides (for
-        /// regional clusters). `region` has been deprecated in favor of `location`.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("upgradeSettings")]
+        public Input<Inputs.NodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -415,13 +389,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
-
-        /// <summary>
-        /// The zone in which the cluster resides. `zone`
-        /// has been deprecated in favor of `location`.
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
 
         public NodePoolState()
         {
@@ -782,6 +749,32 @@ namespace Pulumi.Gcp.Container
         {
         }
     }
+
+    public sealed class NodePoolUpgradeSettingsArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxSurge", required: true)]
+        public Input<int> MaxSurge { get; set; } = null!;
+
+        [Input("maxUnavailable", required: true)]
+        public Input<int> MaxUnavailable { get; set; } = null!;
+
+        public NodePoolUpgradeSettingsArgs()
+        {
+        }
+    }
+
+    public sealed class NodePoolUpgradeSettingsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxSurge", required: true)]
+        public Input<int> MaxSurge { get; set; } = null!;
+
+        [Input("maxUnavailable", required: true)]
+        public Input<int> MaxUnavailable { get; set; } = null!;
+
+        public NodePoolUpgradeSettingsGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -952,6 +945,22 @@ namespace Pulumi.Gcp.Container
         private NodePoolNodeConfigWorkloadMetadataConfig(string nodeMetadata)
         {
             NodeMetadata = nodeMetadata;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodePoolUpgradeSettings
+    {
+        public readonly int MaxSurge;
+        public readonly int MaxUnavailable;
+
+        [OutputConstructor]
+        private NodePoolUpgradeSettings(
+            int maxSurge,
+            int maxUnavailable)
+        {
+            MaxSurge = maxSurge;
+            MaxUnavailable = maxUnavailable;
         }
     }
     }

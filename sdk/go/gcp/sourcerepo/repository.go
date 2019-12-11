@@ -19,9 +19,11 @@ func NewRepository(ctx *pulumi.Context,
 	if args == nil {
 		inputs["name"] = nil
 		inputs["project"] = nil
+		inputs["pubsubConfigs"] = nil
 	} else {
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
+		inputs["pubsubConfigs"] = args.PubsubConfigs
 	}
 	inputs["size"] = nil
 	inputs["url"] = nil
@@ -40,6 +42,7 @@ func GetRepository(ctx *pulumi.Context,
 	if state != nil {
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
+		inputs["pubsubConfigs"] = state.PubsubConfigs
 		inputs["size"] = state.Size
 		inputs["url"] = state.Url
 	}
@@ -71,6 +74,11 @@ func (r *Repository) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
+// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+func (r *Repository) PubsubConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["pubsubConfigs"])
+}
+
 // The disk usage of the repo, in bytes.
 func (r *Repository) Size() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["size"])
@@ -88,6 +96,8 @@ type RepositoryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	PubsubConfigs interface{}
 	// The disk usage of the repo, in bytes.
 	Size interface{}
 	// URL to clone the repository from Google Cloud Source Repositories.
@@ -101,4 +111,6 @@ type RepositoryArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
+	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	PubsubConfigs interface{}
 }

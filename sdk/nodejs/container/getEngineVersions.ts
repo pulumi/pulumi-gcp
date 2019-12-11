@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## a---
+ * 
+ * subcategory: "Kubernetes (Container) Engine"
+ * layout: "google"
+ * page_title: "Google: gcp.container.getEngineVersions"
+ * sidebar_current: "docs-google-datasource-container-versions"
+ * description: |-
+ *   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
+ * ---
+ * 
+ * # google\_container\_engine\_versions
+ * 
  * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
  * 
  * > If you are using the `gcp.container.getEngineVersions` datasource with a
@@ -14,27 +26,6 @@ import * as utilities from "../utilities";
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const central1b = gcp.container.getEngineVersions({
- *     location: "us-central1-b",
- *     versionPrefix: "1.12.",
- * });
- * const foo = new gcp.container.Cluster("foo", {
- *     initialNodeCount: 1,
- *     location: "us-central1-b",
- *     masterAuth: {
- *         password: "adoy.rm",
- *         username: "mr.yoda",
- *     },
- *     nodeVersion: central1b.latestNodeVersion,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
  */
@@ -50,9 +41,7 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
     const promise: Promise<GetEngineVersionsResult> = pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "location": args.location,
         "project": args.project,
-        "region": args.region,
         "versionPrefix": args.versionPrefix,
-        "zone": args.zone,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -74,7 +63,6 @@ export interface GetEngineVersionsArgs {
      * Defaults to the project that the provider is authenticated with.
      */
     readonly project?: string;
-    readonly region?: string;
     /**
      * If provided, this provider will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
@@ -84,7 +72,6 @@ export interface GetEngineVersionsArgs {
      * for full details on how version strings are formatted.
      */
     readonly versionPrefix?: string;
-    readonly zone?: string;
 }
 
 /**
@@ -105,7 +92,6 @@ export interface GetEngineVersionsResult {
     readonly latestNodeVersion: string;
     readonly location?: string;
     readonly project?: string;
-    readonly region?: string;
     /**
      * A list of versions available in the given zone for use with master instances.
      */
@@ -115,7 +101,6 @@ export interface GetEngineVersionsResult {
      */
     readonly validNodeVersions: string[];
     readonly versionPrefix?: string;
-    readonly zone?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

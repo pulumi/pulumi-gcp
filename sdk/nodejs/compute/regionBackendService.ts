@@ -119,6 +119,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The URL of the network to which this backend service belongs. This field can only be specified when the load
+     * balancing scheme is set to INTERNAL.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
      * the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
      */
@@ -178,6 +183,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
             inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["outlierDetection"] = state ? state.outlierDetection : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
@@ -202,6 +208,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
@@ -309,6 +316,11 @@ export interface RegionBackendServiceState {
      * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the network to which this backend service belongs. This field can only be specified when the load
+     * balancing scheme is set to INTERNAL.
+     */
+    readonly network?: pulumi.Input<string>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
      * the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
@@ -421,6 +433,11 @@ export interface RegionBackendServiceArgs {
      * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The URL of the network to which this backend service belongs. This field can only be specified when the load
+     * balancing scheme is set to INTERNAL.
+     */
+    readonly network?: pulumi.Input<string>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when
      * the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.

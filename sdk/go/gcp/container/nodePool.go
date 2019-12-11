@@ -37,9 +37,8 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["nodeCount"] = nil
 		inputs["nodeLocations"] = nil
 		inputs["project"] = nil
-		inputs["region"] = nil
+		inputs["upgradeSettings"] = nil
 		inputs["version"] = nil
-		inputs["zone"] = nil
 	} else {
 		inputs["autoscaling"] = args.Autoscaling
 		inputs["cluster"] = args.Cluster
@@ -53,9 +52,8 @@ func NewNodePool(ctx *pulumi.Context,
 		inputs["nodeCount"] = args.NodeCount
 		inputs["nodeLocations"] = args.NodeLocations
 		inputs["project"] = args.Project
-		inputs["region"] = args.Region
+		inputs["upgradeSettings"] = args.UpgradeSettings
 		inputs["version"] = args.Version
-		inputs["zone"] = args.Zone
 	}
 	inputs["instanceGroupUrls"] = nil
 	s, err := ctx.RegisterResource("gcp:container/nodePool:NodePool", name, true, inputs, opts...)
@@ -84,9 +82,8 @@ func GetNodePool(ctx *pulumi.Context,
 		inputs["nodeCount"] = state.NodeCount
 		inputs["nodeLocations"] = state.NodeLocations
 		inputs["project"] = state.Project
-		inputs["region"] = state.Region
+		inputs["upgradeSettings"] = state.UpgradeSettings
 		inputs["version"] = state.Version
-		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("gcp:container/nodePool:NodePool", name, id, inputs, opts...)
 	if err != nil {
@@ -111,7 +108,7 @@ func (r *NodePool) Autoscaling() pulumi.Output {
 	return r.s.State["autoscaling"]
 }
 
-// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 func (r *NodePool) Cluster() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["cluster"])
 }
@@ -184,10 +181,8 @@ func (r *NodePool) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region in which the cluster resides (for
-// regional clusters). `region` has been deprecated in favor of `location`.
-func (r *NodePool) Region() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["region"])
+func (r *NodePool) UpgradeSettings() pulumi.Output {
+	return r.s.State["upgradeSettings"]
 }
 
 // The Kubernetes version for the nodes in this pool. Note that if this field
@@ -200,18 +195,12 @@ func (r *NodePool) Version() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
-// The zone in which the cluster resides. `zone`
-// has been deprecated in favor of `location`.
-func (r *NodePool) Zone() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["zone"])
-}
-
 // Input properties used for looking up and filtering NodePool resources.
 type NodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling interface{}
-	// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster interface{}
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -248,9 +237,7 @@ type NodePoolState struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}
-	// The region in which the cluster resides (for
-	// regional clusters). `region` has been deprecated in favor of `location`.
-	Region interface{}
+	UpgradeSettings interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -258,9 +245,6 @@ type NodePoolState struct {
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
 	// `versionPrefix` field to approximate fuzzy versions.
 	Version interface{}
-	// The zone in which the cluster resides. `zone`
-	// has been deprecated in favor of `location`.
-	Zone interface{}
 }
 
 // The set of arguments for constructing a NodePool resource.
@@ -268,7 +252,7 @@ type NodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling interface{}
-	// The cluster to create the node pool for. Cluster must be present in `zone` provided for zonal clusters.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster interface{}
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -304,9 +288,7 @@ type NodePoolArgs struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project interface{}
-	// The region in which the cluster resides (for
-	// regional clusters). `region` has been deprecated in favor of `location`.
-	Region interface{}
+	UpgradeSettings interface{}
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -314,7 +296,4 @@ type NodePoolArgs struct {
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
 	// `versionPrefix` field to approximate fuzzy versions.
 	Version interface{}
-	// The zone in which the cluster resides. `zone`
-	// has been deprecated in favor of `location`.
-	Zone interface{}
 }

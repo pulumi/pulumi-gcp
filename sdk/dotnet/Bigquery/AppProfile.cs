@@ -231,8 +231,8 @@ namespace Pulumi.Gcp.BigQuery
         [Input("allowTransactionalWrites")]
         public Input<bool>? AllowTransactionalWrites { get; set; }
 
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
 
         public AppProfileSingleClusterRoutingArgs()
         {
@@ -244,8 +244,8 @@ namespace Pulumi.Gcp.BigQuery
         [Input("allowTransactionalWrites")]
         public Input<bool>? AllowTransactionalWrites { get; set; }
 
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
 
         public AppProfileSingleClusterRoutingGetArgs()
         {
@@ -260,12 +260,12 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class AppProfileSingleClusterRouting
     {
         public readonly bool? AllowTransactionalWrites;
-        public readonly string? ClusterId;
+        public readonly string ClusterId;
 
         [OutputConstructor]
         private AppProfileSingleClusterRouting(
             bool? allowTransactionalWrites,
-            string? clusterId)
+            string clusterId)
         {
             AllowTransactionalWrites = allowTransactionalWrites;
             ClusterId = clusterId;

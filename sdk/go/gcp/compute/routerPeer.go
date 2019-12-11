@@ -8,12 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a Cloud Router BGP peer. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_peer.html.markdown.
 type RouterPeer struct {
 	s *pulumi.ResourceState
 }
@@ -26,6 +20,9 @@ func NewRouterPeer(ctx *pulumi.Context,
 	}
 	if args == nil || args.PeerAsn == nil {
 		return nil, errors.New("missing required argument 'PeerAsn'")
+	}
+	if args == nil || args.PeerIpAddress == nil {
+		return nil, errors.New("missing required argument 'PeerIpAddress'")
 	}
 	if args == nil || args.Router == nil {
 		return nil, errors.New("missing required argument 'Router'")
@@ -57,6 +54,7 @@ func NewRouterPeer(ctx *pulumi.Context,
 		inputs["router"] = args.Router
 	}
 	inputs["ipAddress"] = nil
+	inputs["managementType"] = nil
 	s, err := ctx.RegisterResource("gcp:compute/routerPeer:RouterPeer", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -76,6 +74,7 @@ func GetRouterPeer(ctx *pulumi.Context,
 		inputs["advertisedRoutePriority"] = state.AdvertisedRoutePriority
 		inputs["interface"] = state.Interface
 		inputs["ipAddress"] = state.IpAddress
+		inputs["managementType"] = state.ManagementType
 		inputs["name"] = state.Name
 		inputs["peerAsn"] = state.PeerAsn
 		inputs["peerIpAddress"] = state.PeerIpAddress
@@ -100,158 +99,162 @@ func (r *RouterPeer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// User-specified flag to indicate which mode to use for advertisement.
-// Options include `DEFAULT` or `CUSTOM`.
+// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+// 'CUSTOM'
 func (r *RouterPeer) AdvertiseMode() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["advertiseMode"])
 }
 
-// User-specified list of prefix groups to advertise in custom mode,
-// which can take one of the following options:
+// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+// custom groups.
 func (r *RouterPeer) AdvertisedGroups() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["advertisedGroups"])
 }
 
-// User-specified list of individual IP ranges to advertise in
-// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
-// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
+// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+// to any specified groups. Leave this field blank to advertise no custom IP ranges.
 func (r *RouterPeer) AdvertisedIpRanges() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["advertisedIpRanges"])
 }
 
-// The priority of routes advertised to this BGP peer.
-// Changing this forces a new peer to be created.
+// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+// routes with the lowest priority value win.
 func (r *RouterPeer) AdvertisedRoutePriority() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["advertisedRoutePriority"])
 }
 
-// The name of the interface the BGP peer is associated with.
-// Changing this forces a new peer to be created.
+// Name of the interface the BGP peer is associated with.
 func (r *RouterPeer) Interface() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["interface"])
 }
 
-// IP address of the interface inside Google Cloud Platform.
+// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 func (r *RouterPeer) IpAddress() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
-// A unique name for BGP peer, required by GCE. Changing
-// this forces a new peer to be created.
+// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+func (r *RouterPeer) ManagementType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["managementType"])
+}
+
+// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (r *RouterPeer) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Peer BGP Autonomous System Number (ASN).
-// Changing this forces a new peer to be created.
+// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 func (r *RouterPeer) PeerAsn() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["peerAsn"])
 }
 
-// IP address of the BGP interface outside Google Cloud.
-// Changing this forces a new peer to be created.
+// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (r *RouterPeer) PeerIpAddress() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["peerIpAddress"])
 }
 
-// The ID of the project in which this peer's router belongs. If it
-// is not provided, the provider project is used. Changing this forces a new peer to be created.
 func (r *RouterPeer) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-// The region this peer's router sits in. If not specified,
-// the project region will be used. Changing this forces a new peer to be
-// created.
+// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 func (r *RouterPeer) Region() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-// The name of the router in which this BGP peer will be configured.
-// Changing this forces a new peer to be created.
+// The name of the Cloud Router in which this BgpPeer will be configured.
 func (r *RouterPeer) Router() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["router"])
 }
 
 // Input properties used for looking up and filtering RouterPeer resources.
 type RouterPeerState struct {
-	// User-specified flag to indicate which mode to use for advertisement.
-	// Options include `DEFAULT` or `CUSTOM`.
+	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+	// 'CUSTOM'
 	AdvertiseMode interface{}
-	// User-specified list of prefix groups to advertise in custom mode,
-	// which can take one of the following options:
+	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+	// custom groups.
 	AdvertisedGroups interface{}
-	// User-specified list of individual IP ranges to advertise in
-	// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
-	// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-	// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
+	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges interface{}
-	// The priority of routes advertised to this BGP peer.
-	// Changing this forces a new peer to be created.
+	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+	// routes with the lowest priority value win.
 	AdvertisedRoutePriority interface{}
-	// The name of the interface the BGP peer is associated with.
-	// Changing this forces a new peer to be created.
+	// Name of the interface the BGP peer is associated with.
 	Interface interface{}
-	// IP address of the interface inside Google Cloud Platform.
+	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress interface{}
-	// A unique name for BGP peer, required by GCE. Changing
-	// this forces a new peer to be created.
+	// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+	// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+	// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+	// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+	ManagementType interface{}
+	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
-	// Peer BGP Autonomous System Number (ASN).
-	// Changing this forces a new peer to be created.
+	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 	PeerAsn interface{}
-	// IP address of the BGP interface outside Google Cloud.
-	// Changing this forces a new peer to be created.
+	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress interface{}
-	// The ID of the project in which this peer's router belongs. If it
-	// is not provided, the provider project is used. Changing this forces a new peer to be created.
 	Project interface{}
-	// The region this peer's router sits in. If not specified,
-	// the project region will be used. Changing this forces a new peer to be
-	// created.
+	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region interface{}
-	// The name of the router in which this BGP peer will be configured.
-	// Changing this forces a new peer to be created.
+	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router interface{}
 }
 
 // The set of arguments for constructing a RouterPeer resource.
 type RouterPeerArgs struct {
-	// User-specified flag to indicate which mode to use for advertisement.
-	// Options include `DEFAULT` or `CUSTOM`.
+	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+	// 'CUSTOM'
 	AdvertiseMode interface{}
-	// User-specified list of prefix groups to advertise in custom mode,
-	// which can take one of the following options:
+	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+	// custom groups.
 	AdvertisedGroups interface{}
-	// User-specified list of individual IP ranges to advertise in
-	// custom mode. This field can only be populated if `advertiseMode` is `CUSTOM` and overrides
-	// the list defined for the router (in the "bgp" message). These IP ranges are advertised in
-	// addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
+	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges interface{}
-	// The priority of routes advertised to this BGP peer.
-	// Changing this forces a new peer to be created.
+	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+	// routes with the lowest priority value win.
 	AdvertisedRoutePriority interface{}
-	// The name of the interface the BGP peer is associated with.
-	// Changing this forces a new peer to be created.
+	// Name of the interface the BGP peer is associated with.
 	Interface interface{}
-	// A unique name for BGP peer, required by GCE. Changing
-	// this forces a new peer to be created.
+	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name interface{}
-	// Peer BGP Autonomous System Number (ASN).
-	// Changing this forces a new peer to be created.
+	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 	PeerAsn interface{}
-	// IP address of the BGP interface outside Google Cloud.
-	// Changing this forces a new peer to be created.
+	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress interface{}
-	// The ID of the project in which this peer's router belongs. If it
-	// is not provided, the provider project is used. Changing this forces a new peer to be created.
 	Project interface{}
-	// The region this peer's router sits in. If not specified,
-	// the project region will be used. Changing this forces a new peer to be
-	// created.
+	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region interface{}
-	// The name of the router in which this BGP peer will be configured.
-	// Changing this forces a new peer to be created.
+	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router interface{}
 }

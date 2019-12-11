@@ -30,6 +30,7 @@ const (
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
 	gcpCloudRun             = "CloudRun"             // CloudRun resources
 	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
+	gcpCloudTasks           = "CloudTasks"           // Cloud Tasks resources
 	gcpComposer             = "Composer"             // Cloud Composer resources
 	gcpCompute              = "Compute"              // Compute resources
 	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
@@ -231,6 +232,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_billing_account_iam_policy.md",
 				},
 			},
+			"google_billing_budget": {
+				Tok: gcpResource(gcpBilling, "Budget"),
+			},
 
 			// Binary Authorization
 			"google_binary_authorization_attestor": {
@@ -367,6 +371,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_organization_iam_policy.md",
 				},
 			},
+			"google_organization_iam_audit_config": {
+				Tok: gcpResource(gcpOrganization, "IamAuditConfig"),
+			},
 			"google_project": {
 				Tok: gcpResource(gcpOrganization, "Project"),
 				Docs: &tfbridge.DocInfo{
@@ -417,17 +424,6 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"service": {
 						CSharpName: "ServiceName",
-					},
-				},
-			},
-			"google_project_services": {
-				Tok: gcpResource(gcpProject, "Services"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_project_services.html.markdown",
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"services": {
-						CSharpName: "ServiceNames",
 					},
 				},
 			},
@@ -978,19 +974,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iap_tunnel_instance_iam_binding": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.markdown",
+					Source: "google_iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_tunnel_instance_iam_member": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.markdown",
+					Source: "google_iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_tunnel_instance_iam_policy": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.markdown",
+					Source: "google_iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_web_backend_service_iam_binding": {
@@ -1203,6 +1199,18 @@ func Provider() tfbridge.ProviderInfo {
 			//CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
+			"google_cloud_run_service_iam_binding": {
+				Tok:  gcpResource(gcpCloudRun, "IamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
+			},
+			"google_cloud_run_service_iam_member": {
+				Tok:  gcpResource(gcpCloudRun, "IamMember"),
+				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
+			},
+			"google_cloud_run_service_iam_policy": {
+				Tok:  gcpResource(gcpCloudRun, "IamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
+			},
 
 			// Machine Learning
 			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
@@ -1215,6 +1223,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// DataFusion
 			"google_data_fusion_instance": {Tok: gcpResource(gcpDataFusion, "Instance")},
+
+			// Cloudtasks
+			"google_cloud_tasks_queue": {Tok: gcpResource(gcpCloudTasks, "Queue")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1326,12 +1337,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpOrganization, "getProject"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
-				},
-			},
-			"google_project_services": {
-				Tok: gcpDataSource(gcpOrganization, "getProjectServices"),
-				Docs: &tfbridge.DocInfo{
-					Source: "google_project_services.html.markdown",
 				},
 			},
 			"google_compute_node_types": {
@@ -1535,6 +1540,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_router": {
 				Tok: gcpDataSource(gcpCompute, "getRouter"),
 			},
+			"google_bigquery_default_service_account": {
+				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
+				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -1550,11 +1559,6 @@ func Provider() tfbridge.ProviderInfo {
 					"utils.ts", // Helpers,
 				},
 				Modules: map[string]*tfbridge.OverlayInfo{
-					"serverless": {
-						DestFiles: []string{
-							"function.ts", // a serverless function that works with language closures.
-						},
-					},
 					"cloudfunctions": {
 						DestFiles: []string{
 							// named with 'z' to come after all relevant files in package since the

@@ -35,7 +35,9 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  *     // Local SSD disk
- *     scratchDisks: [{}],
+ *     scratchDisks: [{
+ *         interface: "SCSI",
+ *     }],
  *     serviceAccount: {
  *         scopes: [
  *             "userinfo-email",
@@ -168,7 +170,7 @@ export class Instance extends pulumi.CustomResource {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
+    public readonly minCpuPlatform!: pulumi.Output<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.

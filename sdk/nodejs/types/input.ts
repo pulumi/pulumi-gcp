@@ -27,12 +27,14 @@ export namespace accesscontextmanager {
         allowedDeviceManagementLevels?: pulumi.Input<pulumi.Input<string>[]>;
         allowedEncryptionStatuses?: pulumi.Input<pulumi.Input<string>[]>;
         osConstraints?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraint>[]>;
+        requireAdminApproval?: pulumi.Input<boolean>;
+        requireCorpOwned?: pulumi.Input<boolean>;
         requireScreenLock?: pulumi.Input<boolean>;
     }
 
     export interface AccessLevelBasicConditionDevicePolicyOsConstraint {
         minimumVersion?: pulumi.Input<string>;
-        osType?: pulumi.Input<string>;
+        osType: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterStatus {
@@ -48,7 +50,7 @@ export namespace appengine {
          * Set to false to use the legacy health check instead of the readiness
          * and liveness checks.
          */
-        splitHealthChecks?: pulumi.Input<boolean>;
+        splitHealthChecks: pulumi.Input<boolean>;
     }
 
     export interface ApplicationUrlDispatchRule {
@@ -72,7 +74,7 @@ export namespace appengine {
     export interface DomainMappingSslSettings {
         certificateId?: pulumi.Input<string>;
         pendingManagedCertificateId?: pulumi.Input<string>;
-        sslManagementType?: pulumi.Input<string>;
+        sslManagementType: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionDeployment {
@@ -83,16 +85,16 @@ export namespace appengine {
     export interface StandardAppVersionDeploymentFile {
         name: pulumi.Input<string>;
         sha1Sum?: pulumi.Input<string>;
-        sourceUrl?: pulumi.Input<string>;
+        sourceUrl: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionDeploymentZip {
         filesCount?: pulumi.Input<number>;
-        sourceUrl?: pulumi.Input<string>;
+        sourceUrl: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionEntrypoint {
-        shell?: pulumi.Input<string>;
+        shell: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionHandler {
@@ -106,7 +108,7 @@ export namespace appengine {
     }
 
     export interface StandardAppVersionHandlerScript {
-        scriptPath?: pulumi.Input<string>;
+        scriptPath: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionHandlerStaticFiles {
@@ -128,7 +130,7 @@ export namespace appengine {
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
         allowTransactionalWrites?: pulumi.Input<boolean>;
-        clusterId?: pulumi.Input<string>;
+        clusterId: pulumi.Input<string>;
     }
 
     export interface DatasetAccess {
@@ -147,6 +149,10 @@ export namespace bigquery {
     }
 
     export interface DatasetDefaultEncryptionConfiguration {
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface TableEncryptionConfiguration {
         kmsKeyName: pulumi.Input<string>;
     }
 
@@ -245,6 +251,32 @@ export namespace billing {
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
+
+    export interface BudgetAllUpdatesRule {
+        pubsubTopic: pulumi.Input<string>;
+        schemaVersion?: pulumi.Input<string>;
+    }
+
+    export interface BudgetAmount {
+        specifiedAmount: pulumi.Input<inputs.billing.BudgetAmountSpecifiedAmount>;
+    }
+
+    export interface BudgetAmountSpecifiedAmount {
+        currencyCode?: pulumi.Input<string>;
+        nanos?: pulumi.Input<number>;
+        units?: pulumi.Input<string>;
+    }
+
+    export interface BudgetBudgetFilter {
+        creditTypesTreatment?: pulumi.Input<string>;
+        projects?: pulumi.Input<pulumi.Input<string>[]>;
+        services?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BudgetThresholdRule {
+        spendBasis?: pulumi.Input<string>;
+        thresholdPercent: pulumi.Input<number>;
+    }
 }
 
 export namespace binaryauthorization {
@@ -279,13 +311,13 @@ export namespace binaryauthorization {
     }
 
     export interface PolicyAdmissionWhitelistPattern {
-        namePattern?: pulumi.Input<string>;
+        namePattern: pulumi.Input<string>;
     }
 
     export interface PolicyClusterAdmissionRule {
         cluster: pulumi.Input<string>;
-        enforcementMode?: pulumi.Input<string>;
-        evaluationMode?: pulumi.Input<string>;
+        enforcementMode: pulumi.Input<string>;
+        evaluationMode: pulumi.Input<string>;
         requireAttestationsBies?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -299,8 +331,9 @@ export namespace binaryauthorization {
 export namespace cloudbuild {
     export interface TriggerBuild {
         images?: pulumi.Input<pulumi.Input<string>[]>;
-        steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildStep>[]>;
+        steps: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildStep>[]>;
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+        timeout?: pulumi.Input<string>;
     }
 
     export interface TriggerBuildStep {
@@ -309,7 +342,7 @@ export namespace cloudbuild {
         entrypoint?: pulumi.Input<string>;
         envs?: pulumi.Input<pulumi.Input<string>[]>;
         id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
         secretEnvs?: pulumi.Input<pulumi.Input<string>[]>;
         timeout?: pulumi.Input<string>;
         timing?: pulumi.Input<string>;
@@ -318,8 +351,8 @@ export namespace cloudbuild {
     }
 
     export interface TriggerBuildStepVolume {
-        name?: pulumi.Input<string>;
-        path?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        path: pulumi.Input<string>;
     }
 
     export interface TriggerGithub {
@@ -330,7 +363,7 @@ export namespace cloudbuild {
     }
 
     export interface TriggerGithubPullRequest {
-        branch?: pulumi.Input<string>;
+        branch: pulumi.Input<string>;
         commentControl?: pulumi.Input<string>;
     }
 
@@ -415,64 +448,26 @@ export namespace cloudrun {
         type?: pulumi.Input<string>;
     }
 
+    export interface IamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface ServiceMetadata {
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         generation?: pulumi.Input<number>;
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        namespace: pulumi.Input<string>;
+        namespace?: pulumi.Input<string>;
         resourceVersion?: pulumi.Input<string>;
         selfLink?: pulumi.Input<string>;
         uid?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpec {
-        containerConcurrency?: pulumi.Input<number>;
-        containers: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceSpecContainer>[]>;
-        servingState?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpecContainer {
-        args?: pulumi.Input<pulumi.Input<string>[]>;
-        commands?: pulumi.Input<pulumi.Input<string>[]>;
-        envs?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnv>[]>;
-        envFroms?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnvFrom>[]>;
-        image: pulumi.Input<string>;
-        resources?: pulumi.Input<inputs.cloudrun.ServiceSpecContainerResources>;
-        workingDir?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpecContainerEnv {
-        name?: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpecContainerEnvFrom {
-        configMapRef?: pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnvFromConfigMapRef>;
-        prefix?: pulumi.Input<string>;
-        secretRef?: pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnvFromSecretRef>;
-    }
-
-    export interface ServiceSpecContainerEnvFromConfigMapRef {
-        localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnvFromConfigMapRefLocalObjectReference>;
-        optional?: pulumi.Input<boolean>;
-    }
-
-    export interface ServiceSpecContainerEnvFromConfigMapRefLocalObjectReference {
-        name?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpecContainerEnvFromSecretRef {
-        localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceSpecContainerEnvFromSecretRefLocalObjectReference>;
-        optional?: pulumi.Input<boolean>;
-    }
-
-    export interface ServiceSpecContainerEnvFromSecretRefLocalObjectReference {
-        name?: pulumi.Input<string>;
-    }
-
-    export interface ServiceSpecContainerResources {
-        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ServiceStatus {
@@ -488,6 +483,79 @@ export namespace cloudrun {
         reason?: pulumi.Input<string>;
         status?: pulumi.Input<string>;
         type?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplate {
+        metadata?: pulumi.Input<inputs.cloudrun.ServiceTemplateMetadata>;
+        spec: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
+    }
+
+    export interface ServiceTemplateMetadata {
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        generation?: pulumi.Input<number>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        name?: pulumi.Input<string>;
+        namespace?: pulumi.Input<string>;
+        resourceVersion?: pulumi.Input<string>;
+        selfLink?: pulumi.Input<string>;
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpec {
+        containerConcurrency?: pulumi.Input<number>;
+        containers: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
+        serviceAccountName?: pulumi.Input<string>;
+        servingState?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainer {
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnv>[]>;
+        envFroms?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFrom>[]>;
+        image: pulumi.Input<string>;
+        resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources>;
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnv {
+        name?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFrom {
+        configMapRef?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRef>;
+        prefix?: pulumi.Input<string>;
+        secretRef?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRef>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromConfigMapRef {
+        localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>;
+        optional?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+        name: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromSecretRef {
+        localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference>;
+        optional?: pulumi.Input<boolean>;
+    }
+
+    export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+        name: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerResources {
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface ServiceTraffic {
+        latestRevision?: pulumi.Input<boolean>;
+        percent: pulumi.Input<number>;
+        revisionName?: pulumi.Input<string>;
     }
 }
 
@@ -517,12 +585,12 @@ export namespace cloudscheduler {
 
     export interface JobHttpTargetOauthToken {
         scope?: pulumi.Input<string>;
-        serviceAccountEmail?: pulumi.Input<string>;
+        serviceAccountEmail: pulumi.Input<string>;
     }
 
     export interface JobHttpTargetOidcToken {
         audience?: pulumi.Input<string>;
-        serviceAccountEmail?: pulumi.Input<string>;
+        serviceAccountEmail: pulumi.Input<string>;
     }
 
     export interface JobPubsubTarget {
@@ -537,6 +605,29 @@ export namespace cloudscheduler {
         maxRetryDuration?: pulumi.Input<string>;
         minBackoffDuration?: pulumi.Input<string>;
         retryCount?: pulumi.Input<number>;
+    }
+}
+
+export namespace cloudtasks {
+    export interface QueueAppEngineRoutingOverride {
+        host?: pulumi.Input<string>;
+        instance?: pulumi.Input<string>;
+        service?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface QueueRateLimits {
+        maxBurstSize?: pulumi.Input<number>;
+        maxConcurrentDispatches?: pulumi.Input<number>;
+        maxDispatchesPerSecond?: pulumi.Input<number>;
+    }
+
+    export interface QueueRetryConfig {
+        maxAttempts?: pulumi.Input<number>;
+        maxBackoff?: pulumi.Input<string>;
+        maxDoublings?: pulumi.Input<number>;
+        maxRetryDuration?: pulumi.Input<string>;
+        minBackoff?: pulumi.Input<string>;
     }
 }
 
@@ -568,7 +659,7 @@ export namespace composer {
         clusterSecondaryRangeName?: pulumi.Input<string>;
         servicesIpv4CidrBlock?: pulumi.Input<string>;
         servicesSecondaryRangeName?: pulumi.Input<string>;
-        useIpAliases?: pulumi.Input<boolean>;
+        useIpAliases: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
@@ -612,14 +703,14 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
-        signedUrlCacheMaxAgeSec?: pulumi.Input<number>;
+        signedUrlCacheMaxAgeSec: pulumi.Input<number>;
     }
 
     export interface BackendServiceBackend {
         balancingMode?: pulumi.Input<string>;
         capacityScaler?: pulumi.Input<number>;
         description?: pulumi.Input<string>;
-        group?: pulumi.Input<string>;
+        group: pulumi.Input<string>;
         maxConnections?: pulumi.Input<number>;
         maxConnectionsPerEndpoint?: pulumi.Input<number>;
         maxConnectionsPerInstance?: pulumi.Input<number>;
@@ -805,7 +896,7 @@ export namespace compute {
     }
 
     export interface ImageGuestOsFeature {
-        type?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
     }
 
     export interface ImageRawDisk {
@@ -915,7 +1006,7 @@ export namespace compute {
     }
 
     export interface InstanceFromTemplateScratchDisk {
-        interface?: pulumi.Input<string>;
+        interface: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateServiceAccount {
@@ -956,12 +1047,6 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerVersion {
-        /**
-         * The
-         * full URL to an instance template from which all new instances
-         * will be created. This field is replaced by `version.instance_template`. You must
-         * specify at least one `version` block with an `instanceTemplate`.
-         */
         instanceTemplate: pulumi.Input<string>;
         /**
          * The name of the instance group manager. Must be 1-63
@@ -1050,7 +1135,7 @@ export namespace compute {
     }
 
     export interface InstanceScratchDisk {
-        interface?: pulumi.Input<string>;
+        interface: pulumi.Input<string>;
     }
 
     export interface InstanceServiceAccount {
@@ -1085,7 +1170,7 @@ export namespace compute {
     }
 
     export interface InstanceTemplateDiskDiskEncryptionKey {
-        kmsKeySelfLink?: pulumi.Input<string>;
+        kmsKeySelfLink: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateGuestAccelerator {
@@ -1352,12 +1437,6 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerVersion {
-        /**
-         * The
-         * full URL to an instance template from which all new instances
-         * will be created. This field is replaced by `version.instance_template`. You must
-         * specify at least one `version` block with an `instanceTemplate`.
-         */
         instanceTemplate: pulumi.Input<string>;
         /**
          * The name of the instance group manager. Must be 1-63
@@ -1390,11 +1469,285 @@ export namespace compute {
         description?: pulumi.Input<string>;
         name: pulumi.Input<string>;
         pathRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRule>[]>;
+        routeRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRule>[]>;
     }
 
     export interface RegionUrlMapPathMatcherPathRule {
         paths: pulumi.Input<pulumi.Input<string>[]>;
-        service: pulumi.Input<string>;
+        routeAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteAction>;
+        service?: pulumi.Input<string>;
+        urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleUrlRedirect>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteAction {
+        corsPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy>;
+        faultInjectionPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>;
+        requestMirrorPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy>;
+        retryPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy>;
+        timeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeout>;
+        urlRewrite?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite>;
+        weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
+        allowCredentials?: pulumi.Input<boolean>;
+        allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        disabled: pulumi.Input<boolean>;
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        maxAge?: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        abort?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort>;
+        delay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus: pulumi.Input<number>;
+        percentage: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
+        percentage: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        backendService: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
+        numRetries?: pulumi.Input<number>;
+        perTryTimeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout>;
+        retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
+        hostRewrite?: pulumi.Input<string>;
+        pathPrefixRewrite?: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        backendService: pulumi.Input<string>;
+        headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>;
+        weight: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherPathRuleUrlRedirect {
+        hostRedirect?: pulumi.Input<string>;
+        httpsRedirect?: pulumi.Input<boolean>;
+        pathRedirect?: pulumi.Input<string>;
+        prefixRedirect?: pulumi.Input<string>;
+        redirectResponseCode?: pulumi.Input<string>;
+        stripQuery: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRule {
+        headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderAction>;
+        matchRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRule>[]>;
+        priority: pulumi.Input<number>;
+        routeAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteAction>;
+        service?: pulumi.Input<string>;
+        urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirect>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRule {
+        fullPathMatch?: pulumi.Input<string>;
+        headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>[]>;
+        ignoreCase?: pulumi.Input<boolean>;
+        metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>[]>;
+        prefixMatch?: pulumi.Input<string>;
+        queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>[]>;
+        regexMatch?: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        exactMatch?: pulumi.Input<string>;
+        headerName: pulumi.Input<string>;
+        invertMatch?: pulumi.Input<boolean>;
+        prefixMatch?: pulumi.Input<string>;
+        presentMatch?: pulumi.Input<boolean>;
+        rangeMatch?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch>;
+        regexMatch?: pulumi.Input<string>;
+        suffixMatch?: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        rangeEnd: pulumi.Input<number>;
+        rangeStart: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        filterLabels: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>[]>;
+        filterMatchCriteria: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        exactMatch?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        presentMatch?: pulumi.Input<boolean>;
+        regexMatch?: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteAction {
+        corsPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy>;
+        faultInjectionPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>;
+        requestMirrorPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy>;
+        retryPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy>;
+        timeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout>;
+        urlRewrite?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite>;
+        weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        allowCredentials?: pulumi.Input<boolean>;
+        allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        disabled?: pulumi.Input<boolean>;
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        maxAge?: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        abort?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort>;
+        delay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus?: pulumi.Input<number>;
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        backendService: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        numRetries: pulumi.Input<number>;
+        perTryTimeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout>;
+        retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        hostRewrite?: pulumi.Input<string>;
+        pathPrefixRewrite?: pulumi.Input<string>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        backendService: pulumi.Input<string>;
+        headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction>;
+        weight: pulumi.Input<number>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleUrlRedirect {
+        hostRedirect?: pulumi.Input<string>;
+        httpsRedirect?: pulumi.Input<boolean>;
+        pathRedirect?: pulumi.Input<string>;
+        prefixRedirect?: pulumi.Input<string>;
+        redirectResponseCode?: pulumi.Input<string>;
+        stripQuery?: pulumi.Input<boolean>;
     }
 
     export interface RegionUrlMapTest {
@@ -1478,7 +1831,7 @@ export namespace compute {
 
     export interface RouterBgpAdvertisedIpRange {
         description?: pulumi.Input<string>;
-        range?: pulumi.Input<string>;
+        range: pulumi.Input<string>;
     }
 
     export interface RouterNatLogConfig {
@@ -1494,7 +1847,7 @@ export namespace compute {
 
     export interface RouterPeerAdvertisedIpRange {
         description?: pulumi.Input<string>;
-        range?: pulumi.Input<string>;
+        range: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRule {
@@ -1509,12 +1862,17 @@ export namespace compute {
     }
 
     export interface SecurityPolicyRuleMatch {
-        config: pulumi.Input<inputs.compute.SecurityPolicyRuleMatchConfig>;
-        versionedExpr: pulumi.Input<string>;
+        config?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatchConfig>;
+        expr?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatchExpr>;
+        versionedExpr?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRuleMatchConfig {
         srcIpRanges: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityPolicyRuleMatchExpr {
+        expression: pulumi.Input<string>;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -1539,7 +1897,7 @@ export namespace compute {
     }
 
     export interface SnapshotSnapshotEncryptionKey {
-        rawKey?: pulumi.Input<string>;
+        rawKey: pulumi.Input<string>;
         sha256?: pulumi.Input<string>;
     }
 
@@ -1570,6 +1928,25 @@ export namespace compute {
         rangeName: pulumi.Input<string>;
     }
 
+    export interface URLMapHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
     export interface URLMapHostRule {
         description?: pulumi.Input<string>;
         hosts: pulumi.Input<pulumi.Input<string>[]>;
@@ -1577,15 +1954,309 @@ export namespace compute {
     }
 
     export interface URLMapPathMatcher {
-        defaultService: pulumi.Input<string>;
+        defaultService?: pulumi.Input<string>;
         description?: pulumi.Input<string>;
+        headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherHeaderAction>;
         name: pulumi.Input<string>;
         pathRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRule>[]>;
+        routeRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRule>[]>;
+    }
+
+    export interface URLMapPathMatcherHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
     }
 
     export interface URLMapPathMatcherPathRule {
         paths: pulumi.Input<pulumi.Input<string>[]>;
-        service: pulumi.Input<string>;
+        routeAction?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteAction>;
+        service?: pulumi.Input<string>;
+        urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleUrlRedirect>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteAction {
+        corsPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy>;
+        faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>;
+        requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy>;
+        retryPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicy>;
+        timeout?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionTimeout>;
+        urlRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionUrlRewrite>;
+        weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendService>[]>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+        allowCredentials?: pulumi.Input<boolean>;
+        allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        disabled: pulumi.Input<boolean>;
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        maxAge?: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        abort?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort>;
+        delay?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus: pulumi.Input<number>;
+        percentage: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
+        percentage: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        backendService: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+        numRetries?: pulumi.Input<number>;
+        perTryTimeout?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout>;
+        retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+        hostRewrite?: pulumi.Input<string>;
+        pathPrefixRewrite?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        backendService: pulumi.Input<string>;
+        headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>;
+        weight: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherPathRuleUrlRedirect {
+        hostRedirect?: pulumi.Input<string>;
+        httpsRedirect?: pulumi.Input<boolean>;
+        pathRedirect?: pulumi.Input<string>;
+        prefixRedirect?: pulumi.Input<string>;
+        redirectResponseCode?: pulumi.Input<string>;
+        stripQuery: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRule {
+        headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderAction>;
+        matchRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRule>[]>;
+        priority: pulumi.Input<number>;
+        routeAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteAction>;
+        service?: pulumi.Input<string>;
+        urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleUrlRedirect>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRule {
+        fullPathMatch?: pulumi.Input<string>;
+        headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatch>[]>;
+        ignoreCase?: pulumi.Input<boolean>;
+        metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter>[]>;
+        prefixMatch?: pulumi.Input<string>;
+        queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>[]>;
+        regexMatch?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        exactMatch?: pulumi.Input<string>;
+        headerName: pulumi.Input<string>;
+        invertMatch?: pulumi.Input<boolean>;
+        prefixMatch?: pulumi.Input<string>;
+        presentMatch?: pulumi.Input<boolean>;
+        rangeMatch?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch>;
+        regexMatch?: pulumi.Input<string>;
+        suffixMatch?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        rangeEnd: pulumi.Input<number>;
+        rangeStart: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        filterLabels: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>[]>;
+        filterMatchCriteria: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        exactMatch?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        presentMatch?: pulumi.Input<boolean>;
+        regexMatch?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteAction {
+        corsPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy>;
+        faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>;
+        requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy>;
+        retryPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicy>;
+        timeout?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionTimeout>;
+        urlRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite>;
+        weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService>[]>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        allowCredentials?: pulumi.Input<boolean>;
+        allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+        allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        disabled?: pulumi.Input<boolean>;
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        maxAge?: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        abort?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort>;
+        delay?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        httpStatus?: pulumi.Input<number>;
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        fixedDelay?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        backendService: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        numRetries: pulumi.Input<number>;
+        perTryTimeout?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout>;
+        retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        hostRewrite?: pulumi.Input<string>;
+        pathPrefixRewrite?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        backendService: pulumi.Input<string>;
+        headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction>;
+        weight: pulumi.Input<number>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+        responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
+        responseHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<string>;
+        replace: pulumi.Input<boolean>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleUrlRedirect {
+        hostRedirect?: pulumi.Input<string>;
+        httpsRedirect?: pulumi.Input<boolean>;
+        pathRedirect?: pulumi.Input<string>;
+        prefixRedirect?: pulumi.Input<string>;
+        redirectResponseCode?: pulumi.Input<string>;
+        stripQuery?: pulumi.Input<boolean>;
     }
 
     export interface URLMapTest {
@@ -1602,33 +2273,28 @@ export namespace container {
         horizontalPodAutoscaling?: pulumi.Input<inputs.container.ClusterAddonsConfigHorizontalPodAutoscaling>;
         httpLoadBalancing?: pulumi.Input<inputs.container.ClusterAddonsConfigHttpLoadBalancing>;
         istioConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigIstioConfig>;
-        kubernetesDashboard?: pulumi.Input<inputs.container.ClusterAddonsConfigKubernetesDashboard>;
         networkPolicyConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigNetworkPolicyConfig>;
     }
 
     export interface ClusterAddonsConfigCloudrunConfig {
-        disabled?: pulumi.Input<boolean>;
+        disabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigHorizontalPodAutoscaling {
-        disabled?: pulumi.Input<boolean>;
+        disabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigHttpLoadBalancing {
-        disabled?: pulumi.Input<boolean>;
+        disabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigIstioConfig {
         auth?: pulumi.Input<string>;
-        disabled?: pulumi.Input<boolean>;
-    }
-
-    export interface ClusterAddonsConfigKubernetesDashboard {
-        disabled?: pulumi.Input<boolean>;
+        disabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigNetworkPolicyConfig {
-        disabled?: pulumi.Input<boolean>;
+        disabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAuthenticatorGroupsConfig {
@@ -1636,8 +2302,14 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscaling {
+        autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
         enabled: pulumi.Input<boolean>;
         resourceLimits?: pulumi.Input<pulumi.Input<inputs.container.ClusterClusterAutoscalingResourceLimit>[]>;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
+        serviceAccount?: pulumi.Input<string>;
     }
 
     export interface ClusterClusterAutoscalingResourceLimit {
@@ -1654,12 +2326,8 @@ export namespace container {
     export interface ClusterIpAllocationPolicy {
         clusterIpv4CidrBlock?: pulumi.Input<string>;
         clusterSecondaryRangeName?: pulumi.Input<string>;
-        createSubnetwork?: pulumi.Input<boolean>;
-        nodeIpv4CidrBlock?: pulumi.Input<string>;
         servicesIpv4CidrBlock?: pulumi.Input<string>;
         servicesSecondaryRangeName?: pulumi.Input<string>;
-        subnetworkName?: pulumi.Input<string>;
-        useIpAliases?: pulumi.Input<boolean>;
     }
 
     export interface ClusterMaintenancePolicy {
@@ -1701,7 +2369,7 @@ export namespace container {
     }
 
     export interface ClusterNetworkPolicy {
-        enabled?: pulumi.Input<boolean>;
+        enabled: pulumi.Input<boolean>;
         provider?: pulumi.Input<string>;
     }
 
@@ -1789,6 +2457,7 @@ export namespace container {
          * a zonal cluster, omit the cluster's zone.
          */
         nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+        upgradeSettings?: pulumi.Input<inputs.container.ClusterNodePoolUpgradeSettings>;
         version?: pulumi.Input<string>;
     }
 
@@ -1846,20 +2515,26 @@ export namespace container {
         nodeMetadata: pulumi.Input<string>;
     }
 
+    export interface ClusterNodePoolUpgradeSettings {
+        maxSurge: pulumi.Input<number>;
+        maxUnavailable: pulumi.Input<number>;
+    }
+
     export interface ClusterPodSecurityPolicyConfig {
         enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterPrivateClusterConfig {
-        enablePrivateEndpoint?: pulumi.Input<boolean>;
+        enablePrivateEndpoint: pulumi.Input<boolean>;
         enablePrivateNodes?: pulumi.Input<boolean>;
         masterIpv4CidrBlock?: pulumi.Input<string>;
+        peeringName?: pulumi.Input<string>;
         privateEndpoint?: pulumi.Input<string>;
         publicEndpoint?: pulumi.Input<string>;
     }
 
     export interface ClusterReleaseChannel {
-        channel?: pulumi.Input<string>;
+        channel: pulumi.Input<string>;
     }
 
     export interface ClusterResourceUsageExportConfig {
@@ -1872,7 +2547,7 @@ export namespace container {
     }
 
     export interface ClusterVerticalPodAutoscaling {
-        enabled?: pulumi.Input<boolean>;
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterWorkloadIdentityConfig {
@@ -1932,6 +2607,11 @@ export namespace container {
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
         nodeMetadata: pulumi.Input<string>;
     }
+
+    export interface NodePoolUpgradeSettings {
+        maxSurge: pulumi.Input<number>;
+        maxUnavailable: pulumi.Input<number>;
+    }
 }
 
 export namespace containeranalysis {
@@ -1941,6 +2621,13 @@ export namespace containeranalysis {
 
     export interface NoteAttestationAuthorityHint {
         humanReadableName: pulumi.Input<string>;
+    }
+}
+
+export namespace datafusion {
+    export interface InstanceNetworkConfig {
+        ipAllocation: pulumi.Input<string>;
+        network: pulumi.Input<string>;
     }
 }
 
@@ -1984,7 +2671,7 @@ export namespace dataproc {
     }
 
     export interface ClusterClusterConfigAutoscalingConfig {
-        policyUri?: pulumi.Input<string>;
+        policyUri: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfigEncryptionConfig {
@@ -2092,7 +2779,7 @@ export namespace dataproc {
     }
 
     export interface JobHadoopConfigLoggingConfig {
-        driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobHiveConfig {
@@ -2127,7 +2814,7 @@ export namespace dataproc {
     }
 
     export interface JobPigConfigLoggingConfig {
-        driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobPlacement {
@@ -2147,7 +2834,7 @@ export namespace dataproc {
     }
 
     export interface JobPysparkConfigLoggingConfig {
-        driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobReference {
@@ -2155,7 +2842,7 @@ export namespace dataproc {
     }
 
     export interface JobScheduling {
-        maxFailuresPerHour?: pulumi.Input<number>;
+        maxFailuresPerHour: pulumi.Input<number>;
     }
 
     export interface JobSparkConfig {
@@ -2170,7 +2857,7 @@ export namespace dataproc {
     }
 
     export interface JobSparkConfigLoggingConfig {
-        driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobSparksqlConfig {
@@ -2183,7 +2870,7 @@ export namespace dataproc {
     }
 
     export interface JobSparksqlConfigLoggingConfig {
-        driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobStatus {
@@ -2210,39 +2897,39 @@ export namespace dns {
     }
 
     export interface ManagedZoneForwardingConfig {
-        targetNameServers?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZoneForwardingConfigTargetNameServer>[]>;
+        targetNameServers: pulumi.Input<pulumi.Input<inputs.dns.ManagedZoneForwardingConfigTargetNameServer>[]>;
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
-        ipv4Address?: pulumi.Input<string>;
+        ipv4Address: pulumi.Input<string>;
     }
 
     export interface ManagedZonePeeringConfig {
-        targetNetwork?: pulumi.Input<inputs.dns.ManagedZonePeeringConfigTargetNetwork>;
+        targetNetwork: pulumi.Input<inputs.dns.ManagedZonePeeringConfigTargetNetwork>;
     }
 
     export interface ManagedZonePeeringConfigTargetNetwork {
-        networkUrl?: pulumi.Input<string>;
+        networkUrl: pulumi.Input<string>;
     }
 
     export interface ManagedZonePrivateVisibilityConfig {
-        networks?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
+        networks: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
     }
 
     export interface ManagedZonePrivateVisibilityConfigNetwork {
-        networkUrl?: pulumi.Input<string>;
+        networkUrl: pulumi.Input<string>;
     }
 
     export interface PolicyAlternativeNameServerConfig {
-        targetNameServers?: pulumi.Input<pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfigTargetNameServer>[]>;
+        targetNameServers: pulumi.Input<pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfigTargetNameServer>[]>;
     }
 
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
-        ipv4Address?: pulumi.Input<string>;
+        ipv4Address: pulumi.Input<string>;
     }
 
     export interface PolicyNetwork {
-        networkUrl?: pulumi.Input<string>;
+        networkUrl: pulumi.Input<string>;
     }
 }
 
@@ -2523,16 +3210,12 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
-        publicKeyCertificate?: pulumi.Input<inputs.kms.RegistryCredentialPublicKeyCertificate>;
+        publicKeyCertificate: pulumi.Input<inputs.kms.RegistryCredentialPublicKeyCertificate>;
     }
 
     export interface RegistryCredentialPublicKeyCertificate {
         certificate: pulumi.Input<string>;
         format: pulumi.Input<string>;
-    }
-
-    export interface RegistryEventNotificationConfig {
-        pubsubTopicName: pulumi.Input<string>;
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -2561,7 +3244,7 @@ export namespace logging {
     }
 
     export interface MetricBucketOptionsExplicitBuckets {
-        bounds?: pulumi.Input<pulumi.Input<number>[]>;
+        bounds: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface MetricBucketOptionsExponentialBuckets {
@@ -2593,7 +3276,7 @@ export namespace logging {
 
 export namespace ml {
     export interface EngineModelDefaultVersion {
-        name?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
     }
 }
 
@@ -2665,7 +3348,7 @@ export namespace monitoring {
     }
 
     export interface UptimeCheckConfigContentMatcher {
-        content?: pulumi.Input<string>;
+        content: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigHttpCheck {
@@ -2679,16 +3362,8 @@ export namespace monitoring {
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
-        password?: pulumi.Input<string>;
-        username?: pulumi.Input<string>;
-    }
-
-    export interface UptimeCheckConfigInternalChecker {
-        displayName?: pulumi.Input<string>;
-        gcpZone?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        network?: pulumi.Input<string>;
-        peerProjectId?: pulumi.Input<string>;
+        password: pulumi.Input<string>;
+        username: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigMonitoredResource {
@@ -2768,6 +3443,11 @@ export namespace organizations {
         title: pulumi.Input<string>;
     }
 
+    export interface IamAuditConfigAuditLogConfig {
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+        logType: pulumi.Input<string>;
+    }
+
     export interface PolicyBooleanPolicy {
         enforced: pulumi.Input<boolean>;
     }
@@ -2840,7 +3520,7 @@ export namespace projects {
 
 export namespace pubsub {
     export interface SubscriptionExpirationPolicy {
-        ttl?: pulumi.Input<string>;
+        ttl: pulumi.Input<string>;
     }
 
     export interface SubscriptionIAMBindingCondition {
@@ -2922,6 +3602,12 @@ export namespace sourcerepo {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface RepositoryPubsubConfig {
+        messageFormat: pulumi.Input<string>;
+        serviceAccountEmail?: pulumi.Input<string>;
+        topic: pulumi.Input<string>;
     }
 }
 
@@ -3014,8 +3700,8 @@ export namespace sql {
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
-        name?: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsIpConfiguration {
@@ -3034,7 +3720,7 @@ export namespace sql {
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
         name?: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        value: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsLocationPreference {
@@ -3089,7 +3775,6 @@ export namespace storage {
     export interface BucketLifecycleRuleCondition {
         age?: pulumi.Input<number>;
         createdBefore?: pulumi.Input<string>;
-        isLive?: pulumi.Input<boolean>;
         matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>;
         numNewerVersions?: pulumi.Input<number>;
         withState?: pulumi.Input<string>;
@@ -3106,7 +3791,7 @@ export namespace storage {
     }
 
     export interface BucketVersioning {
-        enabled?: pulumi.Input<boolean>;
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface BucketWebsite {
@@ -3201,6 +3886,6 @@ export namespace tpu {
     }
 
     export interface NodeSchedulingConfig {
-        preemptible?: pulumi.Input<boolean>;
+        preemptible: pulumi.Input<boolean>;
     }
 }

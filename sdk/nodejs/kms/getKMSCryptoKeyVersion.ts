@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
  * 
  * A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myKeyRing = gcp.kms.getKMSKeyRing({
- *     location: "us-central1",
- *     name: "my-key-ring",
- * });
- * const myCryptoKey = gcp.kms.getKMSCryptoKey({
- *     keyRing: myKeyRing.selfLink,
- *     name: "my-crypto-key",
- * });
- * const myCryptoKeyVersion = google_kms_key_my_key.selfLink.apply(selfLink => gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: selfLink,
- * }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
  */

@@ -11,26 +11,6 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
- * 
- * ## Example Usage
- * 
- * Example creating an ACL on a bucket with one owner, and one reader.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const imageStore = new gcp.storage.Bucket("image-store", {
- *     location: "EU",
- * });
- * const imageStoreAcl = new gcp.storage.BucketACL("image-store-acl", {
- *     bucket: image_store.name,
- *     roleEntities: [
- *         "OWNER:user-my.email@gmail.com",
- *         "READER:group-mygroup",
- *     ],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
  */

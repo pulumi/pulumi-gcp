@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         /// </summary>
         [Output("minCpuPlatform")]
-        public Output<string?> MinCpuPlatform { get; private set; } = null!;
+        public Output<string> MinCpuPlatform { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the resource, required by GCE.
@@ -1152,8 +1152,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceScratchDisksArgs : Pulumi.ResourceArgs
     {
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        [Input("interface", required: true)]
+        public Input<string> Interface { get; set; } = null!;
 
         public InstanceScratchDisksArgs()
         {
@@ -1162,8 +1162,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceScratchDisksGetArgs : Pulumi.ResourceArgs
     {
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        [Input("interface", required: true)]
+        public Input<string> Interface { get; set; } = null!;
 
         public InstanceScratchDisksGetArgs()
         {
@@ -1459,10 +1459,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceScratchDisks
     {
-        public readonly string? Interface;
+        public readonly string Interface;
 
         [OutputConstructor]
-        private InstanceScratchDisks(string? @interface)
+        private InstanceScratchDisks(string @interface)
         {
             Interface = @interface;
         }

@@ -58,7 +58,8 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly filename!: pulumi.Output<string | undefined>;
     /**
-     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+     * 'trigger_template' or 'github' must be provided.
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     /**
@@ -96,7 +97,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
      * interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a
-     * build. This field is required, and will be validated as such in 3.0.0.
+     * build. One of 'trigger_template' or 'github' must be provided.
      */
     public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
 
@@ -178,7 +179,8 @@ export interface TriggerState {
      */
     readonly filename?: pulumi.Input<string>;
     /**
-     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+     * 'trigger_template' or 'github' must be provided.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
@@ -216,7 +218,7 @@ export interface TriggerState {
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
      * interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a
-     * build. This field is required, and will be validated as such in 3.0.0.
+     * build. One of 'trigger_template' or 'github' must be provided.
      */
     readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }
@@ -243,7 +245,8 @@ export interface TriggerArgs {
      */
     readonly filename?: pulumi.Input<string>;
     /**
-     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+     * Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+     * 'trigger_template' or 'github' must be provided.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
@@ -277,7 +280,7 @@ export interface TriggerArgs {
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
      * interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a
-     * build. This field is required, and will be validated as such in 3.0.0.
+     * build. One of 'trigger_template' or 'github' must be provided.
      */
     readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }

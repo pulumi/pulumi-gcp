@@ -23,6 +23,8 @@ namespace Pulumi.Gcp
 
         public static string? BigtableCustomEndpoint { get; set; } = __config.Get("bigtableCustomEndpoint");
 
+        public static string? BillingCustomEndpoint { get; set; } = __config.Get("billingCustomEndpoint");
+
         public static string? BinaryAuthorizationCustomEndpoint { get; set; } = __config.Get("binaryAuthorizationCustomEndpoint");
 
         public static string? CloudBillingCustomEndpoint { get; set; } = __config.Get("cloudBillingCustomEndpoint");
@@ -36,6 +38,8 @@ namespace Pulumi.Gcp
         public static string? CloudRunCustomEndpoint { get; set; } = __config.Get("cloudRunCustomEndpoint");
 
         public static string? CloudSchedulerCustomEndpoint { get; set; } = __config.Get("cloudSchedulerCustomEndpoint");
+
+        public static string? CloudTasksCustomEndpoint { get; set; } = __config.Get("cloudTasksCustomEndpoint");
 
         public static string? ComposerCustomEndpoint { get; set; } = __config.Get("composerCustomEndpoint");
 
@@ -90,6 +94,8 @@ namespace Pulumi.Gcp
         public static string? RedisCustomEndpoint { get; set; } = __config.Get("redisCustomEndpoint");
 
         public static string? Region { get; set; } = __config.Get("region") ?? Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+
+        public static string? RequestTimeout { get; set; } = __config.Get("requestTimeout");
 
         public static string? ResourceManagerCustomEndpoint { get; set; } = __config.Get("resourceManagerCustomEndpoint");
 

@@ -11,17 +11,6 @@ namespace Pulumi.Gcp.Kms
     public static partial class Invokes
     {
         /// <summary>
-        /// This data source allows you to encrypt data with Google Cloud KMS and use the
-        /// ciphertext within your resource definitions.
-        /// 
-        /// For more information see
-        /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
-        /// 
-        /// &gt; **NOTE**: Using this data source will allow you to conceal secret data within your
-        /// resource definitions, but it does not take care of protecting that data in the
-        /// logging output, plan output, or state output.  Please take care to secure your secret
-        /// data outside of resource definitions.
-        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret_ciphertext.html.markdown.
         /// </summary>
         public static Task<GetKMSSecretCiphertextResult> GetKMSSecretCiphertext(GetKMSSecretCiphertextArgs args, InvokeOptions? options = null)

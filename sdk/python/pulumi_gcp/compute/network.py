@@ -18,7 +18,6 @@ class Network(pulumi.CustomResource):
     """
     description: pulumi.Output[str]
     gateway_ipv4: pulumi.Output[str]
-    ipv4_range: pulumi.Output[str]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
@@ -30,7 +29,7 @@ class Network(pulumi.CustomResource):
     """
     The URI of the created resource.
     """
-    def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, ipv4_range=None, name=None, project=None, routing_mode=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, name=None, project=None, routing_mode=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Network resource with the given unique name, props, and options.
         
@@ -63,7 +62,6 @@ class Network(pulumi.CustomResource):
             __props__['auto_create_subnetworks'] = auto_create_subnetworks
             __props__['delete_default_routes_on_create'] = delete_default_routes_on_create
             __props__['description'] = description
-            __props__['ipv4_range'] = ipv4_range
             __props__['name'] = name
             __props__['project'] = project
             __props__['routing_mode'] = routing_mode
@@ -76,7 +74,7 @@ class Network(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, gateway_ipv4=None, ipv4_range=None, name=None, project=None, routing_mode=None, self_link=None):
+    def get(resource_name, id, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, gateway_ipv4=None, name=None, project=None, routing_mode=None, self_link=None):
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -99,7 +97,6 @@ class Network(pulumi.CustomResource):
         __props__["delete_default_routes_on_create"] = delete_default_routes_on_create
         __props__["description"] = description
         __props__["gateway_ipv4"] = gateway_ipv4
-        __props__["ipv4_range"] = ipv4_range
         __props__["name"] = name
         __props__["project"] = project
         __props__["routing_mode"] = routing_mode

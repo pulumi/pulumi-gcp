@@ -243,11 +243,14 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesMatchArgs : Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
-        public Input<SecurityPolicyRulesMatchConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<SecurityPolicyRulesMatchConfigArgs>? Config { get; set; }
 
-        [Input("versionedExpr", required: true)]
-        public Input<string> VersionedExpr { get; set; } = null!;
+        [Input("expr")]
+        public Input<SecurityPolicyRulesMatchExprArgs>? Expr { get; set; }
+
+        [Input("versionedExpr")]
+        public Input<string>? VersionedExpr { get; set; }
 
         public SecurityPolicyRulesMatchArgs()
         {
@@ -284,13 +287,36 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+    public sealed class SecurityPolicyRulesMatchExprArgs : Pulumi.ResourceArgs
+    {
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        public SecurityPolicyRulesMatchExprArgs()
+        {
+        }
+    }
+
+    public sealed class SecurityPolicyRulesMatchExprGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
+
+        public SecurityPolicyRulesMatchExprGetArgs()
+        {
+        }
+    }
+
     public sealed class SecurityPolicyRulesMatchGetArgs : Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
-        public Input<SecurityPolicyRulesMatchConfigGetArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<SecurityPolicyRulesMatchConfigGetArgs>? Config { get; set; }
 
-        [Input("versionedExpr", required: true)]
-        public Input<string> VersionedExpr { get; set; } = null!;
+        [Input("expr")]
+        public Input<SecurityPolicyRulesMatchExprGetArgs>? Expr { get; set; }
+
+        [Input("versionedExpr")]
+        public Input<string>? VersionedExpr { get; set; }
 
         public SecurityPolicyRulesMatchGetArgs()
         {
@@ -332,15 +358,18 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SecurityPolicyRulesMatch
     {
-        public readonly SecurityPolicyRulesMatchConfig Config;
-        public readonly string VersionedExpr;
+        public readonly SecurityPolicyRulesMatchConfig? Config;
+        public readonly SecurityPolicyRulesMatchExpr? Expr;
+        public readonly string? VersionedExpr;
 
         [OutputConstructor]
         private SecurityPolicyRulesMatch(
-            SecurityPolicyRulesMatchConfig config,
-            string versionedExpr)
+            SecurityPolicyRulesMatchConfig? config,
+            SecurityPolicyRulesMatchExpr? expr,
+            string? versionedExpr)
         {
             Config = config;
+            Expr = expr;
             VersionedExpr = versionedExpr;
         }
     }
@@ -354,6 +383,18 @@ namespace Pulumi.Gcp.Compute
         private SecurityPolicyRulesMatchConfig(ImmutableArray<string> srcIpRanges)
         {
             SrcIpRanges = srcIpRanges;
+        }
+    }
+
+    [OutputType]
+    public sealed class SecurityPolicyRulesMatchExpr
+    {
+        public readonly string Expression;
+
+        [OutputConstructor]
+        private SecurityPolicyRulesMatchExpr(string expression)
+        {
+            Expression = expression;
         }
     }
     }

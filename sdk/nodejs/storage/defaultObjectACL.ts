@@ -20,26 +20,6 @@ import * as utilities from "../utilities";
  * 
  * > Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
  * to control individual role entity pairs.
- * 
- * ## Example Usage
- * 
- * Example creating a default object ACL on a bucket with one owner, and one reader.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const imageStore = new gcp.storage.Bucket("image-store", {
- *     location: "EU",
- * });
- * const imageStoreDefaultAcl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
- *     bucket: image_store.name,
- *     roleEntities: [
- *         "OWNER:user-my.email@gmail.com",
- *         "READER:group-mygroup",
- *     ],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
  */

@@ -35,6 +35,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["replicaConfiguration"] = nil
+		inputs["rootPassword"] = nil
 		inputs["settings"] = nil
 	} else {
 		inputs["databaseVersion"] = args.DatabaseVersion
@@ -43,6 +44,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["replicaConfiguration"] = args.ReplicaConfiguration
+		inputs["rootPassword"] = args.RootPassword
 		inputs["settings"] = args.Settings
 	}
 	inputs["connectionName"] = nil
@@ -77,6 +79,7 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 		inputs["publicIpAddress"] = state.PublicIpAddress
 		inputs["region"] = state.Region
 		inputs["replicaConfiguration"] = state.ReplicaConfiguration
+		inputs["rootPassword"] = state.RootPassword
 		inputs["selfLink"] = state.SelfLink
 		inputs["serverCaCert"] = state.ServerCaCert
 		inputs["serviceAccountEmailAddress"] = state.ServiceAccountEmailAddress
@@ -105,9 +108,10 @@ func (r *DatabaseInstance) ConnectionName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["connectionName"])
 }
 
-// The MySQL or PostgreSQL version to
+// The MySQL, PostgreSQL or MS SQL Server (beta) version to
 // use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
 // instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
 // See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
 // for more information.
 func (r *DatabaseInstance) DatabaseVersion() pulumi.StringOutput {
@@ -172,6 +176,11 @@ func (r *DatabaseInstance) ReplicaConfiguration() pulumi.Output {
 	return r.s.State["replicaConfiguration"]
 }
 
+// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+func (r *DatabaseInstance) RootPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rootPassword"])
+}
+
 // The URI of the created resource.
 func (r *DatabaseInstance) SelfLink() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["selfLink"])
@@ -198,9 +207,10 @@ type DatabaseInstanceState struct {
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName interface{}
-	// The MySQL or PostgreSQL version to
+	// The MySQL, PostgreSQL or MS SQL Server (beta) version to
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+	// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
 	// for more information.
 	DatabaseVersion interface{}
@@ -235,6 +245,8 @@ type DatabaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration interface{}
+	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	RootPassword interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
 	ServerCaCert interface{}
@@ -248,9 +260,10 @@ type DatabaseInstanceState struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The MySQL or PostgreSQL version to
+	// The MySQL, PostgreSQL or MS SQL Server (beta) version to
 	// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
 	// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+	// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
 	// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
 	// for more information.
 	DatabaseVersion interface{}
@@ -277,6 +290,8 @@ type DatabaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration interface{}
+	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	RootPassword interface{}
 	// The settings to use for the database. The
 	// configuration is detailed below.
 	Settings interface{}

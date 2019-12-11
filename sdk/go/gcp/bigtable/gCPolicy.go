@@ -85,6 +85,7 @@ func (r *GCPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The name of the column family.
 func (r *GCPolicy) ColumnFamily() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["columnFamily"])
 }
@@ -114,12 +115,14 @@ func (r *GCPolicy) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
+// The name of the table.
 func (r *GCPolicy) Table() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["table"])
 }
 
 // Input properties used for looking up and filtering GCPolicy resources.
 type GCPolicyState struct {
+	// The name of the column family.
 	ColumnFamily interface{}
 	// The name of the Bigtable instance.
 	InstanceName interface{}
@@ -131,11 +134,13 @@ type GCPolicyState struct {
 	Mode interface{}
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
+	// The name of the table.
 	Table interface{}
 }
 
 // The set of arguments for constructing a GCPolicy resource.
 type GCPolicyArgs struct {
+	// The name of the column family.
 	ColumnFamily interface{}
 	// The name of the Bigtable instance.
 	InstanceName interface{}
@@ -147,5 +152,6 @@ type GCPolicyArgs struct {
 	Mode interface{}
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project interface{}
+	// The name of the table.
 	Table interface{}
 }

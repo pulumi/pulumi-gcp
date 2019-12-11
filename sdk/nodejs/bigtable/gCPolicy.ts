@@ -10,54 +10,6 @@ import * as utilities from "../utilities";
  * Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const instance = new gcp.bigtable.Instance("instance", {
- *     clusterId: "tf-instance-cluster",
- *     numNodes: 3,
- *     storageType: "HDD",
- *     zone: "us-central1-b",
- * });
- * const table = new gcp.bigtable.Table("table", {
- *     columnFamilies: [{
- *         family: "name",
- *     }],
- *     instanceName: instance.name,
- * });
- * const policy = new gcp.bigtable.GCPolicy("policy", {
- *     columnFamily: "name",
- *     instanceName: instance.name,
- *     maxAges: [{
- *         days: 7,
- *     }],
- *     table: table.name,
- * });
- * ```
- * 
- * Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const policy = new gcp.bigtable.GCPolicy("policy", {
- *     columnFamily: "name",
- *     instanceName: google_bigtable_instance_instance.name,
- *     maxAges: [{
- *         days: 7,
- *     }],
- *     maxVersions: [{
- *         number: 10,
- *     }],
- *     mode: "UNION",
- *     table: google_bigtable_table_table.name,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
  */
@@ -88,6 +40,9 @@ export class GCPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === GCPolicy.__pulumiType;
     }
 
+    /**
+     * The name of the column family.
+     */
     public readonly columnFamily!: pulumi.Output<string>;
     /**
      * The name of the Bigtable instance.
@@ -109,6 +64,9 @@ export class GCPolicy extends pulumi.CustomResource {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The name of the table.
+     */
     public readonly table!: pulumi.Output<string>;
 
     /**
@@ -164,6 +122,9 @@ export class GCPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GCPolicy resources.
  */
 export interface GCPolicyState {
+    /**
+     * The name of the column family.
+     */
     readonly columnFamily?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
@@ -185,6 +146,9 @@ export interface GCPolicyState {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The name of the table.
+     */
     readonly table?: pulumi.Input<string>;
 }
 
@@ -192,6 +156,9 @@ export interface GCPolicyState {
  * The set of arguments for constructing a GCPolicy resource.
  */
 export interface GCPolicyArgs {
+    /**
+     * The name of the column family.
+     */
     readonly columnFamily: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
@@ -213,5 +180,8 @@ export interface GCPolicyArgs {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The name of the table.
+     */
     readonly table: pulumi.Input<string>;
 }

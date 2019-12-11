@@ -12,9 +12,6 @@ import * as utilities from "../utilities";
  * For a list of services available, visit the
  * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
  * 
- * > **Note:** This resource _must not_ be used in conjunction with
- *    `gcp.projects.Services` or they will fight over which services should be enabled.
- * 
  * ## Example Usage
  * 
  * ```typescript

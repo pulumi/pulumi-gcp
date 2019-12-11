@@ -46,10 +46,6 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable flow logging for this subnetwork.
-     */
-    public readonly enableFlowLogs!: pulumi.Output<boolean>;
-    /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
@@ -65,9 +61,9 @@ export class Subnetwork extends pulumi.CustomResource {
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-     * Stackdriver.
+     * Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The name must be 1-63
      * characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
@@ -132,7 +128,6 @@ export class Subnetwork extends pulumi.CustomResource {
             const state = argsOrState as SubnetworkState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
-            inputs["enableFlowLogs"] = state ? state.enableFlowLogs : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
             inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
@@ -155,7 +150,6 @@ export class Subnetwork extends pulumi.CustomResource {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;
-            inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -196,10 +190,6 @@ export interface SubnetworkState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to enable flow logging for this subnetwork.
-     */
-    readonly enableFlowLogs?: pulumi.Input<boolean>;
-    /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      */
     readonly fingerprint?: pulumi.Input<string>;
@@ -215,7 +205,7 @@ export interface SubnetworkState {
     readonly ipCidrRange?: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-     * Stackdriver.
+     * Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
      */
     readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**
@@ -279,10 +269,6 @@ export interface SubnetworkArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to enable flow logging for this subnetwork.
-     */
-    readonly enableFlowLogs?: pulumi.Input<boolean>;
-    /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the
      * subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network.
      * Only IPv4 is supported.
@@ -290,7 +276,7 @@ export interface SubnetworkArgs {
     readonly ipCidrRange: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to
-     * Stackdriver.
+     * Stackdriver. This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
      */
     readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**

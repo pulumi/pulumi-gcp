@@ -15,45 +15,6 @@ import * as utilities from "../utilities";
  * passwords as well as certificate outputs will be stored in the raw state as
  * plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * 
- * ## Example Usage - with a separately managed node pool (recommended)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const primary = new gcp.container.Cluster("primary", {
- *     initialNodeCount: 1,
- *     location: "us-central1",
- *     masterAuth: {
- *         clientCertificateConfig: {
- *             issueClientCertificate: false,
- *         },
- *         password: "",
- *         username: "",
- *     },
- *     // We can't create a cluster with no node pool defined, but we want to only use
- *     // separately managed node pools. So we create the smallest possible default
- *     // node pool and immediately delete it.
- *     removeDefaultNodePool: true,
- * });
- * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
- *     cluster: primary.name,
- *     location: "us-central1",
- *     nodeConfig: {
- *         machineType: "n1-standard-1",
- *         metadata: {
- *             "disable-legacy-endpoints": "true",
- *         },
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
- *         preemptible: true,
- *     },
- *     nodeCount: 1,
- * });
- * ```
- * 
  * ## Example Usage - with the default node pool
  * 
  * ```typescript
@@ -122,22 +83,12 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additionalZones` has been
-     * deprecated in favour of `nodeLocations`.
-     */
-    public readonly additionalZones!: pulumi.Output<string[]>;
-    /**
      * The configuration for addons supported by GKE.
      * Structure is documented below.
      */
     public readonly addonsConfig!: pulumi.Output<outputs.container.ClusterAddonsConfig>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
      */
@@ -153,11 +104,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly clusterAutoscaling!: pulumi.Output<outputs.container.ClusterClusterAutoscaling>;
     /**
      * The IP address range of the Kubernetes pods
-     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+     * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+     * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+     * only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
      */
     public readonly clusterIpv4Cidr!: pulumi.Output<string>;
     /**
@@ -227,27 +176,27 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
-     * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-     * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ipAllocationPolicy = []`.
+     * Configuration of cluster IP allocation for
+     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * making the cluster VPC-native instead of routes-based. Structure is documented
+     * below.
      */
-    public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy>;
+    public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy | undefined>;
     /**
      * The location (region or zone) in which the cluster
      * master will be created, as well as the default node location. If you specify a
      * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
      * single cluster master. If you specify a region (such as `us-west1`), the
      * cluster will be a regional cluster with multiple masters spread across zones in
-     * the region, and with default node locations in those zones as well.
+     * the region, and with default node locations in those zones as well
      */
     public readonly location!: pulumi.Output<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
-    public readonly loggingService!: pulumi.Output<string>;
+    public readonly loggingService!: pulumi.Output<string | undefined>;
     /**
      * The maintenance policy to use for the cluster. Structure is
      * documented below.
@@ -293,9 +242,9 @@ export class Cluster extends pulumi.CustomResource {
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
      * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-     * Defaults to `monitoring.googleapis.com`
+     * Defaults to `monitoring.googleapis.com/kubernetes`
      */
-    public readonly monitoringService!: pulumi.Output<string>;
+    public readonly monitoringService!: pulumi.Output<string | undefined>;
     /**
      * The name of the cluster, unique within the project and
      * location.
@@ -364,7 +313,6 @@ export class Cluster extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
     /**
      * ) Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -396,8 +344,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
     /**
-     * The name or selfLink of the Google Compute Engine subnetwork in
-     * which the cluster's instances are launched.
+     * The name or selfLink of the Google Compute Engine
+     * subnetwork in which the cluster's instances are launched.
      */
     public readonly subnetwork!: pulumi.Output<string>;
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
@@ -414,12 +362,6 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig | undefined>;
-    /**
-     * The zone that the cluster master and nodes
-     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
-     * has been deprecated in favour of `location`.
-     */
-    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -433,7 +375,6 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["additionalZones"] = state ? state.additionalZones : undefined;
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
@@ -469,7 +410,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
             inputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = state ? state.resourceLabels : undefined;
@@ -479,10 +419,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
             inputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
             inputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            inputs["additionalZones"] = args ? args.additionalZones : undefined;
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
@@ -515,7 +453,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
@@ -523,7 +460,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["endpoint"] = undefined /*out*/;
             inputs["instanceGroupUrls"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
@@ -546,22 +482,12 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additionalZones` has been
-     * deprecated in favour of `nodeLocations`.
-     */
-    readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The configuration for addons supported by GKE.
      * Structure is documented below.
      */
     readonly addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
      */
@@ -577,11 +503,9 @@ export interface ClusterState {
     readonly clusterAutoscaling?: pulumi.Input<inputs.container.ClusterClusterAutoscaling>;
     /**
      * The IP address range of the Kubernetes pods
-     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+     * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+     * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+     * only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -651,10 +575,10 @@ export interface ClusterState {
      */
     readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-     * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ipAllocationPolicy = []`.
+     * Configuration of cluster IP allocation for
+     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * making the cluster VPC-native instead of routes-based. Structure is documented
+     * below.
      */
     readonly ipAllocationPolicy?: pulumi.Input<inputs.container.ClusterIpAllocationPolicy>;
     /**
@@ -663,13 +587,13 @@ export interface ClusterState {
      * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
      * single cluster master. If you specify a region (such as `us-west1`), the
      * cluster will be a regional cluster with multiple masters spread across zones in
-     * the region, and with default node locations in those zones as well.
+     * the region, and with default node locations in those zones as well
      */
     readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -717,7 +641,7 @@ export interface ClusterState {
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
      * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-     * Defaults to `monitoring.googleapis.com`
+     * Defaults to `monitoring.googleapis.com/kubernetes`
      */
     readonly monitoringService?: pulumi.Input<string>;
     /**
@@ -788,7 +712,6 @@ export interface ClusterState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
     /**
      * ) Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -820,8 +743,8 @@ export interface ClusterState {
      */
     readonly servicesIpv4Cidr?: pulumi.Input<string>;
     /**
-     * The name or selfLink of the Google Compute Engine subnetwork in
-     * which the cluster's instances are launched.
+     * The name or selfLink of the Google Compute Engine
+     * subnetwork in which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
@@ -838,12 +761,6 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly workloadIdentityConfig?: pulumi.Input<inputs.container.ClusterWorkloadIdentityConfig>;
-    /**
-     * The zone that the cluster master and nodes
-     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
-     * has been deprecated in favour of `location`.
-     */
-    readonly zone?: pulumi.Input<string>;
 }
 
 /**
@@ -851,22 +768,12 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The list of zones in which the cluster's nodes
-     * should be located. These must be in the same region as the cluster zone for
-     * zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-     * the number of nodes specified in `initialNodeCount` is created in
-     * all specified zones as well as the primary zone. If specified for a regional
-     * cluster, nodes will only be created in these zones. `additionalZones` has been
-     * deprecated in favour of `nodeLocations`.
-     */
-    readonly additionalZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The configuration for addons supported by GKE.
      * Structure is documented below.
      */
     readonly addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
      */
@@ -882,11 +789,9 @@ export interface ClusterArgs {
     readonly clusterAutoscaling?: pulumi.Input<inputs.container.ClusterClusterAutoscaling>;
     /**
      * The IP address range of the Kubernetes pods
-     * in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-     * automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-     * work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-     * not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-     * cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+     * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+     * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+     * only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -947,10 +852,10 @@ export interface ClusterArgs {
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
-     * Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-     * This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-     * Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * in order to support explicit removal with `ipAllocationPolicy = []`.
+     * Configuration of cluster IP allocation for
+     * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * making the cluster VPC-native instead of routes-based. Structure is documented
+     * below.
      */
     readonly ipAllocationPolicy?: pulumi.Input<inputs.container.ClusterIpAllocationPolicy>;
     /**
@@ -959,13 +864,13 @@ export interface ClusterArgs {
      * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
      * single cluster master. If you specify a region (such as `us-west1`), the
      * cluster will be a regional cluster with multiple masters spread across zones in
-     * the region, and with default node locations in those zones as well.
+     * the region, and with default node locations in those zones as well
      */
     readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -1007,7 +912,7 @@ export interface ClusterArgs {
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
      * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-     * Defaults to `monitoring.googleapis.com`
+     * Defaults to `monitoring.googleapis.com/kubernetes`
      */
     readonly monitoringService?: pulumi.Input<string>;
     /**
@@ -1078,7 +983,6 @@ export interface ClusterArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
     /**
      * ) Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1103,8 +1007,8 @@ export interface ClusterArgs {
      */
     readonly resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
     /**
-     * The name or selfLink of the Google Compute Engine subnetwork in
-     * which the cluster's instances are launched.
+     * The name or selfLink of the Google Compute Engine
+     * subnetwork in which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
@@ -1120,10 +1024,4 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     readonly workloadIdentityConfig?: pulumi.Input<inputs.container.ClusterWorkloadIdentityConfig>;
-    /**
-     * The zone that the cluster master and nodes
-     * should be created in. If specified, this cluster will be a zonal cluster. `zone`
-     * has been deprecated in favour of `location`.
-     */
-    readonly zone?: pulumi.Input<string>;
 }

@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.Organizations
         /// The resource name of the Organization in the form `organizations/{organization_id}`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The Organization ID.
+        /// </summary>
+        public readonly string OrgId;
         public readonly string? Organization;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -71,6 +75,7 @@ namespace Pulumi.Gcp.Organizations
             string domain,
             string lifecycleState,
             string name,
+            string orgId,
             string? organization,
             string id)
         {
@@ -79,6 +84,7 @@ namespace Pulumi.Gcp.Organizations
             Domain = domain;
             LifecycleState = lifecycleState;
             Name = name;
+            OrgId = orgId;
             Organization = organization;
             Id = id;
         }

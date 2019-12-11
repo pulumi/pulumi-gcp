@@ -186,8 +186,6 @@ func (r *InstanceGroupManager) UpdatePolicy() pulumi.Output {
 // Application versions managed by this instance group. Each
 // version deals with a specific instance template, allowing canary release scenarios.
 // Structure is documented below.
-// Until `instanceTemplate` is removed this field will be Optional to allow for a
-// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 func (r *InstanceGroupManager) Versions() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["versions"])
 }
@@ -251,8 +249,6 @@ type InstanceGroupManagerState struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	// Until `instanceTemplate` is removed this field will be Optional to allow for a
-	// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will
@@ -303,8 +299,6 @@ type InstanceGroupManagerArgs struct {
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
-	// Until `instanceTemplate` is removed this field will be Optional to allow for a
-	// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
 	Versions interface{}
 	// Whether to wait for all instances to be created/updated before
 	// returning. Note that if this is set to true and the operation does not succeed, this provider will

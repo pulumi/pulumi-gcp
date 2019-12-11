@@ -355,8 +355,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SnapshotSnapshotEncryptionKeyArgs : Pulumi.ResourceArgs
     {
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
+        [Input("rawKey", required: true)]
+        public Input<string> RawKey { get; set; } = null!;
 
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
@@ -368,8 +368,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SnapshotSnapshotEncryptionKeyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
+        [Input("rawKey", required: true)]
+        public Input<string> RawKey { get; set; } = null!;
 
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
@@ -406,12 +406,12 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SnapshotSnapshotEncryptionKey
     {
-        public readonly string? RawKey;
+        public readonly string RawKey;
         public readonly string Sha256;
 
         [OutputConstructor]
         private SnapshotSnapshotEncryptionKey(
-            string? rawKey,
+            string rawKey,
             string sha256)
         {
             RawKey = rawKey;
