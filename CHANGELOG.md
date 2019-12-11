@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+
+* Upgrade to v3.2.0 of the Google Beta Terraform Provider.  
+  A summary of the breaking changes to the underlying provider can be found [in the Terraform upgrade guide](https://www.terraform.io/docs/providers/google/guides/version_3_upgrade.html#upgrade-topics)
 
 ---
 
